@@ -1538,6 +1538,37 @@ function boxOfPts(pts) {
   for (const p of pts) BB.add(b, p);
   return b;
 }
+/**
+ * Sort a pile of closed rings into solids and the holes inside them, by
+ * nesting depth: even depth is ink, odd depth is a counter. A hole is
+ * assigned to the smallest solid that contains it, so a ring inside a
+ * ring inside a ring lands in the right place.
+ *
+ * Shared by text outlining and the boolean ops — both end up holding a
+ * flat list of rings with no idea which way round they are.
+ */
+function groupRings(loops) {
+  const info = loops.map(pts => ({ pts, area: Math.abs(polyArea(pts)), box: boxOfPts(pts) }));
+  const depth = info.map((L, i) => {
+    let d = 0;
+    for (let j = 0; j < info.length; j++) {
+      if (i === j) continue;
+      if (BB.contains(info[j].box, L.pts[0]) && pointInPoly(L.pts[0], info[j].pts)) d++;
+    }
+    return d;
+  });
+  const groups = [];
+  info.forEach((L, i) => { if (depth[i] % 2 === 0) groups.push({ outer: L, holes: [] }); });
+  if (!groups.length) return [];
+  info.forEach((L, i) => {
+    if (depth[i] % 2 === 0) return;
+    let best = null;
+    for (const gr of groups)
+      if (pointInPoly(L.pts[0], gr.outer.pts) && (!best || gr.outer.area < best.outer.area)) best = gr;
+    (best || groups[0]).holes.push(L);
+  });
+  return groups;
+}
 
 /* ---- Douglas-Peucker ---- */
 function dpSimplify(pts, tol) {
@@ -1783,26 +1814,8 @@ function traceText(sh) {
     .filter(l => l.length >= 3 && Math.abs(polyArea(l)) > (1.5 / S) * (1.5 / S));
   if (!simplified.length) return [];
 
-  // even nesting depth = solid, odd = counter
-  const info = simplified.map(pts => ({ pts, area: Math.abs(polyArea(pts)), box: boxOfPts(pts) }));
-  const depth = info.map((L, i) => {
-    let d = 0;
-    for (let j = 0; j < info.length; j++) {
-      if (i === j) continue;
-      if (BB.contains(info[j].box, L.pts[0]) && pointInPoly(L.pts[0], info[j].pts)) d++;
-    }
-    return d;
-  });
-  const groups = [];
-  info.forEach((L, i) => { if (depth[i] % 2 === 0) groups.push({ outer: L, holes: [] }); });
+  const groups = groupRings(simplified);
   if (!groups.length) return [];
-  info.forEach((L, i) => {
-    if (depth[i] % 2 === 0) return;
-    let best = null;
-    for (const gr of groups)
-      if (pointInPoly(L.pts[0], gr.outer.pts) && (!best || gr.outer.area < best.outer.area)) best = gr;
-    (best || groups[0]).holes.push(L);
-  });
 
   return groups.map(gr => ({
     outer: loopToNodes(gr.outer.pts, true, fitTol, lineTol),
@@ -1827,6 +1840,324 @@ function explodeTextShape(sh) {
     s.m = Object.assign({}, sh.m);
     return s;
   });
+}
+
+/* =====================================================================
+   10c. Polygon booleans — union / difference / intersection
+   ---------------------------------------------------------------------
+   Flatten -> clip -> refit. The clipper splits every edge of both
+   operands at each crossing, keeps the pieces the operation calls for,
+   then chains the survivors back into rings.
+
+   Shared and collinear edges are the whole difficulty here, and with
+   grid snap on they are the common case rather than a rare one, so they
+   are handled explicitly: an edge lying on the other polygon's boundary
+   is classified by comparing the two directions rather than by an
+   inside/outside test, which would be a coin flip exactly there.
+
+   When every input segment is a line the output is exact — two snapped
+   rectangles union to crisp right angles with no approximation at all.
+   Curves are sampled, so they come back as fitted cubics and lose their
+   bulges (a booleaned arc exports to DXF as a polyline, not an arc).
+   ===================================================================== */
+const B_EPS = 1e-7;
+const bKey = p => p.x.toFixed(5) + ',' + p.y.toFixed(5);
+const bSame = (a, b) => Math.abs(a.x - b.x) < 1e-5 && Math.abs(a.y - b.y) < 1e-5;
+
+/** Average scale a matrix applies, for turning a local length into world. */
+const matScale = m => Math.sqrt(Math.abs(m.a * m.d - m.b * m.c)) || 1;
+
+/** A shape's closed contours as world-space point rings. */
+function flattenShape(sh, tol, state) {
+  const rings = [];
+  const k = matScale(sh.m);
+  for (const ct of contours(sh)) {
+    if (!ct.closed || ct.nodes.length < 3) { state.open = true; continue; }
+    const pts = [];
+    const n = ct.nodes, N = n.length;
+    for (let i = 0; i < N; i++) {
+      const a = n[i], b = n[(i + 1) % N];
+      pts.push(Mx.apply(sh.m, a));
+      const kind = segKind(a);
+      if (kind === 'line') continue;             // exact, no subdivision
+      state.curves = true;
+      const steps = clamp(Math.ceil(segLength(a, b) * k / tol), 4, 256);
+      for (let s = 1; s < steps; s++) pts.push(Mx.apply(sh.m, segPoint(a, b, s / steps)));
+    }
+    const out = [];
+    for (const p of pts) if (!out.length || !bSame(out[out.length - 1], p)) out.push(p);
+    if (out.length > 2 && bSame(out[0], out[out.length - 1])) out.pop();
+    if (out.length >= 3) rings.push(out);
+  }
+  return rings;
+}
+
+/** Even-odd containment against a set of rings (outer + holes). */
+function pointInRings(p, rings) {
+  let inside = false;
+  for (const r of rings) if (pointInPoly(p, r)) inside = !inside;
+  return inside;
+}
+/** Distance from p to segment ab, used to spot boundary-coincident edges. */
+function distToSeg(p, a, b) {
+  const d = sub(b, a), L2 = dot(d, d);
+  if (L2 < B_EPS) return dist(p, a);
+  const t = clamp(dot(sub(p, a), d) / L2, 0, 1);
+  return dist(p, add(a, scl(d, t)));
+}
+
+/** Every parameter along a1->a2 and b1->b2 where the pair must be cut. */
+function edgeCuts(a1, a2, b1, b2, outA, outB) {
+  const r = sub(a2, a1), s = sub(b2, b1);
+  const den = crs(r, s);
+  const qp = sub(b1, a1);
+  const lr = vlen(r), ls = vlen(s);
+  if (lr < B_EPS || ls < B_EPS) return;
+  if (Math.abs(den) > B_EPS * lr * ls) {
+    const t = crs(qp, s) / den, u = crs(qp, r) / den;
+    if (t > -1e-9 && t < 1 + 1e-9 && u > -1e-9 && u < 1 + 1e-9) {
+      outA.push(clamp(t, 0, 1));
+      outB.push(clamp(u, 0, 1));
+    }
+    return;
+  }
+  // parallel; only collinear pairs produce cuts
+  if (Math.abs(crs(qp, r)) > 1e-7 * lr) return;
+  const rr = dot(r, r), ss = dot(s, s);
+  for (const q of [b1, b2]) {
+    const t = dot(sub(q, a1), r) / rr;
+    if (t > 1e-9 && t < 1 - 1e-9) outA.push(t);
+  }
+  for (const q of [a1, a2]) {
+    const u = dot(sub(q, b1), s) / ss;
+    if (u > 1e-9 && u < 1 - 1e-9) outB.push(u);
+  }
+}
+
+/** Rings -> directed edges, cut wherever the other operand crosses them. */
+function splitEdges(ringsA, ringsB) {
+  const mk = rings => {
+    const es = [];
+    for (const r of rings)
+      for (let i = 0; i < r.length; i++) es.push({ a: r[i], b: r[(i + 1) % r.length], cuts: [] });
+    return es;
+  };
+  const A = mk(ringsA), B = mk(ringsB);
+  for (const ea of A)
+    for (const eb of B) edgeCuts(ea.a, ea.b, eb.a, eb.b, ea.cuts, eb.cuts);
+  const explode = es => {
+    const out = [];
+    for (const e of es) {
+      const ts = e.cuts.filter(t => t > 1e-9 && t < 1 - 1e-9).sort((x, y) => x - y);
+      let prev = e.a;
+      for (const t of ts) {
+        const p = lerpP(e.a, e.b, t);
+        if (!bSame(prev, p)) out.push({ a: prev, b: p });
+        prev = p;
+      }
+      if (!bSame(prev, e.b)) out.push({ a: prev, b: e.b });
+    }
+    return out;
+  };
+  return { A: explode(A), B: explode(B) };
+}
+
+/**
+ * Chain directed edges into closed rings. Where several edges leave the
+ * same point, take the sharpest right turn — that keeps the walk on one
+ * boundary instead of cutting across at a self-touching vertex.
+ */
+function chainRings(edges) {
+  const from = new Map();
+  edges.forEach((e, i) => {
+    const k = bKey(e.a);
+    if (!from.has(k)) from.set(k, []);
+    from.get(k).push(i);
+  });
+  const used = new Uint8Array(edges.length);
+  const rings = [];
+  for (let i = 0; i < edges.length; i++) {
+    if (used[i]) continue;
+    const ring = [];
+    let cur = i, guard = 0;
+    while (guard++ <= edges.length + 2) {
+      used[cur] = 1;
+      ring.push(edges[cur].a);
+      const end = edges[cur].b;
+      const cand = (from.get(bKey(end)) || []).filter(j => !used[j]);
+      if (!cand.length) break;
+      let pick = cand[0];
+      if (cand.length > 1) {
+        const inDir = norm(sub(end, edges[cur].a));
+        let best = Infinity;
+        for (const j of cand) {
+          const d = norm(sub(edges[j].b, edges[j].a));
+          // turn angle in (-pi, pi]; smallest picks the hardest right turn
+          let ang = sangle(inDir, d);
+          if (ang <= -Math.PI + 1e-9) ang = Math.PI;
+          if (ang < best) { best = ang; pick = j; }
+        }
+      }
+      cur = pick;
+      if (bSame(edges[cur].a, edges[i].a) && used[cur]) break;
+    }
+    if (ring.length >= 3) rings.push(ring);
+  }
+  return rings;
+}
+
+/** Drop vertices that sit on a straight run — only safe on exact output. */
+function dropCollinear(ring, tol) {
+  const out = [];
+  const n = ring.length;
+  for (let i = 0; i < n; i++) {
+    const p = ring[(i - 1 + n) % n], q = ring[i], r = ring[(i + 1) % n];
+    const d = sub(r, p), L = vlen(d);
+    if (L > B_EPS && Math.abs(crs(d, sub(q, p))) / L < tol) continue;
+    out.push(q);
+  }
+  return out.length >= 3 ? out : ring;
+}
+
+/**
+ * The clip itself. ringsA/ringsB are world-space rings; op is
+ * 'union' | 'difference' | 'intersect'. Returns rings.
+ */
+function clipRings(ringsA, ringsB, op) {
+  if (!ringsA.length) return op === 'union' ? ringsB.slice() : [];
+  if (!ringsB.length) return op === 'intersect' ? [] : ringsA.slice();
+  const { A, B } = splitEdges(ringsA, ringsB);
+  const otherEdges = { A: B, B: A };
+  const otherRings = { A: ringsB, B: ringsA };
+  const keep = [];
+
+  const classify = (e, side) => {
+    const mid = lerpP(e.a, e.b, 0.5);
+    const dir = norm(sub(e.b, e.a));
+    // sitting on the other boundary? then direction decides, not inside/outside
+    for (const o of otherEdges[side]) {
+      if (distToSeg(mid, o.a, o.b) < 1e-6) {
+        const od = norm(sub(o.b, o.a));
+        return { coincident: true, sameDir: dot(dir, od) > 0 };
+      }
+    }
+    return { coincident: false, inside: pointInRings(mid, otherRings[side]) };
+  };
+
+  for (const e of A) {
+    const c = classify(e, 'A');
+    if (c.coincident) {
+      // keep the A copy once for union/intersect when both agree; for
+      // difference an agreeing edge is swallowed and an opposing one survives
+      if (op === 'difference' ? !c.sameDir : c.sameDir) keep.push(e);
+      continue;
+    }
+    if (op === 'intersect' ? c.inside : !c.inside) keep.push(e);
+  }
+  for (const e of B) {
+    const c = classify(e, 'B');
+    if (c.coincident) continue;              // already settled from A's side
+    if (op === 'union') { if (!c.inside) keep.push(e); }
+    else if (op === 'intersect') { if (c.inside) keep.push(e); }
+    else if (c.inside) keep.push({ a: e.b, b: e.a });   // reversed: cuts the hole
+  }
+  return chainRings(keep);
+}
+
+/** Run a boolean over the current selection and replace it with the result. */
+function booleanSel(op) {
+  const sel = selShapes();
+  if (sel.length < 2) return status('Select two or more shapes first');
+
+  // text operands are traced to outlines first; one text can yield several
+  // glyph shapes, so each operand remembers which selected shape it came from
+  const operands = [];
+  for (const sh of sel) {
+    if (sh.kind === 'text') {
+      const parts = explodeTextShape(sh);
+      if (!parts.length) return status('That text produced no outlines');
+      for (const p of parts) operands.push({ shape: p, src: sh });
+    } else operands.push({ shape: sh, src: sh });
+  }
+
+  // Tolerance follows the size of the drawing, not the zoom: geometry you
+  // keep should not come out coarser because you happened to be zoomed out.
+  const span = (b => Math.max(BB.w(b), BB.h(b)))(worldBBoxOf(operands.map(o => o.shape)));
+  const tol = clamp(span * 0.0005, 0.02, 1.5);
+  const state = { curves: false, open: false };
+  const sets = operands.map(o => flattenShape(o.shape, tol, state));
+  if (!sets.some(s => s.length)) return status('Boolean needs closed shapes');
+  if (state.open) status('Open contours were ignored');
+
+  // bottom-most selected shape in z-order is the subject and lends its style
+  const zOf = sh => app.doc.shapes.indexOf(sh);
+  const bottom = sel.slice().sort((a, b) => zOf(a) - zOf(b))[0];
+
+  // fold every operand belonging to one source shape into a single solid
+  const foldOf = pred => {
+    let acc = [];
+    sets.forEach((s, i) => {
+      if (!s.length || !pred(operands[i], i)) return;
+      acc = acc.length ? clipRings(acc, s, 'union') : s;
+    });
+    return acc;
+  };
+
+  let result;
+  if (op === 'difference') {
+    const subject = foldOf(o => o.src === bottom);
+    const subtrahend = foldOf(o => o.src !== bottom);
+    if (!subject.length) return status('The bottom shape has nothing to subtract from');
+    result = subtrahend.length ? clipRings(subject, subtrahend, 'difference') : subject;
+  } else {
+    result = [];
+    for (const s of sets) {
+      if (!s.length) continue;
+      result = result.length ? clipRings(result, s, op) : s;
+      if (!result.length) break;               // intersection can die early
+    }
+  }
+
+  if (!result.length) return status('Result is empty — the shapes do not overlap');
+
+  // rebuild: exact when nothing was ever sampled, fitted when it was
+  const exact = !state.curves;
+  const rings = result
+    .map(r => exact ? dropCollinear(r, 1e-6) : simplifyLoop(r, tol * 0.6))
+    .filter(r => r.length >= 3 && Math.abs(polyArea(r)) > 1e-6);
+  if (!rings.length) return status('Result is empty');
+
+  const groups = groupRings(rings);
+  if (!groups.length) return status('Result is empty');
+
+  const toNodes = pts => exact
+    ? pts.map(p => mkNode(p.x, p.y, { seg: 'line', t: 'corner' }))
+    : loopToNodes(pts, true, tol * 1.6, tol);
+
+  const made = [];
+  for (const gr of groups) {
+    const outer = toNodes(gr.outer.pts);
+    if (outer.length < 3) continue;
+    const s = mkShape(outer, true, Object.assign({}, bottom.style, { rule: 'evenodd' }), 'path');
+    const holes = gr.holes.map(h => toNodes(h.pts)).filter(h => h.length >= 3);
+    if (holes.length) s.subs = holes.map(h => ({ nodes: h, closed: true }));
+    s.m = Mx.id();
+    made.push(s);
+  }
+  if (!made.length) return status('Result is empty');
+
+  pushUndo();
+  const at = Math.max(0, Math.min(...sel.map(zOf)));
+  app.doc.shapes = app.doc.shapes.filter(s => !sel.includes(s));
+  app.doc.shapes.splice(Math.min(at, app.doc.shapes.length), 0, ...made);
+  app.sel = made.map(s => s.id);
+  app.nodeSel = []; app.edgeSel = null;
+  app.handleMode = 'scale';
+  save(); render();
+  const verts = made.reduce((n, s) => n + contours(s).reduce((k, c) => k + c.nodes.length, 0), 0);
+  status(`${op === 'union' ? 'Union' : op === 'difference' ? 'Difference' : 'Intersection'} — ` +
+         `${made.length} path${made.length === 1 ? '' : 's'}, ${verts} vertices` +
+         (exact ? ' (exact)' : ' (curves refitted)'));
 }
 
 /* =====================================================================
@@ -3580,6 +3911,11 @@ const ICONS = {
   tocurve: '<path d="M4.5 18.5C4.5 9 19.5 15 19.5 5.5"/><circle cx="4.5" cy="18.5" r="2"/><circle cx="19.5" cy="5.5" r="2"/>',
   reset:   '<path d="M5 5h14v14H5z" opacity=".35"/><path d="M8.5 8.5h7v7h-7z"/>',
   text:    '<path d="M4.5 7V4.5h15V7"/><path d="M12 4.5v15"/><path d="M8.5 19.5h7"/>',
+  group:   '<rect x="2.2" y="2.2" width="19.6" height="19.6" rx="1.8" stroke-dasharray="3 2.4" opacity=".6"/><rect x="5.8" y="5.8" width="6.4" height="6.4" rx="1" fill="currentColor"/><rect x="11.8" y="11.8" width="6.4" height="6.4" rx="1" fill="currentColor"/>',
+  ungroup: '<path d="M2.2 8.4V4a1.8 1.8 0 0 1 1.8-1.8h4.4M21.8 15.6V20a1.8 1.8 0 0 1-1.8 1.8h-4.4" opacity=".6"/><rect x="5.8" y="5.8" width="6.4" height="6.4" rx="1" fill="currentColor"/><rect x="11.8" y="11.8" width="6.4" height="6.4" rx="1" fill="currentColor"/>',
+  union:   '<path d="M3.5 3.5H14.5V9.5H20.5V20.5H9.5V14.5H3.5Z" fill="currentColor" opacity=".28"/><path d="M3.5 3.5H14.5V9.5H20.5V20.5H9.5V14.5H3.5Z"/>',
+  diff:    '<rect x="9.5" y="9.5" width="11" height="11" rx="1" opacity=".45" stroke-dasharray="3 2.2"/><path d="M3.5 3.5H14.5V9.5H9.5V14.5H3.5Z" fill="currentColor" opacity=".28"/><path d="M3.5 3.5H14.5V9.5H9.5V14.5H3.5Z"/>',
+  intersect: '<rect x="3.5" y="3.5" width="11" height="11" rx="1" opacity=".45"/><rect x="9.5" y="9.5" width="11" height="11" rx="1" opacity=".45"/><path d="M9.5 9.5H14.5V14.5H9.5Z" fill="currentColor" opacity=".55"/><path d="M9.5 9.5H14.5V14.5H9.5Z"/>',
   explode: '<path d="M12 3.2 15 8l5.5.8-4 3.9.9 5.5L12 15.6 6.6 18.2l.9-5.5-4-3.9L9 8Z" opacity=".35"/><path d="M4 20 8.6 15.4M20 20l-4.6-4.6M12 21.5v-4" /><circle cx="12" cy="9.5" r="2.2"/>',
   pdf:     '<path d="M6 2.5h7l5 5v14H6z"/><path d="M13 2.5v5h5"/><path d="M12 10.5v6M9.5 14l2.5 2.5 2.5-2.5"/>',
   dxf:     '<path d="M6 2.5h7l5 5v14H6z"/><path d="M13 2.5v5h5"/><path d="m8.6 18 3.4-6 3.8 3.4"/><circle cx="8.6" cy="18" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="15.8" cy="15.4" r="1.3" fill="currentColor"/>'
@@ -3621,7 +3957,16 @@ const TOOLS = [
   { k: 'fillet',  icon: 'fillet',  title: 'Fillet — click a vertex to round it (F)' },
   { k: 'chamfer', icon: 'chamfer', title: 'Chamfer — click a vertex to cut it (K)' },
   '-',
-  { k: 'pan',     icon: 'hand',    title: 'Pan (or hold Space / middle-drag)' }
+  { k: 'pan',     icon: 'hand',    title: 'Pan (or hold Space / middle-drag)' },
+  '-',
+  // Actions, not modal tools: these fire once on the current selection and
+  // never take the .active class.
+  { id: 'union',      act: () => booleanSel('union'),      icon: 'union',     title: 'Union — weld the selected shapes into one' },
+  { id: 'difference', act: () => booleanSel('difference'), icon: 'diff',      title: 'Difference — subtract everything above from the bottom shape' },
+  { id: 'intersect',  act: () => booleanSel('intersect'),  icon: 'intersect', title: 'Intersection — keep only the overlap' },
+  '-',
+  { id: 'group',   act: () => groupSel(),   icon: 'group',   title: 'Group the selection (Ctrl+G)' },
+  { id: 'ungroup', act: () => ungroupSel(), icon: 'ungroup', title: 'Ungroup one level (Ctrl+Shift+G)' }
 ];
 const TOOL_HINTS = {
   select:  'Click a shape to select it. <b>Click it again</b> to swap the handles between move/scale and rotate/skew.',
@@ -3647,13 +3992,30 @@ const TOOL_LABEL = {
   polygon: 'Polygon', star: 'Star', text: 'Text', fillet: 'Fillet', chamfer: 'Chamfer', pan: 'Pan'
 };
 const toolBtns = {};
+const actionBtns = {};
 (function buildToolbar() {
   const tb = $('#toolbar');
   for (const t of TOOLS) {
     if (t === '-') { const s = document.createElement('div'); s.className = 'sep'; tb.appendChild(s); continue; }
+    if (t.act) {
+      // kept out of toolBtns on purpose, so setTool never highlights one
+      actionBtns[t.id] = mkBtn(tb, { cls: 'tool act', icon: t.icon, title: t.title, onclick: t.act });
+      continue;
+    }
     toolBtns[t.k] = mkBtn(tb, { cls: 'tool', icon: t.icon, title: t.title, onclick: () => setTool(t.k) });
   }
 })();
+/** Actions only make sense for some selections — dim the rest. */
+function updateToolbarEnabled() {
+  const n = app.sel.length;
+  const grouped = selShapes().some(s => s.g);
+  const set = (id, on) => { const b = actionBtns[id]; if (b) b.disabled = !on; };
+  set('group', n >= 2);
+  set('ungroup', grouped);
+  set('union', n >= 2);
+  set('difference', n >= 2);
+  set('intersect', n >= 2);
+}
 
 function updateCursor() {
   const t = spaceDown ? 'pan' : app.tool;
@@ -3989,6 +4351,7 @@ function updatePanel() {
 
   setVal('#docW', app.doc.w);
   setVal('#docH', app.doc.h);
+  updateToolbarEnabled();
   $('#objInfo').textContent = `${app.doc.shapes.length} object${app.doc.shapes.length === 1 ? '' : 's'}` +
     (app.sel.length ? ` · ${app.sel.length} selected` : '');
 }
@@ -4376,13 +4739,49 @@ function newDoc() {
   save(); render();
   status('New drawing');
 }
+/** Resolve the host's download capability once, if we are running inside
+    one. Plain browser tabs have no such host and get null. */
+let hostDl = null;
+function hostDownloads() {
+  if (!hostDl) {
+    hostDl = (typeof claude !== 'undefined' && claude && typeof claude.use === 'function')
+      ? Promise.resolve(claude.use('downloads')).catch(() => null)
+      : Promise.resolve(null);
+  }
+  return hostDl;
+}
+/**
+ * Hand the user a generated file.
+ *
+ * In an ordinary tab this is an anchor click. Inside a sandboxed viewer
+ * that blocks page-initiated downloads the anchor is silently inert, so
+ * route through the host instead. Hosts allowlist extensions and neither
+ * .pdf nor .dxf is on it, so a refused extension retries with .txt
+ * appended — clunky, but a file you rename beats a button that does
+ * nothing.
+ */
 function download(name, text, type) {
-  const blob = new Blob([text], { type: type || 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = name;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const viaLink = () => {
+    const blob = new Blob([text], { type: type || 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  hostDownloads().then(dl => {
+    if (!dl) return viaLink();
+    return dl.save({ filename: name, data: text }).catch(err => {
+      const code = err && err.code;
+      if (code === 'rejected_extension' || code === 'extension_not_enabled') {
+        return dl.save({ filename: name + '.txt', data: text })
+          .then(() => status(`Saved as ${name}.txt — rename it to ${name} to open it`))
+          .catch(e2 => status('Could not save: ' + ((e2 && e2.message) || 'blocked')));
+      }
+      if (code === 'declined') return status('Save cancelled');
+      status('Could not save: ' + ((err && err.message) || 'blocked'));
+    });
+  }).catch(viaLink);
 }
 const xmlEsc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 function svgText() {
@@ -4701,6 +5100,7 @@ window.addEventListener('keydown', e => {
     if (k === 'y') { e.preventDefault(); redo(); return; }
     if (k === 'd') { e.preventDefault(); duplicateSel(); return; }
     if (k === 'a') { e.preventDefault(); app.sel = app.doc.shapes.map(s => s.id); if (app.sel.length) app.handleMode = 'scale'; render(); return; }
+    if (k === 'g') { e.preventDefault(); if (e.shiftKey) ungroupSel(); else groupSel(); return; }
     if (k === 's') { e.preventDefault(); exportSVG(); return; }
     return;
   }
