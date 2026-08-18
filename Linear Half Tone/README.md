@@ -4,14 +4,14 @@ Turns a picture into a **line halftone** where line width carries the tone, then
 that width into **cut depth** through V-bit geometry — so the result can be carved on a
 3-axis CNC router rather than only printed.
 
-Open `index.html`. No build step, no server, no dependencies. Every image stays in the
+Open `LinearHalfToner.html`. No build step, no server, no dependencies. Every image stays in the
 browser; nothing is uploaded anywhere.
 
 ```
 Linear Half Tone/
-├── index.html     the whole app — markup, styles, engine and UI in one file
-├── README.md      this file
-└── sessions/      working-session summaries
+├── LinearHalfToner.html   the whole app — markup, styles, engine and UI in one file
+├── README.md              this file
+└── sessions/              working-session summaries
 ```
 
 ---
