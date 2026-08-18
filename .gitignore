@@ -3,3 +3,9 @@ _preview_*.html
 
 # Local editor / assistant settings
 .claude/settings.local.json
+
+# Separate repository checked out inside this one (own remote and history)
+NOVELTECH/
+
+# Generated toolpath output from Linear Half Toner
+*.nc

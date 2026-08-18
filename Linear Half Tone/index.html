@@ -1,0 +1,4183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Half Toner</title>
+<style>
+:root{
+  --bg:#0f1220; --bg2:#151a2e; --bg3:#1b2138; --line:#2a3154; --line2:#39416b;
+  --tx:#e8eaf6; --tx2:#969db8; --tx3:#6e7699;
+  --acc:#6c7bff; --acc2:#4d59c9; --cy:#38d9d3; --warn:#ffb454; --bad:#ff6b81; --ok:#4ade80;
+  --t1:#6c7bff; --t2:#38d9d3; --t3:#ffb454;
+  --sb:300px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--tx);
+  font:13px/1.45 "Segoe UI",system-ui,-apple-system,sans-serif;
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:5px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--line2)}
+
+#app{display:flex;flex-direction:column;height:100%}
+#top{
+  display:flex;align-items:center;gap:8px;padding:0 12px;height:46px;flex:none;
+  background:linear-gradient(180deg,#191f36,#141930);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:650;letter-spacing:.2px;white-space:nowrap}
+.brand svg{width:22px;height:22px;flex:none}
+@media(max-width:1340px){.brand span{display:none}}
+.sep{width:1px;height:24px;background:var(--line);flex:none}
+.grow{flex:1}
+
+#steps{display:flex;align-items:center;gap:2px;overflow:hidden}
+.step{
+  display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:7px;cursor:pointer;
+  border:1px solid transparent;color:var(--tx2);white-space:nowrap;background:none;font:inherit;
+}
+.step:hover{background:#1e2440;color:var(--tx)}
+.step.on{background:#232b4c;border-color:var(--line2);color:var(--tx)}
+.step b{
+  width:19px;height:19px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--bg3);border:1px solid var(--line2);font-size:11px;font-weight:600;color:var(--tx2)
+}
+.step.on b{background:var(--acc2);border-color:var(--acc);color:#fff}
+.step .lb{font-size:12.5px;font-weight:500}
+@media(max-width:1080px){.step .lb{display:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:7px 12px;border-radius:7px;background:var(--bg3);border:1px solid var(--line2);
+  cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s;font-size:12.5px;
+}
+.btn:hover:not(:disabled){background:#28304f;border-color:#4b5488}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+.btn.pri{background:linear-gradient(180deg,var(--acc2),#3b45a8);border-color:var(--acc);color:#fff;font-weight:600}
+.btn.pri:hover:not(:disabled){background:var(--acc2)}
+.btn.sm{padding:5px 9px;font-size:12px}
+.btn.ico{padding:6px 8px}
+.btn.gh{background:transparent;border-color:var(--line)}
+.btn.gh:hover:not(:disabled){background:var(--bg3)}
+.btn.wide{width:100%}
+.btn.on{background:var(--acc2);border-color:var(--acc);color:#fff}
+.btn svg{width:14px;height:14px;flex:none}
+
+#main{flex:1;display:flex;min-height:0}
+#side{
+  width:var(--sb);flex:none;background:var(--bg2);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;min-height:0;
+}
+#panes{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 11px 26px}
+#sidefoot{flex:none;border-top:1px solid var(--line);padding:9px 11px;background:#12172a;display:flex;gap:7px}
+
+.pane{display:none;animation:fade .16s ease}
+.pane.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+.grp{margin:0 0 12px;border:1px solid var(--line);border-radius:9px;background:#12172a;overflow:hidden}
+.grp>h3{
+  margin:0;padding:8px 10px;font-size:11px;font-weight:650;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--tx3);background:#161c33;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;
+}
+.grp>h3 .cv{margin-left:auto;transition:transform .15s;opacity:.6}
+.grp.col>h3 .cv{transform:rotate(-90deg)}
+.grp.col>.gb{display:none}
+.gb{padding:9px 10px}
+
+.ctl{margin:0 0 10px}
+.ctl:last-child{margin-bottom:0}
+.clab{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--tx2);margin:0 0 5px}
+.clab .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hint{
+  width:13px;height:13px;border-radius:50%;background:var(--bg3);border:1px solid var(--line2);
+  display:grid;place-items:center;font-size:9px;color:var(--tx3);cursor:help;flex:none;font-style:normal;
+}
+.hint:hover{background:var(--acc2);color:#fff;border-color:var(--acc)}
+
+.srow{display:flex;align-items:center;gap:8px}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1;min-width:0;height:18px;background:transparent;cursor:pointer;margin:0;
+}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--bg3);border:1px solid var(--line)}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:14px;border-radius:50%;margin-top:-6px;
+  background:linear-gradient(180deg,#8b96ff,var(--acc));border:1px solid #2b3160;box-shadow:0 1px 3px #0008;
+}
+input[type=range]:hover::-webkit-slider-thumb{background:#9aa3ff}
+input[type=range]:focus-visible{outline:2px solid var(--cy);outline-offset:2px;border-radius:4px}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--bg3);border:1px solid var(--line)}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--acc);border:1px solid #2b3160}
+
+input[type=number],input[type=text],select{
+  background:var(--bg3);border:1px solid var(--line2);border-radius:6px;padding:5px 7px;
+  min-width:0;outline:none;transition:border-color .12s;
+}
+input[type=number]:focus,input[type=text]:focus,select:focus{border-color:var(--acc)}
+input[type=number]{width:68px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
+select{width:100%;cursor:pointer}
+.unit{font-size:11px;color:var(--tx3);width:24px;flex:none}
+
+.seg{display:flex;border:1px solid var(--line2);border-radius:7px;overflow:hidden;background:var(--bg3)}
+.seg label{flex:1;position:relative;cursor:pointer;min-width:0}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{
+  display:block;text-align:center;padding:6px 4px;font-size:12px;color:var(--tx2);
+  border-right:1px solid var(--line);transition:background .12s;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.seg label:last-child span{border-right:none}
+.seg label:hover span{background:#242b48;color:var(--tx)}
+.seg input:checked+span{background:var(--acc2);color:#fff;font-weight:600}
+.seg input:disabled+span{opacity:.4;cursor:not-allowed}
+.seg input:focus-visible+span{outline:2px solid var(--cy);outline-offset:-2px}
+.seg.wrap{flex-wrap:wrap}
+.seg.wrap label{flex:1 0 30%}
+.seg.wrap span{border-bottom:1px solid var(--line)}
+
+.radios{display:flex;flex-direction:column;gap:4px}
+.rad{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:7px;cursor:pointer;position:relative}
+.rad:hover{background:#1a2038}
+.rad input{position:absolute;opacity:0;pointer-events:none}
+.rad .dot{
+  width:14px;height:14px;border-radius:50%;border:1.5px solid var(--line2);flex:none;margin-top:2px;
+  display:grid;place-items:center;transition:border-color .12s;
+}
+.rad .dot::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--acc);transform:scale(0);transition:transform .12s}
+.rad input:checked~.dot{border-color:var(--acc)}
+.rad input:checked~.dot::after{transform:scale(1)}
+.rad input:checked~.rt .rl{color:var(--tx);font-weight:600}
+.rad input:focus-visible~.dot{outline:2px solid var(--cy);outline-offset:2px}
+.rt{min-width:0}
+.rl{font-size:12.5px;color:var(--tx2);display:block}
+.rd{font-size:11px;color:var(--tx3);display:block;margin-top:1px;line-height:1.35}
+
+.chk{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;user-select:none;position:relative}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk .bx{
+  width:15px;height:15px;border-radius:4px;border:1.5px solid var(--line2);flex:none;
+  display:grid;place-items:center;transition:all .12s;background:var(--bg3);
+}
+.chk .bx::after{content:"";width:8px;height:5px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) scale(0);transition:transform .12s;margin-top:-3px}
+.chk input:checked~.bx{background:var(--acc2);border-color:var(--acc)}
+.chk input:checked~.bx::after{transform:rotate(-45deg) scale(1)}
+.chk input:focus-visible~.bx{outline:2px solid var(--cy);outline-offset:2px}
+.chk .ct{font-size:12.5px;color:var(--tx2)}
+.chk input:checked~.ct{color:var(--tx)}
+
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.note{font-size:11px;color:var(--tx3);line-height:1.5;margin:9px 0 0;padding:7px 9px;background:#161c33;border-left:2px solid var(--line2);border-radius:0 6px 6px 0}
+.note b{color:var(--tx2);font-weight:600}
+.note.warn{border-left-color:var(--warn);background:#2a2415;color:#e3cfa4}
+.note.warn b{color:var(--warn)}
+.note.hide{display:none}
+
+.kv{display:flex;justify-content:space-between;gap:8px;padding:4px 0;font-size:11.5px;border-bottom:1px dashed #232a49}
+.kv:last-child{border-bottom:none}
+.kv .k{color:var(--tx3)}
+.kv .v{color:var(--cy);font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.kv .v.w{color:var(--warn)}
+
+input[type=color]{width:100%;height:28px;padding:2px;background:var(--bg3);border:1px solid var(--line2);border-radius:6px;cursor:pointer}
+input[type=file]{display:none}
+
+/* ---- v2 additions ---- */
+.subhead{font-size:10.5px;font-weight:650;letter-spacing:.7px;text-transform:uppercase;color:var(--tx3);margin:12px 0 6px;padding-top:9px;border-top:1px dashed #232a49}
+.ctl:first-child .subhead,.gb>.subhead:first-child{margin-top:0;padding-top:0;border-top:none}
+.toolsel{display:flex;gap:5px;align-items:center;margin-bottom:9px}
+.toolsel .seg{flex:1}
+.tchip{width:9px;height:9px;border-radius:2px;flex:none;display:inline-block;margin-right:5px;vertical-align:middle}
+.t1c{background:var(--t1)} .t2c{background:var(--t2)} .t3c{background:var(--t3)}
+canvas.pad{width:100%;border:1px solid var(--line);border-radius:6px;background:#0d1122;display:block;margin-top:8px}
+#curveCv{cursor:crosshair;touch-action:none}
+#stage.brush{cursor:none}
+#stage.pick{cursor:crosshair}
+.legend{display:flex;gap:10px;align-items:center;font-size:11px;color:var(--tx3)}
+.legend i{font-style:normal;display:inline-flex;align-items:center;gap:4px}
+.tlist{width:100%;border-collapse:collapse;font-size:12px}
+.tlist th{text-align:left;color:var(--tx3);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tlist td{padding:6px 8px;border-bottom:1px solid #1e2440;color:var(--tx2)}
+.tlist tr:hover td{background:#1a2038;color:var(--tx)}
+.tlist td.num{font-variant-numeric:tabular-nums;text-align:right}
+.tlist .act{text-align:right;white-space:nowrap}
+.hist{max-height:180px;overflow-y:auto;border:1px solid var(--line);border-radius:7px;background:#0d1122}
+.hrow{display:flex;gap:8px;align-items:center;padding:5px 9px;font-size:11.5px;color:var(--tx3);cursor:pointer;border-bottom:1px solid #171d33}
+.hrow:hover{background:#1a2038;color:var(--tx)}
+.hrow.cur{background:#232b4c;color:var(--tx)}
+.hrow .hi{width:16px;color:var(--tx3);font-variant-numeric:tabular-nums}
+
+#stagewrap{flex:1;display:flex;flex-direction:column;min-width:0;position:relative;background:#0b0e1a}
+#stagebar{
+  display:flex;align-items:center;gap:8px;padding:0 10px;height:38px;flex:none;
+  background:var(--bg2);border-bottom:1px solid var(--line);overflow-x:auto;
+}
+#stagebar::-webkit-scrollbar{height:0}
+#viewSeg{flex:none}
+#viewSeg label{flex:0 0 auto}
+#viewSeg span{padding:6px 10px;overflow:visible}
+#stage{flex:1;position:relative;overflow:hidden;cursor:grab;min-height:0}
+#stage.pan{cursor:grabbing}
+#cv{position:absolute;left:0;top:0;display:block}
+#drop{position:absolute;inset:0;display:none;place-items:center;background:#0b0e1ad9;border:2px dashed var(--acc);z-index:20;pointer-events:none}
+#drop.on{display:grid}
+#drop div{text-align:center;color:var(--acc);font-size:16px;font-weight:600}
+
+#empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;z-index:5}
+#empty.hide{display:none}
+#empty .box{max-width:460px}
+#empty h2{font-size:19px;margin:14px 0 6px;font-weight:650}
+#empty p{color:var(--tx2);margin:0 0 18px;line-height:1.6}
+#empty .cta{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+#empty .fmt{margin-top:16px;font-size:11px;color:var(--tx3)}
+
+#statbar{
+  display:flex;align-items:center;gap:14px;padding:0 12px;height:28px;flex:none;
+  background:var(--bg2);border-top:1px solid var(--line);font-size:11.5px;color:var(--tx3);
+  overflow-x:auto;white-space:nowrap;
+}
+#statbar b{color:var(--tx2);font-weight:600;font-variant-numeric:tabular-nums}
+#statbar .led{width:6px;height:6px;border-radius:50%;background:var(--ok);flex:none}
+#statbar .led.busy{background:var(--warn);animation:pulse .8s infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+#busy{
+  position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:30;
+  background:#1b2138ee;border:1px solid var(--line2);border-radius:20px;padding:6px 15px;
+  font-size:12px;display:none;align-items:center;gap:8px;box-shadow:0 4px 18px #0007;
+}
+#busy.on{display:flex}
+.spin{width:12px;height:12px;border:2px solid var(--line2);border-top-color:var(--acc);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+#toast{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:none}
+.tst{
+  background:#1b2138f2;border:1px solid var(--line2);border-left:3px solid var(--acc);border-radius:8px;
+  padding:9px 15px;font-size:12.5px;box-shadow:0 6px 22px #0009;animation:up .2s ease;max-width:480px;
+}
+.tst.ok{border-left-color:var(--ok)} .tst.bad{border-left-color:var(--bad)} .tst.warn{border-left-color:var(--warn)}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.mask{position:fixed;inset:0;background:#080a14cc;z-index:100;display:none;place-items:center;padding:20px}
+.mask.on{display:grid}
+.modal{background:var(--bg2);border:1px solid var(--line2);border-radius:12px;max-width:680px;width:100%;max-height:86vh;display:flex;flex-direction:column;box-shadow:0 18px 60px #000a}
+.modal header{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.modal header h2{margin:0;font-size:15px;font-weight:650;flex:1}
+.modal .body{padding:16px;overflow-y:auto;line-height:1.65;color:var(--tx2)}
+.modal .body h4{color:var(--tx);margin:17px 0 6px;font-size:13px}
+.modal .body h4:first-child{margin-top:0}
+.modal .body ul{margin:6px 0;padding-left:19px}
+.modal .body li{margin:3px 0}
+.modal .body code{background:var(--bg3);padding:1px 5px;border-radius:4px;font-size:11.5px;color:var(--cy);font-family:ui-monospace,Consolas,monospace}
+.modal .body kbd{background:var(--bg3);border:1px solid var(--line2);border-bottom-width:2px;padding:1px 5px;border-radius:4px;font-size:11px;color:var(--tx)}
+.modal footer{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end}
+.x{background:none;border:none;cursor:pointer;color:var(--tx3);font-size:20px;line-height:1;padding:2px 6px;border-radius:5px}
+.x:hover{background:var(--bg3);color:var(--tx)}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div id="top">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#1b2138" stroke="#39416b"/>
+        <path d="M4 7h16" stroke="#6c7bff" stroke-width="1"/>
+        <path d="M4 10h16" stroke="#6c7bff" stroke-width="2"/>
+        <path d="M4 13.5h16" stroke="#6c7bff" stroke-width="3.2"/>
+        <path d="M4 18h16" stroke="#38d9d3" stroke-width="4.6"/>
+      </svg>
+      <span>Linear Half Toner</span>
+    </div>
+    <div class="sep"></div>
+    <nav id="steps"></nav>
+    <div class="grow"></div>
+    <button class="btn gh ico" id="bUndo" disabled title="Undo (Ctrl+Z)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10H9"/></svg>
+    </button>
+    <button class="btn gh ico" id="bRedo" disabled title="Redo (Ctrl+Shift+Z)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 14 5-5-5-5"/><path d="M20 9H9a5 5 0 0 0 0 10h6"/></svg>
+    </button>
+    <button class="btn gh" id="bAB" title="Hold to compare against the saved snapshot (B)">A/B</button>
+    <div class="sep"></div>
+    <button class="btn" id="bOpen" title="Open an image or vector file (O)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0L7 9m5-5 5 5"/><path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg>
+      Open
+    </button>
+    <button class="btn" id="bSample" title="Load a built-in test image">Test image</button>
+    <div class="sep"></div>
+    <button class="btn pri" id="bExport" disabled title="Go to export step (E)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0 5-5m-5 5-5-5"/><path d="M4 18v2h16v-2"/></svg>
+      Export
+    </button>
+    <button class="btn gh" id="bHelp" title="Help &amp; workflow (?)">?</button>
+  </div>
+
+  <div id="main">
+    <aside id="side">
+      <div id="panes">
+        <div class="pane" id="pane-source"></div>
+        <div class="pane" id="pane-correct"></div>
+        <div class="pane" id="pane-pattern"></div>
+        <div class="pane" id="pane-tool"></div>
+        <div class="pane" id="pane-export"></div>
+      </div>
+      <div id="sidefoot">
+        <button class="btn sm gh" id="bPreset" style="flex:1" title="Save all settings to a .lht.json file">Save preset</button>
+        <button class="btn sm gh" id="bPresetLoad" style="flex:1" title="Load settings from a .lht.json file">Load</button>
+        <button class="btn sm gh" id="bResetAll" title="Reset every setting to defaults">Reset</button>
+      </div>
+    </aside>
+
+    <div id="stagewrap">
+      <div id="stagebar">
+        <span style="color:var(--tx3);font-size:11.5px">View</span>
+        <div class="seg" id="viewSeg"></div>
+        <div class="sep"></div>
+        <button class="btn sm gh" id="bFit" title="Fit to window (F)">Fit</button>
+        <button class="btn sm gh" id="bZ100" title="Zoom 100%">1:1</button>
+        <span id="zoomTxt" style="color:var(--tx3);font-size:11.5px;min-width:42px">100%</span>
+        <div class="sep"></div>
+        <label class="chk" style="padding:0"><input type="checkbox" id="cShowGrid"><span class="bx"></span><span class="ct">Grid</span></label>
+        <label class="chk" style="padding:0"><input type="checkbox" id="cShowImg"><span class="bx"></span><span class="ct">Ghost</span></label>
+        <label class="chk" style="padding:0"><input type="checkbox" id="cShowTiles"><span class="bx"></span><span class="ct">Tiles</span></label>
+        <div class="sep"></div>
+        <div class="legend" id="toolLegend"></div>
+        <div style="flex:1"></div>
+        <button class="btn sm gh" id="bRender" title="Recompute now">Recompute</button>
+      </div>
+
+      <div id="stage">
+        <canvas id="cv"></canvas>
+        <div id="busy"><span class="spin"></span><span id="busyTxt">Working&hellip;</span></div>
+        <div id="drop"><div>Drop image, SVG or preset to load</div></div>
+        <div id="empty">
+          <div class="box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#39416b" stroke-width="1.4" style="width:64px;height:64px">
+              <rect x="2.5" y="4.5" width="19" height="15" rx="2"/>
+              <path d="M2.5 15l5-4 4 3 4.5-4 5.5 4.5"/><circle cx="8.5" cy="9" r="1.5"/>
+            </svg>
+            <h2>Load a picture to begin</h2>
+            <p>Raster (PNG, JPG, WebP, BMP, GIF) or vector (SVG). Everything runs locally in your browser &mdash; nothing is uploaded.</p>
+            <div class="cta">
+              <button class="btn pri" id="bOpen2">Choose a file</button>
+              <button class="btn" id="bSample2">Use test image</button>
+            </div>
+            <div class="fmt">or drag &amp; drop anywhere &middot; or paste from clipboard (Ctrl+V)</div>
+          </div>
+        </div>
+        <div id="toast"></div>
+      </div>
+
+      <div id="statbar">
+        <span class="led" id="led"></span>
+        <span id="stSrc">No file</span>
+        <span id="stSize"></span>
+        <span id="stPaths"></span>
+        <span id="stLen"></span>
+        <span id="stDepth"></span>
+        <span id="stTime"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="fileIn" accept="image/*,.svg,image/svg+xml">
+<input type="file" id="presetIn" accept=".json,.lht,application/json">
+
+<div class="mask" id="libMask">
+  <div class="modal">
+    <header><h2>Tool library</h2><button class="x" data-close="libMask">&times;</button></header>
+    <div class="body" style="padding:0">
+      <table class="tlist" id="libTable"></table>
+    </div>
+    <footer>
+      <button class="btn" id="bLibAdd">Save current tool</button>
+      <button class="btn gh" id="bLibReset">Restore defaults</button>
+      <div style="flex:1"></div>
+      <button class="btn pri" data-close="libMask">Close</button>
+    </footer>
+  </div>
+</div>
+
+<div class="mask" id="helpMask">
+  <div class="modal">
+    <header><h2>Linear Half Toner &mdash; workflow</h2><button class="x" data-close="helpMask">&times;</button></header>
+    <div class="body">
+      <h4>1 &middot; Source</h4>
+      <p>Load a raster image or an SVG, and set the physical size of the finished carving. Every dimension in the app is real millimetres (or inches) on your material.</p>
+      <h4>2 &middot; Correct</h4>
+      <p>Fix the artwork <em>before</em> it becomes a halftone: crop, rotate, levels, tone curve, denoise, sharpen. Paint a <b>mask</b> here to protect areas from cutting, or to restrict a tool to one region. Judge it in the <b>Corrected</b> view.</p>
+      <h4>3 &middot; Pattern</h4>
+      <p>Each tool has its own pattern, angle and pitch. <b>Width modulation</b> is the one that matters for V-carving: dark areas become wide lines, wide lines become deep cuts. Keep max width at or below the pitch or neighbouring lines merge.</p>
+      <h4>4 &middot; Tool</h4>
+      <p>For a V-bit of included angle <code>A</code> at depth <code>d</code>, the groove is <code>w = 2·d·tan(A/2)</code> wide; a tapered engraver with a flat tip adds <code>T</code>. The app inverts that to turn width into depth. Up to three tools can share one job, each taking its own band of the tonal range &mdash; a wide V for the darks, a fine one for detail.</p>
+      <h4>5 &middot; Export</h4>
+      <ul>
+        <li><b>SVG / DXF outlines</b> &mdash; closed variable-width outlines. Apply a <em>V-carve</em> toolpath in VCarve, Aspire, Carveco or Fusion and the CAM derives depth from shape width. Recommended.</li>
+        <li><b>DXF polylines with width</b> &mdash; centrelines carrying per-vertex start/end width.</li>
+        <li><b>G-code</b> &mdash; GRBL, Mach3, LinuxCNC or Marlin, with optional arc fitting, laser power mode and bed tiling. <b>Dry-run above the material first.</b></li>
+      </ul>
+      <h4>Keyboard</h4>
+      <p><kbd>1</kbd>&ndash;<kbd>5</kbd> steps &middot; <kbd>O</kbd> open &middot; <kbd>E</kbd> export &middot; <kbd>F</kbd> fit &middot; <kbd>V</kbd> cycle view &middot; <kbd>B</kbd> hold to A/B compare &middot; <kbd>Ctrl</kbd>+<kbd>Z</kbd> undo &middot; <kbd>[</kbd> <kbd>]</kbd> brush size &middot; <kbd>Space</kbd>+drag to pan &middot; wheel to zoom</p>
+    </div>
+    <footer><button class="btn pri" data-close="helpMask">Got it</button></footer>
+  </div>
+</div>
+
+<script type="text/plain" id="engineSrc">
+/* ============================================================================
+   ENGINE — pure geometry. No DOM, no globals from the app.
+   Evaluated in the main thread AND inside the Web Worker from the same source.
+   Public surface is globalThis.ENG at the bottom of the second engine block.
+   ========================================================================== */
+
+const E_clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const E_TAU = Math.PI * 2;
+
+/* ---------------------------------------------------------- tool geometry */
+
+function E_tanHalf(t){ return Math.tan(E_clamp(t.bitAngle, 2, 178) * Math.PI / 360); }
+
+function E_widthForDepth(t, d){
+  const k = E_tanHalf(t);
+  return t.bitType === 'taper' ? t.tipDia + 2 * d * k : 2 * d * k;
+}
+function E_depthForWidth(t, w){
+  const k = E_tanHalf(t);
+  return t.bitType === 'taper' ? Math.max(0, w - t.tipDia) / (2 * k) : w / (2 * k);
+}
+function E_effMaxWidth(t){
+  return Math.max(0.01, Math.min(t.bitDia, E_widthForDepth(t, t.maxDepth)));
+}
+
+/* --------------------------------------------------------------- sampling */
+
+function E_sampler(buf, w, h, outW, outH){
+  const sx = w / outW, sy = h / outH;
+  return function(x, y){
+    let u = x * sx - 0.5, v = y * sy - 0.5;
+    if (u < 0) u = 0; else if (u > w - 1.001) u = w - 1.001;
+    if (v < 0) v = 0; else if (v > h - 1.001) v = h - 1.001;
+    const x0 = u | 0, y0 = v | 0, fx = u - x0, fy = v - y0;
+    const o = y0 * w + x0;
+    const t = buf[o] + (buf[o + 1] - buf[o]) * fx;
+    const b = buf[o + w] + (buf[o + w + 1] - buf[o + w]) * fx;
+    return t + (b - t) * fy;
+  };
+}
+
+/* ================================================== line pattern sources === */
+
+function E_genLines(cfg, tool, step){
+  const W = cfg.outW, H = cfg.outH, out = [];
+  const nL = tool.pattern === 'hatch' ? E_clamp(Math.round(cfg.layers), 1, 4) : 1;
+  for (let li = 0; li < nL; li++){
+    const a  = (tool.angle + li * cfg.layerStep) * Math.PI / 180;
+    const dx = Math.cos(a), dy = Math.sin(a), nx = -dy, ny = dx;
+    let sMin = Infinity, sMax = -Infinity, tMin = Infinity, tMax = -Infinity;
+    const corners = [[0,0],[W,0],[W,H],[0,H]];
+    for (let i = 0; i < 4; i++){
+      const s = corners[i][0]*nx + corners[i][1]*ny, t = corners[i][0]*dx + corners[i][1]*dy;
+      if (s < sMin) sMin = s; if (s > sMax) sMax = s;
+      if (t < tMin) tMin = t; if (t > tMax) tMax = t;
+    }
+    const off = nL > 1 ? (li / nL) * tool.pitch : 0;
+    let flip = false;
+    for (let s = sMin + off; s <= sMax + 1e-9; s += tool.pitch){
+      const pts = [];
+      const t0 = flip ? tMax : tMin, t1 = flip ? tMin : tMax, ds = flip ? -step : step;
+      for (let t = t0; flip ? t >= t1 : t <= t1; t += ds)
+        pts.push({ x: s*nx + t*dx, y: s*ny + t*dy });
+      if (pts.length > 1) out.push({ pts, layer: li, nL, nx, ny });
+      flip = !flip;
+    }
+  }
+  return out;
+}
+
+function E_genRadialFamily(cfg, tool, step){
+  const W = cfg.outW, H = cfg.outH, out = [];
+  const cx = cfg.ccx / 100 * W, cy = cfg.ccy / 100 * H;
+  const maxR = Math.max(Math.hypot(cx, cy), Math.hypot(W - cx, cy),
+                        Math.hypot(cx, H - cy), Math.hypot(W - cx, H - cy));
+
+  if (tool.pattern === 'concentric'){
+    for (let r = tool.pitch; r <= maxR; r += tool.pitch){
+      const da = E_clamp(step / r, 0.0015, 0.35), pts = [];
+      for (let t = 0; t <= E_TAU + da; t += da) pts.push({ x: cx + Math.cos(t) * r, y: cy + Math.sin(t) * r });
+      out.push({ pts, layer: 0, nL: 1 });
+    }
+  } else if (tool.pattern === 'spiral'){
+    const pts = [], k = tool.pitch / E_TAU;
+    let t = 0;
+    for (;;){
+      const r = k * t;
+      if (r > maxR) break;
+      pts.push({ x: cx + Math.cos(t) * r, y: cy + Math.sin(t) * r });
+      t += E_clamp(step / Math.max(r, tool.pitch / 6), 0.0015, 0.5);
+    }
+    if (pts.length > 1) out.push({ pts, layer: 0, nL: 1 });
+  } else {
+    const n = Math.max(8, Math.round(E_TAU * maxR / tool.pitch)), r0 = tool.pitch / 2;
+    for (let i = 0; i < n; i++){
+      const a = i / n * E_TAU, ca = Math.cos(a), sa = Math.sin(a), pts = [];
+      const fwd = i % 2 === 0;
+      for (let r = fwd ? r0 : maxR; fwd ? r <= maxR : r >= r0; r += fwd ? step : -step)
+        pts.push({ x: cx + ca * r, y: cy + sa * r });
+      if (pts.length > 1) out.push({ pts, layer: 0, nL: 1 });
+    }
+  }
+  return out;
+}
+
+/* ------------------------------------------------ contour (marching squares) */
+
+function E_genContour(cfg, tool, gray, gw, gh){
+  const W = cfg.outW, H = cfg.outH;
+  const cell = E_clamp(cfg.sampleStep * 2, 0.15, 3);
+  const nx = Math.max(4, Math.min(1400, Math.round(W / cell))) + 1;
+  const ny = Math.max(4, Math.min(1400, Math.round(H / cell))) + 1;
+  const sx = W / (nx - 1), sy = H / (ny - 1);
+  const smp = E_sampler(gray, gw, gh, W, H);
+
+  const f = new Float32Array(nx * ny);
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) f[j*nx+i] = smp(i*sx, j*sy);
+
+  const levels = E_clamp(Math.round(cfg.contourLevels), 2, 80);
+  const out = [];
+  const key = (x, y) => (Math.round(x * 64) + ',' + Math.round(y * 64));
+
+  for (let L = 1; L <= levels; L++){
+    const th = L / (levels + 1);
+    const segs = [];
+    const ip = (a, b, va, vb) => { const t = (th - va) / ((vb - va) || 1e-9); return a + (b - a) * E_clamp(t, 0, 1); };
+    for (let j = 0; j < ny - 1; j++){
+      for (let i = 0; i < nx - 1; i++){
+        const v0 = f[j*nx+i], v1 = f[j*nx+i+1], v2 = f[(j+1)*nx+i+1], v3 = f[(j+1)*nx+i];
+        let c = 0;
+        if (v0 > th) c |= 1; if (v1 > th) c |= 2; if (v2 > th) c |= 4; if (v3 > th) c |= 8;
+        if (c === 0 || c === 15) continue;
+        const x0 = i*sx, y0 = j*sy, x1 = x0+sx, y1 = y0+sy;
+        const top    = { x: ip(x0, x1, v0, v1), y: y0 };
+        const right  = { x: x1, y: ip(y0, y1, v1, v2) };
+        const bottom = { x: ip(x0, x1, v3, v2), y: y1 };
+        const left   = { x: x0, y: ip(y0, y1, v0, v3) };
+        const push = (a, b) => segs.push([a, b]);
+        switch (c){
+          case 1: case 14: push(left, top); break;
+          case 2: case 13: push(top, right); break;
+          case 3: case 12: push(left, right); break;
+          case 4: case 11: push(right, bottom); break;
+          case 6: case 9:  push(top, bottom); break;
+          case 7: case 8:  push(left, bottom); break;
+          case 5:  push(left, top); push(right, bottom); break;
+          case 10: push(top, right); push(left, bottom); break;
+        }
+      }
+    }
+    /* stitch segments into polylines by matching endpoints */
+    const heads = new Map();
+    for (let i = 0; i < segs.length; i++){
+      const k = key(segs[i][0].x, segs[i][0].y);
+      if (!heads.has(k)) heads.set(k, []);
+      heads.get(k).push(i);
+    }
+    const used = new Uint8Array(segs.length);
+    for (let i = 0; i < segs.length; i++){
+      if (used[i]) continue;
+      used[i] = 1;
+      const pts = [segs[i][0], segs[i][1]];
+      for (;;){
+        const k = key(pts[pts.length-1].x, pts[pts.length-1].y);
+        const cand = heads.get(k);
+        let nxt = -1;
+        if (cand) for (const c of cand) if (!used[c]){ nxt = c; break; }
+        if (nxt < 0) break;
+        used[nxt] = 1;
+        pts.push(segs[nxt][1]);
+        if (pts.length > 60000) break;
+      }
+      if (pts.length > 2) out.push({ pts, layer: 0, nL: 1 });
+    }
+  }
+  return out;
+}
+
+/* ------------------------------------------------- dots (error diffusion) */
+
+function E_genDots(cfg, tool, sample, darkOf){
+  const W = cfg.outW, H = cfg.outH, p = Math.max(0.15, tool.pitch);
+  const nx = Math.max(2, Math.round(W / p)), ny = Math.max(2, Math.round(H / p));
+  const buf = new Float32Array(nx * ny);
+  for (let j = 0; j < ny; j++)
+    for (let i = 0; i < nx; i++)
+      buf[j*nx+i] = darkOf(sample((i + 0.5) * W / nx, (j + 0.5) * H / ny));
+
+  const out = [];
+  for (let j = 0; j < ny; j++){
+    const ltr = j % 2 === 0;
+    for (let q = 0; q < nx; q++){
+      const i = ltr ? q : nx - 1 - q;
+      const o = j*nx+i, v = buf[o];
+      const on = v > 0.5 ? 1 : 0;
+      const err = v - on;
+      const add = (di, dj, f) => {
+        const ii = i + (ltr ? di : -di), jj = j + dj;
+        if (ii < 0 || ii >= nx || jj < 0 || jj >= ny) return;
+        buf[jj*nx+ii] += err * f;
+      };
+      add(1, 0, 7/16); add(-1, 1, 3/16); add(0, 1, 5/16); add(1, 1, 1/16);
+      if (on) out.push({ pts: [{ x: (i + 0.5) * W / nx, y: (j + 0.5) * H / ny }], layer: 0, nL: 1, dot: true });
+    }
+  }
+  return out;
+}
+
+/* ------------------------------------- stipple + travelling-salesman tour  */
+
+function E_genStipple(cfg, tool, sample, darkOf, maskAt, tool_scope){
+  const W = cfg.outW, H = cfg.outH;
+  const p = Math.max(0.2, tool.pitch);
+  const gx = Math.max(8, Math.min(600, Math.round(W / (p * 0.5))));
+  const gy = Math.max(8, Math.min(600, Math.round(H / (p * 0.5))));
+  const cw = W / gx, ch = H / gy;
+
+  /* density field */
+  const dens = new Float32Array(gx * gy);
+  let total = 0;
+  for (let j = 0; j < gy; j++) for (let i = 0; i < gx; i++){
+    const x = (i + 0.5) * cw, y = (j + 0.5) * ch;
+    let d = darkOf(sample(x, y));
+    if (maskAt){
+      const m = maskAt(x, y);
+      if (tool_scope === 'in')  d *= m;
+      if (tool_scope === 'out') d *= (1 - m);
+    }
+    dens[j*gx+i] = d; total += d;
+  }
+  if (total <= 0) return [];
+
+  let N = Math.round(total * cw * ch / (p * p));
+  N = E_clamp(N, 1, cfg.stippleMax);
+
+  /* seed by cumulative-density sampling */
+  const cum = new Float32Array(gx * gy);
+  let run = 0;
+  for (let i = 0; i < dens.length; i++){ run += dens[i]; cum[i] = run; }
+  let seed = 12345;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  const px = new Float64Array(N), py = new Float64Array(N);
+  for (let n = 0; n < N; n++){
+    const r = rnd() * run;
+    let lo = 0, hi = cum.length - 1;
+    while (lo < hi){ const mid = (lo + hi) >> 1; if (cum[mid] < r) lo = mid + 1; else hi = mid; }
+    px[n] = (lo % gx + rnd()) * cw;
+    py[n] = (((lo / gx) | 0) + rnd()) * ch;
+    if (py[n] > H) py[n] = H * rnd();
+  }
+
+  /* Lloyd relaxation against the density field */
+  const accX = new Float64Array(N), accY = new Float64Array(N), accW = new Float64Array(N);
+  const iters = E_clamp(Math.round(cfg.stippleRelax), 0, 12);
+  for (let it = 0; it < iters; it++){
+    accX.fill(0); accY.fill(0); accW.fill(0);
+    const grid = E_buildGrid(px, py, N, W, H, Math.max(p, 0.5));
+    for (let j = 0; j < gy; j++) for (let i = 0; i < gx; i++){
+      const wgt = dens[j*gx+i];
+      if (wgt <= 0.0005) continue;
+      const x = (i + 0.5) * cw, y = (j + 0.5) * ch;
+      const k = E_nearest(grid, px, py, x, y, -1);
+      if (k < 0) continue;
+      accX[k] += x * wgt; accY[k] += y * wgt; accW[k] += wgt;
+    }
+    for (let n = 0; n < N; n++) if (accW[n] > 0){ px[n] = accX[n] / accW[n]; py[n] = accY[n] / accW[n]; }
+  }
+
+  /* order into one continuous tour: nearest neighbour, then bounded 2-opt */
+  const order = E_tour(px, py, N, W, H, Math.max(p, 0.5), cfg.stippleOpt);
+  const pts = [];
+  for (let i = 0; i < N; i++) pts.push({ x: px[order[i]], y: py[order[i]] });
+  return [{ pts, layer: 0, nL: 1, tour: true }];
+}
+
+/* ------------------------------------------------ spatial grid + neighbour */
+
+function E_buildGrid(px, py, n, W, H, cell){
+  const nx = Math.max(1, Math.ceil(W / cell)), ny = Math.max(1, Math.ceil(H / cell));
+  const head = new Int32Array(nx * ny).fill(-1);
+  const next = new Int32Array(n).fill(-1);
+  for (let i = 0; i < n; i++){
+    const cx = E_clamp((px[i] / cell) | 0, 0, nx - 1), cy = E_clamp((py[i] / cell) | 0, 0, ny - 1);
+    const c = cy * nx + cx;
+    next[i] = head[c]; head[c] = i;
+  }
+  return { nx, ny, cell, head, next, used: new Uint8Array(n) };
+}
+function E_nearest(g, px, py, x, y, skip){
+  const cx = E_clamp((x / g.cell) | 0, 0, g.nx - 1), cy = E_clamp((y / g.cell) | 0, 0, g.ny - 1);
+  let best = -1, bd = Infinity;
+  for (let r = 0; r < Math.max(g.nx, g.ny); r++){
+    if (best >= 0 && (r - 1) * g.cell > Math.sqrt(bd)) break;
+    for (let j = cy - r; j <= cy + r; j++){
+      if (j < 0 || j >= g.ny) continue;
+      for (let i = cx - r; i <= cx + r; i++){
+        if (i < 0 || i >= g.nx) continue;
+        if (r > 0 && Math.abs(i - cx) !== r && Math.abs(j - cy) !== r) continue;
+        for (let k = g.head[j * g.nx + i]; k !== -1; k = g.next[k]){
+          if (k === skip || g.used[k]) continue;
+          const d = (px[k] - x) * (px[k] - x) + (py[k] - y) * (py[k] - y);
+          if (d < bd){ bd = d; best = k; }
+        }
+      }
+    }
+  }
+  return best;
+}
+
+function E_tour(px, py, n, W, H, cell, optPasses){
+  const g = E_buildGrid(px, py, n, W, H, cell);
+  const order = new Int32Array(n);
+  let cur = 0;
+  g.used[0] = 1; order[0] = 0;
+  for (let i = 1; i < n; i++){
+    const k = E_nearest(g, px, py, px[cur], py[cur], cur);
+    if (k < 0){ for (let j = 0; j < n; j++) if (!g.used[j]){ order[i] = j; g.used[j] = 1; cur = j; break; } continue; }
+    g.used[k] = 1; order[i] = k; cur = k;
+  }
+  /* 2-opt restricted to a sliding window — full 2-opt is O(n^2) */
+  const D = (a, b) => Math.hypot(px[a] - px[b], py[a] - py[b]);
+  const win = 40;
+  for (let pass = 0; pass < E_clamp(optPasses, 0, 8); pass++){
+    let improved = false;
+    for (let i = 1; i < n - 2; i++){
+      const lim = Math.min(n - 1, i + win);
+      for (let k = i + 1; k < lim; k++){
+        const a = order[i-1], b = order[i], c = order[k], d = order[k+1];
+        if (D(a,b) + D(c,d) > D(a,c) + D(b,d) + 1e-9){
+          for (let l = i, r = k; l < r; l++, r--){ const t = order[l]; order[l] = order[r]; order[r] = t; }
+          improved = true;
+        }
+      }
+    }
+    if (!improved) break;
+  }
+  return order;
+}
+
+/* ============================================ tone -> modulated toolpaths === */
+
+function E_modulate(polys, cfg, tool, sample, darkOf, maskAt){
+  const W = cfg.outW, H = cfg.outH;
+  const wMaxEff = Math.min(tool.wMax, E_effMaxWidth(tool));
+  const wMinEff = E_clamp(tool.wMin, 0, wMaxEff);
+  const fixedW  = Math.min(cfg.wFixed, E_effMaxWidth(tool));
+  const lo = E_clamp(tool.toneLo, 0, 99) / 100, hi = E_clamp(tool.toneHi, 1, 100) / 100;
+  const span = Math.max(0.01, hi - lo);
+  const mod = cfg.modMode;
+  const wavy = tool.pattern === 'wave' || mod === 'amp' || mod === 'both';
+  const waveK = cfg.waveLen > 0.05 ? (E_TAU / cfg.waveLen) : 0;
+  const segs = [];
+
+  for (let pi = 0; pi < polys.length; pi++){
+    const poly = polys[pi], pts = poly.pts, n = pts.length;
+    let nx = poly.nx, ny = poly.ny;
+    const fixedN = nx !== undefined;
+    let cur = null, arc = 0;
+
+    const flush = () => {
+      if (!cur) return;
+      if (cur.length > 1){
+        let L = 0;
+        for (let i = 1; i < cur.length; i++) L += Math.hypot(cur[i].x - cur[i-1].x, cur[i].y - cur[i-1].y);
+        if (L >= cfg.minRun) segs.push({ pts: cur, layer: poly.layer, tool: tool.id, tour: !!poly.tour });
+      } else if (cfg.minRun <= 0 || poly.dot){
+        segs.push({ pts: cur, layer: poly.layer, tool: tool.id, dot: true });
+      }
+      cur = null;
+    };
+
+    for (let i = 0; i < n; i++){
+      const p = pts[i];
+      if (i > 0) arc += Math.hypot(p.x - pts[i-1].x, p.y - pts[i-1].y);
+      if (p.x < 0 || p.y < 0 || p.x > W || p.y > H){ flush(); continue; }
+
+      let k = darkOf(sample(p.x, p.y));
+
+      if (maskAt){
+        const m = maskAt(p.x, p.y);
+        if (tool.maskScope === 'in'  && m <= 0.5){ flush(); continue; }
+        if (tool.maskScope === 'out' && m >  0.5){ flush(); continue; }
+        /* the intensity modes only apply to tools that are not already scoped
+           by the mask — otherwise "cut inside the mask" and "protect the mask"
+           would cancel each other out */
+        if (tool.maskScope === 'all'){
+          if (cfg.maskMode === 'protect') k *= (1 - m);
+          else if (cfg.maskMode === 'reduce') k *= (1 - m * cfg.maskStrength);
+          else if (cfg.maskMode === 'boost')  k = E_clamp(k * (1 + m * cfg.maskStrength * 2), 0, 1);
+        }
+      }
+
+      k = E_clamp((k - lo) / span, 0, 1);
+      if (poly.nL > 1) k = E_clamp((k - poly.layer / poly.nL) * poly.nL, 0, 1);
+      if (cfg.toneGamma !== 1) k = Math.pow(k, cfg.toneGamma);
+
+      let w, on = true;
+      if (mod === 'width' || mod === 'both'){
+        w = wMinEff + k * (wMaxEff - wMinEff);
+        if (w < tool.cutoff || k <= 0) on = false;
+      } else if (mod === 'dash'){
+        w = fixedW;
+        on = k > 0.004 && ((arc / Math.max(0.05, cfg.dashLen)) % 1) < k;
+      } else {
+        w = fixedW;
+        on = k > 0.004;
+      }
+      if (!on){ flush(); continue; }
+
+      let x = p.x, y = p.y;
+      if (wavy && cfg.waveAmp > 0){
+        if (!fixedN){
+          const a = pts[Math.max(0, i-1)], b = pts[Math.min(n-1, i+1)];
+          const tx = b.x - a.x, ty = b.y - a.y, L = Math.hypot(tx, ty) || 1;
+          nx = -ty / L; ny = tx / L;
+        }
+        const amp = (mod === 'amp' || mod === 'both') ? cfg.waveAmp * k : cfg.waveAmp;
+        const off = amp * Math.sin(arc * waveK);
+        x += nx * off; y += ny * off;
+      }
+
+      if (!cur) cur = [];
+      cur.push({ x, y, w, d: E_depthForWidth(tool, w) });
+    }
+    flush();
+  }
+  return segs;
+}
+
+/* ======================================= Douglas-Peucker over (x, y, width) */
+
+function E_simplify(pts, tol, wTol){
+  const n = pts.length;
+  if (n < 3 || tol <= 0) return pts;
+  const s = wTol > 0 ? tol / wTol : 0;          // scales width error into distance units
+  const keep = new Uint8Array(n);
+  keep[0] = keep[n-1] = 1;
+  const stack = [[0, n - 1]];
+
+  while (stack.length){
+    const [a, b] = stack.pop();
+    if (b <= a + 1) continue;
+    const ax = pts[a].x, ay = pts[a].y, aw = pts[a].w * s;
+    const bx = pts[b].x, by = pts[b].y, bw = pts[b].w * s;
+    let dx = bx - ax, dy = by - ay, dw = bw - aw;
+    const len2 = dx*dx + dy*dy + dw*dw;
+    let worst = -1, wd = tol;
+    for (let i = a + 1; i < b; i++){
+      const px = pts[i].x - ax, py = pts[i].y - ay, pw = pts[i].w * s - aw;
+      let t = len2 > 1e-12 ? (px*dx + py*dy + pw*dw) / len2 : 0;
+      t = E_clamp(t, 0, 1);
+      const ex = px - dx*t, ey = py - dy*t, ew = pw - dw*t;
+      const d = Math.sqrt(ex*ex + ey*ey + ew*ew);
+      if (d > wd){ wd = d; worst = i; }
+    }
+    if (worst > 0){ keep[worst] = 1; stack.push([a, worst], [worst, b]); }
+  }
+  const out = [];
+  for (let i = 0; i < n; i++) if (keep[i]) out.push(pts[i]);
+  return out;
+}
+
+/* ==================================================== travel-order optimiser */
+
+function E_orderSegs(segs, W, H){
+  const n = segs.length;
+  if (n < 3) return segs;
+  const m = n * 2, ex = new Float64Array(m), ey = new Float64Array(m);
+  for (let i = 0; i < n; i++){
+    const p = segs[i].pts;
+    ex[2*i] = p[0].x;              ey[2*i] = p[0].y;
+    ex[2*i+1] = p[p.length-1].x;   ey[2*i+1] = p[p.length-1].y;
+  }
+  const cell = Math.max(0.5, Math.sqrt(W * H / n) * 1.4);
+  const g = E_buildGrid(ex, ey, m, W, H, cell);
+  const done = new Uint8Array(n), out = [];
+  let cx = 0, cy = 0;
+  for (let c = 0; c < n; c++){
+    const k = E_nearest(g, ex, ey, cx, cy, -1);
+    if (k < 0) break;
+    const si = k >> 1, rev = (k & 1) === 1;
+    g.used[2*si] = 1; g.used[2*si+1] = 1; done[si] = 1;
+    const s = segs[si];
+    if (rev && s.pts.length > 1) s.pts = s.pts.slice().reverse();
+    out.push(s);
+    const last = s.pts[s.pts.length-1];
+    cx = last.x; cy = last.y;
+  }
+  for (let i = 0; i < n; i++) if (!done[i]) out.push(segs[i]);
+  return out;
+}
+
+/* ================================================= variable-width outlines */
+
+function E_circlePoly(cx, cy, r){
+  const p = [];
+  for (let i = 0; i < 14; i++){ const a = i / 14 * E_TAU; p.push({ x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r }); }
+  return p;
+}
+
+function E_outline(pts, capStyle){
+  const n = pts.length;
+  if (n === 0) return [];
+  if (n === 1) return E_circlePoly(pts[0].x, pts[0].y, Math.max(pts[0].w, 0.01) / 2);
+
+  const nx = new Float64Array(n), ny = new Float64Array(n);
+  for (let i = 0; i < n; i++){
+    const a = pts[Math.max(0, i - 1)], b = pts[Math.min(n - 1, i + 1)];
+    let tx = b.x - a.x, ty = b.y - a.y, L = Math.hypot(tx, ty);
+    if (L < 1e-9){ tx = 1; ty = 0; L = 1; }
+    nx[i] = -ty / L; ny[i] = tx / L;
+  }
+  const left = new Array(n), right = new Array(n);
+  for (let i = 0; i < n; i++){
+    const h = Math.max(pts[i].w, 0.004) / 2;
+    left[i]  = { x: pts[i].x + nx[i] * h, y: pts[i].y + ny[i] * h };
+    right[i] = { x: pts[i].x - nx[i] * h, y: pts[i].y - ny[i] * h };
+  }
+  const out = left.slice();
+  const cap = (idx, from, to) => {
+    if (capStyle !== 'round') return;
+    const c = pts[idx], r = Math.max(c.w, 0.004) / 2;
+    const a0 = Math.atan2(from.y - c.y, from.x - c.x);
+    const a1 = Math.atan2(to.y - c.y, to.x - c.x);
+    let da = a1 - a0;
+    while (da <= -Math.PI) da += E_TAU;
+    while (da >   Math.PI) da -= E_TAU;
+    for (let i = 1; i < 6; i++){
+      const a = a0 + da * (i / 6);
+      out.push({ x: c.x + Math.cos(a) * r, y: c.y + Math.sin(a) * r });
+    }
+  };
+  cap(n - 1, left[n - 1], right[n - 1]);
+  for (let i = n - 1; i >= 0; i--) out.push(right[i]);
+  cap(0, right[0], left[0]);
+  return out;
+}
+
+/* ============================== acceleration-aware run-time estimate ======= */
+
+function E_moveTime(L, ve, vx, F, A){
+  if (L <= 1e-9) return 0;
+  ve = Math.min(ve, F); vx = Math.min(vx, F);
+  const dA = (F*F - ve*ve) / (2*A), dD = (F*F - vx*vx) / (2*A);
+  if (dA + dD <= L) return (F - ve)/A + (F - vx)/A + (L - dA - dD)/F;
+  const vp = Math.sqrt(Math.max((2*A*L + ve*ve + vx*vx) / 2, Math.max(ve, vx) * Math.max(ve, vx)));
+  return Math.max(0, (vp - ve)/A) + Math.max(0, (vp - vx)/A);
+}
+
+function E_junctionV(ux1, uy1, ux2, uy2, A, jd, F){
+  const cosT = -(ux1*ux2 + uy1*uy2);
+  const sinHalf = Math.sqrt(Math.max(0, (1 - cosT) / 2));
+  if (sinHalf >= 0.9999) return F;
+  if (sinHalf <= 1e-6) return 0;
+  const R = jd * sinHalf / (1 - sinHalf);
+  return Math.min(F, Math.sqrt(A * R));
+}
+
+/* opt: { accel, jd, blockRate, rapid, plunge, hop, feedOf(toolId) } */
+function E_time(segs, opt){
+  const A = Math.max(1, opt.accel), jd = Math.max(0.0005, opt.jd);
+  let cut = 0, travel = 0, blocks = 0;
+  let cx = 0, cy = 0;
+
+  for (let si = 0; si < segs.length; si++){
+    const s = segs[si], p = s.pts, n = p.length;
+    const F = Math.max(1, opt.feedOf(s.tool)) / 60;      // mm/s
+    const RP = Math.max(1, opt.rapid) / 60;
+    const PL = Math.max(1, opt.plungeOf(s.tool)) / 60;
+
+    /* rapid to the start, then plunge */
+    const dist = Math.hypot(p[0].x - cx, p[0].y - cy);
+    travel += E_moveTime(dist, 0, 0, RP, A) + E_moveTime(opt.hop * 2, 0, 0, RP, A);
+    travel += E_moveTime(Math.max(p[0].d, 0.01), 0, 0, PL, A);
+    blocks += 3;
+
+    if (n > 1){
+      const L = new Float64Array(n - 1), ux = new Float64Array(n - 1), uy = new Float64Array(n - 1);
+      for (let i = 0; i < n - 1; i++){
+        const dx = p[i+1].x - p[i].x, dy = p[i+1].y - p[i].y;
+        const d = Math.hypot(dx, dy) || 1e-9;
+        L[i] = d; ux[i] = dx / d; uy[i] = dy / d;
+      }
+      const v = new Float64Array(n);
+      v[0] = 0; v[n-1] = 0;
+      for (let i = 1; i < n - 1; i++) v[i] = E_junctionV(ux[i-1], uy[i-1], ux[i], uy[i], A, jd, F);
+      for (let i = n - 2; i >= 0; i--) v[i] = Math.min(v[i], Math.sqrt(v[i+1]*v[i+1] + 2*A*L[i]));
+      for (let i = 0; i < n - 1; i++) v[i+1] = Math.min(v[i+1], Math.sqrt(v[i]*v[i] + 2*A*L[i]));
+      for (let i = 0; i < n - 1; i++) cut += E_moveTime(L[i], v[i], v[i+1], F, A);
+      blocks += n - 1;
+      cx = p[n-1].x; cy = p[n-1].y;
+    } else { cx = p[0].x; cy = p[0].y; }
+  }
+  const kinematic = cut + travel;
+  const blockLimited = opt.blockRate > 0 ? blocks / opt.blockRate : 0;
+  return { cut, travel, blocks, total: Math.max(kinematic, blockLimited), blockLimited: blockLimited > kinematic };
+}
+
+/* ===================================================== arc fitting (G2/G3) */
+
+function E_circleThrough(a, b, c){
+  const d = 2 * (a.x*(b.y - c.y) + b.x*(c.y - a.y) + c.x*(a.y - b.y));
+  if (Math.abs(d) < 1e-12) return null;
+  const ua = a.x*a.x + a.y*a.y, ub = b.x*b.x + b.y*b.y, uc = c.x*c.x + c.y*c.y;
+  const cx = (ua*(b.y - c.y) + ub*(c.y - a.y) + uc*(a.y - b.y)) / d;
+  const cy = (ua*(c.x - b.x) + ub*(a.x - c.x) + uc*(b.x - a.x)) / d;
+  const r = Math.hypot(a.x - cx, a.y - cy);
+  if (!isFinite(r) || r < 1e-6 || r > 1e5) return null;
+  const cross = (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x);
+  return { cx, cy, r, ccw: cross > 0 };
+}
+
+function E_fitArcs(pts, tol, depthTol, minPts){
+  const out = [], n = pts.length;
+  let i = 0;
+  while (i < n - 1){
+    let bestJ = -1, bestArc = null;
+    const maxJ = Math.min(n - 1, i + 400);
+    for (let j = i + (minPts - 1); j <= maxJ; j++){
+      const arc = E_circleThrough(pts[i], pts[(i + j) >> 1], pts[j]);
+      if (!arc) break;
+      let ok = true;
+      for (let k = i + 1; k < j; k++){
+        if (Math.abs(Math.hypot(pts[k].x - arc.cx, pts[k].y - arc.cy) - arc.r) > tol){ ok = false; break; }
+      }
+      if (ok){
+        const d0 = pts[i].d, d1 = pts[j].d;
+        for (let k = i + 1; k < j; k++){
+          if (Math.abs(pts[k].d - (d0 + (d1 - d0) * (k - i) / (j - i))) > depthTol){ ok = false; break; }
+        }
+      }
+      if (!ok) break;
+      bestJ = j; bestArc = arc;
+    }
+    if (bestJ > i + (minPts - 2) && bestArc){ out.push({ arc: bestArc, from: i, to: bestJ }); i = bestJ; }
+    else { out.push({ from: i, to: i + 1 }); i++; }
+  }
+  return out;
+}
+
+/* ============================================================ orchestrator */
+
+function E_run(cfg, gray, gw, gh, mask){
+  const sample = E_sampler(gray, gw, gh, cfg.outW, cfg.outH);
+  const maskRaw = mask ? E_sampler(mask, gw, gh, cfg.outW, cfg.outH) : null;
+  const maskAt = maskRaw ? function(x, y){ return maskRaw(x, y) / 255; } : null;
+  const darkOf = t => cfg.invertTone ? t : 1 - t;
+
+  const area = cfg.outW * cfg.outH;
+  let segs = [], throttled = false, stepUsed = cfg.sampleStep;
+
+  for (let ti = 0; ti < cfg.tools.length; ti++){
+    const tool = cfg.tools[ti];
+    if (!tool.on) continue;
+
+    let step = Math.max(0.02, cfg.sampleStep);
+    if (cfg.budget > 0){
+      let est;
+      if (tool.pattern === 'hatch')       est = area / tool.pitch * E_clamp(cfg.layers, 1, 4);
+      else if (tool.pattern === 'radial') est = E_TAU * Math.hypot(cfg.outW, cfg.outH) * Math.hypot(cfg.outW, cfg.outH) / (2 * tool.pitch);
+      else                                est = area / tool.pitch;
+      const s2 = Math.max(step, est / cfg.budget);
+      if (s2 > step * 1.02){ throttled = true; step = s2; }
+    }
+    stepUsed = Math.max(stepUsed, step);
+
+    let raw;
+    if (tool.pattern === 'stipple')      raw = E_genStipple(cfg, tool, sample, darkOf, maskAt, tool.maskScope);
+    else if (tool.pattern === 'dots')    raw = E_genDots(cfg, tool, sample, darkOf);
+    else if (tool.pattern === 'contour') raw = E_genContour(cfg, tool, gray, gw, gh);
+    else if (tool.pattern === 'concentric' || tool.pattern === 'spiral' || tool.pattern === 'radial')
+                                         raw = E_genRadialFamily(cfg, tool, step);
+    else                                 raw = E_genLines(cfg, tool, step);
+
+    segs = segs.concat(E_modulate(raw, cfg, tool, sample, darkOf, maskAt));
+  }
+
+  let rawPts = 0;
+  for (let i = 0; i < segs.length; i++) rawPts += segs[i].pts.length;
+
+  if (cfg.simplify > 0)
+    for (let i = 0; i < segs.length; i++)
+      if (!segs[i].tour) segs[i].pts = E_simplify(segs[i].pts, cfg.simplify, cfg.simplifyW);
+
+  if (cfg.order) segs = E_orderSegs(segs, cfg.outW, cfg.outH);
+
+  let len = 0, pts = 0, ink = 0, dMin = Infinity, dMax = 0;
+  const perTool = {};
+  for (let i = 0; i < segs.length; i++){
+    const s = segs[i], p = s.pts;
+    s.out = E_outline(p, cfg.capStyle);
+    let L = 0, wsum = 0;
+    for (let j = 0; j < p.length; j++){
+      wsum += p[j].w;
+      if (p[j].d < dMin) dMin = p[j].d;
+      if (p[j].d > dMax) dMax = p[j].d;
+      if (j > 0) L += Math.hypot(p[j].x - p[j-1].x, p[j].y - p[j-1].y);
+    }
+    len += L; pts += p.length; ink += L * (wsum / p.length);
+    const t = perTool[s.tool] || (perTool[s.tool] = { n: 0, len: 0, dMax: 0 });
+    t.n++; t.len += L;
+    for (let j = 0; j < p.length; j++) if (p[j].d > t.dMax) t.dMax = p[j].d;
+  }
+
+  return {
+    segs,
+    stats: {
+      n: segs.length, pts, len,
+      dMin: isFinite(dMin) ? dMin : 0, dMax,
+      cov: area > 0 ? E_clamp(ink / area, 0, 1) : 0, rawPts,
+      step: stepUsed, throttled, perTool
+    }
+  };
+}
+
+globalThis.ENG = {
+  run: E_run, time: E_time, outline: E_outline, simplify: E_simplify,
+  fitArcs: E_fitArcs, depthForWidth: E_depthForWidth, widthForDepth: E_widthForDepth,
+  effMaxWidth: E_effMaxWidth, tanHalf: E_tanHalf, sampler: E_sampler
+};
+</script>
+
+<script>
+"use strict";
+
+/* ============================================================================
+   Linear Half Toner — application layer.
+   All internal lengths are millimetres; units convert only for display.
+   ========================================================================== */
+
+const $  = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const lerp  = (a, b, t) => a + (b - a) * t;
+const MM_IN = 25.4;
+const DEG   = Math.PI / 180;
+
+/* evaluate the shared engine into this realm (indirect eval -> global scope) */
+const ENGINE_SRC = document.getElementById('engineSrc').textContent;
+(0, eval)(ENGINE_SRC);
+
+/* ---------------------------------------------------------------- state --- */
+
+const DEF = {
+  /* source */
+  rasterW: 1400, bgColor: '#ffffff',
+  units: 'mm', outW: 200, outH: 150, lockAspect: true,
+  /* geometry corrections */
+  rot: 0, flipH: false, flipV: false,
+  cropOn: false, cx0: 0, cy0: 0, cx1: 100, cy1: 100,
+  /* tonal corrections */
+  grayMode: 'lum', invert: false,
+  blackPt: 0, whitePt: 255, outBlack: 0, outWhite: 255,
+  exposure: 0, brightness: 0, contrast: 0, gamma: 1,
+  denoise: 0, blur: 0, sharpen: 0, sharpenR: 1.5, posterize: 0,
+  curveOn: false, curve: [[0, 0], [1, 1]],
+  /* mask */
+  maskOn: false, maskMode: 'protect', maskStrength: 1, brushSize: 8, brushSoft: 0.5,
+  /* shared pattern settings */
+  sampleStep: 0.25, modMode: 'width', toneGamma: 1, invertTone: false,
+  wFixed: 0.4, minRun: 0.3, capStyle: 'round', dashLen: 1.5,
+  waveAmp: 0.35, waveLen: 6, ccx: 50, ccy: 50, layers: 1, layerStep: 90,
+  contourLevels: 14, stippleMax: 20000, stippleRelax: 4, stippleOpt: 2,
+  /* optimisation */
+  simplify: 0.02, simplifyW: 0.02, order: true, budgetK: 900, unlimited: false,
+  /* tool 1 */
+  t1On: true, t1Name: 'Main V-bit', t1Pattern: 'lines', t1Angle: 0, t1Pitch: 1.2,
+  t1WMin: 0.05, t1WMax: 1.0, t1Cutoff: 0.08, t1ToneLo: 0, t1ToneHi: 100, t1MaskScope: 'all',
+  t1BitType: 'v', t1BitAngle: 60, t1BitDia: 6.35, t1TipDia: 0.2, t1MaxDepth: 2.0,
+  t1Feed: 1200, t1Plunge: 400, t1Rpm: 18000, t1ToolNum: 1,
+  /* tool 2 */
+  t2On: false, t2Name: 'Detail V-bit', t2Pattern: 'lines', t2Angle: 90, t2Pitch: 0.8,
+  t2WMin: 0.03, t2WMax: 0.45, t2Cutoff: 0.05, t2ToneLo: 0, t2ToneHi: 55, t2MaskScope: 'all',
+  t2BitType: 'v', t2BitAngle: 30, t2BitDia: 3.175, t2TipDia: 0.1, t2MaxDepth: 1.5,
+  t2Feed: 900, t2Plunge: 300, t2Rpm: 18000, t2ToolNum: 2,
+  /* tool 3 */
+  t3On: false, t3Name: 'Third tool', t3Pattern: 'stipple', t3Angle: 45, t3Pitch: 1.5,
+  t3WMin: 0.05, t3WMax: 0.8, t3Cutoff: 0.06, t3ToneLo: 0, t3ToneHi: 100, t3MaskScope: 'all',
+  t3BitType: 'v', t3BitAngle: 90, t3BitDia: 6.35, t3TipDia: 0.2, t3MaxDepth: 2.0,
+  t3Feed: 1200, t3Plunge: 400, t3Rpm: 18000, t3ToolNum: 3,
+  /* machine */
+  rapid: 3000, accel: 500, jd: 0.01, blockRate: 900,
+  safeZ: 5, retractZ: 1, passDepth: 0,
+  originX: 'left', originY: 'bottom', zZero: 'top', stockT: 19, airPass: false,
+  spindleOn: true, useM6: false, gPrec: 3,
+  dialect: 'grbl', lineNumbers: false,
+  laserOn: false, laserMax: 1000, laserMin: 0,
+  arcFit: false, arcTol: 0.02,
+  /* tiling */
+  tileOn: false, bedX: 300, bedY: 200, tileOverlap: 2, tileMarks: true,
+  /* export */
+  svgMode: 'outline', svgCombine: true, svgBg: false, svgPrec: 3,
+  dxfVer: 'r12', dxfMode: 'outline', dxfLayer: 'HALFTONE',
+  gHeader: true, perTool: true,
+  /* carve simulation */
+  matColor: '#c8a06a', lightAz: 135, lightEl: 42, carveExag: 1.6
+};
+
+let S = Object.assign({}, DEF);
+S.curve = DEF.curve.map(p => p.slice());
+
+/* runtime — never written to presets */
+const R = {
+  fileName: '', fileKind: '', srcW: 0, srcH: 0, svgText: null,
+  src: null, geo: null, work: null,
+  gray: null, gray0: null, gw: 0, gh: 0,
+  maskBuf: null,
+  paths: [], stats: null, timing: null,
+  dirtyGeo: true, dirtyGray: true, dirtyPaths: true,
+  view: { z: 1, ox: 0, oy: 0 },
+  mode: 'halftone', showGrid: false, showImg: false, showTiles: false,
+  step: 'source', activeTool: 1,
+  dragCrop: null, panning: false, spaceDown: false,
+  painting: false, brushAt: null,
+  hist: [], histAt: -1, snapB: null, showingB: false,
+  worker: null, workerBusy: false, workerSeq: 0, workerOk: true,
+  curveDrag: -1, ms: 0
+};
+
+const TOOL_COLORS = ['#6c7bff', '#38d9d3', '#ffb454'];
+const U   = () => S.units === 'in' ? 1 / MM_IN : 1;
+const UL  = () => S.units === 'in' ? 'in' : 'mm';
+const fromMM = v => S.units === 'in' ? v / MM_IN : v;
+const TP  = () => 't' + R.activeTool;
+
+function toolCfg(i){
+  const p = 't' + i;
+  return {
+    id: i, on: !!S[p+'On'], name: S[p+'Name'],
+    pattern: S[p+'Pattern'], angle: S[p+'Angle'], pitch: S[p+'Pitch'],
+    wMin: S[p+'WMin'], wMax: S[p+'WMax'], cutoff: S[p+'Cutoff'],
+    toneLo: S[p+'ToneLo'], toneHi: S[p+'ToneHi'], maskScope: S[p+'MaskScope'],
+    bitType: S[p+'BitType'], bitAngle: S[p+'BitAngle'], bitDia: S[p+'BitDia'],
+    tipDia: S[p+'TipDia'], maxDepth: S[p+'MaxDepth'],
+    feed: S[p+'Feed'], plunge: S[p+'Plunge'], rpm: S[p+'Rpm'], toolNum: S[p+'ToolNum']
+  };
+}
+const activeTools = () => [1, 2, 3].map(toolCfg).filter(t => t.on);
+
+/* ------------------------------------------------------------- controls --- */
+
+const PAT_OPTS = [
+  ['lines','Parallel lines','The classic linear halftone — one angle, evenly spaced.'],
+  ['hatch','Cross hatch','Two or more angles layered, each taking over as the image darkens.'],
+  ['wave','Wavy lines','Parallel lines with a sine wiggle. Hides the line grid in flat areas.'],
+  ['concentric','Concentric circles','Rings around a centre point.'],
+  ['spiral','Spiral','One continuous spiral — a single unbroken toolpath.'],
+  ['radial','Radial rays','Straight lines fanning out from a centre point.'],
+  ['contour','Contour lines','Follows lines of equal tone, like a topographic map.'],
+  ['dots','Dot screen','Floyd–Steinberg error diffusion. Each dot is a single plunge.'],
+  ['stipple','Stipple / TSP','Relaxed stipple points joined into one continuous tour — a single plunge for the whole carving.']
+];
+const LINEISH = ['lines','hatch','wave'];
+const CENTREISH = ['concentric','spiral','radial'];
+
+const PANELS = {
+
+source: [
+  { t:'g', l:'File', b:[
+    { t:'btn', l:'Open image or vector…', act:'open', pri:true },
+    { t:'row', b:[
+      { t:'btn', l:'Test image', act:'sample' },
+      { t:'btn', l:'Clear', act:'clear' }
+    ]},
+    { t:'info', rows:[['iName','File'],['iKind','Type'],['iPx','Source pixels'],['iWork','Working pixels']] },
+    { t:'note', l:'Everything runs locally in your browser. Nothing is uploaded anywhere.' }
+  ]},
+
+  { t:'g', l:'Vector rasterising', b:[
+    { t:'sl', k:'rasterW', l:'Raster resolution', mn:400, mx:4000, st:50, u:'px',
+      h:'SVG files are converted to pixels before halftoning. Higher resolves finer detail.' },
+    { t:'ctext', k:'bgColor', l:'Background behind transparency' },
+    { t:'note', l:'Only used for <b>SVG</b> input and for images with an alpha channel.' }
+  ]},
+
+  { t:'g', l:'Finished size', b:[
+    { t:'seg', k:'units', l:'Units', o:[['mm','Millimetres'],['in','Inches']] },
+    { t:'sl', k:'outW', l:'Width', mn:10, mx:1200, st:1, mm:true,
+      h:'Physical width of the carving on your material.' },
+    { t:'sl', k:'outH', l:'Height', mn:10, mx:1200, st:1, mm:true },
+    { t:'chk', k:'lockAspect', l:'Lock to image aspect ratio' },
+    { t:'row', b:[
+      { t:'btn', l:'Swap W/H', act:'swapWH' },
+      { t:'btn', l:'Fit to image', act:'fitSize' }
+    ]},
+    { t:'info', rows:[['iDpi','Sampling density'],['iAspect','Aspect']] }
+  ]},
+
+  { t:'g', l:'Compute', b:[
+    { t:'chk', k:'unlimited', l:'No point limit (full detail)' },
+    { t:'sl', k:'budgetK', l:'Point budget', mn:100, mx:5000, st:50, u:'k', w:s=>!s.unlimited,
+      h:'Caps how many toolpath points the preview generates. Raise it for fine pitches; the worker keeps the interface responsive either way.' },
+    { t:'info', rows:[['iWorker','Compute'],['iMs','Last run']] },
+    { t:'note', l:'Geometry runs in a background worker, so the interface stays responsive. If workers are unavailable it falls back to computing on the main thread.' }
+  ]}
+],
+
+correct: [
+  { t:'g', l:'Orientation', b:[
+    { t:'sl', k:'rot', l:'Rotate', mn:-180, mx:180, st:0.5, u:'°' },
+    { t:'row3', b:[
+      { t:'btn', l:'↺ 90', act:'rotL' },
+      { t:'btn', l:'↻ 90', act:'rotR' },
+      { t:'btn', l:'0°', act:'rot0' }
+    ]},
+    { t:'row', b:[
+      { t:'chk', k:'flipH', l:'Flip horizontal' },
+      { t:'chk', k:'flipV', l:'Flip vertical' }
+    ]},
+    { t:'note', l:'Mirror the artwork if your material is carved from the back, or to correct a scan.' }
+  ]},
+
+  { t:'g', l:'Crop', b:[
+    { t:'chk', k:'cropOn', l:'Enable crop (drag on canvas)' },
+    { t:'row', b:[
+      { t:'num', k:'cx0', l:'Left', mn:0, mx:100, st:0.1, u:'%', w:s=>s.cropOn },
+      { t:'num', k:'cy0', l:'Top', mn:0, mx:100, st:0.1, u:'%', w:s=>s.cropOn }
+    ]},
+    { t:'row', b:[
+      { t:'num', k:'cx1', l:'Right', mn:0, mx:100, st:0.1, u:'%', w:s=>s.cropOn },
+      { t:'num', k:'cy1', l:'Bottom', mn:0, mx:100, st:0.1, u:'%', w:s=>s.cropOn }
+    ]},
+    { t:'btn', l:'Reset crop', act:'resetCrop', w:s=>s.cropOn },
+    { t:'note', l:'Switch the view to <b>Original</b> and drag the handles on the canvas.', w:s=>s.cropOn }
+  ]},
+
+  { t:'g', l:'Greyscale conversion', b:[
+    { t:'sel', k:'grayMode', l:'Channel', o:[
+      ['lum','Luminance (Rec.709) — natural'],
+      ['lum601','Luminance (Rec.601)'],
+      ['avg','Average of R,G,B'],
+      ['light','Lightness (HSL)'],
+      ['max','Maximum channel'],
+      ['min','Minimum channel'],
+      ['r','Red channel only'],
+      ['g','Green channel only'],
+      ['b','Blue channel only']
+    ], h:'Red/green/blue channels can pull much more contrast out of a coloured original.' },
+    { t:'chk', k:'invert', l:'Invert image (negative)' }
+  ]},
+
+  { t:'g', l:'Levels', b:[
+    { t:'sl', k:'blackPt', l:'Input black', mn:0, mx:255, st:1,
+      h:'Anything at or below this becomes solid black. Raise it to deepen shadows.' },
+    { t:'sl', k:'whitePt', l:'Input white', mn:0, mx:255, st:1,
+      h:'Anything at or above this becomes paper white and will not be cut at all.' },
+    { t:'sl', k:'outBlack', l:'Output black', mn:0, mx:255, st:1 },
+    { t:'sl', k:'outWhite', l:'Output white', mn:0, mx:255, st:1 },
+    { t:'row', b:[
+      { t:'btn', l:'Auto levels', act:'autoLevels' },
+      { t:'btn', l:'Reset levels', act:'resetLevels' }
+    ]},
+    { t:'hist' }
+  ]},
+
+  { t:'g', l:'Tone curve', b:[
+    { t:'chk', k:'curveOn', l:'Enable tone curve' },
+    { t:'curve', w:s=>s.curveOn },
+    { t:'row3', b:[
+      { t:'btn', l:'Linear', act:'curveLin', w:s=>s.curveOn },
+      { t:'btn', l:'S-curve', act:'curveS', w:s=>s.curveOn },
+      { t:'btn', l:'Film', act:'curveFilm', w:s=>s.curveOn }
+    ]},
+    { t:'note', l:'Click to add a point, drag to shape, right-click or double-click a point to remove it. Horizontal is input tone, vertical is output.', w:s=>s.curveOn }
+  ]},
+
+  { t:'g', l:'Tone', b:[
+    { t:'sl', k:'exposure', l:'Exposure', mn:-2, mx:2, st:0.05, u:'EV' },
+    { t:'sl', k:'brightness', l:'Brightness', mn:-100, mx:100, st:1 },
+    { t:'sl', k:'contrast', l:'Contrast', mn:-100, mx:100, st:1 },
+    { t:'sl', k:'gamma', l:'Gamma', mn:0.2, mx:3, st:0.01,
+      h:'Below 1 lifts the mid-tones (lighter, less cutting); above 1 deepens them.' },
+    { t:'sl', k:'posterize', l:'Posterise', mn:0, mx:16, st:1, u:'lv',
+      h:'0 is off. Reduces the image to this many flat tones.' }
+  ]},
+
+  { t:'g', l:'Detail', b:[
+    { t:'sl', k:'denoise', l:'Denoise (median)', mn:0, mx:3, st:1, u:'px',
+      h:'Removes speckle that would otherwise become random cutting marks.' },
+    { t:'sl', k:'blur', l:'Blur', mn:0, mx:12, st:0.25, u:'px' },
+    { t:'sl', k:'sharpen', l:'Sharpen', mn:0, mx:200, st:5, u:'%' },
+    { t:'sl', k:'sharpenR', l:'Sharpen radius', mn:0.5, mx:8, st:0.25, u:'px', w:s=>s.sharpen>0 }
+  ]},
+
+  { t:'g', l:'Mask', b:[
+    { t:'chk', k:'maskOn', l:'Enable mask painting' },
+    { t:'note', l:'Switch the view to <b>Mask</b> and paint on the canvas. Hold <b>Alt</b> to erase. <kbd>[</kbd> and <kbd>]</kbd> change brush size.', w:s=>s.maskOn },
+    { t:'rad', k:'maskMode', w:s=>s.maskOn, o:[
+      ['protect','Protect','Painted areas are not cut at all.'],
+      ['reduce','Reduce','Painted areas cut shallower.'],
+      ['boost','Boost','Painted areas cut deeper.']
+    ]},
+    { t:'sl', k:'maskStrength', l:'Mask strength', mn:0, mx:1, st:0.05, w:s=>s.maskOn&&s.maskMode!=='protect' },
+    { t:'sl', k:'brushSize', l:'Brush size', mn:1, mx:80, st:1, mm:true, w:s=>s.maskOn },
+    { t:'sl', k:'brushSoft', l:'Brush softness', mn:0, mx:1, st:0.05, w:s=>s.maskOn },
+    { t:'row3', b:[
+      { t:'btn', l:'Clear', act:'maskClear', w:s=>s.maskOn },
+      { t:'btn', l:'Fill', act:'maskFill', w:s=>s.maskOn },
+      { t:'btn', l:'Invert', act:'maskInvert', w:s=>s.maskOn }
+    ]},
+    { t:'note', l:'Each tool can also be limited to <b>inside</b> or <b>outside</b> the mask on the Pattern step — that is how you get a different pitch or angle per region. A tool scoped that way uses the mask purely to pick its region, so the mode above does not also apply to it.', w:s=>s.maskOn }
+  ]},
+
+  { t:'g', l:'Reset', b:[
+    { t:'btn', l:'Reset all corrections', act:'resetCorrect' },
+    { t:'note', l:'Corrections only affect the tone that feeds the halftone. Pattern and tool settings are untouched.' }
+  ]}
+],
+
+pattern: () => { const P = TP(); return [
+  { t:'toolsel' },
+
+  { t:'g', l:'Pattern', b:[
+    { t:'rad', k:P+'Pattern', o:PAT_OPTS }
+  ]},
+
+  { t:'g', l:'Geometry', b:[
+    { t:'sl', k:P+'Angle', l:'Line angle', mn:0, mx:180, st:1, u:'°',
+      w:s=>LINEISH.includes(s[P+'Pattern']),
+      h:'45° is traditional: it disguises the line grid and avoids fighting the wood grain.' },
+    { t:'sl', k:P+'Pitch', l:'Line pitch', mn:0.2, mx:12, st:0.05, mm:true,
+      h:'Centre-to-centre spacing — for dots and stipple, the mean spacing. The most important setting for both tonal resolution and cutting time.' },
+    { t:'sl', k:'sampleStep', l:'Sample step', mn:0.05, mx:2, st:0.05, mm:true,
+      h:'How often the image is read along each line.' },
+    { t:'sl', k:'layers', l:'Hatch layers', mn:1, mx:4, st:1, w:s=>s[P+'Pattern']==='hatch' },
+    { t:'sl', k:'layerStep', l:'Angle between layers', mn:5, mx:175, st:5, u:'°', w:s=>s[P+'Pattern']==='hatch' },
+    { t:'sl', k:'contourLevels', l:'Contour levels', mn:2, mx:80, st:1, w:s=>s[P+'Pattern']==='contour' },
+    { t:'sl', k:'stippleMax', l:'Maximum points', mn:500, mx:60000, st:500, w:s=>s[P+'Pattern']==='stipple' },
+    { t:'sl', k:'stippleRelax', l:'Relaxation passes', mn:0, mx:12, st:1, w:s=>s[P+'Pattern']==='stipple',
+      h:'Lloyd relaxation evens out the stipple spacing. More passes look better and take longer.' },
+    { t:'sl', k:'stippleOpt', l:'Tour optimisation', mn:0, mx:8, st:1, w:s=>s[P+'Pattern']==='stipple',
+      h:'Windowed 2-opt passes over the travelling-salesman tour — shortens the single continuous path.' },
+    { t:'sl', k:'waveAmp', l:'Wave amplitude', mn:0, mx:5, st:0.05, mm:true,
+      w:s=>s[P+'Pattern']==='wave'||s.modMode==='amp'||s.modMode==='both' },
+    { t:'sl', k:'waveLen', l:'Wave length', mn:0.5, mx:40, st:0.5, mm:true,
+      w:s=>s[P+'Pattern']==='wave'||s.modMode==='amp'||s.modMode==='both' },
+    { t:'row', b:[
+      { t:'num', k:'ccx', l:'Centre X', mn:-50, mx:150, st:1, u:'%', w:s=>CENTREISH.includes(s[P+'Pattern']) },
+      { t:'num', k:'ccy', l:'Centre Y', mn:-50, mx:150, st:1, u:'%', w:s=>CENTREISH.includes(s[P+'Pattern']) }
+    ]},
+    { t:'row3', b:[
+      { t:'btn', l:'0°', act:'ang0', w:s=>LINEISH.includes(s[P+'Pattern']) },
+      { t:'btn', l:'45°', act:'ang45', w:s=>LINEISH.includes(s[P+'Pattern']) },
+      { t:'btn', l:'90°', act:'ang90', w:s=>LINEISH.includes(s[P+'Pattern']) }
+    ]}
+  ]},
+
+  { t:'g', l:'Tone encoding', b:[
+    { t:'rad', k:'modMode', o:[
+      ['width','Line width','Dark = wide line. The mode to use for V-carving — width becomes depth.'],
+      ['amp','Wiggle amplitude','Dark = bigger wiggle, constant width.'],
+      ['both','Width + wiggle','Both at once.'],
+      ['dash','Dash density','Dark = longer dashes. Constant width, broken lines.']
+    ]},
+    { t:'chk', k:'invertTone', l:'Invert tone mapping (cut the highlights)' }
+  ]},
+
+  { t:'g', l:'Width mapping', b:[
+    { t:'sl', k:P+'WMin', l:'Minimum width', mn:0, mx:5, st:0.01, mm:true, w:s=>s.modMode==='width'||s.modMode==='both' },
+    { t:'sl', k:P+'WMax', l:'Maximum width', mn:0.05, mx:12, st:0.05, mm:true, w:s=>s.modMode==='width'||s.modMode==='both',
+      h:'Width in the darkest areas. Capped by the tool geometry.' },
+    { t:'sl', k:'wFixed', l:'Line width', mn:0.05, mx:8, st:0.05, mm:true, w:s=>s.modMode==='amp'||s.modMode==='dash' },
+    { t:'sl', k:P+'Cutoff', l:'Cut threshold', mn:0, mx:3, st:0.01, mm:true, w:s=>s.modMode==='width'||s.modMode==='both',
+      h:'Lines thinner than this are left out entirely, giving clean white highlights.' },
+    { t:'sl', k:'dashLen', l:'Dash period', mn:0.2, mx:20, st:0.1, mm:true, w:s=>s.modMode==='dash' },
+    { t:'sl', k:'toneGamma', l:'Tone curve', mn:0.2, mx:4, st:0.05,
+      h:'Bends the tone-to-width relationship. Below 1 widens the mid-tones.' },
+    { t:'sl', k:'minRun', l:'Drop runs under', mn:0, mx:5, st:0.05, mm:true },
+    { t:'seg', k:'capStyle', l:'Line ends', o:[['round','Rounded'],['butt','Square']] },
+    { t:'note', id:'pitchWarn', l:'', cls:'warn' }
+  ]},
+
+  { t:'g', l:'Tonal band &amp; region', b:[
+    { t:'row', b:[
+      { t:'num', k:P+'ToneLo', l:'Tone floor', mn:0, mx:100, st:1, u:'%' },
+      { t:'num', k:P+'ToneHi', l:'Tone ceiling', mn:0, mx:100, st:1, u:'%' }
+    ]},
+    { t:'seg', k:P+'MaskScope', l:'Where this tool cuts', o:[['all','Everywhere'],['in','Inside mask'],['out','Outside mask']] },
+    { t:'note', l:'Give each tool its own slice of the tonal range to split a job between a wide roughing V-bit and a fine detail bit. Combine with the mask to change pattern by region.' }
+  ]},
+
+  { t:'g', l:'Optimisation', b:[
+    { t:'sl', k:'simplify', l:'Simplify tolerance', mn:0, mx:0.5, st:0.005, mm:true,
+      h:'Douglas–Peucker over position and width together. Flat areas collapse to a handful of points, which shrinks files and lets the machine reach its feed rate.' },
+    { t:'sl', k:'simplifyW', l:'Width tolerance', mn:0.002, mx:0.3, st:0.002, mm:true, w:s=>s.simplify>0,
+      h:'How much width error the simplifier may introduce. Smaller keeps tonal fidelity.' },
+    { t:'chk', k:'order', l:'Optimise travel order' },
+    { t:'info', rows:[['iSimp','Points saved'],['iTravel','Travel time']] }
+  ]},
+
+  { t:'g', l:'Result', b:[
+    { t:'info', rows:[['iPaths','Toolpaths'],['iPts','Points'],['iLen','Cut length'],['iCov','Ink coverage']] }
+  ]}
+]; },
+
+tool: () => { const P = TP(); return [
+  { t:'toolsel' },
+
+  { t:'g', l:'Cutter', b:[
+    { t:'text', k:P+'Name', l:'Name' },
+    { t:'rad', k:P+'BitType', o:[
+      ['v','V-bit','A true V — the groove width is set purely by how deep it goes.'],
+      ['taper','Tapered engraver','A V with a small flat tip. The tip diameter is the narrowest groove it can cut.']
+    ]},
+    { t:'sl', k:P+'BitAngle', l:'Included angle', mn:10, mx:150, st:1, u:'°',
+      h:'The full angle across the tip. Narrow angles cut fine lines but need much more depth for the same width.' },
+    { t:'row3', b:[
+      { t:'btn', l:'30°', act:'a30' },
+      { t:'btn', l:'60°', act:'a60' },
+      { t:'btn', l:'90°', act:'a90' }
+    ]},
+    { t:'sl', k:P+'BitDia', l:'Cutter diameter', mn:0.5, mx:32, st:0.05, mm:true },
+    { t:'sl', k:P+'TipDia', l:'Flat tip diameter', mn:0.01, mx:3, st:0.01, mm:true, w:s=>s[P+'BitType']==='taper' },
+    { t:'sl', k:P+'MaxDepth', l:'Maximum depth', mn:0.1, mx:25, st:0.05, mm:true },
+    { t:'row', b:[
+      { t:'btn', l:'Tool library…', act:'openLib' },
+      { t:'btn', l:'Clamp width', act:'clampTool' }
+    ]},
+    { t:'note', id:'toolWarn', l:'', cls:'warn' }
+  ]},
+
+  { t:'g', l:'Geometry check', b:[
+    { t:'info', rows:[
+      ['iFormula','Relation'],
+      ['iWmaxBit','Width at full diameter'],
+      ['iWmaxDepth','Width at maximum depth'],
+      ['iWeff','Usable maximum width'],
+      ['iDmin','Depth at minimum width'],
+      ['iDmax','Depth at maximum width']
+    ]},
+    { t:'depthcurve' }
+  ]},
+
+  { t:'g', l:'Feeds for this tool', b:[
+    { t:'sl', k:P+'Feed', l:'Cutting feed', mn:50, mx:8000, st:50, u:'/min', mmrate:true },
+    { t:'sl', k:P+'Plunge', l:'Plunge feed', mn:20, mx:3000, st:20, u:'/min', mmrate:true },
+    { t:'sl', k:P+'Rpm', l:'Spindle speed', mn:1000, mx:60000, st:500, u:'rpm' },
+    { t:'num', k:P+'ToolNum', l:'Tool number', mn:0, mx:99, st:1 }
+  ]},
+
+  { t:'g', l:'Work origin', b:[
+    { t:'seg', k:'originX', l:'X zero', o:[['left','Left'],['center','Centre'],['right','Right']] },
+    { t:'seg', k:'originY', l:'Y zero', o:[['bottom','Bottom'],['center','Centre'],['top','Top']] },
+    { t:'seg', k:'zZero', l:'Z zero', o:[['top','Material top'],['bed','Machine bed']] },
+    { t:'sl', k:'stockT', l:'Stock thickness', mn:0.5, mx:100, st:0.5, mm:true, w:s=>s.zZero==='bed',
+      h:'Needed so the program knows where the surface is when Z is zeroed on the bed.' },
+    { t:'chk', k:'airPass', l:'Air pass around the outline first' },
+    { t:'note', l:'The air pass traces the bounding box at safe Z with the spindle off, so you can confirm placement before anything is cut.' }
+  ]},
+
+  { t:'g', l:'Machine motion', b:[
+    { t:'sl', k:'rapid', l:'Rapid rate', mn:200, mx:20000, st:100, u:'/min', mmrate:true },
+    { t:'sl', k:'accel', l:'Acceleration', mn:20, mx:5000, st:10, u:'mm/s²',
+      h:'Used for the run-time estimate. GRBL reports it as $120/$121.' },
+    { t:'sl', k:'jd', l:'Junction deviation', mn:0.001, mx:0.2, st:0.001, mm:true,
+      h:'How much the controller rounds corners. GRBL $11. Larger keeps more speed through turns.' },
+    { t:'sl', k:'blockRate', l:'Block rate ceiling', mn:0, mx:5000, st:50, u:'/s',
+      h:'How many G-code lines per second the controller can consume. 0 disables the check. With very short segments this, not the feed rate, is often the real limit.' },
+    { t:'sl', k:'safeZ', l:'Safe Z (rapid height)', mn:0.5, mx:50, st:0.5, mm:true },
+    { t:'sl', k:'retractZ', l:'Hop between lines', mn:0, mx:20, st:0.25, mm:true },
+    { t:'sl', k:'passDepth', l:'Depth per pass', mn:0, mx:10, st:0.25, mm:true,
+      h:'0 cuts everything in one pass. Otherwise the program repeats, stepping down by this much each time.' },
+    { t:'row', b:[
+      { t:'chk', k:'spindleOn', l:'Spindle M3/M5' },
+      { t:'chk', k:'useM6', l:'Emit M6 change' }
+    ]},
+    { t:'info', rows:[['iTcut','Cutting time'],['iTtrav','Travel time'],['iTblocks','G-code blocks'],['iTlimit','Limiting factor']] }
+  ]}
+]; },
+
+export: [
+  { t:'g', l:'SVG — vector outline', b:[
+    { t:'rad', k:'svgMode', o:[
+      ['outline','Closed outlines','Every line becomes a filled shape whose width varies. Apply a V-carve toolpath to these in your CAM.'],
+      ['center','Centre lines','Single hairline strokes.'],
+      ['both','Outlines + centre lines','Both, on separate layers.']
+    ]},
+    { t:'row', b:[
+      { t:'chk', k:'svgCombine', l:'One combined path' },
+      { t:'chk', k:'svgBg', l:'White background' }
+    ]},
+    { t:'num', k:'svgPrec', l:'Decimal places', mn:1, mx:5, st:1 },
+    { t:'btn', l:'Download SVG', act:'expSvg', pri:true },
+    { t:'note', l:'Sized in real <b>mm</b>: 1 SVG user unit = 1&nbsp;mm. Tools are written to separate layers.' }
+  ]},
+
+  { t:'g', l:'DXF — for CAM', b:[
+    { t:'seg', k:'dxfVer', l:'Format', o:[['r12','R12 POLYLINE'],['r2000','R2000 LWPOLYLINE']] },
+    { t:'rad', k:'dxfMode', o:[
+      ['outline','Closed outlines','Widest compatibility. V-carve these exactly like engraved text.'],
+      ['width','Centre lines with width','Polylines carrying per-vertex start/end width.'],
+      ['center','Plain centre lines','Zero-width polylines only.']
+    ]},
+    { t:'text', k:'dxfLayer', l:'Layer name prefix' },
+    { t:'btn', l:'Download DXF', act:'expDxf', pri:true },
+    { t:'note', l:'R12 is the safest choice for older CAM. Each tool gets its own layer.' }
+  ]},
+
+  { t:'g', l:'G-code — controller', b:[
+    { t:'sel', k:'dialect', l:'Dialect', o:[
+      ['grbl','GRBL / Carbide / Openbuilds'],
+      ['mach3','Mach3 / Mach4'],
+      ['linuxcnc','LinuxCNC'],
+      ['marlin','Marlin (3D-printer firmware)']
+    ]},
+    { t:'chk', k:'lineNumbers', l:'Number every line (N-words)' },
+    { t:'chk', k:'arcFit', l:'Fit arcs (G2/G3)' },
+    { t:'sl', k:'arcTol', l:'Arc tolerance', mn:0.002, mx:0.2, st:0.002, mm:true, w:s=>s.arcFit,
+      h:'How far the fitted arc may stray from the sampled points. Only helps curved patterns.' },
+    { t:'chk', k:'perTool', l:'Separate file per tool' },
+    { t:'chk', k:'gHeader', l:'Include descriptive header' }
+  ]},
+
+  { t:'g', l:'Laser mode', b:[
+    { t:'chk', k:'laserOn', l:'Output laser power instead of depth' },
+    { t:'sl', k:'laserMax', l:'Maximum power (S)', mn:1, mx:10000, st:10, w:s=>s.laserOn },
+    { t:'sl', k:'laserMin', l:'Minimum power (S)', mn:0, mx:5000, st:10, w:s=>s.laserOn },
+    { t:'note', l:'Z is held constant and line width drives the <code>S</code> word instead, using <code>M4</code> dynamic power where the dialect supports it. Sensible for a diode laser; ignore it for milling.', w:s=>s.laserOn }
+  ]},
+
+  { t:'g', l:'Tiling', b:[
+    { t:'chk', k:'tileOn', l:'Split across machine bed' },
+    { t:'row', b:[
+      { t:'num', k:'bedX', l:'Bed X', mn:20, mx:3000, st:10, mm:true, w:s=>s.tileOn },
+      { t:'num', k:'bedY', l:'Bed Y', mn:20, mx:3000, st:10, mm:true, w:s=>s.tileOn }
+    ]},
+    { t:'sl', k:'tileOverlap', l:'Tile overlap', mn:0, mx:20, st:0.5, mm:true, w:s=>s.tileOn },
+    { t:'chk', k:'tileMarks', l:'Registration marks', w:s=>s.tileOn },
+    { t:'info', rows:[['iTiles','Tiles']], w:s=>s.tileOn },
+    { t:'note', l:'Each tile is written as its own program with coordinates rebased to that tile’s corner. Registration marks are shallow crosses in the overlap so tiles can be aligned by eye.', w:s=>s.tileOn }
+  ]},
+
+  { t:'g', l:'Write G-code', b:[
+    { t:'info', rows:[['iGunit','Units'],['iGtool','Tools'],['iGdepth','Depth range'],['iGpass','Passes'],['iGtime','Estimated run time']] },
+    { t:'btn', l:'Download G-code', act:'expGcode', pri:true },
+    { t:'note', l:'Written for a 3-axis router. Depth follows the line width through the cutter geometry. <b>Dry-run above the workpiece before you cut.</b>', cls:'warn' }
+  ]},
+
+  { t:'g', l:'Images', b:[
+    { t:'row', b:[
+      { t:'btn', l:'Corrected PNG', act:'expPngCorr' },
+      { t:'btn', l:'Preview PNG', act:'expPngPrev' }
+    ]},
+    { t:'btn', l:'Carve simulation PNG', act:'expPngCarve' }
+  ]},
+
+  { t:'g', l:'Carve simulation', b:[
+    { t:'ctext', k:'matColor', l:'Material colour' },
+    { t:'sl', k:'lightAz', l:'Light direction', mn:0, mx:360, st:5, u:'°' },
+    { t:'sl', k:'lightEl', l:'Light height', mn:5, mx:89, st:1, u:'°' },
+    { t:'sl', k:'carveExag', l:'Relief exaggeration', mn:0.2, mx:6, st:0.1 },
+    { t:'note', l:'Switch the view to <b>Carve</b> to see it. The relief is rasterised from the actual cut depths, so merged lines and over-deep areas show up before you cut.' }
+  ]}
+]
+
+};
+
+/* ------------------------------------------------------ panel building --- */
+
+const WHENS = [];
+const KEYCTL = {};
+
+const GEO_KEYS  = new Set(['rasterW','bgColor','rot','flipH','flipV']);
+const GRAY_KEYS = new Set(['cropOn','cx0','cy0','cx1','cy1','grayMode','invert','blackPt','whitePt',
+  'outBlack','outWhite','exposure','brightness','contrast','gamma','denoise','blur','sharpen',
+  'sharpenR','posterize','curveOn','curve']);
+const CARVE_KEYS = new Set(['matColor','lightAz','lightEl','carveExag']);
+const IDLE_KEYS = new Set(['svgMode','svgCombine','svgBg','svgPrec','dxfVer','dxfMode','dxfLayer',
+  'gHeader','perTool','dialect','lineNumbers','arcFit','arcTol','laserOn','laserMax','laserMin',
+  'tileOn','bedX','bedY','tileOverlap','tileMarks','units','brushSize','brushSoft',
+  'matColor','lightAz','lightEl','carveExag','originX','originY','zZero','stockT','airPass',
+  'safeZ','retractZ','passDepth','spindleOn','useM6','gPrec','rapid','accel','jd','blockRate',
+  't1Feed','t1Plunge','t1Rpm','t1ToolNum','t1Name',
+  't2Feed','t2Plunge','t2Rpm','t2ToolNum','t2Name',
+  't3Feed','t3Plunge','t3Rpm','t3ToolNum','t3Name']);
+
+function rangeOf(c){
+  let f = 1;
+  if (c.mm || c.mmrate) f = U();
+  let mn = c.mn * f, mx = c.mx * f, st = c.st * f;
+  if (f !== 1){
+    st = Math.max(0.0001, Number(st.toPrecision(2)));
+    mn = Number(mn.toFixed(4)); mx = Number(mx.toFixed(4));
+  }
+  const dec = st >= 1 ? 0 : st >= 0.1 ? 1 : st >= 0.01 ? 2 : st >= 0.001 ? 3 : 4;
+  const unit = c.mm ? UL() : c.mmrate ? UL() + (c.u || '') : (c.u || '');
+  return { mn, mx, st, dec, unit };
+}
+const dispVal  = (c, v) => (c.mm || c.mmrate) ? v * U() : v;
+const storeVal = (c, v) => (c.mm || c.mmrate) ? v / U() : v;
+
+function whenIdx(w){ if (!w) return ''; WHENS.push(w); return ' data-w="' + (WHENS.length - 1) + '"'; }
+function hintOf(c){ return c.h ? '<i class="hint" title="' + c.h.replace(/"/g, '&quot;') + '">?</i>' : ''; }
+
+function ctlHTML(c){
+  const w = whenIdx(c.w);
+  switch (c.t){
+
+  case 'g':
+    return '<section class="grp"' + w + '><h3>' + c.l +
+      '<svg class="cv" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5 6 8.5 10 4.5"/></svg>' +
+      '</h3><div class="gb">' + c.b.map(ctlHTML).join('') + '</div></section>';
+
+  case 'sl': {
+    const r = rangeOf(c), v = dispVal(c, S[c.k]);
+    KEYCTL[c.k] = c;
+    return '<div class="ctl"' + w + '>' +
+      '<div class="clab"><span class="nm">' + c.l + '</span>' + hintOf(c) + '</div>' +
+      '<div class="srow">' +
+        '<input type="range" id="r_' + c.k + '" data-k="' + c.k + '" min="' + r.mn + '" max="' + r.mx +
+        '" step="' + r.st + '" value="' + v.toFixed(r.dec) + '">' +
+        '<input type="number" id="f_' + c.k + '" data-k="' + c.k + '" min="' + r.mn + '" max="' + r.mx +
+        '" step="' + r.st + '" value="' + v.toFixed(r.dec) + '">' +
+        '<span class="unit">' + r.unit + '</span>' +
+      '</div></div>';
+  }
+
+  case 'num': {
+    const r = rangeOf(c), v = dispVal(c, S[c.k]);
+    KEYCTL[c.k] = c;
+    return '<div class="ctl"' + w + '>' +
+      '<div class="clab"><span class="nm">' + c.l + '</span>' + hintOf(c) + '</div>' +
+      '<div class="srow"><input type="number" id="f_' + c.k + '" data-k="' + c.k + '" style="flex:1;width:auto" min="' +
+      r.mn + '" max="' + r.mx + '" step="' + r.st + '" value="' + v.toFixed(r.dec) + '">' +
+      '<span class="unit">' + r.unit + '</span></div></div>';
+  }
+
+  case 'seg': {
+    KEYCTL[c.k] = c;
+    const opts = c.o.map(o =>
+      '<label><input type="radio" name="n_' + c.k + '" data-k="' + c.k + '" value="' + o[0] + '"' +
+      (S[c.k] === o[0] ? ' checked' : '') + '><span>' + o[1] + '</span></label>').join('');
+    return '<div class="ctl"' + w + '>' + (c.l ? '<div class="clab"><span class="nm">' + c.l + '</span>' + hintOf(c) + '</div>' : '') +
+      '<div class="seg' + (c.o.length > 3 ? ' wrap' : '') + '">' + opts + '</div></div>';
+  }
+
+  case 'rad': {
+    KEYCTL[c.k] = c;
+    const opts = c.o.map(o =>
+      '<label class="rad"><input type="radio" name="n_' + c.k + '" data-k="' + c.k + '" value="' + o[0] + '"' +
+      (S[c.k] === o[0] ? ' checked' : '') + '><span class="dot"></span><span class="rt">' +
+      '<span class="rl">' + o[1] + '</span>' + (o[2] ? '<span class="rd">' + o[2] + '</span>' : '') +
+      '</span></label>').join('');
+    return '<div class="ctl"' + w + '><div class="radios">' + opts + '</div></div>';
+  }
+
+  case 'sel': {
+    KEYCTL[c.k] = c;
+    const opts = c.o.map(o => '<option value="' + o[0] + '"' + (S[c.k] === o[0] ? ' selected' : '') + '>' + o[1] + '</option>').join('');
+    return '<div class="ctl"' + w + '><div class="clab"><span class="nm">' + c.l + '</span>' + hintOf(c) + '</div>' +
+      '<select id="f_' + c.k + '" data-k="' + c.k + '">' + opts + '</select></div>';
+  }
+
+  case 'chk':
+    KEYCTL[c.k] = c;
+    return '<label class="chk"' + w + '><input type="checkbox" data-k="' + c.k + '"' + (S[c.k] ? ' checked' : '') +
+      '><span class="bx"></span><span class="ct">' + c.l + '</span></label>';
+
+  case 'text':
+    KEYCTL[c.k] = c;
+    return '<div class="ctl"' + w + '><div class="clab"><span class="nm">' + c.l + '</span></div>' +
+      '<input type="text" id="f_' + c.k + '" data-k="' + c.k + '" style="width:100%" value="' + String(S[c.k]).replace(/"/g, '&quot;') + '"></div>';
+
+  case 'ctext':
+    KEYCTL[c.k] = c;
+    return '<div class="ctl"' + w + '><div class="clab"><span class="nm">' + c.l + '</span></div>' +
+      '<input type="color" data-k="' + c.k + '" value="' + S[c.k] + '"></div>';
+
+  case 'btn':
+    return '<button class="btn' + (c.pri ? ' pri' : '') + ' wide" data-act="' + c.act + '" style="margin-bottom:8px"' + w + '>' + c.l + '</button>';
+
+  case 'row':  return '<div class="row2"' + w + '>' + c.b.map(ctlHTML).join('') + '</div>';
+  case 'row3': return '<div class="row3"' + w + '>' + c.b.map(ctlHTML).join('') + '</div>';
+
+  case 'info':
+    return '<div class="ctl"' + w + '>' + c.rows.map(r =>
+      '<div class="kv"><span class="k">' + r[1] + '</span><span class="v" id="' + r[0] + '">&mdash;</span></div>').join('') + '</div>';
+
+  case 'note':
+    return '<div class="note ' + (c.cls || '') + (c.id ? ' hide' : '') + '"' + (c.id ? ' id="' + c.id + '"' : '') + w + '>' + c.l + '</div>';
+
+  case 'hist':
+    return '<canvas id="histCv" class="pad" width="260" height="54" style="height:54px"></canvas>';
+
+  case 'curve':
+    return '<canvas id="curveCv" class="pad" width="260" height="200" style="height:200px"></canvas>';
+
+  case 'depthcurve':
+    return '<canvas id="curveCv2" class="pad" width="260" height="96" style="height:96px"></canvas>';
+
+  case 'toolsel': {
+    const segs = [1, 2, 3].map(i =>
+      '<label><input type="radio" name="ntoolsel" value="' + i + '"' + (R.activeTool === i ? ' checked' : '') +
+      '><span><i class="tchip t' + i + 'c"></i>Tool ' + i + '</span></label>').join('');
+    const en = R.activeTool === 1 ? '' :
+      '<label class="chk"><input type="checkbox" data-k="t' + R.activeTool + 'On"' + (S['t'+R.activeTool+'On'] ? ' checked' : '') +
+      '><span class="bx"></span><span class="ct">Enable tool ' + R.activeTool + '</span></label>';
+    return '<div class="toolsel"><div class="seg">' + segs + '</div></div>' + en;
+  }
+  }
+  return '';
+}
+
+function buildPanels(){
+  WHENS.length = 0;
+  const collapsed = new Set();
+  $$('.grp.col > h3').forEach(h => collapsed.add(h.textContent.trim()));
+  for (const key in PANELS){
+    const spec = typeof PANELS[key] === 'function' ? PANELS[key]() : PANELS[key];
+    $('#pane-' + key).innerHTML = spec.map(ctlHTML).join('');
+  }
+  $$('.grp').forEach(g => { if (collapsed.has($('h3', g).textContent.trim())) g.classList.add('col'); });
+  syncVisibility();
+  drawHistogram(); drawCurveEditor(); drawDepthCurve();
+}
+
+function syncVisibility(){
+  $$('[data-w]').forEach(el => {
+    const p = WHENS[+el.dataset.w];
+    el.style.display = (p && !p(S)) ? 'none' : '';
+  });
+  $$('.row2,.row3').forEach(r => {
+    const kids = Array.from(r.children);
+    if (kids.length && kids.every(k => k.style.display === 'none')) r.style.display = 'none';
+    else if (!r.dataset.w) r.style.display = '';
+  });
+}
+
+function refreshCtl(k){
+  const c = KEYCTL[k]; if (!c) return;
+  const r = c.mn !== undefined ? rangeOf(c) : null;
+  const v = r ? dispVal(c, S[k]).toFixed(r.dec) : S[k];
+  const sl = $('#r_' + k), nu = $('#f_' + k);
+  if (sl) sl.value = v;
+  if (nu) nu.value = v;
+  $$('[data-k="' + k + '"]').forEach(el => {
+    if (el.type === 'checkbox') el.checked = !!S[k];
+    else if (el.type === 'radio') el.checked = (el.value === S[k]);
+    else if (el.type === 'color' || el.tagName === 'SELECT' || el.type === 'text') el.value = S[k];
+  });
+}
+function refreshAll(){ for (const k in KEYCTL) refreshCtl(k); }
+
+/* ------------------------------------------------------------- plumbing --- */
+
+let renderTimer = null;
+const LEVEL = { geo: 1, gray: 2, paths: 3, none: 4 };
+
+function schedule(level, wait){
+  if (level <= 1) R.dirtyGeo = true;
+  if (level <= 2) R.dirtyGray = true;
+  if (level <= 3) R.dirtyPaths = true;
+  clearTimeout(renderTimer);
+  setBusy(true);
+  renderTimer = setTimeout(recompute, wait === undefined ? 90 : wait);
+}
+function levelForKey(k){
+  if (GEO_KEYS.has(k))  return LEVEL.geo;
+  if (GRAY_KEYS.has(k)) return LEVEL.gray;
+  if (IDLE_KEYS.has(k)) return LEVEL.none;
+  return LEVEL.paths;
+}
+
+function setBusy(on, txt){
+  $('#busy').classList.toggle('on', !!on);
+  $('#led').classList.toggle('busy', !!on);
+  if (txt) $('#busyTxt').textContent = txt;
+}
+function toast(msg, kind){
+  const d = document.createElement('div');
+  d.className = 'tst ' + (kind || '');
+  d.innerHTML = msg;
+  $('#toast').appendChild(d);
+  setTimeout(() => { d.style.transition = 'opacity .3s'; d.style.opacity = '0';
+                     setTimeout(() => d.remove(), 320); }, kind === 'bad' ? 5200 : 3000);
+}
+
+function aspect(){
+  const c = R.work || R.geo;
+  return c && c.height ? c.width / c.height : 4 / 3;
+}
+function applyAspect(from){
+  if (!S.lockAspect) return;
+  const a = aspect();
+  if (from === 'h') S.outW = clamp(S.outH * a, 1, 5000);
+  else              S.outH = clamp(S.outW / a, 1, 5000);
+  refreshCtl('outW'); refreshCtl('outH');
+}
+
+/* ------------------------------------------------------ undo / redo / A-B --- */
+
+const HIST_MAX = 60;
+
+function cloneS(o){
+  const c = Object.assign({}, o);
+  c.curve = o.curve.map(p => p.slice());
+  return c;
+}
+function pushHistory(label, maskChanged){
+  const prev = R.hist[R.histAt];
+  const entry = {
+    label: label || 'change',
+    S: cloneS(S),
+    mask: maskChanged ? (R.maskBuf ? R.maskBuf.slice() : null) : (prev ? prev.mask : (R.maskBuf ? R.maskBuf.slice() : null))
+  };
+  R.hist.length = R.histAt + 1;
+  R.hist.push(entry);
+  if (R.hist.length > HIST_MAX) R.hist.shift();
+  R.histAt = R.hist.length - 1;
+  updateHistButtons();
+}
+function applyHistory(i){
+  const e = R.hist[i];
+  if (!e) return;
+  R.histAt = i;
+  S = cloneS(e.S);
+  R.maskBuf = e.mask ? e.mask.slice() : null;
+  buildPanels();
+  updateHistButtons();
+  schedule(LEVEL.geo, 0);
+}
+function undo(){ if (R.histAt > 0) { applyHistory(R.histAt - 1); toast('Undo — ' + R.hist[R.histAt + 1].label); } }
+function redo(){ if (R.histAt < R.hist.length - 1) { applyHistory(R.histAt + 1); toast('Redo — ' + R.hist[R.histAt].label); } }
+function updateHistButtons(){
+  $('#bUndo').disabled = R.histAt <= 0;
+  $('#bRedo').disabled = R.histAt >= R.hist.length - 1;
+  $('#bAB').classList.toggle('on', !!R.snapB);
+}
+
+function abClick(){
+  if (!R.snapB){
+    R.snapB = { S: cloneS(S), mask: R.maskBuf ? R.maskBuf.slice() : null };
+    updateHistButtons();
+    toast('Snapshot <b>B</b> saved. Click A/B again to swap, or hold <b>B</b> to peek.', 'ok');
+    return;
+  }
+  const cur = { S: cloneS(S), mask: R.maskBuf ? R.maskBuf.slice() : null };
+  S = cloneS(R.snapB.S);
+  R.maskBuf = R.snapB.mask ? R.snapB.mask.slice() : null;
+  R.snapB = cur;
+  buildPanels();
+  schedule(LEVEL.geo, 0);
+  toast('Swapped with snapshot');
+}
+function abPeek(on){
+  if (!R.snapB) return;
+  if (on && !R.showingB){
+    R.abHold = { S: cloneS(S), mask: R.maskBuf ? R.maskBuf.slice() : null };
+    S = cloneS(R.snapB.S);
+    R.maskBuf = R.snapB.mask ? R.snapB.mask.slice() : null;
+    R.showingB = true;
+    schedule(LEVEL.gray, 0);
+  } else if (!on && R.showingB){
+    S = cloneS(R.abHold.S);
+    R.maskBuf = R.abHold.mask ? R.abHold.mask.slice() : null;
+    R.showingB = false;
+    schedule(LEVEL.gray, 0);
+  }
+}
+
+/* --------------------------------------------------------- input handling --- */
+
+let histTimer = null;
+function noteChange(label){
+  clearTimeout(histTimer);
+  histTimer = setTimeout(() => pushHistory(label), 420);
+}
+
+function onFieldInput(e){
+  const el = e.target;
+  if (el.name === 'ntoolsel'){ R.activeTool = +el.value; buildPanels(); drawStage(); return; }
+  const k = el.dataset && el.dataset.k;
+  if (!k) return;
+  const c = KEYCTL[k];
+  let v;
+  if (el.type === 'checkbox')   v = el.checked;
+  else if (el.type === 'radio') v = el.value;
+  else if (el.type === 'number' || el.type === 'range'){
+    v = parseFloat(el.value);
+    if (!isFinite(v)) return;
+    const r = rangeOf(c);
+    if (el.type === 'number') v = clamp(v, r.mn, r.mx);
+    v = storeVal(c, v);
+  } else v = el.value;
+
+  S[k] = v;
+
+  if (el.type === 'range' || el.type === 'number'){
+    const r = rangeOf(c), d = dispVal(c, v).toFixed(r.dec);
+    const other = el.type === 'range' ? $('#f_' + k) : $('#r_' + k);
+    if (other) other.value = d;
+  }
+
+  if (k === 'outW') applyAspect('w');
+  if (k === 'outH') applyAspect('h');
+  if (k === 'lockAspect' && v) applyAspect('w');
+  if (k === 'units') buildPanels();
+  if (k.startsWith('cx') || k.startsWith('cy')){
+    S.cx1 = Math.max(S.cx1, S.cx0 + 1); S.cy1 = Math.max(S.cy1, S.cy0 + 1);
+  }
+  if (/On$/.test(k) || k === 'maskOn') buildLegend();
+  if (CARVE_KEYS.has(k)) R.carveDirty = true;
+
+  syncVisibility();
+  noteChange(c && c.l ? c.l : k);
+
+  const lvl = levelForKey(k);
+  if (lvl === LEVEL.none){ updateReadouts(); drawStage(); }
+  else schedule(lvl, el.type === 'range' ? 60 : 0);
+}
+
+/* -------------------------------------------------------------- actions --- */
+
+const ACTS = {
+  open:   () => $('#fileIn').click(),
+  sample: () => loadSample(),
+  clear:  () => { R.src = R.geo = R.work = R.gray = null; R.paths = []; R.stats = null;
+                  R.fileName = ''; $('#empty').classList.remove('hide'); $('#bExport').disabled = true;
+                  updateReadouts(); drawStage(); },
+  swapWH: () => { const t = S.outW; S.outW = S.outH; S.outH = t; S.lockAspect = false;
+                  ['outW','outH','lockAspect'].forEach(refreshCtl); schedule(LEVEL.paths, 0); },
+  fitSize:() => { S.lockAspect = true; applyAspect('w'); schedule(LEVEL.paths, 0); },
+
+  rotL:   () => { S.rot = ((S.rot - 90 + 180) % 360 + 360) % 360 - 180; refreshCtl('rot'); schedule(LEVEL.geo, 0); },
+  rotR:   () => { S.rot = ((S.rot + 90 + 180) % 360 + 360) % 360 - 180; refreshCtl('rot'); schedule(LEVEL.geo, 0); },
+  rot0:   () => { S.rot = 0; refreshCtl('rot'); schedule(LEVEL.geo, 0); },
+  resetCrop: () => { S.cx0 = 0; S.cy0 = 0; S.cx1 = 100; S.cy1 = 100;
+                     ['cx0','cy0','cx1','cy1'].forEach(refreshCtl); schedule(LEVEL.gray, 0); },
+  autoLevels: () => autoLevels(),
+  resetLevels: () => { ['blackPt','whitePt','outBlack','outWhite'].forEach(k => { S[k] = DEF[k]; refreshCtl(k); });
+                       schedule(LEVEL.gray, 0); },
+  resetCorrect: () => {
+    ['rot','flipH','flipV','cropOn','cx0','cy0','cx1','cy1','grayMode','invert','blackPt','whitePt',
+     'outBlack','outWhite','exposure','brightness','contrast','gamma','denoise','blur','sharpen',
+     'sharpenR','posterize','curveOn'].forEach(k => { S[k] = DEF[k]; });
+    S.curve = DEF.curve.map(p => p.slice());
+    buildPanels(); pushHistory('reset corrections'); schedule(LEVEL.geo, 0);
+    toast('Corrections reset', 'ok');
+  },
+
+  curveLin:  () => setCurve([[0,0],[1,1]]),
+  curveS:    () => setCurve([[0,0],[0.25,0.16],[0.5,0.5],[0.75,0.84],[1,1]]),
+  curveFilm: () => setCurve([[0,0.03],[0.25,0.14],[0.5,0.48],[0.78,0.86],[1,0.98]]),
+
+  maskClear:  () => { ensureMask(); R.maskBuf.fill(0); pushHistory('clear mask', true); schedule(LEVEL.paths, 0); },
+  maskFill:   () => { ensureMask(); R.maskBuf.fill(255); pushHistory('fill mask', true); schedule(LEVEL.paths, 0); },
+  maskInvert: () => { ensureMask(); for (let i = 0; i < R.maskBuf.length; i++) R.maskBuf[i] = 255 - R.maskBuf[i];
+                      pushHistory('invert mask', true); schedule(LEVEL.paths, 0); },
+
+  ang0:  () => { S[TP()+'Angle'] = 0;  refreshCtl(TP()+'Angle'); schedule(LEVEL.paths, 0); },
+  ang45: () => { S[TP()+'Angle'] = 45; refreshCtl(TP()+'Angle'); schedule(LEVEL.paths, 0); },
+  ang90: () => { S[TP()+'Angle'] = 90; refreshCtl(TP()+'Angle'); schedule(LEVEL.paths, 0); },
+  a30: () => { S[TP()+'BitAngle'] = 30; refreshCtl(TP()+'BitAngle'); schedule(LEVEL.paths, 0); },
+  a60: () => { S[TP()+'BitAngle'] = 60; refreshCtl(TP()+'BitAngle'); schedule(LEVEL.paths, 0); },
+  a90: () => { S[TP()+'BitAngle'] = 90; refreshCtl(TP()+'BitAngle'); schedule(LEVEL.paths, 0); },
+  clampTool: () => {
+    const P = TP(), m = ENG.effMaxWidth(toolCfg(R.activeTool));
+    S[P+'WMax'] = Math.min(S[P+'WMax'], m);
+    if (S[P+'WMax'] <= S[P+'WMin']) S[P+'WMin'] = Math.max(0, S[P+'WMax'] - 0.05);
+    refreshCtl(P+'WMax'); refreshCtl(P+'WMin');
+    toast('Maximum width clamped to ' + fmtLen(m), 'ok');
+    schedule(LEVEL.paths, 0);
+  },
+  openLib: () => openLibrary(),
+
+  expSvg:     () => exportSVG(),
+  expDxf:     () => exportDXF(),
+  expGcode:   () => exportGcode(),
+  expPngCorr: () => exportPNG('corrected'),
+  expPngPrev: () => exportPNG('preview'),
+  expPngCarve:() => exportPNG('carve')
+};
+
+function fmtLen(mm, dec){
+  const v = fromMM(mm);
+  return v.toFixed(dec !== undefined ? dec : (S.units === 'in' ? 4 : 2)) + ' ' + UL();
+}
+function fmtLenLong(mm){
+  if (S.units === 'in') return (mm / MM_IN).toFixed(2) + ' in';
+  return mm >= 1000 ? (mm / 1000).toFixed(2) + ' m' : mm.toFixed(1) + ' mm';
+}
+function fmtTime(s){
+  if (!s || !isFinite(s)) return '—';
+  const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = Math.round(s % 60);
+  return h ? h + ' h ' + m + ' min' : m ? m + ' min ' + ss + ' s' : ss + ' s';
+}
+
+/* ============================================================== loading === */
+
+const SRC_MAX  = 3200;
+const WORK_MAX = 1500;
+
+function newCanvas(w, h){
+  const c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h));
+  return c;
+}
+
+function loadFile(file){
+  if (!file) return;
+  const isSvg = /svg/i.test(file.type) || /\.svg$/i.test(file.name);
+  R.fileName = file.name;
+  R.fileKind = isSvg ? 'Vector (SVG)' : (file.type || 'raster');
+  setBusy(true, 'Decoding…');
+  const rd = new FileReader();
+  rd.onerror = () => { setBusy(false); toast('Could not read that file.', 'bad'); };
+  if (isSvg){
+    rd.onload = () => { R.svgText = rd.result; rasterSvg().catch(svgFail); };
+    rd.readAsText(file);
+  } else {
+    rd.onload = () => {
+      const img = new Image();
+      img.onload = () => { R.svgText = null; adoptRaster(img); };
+      img.onerror = () => { setBusy(false); toast('That image could not be decoded.', 'bad'); };
+      img.src = rd.result;
+    };
+    rd.readAsDataURL(file);
+  }
+}
+function svgFail(){ setBusy(false); toast('That SVG could not be rendered. Try exporting it as plain SVG 1.1.', 'bad'); }
+
+function adoptRaster(img){
+  const nw = img.naturalWidth || img.width, nh = img.naturalHeight || img.height;
+  if (!nw || !nh){ setBusy(false); toast('That image has no usable size.', 'bad'); return; }
+  const sc = Math.min(1, SRC_MAX / Math.max(nw, nh));
+  const c = newCanvas(nw * sc, nh * sc);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  R.src = c; R.srcW = nw; R.srcH = nh;
+  afterLoad();
+}
+
+function rasterSvg(){
+  return new Promise((res, rej) => {
+    const doc = new DOMParser().parseFromString(R.svgText, 'image/svg+xml');
+    const root = doc.documentElement;
+    if (!root || root.nodeName === 'parsererror' || !/svg/i.test(root.nodeName)) return rej();
+
+    const vb = (root.getAttribute('viewBox') || '').trim().split(/[\s,]+/).map(Number);
+    const aw = parseFloat(root.getAttribute('width')), ah = parseFloat(root.getAttribute('height'));
+    let iw, ih;
+    if (vb.length === 4 && vb[2] > 0 && vb[3] > 0){ iw = vb[2]; ih = vb[3]; }
+    else if (isFinite(aw) && isFinite(ah) && aw > 0 && ah > 0){ iw = aw; ih = ah; root.setAttribute('viewBox', '0 0 ' + iw + ' ' + ih); }
+    else { iw = 512; ih = 512; root.setAttribute('viewBox', '0 0 512 512'); }
+
+    const sc = S.rasterW / Math.max(iw, ih);
+    const pw = Math.max(16, Math.round(iw * sc)), ph = Math.max(16, Math.round(ih * sc));
+    root.setAttribute('width', pw);
+    root.setAttribute('height', ph);
+    root.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+    const blob = new Blob([new XMLSerializer().serializeToString(root)], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+    img.onload = () => {
+      const c = newCanvas(pw, ph), g = c.getContext('2d');
+      g.fillStyle = S.bgColor; g.fillRect(0, 0, pw, ph);
+      g.drawImage(img, 0, 0, pw, ph);
+      URL.revokeObjectURL(url);
+      R.src = c; R.srcW = Math.round(iw); R.srcH = Math.round(ih);
+      afterLoad(); res();
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(); };
+    img.src = url;
+  });
+}
+
+function afterLoad(){
+  $('#empty').classList.add('hide');
+  $('#bExport').disabled = false;
+  R.dirtyGeo = R.dirtyGray = R.dirtyPaths = true;
+  R.maskBuf = null;
+  recompute(true);
+  gotoStep('correct');
+  if (!R.hist.length) pushHistory('load');
+  toast('Loaded &mdash; correct the artwork first, then shape the halftone.', 'ok');
+}
+
+function loadSample(){
+  const W = 1200, H = 900, c = newCanvas(W, H), g = c.getContext('2d');
+  g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
+  const sph = g.createRadialGradient(W * 0.30, H * 0.40, 10, W * 0.30, H * 0.44, 230);
+  sph.addColorStop(0, '#ffffff'); sph.addColorStop(0.35, '#b9b9b9');
+  sph.addColorStop(0.8, '#3a3a3a'); sph.addColorStop(1, '#0d0d0d');
+  g.fillStyle = sph; g.beginPath(); g.arc(W * 0.30, H * 0.42, 220, 0, 7); g.fill();
+  const ramp = g.createLinearGradient(W * 0.56, 0, W * 0.97, 0);
+  ramp.addColorStop(0, '#000'); ramp.addColorStop(1, '#fff');
+  g.fillStyle = ramp; g.fillRect(W * 0.56, H * 0.10, W * 0.41, 120);
+  for (let i = 0; i < 10; i++){
+    const v = Math.round(255 * i / 9);
+    g.fillStyle = 'rgb(' + v + ',' + v + ',' + v + ')';
+    g.fillRect(W * 0.56 + i * (W * 0.41 / 10), H * 0.30, W * 0.41 / 10, 90);
+  }
+  g.strokeStyle = '#111'; g.lineWidth = 3;
+  for (let r = 20; r < 150; r += 16){ g.beginPath(); g.arc(W * 0.76, H * 0.72, r, 0, 7); g.stroke(); }
+  for (let i = 0; i < 26; i++){ g.fillStyle = '#111'; g.fillRect(W * 0.05 + i * 9, H * 0.80, 3, 110); }
+  g.fillStyle = '#111'; g.font = '700 74px Segoe UI, sans-serif'; g.textBaseline = 'top';
+  g.fillText('HALFTONE', W * 0.05, H * 0.62);
+  g.font = '400 30px Segoe UI, sans-serif'; g.fillStyle = '#555';
+  g.fillText('tonal ramp · fine lines · shading', W * 0.05, H * 0.71);
+  R.src = c; R.srcW = W; R.srcH = H; R.svgText = null;
+  R.fileName = 'test-target'; R.fileKind = 'Generated';
+  afterLoad();
+}
+
+/* ========================================================== corrections === */
+
+function buildGeo(){
+  if (!R.src){ R.geo = null; return; }
+  const s = R.src, a = S.rot * DEG;
+  const ca = Math.abs(Math.cos(a)), sa = Math.abs(Math.sin(a));
+  const w = Math.ceil(s.width * ca + s.height * sa);
+  const h = Math.ceil(s.width * sa + s.height * ca);
+  const c = newCanvas(w, h), g = c.getContext('2d');
+  g.fillStyle = S.bgColor; g.fillRect(0, 0, w, h);
+  g.translate(w / 2, h / 2);
+  g.rotate(a);
+  g.scale(S.flipH ? -1 : 1, S.flipV ? -1 : 1);
+  g.imageSmoothingQuality = 'high';
+  g.drawImage(s, -s.width / 2, -s.height / 2);
+  R.geo = c;
+}
+
+function cropRectPx(){
+  const g = R.geo;
+  if (!g) return { x: 0, y: 0, w: 1, h: 1 };
+  if (!S.cropOn) return { x: 0, y: 0, w: g.width, h: g.height };
+  const x0 = clamp(S.cx0, 0, 99) / 100 * g.width,  x1 = clamp(S.cx1, 1, 100) / 100 * g.width;
+  const y0 = clamp(S.cy0, 0, 99) / 100 * g.height, y1 = clamp(S.cy1, 1, 100) / 100 * g.height;
+  return { x: Math.round(x0), y: Math.round(y0),
+           w: Math.max(2, Math.round(x1 - x0)), h: Math.max(2, Math.round(y1 - y0)) };
+}
+
+function buildWork(){
+  if (!R.geo){ R.work = null; return; }
+  const r = cropRectPx();
+  const sc = Math.min(1, WORK_MAX / Math.max(r.w, r.h));
+  const c = newCanvas(r.w * sc, r.h * sc), g = c.getContext('2d');
+  g.imageSmoothingQuality = 'high';
+  g.fillStyle = S.bgColor; g.fillRect(0, 0, c.width, c.height);
+  g.drawImage(R.geo, r.x, r.y, r.w, r.h, 0, 0, c.width, c.height);
+  R.work = c;
+  resampleMask(c.width, c.height);
+}
+
+/* ---- mask ---------------------------------------------------------------- */
+
+function ensureMask(){
+  const w = R.work ? R.work.width : 0, h = R.work ? R.work.height : 0;
+  if (!w || !h) return null;
+  if (!R.maskBuf || R.maskBuf.length !== w * h) R.maskBuf = new Uint8Array(w * h);
+  return R.maskBuf;
+}
+function resampleMask(nw, nh){
+  if (!R.maskBuf) return;
+  if (R.maskBuf.length === nw * nh) return;
+  const ow = R.maskW || 0, oh = R.maskH || 0;
+  const src = R.maskBuf;
+  const dst = new Uint8Array(nw * nh);
+  if (ow > 0 && oh > 0){
+    for (let y = 0; y < nh; y++){
+      const sy = Math.min(oh - 1, Math.floor(y / nh * oh));
+      for (let x = 0; x < nw; x++){
+        const sx = Math.min(ow - 1, Math.floor(x / nw * ow));
+        dst[y * nw + x] = src[sy * ow + sx];
+      }
+    }
+  }
+  R.maskBuf = dst;
+}
+
+/* ---- pixel maths --------------------------------------------------------- */
+
+function boxBlur(src, w, h, rad){
+  if (rad < 0.5) return src;
+  const r = Math.max(1, Math.round(rad));
+  const a = src, b = new Float32Array(src.length);
+  for (let pass = 0; pass < 3; pass++){
+    for (let y = 0; y < h; y++){
+      const o = y * w; let sum = 0;
+      for (let i = -r; i <= r; i++) sum += a[o + clamp(i, 0, w - 1)];
+      const n = 2 * r + 1;
+      for (let x = 0; x < w; x++){
+        b[o + x] = sum / n;
+        sum += a[o + clamp(x + r + 1, 0, w - 1)] - a[o + clamp(x - r, 0, w - 1)];
+      }
+    }
+    for (let x = 0; x < w; x++){
+      let sum = 0;
+      for (let i = -r; i <= r; i++) sum += b[clamp(i, 0, h - 1) * w + x];
+      const n = 2 * r + 1;
+      for (let y = 0; y < h; y++){
+        a[y * w + x] = sum / n;
+        sum += b[clamp(y + r + 1, 0, h - 1) * w + x] - b[clamp(y - r, 0, h - 1) * w + x];
+      }
+    }
+  }
+  return a;
+}
+
+function median3(src, w, h, times){
+  let a = src;
+  const win = new Float32Array(9);
+  for (let t = 0; t < times; t++){
+    const b = new Float32Array(a.length);
+    for (let y = 0; y < h; y++){
+      for (let x = 0; x < w; x++){
+        let n = 0;
+        for (let dy = -1; dy <= 1; dy++){
+          const yy = clamp(y + dy, 0, h - 1) * w;
+          for (let dx = -1; dx <= 1; dx++) win[n++] = a[yy + clamp(x + dx, 0, w - 1)];
+        }
+        for (let i = 1; i < 9; i++){ const v = win[i]; let j = i - 1;
+          while (j >= 0 && win[j] > v){ win[j + 1] = win[j]; j--; } win[j + 1] = v; }
+        b[y * w + x] = win[4];
+      }
+    }
+    a = b;
+  }
+  return a;
+}
+
+function grayscaleOf(data, n, mode){
+  const out = new Float32Array(n);
+  for (let i = 0, p = 0; i < n; i++, p += 4){
+    const r = data[p] / 255, g = data[p + 1] / 255, b = data[p + 2] / 255;
+    let v;
+    switch (mode){
+      case 'lum601': v = 0.299 * r + 0.587 * g + 0.114 * b; break;
+      case 'avg':    v = (r + g + b) / 3; break;
+      case 'light':  v = (Math.max(r, g, b) + Math.min(r, g, b)) / 2; break;
+      case 'max':    v = Math.max(r, g, b); break;
+      case 'min':    v = Math.min(r, g, b); break;
+      case 'r':      v = r; break;
+      case 'g':      v = g; break;
+      case 'b':      v = b; break;
+      default:       v = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+    out[i] = v;
+  }
+  return out;
+}
+
+/* monotone cubic (Fritsch–Carlson) so the curve never overshoots */
+function curveLUT(pts){
+  const lut = new Float32Array(256);
+  const p = pts.slice().sort((a, b) => a[0] - b[0]);
+  const n = p.length;
+  if (n < 2){ for (let i = 0; i < 256; i++) lut[i] = i / 255; return lut; }
+  const xs = p.map(q => clamp(q[0], 0, 1)), ys = p.map(q => clamp(q[1], 0, 1));
+  const d = new Float64Array(n - 1), m = new Float64Array(n);
+  for (let i = 0; i < n - 1; i++) d[i] = (ys[i+1] - ys[i]) / Math.max(1e-6, xs[i+1] - xs[i]);
+  m[0] = d[0]; m[n-1] = d[n-2];
+  for (let i = 1; i < n - 1; i++) m[i] = d[i-1] * d[i] <= 0 ? 0 : (d[i-1] + d[i]) / 2;
+  for (let i = 0; i < n - 1; i++){
+    if (d[i] === 0){ m[i] = 0; m[i+1] = 0; continue; }
+    const a = m[i] / d[i], b = m[i+1] / d[i], s = a*a + b*b;
+    if (s > 9){ const t = 3 / Math.sqrt(s); m[i] = t * a * d[i]; m[i+1] = t * b * d[i]; }
+  }
+  let seg = 0;
+  for (let i = 0; i < 256; i++){
+    const x = i / 255;
+    while (seg < n - 2 && x > xs[seg+1]) seg++;
+    const h = Math.max(1e-6, xs[seg+1] - xs[seg]);
+    const t = clamp((x - xs[seg]) / h, 0, 1), t2 = t*t, t3 = t2*t;
+    lut[i] = clamp((2*t3 - 3*t2 + 1)*ys[seg] + (t3 - 2*t2 + t)*h*m[seg] +
+                   (-2*t3 + 3*t2)*ys[seg+1] + (t3 - t2)*h*m[seg+1], 0, 1);
+  }
+  return lut;
+}
+
+function buildGray(){
+  if (!R.work){ R.gray = null; return; }
+  const w = R.work.width, h = R.work.height, n = w * h;
+  const id = R.work.getContext('2d').getImageData(0, 0, w, h);
+  let a = grayscaleOf(id.data, n, S.grayMode);
+
+  if (S.denoise > 0) a = median3(a, w, h, Math.round(S.denoise));
+  if (S.blur   > 0) a = boxBlur(a, w, h, S.blur);
+
+  R.gray0 = a.slice();
+
+  const bp = S.blackPt / 255, wp = S.whitePt / 255;
+  const span = Math.max(1e-4, wp - bp);
+  const ex = Math.pow(2, S.exposure), br = S.brightness / 200;
+  const C = S.contrast * 2.55, cf = (259 * (C + 255)) / (255 * (259 - C));
+  const gm = S.gamma;
+  const lut = S.curveOn ? curveLUT(S.curve) : null;
+
+  for (let i = 0; i < n; i++){
+    let v = (a[i] - bp) / span;
+    v = clamp(v, 0, 1) * ex + br;
+    v = clamp(cf * (v - 0.5) + 0.5, 0, 1);
+    if (gm !== 1) v = Math.pow(v, gm);
+    if (lut) v = lut[clamp(Math.round(v * 255), 0, 255)];
+    a[i] = v;
+  }
+
+  if (S.sharpen > 0){
+    const bl = boxBlur(a.slice(), w, h, S.sharpenR);
+    const k = S.sharpen / 100;
+    for (let i = 0; i < n; i++) a[i] = clamp(a[i] + k * (a[i] - bl[i]), 0, 1);
+  }
+  if (S.posterize >= 2){
+    const L = S.posterize - 1;
+    for (let i = 0; i < n; i++) a[i] = Math.round(a[i] * L) / L;
+  }
+  const ob = S.outBlack / 255, ow = S.outWhite / 255;
+  if (ob !== 0 || ow !== 1) for (let i = 0; i < n; i++) a[i] = ob + a[i] * (ow - ob);
+  if (S.invert) for (let i = 0; i < n; i++) a[i] = 1 - a[i];
+
+  R.gray = a; R.gw = w; R.gh = h; R.maskW = w; R.maskH = h;
+  drawHistogram();
+}
+
+function autoLevels(){
+  if (!R.gray0){ toast('Load an image first.', 'warn'); return; }
+  const n = R.gray0.length, hist = new Uint32Array(256);
+  for (let i = 0; i < n; i++) hist[clamp(Math.round(R.gray0[i] * 255), 0, 255)]++;
+  const lo = n * 0.005, hi = n * 0.995;
+  let acc = 0, b = 0, w = 255;
+  for (let i = 0; i < 256; i++){ acc += hist[i]; if (acc >= lo){ b = i; break; } }
+  acc = 0;
+  for (let i = 0; i < 256; i++){ acc += hist[i]; if (acc >= hi){ w = i; break; } }
+  if (w - b < 8){ b = 0; w = 255; }
+  S.blackPt = b; S.whitePt = w; S.outBlack = 0; S.outWhite = 255;
+  ['blackPt','whitePt','outBlack','outWhite'].forEach(refreshCtl);
+  pushHistory('auto levels');
+  schedule(LEVEL.gray, 0);
+  toast('Levels set to ' + b + ' &ndash; ' + w, 'ok');
+}
+
+function setCurve(pts){
+  S.curve = pts.map(p => p.slice());
+  drawCurveEditor();
+  pushHistory('tone curve');
+  schedule(LEVEL.gray, 0);
+}
+
+/* ---- small canvases ------------------------------------------------------ */
+
+function drawHistogram(){
+  const cv = $('#histCv'); if (!cv || !R.gray) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  g.clearRect(0, 0, W, H);
+  const bins = 128, hist = new Uint32Array(bins), n = R.gray.length;
+  for (let i = 0; i < n; i++) hist[clamp(Math.floor(R.gray[i] * bins), 0, bins - 1)]++;
+  let mx = 0; for (let i = 0; i < bins; i++) mx = Math.max(mx, hist[i]);
+  if (!mx) return;
+  const bw = W / bins;
+  for (let i = 0; i < bins; i++){
+    const v = Math.pow(hist[i] / mx, 0.45) * (H - 4), t = i / (bins - 1);
+    g.fillStyle = 'rgb(' + Math.round(60 + t * 150) + ',' + Math.round(70 + t * 145) + ',' + Math.round(120 + t * 110) + ')';
+    g.fillRect(i * bw, H - v, Math.ceil(bw), v);
+  }
+}
+
+function curvePad(){ return 10; }
+function curveToScreen(cv, x, y){
+  const p = curvePad();
+  return [p + x * (cv.width - 2*p), cv.height - p - y * (cv.height - 2*p)];
+}
+function curveFromScreen(cv, sx, sy){
+  const p = curvePad();
+  return [clamp((sx - p) / (cv.width - 2*p), 0, 1), clamp((cv.height - p - sy) / (cv.height - 2*p), 0, 1)];
+}
+
+function drawCurveEditor(){
+  const cv = $('#curveCv'); if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, p = curvePad();
+  g.clearRect(0, 0, W, H);
+
+  if (R.gray){
+    const bins = 96, hist = new Uint32Array(bins), n = R.gray.length;
+    for (let i = 0; i < n; i++) hist[clamp(Math.floor(R.gray[i] * bins), 0, bins - 1)]++;
+    let mx = 0; for (let i = 0; i < bins; i++) mx = Math.max(mx, hist[i]);
+    if (mx){
+      g.fillStyle = 'rgba(108,123,255,.16)';
+      for (let i = 0; i < bins; i++){
+        const v = Math.pow(hist[i] / mx, 0.45) * (H - 2*p);
+        g.fillRect(p + i / bins * (W - 2*p), H - p - v, Math.ceil((W - 2*p) / bins), v);
+      }
+    }
+  }
+  g.strokeStyle = '#232a49'; g.lineWidth = 1;
+  g.beginPath();
+  for (let i = 0; i <= 4; i++){
+    const x = p + (W - 2*p) * i / 4, y = p + (H - 2*p) * i / 4;
+    g.moveTo(x, p); g.lineTo(x, H - p);
+    g.moveTo(p, y); g.lineTo(W - p, y);
+  }
+  g.stroke();
+  g.strokeStyle = '#39416b';
+  g.beginPath(); g.moveTo(p, H - p); g.lineTo(W - p, p); g.stroke();
+
+  const lut = curveLUT(S.curve);
+  g.strokeStyle = '#38d9d3'; g.lineWidth = 2;
+  g.beginPath();
+  for (let i = 0; i < 256; i++){
+    const s = curveToScreen(cv, i / 255, lut[i]);
+    if (i === 0) g.moveTo(s[0], s[1]); else g.lineTo(s[0], s[1]);
+  }
+  g.stroke();
+
+  for (let i = 0; i < S.curve.length; i++){
+    const s = curveToScreen(cv, S.curve[i][0], S.curve[i][1]);
+    g.fillStyle = i === R.curveDrag ? '#fff' : '#6c7bff';
+    g.strokeStyle = '#0b0e1a'; g.lineWidth = 1.5;
+    g.beginPath(); g.arc(s[0], s[1], 5, 0, 7); g.fill(); g.stroke();
+  }
+}
+
+function drawDepthCurve(){
+  const cv = $('#curveCv2'); if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, pad = 6;
+  const t = toolCfg(R.activeTool);
+  g.clearRect(0, 0, W, H);
+  const eff = ENG.effMaxWidth(t), dm = Math.max(1e-3, ENG.depthForWidth(t, eff));
+  g.strokeStyle = '#232a49'; g.lineWidth = 1;
+  for (let i = 0; i <= 4; i++){
+    const y = pad + (H - 2*pad) * i / 4;
+    g.beginPath(); g.moveTo(pad, y); g.lineTo(W - pad, y); g.stroke();
+  }
+  g.beginPath(); g.moveTo(pad, pad); g.lineTo(W / 2, H - pad); g.lineTo(W - pad, pad);
+  g.strokeStyle = TOOL_COLORS[R.activeTool - 1]; g.lineWidth = 2; g.stroke();
+  g.fillStyle = 'rgba(108,123,255,.14)';
+  g.beginPath(); g.moveTo(pad, pad); g.lineTo(W / 2, H - pad); g.lineTo(W - pad, pad); g.closePath(); g.fill();
+
+  const wm = Math.min(S[TP()+'WMax'], eff), frac = eff > 0 ? wm / eff : 0;
+  const y = pad + (H - 2*pad) * (ENG.depthForWidth(t, wm) / dm);
+  g.strokeStyle = '#38d9d3'; g.lineWidth = 1.5;
+  g.beginPath(); g.moveTo(W/2 - (W/2 - pad) * frac, y); g.lineTo(W/2 + (W/2 - pad) * frac, y); g.stroke();
+  g.fillStyle = '#6e7699'; g.font = '10px Segoe UI, sans-serif';
+  g.fillText('width ' + fmtLen(wm), 8, 12);
+  g.fillText('depth ' + fmtLen(ENG.depthForWidth(t, wm), 3), 8, H - 6);
+}
+
+/* ======================================================= compute pipeline === */
+
+const WORKER_GLUE = '\nself.onmessage=function(e){var d=e.data;try{' +
+  'var r=ENG.run(d.cfg,d.gray,d.gw,d.gh,d.mask);' +
+  'self.postMessage({id:d.id,segs:r.segs,stats:r.stats});' +
+  '}catch(err){self.postMessage({id:d.id,error:String((err&&err.message)||err)});}};\n';
+
+function makeWorker(){
+  try {
+    const url = URL.createObjectURL(new Blob([ENGINE_SRC + WORKER_GLUE], { type: 'text/javascript' }));
+    const w = new Worker(url);
+    w.onmessage = e => {
+      const d = e.data;
+      if (d.id !== R.workerSeq) return;             // a newer request has superseded this one
+      R.workerBusy = false;
+      if (d.error){ toast('Geometry failed: ' + d.error, 'bad'); setBusy(false); return; }
+      R.paths = d.segs; R.stats = d.stats;
+      finishPaths();
+    };
+    w.onerror = () => {
+      if (R.workerOk){
+        R.workerOk = false; R.worker = null;
+        toast('Background worker unavailable — computing on the main thread instead.', 'warn');
+        computePaths();
+      }
+    };
+    return w;
+  } catch (err){
+    R.workerOk = false;
+    return null;
+  }
+}
+
+function buildCfg(){
+  return {
+    outW: S.outW, outH: S.outH, sampleStep: S.sampleStep,
+    modMode: S.modMode, toneGamma: S.toneGamma, invertTone: S.invertTone,
+    wFixed: S.wFixed, minRun: S.minRun, capStyle: S.capStyle, dashLen: S.dashLen,
+    waveAmp: S.waveAmp, waveLen: S.waveLen, ccx: S.ccx, ccy: S.ccy,
+    layers: S.layers, layerStep: S.layerStep,
+    contourLevels: S.contourLevels, stippleMax: S.stippleMax,
+    stippleRelax: S.stippleRelax, stippleOpt: S.stippleOpt,
+    simplify: S.simplify, simplifyW: S.simplifyW, order: S.order,
+    budget: S.unlimited ? 0 : Math.round(S.budgetK * 1000),
+    maskMode: S.maskMode, maskStrength: S.maskStrength,
+    tools: [1, 2, 3].map(toolCfg)
+  };
+}
+
+function computePaths(){
+  if (!R.gray){ R.paths = []; R.stats = null; finishPaths(); return; }
+  const cfg = buildCfg();
+  const mask = (S.maskOn && R.maskBuf) ? R.maskBuf : null;
+  const id = ++R.workerSeq;
+  R.tStart = performance.now();
+
+  if (R.worker){
+    R.workerBusy = true;
+    setBusy(true, 'Generating toolpaths…');
+    try {
+      R.worker.postMessage({ id, cfg, gray: R.gray, gw: R.gw, gh: R.gh, mask });
+      return;
+    } catch (err){
+      R.worker = null; R.workerOk = false;
+    }
+  }
+  try {
+    const r = ENG.run(cfg, R.gray, R.gw, R.gh, mask);
+    R.paths = r.segs; R.stats = r.stats;
+  } catch (err){
+    console.error(err);
+    R.paths = []; R.stats = null;
+    toast('Geometry failed: ' + err.message, 'bad');
+  }
+  finishPaths();
+}
+
+function finishPaths(){
+  R.ms = R.tStart ? performance.now() - R.tStart : 0;
+  R.carveDirty = true;
+  computeTiming();
+  updateReadouts();
+  drawStage();
+  setBusy(false);
+}
+
+function recompute(force){
+  try {
+    if (R.dirtyGeo  || force){ buildGeo();  R.dirtyGeo = false; R.dirtyGray = true; }
+    if (R.dirtyGray || force){
+      buildWork(); buildGray();
+      R.dirtyGray = false; R.dirtyPaths = true;
+      if (S.lockAspect) applyAspect('w');
+    }
+    if (R.dirtyPaths || force){ R.dirtyPaths = false; computePaths(); return; }
+  } catch (err){
+    console.error(err);
+    toast('Something went wrong while computing: ' + err.message, 'bad');
+  }
+  updateReadouts(); drawStage(); setBusy(false);
+}
+
+/* ---------------------------------------------------------------- timing --- */
+
+function passCount(){
+  if (!R.stats || S.passDepth <= 0) return 1;
+  return Math.max(1, Math.ceil(R.stats.dMax / S.passDepth));
+}
+
+function computeTiming(){
+  if (!R.paths || !R.paths.length){ R.timing = null; return; }
+  const tools = { 1: toolCfg(1), 2: toolCfg(2), 3: toolCfg(3) };
+  const t = ENG.time(R.paths, {
+    accel: S.accel, jd: S.jd, blockRate: S.blockRate,
+    rapid: S.rapid, hop: Math.max(0.2, S.retractZ),
+    feedOf:   id => (tools[id] || tools[1]).feed,
+    plungeOf: id => (tools[id] || tools[1]).plunge
+  });
+  const p = passCount();
+  R.timing = { cut: t.cut * p, travel: t.travel * p, blocks: t.blocks * p,
+               total: t.total * p, blockLimited: t.blockLimited };
+}
+
+/* ------------------------------------------------------------------ tiles --- */
+
+function tileGrid(){
+  if (!S.tileOn) return [{ i: 0, j: 0, x: 0, y: 0, w: S.outW, h: S.outH }];
+  const stepX = Math.max(1, S.bedX - S.tileOverlap), stepY = Math.max(1, S.bedY - S.tileOverlap);
+  const nx = Math.max(1, Math.ceil(Math.max(0.001, S.outW - S.tileOverlap) / stepX));
+  const ny = Math.max(1, Math.ceil(Math.max(0.001, S.outH - S.tileOverlap) / stepY));
+  const out = [];
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++){
+    const x = i * stepX, y = j * stepY;
+    out.push({ i, j, x, y, w: Math.min(S.bedX, S.outW - x), h: Math.min(S.bedY, S.outH - y) });
+  }
+  return out;
+}
+
+/* -------------------------------------------------------------- readouts --- */
+
+function setTxt(id, v, warn){
+  const el = $('#' + id); if (!el) return;
+  el.innerHTML = v;
+  el.classList.toggle('w', !!warn);
+}
+
+function buildLegend(){
+  const el = $('#toolLegend'); if (!el) return;
+  const on = [1, 2, 3].filter(i => S['t' + i + 'On']);
+  el.innerHTML = on.length < 2 ? '' :
+    on.map(i => '<i><span class="tchip t' + i + 'c"></span>' + (S['t' + i + 'Name'] || 'Tool ' + i) + '</i>').join('');
+}
+
+function updateReadouts(){
+  const st = R.stats, T = toolCfg(R.activeTool);
+
+  setTxt('iName', R.fileName || '—');
+  setTxt('iKind', R.fileKind || '—');
+  setTxt('iPx',   R.src ? R.srcW + ' × ' + R.srcH : '—');
+  setTxt('iWork', R.work ? R.work.width + ' × ' + R.work.height : '—');
+  setTxt('iAspect', R.work ? (R.work.width / R.work.height).toFixed(3) + ' : 1' : '—');
+  setTxt('iDpi', R.work ? Math.round(R.work.width / (S.outW / MM_IN)) + ' dpi on material' : '—');
+  setTxt('iWorker', R.worker ? 'Background worker' : 'Main thread', !R.worker);
+  setTxt('iMs', R.ms ? Math.round(R.ms) + ' ms' : '—');
+
+  if (st){
+    setTxt('iPaths', st.n.toLocaleString());
+    setTxt('iPts',   st.pts.toLocaleString());
+    setTxt('iLen',   fmtLenLong(st.len));
+    setTxt('iCov',   Math.round(st.cov * 100) + ' %');
+    const saved = st.rawPts ? Math.max(0, st.rawPts - st.pts) : 0;
+    setTxt('iSimp', st.rawPts ? saved.toLocaleString() + ' of ' + st.rawPts.toLocaleString() +
+                    ' (' + Math.round(saved / Math.max(1, st.rawPts) * 100) + ' %)' : '—');
+  }
+  if (R.timing){
+    setTxt('iTravel', fmtTime(R.timing.travel) + ' of ' + fmtTime(R.timing.total));
+    setTxt('iTcut', fmtTime(R.timing.cut));
+    setTxt('iTtrav', fmtTime(R.timing.travel));
+    setTxt('iTblocks', Math.round(R.timing.blocks).toLocaleString());
+    setTxt('iTlimit', R.timing.blockLimited ? 'Controller block rate' : 'Feed &amp; acceleration', R.timing.blockLimited);
+  }
+
+  /* tool geometry for the tool being edited */
+  setTxt('iFormula', T.bitType === 'taper'
+    ? 'w = ' + fmtLen(T.tipDia) + ' + 2·d·tan(' + T.bitAngle + '°/2)'
+    : 'w = 2·d·tan(' + T.bitAngle + '°/2)');
+  setTxt('iWmaxBit',   fmtLen(T.bitDia));
+  setTxt('iWmaxDepth', fmtLen(ENG.widthForDepth(T, T.maxDepth)));
+  const eff = ENG.effMaxWidth(T);
+  setTxt('iWeff', fmtLen(eff), T.wMax > eff + 1e-6);
+  setTxt('iDmin', fmtLen(ENG.depthForWidth(T, Math.min(T.wMin, eff)), 3));
+  setTxt('iDmax', fmtLen(ENG.depthForWidth(T, Math.min(T.wMax, eff)), 3));
+
+  const pw = $('#pitchWarn');
+  if (pw){
+    const msgs = [];
+    if ((S.modMode === 'width' || S.modMode === 'both') && T.wMax > T.pitch * 1.001 &&
+        !['dots','stipple'].includes(T.pattern))
+      msgs.push('Maximum width (' + fmtLen(T.wMax) + ') is wider than the pitch (' + fmtLen(T.pitch) + ') — dark areas will merge into solid pockets.');
+    if (st && st.throttled)
+      msgs.push('Sample step raised to ' + fmtLen(st.step, 3) + ' to stay inside the point budget. Raise the budget on the Source step, or increase the pitch.');
+    pw.innerHTML = msgs.map(m => '<b>Note</b> ' + m).join('<br><br>');
+    pw.classList.toggle('hide', msgs.length === 0);
+  }
+  const tw = $('#toolWarn');
+  if (tw){
+    const msgs = [];
+    if (T.wMax > eff + 1e-6)
+      msgs.push('The width mapping asks for ' + fmtLen(T.wMax) + ' but this cutter tops out at ' + fmtLen(eff) + '. Lines are being clamped.');
+    if (T.bitType === 'taper' && T.tipDia >= T.wMax)
+      msgs.push('The flat tip (' + fmtLen(T.tipDia) + ') is already as wide as the maximum line — no tonal range is left.');
+    tw.innerHTML = msgs.map(m => '<b>Note</b> ' + m).join('<br><br>');
+    tw.classList.toggle('hide', msgs.length === 0);
+  }
+
+  const tools = activeTools();
+  setTxt('iGunit', (S.units === 'in' ? 'Inches (G20)' : 'Millimetres (G21)') + ' · ' + S.dialect.toUpperCase());
+  setTxt('iGtool', tools.length ? tools.map(t => (t.name || 'Tool ' + t.id) + ' ' + t.bitAngle + '°').join(', ') : '—');
+  setTxt('iGdepth', st ? fmtLen(st.dMin, 3) + ' … ' + fmtLen(st.dMax, 3) : '—');
+  setTxt('iGpass', passCount() + (passCount() > 1 ? ' passes' : ' pass'));
+  setTxt('iGtime', R.timing ? fmtTime(R.timing.total) : '—');
+  const tiles = tileGrid();
+  setTxt('iTiles', S.tileOn ? tiles.length + ' (' + fmtLen(S.bedX, 0) + ' × ' + fmtLen(S.bedY, 0) + ')' : '1');
+
+  $('#stSrc').textContent = R.fileName || 'No file';
+  $('#stSize').innerHTML  = R.src ? '<b>' + fmtLen(S.outW, 1) + '</b> × <b>' + fmtLen(S.outH, 1) + '</b>' : '';
+  $('#stPaths').innerHTML = st ? '<b>' + st.n.toLocaleString() + '</b> paths' : '';
+  $('#stLen').innerHTML   = st ? '<b>' + fmtLenLong(st.len) + '</b> of cut' : '';
+  $('#stDepth').innerHTML = st ? 'depth <b>' + fmtLen(st.dMax, 2) + '</b>' : '';
+  $('#stTime').innerHTML  = R.timing ? '≈ <b>' + fmtTime(R.timing.total) + '</b>' + (R.ms ? ' · ' + Math.round(R.ms) + ' ms' : '') : '';
+
+  drawDepthCurve();
+  buildLegend();
+}
+
+/* ==================================================== tool library (local) */
+
+const LIB_DEFAULT = [
+  { name: '60° V-bit ⌀6.35', bitType: 'v', bitAngle: 60, bitDia: 6.35, tipDia: 0.2, maxDepth: 2.0, feed: 1200, plunge: 400, rpm: 18000 },
+  { name: '90° V-bit ⌀6.35', bitType: 'v', bitAngle: 90, bitDia: 6.35, tipDia: 0.2, maxDepth: 2.5, feed: 1400, plunge: 450, rpm: 18000 },
+  { name: '30° V-bit ⌀3.18', bitType: 'v', bitAngle: 30, bitDia: 3.175, tipDia: 0.1, maxDepth: 1.5, feed: 900,  plunge: 300, rpm: 20000 },
+  { name: '45° V-bit ⌀12.7', bitType: 'v', bitAngle: 45, bitDia: 12.7, tipDia: 0.2, maxDepth: 6.0, feed: 1600, plunge: 500, rpm: 16000 },
+  { name: '120° V-bit ⌀12.7', bitType: 'v', bitAngle: 120, bitDia: 12.7, tipDia: 0.2, maxDepth: 3.0, feed: 1800, plunge: 600, rpm: 16000 },
+  { name: '20° engraver, 0.2 tip', bitType: 'taper', bitAngle: 20, bitDia: 3.175, tipDia: 0.2, maxDepth: 1.2, feed: 700, plunge: 250, rpm: 22000 },
+  { name: '15° engraver, 0.1 tip', bitType: 'taper', bitAngle: 15, bitDia: 3.175, tipDia: 0.1, maxDepth: 1.0, feed: 600, plunge: 200, rpm: 24000 }
+];
+const LIB_KEY = 'lht.toolLibrary.v1';
+
+function libLoad(){
+  try {
+    const raw = localStorage.getItem(LIB_KEY);
+    if (raw){ const a = JSON.parse(raw); if (Array.isArray(a) && a.length) return a; }
+  } catch (e){ /* storage unavailable — fall through to defaults */ }
+  return LIB_DEFAULT.map(t => Object.assign({}, t));
+}
+function libSave(a){
+  try { localStorage.setItem(LIB_KEY, JSON.stringify(a)); }
+  catch (e){ toast('Could not save the tool library — browser storage is unavailable.', 'warn'); }
+}
+function openLibrary(){
+  renderLibrary();
+  $('#libMask').classList.add('on');
+}
+function renderLibrary(){
+  const lib = libLoad();
+  $('#libTable').innerHTML =
+    '<tr><th>Tool</th><th>Type</th><th class="num">Angle</th><th class="num">⌀</th><th class="num">Depth</th><th class="num">Feed</th><th></th></tr>' +
+    lib.map((t, i) =>
+      '<tr><td>' + t.name + '</td><td>' + (t.bitType === 'taper' ? 'Tapered' : 'V-bit') + '</td>' +
+      '<td class="num">' + t.bitAngle + '°</td><td class="num">' + fmtLen(t.bitDia) + '</td>' +
+      '<td class="num">' + fmtLen(t.maxDepth) + '</td><td class="num">' + Math.round(fromMM(t.feed)) + '</td>' +
+      '<td class="act"><button class="btn sm" data-lib="' + i + '">Use</button> ' +
+      '<button class="btn sm gh" data-libdel="' + i + '">×</button></td></tr>').join('');
+}
+function libApply(i){
+  const lib = libLoad(), t = lib[i];
+  if (!t) return;
+  const P = TP();
+  S[P+'Name'] = t.name; S[P+'BitType'] = t.bitType; S[P+'BitAngle'] = t.bitAngle;
+  S[P+'BitDia'] = t.bitDia; S[P+'TipDia'] = t.tipDia; S[P+'MaxDepth'] = t.maxDepth;
+  S[P+'Feed'] = t.feed; S[P+'Plunge'] = t.plunge; S[P+'Rpm'] = t.rpm;
+  buildPanels();
+  pushHistory('apply tool preset');
+  schedule(LEVEL.paths, 0);
+  $('#libMask').classList.remove('on');
+  toast('Applied <b>' + t.name + '</b> to tool ' + R.activeTool, 'ok');
+}
+function libAddCurrent(){
+  const lib = libLoad(), t = toolCfg(R.activeTool);
+  lib.push({ name: t.name || ('Tool ' + t.id), bitType: t.bitType, bitAngle: t.bitAngle,
+             bitDia: t.bitDia, tipDia: t.tipDia, maxDepth: t.maxDepth,
+             feed: t.feed, plunge: t.plunge, rpm: t.rpm });
+  libSave(lib); renderLibrary();
+  toast('Saved to the library', 'ok');
+}
+function libDelete(i){
+  const lib = libLoad();
+  lib.splice(i, 1);
+  libSave(lib); renderLibrary();
+}
+
+/* =============================================================== stage === */
+
+const STEPS = [['source','Source'],['correct','Correct'],['pattern','Pattern'],['tool','Tool'],['export','Export']];
+const STEP_VIEW = { source:'corrected', correct:'corrected', pattern:'halftone', tool:'halftone', export:'halftone' };
+
+function viewList(){
+  const v = [['original','Original'],['corrected','Corrected']];
+  if (S.maskOn) v.push(['mask','Mask']);
+  v.push(['halftone','Halftone'], ['depth','Depth'], ['carve','Carve']);
+  return v;
+}
+
+function buildChrome(){
+  $('#steps').innerHTML = STEPS.map((s, i) =>
+    '<button class="step" data-step="' + s[0] + '" title="Step ' + (i + 1) + ' — ' + s[1] + '"><b>' +
+    (i + 1) + '</b><span class="lb">' + s[1] + '</span></button>').join('');
+  buildViewSeg();
+}
+function buildViewSeg(){
+  $('#viewSeg').innerHTML = viewList().map(v =>
+    '<label><input type="radio" name="viewmode" value="' + v[0] + '"' + (R.mode === v[0] ? ' checked' : '') +
+    '><span>' + v[1] + '</span></label>').join('');
+}
+
+function gotoStep(name){
+  R.step = name;
+  $$('.step').forEach(b => b.classList.toggle('on', b.dataset.step === name));
+  $$('.pane').forEach(p => p.classList.toggle('on', p.id === 'pane-' + name));
+  const v = STEP_VIEW[name];
+  if (v && R.mode !== v){ setMode(v); return; }
+  drawStage();
+}
+
+function setMode(m){
+  const prev = R.mode;
+  if (!viewList().some(v => v[0] === m)) m = 'halftone';
+  R.mode = m;
+  $$('input[name=viewmode]').forEach(r => r.checked = (r.value === m));
+  if (isImgSpace(prev) !== isImgSpace(m)) fitView();
+  drawStage();
+}
+const isImgSpace = m => m === 'original';
+
+function docSize(){
+  if (isImgSpace(R.mode) && R.geo) return { w: R.geo.width, h: R.geo.height };
+  return { w: S.outW, h: S.outH };
+}
+
+function fitView(){
+  const st = $('#stage'), d = docSize(), pad = 34;
+  const z = Math.min((st.clientWidth - pad * 2) / d.w, (st.clientHeight - pad * 2) / d.h);
+  R.view.z = z > 0 && isFinite(z) ? z : 1;
+  R.view.ox = (st.clientWidth  - d.w * R.view.z) / 2;
+  R.view.oy = (st.clientHeight - d.h * R.view.z) / 2;
+  drawStage();
+}
+
+function grayCanvas(){
+  if (!R.gray) return null;
+  if (R.grayCv && R.grayCv._src === R.gray) return R.grayCv;
+  const c = newCanvas(R.gw, R.gh), g = c.getContext('2d');
+  const id = g.createImageData(R.gw, R.gh), d = id.data;
+  for (let i = 0, p = 0; i < R.gray.length; i++, p += 4){
+    const v = clamp(Math.round(R.gray[i] * 255), 0, 255);
+    d[p] = d[p+1] = d[p+2] = v; d[p+3] = 255;
+  }
+  g.putImageData(id, 0, 0);
+  c._src = R.gray; R.grayCv = c;
+  return c;
+}
+
+function maskCanvas(){
+  if (!R.maskBuf || !R.gw) return null;
+  if (R.maskCv && R.maskCv._n === R.maskStamp && R.maskCv.width === R.gw) return R.maskCv;
+  const c = newCanvas(R.gw, R.gh), g = c.getContext('2d');
+  const id = g.createImageData(R.gw, R.gh), d = id.data;
+  const col = S.maskMode === 'boost' ? [80, 220, 140] : S.maskMode === 'reduce' ? [90, 160, 255] : [255, 90, 110];
+  for (let i = 0, p = 0; i < R.maskBuf.length; i++, p += 4){
+    d[p] = col[0]; d[p+1] = col[1]; d[p+2] = col[2]; d[p+3] = R.maskBuf[i];
+  }
+  g.putImageData(id, 0, 0);
+  c._n = R.maskStamp; R.maskCv = c;
+  return c;
+}
+
+const depthColor = t => {
+  const stops = [[56,217,211],[80,140,255],[132,99,255],[210,70,190],[255,90,110]];
+  const x = clamp(t, 0, 1) * (stops.length - 1);
+  const i = Math.min(stops.length - 2, x | 0), f = x - i;
+  const a = stops[i], b = stops[i+1];
+  return 'rgb(' + Math.round(lerp(a[0],b[0],f)) + ',' + Math.round(lerp(a[1],b[1],f)) + ',' + Math.round(lerp(a[2],b[2],f)) + ')';
+};
+
+/* ------------------------------------------------- carve relief simulation */
+
+function depthBands(g, bands, colorOf){
+  const paths = []; for (let i = 0; i < bands; i++) paths.push(new Path2D());
+  const dm = Math.max(1e-4, R.stats ? R.stats.dMax : 1);
+  for (const s of R.paths){
+    const p = s.pts, n = p.length;
+    if (n === 1){
+      const r = Math.max(p[0].w, .01) / 2;
+      const pa = paths[clamp((p[0].d / dm * bands) | 0, 0, bands - 1)];
+      pa.moveTo(p[0].x + r, p[0].y); pa.arc(p[0].x, p[0].y, r, 0, Math.PI * 2); pa.closePath();
+      continue;
+    }
+    for (let i = 0; i < n - 1; i++){
+      const a = p[i], b = p[i+1];
+      const tx = b.x - a.x, ty = b.y - a.y, L = Math.hypot(tx, ty);
+      if (L < 1e-9) continue;
+      const nx = -ty / L, ny = tx / L;
+      const ha = Math.max(a.w, .004) / 2, hb = Math.max(b.w, .004) / 2;
+      const pa = paths[clamp((Math.max(a.d, b.d) / dm * bands) | 0, 0, bands - 1)];
+      pa.moveTo(a.x + nx*ha, a.y + ny*ha);
+      pa.lineTo(b.x + nx*hb, b.y + ny*hb);
+      pa.lineTo(b.x - nx*hb, b.y - ny*hb);
+      pa.lineTo(a.x - nx*ha, a.y - ny*ha);
+      pa.closePath();
+    }
+  }
+  for (let i = 0; i < bands; i++){ g.fillStyle = colorOf(i / (bands - 1)); g.fill(paths[i]); }
+}
+
+function buildCarve(){
+  if (!R.paths || !R.paths.length || !R.stats) return null;
+  if (R.carveCv && !R.carveDirty) return R.carveCv;
+
+  const px = clamp(Math.round(S.outW * 5), 320, 1500);
+  const sc = px / S.outW, ph = Math.max(1, Math.round(S.outH * sc));
+  const hc = newCanvas(px, ph), hg = hc.getContext('2d');
+  hg.fillStyle = '#000'; hg.fillRect(0, 0, px, ph);
+  hg.save(); hg.scale(sc, sc);
+  hg.globalCompositeOperation = 'lighten';
+  depthBands(hg, 24, t => { const v = Math.round(clamp(t, 0, 1) * 255); return 'rgb(' + v + ',' + v + ',' + v + ')'; });
+  hg.restore();
+
+  const src = hg.getImageData(0, 0, px, ph).data;
+  const out = newCanvas(px, ph), og = out.getContext('2d');
+  const od = og.createImageData(px, ph), o = od.data;
+
+  const dm = R.stats.dMax || 1;
+  const az = S.lightAz * DEG, el = S.lightEl * DEG;
+  const lx = Math.cos(el) * Math.cos(az), ly = Math.cos(el) * Math.sin(az), lz = Math.sin(el);
+  const hexc = S.matColor.replace('#', '');
+  const mr = parseInt(hexc.slice(0, 2), 16), mg = parseInt(hexc.slice(2, 4), 16), mb = parseInt(hexc.slice(4, 6), 16);
+  const zs = dm * S.carveExag * sc / 255;      // height units per grey level, in pixel space
+
+  const H = (x, y) => src[((y < 0 ? 0 : y >= ph ? ph - 1 : y) * px + (x < 0 ? 0 : x >= px ? px - 1 : x)) * 4];
+
+  for (let y = 0; y < ph; y++){
+    for (let x = 0; x < px; x++){
+      const i = (y * px + x);
+      const c = src[i * 4];
+      const gx = (H(x+1, y) - H(x-1, y)) * zs * 0.5;
+      const gy = (H(x, y+1) - H(x, y-1)) * zs * 0.5;
+      /* surface is z = -depth, so the normal uses +gradient */
+      let nx = gx, ny = gy, nz = 1;
+      const inv = 1 / Math.sqrt(nx*nx + ny*ny + 1);
+      nx *= inv; ny *= inv; nz *= inv;
+      const lam = Math.max(0, nx*lx + ny*ly + nz*lz);
+      const ao = 1 - 0.55 * (c / 255);                       // deeper sits in shadow
+      const spec = Math.pow(lam, 26) * 0.35;
+      const k = (0.26 + 0.82 * lam) * ao;
+      o[i*4]   = clamp(mr * k + 255 * spec, 0, 255);
+      o[i*4+1] = clamp(mg * k + 255 * spec, 0, 255);
+      o[i*4+2] = clamp(mb * k + 255 * spec, 0, 255);
+      o[i*4+3] = 255;
+    }
+  }
+  og.putImageData(od, 0, 0);
+  R.carveCv = out; R.carveDirty = false;
+  return out;
+}
+
+/* ------------------------------------------------------------- main draw */
+
+function drawStage(){
+  const st = $('#stage'), cv = $('#cv');
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const W = st.clientWidth, H = st.clientHeight;
+  if (!W || !H) return;
+  if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)){
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    cv.style.width = W + 'px'; cv.style.height = H + 'px';
+  }
+  const g = cv.getContext('2d');
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, W, H);
+  $('#zoomTxt').textContent = Math.round(R.view.z * (isImgSpace(R.mode) ? 100 : 100 / 3.7795)) + '%';
+  if (!R.src) return;
+
+  const d = docSize(), z = R.view.z, ox = R.view.ox, oy = R.view.oy;
+  g.save();
+  g.translate(ox, oy); g.scale(z, z);
+  g.fillStyle = '#ffffff';
+  g.fillRect(0, 0, d.w, d.h);
+
+  if (R.mode === 'original' && R.geo){
+    g.drawImage(R.geo, 0, 0);
+  } else if (R.mode === 'corrected'){
+    const c = grayCanvas(); if (c) g.drawImage(c, 0, 0, d.w, d.h);
+  } else if (R.mode === 'mask'){
+    const c = grayCanvas(); if (c) g.drawImage(c, 0, 0, d.w, d.h);
+    const m = maskCanvas();
+    if (m){ g.globalAlpha = 0.55; g.drawImage(m, 0, 0, d.w, d.h); g.globalAlpha = 1; }
+  } else if (R.mode === 'carve'){
+    const c = buildCarve();
+    if (c) g.drawImage(c, 0, 0, d.w, d.h);
+    else { const gc = grayCanvas(); if (gc) g.drawImage(gc, 0, 0, d.w, d.h); }
+  } else {
+    if (R.showImg){
+      const c = grayCanvas();
+      if (c){ g.globalAlpha = 0.28; g.drawImage(c, 0, 0, d.w, d.h); g.globalAlpha = 1; }
+    }
+    drawPaths(g);
+  }
+
+  if (R.showGrid && !isImgSpace(R.mode)) drawGrid(g, d, z);
+  if (R.showTiles && S.tileOn && !isImgSpace(R.mode)) drawTiles(g, z);
+  g.restore();
+
+  g.strokeStyle = '#39416b'; g.lineWidth = 1;
+  g.strokeRect(ox - 0.5, oy - 0.5, d.w * z + 1, d.h * z + 1);
+
+  if (S.cropOn && R.mode === 'original' && R.geo) drawCropOverlay(g, d, z, ox, oy);
+  if (S.maskOn && R.mode === 'mask' && R.brushAt) drawBrush(g, z, ox, oy);
+}
+
+function drawPaths(g){
+  const P = R.paths;
+  if (!P || !P.length) return;
+  const multi = activeTools().length > 1;
+
+  if (R.mode === 'depth'){
+    if (R.stats && R.stats.pts <= 300000){ depthBands(g, 14, depthColor); return; }
+    const dm = Math.max(1e-4, R.stats ? R.stats.dMax : 1);
+    for (const s of P){
+      const o = s.out; if (!o || o.length < 3) continue;
+      let mx = 0; for (const p of s.pts) if (p.d > mx) mx = p.d;
+      g.fillStyle = depthColor(mx / dm);
+      g.beginPath(); g.moveTo(o[0].x, o[0].y);
+      for (let i = 1; i < o.length; i++) g.lineTo(o[i].x, o[i].y);
+      g.closePath(); g.fill();
+    }
+    return;
+  }
+
+  const byTool = {};
+  for (const s of P){
+    const t = multi ? (s.tool || 1) : 0;
+    const path = byTool[t] || (byTool[t] = new Path2D());
+    const o = s.out;
+    if (!o || o.length < 3) continue;
+    path.moveTo(o[0].x, o[0].y);
+    for (let i = 1; i < o.length; i++) path.lineTo(o[i].x, o[i].y);
+    path.closePath();
+  }
+  for (const t in byTool){
+    g.fillStyle = t === '0' ? '#111318' : TOOL_COLORS[(+t - 1) % 3];
+    g.fill(byTool[t]);
+  }
+}
+
+function drawGrid(g, d, z){
+  const stepMM = S.units === 'in' ? MM_IN : 10;
+  g.lineWidth = 1 / z;
+  g.strokeStyle = 'rgba(108,123,255,.30)';
+  g.beginPath();
+  for (let x = 0; x <= d.w + 1e-6; x += stepMM){ g.moveTo(x, 0); g.lineTo(x, d.h); }
+  for (let y = 0; y <= d.h + 1e-6; y += stepMM){ g.moveTo(0, y); g.lineTo(d.w, y); }
+  g.stroke();
+  g.strokeStyle = 'rgba(56,217,211,.45)';
+  g.beginPath();
+  for (let x = 0; x <= d.w + 1e-6; x += stepMM * 5){ g.moveTo(x, 0); g.lineTo(x, d.h); }
+  for (let y = 0; y <= d.h + 1e-6; y += stepMM * 5){ g.moveTo(0, y); g.lineTo(d.w, y); }
+  g.stroke();
+}
+
+function drawTiles(g, z){
+  const tiles = tileGrid();
+  g.lineWidth = 1.5 / z;
+  g.font = (11 / z) + 'px Segoe UI, sans-serif';
+  for (const t of tiles){
+    g.strokeStyle = 'rgba(255,180,84,.85)';
+    g.setLineDash([6 / z, 4 / z]);
+    g.strokeRect(t.x, t.y, t.w, t.h);
+    g.setLineDash([]);
+    g.fillStyle = 'rgba(255,180,84,.9)';
+    g.fillText('T' + (t.j + 1) + '-' + (t.i + 1), t.x + 3 / z, t.y + 13 / z);
+  }
+}
+
+function drawBrush(g, z, ox, oy){
+  const r = S.brushSize / 2 * z;
+  g.save();
+  g.strokeStyle = '#fff'; g.lineWidth = 1;
+  g.beginPath(); g.arc(ox + R.brushAt.x * z, oy + R.brushAt.y * z, r, 0, 7); g.stroke();
+  g.strokeStyle = '#000'; g.lineWidth = 1;
+  g.beginPath(); g.arc(ox + R.brushAt.x * z, oy + R.brushAt.y * z, r + 1, 0, 7); g.stroke();
+  g.restore();
+}
+
+/* ---------------------------------------------------------- crop overlay */
+
+function cropScreenRect(d, z, ox, oy){
+  return {
+    x: ox + S.cx0 / 100 * d.w * z, y: oy + S.cy0 / 100 * d.h * z,
+    w: (S.cx1 - S.cx0) / 100 * d.w * z, h: (S.cy1 - S.cy0) / 100 * d.h * z
+  };
+}
+const HS = 8;
+function cropHandles(r){
+  return {
+    nw:[r.x, r.y], n:[r.x + r.w/2, r.y], ne:[r.x + r.w, r.y],
+    w:[r.x, r.y + r.h/2], e:[r.x + r.w, r.y + r.h/2],
+    sw:[r.x, r.y + r.h], s:[r.x + r.w/2, r.y + r.h], se:[r.x + r.w, r.y + r.h]
+  };
+}
+function drawCropOverlay(g, d, z, ox, oy){
+  const r = cropScreenRect(d, z, ox, oy);
+  g.save();
+  g.fillStyle = 'rgba(8,10,20,.62)';
+  g.beginPath(); g.rect(ox, oy, d.w * z, d.h * z); g.rect(r.x, r.y, r.w, r.h);
+  g.fill('evenodd');
+  g.strokeStyle = '#38d9d3'; g.lineWidth = 1.5;
+  g.strokeRect(r.x, r.y, r.w, r.h);
+  g.strokeStyle = 'rgba(56,217,211,.35)'; g.lineWidth = 1;
+  g.beginPath();
+  for (let i = 1; i < 3; i++){
+    g.moveTo(r.x + r.w*i/3, r.y); g.lineTo(r.x + r.w*i/3, r.y + r.h);
+    g.moveTo(r.x, r.y + r.h*i/3); g.lineTo(r.x + r.w, r.y + r.h*i/3);
+  }
+  g.stroke();
+  g.fillStyle = '#38d9d3'; g.strokeStyle = '#0b0e1a'; g.lineWidth = 1;
+  const hs = cropHandles(r);
+  for (const k in hs){
+    const p = hs[k];
+    g.fillRect(p[0] - HS/2, p[1] - HS/2, HS, HS);
+    g.strokeRect(p[0] - HS/2, p[1] - HS/2, HS, HS);
+  }
+  g.restore();
+}
+function cropHitTest(mx, my){
+  const d = docSize(), r = cropScreenRect(d, R.view.z, R.view.ox, R.view.oy);
+  const hs = cropHandles(r);
+  for (const k in hs){
+    const p = hs[k];
+    if (Math.abs(mx - p[0]) <= HS && Math.abs(my - p[1]) <= HS) return k;
+  }
+  if (mx > r.x && mx < r.x + r.w && my > r.y && my < r.y + r.h) return 'move';
+  return null;
+}
+const CURSORS = { nw:'nwse-resize', se:'nwse-resize', ne:'nesw-resize', sw:'nesw-resize',
+                  n:'ns-resize', s:'ns-resize', e:'ew-resize', w:'ew-resize', move:'move' };
+
+/* ------------------------------------------------------------ mask brush */
+
+function paintMask(docX, docY, erase){
+  const buf = ensureMask();
+  if (!buf) return;
+  const sx = R.gw / S.outW, sy = R.gh / S.outH;
+  const cx = docX * sx, cy = docY * sy;
+  const rr = (S.brushSize / 2) * sx;
+  const soft = clamp(S.brushSoft, 0, 0.98);
+  const x0 = Math.max(0, Math.floor(cx - rr)), x1 = Math.min(R.gw - 1, Math.ceil(cx + rr));
+  const y0 = Math.max(0, Math.floor(cy - rr)), y1 = Math.min(R.gh - 1, Math.ceil(cy + rr));
+  const inner = rr * (1 - soft);
+  for (let y = y0; y <= y1; y++){
+    for (let x = x0; x <= x1; x++){
+      const dd = Math.hypot(x - cx, y - cy);
+      if (dd > rr) continue;
+      let a = dd <= inner ? 1 : 1 - (dd - inner) / Math.max(1e-6, rr - inner);
+      a = clamp(a, 0, 1) * 255;
+      const i = y * R.gw + x;
+      buf[i] = erase ? Math.max(0, buf[i] - a) : Math.min(255, buf[i] + a);
+    }
+  }
+  R.maskStamp = (R.maskStamp || 0) + 1;
+}
+
+/* ============================================================= exporting === */
+
+function nf(v, p){
+  if (!isFinite(v)) v = 0;
+  let s = v.toFixed(p);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return (s === '-0' || s === '') ? '0' : s;
+}
+function baseName(){
+  const n = (R.fileName || 'halftone').replace(/\.[^.]+$/, '').replace(/[^\w\- ]+/g, '_').trim();
+  return (n || 'halftone').replace(/\s+/g, '-').toLowerCase();
+}
+function saveText(name, text, mime){
+  saveBlob(new Blob([text], { type: mime || 'text/plain;charset=utf-8' }), name);
+}
+function saveBlob(blob, name){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+function readyCheck(){
+  if (!R.paths || !R.paths.length){
+    toast('Nothing to export yet — load a picture and check the halftone preview.', 'warn');
+    return false;
+  }
+  return true;
+}
+function segsForTool(id){ return R.paths.filter(s => (s.tool || 1) === id); }
+
+function settingsComment(){
+  const st = R.stats, lines = ['Linear Half Toner'];
+  lines.push('size          ' + nf(S.outW, 2) + ' x ' + nf(S.outH, 2) + ' mm');
+  for (const t of activeTools()){
+    lines.push('tool ' + t.id + '        ' + (t.name || '') + ' — ' +
+      (t.bitType === 'taper' ? 'tapered engraver' : 'V-bit') + ' ' + t.bitAngle + ' deg, dia ' + nf(t.bitDia, 3) + ' mm' +
+      (t.bitType === 'taper' ? ', tip ' + nf(t.tipDia, 3) + ' mm' : ''));
+    lines.push('              pattern ' + t.pattern + ', angle ' + t.angle + ' deg, pitch ' + nf(t.pitch, 3) +
+      ' mm, width ' + nf(Math.min(t.wMin, ENG.effMaxWidth(t)), 3) + '..' + nf(Math.min(t.wMax, ENG.effMaxWidth(t)), 3) + ' mm');
+    lines.push('              tone band ' + t.toneLo + '-' + t.toneHi + '%, region ' + t.maskScope +
+      ', relation ' + (t.bitType === 'taper' ? 'w = tip + 2*d*tan(A/2)' : 'w = 2*d*tan(A/2)'));
+  }
+  lines.push('encoding      ' + S.modMode + ', sample step ' + nf(st ? st.step : S.sampleStep, 3) + ' mm' +
+             (S.simplify > 0 ? ', simplified to ' + nf(S.simplify, 3) + ' mm' : ''));
+  lines.push('depth         ' + nf(st ? st.dMin : 0, 3) + ' .. ' + nf(st ? st.dMax : 0, 3) + ' mm');
+  lines.push('paths         ' + (st ? st.n : 0) + ',  cut length ' + nf(st ? st.len : 0, 1) + ' mm');
+  lines.push('origin        X ' + S.originX + ', Y ' + S.originY + ', Z zero at ' + (S.zZero === 'bed' ? 'machine bed' : 'material top'));
+  lines.push('generated     ' + new Date().toISOString().slice(0, 19).replace('T', ' '));
+  return lines;
+}
+
+/* ------------------------------------------------------------------ SVG --- */
+
+function exportSVG(){
+  if (!readyCheck()) return;
+  const p = clamp(Math.round(S.svgPrec), 1, 5);
+  const W = S.outW, H = S.outH, parts = [];
+
+  parts.push('<?xml version="1.0" encoding="UTF-8"?>');
+  parts.push('<!--\n' + settingsComment().join('\n') + '\n-->');
+  parts.push('<svg xmlns="http://www.w3.org/2000/svg" ' +
+             'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" ' +
+             'version="1.1" width="' + nf(W, 4) + 'mm" height="' +
+             nf(H, 4) + 'mm" viewBox="0 0 ' + nf(W, 4) + ' ' + nf(H, 4) + '">');
+  parts.push('<title>' + baseName() + ' halftone</title>');
+  if (S.svgBg) parts.push('<rect x="0" y="0" width="' + nf(W, 4) + '" height="' + nf(H, 4) + '" fill="#ffffff"/>');
+
+  const wantOut = S.svgMode === 'outline' || S.svgMode === 'both';
+  const wantCen = S.svgMode === 'center'  || S.svgMode === 'both';
+
+  for (const t of activeTools()){
+    const segs = segsForTool(t.id);
+    if (!segs.length) continue;
+    const label = 'tool' + t.id;
+    if (wantOut){
+      const ds = [];
+      for (const s of segs){
+        const o = s.out;
+        if (!o || o.length < 3) continue;
+        let d = 'M' + nf(o[0].x, p) + ' ' + nf(o[0].y, p);
+        for (let i = 1; i < o.length; i++) d += 'L' + nf(o[i].x, p) + ' ' + nf(o[i].y, p);
+        ds.push(d + 'Z');
+      }
+      parts.push('<g id="' + label + '-outlines" inkscape:label="' + label + ' outlines" fill="#000000" fill-rule="nonzero" stroke="none">');
+      if (S.svgCombine) parts.push('<path d="' + ds.join('') + '"/>');
+      else for (const d of ds) parts.push('<path d="' + d + '"/>');
+      parts.push('</g>');
+    }
+    if (wantCen){
+      const ds = [];
+      for (const s of segs){
+        const q = s.pts;
+        if (q.length < 2) continue;
+        let d = 'M' + nf(q[0].x, p) + ' ' + nf(q[0].y, p);
+        for (let i = 1; i < q.length; i++) d += 'L' + nf(q[i].x, p) + ' ' + nf(q[i].y, p);
+        ds.push(d);
+      }
+      parts.push('<g id="' + label + '-centrelines" inkscape:label="' + label + ' centrelines" fill="none" stroke="' + TOOL_COLORS[(t.id - 1) % 3] +
+                 '" stroke-width="0.05" stroke-linecap="round">');
+      if (S.svgCombine) parts.push('<path d="' + ds.join('') + '"/>');
+      else for (const d of ds) parts.push('<path d="' + d + '"/>');
+      parts.push('</g>');
+    }
+  }
+  parts.push('</svg>');
+  saveText(baseName() + '-halftone.svg', parts.join('\n'), 'image/svg+xml;charset=utf-8');
+  toast('Saved <b>' + baseName() + '-halftone.svg</b>', 'ok');
+}
+
+/* ------------------------------------------------------------------ DXF --- */
+
+function dxfPolylinesFor(segs){
+  const H = S.outH, out = [];
+  if (S.dxfMode === 'outline'){
+    for (const s of segs){
+      const o = s.out;
+      if (!o || o.length < 3) continue;
+      out.push({ pts: o.map(q => ({ x: q.x, y: H - q.y })), closed: true, widths: null });
+    }
+  } else if (S.dxfMode === 'width'){
+    for (const s of segs){
+      if (s.pts.length < 2) continue;
+      out.push({ pts: s.pts.map(q => ({ x: q.x, y: H - q.y })), closed: false, widths: s.pts.map(q => q.w) });
+    }
+  } else {
+    for (const s of segs){
+      if (s.pts.length < 2) continue;
+      out.push({ pts: s.pts.map(q => ({ x: q.x, y: H - q.y })), closed: false, widths: null });
+    }
+  }
+  return out;
+}
+function layerName(id){
+  const base = (S.dxfLayer || 'HALFTONE').toUpperCase().replace(/[^A-Z0-9_\-$]/g, '_') || 'HALFTONE';
+  return activeTools().length > 1 ? (base + '_T' + id).slice(0, 30) : base;
+}
+
+function exportDXF(){
+  if (!readyCheck()) return;
+  const groups = activeTools().map(t => ({ layer: layerName(t.id), polys: dxfPolylinesFor(segsForTool(t.id)) }))
+                              .filter(g => g.polys.length);
+  const txt = S.dxfVer === 'r2000' ? dxfR2000(groups) : dxfR12(groups);
+  saveText(baseName() + '-halftone.dxf', txt, 'application/dxf');
+  toast('Saved <b>' + baseName() + '-halftone.dxf</b>', 'ok');
+}
+
+function dxfR12(groups){
+  const L = [], P = 4;
+  const g = (c, v) => { L.push(String(c)); L.push(String(v)); };
+  g(999, 'Linear Half Toner');
+  settingsComment().forEach(c => g(999, c));
+
+  g(0, 'SECTION'); g(2, 'HEADER');
+  g(9, '$ACADVER'); g(1, 'AC1009');
+  g(9, '$INSBASE'); g(10, '0.0'); g(20, '0.0'); g(30, '0.0');
+  g(9, '$EXTMIN');  g(10, '0.0'); g(20, '0.0'); g(30, '0.0');
+  g(9, '$EXTMAX');  g(10, nf(S.outW, P)); g(20, nf(S.outH, P)); g(30, '0.0');
+  g(9, '$INSUNITS'); g(70, 4);
+  g(9, '$MEASUREMENT'); g(70, 1);
+  g(0, 'ENDSEC');
+
+  g(0, 'SECTION'); g(2, 'TABLES');
+  g(0, 'TABLE'); g(2, 'LAYER'); g(70, groups.length + 1);
+  g(0, 'LAYER'); g(2, '0'); g(70, 0); g(62, 7); g(6, 'CONTINUOUS');
+  groups.forEach((gr, i) => { g(0, 'LAYER'); g(2, gr.layer); g(70, 0); g(62, [7, 4, 2][i % 3]); g(6, 'CONTINUOUS'); });
+  g(0, 'ENDTAB'); g(0, 'ENDSEC');
+
+  g(0, 'SECTION'); g(2, 'ENTITIES');
+  for (const gr of groups){
+    for (const poly of gr.polys){
+      g(0, 'POLYLINE'); g(8, gr.layer); g(66, 1); g(70, poly.closed ? 1 : 0);
+      g(10, '0.0'); g(20, '0.0'); g(30, '0.0');
+      for (let i = 0; i < poly.pts.length; i++){
+        const q = poly.pts[i];
+        g(0, 'VERTEX'); g(8, gr.layer);
+        g(10, nf(q.x, P)); g(20, nf(q.y, P)); g(30, '0.0');
+        if (poly.widths){
+          g(40, nf(poly.widths[i], P));
+          g(41, nf(poly.widths[Math.min(i + 1, poly.widths.length - 1)], P));
+        }
+      }
+      g(0, 'SEQEND'); g(8, gr.layer);
+    }
+  }
+  g(0, 'ENDSEC'); g(0, 'EOF');
+  return L.join('\r\n') + '\r\n';
+}
+
+function dxfR2000(groups){
+  const L = [], P = 4;
+  const g = (c, v) => { L.push(String(c)); L.push(String(v)); };
+  let H = 0x30;
+  const nh = () => (H++).toString(16).toUpperCase();
+  const hDict = nh(), hGroup = nh();
+  const hVportT = nh(), hLtypeT = nh(), hLayerT = nh(), hStyleT = nh(),
+        hViewT = nh(), hUcsT = nh(), hAppidT = nh(), hDimT = nh(), hBrecT = nh();
+  const hMs = nh(), hPs = nh();
+
+  const tbl = (name, handle, count, body) => {
+    g(0, 'TABLE'); g(2, name); g(5, handle); g(100, 'AcDbSymbolTable'); g(70, count);
+    body(); g(0, 'ENDTAB');
+  };
+  const rec = (type, sub, name, handle, owner, extra) => {
+    g(0, type); g(5, handle); g(330, owner);
+    g(100, 'AcDbSymbolTableRecord'); g(100, sub); g(2, name); g(70, 0);
+    if (extra) extra();
+  };
+
+  g(999, 'Linear Half Toner');
+  settingsComment().forEach(c => g(999, c));
+
+  g(0, 'SECTION'); g(2, 'HEADER');
+  g(9, '$ACADVER'); g(1, 'AC1015');
+  g(9, '$INSBASE'); g(10, '0.0'); g(20, '0.0'); g(30, '0.0');
+  g(9, '$EXTMIN');  g(10, '0.0'); g(20, '0.0'); g(30, '0.0');
+  g(9, '$EXTMAX');  g(10, nf(S.outW, P)); g(20, nf(S.outH, P)); g(30, '0.0');
+  g(9, '$INSUNITS'); g(70, 4);
+  g(9, '$MEASUREMENT'); g(70, 1);
+  g(9, '$LUNITS'); g(70, 2);
+  g(9, '$HANDSEED'); g(5, 'FFFF');
+  g(0, 'ENDSEC');
+
+  g(0, 'SECTION'); g(2, 'TABLES');
+  tbl('VPORT', hVportT, 1, () => {
+    rec('VPORT', 'AcDbViewportTableRecord', '*ACTIVE', nh(), hVportT, () => {
+      g(10, '0.0'); g(20, '0.0'); g(11, '1.0'); g(21, '1.0');
+      g(12, nf(S.outW / 2, P)); g(22, nf(S.outH / 2, P));
+      g(13, '0.0'); g(23, '0.0'); g(14, '10.0'); g(24, '10.0');
+      g(15, '10.0'); g(25, '10.0'); g(16, '0.0'); g(26, '0.0'); g(36, '1.0');
+      g(17, '0.0'); g(27, '0.0'); g(37, '0.0');
+      g(40, nf(Math.max(S.outW, S.outH) * 1.2, P)); g(41, 1.5); g(42, 50.0);
+      g(43, 0.0); g(44, 0.0); g(50, 0.0); g(51, 0.0);
+      g(71, 0); g(72, 100); g(73, 1); g(74, 3); g(75, 0); g(76, 0); g(77, 0); g(78, 0);
+    });
+  });
+  tbl('LTYPE', hLtypeT, 3, () => {
+    ['ByBlock','ByLayer','CONTINUOUS'].forEach(n =>
+      rec('LTYPE', 'AcDbLinetypeTableRecord', n, nh(), hLtypeT, () => { g(3, n === 'CONTINUOUS' ? 'Solid line' : ''); g(72, 65); g(73, 0); g(40, 0.0); }));
+  });
+  tbl('LAYER', hLayerT, groups.length + 1, () => {
+    rec('LAYER', 'AcDbLayerTableRecord', '0', nh(), hLayerT, () => { g(62, 7); g(6, 'CONTINUOUS'); g(370, 25); g(390, 'F'); });
+    groups.forEach((gr, i) => rec('LAYER', 'AcDbLayerTableRecord', gr.layer, nh(), hLayerT,
+      () => { g(62, [7, 4, 2][i % 3]); g(6, 'CONTINUOUS'); g(370, 25); g(390, 'F'); }));
+  });
+  tbl('STYLE', hStyleT, 1, () => {
+    rec('STYLE', 'AcDbTextStyleTableRecord', 'Standard', nh(), hStyleT, () => {
+      g(40, 0.0); g(41, 1.0); g(50, 0.0); g(71, 0); g(42, 2.5); g(3, 'txt'); g(4, '');
+    });
+  });
+  tbl('VIEW', hViewT, 0, () => {});
+  tbl('UCS',  hUcsT,  0, () => {});
+  tbl('APPID', hAppidT, 1, () => { rec('APPID', 'AcDbRegAppTableRecord', 'ACAD', nh(), hAppidT); });
+
+  g(0, 'TABLE'); g(2, 'DIMSTYLE'); g(5, hDimT); g(100, 'AcDbSymbolTable'); g(70, 1);
+  g(100, 'AcDbDimStyleTable'); g(71, 0);
+  g(0, 'DIMSTYLE'); g(105, nh()); g(330, hDimT);
+  g(100, 'AcDbSymbolTableRecord'); g(100, 'AcDbDimStyleTableRecord'); g(2, 'Standard'); g(70, 0);
+  g(0, 'ENDTAB');
+
+  tbl('BLOCK_RECORD', hBrecT, 2, () => {
+    g(0, 'BLOCK_RECORD'); g(5, hMs); g(330, hBrecT);
+    g(100, 'AcDbSymbolTableRecord'); g(100, 'AcDbBlockTableRecord'); g(2, '*Model_Space'); g(70, 0); g(280, 1); g(281, 0);
+    g(0, 'BLOCK_RECORD'); g(5, hPs); g(330, hBrecT);
+    g(100, 'AcDbSymbolTableRecord'); g(100, 'AcDbBlockTableRecord'); g(2, '*Paper_Space'); g(70, 0); g(280, 1); g(281, 0);
+  });
+  g(0, 'ENDSEC');
+
+  const blk = (name, brec, ps) => {
+    g(0, 'BLOCK'); g(5, nh()); g(330, brec); g(100, 'AcDbEntity');
+    if (ps) g(67, 1);
+    g(8, '0'); g(100, 'AcDbBlockBegin'); g(2, name); g(70, 0);
+    g(10, '0.0'); g(20, '0.0'); g(30, '0.0'); g(3, name); g(1, '');
+    g(0, 'ENDBLK'); g(5, nh()); g(330, brec); g(100, 'AcDbEntity');
+    if (ps) g(67, 1);
+    g(8, '0'); g(100, 'AcDbBlockEnd');
+  };
+  g(0, 'SECTION'); g(2, 'BLOCKS');
+  blk('*Model_Space', hMs, false);
+  blk('*Paper_Space', hPs, true);
+  g(0, 'ENDSEC');
+
+  g(0, 'SECTION'); g(2, 'ENTITIES');
+  for (const gr of groups){
+    for (const poly of gr.polys){
+      g(0, 'LWPOLYLINE'); g(5, nh()); g(330, hMs);
+      g(100, 'AcDbEntity'); g(8, gr.layer); g(100, 'AcDbPolyline');
+      g(90, poly.pts.length); g(70, poly.closed ? 1 : 0);
+      if (!poly.widths) g(43, '0.0');
+      for (let i = 0; i < poly.pts.length; i++){
+        const q = poly.pts[i];
+        g(10, nf(q.x, P)); g(20, nf(q.y, P));
+        if (poly.widths){
+          g(40, nf(poly.widths[i], P));
+          g(41, nf(poly.widths[Math.min(i + 1, poly.widths.length - 1)], P));
+        }
+      }
+    }
+  }
+  g(0, 'ENDSEC');
+
+  g(0, 'SECTION'); g(2, 'OBJECTS');
+  g(0, 'DICTIONARY'); g(5, hDict); g(330, '0'); g(100, 'AcDbDictionary'); g(281, 1);
+  g(3, 'ACAD_GROUP'); g(350, hGroup);
+  g(0, 'DICTIONARY'); g(5, hGroup); g(330, hDict); g(100, 'AcDbDictionary'); g(281, 1);
+  g(0, 'ENDSEC');
+  g(0, 'EOF');
+  return L.join('\r\n') + '\r\n';
+}
+
+/* ---------------------------------------------------------------- G-code --- */
+
+const DIALECT = {
+  grbl:     { arcs: true,  m6: false, end: 'M30', pct: true,  laser: true,  cmt: '(', modal: true,  pause: 'M0', dwellMs: false },
+  mach3:    { arcs: true,  m6: true,  end: 'M30', pct: true,  laser: false, cmt: '(', modal: true,  pause: 'M0', dwellMs: false },
+  linuxcnc: { arcs: true,  m6: true,  end: 'M2',  pct: true,  laser: false, cmt: '(', modal: true,  pause: 'M0', dwellMs: false },
+  marlin:   { arcs: false, m6: false, end: 'M2',  pct: false, laser: true,  cmt: ';', modal: false, pause: '',   dwellMs: true }
+};
+
+function originOffset(){
+  return {
+    ox: S.originX === 'center' ? -S.outW / 2 : S.originX === 'right' ? -S.outW : 0,
+    oy: S.originY === 'center' ? -S.outH / 2 : S.originY === 'top'   ? -S.outH : 0
+  };
+}
+
+/* clip one segment to a tile rectangle, interpolating at the boundary */
+function clipSeg(seg, rect){
+  const inside = p => p.x >= rect.x - 1e-9 && p.x <= rect.x + rect.w + 1e-9 &&
+                      p.y >= rect.y - 1e-9 && p.y <= rect.y + rect.h + 1e-9;
+  const pts = seg.pts, out = [];
+  let cur = null;
+  const mix = (a, b, t) => ({ x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t),
+                              w: lerp(a.w, b.w, t), d: lerp(a.d, b.d, t) });
+  const crossT = (a, b) => {
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 24; i++){ const m = (lo + hi) / 2; if (inside(mix(a, b, m))) lo = m; else hi = m; }
+    return lo;
+  };
+  for (let i = 0; i < pts.length; i++){
+    const p = pts[i], ins = inside(p);
+    if (ins){
+      if (!cur){
+        cur = [];
+        if (i > 0) cur.push(mix(pts[i], pts[i-1], crossT(pts[i], pts[i-1])));
+      }
+      cur.push(p);
+    } else if (cur){
+      cur.push(mix(pts[i-1], pts[i], crossT(pts[i-1], pts[i])));
+      if (cur.length > 1) out.push({ pts: cur, tool: seg.tool });
+      cur = null;
+    }
+  }
+  if (cur && cur.length > 1) out.push({ pts: cur, tool: seg.tool });
+  else if (cur && cur.length === 1 && seg.dot) out.push({ pts: cur, tool: seg.tool, dot: true });
+  return out;
+}
+
+function gcodeBody(segs, tools, tile){
+  const D = DIALECT[S.dialect] || DIALECT.grbl;
+  const inch = S.units === 'in';
+  const k = inch ? 1 / MM_IN : 1;
+  const P = clamp(Math.round(S.gPrec) + (inch ? 1 : 0), 2, 6);
+  const v = x => nf(x * k, P);
+  const H = S.outH, off = originOffset();
+  const tox = tile ? -tile.x : 0, toy = tile ? -(H - tile.y - tile.h) : 0;
+  const X = x => v(x + off.ox + tox);
+  const Y = y => v((H - y) + off.oy + toy);
+
+  const surface = S.zZero === 'bed' ? S.stockT : 0;
+  const zTop  = v(surface);
+  const safeZ = v(surface + S.safeZ);
+  const hopZ  = v(surface + Math.max(0.1, S.retractZ));
+  const zCut  = d => v(surface - d);
+
+  const nPass = passCount();
+  const step  = S.passDepth > 0 ? S.passDepth : Infinity;
+  const laser = S.laserOn && D.laser;
+
+  const L = [];
+  let lineNo = 10;
+  const put = s => { L.push(S.lineNumbers ? ('N' + (lineNo += 10) + ' ' + s) : s); };
+  const cmt = s => { L.push(D.cmt === ';' ? '; ' + s : '(' + s.replace(/[()]/g, '') + ')'); };
+
+  if (S.gHeader){
+    settingsComment().forEach(cmt);
+    cmt('dialect ' + S.dialect + (laser ? ', LASER power mode' : ''));
+    cmt(S.zZero === 'bed'
+      ? 'Z zero = machine bed; material surface at Z' + zTop
+      : 'Z zero = top of material, negative Z cuts into it');
+    if (tile) cmt('tile ' + (tile.j + 1) + '-' + (tile.i + 1) + ' of the tiled job');
+    L.push('');
+  }
+
+  put('G90 G94' + (S.dialect === 'marlin' ? '' : ' G17'));
+  put(inch ? 'G20' : 'G21');
+  put('G0 Z' + safeZ);
+
+  const powerOf = (w, tool) => {
+    const eff = ENG.effMaxWidth(tool);
+    const lo = Math.min(tool.wMin, eff), hi = Math.max(lo + 1e-6, Math.min(tool.wMax, eff));
+    const f = clamp((w - lo) / (hi - lo), 0, 1);
+    return Math.round(lerp(S.laserMin, S.laserMax, f));
+  };
+
+  if (S.airPass){
+    cmt('air pass — outline only, nothing is cut');
+    put('G0 Z' + safeZ);
+    put('G0 X' + X(0) + ' Y' + Y(tile ? tile.y + tile.h : H));
+    put('G0 X' + X(tile ? tile.x + tile.w : S.outW) + ' Y' + Y(tile ? tile.y + tile.h : H));
+    put('G0 X' + X(tile ? tile.x + tile.w : S.outW) + ' Y' + Y(tile ? tile.y : 0));
+    put('G0 X' + X(tile ? tile.x : 0) + ' Y' + Y(tile ? tile.y : 0));
+    put('G0 X' + X(tile ? tile.x : 0) + ' Y' + Y(tile ? tile.y + tile.h : H));
+    if (D.pause){ cmt('press cycle start when the placement looks right'); put(D.pause); }
+  }
+
+  let cx = 0, cy = 0, moves = 0, curTool = -1;
+
+  for (const tool of tools){
+    const mine = segs.filter(s => (s.tool || 1) === tool.id);
+    if (!mine.length) continue;
+    const feed = nf(tool.feed * k, 1), plunge = nf(tool.plunge * k, 1);
+
+    if (curTool !== tool.id){
+      cmt('tool ' + tool.id + ' — ' + (tool.name || '') + ' ' + tool.bitAngle + ' deg');
+      if (D.m6 && S.useM6){ put('T' + Math.round(tool.toolNum) + ' M6'); }
+      else if (S.useM6){ put('M6 T' + Math.round(tool.toolNum)); }
+      if (laser) put('M4 S0');
+      else if (S.spindleOn){ put('S' + Math.round(tool.rpm) + ' M3'); put(D.dwellMs ? 'G4 P2000' : 'G4 P2'); }
+      curTool = tool.id;
+    }
+
+    for (let pass = 0; pass < nPass; pass++){
+      const lim = (pass + 1) * step, prev = pass * step;
+      if (nPass > 1) cmt('pass ' + (pass + 1) + ' of ' + nPass + ', down to ' +
+        nf(Math.min(lim, R.stats.dMax) * k, P) + (inch ? ' in' : ' mm'));
+
+      for (const s of mine){
+        const q = s.pts;
+        if (!q.length) continue;
+        let mx = 0; for (const pt of q) if (pt.d > mx) mx = pt.d;
+        if (!laser && mx <= prev + 1e-9) continue;
+
+        const a = q[0], b = q[q.length - 1];
+        const rev = Math.hypot(b.x - cx, b.y - cy) < Math.hypot(a.x - cx, a.y - cy);
+        const seq = rev ? q.slice().reverse() : q;
+        const first = seq[0];
+
+        if (laser){
+          put('G0 X' + X(first.x) + ' Y' + Y(first.y) + ' S0');
+          let f = true;
+          for (let i = 1; i < seq.length; i++){
+            const pt = seq[i];
+            put('G1 X' + X(pt.x) + ' Y' + Y(pt.y) + ' S' + powerOf(pt.w, tool) + (f ? ' F' + feed : ''));
+            f = false;
+          }
+          if (seq.length === 1){
+            put('G1 X' + X(first.x) + ' Y' + Y(first.y) + ' S' + powerOf(first.w, tool) + ' F' + feed);
+          }
+          put('S0');
+        } else {
+          const zOf = pt => zCut(Math.min(pt.d, lim));
+          put('G0 Z' + hopZ);
+          put('G0 X' + X(first.x) + ' Y' + Y(first.y));
+          put('G1 Z' + zOf(first) + ' F' + plunge);
+          let f = true;
+
+          const arcs = (S.arcFit && D.arcs && seq.length > 4)
+            ? ENG.fitArcs(seq, S.arcTol, Math.max(0.01, S.arcTol), 5) : null;
+
+          if (arcs){
+            for (const a2 of arcs){
+              const to = seq[a2.to];
+              if (a2.arc){
+                const from = seq[a2.from];
+                const iOff = v(a2.arc.cx - from.x), jOff = v((H - a2.arc.cy) - (H - from.y));
+                put((a2.arc.ccw ? 'G3' : 'G2') + ' X' + X(to.x) + ' Y' + Y(to.y) + ' Z' + zOf(to) +
+                    ' I' + iOff + ' J' + jOff + (f ? ' F' + feed : ''));
+              } else {
+                put('G1 X' + X(to.x) + ' Y' + Y(to.y) + ' Z' + zOf(to) + (f ? ' F' + feed : ''));
+              }
+              f = false;
+            }
+          } else {
+            for (let i = 1; i < seq.length; i++){
+              const pt = seq[i];
+              put('G1 X' + X(pt.x) + ' Y' + Y(pt.y) + ' Z' + zOf(pt) + (f ? ' F' + feed : ''));
+              f = false;
+            }
+            if (seq.length === 1) put('G1 X' + X(first.x) + ' Y' + Y(first.y) + ' F' + feed);
+          }
+        }
+        const last = seq[seq.length - 1];
+        cx = last.x; cy = last.y;
+        moves += seq.length;
+      }
+      if (laser) break;                       // power modulation needs only one pass
+    }
+  }
+
+  if (tile && S.tileMarks) gcodeMarks(put, cmt, X, Y, zCut, safeZ, tile, tools[0]);
+
+  put('G0 Z' + safeZ);
+  if (laser) put('M5 S0');
+  else if (S.spindleOn) put('M5');
+  put('G0 X' + X(tile ? tile.x : 0) + ' Y' + Y(tile ? tile.y + tile.h : S.outH));
+  put(D.end);
+  if (D.pct) L.push('%');
+  return { text: L.join('\n') + '\n', moves };
+}
+
+/* shallow registration crosses in the tile overlap, for aligning tiles by eye */
+function gcodeMarks(put, cmt, X, Y, zCut, safeZ, tile, tool){
+  if (!tool) return;
+  cmt('registration marks (shallow crosses in the overlap)');
+  const d = Math.min(0.4, tool.maxDepth * 0.3), arm = 2, in_ = 3;
+  const pts = [[tile.x + in_, tile.y + in_], [tile.x + tile.w - in_, tile.y + in_],
+               [tile.x + in_, tile.y + tile.h - in_], [tile.x + tile.w - in_, tile.y + tile.h - in_]];
+  for (const p of pts){
+    put('G0 Z' + safeZ);
+    put('G0 X' + X(p[0] - arm) + ' Y' + Y(p[1]));
+    put('G1 Z' + zCut(d) + ' F' + Math.round(tool.plunge));
+    put('G1 X' + X(p[0] + arm) + ' Y' + Y(p[1]) + ' F' + Math.round(tool.feed));
+    put('G0 Z' + safeZ);
+    put('G0 X' + X(p[0]) + ' Y' + Y(p[1] - arm));
+    put('G1 Z' + zCut(d) + ' F' + Math.round(tool.plunge));
+    put('G1 X' + X(p[0]) + ' Y' + Y(p[1] + arm) + ' F' + Math.round(tool.feed));
+  }
+  put('G0 Z' + safeZ);
+}
+
+function exportGcode(){
+  if (!readyCheck()) return;
+  const tools = activeTools();
+  const tiles = tileGrid();
+  const files = [];
+
+  for (const tile of tiles){
+    const tileSegs = S.tileOn
+      ? R.paths.reduce((acc, s) => acc.concat(clipSeg(s, tile)), [])
+      : R.paths;
+    if (!tileSegs.length) continue;
+    const groups = (S.perTool && tools.length > 1) ? tools.map(t => [t]) : [tools];
+    for (const grp of groups){
+      const sub = tileSegs.filter(s => grp.some(t => t.id === (s.tool || 1)));
+      if (!sub.length) continue;
+      const r = gcodeBody(sub, grp, S.tileOn ? tile : null);
+      let name = baseName();
+      if (S.tileOn) name += '-t' + (tile.j + 1) + (tile.i + 1);
+      if (grp.length === 1 && tools.length > 1) name += '-tool' + grp[0].id;
+      files.push({ name: name + '.nc', text: r.text, moves: r.moves });
+    }
+  }
+
+  if (!files.length){ toast('Nothing fell inside the tiles.', 'warn'); return; }
+
+  files.forEach((f, i) => setTimeout(() => saveText(f.name, f.text), i * 350));
+  const total = files.reduce((a, f) => a + f.moves, 0);
+  toast('Writing <b>' + files.length + '</b> file' + (files.length > 1 ? 's' : '') + ' — ' +
+        total.toLocaleString() + ' cutting moves, ' + passCount() + ' pass' + (passCount() > 1 ? 'es' : '') +
+        '. Dry-run above the material first.', 'warn');
+}
+
+/* ---------------------------------------------------------------- images --- */
+
+function exportPNG(which){
+  if (which === 'corrected'){
+    const c = grayCanvas();
+    if (!c){ toast('Load a picture first.', 'warn'); return; }
+    c.toBlob(b => { saveBlob(b, baseName() + '-corrected.png'); toast('Saved corrected PNG', 'ok'); });
+    return;
+  }
+  if (!readyCheck()) return;
+  if (which === 'carve'){
+    const c = buildCarve();
+    if (!c){ toast('Nothing to simulate yet.', 'warn'); return; }
+    c.toBlob(b => { saveBlob(b, baseName() + '-carve.png'); toast('Saved carve simulation', 'ok'); });
+    return;
+  }
+  const px = clamp(Math.round(S.outW * 8), 400, 4000), sc = px / S.outW;
+  const c = newCanvas(px, S.outH * sc), g = c.getContext('2d');
+  g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+  g.scale(sc, sc);
+  g.fillStyle = '#000';
+  const path = new Path2D();
+  for (const s of R.paths){
+    const o = s.out; if (!o || o.length < 3) continue;
+    path.moveTo(o[0].x, o[0].y);
+    for (let i = 1; i < o.length; i++) path.lineTo(o[i].x, o[i].y);
+    path.closePath();
+  }
+  g.fill(path);
+  c.toBlob(b => { saveBlob(b, baseName() + '-halftone.png'); toast('Saved preview PNG', 'ok'); });
+}
+
+/* ---------------------------------------------------------------- presets --- */
+
+function savePreset(){
+  saveText(baseName() + '.lht.json', JSON.stringify({ app: 'Linear Half Toner', version: 2, settings: S }, null, 2), 'application/json');
+  toast('Preset saved', 'ok');
+}
+function loadPreset(file){
+  const rd = new FileReader();
+  rd.onload = () => {
+    try {
+      const d = JSON.parse(rd.result);
+      const src = d && d.settings ? d.settings : d;
+      if (!src || typeof src !== 'object') throw new Error('not a preset file');
+      let n = 0;
+      for (const k in DEF){
+        if (!(k in src)) continue;
+        if (k === 'curve'){ if (Array.isArray(src.curve)) { S.curve = src.curve.map(p => p.slice()); n++; } continue; }
+        if (typeof src[k] === typeof DEF[k]){ S[k] = src[k]; n++; }
+      }
+      buildPanels();
+      pushHistory('load preset');
+      schedule(LEVEL.geo, 0);
+      toast('Preset loaded (' + n + ' of ' + Object.keys(DEF).length + ' settings)', 'ok');
+    } catch (e){
+      toast('That does not look like a Linear Half Toner preset.', 'bad');
+    }
+  };
+  rd.readAsText(file);
+}
+
+/* ================================================================ events === */
+
+function stageXY(e){
+  const r = $('#stage').getBoundingClientRect();
+  return { mx: e.clientX - r.left, my: e.clientY - r.top };
+}
+function toDoc(mx, my){
+  return { x: (mx - R.view.ox) / R.view.z, y: (my - R.view.oy) / R.view.z };
+}
+
+function wire(){
+
+  /* --- sidebar ---------------------------------------------------------- */
+  $('#panes').addEventListener('input', onFieldInput);
+  $('#panes').addEventListener('input', e => {
+    const k = e.target.dataset && e.target.dataset.k;
+    if (k === 'maskOn'){
+      buildViewSeg();
+      if (S.maskOn) setMode('mask');
+      else if (R.mode === 'mask') setMode('corrected');
+    }
+  });
+  $('#panes').addEventListener('click', e => {
+    const h = e.target.closest('.grp > h3');
+    if (h){ h.parentElement.classList.toggle('col'); return; }
+    const b = e.target.closest('[data-act]');
+    if (b && ACTS[b.dataset.act]) ACTS[b.dataset.act]();
+  });
+
+  /* --- tone curve editor ------------------------------------------------ */
+  $('#panes').addEventListener('mousedown', e => {
+    const cv = e.target.closest('#curveCv');
+    if (!cv) return;
+    e.preventDefault();
+    const r = cv.getBoundingClientRect();
+    const sx = (e.clientX - r.left) * cv.width / r.width;
+    const sy = (e.clientY - r.top)  * cv.height / r.height;
+    let hit = -1;
+    for (let i = 0; i < S.curve.length; i++){
+      const s = curveToScreen(cv, S.curve[i][0], S.curve[i][1]);
+      if (Math.hypot(sx - s[0], sy - s[1]) < 9){ hit = i; break; }
+    }
+    if (e.button === 2 || e.detail === 2){
+      if (hit >= 0 && S.curve.length > 2){
+        S.curve.splice(hit, 1);
+        drawCurveEditor(); pushHistory('curve point'); schedule(LEVEL.gray, 0);
+      }
+      return;
+    }
+    if (hit < 0){
+      const p = curveFromScreen(cv, sx, sy);
+      S.curve.push(p);
+      S.curve.sort((a, b) => a[0] - b[0]);
+      hit = S.curve.findIndex(q => q[0] === p[0] && q[1] === p[1]);
+    }
+    R.curveDrag = hit;
+    drawCurveEditor();
+  });
+  $('#panes').addEventListener('contextmenu', e => { if (e.target.closest('#curveCv')) e.preventDefault(); });
+
+  window.addEventListener('mousemove', e => {
+    if (R.curveDrag < 0) return;
+    const cv = $('#curveCv'); if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const sx = (e.clientX - r.left) * cv.width / r.width;
+    const sy = (e.clientY - r.top)  * cv.height / r.height;
+    const p = curveFromScreen(cv, sx, sy);
+    const i = R.curveDrag;
+    const lo = i > 0 ? S.curve[i-1][0] + 0.005 : 0;
+    const hi = i < S.curve.length - 1 ? S.curve[i+1][0] - 0.005 : 1;
+    S.curve[i] = [clamp(p[0], lo, hi), p[1]];
+    drawCurveEditor();
+    clearTimeout(R.curveTimer);
+    R.curveTimer = setTimeout(() => schedule(LEVEL.gray, 0), 90);
+  });
+  window.addEventListener('mouseup', () => {
+    if (R.curveDrag >= 0){ R.curveDrag = -1; drawCurveEditor(); pushHistory('tone curve'); schedule(LEVEL.gray, 0); }
+  });
+
+  /* --- steps and views -------------------------------------------------- */
+  $('#steps').addEventListener('click', e => {
+    const b = e.target.closest('[data-step]');
+    if (b) gotoStep(b.dataset.step);
+  });
+  $('#viewSeg').addEventListener('input', e => { if (e.target.name === 'viewmode') setMode(e.target.value); });
+  $('#cShowGrid').addEventListener('input',  e => { R.showGrid  = e.target.checked; drawStage(); });
+  $('#cShowImg').addEventListener('input',   e => { R.showImg   = e.target.checked; drawStage(); });
+  $('#cShowTiles').addEventListener('input', e => { R.showTiles = e.target.checked; drawStage(); });
+  $('#bFit').addEventListener('click', fitView);
+  $('#bZ100').addEventListener('click', () => {
+    const st = $('#stage'), c = { x: st.clientWidth / 2, y: st.clientHeight / 2 };
+    const d = toDoc(c.x, c.y);
+    R.view.z = isImgSpace(R.mode) ? 1 : 3.7795;
+    R.view.ox = c.x - d.x * R.view.z; R.view.oy = c.y - d.y * R.view.z;
+    drawStage();
+  });
+  $('#bRender').addEventListener('click', () => schedule(LEVEL.geo, 0));
+
+  /* --- top bar ---------------------------------------------------------- */
+  $('#bOpen').addEventListener('click', () => $('#fileIn').click());
+  $('#bOpen2').addEventListener('click', () => $('#fileIn').click());
+  $('#bSample').addEventListener('click', loadSample);
+  $('#bSample2').addEventListener('click', loadSample);
+  $('#bExport').addEventListener('click', () => gotoStep('export'));
+  $('#bHelp').addEventListener('click', () => $('#helpMask').classList.add('on'));
+  $('#bUndo').addEventListener('click', undo);
+  $('#bRedo').addEventListener('click', redo);
+  $('#bAB').addEventListener('click', abClick);
+  $$('[data-close]').forEach(b => b.addEventListener('click', () => $('#' + b.dataset.close).classList.remove('on')));
+  $$('.mask').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('on'); }));
+
+  $('#fileIn').addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); e.target.value = ''; });
+  $('#presetIn').addEventListener('change', e => { if (e.target.files[0]) loadPreset(e.target.files[0]); e.target.value = ''; });
+  $('#bPreset').addEventListener('click', savePreset);
+  $('#bPresetLoad').addEventListener('click', () => $('#presetIn').click());
+  $('#bResetAll').addEventListener('click', () => {
+    S = Object.assign({}, DEF); S.curve = DEF.curve.map(p => p.slice());
+    R.maskBuf = null;
+    buildPanels(); buildViewSeg(); pushHistory('reset all');
+    if (R.src) schedule(LEVEL.geo, 0); else { updateReadouts(); drawStage(); }
+    toast('All settings reset to defaults', 'ok');
+  });
+
+  /* --- tool library ----------------------------------------------------- */
+  $('#libTable').addEventListener('click', e => {
+    const use = e.target.closest('[data-lib]');
+    if (use) return libApply(+use.dataset.lib);
+    const del = e.target.closest('[data-libdel]');
+    if (del) return libDelete(+del.dataset.libdel);
+  });
+  $('#bLibAdd').addEventListener('click', libAddCurrent);
+  $('#bLibReset').addEventListener('click', () => { libSave(LIB_DEFAULT.map(t => Object.assign({}, t))); renderLibrary(); });
+
+  /* --- stage: pan, zoom, crop, paint ------------------------------------ */
+  const stage = $('#stage');
+
+  stage.addEventListener('mousedown', e => {
+    const { mx, my } = stageXY(e);
+    const painting = S.maskOn && R.mode === 'mask' && R.gray && !R.spaceDown && e.button === 0;
+    const cropping = S.cropOn && R.mode === 'original' && R.geo;
+    const handle = cropping && !R.spaceDown && e.button === 0 ? cropHitTest(mx, my) : null;
+
+    if (painting){
+      pushHistory('paint mask', true);
+      R.painting = true; R.eraser = e.altKey;
+      const d = toDoc(mx, my);
+      paintMask(d.x, d.y, R.eraser);
+      drawStage();
+    } else if (handle){
+      R.dragCrop = { h: handle, mx, my, o: { x0: S.cx0, y0: S.cy0, x1: S.cx1, y1: S.cy1 } };
+    } else {
+      R.panning = true; R.panFrom = { mx, my, ox: R.view.ox, oy: R.view.oy };
+      stage.classList.add('pan');
+    }
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', e => {
+    const { mx, my } = stageXY(e);
+
+    if (R.panning){
+      R.view.ox = R.panFrom.ox + (mx - R.panFrom.mx);
+      R.view.oy = R.panFrom.oy + (my - R.panFrom.my);
+      drawStage();
+      return;
+    }
+    if (R.painting){
+      const d = toDoc(mx, my);
+      R.brushAt = d;
+      paintMask(d.x, d.y, R.eraser);
+      drawStage();
+      return;
+    }
+    if (R.dragCrop){
+      const d = docSize(), z = R.view.z;
+      const dx = (mx - R.dragCrop.mx) / (d.w * z) * 100;
+      const dy = (my - R.dragCrop.my) / (d.h * z) * 100;
+      const o = R.dragCrop.o, h = R.dragCrop.h;
+      let x0 = o.x0, y0 = o.y0, x1 = o.x1, y1 = o.y1;
+      if (h === 'move'){
+        const w = x1 - x0, hh = y1 - y0;
+        x0 = clamp(o.x0 + dx, 0, 100 - w); x1 = x0 + w;
+        y0 = clamp(o.y0 + dy, 0, 100 - hh); y1 = y0 + hh;
+      } else {
+        if (h.includes('w')) x0 = clamp(o.x0 + dx, 0, o.x1 - 2);
+        if (h.includes('e')) x1 = clamp(o.x1 + dx, o.x0 + 2, 100);
+        if (h.includes('n')) y0 = clamp(o.y0 + dy, 0, o.y1 - 2);
+        if (h.includes('s')) y1 = clamp(o.y1 + dy, o.y0 + 2, 100);
+      }
+      S.cx0 = x0; S.cy0 = y0; S.cx1 = x1; S.cy1 = y1;
+      ['cx0','cy0','cx1','cy1'].forEach(refreshCtl);
+      drawStage();
+      clearTimeout(R.cropTimer);
+      R.cropTimer = setTimeout(() => schedule(LEVEL.gray, 0), 140);
+      return;
+    }
+
+    if (S.maskOn && R.mode === 'mask'){
+      R.brushAt = toDoc(mx, my);
+      stage.classList.add('brush');
+      drawStage();
+    } else {
+      stage.classList.remove('brush');
+      if (R.brushAt){ R.brushAt = null; drawStage(); }
+      if (S.cropOn && R.mode === 'original' && R.geo && !R.spaceDown){
+        const h = cropHitTest(mx, my);
+        stage.style.cursor = h ? CURSORS[h] : '';
+      } else stage.style.cursor = '';
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (R.panning){ R.panning = false; stage.classList.remove('pan'); }
+    if (R.dragCrop){ R.dragCrop = null; schedule(LEVEL.gray, 0); }
+    if (R.painting){ R.painting = false; R.maskCv = null; schedule(LEVEL.paths, 0); }
+  });
+
+  stage.addEventListener('wheel', e => {
+    e.preventDefault();
+    const { mx, my } = stageXY(e);
+    const d = toDoc(mx, my);
+    R.view.z = clamp(R.view.z * (e.deltaY < 0 ? 1.13 : 1 / 1.13), 0.02, 400);
+    R.view.ox = mx - d.x * R.view.z; R.view.oy = my - d.y * R.view.z;
+    drawStage();
+  }, { passive: false });
+
+  /* --- files ------------------------------------------------------------ */
+  let dragN = 0;
+  window.addEventListener('dragenter', e => { e.preventDefault(); dragN++; $('#drop').classList.add('on'); });
+  window.addEventListener('dragover',  e => e.preventDefault());
+  window.addEventListener('dragleave', () => { dragN--; if (dragN <= 0){ dragN = 0; $('#drop').classList.remove('on'); } });
+  window.addEventListener('drop', e => {
+    e.preventDefault(); dragN = 0; $('#drop').classList.remove('on');
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (!f) return;
+    if (/\.(json|lht)$/i.test(f.name)) loadPreset(f); else loadFile(f);
+  });
+  window.addEventListener('paste', e => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    for (const it of items){
+      if (it.kind === 'file'){
+        const f = it.getAsFile();
+        if (f){ loadFile(f); e.preventDefault(); return; }
+      }
+    }
+  });
+
+  /* --- keyboard --------------------------------------------------------- */
+  window.addEventListener('keydown', e => {
+    if (e.key === ' ') R.spaceDown = true;
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z'){
+      e.preventDefault();
+      if (e.shiftKey) redo(); else undo();
+      return;
+    }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    const k = e.key.toLowerCase();
+    if (k >= '1' && k <= '5'){ gotoStep(STEPS[+k - 1][0]); e.preventDefault(); }
+    else if (k === 'o'){ $('#fileIn').click(); e.preventDefault(); }
+    else if (k === 'e'){ gotoStep('export'); e.preventDefault(); }
+    else if (k === 'f'){ fitView(); e.preventDefault(); }
+    else if (k === 'b'){ abPeek(true); e.preventDefault(); }
+    else if (k === 'v'){
+      const V = viewList(), i = V.findIndex(v => v[0] === R.mode);
+      setMode(V[(i + 1) % V.length][0]); e.preventDefault();
+    }
+    else if (k === '[' || k === ']'){
+      S.brushSize = clamp(S.brushSize * (k === '[' ? 0.8 : 1.25), 1, 80);
+      refreshCtl('brushSize'); drawStage(); e.preventDefault();
+    }
+    else if (k === '?' || (k === '/' && e.shiftKey)){ $('#helpMask').classList.toggle('on'); e.preventDefault(); }
+    else if (k === 'escape'){ $$('.mask').forEach(m => m.classList.remove('on')); }
+  });
+  window.addEventListener('keyup', e => {
+    if (e.key === ' ') R.spaceDown = false;
+    if (e.key.toLowerCase() === 'b') abPeek(false);
+  });
+
+  let rz;
+  window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(drawStage, 80); });
+}
+
+/* ================================================================== init === */
+
+function init(){
+  R.worker = makeWorker();
+  buildChrome();
+  buildPanels();
+  wire();
+  gotoStep('source');
+  pushHistory('start');
+  updateReadouts();
+  fitView();
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+
+</script>
+</body>
+</html>
