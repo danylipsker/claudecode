@@ -215,6 +215,7 @@ Corrected PNG, halftone preview PNG, and carve simulation PNG.
 | `F`                             | Fit to window                      |
 | `V`                             | Cycle view mode                    |
 | `B`                             | Hold to compare against snapshot B |
+| `Ctrl`+`S`                      | Save project                       |
 | `Ctrl`+`Z` / `Ctrl`+`Shift`+`Z` | Undo / redo                        |
 | `[` `]`                         | Brush size                         |
 | `Alt`+drag                      | Erase mask                         |
@@ -222,8 +223,16 @@ Corrected PNG, halftone preview PNG, and carve simulation PNG.
 | Wheel                           | Zoom at cursor                     |
 | `Ctrl`+`V`                      | Paste an image                     |
 
-Presets save all 159 settings to a `.lht.json` file; drop one back on the window to reload
-it. Undo history holds 60 steps and shares mask snapshots between entries so memory stays
+**Save result** in the top bar writes a `.lhtproj.json` **project** — the picture, the
+painted mask and all 159 settings together — so you can stop mid-job and pick up exactly
+where you left off. Vector sources are kept as SVG rather than rasterised, so a restored
+project can still be re-rasterised at any resolution. Drop the file back on the window to
+restore it.
+
+**Save preset** in the sidebar writes settings only (`.lht.json`), for reusing a look
+across different pictures. `Load` accepts either kind.
+
+Undo history holds 60 steps and shares mask snapshots between entries so memory stays
 bounded.
 
 ---

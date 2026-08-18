@@ -313,6 +313,10 @@ canvas.pad{width:100%;border:1px solid var(--line);border-radius:6px;background:
     </button>
     <button class="btn" id="bSample" title="Load a built-in test image">Test image</button>
     <div class="sep"></div>
+    <button class="btn" id="bSaveResult" disabled title="Save the whole project — picture, every setting and the mask — so you can pick up exactly where you left off (Ctrl+S)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+      Save result
+    </button>
     <button class="btn pri" id="bExport" disabled title="Go to export step (E)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0 5-5m-5 5-5-5"/><path d="M4 18v2h16v-2"/></svg>
       Export
@@ -390,7 +394,7 @@ canvas.pad{width:100%;border:1px solid var(--line);border-radius:6px;background:
 </div>
 
 <input type="file" id="fileIn" accept="image/*,.svg,image/svg+xml">
-<input type="file" id="presetIn" accept=".json,.lht,application/json">
+<input type="file" id="presetIn" accept=".json,.lht,.lhtproj,application/json">
 
 <div class="mask" id="libMask">
   <div class="modal">
@@ -426,7 +430,7 @@ canvas.pad{width:100%;border:1px solid var(--line);border-radius:6px;background:
         <li><b>G-code</b> &mdash; GRBL, Mach3, LinuxCNC or Marlin, with optional arc fitting, laser power mode and bed tiling. <b>Dry-run above the material first.</b></li>
       </ul>
       <h4>Keyboard</h4>
-      <p><kbd>1</kbd>&ndash;<kbd>5</kbd> steps &middot; <kbd>O</kbd> open &middot; <kbd>E</kbd> export &middot; <kbd>F</kbd> fit &middot; <kbd>V</kbd> cycle view &middot; <kbd>B</kbd> hold to A/B compare &middot; <kbd>Ctrl</kbd>+<kbd>Z</kbd> undo &middot; <kbd>[</kbd> <kbd>]</kbd> brush size &middot; <kbd>Space</kbd>+drag to pan &middot; wheel to zoom</p>
+      <p><kbd>1</kbd>&ndash;<kbd>5</kbd> steps &middot; <kbd>O</kbd> open &middot; <kbd>Ctrl</kbd>+<kbd>S</kbd> save project &middot; <kbd>E</kbd> export &middot; <kbd>F</kbd> fit &middot; <kbd>V</kbd> cycle view &middot; <kbd>B</kbd> hold to A/B compare &middot; <kbd>Ctrl</kbd>+<kbd>Z</kbd> undo &middot; <kbd>[</kbd> <kbd>]</kbd> brush size &middot; <kbd>Space</kbd>+drag to pan &middot; wheel to zoom</p>
     </div>
     <footer><button class="btn pri" data-close="helpMask">Got it</button></footer>
   </div>
@@ -952,22 +956,27 @@ function E_outline(pts, capStyle){
     right[i] = { x: pts[i].x - nx[i] * h, y: pts[i].y - ny[i] * h };
   }
   const out = left.slice();
-  const cap = (idx, from, to) => {
+  /* Round caps are exact half turns: `from` and `to` sit diametrically opposite
+     each other, so the sweep magnitude is always PI and only its SIGN decides
+     whether the arc bulges past the end of the line or folds back into it.
+     With the normal taken as n = (-ty, tx), sweeping by -PI carries the end cap
+     forward along +t and the start cap backward along -t, which is what a round
+     end means. Deriving the sign from atan2 cannot work here: the difference is
+     +/-PI exactly, so normalising it collapses both caps to the same direction
+     and inverts them. */
+  const CAP_STEPS = 10;
+  const cap = (idx, from) => {
     if (capStyle !== 'round') return;
     const c = pts[idx], r = Math.max(c.w, 0.004) / 2;
     const a0 = Math.atan2(from.y - c.y, from.x - c.x);
-    const a1 = Math.atan2(to.y - c.y, to.x - c.x);
-    let da = a1 - a0;
-    while (da <= -Math.PI) da += E_TAU;
-    while (da >   Math.PI) da -= E_TAU;
-    for (let i = 1; i < 6; i++){
-      const a = a0 + da * (i / 6);
+    for (let i = 1; i < CAP_STEPS; i++){
+      const a = a0 - Math.PI * (i / CAP_STEPS);
       out.push({ x: c.x + Math.cos(a) * r, y: c.y + Math.sin(a) * r });
     }
   };
-  cap(n - 1, left[n - 1], right[n - 1]);
+  cap(n - 1, left[n - 1]);
   for (let i = n - 1; i >= 0; i--) out.push(right[i]);
-  cap(0, right[0], left[0]);
+  cap(0, right[0]);
   return out;
 }
 
@@ -2050,7 +2059,8 @@ const ACTS = {
   open:   () => $('#fileIn').click(),
   sample: () => loadSample(),
   clear:  () => { R.src = R.geo = R.work = R.gray = null; R.paths = []; R.stats = null;
-                  R.fileName = ''; $('#empty').classList.remove('hide'); $('#bExport').disabled = true;
+                  R.fileName = ''; $('#empty').classList.remove('hide');
+                  $('#bExport').disabled = true; $('#bSaveResult').disabled = true;
                   updateReadouts(); drawStage(); },
   swapWH: () => { const t = S.outW; S.outW = S.outH; S.outH = t; S.lockAspect = false;
                   ['outW','outH','lockAspect'].forEach(refreshCtl); schedule(LEVEL.paths, 0); },
@@ -2202,6 +2212,7 @@ function rasterSvg(){
 function afterLoad(){
   $('#empty').classList.add('hide');
   $('#bExport').disabled = false;
+  $('#bSaveResult').disabled = false;
   R.dirtyGeo = R.dirtyGray = R.dirtyPaths = true;
   R.maskBuf = null;
   recompute(true);
@@ -3851,19 +3862,107 @@ function savePreset(){
   saveText(baseName() + '.lht.json', JSON.stringify({ app: 'Linear Half Toner', version: 2, settings: S }, null, 2), 'application/json');
   toast('Preset saved', 'ok');
 }
+
+/* ---- whole-project save -------------------------------------------------- */
+/* A preset carries settings only, so reloading one still needs the picture
+   opened by hand. A project bundles the source artwork and the painted mask
+   alongside the settings, which is what "save my work so far" actually means. */
+
+function b64FromBytes(bytes){
+  let s = '';
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk)
+    s += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+  return btoa(s);
+}
+function bytesFromB64(b64){
+  const bin = atob(b64), out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+function saveProject(){
+  if (!R.src){ toast('Load a picture before saving a project.', 'warn'); return; }
+  setBusy(true, 'Packing project…');
+  try {
+    const proj = {
+      app: 'Linear Half Toner', kind: 'project', version: 2,
+      saved: new Date().toISOString(),
+      fileName: R.fileName, fileKind: R.fileKind,
+      srcW: R.srcW, srcH: R.srcH,
+      settings: S,
+      activeTool: R.activeTool,
+      view: R.mode
+    };
+    /* keep vector sources as vectors — smaller and re-rasterisable at any size */
+    if (R.svgText) proj.svg = R.svgText;
+    else proj.png = R.src.toDataURL('image/png');
+
+    if (R.maskBuf && R.maskBuf.some(v => v !== 0)){
+      proj.mask = { w: R.maskW || R.gw, h: R.maskH || R.gh, data: b64FromBytes(R.maskBuf) };
+    }
+    const txt = JSON.stringify(proj);
+    saveText(baseName() + '.lhtproj.json', txt, 'application/json');
+    toast('Project saved — <b>' + (txt.length / 1048576).toFixed(1) + ' MB</b>, reopen it with <b>Load</b>.', 'ok');
+  } catch (err){
+    toast('Could not pack the project: ' + err.message, 'bad');
+  }
+  setBusy(false);
+}
+
+function applyProjectSettings(src){
+  let n = 0;
+  for (const k in DEF){
+    if (!(k in src)) continue;
+    if (k === 'curve'){ if (Array.isArray(src.curve)){ S.curve = src.curve.map(p => p.slice()); n++; } continue; }
+    if (typeof src[k] === typeof DEF[k]){ S[k] = src[k]; n++; }
+  }
+  return n;
+}
+
+function loadProject(d){
+  const n = applyProjectSettings(d.settings || {});
+  R.activeTool = clamp(+d.activeTool || 1, 1, 3);
+  R.fileName = d.fileName || 'project';
+  R.fileKind = d.fileKind || 'restored';
+
+  const pendingMask = d.mask || null;
+  const finish = () => {
+    if (pendingMask){
+      const bytes = bytesFromB64(pendingMask.data);
+      R.maskBuf = bytes; R.maskW = pendingMask.w; R.maskH = pendingMask.h;
+      resampleMask(R.work ? R.work.width : pendingMask.w, R.work ? R.work.height : pendingMask.h);
+      R.maskStamp = (R.maskStamp || 0) + 1;
+    }
+    buildPanels(); buildViewSeg();
+    if (d.view) setMode(d.view);
+    pushHistory('load project');
+    schedule(LEVEL.gray, 0);
+    toast('Project restored — ' + n + ' settings, picture and mask.', 'ok');
+  };
+
+  if (d.svg){
+    R.svgText = d.svg;
+    rasterSvg().then(finish).catch(() => { setBusy(false); toast('The vector artwork in that project could not be re-rendered.', 'bad'); });
+  } else if (d.png){
+    const img = new Image();
+    img.onload = () => { R.svgText = null; adoptRaster(img); finish(); };
+    img.onerror = () => { setBusy(false); toast('The picture in that project could not be decoded.', 'bad'); };
+    img.src = d.png;
+  } else {
+    toast('That project has no artwork in it — settings only were restored.', 'warn');
+    finish();
+  }
+}
 function loadPreset(file){
   const rd = new FileReader();
   rd.onload = () => {
     try {
       const d = JSON.parse(rd.result);
+      if (d && (d.kind === 'project' || d.png || d.svg)){ loadProject(d); return; }
       const src = d && d.settings ? d.settings : d;
       if (!src || typeof src !== 'object') throw new Error('not a preset file');
-      let n = 0;
-      for (const k in DEF){
-        if (!(k in src)) continue;
-        if (k === 'curve'){ if (Array.isArray(src.curve)) { S.curve = src.curve.map(p => p.slice()); n++; } continue; }
-        if (typeof src[k] === typeof DEF[k]){ S[k] = src[k]; n++; }
-      }
+      const n = applyProjectSettings(src);
       buildPanels();
       pushHistory('load preset');
       schedule(LEVEL.geo, 0);
@@ -3979,6 +4078,7 @@ function wire(){
   $('#bSample').addEventListener('click', loadSample);
   $('#bSample2').addEventListener('click', loadSample);
   $('#bExport').addEventListener('click', () => gotoStep('export'));
+  $('#bSaveResult').addEventListener('click', saveProject);
   $('#bHelp').addEventListener('click', () => $('#helpMask').classList.add('on'));
   $('#bUndo').addEventListener('click', undo);
   $('#bRedo').addEventListener('click', redo);
@@ -4132,6 +4232,11 @@ function wire(){
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z'){
       e.preventDefault();
       if (e.shiftKey) redo(); else undo();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's'){
+      e.preventDefault();
+      saveProject();
       return;
     }
     if (e.ctrlKey || e.metaKey || e.altKey) return;
