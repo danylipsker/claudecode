@@ -31,18 +31,17 @@
   <ln x="640 272 640 240" f="0" te="OUT 1"/>
   <c x="640 272 704 272" f="0" c="5e-08" iv="0" sr="0" vd="0"/>
   <x x="666 250 680 254" f="0" si="13" te="C3" co="#e0e0a0"/>
+  <r x="704 96 704 272" f="0" r="22000"/>
+  <x x="676 178 690 182" f="0" si="13" te="R3" co="#e0e0a0"/>
   <w x="704 272 704 304" f="0"/>
   <w x="704 304 816 304" f="0"/>
-  <r x="704 96 704 304" f="0" r="22000"/>
-  <x x="676 194 690 198" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <r x="1088 96 1088 240" f="0" r="1000000"/>
-  <x x="1060 162 1074 166" f="0" si="13" te="R4" co="#e0e0a0"/>
-  <w x="1088 240 816 240" f="0"/>
-  <w x="1088 240 1088 336" f="0"/>
-  <w x="1088 336 944 336" f="0"/>
-  <w x="944 336 816 336" f="0"/>
-  <pc x="1088 336 1088 560" f="0" c="1e-05" iv="0" sr="0" vd="0"/>
-  <x x="1060 442 1074 446" f="0" si="13" te="C6" co="#e0e0a0"/>
+  <r x="736 96 736 240" f="0" r="1000000"/>
+  <x x="708 162 722 166" f="0" si="13" te="R4" co="#e0e0a0"/>
+  <w x="736 240 816 240" f="0"/>
+  <w x="736 240 736 336" f="0"/>
+  <w x="736 336 816 336" f="0"/>
+  <pc x="736 336 736 560" f="0" c="1e-05" iv="0" sr="0" vd="0"/>
+  <x x="708 442 722 446" f="0" si="13" te="C6" co="#e0e0a0"/>
   <Timer x="816 208 848 208" f="14"/>
   <w x="880 176 880 96" f="0"/>
   <w x="912 368 912 560" f="0"/>
@@ -59,25 +58,25 @@
   <w x="272 96 416 96" f="0"/>
   <w x="416 96 576 96" f="0"/>
   <w x="576 96 704 96" f="0"/>
-  <w x="704 96 880 96" f="0"/>
+  <w x="704 96 736 96" f="0"/>
+  <w x="736 96 880 96" f="0"/>
   <w x="880 96 1024 96" f="0"/>
-  <w x="1024 96 1088 96" f="0"/>
-  <w x="1088 96 1152 96" f="0"/>
+  <w x="1024 96 1152 96" f="0"/>
   <w x="96 560 176 560" f="0"/>
   <w x="176 560 272 560" f="0"/>
   <w x="272 560 416 560" f="0"/>
   <w x="416 560 448 560" f="0"/>
   <w x="448 560 480 560" f="0"/>
-  <w x="480 560 880 560" f="0"/>
+  <w x="480 560 736 560" f="0"/>
+  <w x="736 560 880 560" f="0"/>
   <w x="880 560 912 560" f="0"/>
-  <w x="912 560 1088 560" f="0"/>
-  <w x="1088 560 1120 560" f="0"/>
+  <w x="912 560 1120 560" f="0"/>
   <w x="1120 560 1152 560" f="0"/>
   <x x="96 640 682 644" f="0" si="13" te="Both timers are connected in their one-shot mode.  Grounding the trigger input\nstarts timer 1, which then starts timer 2 as its output falls.\n\nThe book uses a 556, which is two 555s on one chip; CircuitJS has no 556, so the\ntwo halves are drawn separately and wired exactly as the 556 pinout connects them.\nPress T to trigger." co="#c8d8c8"/>
   <x x="96 748 319 752" f="0" si="14" te="timer 1 delay = 1.1 x R1 x C1\ntimer 2 delay = 1.1 x R4 x C6" co="#ffe08a"/>
   <x x="96 806 558 810" f="0" si="12" te="Book waveform, p.10:  TRIGGER goes low, OUT 1 goes high for its delay,\nthen OUT 2 goes high for its own delay as OUT 1 falls." co="#9fb8c8"/>
-  <o en="51" sp="64" f="x20a" p="0" x="OUT 1"><p v="0" sc="2"/></o>
-  <o en="54" sp="64" f="x20a" p="1" x="OUT 2"><p v="0" sc="2"/></o>
+  <o en="50" sp="64" f="x20a" p="0" x="OUT 1"><p v="0" sc="2"/></o>
+  <o en="53" sp="64" f="x20a" p="1" x="OUT 2"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="100000" mx="2000000" st="R1 delay 1" stp="0" log="0"/>
   <adj e="36" ei="0" en="Resistance (ohms)" mn="100000" mx="2000000" st="R4 delay 2" stp="0" log="0"/>
 </cir>

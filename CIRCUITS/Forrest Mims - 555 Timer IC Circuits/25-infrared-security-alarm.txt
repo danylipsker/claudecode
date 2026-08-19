@@ -33,15 +33,15 @@
   <x x="826 442 840 446" f="0" si="13" te="Q2" co="#e0e0a0"/>
   <w x="768 272 768 464" f="0"/>
   <w x="768 464 800 464" f="0"/>
-  <r x="1152 96 1152 272" f="0" r="1000000"/>
-  <x x="1124 178 1138 182" f="0" si="13" te="R5" co="#e0e0a0"/>
-  <w x="1152 272 880 272" f="0"/>
-  <w x="1152 272 1152 368" f="0"/>
-  <w x="1152 368 880 368" f="0"/>
-  <c x="1152 368 1152 560" f="0" c="4.7e-08" iv="0" sr="0" vd="0"/>
-  <x x="1124 458 1138 462" f="0" si="13" te="C3" co="#e0e0a0"/>
+  <r x="784 96 784 272" f="0" r="1000000"/>
+  <x x="756 178 770 182" f="0" si="13" te="R5" co="#e0e0a0"/>
+  <w x="784 272 880 272" f="0"/>
+  <w x="784 272 784 368" f="0"/>
+  <w x="784 368 864 368" f="0"/>
+  <w x="864 368 880 368" f="0"/>
+  <c x="784 368 784 560" f="0" c="4.7e-08" iv="0" sr="0" vd="0"/>
+  <x x="756 458 770 462" f="0" si="13" te="C3" co="#e0e0a0"/>
   <w x="864 448 864 368" f="0"/>
-  <w x="864 368 1152 368" f="0"/>
   <w x="864 480 864 560" f="0"/>
   <w x="880 336 816 336" f="0"/>
   <w x="816 336 816 528" f="0"/>
@@ -65,22 +65,22 @@
   <w x="416 96 592 96" f="0"/>
   <w x="592 96 640 96" f="0"/>
   <w x="640 96 768 96" f="0"/>
-  <w x="768 96 944 96" f="0"/>
+  <w x="768 96 784 96" f="0"/>
+  <w x="784 96 944 96" f="0"/>
   <w x="944 96 1040 96" f="0"/>
-  <w x="1040 96 1152 96" f="0"/>
-  <w x="1152 96 1184 96" f="0"/>
+  <w x="1040 96 1184 96" f="0"/>
   <w x="1184 96 1216 96" f="0"/>
   <w x="96 560 272 560" f="0"/>
   <w x="272 560 448 560" f="0"/>
-  <w x="448 560 864 560" f="0"/>
+  <w x="448 560 784 560" f="0"/>
+  <w x="784 560 864 560" f="0"/>
   <w x="864 560 944 560" f="0"/>
   <w x="944 560 976 560" f="0"/>
-  <w x="976 560 1152 560" f="0"/>
-  <w x="1152 560 1184 560" f="0"/>
+  <w x="976 560 1184 560" f="0"/>
   <w x="1184 560 1216 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="The alarm sounds when the insert is moved from between the LED, an infrared emitter,\nand Q1.  Monitor doors, windows and so on by attaching the insert to them.  Shield\nQ1 from external light.  The gap is about 1 inch.\n\n555 (1) pulses the emitter; 555 (2) is a missing-pulse detector that keeps quiet\nwhile pulses arrive.  CircuitJS has no phototransistor, so the optical path is a\nswitch: press B to break the beam and trip the alarm." co="#c8d8c8"/>
   <x x="96 761 303 765" f="0" si="14" te="alarm delay = 1.1 x R5 x C3" co="#ffe08a"/>
   <o en="59" sp="64" f="x20a" p="0" x="buzzer drive"><p v="0" sc="2"/></o>
-  <o en="39" sp="64" f="x20a" p="1" x="charge on C3"><p v="0" sc="2"/></o>
+  <o en="40" sp="64" f="x20a" p="1" x="charge on C3"><p v="0" sc="2"/></o>
   <adj e="34" ei="0" en="Resistance (ohms)" mn="100000" mx="4000000" st="R5 alarm delay" stp="0" log="0"/>
 </cir>

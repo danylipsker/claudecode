@@ -87,6 +87,14 @@ Loading a circuit gives you the whole page, not just a runnable schematic:
   offset 32 px to the side. Removing that offset would break the part.
 * Scope probes get their own vertical lane, jogging horizontally at the node's
   own y first where the lane below it is occupied.
+* **No wire crosses a chip body, no two segments share a lane, and no endpoint
+  sits part-way along another segment.** That last one matters electrically as
+  well as visually: CircuitJS joins elements only where posts share coordinates,
+  so a wire ending in the middle of another wire *looks* like a junction and is
+  not one. `lint.py` in the generator checks all three.
+* Because CircuitJS puts pins 7, 2 and 6 on the 555's left face, the timing
+  network is drawn to the left of every chip. Mims puts it on the right on
+  several pages -- same parts, same connections, mirrored placement.
 * **Component values** are the book's, except where noted below.
 * **Speakers** are an 8 Ω resistor plus an Audio Output tap, so the tone circuits
   can actually be heard.

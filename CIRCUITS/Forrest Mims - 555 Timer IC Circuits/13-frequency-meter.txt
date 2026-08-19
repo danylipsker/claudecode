@@ -8,50 +8,50 @@
   <c x="128 304 240 304" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
   <x x="178 282 192 286" f="0" si="13" te="C1" co="#e0e0a0"/>
   <w x="240 304 240 304" f="0"/>
-  <w x="240 304 464 304" f="0"/>
+  <w x="240 304 560 304" f="0"/>
   <r x="240 96 240 304" f="0" r="4700"/>
   <x x="212 194 226 198" f="0" si="13" te="R1" co="#e0e0a0"/>
   <r x="240 304 240 560" f="0" r="4700"/>
   <x x="212 426 226 430" f="0" si="13" te="R2" co="#e0e0a0"/>
-  <r x="720 96 720 336" f="0" r="4700"/>
-  <x x="692 210 706 214" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <w x="720 336 464 336" f="0"/>
-  <w x="720 336 720 240" f="0"/>
-  <w x="720 240 464 240" f="0"/>
-  <c x="720 336 720 560" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
-  <x x="692 442 706 446" f="0" si="13" te="C3" co="#e0e0a0"/>
-  <Timer x="464 208 496 208" f="14"/>
-  <w x="528 176 528 96" f="0"/>
-  <w x="560 368 560 560" f="0"/>
-  <w x="592 240 656 240" f="0"/>
-  <w x="656 240 656 96" f="0"/>
-  <c x="528 368 528 560" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
-  <x x="500 458 514 462" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <w x="592 272 848 272" f="0"/>
-  <r x="848 96 848 272" f="0" r="4700"/>
-  <x x="820 178 834 182" f="0" si="13" te="R4" co="#e0e0a0"/>
-  <r x="848 272 848 416" f="0" r="10000"/>
-  <x x="820 338 834 342" f="0" si="13" te="R5" co="#e0e0a0"/>
-  <r x="848 416 848 480" f="0" r="100"/>
-  <x x="820 442 834 446" f="0" si="13" te="R6" co="#e0e0a0"/>
-  <Ammeter x="848 480 848 560" f="1" me="1" sc="0"/>
-  <x x="880 430 988 434" f="0" si="11" te="R5 CALIBRATE METER" co="#e0e0a0"/>
-  <x x="880 500 946 504" f="0" si="12" te="M1  0-1 mA" co="#c8c8c8"/>
-  <p x="592 272 592 560" f="1" me="0" sc="0" re="0"/>
+  <r x="432 96 432 240" f="0" r="4700"/>
+  <x x="404 162 418 166" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <w x="432 240 560 240" f="0"/>
+  <w x="432 240 432 336" f="0"/>
+  <w x="432 336 560 336" f="0"/>
+  <c x="432 336 432 560" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
+  <x x="404 442 418 446" f="0" si="13" te="C3" co="#e0e0a0"/>
+  <Timer x="560 208 592 208" f="14"/>
+  <w x="624 176 624 96" f="0"/>
+  <w x="656 368 656 560" f="0"/>
+  <w x="688 240 752 240" f="0"/>
+  <w x="752 240 752 96" f="0"/>
+  <c x="624 368 624 560" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
+  <x x="596 458 610 462" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <w x="688 272 880 272" f="0"/>
+  <r x="880 96 880 272" f="0" r="4700"/>
+  <x x="852 178 866 182" f="0" si="13" te="R4" co="#e0e0a0"/>
+  <r x="880 272 880 416" f="0" r="10000"/>
+  <x x="852 338 866 342" f="0" si="13" te="R5" co="#e0e0a0"/>
+  <r x="880 416 880 480" f="0" r="100"/>
+  <x x="852 442 866 446" f="0" si="13" te="R6" co="#e0e0a0"/>
+  <Ammeter x="880 480 880 560" f="1" me="1" sc="0"/>
+  <x x="904 430 1012 434" f="0" si="11" te="R5 CALIBRATE METER" co="#e0e0a0"/>
+  <x x="904 500 970 504" f="0" si="12" te="M1  0-1 mA" co="#c8c8c8"/>
+  <p x="688 272 688 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 240 96" f="0"/>
-  <w x="240 96 528 96" f="0"/>
-  <w x="528 96 656 96" f="0"/>
-  <w x="656 96 720 96" f="0"/>
-  <w x="720 96 848 96" f="0"/>
-  <w x="848 96 1024 96" f="0"/>
+  <w x="240 96 432 96" f="0"/>
+  <w x="432 96 624 96" f="0"/>
+  <w x="624 96 752 96" f="0"/>
+  <w x="752 96 880 96" f="0"/>
+  <w x="880 96 1024 96" f="0"/>
   <w x="96 560 128 560" f="0"/>
   <w x="128 560 240 560" f="0"/>
-  <w x="240 560 528 560" f="0"/>
-  <w x="528 560 560 560" f="0"/>
-  <w x="560 560 592 560" f="0"/>
-  <w x="592 560 720 560" f="0"/>
-  <w x="720 560 848 560" f="0"/>
-  <w x="848 560 1024 560" f="0"/>
+  <w x="240 560 432 560" f="0"/>
+  <w x="432 560 624 560" f="0"/>
+  <w x="624 560 656 560" f="0"/>
+  <w x="656 560 688 560" f="0"/>
+  <w x="688 560 880 560" f="0"/>
+  <w x="880 560 1024 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="This ultra-simple circuit measures audio frequency signals.  The input signal should\nrange from 2.5 to 5 volts.  The 555 is a one-shot, so every input cycle produces one\nfixed-width output pulse and the average output current rises with input frequency.\nR3 and C3 determine the frequency range; R5 calibrates the meter.\n\nFor testing, connect the pulse generator on the facing page directly to pin 2 and\nomit C1.  It is OK to add an amplifier ahead of the input." co="#c8d8c8"/>
   <x x="96 761 624 765" f="0" si="12" te="Book graph, p.17: meter reading 0 to 1 mA against frequency 0 to 5 kHz.\nWith R3 = 2.2K and C3 = .1 uF the response is close to a straight line to 5 kHz.\nWith R3 = 10K and C3 = .1 uF it is much steeper but goes non-linear at 1 kHz." co="#9fb8c8"/>
   <o en="38" sp="64" f="x20a" p="0" x="pin 3 pulses"><p v="0" sc="2"/></o>

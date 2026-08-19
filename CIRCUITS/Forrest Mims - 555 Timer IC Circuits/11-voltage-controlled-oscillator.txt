@@ -3,51 +3,49 @@
   <g x="96 560 96 608" f="0"/>
   <x x="96 32 446 36" f="0" si="22" te="VOLTAGE-CONTROLLED OSCILLATOR" co="#ffffff"/>
   <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.15" co="#98a8b8"/>
-  <r x="816 96 816 240" f="0" r="100000"/>
-  <x x="788 162 802 166" f="0" si="13" te="R2" co="#e0e0a0"/>
-  <w x="816 240 688 240" f="0"/>
-  <w x="688 240 496 240" f="0"/>
-  <r x="816 240 816 336" f="0" r="1000"/>
-  <x x="788 282 802 286" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <w x="816 336 688 336" f="0"/>
-  <w x="688 336 496 336" f="0"/>
-  <w x="496 304 656 304" f="0"/>
-  <w x="656 304 656 336" f="0"/>
-  <w x="656 336 688 336" f="0"/>
-  <c x="816 336 816 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
-  <x x="788 442 802 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <r x="400 96 400 240" f="0" r="100000"/>
+  <x x="372 162 386 166" f="0" si="13" te="R2" co="#e0e0a0"/>
+  <w x="400 240 496 240" f="0"/>
+  <r x="400 240 400 336" f="0" r="1000"/>
+  <x x="372 282 386 286" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <w x="400 336 464 336" f="0"/>
+  <w x="464 336 496 336" f="0"/>
+  <w x="496 304 464 304" f="0"/>
+  <w x="464 304 464 336" f="0"/>
+  <c x="400 336 400 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
+  <x x="372 442 386 446" f="0" si="13" te="C1" co="#e0e0a0"/>
   <Timer x="496 208 528 208" f="14"/>
   <w x="560 176 560 96" f="0"/>
   <w x="592 368 592 560" f="0"/>
-  <w x="624 240 656 240" f="0"/>
-  <w x="656 240 656 96" f="0"/>
-  <r x="272 96 272 208" f="0" r="220"/>
-  <x x="244 146 258 150" f="0" si="13" te="R1" co="#e0e0a0"/>
-  <r x="272 208 272 288" f="0" r="8"/>
-  <x x="176 240 242 244" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
-  <w x="272 288 272 272" f="0"/>
-  <w x="272 272 624 272" f="0"/>
-  <pt x="176 96 208 400" f="0" ma="100000" po="0.5" sl="Control Voltage"/>
-  <w x="176 400 176 560" f="0"/>
-  <w x="208 304 208 368" f="0"/>
-  <w x="208 368 560 368" f="0"/>
-  <x x="96 330 235 334" f="0" si="11" te="INPUT (CONTROL) VOLTAGE" co="#e0e0a0"/>
+  <w x="624 240 688 240" f="0"/>
+  <w x="688 240 688 96" f="0"/>
+  <r x="768 96 768 176" f="0" r="220"/>
+  <x x="740 130 754 134" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <r x="768 176 768 240" f="0" r="8"/>
+  <x x="792 200 858 204" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
+  <w x="768 240 768 272" f="0"/>
+  <w x="768 272 624 272" f="0"/>
+  <pt x="208 432 240 560" f="0" ma="100000" po="0.5" sl="Control Voltage"/>
+  <w x="208 432 208 96" f="0"/>
+  <w x="240 496 560 496" f="0"/>
+  <w x="560 496 560 368" f="0"/>
+  <x x="96 400 235 404" f="0" si="11" te="INPUT (CONTROL) VOLTAGE" co="#e0e0a0"/>
   <p x="624 272 624 560" f="1" me="0" sc="0" re="0"/>
-  <w x="96 96 176 96" f="0"/>
-  <w x="176 96 272 96" f="0"/>
-  <w x="272 96 560 96" f="0"/>
-  <w x="560 96 656 96" f="0"/>
-  <w x="656 96 816 96" f="0"/>
-  <w x="816 96 880 96" f="0"/>
-  <w x="96 560 176 560" f="0"/>
-  <w x="176 560 592 560" f="0"/>
+  <w x="96 96 208 96" f="0"/>
+  <w x="208 96 400 96" f="0"/>
+  <w x="400 96 560 96" f="0"/>
+  <w x="560 96 688 96" f="0"/>
+  <w x="688 96 768 96" f="0"/>
+  <w x="768 96 832 96" f="0"/>
+  <w x="96 560 208 560" f="0"/>
+  <w x="208 560 400 560" f="0"/>
+  <w x="400 560 592 560" f="0"/>
   <w x="592 560 624 560" f="0"/>
-  <w x="624 560 816 560" f="0"/>
-  <w x="816 560 880 560" f="0"/>
+  <w x="624 560 832 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="The 555 oscillates at a frequency determined by R2 and C1.  A voltage applied to the\ninput changes the oscillation frequency: as the input voltage increases, the\noscillation frequency decreases.\n\nThe 100K potentiometer provides a variable input voltage for testing.  For more\nvolume, omit R1 and connect the speaker to ground through a 4.7 uF capacitor." co="#c8d8c8"/>
   <x x="96 748 704 752" f="0" si="14" te="free-running f = 1.44 / ((R2 + 2 R3) C1)\npin 5 moves both comparator thresholds, so f falls as the control voltage rises" co="#ffe08a"/>
   <x x="96 806 558 810" f="0" si="12" te="Book waveform, p.15:  as INPUT VOLTAGE ramps up and down, SPEAKER TONE\nFREQUENCY moves the opposite way." co="#9fb8c8"/>
-  <o en="33" sp="64" f="x20a" p="0" x="pin 3 / speaker"><p v="0" sc="2"/></o>
-  <o en="15" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
+  <o en="31" sp="64" f="x20a" p="0" x="pin 3 / speaker"><p v="0" sc="2"/></o>
+  <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="200000" st="R2 pitch" stp="0" log="0"/>
 </cir>
