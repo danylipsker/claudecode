@@ -1,0 +1,47 @@
+<cir f="1" ts="5e-06" ic="100" cb="50" pb="43" vr="9" mts="5e-11">
+  <v x="96 560 96 96" f="0" wf="0" maxv="9"/>
+  <g x="96 560 96 608" f="0"/>
+  <x x="96 32 386 36" f="0" si="22" te="BASIC MONOSTABLE CIRCUIT" co="#ffffff"/>
+  <x x="96 58 604 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.6" co="#98a8b8"/>
+  <r x="272 96 272 240" f="0" r="100000"/>
+  <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <w x="272 240 400 240" f="0"/>
+  <w x="272 240 272 336" f="0"/>
+  <w x="272 336 400 336" f="0"/>
+  <pc x="272 336 272 560" f="0" c="1e-05" iv="0" sr="0" vd="0"/>
+  <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <w x="400 304 192 304" f="0"/>
+  <v x="192 560 192 304" f="0" wf="2" fr="0.7" maxv="4.5" bias="4.5" dutyCycle="0.93" ir="100"/>
+  <x x="104 278 209 282" f="0" si="12" te="TRIGGER PULSE IN" co="#e0e0a0"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 592 240" f="0"/>
+  <w x="592 240 592 96" f="0"/>
+  <c x="464 368 464 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
+  <x x="436 458 450 462" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <w x="528 272 640 272" f="0"/>
+  <ln x="640 272 640 240" f="0" te="MONOSTABLE PULSE OUT"/>
+  <p x="640 272 640 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 272 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 592 96" f="0"/>
+  <w x="592 96 704 96" f="0"/>
+  <w x="96 560 192 560" f="0"/>
+  <w x="192 560 272 560" f="0"/>
+  <w x="272 560 464 560" f="0"/>
+  <w x="464 560 496 560" f="0"/>
+  <w x="496 560 640 560" f="0"/>
+  <w x="640 560 704 560" f="0"/>
+  <x x="96 640 689 644" f="0" si="13" te="A negative trigger pulse at pin 2 turns off a transistor that otherwise shorts C1\nto ground.  The output then goes high while C1 charges through R1.  When the charge\non C1 reaches 2/3 Vcc the 555 discharges C1 to ground and the output goes low.\n\nPress T to pull pin 2 low.  Make reset and trigger momentarily low to restart the\ntiming cycle; otherwise keep reset (pin 4) at Vcc." co="#c8d8c8"/>
+  <x x="96 748 434 752" f="0" si="14" te="t = R1 x C1        (t is independent of Vcc)" co="#ffe08a"/>
+  <x x="96 792 551 796" f="0" si="12" te="Book graph, p.6: C1 from .001 to 100 uF against time delay from\n10 usec to 10 sec, one sloping line per R1 of 1K, 10K, 100K, 1M, 10M." co="#9fb8c8"/>
+  <x x="1230 96 1445 100" f="0" si="14" te="TIME DELAY t = 1.1 x R1 x C1" co="#ffffff"/>
+  <x x="1230 120 1269 124" f="0" si="12" te="C1\n0.1 uF\n1 uF\n10 uF\n100 uF" co="#c8c8c8"/>
+  <x x="1326 120 1378 124" f="0" si="12" te="R1 = 10K\n1.1 ms\n11 ms\n110 ms\n1.1 s" co="#c8c8c8"/>
+  <x x="1422 120 1481 124" f="0" si="12" te="R1 = 100K\n11 ms\n110 ms\n1.1 s\n11 s" co="#c8c8c8"/>
+  <x x="1518 120 1564 124" f="0" si="12" te="R1 = 1M\n110 ms\n1.1 s\n11 s\n110 s" co="#c8c8c8"/>
+  <o en="23" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
+  <o en="9" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
+  <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="1000000" st="R1" stp="0" log="0"/>
+</cir>

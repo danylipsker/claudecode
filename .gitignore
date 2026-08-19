@@ -9,3 +9,9 @@ NOVELTECH/
 
 # Generated toolpath output from Linear Half Toner
 *.nc
+
+# Bundled CircuitJS1 desktop build (third-party, ~370MB; the .zip alone exceeds
+# GitHub's 100MB file limit). Used as a local same-origin mirror for verifying
+# circuits — re-download rather than version it.
+CIRCUITS/circuitjs1-win/
+CIRCUITS/circuitjs1-win.zip

@@ -1,0 +1,43 @@
+<cir f="1" ts="5e-06" ic="300" cb="50" pb="43" vr="9" mts="5e-11">
+  <v x="96 560 96 96" f="0" wf="0" maxv="9"/>
+  <g x="96 560 96 608" f="0"/>
+  <x x="96 32 301 36" f="0" si="22" te="FREQUENCY DIVIDER" co="#ffffff"/>
+  <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.14" co="#98a8b8"/>
+  <r x="272 96 272 240" f="0" r="1000000"/>
+  <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <w x="272 240 400 240" f="0"/>
+  <w x="272 240 272 336" f="0"/>
+  <w x="272 336 400 336" f="0"/>
+  <c x="272 336 272 560" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
+  <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <w x="400 304 176 304" f="0"/>
+  <v x="176 560 176 304" f="0" wf="2" fr="30" maxv="4.5" bias="4.5" dutyCycle="0.5" ir="1000"/>
+  <ln x="176 304 176 272" f="0" te="IN"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 592 240" f="0"/>
+  <w x="592 240 592 96" f="0"/>
+  <c x="464 368 464 560" f="0" c="4.7e-08" iv="0" sr="0" vd="0"/>
+  <x x="436 458 450 462" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <p x="176 304 112 448" f="1" me="0" sc="0" re="0"/>
+  <w x="528 272 640 272" f="0"/>
+  <ln x="640 272 640 240" f="0" te="OUT"/>
+  <p x="640 272 640 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 272 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 592 96" f="0"/>
+  <w x="592 96 704 96" f="0"/>
+  <w x="96 560 176 560" f="0"/>
+  <w x="176 560 272 560" f="0"/>
+  <w x="272 560 464 560" f="0"/>
+  <w x="464 560 496 560" f="0"/>
+  <w x="496 560 640 560" f="0"/>
+  <w x="640 560 704 560" f="0"/>
+  <x x="96 640 682 644" f="0" si="13" te="In this circuit the 555 is connected as a monostable multivibrator.  Once a timing\ncycle is initiated by an input pulse, subsequent input pulses have no effect until\nthe cycle is completed.  For the waveforms shown the output frequency is half the\ninput frequency.  This circuit also squares slowly rising input pulses.\n\nStretch R1 and the same circuit divides by 3, then 5, and so on." co="#c8d8c8"/>
+  <x x="96 748 635 752" f="0" si="14" te="cycle = 1.1 x R1 x C1;  divide ratio follows from cycle / input period" co="#ffe08a"/>
+  <x x="96 792 544 796" f="0" si="12" te="Book waveform, p.14, with C1 = 0.1 uF and R1 varied:  IN, then IN/1,\nIN/2 and IN/5 as R1 is lengthened." co="#9fb8c8"/>
+  <o en="21" sp="64" f="x20a" p="0" x="IN"><p v="0" sc="2"/></o>
+  <o en="24" sp="64" f="x20a" p="1" x="OUT"><p v="0" sc="2"/></o>
+  <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="2000000" st="R1 divide ratio" stp="0" log="0"/>
+</cir>

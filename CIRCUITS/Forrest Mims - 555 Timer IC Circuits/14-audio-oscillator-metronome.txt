@@ -1,0 +1,55 @@
+<cir f="1" ts="5e-06" ic="400" cb="50" pb="43" vr="9" mts="5e-11">
+  <v x="96 560 96 96" f="0" wf="0" maxv="9"/>
+  <g x="96 560 96 608" f="0"/>
+  <x x="96 32 434 36" f="0" si="22" te="AUDIO OSCILLATOR / METRONOME" co="#ffffff"/>
+  <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.18" co="#98a8b8"/>
+  <r x="272 96 272 240" f="0" r="1000000"/>
+  <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <w x="272 240 400 240" f="0"/>
+  <r x="272 240 272 336" f="0" r="1000"/>
+  <x x="244 282 258 286" f="0" si="13" te="R2" co="#e0e0a0"/>
+  <w x="272 336 368 336" f="0"/>
+  <w x="368 336 400 336" f="0"/>
+  <w x="400 304 368 304" f="0"/>
+  <w x="368 304 368 336" f="0"/>
+  <c x="272 336 272 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
+  <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 592 240" f="0"/>
+  <w x="592 240 592 96" f="0"/>
+  <w x="528 272 640 272" f="0"/>
+  <r x="640 272 640 176" f="0" r="4700"/>
+  <w x="640 176 640 96" f="0"/>
+  <x x="664 150 924 154" f="0" si="11" te="PIEZO ELEMENT  (black to pin 3, red to +9V)" co="#c8c8c8"/>
+  <r x="640 272 720 272" f="0" r="100"/>
+  <x x="674 250 688 254" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <r x="720 272 720 400" f="0" r="8"/>
+  <x x="744 330 810 334" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
+  <pc x="720 400 720 560" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
+  <x x="692 474 706 478" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <p x="528 272 592 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 272 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 592 96" f="0"/>
+  <w x="592 96 640 96" f="0"/>
+  <w x="640 96 896 96" f="0"/>
+  <w x="96 560 272 560" f="0"/>
+  <w x="272 560 496 560" f="0"/>
+  <w x="496 560 592 560" f="0"/>
+  <w x="592 560 720 560" f="0"/>
+  <w x="720 560 896 560" f="0"/>
+  <x x="96 640 675 644" f="0" si="13" te="This circuit will function with either or both output devices.  The speaker gives\nmore volume but uses more current.  Use R3 to reduce volume; 10 to 1000 ohms.\nA piezo element without an internal driver circuit can be connected instead, and\ngives an intense sound.  Note: your values may vary.\n\nC1 = .01 uF makes it an audio oscillator; C1 = 1 uF makes it a metronome." co="#c8d8c8"/>
+  <x x="96 748 367 752" f="0" si="13" te="'Note: your values may vary.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
+  <x x="1230 96 1414 100" f="0" si="14" te="OSCILLATOR  (C = .01 uF)" co="#ffffff"/>
+  <x x="1230 120 1256 124" f="0" si="12" te="R1\n1M\n470K\n220K\n100K\n47K\n22K\n10K\n4.7K\n2.2K\n1K" co="#c8c8c8"/>
+  <x x="1366 120 1458 124" f="0" si="12" te="FREQUENCY (Hz)\n17\n40\n85\n177\n410\n838\n1570\n2746\n4606\n6283" co="#c8c8c8"/>
+  <x x="1230 319 1399 323" f="0" si="14" te="METRONOME  (C1 = 1 uF)" co="#ffffff"/>
+  <x x="1230 343 1256 347" f="0" si="12" te="R1\n1M\n680K\n470K\n220K\n100K" co="#c8c8c8"/>
+  <x x="1366 343 1458 347" f="0" si="12" te="FREQUENCY (Hz)\n1.2\n1.8\n2.9\n6.1\n9.4" co="#c8c8c8"/>
+  <o en="30" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
+  <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
+  <adj e="4" ei="0" en="Resistance (ohms)" mn="1000" mx="1000000" st="R1 pitch" stp="0" log="1"/>
+  <adj e="13" ei="0" en="Capacitance (F)" mn="1e-08" mx="1e-06" st="C1 tone / metronome" stp="0" log="1"/>
+</cir>

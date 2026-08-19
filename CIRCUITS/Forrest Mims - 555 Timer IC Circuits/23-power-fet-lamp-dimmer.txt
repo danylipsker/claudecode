@@ -1,0 +1,52 @@
+<cir f="1" ts="5e-06" ic="500" cb="50" pb="43" vr="9" mts="5e-11">
+  <v x="96 560 96 96" f="0" wf="0" maxv="9"/>
+  <g x="96 560 96 608" f="0"/>
+  <x x="96 32 350 36" f="0" si="22" te="POWER FET LAMP DIMMER" co="#ffffff"/>
+  <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.27" co="#98a8b8"/>
+  <r x="272 96 272 176" f="0" r="100"/>
+  <x x="244 130 258 134" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <r x="272 176 272 240" f="0" r="2500"/>
+  <x x="244 202 258 206" f="0" si="13" te="R2" co="#e0e0a0"/>
+  <w x="272 240 352 240" f="0"/>
+  <r x="272 240 272 336" f="0" r="1000"/>
+  <x x="244 282 258 286" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <w x="272 336 320 336" f="0"/>
+  <w x="320 336 352 336" f="0"/>
+  <w x="352 304 320 304" f="0"/>
+  <w x="320 304 320 336" f="0"/>
+  <c x="272 336 272 560" f="0" c="4.7e-08" iv="0" sr="0" vd="0"/>
+  <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <Timer x="352 208 384 208" f="14"/>
+  <w x="416 176 416 96" f="0"/>
+  <w x="448 368 448 560" f="0"/>
+  <c x="416 368 416 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
+  <x x="388 458 402 462" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <w x="480 240 608 240" f="0"/>
+  <w x="608 240 608 96" f="0"/>
+  <w x="480 272 656 272" f="0"/>
+  <r x="656 272 704 272" f="0" r="10000"/>
+  <x x="674 250 688 254" f="0" si="13" te="R4" co="#e0e0a0"/>
+  <f x="704 272 768 272" f="0" mo="default-nodiode"/>
+  <x x="730 250 744 254" f="0" si="13" te="Q1" co="#e0e0a0"/>
+  <Lamp x="768 256 768 176" f="0" te="300" np="3" nv="6" wa="0.4" co="0.4"/>
+  <x x="740 210 754 214" f="0" si="13" te="L1" co="#e0e0a0"/>
+  <w x="768 176 768 96" f="0"/>
+  <w x="768 288 768 560" f="0"/>
+  <p x="480 272 624 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 272 96" f="0"/>
+  <w x="272 96 416 96" f="0"/>
+  <w x="416 96 608 96" f="0"/>
+  <w x="608 96 768 96" f="0"/>
+  <w x="768 96 832 96" f="0"/>
+  <w x="96 560 272 560" f="0"/>
+  <w x="272 560 416 560" f="0"/>
+  <w x="416 560 448 560" f="0"/>
+  <w x="448 560 624 560" f="0"/>
+  <w x="624 560 768 560" f="0"/>
+  <w x="768 560 832 560" f="0"/>
+  <x x="96 640 703 644" f="0" si="13" te="This circuit is a linear lamp dimmer.  In operation, the 555 switches Q1 on and off\nat a rate determined by R1 + R2 and C1.  When Q1 is on, L1 is also on.  The switching\nrate is so fast that L1 appears to glow continuously.  Increasing the switching rate\nincreases the apparent brightness of L1.\n\nQ1 must be properly rated.  A PR13 6-volt flashlight lamp consumes 0.5 ampere or\n3 watts, so use an IRF511 or similar power FET and attach a TO-220 heatsink to\ndissipate excess heat.  Some versions may operate when the 555 is powered by +6V." co="#c8d8c8"/>
+  <x x="96 774 467 778" f="0" si="13" te="'Attach a TO-220 heatsink to dissipate excess heat.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
+  <o en="33" sp="64" f="x20a" p="0" x="gate drive"><p v="0" sc="2"/></o>
+  <o en="15" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
+  <adj e="6" ei="0" en="Resistance (ohms)" mn="100" mx="5000" st="R2 brightness" stp="0" log="0"/>
+</cir>

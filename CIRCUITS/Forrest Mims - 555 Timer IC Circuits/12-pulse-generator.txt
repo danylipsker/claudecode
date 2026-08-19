@@ -1,0 +1,44 @@
+<cir f="1" ts="5e-06" ic="400" cb="50" pb="43" vr="9" mts="5e-11">
+  <v x="96 560 96 96" f="0" wf="0" maxv="9"/>
+  <g x="96 560 96 608" f="0"/>
+  <x x="96 32 277 36" f="0" si="22" te="PULSE GENERATOR" co="#ffffff"/>
+  <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.16" co="#98a8b8"/>
+  <r x="272 96 272 240" f="0" r="1000000"/>
+  <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <w x="272 240 400 240" f="0"/>
+  <r x="272 240 272 336" f="0" r="1000"/>
+  <x x="244 282 258 286" f="0" si="13" te="R2" co="#e0e0a0"/>
+  <w x="272 336 368 336" f="0"/>
+  <w x="368 336 400 336" f="0"/>
+  <w x="400 304 368 304" f="0"/>
+  <w x="368 304 368 336" f="0"/>
+  <c x="272 336 272 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
+  <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 592 240" f="0"/>
+  <w x="592 240 592 96" f="0"/>
+  <w x="528 272 640 272" f="0"/>
+  <ln x="640 272 640 240" f="0" te="OUT"/>
+  <p x="640 272 640 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 272 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 592 96" f="0"/>
+  <w x="592 96 704 96" f="0"/>
+  <w x="96 560 272 560" f="0"/>
+  <w x="272 560 496 560" f="0"/>
+  <w x="496 560 640 560" f="0"/>
+  <w x="640 560 704 560" f="0"/>
+  <x x="96 640 668 644" f="0" si="13" te="Use as a digital logic clock pulse generator, signal generator, and so on.\nUse the frequency table to select R1 and C1.  R2 is much smaller than R1, so the\noutput spends most of each cycle low and delivers a narrow positive pulse.\n\nIt is fine to connect pin 3 directly to the frequency meter on the facing page." co="#c8d8c8"/>
+  <x x="96 735 380 739" f="0" si="14" te="f = 1.44 / ((R1 + 2 R2) C1),  R2 = 1K" co="#ffe08a"/>
+  <x x="1230 96 1499 100" f="0" si="14" te="FREQUENCY TABLE (FREQUENCIES IN Hz)" co="#ffffff"/>
+  <x x="1230 120 1276 124" f="0" si="12" te="C1 (uF)\n.0022\n.0033\n.0047\n.0068\n.01\n.015\n.022\n.033\n.047\n.068\n.1\n.15\n.22" co="#c8c8c8"/>
+  <x x="1326 120 1378 124" f="0" si="12" te="R1 = 10K\n42,470\n30,490\n21,522\n16,300\n11,622\n7,210\n4,959\n3,530\n2,351\n1,737\n1,139\n804\n540" co="#c8c8c8"/>
+  <x x="1422 120 1481 124" f="0" si="12" te="R1 = 100K\n5,240\n3,740\n2,630\n1,987\n1,414\n876\n601\n428\n285\n210\n138\n97\n65" co="#c8c8c8"/>
+  <x x="1518 120 1564 124" f="0" si="12" te="R1 = 1M\n520\n371\n261\n197\n140\n87\n60\n42\n28\n20\n14\n10\n6" co="#c8c8c8"/>
+  <o en="22" sp="64" f="x20a" p="0" x="pin 3 pulses"><p v="0" sc="2"/></o>
+  <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
+  <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="1000000" st="R1" stp="0" log="1"/>
+  <adj e="13" ei="0" en="Capacitance (F)" mn="2e-09" mx="1e-06" st="C1" stp="0" log="1"/>
+</cir>
