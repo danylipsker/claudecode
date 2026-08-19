@@ -3,65 +3,57 @@
   <g x="96 560 96 608" f="0"/>
   <x x="96 32 350 36" f="0" si="22" te="LIGHT / DARK DETECTOR" co="#ffffff"/>
   <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.28" co="#98a8b8"/>
-  <LDR x="144 208 144 272" f="0" ps="0.34" st="Light on LDR"/>
-  <r x="144 272 144 400" f="0" r="4700"/>
-  <x x="116 330 130 334" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <S x="144 208 144 144" f="0" li="1" th="2" key="l"/>
-  <w x="128 144 128 96" f="0"/>
-  <w x="160 144 176 144" f="0"/>
-  <w x="176 144 176 560" f="0"/>
-  <S x="144 400 144 464" f="0" li="1" th="2"/>
-  <w x="160 464 208 464" f="0"/>
-  <w x="208 464 208 560" f="0"/>
-  <w x="128 464 112 464" f="0"/>
-  <w x="112 464 112 96" f="0"/>
-  <x x="96 120 216 124" f="0" si="12" te="S1  L / D  (linked pair)"/>
-  <w x="144 272 272 272" f="0"/>
-  <ln x="272 272 272 240" f="0" te="SENSE"/>
-  <r x="352 96 352 240" f="0" r="47000"/>
-  <x x="324 162 338 166" f="0" si="13" te="R1" co="#e0e0a0"/>
-  <w x="352 240 432 240" f="0"/>
-  <r x="352 240 352 336" f="0" r="1000"/>
-  <x x="324 282 338 286" f="0" si="13" te="R2" co="#e0e0a0"/>
-  <w x="352 336 400 336" f="0"/>
-  <w x="400 336 432 336" f="0"/>
-  <w x="432 304 400 304" f="0"/>
-  <w x="400 304 400 336" f="0"/>
-  <c x="352 336 352 560" f="0" c="4.7e-08" iv="0" sr="0" vd="0"/>
-  <x x="324 442 338 446" f="0" si="13" te="C1" co="#e0e0a0"/>
-  <Timer x="432 208 464 208" f="14"/>
-  <w x="496 176 496 96" f="0"/>
-  <w x="528 368 528 560" f="0"/>
-  <c x="496 368 496 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
-  <w x="560 240 624 240" f="0"/>
-  <w x="624 240 624 176" f="0"/>
-  <w x="624 176 272 176" f="0"/>
-  <w x="272 176 272 272" f="0"/>
-  <w x="560 272 688 272" f="0"/>
-  <c x="688 272 688 352" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
-  <x x="660 306 674 310" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <r x="688 352 688 416" f="0" r="8"/>
-  <ln x="688 384 752 384" f="0" te="SPKR"/>
-  <aout x="688 416 720 416" f="0" du="1" sa="8000" la="1"/>
-  <w x="688 416 688 560" f="0"/>
-  <p x="560 272 656 560" f="1" me="0" sc="0" re="0"/>
-  <w x="96 96 112 96" f="0"/>
-  <w x="112 96 128 96" f="0"/>
-  <w x="128 96 352 96" f="0"/>
-  <w x="352 96 496 96" f="0"/>
-  <w x="496 96 800 96" f="0"/>
-  <w x="96 560 176 560" f="0"/>
-  <w x="176 560 208 560" f="0"/>
-  <w x="208 560 352 560" f="0"/>
-  <w x="352 560 496 560" f="0"/>
-  <w x="496 560 528 560" f="0"/>
-  <w x="528 560 656 560" f="0"/>
-  <w x="656 560 688 560" f="0"/>
-  <w x="688 560 800 560" f="0"/>
+  <r x="272 96 272 240" f="0" r="47000"/>
+  <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
+  <w x="272 240 400 240" f="0"/>
+  <r x="272 240 272 336" f="0" r="1000"/>
+  <x x="244 282 258 286" f="0" si="13" te="R2" co="#e0e0a0"/>
+  <w x="272 336 368 336" f="0"/>
+  <w x="368 336 400 336" f="0"/>
+  <w x="400 304 368 304" f="0"/>
+  <w x="368 304 368 336" f="0"/>
+  <c x="272 336 272 560" f="0" c="4.7e-08" iv="0" sr="0" vd="0"/>
+  <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 688 240" f="0"/>
+  <LDR x="688 240 688 336" f="0" ps="0.34" st="Light on LDR"/>
+  <r x="688 336 688 432" f="0" r="4700"/>
+  <x x="660 378 674 382" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <x x="712 260 790 264" f="0" si="11" te="PHOTORESISTOR" co="#c8c8c8"/>
+  <S x="688 240 688 176" f="0" li="1" th="2" key="l"/>
+  <w x="672 176 672 96" f="0"/>
+  <w x="704 176 784 176" f="0"/>
+  <w x="784 176 784 560" f="0"/>
+  <S x="688 432 688 496" f="0" li="1" th="2"/>
+  <w x="704 496 704 560" f="0"/>
+  <w x="672 496 624 496" f="0"/>
+  <w x="624 496 624 96" f="0"/>
+  <ln x="688 240 640 240" f="0" te="SENSE"/>
+  <x x="96 660 1178 664" f="0" si="11" te="S1 is drawn as two linked poles (a) and (b).  Their exact wiring does not resolve at this scan resolution; this is the swap that produces the L and D behaviour the page describes." co="#c08080"/>
+  <w x="528 272 880 272" f="0"/>
+  <pc x="880 272 880 352" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
+  <x x="852 306 866 310" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <r x="880 352 880 560" f="0" r="8"/>
+  <x x="904 400 970 404" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
+  <p x="528 272 848 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 272 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 624 96" f="0"/>
+  <w x="624 96 672 96" f="0"/>
+  <w x="672 96 960 96" f="0"/>
+  <w x="96 560 272 560" f="0"/>
+  <w x="272 560 496 560" f="0"/>
+  <w x="496 560 704 560" f="0"/>
+  <w x="704 560 784 560" f="0"/>
+  <w x="784 560 848 560" f="0"/>
+  <w x="848 560 880 560" f="0"/>
+  <w x="880 560 960 560" f="0"/>
   <x x="96 640 668 644" f="0" si="13" te="When S1 is in position L the speaker emits a tone when light strikes the\nphotoresistor.  When S1 is in position D the speaker emits a tone when the\nphotoresistor is not illuminated.  It is OK to alter R1 and C1 to change the\nfrequency of the tone.\n\nPress L to throw both linked halves of S1, and drag the Light slider to test.\nCircuitJS's photoresistor covers only about 5.9K to 98K where a real cell covers\nfar more, so R3 is on a slider: about 4.7K suits position L, about 82K suits D." co="#c8d8c8"/>
   <x x="96 774 577 778" f="0" si="12" te="Book waveform, p.28:  with S1 at L, TONE ON follows LIGHT.  With S1 at D,\nTONE ON follows DARK instead." co="#9fb8c8"/>
   <x x="96 824 525 828" f="0" si="13" te="'OK to alter R1 and C1 to change the frequency of the tone.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
-  <o en="45" sp="64" f="x20a" p="0" x="speaker drive"><p v="0" sc="2"/></o>
-  <adj e="19" ei="0" en="Resistance (ohms)" mn="10000" mx="200000" st="R1 tone" stp="0" log="0"/>
-  <adj e="5" ei="0" en="Resistance (ohms)" mn="1000" mx="100000" st="R3 trip point" stp="0" log="1"/>
+  <o en="38" sp="64" f="x20a" p="0" x="speaker drive"><p v="0" sc="2"/></o>
+  <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="200000" st="R1 tone" stp="0" log="0"/>
+  <adj e="20" ei="0" en="Resistance (ohms)" mn="1000" mx="100000" st="R3 trip point" stp="0" log="1"/>
 </cir>
