@@ -18,7 +18,7 @@ on-canvas notes all travel with it.
 
 | # | File | Book p. | Interactive controls |
 |---|------|--------:|----------------------|
-| 01 | `01-basic-monostable.txt` | 6 | **T** = trigger · R1 slider |
+| 01 | `01-basic-monostable.txt` | 6 | R1 slider · self-triggers every 1.4 s |
 | 02 | `02-basic-astable.txt` | 7 | R1, R2 sliders |
 | 03 | `03-bouncefree-switch.txt` | 8 | **S** = S1 · C1 dead-time slider |
 | 04 | `04-touch-activated-switch.txt` | 8 | **T** = touch |

@@ -33,7 +33,7 @@
   <w x="464 560 496 560" f="0"/>
   <w x="496 560 640 560" f="0"/>
   <w x="640 560 704 560" f="0"/>
-  <x x="96 640 689 644" f="0" si="13" te="A negative trigger pulse at pin 2 turns off a transistor that otherwise shorts C1\nto ground.  The output then goes high while C1 charges through R1.  When the charge\non C1 reaches 2/3 Vcc the 555 discharges C1 to ground and the output goes low.\n\nPress T to pull pin 2 low.  Make reset and trigger momentarily low to restart the\ntiming cycle; otherwise keep reset (pin 4) at Vcc." co="#c8d8c8"/>
+  <x x="96 640 689 644" f="0" si="13" te="A negative trigger pulse at pin 2 turns off a transistor that otherwise shorts C1\nto ground.  The output then goes high while C1 charges through R1.  When the charge\non C1 reaches 2/3 Vcc the 555 discharges C1 to ground and the output goes low.\n\nThe pulse source holds pin 2 low for 100 ms every 1.4 s, so the cycle retriggers\nitself.  Trigger must be momentarily low to restart the timing cycle; otherwise\nkeep reset (pin 4) at Vcc." co="#c8d8c8"/>
   <x x="96 748 434 752" f="0" si="14" te="t = R1 x C1        (t is independent of Vcc)" co="#ffe08a"/>
   <x x="96 792 551 796" f="0" si="12" te="Book graph, p.6: C1 from .001 to 100 uF against time delay from\n10 usec to 10 sec, one sloping line per R1 of 1K, 10K, 100K, 1M, 10M." co="#9fb8c8"/>
   <x x="1230 96 1445 100" f="0" si="14" te="TIME DELAY t = 1.1 x R1 x C1" co="#ffffff"/>
