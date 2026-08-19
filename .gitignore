@@ -15,3 +15,7 @@ NOVELTECH/
 # circuits — re-download rather than version it.
 CIRCUITS/circuitjs1-win/
 CIRCUITS/circuitjs1-win.zip
+
+# Python bytecode
+__pycache__/
+*.pyc
