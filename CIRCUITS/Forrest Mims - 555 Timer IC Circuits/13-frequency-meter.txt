@@ -37,7 +37,7 @@
   <Ammeter x="848 480 848 560" f="1" me="1" sc="0"/>
   <x x="880 430 988 434" f="0" si="11" te="R5 CALIBRATE METER" co="#e0e0a0"/>
   <x x="880 500 946 504" f="0" si="12" te="M1  0-1 mA" co="#c8c8c8"/>
-  <p x="592 272 784 560" f="1" me="0" sc="0" re="0"/>
+  <p x="592 272 592 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 240 96" f="0"/>
   <w x="240 96 528 96" f="0"/>
   <w x="528 96 656 96" f="0"/>
@@ -48,9 +48,9 @@
   <w x="128 560 240 560" f="0"/>
   <w x="240 560 528 560" f="0"/>
   <w x="528 560 560 560" f="0"/>
-  <w x="560 560 720 560" f="0"/>
-  <w x="720 560 784 560" f="0"/>
-  <w x="784 560 848 560" f="0"/>
+  <w x="560 560 592 560" f="0"/>
+  <w x="592 560 720 560" f="0"/>
+  <w x="720 560 848 560" f="0"/>
   <w x="848 560 1024 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="This ultra-simple circuit measures audio frequency signals.  The input signal should\nrange from 2.5 to 5 volts.  The 555 is a one-shot, so every input cycle produces one\nfixed-width output pulse and the average output current rises with input frequency.\nR3 and C3 determine the frequency range; R5 calibrates the meter.\n\nFor testing, connect the pulse generator on the facing page directly to pin 2 and\nomit C1.  It is OK to add an amplifier ahead of the input." co="#c8d8c8"/>
   <x x="96 761 624 765" f="0" si="12" te="Book graph, p.17: meter reading 0 to 1 mA against frequency 0 to 5 kHz.\nWith R3 = 2.2K and C3 = .1 uF the response is close to a straight line to 5 kHz.\nWith R3 = 10K and C3 = .1 uF it is much steeper but goes non-linear at 1 kHz." co="#9fb8c8"/>

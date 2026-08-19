@@ -5,56 +5,56 @@
   <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.32" co="#98a8b8"/>
   <r x="272 96 272 240" f="0" r="47000"/>
   <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
-  <w x="272 240 352 240" f="0"/>
+  <w x="272 240 400 240" f="0"/>
   <r x="272 240 272 336" f="0" r="1000"/>
   <x x="244 282 258 286" f="0" si="13" te="R2" co="#e0e0a0"/>
-  <w x="272 336 320 336" f="0"/>
-  <w x="320 336 352 336" f="0"/>
-  <w x="352 304 320 304" f="0"/>
-  <w x="320 304 320 336" f="0"/>
+  <w x="272 336 368 336" f="0"/>
+  <w x="368 336 400 336" f="0"/>
+  <w x="400 304 368 304" f="0"/>
+  <w x="368 304 368 336" f="0"/>
   <c x="272 336 272 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
   <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
-  <Timer x="352 208 384 208" f="14"/>
-  <w x="416 176 416 96" f="0"/>
-  <w x="448 368 448 560" f="0"/>
-  <c x="416 368 416 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
-  <x x="388 458 402 462" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <w x="480 240 528 240" f="0"/>
-  <w x="528 240 528 96" f="0"/>
-  <w x="480 272 592 272" f="0"/>
-  <w x="592 272 592 272" f="0"/>
-  <w x="592 272 640 272" f="0"/>
-  <T x="640 272 704 272" f="0" in="0.05" ra="19" co="0.999" wi="32" c0="0" c1="0"/>
-  <x x="666 250 680 254" f="0" si="13" te="T1" co="#e0e0a0"/>
-  <w x="640 304 640 560" f="0"/>
-  <d x="704 272 768 272" f="0" mo="default"/>
-  <w x="768 272 800 272" f="0"/>
-  <c x="800 272 800 400" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
-  <x x="772 330 786 334" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <ln x="800 272 800 240" f="0" te="HV OUT"/>
-  <r x="864 272 864 400" f="0" r="1000000"/>
-  <x x="836 330 850 334" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <w x="864 272 800 272" f="0"/>
-  <w x="864 400 800 400" f="0"/>
-  <w x="800 400 800 560" f="0"/>
-  <w x="704 304 704 400" f="0"/>
-  <w x="704 400 800 400" f="0"/>
-  <p x="800 272 736 560" f="1" me="0" sc="0" re="0"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 592 240" f="0"/>
+  <w x="592 240 592 96" f="0"/>
+  <w x="528 272 608 272" f="0"/>
+  <w x="608 272 608 272" f="0"/>
+  <w x="608 272 672 272" f="0"/>
+  <T x="672 272 736 272" f="0" in="0.05" ra="19" co="0.999" wi="32" c0="0" c1="0"/>
+  <x x="698 250 712 254" f="0" si="13" te="T1" co="#e0e0a0"/>
+  <w x="672 304 672 560" f="0"/>
+  <x x="600 220 712 224" f="0" si="12" te="T1  6.3 V : 120 V" co="#e0e0a0"/>
+  <d x="736 272 816 272" f="0" mo="default"/>
+  <x x="770 250 784 254" f="0" si="13" te="D1" co="#e0e0a0"/>
+  <w x="816 272 864 272" f="0"/>
+  <ln x="864 272 864 240" f="0" te="HV OUT"/>
+  <c x="864 272 864 432" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
+  <x x="836 346 850 350" f="0" si="13" te="C2" co="#e0e0a0"/>
+  <r x="960 272 960 432" f="0" r="1000000"/>
+  <x x="932 346 946 350" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <w x="864 272 960 272" f="0"/>
+  <w x="864 432 960 432" f="0"/>
+  <w x="736 304 736 432" f="0"/>
+  <w x="736 432 864 432" f="0"/>
+  <w x="864 432 864 560" f="0"/>
+  <x x="888 470 1093 474" f="0" si="11" te="secondary tied to ground here:\nthe page leaves it floating, which\nthe solver cannot reference" co="#c08080"/>
+  <w x="960 272 1024 272" f="0"/>
+  <p x="1024 272 1024 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 272 96" f="0"/>
-  <w x="272 96 416 96" f="0"/>
-  <w x="416 96 528 96" f="0"/>
-  <w x="528 96 896 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 592 96" f="0"/>
+  <w x="592 96 1024 96" f="0"/>
   <w x="96 560 272 560" f="0"/>
-  <w x="272 560 416 560" f="0"/>
-  <w x="416 560 448 560" f="0"/>
-  <w x="448 560 640 560" f="0"/>
-  <w x="640 560 736 560" f="0"/>
-  <w x="736 560 800 560" f="0"/>
-  <w x="800 560 896 560" f="0"/>
+  <w x="272 560 496 560" f="0"/>
+  <w x="496 560 672 560" f="0"/>
+  <w x="672 560 864 560" f="0"/>
+  <w x="864 560 1024 560" f="0"/>
   <x x="96 640 703 644" f="0" si="13" te="This circuit applies a pulsating current to a transformer winding.  The input voltage\nis then boosted by the transformer's second winding.  Use to power neon lamps, plasma\ndisplays and so on.  T1 is a miniature 6.3 V to 120 V power transformer.\n\nCaution: high voltage.  Do not touch output leads.  R3 bleeds charge from C2 when\nVin is removed." co="#c8d8c8"/>
   <x x="96 748 551 752" f="0" si="12" te="Book graph, p.32: Vin 3 to 10 V against Vout 10 to 120 V, close to a\nstraight line.  Book note: a 470K to 1M resistor with a .047 uF 250 V\ncapacitor across a neon lamp makes a neon lamp flasher on the output." co="#9fb8c8"/>
   <x x="96 810 367 814" f="0" si="13" te="'Caution: do not touch output leads!'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
-  <o en="40" sp="64" f="x20a" p="0" x="HV output"><p v="0" sc="20"/></o>
+  <o en="42" sp="64" f="x20a" p="0" x="HV output"><p v="0" sc="20"/></o>
   <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="200000" st="R1 switching rate" stp="0" log="0"/>
 </cir>

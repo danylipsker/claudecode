@@ -29,7 +29,7 @@
   <x x="744 330 810 334" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
   <pc x="720 400 720 560" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
   <x x="692 474 706 478" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <p x="528 272 592 560" f="1" me="0" sc="0" re="0"/>
+  <p x="528 272 528 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 272 96" f="0"/>
   <w x="272 96 464 96" f="0"/>
   <w x="464 96 592 96" f="0"/>
@@ -37,8 +37,8 @@
   <w x="640 96 896 96" f="0"/>
   <w x="96 560 272 560" f="0"/>
   <w x="272 560 496 560" f="0"/>
-  <w x="496 560 592 560" f="0"/>
-  <w x="592 560 720 560" f="0"/>
+  <w x="496 560 528 560" f="0"/>
+  <w x="528 560 720 560" f="0"/>
   <w x="720 560 896 560" f="0"/>
   <x x="96 640 675 644" f="0" si="13" te="This circuit will function with either or both output devices.  The speaker gives\nmore volume but uses more current.  Use R3 to reduce volume; 10 to 1000 ohms.\nA piezo element without an internal driver circuit can be connected instead, and\ngives an intense sound.  Note: your values may vary.\n\nC1 = .01 uF makes it an audio oscillator; C1 = 1 uF makes it a metronome." co="#c8d8c8"/>
   <x x="96 748 367 752" f="0" si="13" te="'Note: your values may vary.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>

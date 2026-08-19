@@ -3,43 +3,39 @@
   <g x="96 560 96 608" f="0"/>
   <x x="96 32 434 36" f="0" si="22" te="ANALOG LIGHTWAVE TRANSMITTER" co="#ffffff"/>
   <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.30" co="#98a8b8"/>
-  <LDR x="320 96 320 240" f="0" ps="0.34" st="Light on R1"/>
-  <x x="292 162 306 166" f="0" si="13" te="R1" co="#e0e0a0"/>
-  <w x="320 240 400 240" f="0"/>
-  <r x="320 240 320 336" f="0" r="1000"/>
-  <x x="292 282 306 286" f="0" si="13" te="R2" co="#e0e0a0"/>
-  <w x="320 336 368 336" f="0"/>
-  <w x="368 336 400 336" f="0"/>
-  <w x="400 304 368 304" f="0"/>
-  <w x="368 304 368 336" f="0"/>
-  <c x="320 336 320 560" f="0" c="2.2e-07" iv="0" sr="0" vd="0"/>
-  <x x="292 442 306 446" f="0" si="13" te="C1" co="#e0e0a0"/>
-  <Timer x="400 208 432 208" f="14"/>
-  <w x="464 176 464 96" f="0"/>
-  <w x="496 368 496 560" f="0"/>
-  <c x="464 368 464 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
-  <x x="436 458 450 462" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <w x="528 240 608 240" f="0"/>
-  <w x="608 240 608 96" f="0"/>
-  <w x="528 272 656 272" f="0"/>
-  <r x="656 272 656 336" f="0" r="220"/>
-  <x x="628 298 642 302" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <LED x="656 336 656 416" f="0" mo="default-led" cr="0.6" cg="0" cb="0.6" mbc="0.01"/>
-  <ln x="656 376 720 376" f="0" te="IR OUT"/>
-  <w x="656 416 656 560" f="0"/>
-  <p x="528 272 624 560" f="1" me="0" sc="0" re="0"/>
-  <w x="96 96 320 96" f="0"/>
-  <w x="320 96 464 96" f="0"/>
-  <w x="464 96 608 96" f="0"/>
-  <w x="608 96 768 96" f="0"/>
-  <w x="96 560 320 560" f="0"/>
-  <w x="320 560 464 560" f="0"/>
-  <w x="464 560 496 560" f="0"/>
-  <w x="496 560 624 560" f="0"/>
-  <w x="624 560 656 560" f="0"/>
-  <w x="656 560 768 560" f="0"/>
+  <LDR x="304 96 304 240" f="0" ps="0.34" st="Light on R1"/>
+  <w x="304 240 432 240" f="0"/>
+  <r x="304 240 304 336" f="0" r="1000"/>
+  <x x="276 282 290 286" f="0" si="13" te="R2" co="#e0e0a0"/>
+  <w x="304 336 400 336" f="0"/>
+  <w x="400 336 432 336" f="0"/>
+  <w x="432 304 400 304" f="0"/>
+  <w x="400 304 400 336" f="0"/>
+  <c x="304 336 304 560" f="0" c="2.2e-07" iv="0" sr="0" vd="0"/>
+  <x x="276 442 290 446" f="0" si="13" te="C1" co="#e0e0a0"/>
+  <x x="176 150 288 154" f="0" si="12" te="R1  photoresistor" co="#e0e0a0"/>
+  <Timer x="432 208 464 208" f="14"/>
+  <w x="496 176 496 96" f="0"/>
+  <w x="528 368 528 560" f="0"/>
+  <w x="560 240 656 240" f="0"/>
+  <w x="656 240 656 96" f="0"/>
+  <r x="720 96 720 240" f="0" r="220"/>
+  <x x="692 162 706 166" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <LED x="720 240 720 272" f="0" mo="default-led" cr="0.7" cg="0.1" cb="0.7" mbc="0.01"/>
+  <w x="720 272 560 272" f="0"/>
+  <x x="744 250 883 254" f="0" si="11" te="LED  (infrared emitter)\nlens -> infrared beam" co="#c8c8c8"/>
+  <p x="560 272 560 560" f="1" me="0" sc="0" re="0"/>
+  <w x="96 96 304 96" f="0"/>
+  <w x="304 96 496 96" f="0"/>
+  <w x="496 96 656 96" f="0"/>
+  <w x="656 96 720 96" f="0"/>
+  <w x="720 96 832 96" f="0"/>
+  <w x="96 560 304 560" f="0"/>
+  <w x="304 560 528 560" f="0"/>
+  <w x="528 560 560 560" f="0"/>
+  <w x="560 560 832 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="This circuit pulses an infrared-emitting diode at a frequency determined by R1 and\nC1.  R1 can be any sensor having variable resistance.  When R1 is a cadmium sulfide\nphotoresistor, the frequency of the signal rises with light level.\n\nThe receiver on the facing page receives and amplifies the signal, then converts the\nsignal's frequency into a current which is displayed on a 0 to 1 mA meter.  Use\nlenses to increase range." co="#c8d8c8"/>
   <x x="96 761 367 765" f="0" si="13" te="'Use lenses to increase range.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
-  <o en="28" sp="64" f="x20a" p="0" x="LED drive"><p v="0" sc="2"/></o>
-  <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
+  <o en="25" sp="64" f="x20a" p="0" x="LED drive"><p v="0" sc="2"/></o>
+  <o en="12" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
 </cir>

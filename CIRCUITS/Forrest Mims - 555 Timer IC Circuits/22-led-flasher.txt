@@ -5,48 +5,48 @@
   <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.26" co="#98a8b8"/>
   <r x="272 96 272 240" f="0" r="100000"/>
   <x x="244 162 258 166" f="0" si="13" te="R1" co="#e0e0a0"/>
-  <w x="272 240 352 240" f="0"/>
+  <w x="272 240 400 240" f="0"/>
   <r x="272 240 272 336" f="0" r="1000"/>
   <x x="244 282 258 286" f="0" si="13" te="R2" co="#e0e0a0"/>
-  <w x="272 336 320 336" f="0"/>
-  <w x="320 336 352 336" f="0"/>
-  <w x="352 304 320 304" f="0"/>
-  <w x="320 304 320 336" f="0"/>
-  <c x="272 336 272 560" f="0" c="4.7e-05" iv="0" sr="0" vd="0"/>
+  <w x="272 336 368 336" f="0"/>
+  <w x="368 336 400 336" f="0"/>
+  <w x="400 304 368 304" f="0"/>
+  <w x="368 304 368 336" f="0"/>
+  <pc x="272 336 272 560" f="0" c="4.7e-05" iv="0" sr="0" vd="0"/>
   <x x="244 442 258 446" f="0" si="13" te="C1" co="#e0e0a0"/>
-  <Timer x="352 208 384 208" f="14"/>
-  <w x="416 176 416 96" f="0"/>
-  <w x="448 368 448 560" f="0"/>
-  <c x="416 368 416 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
-  <x x="388 458 402 462" f="0" si="13" te="C2" co="#e0e0a0"/>
-  <w x="480 240 528 240" f="0"/>
-  <w x="528 240 528 96" f="0"/>
-  <w x="480 272 560 272" f="0"/>
-  <r x="560 272 624 272" f="0" r="1000"/>
-  <x x="586 250 600 254" f="0" si="13" te="R3" co="#e0e0a0"/>
-  <t x="624 272 688 272" f="0" pn="1" be="100" mo="default" vbe="0" vbc="0"/>
-  <x x="650 250 664 254" f="0" si="13" te="Q1" co="#e0e0a0"/>
-  <LED x="688 256 688 176" f="0" mo="default-led" cr="1" cg="0" cb="0" mbc="0.01"/>
-  <r x="688 176 688 96" f="0" r="270"/>
-  <x x="660 130 674 134" f="0" si="13" te="R4" co="#e0e0a0"/>
-  <w x="688 288 688 560" f="0"/>
-  <p x="480 272 528 560" f="1" me="0" sc="0" re="0"/>
+  <Timer x="400 208 432 208" f="14"/>
+  <w x="464 176 464 96" f="0"/>
+  <w x="496 368 496 560" f="0"/>
+  <w x="528 240 592 240" f="0"/>
+  <w x="592 240 592 96" f="0"/>
+  <w x="528 272 608 272" f="0"/>
+  <r x="608 272 672 272" f="0" r="1000"/>
+  <x x="634 250 648 254" f="0" si="13" te="R3" co="#e0e0a0"/>
+  <t x="672 272 736 272" f="0" pn="1" be="100" mo="default" vbe="0" vbc="0"/>
+  <x x="698 250 712 254" f="0" si="13" te="Q1" co="#e0e0a0"/>
+  <r x="736 96 736 256" f="0" r="270"/>
+  <x x="708 170 722 174" f="0" si="13" te="R4" co="#e0e0a0"/>
+  <w x="736 256 736 256" f="0"/>
+  <w x="736 288 736 560" f="0"/>
+  <w x="736 256 800 256" f="0"/>
+  <LED x="800 256 800 560" f="0" mo="default-led" cr="1" cg="0" cb="0" mbc="0.01"/>
+  <p x="528 272 528 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 272 96" f="0"/>
-  <w x="272 96 416 96" f="0"/>
-  <w x="416 96 528 96" f="0"/>
-  <w x="528 96 688 96" f="0"/>
-  <w x="688 96 768 96" f="0"/>
+  <w x="272 96 464 96" f="0"/>
+  <w x="464 96 592 96" f="0"/>
+  <w x="592 96 736 96" f="0"/>
+  <w x="736 96 832 96" f="0"/>
   <w x="96 560 272 560" f="0"/>
-  <w x="272 560 416 560" f="0"/>
-  <w x="416 560 448 560" f="0"/>
-  <w x="448 560 528 560" f="0"/>
-  <w x="528 560 688 560" f="0"/>
-  <w x="688 560 768 560" f="0"/>
+  <w x="272 560 496 560" f="0"/>
+  <w x="496 560 528 560" f="0"/>
+  <w x="528 560 736 560" f="0"/>
+  <w x="736 560 800 560" f="0"/>
+  <w x="800 560 832 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="This circuit will drive both visible light and infrared-emitting diodes.  Use a red,\ngreen or yellow LED to make a visible light flasher.  Use a near-infrared emitter to\nmake a powerful transmitter.  Connect a solar cell, photodiode or phototransistor to\nan amplifier to receive the signal.\n\nConnect a piezo buzzer across the LED for a light and sound darkroom timer.\nReduce C1 for faster pulse rates, especially when an infrared emitter is used." co="#c8d8c8"/>
   <x x="1230 96 1414 100" f="0" si="14" te="FLASH RATE  (C1 = 47 uF)" co="#ffffff"/>
   <x x="1230 120 1256 124" f="0" si="12" te="R1\n100K\n47K\n22K\n10K\n4.7K\n2.2K\n1.0K" co="#c8c8c8"/>
   <x x="1326 120 1385 124" f="0" si="12" te="RATE (Hz)\n.2\n.6\n1.1\n2.1\n3.6\n6.1\n8.3" co="#c8c8c8"/>
-  <o en="31" sp="64" f="x20a" p="0" x="pin 3 output"><p v="0" sc="2"/></o>
+  <o en="31" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
   <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="1000" mx="200000" st="R1 flash rate" stp="0" log="0"/>
 </cir>

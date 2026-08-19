@@ -37,7 +37,7 @@
   <x x="852 306 866 310" f="0" si="13" te="C2" co="#e0e0a0"/>
   <r x="880 352 880 560" f="0" r="8"/>
   <x x="904 400 970 404" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
-  <p x="528 272 848 560" f="1" me="0" sc="0" re="0"/>
+  <p x="528 272 528 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 272 96" f="0"/>
   <w x="272 96 464 96" f="0"/>
   <w x="464 96 624 96" f="0"/>
@@ -45,10 +45,10 @@
   <w x="672 96 960 96" f="0"/>
   <w x="96 560 272 560" f="0"/>
   <w x="272 560 496 560" f="0"/>
-  <w x="496 560 704 560" f="0"/>
+  <w x="496 560 528 560" f="0"/>
+  <w x="528 560 704 560" f="0"/>
   <w x="704 560 784 560" f="0"/>
-  <w x="784 560 848 560" f="0"/>
-  <w x="848 560 880 560" f="0"/>
+  <w x="784 560 880 560" f="0"/>
   <w x="880 560 960 560" f="0"/>
   <x x="96 640 668 644" f="0" si="13" te="When S1 is in position L the speaker emits a tone when light strikes the\nphotoresistor.  When S1 is in position D the speaker emits a tone when the\nphotoresistor is not illuminated.  It is OK to alter R1 and C1 to change the\nfrequency of the tone.\n\nPress L to throw both linked halves of S1, and drag the Light slider to test.\nCircuitJS's photoresistor covers only about 5.9K to 98K where a real cell covers\nfar more, so R3 is on a slider: about 4.7K suits position L, about 82K suits D." co="#c8d8c8"/>
   <x x="96 774 577 778" f="0" si="12" te="Book waveform, p.28:  with S1 at L, TONE ON follows LIGHT.  With S1 at D,\nTONE ON follows DARK instead." co="#9fb8c8"/>
