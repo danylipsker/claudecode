@@ -374,9 +374,9 @@
     #hint .keys { display: none; }
   }
 
-  /* ---------- level picker ---------- */
+  /* ---------- level picker & pack browser ---------- */
 
-  #picker {
+  #picker, #browser {
     position: fixed;
     inset: 0;
     display: none;
@@ -387,7 +387,7 @@
     backdrop-filter: blur(4px);
     z-index: 10;
   }
-  #picker.show { display: flex; }
+  #picker.show, #browser.show { display: flex; }
   .sheet {
     width: 100%;
     max-width: 460px;
@@ -433,6 +433,37 @@
   .lv.done { border-color: rgba(78, 203, 141, .55); background: rgba(78, 203, 141, .1); }
   .lv.done small { color: var(--green); }
   .lv.current { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  /* ---------- external level pack browser ---------- */
+
+  .sheet.wide { max-width: 680px; }
+  .thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .thumb {
+    padding: 5px 5px 3px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--muted);
+    font: inherit;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .thumb:hover { border-color: var(--accent); }
+  .thumb canvas {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    background: var(--floor-a);
+  }
+  .thumb small { display: block; font-size: .62rem; font-weight: 500; margin-top: 3px; }
+  .thumb.done { border-color: rgba(78, 203, 141, .55); background: rgba(78, 203, 141, .1); }
+  .thumb.done small { color: var(--green); }
+  .thumb.current { outline: 2px solid var(--accent); outline-offset: 1px; }
 
   @media (prefers-reduced-motion: reduce) {
     .ent { transition: none; }
@@ -489,8 +520,10 @@
     <button class="btn" id="prev">Prev</button>
     <button class="btn" id="next">Next<span class="key">N</span></button>
     <button class="btn" id="levels">Levels</button>
+    <button class="btn" id="open" title="Load levels from a .txt file">Open<span class="key">O</span></button>
     <button class="btn icon" id="sound" title="Toggle sound">🔊</button>
   </div>
+  <input type="file" id="file" accept=".txt,text/plain" hidden>
 
   <div id="hint"><span class="keys">Arrow keys or WASD to move · swipe on the board on touch</span></div>
 </div>
@@ -502,6 +535,18 @@
     <div class="actions">
       <button class="btn" id="wipe">Reset Progress</button>
       <button class="btn primary" id="closePicker">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="browser">
+  <div class="sheet wide">
+    <h3><span id="packTitle">Level pack</span> <span id="packInfo"></span></h3>
+    <div class="thumbs" id="thumbGrid"></div>
+    <div class="actions">
+      <button class="btn" id="classic">Classic Levels</button>
+      <button class="btn" id="openMore">Open File…</button>
+      <button class="btn primary" id="closeBrowser">Close</button>
     </div>
   </div>
 </div>
@@ -716,6 +761,43 @@
     return { name: def.name, par: def.par, w, h, walls, goals, boxes, player };
   }
 
+  /* ---------- external level packs ---------- *
+   * Accepts boxoban files ("; 0" headers, one 10x10 grid each) and generic
+   * Sokoban text files ("Level 1" headers or blank-line-separated grids).
+   * A line counts as board data when it holds only level glyphs and at
+   * least one wall; anything else ends the current grid and may name the
+   * next one. Grids without a player, without crates, or with more crates
+   * than goals are unwinnable in this engine and are dropped.
+   */
+  function parseLevelPack(text, label) {
+    const defs = [];
+    let rows = [], header = null;
+    const isBoard = s => /^[ #.$*@+]+$/.test(s) && s.includes("#");
+
+    const flush = () => {
+      if (rows.length >= 3) {
+        const flat = rows.join("");
+        const crates = (flat.match(/[$*]/g) || []).length;
+        const goals = (flat.match(/[.*+]/g) || []).length;
+        if (/[@+]/.test(flat) && crates > 0 && crates <= goals) {
+          defs.push({ name: label + " #" + (header ?? defs.length + 1), rows });
+        }
+      }
+      rows = [];
+      header = null;
+    };
+
+    for (const raw of text.split(/\r?\n/)) {
+      const line = raw.replace(/\s+$/, "");
+      if (isBoard(line)) { rows.push(line); continue; }
+      flush();
+      const m = line.match(/^;\s*(.+)$/) || line.match(/^\s*level\s+(\S+)/i);
+      if (m) header = m[1];
+    }
+    flush();
+    return defs;
+  }
+
   // Cells the player can ever stand on — used to hide scenery outside the level.
   function reachable(level) {
     const seen = Array.from({ length: level.h }, () => new Array(level.w).fill(false));
@@ -752,6 +834,11 @@
     picker: document.getElementById("picker"),
     levelGrid: document.getElementById("levelGrid"),
     progress: document.getElementById("progress"),
+    browser: document.getElementById("browser"),
+    thumbGrid: document.getElementById("thumbGrid"),
+    packTitle: document.getElementById("packTitle"),
+    packInfo: document.getElementById("packInfo"),
+    file: document.getElementById("file"),
     undo: document.getElementById("undo"),
     next: document.getElementById("next"),
     prev: document.getElementById("prev"),
@@ -771,6 +858,13 @@
     boxEls: [],
     playerEl: null
   };
+
+  // The active level pack, or null when playing the built-in set. External
+  // packs keep their own progress namespace so classic bests stay intact.
+  let pack = null;
+  let builtinIndex = 0; // where the classic set was left, restored on return
+  const curLevels = () => pack ? pack.defs : LEVELS;
+  const progKey = i => (pack ? "pk:" + pack.id + ":" : "lv") + i;
 
   const at = (list, x, y) => list.findIndex(b => b.x === x && b.y === y);
   const isWall = (x, y) => state.level.walls[y][x];
@@ -1006,21 +1100,21 @@
     sfx.win();
     state.playerEl.classList.add("cheer");
 
-    const key = "lv" + state.index;
+    const key = progKey(state.index);
     const best = progress[key];
     const beaten = !best || state.moves < best.moves;
     if (beaten) progress[key] = { moves: state.moves, pushes: state.pushes };
     saveProgress();
 
     const level = state.level;
-    el.winTitle.textContent = state.index === LEVELS.length - 1 ? "All levels cleared!" : "Level complete!";
+    const last = state.index === curLevels().length - 1;
+    el.winTitle.textContent = last ? "All levels cleared!" : "Level complete!";
     el.winDetail.textContent = `${plural(state.moves, "move")} · ${plural(state.pushes, "push", "es")}`;
     el.winMedal.textContent =
-      state.pushes <= level.par ? "Perfect — matched par!" :
+      level.par != null && state.pushes <= level.par ? "Perfect — matched par!" :
       beaten ? "New personal best" : "";
     el.overlay.classList.add("show");
-    document.getElementById("nextLevel").textContent =
-      state.index === LEVELS.length - 1 ? "Back to Level 1" : "Next Level";
+    document.getElementById("nextLevel").textContent = last ? "Back to Level 1" : "Next Level";
     document.getElementById("nextLevel").focus();
 
     updateHud();
@@ -1028,12 +1122,11 @@
   }
 
   function updateHud() {
-    const key = "lv" + state.index;
-    const best = progress[key];
-    el.statLevel.textContent = (state.index + 1) + ". " + state.level.name;
+    const best = progress[progKey(state.index)];
+    el.statLevel.textContent = pack ? state.level.name : (state.index + 1) + ". " + state.level.name;
     el.statMoves.textContent = state.moves;
     el.statPushes.textContent = state.pushes;
-    el.statPar.textContent = state.level.par;
+    el.statPar.textContent = state.level.par ?? "—";
     el.statBest.textContent = best ? best.moves + " mv" : "—";
     el.undo.disabled = state.won || state.history.length === 0;
 
@@ -1050,8 +1143,9 @@
   }
 
   function loadLevel(i) {
-    state.index = (i + LEVELS.length) % LEVELS.length;
-    state.level = parseLevel(LEVELS[state.index]);
+    const list = curLevels();
+    state.index = (i + list.length) % list.length;
+    state.level = parseLevel(list[state.index]);
     state.boxes = state.level.boxes.map(b => ({ ...b }));
     state.player = { ...state.level.player };
     state.facing = "down";
@@ -1071,6 +1165,7 @@
   /* ---------- level picker ---------- */
 
   function renderPicker() {
+    if (pack) { updateBrowserMarks(); return; }
     el.levelGrid.innerHTML = "";
     let solved = 0;
 
@@ -1091,6 +1186,113 @@
     el.progress.textContent = solved + " / " + LEVELS.length + " solved";
   }
 
+  /* ---------- external pack browser ---------- */
+
+  // Miniature of a raw level grid, drawn straight from its text rows.
+  function drawThumb(canvas, def) {
+    const w = Math.max.apply(null, def.rows.map(r => r.length));
+    const h = def.rows.length;
+    const s = 12;
+    canvas.width = w * s;
+    canvas.height = h * s;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#1e2342";
+    ctx.fillRect(0, 0, w * s, h * s);
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const c = def.rows[y][x] || " ";
+        const cx = x * s + s / 2, cy = y * s + s / 2;
+        if (c === "#") {
+          ctx.fillStyle = "#3d4477";
+          ctx.fillRect(x * s + 0.5, y * s + 0.5, s - 1, s - 1);
+        } else if (c === "$" || c === "*") {
+          ctx.fillStyle = c === "*" ? "#4ecb8d" : "#d69551";
+          ctx.fillRect(x * s + 2, y * s + 2, s - 4, s - 4);
+        } else if (c === "@" || c === "+") {
+          ctx.fillStyle = "#38d9d3";
+          ctx.beginPath();
+          ctx.arc(cx, cy, s * 0.36, 0, 7);
+          ctx.fill();
+        } else if (c === ".") {
+          ctx.fillStyle = "#ffd166";
+          ctx.beginPath();
+          ctx.arc(cx, cy, s * 0.2, 0, 7);
+          ctx.fill();
+        }
+      }
+    }
+  }
+
+  // Thumbnails are drawn only as they scroll into view — packs run to a
+  // thousand levels and painting them all up front would stall the open.
+  let thumbIO = null;
+
+  function buildBrowser() {
+    if (thumbIO) thumbIO.disconnect();
+    el.thumbGrid.innerHTML = "";
+    el.packTitle.textContent = pack.label;
+
+    thumbIO = new IntersectionObserver(entries => {
+      for (const en of entries) {
+        if (!en.isIntersecting) continue;
+        thumbIO.unobserve(en.target);
+        drawThumb(en.target.firstChild, pack.defs[+en.target.dataset.i]);
+      }
+    }, { root: el.thumbGrid.closest(".sheet"), rootMargin: "300px" });
+
+    pack.defs.forEach((def, i) => {
+      const b = document.createElement("button");
+      b.className = "thumb";
+      b.dataset.i = i;
+      b.title = def.name;
+      const c = document.createElement("canvas");
+      const label = document.createElement("small");
+      b.append(c, label);
+      b.addEventListener("click", () => {
+        el.browser.classList.remove("show");
+        loadLevel(i);
+      });
+      thumbIO.observe(b);
+      el.thumbGrid.appendChild(b);
+    });
+
+    updateBrowserMarks();
+  }
+
+  function updateBrowserMarks() {
+    let solved = 0;
+    let i = 0;
+    for (const b of el.thumbGrid.children) {
+      const best = progress[progKey(i)];
+      if (best) solved++;
+      b.classList.toggle("done", !!best);
+      b.classList.toggle("current", i === state.index);
+      b.lastChild.textContent = (i + 1) + (best ? " · " + best.moves + " mv" : "");
+      i++;
+    }
+    el.packInfo.textContent = solved + " / " + pack.defs.length + " solved";
+  }
+
+  function openPackFile(file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const label = file.name.replace(/\.[^.]+$/, "");
+      const defs = parseLevelPack(reader.result, label);
+      if (!defs.length) {
+        el.hint.className = "stuck";
+        el.hint.textContent = file.name + ": no Sokoban levels recognized";
+        return;
+      }
+      if (!pack) builtinIndex = state.index;
+      pack = { id: file.name, label: file.name, defs };
+      loadLevel(0);
+      buildBrowser();
+      el.picker.classList.remove("show");
+      el.browser.classList.add("show");
+    };
+    reader.readAsText(file);
+  }
+
   /* ---------- input ---------- */
 
   const KEYS = {
@@ -1104,6 +1306,11 @@
 
     if (el.picker.classList.contains("show")) {
       if (e.key === "Escape") el.picker.classList.remove("show");
+      return;
+    }
+
+    if (el.browser.classList.contains("show")) {
+      if (e.key === "Escape") el.browser.classList.remove("show");
       return;
     }
 
@@ -1126,6 +1333,9 @@
         break;
       case "n":
         loadLevel(state.index + 1);
+        break;
+      case "o":
+        el.file.click();
         break;
       case "p":
         loadLevel(state.index - 1);
@@ -1165,11 +1375,28 @@
 
   document.getElementById("levels").addEventListener("click", () => {
     renderPicker();
-    el.picker.classList.add("show");
+    (pack ? el.browser : el.picker).classList.add("show");
   });
   document.getElementById("closePicker").addEventListener("click", () => el.picker.classList.remove("show"));
   el.picker.addEventListener("click", e => {
     if (e.target === el.picker) el.picker.classList.remove("show");
+  });
+
+  document.getElementById("open").addEventListener("click", () => el.file.click());
+  document.getElementById("openMore").addEventListener("click", () => el.file.click());
+  el.file.addEventListener("change", () => {
+    if (el.file.files[0]) openPackFile(el.file.files[0]);
+    el.file.value = "";
+  });
+
+  document.getElementById("classic").addEventListener("click", () => {
+    pack = null;
+    el.browser.classList.remove("show");
+    loadLevel(builtinIndex);
+  });
+  document.getElementById("closeBrowser").addEventListener("click", () => el.browser.classList.remove("show"));
+  el.browser.addEventListener("click", e => {
+    if (e.target === el.browser) el.browser.classList.remove("show");
   });
 
   document.getElementById("wipe").addEventListener("click", () => {

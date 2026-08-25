@@ -16,6 +16,11 @@ NOVELTECH/
 CIRCUITS/circuitjs1-win/
 CIRCUITS/circuitjs1-win.zip
 
+# DeepMind boxoban level dataset (third-party, ~171MB; Apache-licensed).
+# Re-download from https://github.com/deepmind/boxoban-levels rather than
+# version it — the game opens its .txt files at runtime via the Open button.
+sokoban/boxoban-levels-master/
+
 # Python bytecode
 __pycache__/
 *.pyc
