@@ -40,22 +40,24 @@
   <w x="1024 240 1024 96" f="0"/>
   <c x="880 368 880 560" f="0" c="1e-08" iv="0" sr="0" vd="0"/>
   <x x="845 458 866 462" f="0" si="13" te="C2b" co="#e0e0a0"/>
+  <w x="752 464 1088 464" f="0"/>
+  <w x="1088 464 1152 464" f="0"/>
+  <r x="1088 464 1088 560" f="0" r="10000"/>
+  <x x="1060 506 1074 510" f="0" si="13" te="R4" co="#e0e0a0"/>
   <t x="1152 464 1152 528" f="0" pn="1" be="100" mo="default" vbe="0" vbc="0"/>
   <x x="1124 490 1138 494" f="0" si="13" te="Q1" co="#e0e0a0"/>
-  <w x="752 464 1152 464" f="0"/>
-  <r x="1152 592 1152 560" f="0" r="10000"/>
-  <x x="1124 570 1138 574" f="0" si="13" te="R4" co="#e0e0a0"/>
-  <w x="1136 528 1136 592" f="0"/>
-  <w x="1168 528 1168 624" f="0"/>
-  <w x="1168 624 736 624" f="0"/>
-  <w x="736 624 736 560" f="0"/>
+  <w x="1136 528 1136 560" f="0"/>
+  <w x="1168 528 1168 496" f="0"/>
+  <w x="1168 496 704 496" f="0"/>
+  <w x="704 496 704 336" f="0"/>
+  <w x="704 336 736 336" f="0"/>
   <x x="1176 470 1235 474" f="0" si="12" te="Q1 2N3904" co="#e0e0a0"/>
   <w x="944 272 1184 272" f="0"/>
   <r x="1184 272 1184 560" f="0" r="1000"/>
   <x x="1208 300 1322 304" f="0" si="11" te="PIEZO BUZZER\n(1k load stands in)" co="#c8c8c8"/>
   <p x="480 272 480 560" f="1" me="0" sc="0" re="0"/>
   <p x="944 272 944 560" f="1" me="0" sc="0" re="0"/>
-  <x x="96 700 961 704" f="0" si="11" te="Q1's E/C labelling does not resolve at this scan resolution; it is built here as the discharge switch across C3 that the page's text describes." co="#c08080"/>
+  <x x="96 700 1336 704" f="0" si="11" te="Mims labels Q1's leads E to pins 12/13 and C to ground; built here the conventional way round -- collector on C3, emitter grounded -- which is the discharge switch across C3 that the page's text describes." co="#c08080"/>
   <w x="96 96 272 96" f="0"/>
   <w x="272 96 416 96" f="0"/>
   <w x="416 96 592 96" f="0"/>
@@ -71,14 +73,15 @@
   <w x="736 560 880 560" f="0"/>
   <w x="880 560 912 560" f="0"/>
   <w x="912 560 944 560" f="0"/>
-  <w x="944 560 1152 560" f="0"/>
-  <w x="1152 560 1184 560" f="0"/>
+  <w x="944 560 1088 560" f="0"/>
+  <w x="1088 560 1136 560" f="0"/>
+  <w x="1136 560 1184 560" f="0"/>
   <w x="1184 560 1216 560" f="0"/>
   <x x="96 640 675 644" f="0" si="13" te="This circuit applies brief pulses of current to a piezo buzzer.  This causes the\nbuzzer to emit attention-getting chirps, and makes a good warning device.\n\nR1 controls the rate of chirps; use a 100K fixed resistor for about 2 to 3 chirps\nper second.  C3 controls the duration of the chirps.  For long duration pulses,\nwhich become tone bursts, increase C3 to 0.22 uF or more.  Reduce volume by\ninserting a 100 to 10,000 ohm resistor between pin 9 and the piezo buzzer.\nTry using a CdS photoresistor for R1." co="#c8d8c8"/>
   <x x="96 774 380 778" f="0" si="14" te="chirp rate  = 1.44 / ((R1 + 2 R2) C1)\nchirp length = 1.1 x R3 x C3" co="#ffe08a"/>
   <x x="96 832 367 836" f="0" si="13" te="'Try using CdS photoresistor for R1.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
-  <o en="54" sp="64" f="x20a" p="0" x="chirp rate"><p v="0" sc="2"/></o>
-  <o en="55" sp="64" f="x20a" p="1" x="chirp gate"><p v="0" sc="2"/></o>
+  <o en="56" sp="64" f="x20a" p="0" x="chirp rate"><p v="0" sc="2"/></o>
+  <o en="57" sp="64" f="x20a" p="1" x="chirp gate"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="100000" mx="2000000" st="R1 chirp rate" stp="0" log="0"/>
   <adj e="32" ei="0" en="Capacitance (F)" mn="1e-09" mx="2.2e-07" st="C3 chirp length" stp="0" log="1"/>
 </cir>

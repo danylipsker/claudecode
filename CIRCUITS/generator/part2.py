@@ -87,7 +87,11 @@ def c16():
 
     # The logic gate drives Q1's gate.  Q1 switches only the feed to R1 --
     # pins 8 and 4 go straight to the rail, as p.20 draws them.
-    c.add('<L x="176 176 240 176" f="0" key="g"/>')
+    # The post of a logic input sits at its FIRST coordinate, so the element is
+    # drawn right-to-left to put that post against Q1's gate.  hi="9" because the
+    # page powers the logic gate from the same rail as the 555: a 5 V default
+    # cannot lift the source follower above the chip's 6 V threshold.
+    c.add('<L x="240 176 176 176" f="0" key="g" hi="9"/>')
     c.text((104, 148), "ANY LOGIC GATE  (press G)", 11, "#e0e0a0")
     g, src, drn = fet_posts((272, 176), (336, 176))
     c.w((240, 176), (272, 176))
@@ -155,16 +159,21 @@ def c17():
     chip_power(c, B, vr, gr, reset_x=1024)
     ctl_cap(c, B, gr, 1e-8, ref="C2b")
 
-    # Q1 across C3, gated from the OUT1/TRIG2 node, with R4 to ground.
+    # Q1 across C3, gated from the OUT1/TRIG2 node, with R4 pulling that node down.
+    # The base wire is split at 1088 so R4 hangs off a real three-way node -- a wire
+    # ending part-way along another wire looks joined but is not.
+    c.w((752, 464), (1088, 464))
+    c.w((1088, 464), (1152, 464))
+    c.r((1088, 464), (1088, gr.y), 10000, ref="R4")
+    gr.tap(1088)
     b, coll, emit = bjt_posts((1152, 464), (1152, 528))
     c.npn((1152, 464), (1152, 528), ref="Q1")
-    c.w((752, 464), (1152, 464))
-    c.r((1152, 592), (1152, gr.y), 10000, ref="R4")
-    c.w(emit, (emit[0], 592))
-    c.w(coll, (coll[0], 624))
-    c.w((coll[0], 624), (736, 624))
-    c.w((736, 624), (736, gr.y))
-    gr.tap(1152)
+    c.w(emit, (emit[0], gr.y))
+    gr.tap(emit[0])
+    c.w(coll, (coll[0], 496))
+    c.w((coll[0], 496), (704, 496))
+    c.w((704, 496), (704, 336))
+    c.w((704, 336), (736, 336))
     c.text((1176, 470), "Q1 2N3904", 12, "#e0e0a0")
 
     # piezo buzzer on OUT2
@@ -179,8 +188,9 @@ def c17():
     c.scope(p2, 1, ((0, 2),), label="chirp gate")
     c.slider(r1, "Resistance (ohms)", 100000, 2000000, "R1 chirp rate")
     c.slider(c3, "Capacitance (F)", 1e-9, 2.2e-7, "C3 chirp length", log=True)
-    c.text((96, 700), "Q1's E/C labelling does not resolve at this scan resolution; it is built here "
-                      "as the discharge switch across C3 that the page's text describes.", 11, "#c08080")
+    c.text((96, 700), "Mims labels Q1's leads E to pins 12/13 and C to ground; built here the "
+                      "conventional way round -- collector on C3, emitter grounded -- which is the "
+                      "discharge switch across C3 that the page's text describes.", 11, "#c08080")
     vr.build(); gr.build()
     return "17-chirp-generator", c
 
@@ -703,12 +713,14 @@ def c27():
     inm2, inp2, outp2 = opamp_posts((624, 336), (720, 336))
     c.w((560, 320), (560, inp2[1]))
     c.w((560, inp2[1]), inp2)
-    c.pot((496, 448), (528, 560), 10000, 0.5, "R4 bias")
-    c.w((496, 448), (496, 400))
-    c.w((496, 400), (496, VP_Y)); vr.tap(496)
-    c.w((496, 560), (496, gr.y)); gr.tap(496)
-    c.w((528, 504), (592, 504))
-    c.w((592, 504), (592, inm2[1]))
+    # A PotElm's three posts are point1, point1+(0,128) and the wiper at
+    # point1+(32,64) -- the drawn end point only sets the wiper's side.  Wiring to
+    # the drawn coordinates instead of these misses every one of them.
+    c.pot((496, 432), (528, 560), 10000, 0.5, "R4 bias")
+    c.w((496, 432), (496, VP_Y)); vr.tap(496)
+    gr.tap(496)
+    c.w((528, 496), (592, 496))
+    c.w((592, 496), (592, inm2[1]))
     c.w((592, inm2[1]), inm2)
     c.opamp((624, 336), (720, 336))
 

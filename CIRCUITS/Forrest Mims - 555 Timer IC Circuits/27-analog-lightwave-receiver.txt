@@ -25,12 +25,10 @@
   <a x="432 320 528 320" f="0" ma="15" mi="-15" ga="100000"/>
   <w x="560 320 560 352" f="0"/>
   <w x="560 352 624 352" f="0"/>
-  <pt x="496 448 528 560" f="0" ma="10000" po="0.5" sl="R4 bias"/>
-  <w x="496 448 496 400" f="0"/>
-  <w x="496 400 496 96" f="0"/>
-  <w x="496 560 496 560" f="0"/>
-  <w x="528 504 592 504" f="0"/>
-  <w x="592 504 592 320" f="0"/>
+  <pt x="496 432 528 560" f="0" ma="10000" po="0.5" sl="R4 bias"/>
+  <w x="496 432 496 96" f="0"/>
+  <w x="528 496 592 496" f="0"/>
+  <w x="592 496 592 320" f="0"/>
   <w x="592 320 624 320" f="0"/>
   <a x="624 336 720 336" f="0" ma="15" mi="-15" ga="100000"/>
   <c x="720 336 784 336" f="0" c="1e-07" iv="0" sr="0" vd="0"/>
@@ -87,6 +85,6 @@
   <w x="1152 560 1216 560" f="0"/>
   <x x="96 640 689 644" f="0" si="13" te="This circuit receives pulse-frequency-modulated signals from the transmitter on the\nfacing page.  Two op amps, the halves of a 1458, amplify the phototransistor's\npulses; the 555 one-shot turns each pulse into a fixed-width output pulse, so the\naveraged current on M1 reads the transmitter's frequency.  Calibrate with R9.\n\nIt is OK to use two 741s in place of the 1458.  Connect C2 directly across pins 8\nand 4 of the 1458.  Here the phototransistor is modelled by the pulse source." co="#c8d8c8"/>
   <x x="96 761 584 765" f="0" si="12" te="Book graph, p.30: receiver current 0 to 1 mA against transmitter frequency\n0.1 to 1.2 kHz, close to a straight line.  The test receiver gave a\nnon-linear response when the transmitter frequency exceeded 1.3 kHz." co="#9fb8c8"/>
-  <o en="66" sp="64" f="x20a" p="0" x="one-shot output"><p v="0" sc="2"/></o>
-  <adj e="59" ei="0" en="Resistance (ohms)" mn="1000" mx="50000" st="R9 calibrate" stp="0" log="0"/>
+  <o en="64" sp="64" f="x20a" p="0" x="one-shot output"><p v="0" sc="2"/></o>
+  <adj e="57" ei="0" en="Resistance (ohms)" mn="1000" mx="50000" st="R9 calibrate" stp="0" log="0"/>
 </cir>

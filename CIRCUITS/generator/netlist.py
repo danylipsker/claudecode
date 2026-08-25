@@ -45,7 +45,17 @@ def posts(tag, x, flags):
         w = int(flags.get("wi", 32))
         return [("P+", a), ("S+", b), ("P-", (a[0], a[1] + w)), ("S-", (b[0], b[1] + w))]
     if tag == "pt":
-        return [("A", a), ("B", b), ("W", b)]
+        # Verified against the running app: the track runs from point1 along the
+        # major axis, and the drawn end point only supplies the wiper's sideways
+        # offset -- the wiper sits at the track's midpoint, not at point2.
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        if abs(dy) >= abs(dx):
+            sgn = 1 if dy >= 0 else -1
+            return [("A", a), ("B", (a[0], a[1] + dy)),
+                    ("W", (a[0] + dx, a[1] + sgn * (abs(dy) // 2)))]
+        sgn = 1 if dx >= 0 else -1
+        return [("A", a), ("B", (a[0] + dx, a[1])),
+                ("W", (a[0] + sgn * (abs(dx) // 2), a[1] + dy))]
     if tag in ("g", "ln", "aout", "L", "M"):
         return [("1", a)]
     return [("1", a), ("2", b)]

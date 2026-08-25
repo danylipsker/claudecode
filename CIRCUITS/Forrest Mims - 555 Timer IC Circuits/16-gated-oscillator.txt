@@ -3,7 +3,7 @@
   <g x="96 560 96 608" f="0"/>
   <x x="96 32 289 36" f="0" si="22" te="GATED OSCILLATOR" co="#ffffff"/>
   <x x="96 58 610 62" f="0" si="12" te="Forrest M. Mims III  -  Engineer's Mini-Notebook: 555 Timer IC Circuits,  p.20" co="#98a8b8"/>
-  <L x="176 176 240 176" f="0" key="g"/>
+  <L x="240 176 176 176" f="0" key="g" hi="9"/>
   <x x="104 148 255 152" f="0" si="11" te="ANY LOGIC GATE  (press G)" co="#e0e0a0"/>
   <w x="240 176 272 176" f="0"/>
   <f x="272 176 336 176" f="0" mo="default-nodiode"/>
