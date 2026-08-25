@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affine Transformations Lab</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#2a2f3a;
+    --txt:#e6e9ef; --dim:#9aa3b2; --accent:#ff9f1c; --accent2:#2ec4b6;
+    --err:#e5484d; --ok:#30a46c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI",system-ui,Roboto,Arial,sans-serif;font-size:14px;overflow:hidden}
+  #app{display:grid;grid-template-columns:430px 1fr;height:100vh}
+  /* ---------- left panel ---------- */
+  #panel{background:var(--panel);border-right:1px solid var(--line);overflow-y:auto;padding:14px}
+  #panel h1{font-size:18px;margin:2px 0 2px;color:var(--accent)}
+  #panel h1 small{color:var(--dim);font-weight:400;font-size:12px;display:block;margin-top:2px}
+  .section{margin-top:14px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px}
+  .section h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 8px}
+  .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  button{background:#262c38;border:1px solid var(--line);color:var(--txt);border-radius:6px;
+    padding:5px 9px;cursor:pointer;font-size:12.5px;transition:background .15s}
+  button:hover{background:#313a4b}
+  button.sel{background:var(--accent);border-color:var(--accent);color:#111;font-weight:600}
+  button.mini{padding:2px 6px;font-size:12px;line-height:1.4}
+  button.warn:hover{background:#4b3131}
+  .note{font-size:12px;color:var(--dim);line-height:1.5}
+  .note b{color:var(--txt)}
+  .note code{background:#0d0f14;padding:1px 4px;border-radius:4px;color:var(--accent2);font-size:11.5px}
+  /* ---------- matrix cards ---------- */
+  .mcard{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:#191d26;overflow:hidden}
+  .mcard.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .mcard.off{opacity:.45}
+  .mhead{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#20242f;cursor:pointer;user-select:none}
+  .mhead .name{flex:1;background:transparent;border:none;color:var(--txt);font-size:13px;font-weight:600;outline:none;min-width:0}
+  .mhead .name:focus{color:var(--accent)}
+  .mgrid{display:grid;gap:4px;padding:8px;width:max-content;margin:0 auto}
+  .mgrid input{width:78px;text-align:center;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+    border-radius:5px;padding:5px 4px;font-family:Consolas,monospace;font-size:12.5px;outline:none}
+  .mgrid input:focus{border-color:var(--accent2)}
+  .mgrid input.bad{border-color:var(--err);color:var(--err)}
+  .mgrid input.hom{background:#111420;color:#5d6575}
+  /* ---------- result ---------- */
+  #result .mgrid div{width:78px;text-align:center;font-family:Consolas,monospace;font-size:12.5px;
+    padding:5px 4px;color:var(--txt);background:#0d0f14;border:1px solid var(--line);border-radius:5px}
+  #detline{margin-top:8px;font-size:12.5px;color:var(--dim)}
+  #detline b{color:var(--accent)}
+  #errline{color:var(--err);font-size:12px;margin-top:6px;display:none}
+  /* ---------- viewport ---------- */
+  #view{position:relative}
+  #view canvas{display:block}
+  #hud{position:absolute;left:12px;top:10px;font-size:12px;color:var(--dim);background:rgba(15,17,21,.65);
+    padding:6px 10px;border-radius:6px;pointer-events:none;line-height:1.6}
+  #hud b{color:var(--txt)}
+  .legend{position:absolute;right:12px;top:10px;font-size:12px;background:rgba(15,17,21,.65);
+    padding:8px 12px;border-radius:6px;line-height:1.7;pointer-events:none}
+  .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+  kbd{background:#262c38;border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:11px}
+  ::-webkit-scrollbar{width:9px}::-webkit-scrollbar-thumb{background:#2c3342;border-radius:5px}
+  /* ---------- quaternions ---------- */
+  .qcard{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:#191d26;overflow:hidden}
+  .qcard.sel{border-color:var(--accent2);box-shadow:0 0 0 1px var(--accent2)}
+  .qrow{display:grid;grid-template-columns:22px 1fr;gap:4px;align-items:center;padding:0 8px 4px}
+  .qrow label{font-family:Consolas,monospace;color:var(--dim);text-align:right;font-size:13px}
+  .qrow label.i{color:#e5484d}.qrow label.j{color:#30a46c}.qrow label.k{color:#3e8eed}
+  .qrow input{width:100%;text-align:center;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+    border-radius:5px;padding:5px 4px;font-family:Consolas,monospace;font-size:12.5px;outline:none}
+  .qrow input:focus{border-color:var(--accent2)}
+  .qrow input.bad{border-color:var(--err);color:var(--err)}
+  .qinfo{padding:2px 10px 8px;font-size:12px;color:var(--dim);line-height:1.55}
+  .qinfo b{color:var(--txt)}
+  .qacts{display:flex;gap:5px;padding:0 8px 9px;flex-wrap:wrap}
+  .conv{margin-top:6px;background:#141820;border:1px solid var(--line);border-radius:6px;padding:8px}
+  .conv h3{margin:0 0 6px;font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.06em}
+  .conv .note b{color:var(--txt)}
+  #slerpCtl{display:flex;align-items:center;gap:8px;margin-top:8px}
+  #slerpCtl input[type=range]{flex:1;accent-color:var(--accent2)}
+  #slerpVal{font-family:Consolas,monospace;font-size:12px;color:var(--accent2);min-width:34px;text-align:right}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="panel">
+    <h1>Affine Transformations Lab
+      <small>2×2 · 3×3 · 4×4 matrices — move, rotate, scale, shear &amp; compose</small></h1>
+
+    <div class="section">
+      <h2>Matrix dimension</h2>
+      <div class="row" id="dimRow">
+        <button data-dim="2">2 × 2 <span class="note">· 2D linear</span></button>
+        <button data-dim="3" class="sel">3 × 3 <span class="note">· 2D affine</span></button>
+        <button data-dim="4">4 × 4 <span class="note">· 3D affine</span></button>
+      </div>
+      <div class="note" style="margin-top:6px" id="dimNote"></div>
+    </div>
+
+    <div class="section">
+      <h2>Insert preset into selected matrix</h2>
+      <div class="row" id="presetRow"></div>
+      <div class="note" style="margin-top:6px">
+        Presets write <b>expressions</b> (e.g. <code>cos(deg(30))</code>) so you can see &amp; edit the trig.
+        Cells accept numbers (<code>1.5</code>, <code>1/3</code>), arithmetic (<code>+ - * / ^</code>),
+        trig &amp; functions (<code>sin cos tan asin acos atan sqrt abs exp log min max deg rad</code>)
+        and constants <code>pi</code>, <code>e</code>, <code>tau</code>.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Matrix stack — composite by multiplication</h2>
+      <div id="stack"></div>
+      <div class="row">
+        <button id="addBtn">+ Add matrix</button>
+        <button id="clearBtn" class="warn">Reset stack</button>
+      </div>
+      <div class="note" style="margin-top:6px">
+        Matrices are composed <b>top → bottom</b>: the top matrix is applied <b>first</b>.
+        Composite&nbsp;=&nbsp;M<sub>n</sub>·…·M<sub>2</sub>·M<sub>1</sub>. Order matters — try swapping rotation and translation!
+      </div>
+    </div>
+
+    <div class="section" id="result">
+      <h2>Composite result</h2>
+      <div id="resultGrid"></div>
+      <div id="detline"></div>
+      <div id="errline"></div>
+    </div>
+
+    <div class="section">
+      <h2>Display</h2>
+      <div class="row">
+        <button id="animBtn">▶ Animate from identity</button>
+        <button id="ghostBtn" class="sel">Ghost: on</button>
+        <button id="axesBtn" class="sel">Basis vectors: on</button>
+      </div>
+    </div>
+
+    <div class="section" id="qsection">
+      <h2>Quaternions — 3D rotations, composed &amp; interpolated</h2>
+      <div class="note">q = <b>w + x·i + y·j + z·k</b>, i² = j² = k² = ijk = −1. Rotation of v: <code>p' = q·p·q⁻¹</code> (unit q).
+        Composing rotations = multiplying quaternions — order matters, same as matrices.
+        Everything here also works in <b>4×4 mode</b>: quaternions are applied into the composite matrix and
+        <b>slerp</b>-interpolated to the shape.</div>
+      <div class="row" style="margin-top:6px">
+        <button id="qAddBtn" class="mini">+ Add quaternion</button>
+      </div>
+      <div id="qstack" style="margin-top:8px"></div>
+      <div id="slerpCtl">
+        <button id="slerpBtn" class="mini">▶ Slerp identity → q<sub>total</sub></button>
+        <input type="range" id="slerpRange" min="0" max="1" step="0.01" value="1">
+        <span id="slerpVal">1.00</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>How each transform is represented</h2>
+      <div class="note" id="cheatsheet"></div>
+      <div class="conv">
+        <h3>Quaternion ⇄ rotation converters</h3>
+        <div class="note" id="convNote">
+          <b>Axis-angle → q</b>: axis (a<sub>x</sub>,a<sub>y</sub>,a<sub>z</sub>), angle θ ⇒ <code>q = [cos(θ/2), sin(θ/2)·a]</code>.<br>
+          <b>Euler (yaw,pitch,roll) → q</b>: q = q<sub>z</sub>(yaw) ⊗ q<sub>y</sub>(pitch) ⊗ q<sub>x</sub>(roll).<br>
+          <b>Matrix → q</b>: read the orthonormal upper 3×3 back into q (equations in the q-Matrix converter below).<br>
+          <b>q → Matrix</b> and <b>Matrix → q</b>: applied to the selected quaternion card.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view">
+    <div id="hud"></div>
+    <div class="legend">
+      <div><span class="sw" style="background:#8b93a5"></span>original (ghost)</div>
+      <div><span class="sw" style="background:#ff9f1c"></span>transformed</div>
+      <div><span class="sw" style="background:#e5484d"></span>x̂ axis&nbsp; <span class="sw" style="background:#30a46c"></span>ŷ axis&nbsp; <span class="sw" style="background:#3e8eed"></span>ẑ axis</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+"use strict";
+/* =====================================================================
+   1. EXPRESSION ENGINE — numbers, arithmetic, trig  (no eval())
+   Grammar: expr := term (('+'|'-') term)*
+            term := unary (('*'|'/'|'%') unary)*
+            pow  := unary ('^' pow)?            (right assoc)
+            unary:= '-' unary | primary
+            primary := number | const | func(args) | '(' expr ')'
+   ===================================================================== */
+const FUNCS = {
+  sin:Math.sin, cos:Math.cos, tan:Math.tan, asin:Math.asin, acos:Math.acos,
+  atan:Math.atan, atan2:Math.atan2, sqrt:Math.sqrt, cbrt:Math.cbrt, abs:Math.abs,
+  exp:Math.exp, log:Math.log, ln:Math.log, log10:Math.log10, floor:Math.floor,
+  ceil:Math.ceil, round:Math.round, min:Math.min, max:Math.max, pow:Math.pow,
+  deg:d=>d*Math.PI/180, rad:d=>d, sign:Math.sign, hyp:Math.hypot
+};
+const CONSTS = { pi:Math.PI, e:Math.E, tau:Math.PI*2, phi:(1+Math.sqrt(5))/2 };
+
+function tokenize(s){
+  const toks=[]; let i=0;
+  while(i<s.length){
+    const c=s[i];
+    if(/\s/.test(c)){i++;continue;}
+    if(/[0-9.]/.test(c)){
+      let j=i; while(j<s.length&&/[0-9.]/.test(s[j]))j++;
+      const raw=s.slice(i,j);
+      if((raw.match(/\./g)||[]).length>1) throw Error("bad number '"+raw+"'");
+      toks.push({t:'num',v:parseFloat(raw)}); i=j; continue;
+    }
+    if(/[A-Za-z_]/.test(c)){
+      let j=i; while(j<s.length&&/[A-Za-z0-9_]/.test(s[j]))j++;
+      toks.push({t:'id',v:s.slice(i,j).toLowerCase()}); i=j; continue;
+    }
+    if('+-*/%^(),'.includes(c)){toks.push({t:c}); i++; continue;}
+    throw Error("unexpected '"+c+"'");
+  }
+  return toks;
+}
+function parseExpr(src){
+  const toks=tokenize(String(src)); let p=0;
+  const peek=()=>toks[p]||{t:'end'};
+  const eat=t=>{ if(peek().t===t){p++;return true;} return false; };
+  function expr(){ let v=term();
+    while(peek().t==='+'||peek().t==='-'){ const op=toks[p++].t; const r=term(); v=op==='+'?v+r:v-r; } return v; }
+  function term(){ let v=unary();
+    while(peek().t==='*'||peek().t==='/'||peek().t==='%'){ const op=toks[p++].t; const r=unary();
+      v=op==='*'?v*r:op==='/'?v/r:v%r; } return v; }
+  function unary(){
+    if(eat('-')) return -unary();
+    if(eat('+')) return unary();
+    return pow();
+  }
+  function pow(){ const b=primary(); if(eat('^')) return Math.pow(b,pow()); return b; }
+  function primary(){
+    const tk=peek();
+    if(tk.t==='num'){p++; return tk.v;}
+    if(tk.t==='('){ p++; const v=expr(); if(!eat(')')) throw Error("missing )"); return v; }
+    if(tk.t==='id'){
+      p++; const name=tk.v;
+      if(eat('(')){
+        const args=[];
+        if(!eat(')')){ do{ args.push(expr()); }while(eat(',')); if(!eat(')')) throw Error("missing )"); }
+        const f=FUNCS[name]; if(!f) throw Error("unknown fn '"+name+"'");
+        if(args.length!==f.length && !(name==='min'||name==='max'))
+          throw Error(name+" expects "+f.length+" arg(s)");
+        return f(...args);
+      }
+      if(name in CONSTS) return CONSTS[name];
+      throw Error("unknown '"+name+"'");
+    }
+    throw Error("unexpected token");
+  }
+  const v=expr();
+  if(p<toks.length) throw Error("trailing input");
+  if(typeof v!=='number'||Number.isNaN(v)) throw Error("NaN");
+  return v;
+}
+
+/* =====================================================================
+   2. MATRIX HELPERS
+   ===================================================================== */
+const I = n => Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>r===c?"1":"0"));
+const matNum = cells => cells.map(row=>row.map(parseExpr));
+function matMul(A,B){
+  const n=A.length, C=Array.from({length:n},()=>Array(n).fill(0));
+  for(let r=0;r<n;r++)for(let c=0;c<n;c++){let s=0;for(let k=0;k<n;k++)s+=A[r][k]*B[k][c];C[r][c]=s;}
+  return C;
+}
+function matDet(M){
+  const n=M.length, a=M.map(r=>r.slice()); let d=1;
+  for(let c=0;c<n;c++){
+    let piv=c; for(let r=c+1;r<n;r++) if(Math.abs(a[r][c])>Math.abs(a[piv][c])) piv=r;
+    if(Math.abs(a[piv][c])<1e-12) return 0;
+    if(piv!==c){[a[piv],a[c]]=[a[c],a[piv]]; d=-d;}
+    d*=a[c][c];
+    for(let r=c+1;r<n;r++){const f=a[r][c]/a[c][c]; for(let k=c;k<n;k++) a[r][k]-=f*a[c][k];}
+  }
+  return d;
+}
+/* Apply matrix (2,3,4) to a 3D point. 3x3 & 4x4 use homogeneous coords
+   with perspective divide so the bottom row is fully honored. */
+function applyMat(M,d,x,y,z){
+  if(d===2) return [M[0][0]*x+M[0][1]*y, M[1][0]*x+M[1][1]*y, 0];
+  if(d===3){
+    const w=M[2][0]*x+M[2][1]*y+M[2][2];
+    const iw=Math.abs(w)<1e-9?1e9:1/w;
+    return [(M[0][0]*x+M[0][1]*y+M[0][2])*iw,(M[1][0]*x+M[1][1]*y+M[1][2])*iw,0];
+  }
+  const w=M[3][0]*x+M[3][1]*y+M[3][2]*z+M[3][3];
+  const iw=Math.abs(w)<1e-9?1e9:1/w;
+  return [(M[0][0]*x+M[0][1]*y+M[0][2]*z+M[0][3])*iw,
+          (M[1][0]*x+M[1][1]*y+M[1][2]*z+M[1][3])*iw,
+          (M[2][0]*x+M[2][1]*y+M[2][2]*z+M[2][3])*iw];
+}
+const fmt=v=>{ if(!isFinite(v)) return "—";
+  const r=Math.abs(v)<1e-10?0:v; let s=r.toFixed(3);
+  return s.replace(/\.000$/,"").replace(/(\.\d*?)0+$/,"$1"); };
+
+/* =====================================================================
+   2b. QUATERNION MATH — q = [w, x, y, z]
+   ===================================================================== */
+const qMul=(a,b)=>[
+  a[0]*b[0]-a[1]*b[1]-a[2]*b[2]-a[3]*b[3],
+  a[0]*b[1]+a[1]*b[0]+a[2]*b[3]-a[3]*b[2],
+  a[0]*b[2]-a[1]*b[3]+a[2]*b[0]+a[3]*b[1],
+  a[0]*b[3]+a[1]*b[2]-a[2]*b[1]+a[3]*b[0]];
+const qConj=q=>[q[0],-q[1],-q[2],-q[3]];
+const qNorm=q=>Math.hypot(q[0],q[1],q[2],q[3]);
+const qUnit=q=>{const n=qNorm(q)||1;return q.map(v=>v/n);};
+const qRotateVec=(q,v)=>{              // p' = q·p·q⁻¹ , unit q
+  const p=[0,...v], qc=qConj(q);
+  return qMul(qMul(q,p),qc).slice(1);
+};
+function qToMat3(q){
+  const [w,x,y,z]=qUnit(q);
+  return [
+    [1-2*(y*y+z*z), 2*(x*y-w*z),   2*(x*z+w*y)],
+    [2*(x*y+w*z),   1-2*(x*x+z*z), 2*(y*z-w*x)],
+    [2*(x*z-w*y),   2*(y*z+w*x),   1-2*(x*x+y*y)]];
+}
+function mat3ToQ(M){                   // Shepperd's method
+  const tr=M[0][0]+M[1][1]+M[2][2];
+  let w,x,y,z;
+  if(tr>0){ const s=Math.sqrt(tr+1)*2;
+    w=s/4; x=(M[2][1]-M[1][2])/s; y=(M[0][2]-M[2][0])/s; z=(M[1][0]-M[0][1])/s;
+  }else if(M[0][0]>M[1][1]&&M[0][0]>M[2][2]){ const s=Math.sqrt(Math.max(0,1+M[0][0]-M[1][1]-M[2][2]))*2;
+    w=(M[2][1]-M[1][2])/s; x=s/4; y=(M[0][1]+M[1][0])/s; z=(M[0][2]+M[2][0])/s;
+  }else if(M[1][1]>M[2][2]){ const s=Math.sqrt(Math.max(0,1+M[1][1]-M[0][0]-M[2][2]))*2;
+    w=(M[0][2]-M[2][0])/s; x=(M[0][1]+M[1][0])/s; y=s/4; z=(M[1][2]+M[2][1])/s;
+  }else{ const s=Math.sqrt(Math.max(0,1+M[2][2]-M[0][0]-M[1][1]))*2;
+    w=(M[1][0]-M[0][1])/s; x=(M[0][2]+M[2][0])/s; y=(M[1][2]+M[2][1])/s; z=s/4; }
+  return qUnit([w,x,y,z]);
+}
+function qToAxisAngle(q){
+  const u=qUnit(q), th=2*Math.acos(Math.min(1,Math.abs(u[0])));
+  const s=Math.sqrt(Math.max(0,1-u[0]*u[0]));
+  const axis=s<1e-9?[1,0,0]:[u[1]/s,u[2]/s,u[3]/s];
+  return {axis, thetaDeg:th*180/Math.PI};
+}
+function axisAngleToQ(axis,thetaDeg){
+  const n=Math.hypot(...axis)||1, h=thetaDeg*Math.PI/360;
+  return [Math.cos(h), axis[0]/n*Math.sin(h), axis[1]/n*Math.sin(h), axis[2]/n*Math.sin(h)];
+}
+function eulerToQ(yawZ,pitchY,rollX){  // degrees, applied X then Y then Z
+  const cx=Math.cos(rollX*Math.PI/360), sx=Math.sin(rollX*Math.PI/360);
+  const cy=Math.cos(pitchY*Math.PI/360), sy=Math.sin(pitchY*Math.PI/360);
+  const cz=Math.cos(yawZ*Math.PI/360),  sz=Math.sin(yawZ*Math.PI/360);
+  return qMul([cz,0,0,sz],qMul([cy,0,sy,0],[cx,sx,0,0]));
+}
+function qToEuler(q){                  // ZYX convention, degrees
+  const [w,x,y,z]=qUnit(q);
+  const sinp=2*(w*y-z*x);
+  const pitch=Math.abs(sinp)>=1?Math.sign(sinp)*90:Math.asin(sinp)*180/Math.PI;
+  const yaw=Math.atan2(2*(w*z+x*y),1-2*(y*y+z*z))*180/Math.PI;
+  const roll=Math.atan2(2*(w*x+y*z),1-2*(x*x+y*y))*180/Math.PI;
+  return {yaw,pitch,roll};
+}
+function qSlerp(a,b,t){                // shortest-arc spherical interpolation
+  let [w1,x1,y1,z1]=qUnit(a), [w2,x2,y2,z2]=qUnit(b);
+  let dot=w1*w2+x1*x2+y1*y2+z1*z2;
+  if(dot<0){dot=-dot; w2=-w2;x2=-x2;y2=-y2;z2=-z2;}
+  if(dot>0.9995) return qUnit([w1+t*(w2-w1),x1+t*(x2-x1),y1+t*(y2-y1),z1+t*(z2-z1)]);
+  const th=Math.acos(Math.min(1,dot)), s=Math.sin(th);
+  const A=Math.sin((1-t)*th)/s, B=Math.sin(t*th)/s;
+  return [w1*A+w2*B, x1*A+x2*B, y1*A+y2*B, z1*A+z2*B];
+}
+function qToMat4(q){
+  const R=qToMat3(q);
+  return [
+    [R[0][0],R[0][1],R[0][2],"0"],
+    [R[1][0],R[1][1],R[1][2],"0"],
+    [R[2][0],R[2][1],R[2][2],"0"],
+    ["0","0","0","1"]].map(r=>r.map(v=>typeof v==="string"?v:fmt(v)));
+}
+
+/* =====================================================================
+   3. PRESETS — inserted as readable expressions
+   ===================================================================== */
+const PRESETS = {
+  2:[
+    ["Identity", ()=>I(2)],
+    ["Rotate 30°", ()=>[["cos(deg(30))","-sin(deg(30))"],["sin(deg(30))","cos(deg(30))"]]],
+    ["Scale", ()=>[["1.5","0"],["0","0.75"]]],
+    ["Shear X", ()=>[["1","0.5"],["0","1"]]],
+    ["Shear Y", ()=>[["1","0"],["tan(deg(20))","1"]]],
+    ["Reflect X", ()=>[["-1","0"],["0","1"]]],
+  ],
+  3:[
+    ["Identity", ()=>I(3)],
+    ["Translate", ()=>[["1","0","1"],["0","1","0.5"],["0","0","1"]]],
+    ["Rotate 30°", ()=>[["cos(deg(30))","-sin(deg(30))","0"],["sin(deg(30))","cos(deg(30))","0"],["0","0","1"]]],
+    ["Scale", ()=>[["1.5","0","0"],["0","0.75","0"],["0","0","1"]]],
+    ["Shear X", ()=>[["1","0.5","0"],["0","1","0"],["0","0","1"]]],
+    ["Shear Y", ()=>[["1","0","0"],["tan(deg(20))","1","0"],["0","0","1"]]],
+    ["Reflect X", ()=>[["-1","0","0"],["0","1","0"],["0","0","1"]]],
+  ],
+  4:[
+    ["Identity", ()=>I(4)],
+    ["Translate", ()=>[["1","0","0","1"],["0","1","0","0.5"],["0","0","1","0.25"],["0","0","0","1"]]],
+    ["Rotate X 30°", ()=>[["1","0","0","0"],["0","cos(deg(30))","-sin(deg(30))","0"],["0","sin(deg(30))","cos(deg(30))","0"],["0","0","0","1"]]],
+    ["Rotate Y 30°", ()=>[["cos(deg(30))","0","sin(deg(30))","0"],["0","1","0","0"],["-sin(deg(30))","0","cos(deg(30))","0"],["0","0","0","1"]]],
+    ["Rotate Z 30°", ()=>[["cos(deg(30))","-sin(deg(30))","0","0"],["sin(deg(30))","cos(deg(30))","0","0"],["0","0","1","0"],["0","0","0","1"]]],
+    ["Scale", ()=>[["1.5","0","0","0"],["0","0.75","0","0"],["0","0","1.25","0"],["0","0","0","1"]]],
+    ["Shear XY", ()=>[["1","0.5","0","0"],["0","1","0","0"],["0","0","1","0"],["0","0","0","1"]]],
+    ["Reflect X", ()=>[["-1","0","0","0"],["0","1","0","0"],["0","0","1","0"],["0","0","0","1"]]],
+  ]
+};
+const DIM_NOTES = {
+  2:"<b>2×2</b> — linear maps of the plane: rotation, scale, shear, reflection. Translation is <b>not</b> linear — it needs homogeneous coordinates → use 3×3.",
+  3:"<b>3×3</b> — 2D affine maps in homogeneous coordinates (x, y, 1): the <b>last column is the translation</b>. Keep the bottom row 0 0 1 to stay affine (edit it for projective warps).",
+  4:"<b>4×4</b> — full 3D affine maps in homogeneous coordinates (x, y, z, 1): upper-left 3×3 = rotate / scale / shear, last column = translation."
+};
+const CHEATSHEET = {
+  2:"<b>Scale</b>: diagonal entries <code>sx, sy</code>.<br><b>Rotation θ</b>: <code>[cosθ −sinθ; sinθ cosθ]</code> — columns stay orthonormal.<br><b>Shear</b>: off-diagonal entries.<br><b>Reflection</b>: −1 on a diagonal → det &lt; 0 flips orientation.<br><b>Move (translate)</b>: impossible here — needs 3×3 homogeneous form.",
+  3:"<b>Move</b>: <code>tx, ty</code> in the last column.<br><b>Rotation θ</b>: upper 2×2 block <code>[cosθ −sinθ; sinθ cosθ]</code>.<br><b>Scale</b>: <code>M[0][0], M[1][1]</code>.<br><b>Shear</b>: off-diagonal <code>M[0][1]</code> / <code>M[1][0]</code>.<br><b>Any affine map</b> = linear part + translation in one matrix.<br><b>det</b> = signed area scale factor.",
+  4:"<b>Move</b>: <code>tx, ty, tz</code> in the last column.<br><b>Rotation</b>: orthonormal upper 3×3 (see the Rotate X/Y/Z presets).<br><b>Scale</b>: diagonal <code>sx, sy, sz</code>.<br><b>Shear</b>: off-diagonal entries of the upper 3×3.<br><b>det</b> = signed volume scale factor; det = 0 → collapses space (non-invertible)."
+};
+
+/* =====================================================================
+   4. STATE
+   ===================================================================== */
+let uid=0;
+const state={
+  dim:3,
+  stack:[],          // {id,name,enabled,cells:string[][]}
+  quats:[],          // {id,name,enabled,cells:[w,x,y,z] strings}
+  selectedId:null,
+  showGhost:true,
+  showBasis:true,
+  anim:{active:false,t:0},
+  slerp:{active:false,t:0,val:1},
+  qTotal:[1,0,0,0],
+};
+function newMatrix(name,cells){ return {id:++uid,name,enabled:true,cells:cells||I(state.dim)}; }
+function defaultStack(dim){
+  if(dim===2) return [ Object.assign(newMatrix("Rotate 30°", PRESETS[2][1][1]()),{}),
+                       Object.assign(newMatrix("Scale",      PRESETS[2][3][1]()),{}) ];
+  if(dim===3) return [ newMatrix("Rotate 30°", PRESETS[3][2][1]()),
+                       newMatrix("Translate",  PRESETS[3][1][1]()) ];
+  return           [ newMatrix("Rotate Z 30°", PRESETS[4][4][1]()),
+                     newMatrix("Translate",    PRESETS[4][1][1]()) ];
+}
+
+/* =====================================================================
+   5. UI — panel
+   ===================================================================== */
+const $=s=>document.querySelector(s);
+const stackEl=$("#stack"), resultGrid=$("#resultGrid"), detline=$("#detline"), errline=$("#errline");
+
+function renderPresets(){
+  const row=$("#presetRow"); row.innerHTML="";
+  PRESETS[state.dim].forEach(([label,gen])=>{
+    const b=document.createElement("button"); b.className="mini"; b.textContent=label;
+    b.onclick=()=>{ const m=state.stack.find(m=>m.id===state.selectedId)||state.stack[0];
+      if(!m) return; m.cells=gen(); if(!m.name||m.name==="Matrix") m.name=label;
+      renderStack(); update(); };
+    row.appendChild(b);
+  });
+  $("#dimNote").innerHTML=DIM_NOTES[state.dim];
+  $("#cheatsheet").innerHTML=CHEATSHEET[state.dim];
+}
+
+function renderStack(){
+  stackEl.innerHTML="";
+  state.stack.forEach((m,idx)=>{
+    const card=document.createElement("div");
+    card.className="mcard"+(m.id===state.selectedId?" sel":"")+(m.enabled?"":" off");
+    const head=document.createElement("div"); head.className="mhead";
+    head.onclick=e=>{ if(e.target.tagName!=="BUTTON"){state.selectedId=m.id;renderStack();} };
+    const chk=document.createElement("input"); chk.type="checkbox"; chk.checked=m.enabled;
+    chk.title="include in composite";
+    chk.onchange=()=>{m.enabled=chk.checked; renderStack(); update();};
+    const name=document.createElement("input"); name.className="name"; name.value=m.name;
+    name.oninput=()=>m.name=name.value;
+    name.onclick=e=>e.stopPropagation();
+    head.append(chk,name);
+    const btns=[["↑",()=>move(idx,-1),"move up (applies earlier)"],
+                ["↓",()=>move(idx,+1),"move down (applies later)"],
+                ["⧉",()=>{state.stack.splice(idx+1,0,{...JSON.parse(JSON.stringify(m)),id:++uid,name:m.name+" copy"});renderStack();update();},"duplicate"],
+                ["✕",()=>{state.stack.splice(idx,1);renderStack();update();},"delete"]];
+    btns.forEach(([t,fn,tip])=>{const b=document.createElement("button");b.className="mini";b.textContent=t;b.title=tip;
+      b.onclick=e=>{e.stopPropagation();fn();};head.appendChild(b);});
+    card.appendChild(head);
+    const grid=document.createElement("div"); grid.className="mgrid";
+    grid.style.gridTemplateColumns=`repeat(${state.dim},78px)`;
+    m.cells.forEach((row,r)=>row.forEach((val,c)=>{
+      const inp=document.createElement("input"); inp.value=val;
+      const homogeneous = state.dim>2 && r===state.dim-1;
+      if(homogeneous) inp.classList.add("hom");
+      inp.dataset.r=r; inp.dataset.c=c;
+      inp.oninput=()=>{ m.cells[r][c]=inp.value;
+        try{ parseExpr(inp.value); inp.classList.remove("bad"); }
+        catch{ inp.classList.add("bad"); }
+        update(); };
+      grid.appendChild(inp);
+    }));
+    card.appendChild(grid);
+    stackEl.appendChild(card);
+  });
+}
+function move(idx,dir){
+  const j=idx+dir; if(j<0||j>=state.stack.length) return;
+  [state.stack[idx],state.stack[j]]=[state.stack[j],state.stack[idx]];
+  renderStack(); update();
+}
+
+$("#dimRow").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  state.dim=+b.dataset.dim;
+  [...$("#dimRow").children].forEach(x=>x.classList.toggle("sel",x===b));
+  state.stack=defaultStack(state.dim); state.selectedId=state.stack[0].id;
+  rebuildGeometry(); renderPresets(); renderStack(); update();
+});
+$("#addBtn").onclick=()=>{ const m=newMatrix("Matrix"); state.stack.push(m); state.selectedId=m.id; renderStack(); update(); };
+$("#clearBtn").onclick=()=>{ state.stack=defaultStack(state.dim); state.selectedId=state.stack[0].id; renderStack(); update(); };
+$("#animBtn").onclick=()=>{ state.anim.active=true; state.anim.t=0; };
+$("#ghostBtn").onclick=e=>{ state.showGhost=!state.showGhost; e.target.classList.toggle("sel",state.showGhost);
+  e.target.textContent="Ghost: "+(state.showGhost?"on":"off"); ghostGroup.visible=state.showGhost; };
+$("#axesBtn").onclick=e=>{ state.showBasis=!state.showBasis; e.target.classList.toggle("sel",state.showBasis);
+  e.target.textContent="Basis vectors: "+(state.showBasis?"on":"off"); basisGroup.visible=state.showBasis; };
+
+/* =====================================================================
+   5b. UI — quaternions
+   ===================================================================== */
+const qstackEl=$("#qstack");
+function newQuat(name,cells){ return {id:++uid,name,enabled:true,cells:cells||["1","0","0","0"]}; }
+function quatReadout(qq){
+  try{
+    const q=qq.cells.map(parseExpr), n=qNorm(q), u=qUnit(q);
+    const {axis,thetaDeg}=qToAxisAngle(u), e=qToEuler(u);
+    const pure=Math.abs(u[0])<1e-9?" · <b style='color:var(--accent)'>pure quaternion</b> (180°)":"";
+    return `|q| = <b>${fmt(n)}</b> · unit = [${u.map(fmt).join(", ")}]${pure}<br>`+
+      `axis = (${axis.map(v=>fmt(v)).join(", ")}) · angle = <b>${fmt(thetaDeg)}°</b><br>`+
+      `Euler ZYX: yaw ${fmt(e.yaw)}° · pitch ${fmt(e.pitch)}° · roll ${fmt(e.roll)}°`;
+  }catch{ return "<span style='color:var(--err)'>invalid expression</span>"; }
+}
+function refreshQuatReadouts(){
+  qstackEl.querySelectorAll(".qinfo").forEach((el,i)=>{
+    if(state.quats[i]) el.innerHTML=quatReadout(state.quats[i]);
+  });
+}
+function renderQuats(){
+  qstackEl.innerHTML="";
+  if(state.quats.length===0){
+    qstackEl.innerHTML='<div class="note" style="padding:4px 2px">No quaternions yet — add one, then convert from axis-angle, Euler or the composite matrix.</div>';
+  }
+  state.quats.forEach((qq,idx)=>{
+    const card=document.createElement("div");
+    card.className="qcard"+(qq.id===state.selectedId?" sel":"")+(qq.enabled?"":" off");
+    const head=document.createElement("div"); head.className="mhead";
+    head.onclick=e=>{ if(e.target.tagName!=="BUTTON"){state.selectedId=qq.id;renderQuats();} };
+    const chk=document.createElement("input"); chk.type="checkbox"; chk.checked=qq.enabled;
+    chk.title="include in q_total";
+    chk.onchange=()=>{qq.enabled=chk.checked; renderQuats(); update();};
+    const name=document.createElement("input"); name.className="name"; name.value=qq.name;
+    name.oninput=()=>qq.name=name.value;
+    name.onclick=e=>e.stopPropagation();
+    head.append(chk,name);
+    const btns=[["↑",()=>qmove(idx,-1),"move up (applied last)"],
+                ["↓",()=>qmove(idx,+1),"move down (applied first)"],
+                ["⧉",()=>{state.quats.splice(idx+1,0,{...JSON.parse(JSON.stringify(qq)),id:++uid,name:qq.name+" copy"});renderQuats();update();},"duplicate"],
+                ["✕",()=>{state.quats.splice(idx,1);renderQuats();update();},"delete"]];
+    btns.forEach(([t,fn,tip])=>{const b=document.createElement("button");b.className="mini";b.textContent=t;b.title=tip;
+      b.onclick=e=>{e.stopPropagation();fn();};head.appendChild(b);});
+    card.appendChild(head);
+    ["w","x","y","z"].forEach((comp,i)=>{
+      const row=document.createElement("div"); row.className="qrow";
+      const lab=document.createElement("label"); lab.textContent=comp;
+      if(comp==="x")lab.classList.add("i"); if(comp==="y")lab.classList.add("j"); if(comp==="z")lab.classList.add("k");
+      const inp=document.createElement("input"); inp.value=qq.cells[i];
+      inp.oninput=()=>{ qq.cells[i]=inp.value;
+        try{ parseExpr(inp.value); inp.classList.remove("bad"); }
+        catch{ inp.classList.add("bad"); }
+        update(); };
+      row.append(lab,inp); card.appendChild(row);
+    });
+    /* live readout */
+    const info=document.createElement("div"); info.className="qinfo";
+    info.innerHTML=quatReadout(qq);
+    card.appendChild(info);
+    /* converters */
+    const acts=document.createElement("div"); acts.className="qacts";
+    const mk=(t,tip,fn)=>{const b=document.createElement("button");b.className="mini";b.textContent=t;b.title=tip;b.onclick=fn;acts.appendChild(b);};
+    mk("from axis-angle","axis (0,0,1), angle 30°",()=>{qq.cells=axisAngleToQ([0,0,1],30).map(fmt);renderQuats();update();});
+    mk("from Euler 30°,45°,60°","yaw=30° pitch=45° roll=60° (ZYX)",()=>{qq.cells=eulerToQ(30,45,60).map(fmt);renderQuats();update();});
+    mk("from composite matrix","read rotation of the current composite matrix (4×4 mode)",()=>{
+      if(!state.currentComposite||state.dim!==4){alert("Switch to 4×4 mode first.");return;}
+      const R=state.currentComposite.slice(0,3).map(r=>r.slice(0,3));
+      const M=[[1,0,0],[0,1,0],[0,0,1]];
+      const det=matDet(M.map((_,i)=>M[i].map((_,j)=>R[i][j])));
+      const scl=Math.cbrt(Math.abs(det))||1;
+      const Rn=R.map(r=>r.map(v=>v/scl));
+      qq.cells=mat3ToQ(Rn).map(fmt);renderQuats();update();
+    });
+    mk("to 4×4 matrix","convert this quaternion to a rotation matrix in the stack",()=>{
+      try{
+        const cells=qToMat4(qq.cells.map(parseExpr));
+        if(state.dim!==4){alert("Switch to 4×4 mode first.");return;}
+        const m=newMatrix(qq.name+" →M",cells); state.stack.push(m); state.selectedId=m.id;
+        renderStack(); update();
+      }catch{}
+    });
+    card.appendChild(acts);
+    qstackEl.appendChild(card);
+  });
+}
+function qmove(idx,dir){
+  const j=idx+dir; if(j<0||j>=state.quats.length) return;
+  [state.quats[idx],state.quats[j]]=[state.quats[j],state.quats[idx]];
+  renderQuats(); update();
+}
+$("#qAddBtn").onclick=()=>{ const qq=newQuat("quaternion"); state.quats.push(qq); state.selectedId=qq.id; renderQuats(); update(); };
+$("#slerpBtn").onclick=()=>{ state.slerp.active=true; state.slerp.t=0; };
+$("#slerpRange").oninput=e=>{ state.slerp.val=+e.target.value; $("#slerpVal").textContent=state.slerp.val.toFixed(2); };
+
+/* =====================================================================
+   6. THREE.JS SCENE
+   ===================================================================== */
+const view=$("#view");
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(devicePixelRatio);
+view.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0f1115);
+const camera=new THREE.PerspectiveCamera(50,1,0.01,200);
+camera.position.set(3.2,2.6,4.2);
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;
+
+scene.add(new THREE.AmbientLight(0xffffff,.55));
+const key=new THREE.DirectionalLight(0xffffff,.8); key.position.set(4,6,5); scene.add(key);
+
+/* grid on XY plane + axes */
+const grid=new THREE.GridHelper(12,24,0x3a4152,0x232936);
+grid.rotation.x=Math.PI/2; grid.position.z=-0.001; scene.add(grid);
+const axes=new THREE.AxesHelper(1.6); scene.add(axes);
+
+/* base geometry per dimension */
+let basePts=null;              // Float32Array of unit-shape vertices
+let transMesh=null, ghostGroup=new THREE.Group(), basisGroup=new THREE.Group();
+scene.add(ghostGroup, basisGroup);
+
+function fShape(){             // asymmetric 2D polygon (shows orientation/chirality)
+  const s=new THREE.Shape();
+  const P=[[0,0],[0.28,0],[0.28,0.42],[0.62,0.42],[0.62,0.68],[0.28,0.68],[0.28,1],[0,1]];
+  s.moveTo(P[0][0],P[0][1]); P.slice(1).forEach(p=>s.lineTo(p[0],p[1])); s.closePath();
+  return s;
+}
+function rebuildGeometry(){
+  if(transMesh){ scene.remove(transMesh); transMesh.geometry.dispose(); }
+  ghostGroup.clear(); basisGroup.clear();
+  let geo;
+  if(state.dim===4){
+    geo=new THREE.BoxGeometry(1,1,1); geo.translate(0.5,0.5,0.5);
+  }else{
+    geo=new THREE.ShapeGeometry(fShape());
+  }
+  basePts=geo.attributes.position.array.slice();
+  const mat=new THREE.MeshStandardMaterial({color:0xff9f1c,roughness:.45,metalness:.05,
+    transparent:true,opacity:.92,side:THREE.DoubleSide});
+  transMesh=new THREE.Mesh(geo,mat); scene.add(transMesh);
+  const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geo),
+    new THREE.LineBasicMaterial({color:0x1a1206})); transMesh.add(edges);
+  /* ghost = untouched copy */
+  const ghostMat=new THREE.MeshBasicMaterial({color:0x8b93a5,wireframe:true,transparent:true,opacity:.55});
+  const ghost=new THREE.Mesh(geo.clone(),ghostMat); ghostGroup.add(ghost);
+  ghostGroup.visible=state.showGhost;
+  /* basis arrows */
+  const cols=[0xe5484d,0x30a46c,0x3e8eed];
+  for(let i=0;i<3;i++){
+    const a=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(),1,cols[i],0.12,0.07);
+    basisGroup.add(a);
+  }
+  basisGroup.visible=state.showBasis;
+}
+
+/* transform every vertex with the composite matrix */
+function deform(M,d,blend){    // blend: 0 = identity, 1 = full matrix
+  const pos=transMesh.geometry.attributes.position;
+  const n=state.dim, Im=I(n).map(r=>r.map(parseFloat));
+  const MM=M.map((row,r)=>row.map((v,c)=>Im[r][c]+(v-Im[r][c])*blend));
+  for(let i=0;i<pos.count;i++){
+    const x=basePts[i*3],y=basePts[i*3+1],z=basePts[i*3+2];
+    const [X,Y,Z]=applyMat(MM,d,x,y,z);
+    pos.setXYZ(i,X,Y,Z);
+  }
+  pos.needsUpdate=true;
+  transMesh.geometry.computeVertexNormals();
+  /* basis arrows: origin = image of O, tips = image of basis vectors */
+  const O=applyMat(MM,d,0,0,0);
+  const E=[[1,0,0],[0,1,0],[0,0,1]];
+  basisGroup.children.forEach((arr,i)=>{
+    const P=applyMat(MM,d,...E[i]);
+    const dir=new THREE.Vector3(P[0]-O[0],P[1]-O[1],P[2]-O[2]);
+    const len=Math.max(dir.length(),1e-6);
+    arr.position.set(O[0],O[1],O[2]);
+    arr.setDirection(dir.normalize());
+    arr.setLength(len,Math.min(.14,len*.25),Math.min(.08,len*.15));
+  });
+}
+
+/* =====================================================================
+   7. COMPOSITE + UPDATE
+   ===================================================================== */
+let lastGood=null;
+function update(){
+  const n=state.dim;
+  let composite=I(n).map(r=>r.map(parseFloat));
+  let ok=true, firstErr="";
+  const active=state.stack.filter(m=>m.enabled);
+  const nums=[];
+  for(const m of active){
+    try{ nums.push(matNum(m.cells)); }
+    catch(e){ ok=false; firstErr=`“${m.name}”: ${e.message}`; break; }
+  }
+  /* quaternion product: q_total = q1 ⊗ q2 ⊗ … (top applies last, like matrices) */
+  let qTotal=[1,0,0,0], qOk=true;
+  const qActive=state.quats.filter(q=>q.enabled);
+  for(const qq of qActive){
+    try{ qTotal=qMul(qTotal,qq.cells.map(parseExpr)); }
+    catch(e){ qOk=false; if(ok){ok=false;firstErr=`quaternion “${qq.name}”: ${e.message}`;} }
+  }
+  if(qOk) qTotal=qUnit(qTotal);
+  state.qTotal=qTotal;
+  if(ok){
+    composite=nums.reduce((acc,M)=>matMul(M,acc), I(n).map(r=>r.map(parseFloat)));
+    if(n===4 && qActive.length){
+      const R=qToMat3(qTotal).map(r=>r.map(v=>isFinite(v)?v:0));
+      composite=composite.map((row,r)=>row.map((v,c)=>{
+        if(r<3&&c<3){
+          let s=0; for(let k=0;k<3;k++) s+=R[r][k]*composite[k][c];
+          return s;
+        }
+        return v;
+      }));
+    }
+    lastGood=composite;
+    errline.style.display="none";
+  }else{
+    errline.textContent="⚠ "+firstErr+" — showing last valid result";
+    errline.style.display="block";
+    composite=lastGood||composite;
+  }
+  /* result grid */
+  resultGrid.innerHTML="";
+  const g=document.createElement("div"); g.className="mgrid";
+  g.style.gridTemplateColumns=`repeat(${n},78px)`;
+  composite.forEach(row=>row.forEach(v=>{
+    const d=document.createElement("div"); d.textContent=fmt(v); g.appendChild(d);
+  }));
+  resultGrid.appendChild(g);
+  const det=matDet(composite), lin=n===4?matDet(composite.slice(0,3).map(r=>r.slice(0,3))):det;
+  const measure=n===4?"volume":"area";
+  detline.innerHTML=`det = <b>${fmt(det)}</b> — ${measure} scale factor`+
+    (Math.abs(det)<1e-9?` · <span style="color:var(--err)">singular: space collapses</span>`:
+     det<0?` · <span style="color:var(--accent2)">orientation flipped</span>`:"")+
+    (n>2&&Math.abs(lin-det)>1e-9?` · linear-part det = ${fmt(lin)}`:"")+
+    (qActive.length?` · <span style="color:var(--accent2)">⊗ q_total = [${qTotal.map(fmt).join(", ")}]</span>`:"");
+  $("#hud").innerHTML=`<b>${n}×${n}</b> · ${active.length} active ${active.length===1?"matrix":"matrices"}`+
+    (qActive.length?` · ${qActive.length} quat`:"")+
+    `<br>drag = orbit · wheel = zoom · right-drag = pan`;
+  state.currentComposite=composite;
+  refreshQuatReadouts();   // update readouts without stealing input focus
+}
+
+/* =====================================================================
+   8. MAIN LOOP (with animate-from-identity)
+   ===================================================================== */
+function resize(){
+  const w=view.clientWidth,h=view.clientHeight;
+  renderer.setSize(w,h); camera.aspect=w/h; camera.updateProjectionMatrix();
+}
+window.addEventListener("resize",resize);
+
+const clock=new THREE.Clock();
+function loop(){
+  requestAnimationFrame(loop);
+  const dt=clock.getDelta();
+  let blend=1;
+  if(state.anim.active){
+    state.anim.t+=dt/1.6;
+    if(state.anim.t>=1){state.anim.t=1;state.anim.active=false;}
+    const t=state.anim.t;
+    blend=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;   // easeInOutQuad
+  }
+  if(state.slerp.active){
+    state.slerp.t+=dt/1.8;
+    if(state.slerp.t>=1){state.slerp.t=1;state.slerp.active=false;}
+    state.slerp.val=state.slerp.t;
+    $("#slerpRange").value=state.slerp.val;
+    $("#slerpVal").textContent=state.slerp.val.toFixed(2);
+  }
+  if(state.currentComposite){
+    let M=state.currentComposite;
+    if(state.dim===4 && state.slerp.val<1 && state.quats.some(q=>q.enabled)){
+      const qs=qSlerp([1,0,0,0],state.qTotal,state.slerp.val);
+      const qf=qUnit(state.qTotal);
+      const R=[[0,0,0],[0,0,0],[0,0,0]];
+      const Rs=qToMat3(qs), Rf=qToMat3(qf);
+      const RfT=[[Rf[0][0],Rf[1][0],Rf[2][0]],[Rf[0][1],Rf[1][1],Rf[2][1]],[Rf[0][2],Rf[1][2],Rf[2][2]]];
+      for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+        let s=0; for(let k=0;k<3;k++) s+=Rs[r][k]*RfT[k][c];
+        R[r][c]=s;
+      }
+      M=M.map((row,r)=>row.map((v,c)=>(r<3&&c<3)?
+        (()=>{let s=0;for(let k=0;k<3;k++)s+=R[r][k]*M[k][c];return s;})():v));
+    }
+    deform(M,state.dim,blend);
+  }
+  controls.update();
+  renderer.render(scene,camera);
+}
+
+/* =====================================================================
+   9. INIT
+   ===================================================================== */
+state.stack=defaultStack(3); state.selectedId=state.stack[0].id;
+state.quats=[newQuat("q: 30° about Z", ["cos(deg(15))","0","0","sin(deg(15))"])];
+renderPresets(); renderStack(); renderQuats(); rebuildGeometry(); resize(); update(); loop();
+</script>
+</body>
+</html>
