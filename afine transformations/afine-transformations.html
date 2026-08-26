@@ -44,7 +44,7 @@
   .mgrid input.bad{border-color:var(--err);color:var(--err)}
   .mgrid input.hom{background:#111420;color:#5d6575}
   /* ---------- result ---------- */
-  #result .mgrid div{width:78px;text-align:center;font-family:Consolas,monospace;font-size:12.5px;
+  #result .mgrid div,#tprime .mgrid div{width:78px;text-align:center;font-family:Consolas,monospace;font-size:12.5px;
     padding:5px 4px;color:var(--txt);background:#0d0f14;border:1px solid var(--line);border-radius:5px}
   #detline{margin-top:8px;font-size:12.5px;color:var(--dim)}
   #detline b{color:var(--accent)}
@@ -79,13 +79,33 @@
   #slerpCtl{display:flex;align-items:center;gap:8px;margin-top:8px}
   #slerpCtl input[type=range]{flex:1;accent-color:var(--accent2)}
   #slerpVal{font-family:Consolas,monospace;font-size:12px;color:var(--accent2);min-width:34px;text-align:right}
+  /* ---------- numeric spinners ---------- */
+  .numcell{display:flex;align-items:stretch;width:78px}
+  .numcell input{flex:1 1 auto;min-width:0;width:auto !important;border-radius:5px 0 0 5px;border-right:none}
+  .spin{display:flex;flex-direction:column;flex:0 0 14px;width:14px}
+  .spin button{flex:1;padding:0;margin:0;min-height:0;font-size:7.5px;line-height:1;color:var(--dim);
+    background:#20262f;border:1px solid var(--line);border-radius:0;cursor:pointer}
+  .spin button:first-child{border-bottom:none;border-radius:0 5px 0 0}
+  .spin button:last-child{border-radius:0 0 5px 0}
+  .spin button:hover{background:#313a4b;color:var(--accent2)}
+  .qrow .numcell{width:auto}
+  /* ---------- tensors ---------- */
+  .tsub{margin-top:9px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--dim)}
+  .tctl{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
+  .tctl label{font-size:12px;color:var(--dim)}
+  #thetaCell input{text-align:center;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+    border-radius:5px;padding:5px 4px;font-family:Consolas,monospace;font-size:12.5px;outline:none}
+  #thetaCell input.bad{border-color:var(--err);color:var(--err)}
+  #tinfo{margin-top:8px;font-size:12.3px;color:var(--dim);line-height:1.65}
+  #tinfo b{color:var(--txt)}
+  #tinfo .lam{font-family:Consolas,monospace;color:var(--accent2)}
 </style>
 </head>
 <body>
 <div id="app">
   <div id="panel">
     <h1>Affine Transformations Lab
-      <small>2×2 · 3×3 · 4×4 matrices — move, rotate, scale, shear &amp; compose</small></h1>
+      <small>2×2 · 3×3 · 4×4 matrices — move, rotate, scale, shear &amp; compose · quaternions · rank-2 tensors</small></h1>
 
     <div class="section">
       <h2>Matrix dimension</h2>
@@ -154,6 +174,22 @@
       </div>
     </div>
 
+    <div class="section" id="tsection">
+      <h2>Tensors — rank-2: T′ = R·T·Rᵀ</h2>
+      <div class="note" id="tnote"></div>
+      <div class="tsub">Tensor components T<sub>ij</sub></div>
+      <div id="tgrid" style="margin-top:4px"></div>
+      <div class="row" id="tpresetRow"></div>
+      <div class="tctl">
+        <label>basis rotation θ (°)</label><span id="thetaCell"></span>
+        <button id="tspinBtn" class="mini">▶ Spin basis</button>
+        <button id="tshowBtn" class="mini sel">Ellipse: on</button>
+      </div>
+      <div class="tsub">Components seen in the rotated basis — T′ = R(θ)·T·R(θ)ᵀ</div>
+      <div id="tprime" style="margin-top:4px"></div>
+      <div id="tinfo"></div>
+    </div>
+
     <div class="section">
       <h2>How each transform is represented</h2>
       <div class="note" id="cheatsheet"></div>
@@ -175,6 +211,7 @@
       <div><span class="sw" style="background:#8b93a5"></span>original (ghost)</div>
       <div><span class="sw" style="background:#ff9f1c"></span>transformed</div>
       <div><span class="sw" style="background:#e5484d"></span>x̂ axis&nbsp; <span class="sw" style="background:#30a46c"></span>ŷ axis&nbsp; <span class="sw" style="background:#3e8eed"></span>ẑ axis</div>
+      <div><span class="sw" style="background:#2ec4b6"></span>tensor ellipse / ellipsoid&nbsp; <span class="sw" style="background:#9aa3b2"></span>rotated basis frame</div>
     </div>
   </div>
 </div>
@@ -300,6 +337,62 @@ const fmt=v=>{ if(!isFinite(v)) return "—";
   const r=Math.abs(v)<1e-10?0:v; let s=r.toFixed(3);
   return s.replace(/\.000$/,"").replace(/(\.\d*?)0+$/,"$1"); };
 
+/* Jacobi eigen-decomposition of a symmetric n×n matrix (n = 2 or 3).
+   Returns [{val, vec}] sorted by eigenvalue, vec = unit eigenvector. */
+function symEig(Sin){
+  const n=Sin.length, S=Sin.map(r=>r.slice());
+  const V=Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>r===c?1:0));
+  for(let sweep=0;sweep<60;sweep++){
+    let p=0,q=1,off=0;
+    for(let r=0;r<n;r++)for(let c=r+1;c<n;c++)
+      if(Math.abs(S[r][c])>off){off=Math.abs(S[r][c]);p=r;q=c;}
+    if(off<1e-12) break;
+    const th=0.5*Math.atan2(2*S[p][q],S[p][p]-S[q][q]);
+    const co=Math.cos(th),si=Math.sin(th);
+    for(let k=0;k<n;k++){ const a=S[k][p],b=S[k][q]; S[k][p]=co*a+si*b; S[k][q]=-si*a+co*b; }
+    for(let k=0;k<n;k++){ const a=S[p][k],b=S[q][k]; S[p][k]=co*a+si*b; S[q][k]=-si*a+co*b;
+      const va=V[k][p],vb=V[k][q]; V[k][p]=co*va+si*vb; V[k][q]=-si*va+co*vb; }
+  }
+  const out=Array.from({length:n},(_,i)=>({val:S[i][i],vec:V.map(r=>r[i])}));
+  out.sort((a,b)=>b.val-a.val);
+  return out;
+}
+
+/* ---------- numeric stepping + spinner widgets ----------
+   Angle-aware: an expression containing deg(θ) steps the ANGLE ±1°;
+   plain numbers / other expressions step ±unit (translate, scale, shear…). */
+const fmtStep=v=>{ const r=Math.round(v*1e9)/1e9; let s=r.toFixed(4);
+  return s.replace(/\.0+$/,"").replace(/(\.\d*?)0+$/,"$1"); };
+const DEG_RE=/deg\(\s*(-?\d+(?:\.\d+)?)\s*\)/;
+function stepExpr(src,dir,unit=1){
+  const s=String(src).trim()||"0";
+  if(DEG_RE.test(s)) return s.replace(DEG_RE,(_,num)=>`deg(${fmtStep(parseFloat(num)+dir)})`);
+  if(/^-?\d+(?:\.\d+)?$/.test(s)) return fmtStep(parseFloat(s)+dir*unit);
+  try{ return fmtStep(parseExpr(s)+dir*unit); }catch{ return s; }
+}
+function holdable(btn,fn){            // click once, or press-and-hold to auto-repeat
+  let t=null,iv=null;
+  const stop=()=>{clearTimeout(t);clearInterval(iv);t=iv=null;};
+  btn.addEventListener("mousedown",e=>{ e.preventDefault(); fn();
+    t=setTimeout(()=>{ iv=setInterval(fn,80); },400); });
+  ["mouseup","mouseleave","blur"].forEach(ev=>btn.addEventListener(ev,stop));
+}
+function spinWrap(inp,step){          // wrap an input with ▲/▼ buttons + arrow-key support
+  const wrap=document.createElement("div"); wrap.className="numcell";
+  const col=document.createElement("div"); col.className="spin";
+  const up=document.createElement("button"); up.type="button"; up.textContent="▲";
+  up.title="increase — angles: +1°, values: +1 step (hold to repeat)";
+  const dn=document.createElement("button"); dn.type="button"; dn.textContent="▼";
+  dn.title="decrease — angles: −1°, values: −1 step (hold to repeat)";
+  holdable(up,()=>step(+1)); holdable(dn,()=>step(-1));
+  col.append(up,dn); wrap.append(inp,col);
+  inp.addEventListener("keydown",e=>{
+    if(e.key==="ArrowUp"){e.preventDefault();step(+1);}
+    else if(e.key==="ArrowDown"){e.preventDefault();step(-1);}
+  });
+  return wrap;
+}
+
 /* =====================================================================
    2b. QUATERNION MATH — q = [w, x, y, z]
    ===================================================================== */
@@ -420,6 +513,46 @@ const CHEATSHEET = {
   4:"<b>Move</b>: <code>tx, ty, tz</code> in the last column.<br><b>Rotation</b>: orthonormal upper 3×3 (see the Rotate X/Y/Z presets).<br><b>Scale</b>: diagonal <code>sx, sy, sz</code>.<br><b>Shear</b>: off-diagonal entries of the upper 3×3.<br><b>det</b> = signed volume scale factor; det = 0 → collapses space (non-invertible)."
 };
 
+/* ---------- rank-2 tensor presets / notes (2×2 in 2D modes, 3×3 in 4×4 mode) ---------- */
+const TDEFAULT={
+  2:[["2","0.6"],["0.6","1"]],
+  3:[["2","0.4","0"],["0.4","1","0.3"],["0","0.3","0.7"]]
+};
+const TPRESETS={
+  2:[
+    ["Identity (metric δ)",()=>[["1","0"],["0","1"]]],
+    ["Uniaxial stress",()=>[["2","0"],["0","0"]]],
+    ["Pure shear",()=>[["0","1"],["1","0"]]],
+    ["Diag 2, 0.5",()=>[["2","0"],["0","0.5"]]],
+    ["Spin (antisym)",()=>[["0","-1"],["1","0"]]],
+    ["Stress + shear",()=>[["2","0.6"],["0.6","1"]]],
+  ],
+  3:[
+    ["Identity (metric δ)",()=>[["1","0","0"],["0","1","0"],["0","0","1"]]],
+    ["Uniaxial stress",()=>[["2","0","0"],["0","0","0"],["0","0","0"]]],
+    ["Pure shear xy",()=>[["0","1","0"],["1","0","0"],["0","0","0"]]],
+    ["Diag 2, 1, 0.5",()=>[["2","0","0"],["0","1","0"],["0","0","0.5"]]],
+    ["Inertia-like",()=>[["2","0.4","0"],["0.4","1","0.3"],["0","0.3","0.7"]]],
+    ["Vorticity (antisym)",()=>[["0","-1","0"],["1","0","0"],["0","0","0"]]],
+  ]
+};
+const TENSOR_NOTES={
+  2:`A <b>rank-2 tensor</b> is a linear machine on vectors that exists independently of any coordinate
+     system — the 2×2 numbers below are only its <i>components in the current basis</i>. A vector needs one
+     rotation (v′ = R·v); a rank-2 tensor needs two: <code>T′ = R·T·Rᵀ</code> — that transformation law is
+     what makes it a tensor. Examples: stress σ, strain ε, metric g, moment of inertia.<br>
+     In the viewport (left of the shape) the teal <b>ellipse</b> is the image of the unit circle under T —
+     the tensor itself. The grey wireframe is T in the original basis (θ = 0); teal/red arrows are the
+     <b>principal axes</b> — eigenvectors of the symmetric part, length |λ|, red = negative λ; thin grey
+     arrows show the rotated basis. Spin θ: <b>components dance, invariants and the shape stay put</b>.`,
+  3:`Same law in 3D: a 3×3 rank-2 tensor, basis rotated about ẑ, <code>T′ = R·T·Rᵀ</code>.
+     The teal <b>ellipsoid</b> is the image of the unit sphere under T (think stress or inertia ellipsoid);
+     the grey wireframe is the original-basis view; arrows are the principal axes (eigenvectors of the
+     symmetric part, red = negative eigenvalue). Symmetric part = pure stretch along the principal axes;
+     antisymmetric part = pure spin with axial vector ω.
+     Rotate θ and watch the components change while eigenvalues, trace and det stay invariant.`
+};
+
 /* =====================================================================
    4. STATE
    ===================================================================== */
@@ -434,6 +567,7 @@ const state={
   anim:{active:false,t:0},
   slerp:{active:false,t:0,val:1},
   qTotal:[1,0,0,0],
+  tensor:{cells:null,theta:"0",spin:false,show:true},
 };
 function newMatrix(name,cells){ return {id:++uid,name,enabled:true,cells:cells||I(state.dim)}; }
 function defaultStack(dim){
@@ -496,7 +630,10 @@ function renderStack(){
         try{ parseExpr(inp.value); inp.classList.remove("bad"); }
         catch{ inp.classList.add("bad"); }
         update(); };
-      grid.appendChild(inp);
+      grid.appendChild(spinWrap(inp,dir=>{     // angles ±1°, translate/scale/shear ±1
+        m.cells[r][c]=stepExpr(m.cells[r][c],dir,1);
+        inp.value=m.cells[r][c]; inp.classList.remove("bad"); update();
+      }));
     }));
     card.appendChild(grid);
     stackEl.appendChild(card);
@@ -513,7 +650,7 @@ $("#dimRow").addEventListener("click",e=>{
   state.dim=+b.dataset.dim;
   [...$("#dimRow").children].forEach(x=>x.classList.toggle("sel",x===b));
   state.stack=defaultStack(state.dim); state.selectedId=state.stack[0].id;
-  rebuildGeometry(); renderPresets(); renderStack(); update();
+  rebuildGeometry(); renderPresets(); renderStack(); renderTensor(); rebuildTensorGeo(); update();
 });
 $("#addBtn").onclick=()=>{ const m=newMatrix("Matrix"); state.stack.push(m); state.selectedId=m.id; renderStack(); update(); };
 $("#clearBtn").onclick=()=>{ state.stack=defaultStack(state.dim); state.selectedId=state.stack[0].id; renderStack(); update(); };
@@ -576,7 +713,12 @@ function renderQuats(){
         try{ parseExpr(inp.value); inp.classList.remove("bad"); }
         catch{ inp.classList.add("bad"); }
         update(); };
-      row.append(lab,inp); card.appendChild(row);
+      /* angles inside deg() still step ±1°; bare components step ±0.1 (unit-quat scale) */
+      row.append(lab,spinWrap(inp,dir=>{
+        qq.cells[i]=stepExpr(qq.cells[i],dir,0.1);
+        inp.value=qq.cells[i]; inp.classList.remove("bad"); update();
+      }));
+      card.appendChild(row);
     });
     /* live readout */
     const info=document.createElement("div"); info.className="qinfo";
@@ -616,6 +758,94 @@ function qmove(idx,dir){
 $("#qAddBtn").onclick=()=>{ const qq=newQuat("quaternion"); state.quats.push(qq); state.selectedId=qq.id; renderQuats(); update(); };
 $("#slerpBtn").onclick=()=>{ state.slerp.active=true; state.slerp.t=0; };
 $("#slerpRange").oninput=e=>{ state.slerp.val=+e.target.value; $("#slerpVal").textContent=state.slerp.val.toFixed(2); };
+
+/* =====================================================================
+   5c. UI — TENSORS (rank-2): T′ = R·T·Rᵀ
+   ===================================================================== */
+const tdim=()=>state.dim===4?3:2;      // tensor size follows the app: 2D modes → 2×2, 4×4 mode → 3×3
+const tgridEl=$("#tgrid"), tprimeEl=$("#tprime"), tinfoEl=$("#tinfo");
+function renderTensor(){
+  const td=tdim(), T=state.tensor;
+  if(!T.cells||T.cells.length!==td) T.cells=TDEFAULT[td].map(r=>r.slice());
+  $("#tnote").innerHTML=TENSOR_NOTES[td];
+  const prow=$("#tpresetRow"); prow.innerHTML="";
+  TPRESETS[td].forEach(([label,gen])=>{
+    const b=document.createElement("button"); b.className="mini"; b.textContent=label;
+    b.onclick=()=>{ T.cells=gen().map(r=>r.slice()); renderTensor(); update(); };
+    prow.appendChild(b);
+  });
+  tgridEl.innerHTML="";
+  const g=document.createElement("div"); g.className="mgrid";
+  g.style.gridTemplateColumns=`repeat(${td},78px)`;
+  T.cells.forEach((row,r)=>row.forEach((val,c)=>{
+    const inp=document.createElement("input"); inp.value=val;
+    inp.oninput=()=>{ T.cells[r][c]=inp.value;
+      try{ parseExpr(inp.value); inp.classList.remove("bad"); }
+      catch{ inp.classList.add("bad"); }
+      update(); };
+    g.appendChild(spinWrap(inp,dir=>{
+      T.cells[r][c]=stepExpr(T.cells[r][c],dir,1);
+      inp.value=T.cells[r][c]; inp.classList.remove("bad"); update();
+    }));
+  }));
+  tgridEl.appendChild(g);
+  /* θ input — plain degrees, spinner steps ±1° */
+  const th=$("#thetaCell"); th.innerHTML="";
+  const ti=document.createElement("input"); ti.value=T.theta;
+  ti.oninput=()=>{ T.theta=ti.value;
+    try{ parseExpr(ti.value); ti.classList.remove("bad"); }
+    catch{ ti.classList.add("bad"); }
+    update(); };
+  const cell=spinWrap(ti,dir=>{
+    T.theta=stepExpr(T.theta,dir,1);
+    ti.value=T.theta; ti.classList.remove("bad"); update();
+  });
+  cell.style.width="92px";
+  th.appendChild(cell);
+  T._thetaInp=ti;
+  $("#tshowBtn").textContent=(td===3?"Ellipsoid: ":"Ellipse: ")+(T.show?"on":"off");
+  $("#tshowBtn").classList.toggle("sel",T.show);
+}
+function updateTensor(){
+  const td=tdim(), T=state.tensor;
+  let err="";
+  let theta; try{ theta=parseExpr(T.theta===""?"0":T.theta); T._lastTh=theta; }
+  catch(e){ err="θ: "+e.message; theta=T._lastTh||0; }
+  let M; try{ M=T.cells.map(r=>r.map(parseExpr)); T._lastM=M; }
+  catch(e){ err=err||("component: "+e.message); M=T._lastM; }
+  if(!M||M.length!==td) M=TDEFAULT[td].map(r=>r.map(parseFloat));
+  const a=theta*Math.PI/180, c=Math.cos(a), s=Math.sin(a);
+  const R= td===2? [[c,-s],[s,c]] : [[c,-s,0],[s,c,0],[0,0,1]];
+  const Rt=R[0].map((_,j)=>R.map(row=>row[j]));
+  const TP=matMul(matMul(R,M),Rt);
+  const S=TP.map((row,r)=>row.map((v,cc)=>(v+TP[cc][r])/2));
+  const A=TP.map((row,r)=>row.map((v,cc)=>(v-TP[cc][r])/2));
+  const eig=symEig(S);
+  tprimeEl.innerHTML="";
+  const g=document.createElement("div"); g.className="mgrid";
+  g.style.gridTemplateColumns=`repeat(${td},78px)`;
+  TP.forEach(row=>row.forEach(v=>{
+    const d=document.createElement("div"); d.textContent=fmt(v); g.appendChild(d);
+  }));
+  tprimeEl.appendChild(g);
+  const tr=TP.reduce((acc,row,i)=>acc+row[i],0), det=matDet(TP);
+  const spinTxt= td===2? `ω = ${fmt(A[1][0])}`
+    : `ω = (${fmt(A[2][1])}, ${fmt(A[0][2])}, ${fmt(A[1][0])})`;
+  tinfoEl.innerHTML=
+    (err?`<div style="color:var(--err)">⚠ ${err} — showing last valid tensor</div>`:"")+
+    `principal values (sym part): <span class="lam">λ = ${eig.map(e=>fmt(e.val)).join(", ")}</span>`+
+    ` · antisym spin ${spinTxt}<br>`+
+    `invariants — unchanged by θ: <b>tr = ${fmt(tr)}</b> · <b>det = ${fmt(det)}</b>`+
+    ` — turn θ and watch T′ dance while these (and the shape) stay put.`;
+  T._num={TP,M,R,eig,td};
+}
+$("#tspinBtn").onclick=e=>{ state.tensor.spin=!state.tensor.spin;
+  e.target.classList.toggle("sel",state.tensor.spin);
+  e.target.textContent=state.tensor.spin?"■ Stop spin":"▶ Spin basis"; };
+$("#tshowBtn").onclick=e=>{ state.tensor.show=!state.tensor.show;
+  e.target.classList.toggle("sel",state.tensor.show);
+  e.target.textContent=(tdim()===3?"Ellipsoid: ":"Ellipse: ")+(state.tensor.show?"on":"off");
+  tensorGroup.visible=state.tensor.show; };
 
 /* =====================================================================
    6. THREE.JS SCENE
@@ -703,6 +933,67 @@ function deform(M,d,blend){    // blend: 0 = identity, 1 = full matrix
   });
 }
 
+/* ---------- tensor visualization: ellipse/ellipsoid + principal axes ---------- */
+const tensorGroup=new THREE.Group(); scene.add(tensorGroup);
+let tensorMeshT=null, tensorGhost=null, tBase=null, tEigArrows=[], tFrameArrows=[];
+function rebuildTensorGeo(){
+  tensorGroup.clear(); tEigArrows=[]; tFrameArrows=[];
+  const td=tdim();
+  const geo= td===3? new THREE.SphereGeometry(1,28,18) : new THREE.CircleGeometry(1,72);
+  tBase=geo.attributes.position.array.slice();
+  const mat=new THREE.MeshStandardMaterial({color:0x2ec4b6,roughness:.5,metalness:.05,
+    transparent:true,opacity:.32,side:THREE.DoubleSide,depthWrite:false});
+  tensorMeshT=new THREE.Mesh(geo,mat); tensorGroup.add(tensorMeshT);
+  tensorGhost=new THREE.Mesh(geo.clone(),
+    new THREE.MeshBasicMaterial({color:0x8b93a5,wireframe:true,transparent:true,opacity:.25}));
+  tensorGroup.add(tensorGhost);
+  for(let i=0;i<td;i++){
+    const a=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(),1,0x2ec4b6,.16,.08);
+    tEigArrows.push(a); tensorGroup.add(a);
+    const f=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(),1.35,0x9aa3b2,.09,.05);
+    f.line.material.transparent=true; f.line.material.opacity=.5;
+    f.cone.material.transparent=true; f.cone.material.opacity=.5;
+    tFrameArrows.push(f); tensorGroup.add(f);
+  }
+  tensorGroup.position.set(-2.6,0.5,td===3?0.5:0);
+  tensorGroup.visible=state.tensor.show;
+}
+function deformTensor(){
+  const T=state.tensor;
+  if(!tensorMeshT||!T._num) return;
+  tensorGroup.visible=T.show;
+  if(!T.show) return;
+  const {TP,M,R,eig,td}=T._num;
+  const lin=(Mx,x,y,z)=> td===2?
+    [Mx[0][0]*x+Mx[0][1]*y, Mx[1][0]*x+Mx[1][1]*y, 0.002]:
+    [Mx[0][0]*x+Mx[0][1]*y+Mx[0][2]*z,
+     Mx[1][0]*x+Mx[1][1]*y+Mx[1][2]*z,
+     Mx[2][0]*x+Mx[2][1]*y+Mx[2][2]*z];
+  const warp=(mesh,Mx)=>{
+    const pos=mesh.geometry.attributes.position;
+    for(let i=0;i<pos.count;i++){
+      const p=lin(Mx,tBase[i*3],tBase[i*3+1],tBase[i*3+2]);
+      pos.setXYZ(i,p[0],p[1],p[2]);
+    }
+    pos.needsUpdate=true;
+  };
+  warp(tensorMeshT,TP); tensorMeshT.geometry.computeVertexNormals();
+  warp(tensorGhost,M);
+  tEigArrows.forEach((arr,i)=>{
+    const e=eig[i];
+    if(!e||Math.abs(e.val)<1e-4){arr.visible=false;return;}
+    arr.visible=true;
+    const len=Math.abs(e.val), v=e.vec;
+    arr.setColor(new THREE.Color(e.val<0?0xe5484d:0x2ec4b6));
+    arr.setDirection(new THREE.Vector3(v[0],v[1],td===3?v[2]:0).normalize());
+    arr.setLength(len,Math.min(.16,len*.3),Math.min(.08,len*.18));
+  });
+  tFrameArrows.forEach((arr,i)=>{
+    arr.setDirection(new THREE.Vector3(R[0][i],R[1][i],td===3?R[2][i]:0).normalize());
+    arr.setLength(1.35,.09,.05);
+  });
+}
+
 /* =====================================================================
    7. COMPOSITE + UPDATE
    ===================================================================== */
@@ -765,6 +1056,7 @@ function update(){
     `<br>drag = orbit · wheel = zoom · right-drag = pan`;
   state.currentComposite=composite;
   refreshQuatReadouts();   // update readouts without stealing input focus
+  updateTensor();
 }
 
 /* =====================================================================
@@ -811,6 +1103,14 @@ function loop(){
     }
     deform(M,state.dim,blend);
   }
+  if(state.tensor.spin){          // animate the basis rotation: 40°/s
+    let th=0; try{ th=parseExpr(state.tensor.theta||"0"); }catch{}
+    state.tensor.theta=fmtStep(((th+dt*40)%360+360)%360);
+    if(state.tensor._thetaInp && document.activeElement!==state.tensor._thetaInp)
+      state.tensor._thetaInp.value=state.tensor.theta;
+    updateTensor();
+  }
+  deformTensor();
   controls.update();
   renderer.render(scene,camera);
 }
@@ -820,7 +1120,9 @@ function loop(){
    ===================================================================== */
 state.stack=defaultStack(3); state.selectedId=state.stack[0].id;
 state.quats=[newQuat("q: 30° about Z", ["cos(deg(15))","0","0","sin(deg(15))"])];
-renderPresets(); renderStack(); renderQuats(); rebuildGeometry(); resize(); update(); loop();
+state.tensor.cells=TDEFAULT[2].map(r=>r.slice());
+renderPresets(); renderStack(); renderQuats(); renderTensor();
+rebuildGeometry(); rebuildTensorGeo(); resize(); update(); loop();
 </script>
 </body>
 </html>
