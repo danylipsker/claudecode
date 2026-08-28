@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CURVES — Parametric Curve Lab</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#2a2f3a;
+    --txt:#e6e9ef; --dim:#9aa3b2; --accent:#ff9f1c; --accent2:#2ec4b6;
+    --err:#e5484d; --ok:#30a46c; --blue:#3e8eed;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI",system-ui,Roboto,Arial,sans-serif;font-size:14px;overflow:hidden}
+  #app{display:grid;grid-template-columns:252px 348px 1fr;height:100vh}
+
+  /* ---------- library (left) ---------- */
+  #lib{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+  #lib header{padding:12px 12px 8px}
+  #lib h1{font-size:17px;margin:0;color:var(--accent)}
+  #lib h1 small{color:var(--dim);font-weight:400;font-size:11.5px;display:block;margin-top:2px}
+  #search{width:100%;margin-top:9px;background:#0d0f14;border:1px solid var(--line);color:var(--txt);
+    border-radius:6px;padding:6px 9px;font-size:12.5px;outline:none}
+  #search:focus{border-color:var(--accent2)}
+  #list{flex:1;overflow-y:auto;padding:0 8px 12px}
+  .ghead{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);
+    margin:12px 4px 4px;display:flex;align-items:center;gap:6px}
+  .ghead::after{content:"";flex:1;height:1px;background:var(--line)}
+  .citem{display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:6px;cursor:pointer;
+    font-size:12.8px;color:var(--txt);border:1px solid transparent;user-select:none}
+  .citem:hover{background:#20242f}
+  .citem.sel{background:#2a2416;border-color:var(--accent);color:var(--accent)}
+  .citem .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .citem .d3tag{font-size:9.5px;color:var(--blue);border:1px solid #2a3a55;border-radius:4px;padding:0 4px}
+  .citem button{visibility:hidden;background:transparent;border:none;color:var(--dim);cursor:pointer;
+    font-size:11px;padding:0 3px;border-radius:4px}
+  .citem:hover button{visibility:visible}
+  .citem button:hover{color:var(--accent)}
+  .citem button.del:hover{color:var(--err)}
+  #newBtn{margin:10px 12px 12px;background:#262c38;border:1px solid var(--line);color:var(--txt);
+    border-radius:6px;padding:7px;cursor:pointer;font-size:12.5px}
+  #newBtn:hover{background:#313a4b;border-color:var(--accent2);color:var(--accent2)}
+
+  /* ---------- control panel (middle) ---------- */
+  #panel{background:var(--panel);border-right:1px solid var(--line);overflow-y:auto;padding:12px;min-height:0}
+  .section{margin-bottom:12px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px}
+  .section h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 8px}
+  #curveName{font-size:16px;color:var(--accent);margin:0 0 4px;font-weight:600}
+  #curveNotes{font-size:12px;color:var(--dim);line-height:1.55;margin:0 0 8px}
+  .eq{background:#0d0f14;border:1px solid var(--line);border-radius:6px;padding:7px 9px;
+    font-family:Consolas,monospace;font-size:12.3px;color:var(--accent2);line-height:1.7;overflow-x:auto;white-space:pre}
+  .eq .lbl{color:var(--dim)}
+  .classic{margin-top:6px;font-size:12px;color:var(--dim)}
+  .classic code{background:#0d0f14;padding:1px 5px;border-radius:4px;color:var(--txt);font-family:Consolas,monospace;font-size:11.8px}
+
+  .prow{display:grid;grid-template-columns:34px 1fr 96px;gap:8px;align-items:center;margin-bottom:7px}
+  .prow label{font-family:Consolas,monospace;font-size:13px;color:var(--accent2);text-align:right}
+  .prow input[type=range]{width:100%;accent-color:var(--accent);height:20px;margin:0}
+  .numcell{display:flex;align-items:stretch}
+  .numcell input{flex:1 1 auto;min-width:0;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+    border-radius:5px 0 0 5px;border-right:none;padding:4px 5px;font-family:Consolas,monospace;font-size:12.3px;
+    outline:none;text-align:center}
+  .numcell input:focus{border-color:var(--accent2)}
+  .numcell input.bad{border-color:var(--err);color:var(--err)}
+  .spin{display:flex;flex-direction:column;flex:0 0 14px;width:14px}
+  .spin button{flex:1;padding:0;margin:0;min-height:0;font-size:7.5px;line-height:1;color:var(--dim);
+    background:#20262f;border:1px solid var(--line);border-radius:0;cursor:pointer}
+  .spin button:first-child{border-bottom:none;border-radius:0 5px 0 0}
+  .spin button:last-child{border-radius:0 0 5px 0}
+  .spin button:hover{background:#313a4b;color:var(--accent2)}
+
+  .drow{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:6px;align-items:center;margin-bottom:7px}
+  .drow label{font-size:12px;color:var(--dim);font-family:Consolas,monospace}
+  .drow input{background:#0d0f14;border:1px solid var(--line);color:var(--accent2);border-radius:5px;
+    padding:4px 6px;font-family:Consolas,monospace;font-size:12.3px;outline:none;width:100%;text-align:center}
+  .drow input:focus{border-color:var(--accent2)}
+  .drow input.bad{border-color:var(--err);color:var(--err)}
+
+  .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  button{background:#262c38;border:1px solid var(--line);color:var(--txt);border-radius:6px;
+    padding:5px 9px;cursor:pointer;font-size:12.5px;transition:background .15s}
+  button:hover{background:#313a4b}
+  button.sel{background:var(--accent);border-color:var(--accent);color:#111;font-weight:600}
+  button.tealsel{background:var(--accent2);border-color:var(--accent2);color:#111;font-weight:600}
+  button.mini{padding:2px 7px;font-size:11.5px}
+  .note{font-size:11.8px;color:var(--dim);line-height:1.5}
+  .note b{color:var(--txt)}
+  .note code{background:#0d0f14;padding:1px 4px;border-radius:4px;color:var(--accent2);font-size:11px;font-family:Consolas,monospace}
+  #errline{color:var(--err);font-size:12px;margin-top:6px;display:none;white-space:pre-wrap;font-family:Consolas,monospace}
+
+  /* editor */
+  #editor .erow{margin-bottom:8px}
+  #editor .erow label{display:block;font-size:11px;color:var(--dim);margin-bottom:3px;
+    font-family:Consolas,monospace}
+  #editor .erow input[type=text]{width:100%;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+    border-radius:5px;padding:5px 8px;font-family:Consolas,monospace;font-size:12.3px;outline:none}
+  #editor .erow input[type=text]:focus{border-color:var(--accent2)}
+  #editor .erow input.bad{border-color:var(--err)}
+  .pedit{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 24px;gap:4px;margin-bottom:4px;align-items:center}
+  .pedit input{width:100%;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+    border-radius:5px;padding:4px 4px;font-family:Consolas,monospace;font-size:11.8px;outline:none;text-align:center}
+  .pedit input:focus{border-color:var(--accent2)}
+  .pedit button{padding:2px 0;font-size:11px;color:var(--dim)}
+  .pehead{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 24px;gap:4px;margin-bottom:3px}
+  .pehead span{font-size:10px;color:var(--dim);text-align:center;font-family:Consolas,monospace}
+
+  /* ---------- viewport ---------- */
+  #view{position:relative;min-width:0}
+  #view canvas{display:block;cursor:grab}
+  #view canvas.dragging{cursor:grabbing}
+  #hud{position:absolute;left:12px;top:10px;font-size:12px;color:var(--dim);background:rgba(15,17,21,.72);
+    padding:6px 10px;border-radius:6px;pointer-events:none;line-height:1.6;max-width:60%}
+  #hud b{color:var(--txt)}
+  #hud .tt{color:var(--accent2);font-family:Consolas,monospace;font-size:11.5px}
+  #legend{position:absolute;right:12px;top:10px;font-size:12px;background:rgba(15,17,21,.72);
+    padding:7px 11px;border-radius:6px;line-height:1.7;pointer-events:none}
+  .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+  kbd{background:#262c38;border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:11px}
+  ::-webkit-scrollbar{width:9px}::-webkit-scrollbar-thumb{background:#2c3342;border-radius:5px}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ LIBRARY ============ -->
+  <div id="lib">
+    <header>
+      <h1>CURVES<small>parametric curve lab — famous curves, space curves &amp; your own</small></h1>
+      <input id="search" type="text" placeholder="filter curves…" spellcheck="false">
+    </header>
+    <div id="list"></div>
+    <button id="newBtn">＋ New experimental curve</button>
+  </div>
+
+  <!-- ============ CONTROL PANEL ============ -->
+  <div id="panel">
+
+    <div class="section" id="infoSec">
+      <h3 id="curveName"></h3>
+      <p id="curveNotes"></p>
+      <div class="eq" id="eqBox"></div>
+      <div class="classic" id="classicBox"></div>
+      <div class="row" style="margin-top:9px">
+        <button id="cloneBtn" class="mini">Clone → My curves</button>
+        <button id="editBtn" class="mini">Edit</button>
+        <button id="resetBtn" class="mini">Reset values</button>
+      </div>
+    </div>
+
+    <div class="section" id="paramSec">
+      <h2>Parameters</h2>
+      <div id="paramRows"></div>
+      <div class="note" id="noParamNote" style="display:none">This curve has no free parameters.</div>
+    </div>
+
+    <div class="section" id="domainSec">
+      <h2>Domain</h2>
+      <div class="drow">
+        <label>t ∈ [</label><input id="tMin" spellcheck="false">
+        <label>,</label><input id="tMax" spellcheck="false">
+      </div>
+      <div class="drow">
+        <label>samples</label><input id="tN">
+        <label></label><span></span>
+      </div>
+      <div class="note">Accepts expressions: <code>pi</code>, <code>2*pi</code>, <code>-pi/2</code>…</div>
+      <div id="errline"></div>
+    </div>
+
+    <div class="section">
+      <h2>View</h2>
+      <div class="row" style="margin-bottom:8px">
+        <button id="mode2d">2D</button>
+        <button id="mode3d">3D</button>
+        <button id="fitBtn">Fit ⌖</button>
+        <button id="pngBtn">PNG ⭳</button>
+      </div>
+      <div class="row" style="margin-bottom:8px">
+        <button id="traceBtn">Trace ●</button>
+        <button id="spinBtn">Spin ⟳</button>
+        <button id="gridBtn" class="tealsel">Grid</button>
+      </div>
+      <div class="prow" style="grid-template-columns:60px 1fr 50px">
+        <label style="font-size:11px;color:var(--dim);font-family:'Segoe UI'">speed</label>
+        <input type="range" id="speedRange" min="0.02" max="1" step="0.01" value="0.16" style="accent-color:var(--accent2)">
+        <span id="speedVal" style="font-family:Consolas,monospace;font-size:11.5px;color:var(--accent2);text-align:right"></span>
+      </div>
+      <div class="note" style="margin-top:4px">
+        <b>2D:</b> drag pan · wheel zoom · double-click fit<br>
+        <b>3D:</b> drag orbit · right-drag pan · wheel zoom
+      </div>
+    </div>
+
+    <!-- ============ EDITOR ============ -->
+    <div class="section" id="editor" style="display:none">
+      <h2 id="editorTitle">Curve editor</h2>
+      <div class="erow"><label>name</label><input type="text" id="eName" spellcheck="false"></div>
+      <div class="erow"><label>helpers — optional, e.g. <span style="color:var(--accent2)">r = a*cos(3*t)</span> (separate with ;)</label>
+        <input type="text" id="eAux" spellcheck="false" placeholder="r = …; w = …"></div>
+      <div class="erow"><label>x(t) =</label><input type="text" id="eX" spellcheck="false"></div>
+      <div class="erow"><label>y(t) =</label><input type="text" id="eY" spellcheck="false"></div>
+      <div class="erow"><label>z(t) =  (empty → planar curve)</label><input type="text" id="eZ" spellcheck="false" placeholder="0"></div>
+      <div class="drow">
+        <label>t ∈ [</label><input id="eTMin" spellcheck="false">
+        <label>,</label><input id="eTMax" spellcheck="false">
+      </div>
+      <div style="margin:8px 0 4px;font-size:11px;color:var(--dim);font-family:Consolas,monospace">parameters</div>
+      <div class="pehead"><span>name</span><span>value</span><span>min</span><span>max</span><span>step</span><span></span></div>
+      <div id="ePRows"></div>
+      <div class="row" style="margin-top:4px"><button class="mini" id="ePAdd">＋ parameter</button></div>
+      <div class="note" style="margin-top:8px">
+        Functions: <code>sin cos tan sec csc cot asin acos atan atan2 sinh cosh tanh exp log ln sqrt cbrt nroot(x,n) abs sign pow mod floor round min max</code>,
+        constants <code>pi e tau</code>. Powers: <code>^</code> or <code>**</code>. Return <code>NaN</code> to cut a gap.
+        The preview updates live as you type.
+      </div>
+      <div id="eErr" style="color:var(--err);font-size:12px;margin-top:6px;white-space:pre-wrap;font-family:Consolas,monospace"></div>
+      <div class="row" style="margin-top:10px">
+        <button id="eSave" class="tealsel">Save</button>
+        <button id="eCancel">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ VIEWPORT ============ -->
+  <div id="view">
+    <canvas id="cv"></canvas>
+    <div id="hud"></div>
+    <div id="legend"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* =================================================================
+   CURVES — parametric curve lab
+   Library seeded from “List of Famous Curves” (matematica.pt copy in
+   C:\books\MATH-FORMULAES). Each curve is a parametric triple
+   x(t), y(t), z(t) with optional helper assignments (aux), free
+   parameters, and a t-domain. 2D and 3D software renderers, live
+   editing, and user-defined experimental curves persisted locally.
+   ================================================================= */
+
+/* ---------------- expression compiler ---------------- */
+const MATH_FNS = ('sin cos tan asin acos atan atan2 sinh cosh tanh asinh acosh atanh exp log log2 log10 '+
+  'sqrt cbrt abs sign floor ceil round trunc min max pow hypot PI E').split(' ');
+const EXTRAS = [
+  ['pi','Math.PI'], ['e','Math.E'], ['tau','(2*Math.PI)'], ['ln','Math.log'],
+  ['sec','(x=>1/Math.cos(x))'], ['csc','(x=>1/Math.sin(x))'], ['cot','(x=>Math.cos(x)/Math.sin(x))'],
+  ['mod','((x,y)=>((x%y)+y)%y)'], ['nroot','((x,n)=>Math.sign(x)*Math.pow(Math.abs(x),1/n))'],
+];
+const BAD_NAMES = new Set(['t','P']);
+// Prelude with names excluded when a curve's params/helpers shadow them.
+function buildPrelude(shadow){
+  let s = `const {${MATH_FNS.filter(n=>!shadow.has(n)).join(',')}}=Math;`;
+  for (const [k,v] of EXTRAS) if (!shadow.has(k)) s += `const ${k}=${v};`;
+  return s;
+}
+const BASE_PRELUDE = buildPrelude(new Set());
+
+function prep(src){ return String(src||'').replace(/\^/g,'**'); }
+function checkParens(src, label){
+  let d = 0;
+  for (const ch of String(src||'')){
+    if (ch==='(') d++;
+    else if (ch===')') d--;
+    if (d<0) break;
+  }
+  if (d!==0) throw new Error('unbalanced parentheses in '+label);
+}
+
+// Compile one curve (aux + x,y,z) into f(t, P) -> [x,y,z]. Throws on bad syntax.
+function compileCurve(def){
+  const pk = (def.params||[]).map(p=>p.k);
+  for (const k of pk)
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(k) || BAD_NAMES.has(k))
+      throw new Error(`parameter name "${k}" is not allowed`);
+  const auxDefs = [];
+  const auxSrc = prep(def.aux);
+  if (auxSrc.trim()){
+    for (const piece of auxSrc.split(';')){
+      if (!piece.trim()) continue;
+      const m = piece.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([\s\S]+)$/);
+      if (!m) throw new Error('helper must look like  name = expression :  "'+piece.trim()+'"');
+      if (BAD_NAMES.has(m[1]) || pk.includes(m[1]))
+        throw new Error('helper name "'+m[1]+'" clashes with a parameter');
+      auxDefs.push(m);
+    }
+  }
+  checkParens(def.aux,'the helpers'); checkParens(def.x,'x(t)'); checkParens(def.y,'y(t)'); checkParens(def.z,'z(t)');
+  const shadow = new Set([...pk, ...auxDefs.map(m=>m[1])]);
+  const destr = pk.length ? `const {${pk.join(',')}}=P;` : '';
+  const auxCode = auxDefs.map(m=>`const ${m[1]}=(${m[2]});`).join('');
+  const xe = prep(def.x)||'0', ye = prep(def.y)||'0', ze = prep(def.z).trim()||'0';
+  const body = `${buildPrelude(shadow)}${destr}${auxCode}return [(${xe}),(${ye}),(${ze})];`;
+  let f;
+  try{ f = new Function('t','P', body); }
+  catch(err){
+    let msg = err.message;
+    if (/exponentiation/i.test(msg)) msg += ' — write -(x^2) instead of -x^2';
+    throw new Error(msg);
+  }
+  f(0.1234, paramObj(def)); // smoke-test (runtime NaN is fine; typos throw here)
+  return f;
+}
+function paramObj(def){ const o={}; for (const p of (def.params||[])) o[p.k]=p.v; return o; }
+
+// Constant expressions for domain bounds ("2*pi" …)
+function evalConst(src){
+  const v = new Function(`${BASE_PRELUDE}return (${prep(src)});`)();
+  if (typeof v!=='number' || !isFinite(v)) throw new Error('not a finite number');
+  return v;
+}
+
+/* ---------------- curve library ---------------- */
+/* g: '2d' famous plane curves · '3d' space curves · 'custom' user curves */
+const P = (k,v,min,max,step)=>({k,v,min,max,step});
+const BUILTINS = [
+// ------- famous plane curves (roster from the source list) -------
+{id:'astroid',name:'Astroid',g:'2d',notes:'Johann Bernoulli, 1691. A four-cusped hypocycloid: a circle of radius a/4 rolling inside a circle of radius a.',
+ classic:'x^(2/3) + y^(2/3) = a^(2/3)', x:'a*cos(t)^3', y:'a*sin(t)^3', z:'', tMin:'0', tMax:'2*pi', n:600,
+ params:[P('a',1,0.1,4,0.01)]},
+{id:'bicorn',name:'Bicorn',g:'2d',notes:'The “cocked-hat” curve, studied by James Sylvester (1864) and Arthur Cayley (1867). Two cusps on one axis.',
+ classic:'y²(a² − x²) = (x² + 2ay − a²)²', x:'a*sin(t)', y:'a*cos(t)^2*(2+cos(t))/(3+sin(t)^2)', z:'', tMin:'0', tMax:'2*pi', n:600,
+ params:[P('a',1,0.1,4,0.01)]},
+{id:'cardioid',name:'Cardioid',g:'2d',notes:'The heart-shaped epicycloid traced by a circle rolling around an equal circle. Named by Castillon, 1741.',
+ classic:'r = 2a(1 + cos θ)', aux:'r = 2*a*(1+cos(t))', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:600,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'cartesian-oval',name:'Cartesian Oval',g:'2d',notes:'René Descartes, 1637: points whose distances r₁, r₂ to two foci satisfy r₁ + m·r₂ = c. Foci at (0,0) and (d,0); the two quadratic roots give the two ovals.',
+ classic:'r₁ + m·r₂ = c',
+ aux:'q=m*m-1; B=2*(c-m*m*d*cos(t)); C=m*m*d*d-c*c; s=(t<2*pi?1:-1); rr=(-B+s*sqrt(B*B-4*q*C))/(2*q); r=(rr>0?rr:NaN)',
+ x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'4*pi', n:1200,
+ params:[P('c',2,0.5,4,0.01),P('m',0.5,0.05,0.95,0.01),P('d',1,0.1,3,0.01)]},
+{id:'cassini',name:'Cassinian Ovals',g:'2d',notes:'Giovanni Cassini, 1680: points where the product of distances to two foci (±a, 0) equals b². b>a one oval, b=a the lemniscate, b<a two loops.',
+ classic:'r⁴ − 2a²r²cos 2θ + a⁴ = b⁴',
+ aux:'s=(t<2*pi?1:-1); d2=b^4-a^4*sin(2*t)^2; r2=a*a*cos(2*t)+s*sqrt(d2); r=(r2>0?sqrt(r2):NaN)',
+ x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'4*pi', n:1400,
+ params:[P('a',1,0.1,2,0.01),P('b',1.05,0.1,2.5,0.01)]},
+{id:'catenary',name:'Catenary',g:'2d',notes:'The hanging-chain curve — Leibniz, Huygens and Johann Bernoulli, 1691, answering a challenge by Jakob Bernoulli. Galileo had guessed a parabola.',
+ classic:'y = a·cosh(x/a)', x:'t', y:'a*cosh(t/a)', z:'', tMin:'-3', tMax:'3', n:400,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'cayley-sextic',name:"Cayley's Sextic",g:'2d',notes:'Studied by Colin Maclaurin (1718), named for Arthur Cayley by Archibald. A sinusoidal spiral relative of the cardioid.',
+ classic:'r = 4a·cos³(θ/3)', aux:'r = 4*a*cos(t/3)^3', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'3*pi', n:800,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'circle',name:'Circle',g:'2d',notes:'The oldest curve of all. Center (cx, cy), radius a.',
+ classic:'(x−cx)² + (y−cy)² = a²', x:'cx + a*cos(t)', y:'cy + a*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:360,
+ params:[P('a',1,0.05,4,0.01),P('cx',0,-3,3,0.01),P('cy',0,-3,3,0.01)]},
+{id:'cissoid',name:'Cissoid of Diocles',g:'2d',notes:'Diocles, ~180 BC, invented to double the cube. Cusp at the origin, vertical asymptote x = 2a.',
+ classic:'y²(2a − x) = x³', x:'2*a*t^2/(1+t^2)', y:'2*a*t^3/(1+t^2)', z:'', tMin:'-8', tMax:'8', n:900,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'conchoid',name:'Conchoid of Nicomedes',g:'2d',notes:'Nicomedes, ~180 BC, for angle trisection. Offset a measured along rays through the pole from the line x = b; both branches shown.',
+ classic:'r = a + b·sec θ', aux:'r = a + b/cos(t)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:1200,
+ params:[P('a',1,0.05,3,0.01),P('b',1,0.1,3,0.01)]},
+{id:'cycloid',name:'Cycloid',g:'2d',notes:'Traced by a point on a rolling wheel of radius a; pen at distance h from the hub (h=a pure, h<a curtate, h>a prolate). The brachistochrone of the Bernoullis.',
+ classic:'x = at − h·sin t,  y = a − h·cos t', x:'a*t - h*sin(t)', y:'a - h*cos(t)', z:'', tMin:'-2*pi', tMax:'4*pi', n:800,
+ params:[P('a',1,0.1,2,0.01),P('h',1,0,2.5,0.01)]},
+{id:'devil',name:"Devil's Curve",g:'2d',notes:'Gabriel Cramer, 1750. Named after the diabolo juggling toy. The classic shape uses b² − a² small (defaults b=1, a=0.98).',
+ classic:'y⁴ − x⁴ = a²y² − b²x²',
+ aux:'r2=(b*b*cos(t)^2-a*a*sin(t)^2)/(cos(t)^2-sin(t)^2); r=(r2>0?sqrt(r2):NaN)',
+ x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:1600,
+ params:[P('a',0.98,0.1,2,0.005),P('b',1,0.1,2,0.005)]},
+{id:'ellipse',name:'Ellipse',g:'2d',notes:'A conic section: sum of distances to the two foci is constant. Semi-axes a and b.',
+ classic:'x²/a² + y²/b² = 1', x:'a*cos(t)', y:'b*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:360,
+ params:[P('a',1.5,0.1,4,0.01),P('b',1,0.1,4,0.01)]},
+{id:'epicycloid',name:'Epicycloid',g:'2d',notes:'A circle of radius b rolling outside a circle of radius a. a/b = 1 cardioid, 2 nephroid. Extend t to close non-integer ratios.',
+ classic:'x = (a+b)cos t − b·cos((a+b)t/b)', x:'(a+b)*cos(t) - b*cos((a+b)/b*t)', y:'(a+b)*sin(t) - b*sin((a+b)/b*t)', z:'', tMin:'0', tMax:'2*pi', n:1000,
+ params:[P('a',1,0.1,3,0.01),P('b',0.25,0.05,1.5,0.01)]},
+{id:'epitrochoid',name:'Epitrochoid',g:'2d',notes:'Rolling outside with the pen at distance c from the rolling center — the Spirograph family. The Wankel engine housing is one.',
+ classic:'x = (a+b)cos t − c·cos((a+b)t/b)', x:'(a+b)*cos(t) - c*cos((a+b)/b*t)', y:'(a+b)*sin(t) - c*sin((a+b)/b*t)', z:'', tMin:'0', tMax:'6*pi', n:1600,
+ params:[P('a',1,0.1,3,0.01),P('b',0.3,0.05,1.5,0.01),P('c',0.5,0,1.5,0.01)]},
+{id:'log-spiral',name:'Equiangular Spiral',g:'2d',notes:'Descartes 1638; Jakob Bernoulli\'s “spira mirabilis”, carved on his tomb. Crosses every ray at the same angle; b controls the pitch.',
+ classic:'r = a·e^(bθ)', aux:'r = a*exp(b*t)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'-4*pi', tMax:'6*pi', n:1200,
+ params:[P('a',0.15,0.01,1,0.005),P('b',0.15,0.02,0.5,0.005)]},
+{id:'fermat-spiral',name:"Fermat's Spiral",g:'2d',notes:'Pierre de Fermat, 1636. r² = a²θ — the two signed square roots give the two centrally-symmetric arms.',
+ classic:'r² = a²θ', aux:'u=abs(t); r=sign(t)*a*sqrt(u)', x:'r*cos(u)', y:'r*sin(u)', z:'', tMin:'-6*pi', tMax:'6*pi', n:1400,
+ params:[P('a',0.3,0.02,1.5,0.01)]},
+{id:'folium',name:'Folium of Descartes',g:'2d',notes:'Descartes, 1638 — his challenge to Fermat, who tamed its tangents. One leaf, asymptote x + y + a = 0.',
+ classic:'x³ + y³ = 3axy', x:'3*a*t/(1+t^3)', y:'3*a*t^2/(1+t^3)', z:'', tMin:'-12', tMax:'12', n:1600,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'frequency',name:'Frequency Curve',g:'2d',notes:'The Gaussian bell of de Moivre (1733), Gauss and Laplace. Mean m, spread s, height a.',
+ classic:'y = a·e^(−(x−m)²/2s²)', x:'t', y:'a*exp(-((t-m)^2)/(2*s^2))', z:'', tMin:'-3', tMax:'3', n:500,
+ params:[P('a',1,0.1,2,0.01),P('m',0,-2,2,0.01),P('s',0.6,0.1,2,0.01)]},
+{id:'hyperbola',name:'Hyperbola',g:'2d',notes:'The conic of Apollonius: |difference| of distances to the foci is constant. Both branches via the secant–tangent parametrization.',
+ classic:'x²/a² − y²/b² = 1', x:'a/cos(t)', y:'b*tan(t)', z:'', tMin:'0', tMax:'2*pi', n:1000,
+ params:[P('a',1,0.1,3,0.01),P('b',0.8,0.1,3,0.01)]},
+{id:'hyperbolic-spiral',name:'Hyperbolic Spiral',g:'2d',notes:'Pierre Varignon, 1704. Reciprocal of the Archimedean spiral; approaches the asymptote y = a as θ → 0.',
+ classic:'r = a/θ', aux:'r = a/t', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0.12', tMax:'8*pi', n:1400,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'hypocycloid',name:'Hypocycloid',g:'2d',notes:'A circle of radius b rolling inside a circle of radius a. a/b = 3 deltoid, 4 astroid. Extend t to close non-integer ratios.',
+ classic:'x = (a−b)cos t + b·cos((a−b)t/b)', x:'(a-b)*cos(t) + b*cos((a-b)/b*t)', y:'(a-b)*sin(t) - b*sin((a-b)/b*t)', z:'', tMin:'0', tMax:'2*pi', n:1000,
+ params:[P('a',1,0.2,3,0.01),P('b',0.25,0.05,1.5,0.01)]},
+{id:'hypotrochoid',name:'Hypotrochoid',g:'2d',notes:'Rolling inside with the pen at distance c — the other half of the Spirograph family.',
+ classic:'x = (a−b)cos t + c·cos((a−b)t/b)', x:'(a-b)*cos(t) + c*cos((a-b)/b*t)', y:'(a-b)*sin(t) - c*sin((a-b)/b*t)', z:'', tMin:'0', tMax:'4*pi', n:1600,
+ params:[P('a',1,0.2,3,0.01),P('b',0.4,0.05,1.5,0.01),P('c',0.25,0,1.5,0.01)]},
+{id:'involute',name:'Involute of a Circle',g:'2d',notes:'Huygens, 1673, designing pendulum clocks. The path of a string end unwinding from a circle — the profile of most gear teeth.',
+ classic:'x = a(cos t + t·sin t)', x:'a*(cos(t)+t*sin(t))', y:'a*(sin(t)-t*cos(t))', z:'', tMin:'0', tMax:'4*pi', n:900,
+ params:[P('a',0.3,0.05,1.5,0.01)]},
+{id:'kampyle',name:'Kampyle of Eudoxus',g:'2d',notes:'Eudoxus, ~350 BC, another attack on doubling the cube. Two mirrored branches, vertical asymptotes.',
+ classic:'x⁴ = a²(x² + y²)', aux:'r = a/cos(t)^2', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:1200,
+ params:[P('a',0.6,0.05,2,0.01)]},
+{id:'kappa',name:'Kappa Curve',g:'2d',notes:'Studied by Gutschoven (1662), Newton and Johann Bernoulli. Shaped like the letter κ; horizontal asymptotes y = ±a.',
+ classic:'y²(x² + y²) = a²x²', aux:'r = a*cos(t)/sin(t)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:1200,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'lame',name:'Lamé Curve (Superellipse)',g:'2d',notes:'Gabriel Lamé, 1818. n=2 ellipse, n≈2.5 Piet Hein\'s superellipse, n→∞ rectangle, n=2/3 astroid.',
+ classic:'|x/a|ⁿ + |y/b|ⁿ = 1', x:'a*sign(cos(t))*abs(cos(t))^(2/n)', y:'b*sign(sin(t))*abs(sin(t))^(2/n)', z:'', tMin:'0', tMax:'2*pi', n:800,
+ params:[P('a',1.3,0.1,3,0.01),P('b',1,0.1,3,0.01),P('n',2.5,0.2,8,0.02)]},
+{id:'lemniscate',name:'Lemniscate of Bernoulli',g:'2d',notes:'Jakob Bernoulli, 1694 — the ∞ ribbon. The Cassinian oval with b = a: product of distances to (±a/√2, 0) equals a²/2.',
+ classic:'r² = a²·cos 2θ', aux:'c2=cos(2*t); r=(c2>0?a*sqrt(c2):NaN)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:900,
+ params:[P('a',1.5,0.1,4,0.01)]},
+{id:'limacon',name:'Limaçon of Pascal',g:'2d',notes:'Étienne Pascal (Blaise\'s father); named by Roberval, 1650. b < a inner loop, b = a cardioid, b ≥ 2a convex.',
+ classic:'r = b + a·cos θ', aux:'r = b + a*cos(t)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:800,
+ params:[P('a',1,0.05,2.5,0.01),P('b',0.5,0,2.5,0.01)]},
+{id:'lissajous',name:'Lissajous Curves',g:'2d',notes:'Nathaniel Bowditch 1815, Jules Lissajous 1857. Two perpendicular oscillations, frequency ratio p:q, phase d. Closed when p/q is rational.',
+ classic:'x = a·sin(pt + d),  y = b·sin(qt)', x:'a*sin(p*t + d)', y:'b*sin(q*t)', z:'', tMin:'0', tMax:'2*pi', n:1200,
+ params:[P('a',1.4,0.1,3,0.01),P('b',1,0.1,3,0.01),P('p',3,1,12,1),P('q',2,1,12,1),P('d',1.5708,0,6.2832,0.01)]},
+{id:'lituus',name:'Lituus',g:'2d',notes:'Roger Cotes, 1722. Named after the augur\'s crooked staff; the area of the circular sector swept stays constant.',
+ classic:'r = a/√θ', aux:'r = a/sqrt(t)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0.02', tMax:'6*pi', n:1400,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'neile',name:"Neile's Semi-cubical Parabola",g:'2d',notes:'William Neile, 1657 — the first algebraic curve to have its arc length computed.',
+ classic:'y² = a²x³', x:'t^2', y:'a*t^3', z:'', tMin:'-1.4', tMax:'1.4', n:500,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'parabola',name:'Parabola',g:'2d',notes:'The conic of projectiles and mirrors: every point equidistant from focus (0, a) and directrix y = −a.',
+ classic:'x² = 4ay', x:'2*a*t', y:'a*t^2', z:'', tMin:'-3', tMax:'3', n:400,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'pearls',name:'Pearls of Sluze',g:'2d',notes:'René de Sluze, studied 1657–68; named by Blaise Pascal. A whole family — vary the integer exponents.',
+ classic:'yⁿ = k·(a−x)ᵖ·xᵐ',
+ aux:'u=(t<=1?t:2-t); s=(t<=1?1:-1); X=a*u; base=k*pow(a-X,p)*pow(X,m); Y=(s<0&&mod(n,2)==1?NaN:s*pow(base,1/n))',
+ x:'X', y:'Y', z:'', tMin:'0', tMax:'2', n:900,
+ params:[P('n',4,1,8,1),P('p',2,1,6,1),P('m',2,1,6,1),P('k',16,0.5,64,0.5),P('a',1,0.2,2,0.01)]},
+{id:'pursuit',name:'Pursuit Curve',g:'2d',notes:'Pierre Bouguer, 1732: the path of a pursuer always aimed at prey fleeing along a straight line.',
+ classic:'y = c·x² − ln x', x:'t', y:'c*t^2 - log(t)', z:'', tMin:'0.04', tMax:'3', n:600,
+ params:[P('c',1,0.1,3,0.01)]},
+{id:'quadratrix',name:'Quadratrix of Hippias',g:'2d',notes:'Hippias of Elis, ~430 BC — trisects angles; Dinostratus later squared the circle with it. A falling line meets a rotating ray.',
+ classic:'y = x·tan(πy/2a)', x:'2*a*t/pi/tan(t)', y:'2*a*t/pi', z:'', tMin:'0.0001', tMax:'pi-0.05', n:900,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'line',name:'Straight Line',g:'2d',notes:'Slope m, intercept c. The shortest path between two points — included for completeness.',
+ classic:'y = m·x + c', x:'t', y:'m*t + c', z:'', tMin:'-5', tMax:'5', n:64,
+ params:[P('m',0.5,-3,3,0.01),P('c',0,-3,3,0.01)]},
+{id:'strophoid',name:'Right Strophoid',g:'2d',notes:'Isaac Barrow, 1670 (the name, from Montucci 1846, means “belt with a twist”). Loop through (−a, 0), asymptote x = a.',
+ classic:'y²(a − x) = x²(a + x)', x:'a*(t^2-1)/(t^2+1)', y:'a*t*(t^2-1)/(t^2+1)', z:'', tMin:'-7', tMax:'7', n:900,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'serpentine',name:'Serpentine',g:'2d',notes:'Studied by L\'Hôpital and Huygens (1692); named by Newton in his cubic classification, 1701.',
+ classic:'x²y + aby − a²x = 0', x:'t', y:'a*a*t/(t^2 + a*b)', z:'', tMin:'-6', tMax:'6', n:600,
+ params:[P('a',1,0.1,3,0.01),P('b',1,0.1,3,0.01)]},
+{id:'archimedes',name:'Spiral of Archimedes',g:'2d',notes:'Archimedes, ~225 BC (Conon\'s spiral). Uniformly spaced turns — the groove of a vinyl record.',
+ classic:'r = a·θ', aux:'r = a*t', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'8*pi', n:1400,
+ params:[P('a',0.12,0.01,0.5,0.005)]},
+{id:'tractrix',name:'Tractrix',g:'2d',notes:'Claude Perrault\'s watch-on-a-chain problem, solved by Huygens/Leibniz, 1692. Constant tangent length; revolve it for the pseudosphere.',
+ classic:'x = a(t − tanh t),  y = a·sech t', x:'a*(t - tanh(t))', y:'a/cosh(t)', z:'', tMin:'-4.5', tMax:'4.5', n:700,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'tricuspoid',name:'Tricuspoid (Deltoid)',g:'2d',notes:'Euler 1745, Steiner 1856. The three-cusped hypocycloid (rolling radius a inside 3a).',
+ classic:'x = a(2cos t + cos 2t)', x:'a*(2*cos(t)+cos(2*t))', y:'a*(2*sin(t)-sin(2*t))', z:'', tMin:'0', tMax:'2*pi', n:700,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'trident',name:'Trident of Newton',g:'2d',notes:'Newton\'s classification of cubics, 1701 — the “parabola with a hyperbolic leg”. Also Descartes\' parabola.',
+ classic:'xy = cx³ + dx² + ex + f', x:'t', y:'c*t^2 + d*t + e + f/t', z:'', tMin:'-4', tMax:'4', n:900,
+ params:[P('c',0.25,-1,1,0.01),P('d',0,-2,2,0.01),P('e',0,-2,2,0.01),P('f',1,-3,3,0.01)]},
+{id:'trisectrix',name:'Trisectrix of Maclaurin',g:'2d',notes:'Colin Maclaurin, 1742, built to trisect angles: an angle at the pole appears trebled at (a, 0).',
+ classic:'2x(x² + y²) = a(3x² − y²)', aux:'r = a*(4*cos(t)^2 - 1)/(2*cos(t))', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:1200,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'tschirnhaus',name:'Tschirnhaus Cubic',g:'2d',notes:'Ehrenfried von Tschirnhaus, 1690; also studied by de L\'Hôpital and Catalan (its other names).',
+ classic:'r = a·sec³(θ/3)', aux:'r = a/cos(t/3)^3', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'-3*pi/2+0.3', tMax:'3*pi/2-0.3', n:1200,
+ params:[P('a',0.35,0.05,2,0.01)]},
+{id:'witch',name:'Witch of Agnesi',g:'2d',notes:'Maria Gaetana Agnesi, 1748. “Versiera” (turning rope) was mistranslated as “witch”. The Cauchy distribution in disguise.',
+ classic:'y(x² + 4a²) = 8a³', x:'2*a*t', y:'2*a/(1+t^2)', z:'', tMin:'-6', tMax:'6', n:600,
+ params:[P('a',0.5,0.05,2,0.01)]},
+// ------- space curves (3D) -------
+{id:'helix',name:'Helix',g:'3d',notes:'The circular helix — constant curvature and torsion. Radius a, climb b per radian (pitch 2πb).',
+ classic:'x = a·cos t, y = a·sin t, z = b·t', x:'a*cos(t)', y:'a*sin(t)', z:'b*t', tMin:'-6*pi', tMax:'6*pi', n:1200,
+ params:[P('a',1,0.1,2.5,0.01),P('b',0.12,0.01,0.6,0.005)]},
+{id:'conical-spiral',name:'Conical Spiral',g:'3d',notes:'A spiral wound on a cone of base radius a and height h; w turns of winding. Seashells grow this way.',
+ classic:'r(t) = a·t, z = h(1 − t)', x:'a*t*cos(w*t)', y:'a*t*sin(w*t)', z:'h*(1-t)', tMin:'0', tMax:'1', n:1500,
+ params:[P('a',1.4,0.2,3,0.01),P('h',1.6,0.2,3,0.01),P('w',26,4,80,1)]},
+{id:'spherical-spiral',name:'Spherical Spiral',g:'3d',notes:'A curve winding from pole to pole on a sphere of radius a — k windings (a loxodrome-style path).',
+ classic:'x = a·cos t·cos kt, …, z = a·sin t', x:'a*cos(t)*cos(k*t)', y:'a*cos(t)*sin(k*t)', z:'a*sin(t)', tMin:'-pi/2', tMax:'pi/2', n:1600,
+ params:[P('a',1.3,0.2,2.5,0.01),P('k',10,2,40,1)]},
+{id:'viviani',name:"Viviani's Curve",g:'3d',notes:'Vincenzo Viviani, 1692: the figure-eight intersection of a sphere of radius 2a with a tangent cylinder of radius a.',
+ classic:'sphere ∩ cylinder', x:'a*(1+cos(t))', y:'a*sin(t)', z:'2*a*sin(t/2)', tMin:'-2*pi', tMax:'2*pi', n:900,
+ params:[P('a',0.8,0.1,2,0.01)]},
+{id:'trefoil',name:'Trefoil Knot',g:'3d',notes:'The simplest non-trivial knot — a (2,3) torus knot. Scale a.',
+ classic:'x = a(sin t + 2sin 2t), …', x:'a*(sin(t)+2*sin(2*t))', y:'a*(cos(t)-2*cos(2*t))', z:'-a*sin(3*t)', tMin:'0', tMax:'2*pi', n:900,
+ params:[P('a',0.45,0.1,1.5,0.01)]},
+{id:'torus-knot',name:'Torus Knot (p,q)',g:'3d',notes:'Winds p times around the torus axis and q times through the hole (coprime p,q knot; p=1 gives a toroidal coil). Major radius c, tube radius d.',
+ classic:'r = c + d·cos qt, z = d·sin qt', x:'(c + d*cos(q*t))*cos(p*t)', y:'(c + d*cos(q*t))*sin(p*t)', z:'d*sin(q*t)', tMin:'0', tMax:'2*pi', n:1600,
+ params:[P('p',2,1,12,1),P('q',3,1,12,1),P('c',1,0.3,2,0.01),P('d',0.35,0.05,1,0.01)]},
+{id:'lissajous3d',name:'Lissajous 3D',g:'3d',notes:'Three perpendicular oscillations with integer frequencies p, q, w and a phase d — the 2D scope trace lifted into space.',
+ classic:'x = a·sin(pt+d), y = a·sin qt, z = a·sin wt', x:'a*sin(p*t + d)', y:'a*sin(q*t)', z:'a*sin(w*t)', tMin:'0', tMax:'2*pi', n:1600,
+ params:[P('a',1.1,0.2,2,0.01),P('p',3,1,12,1),P('q',2,1,12,1),P('w',5,1,12,1),P('d',1.5708,0,6.2832,0.01)]},
+{id:'twisted-cubic',name:'Twisted Cubic',g:'3d',notes:'The moment curve (t, t², t³) — the standard example of a genuinely twisted space curve.',
+ classic:'x = at, y = bt², z = ct³', x:'a*t', y:'b*t^2', z:'c*t^3', tMin:'-1.5', tMax:'1.5', n:500,
+ params:[P('a',1,0.1,2,0.01),P('b',1,0.1,2,0.01),P('c',1,0.1,2,0.01)]},
+];
+
+/* ---------------- state ---------------- */
+const LS_KEY = 'curves-lab-v1';
+let customs = [];                       // user curves
+let overrides = {};                     // per-builtin {params:{}, tMin,tMax,n}
+let selId = 'astroid';
+let mode = '2d';                        // '2d' | '3d'
+let showGrid = true;
+let trace = false, spin = false, animSpeed = 0.16, phase = 0;
+let editing = null;                     // working copy in the editor (null = closed)
+let editingIsNew = false;
+let compiled = null, samples = [], sampleTs = [], bbox = null, compileErr = '';
+let curve3D = false;                    // selected curve has a z component
+
+const view2 = {scale:120, ox:0, oy:0, inited:false};
+const view3 = {yaw:0.6, pitch:0.42, dist:6, cx:0, cy:0, cz:0, inited:false};
+
+const $ = id => document.getElementById(id);
+const cv = $('cv'), ctx = cv.getContext('2d');
+
+/* ---------------- persistence ---------------- */
+function saveLS(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify({v:1, customs, overrides, selId, mode})); }catch(e){}
+}
+function loadLS(){
+  try{
+    const d = JSON.parse(localStorage.getItem(LS_KEY)||'null');
+    if (!d) return;
+    customs = d.customs||[];
+    overrides = d.overrides||{};
+    if (d.selId && findCurve(d.selId)) selId = d.selId;
+    if (d.mode==='3d') mode = '3d';
+  }catch(e){}
+}
+
+/* ---------------- curve resolution ---------------- */
+function findCurve(id){ return BUILTINS.find(c=>c.id===id) || customs.find(c=>c.id===id); }
+function isCustom(c){ return c.g==='custom'; }
+
+// Effective definition = builtin + user overrides (customs are stored directly)
+function effectiveDef(c){
+  if (isCustom(c)) return c;
+  const o = overrides[c.id];
+  if (!o) return c;
+  const d = Object.assign({}, c);
+  d.params = c.params.map(p => Object.assign({}, p, o.params && o.params[p.k]!==undefined ? {v:o.params[p.k]} : {}));
+  if (o.tMin!==undefined) d.tMin = o.tMin;
+  if (o.tMax!==undefined) d.tMax = o.tMax;
+  if (o.n!==undefined) d.n = o.n;
+  return d;
+}
+function setOverride(c, patch){
+  if (isCustom(c)){ Object.assign(c, patch); saveLS(); return; }
+  const o = overrides[c.id] = overrides[c.id] || {};
+  Object.assign(o, patch);
+  saveLS();
+}
+function setParamValue(c, k, v){
+  if (isCustom(c)){ const p=c.params.find(p=>p.k===k); if(p) p.v=v; saveLS(); return; }
+  const o = overrides[c.id] = overrides[c.id] || {};
+  o.params = o.params || {};
+  o.params[k] = v;
+  saveLS();
+}
+
+/* ---------------- sampling ---------------- */
+function rebuild(){
+  const raw = findCurve(selId);
+  const c = editing || (raw && effectiveDef(raw));
+  if (!c) return;
+  compileErr = '';
+  compiled = null; samples = []; sampleTs = []; bbox = null;
+  let t0, t1, n;
+  try{ t0 = evalConst(c.tMin); t1 = evalConst(c.tMax); }
+  catch(e){ compileErr = 'domain: '+e.message; drawSoon(); return; }
+  n = Math.max(8, Math.min(20000, Math.round(+c.n || 800)));
+  try{ compiled = compileCurve(c); }
+  catch(e){ compileErr = e.message; drawSoon(); return; }
+  const Pv = paramObj(c);
+  curve3D = false;
+  const pts = new Array(n+1), ts = new Array(n+1);
+  for (let i=0;i<=n;i++){
+    const t = t0 + (t1-t0)*i/n;
+    let p;
+    try{ p = compiled(t, Pv); }catch(e){ p = [NaN,NaN,NaN]; }
+    let [x,y,z] = p;
+    if (!isFinite(x)||!isFinite(y)||!isFinite(z)){ x=y=z=NaN; }
+    else if (Math.abs(x)>1e7||Math.abs(y)>1e7||Math.abs(z)>1e7){ x=y=z=NaN; }
+    if (z!==0 && !Number.isNaN(z)) curve3D = true;
+    pts[i]=[x,y,z]; ts[i]=t;
+  }
+  samples = pts; sampleTs = ts;
+  bbox = robustBBox(pts);
+  updateHud();
+  drawSoon();
+}
+
+// Bounding box resistant to asymptote blow-ups: trim by percentile.
+function robustBBox(pts){
+  const mags = [];
+  for (const p of pts) if (!Number.isNaN(p[0])) mags.push(Math.max(Math.abs(p[0]),Math.abs(p[1]),Math.abs(p[2])));
+  if (!mags.length) return null;
+  mags.sort((a,b)=>a-b);
+  const p80 = mags[Math.min(mags.length-1, Math.floor(mags.length*0.8))];
+  const limit = Math.max(p80*1.6, mags[Math.floor(mags.length/2)]*2, 1e-6);
+  let xa=1/0,xb=-1/0,ya=1/0,yb=-1/0,za=1/0,zb=-1/0,cnt=0;
+  for (const [x,y,z] of pts){
+    if (Number.isNaN(x)) continue;
+    if (Math.abs(x)>limit||Math.abs(y)>limit||Math.abs(z)>limit) continue;
+    xa=Math.min(xa,x); xb=Math.max(xb,x); ya=Math.min(ya,y); yb=Math.max(yb,y);
+    za=Math.min(za,z); zb=Math.max(zb,z); cnt++;
+  }
+  if (!cnt) return null;
+  return {xa,xb,ya,yb,za,zb};
+}
+
+/* ---------------- fitting ---------------- */
+let fitPending = false;
+function fitView(){
+  if (!bbox) return;
+  const w = cv.clientWidth, h = cv.clientHeight;
+  if (w<40 || h<40){ fitPending = true; return; }
+  fitPending = false;
+  if (mode==='2d'){
+    const sw = Math.max(bbox.xb-bbox.xa, 1e-6), sh = Math.max(bbox.yb-bbox.ya, 1e-6);
+    view2.scale = Math.min((w*0.8)/sw, (h*0.8)/sh);
+    view2.scale = Math.min(Math.max(view2.scale, 1e-4), 1e6);
+    const cx = (bbox.xa+bbox.xb)/2, cy = (bbox.ya+bbox.yb)/2;
+    view2.ox = w/2 - cx*view2.scale;
+    view2.oy = h/2 + cy*view2.scale;
+    view2.inited = true;
+  } else {
+    view3.cx = (bbox.xa+bbox.xb)/2; view3.cy = (bbox.ya+bbox.yb)/2; view3.cz = (bbox.za+bbox.zb)/2;
+    const r = Math.max(bbox.xb-bbox.xa, bbox.yb-bbox.ya, bbox.zb-bbox.za, 0.5);
+    view3.dist = r*1.9 + 0.8;
+    view3.inited = true;
+  }
+  drawSoon();
+}
+
+/* ---------------- drawing ---------------- */
+let needsDraw = true;
+function drawSoon(){ needsDraw = true; }
+
+function resize(){
+  const dpr = window.devicePixelRatio||1;
+  const w = $('view').clientWidth, h = $('view').clientHeight;
+  cv.style.width = w+'px'; cv.style.height = h+'px';
+  cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  if (fitPending && w>=40 && h>=40) fitView();
+  drawSoon();
+}
+window.addEventListener('resize', resize);
+new ResizeObserver(()=>resize()).observe(document.getElementById('view'));
+
+function niceStep(raw){
+  const p = Math.pow(10, Math.floor(Math.log10(raw)));
+  const m = raw/p;
+  return (m<1.5?1:m<3.5?2:m<7.5?5:10)*p;
+}
+const fmt = v => {
+  if (v===0) return '0';
+  const a = Math.abs(v);
+  if (a>=1e5||a<1e-4) return v.toExponential(1);
+  return +v.toPrecision(6)+'';
+};
+
+/* ----- 2D ----- */
+const W2S = (x,y)=>[view2.ox + x*view2.scale, view2.oy - y*view2.scale];
+
+function draw2D(w,h){
+  // grid
+  if (showGrid){
+    const step = niceStep(70/view2.scale);
+    const x0 = (0 - view2.ox)/view2.scale, x1 = (w - view2.ox)/view2.scale;
+    const y1 = (view2.oy - 0)/view2.scale, y0 = (view2.oy - h)/view2.scale;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = Math.ceil(x0/step)*step; x<=x1; x+=step){ const [sx] = W2S(x,0); ctx.moveTo(sx,0); ctx.lineTo(sx,h); }
+    for (let y = Math.ceil(y0/step)*step; y<=y1; y+=step){ const [,sy] = W2S(0,y); ctx.moveTo(0,sy); ctx.lineTo(w,sy); }
+    ctx.strokeStyle = '#1b1f28'; ctx.stroke();
+    // axes
+    ctx.beginPath();
+    const [ox,oy] = W2S(0,0);
+    if (oy>=0&&oy<=h){ ctx.moveTo(0,oy); ctx.lineTo(w,oy); }
+    if (ox>=0&&ox<=w){ ctx.moveTo(ox,0); ctx.lineTo(ox,h); }
+    ctx.strokeStyle = '#39404f'; ctx.stroke();
+    // labels
+    ctx.fillStyle = '#5a6374'; ctx.font = '10.5px Consolas,monospace';
+    const ly = Math.min(Math.max(oy+13, 12), h-4);
+    for (let x = Math.ceil(x0/step)*step; x<=x1; x+=step){
+      if (Math.abs(x)<step/2) continue;
+      const [sx] = W2S(x,0); ctx.fillText(fmt(x), sx+3, ly);
+    }
+    const lx = Math.min(Math.max(ox+5, 4), w-38);
+    for (let y = Math.ceil(y0/step)*step; y<=y1; y+=step){
+      if (Math.abs(y)<step/2) continue;
+      const [,sy] = W2S(0,y); ctx.fillText(fmt(y), lx, sy-3);
+    }
+  }
+  // curve (xy projection when 3D)
+  drawPolyline2D(w,h);
+  if (trace) drawMarker2D();
+}
+
+function drawPolyline2D(w,h){
+  const jump = (w+h)*0.75;
+  ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.strokeStyle = '#ff9f1c';
+  ctx.beginPath();
+  let pen = false, px=0, py=0;
+  for (const p of samples){
+    if (Number.isNaN(p[0])){ pen=false; continue; }
+    const [sx,sy] = W2S(p[0],p[1]);
+    if (!pen){ ctx.moveTo(sx,sy); pen=true; }
+    else{
+      if (Math.abs(sx-px)+Math.abs(sy-py) > jump){ ctx.moveTo(sx,sy); }
+      else ctx.lineTo(sx,sy);
+    }
+    px=sx; py=sy;
+  }
+  ctx.stroke();
+}
+
+function markerPoint(){
+  if (!samples.length) return null;
+  const i = Math.min(samples.length-1, Math.floor(phase*(samples.length-1)));
+  const p = samples[i];
+  if (Number.isNaN(p[0])) return null;
+  return {p, t:sampleTs[i], i};
+}
+function drawMarker2D(){
+  const m = markerPoint(); if (!m) return;
+  // comet tail
+  const tail = Math.floor(samples.length*0.12);
+  ctx.lineWidth = 3.2; ctx.strokeStyle = 'rgba(46,196,182,0.85)';
+  ctx.beginPath();
+  let pen=false;
+  for (let j=Math.max(0,m.i-tail); j<=m.i; j++){
+    const q = samples[j];
+    if (Number.isNaN(q[0])){ pen=false; continue; }
+    const [sx,sy]=W2S(q[0],q[1]);
+    if (!pen){ ctx.moveTo(sx,sy); pen=true; } else ctx.lineTo(sx,sy);
+  }
+  ctx.stroke();
+  const [sx,sy] = W2S(m.p[0],m.p[1]);
+  ctx.fillStyle = '#2ec4b6';
+  ctx.beginPath(); ctx.arc(sx,sy,5,0,7); ctx.fill();
+  ctx.strokeStyle = '#0f1115'; ctx.lineWidth = 1.5; ctx.stroke();
+}
+
+/* ----- 3D ----- */
+function cameraBasis(){
+  const cy=Math.cos(view3.yaw), sy=Math.sin(view3.yaw);
+  const cp=Math.cos(view3.pitch), sp=Math.sin(view3.pitch);
+  // camera position offset from target (z-up world)
+  const eye = [view3.dist*cp*cy, view3.dist*cp*sy, view3.dist*sp];
+  const fwd = norm3([-eye[0],-eye[1],-eye[2]]);           // looking at target
+  const right = norm3(cross3(fwd, [0,0,1]));
+  const up = cross3(right, fwd);
+  return {eye, fwd, right, up};
+}
+const cross3=(a,b)=>[a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+const norm3=a=>{const l=Math.hypot(a[0],a[1],a[2])||1; return [a[0]/l,a[1]/l,a[2]/l];};
+
+function makeProjector(w,h){
+  const {eye,fwd,right,up} = cameraBasis();
+  const ex = view3.cx+eye[0], ey = view3.cy+eye[1], ez = view3.cz+eye[2];
+  const f = 1.25*Math.min(w,h);
+  return (x,y,z)=>{
+    const dx=x-ex, dy=y-ey, dz=z-ez;
+    const cz = dx*fwd[0]+dy*fwd[1]+dz*fwd[2];          // depth along view
+    if (cz < 0.05) return null;
+    const cx = dx*right[0]+dy*right[1]+dz*right[2];
+    const cyv = dx*up[0]+dy*up[1]+dz*up[2];
+    return [w/2 + f*cx/cz, h/2 - f*cyv/cz, cz];
+  };
+}
+
+function draw3D(w,h){
+  const proj = makeProjector(w,h);
+  // ground grid on z = 0, sized to the curve
+  if (showGrid){
+    const span = bbox ? Math.max(bbox.xb-bbox.xa, bbox.yb-bbox.ya, bbox.zb-bbox.za, 0.5) : 2;
+    const step = niceStep(span/4);
+    const half = step*4;
+    ctx.lineWidth = 1;
+    for (let i=-4;i<=4;i++){
+      line3(proj, -half, i*step, 0, half, i*step, 0, i===0 ? '#3a4152' : '#1c212b');
+      line3(proj, i*step, -half, 0, i*step, half, 0, i===0 ? '#3a4152' : '#1c212b');
+    }
+    // axes
+    const L = half*1.05;
+    line3(proj, 0,0,0, L,0,0, '#e5484d', 1.6);
+    line3(proj, 0,0,0, 0,L,0, '#30a46c', 1.6);
+    line3(proj, 0,0,0, 0,0,L*0.75, '#3e8eed', 1.6);
+    label3(proj, L*1.04,0,0,'x','#e5484d');
+    label3(proj, 0,L*1.04,0,'y','#30a46c');
+    label3(proj, 0,0,L*0.79,'z','#3e8eed');
+  }
+  // curve with depth-shaded segments
+  drawPolyline3D(proj,w,h);
+  if (trace) drawMarker3D(proj);
+}
+function line3(proj,x0,y0,z0,x1,y1,z1,color,width){
+  const a = proj(x0,y0,z0), b = proj(x1,y1,z1);
+  if (!a||!b) return;
+  ctx.strokeStyle = color; ctx.lineWidth = width||1;
+  ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke();
+}
+function label3(proj,x,y,z,s,color){
+  const a = proj(x,y,z); if(!a) return;
+  ctx.fillStyle = color; ctx.font = '12px Consolas,monospace';
+  ctx.fillText(s, a[0]+3, a[1]-3);
+}
+function drawPolyline3D(proj,w,h){
+  const jump = (w+h)*0.75;
+  // project all, find depth range for shading
+  const sp = new Array(samples.length);
+  let zn=1/0, zf=-1/0;
+  for (let i=0;i<samples.length;i++){
+    const p = samples[i];
+    if (Number.isNaN(p[0])){ sp[i]=null; continue; }
+    const s = proj(p[0],p[1],p[2]);
+    sp[i]=s;
+    if (s){ zn=Math.min(zn,s[2]); zf=Math.max(zf,s[2]); }
+  }
+  if (zf<=zn) zf=zn+1;
+  ctx.lineJoin='round'; ctx.lineCap='round';
+  for (let i=1;i<sp.length;i++){
+    const a=sp[i-1], b=sp[i];
+    if (!a||!b) continue;
+    if (Math.abs(a[0]-b[0])+Math.abs(a[1]-b[1]) > jump) continue;
+    const d = 1 - (((a[2]+b[2])/2)-zn)/(zf-zn);         // 1 near … 0 far
+    const li = 42 + d*24;                                // lightness %
+    const al = 0.35 + d*0.65;
+    ctx.strokeStyle = `hsla(36, 100%, ${li}%, ${al})`;
+    ctx.lineWidth = 1.2 + d*1.4;
+    ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke();
+  }
+}
+function drawMarker3D(proj){
+  const m = markerPoint(); if (!m) return;
+  const tail = Math.floor(samples.length*0.12);
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(46,196,182,0.9)';
+  ctx.beginPath(); let pen=false;
+  for (let j=Math.max(0,m.i-tail); j<=m.i; j++){
+    const q = samples[j];
+    if (Number.isNaN(q[0])){ pen=false; continue; }
+    const s = proj(q[0],q[1],q[2]); if (!s){ pen=false; continue; }
+    if (!pen){ ctx.moveTo(s[0],s[1]); pen=true; } else ctx.lineTo(s[0],s[1]);
+  }
+  ctx.stroke();
+  const s = proj(m.p[0],m.p[1],m.p[2]); if (!s) return;
+  ctx.fillStyle = '#2ec4b6';
+  ctx.beginPath(); ctx.arc(s[0],s[1],5,0,7); ctx.fill();
+  ctx.strokeStyle='#0f1115'; ctx.lineWidth=1.5; ctx.stroke();
+}
+
+/* ----- frame loop ----- */
+let lastT = performance.now();
+function frame(now){
+  const dt = Math.min(0.1, (now-lastT)/1000); lastT = now;
+  if (trace){ phase = (phase + dt*animSpeed) % 1; needsDraw = true; }
+  if (spin && mode==='3d'){ view3.yaw += dt*0.35; needsDraw = true; }
+  if (needsDraw){
+    needsDraw = false;
+    const w = cv.clientWidth, h = cv.clientHeight;
+    ctx.clearRect(0,0,w,h);
+    if (mode==='2d') draw2D(w,h); else draw3D(w,h);
+    if (compileErr){
+      ctx.fillStyle = '#e5484d'; ctx.font = '13px Consolas,monospace';
+      ctx.fillText('⚠ '+compileErr, 14, h-16);
+    }
+    if (trace) updateHudTrace();
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------------- HUD / legend ---------------- */
+function updateHud(){
+  const raw = findCurve(selId);
+  const c = editing || (raw && effectiveDef(raw));
+  if (!c) return;
+  const proj2d = (mode==='2d' && curve3D) ? ' <span style="color:#3e8eed">(xy projection — switch to 3D)</span>' : '';
+  $('hud').innerHTML = `<b>${esc(c.name)}</b> — ${mode.toUpperCase()}${proj2d}<br>` +
+    `t ∈ [${esc(String(c.tMin))}, ${esc(String(c.tMax))}] · ${c.n||800} samples` +
+    `<span id="hudTrace"></span>`;
+  $('legend').innerHTML = mode==='3d'
+    ? `<span class="sw" style="background:#e5484d"></span>x&nbsp;&nbsp;<span class="sw" style="background:#30a46c"></span>y&nbsp;&nbsp;<span class="sw" style="background:#3e8eed"></span>z`
+    : `<span class="sw" style="background:#ff9f1c"></span>curve&nbsp;&nbsp;<span class="sw" style="background:#2ec4b6"></span>trace`;
+}
+function updateHudTrace(){
+  const el = $('hudTrace'); if (!el) return;
+  const m = markerPoint();
+  if (!m){ el.innerHTML=''; return; }
+  const z = curve3D ? `, ${fmt(m.p[2])}` : '';
+  el.innerHTML = `<br><span class="tt">t = ${fmt(m.t)} · P = (${fmt(m.p[0])}, ${fmt(m.p[1])}${z})</span>`;
+}
+const esc = s => String(s).replace(/[&<>"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+
+/* ---------------- library UI ---------------- */
+function renderList(){
+  const q = $('search').value.trim().toLowerCase();
+  const groups = [
+    ['Famous curves — 2D', BUILTINS.filter(c=>c.g==='2d')],
+    ['Space curves — 3D', BUILTINS.filter(c=>c.g==='3d')],
+    ['My curves', customs],
+  ];
+  let html = '';
+  for (const [title, arr] of groups){
+    const vis = arr.filter(c => !q || c.name.toLowerCase().includes(q));
+    if (!vis.length && !(title==='My curves' && !q)) { if(!vis.length) continue; }
+    html += `<div class="ghead">${title}</div>`;
+    if (!vis.length) html += `<div class="note" style="padding:2px 8px">none yet — press “＋ New” below or clone a famous curve</div>`;
+    for (const c of vis){
+      const sel = c.id===selId ? ' sel':'';
+      const tag = (c.g==='3d'||(c.g==='custom'&&c.z&&c.z.trim()&&c.z.trim()!=='0')) ? '<span class="d3tag">3D</span>' : '';
+      const btns = c.g==='custom'
+        ? `<button title="edit" data-act="edit" data-id="${c.id}">✎</button><button class="del" title="delete" data-act="del" data-id="${c.id}">✕</button>` : '';
+      html += `<div class="citem${sel}" data-id="${c.id}"><span class="nm">${esc(c.name)}</span>${tag}${btns}</div>`;
+    }
+  }
+  $('list').innerHTML = html;
+}
+$('list').addEventListener('click', e=>{
+  const b = e.target.closest('button');
+  if (b){
+    const id = b.dataset.id;
+    if (b.dataset.act==='del'){
+      const c = findCurve(id);
+      if (confirm(`Delete "${c.name}"?`)){
+        customs = customs.filter(x=>x.id!==id);
+        if (selId===id) selId = 'astroid';
+        if (editing && editing.id===id) closeEditor(false);
+        saveLS(); renderList(); selectCurve(selId, false);
+      }
+      return;
+    }
+    if (b.dataset.act==='edit'){ selectCurve(id, false); openEditor(findCurve(id), false); return; }
+  }
+  const it = e.target.closest('.citem');
+  if (it) selectCurve(it.dataset.id, true);
+});
+$('search').addEventListener('input', renderList);
+
+function selectCurve(id, autoMode){
+  if (editing) closeEditor(false);
+  selId = id; saveLS();
+  const c = findCurve(id);
+  if (autoMode){
+    const has3 = c.g==='3d' || (c.z && c.z.trim() && c.z.trim()!=='0');
+    setMode(has3 ? '3d' : '2d', false);
+  }
+  renderList(); renderPanel(); rebuild();
+  fitAfterBuild();
+}
+function fitAfterBuild(){ setTimeout(fitView, 0); }
+
+/* ---------------- control panel UI ---------------- */
+function renderPanel(){
+  const c = effectiveDef(findCurve(selId));
+  $('curveName').textContent = c.name;
+  $('curveNotes').textContent = c.notes||'';
+  let eq = '';
+  if (c.aux && c.aux.trim()) eq += `<span class="lbl">let</span>  ${esc(c.aux)}\n`;
+  eq += `<span class="lbl">x(t)</span> = ${esc(c.x)}\n<span class="lbl">y(t)</span> = ${esc(c.y)}`;
+  if (c.z && c.z.trim() && c.z.trim()!=='0') eq += `\n<span class="lbl">z(t)</span> = ${esc(c.z)}`;
+  $('eqBox').innerHTML = eq;
+  $('classicBox').innerHTML = c.classic ? `classic form&nbsp; <code>${esc(c.classic)}</code>` : '';
+  $('editBtn').style.display = isCustom(findCurve(selId)) ? '' : 'none';
+  renderParams(c);
+  $('tMin').value = c.tMin; $('tMax').value = c.tMax; $('tN').value = c.n||800;
+  $('tMin').classList.remove('bad'); $('tMax').classList.remove('bad');
+  showErr('');
+}
+
+function renderParams(c){
+  const box = $('paramRows'); box.innerHTML='';
+  $('noParamNote').style.display = (c.params&&c.params.length)?'none':'block';
+  for (const p of (c.params||[])){
+    const row = document.createElement('div'); row.className='prow';
+    row.innerHTML = `<label>${esc(p.k)}</label>
+      <input type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.v}">
+      <span class="numcell"><input type="text" value="${p.v}">
+        <span class="spin"><button>▲</button><button>▼</button></span></span>`;
+    const range = row.querySelector('input[type=range]');
+    const num = row.querySelector('input[type=text]');
+    const [up,down] = row.querySelectorAll('.spin button');
+    const commit = v => {
+      if (!isFinite(v)) { num.classList.add('bad'); return; }
+      num.classList.remove('bad');
+      setParamValue(findCurve(selId), p.k, v);
+      range.value = v; num.value = +v.toPrecision(6);
+      rebuild();
+    };
+    range.addEventListener('input', ()=>commit(parseFloat(range.value)));
+    num.addEventListener('change', ()=>commit(parseFloat(num.value)));
+    up.addEventListener('click', ()=>commit((parseFloat(num.value)||0)+p.step));
+    down.addEventListener('click', ()=>commit((parseFloat(num.value)||0)-p.step));
+    box.appendChild(row);
+  }
+}
+
+function showErr(msg){
+  const el = $('errline');
+  el.style.display = msg?'block':'none';
+  el.textContent = msg||'';
+}
+
+for (const id of ['tMin','tMax']){
+  $(id).addEventListener('change', ()=>{
+    const el = $(id);
+    try{ evalConst(el.value); el.classList.remove('bad'); }
+    catch(e){ el.classList.add('bad'); showErr('t-range: '+e.message); return; }
+    showErr('');
+    setOverride(findCurve(selId), {[id]:el.value});
+    rebuild();
+  });
+}
+$('tN').addEventListener('change', ()=>{
+  const v = Math.max(8, Math.min(20000, Math.round(parseFloat($('tN').value)||800)));
+  $('tN').value = v;
+  setOverride(findCurve(selId), {n:v});
+  rebuild();
+});
+
+$('resetBtn').addEventListener('click', ()=>{
+  const raw = findCurve(selId);
+  if (isCustom(raw)){ rebuild(); return; }
+  delete overrides[raw.id]; saveLS();
+  renderPanel(); rebuild(); fitAfterBuild();
+});
+$('cloneBtn').addEventListener('click', ()=>{
+  const c = effectiveDef(findCurve(selId));
+  const copy = JSON.parse(JSON.stringify(c));
+  copy.id = 'u'+Date.now().toString(36);
+  copy.name = c.name+' (mine)';
+  copy.g = 'custom';
+  openEditor(copy, true);
+});
+$('editBtn').addEventListener('click', ()=>{
+  const c = findCurve(selId);
+  if (isCustom(c)) openEditor(c, false);
+});
+
+/* ---------------- view controls ---------------- */
+function setMode(m, refit){
+  mode = m; saveLS();
+  $('mode2d').classList.toggle('sel', m==='2d');
+  $('mode3d').classList.toggle('sel', m==='3d');
+  updateHud(); drawSoon();
+  if (refit!==false) fitView();
+}
+$('mode2d').addEventListener('click', ()=>setMode('2d'));
+$('mode3d').addEventListener('click', ()=>setMode('3d'));
+$('fitBtn').addEventListener('click', fitView);
+$('traceBtn').addEventListener('click', ()=>{
+  trace = !trace; $('traceBtn').classList.toggle('tealsel', trace); updateHud(); drawSoon();
+});
+$('spinBtn').addEventListener('click', ()=>{
+  spin = !spin; $('spinBtn').classList.toggle('tealsel', spin);
+  if (spin && mode!=='3d') setMode('3d');
+});
+$('gridBtn').addEventListener('click', ()=>{
+  showGrid = !showGrid; $('gridBtn').classList.toggle('tealsel', showGrid); drawSoon();
+});
+const speedR = $('speedRange');
+function updSpeed(){ animSpeed = parseFloat(speedR.value); $('speedVal').textContent = animSpeed.toFixed(2); }
+speedR.addEventListener('input', updSpeed);
+$('pngBtn').addEventListener('click', ()=>{
+  const raw = findCurve(selId);
+  const c = editing || (raw && effectiveDef(raw));
+  if (!c) return;
+  const a = document.createElement('a');
+  a.download = (c.name.replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-')||'curve')+'.png';
+  a.href = cv.toDataURL('image/png');
+  a.click();
+});
+
+/* mouse interaction */
+let drag = null;
+cv.addEventListener('mousedown', e=>{
+  drag = {x:e.clientX, y:e.clientY, btn:e.button,
+          ox:view2.ox, oy:view2.oy, yaw:view3.yaw, pitch:view3.pitch,
+          cx:view3.cx, cy:view3.cy, cz:view3.cz};
+  cv.classList.add('dragging');
+});
+window.addEventListener('mousemove', e=>{
+  if (!drag) return;
+  const dx = e.clientX-drag.x, dy = e.clientY-drag.y;
+  if (mode==='2d'){
+    view2.ox = drag.ox+dx; view2.oy = drag.oy+dy;
+  } else if (drag.btn===2){
+    const {right,up} = cameraBasis();
+    const k = view3.dist/700;
+    view3.cx = drag.cx - (right[0]*dx - up[0]*dy)*k;
+    view3.cy = drag.cy - (right[1]*dx - up[1]*dy)*k;
+    view3.cz = drag.cz - (right[2]*dx - up[2]*dy)*k;
+  } else {
+    view3.yaw = drag.yaw + dx*0.008;
+    view3.pitch = Math.max(-1.5, Math.min(1.5, drag.pitch + dy*0.008));
+  }
+  drawSoon();
+});
+window.addEventListener('mouseup', ()=>{ drag=null; cv.classList.remove('dragging'); });
+cv.addEventListener('contextmenu', e=>e.preventDefault());
+cv.addEventListener('wheel', e=>{
+  e.preventDefault();
+  const k = Math.exp(-e.deltaY*0.0012);
+  if (mode==='2d'){
+    const r = cv.getBoundingClientRect();
+    const mx = e.clientX-r.left, my = e.clientY-r.top;
+    view2.ox = mx - (mx-view2.ox)*k;
+    view2.oy = my - (my-view2.oy)*k;
+    view2.scale *= k;
+  } else {
+    view3.dist = Math.max(0.4, Math.min(500, view3.dist/k));
+  }
+  drawSoon();
+},{passive:false});
+cv.addEventListener('dblclick', fitView);
+
+/* ---------------- editor ---------------- */
+function openEditor(def, isNew){
+  editing = JSON.parse(JSON.stringify(def));
+  editingIsNew = !!isNew;
+  $('editor').style.display = '';
+  $('editorTitle').textContent = isNew ? 'New curve' : 'Edit curve';
+  $('eName').value = editing.name||'';
+  $('eAux').value = editing.aux||'';
+  $('eX').value = editing.x||''; $('eY').value = editing.y||''; $('eZ').value = editing.z||'';
+  $('eTMin').value = editing.tMin; $('eTMax').value = editing.tMax;
+  renderEParams();
+  liveEditor();
+  $('editor').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function closeEditor(keep){
+  editing = null; $('editor').style.display='none';
+  if (!findCurve(selId)) selId = 'astroid';
+  if (!keep){ rebuild(); }
+}
+function renderEParams(){
+  const box = $('ePRows'); box.innerHTML='';
+  (editing.params||[]).forEach((p,i)=>{
+    const row = document.createElement('div'); row.className='pedit';
+    row.innerHTML = `<input value="${esc(p.k)}" data-f="k"><input value="${p.v}" data-f="v">
+      <input value="${p.min}" data-f="min"><input value="${p.max}" data-f="max">
+      <input value="${p.step}" data-f="step"><button title="remove">✕</button>`;
+    row.querySelectorAll('input').forEach(inp=>{
+      inp.addEventListener('input', ()=>{
+        const f = inp.dataset.f;
+        if (f==='k') p.k = inp.value.trim();
+        else p[f] = parseFloat(inp.value);
+        liveEditor();
+      });
+    });
+    row.querySelector('button').addEventListener('click', ()=>{
+      editing.params.splice(i,1); renderEParams(); liveEditor();
+    });
+    box.appendChild(row);
+  });
+}
+$('ePAdd').addEventListener('click', ()=>{
+  editing.params = editing.params||[];
+  const used = new Set(editing.params.map(p=>p.k));
+  let k = 'abcdknpquvw'.split('').find(ch=>!used.has(ch)) || 'p'+editing.params.length;
+  editing.params.push(P(k,1,0,3,0.01));
+  renderEParams(); liveEditor();
+});
+for (const id of ['eName','eAux','eX','eY','eZ','eTMin','eTMax']){
+  $(id).addEventListener('input', liveEditor);
+}
+function validateEditing(){
+  editing.name = $('eName').value.trim()||'untitled';
+  editing.aux = $('eAux').value;
+  editing.x = $('eX').value; editing.y = $('eY').value; editing.z = $('eZ').value;
+  editing.tMin = $('eTMin').value; editing.tMax = $('eTMax').value;
+  editing.n = editing.n||900;
+  // params sanity
+  const seen = new Set();
+  for (const p of (editing.params||[])){
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(p.k)) throw new Error(`parameter name "${p.k}" is not a valid identifier`);
+    if (BAD_NAMES.has(p.k)) throw new Error(`parameter name "${p.k}" is reserved`);
+    if (seen.has(p.k)) throw new Error(`duplicate parameter "${p.k}"`);
+    seen.add(p.k);
+    if (!isFinite(p.v)) p.v = 0;
+    if (!isFinite(p.min)) p.min = 0;
+    if (!isFinite(p.max)) p.max = p.min+1;
+    if (!isFinite(p.step)||p.step<=0) p.step = 0.01;
+  }
+  evalConst(editing.tMin); evalConst(editing.tMax);
+  compileCurve(editing);
+}
+function liveEditor(){
+  if (!editing) return;
+  try{
+    validateEditing();
+    $('eErr').textContent = '';
+    rebuild();               // rebuild() prefers `editing` when open → live preview
+  }catch(e){
+    $('eErr').textContent = '⚠ '+e.message;
+  }
+}
+$('eSave').addEventListener('click', ()=>{
+  try{ validateEditing(); }
+  catch(e){ $('eErr').textContent = '⚠ '+e.message; return; }
+  const saved = editing;
+  if (editingIsNew || !customs.find(c=>c.id===saved.id)) customs.push(saved);
+  else customs[customs.findIndex(c=>c.id===saved.id)] = saved;
+  saved.g = 'custom';
+  editing = null; $('editor').style.display='none';
+  saveLS();
+  selectCurve(saved.id, true);
+});
+$('eCancel').addEventListener('click', ()=>{
+  closeEditor(false);
+  renderList(); renderPanel();
+});
+$('newBtn').addEventListener('click', ()=>{
+  const def = {
+    id:'u'+Date.now().toString(36), g:'custom',
+    name:'Experiment '+(customs.length+1),
+    notes:'Your own parametric curve — edit the expressions below.',
+    classic:'', aux:'r = 1 + amp*cos(k*t)',
+    x:'r*cos(t)', y:'r*sin(t)', z:'amp*sin(k*t)',
+    tMin:'0', tMax:'2*pi', n:1200,
+    params:[P('k',7,1,20,1), P('amp',0.3,0,1,0.01)],
+  };
+  selId = def.id; // preview target
+  openEditor(def, true);
+  renderList();
+});
+
+/* ---------------- boot ---------------- */
+loadLS();
+const hashCurve = (location.hash.match(/curve=([A-Za-z0-9_-]+)/)||[])[1];
+if (hashCurve && findCurve(hashCurve)) selId = hashCurve;
+resize();
+renderList();
+setMode(mode, false);
+updSpeed();
+$('gridBtn').classList.toggle('tealsel', showGrid);
+selectCurve(selId, !!hashCurve);
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
