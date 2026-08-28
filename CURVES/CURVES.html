@@ -174,7 +174,6 @@
         <button id="mode2d">2D</button>
         <button id="mode3d">3D</button>
         <button id="fitBtn">Fit ⌖</button>
-        <button id="pngBtn">PNG ⭳</button>
       </div>
       <div class="row" style="margin-bottom:8px">
         <button id="traceBtn">Trace ●</button>
@@ -189,6 +188,21 @@
       <div class="note" style="margin-top:4px">
         <b>2D:</b> drag pan · wheel zoom · double-click fit<br>
         <b>3D:</b> drag orbit · right-drag pan · wheel zoom
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Export</h2>
+      <div class="row" id="exportRow">
+        <button data-fmt="svg">SVG</button><button data-fmt="dxf">DXF</button><button data-fmt="pdf">PDF</button><button data-fmt="eps">EPS</button><button data-fmt="ai">AI</button><button data-fmt="wmf">WMF</button><button data-fmt="emf">EMF</button><button data-fmt="plt">HPGL</button><button data-fmt="png">PNG</button>
+      </div>
+      <div class="note" style="margin-top:6px">
+        Vector files carry the curve as polylines at full sample resolution, black stroke,
+        tightly cropped. <b>DXF</b> (R12) keeps true world coordinates — 3D polylines for
+        space curves — for CAD/CNC. The flat formats (<b>SVG, PDF, EPS, AI, WMF, EMF,
+        HPGL</b>) export exactly what the current view shows: a space curve in 3D mode
+        exports its screen projection, in 2D mode its xy projection. <b>AI</b> is
+        Illustrator-3-compatible PostScript. <b>PNG</b> captures the canvas as pixels.
       </div>
     </div>
 
@@ -603,7 +617,7 @@ function robustBBox(pts){
     za=Math.min(za,z); zb=Math.max(zb,z); cnt++;
   }
   if (!cnt) return null;
-  return {xa,xb,ya,yb,za,zb};
+  return {xa,xb,ya,yb,za,zb,limit};
 }
 
 /* ---------------- fitting ---------------- */
@@ -1061,14 +1075,290 @@ $('gridBtn').addEventListener('click', ()=>{
 const speedR = $('speedRange');
 function updSpeed(){ animSpeed = parseFloat(speedR.value); $('speedVal').textContent = animSpeed.toFixed(2); }
 speedR.addEventListener('input', updSpeed);
-$('pngBtn').addEventListener('click', ()=>{
+/* ---------------- vector export ---------------- */
+function curveFileName(){
   const raw = findCurve(selId);
   const c = editing || (raw && effectiveDef(raw));
-  if (!c) return;
+  return (((c&&c.name)||'curve').replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-')||'curve');
+}
+
+// The exportable geometry: world-space polylines (segs3, for DXF) and flat
+// polylines in y-up coordinates matching what the current view shows (segs).
+function exportFigure(){
+  if (!samples.length || !bbox) return null;
+  const lim = bbox.limit;
+  const span3 = Math.max(bbox.xb-bbox.xa, bbox.yb-bbox.ya, bbox.zb-bbox.za, 1e-9);
+  const segs3 = [];
+  { let cur=[], prev=null;
+    const flush=()=>{ if (cur.length>1) segs3.push(cur); cur=[]; prev=null; };
+    for (const p of samples){
+      if (Number.isNaN(p[0]) || Math.abs(p[0])>lim || Math.abs(p[1])>lim || Math.abs(p[2])>lim){ flush(); continue; }
+      if (prev && Math.hypot(p[0]-prev[0], p[1]-prev[1], p[2]-prev[2]) > span3*0.35) flush();
+      cur.push(p); prev = p;
+    }
+    flush();
+  }
+  if (!segs3.length) return null;
+  let segs;
+  if (curve3D && mode==='3d'){                     // export the on-screen 3D projection
+    const w = cv.clientWidth||1000, h = cv.clientHeight||800;
+    const proj = makeProjector(w,h);
+    const jump = Math.hypot(w,h)*0.5;
+    segs = [];
+    let cur=[], prev=null;
+    const flush=()=>{ if (cur.length>1) segs.push(cur); cur=[]; prev=null; };
+    for (const p of samples){
+      if (Number.isNaN(p[0])){ flush(); continue; }
+      const s = proj(p[0],p[1],p[2]);
+      if (!s){ flush(); continue; }
+      const q = [s[0], h-s[1]];                    // flip to y-up
+      if (prev && Math.hypot(q[0]-prev[0], q[1]-prev[1]) > jump) flush();
+      cur.push(q); prev = q;
+    }
+    flush();
+  } else {
+    segs = segs3.map(seg=>seg.map(p=>[p[0],p[1]]));
+  }
+  if (!segs.length) return null;
+  let xa=1/0,xb=-1/0,ya=1/0,yb=-1/0;
+  for (const seg of segs) for (const [x,y] of seg){
+    if (x<xa)xa=x; if (x>xb)xb=x; if (y<ya)ya=y; if (y>yb)yb=y;
+  }
+  return {segs, segs3, has3: curve3D, xa,xb,ya,yb, name: curveFileName()};
+}
+
+// Fit flat segments into a page: max dimension maxDim with margin, y flipped when yDown.
+function layoutSegs(fig, maxDim, margin, yDown){
+  const sw = Math.max(fig.xb-fig.xa, 1e-9), sh = Math.max(fig.yb-fig.ya, 1e-9);
+  const k = (maxDim - 2*margin)/Math.max(sw,sh);
+  const PW = +(sw*k + 2*margin).toFixed(2), PH = +(sh*k + 2*margin).toFixed(2);
+  const segs = fig.segs.map(seg=>seg.map(p=>[
+    margin + (p[0]-fig.xa)*k,
+    yDown ? margin + (fig.yb-p[1])*k : margin + (p[1]-fig.ya)*k
+  ]));
+  return {PW, PH, segs};
+}
+
+function buildSVG(fig){
+  const L = layoutSegs(fig, 1000, 30, true);
+  let d = '';
+  for (const seg of L.segs){
+    d += 'M'+seg[0][0].toFixed(2)+' '+seg[0][1].toFixed(2);
+    for (let i=1;i<seg.length;i++) d += 'L'+seg[i][0].toFixed(2)+' '+seg[i][1].toFixed(2);
+  }
+  return '<?xml version="1.0" encoding="UTF-8"?>\n'+
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${L.PW}" height="${L.PH}" viewBox="0 0 ${L.PW} ${L.PH}">\n`+
+    `<title>${esc(fig.name)}</title>\n`+
+    `<path d="${d}" fill="none" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>\n`+
+    '</svg>\n';
+}
+
+function buildEPS(fig){
+  const L = layoutSegs(fig, 720, 24, false);
+  let s = '%!PS-Adobe-3.0 EPSF-3.0\n'+
+    `%%BoundingBox: 0 0 ${Math.ceil(L.PW)} ${Math.ceil(L.PH)}\n`+
+    `%%HiResBoundingBox: 0 0 ${L.PW} ${L.PH}\n`+
+    `%%Title: (${fig.name})\n%%Creator: (CURVES parametric curve lab)\n%%EndComments\n`+
+    '1.2 setlinewidth\n1 setlinejoin\n1 setlinecap\n0 setgray\n';
+  for (const seg of L.segs){
+    s += 'newpath\n'+seg[0][0].toFixed(2)+' '+seg[0][1].toFixed(2)+' moveto\n';
+    for (let i=1;i<seg.length;i++) s += seg[i][0].toFixed(2)+' '+seg[i][1].toFixed(2)+' lineto\n';
+    s += 'stroke\n';
+  }
+  return s+'showpage\n%%EOF\n';
+}
+
+function buildAI(fig){
+  const L = layoutSegs(fig, 720, 24, false);
+  let s = '%!PS-Adobe-3.0\n%%Creator: Adobe Illustrator(TM) 3.2\n'+
+    `%%Title: (${fig.name}.ai)\n`+
+    `%%BoundingBox: 0 0 ${Math.ceil(L.PW)} ${Math.ceil(L.PH)}\n`+
+    '%%DocumentProcessColors: Black\n%%EndComments\n%%EndProlog\n%%BeginSetup\n%%EndSetup\n'+
+    '0 G\n1.2 w\n1 j\n1 J\n';
+  for (const seg of L.segs){
+    s += seg[0][0].toFixed(2)+' '+seg[0][1].toFixed(2)+' m\n';
+    for (let i=1;i<seg.length;i++) s += seg[i][0].toFixed(2)+' '+seg[i][1].toFixed(2)+' L\n';
+    s += 'S\n';
+  }
+  return s+'%%Trailer\n%%EOF\n';
+}
+
+function buildPDF(fig){
+  const L = layoutSegs(fig, 720, 24, false);
+  let st = '1 j 1 J 1.2 w 0 0 0 RG\n';
+  for (const seg of L.segs){
+    st += seg[0][0].toFixed(2)+' '+seg[0][1].toFixed(2)+' m\n';
+    for (let i=1;i<seg.length;i++) st += seg[i][0].toFixed(2)+' '+seg[i][1].toFixed(2)+' l\n';
+    st += 'S\n';
+  }
+  const objs = [
+    '<</Type/Catalog/Pages 2 0 R>>',
+    '<</Type/Pages/Kids[3 0 R]/Count 1>>',
+    `<</Type/Page/Parent 2 0 R/MediaBox[0 0 ${L.PW} ${L.PH}]/Contents 4 0 R/Resources<<>>>>`,
+    `<</Length ${st.length}>>\nstream\n${st}endstream`,
+  ];
+  let pdf = '%PDF-1.4\n';
+  const offs = [];
+  objs.forEach((o,i)=>{ offs.push(pdf.length); pdf += `${i+1} 0 obj\n${o}\nendobj\n`; });
+  const xref = pdf.length;
+  pdf += 'xref\n0 5\n0000000000 65535 f \n'+offs.map(o=>String(o).padStart(10,'0')+' 00000 n \n').join('');
+  pdf += `trailer\n<</Size 5/Root 1 0 R>>\nstartxref\n${xref}\n%%EOF\n`;
+  return pdf;
+}
+
+function buildDXF(fig){
+  const nf = v => { const s = (+v.toFixed(6)).toString(); return s.includes('e') ? v.toFixed(6) : s; };
+  const layer = (fig.name.toUpperCase().replace(/[^A-Z0-9_-]/g,'_')||'CURVE');
+  let s = '0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1009\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n';
+  for (const seg of fig.segs3){
+    s += `0\nPOLYLINE\n8\n${layer}\n66\n1\n70\n${fig.has3?8:0}\n10\n0.0\n20\n0.0\n30\n0.0\n`;
+    for (const p of seg){
+      s += `0\nVERTEX\n8\n${layer}\n10\n${nf(p[0])}\n20\n${nf(p[1])}\n30\n${nf(fig.has3?p[2]:0)}\n`;
+      if (fig.has3) s += '70\n32\n';
+    }
+    s += `0\nSEQEND\n8\n${layer}\n`;
+  }
+  return s+'0\nENDSEC\n0\nEOF\n';
+}
+
+function buildHPGL(fig){
+  const L = layoutSegs(fig, 7200, 200, false);        // HPGL: 1 unit = 0.025 mm, y-up
+  const lines = ['IN;SP1;'];
+  for (const seg of L.segs){
+    let s = 'PU'+Math.round(seg[0][0])+','+Math.round(seg[0][1])+';PD';
+    s += seg.slice(1).map(p=>Math.round(p[0])+','+Math.round(p[1])).join(',')+';';
+    lines.push(s);
+  }
+  lines.push('PU0,0;SP0;');
+  return lines.join('\n')+'\n';
+}
+
+// little-endian byte writer for the two binary metafile formats
+class BW{
+  constructor(){ this.b = []; }
+  u8(v){ this.b.push(v & 255); }
+  u16(v){ this.u8(v); this.u8(v >> 8); }
+  i16(v){ this.u16(v < 0 ? v + 0x10000 : v); }
+  u32(v){ this.u16(v & 0xffff); this.u16((v >>> 16) & 0xffff); }
+  i32(v){ this.u32(v < 0 ? v + 0x100000000 : v); }
+  bytes(){ return new Uint8Array(this.b); }
+}
+function concatBytes(...arrs){
+  const n = arrs.reduce((a,b)=>a+b.length, 0);
+  const out = new Uint8Array(n);
+  let p = 0;
+  for (const a of arrs){ out.set(a, p); p += a.length; }
+  return out;
+}
+
+function buildWMF(fig){                               // placeable WMF, 1000 units/inch
+  const L = layoutSegs(fig, 8000, 200, true);
+  const W = Math.round(L.PW), H = Math.round(L.PH);
+  const recs = [
+    [0x020B, [0, 0]],                                 // SetWindowOrg: y, x
+    [0x020C, [H, W]],                                 // SetWindowExt: y, x
+    [0x02FA, [0, 14, 0, 0, 0]],                       // CreatePenIndirect: solid, w=14, black
+    [0x012D, [0]],                                    // SelectObject pen 0
+  ];
+  for (const seg of L.segs){
+    const params = [seg.length];
+    for (const p of seg) params.push(Math.round(p[0]), Math.round(p[1]));
+    recs.push([0x0325, params]);                      // Polyline
+  }
+  recs.push([0x0000, []]);                            // EOF
+  const sizes = recs.map(r=>3+r[1].length);
+  const totalWords = 9 + sizes.reduce((a,b)=>a+b, 0);
+  const w = new BW();
+  w.u32(0x9AC6CDD7); w.u16(0);                        // placeable key, hWmf
+  w.i16(0); w.i16(0); w.i16(W); w.i16(H);             // bbox in metafile units
+  w.u16(1000); w.u32(0);                              // units/inch, reserved
+  let cs = 0;
+  for (let i=0;i<20;i+=2) cs ^= w.b[i] | (w.b[i+1]<<8);
+  w.u16(cs);                                          // checksum of the 10 words above
+  w.u16(1); w.u16(9); w.u16(0x0300);                  // memory metafile, header 9 words, v3
+  w.u32(totalWords); w.u16(1);                        // size in words, 1 object
+  w.u32(Math.max(...sizes)); w.u16(0);                // largest record, reserved
+  recs.forEach((r,i)=>{
+    w.u32(sizes[i]); w.u16(r[0]);
+    for (const p of r[1]) w.i16(p);
+  });
+  return w.bytes();
+}
+
+function buildEMF(fig){
+  const L = layoutSegs(fig, 1200, 40, true);
+  const W = Math.round(L.PW), H = Math.round(L.PH);
+  const rec = (type, fill) => {
+    const b = new BW(); fill(b);
+    const body = b.bytes();
+    const head = new BW(); head.u32(type); head.u32(8 + body.length);
+    return concatBytes(head.bytes(), body);
+  };
+  const records = [
+    rec(38, b=>{ b.u32(1); b.u32(0); b.u32(2); b.u32(0); b.u32(0); }),   // EMR_CREATEPEN #1: solid, w2, black
+    rec(37, b=>{ b.u32(1); }),                                           // EMR_SELECTOBJECT #1
+  ];
+  for (const seg of L.segs){
+    records.push(rec(4, b=>{                                             // EMR_POLYLINE
+      let xa=1e9,ya=1e9,xb=-1e9,yb=-1e9;
+      for (const p of seg){
+        const x=Math.round(p[0]), y=Math.round(p[1]);
+        if (x<xa)xa=x; if (x>xb)xb=x; if (y<ya)ya=y; if (y>yb)yb=y;
+      }
+      b.i32(xa); b.i32(ya); b.i32(xb); b.i32(yb);
+      b.u32(seg.length);
+      for (const p of seg){ b.i32(Math.round(p[0])); b.i32(Math.round(p[1])); }
+    }));
+  }
+  records.push(rec(14, b=>{ b.u32(0); b.u32(16); b.u32(20); }));         // EMR_EOF
+  const bodyLen = records.reduce((a,r)=>a+r.length, 0);
+  const h = new BW();
+  h.u32(1); h.u32(88);                                // EMR_HEADER, 88 bytes
+  h.i32(0); h.i32(0); h.i32(W-1); h.i32(H-1);         // bounds (device px)
+  h.i32(0); h.i32(0);                                 // frame (0.01 mm)
+  h.i32(Math.round(W*2540/96)); h.i32(Math.round(H*2540/96));
+  h.u32(0x464D4520); h.u32(0x00010000);               // " EMF" signature, version
+  h.u32(88 + bodyLen); h.u32(records.length + 1);     // file bytes, record count
+  h.u16(2); h.u16(0);                                 // handles, reserved
+  h.u32(0); h.u32(0); h.u32(0);                       // description, palette
+  h.u32(1920); h.u32(1080); h.u32(508); h.u32(286);   // reference device px / mm
+  return concatBytes(h.bytes(), ...records);
+}
+
+const EXPORT_DEFS = {
+  svg:{fn:buildSVG,  mime:'image/svg+xml',            ext:'svg'},
+  dxf:{fn:buildDXF,  mime:'image/vnd.dxf',            ext:'dxf'},
+  pdf:{fn:buildPDF,  mime:'application/pdf',          ext:'pdf'},
+  eps:{fn:buildEPS,  mime:'application/postscript',   ext:'eps'},
+  ai: {fn:buildAI,   mime:'application/postscript',   ext:'ai'},
+  wmf:{fn:buildWMF,  mime:'image/wmf',                ext:'wmf'},
+  emf:{fn:buildEMF,  mime:'image/emf',                ext:'emf'},
+  plt:{fn:buildHPGL, mime:'application/vnd.hp-hpgl',  ext:'plt'},
+};
+function buildExport(fmt, fig){
+  const d = EXPORT_DEFS[fmt];
+  return d ? {data: d.fn(fig), mime: d.mime, ext: d.ext} : null;
+}
+
+$('exportRow').addEventListener('click', e=>{
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  const fmt = btn.dataset.fmt;
   const a = document.createElement('a');
-  a.download = (c.name.replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-')||'curve')+'.png';
-  a.href = cv.toDataURL('image/png');
+  if (fmt==='png'){
+    a.download = curveFileName()+'.png';
+    a.href = cv.toDataURL('image/png');
+    a.click();
+    return;
+  }
+  const fig = exportFigure();
+  if (!fig){ showErr('nothing to export — the current domain produces no finite points'); return; }
+  const out = buildExport(fmt, fig);
+  if (!out) return;
+  a.download = fig.name+'.'+out.ext;
+  a.href = URL.createObjectURL(new Blob([out.data], {type: out.mime}));
   a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
 });
 
 /* mouse interaction */
