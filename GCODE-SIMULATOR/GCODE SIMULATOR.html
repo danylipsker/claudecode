@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G-code Simulator</title>
+<style>
+:root{
+  --bg:#0f1220; --bg2:#151a2e; --bg3:#1b2138; --line:#2a3154; --line2:#39416b;
+  --tx:#e8eaf6; --tx2:#969db8; --tx3:#6e7699;
+  --acc:#6c7bff; --acc2:#4d59c9; --cy:#38d9d3; --warn:#ffb454; --bad:#ff6b81; --ok:#4ade80;
+  --sb:292px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--tx);
+  font:13px/1.45 "Segoe UI",system-ui,-apple-system,sans-serif;
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+button,input,select{font:inherit;color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:5px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--line2)}
+
+#app{display:flex;flex-direction:column;height:100%}
+#top{
+  display:flex;align-items:center;gap:8px;padding:0 12px;height:46px;flex:none;
+  background:linear-gradient(180deg,#191f36,#141930);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:650;letter-spacing:.2px;white-space:nowrap}
+.brand svg{width:22px;height:22px;flex:none}
+@media(max-width:1240px){.brand span{display:none}}
+.sep{width:1px;height:24px;background:var(--line);flex:none}
+.grow{flex:1}
+.fname{color:var(--tx2);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:22vw}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:7px 12px;border-radius:7px;background:var(--bg3);border:1px solid var(--line2);
+  cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s;font-size:12.5px;
+}
+.btn:hover:not(:disabled){background:#28304f;border-color:#4b5488}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+.btn.pri{background:linear-gradient(180deg,var(--acc2),#3b45a8);border-color:var(--acc);color:#fff;font-weight:600}
+.btn.pri:hover:not(:disabled){background:var(--acc2)}
+.btn.sm{padding:5px 9px;font-size:12px}
+.btn.ico{padding:6px 8px}
+.btn.on{background:var(--acc2);border-color:var(--acc);color:#fff}
+.btn svg{width:14px;height:14px;flex:none}
+.seg{display:flex;border:1px solid var(--line2);border-radius:7px;overflow:hidden}
+.seg .btn{border:none;border-radius:0;background:var(--bg3)}
+.seg .btn+.btn{border-left:1px solid var(--line2)}
+.seg .btn.on{background:var(--acc2);color:#fff}
+
+#main{flex:1;display:flex;min-height:0}
+#side{
+  width:var(--sb);flex:none;background:var(--bg2);border-right:1px solid var(--line);
+  overflow-y:auto;overflow-x:hidden;padding:10px 11px 26px;
+}
+.grp{margin:0 0 12px;border:1px solid var(--line);border-radius:9px;background:#12172a;overflow:hidden}
+.grp>h3{
+  margin:0;padding:8px 10px;font-size:11px;font-weight:650;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--tx3);background:#161c33;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;
+}
+.grp>h3 .cv{margin-left:auto;transition:transform .15s;opacity:.6}
+.grp.col>h3 .cv{transform:rotate(-90deg)}
+.grp.col>.gb{display:none}
+.gb{padding:9px 10px}
+.kv{display:flex;gap:8px;align-items:baseline;margin:0 0 5px;font-size:12px}
+.kv:last-child{margin-bottom:0}
+.kv .k{color:var(--tx2);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kv .v{color:var(--tx);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kv .v.dim{color:var(--tx3)}
+.kv .v.warn{color:var(--warn)}
+.kv .v.bad{color:var(--bad)}
+.ctl{margin:0 0 9px}
+.ctl:last-child{margin-bottom:0}
+.clab{display:block;font-size:12px;color:var(--tx2);margin:0 0 4px}
+select.inp,input.inp{
+  width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:6px;
+  padding:5px 7px;font-size:12.5px;outline:none;
+}
+select.inp:focus,input.inp:focus{border-color:var(--acc)}
+.chkrow{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--tx2);margin:0 0 7px;cursor:pointer;user-select:none}
+.chkrow:last-child{margin-bottom:0}
+.chkrow input{accent-color:var(--acc)}
+.chkrow:hover{color:var(--tx)}
+.r2{display:flex;gap:7px}
+.r2>*{flex:1;min-width:0}
+.r3{display:flex;gap:7px}
+.r3>*{flex:1;min-width:0}
+.mini{font-size:11px;color:var(--tx3);margin:2px 0 0}
+
+#toolrows .trow{
+  display:flex;align-items:center;gap:6px;margin:0 0 7px;padding:7px;border:1px solid var(--line);
+  border-radius:7px;background:#151a30;flex-wrap:wrap;
+}
+#toolrows .trow:last-child{margin-bottom:0}
+.tdot{width:11px;height:11px;border-radius:50%;flex:none;border:1px solid #fff3}
+.tnum{font-weight:650;width:28px;flex:none}
+.trow select,.trow input{background:var(--bg3);border:1px solid var(--line2);border-radius:5px;padding:3px 5px;font-size:11.5px;outline:none}
+.trow select:focus,.trow input:focus{border-color:var(--acc)}
+.trow .w52{width:52px}.trow .w44{width:44px}.trow .w36{width:36px}
+.tl{font-size:10.5px;color:var(--tx3)}
+
+#warns{list-style:none;margin:0;padding:0}
+#warns li{
+  margin:0 0 6px;padding:6px 8px;border-radius:6px;background:#1c1a2b;border:1px solid #4a3a55;
+  color:var(--warn);font-size:11.5px;line-height:1.4;
+}
+#warns li .wl{color:var(--tx3);font-size:10.5px}
+#nowarn{color:var(--ok);font-size:12px}
+.foot{color:var(--tx3);font-size:11px;line-height:1.7;margin-top:2px}
+.foot kbd{background:var(--bg3);border:1px solid var(--line2);border-bottom-width:2px;padding:0 4px;border-radius:4px;font-size:10px;color:var(--tx)}
+
+#stage{flex:1;display:flex;flex-direction:column;min-width:0}
+#readouts{
+  flex:none;display:flex;gap:8px;align-items:stretch;padding:7px 10px;flex-wrap:wrap;
+  background:#12172a;border-bottom:1px solid var(--line);
+}
+.ro{display:flex;flex-direction:column;gap:2px;min-width:86px;flex:1;max-width:150px}
+.ro label{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--tx3);white-space:nowrap}
+.ro input{
+  background:var(--bg3);border:1px solid var(--line2);border-radius:6px;padding:4px 7px;
+  font:12px ui-monospace,Consolas,monospace;color:var(--cy);outline:none;width:100%;
+}
+.ro input.t{color:var(--warn)}
+#viewwrap{flex:1;position:relative;min-height:0;background:#0b0e1a}
+#gl{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+#glfail{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--bad);padding:30px;text-align:center}
+#empty{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  color:var(--tx3);text-align:center;padding:20px;pointer-events:none;
+}
+#empty.hide{display:none}
+#empty b{color:var(--tx2);font-weight:600;font-size:15px}
+#busy{
+  position:absolute;top:10px;left:50%;transform:translateX(-50%);display:none;z-index:6;
+  background:#1b2138ee;border:1px solid var(--line2);border-radius:7px;padding:6px 12px;font-size:12px;color:var(--cy);
+}
+#banner{
+  position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:8;background:#0f122088;
+}
+#banner .card{
+  background:var(--bg2);border:1px solid var(--line2);border-radius:12px;padding:18px 20px;max-width:400px;
+  box-shadow:0 18px 60px #000a;text-align:center;
+}
+#banner h2{margin:0 0 6px;font-size:15px}
+#banner p{margin:0 0 14px;color:var(--tx2);font-size:12.5px;line-height:1.5}
+#banner .bb{display:flex;gap:8px;justify-content:center}
+#axhint{position:absolute;left:10px;bottom:8px;font:11px ui-monospace,Consolas,monospace;color:var(--tx3);pointer-events:none}
+#axhint b{font-weight:600}
+
+#playbar{
+  flex:none;display:flex;align-items:center;gap:9px;height:46px;padding:0 12px;
+  background:#12172a;border-top:1px solid var(--line);
+}
+#playbar input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1;min-width:60px;height:18px;background:transparent;cursor:pointer;margin:0;
+}
+#playbar input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--bg3);border:1px solid var(--line)}
+#playbar input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--acc);
+  border:2px solid #fff2;margin-top:-5.5px;
+}
+#playbar input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--bg3);border:1px solid var(--line)}
+#playbar input[type=range]::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:var(--acc);border:2px solid #fff2}
+.pbtx{font-size:11.5px;color:var(--tx2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pbtx b{color:var(--tx);font-weight:600}
+#speed{width:64px}
+.dro{display:flex;gap:4px;align-items:center}
+.dro span{font:11px ui-monospace,Consolas,monospace;color:var(--tx3)}
+.dro input{
+  width:64px;background:var(--bg3);border:1px solid var(--line2);border-radius:5px;padding:2px 5px;
+  font:11px ui-monospace,Consolas,monospace;color:var(--tx);outline:none;
+}
+#drop{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:40;
+  background:#0f1220cc;border:3px dashed var(--acc);color:var(--tx);font-size:18px;font-weight:600;
+}
+#drop.on{display:flex}
+#toast{
+  position:fixed;left:50%;bottom:60px;transform:translateX(-50%);z-index:50;display:none;
+  background:#1b2138;border:1px solid var(--line2);border-radius:8px;padding:8px 14px;
+  font-size:12.5px;box-shadow:0 8px 30px #000a;max-width:70vw;
+}
+#toast.warn{border-color:var(--warn);color:var(--warn)}
+#toast.bad{border-color:var(--bad);color:var(--bad)}
+@media(max-width:1050px){:root{--sb:250px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="top">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#6c7bff" stroke-width="1.7" stroke-linecap="round">
+        <path d="M4 20h16M6 20V9l6-5 6 5v11" stroke="#38d9d3"/>
+        <path d="M12 20v-6M9.5 12.5l5 0" />
+      </svg>
+      <span>G-code Simulator</span>
+    </div>
+    <div class="sep"></div>
+    <button class="btn pri" id="bOpen" title="Open a G-code file — any dialect/extension (.nc .cnc .gcode .ngc .tap .txt .mmg …)">Open…</button>
+    <button class="btn" id="bDemo" title="Built-in two-tool demo: pocket + drill cycle + V-bit engraving">Demo</button>
+    <div class="sep"></div>
+    <div class="seg" title="View mode">
+      <button class="btn sm" id="b2d">2D</button>
+      <button class="btn sm on" id="b3d">3D</button>
+    </div>
+    <div class="seg" title="3D projection (requirement: orthographic and perspective)">
+      <button class="btn sm" id="bOrtho">Ortho</button>
+      <button class="btn sm on" id="bPersp">Persp</button>
+    </div>
+    <div class="seg" title="View presets">
+      <button class="btn sm" data-vp="iso">Iso</button>
+      <button class="btn sm" data-vp="top">Top</button>
+      <button class="btn sm" data-vp="front">Front</button>
+      <button class="btn sm" data-vp="right">Right</button>
+      <button class="btn sm" data-vp="left">Left</button>
+      <button class="btn sm" data-vp="back">Back</button>
+    </div>
+    <button class="btn" id="bFit" title="Fit view (F)">Fit</button>
+    <div class="grow"></div>
+    <span class="fname" id="fname"></span>
+    <input type="file" id="file" hidden>
+  </div>
+
+  <div id="main">
+    <div id="side">
+      <div class="grp">
+        <h3>File <span class="cv">▾</span></h3>
+        <div class="gb" id="fileKv"><div class="kv"><span class="k">No file loaded</span></div></div>
+      </div>
+      <div class="grp">
+        <h3>Stock (raw material) <span class="cv">▾</span></h3>
+        <div class="gb">
+          <div class="r2 ctl">
+            <div><label class="clab">X min</label><input class="inp stk" id="stX" type="number" step="1"></div>
+            <div><label class="clab">Y min</label><input class="inp stk" id="stY" type="number" step="1"></div>
+          </div>
+          <div class="r2 ctl">
+            <div><label class="clab">Width</label><input class="inp stk" id="stW" type="number" step="1" min="0.1"></div>
+            <div><label class="clab">Depth</label><input class="inp stk" id="stD" type="number" step="1" min="0.1"></div>
+          </div>
+          <div class="r2 ctl">
+            <div><label class="clab">Top Z</label><input class="inp stk" id="stT" type="number" step="0.5"></div>
+            <div><label class="clab">Thickness</label><input class="inp stk" id="stH" type="number" step="0.5" min="0.1"></div>
+          </div>
+          <div class="ctl">
+            <label class="clab">Simulation resolution <span id="resLab"></span></label>
+            <input type="range" id="stRes" min="120" max="800" step="20" style="width:100%">
+          </div>
+          <div class="r2 ctl">
+            <button class="btn sm" id="bAutoStock" title="Recompute stock from the toolpath extents (used automatically when the file defines no stock)">Auto from G-code</button>
+            <select class="inp" id="matSel" title="Material look">
+              <option value="alu">Aluminium</option>
+              <option value="wood">Wood</option>
+              <option value="acr">Acrylic</option>
+            </select>
+          </div>
+          <div class="mini">Stock is auto-fit to the toolpath’s maximum limits when the file doesn’t define material.</div>
+        </div>
+      </div>
+      <div class="grp">
+        <h3>Tools <span class="cv">▾</span></h3>
+        <div class="gb">
+          <div id="toolrows"></div>
+          <div class="mini">Diameter, tip type and flutes aren’t stored in G-code — set them here; the carve updates live.</div>
+        </div>
+      </div>
+      <div class="grp">
+        <h3>Simulation <span class="cv">▾</span></h3>
+        <div class="gb">
+          <label class="chkrow"><input type="checkbox" id="pauseTC" checked> Pause at tool changes (M6)</label>
+          <label class="chkrow"><input type="checkbox" id="showTool" checked> Show milling tool</label>
+          <label class="chkrow"><input type="checkbox" id="showPath" checked> Show toolpaths</label>
+          <label class="chkrow"><input type="checkbox" id="showRapids" checked> Show rapid moves</label>
+          <label class="chkrow"><input type="checkbox" id="showWire" checked> Show stock outline</label>
+          <div class="ctl" style="margin-top:8px">
+            <label class="clab" title="G0 speed is machine-defined, not in the file">Assumed rapid rate (mm/min)</label>
+            <input class="inp" id="rapidRate" type="number" min="100" step="100">
+          </div>
+        </div>
+      </div>
+      <div class="grp">
+        <h3>Warnings <span class="cv">▾</span></h3>
+        <div class="gb"><ul id="warns"></ul><div id="nowarn">None</div></div>
+      </div>
+      <div class="foot">
+        Axis colors: <b style="color:#ff6b81">X</b> <b style="color:#4ade80">Y</b> <b style="color:#6c7bff">Z</b> at program zero ·
+        <kbd>Space</kbd> play · <kbd>F</kbd> fit · drag orbits · right-drag / <kbd>Shift</kbd>-drag pans · wheel zooms
+      </div>
+    </div>
+
+    <div id="stage">
+      <div id="readouts">
+        <div class="ro"><label>Tool #</label><input readonly id="rT" class="t" value="—"></div>
+        <div class="ro"><label>Tool Ø mm</label><input readonly id="rDia" value="—"></div>
+        <div class="ro"><label>Spindle rpm</label><input readonly id="rS" value="—"></div>
+        <div class="ro"><label>Feed mm/min</label><input readonly id="rF" value="—"></div>
+        <div class="ro"><label>Plunge mm/min</label><input readonly id="rPl" value="—"></div>
+        <div class="ro"><label>Chip load mm/tooth</label><input readonly id="rChip" value="—"></div>
+      </div>
+      <div id="viewwrap">
+        <canvas id="gl"></canvas>
+        <div id="glfail">WebGL2 is not available in this browser — the simulator needs it for the 3D material view.</div>
+        <div id="empty">
+          <b>No G-code loaded</b>
+          <div>Drop any G-code file here (.nc, .cnc, .gcode, .ngc, .tap, .txt, .mmg …),<br>
+          use <b>Open…</b>, paste with Ctrl+V, or load the <b>Demo</b>.</div>
+        </div>
+        <div id="busy">simulating…</div>
+        <div id="axhint"></div>
+        <div id="banner"><div class="card">
+          <h2 id="bnTitle">Tool change</h2>
+          <p id="bnText"></p>
+          <div class="bb">
+            <button class="btn pri" id="bnGo">Resume</button>
+            <button class="btn" id="bnCont">Run continuously</button>
+          </div>
+        </div></div>
+      </div>
+      <div id="playbar">
+        <button class="btn ico" id="bBack" title="Step to previous G-code line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zM20 6l-10 6 10 6z"/></svg></button>
+        <button class="btn ico" id="bPlay" title="Play / pause (Space)">
+          <svg id="icoPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="icoPause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+        <button class="btn ico" id="bStep" title="Step to next G-code line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM4 6l10 6-10 6z"/></svg></button>
+        <select class="inp" id="speed" title="Playback speed">
+          <option value="1">1×</option><option value="2">2×</option><option value="5">5×</option>
+          <option value="10" selected>10×</option><option value="50">50×</option><option value="200">200×</option>
+        </select>
+        <input type="range" id="prog" min="0" max="1000" value="0" step="any">
+        <span class="pbtx" id="tlab">0:00 / 0:00</span>
+        <span class="pbtx" id="llab">L — / —</span>
+        <div class="dro">
+          <span>X</span><input readonly id="rX"><span>Y</span><input readonly id="rY"><span>Z</span><input readonly id="rZ">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="drop">Drop G-code file to simulate</div>
+<div id="toast"></div>
+
+<script>
+'use strict';
+/* ===================================================== helpers */
+const $ = id => document.getElementById(id);
+const on = (el, ev, fn, o) => el.addEventListener(ev, fn, o);
+const clamp = (x, a, b) => x < a ? a : x > b ? b : x;
+const lerp = (a, b, t) => a + (b - a) * t;
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function nf(x, p = 2){
+  let s = (+x).toFixed(p);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return s === '-0' ? '0' : s;
+}
+function fmtT(sec){
+  sec = Math.max(0, Math.round(sec));
+  const h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), s = sec % 60;
+  return h ? h + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0')
+           : m + ':' + String(s).padStart(2, '0');
+}
+function hexV(h){ return [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255]; }
+let toastT = 0;
+function toast(msg, kind){
+  const t = $('toast');
+  t.textContent = msg; t.className = kind || ''; t.style.display = 'block';
+  clearTimeout(toastT); toastT = setTimeout(() => t.style.display = 'none', kind ? 4500 : 2600);
+}
+
+/* ===================================================== prefs */
+const P = {
+  pauseTC: true, showTool: true, showPath: true, showRapids: true, showWire: true,
+  rapidRate: 3000, res: 400, mat: 'alu', persp: true, tools: {},
+};
+try { Object.assign(P, JSON.parse(localStorage.getItem('gcsim-prefs') || '{}')); } catch (e) {}
+function savePrefs(){ try { localStorage.setItem('gcsim-prefs', JSON.stringify(P)); } catch (e) {} }
+
+const TOOL_COLORS = ['#6c7bff', '#38d9d3', '#ffb454', '#4ade80', '#c792ea', '#f78c6c', '#82aaff', '#ff6b81'];
+function toolDef(t){
+  const d = P.tools[t] || {};
+  return {
+    type: d.type || 'flat', dia: +d.dia > 0 ? +d.dia : 3, ang: +d.ang > 0 ? +d.ang : 60,
+    flutes: +d.flutes > 0 ? +d.flutes : 2,
+  };
+}
+function toolColor(t){
+  const order = M ? M.toolList : [1];
+  const i = Math.max(0, order.indexOf(t));
+  return TOOL_COLORS[i % TOOL_COLORS.length];
+}
+
+/* ===================================================== parser
+   Modal G-code parser normalised to mm. Dialect-tolerant: grbl / Mach3 /
+   LinuxCNC / Marlin / Fanuc-ish tape files. Handles G0-G3 (helical arcs in
+   G17/G18/G19 planes, I/J/K and R form), G20/21, G90/91, canned drill cycles
+   G73/G81/G82/G83/G85 with G98/G99, dwells, block delete, N/O words,
+   checksums, % wrappers, ; and ( ) comments. Rotary A/B/C words are flagged,
+   not simulated (they need machine kinematics).                              */
+const TY = { RAPID: 0, CUT: 1, CW: 2, CCW: 3, PLUNGE: 4, ZRAPID: 5 };
+const WORD_RE = /([A-Za-z])\s*([+-]?(?:\d+\.?\d*|\.\d+))/g;
+const ARC_TOL = 0.02, MAX_ARC_SEGS = 512;
+
+function parse(text, name){
+  const rawLines = text.split(/\r\n|\r|\n/);
+  const nL = rawLines.length;
+  const LR = new Array(nL).fill(null);
+  const SX = [], SY = [], SZ = [], EX = [], EY = [], EZ = [], FA = [], SA = [], TYA = [], LNA = [], DW = [], TA = [], PFA = [];
+  const warns = new Map(), pauses = [], toolChanges = [], tWordLines = [];
+  const flags = { semi: false, paren: false, pct: false, nnum: false, end: '', inch: false, feed0: false };
+  const ignored = new Map();
+  let x = 0, y = 0, z = 0, unit = 1, abs = true, motion = -1, feed = 0, power = 0, tool = 0, plane = 17;
+  let pendDwell = 0, pendPause = false, pendTC = -1, dwellTotal = 0, lastPlungeF = 0;
+  let cyc = 0, cycZ = 0, cycR = 0, cycQ = 0, cycP = 0, cycInitZ = 0, ret98 = true;
+
+  function warn(key, msg, ln){
+    const w = warns.get(key);
+    if (w) w.count++; else warns.set(key, { msg, line: ln, count: 1 });
+  }
+  function push(ax, ay, az, bx, by, bz, ty, ln){
+    const dxy = Math.hypot(bx - ax, by - ay);
+    if (dxy < 1e-9){
+      if (Math.abs(bz - az) < 1e-9) return;
+      ty = ty === TY.RAPID ? TY.ZRAPID : TY.PLUNGE;
+    }
+    if (ty === TY.PLUNGE && feed > 0) lastPlungeF = feed;
+    SX.push(ax); SY.push(ay); SZ.push(az); EX.push(bx); EY.push(by); EZ.push(bz);
+    FA.push(feed); SA.push(power); TYA.push(ty); LNA.push(ln); TA.push(tool); PFA.push(lastPlungeF);
+    DW.push(pendDwell); pendDwell = 0;
+    if (pendPause){ pauses.push({ seg: SX.length - 1, line: ln }); pendPause = false; }
+    if (pendTC >= 0){ toolChanges.push({ seg: SX.length - 1, line: ln, t: pendTC }); pendTC = -1; }
+    const lr = LR[ln]; if (lr) lr[1] = SX.length; else LR[ln] = [SX.length - 1, SX.length];
+  }
+  function lineTo(nx, ny, nz, mo, ln){
+    if (mo === 1 && feed === 0) flags.feed0 = true;
+    push(x, y, z, nx, ny, nz, mo === 0 ? TY.RAPID : TY.CUT, ln);
+    x = nx; y = ny; z = nz;
+  }
+  /* arcs in any plane: axes (a1,a2) span the plane, h is the helical axis    */
+  function arcMove(mo, nx, ny, nz, I, J, K, R, ln){
+    const P17 = plane === 17, P18 = plane === 18;
+    const g = P17 ? { a1: x, a2: y, b1: nx, b2: ny, h0: z, h1: nz, o1: I, o2: J }
+          : P18 ? { a1: z, a2: x, b1: nz, b2: nx, h0: y, h1: ny, o1: K, o2: I }
+                : { a1: y, a2: z, b1: ny, b2: nz, h0: x, h1: nx, o1: J, o2: K };
+    let c1, c2;
+    if (g.o1 !== null || g.o2 !== null){ c1 = g.a1 + (g.o1 || 0); c2 = g.a2 + (g.o2 || 0); }
+    else if (R !== null){
+      const d1 = g.b1 - g.a1, d2 = g.b2 - g.a2, q = Math.hypot(d1, d2);
+      if (q < 1e-9){ warn('arc-r0', 'R-form arc with zero chord — drawn straight', ln); return lineTo(nx, ny, nz, 1, ln); }
+      let h2 = R * R - q * q / 4;
+      if (h2 < 0){
+        if (h2 > -Math.abs(R) * q * 0.01) h2 = 0;
+        else { warn('arc-rr', 'R smaller than half the chord — arc drawn straight', ln); return lineTo(nx, ny, nz, 1, ln); }
+      }
+      const hh = Math.sqrt(h2), k = (mo === 3 ? 1 : -1) * (R < 0 ? -1 : 1);
+      c1 = (g.a1 + g.b1) / 2 + k * hh * (-d2 / q);
+      c2 = (g.a2 + g.b2) / 2 + k * hh * ( d1 / q);
+    } else {
+      warn('arc-no', 'G2/G3 without center offsets or R — drawn straight', ln);
+      return lineTo(nx, ny, nz, 1, ln);
+    }
+    const r0 = Math.hypot(g.a1 - c1, g.a2 - c2), r1 = Math.hypot(g.b1 - c1, g.b2 - c2);
+    if (r0 < 1e-9) return lineTo(nx, ny, nz, 1, ln);
+    const A0 = Math.atan2(g.a2 - c2, g.a1 - c1), A1 = Math.atan2(g.b2 - c2, g.b1 - c1);
+    let sw = A1 - A0;
+    if (mo === 3){ while (sw <= 1e-12) sw += Math.PI * 2; }
+    else        { while (sw >= -1e-12) sw -= Math.PI * 2; }
+    const rM = Math.max(r0, r1);
+    const dA = 2 * Math.acos(clamp(1 - ARC_TOL / Math.max(rM, ARC_TOL), -1, 1));
+    const steps = clamp(Math.ceil(Math.abs(sw) / Math.max(dA, 0.008)), 1, MAX_ARC_SEGS);
+    const ty = mo === 2 ? TY.CW : TY.CCW;
+    let px = x, py = y, pz = z;
+    for (let i = 1; i <= steps; i++){
+      const t = i / steps, a = A0 + sw * t, r = lerp(r0, r1, t);
+      const p1 = c1 + r * Math.cos(a), p2 = c2 + r * Math.sin(a), ph = lerp(g.h0, g.h1, t);
+      let qx, qy, qz;
+      if (i === steps){ qx = nx; qy = ny; qz = nz; }
+      else if (P17){ qx = p1; qy = p2; qz = ph; }
+      else if (P18){ qz = p1; qx = p2; qy = ph; }
+      else { qy = p1; qz = p2; qx = ph; }
+      push(px, py, pz, qx, qy, qz, ty, ln);
+      px = qx; py = qy; pz = qz;
+    }
+    x = nx; y = ny; z = nz;
+  }
+  /* canned drill cycle at hole (hx,hy) using modal cycZ/R/Q/P                */
+  function doCycle(hx, hy, ln){
+    const zR = cycR, zBt = cycZ;
+    push(x, y, z, hx, hy, z, TY.RAPID, ln); x = hx; y = hy;
+    if (z < zR - 1e-9 || z > zR + 1e-9){ push(x, y, z, x, y, zR, TY.RAPID, ln); z = zR; }
+    if (cyc === 83 || cyc === 73){
+      const q = cycQ > 0 ? cycQ : Math.abs(zR - zBt);
+      let cur = zR;
+      while (cur > zBt + 1e-9){
+        const nxt = Math.max(zBt, cur - q);
+        if (cur < zR - 1e-9) { push(x, y, z, x, y, cur + Math.min(1, q * 0.5), TY.RAPID, ln); z = cur + Math.min(1, q * 0.5); }
+        push(x, y, z, x, y, nxt, TY.CUT, ln); z = nxt;
+        if (nxt > zBt + 1e-9 && cyc === 83){ push(x, y, z, x, y, zR, TY.RAPID, ln); z = zR; }
+        cur = nxt;
+      }
+    } else {
+      push(x, y, z, x, y, zBt, TY.CUT, ln); z = zBt;
+    }
+    if ((cyc === 82 || cyc === 89) && cycP > 0){ pendDwell += cycP; dwellTotal += cycP; }
+    const zUp = ret98 ? Math.max(cycInitZ, zR) : zR;
+    if (cyc === 85){ push(x, y, z, x, y, zUp, TY.CUT, ln); }
+    else push(x, y, z, x, y, zUp, TY.RAPID, ln);
+    z = zUp;
+  }
+
+  for (let ln = 0; ln < nL; ln++){
+    const raw = rawLines[ln];
+    if (raw.indexOf(';') >= 0) flags.semi = true;
+    if (raw.indexOf('(') >= 0) flags.paren = true;
+    let code = raw.replace(/\([^)]*\)/g, ' ').replace(/;.*$/, '').replace(/\*\d+\s*$/, '').trim();
+    if (code.startsWith('/')) code = code.slice(1).trim();      // block delete: simulate it
+    if (code === '') continue;
+    if (code[0] === '%'){ flags.pct = true; continue; }
+
+    const gs = [], ms = [], W = {};
+    WORD_RE.lastIndex = 0;
+    let mt;
+    while ((mt = WORD_RE.exec(code))){
+      const L = mt[1].toUpperCase(), v = parseFloat(mt[2]);
+      if (L === 'G') gs.push(v); else if (L === 'M') ms.push(v); else W[L] = v;
+    }
+    if ('N' in W) flags.nnum = true;
+    for (const L of ['A', 'B', 'C']) if (L in W)
+      warn('abc', 'Rotary ' + L + ' axis words ignored — 4/5-axis (and the NOVELTECH arm dialect) need machine kinematics', ln);
+    for (const L in W) if (!'XYZIJKRFSTPQNH'.includes(L) && !'ABC'.includes(L) && L !== 'O' && L !== 'L' && L !== 'D' && L !== 'E')
+      ignored.set(L, (ignored.get(L) || 0) + 1);
+
+    let doMove = false, dwellHere = false;
+    for (const gRaw of gs){
+      const g = Math.round(gRaw * 10) / 10;
+      if (g >= 0 && g <= 3){ motion = g; doMove = true; cyc = 0; }
+      else if (g === 4) dwellHere = true;
+      else if (g === 17 || g === 18 || g === 19) plane = g;
+      else if (g === 20){ unit = 25.4; flags.inch = true; }
+      else if (g === 21) unit = 1;
+      else if (g === 90) abs = true;
+      else if (g === 91) abs = false;
+      else if (g === 90.1 || g === 91.1) ;
+      else if (g === 94) ;
+      else if (g === 93) warn('g93', 'G93 inverse-time feed not supported — times will be wrong', ln);
+      else if (g === 28 || g === 30) warn('g28', 'G' + g + ' homing ignored', ln);
+      else if (g === 40) ;
+      else if (g === 41 || g === 42) warn('comp', 'Cutter radius compensation (G41/G42) ignored — path is centreline', ln);
+      else if (g === 43 || g === 44 || g === 49) { if (g !== 49) warn('g43', 'Tool length offset (G43 H) ignored — Z is taken as programmed', ln); }
+      else if (g >= 54 && g <= 59) warn('wcs', 'Work offsets G54–G59 all treated as one coordinate system', ln);
+      else if (g === 80){ cyc = 0; }
+      else if (g === 73 || g === 81 || g === 82 || g === 83 || g === 85 || g === 89){
+        cyc = g === 89 ? 82 : g; cycInitZ = z; motion = -2; doMove = true;
+      }
+      else if (g === 84 || g === 86 || g === 87 || g === 88){ cyc = 81; cycInitZ = z; motion = -2; doMove = true; warn('cyc' + g, 'Cycle G' + g + ' simulated as simple drill', ln); }
+      else if (g === 98) ret98 = true;
+      else if (g === 99) ret98 = false;
+      else warn('g' + g, 'G' + nf(g, 1) + ' not understood and ignored', ln);
+    }
+    if ('F' in W) feed = W.F * unit;
+    if ('S' in W) power = W.S;
+    if ('T' in W){ tool = W.T; tWordLines.push({ t: W.T, line: ln }); }
+    for (const m of ms){
+      if (m === 0 || m === 1) pendPause = true;
+      else if (m === 2 || m === 30) flags.end = 'M' + m;
+      else if (m === 3 || m === 4 || m === 5) ;
+      else if (m === 6) pendTC = tool;
+      else if (m === 7 || m === 8 || m === 9) ;
+      else warn('m' + m, 'M' + nf(m, 1) + ' not understood and ignored', ln);
+    }
+    if (dwellHere && 'P' in W){
+      const p = W.P >= 30 ? W.P / 1000 : W.P;
+      pendDwell += p; dwellTotal += p;
+    }
+
+    const hasC = 'X' in W || 'Y' in W || 'Z' in W;
+    if (cyc && (('X' in W) || ('Y' in W) || motion === -2)){
+      if ('Z' in W) cycZ = abs ? W.Z * unit : z + W.Z * unit;
+      if ('R' in W) cycR = abs ? W.R * unit : z + W.R * unit;
+      if ('Q' in W) cycQ = Math.abs(W.Q) * unit;
+      if ('P' in W && !dwellHere) cycP = W.P >= 30 ? W.P / 1000 : W.P;
+      if (!abs) warn('cyc91', 'Canned cycle in G91 treated as absolute', ln);
+      const hx = 'X' in W ? (abs ? W.X * unit : x + W.X * unit) : x;
+      const hy = 'Y' in W ? (abs ? W.Y * unit : y + W.Y * unit) : y;
+      doCycle(hx, hy, ln);
+      continue;
+    }
+    if (hasC || (('I' in W || 'J' in W || 'K' in W || 'R' in W) && (motion === 2 || motion === 3) && doMove)){
+      let mo = motion;
+      if (mo < 0){ warn('nomode', 'Coordinates before any G0/G1 — treated as rapid', ln); mo = motion = 0; }
+      const nx = 'X' in W ? (abs ? W.X * unit : x + W.X * unit) : x;
+      const ny = 'Y' in W ? (abs ? W.Y * unit : y + W.Y * unit) : y;
+      const nz = 'Z' in W ? (abs ? W.Z * unit : z + W.Z * unit) : z;
+      if (mo >= 2)
+        arcMove(mo, nx, ny, nz,
+          'I' in W ? W.I * unit : null, 'J' in W ? W.J * unit : null, 'K' in W ? W.K * unit : null,
+          'R' in W ? W.R * unit : null, ln);
+      else lineTo(nx, ny, nz, mo, ln);
+    }
+  }
+  if (flags.feed0) warn('feed0', 'Cutting move before any F word — 600 mm/min assumed', 0);
+  if (ignored.size) warn('ign', 'Word letters ignored: ' + [...ignored.keys()].join(', '), 0);
+
+  /* files that use bare T words with no M6: treat each T as a change */
+  if (!toolChanges.length && tWordLines.length){
+    const distinct = new Set(tWordLines.map(w => w.t));
+    if (distinct.size >= 1){
+      for (const w of tWordLines){
+        let seg = SX.length;
+        for (let i = 0; i < LNA.length; i++) if (LNA[i] >= w.line){ seg = i; break; }
+        if (seg < SX.length) toolChanges.push({ seg, line: w.line, t: w.t });
+      }
+    }
+  }
+  const N = SX.length;
+  if (N && TA.every(t => t === 0)) TA.fill(1);
+  else for (let i = 0; i < N; i++) if (TA[i] === 0) TA[i] = 1;
+
+  const m = {
+    name, lineCount: nL, LR, n: N,
+    sx: Float64Array.from(SX), sy: Float64Array.from(SY), sz: Float64Array.from(SZ),
+    ex: Float64Array.from(EX), ey: Float64Array.from(EY), ez: Float64Array.from(EZ),
+    f: Float64Array.from(FA), s: Float64Array.from(SA), pf: Float64Array.from(PFA),
+    ty: Uint8Array.from(TYA), ln: Int32Array.from(LNA), ta: Uint16Array.from(TA), dw: Float64Array.from(DW),
+    len: new Float64Array(N), t0: new Float64Array(N), t1: new Float64Array(N),
+    pauses, toolChanges, flags, warns, dwellTotal, bytes: text.length,
+  };
+  for (let i = 0; i < N; i++)
+    m.len[i] = Math.hypot(m.ex[i] - m.sx[i], m.ey[i] - m.sy[i], m.ez[i] - m.sz[i]);
+  m.toolList = [...new Set(Array.from(m.ta))];
+
+  /* stats */
+  let cx0 = 1e30, cy0 = 1e30, cx1 = -1e30, cy1 = -1e30;
+  let ax0 = 1e30, ay0 = 1e30, ax1 = -1e30, ay1 = -1e30;
+  let zlo = 1e30, zhi = -1e30, zmaxAll = -1e30, cutLen = 0, rapidLen = 0;
+  const cnt = [0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < N; i++){
+    const t = m.ty[i]; cnt[t]++;
+    zmaxAll = Math.max(zmaxAll, m.ez[i], m.sz[i]);
+    if (t !== TY.ZRAPID){
+      ax0 = Math.min(ax0, m.sx[i], m.ex[i]); ax1 = Math.max(ax1, m.sx[i], m.ex[i]);
+      ay0 = Math.min(ay0, m.sy[i], m.ey[i]); ay1 = Math.max(ay1, m.sy[i], m.ey[i]);
+    }
+    if (t >= 1 && t <= 4){
+      cx0 = Math.min(cx0, m.sx[i], m.ex[i]); cx1 = Math.max(cx1, m.sx[i], m.ex[i]);
+      cy0 = Math.min(cy0, m.sy[i], m.ey[i]); cy1 = Math.max(cy1, m.sy[i], m.ey[i]);
+      zlo = Math.min(zlo, m.ez[i]); zhi = Math.max(zhi, m.ez[i]);
+      cutLen += m.len[i];
+    } else rapidLen += m.len[i];
+  }
+  m.cnt = cnt;
+  m.boundsCut = cx0 < 1e29 ? [cx0, cy0, cx1, cy1] : null;
+  m.boundsAll = ax0 < 1e29 ? [ax0, ay0, ax1, ay1] : null;
+  m.zRange = zlo < 1e29 ? [zlo, zhi] : null;
+  m.zMaxAll = zmaxAll > -1e29 ? zmaxAll : 5;
+  m.cutLen = cutLen; m.rapidLen = rapidLen;
+  return m;
+}
+
+function computeTimes(m, rr){
+  let t = 0, cutT = 0, rapidT = 0;
+  for (let i = 0; i < m.n; i++){
+    t += m.dw[i];
+    m.t0[i] = t;
+    const rapid = m.ty[i] === TY.RAPID || m.ty[i] === TY.ZRAPID;
+    const rate = rapid ? rr : (m.f[i] || 600);
+    const dur = m.len[i] / rate * 60;
+    if (rapid) rapidT += dur; else cutT += dur;
+    t += dur; m.t1[i] = t;
+  }
+  m.total = t;
+  m.cutT = cutT; m.rapidT = rapidT;
+  m.pauseT = m.pauses.map(p => m.t0[p.seg]);
+  m.tcT = m.toolChanges.map(c => ({ time: m.t0[c.seg], seg: c.seg, line: c.line, tool: c.t }));
+}
+
+/* ===================================================== tiny mat4 (column-major) */
+function m4Ident(){ return new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]); }
+function m4Mul(a, b){
+  const o = new Float32Array(16);
+  for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++)
+    o[c*4+r] = a[r]*b[c*4] + a[4+r]*b[c*4+1] + a[8+r]*b[c*4+2] + a[12+r]*b[c*4+3];
+  return o;
+}
+function m4Persp(fov, asp, n, f){
+  const t = 1 / Math.tan(fov / 2), d = 1 / (n - f);
+  return new Float32Array([t/asp,0,0,0, 0,t,0,0, 0,0,(n+f)*d,-1, 0,0,2*n*f*d,0]);
+}
+function m4Ortho(hw, hh, n, f){
+  const d = 1 / (n - f);
+  return new Float32Array([1/hw,0,0,0, 0,1/hh,0,0, 0,0,2*d,0, 0,0,(n+f)*d,1]);
+}
+function v3sub(a,b){ return [a[0]-b[0], a[1]-b[1], a[2]-b[2]]; }
+function v3cross(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+function v3norm(a){ const l = Math.hypot(a[0],a[1],a[2]) || 1; return [a[0]/l, a[1]/l, a[2]/l]; }
+function m4LookAt(eye, ctr, up){
+  const zx = v3norm(v3sub(eye, ctr)), xx = v3norm(v3cross(up, zx)), yx = v3cross(zx, xx);
+  return new Float32Array([
+    xx[0], yx[0], zx[0], 0,  xx[1], yx[1], zx[1], 0,  xx[2], yx[2], zx[2], 0,
+    -(xx[0]*eye[0]+xx[1]*eye[1]+xx[2]*eye[2]),
+    -(yx[0]*eye[0]+yx[1]*eye[1]+yx[2]*eye[2]),
+    -(zx[0]*eye[0]+zx[1]*eye[1]+zx[2]*eye[2]), 1]);
+}
+function m4Translate(x,y,z){ const m = m4Ident(); m[12]=x; m[13]=y; m[14]=z; return m; }
+
+/* ===================================================== GL setup */
+const cvs = $('gl');
+const gl = cvs.getContext('webgl2', { antialias: true });
+if (!gl){ $('glfail').style.display = 'flex'; }
+let dpr = 1, VW = 1, VH = 1;
+
+function compile(vs, fs){
+  const mk = (t, s) => {
+    const sh = gl.createShader(t);
+    gl.shaderSource(sh, s); gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh));
+    return sh;
+  };
+  const p = gl.createProgram();
+  gl.attachShader(p, mk(gl.VERTEX_SHADER, vs));
+  gl.attachShader(p, mk(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+  const u = {};
+  const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS);
+  for (let i = 0; i < n; i++){ const inf = gl.getActiveUniform(p, i); u[inf.name.replace('[0]','')] = gl.getUniformLocation(p, inf.name); }
+  return { p, u };
+}
+
+const SURF_VS = `#version 300 es
+precision highp float;
+precision highp int;
+layout(location=0) in vec3 aUVW;
+layout(location=1) in vec3 aN;
+uniform mat4 uMVP;
+uniform highp sampler2D uH;
+uniform vec3 uOrg; uniform vec2 uSize;
+uniform float uZFlat;
+uniform ivec2 uRes;
+out vec2 vUV; out vec3 vN; out float vMode;
+void main(){
+  vUV = aUVW.xy;
+  float z = aUVW.z > 0.4 ? texelFetch(uH, ivec2(round(aUVW.xy * vec2(uRes))), 0).r : uZFlat;
+  vec3 p = vec3(uOrg.x + aUVW.x * uSize.x, uOrg.y + aUVW.y * uSize.y, z);
+  vN = aN; vMode = aUVW.z;
+  gl_Position = uMVP * vec4(p, 1.0);
+}`;
+const SURF_FS = `#version 300 es
+precision highp float;
+precision highp int;
+in vec2 vUV; in vec3 vN; in float vMode;
+uniform highp sampler2D uH;
+uniform ivec2 uRes;
+uniform vec2 uCell;
+uniform float uZTop; uniform float uZBot;
+uniform vec3 uColTop; uniform vec3 uColCut; uniform vec3 uColSide; uniform vec3 uColHole;
+uniform vec3 uLight;
+out vec4 o;
+void main(){
+  vec3 N; vec3 col;
+  if (vMode > 0.75){
+    ivec2 c = ivec2(round(vUV * vec2(uRes)));
+    float h  = texelFetch(uH, c, 0).r;
+    float x1 = texelFetch(uH, ivec2(min(c.x+1, uRes.x), c.y), 0).r;
+    float x0 = texelFetch(uH, ivec2(max(c.x-1, 0), c.y), 0).r;
+    float y1 = texelFetch(uH, ivec2(c.x, min(c.y+1, uRes.y)), 0).r;
+    float y0 = texelFetch(uH, ivec2(c.x, max(c.y-1, 0)), 0).r;
+    N = normalize(vec3(-(x1-x0)/(2.0*uCell.x), -(y1-y0)/(2.0*uCell.y), 1.0));
+    col = h >= uZTop - 5e-4 ? uColTop : (h <= uZBot + 1e-3 ? uColHole : uColCut);
+    float d = clamp((uZTop - h) / max(uZTop - uZBot, 1e-6), 0.0, 1.0);
+    col *= (1.0 - 0.22 * d);
+  } else { N = normalize(vN); col = uColSide; }
+  vec3 L = normalize(uLight);
+  float dif = max(dot(N, L), 0.0);
+  float dif2 = max(dot(N, normalize(vec3(-L.x, -L.y, L.z*0.5))), 0.0) * 0.25;
+  vec3 hf = normalize(L + vec3(0.0, 0.0, 1.0));
+  float spec = pow(max(dot(N, hf), 0.0), 40.0) * 0.22;
+  o = vec4(col * (0.34 + 0.72 * dif + dif2) + spec, 1.0);
+}`;
+const LINE_VS = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec4 aCol;
+layout(location=2) in float aT;
+uniform mat4 uMVP; uniform float uNow; uniform float uLift;
+out vec4 vCol;
+void main(){
+  float a = (aT < 0.0 || aT <= uNow) ? aCol.a : aCol.a * 0.25;
+  vCol = vec4(aCol.rgb, a);
+  gl_Position = uMVP * vec4(aPos + vec3(0.0, 0.0, uLift), 1.0);
+}`;
+const LINE_FS = `#version 300 es
+precision highp float;
+in vec4 vCol; out vec4 o;
+void main(){ o = vCol; }`;
+const MESH_VS = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec3 aNorm;
+uniform mat4 uMVP; uniform mat4 uModel;
+out vec3 vN;
+void main(){ vN = aNorm; gl_Position = uMVP * (uModel * vec4(aPos, 1.0)); }`;
+const MESH_FS = `#version 300 es
+precision highp float;
+in vec3 vN;
+uniform vec3 uColor; uniform vec3 uLight;
+out vec4 o;
+void main(){
+  vec3 N = normalize(vN);
+  vec3 L = normalize(uLight);
+  float dif = max(dot(N, L), 0.0) + 0.3 * max(dot(N, vec3(-L.x, -L.y, L.z)), 0.0);
+  vec3 hf = normalize(L + vec3(0.0, 0.0, 1.0));
+  float spec = pow(max(dot(N, hf), 0.0), 60.0) * 0.5;
+  o = vec4(uColor * (0.3 + 0.7 * dif) + spec, 1.0);
+}`;
+
+let surfP, lineP, meshP;
+if (gl){
+  surfP = compile(SURF_VS, SURF_FS);
+  lineP = compile(LINE_VS, LINE_FS);
+  meshP = compile(MESH_VS, MESH_FS);
+  gl.enable(gl.DEPTH_TEST);
+}
+
+/* ===================================================== materials */
+const MATS = {
+  alu:  { top: '#8f9bb3', cut: '#c3ccdf', side: '#6f7a94', hole: '#2a3154' },
+  wood: { top: '#b08a5a', cut: '#d9b98a', side: '#8a6a42', hole: '#3a2f22' },
+  acr:  { top: '#5f8fa8', cut: '#9fd0e8', side: '#4a7085', hole: '#243244' },
+};
+
+/* ===================================================== stock + heightmap */
+const stock = { x0: 0, y0: 0, w: 120, d: 80, top: 0, th: 6, user: false };
+let RES = P.res;                 // cells along the longer side
+let gw = 0, gh = 0;              // vertex grid dims (gw+1 x gh+1 texels)
+let H = null, hTex = null;
+let cellW = 1, cellD = 1;
+
+function autoStock(){
+  if (!M || !M.boundsCut){ Object.assign(stock, { x0: -10, y0: -10, w: 120, d: 80, top: 0, th: 6 }); return; }
+  const b = M.boundsCut;
+  let rmax = 1.5;
+  for (const t of M.toolList) rmax = Math.max(rmax, toolDef(t).dia / 2);
+  const mx = rmax + Math.max((b[2] - b[0]) * 0.03, 1);
+  stock.x0 = b[0] - mx; stock.y0 = b[1] - mx;
+  stock.w = Math.max(b[2] - b[0] + 2 * mx, 1);
+  stock.d = Math.max(b[3] - b[1] + 2 * mx, 1);
+  const zr = M.zRange || [-1, 0];
+  if (zr[0] < -1e-6){ stock.top = 0; stock.th = Math.max(-zr[0] * 1.3, 1); }
+  else { stock.top = Math.max(zr[1], 1); stock.th = Math.max(stock.top, 1); }
+  stock.user = false;
+}
+function stockUI(){
+  $('stX').value = nf(stock.x0, 2); $('stY').value = nf(stock.y0, 2);
+  $('stW').value = nf(stock.w, 2);  $('stD').value = nf(stock.d, 2);
+  $('stT').value = nf(stock.top, 2); $('stH').value = nf(stock.th, 2);
+  $('stRes').value = RES; $('resLab').textContent = '· ' + RES + ' cells / ' + nf(Math.max(stock.w, stock.d) / RES, 2) + ' mm';
+}
+
+/* grid + skirt + flat-quad geometry */
+let gridVAO = null, gridN = 0, skirtVAO = null, skirtN = 0, quadVAO = null;
+function delVAO(v){ if (v){ gl.deleteVertexArray(v.vao); for (const b of v.bufs) gl.deleteBuffer(b); } }
+function mkVAO(data, idx, attribs){
+  const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+  const vb = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vb); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+  let off = 0, stride = attribs.reduce((s, a) => s + a * 4, 0);
+  attribs.forEach((sz, i) => {
+    gl.enableVertexAttribArray(i);
+    gl.vertexAttribPointer(i, sz, gl.FLOAT, false, stride, off);
+    off += sz * 4;
+  });
+  const bufs = [vb];
+  if (idx){
+    const ib = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, idx, gl.STATIC_DRAW);
+    bufs.push(ib);
+  }
+  gl.bindVertexArray(null);
+  return { vao, bufs };
+}
+function buildStockGeo(){
+  if (!gl) return;
+  const aspect = stock.d / stock.w;
+  if (stock.w >= stock.d){ gw = RES; gh = Math.max(8, Math.round(RES * aspect)); }
+  else { gh = RES; gw = Math.max(8, Math.round(RES / aspect)); }
+  cellW = stock.w / gw; cellD = stock.d / gh;
+  const W1 = gw + 1, H1 = gh + 1;
+  H = new Float32Array(W1 * H1); H.fill(stock.top);
+  if (hTex) gl.deleteTexture(hTex);
+  hTex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, hTex);
+  gl.texStorage2D(gl.TEXTURE_2D, 1, gl.R32F, W1, H1);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, W1, H1, gl.RED, gl.FLOAT, H);
+
+  /* surface grid */
+  delVAO(gridVAO);
+  const verts = new Float32Array(W1 * H1 * 6);
+  let k = 0;
+  for (let j = 0; j < H1; j++) for (let i = 0; i < W1; i++){
+    verts[k++] = i / gw; verts[k++] = j / gh; verts[k++] = 1;
+    verts[k++] = 0; verts[k++] = 0; verts[k++] = 1;
+  }
+  const idx = new Uint32Array(gw * gh * 6);
+  k = 0;
+  for (let j = 0; j < gh; j++) for (let i = 0; i < gw; i++){
+    const a = j * W1 + i, b = a + 1, c = a + W1, d = c + 1;
+    idx[k++] = a; idx[k++] = b; idx[k++] = c; idx[k++] = b; idx[k++] = d; idx[k++] = c;
+  }
+  gridVAO = mkVAO(verts, idx, [3, 3]); gridN = idx.length;
+
+  /* skirt: 4 edges, top verts sample the heightmap so cut-through edges follow */
+  delVAO(skirtVAO);
+  const sv = [], si = [];
+  function edge(u0, v0, u1, v1, nx, ny){
+    const steps = Math.max(Math.round(Math.hypot((u1 - u0) * gw, (v1 - v0) * gh)), 1);
+    const base = sv.length / 6;
+    for (let s = 0; s <= steps; s++){
+      const u = lerp(u0, u1, s / steps), v = lerp(v0, v1, s / steps);
+      sv.push(u, v, 0.5, nx, ny, 0);     // top (samples height)
+      sv.push(u, v, 0,   nx, ny, 0);     // bottom (uZFlat)
+    }
+    for (let s = 0; s < steps; s++){
+      const a = base + s * 2;
+      si.push(a, a + 1, a + 2, a + 1, a + 3, a + 2);
+    }
+  }
+  edge(0, 0, 1, 0, 0, -1); edge(1, 0, 1, 1, 1, 0); edge(1, 1, 0, 1, 0, 1); edge(0, 1, 0, 0, -1, 0);
+  skirtVAO = mkVAO(new Float32Array(sv), new Uint32Array(si), [3, 3]); skirtN = si.length;
+
+  if (!quadVAO){
+    const qv = new Float32Array([
+      0,0,0, 0,0,1,  1,0,0, 0,0,1,  0,1,0, 0,0,1,
+      1,0,0, 0,0,1,  1,1,0, 0,0,1,  0,1,0, 0,0,1 ]);
+    quadVAO = mkVAO(qv, null, [3, 3]);
+  }
+}
+
+/* ===================================================== carve engine */
+const sim = { t: 0, carvedIdx: -1, carveT: 0, target: 0, snaps: [], crashes: new Set(), crashToasted: false, dirty: [1e9, -1e9], needFull: false };
+function resetCarve(){
+  if (!H) return;
+  H.fill(stock.top);
+  sim.carvedIdx = -1; sim.carveT = 0; sim.snaps = [];
+  sim.crashes.clear(); linesDirty = true;
+  sim.needFull = true;
+}
+function markDirty(j0, j1){
+  sim.dirty[0] = Math.min(sim.dirty[0], j0); sim.dirty[1] = Math.max(sim.dirty[1], j1);
+}
+function stamp(px, py, zTip, td){
+  const r = td.dia / 2, W1 = gw + 1;
+  const i0 = Math.max(0, Math.ceil((px - r - stock.x0) / cellW) - 1);
+  const i1 = Math.min(gw, Math.floor((px + r - stock.x0) / cellW) + 1);
+  const j0 = Math.max(0, Math.ceil((py - r - stock.y0) / cellD) - 1);
+  const j1 = Math.min(gh, Math.floor((py + r - stock.y0) / cellD) + 1);
+  if (i1 < i0 || j1 < j0) return;
+  const r2 = r * r, zBot = stock.top - stock.th;
+  const ball = td.type === 'ball', vee = td.type === 'v';
+  const vk = vee ? 1 / Math.tan(td.ang * Math.PI / 360) : 0;
+  let touched = false;
+  for (let j = j0; j <= j1; j++){
+    const cy = stock.y0 + j * cellD, dy = cy - py, dy2 = dy * dy;
+    const row = j * W1;
+    for (let i = i0; i <= i1; i++){
+      const cx = stock.x0 + i * cellW, dx = cx - px;
+      const d2 = dx * dx + dy2;
+      if (d2 > r2) continue;
+      let zc = zTip;
+      if (ball) zc += r - Math.sqrt(Math.max(r2 - d2, 0));
+      else if (vee) zc += Math.sqrt(d2) * vk;
+      if (zc < H[row + i]){
+        H[row + i] = Math.max(zc, zBot);
+        touched = true;
+      }
+    }
+  }
+  if (touched) markDirty(j0, j1);
+  return touched;
+}
+/* carve one segment fully (u1=1) or partially; idempotent */
+function carveSeg(i, u1){
+  const ty = M.ty[i];
+  const rapid = ty === TY.RAPID || ty === TY.ZRAPID;
+  const td = toolDef(M.ta[i]);
+  const ax = M.sx[i], ay = M.sy[i], az = M.sz[i];
+  const bx = lerp(ax, M.ex[i], u1), by = lerp(ay, M.ey[i], u1), bz = lerp(az, M.ez[i], u1);
+  const L = Math.hypot(bx - ax, by - ay);
+  if (rapid){
+    if (sim.crashes.has(i)) return;
+    const steps = clamp(Math.ceil(L / Math.max(cellW, cellD) / 2), 1, 400);
+    const W1 = gw + 1, r = td.dia / 2;
+    /* the surface at the sampled cell can sit above the tip by the tool's own
+       profile (V/ball) plus one cell of snap error — tolerate that, and skip
+       the start point: pulling out of your own cut is not a crash            */
+    const diag = Math.hypot(cellW, cellD);
+    const prof = td.type === 'v' ? diag * (1 / Math.tan(td.ang * Math.PI / 360))
+               : td.type === 'ball' ? r - Math.sqrt(Math.max(r * r - Math.min(diag, r) ** 2, 0)) : 0;
+    const tol = prof + 0.06;
+    for (let s = 1; s <= steps; s++){
+      const t = s / steps;
+      const px = lerp(ax, bx, t), py = lerp(ay, by, t), pz = lerp(az, bz, t);
+      const ci = Math.round((px - stock.x0) / cellW), cj = Math.round((py - stock.y0) / cellD);
+      if (ci < 0 || ci > gw || cj < 0 || cj > gh) continue;
+      if (pz < H[cj * W1 + ci] - tol){
+        sim.crashes.add(i); linesDirty = true;
+        if (!sim.crashToasted){ sim.crashToasted = true; toast('Rapid move hits material at line ' + (M.ln[i] + 1) + ' — shown in red.', 'bad'); }
+        fillStats();
+        break;
+      }
+    }
+    return;
+  }
+  const step = Math.max(Math.min(cellW, cellD) * 0.55, 0.01);
+  const steps = clamp(Math.ceil(L / step), 1, 20000);
+  for (let s = 0; s <= steps; s++){
+    const t = s / steps;
+    stamp(lerp(ax, bx, t), lerp(ay, by, t), lerp(az, bz, t), td);
+  }
+}
+/* advance carve toward sim.t within a per-frame time budget */
+function carveTick(budgetMs){
+  if (!M || !H) return true;
+  if (sim.t < sim.carveT - 1e-6){                       // rewind: restore snapshot
+    let best = null;
+    for (const s of sim.snaps) if (s.t <= sim.t + 1e-9 && (!best || s.t > best.t)) best = s;
+    if (best){ H.set(best.H); sim.carvedIdx = best.idx; }
+    else { H.fill(stock.top); sim.carvedIdx = -1; }
+    sim.carveT = best ? best.t : 0;
+    sim.crashes.forEach(i => { if (M.t0[i] > sim.t) sim.crashes.delete(i); });
+    linesDirty = true;
+    sim.needFull = true;
+  }
+  const deadline = performance.now() + budgetMs;
+  const snapEvery = M.total / 10;
+  while (sim.carvedIdx < M.n - 1){
+    const i = sim.carvedIdx + 1;
+    if (M.t1[i] <= sim.t + 1e-9){
+      carveSeg(i, 1);
+      sim.carvedIdx = i; sim.carveT = M.t1[i];
+      if (snapEvery > 0 && (sim.snaps.length === 0 || sim.carveT - sim.snaps[sim.snaps.length - 1].t >= snapEvery) && sim.snaps.length < 12)
+        sim.snaps.push({ t: sim.carveT, idx: sim.carvedIdx, H: H.slice() });
+      if (performance.now() > deadline) return false;
+    } else break;
+  }
+  const i = sim.carvedIdx + 1;
+  if (i < M.n && sim.t > M.t0[i]){
+    const u = clamp((sim.t - M.t0[i]) / Math.max(M.t1[i] - M.t0[i], 1e-9), 0, 1);
+    carveSeg(i, u);
+  }
+  sim.carveT = Math.max(sim.carveT, sim.t);
+  return true;
+}
+function uploadH(){
+  if (!gl || !hTex) return;
+  const W1 = gw + 1;
+  gl.bindTexture(gl.TEXTURE_2D, hTex);
+  if (sim.needFull){
+    gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, W1, gh + 1, gl.RED, gl.FLOAT, H);
+    sim.needFull = false;
+  } else if (sim.dirty[1] >= sim.dirty[0]){
+    const j0 = Math.max(0, sim.dirty[0]), j1 = Math.min(gh, sim.dirty[1]);
+    gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, j0, W1, j1 - j0 + 1, gl.RED, gl.FLOAT, H, j0 * W1);
+  }
+  sim.dirty = [1e9, -1e9];
+}
+
+/* ===================================================== toolpath lines VBO */
+let pathVAO = null, pathN = 0, linesDirty = false, pathColBuf = null;
+function buildPathVBO(){
+  if (!gl || !M) return;
+  delVAO(pathVAO); pathVAO = null; pathColBuf = null;
+  const n = M.n;
+  if (!n){ pathN = 0; return; }
+  const pos = new Float32Array(n * 2 * 3), tt = new Float32Array(n * 2);
+  for (let i = 0; i < n; i++){
+    pos[i*6]   = M.sx[i]; pos[i*6+1] = M.sy[i]; pos[i*6+2] = M.sz[i];
+    pos[i*6+3] = M.ex[i]; pos[i*6+4] = M.ey[i]; pos[i*6+5] = M.ez[i];
+    tt[i*2] = M.t0[i]; tt[i*2+1] = M.t1[i];
+  }
+  const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+  const pb = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, pb); gl.bufferData(gl.ARRAY_BUFFER, pos, gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+  pathColBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, pathColBuf); gl.bufferData(gl.ARRAY_BUFFER, n * 2 * 4 * 4, gl.DYNAMIC_DRAW);
+  gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 4, gl.FLOAT, false, 0, 0);
+  const tb = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, tb); gl.bufferData(gl.ARRAY_BUFFER, tt, gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2, 1, gl.FLOAT, false, 0, 0);
+  gl.bindVertexArray(null);
+  pathVAO = { vao, bufs: [pb, pathColBuf, tb] };
+  pathN = n * 2;
+  fillPathColors();
+}
+function fillPathColors(){
+  if (!pathVAO || !M) return;
+  const n = M.n;
+  const col = new Float32Array(n * 2 * 4);
+  const rapidC = hexV('#6e7699'), crashC = hexV('#ff6b81');
+  const tc = {};
+  for (const t of M.toolList) tc[t] = hexV(toolColor(t));
+  for (let i = 0; i < n; i++){
+    const rapid = M.ty[i] === TY.RAPID || M.ty[i] === TY.ZRAPID;
+    let c, a;
+    if (rapid && sim.crashes.has(i)){ c = crashC; a = 1; }
+    else if (rapid){ c = rapidC; a = P.showRapids ? 0.45 : 0; }
+    else { c = tc[M.ta[i]] || rapidC; a = 0.95; }
+    for (let v = 0; v < 2; v++){
+      col[(i*2+v)*4] = c[0]; col[(i*2+v)*4+1] = c[1]; col[(i*2+v)*4+2] = c[2]; col[(i*2+v)*4+3] = a;
+    }
+  }
+  gl.bindBuffer(gl.ARRAY_BUFFER, pathColBuf);
+  gl.bufferSubData(gl.ARRAY_BUFFER, 0, col);
+  linesDirty = false;
+}
+
+/* static lines: origin triad + stock wireframe */
+let axesVAO = null, axesN = 0, wireVAO = null, wireN = 0;
+function buildAxes(){
+  if (!gl) return;
+  delVAO(axesVAO);
+  const L = Math.max(stock.w, stock.d) * 0.18;
+  const X = hexV('#ff6b81'), Y = hexV('#4ade80'), Z = hexV('#6c7bff');
+  const v = [];
+  const put = (x0,y0,z0, x1,y1,z1, c) => v.push(x0,y0,z0, c[0],c[1],c[2],0.95, -1,  x1,y1,z1, c[0],c[1],c[2],0.95, -1);
+  put(0,0,0, L,0,0, X); put(0,0,0, 0,L,0, Y); put(0,0,0, 0,0,L, Z);
+  const ah = L * 0.12;
+  put(L,0,0, L-ah, ah*0.4,0, X); put(L,0,0, L-ah,-ah*0.4,0, X);
+  put(0,L,0, ah*0.4,L-ah,0, Y); put(0,L,0, -ah*0.4,L-ah,0, Y);
+  put(0,0,L, ah*0.4,0,L-ah, Z); put(0,0,L, -ah*0.4,0,L-ah, Z);
+  axesVAO = mkVAO(new Float32Array(v), null, [3, 4, 1]); axesN = v.length / 8;
+
+  delVAO(wireVAO);
+  const c = hexV('#39416b');
+  const x0 = stock.x0, y0 = stock.y0, x1 = x0 + stock.w, y1 = y0 + stock.d;
+  const zt = stock.top, zb = stock.top - stock.th;
+  const w = [];
+  const seg = (a,b) => w.push(a[0],a[1],a[2], c[0],c[1],c[2],0.8, -1, b[0],b[1],b[2], c[0],c[1],c[2],0.8, -1);
+  const q = [[x0,y0],[x1,y0],[x1,y1],[x0,y1]];
+  for (let i = 0; i < 4; i++){
+    const a = q[i], b = q[(i+1)%4];
+    seg([a[0],a[1],zt],[b[0],b[1],zt]); seg([a[0],a[1],zb],[b[0],b[1],zb]); seg([a[0],a[1],zt],[a[0],a[1],zb]);
+  }
+  wireVAO = mkVAO(new Float32Array(w), null, [3, 4, 1]); wireN = w.length / 8;
+}
+
+/* ===================================================== tool mesh */
+let toolVAO = null, toolN = 0, toolMeshKey = '';
+function revolve(profile, segs){
+  const v = [];
+  for (let s = 0; s < segs; s++){
+    const a0 = s / segs * Math.PI * 2, a1 = (s + 1) / segs * Math.PI * 2;
+    const c0 = Math.cos(a0), s0 = Math.sin(a0), c1 = Math.cos(a1), s1 = Math.sin(a1);
+    for (let p = 0; p < profile.length - 1; p++){
+      const [r0, z0] = profile[p], [r1, z1] = profile[p + 1];
+      const dr = r1 - r0, dz = z1 - z0, il = 1 / (Math.hypot(dr, dz) || 1);
+      const nr = dz * il, nz = -dr * il;
+      const P = [
+        [r0*c0, r0*s0, z0], [r1*c0, r1*s0, z1], [r0*c1, r0*s1, z0],
+        [r1*c0, r1*s0, z1], [r1*c1, r1*s1, z1], [r0*c1, r0*s1, z0]];
+      const Nn = [
+        [nr*c0, nr*s0, nz], [nr*c0, nr*s0, nz], [nr*c1, nr*s1, nz],
+        [nr*c0, nr*s0, nz], [nr*c1, nr*s1, nz], [nr*c1, nr*s1, nz]];
+      for (let k = 0; k < 6; k++) v.push(P[k][0], P[k][1], P[k][2], Nn[k][0], Nn[k][1], Nn[k][2]);
+    }
+  }
+  return new Float32Array(v);
+}
+function buildToolMesh(td){
+  const key = td.type + '|' + td.dia + '|' + td.ang + '|' + stock.th;
+  if (key === toolMeshKey && toolVAO) return;
+  toolMeshKey = key;
+  delVAO(toolVAO);
+  const r = td.dia / 2;
+  const cutLen = Math.max(stock.th * 1.6, td.dia * 2.5, 6);
+  const shankR = Math.max(r * 0.72, 1.5), shankL = cutLen * 1.1 + 8;
+  let prof;
+  if (td.type === 'ball'){
+    prof = [[0.0001, 0]];
+    for (let a = 1; a <= 6; a++){
+      const th = a / 6 * Math.PI / 2;
+      prof.push([r * Math.sin(th), r - r * Math.cos(th)]);
+    }
+    prof.push([r, cutLen]);
+  } else if (td.type === 'v'){
+    const h = r / Math.tan(td.ang * Math.PI / 360);
+    prof = [[0.0001, 0], [r, h], [r, Math.max(cutLen, h + 2)]];
+  } else {
+    prof = [[0.0001, 0], [r, 0], [r, cutLen]];
+  }
+  const top = prof[prof.length - 1][1];
+  prof.push([shankR, top + 1], [shankR, top + shankL], [shankR * 2.2, top + shankL + 2], [shankR * 2.2, top + shankL + 10], [0.0001, top + shankL + 10]);
+  const data = revolve(prof, 28);
+  toolVAO = mkVAO(data, null, [3, 3]);
+  toolN = data.length / 6;
+}
+
+/* ===================================================== camera */
+const cam = { yaw: -45, pitch: 32, dist: 200, tgt: [60, 40, 0], persp: P.persp, mode2d: false, fov: 40 * Math.PI / 180 };
+function camEye(){
+  const y = cam.yaw * Math.PI / 180, p = clamp(cam.pitch, -89.9, 89.9) * Math.PI / 180;
+  return [
+    cam.tgt[0] + cam.dist * Math.cos(p) * Math.cos(y),
+    cam.tgt[1] + cam.dist * Math.cos(p) * Math.sin(y),
+    cam.tgt[2] + cam.dist * Math.sin(p)];
+}
+function viewProj(){
+  const asp = VW / VH;
+  const eye = camEye();
+  const V = m4LookAt(eye, cam.tgt, [0, 0, 1]);
+  const near = Math.max(cam.dist * 0.02, 0.05), far = cam.dist * 30 + 2000;
+  let Pm;
+  if (cam.persp && !cam.mode2d) Pm = m4Persp(cam.fov, asp, near, far);
+  else {
+    const hh = cam.dist * Math.tan(cam.fov / 2);
+    Pm = m4Ortho(hh * asp, hh, -far, far);
+  }
+  return m4Mul(Pm, V);
+}
+function fitView(){
+  const cx = stock.x0 + stock.w / 2, cy = stock.y0 + stock.d / 2, cz = stock.top - stock.th / 2;
+  cam.tgt = [cx, cy, cz];
+  const rad = Math.hypot(stock.w, stock.d, stock.th) / 2 * 1.12 + 1;
+  cam.dist = rad / Math.sin(cam.fov / 2);
+}
+function setPreset(name){
+  const m = { iso: [-45, 32], top: [-90, 89.9], front: [-90, 1], back: [90, 1], right: [0, 1], left: [180, 1] }[name];
+  if (!m) return;
+  cam.yaw = m[0]; cam.pitch = m[1];
+  fitView();
+}
+function set2D(is2d){
+  cam.mode2d = is2d;
+  $('b2d').classList.toggle('on', is2d);
+  $('b3d').classList.toggle('on', !is2d);
+  $('bOrtho').disabled = is2d; $('bPersp').disabled = is2d;
+  if (is2d){ cam.yaw = -90; cam.pitch = 89.9; fitView(); }
+  else setPreset('iso');
+}
+
+/* ===================================================== render loop */
+function resize(){
+  dpr = window.devicePixelRatio || 1;
+  const w = $('viewwrap').clientWidth, h = $('viewwrap').clientHeight;
+  VW = Math.max(1, Math.round(w * dpr)); VH = Math.max(1, Math.round(h * dpr));
+  if (cvs.width !== VW || cvs.height !== VH){ cvs.width = VW; cvs.height = VH; }
+}
+function draw(){
+  if (!gl) return;
+  resize();
+  gl.viewport(0, 0, VW, VH);
+  gl.clearColor(0.043, 0.055, 0.102, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  const MVP = viewProj();
+  const mat = MATS[P.mat] || MATS.alu;
+  const zBot = stock.top - stock.th;
+  const light = [0.42, 0.30, 0.85];
+
+  /* stock surface + skirt + floors */
+  gl.useProgram(surfP.p);
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, hTex);
+  gl.uniform1i(surfP.u.uH, 0);
+  gl.uniformMatrix4fv(surfP.u.uMVP, false, MVP);
+  gl.uniform2i(surfP.u.uRes, gw, gh);
+  gl.uniform2f(surfP.u.uCell, cellW, cellD);
+  gl.uniform1f(surfP.u.uZTop, stock.top);
+  gl.uniform1f(surfP.u.uZBot, zBot);
+  gl.uniform3fv(surfP.u.uLight, light);
+  gl.uniform3fv(surfP.u.uColTop, hexV(mat.top));
+  gl.uniform3fv(surfP.u.uColCut, hexV(mat.cut));
+  gl.uniform3fv(surfP.u.uColHole, hexV(mat.hole));
+  if (M){
+    gl.uniform3f(surfP.u.uOrg, stock.x0, stock.y0, 0);
+    gl.uniform2f(surfP.u.uSize, stock.w, stock.d);
+    gl.uniform3fv(surfP.u.uColSide, hexV(mat.side));
+    gl.uniform1f(surfP.u.uZFlat, zBot);
+    gl.bindVertexArray(gridVAO.vao);
+    gl.drawElements(gl.TRIANGLES, gridN, gl.UNSIGNED_INT, 0);
+    gl.bindVertexArray(skirtVAO.vao);
+    gl.drawElements(gl.TRIANGLES, skirtN, gl.UNSIGNED_INT, 0);
+    /* stock bottom */
+    gl.bindVertexArray(quadVAO.vao);
+    gl.uniform1f(surfP.u.uZFlat, zBot - 0.02);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+  /* machine table under the part (requirement 11) */
+  const tw = stock.w * 1.45 + 20, tdp = stock.d * 1.45 + 20;
+  gl.bindVertexArray(quadVAO.vao);
+  gl.uniform3f(surfP.u.uOrg, stock.x0 + stock.w / 2 - tw / 2, stock.y0 + stock.d / 2 - tdp / 2, 0);
+  gl.uniform2f(surfP.u.uSize, tw, tdp);
+  gl.uniform1f(surfP.u.uZFlat, zBot - 0.6);
+  gl.uniform3fv(surfP.u.uColSide, hexV('#1c2340'));
+  gl.drawArrays(gl.TRIANGLES, 0, 6);
+  gl.bindVertexArray(null);
+
+  /* tool */
+  if (M && P.showTool && M.n){
+    const pos = simPos();
+    const td = toolDef(pos.tool);
+    buildToolMesh(td);
+    gl.useProgram(meshP.p);
+    gl.uniformMatrix4fv(meshP.u.uMVP, false, MVP);
+    gl.uniformMatrix4fv(meshP.u.uModel, false, m4Translate(pos.x, pos.y, pos.z));
+    const tc = hexV(toolColor(pos.tool));
+    const steel = [0.72, 0.76, 0.85];
+    gl.uniform3f(meshP.u.uColor, lerp(steel[0], tc[0], 0.35), lerp(steel[1], tc[1], 0.35), lerp(steel[2], tc[2], 0.35));
+    gl.uniform3fv(meshP.u.uLight, light);
+    gl.bindVertexArray(toolVAO.vao);
+    gl.drawArrays(gl.TRIANGLES, 0, toolN);
+    gl.bindVertexArray(null);
+  }
+
+  /* lines: toolpath + wireframe + axes */
+  gl.useProgram(lineP.p);
+  gl.uniformMatrix4fv(lineP.u.uMVP, false, MVP);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.depthMask(false);
+  if (M && P.showPath && pathVAO && pathN){
+    if (linesDirty) fillPathColors();
+    gl.uniform1f(lineP.u.uNow, sim.t);
+    gl.uniform1f(lineP.u.uLift, Math.max(stock.w, stock.d) * 0.0007);
+    gl.bindVertexArray(pathVAO.vao);
+    if (P.showRapids) gl.drawArrays(gl.LINES, 0, pathN);
+    else {
+      /* draw only cut segs: they are interleaved, so draw all but rely on alpha 0 — cheaper: keep full draw */
+      gl.drawArrays(gl.LINES, 0, pathN);
+    }
+    gl.bindVertexArray(null);
+  }
+  gl.uniform1f(lineP.u.uNow, 0); gl.uniform1f(lineP.u.uLift, 0);
+  if (P.showWire && wireVAO && M){ gl.bindVertexArray(wireVAO.vao); gl.drawArrays(gl.LINES, 0, wireN); gl.bindVertexArray(null); }
+  gl.disable(gl.DEPTH_TEST);
+  if (axesVAO){ gl.bindVertexArray(axesVAO.vao); gl.drawArrays(gl.LINES, 0, axesN); gl.bindVertexArray(null); }
+  gl.enable(gl.DEPTH_TEST);
+  gl.depthMask(true);
+  gl.disable(gl.BLEND);
+}
+
+/* rapids hidden: rebuild colors with rapids alpha 0 */
+function applyRapidVis(){
+  linesDirty = true;
+}
+
+/* ===================================================== playback */
+let M = null, playing = false, lastFrame = 0, curLn = -1;
+function lastDone(t){
+  if (!M || !M.n) return -1;
+  let lo = 0, hi = M.n - 1, r = -1;
+  while (lo <= hi){ const mid = (lo + hi) >> 1; if (M.t1[mid] <= t + 1e-9){ r = mid; lo = mid + 1; } else hi = mid - 1; }
+  return r;
+}
+function curSeg(){
+  if (!M || !M.n) return -1;
+  return clamp(lastDone(sim.t) + (sim.t < M.total ? 1 : 0), 0, M.n - 1);
+}
+function simPos(){
+  if (!M || !M.n) return { x: 0, y: 0, z: 5, tool: 1 };
+  const i = curSeg();
+  const u = clamp((sim.t - M.t0[i]) / Math.max(M.t1[i] - M.t0[i], 1e-9), 0, 1);
+  return {
+    x: lerp(M.sx[i], M.ex[i], u), y: lerp(M.sy[i], M.ey[i], u), z: lerp(M.sz[i], M.ez[i], u),
+    tool: M.ta[i], seg: i,
+  };
+}
+function setPlaying(p){
+  if (!M || !M.n) p = false;
+  playing = p;
+  $('icoPlay').style.display = p ? 'none' : '';
+  $('icoPause').style.display = p ? '' : 'none';
+}
+function setSim(t, opts){
+  if (!M) return;
+  const prev = sim.t;
+  sim.t = clamp(t, 0, M.total);
+  if (!(opts && opts.skip)){
+    for (const pt of M.pauseT){
+      if (pt > prev + 1e-9 && pt <= sim.t){
+        sim.t = pt; setPlaying(false);
+        toast('M0 — program pause. Press play to continue.', 'warn');
+        break;
+      }
+    }
+    if (P.pauseTC) for (const c of M.tcT){
+      if (c.time > Math.max(prev, 0.4) + 1e-9 && c.time <= sim.t){
+        sim.t = c.time; setPlaying(false);
+        showTCBanner(c);
+        break;
+      }
+    }
+  }
+  updatePlaybar();
+}
+function showTCBanner(c){
+  const td = toolDef(c.tool);
+  $('bnTitle').textContent = 'Tool change — T' + c.tool;
+  $('bnText').textContent = 'Line ' + (c.line + 1) + ': load T' + c.tool + ' (' +
+    (td.type === 'v' ? td.ang + '° V-bit' : td.type === 'ball' ? 'ball nose' : 'flat end mill') +
+    ', Ø' + nf(td.dia, 2) + ' mm), then resume — or run the whole program without stopping.';
+  $('banner').style.display = 'flex';
+}
+on($('bnGo'), 'click', () => { $('banner').style.display = 'none'; setSim(sim.t + 0.01, { skip: true }); setPlaying(true); });
+on($('bnCont'), 'click', () => {
+  $('banner').style.display = 'none';
+  P.pauseTC = false; $('pauseTC').checked = false; savePrefs();
+  setSim(sim.t + 0.01, { skip: true }); setPlaying(true);
+});
+
+function updatePlaybar(){
+  if (!M){ $('tlab').textContent = '0:00 / 0:00'; $('llab').textContent = 'L — / —'; return; }
+  $('prog').value = M.total ? sim.t / M.total * 1000 : 0;
+  $('tlab').innerHTML = '<b>' + fmtT(sim.t) + '</b> / ' + fmtT(M.total);
+  const p = simPos();
+  $('rX').value = nf(p.x, 3); $('rY').value = nf(p.y, 3); $('rZ').value = nf(p.z, 3);
+  const i = p.seg !== undefined ? p.seg : 0;
+  const ln = M.n ? M.ln[i] : -1;
+  $('llab').textContent = 'L ' + (ln >= 0 ? ln + 1 : '—') + ' / ' + M.lineCount;
+  /* readouts */
+  if (M.n){
+    const td = toolDef(M.ta[i]);
+    $('rT').value = 'T' + M.ta[i] + ' (' + (td.type === 'v' ? td.ang + '°V' : td.type) + ')';
+    $('rDia').value = nf(td.dia, 2);
+    $('rS').value = M.s[i] > 0 ? nf(M.s[i], 0) : '—';
+    $('rF').value = M.f[i] > 0 ? nf(M.f[i], 0) : '—';
+    $('rPl').value = M.pf[i] > 0 ? nf(M.pf[i], 0) : '—';
+    $('rChip').value = (M.s[i] > 0 && M.f[i] > 0) ? (M.f[i] / (M.s[i] * td.flutes)).toFixed(4) : '—';
+  }
+}
+function frame(ts){
+  requestAnimationFrame(frame);
+  const dt = Math.min((ts - lastFrame) / 1000, 0.25); lastFrame = ts;
+  if (!gl) return;
+  if (playing && M){
+    setSim(sim.t + dt * (+$('speed').value));
+    if (sim.t >= M.total) setPlaying(false);
+  }
+  if (M && H){
+    const behind = sim.carveT < sim.t - 1e-6 || sim.t < sim.carveT - 1e-6;
+    const done = carveTick(24);
+    $('busy').style.display = done ? 'none' : 'block';
+    if (!done){
+      const pct = M.total ? Math.round(sim.carveT / Math.max(sim.t, 1e-9) * 100) : 100;
+      $('busy').textContent = 'simulating… ' + Math.min(pct, 99) + '%';
+    }
+    uploadH();
+  }
+  draw();
+  const p = cam.persp && !cam.mode2d ? 'perspective' : 'orthographic';
+  $('axhint').innerHTML = (cam.mode2d ? '2D top · ' : '3D · ') + p +
+    ' · <b>yaw</b> ' + nf(cam.yaw % 360, 0) + '° <b>pitch</b> ' + nf(cam.pitch, 0) + '°';
+}
+requestAnimationFrame(ts => { lastFrame = ts; requestAnimationFrame(frame); });
+
+/* ===================================================== input */
+let drag = 0, dragX = 0, dragY = 0;
+on(cvs, 'pointerdown', e => {
+  drag = (e.button === 2 || e.shiftKey || e.button === 1) ? 2 : 1;
+  dragX = e.clientX; dragY = e.clientY;
+  cvs.setPointerCapture(e.pointerId);
+});
+on(cvs, 'pointermove', e => {
+  if (!drag) return;
+  const dx = e.clientX - dragX, dy = e.clientY - dragY;
+  dragX = e.clientX; dragY = e.clientY;
+  if (drag === 1 && !cam.mode2d){
+    cam.yaw -= dx * 0.4; cam.pitch = clamp(cam.pitch + dy * 0.35, -89.9, 89.9);
+  } else {
+    /* pan in camera plane */
+    const hh = (cam.persp && !cam.mode2d)
+      ? Math.tan(cam.fov / 2) * cam.dist : cam.dist * Math.tan(cam.fov / 2);
+    const sc = 2 * hh / (VH / dpr);
+    const y = cam.yaw * Math.PI / 180, p = clamp(cam.pitch, -89.9, 89.9) * Math.PI / 180;
+    const fwd = [-Math.cos(p) * Math.cos(y), -Math.cos(p) * Math.sin(y), -Math.sin(p)];
+    const right = v3norm(v3cross(fwd, [0, 0, 1]));
+    const up = v3cross(right, fwd);
+    cam.tgt[0] -= (right[0] * dx - up[0] * dy) * sc;
+    cam.tgt[1] -= (right[1] * dx - up[1] * dy) * sc;
+    cam.tgt[2] -= (right[2] * dx - up[2] * dy) * sc;
+  }
+});
+on(cvs, 'pointerup', () => drag = 0);
+on(cvs, 'contextmenu', e => e.preventDefault());
+on(cvs, 'wheel', e => {
+  e.preventDefault();
+  cam.dist = clamp(cam.dist * Math.pow(1.0015, e.deltaY), 1, 100000);
+}, { passive: false });
+on(window, 'keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === ' '){ e.preventDefault(); $('bPlay').click(); }
+  else if (e.key === 'f' || e.key === 'F') fitView();
+});
+on(window, 'resize', resize);
+
+/* ===================================================== stats & tools UI */
+function kv(k, v, c){ return '<div class="kv"><span class="k">' + k + '</span><span class="v' + (c ? ' ' + c : '') + '">' + v + '</span></div>'; }
+function fmtLen(mm){ return mm >= 1000 ? nf(mm / 1000, 2) + ' m' : nf(mm, 1) + ' mm'; }
+function fillStats(){
+  if (!M){ $('fileKv').innerHTML = kv('No file loaded', ''); return; }
+  const fl = M.flags, c = M.cnt;
+  $('fileKv').innerHTML =
+    kv('Name', esc(M.name)) +
+    kv('Size', M.bytes > 1 << 20 ? nf(M.bytes / (1 << 20), 2) + ' MB' : nf(M.bytes / 1024, 1) + ' KB') +
+    kv('Lines', M.lineCount.toLocaleString()) +
+    kv('Units', fl.inch ? 'inches (shown in mm)' : 'mm') +
+    kv('Program end', fl.end || 'none', fl.end ? 'dim' : 'warn') +
+    (M.boundsCut ? kv('Cut area', nf(M.boundsCut[2] - M.boundsCut[0], 1) + ' × ' + nf(M.boundsCut[3] - M.boundsCut[1], 1) + ' mm') : '') +
+    (M.zRange ? kv('Cut Z', nf(M.zRange[0], 2) + ' … ' + nf(M.zRange[1], 2)) : '') +
+    kv('Moves', (c[0] + c[5]).toLocaleString() + ' rapid · ' + (c[1] + c[4]).toLocaleString() + ' cut · ' + (c[2] + c[3]).toLocaleString() + ' arc') +
+    kv('Cut / rapid length', fmtLen(M.cutLen) + ' · ' + fmtLen(M.rapidLen), 'dim') +
+    kv('Tool changes', M.toolChanges.length ? M.toolChanges.map(x => 'T' + x.t).join(' → ') : 'none', 'dim') +
+    (M.pauses.length ? kv('M0 pauses', M.pauses.length, 'warn') : '') +
+    (sim.crashes.size ? kv('Rapid crashes', sim.crashes.size + ' move' + (sim.crashes.size > 1 ? 's' : ''), 'bad') : '') +
+    kv('Estimated time', '<b>' + fmtT(M.total) + '</b>');
+  const ul = $('warns'); ul.innerHTML = '';
+  if (M.warns.size){
+    $('nowarn').style.display = 'none';
+    for (const [, w] of M.warns){
+      const li = document.createElement('li');
+      li.innerHTML = esc(w.msg) + ' <span class="wl">· line ' + (w.line + 1) + (w.count > 1 ? ' · ×' + w.count : '') + '</span>';
+      ul.appendChild(li);
+    }
+  } else $('nowarn').style.display = '';
+}
+function fillTools(){
+  const box = $('toolrows'); box.innerHTML = '';
+  const list = M ? M.toolList : [];
+  if (!list.length){ box.innerHTML = '<div class="mini">No tools yet — load a file.</div>'; return; }
+  for (const t of list){
+    const td = toolDef(t);
+    const row = document.createElement('div'); row.className = 'trow';
+    row.innerHTML =
+      '<span class="tdot" style="background:' + toolColor(t) + '"></span>' +
+      '<span class="tnum">T' + t + '</span>' +
+      '<select data-k="type"><option value="flat"' + (td.type === 'flat' ? ' selected' : '') + '>Flat</option>' +
+      '<option value="ball"' + (td.type === 'ball' ? ' selected' : '') + '>Ball</option>' +
+      '<option value="v"' + (td.type === 'v' ? ' selected' : '') + '>V-bit</option></select>' +
+      '<span class="tl">Ø</span><input class="w52" data-k="dia" type="number" step="0.1" min="0.1" value="' + td.dia + '">' +
+      '<span class="tl vv">∠</span><input class="w44 vv" data-k="ang" type="number" step="5" min="5" max="170" value="' + td.ang + '">' +
+      '<span class="tl">fl</span><input class="w36" data-k="flutes" type="number" step="1" min="1" max="12" value="' + td.flutes + '">';
+    const setVis = () => row.querySelectorAll('.vv').forEach(el => el.style.display = row.querySelector('[data-k=type]').value === 'v' ? '' : 'none');
+    setVis();
+    row.querySelectorAll('select,input').forEach(el => on(el, 'change', () => {
+      const d = P.tools[t] = Object.assign({}, P.tools[t]);
+      d[el.dataset.k] = el.dataset.k === 'type' ? el.value : +el.value;
+      savePrefs(); setVis();
+      toolMeshKey = '';
+      resetCarve();               // diameters changed → recarve to current time
+      fillStats();
+    }));
+    box.appendChild(row);
+  }
+}
+
+/* ===================================================== loading */
+function load(name, text){
+  let m;
+  try { m = parse(text, name); }
+  catch (err){ toast('Could not parse: ' + err.message, 'bad'); return; }
+  if (!m.n){ toast('No motion found — this does not look like executable G-code.', 'warn'); }
+  M = m;
+  computeTimes(M, P.rapidRate);
+  sim.t = 0; sim.crashToasted = false;
+  setPlaying(false);
+  $('banner').style.display = 'none';
+  autoStock();
+  RES = P.res;
+  buildStockGeo(); resetCarve(); buildAxes(); buildPathVBO();
+  stockUI(); fillTools(); fillStats(); updatePlaybar();
+  set2D(cam.mode2d);
+  $('empty').classList.add('hide');
+  $('fname').textContent = name;
+  document.title = name + ' — G-code Simulator';
+  toast(name + ' — ' + M.n.toLocaleString() + ' segments, ' + M.toolList.length + ' tool' + (M.toolList.length > 1 ? 's' : '') + ', est. ' + fmtT(M.total));
+}
+on($('bOpen'), 'click', () => $('file').click());
+on($('file'), 'change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  f.text().then(t => load(f.name, t));
+  e.target.value = '';
+});
+on(window, 'paste', e => {
+  const t = (e.clipboardData || window.clipboardData).getData('text');
+  if (t && t.trim()){ e.preventDefault(); load('pasted.gcode', t); }
+});
+let dragDepth = 0;
+on(window, 'dragenter', e => { e.preventDefault(); if (++dragDepth) $('drop').classList.add('on'); });
+on(window, 'dragover', e => e.preventDefault());
+on(window, 'dragleave', e => { e.preventDefault(); if (--dragDepth <= 0){ dragDepth = 0; $('drop').classList.remove('on'); } });
+on(window, 'drop', e => {
+  e.preventDefault(); dragDepth = 0; $('drop').classList.remove('on');
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f) f.text().then(t => load(f.name, t));
+});
+
+/* ===================================================== controls wiring */
+on($('bFit'), 'click', fitView);
+on($('bDemo'), 'click', () => {
+  P.tools[1] = Object.assign({ type: 'flat', dia: 6, flutes: 2 }, null);
+  P.tools[2] = Object.assign({ type: 'v', dia: 6, ang: 60, flutes: 2 }, null);
+  savePrefs();
+  load('demo.nc', demo());
+});
+on($('b2d'), 'click', () => set2D(true));
+on($('b3d'), 'click', () => set2D(false));
+function setProj(persp){
+  cam.persp = persp; P.persp = persp; savePrefs();
+  $('bOrtho').classList.toggle('on', !persp);
+  $('bPersp').classList.toggle('on', persp);
+}
+on($('bOrtho'), 'click', () => setProj(false));
+on($('bPersp'), 'click', () => setProj(true));
+document.querySelectorAll('[data-vp]').forEach(b => on(b, 'click', () => { if (!cam.mode2d) setPreset(b.dataset.vp); else { set2D(false); setPreset(b.dataset.vp); } }));
+on($('bPlay'), 'click', () => {
+  if (!M || !M.n) return;
+  if (!playing && sim.t >= M.total) setSim(0, { skip: true });
+  setPlaying(!playing);
+});
+on($('prog'), 'input', e => { setPlaying(false); setSim(+e.target.value / 1000 * (M ? M.total : 0), { skip: true }); });
+function stepLine(dir){
+  if (!M || !M.n) return;
+  setPlaying(false);
+  const i = curSeg(), ln = M.ln[i];
+  let j = i;
+  if (dir > 0){ while (j < M.n && M.ln[j] === ln) j++; if (j >= M.n){ setSim(M.total, { skip: true }); return; } }
+  else {
+    j = i;
+    while (j > 0 && M.ln[j] === ln) j--;
+    const l2 = M.ln[j];
+    while (j > 0 && M.ln[j - 1] === l2) j--;
+  }
+  setSim(M.t0[j] + 1e-6, { skip: true });
+}
+on($('bStep'), 'click', () => stepLine(1));
+on($('bBack'), 'click', () => stepLine(-1));
+for (const [id, key] of [['pauseTC', 'pauseTC'], ['showTool', 'showTool'], ['showPath', 'showPath'], ['showWire', 'showWire']])
+  on($(id), 'change', e => { P[key] = e.target.checked; savePrefs(); });
+on($('showRapids'), 'change', e => { P.showRapids = e.target.checked; savePrefs(); applyRapidVis(); });
+on($('rapidRate'), 'change', e => {
+  P.rapidRate = clamp(+e.target.value || 3000, 100, 60000);
+  e.target.value = P.rapidRate; savePrefs();
+  if (M){
+    const frac = M.total ? sim.t / M.total : 0;
+    computeTimes(M, P.rapidRate);
+    buildPathVBO();
+    sim.t = frac * M.total;
+    resetCarve(); fillStats(); updatePlaybar();
+  }
+});
+on($('matSel'), 'change', e => { P.mat = e.target.value; savePrefs(); });
+on($('bAutoStock'), 'click', () => { autoStock(); RES = P.res; buildStockGeo(); resetCarve(); buildAxes(); stockUI(); });
+for (const id of ['stX', 'stY', 'stW', 'stD', 'stT', 'stH'])
+  on($(id), 'change', () => {
+    stock.x0 = +$('stX').value; stock.y0 = +$('stY').value;
+    stock.w = Math.max(+$('stW').value, 0.1); stock.d = Math.max(+$('stD').value, 0.1);
+    stock.top = +$('stT').value; stock.th = Math.max(+$('stH').value, 0.1);
+    stock.user = true;
+    buildStockGeo(); resetCarve(); buildAxes(); stockUI();
+  });
+on($('stRes'), 'input', e => {
+  RES = +e.target.value; P.res = RES; savePrefs();
+  buildStockGeo(); resetCarve(); stockUI();
+});
+for (const g of document.querySelectorAll('.grp>h3'))
+  on(g, 'click', () => g.parentElement.classList.toggle('col'));
+
+/* ===================================================== demo program */
+function demo(){
+  const L = [], put = s => L.push(s), cmt = s => L.push('(' + s + ')');
+  const n3 = x => nf(x, 3);
+  cmt('G-code Simulator - built-in demo');
+  cmt('T1 flat 6mm: face pocket + drill cycle, T2 60deg V-bit: engraving');
+  put('');
+  put('G90 G94 G17');
+  put('G21');
+  put('G0 Z6');
+  cmt('tool 1 - 6 mm flat end mill');
+  put('T1 M6');
+  put('S10000 M3');
+  put('G4 P1.5');
+  cmt('rounded-square pocket, 2 depth passes');
+  const cx = 32, cy = 40;
+  for (let pass = 0; pass < 2; pass++){
+    const zc = pass ? -3 : -1.5;
+    cmt('pass ' + (pass + 1) + ' of 2, Z' + n3(zc));
+    for (let ring = 0; ring < 3; ring++){
+      const hf = 18 - ring * 4.6, r = Math.max(6 - ring * 2, 1.2);
+      put('G0 Z1');
+      put('G0 X' + n3(cx - hf + r) + ' Y' + n3(cy - hf));
+      put('G1 Z' + n3(zc) + ' F250');
+      put('G1 X' + n3(cx + hf - r) + ' Y' + n3(cy - hf) + ' F900');
+      put('G3 X' + n3(cx + hf) + ' Y' + n3(cy - hf + r) + ' I0 J' + n3(r));
+      put('G1 X' + n3(cx + hf) + ' Y' + n3(cy + hf - r));
+      put('G3 X' + n3(cx + hf - r) + ' Y' + n3(cy + hf) + ' I' + n3(-r) + ' J0');
+      put('G1 X' + n3(cx - hf + r) + ' Y' + n3(cy + hf));
+      put('G3 X' + n3(cx - hf) + ' Y' + n3(cy + hf - r) + ' I0 J' + n3(-r));
+      put('G1 X' + n3(cx - hf) + ' Y' + n3(cy - hf + r));
+      put('G3 X' + n3(cx - hf + r) + ' Y' + n3(cy - hf) + ' I' + n3(r) + ' J0');
+    }
+  }
+  put('G0 Z6');
+  cmt('drill row - canned cycle G81');
+  put('G98 G81 X58 Y12 Z-4.2 R1 F220');
+  put('X58 Y26'); put('X58 Y40'); put('X58 Y54'); put('X58 Y68');
+  put('G80');
+  put('G0 Z6');
+  cmt('tool 2 - 60 deg V-bit');
+  put('T2 M6');
+  put('S16000 M3');
+  put('G4 P1.5');
+  cmt('wave engraving, depth varies along each line');
+  let px = 66;
+  for (let r = 0; r < 9; r++){
+    const yb = 10 + r * 7.4;
+    const pts = [];
+    for (let j = 0; j <= 40; j++){
+      const xx = 68 + j * (46 / 40);
+      const yy = yb + 1.6 * Math.sin(j * 0.3 + r * 1.2);
+      const d = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(j * 0.45 + r * 0.7));
+      pts.push([xx, yy, -d]);
+    }
+    const seq = Math.abs(pts[pts.length - 1][0] - px) < Math.abs(pts[0][0] - px) ? pts.reverse() : pts;
+    put('G0 Z1');
+    put('G0 X' + n3(seq[0][0]) + ' Y' + n3(seq[0][1]));
+    put('G1 Z' + n3(seq[0][2]) + ' F250');
+    let f = true;
+    for (let j = 1; j < seq.length; j++){
+      put('G1 X' + n3(seq[j][0]) + ' Y' + n3(seq[j][1]) + ' Z' + n3(seq[j][2]) + (f ? ' F700' : ''));
+      f = false;
+    }
+    px = seq[seq.length - 1][0];
+  }
+  cmt('ring engraving');
+  put('G0 Z1');
+  put('G0 X108 Y40');
+  put('G1 Z-0.9 F250');
+  put('G2 X74 Y40 I-17 J0 F600');
+  put('G2 X108 Y40 I17 J0');
+  put('G0 Z6');
+  put('M5');
+  put('G0 X0 Y0');
+  put('M30');
+  put('%');
+  return L.join('\n') + '\n';
+}
+
+/* ===================================================== boot */
+$('pauseTC').checked = P.pauseTC;
+$('showTool').checked = P.showTool;
+$('showPath').checked = P.showPath;
+$('showRapids').checked = P.showRapids;
+$('showWire').checked = P.showWire;
+$('rapidRate').value = P.rapidRate;
+$('matSel').value = P.mat;
+setProj(P.persp);
+if (gl){ buildStockGeo(); buildAxes(); stockUI(); fitView(); }
+fillTools();
+</script>
+</body>
+</html>

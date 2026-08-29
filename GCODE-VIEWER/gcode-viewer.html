@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G-code Viewer</title>
+<style>
+:root{
+  --bg:#0f1220; --bg2:#151a2e; --bg3:#1b2138; --line:#2a3154; --line2:#39416b;
+  --tx:#e8eaf6; --tx2:#969db8; --tx3:#6e7699;
+  --acc:#6c7bff; --acc2:#4d59c9; --cy:#38d9d3; --warn:#ffb454; --bad:#ff6b81; --ok:#4ade80;
+  --sb:280px; --cw:340px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--tx);
+  font:13px/1.45 "Segoe UI",system-ui,-apple-system,sans-serif;
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+button,input,select{font:inherit;color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:5px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--line2)}
+
+#app{display:flex;flex-direction:column;height:100%}
+#top{
+  display:flex;align-items:center;gap:8px;padding:0 12px;height:46px;flex:none;
+  background:linear-gradient(180deg,#191f36,#141930);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:650;letter-spacing:.2px;white-space:nowrap}
+.brand svg{width:22px;height:22px;flex:none}
+@media(max-width:1000px){.brand span{display:none}}
+.sep{width:1px;height:24px;background:var(--line);flex:none}
+.grow{flex:1}
+.fname{color:var(--tx2);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:34vw}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:7px 12px;border-radius:7px;background:var(--bg3);border:1px solid var(--line2);
+  cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s;font-size:12.5px;
+}
+.btn:hover:not(:disabled){background:#28304f;border-color:#4b5488}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+.btn.pri{background:linear-gradient(180deg,var(--acc2),#3b45a8);border-color:var(--acc);color:#fff;font-weight:600}
+.btn.pri:hover:not(:disabled){background:var(--acc2)}
+.btn.ico{padding:6px 8px}
+.btn.gh{background:transparent;border-color:var(--line)}
+.btn.gh:hover:not(:disabled){background:var(--bg3)}
+.btn.on{background:var(--acc2);border-color:var(--acc);color:#fff}
+.btn svg{width:14px;height:14px;flex:none}
+
+#main{flex:1;display:flex;min-height:0}
+#side{
+  width:var(--sb);flex:none;background:var(--bg2);border-right:1px solid var(--line);
+  overflow-y:auto;overflow-x:hidden;padding:10px 11px 26px;
+}
+.grp{margin:0 0 12px;border:1px solid var(--line);border-radius:9px;background:#12172a;overflow:hidden}
+.grp>h3{
+  margin:0;padding:8px 10px;font-size:11px;font-weight:650;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--tx3);background:#161c33;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;
+}
+.grp>h3 .cv{margin-left:auto;transition:transform .15s;opacity:.6}
+.grp.col>h3 .cv{transform:rotate(-90deg)}
+.grp.col>.gb{display:none}
+.gb{padding:9px 10px}
+.kv{display:flex;gap:8px;align-items:baseline;margin:0 0 5px;font-size:12px}
+.kv:last-child{margin-bottom:0}
+.kv .k{color:var(--tx2);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kv .v{color:var(--tx);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kv .v.dim{color:var(--tx3)}
+.kv .v.warn{color:var(--warn)}
+.ctl{margin:0 0 9px}
+.ctl:last-child{margin-bottom:0}
+.clab{display:block;font-size:12px;color:var(--tx2);margin:0 0 4px}
+select.inp,input.inp{
+  width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:6px;
+  padding:5px 7px;font-size:12.5px;outline:none;
+}
+select.inp:focus,input.inp:focus{border-color:var(--acc)}
+.chkrow{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--tx2);margin:0 0 7px;cursor:pointer;user-select:none}
+.chkrow:last-child{margin-bottom:0}
+.chkrow input{accent-color:var(--acc)}
+.chkrow:hover{color:var(--tx)}
+#legend{margin-top:8px}
+#legbar{height:10px;border-radius:5px;border:1px solid var(--line);margin:0 0 4px}
+#leglab{display:flex;justify-content:space-between;font-size:11px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.legsw{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--tx2);margin:3px 0}
+.legsw i{width:18px;height:0;border-top:2.5px solid;flex:none;border-radius:2px}
+.legsw i.dash{border-top-style:dashed}
+.legsw i.dot{width:7px;height:7px;border:none;border-radius:50%}
+#warns{list-style:none;margin:0;padding:0}
+#warns li{
+  margin:0 0 6px;padding:6px 8px;border-radius:6px;background:#1c1a2b;border:1px solid #4a3a55;
+  color:var(--warn);font-size:11.5px;line-height:1.4;cursor:pointer;
+}
+#warns li:hover{border-color:var(--warn)}
+#warns li .wl{color:var(--tx3);font-size:10.5px}
+#nowarn{color:var(--ok);font-size:12px}
+.foot{color:var(--tx3);font-size:11px;line-height:1.7;margin-top:2px}
+.foot kbd{background:var(--bg3);border:1px solid var(--line2);border-bottom-width:2px;padding:0 4px;border-radius:4px;font-size:10px;color:var(--tx)}
+
+#viewwrap{flex:1;position:relative;min-width:0;background:#0b0e1a}
+#cv,#ov{position:absolute;inset:0;width:100%;height:100%}
+#ov{cursor:crosshair}
+#tip{
+  position:absolute;pointer-events:none;display:none;z-index:5;max-width:340px;
+  background:#1b2138ee;border:1px solid var(--line2);border-radius:7px;padding:6px 9px;
+  font:11.5px/1.5 ui-monospace,Consolas,monospace;color:var(--tx);box-shadow:0 6px 22px #0009;
+  white-space:nowrap;
+}
+#tip .t2{color:var(--tx3)}
+#empty{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  color:var(--tx3);text-align:center;padding:20px;
+}
+#empty svg{width:54px;height:54px;opacity:.4}
+#empty b{color:var(--tx2);font-weight:600;font-size:15px}
+#empty.hide{display:none}
+
+#code{
+  width:var(--cw);flex:none;background:var(--bg2);border-left:1px solid var(--line);
+  display:flex;flex-direction:column;min-height:0;
+}
+#code.hide{display:none}
+#code header{
+  flex:none;display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--line);
+  font-size:11px;font-weight:650;letter-spacing:.8px;text-transform:uppercase;color:var(--tx3);
+}
+#code header .cnt{margin-left:auto;font-weight:400;text-transform:none;letter-spacing:0;font-variant-numeric:tabular-nums}
+#clist{flex:1;overflow:auto;position:relative;font:11.5px/17px ui-monospace,Consolas,monospace}
+#cspace{width:1px}
+#cwin{position:absolute;left:0;right:0;top:0}
+.row{display:flex;height:17px;white-space:pre;cursor:pointer;padding:0 8px 0 0}
+.row:hover{background:#1b2138}
+.row .num{
+  flex:none;width:52px;text-align:right;padding-right:9px;color:#4d5578;user-select:none;
+  border-right:1px solid #1e2440;margin-right:8px;
+}
+.row .tx{overflow:hidden;text-overflow:ellipsis}
+.row.c .tx{color:var(--tx3);font-style:italic}
+.row.g0 .tx{color:var(--tx2)}
+.row.g1 .tx{color:var(--tx)}
+.row.arc .tx{color:var(--cy)}
+.row.m .tx{color:var(--warn)}
+.row.o .tx{color:var(--tx2)}
+.row.sel{background:#232b4c}
+.row.sel .num{color:var(--acc)}
+.row.cur{background:#1a2c2f}
+.row.cur .num{color:var(--cy)}
+.row.hl{background:#26224a}
+
+#playbar{
+  flex:none;display:flex;align-items:center;gap:10px;height:44px;padding:0 12px;
+  background:#12172a;border-top:1px solid var(--line);
+}
+#playbar input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1;min-width:0;height:18px;background:transparent;cursor:pointer;margin:0;
+}
+#playbar input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--bg3);border:1px solid var(--line)}
+#playbar input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--acc);
+  border:2px solid #fff2;margin-top:-5.5px;
+}
+#playbar input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--bg3);border:1px solid var(--line)}
+#playbar input[type=range]::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:var(--acc);border:2px solid #fff2}
+.pbtx{font-size:11.5px;color:var(--tx2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pbtx b{color:var(--tx);font-weight:600}
+#speed{width:64px}
+#coords{min-width:170px;text-align:right;font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--tx3)}
+
+#drop{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:40;
+  background:#0f1220cc;border:3px dashed var(--acc);color:var(--tx);font-size:18px;font-weight:600;
+}
+#drop.on{display:flex}
+#toast{
+  position:fixed;left:50%;bottom:58px;transform:translateX(-50%);z-index:50;display:none;
+  background:#1b2138;border:1px solid var(--line2);border-radius:8px;padding:8px 14px;
+  font-size:12.5px;box-shadow:0 8px 30px #000a;max-width:70vw;
+}
+#toast.warn{border-color:var(--warn);color:var(--warn)}
+@media(max-width:1180px){:root{--cw:280px}}
+@media(max-width:980px){:root{--sb:240px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="top">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#6c7bff" stroke-width="1.7" stroke-linecap="round">
+        <path d="M3 17c4-9 7 4 11-6" stroke="#38d9d3"/>
+        <path d="M14 11a4.5 4.5 0 1 0 6.5 4"/>
+        <circle cx="3" cy="17" r="1.4" fill="#38d9d3" stroke="none"/>
+      </svg>
+      <span>G-code Viewer</span>
+    </div>
+    <div class="sep"></div>
+    <button class="btn pri" id="bOpen" title="Open a G-code file (.nc, .gcode, .ngc, .tap)">Open…</button>
+    <button class="btn" id="bPaste" title="Load G-code from the clipboard (or just press Ctrl+V)">Paste</button>
+    <button class="btn" id="bDemo" title="Load a built-in demo program (mill, grbl dialect, arcs + passes)">Demo</button>
+    <div class="sep"></div>
+    <button class="btn" id="bFit" title="Fit the toolpath in the view (F)">Fit</button>
+    <div class="grow"></div>
+    <span class="fname" id="fname"></span>
+    <button class="btn gh ico" id="bCode" title="Show / hide the G-code text pane">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
+    </button>
+    <input type="file" id="file" accept=".nc,.gcode,.gc,.ngc,.tap,.cnc,.txt" hidden>
+  </div>
+
+  <div id="main">
+    <div id="side">
+      <div class="grp" id="gFile">
+        <h3>File <span class="cv">▾</span></h3>
+        <div class="gb" id="fileKv"><div class="kv"><span class="k">No file loaded</span></div></div>
+      </div>
+      <div class="grp" id="gPath">
+        <h3>Toolpath <span class="cv">▾</span></h3>
+        <div class="gb" id="pathKv"><div class="kv"><span class="k">—</span></div></div>
+      </div>
+      <div class="grp" id="gTime">
+        <h3>Moves &amp; time <span class="cv">▾</span></h3>
+        <div class="gb">
+          <div id="timeKv"><div class="kv"><span class="k">—</span></div></div>
+          <div class="ctl" style="margin-top:9px">
+            <label class="clab" for="rapidRate" title="G0 speed is machine-defined, not in the file; this assumption is used for the time estimate and playback">Assumed rapid rate (mm/min)</label>
+            <input class="inp" id="rapidRate" type="number" min="100" step="100" value="3000">
+          </div>
+        </div>
+      </div>
+      <div class="grp" id="gView">
+        <h3>View <span class="cv">▾</span></h3>
+        <div class="gb">
+          <div class="ctl">
+            <label class="clab" for="colorMode">Color cuts by</label>
+            <select class="inp" id="colorMode">
+              <option value="type">Move type</option>
+              <option value="z">Z depth</option>
+              <option value="feed">Feed rate</option>
+              <option value="power">Power (S)</option>
+            </select>
+          </div>
+          <label class="chkrow"><input type="checkbox" id="showRapids" checked> Show rapid moves</label>
+          <label class="chkrow"><input type="checkbox" id="showPlunges" checked> Show plunge points</label>
+          <label class="chkrow"><input type="checkbox" id="follow" checked> Follow playback in text</label>
+          <div id="legend"></div>
+        </div>
+      </div>
+      <div class="grp" id="gWarn">
+        <h3>Warnings <span class="cv">▾</span></h3>
+        <div class="gb"><ul id="warns"></ul><div id="nowarn">None</div></div>
+      </div>
+      <div class="foot">
+        <kbd>F</kbd> fit · <kbd>Space</kbd> play/pause · <kbd>↑</kbd><kbd>↓</kbd> step lines ·
+        <kbd>Esc</kbd> deselect · drag pans · wheel zooms · double-click zooms in
+      </div>
+    </div>
+
+    <div id="viewwrap">
+      <canvas id="cv"></canvas>
+      <canvas id="ov"></canvas>
+      <div id="tip"></div>
+      <div id="empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        <b>No G-code loaded</b>
+        <div>Drop a .nc / .gcode file here, use <b>Open…</b>, paste with Ctrl+V,<br>or load the built-in <b>Demo</b>.</div>
+      </div>
+    </div>
+
+    <div id="code">
+      <header>G-code <span class="cnt" id="lcount"></span></header>
+      <div id="clist"><div id="cspace"></div><div id="cwin"></div></div>
+    </div>
+  </div>
+
+  <div id="playbar">
+    <button class="btn ico" id="bPlay" title="Play / pause (Space)">
+      <svg id="icoPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="icoPause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <select class="inp" id="speed" title="Playback speed">
+      <option value="1">1×</option><option value="2">2×</option><option value="5">5×</option>
+      <option value="10" selected>10×</option><option value="50">50×</option><option value="200">200×</option>
+    </select>
+    <input type="range" id="prog" min="0" max="1000" value="1000" step="any">
+    <span class="pbtx" id="tlab">0:00 / 0:00</span>
+    <span class="pbtx" id="llab"></span>
+    <span id="coords"></span>
+  </div>
+</div>
+
+<div id="drop">Drop G-code file to load</div>
+<div id="toast"></div>
+
+<script>
+'use strict';
+/* ===================================================== helpers */
+const $ = id => document.getElementById(id);
+const on = (el, ev, fn, o) => el.addEventListener(ev, fn, o);
+const clamp = (x, a, b) => x < a ? a : x > b ? b : x;
+const lerp = (a, b, t) => a + (b - a) * t;
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function nf(x, p = 2){
+  let s = x.toFixed(p);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return s === '-0' ? '0' : s;
+}
+function fmtT(sec){
+  sec = Math.max(0, Math.round(sec));
+  const h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), s = sec % 60;
+  return h ? h + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0')
+           : m + ':' + String(s).padStart(2, '0');
+}
+function hexRGB(h){ return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+function rampColor(stops, t){
+  t = clamp(t, 0, 1) * (stops.length - 1);
+  const i = Math.min(stops.length - 2, Math.floor(t)), f = t - i;
+  const a = hexRGB(stops[i]), b = hexRGB(stops[i + 1]);
+  return 'rgb(' + Math.round(lerp(a[0], b[0], f)) + ',' + Math.round(lerp(a[1], b[1], f)) + ',' + Math.round(lerp(a[2], b[2], f)) + ')';
+}
+let toastT = 0;
+function toast(msg, warn){
+  const t = $('toast');
+  t.textContent = msg; t.className = warn ? 'warn' : ''; t.style.display = 'block';
+  clearTimeout(toastT); toastT = setTimeout(() => t.style.display = 'none', warn ? 4200 : 2600);
+}
+
+/* ===================================================== prefs */
+const P = { colorMode: 'type', showRapids: true, showPlunges: true, follow: true, rapidRate: 3000, codeOpen: true };
+try { Object.assign(P, JSON.parse(localStorage.getItem('gcv-prefs') || '{}')); } catch (e) {}
+function savePrefs(){ try { localStorage.setItem('gcv-prefs', JSON.stringify(P)); } catch (e) {} }
+
+/* ===================================================== parser
+   Modal G-code parser normalised to mm. Understands what the house tools emit
+   (Linear Half Toner: grbl / mach3 / linuxcnc / marlin dialects) plus standard
+   extras: G91, R-form arcs, S-only lines, N numbers, * checksums, % wrappers.
+   Rotary A/B/C words (the NOVELTECH arm dialect) are deliberately NOT motion —
+   they need forward kinematics; the parser flags them instead.               */
+const TY = { RAPID: 0, CUT: 1, CW: 2, CCW: 3, PLUNGE: 4, ZRAPID: 5 };
+const WORD_RE = /([A-Za-z])\s*([+-]?(?:\d+\.?\d*|\.\d+))/g;
+const ARC_TOL = 0.02, MAX_ARC_SEGS = 512;
+
+function parse(text, name){
+  const rawLines = text.split(/\r\n|\r|\n/);
+  const n = rawLines.length;
+  const disp = new Array(n), cls = new Array(n), LR = new Array(n).fill(null);
+  const SX = [], SY = [], SZ = [], EX = [], EY = [], EZ = [], FA = [], SA = [], TYA = [], LNA = [], DW = [];
+  const warns = new Map(), pauses = [], toolChanges = [];
+  const flags = { semi: false, paren: false, pct: false, nnum: false, end: '', spindle: 0, feed0: false, inch: false };
+  const ignored = new Map();
+  let x = 0, y = 0, z = 0, unit = 1, abs = true, motion = -1, feed = 0, power = 0, tool = 0;
+  let pendDwell = 0, pendPause = false, dwellTotal = 0, trailDwell = 0;
+
+  function warn(key, msg, ln){
+    const w = warns.get(key);
+    if (w) w.count++;
+    else warns.set(key, { msg, line: ln, count: 1 });
+  }
+  function push(ax, ay, az, bx, by, bz, ty, ln){
+    const dxy = Math.hypot(bx - ax, by - ay);
+    if (dxy < 1e-9){
+      if (Math.abs(bz - az) < 1e-9) return;                    // true zero move
+      ty = ty === TY.RAPID ? TY.ZRAPID : TY.PLUNGE;
+    }
+    SX.push(ax); SY.push(ay); SZ.push(az); EX.push(bx); EY.push(by); EZ.push(bz);
+    FA.push(feed); SA.push(power); TYA.push(ty); LNA.push(ln);
+    DW.push(pendDwell); pendDwell = 0;
+    if (pendPause){ pauses.push({ seg: SX.length - 1, line: ln }); pendPause = false; }
+    const lr = LR[ln]; if (lr) lr[1] = SX.length; else LR[ln] = [SX.length - 1, SX.length];
+  }
+  function arcMove(mo, nx, ny, nz, I, J, R, ln){
+    let cx, cy;
+    if (I !== null || J !== null){ cx = x + (I || 0); cy = y + (J || 0); }
+    else if (R !== null){
+      const dx = nx - x, dy = ny - y, q = Math.hypot(dx, dy);
+      if (q < 1e-9){ warn('arc-r0', 'R-form arc with zero chord — drawn as a line', ln); return push(x, y, z, nx, ny, nz, TY.CUT, ln); }
+      let h2 = R * R - q * q / 4;
+      if (h2 < 0){
+        if (h2 > -Math.abs(R) * q * 0.01) h2 = 0;
+        else { warn('arc-rr', 'R smaller than half the chord — arc drawn as a line', ln); return push(x, y, z, nx, ny, nz, TY.CUT, ln); }
+      }
+      const h = Math.sqrt(h2), k = (mo === 3 ? 1 : -1) * (R < 0 ? -1 : 1);
+      cx = (x + nx) / 2 + k * h * (-dy / q);
+      cy = (y + ny) / 2 + k * h * ( dx / q);
+    } else {
+      warn('arc-no', 'G2/G3 without I/J or R — drawn as a line', ln);
+      return push(x, y, z, nx, ny, nz, TY.CUT, ln);
+    }
+    const r0 = Math.hypot(x - cx, y - cy), r1 = Math.hypot(nx - cx, ny - cy);
+    if (r0 < 1e-9) return push(x, y, z, nx, ny, nz, TY.CUT, ln);
+    const a0 = Math.atan2(y - cy, x - cx), a1 = Math.atan2(ny - cy, nx - cx);
+    let sw = a1 - a0;
+    if (mo === 3){ while (sw <= 1e-12) sw += Math.PI * 2; }
+    else        { while (sw >= -1e-12) sw -= Math.PI * 2; }
+    const rM = Math.max(r0, r1);
+    const dA = 2 * Math.acos(clamp(1 - ARC_TOL / Math.max(rM, ARC_TOL), -1, 1));
+    const steps = clamp(Math.ceil(Math.abs(sw) / Math.max(dA, 0.008)), 1, MAX_ARC_SEGS);
+    let px = x, py = y, pz = z;
+    const ty = mo === 2 ? TY.CW : TY.CCW;
+    for (let i = 1; i <= steps; i++){
+      const t = i / steps, a = a0 + sw * t, r = lerp(r0, r1, t);
+      const qx = i === steps ? nx : cx + r * Math.cos(a);
+      const qy = i === steps ? ny : cy + r * Math.sin(a);
+      const qz = lerp(z, nz, t);
+      push(px, py, pz, qx, qy, qz, ty, ln);
+      px = qx; py = qy; pz = qz;
+    }
+  }
+
+  for (let ln = 0; ln < n; ln++){
+    const raw = rawLines[ln];
+    disp[ln] = raw;
+    if (raw.indexOf(';') >= 0) flags.semi = true;
+    if (raw.indexOf('(') >= 0) flags.paren = true;
+    let code = raw.replace(/\([^)]*\)/g, ' ').replace(/;.*$/, '').replace(/\*\d+\s*$/, '').trim();
+    if (code === '' ){ cls[ln] = 'c'; continue; }
+    if (code[0] === '%'){ flags.pct = true; cls[ln] = 'c'; continue; }
+
+    const gs = [], ms = [], W = {};
+    WORD_RE.lastIndex = 0;
+    let mt;
+    while ((mt = WORD_RE.exec(code))){
+      const L = mt[1].toUpperCase(), v = parseFloat(mt[2]);
+      if (L === 'G') gs.push(v);
+      else if (L === 'M') ms.push(v);
+      else W[L] = v;
+    }
+    if ('N' in W) flags.nnum = true;
+    for (const L of ['A', 'B', 'C']) if (L in W)
+      warn('abc', 'Rotary ' + L + ' words ignored — the NOVELTECH arm dialect needs forward kinematics and is not supported here', ln);
+    for (const L in W) if (!'XYZIJKRFSTPN'.includes(L) && !'ABC'.includes(L)){
+      ignored.set(L, (ignored.get(L) || 0) + 1);
+    }
+
+    let doMove = false, dwellHere = false;
+    for (const g of gs){
+      if (g >= 0 && g <= 3){ motion = g; doMove = true; }
+      else if (g === 4) dwellHere = true;
+      else if (g === 17) ;
+      else if (g === 18 || g === 19) warn('plane', 'G' + g + ' arc plane not supported — arcs are drawn in XY', ln);
+      else if (g === 20){ unit = 25.4; flags.inch = true; }
+      else if (g === 21) unit = 1;
+      else if (g === 90) abs = true;
+      else if (g === 91) abs = false;
+      else if (g === 94) ;
+      else if (g === 93) warn('g93', 'G93 inverse-time feed not supported — times will be wrong', ln);
+      else warn('g' + g, 'G' + nf(g, 1) + ' not understood and ignored', ln);
+    }
+    if ('F' in W) feed = W.F * unit;
+    if ('S' in W) power = W.S;
+    if ('T' in W) tool = W.T;
+    for (const m of ms){
+      if (m === 0 || m === 1) pendPause = true;
+      else if (m === 2 || m === 30) flags.end = 'M' + m;
+      else if (m === 3 || m === 4) flags.spindle++;
+      else if (m === 5) ;
+      else if (m === 6) toolChanges.push({ t: tool, line: ln });
+      else warn('m' + m, 'M' + nf(m, 1) + ' not understood and ignored', ln);
+    }
+    if (dwellHere && 'P' in W){
+      const p = W.P >= 30 ? W.P / 1000 : W.P;          // grbl/mach3 seconds vs marlin ms
+      pendDwell += p; dwellTotal += p;
+    }
+
+    const hasC = 'X' in W || 'Y' in W || 'Z' in W;
+    if (hasC || (('I' in W || 'J' in W || 'R' in W) && (motion === 2 || motion === 3) && doMove)){
+      let mo = motion;
+      if (mo < 0){ warn('nomode', 'Coordinates before any G0/G1 — treated as rapid', ln); mo = motion = 0; }
+      const nx = 'X' in W ? (abs ? W.X * unit : x + W.X * unit) : x;
+      const ny = 'Y' in W ? (abs ? W.Y * unit : y + W.Y * unit) : y;
+      const nz = 'Z' in W ? (abs ? W.Z * unit : z + W.Z * unit) : z;
+      if (mo >= 2){
+        arcMove(mo, nx, ny, nz,
+          'I' in W ? W.I * unit : null, 'J' in W ? W.J * unit : null, 'R' in W ? W.R * unit : null, ln);
+      } else {
+        if (mo === 1 && feed === 0) flags.feed0 = true;
+        push(x, y, z, nx, ny, nz, mo === 0 ? TY.RAPID : TY.CUT, ln);
+      }
+      x = nx; y = ny; z = nz;
+    }
+    cls[ln] = gs.some(g => g === 2 || g === 3) ? 'arc'
+            : gs.some(g => g === 1) ? 'g1'
+            : gs.some(g => g === 0) ? 'g0'
+            : ms.length ? 'm'
+            : hasC ? (motion >= 2 ? 'arc' : motion === 1 ? 'g1' : 'g0') : 'o';
+  }
+  trailDwell = pendDwell;
+  if (flags.feed0) warn('feed0', 'Cutting move before any F word — 600 mm/min assumed for the time estimate', 0);
+  if (ignored.size){
+    const ks = [...ignored.keys()].join(', ');
+    warn('ign', 'Word letters ignored: ' + ks, 0);
+  }
+
+  const N = SX.length;
+  const m = {
+    name, lines: disp, cls, LR, n: N,
+    sx: Float64Array.from(SX), sy: Float64Array.from(SY), sz: Float64Array.from(SZ),
+    ex: Float64Array.from(EX), ey: Float64Array.from(EY), ez: Float64Array.from(EZ),
+    f: Float64Array.from(FA), s: Float64Array.from(SA),
+    ty: Uint8Array.from(TYA), ln: Int32Array.from(LNA), dw: Float64Array.from(DW),
+    len: new Float64Array(N), t0: new Float64Array(N), t1: new Float64Array(N),
+    pauses, toolChanges, flags, warns, dwellTotal, trailDwell,
+    bytes: text.length,
+  };
+  for (let i = 0; i < N; i++)
+    m.len[i] = Math.hypot(m.ex[i] - m.sx[i], m.ey[i] - m.sy[i], m.ez[i] - m.sz[i]);
+
+  /* stats */
+  let cx0 = 1e30, cy0 = 1e30, cx1 = -1e30, cy1 = -1e30;
+  let ax0 = 1e30, ay0 = 1e30, ax1 = -1e30, ay1 = -1e30;
+  let zlo = 1e30, zhi = -1e30, cutLen = 0, rapidLen = 0;
+  const cnt = [0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < N; i++){
+    const t = m.ty[i]; cnt[t]++;
+    const isCut = t >= 1 && t <= 4;
+    if (t !== TY.ZRAPID){
+      ax0 = Math.min(ax0, m.sx[i], m.ex[i]); ax1 = Math.max(ax1, m.sx[i], m.ex[i]);
+      ay0 = Math.min(ay0, m.sy[i], m.ey[i]); ay1 = Math.max(ay1, m.sy[i], m.ey[i]);
+    }
+    if (isCut){
+      cx0 = Math.min(cx0, m.sx[i], m.ex[i]); cx1 = Math.max(cx1, m.sx[i], m.ex[i]);
+      cy0 = Math.min(cy0, m.sy[i], m.ey[i]); cy1 = Math.max(cy1, m.sy[i], m.ey[i]);
+      zlo = Math.min(zlo, m.ez[i]); zhi = Math.max(zhi, m.ez[i]);   // end Z only: a plunge starts at safe height
+      cutLen += m.len[i];
+    } else rapidLen += m.len[i];
+  }
+  m.cnt = cnt;
+  m.boundsCut = cx0 < 1e29 ? [cx0, cy0, cx1, cy1] : null;
+  m.boundsAll = ax0 < 1e29 ? [ax0, ay0, ax1, ay1] : null;
+  m.zRange = zlo < 1e29 ? [zlo, zhi] : null;
+  m.cutLen = cutLen; m.rapidLen = rapidLen;
+  return m;
+}
+
+function computeTimes(m, rr){
+  let t = 0, cutT = 0, rapidT = 0;
+  for (let i = 0; i < m.n; i++){
+    t += m.dw[i];
+    m.t0[i] = t;
+    const rapid = m.ty[i] === TY.RAPID || m.ty[i] === TY.ZRAPID;
+    const rate = rapid ? rr : (m.f[i] || 600);
+    const dur = m.len[i] / rate * 60;
+    if (rapid) rapidT += dur; else cutT += dur;
+    t += dur; m.t1[i] = t;
+  }
+  m.total = t + m.trailDwell;
+  m.cutT = cutT; m.rapidT = rapidT;
+  m.pauseT = m.pauses.map(p => m.t0[p.seg]);
+}
+
+/* ===================================================== colors */
+const RAMPS = {
+  z:     ['#38d9d3', '#6c7bff', '#ff6b81'],
+  feed:  ['#ffb454', '#e0c25e', '#38d9d3'],
+  power: ['#4b5488', '#ffb454', '#ffe9c9'],
+};
+const TYPE_COLORS = { 0: '#6e7699', 1: '#6c7bff', 2: '#38d9d3', 3: '#38d9d3', 4: '#ffb454', 5: '#6e7699' };
+const NB = 24;
+let bk = null, bkLo = 0, bkHi = 0;                     // per-seg color bucket for ramp modes
+function buildBuckets(m){
+  const mode = P.colorMode;
+  if (!m || mode === 'type'){ bk = null; return; }
+  let lo = 1e30, hi = -1e30;
+  const val = new Float64Array(m.n);
+  for (let i = 0; i < m.n; i++){
+    const cut = m.ty[i] >= 1 && m.ty[i] <= 4;
+    let v = 0;
+    if (mode === 'z') v = (m.sz[i] + m.ez[i]) / 2;
+    else if (mode === 'feed') v = m.f[i] || 600;
+    else v = m.s[i];
+    val[i] = v;
+    if (cut){ lo = Math.min(lo, v); hi = Math.max(hi, v); }
+  }
+  if (lo > hi){ bk = null; return; }
+  bkLo = lo; bkHi = hi;
+  const span = hi - lo < 1e-9 ? 1 : hi - lo;
+  bk = new Uint8Array(m.n);
+  for (let i = 0; i < m.n; i++)
+    bk[i] = clamp(Math.round((val[i] - lo) / span * (NB - 1)), 0, NB - 1);
+}
+function segColor(i){
+  const t = M.ty[i];
+  if (t === TY.RAPID || t === TY.ZRAPID) return TYPE_COLORS[0];
+  if (P.colorMode === 'type' || !bk) return TYPE_COLORS[t];
+  let f = bk[i] / (NB - 1);
+  if (P.colorMode === 'z') f = 1 - f;                  // deep = hot
+  return rampColor(RAMPS[P.colorMode], f);
+}
+
+/* ===================================================== view / canvases */
+const cv = $('cv'), ov = $('ov'), wrap = $('viewwrap');
+const bcv = document.createElement('canvas');          // offscreen base scene
+let dpr = 1, VW = 0, VH = 0;
+const view = { cx: 60, cy: 40, sc: 5 };                // world center (mm), device px per mm
+let baseView = null, viewDirty = false, rebaseT = 0, overlayDirty = true;
+let M = null;                                          // current model
+let simT = 0, playing = false, lastFrame = 0;
+let hovSeg = -1, hovLn = -1, selLn = -1, selRange = null, curLn = -1;
+let doneIdx = -1;                                      // segs fully drawn onto base
+
+function resize(){
+  dpr = window.devicePixelRatio || 1;
+  VW = Math.max(1, Math.round(wrap.clientWidth * dpr));
+  VH = Math.max(1, Math.round(wrap.clientHeight * dpr));
+  for (const c of [cv, ov, bcv]){ c.width = VW; c.height = VH; }
+  renderBase(); drawOverlay();
+}
+const w2sx = wx => (wx - view.cx) * view.sc + VW / 2;
+const w2sy = wy => VH / 2 - (wy - view.cy) * view.sc;
+const s2wx = px => (px - VW / 2) / view.sc + view.cx;
+const s2wy = py => view.cy - (py - VH / 2) / view.sc;
+
+function fit(){
+  if (!M) return;
+  const b = M.boundsCut || M.boundsAll || [-10, -10, 110, 110];
+  const w = Math.max(b[2] - b[0], 1e-6), h = Math.max(b[3] - b[1], 1e-6);
+  view.cx = (b[0] + b[2]) / 2; view.cy = (b[1] + b[3]) / 2;
+  view.sc = Math.min(VW / w, VH / h) * 0.88;
+  view.sc = clamp(view.sc, 0.01 * dpr, 4000 * dpr);
+  renderBase(); drawOverlay();
+}
+
+/* grid + axes + static furniture, then the toolpath up to simT */
+function niceStep(target){
+  const p = Math.pow(10, Math.floor(Math.log10(target)));
+  for (const k of [1, 2, 5, 10]) if (p * k >= target) return p * k;
+  return p * 10;
+}
+function renderBase(){
+  baseView = { cx: view.cx, cy: view.cy, sc: view.sc };
+  viewDirty = false;
+  const g = bcv.getContext('2d');
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.fillStyle = '#0b0e1a'; g.fillRect(0, 0, VW, VH);
+
+  /* grid */
+  const step = niceStep(64 * dpr / view.sc);
+  const minor = step / 5;
+  const wx0 = s2wx(0), wx1 = s2wx(VW), wy0 = s2wy(VH), wy1 = s2wy(0);
+  g.lineWidth = 1;
+  if (minor * view.sc > 5 * dpr){
+    g.strokeStyle = '#141a2e'; g.beginPath();
+    for (let v = Math.floor(wx0 / minor) * minor; v <= wx1; v += minor){ const p = w2sx(v); g.moveTo(p, 0); g.lineTo(p, VH); }
+    for (let v = Math.floor(wy0 / minor) * minor; v <= wy1; v += minor){ const p = w2sy(v); g.moveTo(0, p); g.lineTo(VW, p); }
+    g.stroke();
+  }
+  g.strokeStyle = '#1d2340'; g.beginPath();
+  for (let v = Math.floor(wx0 / step) * step; v <= wx1; v += step){ const p = w2sx(v); g.moveTo(p, 0); g.lineTo(p, VH); }
+  for (let v = Math.floor(wy0 / step) * step; v <= wy1; v += step){ const p = w2sy(v); g.moveTo(0, p); g.lineTo(VW, p); }
+  g.stroke();
+  g.fillStyle = '#4d5578'; g.font = (10 * dpr) + 'px ui-monospace,Consolas,monospace';
+  g.textAlign = 'left'; g.textBaseline = 'bottom';
+  for (let v = Math.floor(wx0 / step) * step; v <= wx1; v += step)
+    g.fillText(nf(v, 3), w2sx(v) + 3 * dpr, VH - 3 * dpr);
+  for (let v = Math.floor(wy0 / step) * step; v <= wy1; v += step)
+    g.fillText(nf(v, 3), 3 * dpr, w2sy(v) - 2 * dpr);
+
+  /* axes + origin */
+  g.strokeStyle = '#39416b'; g.lineWidth = 1.2 * dpr; g.beginPath();
+  const oxp = w2sx(0), oyp = w2sy(0);
+  g.moveTo(oxp, 0); g.lineTo(oxp, VH); g.moveTo(0, oyp); g.lineTo(VW, oyp); g.stroke();
+  g.strokeStyle = '#6c7bff'; g.lineWidth = 1.5 * dpr; g.beginPath();
+  g.moveTo(oxp - 7 * dpr, oyp); g.lineTo(oxp + 7 * dpr, oyp);
+  g.moveTo(oxp, oyp - 7 * dpr); g.lineTo(oxp, oyp + 7 * dpr); g.stroke();
+
+  if (!M){ blit(); return; }
+
+  /* cut bounds box */
+  if (M.boundsCut){
+    const b = M.boundsCut;
+    g.strokeStyle = '#39416b'; g.lineWidth = 1; g.setLineDash([5 * dpr, 5 * dpr]);
+    g.strokeRect(w2sx(b[0]), w2sy(b[3]), (b[2] - b[0]) * view.sc, (b[3] - b[1]) * view.sc);
+    g.setLineDash([]);
+  }
+
+  doneIdx = lastDone(simT);
+  if (doneIdx < M.n - 1){                              // playback in progress: dim everything…
+    drawSegs(g, 0, M.n, 0.14);
+    drawSegs(g, 0, doneIdx + 1, 1);                    // …then the executed part in full
+  } else drawSegs(g, 0, M.n, 1);
+  blit();
+}
+function drawSegs(g, from, to, alpha){
+  if (!M || to <= from) return;
+  g.globalAlpha = alpha;
+  g.lineCap = 'round'; g.lineJoin = 'round';
+  let curKey = '', dashed = false, open = false;
+  const dotR = 2.4 * dpr;
+  for (let i = from; i < to; i++){
+    const t = M.ty[i];
+    if (t === TY.ZRAPID) continue;
+    const rapid = t === TY.RAPID;
+    if (rapid && !P.showRapids) continue;
+    if (t === TY.PLUNGE){
+      if (!P.showPlunges) continue;
+      if (open){ g.stroke(); open = false; curKey = ''; }
+      g.fillStyle = segColor(i);
+      g.beginPath(); g.arc(w2sx(M.ex[i]), w2sy(M.ey[i]), dotR, 0, Math.PI * 2); g.fill();
+      continue;
+    }
+    const col = segColor(i), key = col + (rapid ? 'r' : 'c');
+    if (key !== curKey){
+      if (open) g.stroke();
+      g.strokeStyle = col;
+      g.lineWidth = (rapid ? 1 : 1.6) * dpr;
+      if (rapid !== dashed){ g.setLineDash(rapid ? [5 * dpr, 4 * dpr] : []); dashed = rapid; }
+      g.beginPath(); open = true; curKey = key;
+      g.moveTo(w2sx(M.sx[i]), w2sy(M.sy[i]));
+    } else {
+      const px = w2sx(M.sx[i]), py = w2sy(M.sy[i]);
+      g.moveTo(px, py);
+    }
+    g.lineTo(w2sx(M.ex[i]), w2sy(M.ey[i]));
+  }
+  if (open) g.stroke();
+  g.setLineDash([]); g.globalAlpha = 1;
+}
+function appendSegs(from, to){                          // stroke newly executed segs onto base
+  if (to - from > 4000) return renderBase();
+  const g = bcv.getContext('2d');
+  drawSegs(g, from, to, 1);
+  blit();
+}
+function blit(){
+  const g = cv.getContext('2d');
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.clearRect(0, 0, VW, VH);
+  if (!baseView) return;
+  const k = view.sc / baseView.sc;
+  const wx = baseView.cx - VW / 2 / baseView.sc, wy = baseView.cy + VH / 2 / baseView.sc;
+  g.drawImage(bcv, w2sx(wx), w2sy(wy), VW * k, VH * k);
+}
+function requestRebase(){
+  viewDirty = true;
+  clearTimeout(rebaseT);
+  rebaseT = setTimeout(() => { renderBase(); drawOverlay(); }, 120);
+}
+
+/* overlay: hover, selection, playback tool marker + partial segment */
+function drawOverlay(){
+  overlayDirty = false;
+  const g = ov.getContext('2d');
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.clearRect(0, 0, VW, VH);
+  if (!M) return;
+  g.lineCap = 'round';
+  if (selRange){
+    g.strokeStyle = '#ffffff'; g.globalAlpha = 0.9; g.lineWidth = 3 * dpr; g.beginPath();
+    for (let i = selRange[0]; i < selRange[1]; i++){
+      if (M.ty[i] === TY.ZRAPID) continue;
+      g.moveTo(w2sx(M.sx[i]), w2sy(M.sy[i])); g.lineTo(w2sx(M.ex[i]), w2sy(M.ey[i]));
+    }
+    g.stroke(); g.globalAlpha = 1;
+  }
+  if (hovSeg >= 0 && hovSeg < M.n){
+    const i = hovSeg;
+    g.strokeStyle = '#38d9d3'; g.lineWidth = 3.2 * dpr; g.beginPath();
+    g.moveTo(w2sx(M.sx[i]), w2sy(M.sy[i])); g.lineTo(w2sx(M.ex[i]), w2sy(M.ey[i]));
+    g.stroke();
+  }
+  /* current tool position */
+  const i = lastDone(simT) + 1;
+  let px = null, py = null;
+  if (i < M.n && simT >= M.t0[i]){
+    const f = clamp((simT - M.t0[i]) / Math.max(M.t1[i] - M.t0[i], 1e-9), 0, 1);
+    px = lerp(M.sx[i], M.ex[i], f); py = lerp(M.sy[i], M.ey[i], f);
+    if (M.ty[i] !== TY.ZRAPID){
+      g.strokeStyle = segColor(i); g.lineWidth = (M.ty[i] === TY.RAPID ? 1 : 1.6) * dpr;
+      g.setLineDash(M.ty[i] === TY.RAPID ? [5 * dpr, 4 * dpr] : []);
+      g.beginPath(); g.moveTo(w2sx(M.sx[i]), w2sy(M.sy[i])); g.lineTo(w2sx(px), w2sy(py)); g.stroke();
+      g.setLineDash([]);
+    }
+  } else if (i - 1 >= 0 && i - 1 < M.n && simT < M.total){ px = M.ex[i - 1]; py = M.ey[i - 1]; }
+  else if (simT < M.total && M.n){ px = M.sx[0]; py = M.sy[0]; }
+  if (px !== null && simT < M.total){
+    g.beginPath(); g.arc(w2sx(px), w2sy(py), 5 * dpr, 0, Math.PI * 2);
+    g.strokeStyle = '#38d9d3'; g.lineWidth = 2 * dpr; g.stroke();
+    g.beginPath(); g.arc(w2sx(px), w2sy(py), 1.6 * dpr, 0, Math.PI * 2);
+    g.fillStyle = '#38d9d3'; g.fill();
+  }
+}
+function lastDone(t){
+  if (!M || !M.n) return -1;
+  let lo = 0, hi = M.n - 1, r = -1;
+  while (lo <= hi){
+    const mid = (lo + hi) >> 1;
+    if (M.t1[mid] <= t + 1e-9){ r = mid; lo = mid + 1; } else hi = mid - 1;
+  }
+  return r;
+}
+
+/* ===================================================== spatial index for hover */
+let grid = null, cell = 1;
+function buildIndex(){
+  grid = new Map();
+  if (!M || !M.n || !M.boundsAll) return;
+  const b = M.boundsAll;
+  cell = Math.max(Math.max(b[2] - b[0], b[3] - b[1]) / 160, 1e-6);
+  const key = (ix, iy) => ix * 100003 + iy;
+  for (let i = 0; i < M.n; i++){
+    if (M.ty[i] === TY.ZRAPID) continue;
+    let x0 = M.sx[i] / cell, y0 = M.sy[i] / cell, x1 = M.ex[i] / cell, y1 = M.ey[i] / cell;
+    const steps = Math.min(Math.ceil(Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0))) + 1, 64);
+    for (let sIdx = 0; sIdx <= steps; sIdx++){
+      const t = sIdx / steps;
+      const k = key(Math.floor(lerp(x0, x1, t)), Math.floor(lerp(y0, y1, t)));
+      let a = grid.get(k);
+      if (!a){ a = []; grid.set(k, a); }
+      if (a[a.length - 1] !== i) a.push(i);
+    }
+  }
+}
+function distSeg(px, py, i){
+  const ax = M.sx[i], ay = M.sy[i], bx = M.ex[i], by = M.ey[i];
+  const dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy;
+  const t = l2 < 1e-18 ? 0 : clamp(((px - ax) * dx + (py - ay) * dy) / l2, 0, 1);
+  return Math.hypot(px - (ax + dx * t), py - (ay + dy * t));
+}
+function pick(wx, wy, rad){
+  if (!grid) return -1;
+  let best = -1, bd = rad;
+  const ix = Math.floor(wx / cell), iy = Math.floor(wy / cell);
+  const rr = Math.max(1, Math.ceil(rad / cell));
+  for (let gx = ix - rr; gx <= ix + rr; gx++)
+    for (let gy = iy - rr; gy <= iy + rr; gy++){
+      const a = grid.get(gx * 100003 + gy);
+      if (!a) continue;
+      for (const i of a){
+        if ((M.ty[i] === TY.RAPID && !P.showRapids)) continue;
+        const d = distSeg(wx, wy, i);
+        if (d < bd){ bd = d; best = i; }
+      }
+    }
+  return best;
+}
+
+/* ===================================================== text pane */
+const clist = $('clist'), cwin = $('cwin'), cspace = $('cspace');
+const LH = 17;
+let winFrom = -1, winTo = -1;
+function setPaneModel(){
+  cspace.style.height = (M ? M.lines.length * LH : 0) + 'px';
+  clist.scrollTop = 0;
+  winFrom = -1; renderWin(true);
+  $('lcount').textContent = M ? M.lines.length + ' lines' : '';
+}
+function renderWin(force){
+  if (!M){ cwin.innerHTML = ''; return; }
+  const from = Math.max(0, Math.floor(clist.scrollTop / LH) - 4);
+  const to = Math.min(M.lines.length, from + Math.ceil(clist.clientHeight / LH) + 8);
+  if (!force && from === winFrom && to === winTo) return;
+  winFrom = from; winTo = to;
+  const out = [];
+  for (let ln = from; ln < to; ln++){
+    let c = 'row ' + M.cls[ln];
+    if (ln === selLn) c += ' sel';
+    if (ln === curLn) c += ' cur';
+    if (ln === hovLn) c += ' hl';
+    out.push('<div class="' + c + '" data-ln="' + ln + '"><span class="num">' + (ln + 1) +
+             '</span><span class="tx">' + esc(M.lines[ln]) + '</span></div>');
+  }
+  cwin.style.transform = 'translateY(' + from * LH + 'px)';
+  cwin.innerHTML = out.join('');
+}
+function scrollToLine(ln, centre){
+  const top = ln * LH - (centre ? clist.clientHeight / 2 - LH : 2 * LH);
+  clist.scrollTop = clamp(top, 0, M.lines.length * LH);
+  renderWin(true);
+}
+on(clist, 'scroll', () => renderWin(false));
+on(cwin, 'click', e => {
+  const r = e.target.closest('.row');
+  if (r) selectLine(+r.dataset.ln, true);
+});
+function selectLine(ln, centreCanvas){
+  selLn = ln; selRange = M && M.LR[ln] ? M.LR[ln] : null;
+  renderWin(true); overlayDirty = true;
+  if (centreCanvas && selRange){
+    let x0 = 1e30, y0 = 1e30, x1 = -1e30, y1 = -1e30;
+    for (let i = selRange[0]; i < selRange[1]; i++){
+      x0 = Math.min(x0, M.sx[i], M.ex[i]); x1 = Math.max(x1, M.sx[i], M.ex[i]);
+      y0 = Math.min(y0, M.sy[i], M.ey[i]); y1 = Math.max(y1, M.sy[i], M.ey[i]);
+    }
+    const sx0 = w2sx(x0), sx1 = w2sx(x1), sy0 = w2sy(y1), sy1 = w2sy(y0);
+    if (sx1 < 0 || sx0 > VW || sy1 < 0 || sy0 > VH){
+      view.cx = (x0 + x1) / 2; view.cy = (y0 + y1) / 2;
+      requestRebase();
+    }
+  }
+}
+function clearSel(){ selLn = -1; selRange = null; renderWin(true); overlayDirty = true; }
+
+/* ===================================================== stats sidebar */
+function kv(k, v, c){ return '<div class="kv"><span class="k">' + k + '</span><span class="v' + (c ? ' ' + c : '') + '">' + v + '</span></div>'; }
+function fillStats(){
+  if (!M){ return; }
+  const fl = M.flags;
+  const style = [fl.paren ? '( ) comments' : '', fl.semi ? '; comments' : ''].filter(Boolean).join(', ') || '—';
+  $('fileKv').innerHTML =
+    kv('Name', esc(M.name)) +
+    kv('Size', M.bytes > 1 << 20 ? nf(M.bytes / (1 << 20), 2) + ' MB' : nf(M.bytes / 1024, 1) + ' KB') +
+    kv('Lines', M.lines.length.toLocaleString()) +
+    kv('Units', fl.inch ? 'inches (shown in mm)' : 'mm') +
+    kv('Comment style', style, 'dim') +
+    kv('Program end', fl.end || 'none', fl.end ? 'dim' : 'warn') +
+    (fl.pct ? kv('% wrapper', 'yes', 'dim') : '') +
+    (fl.nnum ? kv('N line numbers', 'yes', 'dim') : '');
+  const b = M.boundsCut, zr = M.zRange;
+  $('pathKv').innerHTML = b ?
+    kv('Cut area', nf(b[2] - b[0], 2) + ' × ' + nf(b[3] - b[1], 2) + ' mm') +
+    kv('X range', nf(b[0], 2) + ' … ' + nf(b[2], 2)) +
+    kv('Y range', nf(b[1], 2) + ' … ' + nf(b[3], 2)) +
+    (zr ? kv('Z range', nf(zr[0], 3) + ' … ' + nf(zr[1], 3)) : '') +
+    kv('Cut length', fmtLen(M.cutLen)) +
+    kv('Rapid length', fmtLen(M.rapidLen), 'dim')
+    : kv('No cutting moves', '—', 'warn');
+  const c = M.cnt;
+  $('timeKv').innerHTML =
+    kv('Rapids', (c[0] + c[5]).toLocaleString(), 'dim') +
+    kv('Cut lines', c[1].toLocaleString()) +
+    kv('Arc chords', (c[2] + c[3]).toLocaleString()) +
+    kv('Plunges', c[4].toLocaleString()) +
+    (M.toolChanges.length ? kv('Tool changes', M.toolChanges.map(t => 'T' + t.t).join(', ')) : '') +
+    (M.pauses.length ? kv('M0 pauses', M.pauses.length, 'warn') : '') +
+    (M.dwellTotal ? kv('Dwell', fmtT(M.dwellTotal), 'dim') : '') +
+    kv('Cut time', fmtT(M.cutT)) +
+    kv('Rapid time', fmtT(M.rapidT), 'dim') +
+    kv('Estimated total', '<b>' + fmtT(M.total) + '</b>');
+  /* warnings */
+  const ul = $('warns'); ul.innerHTML = '';
+  if (M.warns.size){
+    $('nowarn').style.display = 'none';
+    for (const [, w] of M.warns){
+      const li = document.createElement('li');
+      li.innerHTML = esc(w.msg) + ' <span class="wl">· line ' + (w.line + 1) + (w.count > 1 ? ' · ×' + w.count : '') + '</span>';
+      on(li, 'click', () => { scrollToLine(w.line, true); selectLine(w.line, true); });
+      ul.appendChild(li);
+    }
+  } else $('nowarn').style.display = '';
+  fillLegend();
+}
+function fmtLen(mm){ return mm >= 1000 ? nf(mm / 1000, 2) + ' m' : nf(mm, 1) + ' mm'; }
+function fillLegend(){
+  const el = $('legend');
+  if (!M){ el.innerHTML = ''; return; }
+  if (P.colorMode === 'type' || !bk){
+    el.innerHTML =
+      '<div class="legsw"><i class="dash" style="border-color:#6e7699"></i>rapid</div>' +
+      '<div class="legsw"><i style="border-color:#6c7bff"></i>cut</div>' +
+      '<div class="legsw"><i style="border-color:#38d9d3"></i>arc</div>' +
+      '<div class="legsw"><i class="dot" style="background:#ffb454"></i>plunge</div>';
+    return;
+  }
+  const stops = RAMPS[P.colorMode];
+  const rev = P.colorMode === 'z';
+  const css = (rev ? [...stops].reverse() : stops).join(',');
+  const u = P.colorMode === 'z' ? ' mm' : P.colorMode === 'feed' ? ' mm/min' : '';
+  el.innerHTML = '<div id="legbar" style="background:linear-gradient(90deg,' + css + ')"></div>' +
+    '<div id="leglab"><span>' + nf(bkLo, 2) + u + '</span><span>' + nf(bkHi, 2) + u + '</span></div>';
+}
+
+/* ===================================================== playback */
+function setSim(t, opts){
+  if (!M) return;
+  const prev = simT;
+  simT = clamp(t, 0, M.total);
+  if (!(opts && opts.skipPause)){
+    for (const pt of M.pauseT){
+      if (pt > prev + 1e-9 && pt <= simT){
+        simT = pt; setPlaying(false);
+        toast('M0 — program pause. Press play to continue.', true);
+        break;
+      }
+    }
+  }
+  const nd = lastDone(simT);
+  if (nd < doneIdx || (doneIdx < 0 && nd >= 0 && simT < M.total) || (simT >= M.total && doneIdx < M.n - 1)) renderBase();
+  else if (nd > doneIdx){ appendSegs(doneIdx + 1, nd + 1); doneIdx = nd; }
+  overlayDirty = true;
+  updatePlaybar();
+}
+function updatePlaybar(){
+  if (!M){ $('tlab').textContent = '0:00 / 0:00'; $('llab').textContent = ''; return; }
+  $('prog').value = M.total ? simT / M.total * 1000 : 1000;
+  $('tlab').innerHTML = '<b>' + fmtT(simT) + '</b> / ' + fmtT(M.total);
+  const i = clamp(lastDone(simT) + (simT < M.total ? 1 : 0), 0, M.n - 1);
+  const ln = M.n ? M.ln[i] : -1;
+  $('llab').textContent = ln >= 0 ? 'L ' + (ln + 1) : '';
+  if (ln !== curLn){
+    curLn = ln;
+    if (playing && P.follow && ln >= 0){
+      if (ln * LH < clist.scrollTop || (ln + 1) * LH > clist.scrollTop + clist.clientHeight)
+        scrollToLine(ln, true);
+      else renderWin(true);
+    } else renderWin(true);
+  }
+}
+function setPlaying(p){
+  if (!M || !M.n) p = false;
+  playing = p;
+  $('icoPlay').style.display = p ? 'none' : '';
+  $('icoPause').style.display = p ? '' : 'none';
+}
+function frame(ts){
+  requestAnimationFrame(frame);
+  const dt = Math.min((ts - lastFrame) / 1000, 0.25); lastFrame = ts;
+  if (playing && M){
+    setSim(simT + dt * (+$('speed').value), {});
+    if (simT >= M.total) setPlaying(false);
+  }
+  if (viewDirty){ blit(); drawOverlay(); }
+  else if (overlayDirty || playing) drawOverlay();
+}
+requestAnimationFrame(ts => { lastFrame = ts; requestAnimationFrame(frame); });
+
+/* ===================================================== loading */
+function load(name, text){
+  let m;
+  try { m = parse(text, name); }
+  catch (err){ toast('Could not parse: ' + err.message, true); return; }
+  M = m;
+  computeTimes(M, P.rapidRate);
+  buildBuckets(M); buildIndex();
+  hovSeg = -1; hovLn = -1; selLn = -1; selRange = null; curLn = -1;
+  $('tip').style.display = 'none';
+  simT = M.total; doneIdx = M.n - 1;
+  setPlaying(false);
+  $('empty').classList.add('hide');
+  $('fname').textContent = name;
+  document.title = name + ' — G-code Viewer';
+  setPaneModel(); fillStats(); fit(); updatePlaybar();
+  if (!M.n) toast('No motion found in this file — check the text pane.', true);
+  else toast(name + ' — ' + M.n.toLocaleString() + ' segments, est. ' + fmtT(M.total));
+}
+on($('bOpen'), 'click', () => $('file').click());
+on($('file'), 'change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  f.text().then(t => load(f.name, t));
+  e.target.value = '';
+});
+on($('bPaste'), 'click', () => {
+  if (!navigator.clipboard || !navigator.clipboard.readText)
+    return toast('Clipboard blocked here — click the page and press Ctrl+V instead.', true);
+  navigator.clipboard.readText()
+    .then(t => t.trim() ? load('pasted.gcode', t) : toast('Clipboard is empty.', true))
+    .catch(() => toast('Clipboard blocked — press Ctrl+V instead.', true));
+});
+on(window, 'paste', e => {
+  const t = (e.clipboardData || window.clipboardData).getData('text');
+  if (t && t.trim()){ e.preventDefault(); load('pasted.gcode', t); }
+});
+let dragDepth = 0;
+on(window, 'dragenter', e => { e.preventDefault(); if (++dragDepth) $('drop').classList.add('on'); });
+on(window, 'dragover', e => e.preventDefault());
+on(window, 'dragleave', e => { e.preventDefault(); if (--dragDepth <= 0){ dragDepth = 0; $('drop').classList.remove('on'); } });
+on(window, 'drop', e => {
+  e.preventDefault(); dragDepth = 0; $('drop').classList.remove('on');
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f) f.text().then(t => load(f.name, t));
+});
+
+/* ===================================================== canvas input */
+let panning = false, panX = 0, panY = 0, moved = false;
+on(ov, 'pointerdown', e => {
+  if (e.button !== 0 && e.button !== 1) return;
+  panning = true; moved = false; panX = e.clientX; panY = e.clientY;
+  ov.setPointerCapture(e.pointerId);
+});
+on(ov, 'pointermove', e => {
+  const r = wrap.getBoundingClientRect();
+  const mx = (e.clientX - r.left) * dpr, my = (e.clientY - r.top) * dpr;
+  if (panning){
+    const dx = (e.clientX - panX) * dpr, dy = (e.clientY - panY) * dpr;
+    if (Math.abs(e.clientX - panX) + Math.abs(e.clientY - panY) > 2) moved = true;
+    view.cx -= dx / view.sc; view.cy += dy / view.sc;
+    panX = e.clientX; panY = e.clientY;
+    requestRebase();
+    return;
+  }
+  $('coords').textContent = M ? 'X ' + nf(s2wx(mx), 2) + '  Y ' + nf(s2wy(my), 2) + '  ·  ' + nf(view.sc / dpr, 1) + ' px/mm' : '';
+  const i = M ? pick(s2wx(mx), s2wy(my), 8 * dpr / view.sc) : -1;
+  if (i !== hovSeg){
+    hovSeg = i; overlayDirty = true;
+    const oldHov = hovLn;
+    hovLn = i >= 0 ? M.ln[i] : -1;
+    if (hovLn !== oldHov) renderWin(true);
+    const tip = $('tip');
+    if (i >= 0){
+      const t = M.ty[i], names = ['G0 rapid', 'G1 cut', 'G2 arc', 'G3 arc', 'plunge', 'Z rapid'];
+      tip.innerHTML = '<b>L' + (M.ln[i] + 1) + '</b> · ' + names[t] +
+        '<br>X ' + nf(M.ex[i], 3) + '  Y ' + nf(M.ey[i], 3) + '  Z ' + nf(M.ez[i], 3) +
+        '<br><span class="t2">F ' + (M.f[i] ? nf(M.f[i], 0) : '—') + '  S ' + nf(M.s[i], 0) +
+        '  · ' + nf(M.len[i], 2) + ' mm</span>';
+      tip.style.display = 'block';
+    } else tip.style.display = 'none';
+  }
+  if (hovSeg >= 0){
+    const tip = $('tip');
+    tip.style.left = Math.min(e.clientX - r.left + 14, wrap.clientWidth - tip.offsetWidth - 6) + 'px';
+    tip.style.top = Math.min(e.clientY - r.top + 14, wrap.clientHeight - tip.offsetHeight - 6) + 'px';
+  }
+});
+on(ov, 'pointerup', e => {
+  if (!panning) return;
+  panning = false;
+  if (!moved && M){
+    if (hovSeg >= 0){ selectLine(M.ln[hovSeg], false); scrollToLine(M.ln[hovSeg], true); }
+    else clearSel();
+  }
+});
+on(ov, 'pointerleave', () => {
+  hovSeg = -1; $('tip').style.display = 'none'; $('coords').textContent = '';
+  if (hovLn >= 0){ hovLn = -1; renderWin(true); }
+  overlayDirty = true;
+});
+on(ov, 'wheel', e => {
+  e.preventDefault();
+  const r = wrap.getBoundingClientRect();
+  const mx = (e.clientX - r.left) * dpr, my = (e.clientY - r.top) * dpr;
+  const wx = s2wx(mx), wy = s2wy(my);
+  const k = Math.pow(1.0015, -e.deltaY);
+  view.sc = clamp(view.sc * k, 0.01 * dpr, 4000 * dpr);
+  view.cx = wx - (mx - VW / 2) / view.sc;
+  view.cy = wy + (my - VH / 2) / view.sc;
+  requestRebase();
+}, { passive: false });
+on(ov, 'dblclick', e => {
+  const r = wrap.getBoundingClientRect();
+  const wx = s2wx((e.clientX - r.left) * dpr), wy = s2wy((e.clientY - r.top) * dpr);
+  view.cx = wx; view.cy = wy;
+  view.sc = clamp(view.sc * 2, 0.01 * dpr, 4000 * dpr);
+  requestRebase();
+});
+
+/* ===================================================== controls */
+on($('bFit'), 'click', fit);
+on($('bDemo'), 'click', () => load('demo.nc', demo()));
+on($('bPlay'), 'click', () => {
+  if (!M || !M.n) return;
+  if (!playing && simT >= M.total) setSim(0, { skipPause: true });
+  setPlaying(!playing);
+});
+on($('prog'), 'input', e => setSim(+e.target.value / 1000 * (M ? M.total : 0), { skipPause: true }));
+on($('colorMode'), 'change', e => { P.colorMode = e.target.value; savePrefs(); buildBuckets(M); renderBase(); fillLegend(); });
+on($('showRapids'), 'change', e => { P.showRapids = e.target.checked; savePrefs(); renderBase(); });
+on($('showPlunges'), 'change', e => { P.showPlunges = e.target.checked; savePrefs(); renderBase(); });
+on($('follow'), 'change', e => { P.follow = e.target.checked; savePrefs(); });
+on($('rapidRate'), 'change', e => {
+  P.rapidRate = clamp(+e.target.value || 3000, 100, 60000);
+  e.target.value = P.rapidRate; savePrefs();
+  if (M){ computeTimes(M, P.rapidRate); simT = M.total; doneIdx = M.n - 1; renderBase(); fillStats(); updatePlaybar(); }
+});
+on($('bCode'), 'click', () => {
+  P.codeOpen = !P.codeOpen; savePrefs();
+  $('code').classList.toggle('hide', !P.codeOpen);
+  $('bCode').classList.toggle('on', P.codeOpen);
+  resize(); renderWin(true);
+});
+for (const g of document.querySelectorAll('.grp>h3'))
+  on(g, 'click', () => g.parentElement.classList.toggle('col'));
+on(window, 'keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'f' || e.key === 'F') fit();
+  else if (e.key === ' '){ e.preventDefault(); $('bPlay').click(); }
+  else if (e.key === 'Escape') clearSel();
+  else if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && M){
+    e.preventDefault();
+    const dir = e.key === 'ArrowDown' ? 1 : -1;
+    let ln = selLn < 0 ? (dir > 0 ? -1 : M.lines.length) : selLn;
+    do { ln += dir; } while (ln >= 0 && ln < M.lines.length && !M.LR[ln]);
+    if (ln >= 0 && ln < M.lines.length){ selectLine(ln, true); scrollToLine(ln, true); }
+  }
+});
+on(window, 'resize', resize);
+
+/* ===================================================== demo program
+   Mimics Linear Half Toner grbl mill output: wavy V-carve rows with per-point
+   depth, an arc-fitted ring in two passes, registration crosses, M0, %.      */
+function demo(){
+  const L = [], put = s => L.push(s), cmt = s => L.push('(' + s + ')');
+  const n3 = x => nf(x, 3);
+  cmt('G-code Viewer - built-in demo');
+  cmt('mimics Linear Half Toner grbl output: waves, arcs, passes');
+  cmt('Z zero = top of material, negative Z cuts into it');
+  put('');
+  put('G90 G94 G17');
+  put('G21');
+  put('G0 Z5');
+  cmt('air pass - outline only, nothing is cut');
+  put('G0 X0 Y80'); put('G0 X120 Y80'); put('G0 X120 Y0'); put('G0 X0 Y0'); put('G0 X0 Y80');
+  cmt('press cycle start when the placement looks right');
+  put('M0');
+  cmt('tool 1 - 60 deg V-bit');
+  put('M6 T1');
+  put('S12000 M3');
+  put('G4 P2');
+  let px = 0;
+  for (let r = 0; r < 12; r++){
+    const yb = 5.5 + r * 6.3;
+    const pts = [];
+    for (let j = 0; j <= 56; j++){
+      const xx = 4 + j * (112 / 56);
+      const yy = yb + 1.9 * Math.sin(j * 0.24 + r * 1.15);
+      const env = Math.exp(-Math.pow((xx - 60) / 38, 2)) * (0.55 + 0.45 * Math.sin(r * 0.9 + 1));
+      const d = 0.15 + 1.15 * env * (0.5 + 0.5 * Math.sin(j * 0.42 + r * 0.6));
+      pts.push([xx, yy, -d]);
+    }
+    const seq = Math.abs(pts[pts.length - 1][0] - px) < Math.abs(pts[0][0] - px) ? pts.reverse() : pts;
+    put('G0 Z0.6');
+    put('G0 X' + n3(seq[0][0]) + ' Y' + n3(seq[0][1]));
+    put('G1 Z' + n3(seq[0][2]) + ' F300');
+    let f = true;
+    for (let j = 1; j < seq.length; j++){
+      put('G1 X' + n3(seq[j][0]) + ' Y' + n3(seq[j][1]) + ' Z' + n3(seq[j][2]) + (f ? ' F800' : ''));
+      f = false;
+    }
+    px = seq[seq.length - 1][0];
+  }
+  cmt('ring - arc-fitted, 2 passes');
+  for (let pass = 0; pass < 2; pass++){
+    const zc = pass ? -2.2 : -1.1;
+    cmt('pass ' + (pass + 1) + ' of 2, down to ' + n3(-zc) + ' mm');
+    put('G0 Z0.6');
+    put('G0 X86 Y40');
+    put('G1 Z' + n3(zc) + ' F300');
+    put('G2 X34 Y40 Z' + n3(zc) + ' I-26 J0 F600');
+    put('G2 X86 Y40 Z' + n3(zc) + ' I26 J0');
+  }
+  cmt('inner accent arc');
+  put('G0 Z0.6');
+  put('G0 X74 Y40');
+  put('G1 Z-0.8 F300');
+  put('G3 X46 Y40 Z-0.8 I-14 J0 F600');
+  cmt('registration marks (shallow crosses)');
+  for (const p of [[3, 3], [117, 3], [3, 77], [117, 77]]){
+    put('G0 Z5');
+    put('G0 X' + n3(p[0] - 2) + ' Y' + n3(p[1]));
+    put('G1 Z-0.4 F300');
+    put('G1 X' + n3(p[0] + 2) + ' Y' + n3(p[1]) + ' F800');
+    put('G0 Z5');
+    put('G0 X' + n3(p[0]) + ' Y' + n3(p[1] - 2));
+    put('G1 Z-0.4 F300');
+    put('G1 X' + n3(p[0]) + ' Y' + n3(p[1] + 2) + ' F800');
+  }
+  put('G0 Z5');
+  put('M5');
+  put('G0 X0 Y80');
+  put('M30');
+  put('%');
+  return L.join('\n') + '\n';
+}
+
+/* ===================================================== boot */
+$('colorMode').value = P.colorMode;
+$('showRapids').checked = P.showRapids;
+$('showPlunges').checked = P.showPlunges;
+$('follow').checked = P.follow;
+$('rapidRate').value = P.rapidRate;
+$('code').classList.toggle('hide', !P.codeOpen);
+$('bCode').classList.toggle('on', P.codeOpen);
+resize();
+</script>
+</body>
+</html>
