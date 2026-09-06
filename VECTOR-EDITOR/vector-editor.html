@@ -731,7 +731,7 @@
         <div class="grid2" id="alGuideBtns"></div>
 
         <div class="subh">Line &amp; morph</div>
-        <div class="hintline">Select the shape(s), then <kbd>Shift</kbd>-click a <b>line</b> last: one shape moves its centre onto it, several spread along it. For a morph select the <b>start</b> shape, then the <b>end</b> shape; a third, open path becomes the spine. The profile above spaces the steps.</div>
+        <div class="hintline">Select the shape(s), then <kbd>Shift</kbd>-click a <b>line</b> last: one shape moves its centre onto it, several spread along it. For a morph select the <b>start</b> shape, then the <b>end</b> shape; a third, open path becomes the spine. The profile above spaces the steps. The morph stays <b>live</b>: edit either end and the steps re-blend; change the step count or press Morph again to rebuild it; Break apart freezes it.</div>
         <div class="row"><label>Morph steps</label><input type="number" id="alMorphN" class="grow" min="1" max="200" step="1" value="5" title="How many in-between shapes to create"></div>
         <div class="grid2" id="alLineBtns"></div>
       </div>
@@ -1488,6 +1488,8 @@ function cloneShape(sh) {
   // group membership travels with the shape — undo snapshots go through here,
   // so leaving it out would quietly dissolve every group on the first undo
   if (sh.g) c.g = sh.g;
+  // a morph step keeps its link to the two ends, so undo never freezes a live blend
+  if (sh.blend) c.blend = Object.assign({}, sh.blend);
   if (sh.kind === 'text') {
     c.text = sh.text;
     c.font = Object.assign({}, sh.font);
@@ -3312,6 +3314,7 @@ function render() {
   renderQueued = true;
   requestAnimationFrame(() => {
     renderQueued = false;
+    refreshBlends();
     renderPage();
     renderShapes();
     renderOverlay();
@@ -3319,7 +3322,7 @@ function render() {
     updatePanel();
   });
 }
-function renderNow() { renderPage(); renderShapes(); renderOverlay(); renderRulers(); updatePanel(); }
+function renderNow() { refreshBlends(); renderPage(); renderShapes(); renderOverlay(); renderRulers(); updatePanel(); }
 
 function snapDoc() {
   return {
@@ -5427,42 +5430,115 @@ function morphShapes(A, B, ts) {
 }
 /** Start shape = first selected, end shape = second. A third selected
     open path becomes the spine the steps are strung along. The result is
-    one group: Break apart (ungroup) makes every step its own shape. */
+    one group whose steps stay LIVE: every step carries a blend record
+    {a, b, t, spine, turn} and refreshBlends() regenerates it whenever
+    either end (or the spine) changes. Pressing Morph with a step selected,
+    or with the same two ends, rebuilds that blend — the way to change the
+    step count or the profile. Break apart (ungroup) freezes the steps. */
 function morphSel(mod) {
   const sel = app.sel.map(byId).filter(Boolean);
-  if (sel.length < 2) return status('Select the start shape, then Shift-click the end shape');
-  const A = sel[0], B = sel[1];
+  const step = sel.find(x => x.blend);
+  let A, B, spineSh, turn = $('#alTangent').checked;
+  if (step) {
+    A = byId(step.blend.a); B = byId(step.blend.b);
+    spineSh = step.blend.spine ? byId(step.blend.spine) : null;
+    turn = !!step.blend.turn;
+    if (!A || !B) return status('The ends of that morph no longer exist — Break apart to keep the steps as they are');
+  } else {
+    if (sel.length < 2) return status('Select the start shape, then Shift-click the end shape');
+    A = sel[0]; B = sel[1];
+    spineSh = sel.length >= 3 && sel[2].kind !== 'text' && sel[2].nodes && !sel[2].closed ? sel[2] : null;
+  }
   if (A.kind === 'text' || B.kind === 'text') return status('Explode text into curves before morphing it (Text panel → Explode)');
   const steps = clamp(parseInt($('#alMorphN').value, 10) || 5, 1, 200);
-  const spineSh = sel.length >= 3 && sel[2].kind !== 'text' && sel[2].nodes && !sel[2].closed ? sel[2] : null;
   const spine = spineSh ? guideSamples(spineSh) : null;
   const f = profileValues(steps + 2, false).slice(1, -1);
   const shapes = morphShapes(A, B, f);
   if (!shapes.length) return status('These two shapes cannot be morphed');
-  if (spine) {
-    const turn = $('#alTangent').checked;
-    shapes.forEach((sh, i) => {
-      const { p, tan } = guideAt(spine, f[i]), c = BB.centre(localBBox(sh));
-      sh.m = Mx.translate(p.x - c.x, p.y - c.y);
-      if (turn) sh.m = Mx.mul(sh.m, Mx.about(Mx.rotate(Math.atan2(tan.y, tan.x)), c));
-    });
-  }
+  shapes.forEach((sh, i) => {
+    sh.blend = { a: A.id, b: B.id, t: f[i], spine: spineSh ? spineSh.id : null, turn };
+    if (spine) placeOnSpine(sh, spine, f[i], turn);
+  });
   pushUndo();
-  const gid = newGid();
+  // an existing blend between these two ends is replaced, keeping its group
+  const old = app.doc.shapes.filter(x => x.blend && x.blend.a === A.id && x.blend.b === B.id);
+  if (old.length) app.doc.shapes = app.doc.shapes.filter(x => !old.includes(x));
+  let gid = topGroup(A) && topGroup(A) === topGroup(B) ? topGroup(A) : null;
+  if (!gid) {
+    gid = newGid();
+    for (const x of [A, B]) x.g = gid + (x.g ? '/' + x.g : '');
+  }
   for (const sh of shapes) sh.g = gid;
-  for (const s of [A, B]) s.g = gid + (s.g ? '/' + s.g : '');
   const idx = app.doc.shapes.indexOf(A);
   app.doc.shapes.splice(idx + 1, 0, ...shapes);
   makeContiguous([A].concat(shapes, [B]));
-  app.sel = [A.id].concat(shapes.map(s => s.id), [B.id]);
+  app.sel = [A.id].concat(shapes.map(x => x.id), [B.id]);
   app.handleMode = 'scale';
   save(); render();
-  status(`Morph: ${steps} step${steps === 1 ? '' : 's'}${spine ? ' along the spine' : ''} — "Break apart" makes each step its own shape`);
+  status(`${old.length ? 'Rebuilt' : 'Live'} morph: ${steps} step${steps === 1 ? '' : 's'}${spine ? ' along the spine' : ''} — edit either end and the steps follow; Break apart freezes them`);
 }
+function placeOnSpine(sh, spine, t, turn) {
+  const { p, tan } = guideAt(spine, t), c = BB.centre(localBBox(sh));
+  sh.m = Mx.translate(p.x - c.x, p.y - c.y);
+  if (turn) sh.m = Mx.mul(sh.m, Mx.about(Mx.rotate(Math.atan2(tan.y, tan.x)), c));
+}
+/* ---- live blends ------------------------------------------------------------
+   Steps are regenerated from their ends on every render, but only when a
+   cheap signature of either end (matrix, nodes, holes, closed flag, style)
+   or of the spine has changed since the last time — so a drag of one end
+   re-blends every frame, and an untouched blend costs one string compare.
+   An end that disappears (deleted, or turned into text) freezes its steps
+   in place rather than deleting them. The signature cache lives in a
+   "_" property so it is never saved and never survives an undo clone. */
+const blendSig = sh => sh ? JSON.stringify([sh.m, sh.nodes, sh.subs || 0, !!sh.closed, sh.style]) : '';
+function refreshBlends() {
+  for (let pass = 0; pass < 2; pass++) if (!refreshBlendsOnce()) break;   // a blend of a blend settles on the second pass
+}
+function refreshBlendsOnce() {
+  const groups = new Map();
+  for (const sh of app.doc.shapes) {
+    if (!sh.blend) continue;
+    const k = sh.blend.a + '|' + sh.blend.b + '|' + (sh.blend.spine || '');
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(sh);
+  }
+  let changed = false;
+  for (const steps of groups.values()) {
+    const rec = steps[0].blend, A = byId(rec.a), B = byId(rec.b), S = rec.spine ? byId(rec.spine) : null;
+    if (!A || !B || A.kind === 'text' || B.kind === 'text' || (rec.spine && !S)) { for (const x of steps) delete x.blend; continue; }
+    const sig = blendSig(A) + '#' + blendSig(B) + '#' + blendSig(S);
+    if (steps.every(x => x._bsig === sig)) continue;
+    const fresh = morphShapes(A, B, steps.map(x => x.blend.t));
+    if (fresh.length !== steps.length) { for (const x of steps) x._bsig = sig; continue; }
+    const spine = S ? guideSamples(S) : null;
+    steps.forEach((x, i) => {
+      const f = fresh[i];
+      x.nodes = f.nodes; x.closed = f.closed; x.style = f.style;
+      if (f.subs) x.subs = f.subs; else delete x.subs;
+      x.m = Mx.id();
+      if (spine) placeOnSpine(x, spine, x.blend.t, rec.turn);
+      x._bsig = sig;
+    });
+    changed = true;
+  }
+  return changed;
+}
+/** Freeze the steps of the selected blend(s) and split the group up. */
 function breakApartSel() {
-  if (!selShapes().some(s => s.g)) return status('The selection is not a morph or group');
-  ungroupSel();
-  status('Broken apart — click any step to select it on its own');
+  const sel = selShapes();
+  if (!sel.some(x => x.g || x.blend)) return status('The selection is not a morph or group');
+  pushUndo();
+  releaseBlends(sel);
+  if (sel.some(x => x.g)) ungroupSel(true); else { save(); render(); }
+  status('Broken apart — the steps are ordinary shapes now; click any of them to select it on its own');
+}
+/** Drop the blend links of these shapes (and of every step sharing their blend). */
+function releaseBlends(shapes) {
+  const keys = new Set(shapes.filter(x => x.blend).map(x => x.blend.a + '|' + x.blend.b));
+  if (!keys.size) return 0;
+  let n = 0;
+  for (const sh of app.doc.shapes) if (sh.blend && keys.has(sh.blend.a + '|' + sh.blend.b)) { delete sh.blend; delete sh._bsig; n++; }
+  return n;
 }
 
 /* ---- dry runs: what an action would do, drawn as ghosts ---------------
@@ -5590,10 +5666,11 @@ function drawAlignPreview() {
   const gb = $('#alGuideBtns');
   preview(mkBtn(gb, { cls: 'txt sm', icon: 'addguide', label: 'Add guide', title: 'Draw a guide path across the selection and select it last', onclick: withMods(() => addGuide($('#alGuideKind').value)) }), () => addGuide($('#alGuideKind').value));
   preview(mkBtn(gb, { cls: 'txt sm', icon: 'guide', label: 'Along guide', title: 'Place the selected shapes along the last selected path, spaced by the profile · Alt: use the first selected shape as the guide', onclick: withMods(m => distributeAlongGuide(m)) }), m => distributeAlongGuide(m));
+  $('#alMorphN').addEventListener('change', () => { if (selShapes().some(x => x.blend)) { app.ghosts = null; app.previewFn = null; morphSel({}); } });
   const lb = $('#alLineBtns');
   preview(mkBtn(lb, { cls: 'txt sm', icon: 'guide', label: 'Onto line', title: 'Move the centre onto the line selected last, or spread several shapes along it · Alt: the line is the first selected', onclick: withMods(m => ontoLineSel(m)) }), m => ontoLineSel(m));
-  preview(mkBtn(lb, { cls: 'txt sm', icon: 'morph', label: 'Morph', title: 'Create in-between shapes from the first selected shape to the second', onclick: withMods(m => morphSel(m)) }), m => morphSel(m));
-  mkBtn(lb, { cls: 'txt sm', icon: 'ungroup', label: 'Break apart', title: 'Split a morph (or any group) into separately selectable shapes', onclick: withMods(() => breakApartSel()) }).style.gridColumn = '1 / -1';
+  preview(mkBtn(lb, { cls: 'txt sm', icon: 'morph', label: 'Morph', title: 'Create live in-between shapes from the first selected shape to the second (select a step and press again to rebuild)', onclick: withMods(m => morphSel(m)) }), m => morphSel(m));
+  mkBtn(lb, { cls: 'txt sm', icon: 'ungroup', label: 'Break apart', title: 'Freeze a morph and split it (or any group) into separately selectable shapes', onclick: withMods(() => breakApartSel()) }).style.gridColumn = '1 / -1';
   updateProfileUI();
 })();
 
@@ -5815,10 +5892,24 @@ function duplicateSel() {
     return c;
   });
   remapGroups(copies);          // the copy is its own group, not more members
+  remapBlends(copies, sel.map(x => x.id));
   app.doc.shapes.push(...copies);
   app.sel = copies.map(c => c.id);
   save(); render();
   status('Duplicated');
+}
+/** After copying or importing: blend links point at the copies when both
+    ends came along, and are dropped (the steps freeze) when they did not. */
+function remapBlends(copies, oldIds) {
+  const map = new Map();
+  oldIds.forEach((id, i) => { if (copies[i]) map.set(id, copies[i].id); });
+  for (const c of copies) {
+    if (!c.blend) continue;
+    const a = map.get(c.blend.a), b = map.get(c.blend.b), sp = c.blend.spine ? map.get(c.blend.spine) : null;
+    if (a && b && (!c.blend.spine || sp)) c.blend = Object.assign({}, c.blend, { a, b, spine: sp || null });
+    else delete c.blend;
+    delete c._bsig;
+  }
 }
 function deleteSel() {
   if (app.tool === 'node' && app.nodeSel.length) return deleteSelNodes();
@@ -5859,17 +5950,18 @@ function groupSel() {
   save(); render();
   status(`Grouped ${sel.length} shapes`);
 }
-function ungroupSel() {
+function ungroupSel(quiet) {
   const sel = selShapes().filter(s => s.g);
   if (!sel.length) return status('Nothing in the selection is grouped');
-  pushUndo();
+  if (!quiet) pushUndo();
+  releaseBlends(selShapes());          // ungrouping a morph freezes its steps
   for (const sh of sel) {
     const parts = sh.g.split('/');
     parts.shift();                       // peel one level, keep any inner ones
     if (parts.length) sh.g = parts.join('/'); else delete sh.g;
   }
   save(); render();
-  status('Ungrouped');
+  if (!quiet) status('Ungrouped');
 }
 
 
@@ -7550,11 +7642,13 @@ function loadJSONFile(file) {
       if (v < DOC_SCHEMA) migrateDoc(d);
       applyDocMeta(Object.assign({ w: app.doc.w, h: app.doc.h, unit: app.doc.unit }, d));
       app.doc.shapes = d.shapes;
+      const oldIds = app.doc.shapes.map(sh => sh.id);
       for (const sh of app.doc.shapes) {
         sh.id = newId();
         if (!sh.m) sh.m = Mx.id();
       }
       remapGroups(app.doc.shapes);
+      remapBlends(app.doc.shapes, oldIds);
       app.sel = [];
       zoomFit(); save(); render();
       status('Imported ' + file.name + (v < DOC_SCHEMA ? ' (older format ' + v + ')' : ''));
