@@ -6317,7 +6317,8 @@ function drawSnapHint() {
 /* ---- document JSON ----------------------------------------------------- */
 function docJSON() {
   const d = app.doc;
-  return { w: d.w, h: d.h, unit: d.unit, paper: d.paper, orient: d.orient, origin: d.origin, guides: d.guides,
+  return { v: DOC_SCHEMA,
+           w: d.w, h: d.h, unit: d.unit, paper: d.paper, orient: d.orient, origin: d.origin, guides: d.guides,
            grid: { size: app.grid.size, major: app.grid.major, show: app.grid.show }, shapes: d.shapes };
 }
 /** Everything but the shapes, with defaults for files written before these existed. */
@@ -7541,7 +7542,12 @@ function loadJSONFile(file) {
     try {
       const d = JSON.parse(fr.result);
       if (!d || !Array.isArray(d.shapes)) throw new Error('bad file');
+      const v = Number.isFinite(d.v) ? d.v : 1;
+      // Refuse rather than half-read it; unlike the autosave there is no copy to keep,
+      // but the file on disk is untouched and the current drawing stays loaded.
+      if (v > DOC_SCHEMA) { status(file.name + ' was written by a newer VectorLab (format ' + v + ')'); return; }
       pushUndo();
+      if (v < DOC_SCHEMA) migrateDoc(d);
       applyDocMeta(Object.assign({ w: app.doc.w, h: app.doc.h, unit: app.doc.unit }, d));
       app.doc.shapes = d.shapes;
       for (const sh of app.doc.shapes) {
@@ -7551,7 +7557,7 @@ function loadJSONFile(file) {
       remapGroups(app.doc.shapes);
       app.sel = [];
       zoomFit(); save(); render();
-      status('Imported ' + file.name);
+      status('Imported ' + file.name + (v < DOC_SCHEMA ? ' (older format ' + v + ')' : ''));
     } catch (err) { status('That file could not be read as a VectorLab drawing'); }
   };
   fr.readAsText(file);
@@ -8521,7 +8527,7 @@ function openEdgeMenu(e) {
   $('#zoomLabel').textContent = '100%';
   renderNow();
   zoomFit({ x0: 0, y0: 0, x1: app.doc.w, y1: app.doc.h });
-  status('Draw a shape, then click it twice to reach the rotate and skew handles');
+  status(docLoadNote || 'Draw a shape, then click it twice to reach the rotate and skew handles');
 })();
 
 </script>
