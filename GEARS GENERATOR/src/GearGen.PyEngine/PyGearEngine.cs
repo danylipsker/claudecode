@@ -1,0 +1,246 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using GearGen.Geometry;
+
+namespace GearGen.PyEngine
+{
+    /// <summary>
+    /// Owns one persistent "python server.py" child process and talks to it
+    /// with newline-delimited JSON (see py/gear_step/server.py). Starting the
+    /// interpreter once and reusing it avoids ~150-200ms of Python/shapely
+    /// import cost on every parameter tweak, which is what makes a debounced
+    /// live preview feel responsive. All calls are serialized through a
+    /// semaphore -- the protocol is strictly one request in flight at a time.
+    /// </summary>
+    public class PyGearEngine : IDisposable
+    {
+        private Process _proc;
+        private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
+        private readonly string _pythonExe;
+        private readonly string _serverScript;
+
+        public bool IsRunning => _proc != null && !_proc.HasExited;
+
+        public PyGearEngine(string pythonExe = null, string serverScriptPath = null)
+        {
+            _pythonExe = pythonExe ?? "python";
+            _serverScript = serverScriptPath ?? LocateServerScript();
+        }
+
+        /// <summary>Walks up from this assembly's directory looking for
+        /// py/gear_step/server.py -- works regardless of Debug/Release build
+        /// depth as long as the repo layout stays intact.</summary>
+        public static string LocateServerScript()
+        {
+            var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+            var envOverride = Environment.GetEnvironmentVariable("GEARGEN_PY_SERVER");
+            if (!string.IsNullOrEmpty(envOverride) && File.Exists(envOverride))
+                return envOverride;
+
+            while (dir != null)
+            {
+                var candidate = Path.Combine(dir.FullName, "py", "gear_step", "server.py");
+                if (File.Exists(candidate))
+                    return candidate;
+                dir = dir.Parent;
+            }
+            throw new FileNotFoundException(
+                "Could not locate py/gear_step/server.py by walking up from " +
+                AppDomain.CurrentDomain.BaseDirectory + ". Set GEARGEN_PY_SERVER to override.");
+        }
+
+        public void Start()
+        {
+            if (IsRunning) return;
+
+            var psi = new ProcessStartInfo
+            {
+                FileName = _pythonExe,
+                Arguments = "\"" + _serverScript + "\"",
+                WorkingDirectory = Path.GetDirectoryName(_serverScript),
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                StandardOutputEncoding = System.Text.Encoding.UTF8,
+            };
+            _proc = Process.Start(psi);
+        }
+
+        public void Stop()
+        {
+            try
+            {
+                if (_proc != null && !_proc.HasExited)
+                {
+                    _proc.StandardInput.Close();
+                    if (!_proc.WaitForExit(2000))
+                        _proc.Kill();
+                }
+            }
+            catch { /* best effort */ }
+            finally
+            {
+                _proc?.Dispose();
+                _proc = null;
+            }
+        }
+
+        private async Task<EngineResponse> SendAsync(EngineRequest req)
+        {
+            if (!IsRunning) Start();
+
+            await _lock.WaitAsync().ConfigureAwait(false);
+            try
+            {
+                string json = JsonConvert.SerializeObject(req, Formatting.None,
+                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+
+                await _proc.StandardInput.WriteLineAsync(json).ConfigureAwait(false);
+                await _proc.StandardInput.FlushAsync().ConfigureAwait(false);
+
+                string line = await _proc.StandardOutput.ReadLineAsync().ConfigureAwait(false);
+                if (line == null)
+                {
+                    string stderr = "";
+                    try { stderr = _proc.StandardError.ReadToEnd(); } catch { }
+                    throw new EngineException("Python engine process ended unexpectedly.", stderr);
+                }
+                return JsonConvert.DeserializeObject<EngineResponse>(line);
+            }
+            finally
+            {
+                _lock.Release();
+            }
+        }
+
+        private static EngineRequest BuildRequest(string cmd, GearParameters p, string path = null)
+        {
+            var req = new EngineRequest
+            {
+                Cmd = cmd,
+                Unit = p.Unit == UnitSystem.Inch ? "inch" : "metric",
+                Z = p.Teeth,
+                PressureAngleDeg = p.PressureAngleDeg,
+                ProfileShift = p.ProfileShift,
+                AddendumCoeff = p.AddendumCoeff,
+                DedendumCoeff = p.DedendumCoeff,
+                RootFilletCoeff = p.RootFilletCoeff,
+                FaceWidthMm = p.FaceWidthMm,
+                BacklashMm = p.BacklashMm,
+                BoreDiameterMm = p.BoreDiameterMm,
+                HelixAngleDeg = p.HelixAngleDeg,
+                Hand = p.Hand,
+                Path = path,
+            };
+
+            if (p.IsBevel)
+            {
+                // The Python side's BevelGearParams doesn't have a separate
+                // inch constructor (v1 scope) -- convert to mm client-side so
+                // bevel works correctly regardless of the UI's unit toggle.
+                req.GearType = "bevel";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;
+                req.ShaftAngleDeg = p.ShaftAngleDeg;
+                req.PitchAngleOverrideDeg = p.PitchAngleOverrideDeg;
+                return req;
+            }
+
+            if (p.IsWorm)
+            {
+                // Same reasoning as bevel: WormParams has no separate inch
+                // constructor, so convert client-side. PitchDiameterMm is
+                // NOT unit-converted here -- it's already stored in mm on
+                // GearParameters regardless of Unit (see GearViewModel's
+                // PitchDiameterDisplay, which does the inch<->mm conversion
+                // at the UI-binding boundary, same pattern as FaceWidthMm).
+                req.GearType = "worm";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.Starts = p.WormStarts;
+                req.PitchDiameterMm = p.PitchDiameterMm;
+                req.MateTeeth = p.MateTeeth; // wheel teeth, for center-distance info only
+                return req;
+            }
+
+            if (p.Unit == UnitSystem.Inch)
+                req.DiametralPitch = p.DiametralPitch;
+            else
+                req.ModuleMm = p.ModuleMm;
+            return req;
+        }
+
+        public async Task<bool> PingAsync()
+        {
+            try
+            {
+                var resp = await SendAsync(new EngineRequest { Cmd = "ping" }).ConfigureAwait(false);
+                return resp != null && resp.Ok && resp.Pong;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<OutlineResult> GetOutlineAsync(GearParameters p, double simplifyToleranceMm = 0.01)
+        {
+            var req = BuildRequest("outline", p);
+            req.SimplifyToleranceMm = simplifyToleranceMm;
+            var resp = await SendAsync(req).ConfigureAwait(false);
+            if (resp == null || !resp.Ok)
+                throw new EngineException(resp?.Error ?? "Unknown engine error.", resp?.Traceback);
+
+            var result = new OutlineResult
+            {
+                Derived = resp.Derived ?? new System.Collections.Generic.Dictionary<string, double>(),
+                Warnings = resp.Warnings ?? new System.Collections.Generic.List<string>(),
+            };
+            if (resp.Outline != null)
+            {
+                foreach (var pt in resp.Outline)
+                    result.Points.Add(new OutlinePoint(pt[0], pt[1]));
+            }
+            return result;
+        }
+
+        /// <summary>Tessellates the ACTUAL 3D solid (not the flat 2D outline)
+        /// to an STL file, for the live 3D viewer -- bore, helix twist, cone
+        /// taper etc. all show exactly as they'll export, not just implied.
+        /// Slower than GetOutlineAsync (a real solid build, ~1-6s depending
+        /// on gear family/complexity), so the caller should keep this on its
+        /// own debounce/generation-tracking, not block the fast outline-based
+        /// derived-values update on it.</summary>
+        public async Task<string> GetMeshStlPathAsync(GearParameters p)
+        {
+            string tempStl = Path.Combine(Path.GetTempPath(), $"geargen_mesh_{Guid.NewGuid():N}.stl");
+            var resp = await SendAsync(BuildRequest("export_mesh", p, tempStl)).ConfigureAwait(false);
+            if (resp == null || !resp.Ok)
+                throw new EngineException(resp?.Error ?? "Unknown engine error.", resp?.Traceback);
+            return resp.Path;
+        }
+
+        public async Task<string> ExportStepAsync(GearParameters p, string path)
+        {
+            var resp = await SendAsync(BuildRequest("export_step", p, path)).ConfigureAwait(false);
+            if (resp == null || !resp.Ok)
+                throw new EngineException(resp?.Error ?? "Unknown engine error.", resp?.Traceback);
+            return resp.Path;
+        }
+
+        public async Task<string> ExportDxfAsync(GearParameters p, string path)
+        {
+            var resp = await SendAsync(BuildRequest("export_dxf", p, path)).ConfigureAwait(false);
+            if (resp == null || !resp.Ok)
+                throw new EngineException(resp?.Error ?? "Unknown engine error.", resp?.Traceback);
+            return resp.Path;
+        }
+
+        public void Dispose() => Stop();
+    }
+}

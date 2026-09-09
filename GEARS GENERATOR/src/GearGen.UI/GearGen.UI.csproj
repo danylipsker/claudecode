@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GearGen.Geometry\GearGen.Geometry.csproj" />
+    <ProjectReference Include="..\GearGen.PyEngine\GearGen.PyEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.27.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\*.png" />
+  </ItemGroup>
+
+</Project>

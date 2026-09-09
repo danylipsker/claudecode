@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GearGen.App/GearGen.App.csproj" />
+    <Project Path="src/GearGen.Geometry/GearGen.Geometry.csproj" />
+    <Project Path="src/GearGen.PyEngine/GearGen.PyEngine.csproj" />
+    <Project Path="src/GearGen.SolidWorksAddin/GearGen.SolidWorksAddin.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src/GearGen.UI/GearGen.UI.csproj" />
+  </Folder>
+</Solution>

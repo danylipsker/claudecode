@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon></ApplicationIcon>
+    <AssemblyName>GearsGenerator</AssemblyName>
+    <RootNamespace>GearGen.App</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SolidWorks.Interop.sldworks">
+      <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst">
+      <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GearGen.Geometry\GearGen.Geometry.csproj" />
+    <ProjectReference Include="..\GearGen.PyEngine\GearGen.PyEngine.csproj" />
+    <ProjectReference Include="..\GearGen.UI\GearGen.UI.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,285 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using GearGen.PyEngine;
+using SolidWorks.Interop.sldworks;
+
+namespace GearGen.App
+{
+    public partial class App : Application
+    {
+        public static PyGearEngine Engine { get; private set; }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            Engine = new PyGearEngine();
+            try
+            {
+                Engine.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Could not start the Python geometry engine.\n\n" + ex.Message +
+                    "\n\nMake sure Python 3 is installed and on PATH, and that the " +
+                    "'shapely', 'build123d' and 'ezdxf' packages are installed " +
+                    "(pip install shapely build123d ezdxf).",
+                    "GEARS GENERATOR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (e.Args.Length >= 2 && e.Args[0] == "--swversions")
+            {
+                var lines = SolidWorksVersionHelper.FindInstalls()
+                    .Select(i => $"{i.ExePath}  major={i.MajorVersion}  year={i.Year}");
+                File.WriteAllText(e.Args[1], string.Join("\n", lines));
+                Shutdown(0);
+                return;
+            }
+
+            if (e.Args.Length >= 3 && e.Args[0] == "--swtest")
+            {
+                RunSolidWorksTest(e.Args[1], e.Args[2]);
+                return;
+            }
+
+            if (e.Args.Length >= 2 && e.Args[0] == "--swaddincheck")
+            {
+                RunSolidWorksAddinCheck(e.Args[1]);
+                return;
+            }
+
+            if (e.Args.Length >= 2 && e.Args[0] == "--uismoke")
+            {
+                int? teeth = null;
+                if (e.Args.Length >= 3 && int.TryParse(e.Args[2], out int t)) teeth = t;
+                bool exportTest = e.Args.Any(a => a == "--exporttest");
+                double? helix = null;
+                var helixArg = e.Args.FirstOrDefault(a => a.StartsWith("--helix="));
+                if (helixArg != null && double.TryParse(helixArg.Substring(8), out double h)) helix = h;
+                bool bevel = e.Args.Any(a => a == "--bevel");
+                bool worm = e.Args.Any(a => a == "--worm");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm);
+                return;
+            }
+
+            var win = new MainWindow();
+            MainWindow = win;
+            win.Show();
+        }
+
+        private void RunSolidWorksTest(string stepPath, string sldprtPath)
+        {
+            string logPath = sldprtPath + ".log";
+            try
+            {
+                string result = SolidWorksExporter.ImportStepAndSaveAsSldprtAsync(stepPath, sldprtPath)
+                    .GetAwaiter().GetResult();
+                File.WriteAllText(logPath, "OK: " + result);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText(logPath, "FAIL: " + ex);
+            }
+            Shutdown(0);
+        }
+
+        /// <summary>Checks whether the GearGen.SolidWorksAddin is actually
+        /// loaded and connected. Tries Marshal.GetActiveObject first (attach
+        /// to whatever's already running); if that throws, falls back to
+        /// launching a fresh instance from THIS process, exactly like
+        /// SolidWorksExporter's own fallback -- found empirically that
+        /// GetActiveObject reaching a SolidWorks instance launched by a
+        /// SEPARATE process/tool invocation is not reliable in this
+        /// environment (every prior successful COM connection this session
+        /// was to an instance the SAME process either launched or was
+        /// already polling), while the self-contained launch-then-poll
+        /// pattern has worked consistently. Runs on a dedicated STA thread,
+        /// matching SolidWorksExporter's established pattern (SolidWorks'
+        /// automation objects are STA; a plain thread-pool thread fails).
+        /// Logs whether ISldWorks.GetAddInObject(progId) returned a live
+        /// object -- SolidWorks' own documented way to check an add-in's
+        /// connection state -- to a file rather than Console.WriteLine
+        /// (doesn't work for a WinExe subsystem app; see --uismoke's own
+        /// remarks).</summary>
+        private void RunSolidWorksAddinCheck(string logPath)
+        {
+            var thread = new Thread(() =>
+            {
+                ISldWorks swApp = null;
+                string connectionNote;
+                try
+                {
+                    try
+                    {
+                        swApp = (ISldWorks)Marshal.GetActiveObject("SldWorks.Application");
+                        connectionNote = "attached to an already-running SolidWorks instance.";
+                    }
+                    catch (COMException)
+                    {
+                        var t = Type.GetTypeFromProgID("SldWorks.Application");
+                        swApp = (ISldWorks)Activator.CreateInstance(t);
+                        swApp.Visible = true;
+                        connectionNote = "launched a fresh SolidWorks instance from this process (GetActiveObject on the externally-running one failed).";
+                        for (int i = 0; i < 60; i++)
+                        {
+                            try { var _ = swApp.ActiveDoc; break; }
+                            catch { Thread.Sleep(500); }
+                        }
+                        // give newly-loading add-ins (ConnectToSW runs during
+                        // this same startup) a moment to finish connecting
+                        Thread.Sleep(5000);
+                    }
+
+                    try
+                    {
+                        object addin = swApp.GetAddInObject("GearGen.SolidWorksAddin.SwAddin");
+                        if (addin != null)
+                        {
+                            File.WriteAllText(logPath,
+                                "OK: GetAddInObject returned a live object -- add-in is loaded and connected.\n" +
+                                "Connection: " + connectionNote + "\n" +
+                                "Runtime type: " + addin.GetType().FullName);
+                            Marshal.ReleaseComObject(addin);
+                        }
+                        else
+                        {
+                            File.WriteAllText(logPath,
+                                "NOT LOADED: connected to SolidWorks (" + connectionNote + "), but GetAddInObject " +
+                                "returned null (add-in isn't checked in Tools > Add-Ins, or ConnectToSW hasn't completed).");
+                        }
+                    }
+                    finally
+                    {
+                        Marshal.ReleaseComObject(swApp);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    File.WriteAllText(logPath, "FAIL: " + ex);
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.IsBackground = false; // keep the process alive until this finishes
+            thread.Start();
+            thread.Join(TimeSpan.FromSeconds(90)); // fresh-launch fallback can take a while
+            Shutdown(0);
+        }
+
+        /// <summary>Self-contained visual smoke test: shows the window off-screen,
+        /// pumps the dispatcher long enough for the first debounced preview
+        /// round-trip to the Python engine to complete, renders it to a PNG via
+        /// RenderTargetBitmap (screen capture is unavailable in this environment),
+        /// then exits. Invoke as: GearsGenerator.exe --uismoke out.png</summary>
+        private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
+            double? helixOverride = null, bool bevel = false, bool worm = false)
+        {
+            string logPath = outputPngPath + ".log";
+            var log = new System.Text.StringBuilder();
+            void Log(string s) { log.AppendLine(DateTime.Now.ToString("HH:mm:ss.fff") + " " + s); File.WriteAllText(logPath, log.ToString()); }
+
+            try
+            {
+                Log("start");
+                Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPngPath)) ?? ".");
+
+                var win = new MainWindow
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    Left = -5000,
+                    Top = -5000,
+                    ShowInTaskbar = false,
+                };
+                Log("window created");
+                win.Show();
+                Log("window shown");
+
+                if (bevel)
+                    win.Panel.ViewModel.IsBevel = true;
+                if (worm)
+                    win.Panel.ViewModel.IsWorm = true;
+                if (teethOverride.HasValue)
+                    win.Panel.ViewModel.Teeth = teethOverride.Value;
+                if (helixOverride.HasValue)
+                    win.Panel.ViewModel.HelixAngleDeg = helixOverride.Value;
+
+                void PumpFor(int ms)
+                {
+                    var until = DateTime.UtcNow.AddMilliseconds(ms);
+                    while (DateTime.UtcNow < until)
+                    {
+                        Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new Action(() => { }));
+                        Thread.Sleep(20);
+                    }
+                }
+
+                PumpFor(9000); // let the debounce timer fire and both the fast outline AND the slower mesh round-trip finish
+                var geom = win.Panel?.ViewModel?.PreviewGeometry;
+                Log("pumped; StatusMessage=" + win.Panel?.ViewModel?.StatusMessage +
+                    "; geom bounds=" + geom?.Bounds + "; geom null=" + (geom == null) +
+                    "; Model3D null=" + (win.Panel?.ViewModel?.Model3D == null) +
+                    "; IsMeshBusy=" + win.Panel?.ViewModel?.IsMeshBusy);
+
+                // Force a fresh Measure/Arrange against the final (post-binding-update)
+                // geometry -- otherwise the Viewbox can still be holding the scale
+                // transform it computed against the initial empty/placeholder geometry.
+                win.InvalidateMeasure();
+                win.InvalidateArrange();
+                win.UpdateLayout();
+                win.UpdateLayout();
+                var rtb = new RenderTargetBitmap(
+                    Math.Max(1, (int)win.ActualWidth), Math.Max(1, (int)win.ActualHeight), 96, 96, PixelFormats.Pbgra32);
+                rtb.Render(win);
+                Log($"rendered {win.ActualWidth}x{win.ActualHeight}");
+
+                var encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(rtb));
+                using (var fs = File.Create(outputPngPath))
+                    encoder.Save(fs);
+                Log("saved png");
+
+                if (exportTest)
+                {
+                    string stepOut = outputPngPath + ".export-test.step";
+                    string dxfOut = outputPngPath + ".export-test.dxf";
+                    bool stepDone = false, dxfDone = false;
+                    string stepErr = null, dxfErr = null;
+
+                    win.Panel.ViewModel.DoExportStepAsync(stepOut)
+                        .ContinueWith(t => { stepErr = t.Exception?.InnerException?.Message; stepDone = true; });
+                    var untilStep = DateTime.UtcNow.AddSeconds(30);
+                    while (!stepDone && DateTime.UtcNow < untilStep) PumpFor(100);
+                    Log("STEP export done=" + stepDone + " err=" + stepErr + " exists=" + File.Exists(stepOut) +
+                        " size=" + (File.Exists(stepOut) ? new FileInfo(stepOut).Length : -1));
+
+                    win.Panel.ViewModel.DoExportDxfAsync(dxfOut)
+                        .ContinueWith(t => { dxfErr = t.Exception?.InnerException?.Message; dxfDone = true; });
+                    var untilDxf = DateTime.UtcNow.AddSeconds(30);
+                    while (!dxfDone && DateTime.UtcNow < untilDxf) PumpFor(100);
+                    Log("DXF export done=" + dxfDone + " err=" + dxfErr + " exists=" + File.Exists(dxfOut) +
+                        " size=" + (File.Exists(dxfOut) ? new FileInfo(dxfOut).Length : -1));
+                }
+
+                win.Close();
+                Shutdown(0);
+            }
+            catch (Exception ex)
+            {
+                Log("EXCEPTION: " + ex);
+                Shutdown(1);
+            }
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            Engine?.Dispose();
+            base.OnExit(e);
+        }
+    }
+}

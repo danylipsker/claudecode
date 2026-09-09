@@ -1,0 +1,25 @@
+<Window x:Class="GearGen.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:GearGen.UI;assembly=GearGen.UI"
+        Title="GEARS GENERATOR" Height="760" Width="1180" MinHeight="600" MinWidth="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#111827" Padding="18,12">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="⚙" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
+                <TextBlock Text="GEARS GENERATOR" FontSize="16" FontWeight="Bold" Foreground="White"
+                           Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text="parametric involute spur, helical, bevel &amp; worm gears — exact geometry, STEP / DXF / SolidWorks"
+                           FontSize="11" Foreground="#9CA3AF" Margin="14,3,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <ui:GearPanel x:Name="Panel" Grid.Row="1"/>
+    </Grid>
+</Window>

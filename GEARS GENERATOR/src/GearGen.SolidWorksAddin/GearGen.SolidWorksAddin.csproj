@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- SolidWorks 2020+ is 64-bit only; a COM add-in DLL must match the host
+         process bitness, so this cannot be AnyCPU. -->
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AssemblyName>GearGen.SolidWorksAddin</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="SolidWorks.Interop.sldworks">
+      <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst">
+      <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished">
+      <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.swpublished.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GearGen.Geometry\GearGen.Geometry.csproj" />
+    <ProjectReference Include="..\GearGen.PyEngine\GearGen.PyEngine.csproj" />
+    <ProjectReference Include="..\GearGen.UI\GearGen.UI.csproj" />
+  </ItemGroup>
+
+</Project>

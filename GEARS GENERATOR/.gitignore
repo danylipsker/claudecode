@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Python
+__pycache__/
+*.pyc
+
+# scratch / generated output
+ui-shots/
+py/gear_step/out/
+*.sldprt.log
+*.export-test.*
