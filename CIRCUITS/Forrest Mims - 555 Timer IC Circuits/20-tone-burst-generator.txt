@@ -57,5 +57,6 @@
   <x x="96 793 544 797" f="0" si="12" te="Book waveform, p.24:  CLOSE S1 then OPEN S1; TONE ON begins with the\nclosure and stays on well past the release before going off." co="#9fb8c8"/>
   <o en="41" sp="64" f="x20a" p="0" x="tone out"><p v="0" sc="2"/></o>
   <o en="23" sp="64" f="x20a" p="1" x="C2 burst envelope"><p v="0" sc="2"/></o>
+  <adj e="13" ei="0" en="Capacitance (F)" mn="1e-08" mx="1e-06" st="C1 tone" stp="0" log="1"/>
   <adj e="23" ei="0" en="Capacitance (F)" mn="1e-05" mx="0.001" st="C2 burst length" stp="0" log="1"/>
 </cir>

@@ -187,6 +187,7 @@ def c17():
     c.scope(p1, 0, ((0, 2),), label="chirp rate")
     c.scope(p2, 1, ((0, 2),), label="chirp gate")
     c.slider(r1, "Resistance (ohms)", 100000, 2000000, "R1 chirp rate")
+    c.slider(r3, "Resistance (ohms)", 1000, 100000, "R3 chirp length")
     c.slider(c3, "Capacitance (F)", 1e-9, 2.2e-7, "C3 chirp length", log=True)
     c.text((96, 700), "Mims labels Q1's leads E to pins 12/13 and C to ground; built here the "
                       "conventional way round -- collector on C3, emitter grounded -- which is the "
@@ -326,7 +327,7 @@ def c20():
     c.w((304, T.dis[1]), T.dis)
     c.r((304, T.dis[1]), (304, T.th[1]), 22000, ref="R2")
     strap_62(c, T, 304)
-    c.c((304, T.th[1]), (304, gr.y), 1e-7, ref="C1")
+    c1 = c.c((304, T.th[1]), (304, gr.y), 1e-7, ref="C1")
     vr.tap(304); gr.tap(304)
 
     c.add(T.xml())
@@ -359,6 +360,7 @@ def c20():
     p = vprobe(c, T.out, gr, lane=624)
     c.scope(p, 0, ((0, 2),), label="tone out")
     c.scope(c2, 1, ((0, 2),), label="C2 burst envelope")
+    c.slider(c1, "Capacitance (F)", 1e-8, 1e-6, "C1 tone", log=True)
     c.slider(c2, "Capacitance (F)", 1e-5, 1e-3, "C2 burst length", log=True)
     vr.build(); gr.build()
     return "20-tone-burst-generator", c

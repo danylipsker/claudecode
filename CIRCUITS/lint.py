@@ -85,6 +85,7 @@ def crosses_chip(s, box):
 
 def lint(path):
     segs, chips = load(path)
+    elems = len(segs) + len(chips)
     out = []
     for i in range(len(segs)):
         for j in range(i + 1, len(segs)):
@@ -117,14 +118,17 @@ def lint(path):
             continue
         seen.add(msg)
         uniq.append((kind, msg))
-    return uniq
+    return uniq, elems
 
 
 if __name__ == "__main__":
     pattern = sys.argv[1]
     tally = collections.Counter()
-    for f in sorted(glob.glob(pattern)):
-        issues = lint(f)
+    files = sorted(glob.glob(pattern))
+    total_elems = 0
+    for f in files:
+        issues, n = lint(f)
+        total_elems += n
         if not issues:
             continue
         print(os.path.basename(f))
@@ -132,4 +136,10 @@ if __name__ == "__main__":
             tally[kind] += 1
             print("   %-10s %s" % (kind, msg))
         print()
+    if not files:
+        print("warning: no files matched %r" % pattern)
+    elif total_elems == 0:
+        print("warning: 0 elements recognized across %d file(s) -- wrong format?"
+              "  lint.py only understands XML <tag .../> circuits, not the legacy"
+              " plain-text dump." % len(files))
     print("totals:", dict(tally) or "clean")

@@ -83,5 +83,6 @@
   <o en="56" sp="64" f="x20a" p="0" x="chirp rate"><p v="0" sc="2"/></o>
   <o en="57" sp="64" f="x20a" p="1" x="chirp gate"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="100000" mx="2000000" st="R1 chirp rate" stp="0" log="0"/>
+  <adj e="27" ei="0" en="Resistance (ohms)" mn="1000" mx="100000" st="R3 chirp length" stp="0" log="0"/>
   <adj e="32" ei="0" en="Capacitance (F)" mn="1e-09" mx="2.2e-07" st="C3 chirp length" stp="0" log="1"/>
 </cir>
