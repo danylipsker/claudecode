@@ -15,7 +15,11 @@ namespace GearGen.Geometry
         /// <summary>Straight bevel gear, conical -- see docs/gear-math.md section 8.</summary>
         Bevel,
         /// <summary>Worm (the screw member) -- see docs/gear-math.md section 9.</summary>
-        Worm
+        Worm,
+        /// <summary>Linear gear track -- see docs/gear-math.md section 10.</summary>
+        Rack,
+        /// <summary>Internal (ring) gear, teeth pointing inward -- see docs/gear-math.md section 11.</summary>
+        Internal
     }
 
     /// <summary>
@@ -97,6 +101,37 @@ namespace GearGen.Geometry
         /// (unlike a normal gear, a worm's pitch diameter isn't derived from
         /// module*teeth).</summary>
         public double PitchDiameterMm { get; set; } = 20.0;
+
+        // ---- rack (docs/gear-math.md section 10) -- Family == Rack only ------
+        // Reuses Teeth (a rack has a finite number of teeth along its length),
+        // ModuleMm/DiametralPitch, PressureAngleDeg, Addendum/Dedendum/
+        // RootFilletCoeff, BacklashMm, FaceWidthMm (extrusion depth, same
+        // meaning as any other gear), and BoreDiameterMm (mounting holes
+        // through the backing bar, one per tooth pitch, 0 = none).
+
+        public bool IsRack => Family == GearFamily.Rack;
+
+        /// <summary>Solid material below the root land, for mounting/rigidity.</summary>
+        public double BackingHeightMm { get; set; } = 5.0;
+
+        // ---- internal / ring gear (docs/gear-math.md section 11) -- Family == Internal only ----
+        // Reuses Teeth (the ring's own tooth count), ModuleMm/DiametralPitch,
+        // PressureAngleDeg, Addendum/Dedendum/RootFilletCoeff, BacklashMm,
+        // FaceWidthMm, and MateTeeth (the mating pinion's tooth count, for
+        // center-distance info only -- same "info only, no separate wheel
+        // mode" pattern worm gears already use for MateTeeth).
+
+        public bool IsInternal => Family == GearFamily.Internal;
+
+        /// <summary>Shaper-cutter tooth count -- a construction parameter
+        /// only (the fundamental law of gearing guarantees the generated
+        /// flank doesn't depend on it), not a property of the finished ring.
+        /// 0 = let the Python engine pick a sensible default.</summary>
+        public int CutterTeeth { get; set; } = 0;
+
+        /// <summary>Solid rim material beyond the root (dedendum) circle,
+        /// out to the ring's outer diameter.</summary>
+        public double RimThicknessMm { get; set; } = 6.0;
 
         public double ModuleFromDiametralPitch => 25.4 / DiametralPitch;
 

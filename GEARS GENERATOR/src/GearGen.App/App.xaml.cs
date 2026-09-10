@@ -65,7 +65,9 @@ namespace GearGen.App
                 if (helixArg != null && double.TryParse(helixArg.Substring(8), out double h)) helix = h;
                 bool bevel = e.Args.Any(a => a == "--bevel");
                 bool worm = e.Args.Any(a => a == "--worm");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm);
+                bool rack = e.Args.Any(a => a == "--rack");
+                bool internalGear = e.Args.Any(a => a == "--internal");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear);
                 return;
             }
 
@@ -178,7 +180,7 @@ namespace GearGen.App
         /// RenderTargetBitmap (screen capture is unavailable in this environment),
         /// then exits. Invoke as: GearsGenerator.exe --uismoke out.png</summary>
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
-            double? helixOverride = null, bool bevel = false, bool worm = false)
+            double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -204,6 +206,10 @@ namespace GearGen.App
                     win.Panel.ViewModel.IsBevel = true;
                 if (worm)
                     win.Panel.ViewModel.IsWorm = true;
+                if (rack)
+                    win.Panel.ViewModel.IsRack = true;
+                if (internalGear)
+                    win.Panel.ViewModel.IsInternal = true;
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)

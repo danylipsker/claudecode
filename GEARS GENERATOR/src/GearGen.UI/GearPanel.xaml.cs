@@ -88,6 +88,16 @@ namespace GearGen.UI
             if (ViewModel != null) ViewModel.IsBevel = true;
         }
 
+        private void OnRackChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectRackCard();
+        }
+
+        private void OnInternalChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectInternalCard();
+        }
+
         private async void OnExportStepClick(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog

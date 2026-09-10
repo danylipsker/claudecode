@@ -286,6 +286,7 @@ def internal_derived_values(ip: InternalGearParams, pinion_teeth: int = 0) -> di
     center_distance = (ip.pitch_radius - (ip.module_mm * pinion_teeth / 2.0)) if pinion_teeth > 0 else 0.0
     return {
         "pitch_diameter_mm": 2 * ip.pitch_radius,
+        "base_diameter_mm": 2 * ip.base_radius,
         "addendum_diameter_mm": 2 * ip.addendum_radius,
         "dedendum_diameter_mm": 2 * ip.dedendum_radius,
         "outer_diameter_mm": 2 * ip.outer_radius,

@@ -1,6 +1,55 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## Racks and internal (ring) gears: added, validated end-to-end; spiral bevel documented as a plan only (latest)
+## C# UI wired for racks and internal gears (latest)
+
+Closes the gap the previous pass left open (see "the C# side itself... is not
+yet wired" below) — racks and internal gears now have the same UI depth as
+every other family: mosaic card, family-specific parameter section, live 3D
+solid preview, derived values, STEP/DXF export. No Python engine changes.
+
+- `GearGen.Geometry`: `GearFamily` gained `Rack`/`Internal`; `GearParameters`
+  gained `BackingHeightMm` (rack), `CutterTeeth`/`RimThicknessMm` (internal).
+- `GearGen.PyEngine`: `BuildRequest()` grew `IsRack`/`IsInternal` branches
+  (following the existing bevel/worm client-side-mm-conversion pattern, since
+  neither Python dataclass has a separate inch constructor).
+- `GearGen.UI`: `GearViewModel` grew `IsRack`/`IsInternal`/`IsNotInternal`
+  (the last hides the bore spinner, since internal gears don't take a bore —
+  they mount on the ring's own OD in practice) plus display properties for
+  every new derived value. `GearPanel.xaml` grew two mosaic cards (both
+  sharing the existing `GroupName="family"` group — confirmed *not* a repeat
+  of the duplicate-GroupName StackOverflow bug from the bevel/worm phase,
+  since every card in the mosaic has always shared one group), a RACK section
+  (backing height), an INTERNAL section (rim thickness, construction cutter
+  teeth with 0=auto, mating pinion teeth for center-distance info only — no
+  separate "pinion mode", build the actual pinion with the Spur/Helical
+  card), and two new derived-values blocks. Rack deliberately blanks the
+  shared pitch/base/addendum/dedendum *diameter* fields to "-" rather than
+  reusing them for tooth *height* (a rack has no radius to report, and a
+  stale diameter from whatever family was selected before would mislead more
+  than an honest "-"); it gets its own `AddendumHeightText`/
+  `DedendumHeightText` instead. Internal gears round out the diameter grid
+  with a `base_diameter_mm` that `internal_derived_values()` hadn't been
+  exposing.
+- `GearPanel.xaml.cs`: `OnRackChecked`/`OnInternalChecked`, matching the
+  existing `OnWormChecked` one-liner pattern.
+- `App.xaml.cs`: `--rack`/`--internal` flags added to the `--uismoke`
+  dispatcher alongside the existing `--bevel`/`--worm`.
+- Verified empirically, not just by a clean build: ran `--uismoke` with
+  `--rack --exporttest` and `--internal --exporttest` and inspected the
+  rendered PNGs. Rack renders as a straight toothed bar; internal (at a
+  meaningful z=32, not the degenerate z=4 the smoke test's own teeth-clamp
+  produces by default) renders as a proper ring with inward-pointing teeth,
+  correct derived values (addendum diameter 60mm *inside* the 64mm pitch
+  diameter, dedendum 69mm *outside* it — the inverted convention internal
+  gears actually have), and the validity warning ("construction cutter tooth
+  count should be smaller than the ring's own") correctly fires at z=4
+  where the auto cutter-teeth count (8) would exceed the ring's own (4).
+  Both STEP and DXF exports succeeded for both families. Re-ran the existing
+  `--worm` smoke test as a regression check on the XAML region adjacent to
+  the new insertion point — unaffected. All 44 Python tests still pass
+  (`involute.py`/`rack.py`/`internal.py` untouched this pass).
+
+## Racks and internal (ring) gears: added, validated end-to-end; spiral bevel documented as a plan only
 
 Extends the Python geometry engine (`py/gear_step/`) with the two gear families
 PROGRESS.md previously listed as "out of scope for now" that were most tractable
@@ -65,9 +114,8 @@ plan).
   target yet.
 - Both new families' `server.py` commands (outline / export_step / export_dxf
   / export_mesh) are wired following the exact existing dispatch pattern, so
-  the C# UI has a working protocol to connect to; the C# side itself (mosaic
-  cards, parameter panels, live preview) is not yet wired — this pass was
-  Python-only.
+  the C# UI has a working protocol to connect to. (This pass was Python-only;
+  the C# side was wired in the follow-up pass above.)
 - Internal gears' solid-construction default tolerance is deliberately looser
   than the 2D preview default (30 microns vs. 1): left at the tight default,
   a single z=40 ring's STEP file came out at 16.6MB (a whole ring's toothed

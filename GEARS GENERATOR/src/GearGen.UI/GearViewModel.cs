@@ -64,6 +64,7 @@ namespace GearGen.UI
         public string ModuleOrDpLabel =>
             (IsInch ? "Diametral pitch" : "Module") + (IsBevel ? " (outer/heel)" : IsWorm ? " (axial)" : "");
         public string FaceWidthLabel => IsWorm ? "Threaded length" : "Face width";
+        public string BoreOrHoleLabel => IsRack ? "Mounting hole diameter (0 = none)" : "Bore diameter (0 = none)";
         public string LengthSuffix => IsInch ? "in" : "mm";
 
         // ---- gear family (cylindrical vs bevel) -----------------------------
@@ -84,6 +85,22 @@ namespace GearGen.UI
             set { if (value) { _p.Family = GearFamily.Worm; OnChanged(); FamilyChanged(); } }
         }
         public bool IsNotWorm => !IsWorm;
+        public bool IsRack
+        {
+            get => _p.Family == GearFamily.Rack;
+            set { if (value) { _p.Family = GearFamily.Rack; OnChanged(); FamilyChanged(); } }
+        }
+        public bool IsInternal
+        {
+            get => _p.Family == GearFamily.Internal;
+            set { if (value) { _p.Family = GearFamily.Internal; OnChanged(); FamilyChanged(); } }
+        }
+        /// <summary>An internal gear has no separate "bore" -- its whole
+        /// inner region already IS the toothed hole -- so the generic bore
+        /// spinner is hidden for it entirely (rather than shown but silently
+        /// ignored: server.py's internal_params_from_request doesn't even
+        /// read a bore_diameter_mm field).</summary>
+        public bool IsNotInternal => !IsInternal;
 
         private void FamilyChanged()
         {
@@ -91,16 +108,30 @@ namespace GearGen.UI
             OnChanged(nameof(IsBevel));
             OnChanged(nameof(IsWorm));
             OnChanged(nameof(IsNotWorm));
+            OnChanged(nameof(IsRack));
+            OnChanged(nameof(IsInternal));
+            OnChanged(nameof(IsNotInternal));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
             OnChanged(nameof(FaceWidthLabel));
+            OnChanged(nameof(BoreOrHoleLabel));
             ScheduleRefresh();
         }
 
         public void SelectWormCard()
         {
             IsWorm = true;
+        }
+
+        public void SelectRackCard()
+        {
+            IsRack = true;
+        }
+
+        public void SelectInternalCard()
+        {
+            IsInternal = true;
         }
 
         // ---- worm (docs/gear-math.md section 9) -- Family == Worm only ------
@@ -115,6 +146,32 @@ namespace GearGen.UI
         {
             get => IsInch ? UnitConversion.MmToInch(_p.PitchDiameterMm) : _p.PitchDiameterMm;
             set { _p.PitchDiameterMm = Math.Max(0.5, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        // ---- rack (docs/gear-math.md section 10) -- Family == Rack only -----
+
+        public double BackingHeightDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.BackingHeightMm) : _p.BackingHeightMm;
+            set { _p.BackingHeightMm = Math.Max(0.5, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        // ---- internal / ring gear (docs/gear-math.md section 11) -- Family == Internal only ----
+
+        public int CutterTeeth
+        {
+            // 0 = let the Python engine pick a default (max(8, z/2)) -- a
+            // construction parameter only, not a property of the finished
+            // ring (the fundamental law of gearing guarantees the generated
+            // flank doesn't depend on it).
+            get => _p.CutterTeeth;
+            set { _p.CutterTeeth = Math.Max(0, value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public double RimThicknessDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.RimThicknessMm) : _p.RimThicknessMm;
+            set { _p.RimThicknessMm = Math.Max(0.5, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
         }
 
         /// <summary>The gear-family mosaic shows Spur and Helical as separate
@@ -273,6 +330,8 @@ namespace GearGen.UI
             OnChanged(nameof(BacklashDisplay));
             OnChanged(nameof(BoreDiameterDisplay));
             OnChanged(nameof(PitchDiameterDisplay));
+            OnChanged(nameof(BackingHeightDisplay));
+            OnChanged(nameof(RimThicknessDisplay));
         }
 
         // ---- preview / derived values ---------------------------------------
@@ -396,6 +455,16 @@ namespace GearGen.UI
         /// on WormStarts): the wheel IS just a helical gear with these values.</summary>
         public string WheelHintText { get => _wheelHintText; private set { _wheelHintText = value; OnChanged(); } }
 
+        private string _circularPitchText = "-", _totalLengthText = "-", _addendumHeightText = "-", _dedendumHeightText = "-";
+        public string CircularPitchText { get => _circularPitchText; private set { _circularPitchText = value; OnChanged(); } }
+        public string TotalLengthText { get => _totalLengthText; private set { _totalLengthText = value; OnChanged(); } }
+        public string AddendumHeightText { get => _addendumHeightText; private set { _addendumHeightText = value; OnChanged(); } }
+        public string DedendumHeightText { get => _dedendumHeightText; private set { _dedendumHeightText = value; OnChanged(); } }
+
+        private string _outerDiameterText = "-", _cutterTeethText = "-";
+        public string OuterDiameterText { get => _outerDiameterText; private set { _outerDiameterText = value; OnChanged(); } }
+        public string CutterTeethText { get => _cutterTeethText; private set { _cutterTeethText = value; OnChanged(); } }
+
         private void ScheduleRefresh()
         {
             _debounce.Stop();
@@ -451,6 +520,33 @@ namespace GearGen.UI
                     LeadAngleText = $"{dv("lead_angle_deg"):0.##}°";
                     CenterDistanceText = MateTeeth > 0 ? L(dv("center_distance_mm")) : "set wheel teeth";
                     WheelHintText = $"module {L(dv("wheel_module_mm"))}, helix {dv("wheel_helix_angle_deg"):0.##}°, {(_p.Hand == "left" ? "left" : "right")}-hand";
+                }
+                else if (IsRack)
+                {
+                    // rack_derived_values (server.py) returns yet another key
+                    // set -- pitch/base/addendum/dedendum DIAMETER genuinely
+                    // don't apply to a straight rack (infinite radius), so
+                    // explicitly blanked rather than left showing a stale
+                    // value from whatever family was selected before.
+                    PitchDiameterText = "-";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = "-";
+                    DedendumDiameterText = "-";
+                    ToothThicknessText = L(dv("circular_tooth_thickness_mm"));
+                    CircularPitchText = L(dv("circular_pitch_mm"));
+                    AddendumHeightText = L(dv("addendum_height_mm"));
+                    DedendumHeightText = L(dv("dedendum_height_mm"));
+                    TotalLengthText = L(dv("total_length_mm"));
+                }
+                else if (IsInternal)
+                {
+                    PitchDiameterText = L(dv("pitch_diameter_mm"));
+                    BaseDiameterText = L(dv("base_diameter_mm"));
+                    AddendumDiameterText = L(dv("addendum_diameter_mm"));
+                    DedendumDiameterText = L(dv("dedendum_diameter_mm"));
+                    OuterDiameterText = L(dv("outer_diameter_mm"));
+                    CutterTeethText = dv("cutter_teeth").ToString("0");
+                    CenterDistanceText = MateTeeth > 0 ? L(dv("center_distance_mm")) : "set pinion teeth";
                 }
                 else
                 {

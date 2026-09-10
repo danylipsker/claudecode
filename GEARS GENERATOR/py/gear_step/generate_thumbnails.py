@@ -10,7 +10,13 @@ import build123d as bd
 
 from involute import GearParams
 from bevel import BevelGearParams
-from build_gear import build_gear_solid, build_bevel_gear_solid
+from worm import WormParams
+from rack import RackParams
+from internal import InternalGearParams
+from build_gear import (
+    build_gear_solid, build_bevel_gear_solid, build_worm_solid,
+    build_rack_solid, build_internal_gear_solid,
+)
 
 
 def render_solid_thumbnail(solid, out_path, elev=22, azim=35, color="#60A5FA", edge="#1D4ED8"):
@@ -71,5 +77,14 @@ if __name__ == "__main__":
                              face_width_mm=10.0, bore_diameter_mm=6.0)
     render_solid_thumbnail(build_bevel_gear_solid(bevel, n_phi=120, simplify_tolerance_mm=0.05),
                             f"{out_dir}/thumb_bevel.png")
+
+    worm = WormParams(starts=2, axial_module_mm=2.0, pitch_diameter_mm=20.0, length_mm=30.0, bore_diameter_mm=6.0)
+    render_solid_thumbnail(build_worm_solid(worm, n_per_turn=40), f"{out_dir}/thumb_worm.png")
+
+    rack = RackParams(z=8, module_mm=3.0, face_width_mm=12.0, backing_height_mm=6.0)
+    render_solid_thumbnail(build_rack_solid(rack), f"{out_dir}/thumb_rack.png", elev=28, azim=-35)
+
+    internal = InternalGearParams(z=32, module_mm=2.5, face_width_mm=12.0, rim_thickness_mm=6.0, cutter_teeth=16)
+    render_solid_thumbnail(build_internal_gear_solid(internal), f"{out_dir}/thumb_internal.png")
 
     print("done")

@@ -28,6 +28,9 @@ namespace GearGen.PyEngine
         [JsonProperty("pitch_diameter_mm")] public double? PitchDiameterMm;
         [JsonProperty("path")] public string Path;
         [JsonProperty("simplify_tolerance_mm")] public double? SimplifyToleranceMm;
+        [JsonProperty("backing_height_mm")] public double? BackingHeightMm;
+        [JsonProperty("cutter_teeth")] public int? CutterTeeth;
+        [JsonProperty("rim_thickness_mm")] public double? RimThicknessMm;
     }
 
     internal class EngineResponse

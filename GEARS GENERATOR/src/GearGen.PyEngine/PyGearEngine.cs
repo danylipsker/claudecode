@@ -168,6 +168,30 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsRack)
+            {
+                // Same reasoning as bevel/worm: RackParams has no separate
+                // inch constructor, so convert client-side.
+                req.GearType = "rack";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.BackingHeightMm = p.BackingHeightMm;
+                // BoreDiameterMm already set above: mounting holes through
+                // the backing bar, one per tooth pitch, 0 = none.
+                return req;
+            }
+
+            if (p.IsInternal)
+            {
+                // Same reasoning as bevel/worm: InternalGearParams has no
+                // separate inch constructor, so convert client-side.
+                req.GearType = "internal";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.CutterTeeth = p.CutterTeeth;
+                req.RimThicknessMm = p.RimThicknessMm;
+                req.MateTeeth = p.MateTeeth; // mating pinion teeth, for center-distance info only
+                return req;
+            }
+
             if (p.Unit == UnitSystem.Inch)
                 req.DiametralPitch = p.DiametralPitch;
             else

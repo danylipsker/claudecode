@@ -131,10 +131,10 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="18,16,18,16">
                 <StackPanel>
                     <TextBlock Text="Gear Parameters" FontSize="16" FontWeight="Bold" Foreground="#111827"/>
-                    <TextBlock Text="External involute spur, helical, bevel &amp; worm gears" FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0"/>
+                    <TextBlock Text="External involute spur, helical, bevel, worm, rack &amp; internal gears" FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0"/>
 
                     <TextBlock Text="GEAR FAMILY" Style="{StaticResource SectionHeader}"/>
-                    <UniformGrid Columns="2" Rows="2">
+                    <UniformGrid Columns="2" Rows="3">
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsCylindricalSpur, Mode=OneWay}" Checked="OnCylindricalChecked">
                             <StackPanel>
@@ -161,6 +161,20 @@
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
                                 <TextBlock Text="Worm" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsRack, Mode=OneWay}" Checked="OnRackChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_rack.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsInternal, Mode=OneWay}" Checked="OnInternalChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_internal.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Internal" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
                     </UniformGrid>
@@ -197,7 +211,8 @@
 
                     <TextBlock Text="SIZE" Style="{StaticResource SectionHeader}"/>
                     <local:NumericSpinner Label="{Binding FaceWidthLabel}" Value="{Binding FaceWidthDisplay}" Minimum="0.5" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
-                    <local:NumericSpinner Label="Bore diameter (0 = none)" Value="{Binding BoreDiameterDisplay}" Minimum="0" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    <local:NumericSpinner Visibility="{Binding IsNotInternal, Converter={StaticResource B2V}}"
+                                           Label="{Binding BoreOrHoleLabel}" Value="{Binding BoreDiameterDisplay}" Minimum="0" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
 
                     <StackPanel Visibility="{Binding IsCylindrical, Converter={StaticResource B2V}}">
                     <TextBlock Text="HELIX (0° = spur gear)" Style="{StaticResource SectionHeader}"/>
@@ -239,6 +254,24 @@
                         <TextBlock Text="Mate wheel tooth count -- for center-distance info only. There's no separate 'wheel' mode: build the actual wheel with the Helical card using the module/helix/hand shown below."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Wheel teeth (z2, 0 = skip)" Value="{Binding MateTeeth}" Minimum="0" Maximum="500" Step="1" DecimalPlaces="0"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsRack, Converter={StaticResource B2V}}">
+                        <TextBlock Text="RACK" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="A straight gear track -- 'Number of teeth' above sets how many fit along its length. The mounting-hole spinner above (SIZE section) drills one hole per tooth pitch through the backing bar."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Backing height" Value="{Binding BackingHeightDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsInternal, Converter={StaticResource B2V}}">
+                        <TextBlock Text="INTERNAL (RING) GEAR" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Teeth point inward -- 'Number of teeth' above is the ring's own tooth count. Meshes with an external pinion running inside it (same rotation direction, unlike two external gears)."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Rim thickness" Value="{Binding RimThicknessDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Construction cutter teeth (0 = auto)" Value="{Binding CutterTeeth}" Minimum="0" Maximum="200" Step="1" DecimalPlaces="0"/>
+                        <TextBlock Text="Mating pinion tooth count -- for center-distance info only, no separate 'pinion' mode: build the actual pinion with the Spur/Helical card."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,8,0,8"/>
+                        <local:NumericSpinner Label="Pinion teeth (0 = skip)" Value="{Binding MateTeeth}" Minimum="0" Maximum="500" Step="1" DecimalPlaces="0"/>
                     </StackPanel>
 
                     <Expander Header="ADVANCED" Margin="0,14,0,0" Foreground="#6B7280" FontSize="11" FontWeight="Bold">
@@ -373,6 +406,38 @@
                         <TextBlock Text="{Binding WheelHintText}" FontSize="12" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </StackPanel>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsRack, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="CIRCULAR PITCH" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CircularPitchText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="ADDENDUM HEIGHT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding AddendumHeightText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="DEDENDUM HEIGHT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding DedendumHeightText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,8,0,0">
+                        <TextBlock Text="TOTAL LENGTH" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding TotalLengthText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsInternal, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="OUTER DIAMETER" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding OuterDiameterText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CONSTRUCTION CUTTER TEETH" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CutterTeethText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CENTER DISTANCE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CenterDistanceText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
               </StackPanel>
             </Border>
 
