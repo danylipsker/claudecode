@@ -1,6 +1,41 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/bevel/worm/rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Seventh family: double-helical (herringbone) gears (latest)
+## Helical racks (latest)
+
+Second of the requested additions. A helical rack is the straight rack
+with its teeth inclined by the helix angle across the face — the rack a
+helical pinion meshes with — so it is built as a variant of the Rack
+family (a helix angle on `RackParams`, exactly as Spur/Helical share the
+cylindrical family), not a new family:
+
+- **Geometry** (docs/gear-math.md §10.4): everything is decided in the
+  transverse section, a straight rack of `m_t = m_n/cos β`,
+  `tan α_t = tan α_n/cos β`, with depths and fillet on the normal module —
+  the same normal/transverse split as §7. The solid is that outline
+  extruded *obliquely* (`Solid.extrude` along `(shear·b, 0, b)`), which is
+  exact — a shear, not an approximation — then clipped back to a square-
+  ended bar of length `z·p_t` by intersecting with a box (the outline is
+  built with extra teeth to cover the shear; mounting holes stay square).
+  Hand: a rack is a gear of infinite radius with its teeth on top, and
+  §7.3's right-hand gear rotates its top tooth toward −x, so right-hand =
+  `shear = −tan β`; a right-hand rack meshes with a left-hand pinion.
+- **Checks** (`tests/test_rack.py`, 4 new; suite 58): sections of the built
+  solid at two heights match the shifted transverse outline to 1 µm (both
+  hands, one face wide enough that the shear exceeds a pitch); the bar is
+  exactly `z·p_t` × `b`; the pitch-plane section's tooth parallelogram
+  gives the normal thickness `π m_n/2` and transverse `π m_t/2` to 1 µm;
+  flank at `α_t`; the hand sign is derived from `GearParams.twist_total_rad`
+  rather than restated; manifold with holes at 20° and 35°. Straight racks
+  (β = 0) are bit-for-bit the same code path as before.
+- **UI**: Rack and Helical rack cards over one family (the Rack card forces
+  0°, the Helical rack card jumps to 20°), the HELIX section now shows for
+  racks under "HELIX (0° = straight rack)", the rack's derived panel adds
+  transverse module/PA, normal pitch and normal thickness,
+  `helicalrack_z8_m2_pa20_helix20R_fw10_backing5` names, thumbnail.
+  Verified headless (render, derived values, STEP/DXF export, the straight
+  card's name unchanged) and by SolidWorks import.
+
+## Seventh family: double-helical (herringbone) gears
 
 First of the user's requested additions (their list: spiral/zerol bevel,
 screw gears, herringbone, helical rack, face gears, double-enveloping worm,

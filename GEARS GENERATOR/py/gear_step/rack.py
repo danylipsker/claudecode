@@ -48,17 +48,66 @@ class RackParams:
     face_width_mm: float = 10.0         # extrusion depth (the axis a mating gear's face width runs along)
     backing_height_mm: float = 5.0      # solid material below the root land, for mounting/rigidity
     bore_diameter_mm: float = 0.0       # mounting holes along the backing bar, spaced one per pitch; 0 = none
+    helix_angle_deg: float = 0.0        # 0 = straight rack; otherwise a helical rack (docs/gear-math.md 10.4)
+    hand: str = "right"                 # helix hand, ignored at 0deg -- convention in shear_per_mm
 
     @property
     def pressure_angle_rad(self) -> float:
+        """The NORMAL pressure angle (the user's number). The flanks in the
+        transverse section are at transverse_pressure_angle_rad, which is
+        the same thing for a straight rack."""
         return math.radians(self.pressure_angle_deg)
+
+    # -- helical racks: normal vs transverse, the same split as involute.py's
+    # GearParams (docs/gear-math.md 7.1-7.2 and 10.4). module_mm and
+    # pressure_angle_deg are the NORMAL values; the rack's own length
+    # direction sees the transverse ones. All identical when helix = 0. --
+
+    @property
+    def helix_angle_rad(self) -> float:
+        return math.radians(self.helix_angle_deg)
+
+    @property
+    def transverse_module_mm(self) -> float:
+        """m_t = m_n / cos(beta)."""
+        return self.module_mm / math.cos(self.helix_angle_rad)
+
+    @property
+    def transverse_pressure_angle_rad(self) -> float:
+        """tan(alpha_t) = tan(alpha_n) / cos(beta)."""
+        return math.atan(math.tan(self.pressure_angle_rad) / math.cos(self.helix_angle_rad))
+
+    @property
+    def shear_per_mm(self) -> float:
+        """How far (along u, mm) a tooth's trace moves per mm of face width
+        (z) -- the whole difference between a straight and a helical rack's
+        solid (build_gear.build_rack_solid extrudes the transverse outline
+        along (shear, 0, 1)). Sign convention: a rack is a gear of infinite
+        radius with its teeth on top (+v). involute.GearParams.twist_total_rad
+        rotates a RIGHT-hand gear's profile counter-clockwise as z increases,
+        which carries the tooth at the top of that gear toward -x; so
+        right-hand = -tan(beta), left-hand = +tan(beta). A right-hand rack
+        therefore meshes with a LEFT-hand pinion of the same normal module
+        and helix angle -- the same opposite-hands rule as two external
+        helical gears. tests/test_rack.py derives the expected sign from
+        involute.py's own, rather than restating it here."""
+        if abs(self.helix_angle_deg) < 1e-9:
+            return 0.0
+        return (1.0 if self.hand == "left" else -1.0) * math.tan(self.helix_angle_rad)
+
+    @property
+    def normal_pitch_mm(self) -> float:
+        """p_n = pi*m_n, the pitch measured perpendicular to the teeth."""
+        return math.pi * self.module_mm
 
     @property
     def circular_pitch_mm(self) -> float:
-        """p = pi*m. Unlike a gear's circular pitch (2*pi*R/z), this does not
-        depend on z at all -- it's already the z -> infinity limit, since
-        2*pi*R/z = 2*pi*(m*z/2)/z = pi*m regardless of z."""
-        return math.pi * self.module_mm
+        """p_t = pi*m_t, the pitch along the rack's own length. Unlike a
+        gear's circular pitch (2*pi*R/z), this does not depend on z at all
+        -- it's already the z -> infinity limit, since 2*pi*R/z =
+        2*pi*(m*z/2)/z = pi*m regardless of z. Equals pi*m_n for a straight
+        rack."""
+        return math.pi * self.transverse_module_mm
 
     @property
     def circular_tooth_thickness_mm(self) -> float:
@@ -66,8 +115,11 @@ class RackParams:
         itself is never profile-shifted -- shifting the MATING gear relative
         to this rack is the standard way a rack/pinion pair uses profile
         shift, which doesn't change the rack's own tooth shape at all, only
-        where the pinion's teeth land on it)."""
-        return self.module_mm * math.pi / 2.0 - self.backlash_mm
+        where the pinion's teeth land on it). Measured along the rack's
+        length, i.e. the TRANSVERSE thickness s_t = pi*m_t/2 - backlash; the
+        thickness perpendicular to a helical rack's teeth is s_t*cos(beta) =
+        pi*m_n/2 - backlash*cos(beta). Same number either way at 0deg."""
+        return self.transverse_module_mm * math.pi / 2.0 - self.backlash_mm
 
     @property
     def addendum_height_mm(self) -> float:
@@ -93,8 +145,12 @@ def rack_tooth_profile(rp: RackParams, n_arc: int = 12) -> list[tuple[float, flo
     not rack_cutter_tooth_points' cutting-tool one (see module docstring).
     Straight flanks at the pressure angle, a fillet tangent to the flank and
     to the flat root land, flat land at the tip: the standard basic-rack
-    tooth form, centered on u=0."""
-    alpha = rp.pressure_angle_rad
+    tooth form, centered on u=0. This is the TRANSVERSE section (the plane
+    of the rack's length): for a helical rack the flanks are at the
+    transverse pressure angle and the widths follow the transverse module,
+    while the heights and the fillet radius stay on the normal module --
+    docs/gear-math.md 10.4. Identical to the straight rack at 0deg."""
+    alpha = rp.transverse_pressure_angle_rad
     ha = rp.addendum_height_mm
     hf = rp.dedendum_height_mm
     half_thick = rp.circular_tooth_thickness_mm / 2.0
@@ -251,7 +307,7 @@ def _selftest_root_fillet_is_tangent_to_flank_and_root_land():
     rp = RackParams(z=6, module_mm=2.5, pressure_angle_deg=20.0, root_fillet_coeff=0.3)
     n_arc = 20
     tooth = rack_tooth_profile(rp, n_arc=n_arc)
-    alpha = rp.pressure_angle_rad
+    alpha = rp.transverse_pressure_angle_rad  # == pressure_angle_rad for this straight rack
     hf = rp.dedendum_height_mm
     rho = rp.root_fillet_coeff * rp.module_mm
     half_thick = rp.circular_tooth_thickness_mm / 2.0
@@ -291,7 +347,7 @@ def _selftest_root_fillet_adds_material_outboard_of_the_sharp_corner():
     rho = rp.root_fillet_coeff * rp.module_mm
     tooth = rack_tooth_profile(rp, n_arc=12)
     right = tooth[: len(tooth) // 2]
-    corner_u = rp.circular_tooth_thickness_mm / 2.0 + hf * math.tan(rp.pressure_angle_rad)
+    corner_u = rp.circular_tooth_thickness_mm / 2.0 + hf * math.tan(rp.transverse_pressure_angle_rad)
     p_root = right[-1]
     assert p_root[0] > corner_u + 1e-9, (p_root[0], corner_u)
     for (u0, v0), (u1, v1) in zip(right, right[1:]):

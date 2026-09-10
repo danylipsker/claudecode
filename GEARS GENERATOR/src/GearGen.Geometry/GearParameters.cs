@@ -193,8 +193,9 @@ namespace GearGen.Geometry
                     if (MateTeeth > 0) parts.Add("wheel" + MateTeeth);
                     break;
                 case GearFamily.Rack:
-                    parts.Add("rack"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add(IsHelical ? "helicalrack" : "rack"); parts.Add("z" + Teeth); parts.Add(size);
                     parts.Add("pa" + N(PressureAngleDeg));
+                    if (IsHelical) parts.Add("helix" + N(Math.Abs(HelixAngleDeg)) + hand);
                     parts.Add("fw" + Len(FaceWidthMm)); parts.Add("backing" + Len(BackingHeightMm));
                     if (BoreDiameterMm > 0) parts.Add("holes" + Len(BoreDiameterMm));
                     break;

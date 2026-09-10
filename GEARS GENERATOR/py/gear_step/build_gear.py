@@ -12,6 +12,7 @@ Usage: python build_gear.py  (writes sample gears into ./out/)
 from __future__ import annotations
 
 import math
+from dataclasses import replace
 from pathlib import Path
 
 import build123d as bd
@@ -355,15 +356,37 @@ def build_rack_solid(rp: RackParams) -> bd.Part:
     mating gear's own face width runs along, same convention as a spur
     gear's own extrusion), with mounting holes cut through the backing bar
     if bore_diameter_mm > 0 -- one per tooth pitch, through the full
-    thickness (same direction as the extrusion, not through the profile)."""
-    pts = rack_outline(rp)
+    thickness (same direction as the extrusion, not through the profile).
+
+    A helical rack (helix_angle_deg != 0, docs/gear-math.md 10.4) is the
+    same transverse outline extruded OBLIQUELY: the layer at height z is the
+    outline shifted along u by shear_per_mm * z, which is exactly what
+    inclines the teeth by the helix angle while leaving every transverse
+    section a rack of module m_t. A shear is exact, so the flanks are true
+    planes, not an approximation (tests/test_rack.py sections the solid and
+    checks to 1e-6). The sheared prism is then clipped back to a square-
+    ended bar of the straight rack's length z*p_t by intersecting with a
+    box, so the outline is built with enough extra teeth on both sides to
+    cover the shear; the mounting holes stay square to the bar."""
+    fw = rp.face_width_mm
+    shear = rp.shear_per_mm
+    extra = 0 if abs(shear) < 1e-12 else int(math.ceil(abs(shear) * fw / rp.circular_pitch_mm)) + 1
+    pts = rack_outline(replace(rp, z=rp.z + 2 * extra)) if extra else rack_outline(rp)
     closed = pts + [pts[0]]
     with bd.BuildPart() as part:
         with bd.BuildSketch() as sk:
             with bd.BuildLine():
                 bd.Polyline(*closed)
             bd.make_face()
-        bd.extrude(amount=rp.face_width_mm)
+        if extra == 0:
+            bd.extrude(amount=fw)
+        else:
+            bd.add(bd.Solid.extrude(sk.sketch.faces()[0], bd.Vector(shear * fw, 0.0, fw)))
+            length = rp.total_length_mm
+            top = rp.addendum_height_mm + 1.0
+            bottom = -(rp.dedendum_height_mm + rp.backing_height_mm) - 1.0
+            with bd.Locations((0.0, (top + bottom) / 2.0, fw / 2.0)):
+                bd.Box(length, top - bottom, fw, mode=bd.Mode.INTERSECT)
 
         holes = rack_hole_centres(rp)
         if holes:

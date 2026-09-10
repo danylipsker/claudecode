@@ -173,10 +173,17 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsRack, Mode=OneWay}" Checked="OnRackChecked">
+                                     IsChecked="{Binding IsRackStraight, Mode=OneWay}" Checked="OnRackChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_rack.png" Height="76" Stretch="Uniform"/>
                                 <TextBlock Text="Rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsRackHelical, Mode=OneWay}" Checked="OnHelicalRackChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_helical_rack.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Helical rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
@@ -267,7 +274,7 @@
 
                     <StackPanel Visibility="{Binding IsRack, Converter={StaticResource B2V}}">
                         <TextBlock Text="RACK" Style="{StaticResource SectionHeader}"/>
-                        <TextBlock Text="A straight gear track -- 'Number of teeth' above sets how many fit along its length. The mounting-hole spinner above (SIZE section) drills one hole per tooth pitch through the backing bar."
+                        <TextBlock Text="A gear track -- 'Number of teeth' above sets how many fit along its length. The mounting-hole spinner above (SIZE section) drills one hole per tooth pitch through the backing bar. A helix angle (HELIX section) inclines the teeth across the face for meshing with a helical pinion of the OPPOSITE hand: module and pressure angle are then the normal values, pitch and thickness along the bar are transverse."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Backing height" Value="{Binding BackingHeightDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>

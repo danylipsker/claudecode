@@ -4,9 +4,11 @@ Run with: python -m pytest gear_step/tests/test_rack.py -v
 """
 import math
 import sys
+from dataclasses import replace
 from pathlib import Path
 
-from shapely.geometry import Polygon
+from shapely.affinity import translate
+from shapely.geometry import Point, Polygon
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -98,6 +100,8 @@ def test_full_solid_is_manifold_across_several_parameter_combinations():
         dict(z=12, module_mm=3.0, face_width_mm=15.0, backing_height_mm=8.0),
         dict(z=20, module_mm=1.5, face_width_mm=8.0, bore_diameter_mm=3.0),
         dict(z=6, module_mm=4.0, face_width_mm=12.0, pressure_angle_deg=14.5),
+        dict(z=8, module_mm=2.0, face_width_mm=10.0, helix_angle_deg=20.0, bore_diameter_mm=3.0),
+        dict(z=7, module_mm=2.5, face_width_mm=30.0, helix_angle_deg=35.0, hand="left"),
     ]
     for kwargs in cases:
         rp = RackParams(**kwargs)
@@ -106,6 +110,91 @@ def test_full_solid_is_manifold_across_several_parameter_combinations():
         assert len(bodies) == 1, kwargs
         assert bodies[0].is_manifold, kwargs
         assert solid.volume > 0
+
+
+def test_helical_rack_is_the_transverse_outline_sheared_exactly_by_tan_beta():
+    """A helical rack's solid is the transverse outline extruded obliquely
+    (docs/gear-math.md 10.4): the section at height z must be that outline
+    shifted along u by shear_per_mm * z -- to machine precision, a shear is
+    exact -- and the bar must still be square-ended, exactly z*p_t long and
+    face_width tall. Both hands, and a wide face where the shear exceeds a
+    whole pitch (so the extra-teeth margin is exercised)."""
+    import build123d as bd
+    from build_gear import build_rack_solid
+
+    for kwargs in (dict(helix_angle_deg=25.0, hand="right", face_width_mm=12.0),
+                   dict(helix_angle_deg=35.0, hand="left", face_width_mm=30.0)):
+        rp = RackParams(z=6, module_mm=2.0, backing_height_mm=4.0, **kwargs)
+        solid = build_rack_solid(rp)
+        length = rp.total_length_mm
+        bb = solid.bounding_box()
+        assert abs((bb.max.X - bb.min.X) - length) < 1e-6, kwargs
+        assert abs(bb.min.Z) < 1e-6 and abs(bb.max.Z - rp.face_width_mm) < 1e-6, kwargs
+        # a longer straight-built outline with the same transverse geometry is the reference
+        ref = Polygon(rack_outline(replace(rp, z=rp.z + 10)))
+        for zfrac in (0.25, 0.8):
+            z = zfrac * rp.face_width_mm
+            shifted = translate(ref, xoff=rp.shear_per_mm * z)
+            section = solid.intersect(bd.Plane((0, 0, z)))
+            worst, n = 0.0, 0
+            for edge in section.edges():
+                for t in (0.0, 0.5, 1.0):
+                    v = edge.position_at(t)
+                    if abs(v.X) < length / 2.0 - 1e-6:  # the clipped end faces aren't part of the outline
+                        worst = max(worst, shifted.exterior.distance(Point(v.X, v.Y)))
+                        n += 1
+            assert n > 20, (kwargs, z, n)
+            assert worst < 1e-6, (kwargs, z, worst)
+
+
+def test_helical_rack_normal_tooth_thickness_is_pi_m_n_over_2():
+    """Section the built solid with the PITCH plane (v = 0): each tooth is a
+    parallelogram of base s_t (transverse thickness, along u) and height
+    face_width (along z), so its area / (face_width / cos(beta)) is the
+    width measured perpendicular to the inclined tooth. That normal
+    thickness must be pi*m_n/2 -- the property that makes a helical rack
+    mesh with a helical gear of normal module m_n."""
+    import build123d as bd
+    from build_gear import build_rack_solid
+
+    rp = RackParams(z=5, module_mm=3.0, face_width_mm=10.0, helix_angle_deg=30.0)
+    solid = build_rack_solid(rp)
+    pitch_plane = bd.Plane(origin=(0, 0, 0), x_dir=(1, 0, 0), z_dir=(0, 1, 0))  # the plane v = 0
+    faces = solid.intersect(pitch_plane).faces()
+    centre = min(faces, key=lambda f: (f.center() - bd.Vector(0, 0, rp.face_width_mm / 2)).length)  # the middle tooth
+    beta = rp.helix_angle_rad
+    normal_thickness = centre.area / (rp.face_width_mm / math.cos(beta))
+    assert abs(normal_thickness - math.pi * rp.module_mm / 2.0) < 1e-6, normal_thickness
+    # and the transverse thickness along u is s_t = pi*m_t/2, wider by 1/cos(beta)
+    assert abs(centre.area / rp.face_width_mm - rp.circular_tooth_thickness_mm) < 1e-6
+
+
+def test_helical_rack_flank_is_at_the_transverse_pressure_angle():
+    rp = RackParams(z=6, module_mm=3.0, pressure_angle_deg=20.0, helix_angle_deg=30.0)
+    tooth = rack_tooth_profile(rp, n_arc=12)
+    (u0, v0), (u1, v1) = tooth[0], tooth[1]
+    measured = math.degrees(math.atan2(abs(u0 - u1), v0 - v1))
+    expected = math.degrees(math.atan(math.tan(math.radians(20.0)) / math.cos(math.radians(30.0))))
+    assert abs(measured - expected) < 1e-9, (measured, expected)
+    assert expected > 20.0  # alpha_t > alpha_n whenever beta > 0
+
+
+def test_helical_rack_hand_follows_involute_py_s_helical_gear_convention():
+    """A rack is a gear of infinite radius with its teeth on top. A RIGHT-hand
+    gear's profile rotates counter-clockwise with z (GearParams.twist_total_
+    rad > 0 for 'right'), which moves the tooth at the top of that gear
+    toward -x -- so a right-hand rack's teeth must drift toward -u with z and
+    a left-hand rack's toward +u, and a right-hand rack meshes with a LEFT-
+    hand pinion. The expected sign is derived from involute.py's own here,
+    not restated."""
+    from involute import GearParams
+    for hand in ("right", "left"):
+        gp = GearParams(z=20, module_mm=2.0, helix_angle_deg=20.0, hand=hand, face_width_mm=10.0)
+        top_tooth_moves_toward = -1.0 if gp.twist_total_rad > 0 else 1.0  # dx of (0, R) under a small CCW/CW rotation
+        rp = RackParams(z=6, module_mm=2.0, helix_angle_deg=20.0, hand=hand)
+        assert math.copysign(1.0, rp.shear_per_mm) == top_tooth_moves_toward, hand
+        assert abs(abs(rp.shear_per_mm) - math.tan(math.radians(20.0))) < 1e-12
+    assert RackParams(z=6, module_mm=2.0).shear_per_mm == 0.0
 
 
 def test_root_fillet_is_concave_and_flares_the_tooth_into_the_root_land():

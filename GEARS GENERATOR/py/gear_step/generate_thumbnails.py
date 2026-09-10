@@ -84,6 +84,9 @@ if __name__ == "__main__":
     rack = RackParams(z=8, module_mm=3.0, face_width_mm=12.0, backing_height_mm=6.0)
     render_solid_thumbnail(build_rack_solid(rack), f"{out_dir}/thumb_rack.png", elev=28, azim=-35)
 
+    helical_rack = RackParams(z=8, module_mm=3.0, face_width_mm=14.0, backing_height_mm=6.0, helix_angle_deg=30.0)
+    render_solid_thumbnail(build_rack_solid(helical_rack), f"{out_dir}/thumb_helical_rack.png", elev=28, azim=-35)
+
     internal = InternalGearParams(z=32, module_mm=2.5, face_width_mm=12.0, rim_thickness_mm=6.0, cutter_teeth=16)
     render_solid_thumbnail(build_internal_gear_solid(internal), f"{out_dir}/thumb_internal.png")
 

@@ -270,6 +270,8 @@ def rack_params_from_request(p: dict) -> RackParams:
         face_width_mm=float(p.get("face_width_mm", 10.0)),
         backing_height_mm=float(p.get("backing_height_mm", 5.0)),
         bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        helix_angle_deg=float(p.get("helix_angle_deg", 0.0)),
+        hand=str(p.get("hand", "right")),
     )
 
 
@@ -277,6 +279,9 @@ def rack_derived_values(rp: RackParams) -> dict:
     warnings = []
     if rp.z < 2:
         warnings.append("Fewer than 2 teeth -- a rack needs at least 2 to be meaningful.")
+    is_helical = abs(rp.helix_angle_deg) > 1e-9
+    # circular_pitch/tooth_thickness/total_length are along the rack's own
+    # length -- transverse values for a helical rack (docs/gear-math.md 10.4)
     return {
         "circular_pitch_mm": rp.circular_pitch_mm,
         "circular_tooth_thickness_mm": rp.circular_tooth_thickness_mm,
@@ -286,6 +291,12 @@ def rack_derived_values(rp: RackParams) -> dict:
         "total_height_mm": rp.total_height_mm,
         "module_mm": rp.module_mm,
         "diametral_pitch": 25.4 / rp.module_mm,
+        "helix_angle_deg": rp.helix_angle_deg,
+        "transverse_module_mm": rp.transverse_module_mm,
+        "transverse_pressure_angle_deg": math.degrees(rp.transverse_pressure_angle_rad),
+        "normal_pitch_mm": rp.normal_pitch_mm,
+        "normal_tooth_thickness_mm": rp.circular_tooth_thickness_mm * math.cos(rp.helix_angle_rad) if is_helical
+                                     else rp.circular_tooth_thickness_mm,
     }, warnings
 
 

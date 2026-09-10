@@ -128,6 +128,11 @@ namespace GearGen.UI
             ViewModel?.SelectHerringboneCard();
         }
 
+        private void OnHelicalRackChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectHelicalRackCard();
+        }
+
         private async void OnExportStepClick(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog

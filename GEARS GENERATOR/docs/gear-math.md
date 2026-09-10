@@ -661,6 +661,43 @@ along); through-holes for mounting bolts, one per tooth pitch through the backin
 bar, are a straight extrude-and-subtract, the same construction a normal gear's bore
 uses.
 
+### 10.4 Helical racks
+
+A helical rack is the straight rack with its teeth inclined by the helix angle `β` to
+the face-width direction — the rack a helical gear of normal module `m_n` meshes with.
+Everything is decided in the **transverse** section (the plane of the rack's length
+`u` and depth `v`, i.e. the plane of §10.2's outline), which is a straight rack of
+transverse module and pressure angle
+
+```
+m_t = m_n / cos(beta)        p_t = pi * m_t        tan(alpha_t) = tan(alpha_n) / cos(beta)
+```
+
+with tooth depths and the root fillet still on the normal module (`ha = ha*·m_n`,
+`hf = hf*·m_n`, `rho = rho*·m_n`) — the same normal/transverse split as §7.1–7.2. The
+solid is that outline extruded *obliquely*: the layer at height `z` is the outline
+shifted along `u` by `shear·z`, `shear = ∓tan β` (sign below). A shear is exact, so
+the transverse section at every height is the outline to machine precision, the tooth
+trace is a straight line at `β` to the `z` axis, and the tooth thickness measured
+perpendicular to that trace is `s_t·cos β = π·m_n/2`. The sheared prism is clipped
+back to a square-ended bar of length `z·p_t` by intersecting with a box, after
+building the outline with enough extra teeth to cover the shear; mounting holes stay
+square to the bar. `β = 0` reduces to §10.1–10.3 unchanged.
+
+**Hand.** A rack is a gear of infinite radius with its teeth on top. §7.3's convention
+rotates a right-hand gear's profile counter-clockwise as `z` increases, which carries
+the tooth at the top of that gear toward `−x`; so a right-hand rack's teeth drift
+toward `−u` with `z` (`shear = −tan β`) and a left-hand rack's toward `+u`. A
+right-hand rack meshes with a **left**-hand pinion of the same `m_n`, `α_n`, `β` — the
+same opposite-hands rule as two external helical gears.
+
+Checks (`tests/test_rack.py`): sections of the built solid at two heights match the
+shifted transverse outline to 1 µm (both hands, including a face wide enough that the
+shear exceeds a pitch), the bar is exactly `z·p_t` long and `b` tall; the pitch-plane
+section's tooth parallelogram gives the normal thickness `π·m_n/2` and the transverse
+`π·m_t/2` to 1 µm; the transverse flank angle is `α_t`; the hand sign is derived from
+`GearParams.twist_total_rad` rather than restated; manifold with holes at 20° and 35°.
+
 ## 11. Internal (ring) gears
 
 An internal gear has its teeth cut into an annular ring, pointing **inward**, and

@@ -106,12 +106,19 @@ namespace GearGen.UI
             get => _p.Family == GearFamily.Herringbone;
             set { if (value) { _p.Family = GearFamily.Herringbone; OnChanged(); FamilyChanged(); } }
         }
-        /// <summary>The HELIX section serves both the cylindrical family
-        /// (where 0deg means spur) and the herringbone (where the angle is
-        /// each half's helix and must be nonzero) -- one section, two
-        /// headers.</summary>
-        public bool ShowHelixSection => IsCylindrical || IsHerringbone;
-        public string HelixSectionHeader => IsHerringbone ? "HELIX (each half)" : "HELIX (0° = spur gear)";
+        /// <summary>The HELIX section serves the cylindrical family (where
+        /// 0deg means spur), the herringbone (each half's helix, must be
+        /// nonzero) and the rack (0deg = straight rack, else a helical rack,
+        /// docs/gear-math.md 10.4) -- one section, three headers.</summary>
+        public bool ShowHelixSection => IsCylindrical || IsHerringbone || IsRack;
+        public string HelixSectionHeader =>
+            IsHerringbone ? "HELIX (each half)" : IsRack ? "HELIX (0° = straight rack)" : "HELIX (0° = spur gear)";
+
+        /// <summary>Rack and Helical rack are separate cards over one
+        /// GearFamily.Rack, split by HelixAngleDeg -- the same arrangement
+        /// as the Spur/Helical cards over GearFamily.Cylindrical.</summary>
+        public bool IsRackStraight => IsRack && !IsHelical;
+        public bool IsRackHelical => IsRack && IsHelical;
 
         private void FamilyChanged()
         {
@@ -125,6 +132,8 @@ namespace GearGen.UI
             OnChanged(nameof(IsHerringbone));
             OnChanged(nameof(ShowHelixSection));
             OnChanged(nameof(HelixSectionHeader));
+            OnChanged(nameof(IsRackStraight));
+            OnChanged(nameof(IsRackHelical));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -138,9 +147,19 @@ namespace GearGen.UI
             IsWorm = true;
         }
 
+        /// <summary>The Rack card is the straight rack: force the helix back
+        /// to 0 (same reasoning as SelectSpurCard), and the Helical rack
+        /// card jumps to a visibly inclined default from 0 (as SelectHelicalCard).</summary>
         public void SelectRackCard()
         {
             IsRack = true;
+            HelixAngleDeg = 0.0;
+        }
+
+        public void SelectHelicalRackCard()
+        {
+            IsRack = true;
+            if (!IsHelical) HelixAngleDeg = 20.0;
         }
 
         public void SelectInternalCard()
@@ -341,6 +360,8 @@ namespace GearGen.UI
                 OnChanged(nameof(IsHelical));
                 OnChanged(nameof(IsCylindricalSpur));
                 OnChanged(nameof(IsCylindricalHelical));
+                OnChanged(nameof(IsRackStraight));
+                OnChanged(nameof(IsRackHelical));
                 ScheduleRefresh();
             }
         }
@@ -575,6 +596,15 @@ namespace GearGen.UI
                     AddendumHeightText = L(dv("addendum_height_mm"));
                     DedendumHeightText = L(dv("dedendum_height_mm"));
                     TotalLengthText = L(dv("total_length_mm"));
+                    if (IsHelical)
+                    {
+                        // The shared helical block (transverse module / lead /
+                        // twist) is visible whenever HelixAngleDeg > 0; a rack has
+                        // no lead or twist, so say what applies instead.
+                        TransverseModuleText = $"{L(dv("transverse_module_mm"))} ({dv("transverse_pressure_angle_deg"):0.##}° PA)";
+                        LeadText = $"normal pitch {L(dv("normal_pitch_mm"))}, thickness {L(dv("normal_tooth_thickness_mm"))}";
+                        TwistText = $"teeth at {dv("helix_angle_deg"):0.##}° to the face";
+                    }
                 }
                 else if (IsInternal)
                 {
