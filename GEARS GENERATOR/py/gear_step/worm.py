@@ -124,40 +124,38 @@ def thread_axial_profile(wp: WormParams, n_arc: int = 12) -> list[tuple[float, f
         # moving inward (toward -v/dedendum) -- standard trapezoid taper
         return half_thick - v * math.tan(alpha)
 
-    # root fillet: tangent to the flank and to the root land (v = -hf)
-    v_center = -hf + rho
-    u_flank_at_vcenter = half_u_at(v_center)
-    u_center = u_flank_at_vcenter - rho / math.cos(alpha)
-    v_tan = v_center + rho * math.sin(alpha)  # flank/fillet tangent point (going outward is +v)
-
-    p_tan = (half_u_at(v_tan), v_tan)
-    p_root = (u_center, v_center - rho)  # bottom of fillet, tangent to the flat root land
-    a_start = math.atan2(p_tan[1] - v_center, p_tan[0] - u_center)
-    a_end = math.atan2(p_root[1] - v_center, p_root[0] - u_center)
-    if a_end > a_start:
-        a_end -= 2 * math.pi
-    if a_start - a_end > math.pi:
-        a_end += 2 * math.pi
+    # Root fillet: a circle of radius rho tangent to both the flank and the
+    # root land (v = -hf, i.e. the core cylinder's surface once swept), with
+    # its centre on the thread-SPACE side of the flank -- concave, ADDING
+    # material where the flank meets the core, so the thread flares into the
+    # shaft instead of sitting on it. This is what the user meant by "the
+    # fillet serves as a merging geometry between the elements": an earlier
+    # version had the centre inside the thread (the placement that is right
+    # for a cutting tool's convex tip rounding, which this descends from, and
+    # inverted for a root), which rounded the thread's own base corner off
+    # and curled the arc back under it, leaving a quarter-round groove rho
+    # wide along both sides of the thread's junction with the core. Same
+    # construction, same bug, same fix as rack.rack_tooth_profile -- see the
+    # full account and the derivation there; the code is kept identical.
+    pitch = wp.axial_pitch_mm
+    rho_max = (pitch / 2.0 - half_thick - hf * math.tan(alpha)) * math.cos(alpha) / (1.0 - math.sin(alpha))
+    rho = max(0.0, min(rho, rho_max))  # fit on the land: full-round root at rho_max
 
     right_path = [(half_u_at(ha), ha)]           # tip, right side
-    right_path.append(p_tan)                      # down the flank to the fillet
-    # Same tiny-but-real non-monotonic wobble as rack.py's rack_tooth_profile
-    # (this function is its direct template -- see module docstring): the
-    # tangent circle's own widest point (angle 0) sits at a slightly larger u
-    # than p_tan itself whenever alpha>0, an unavoidable property of any
-    # circle tangent to a tilted line and a horizontal one, since the minor
-    # arc from p_tan to p_root always sweeps through that point. Textbook
-    # tangent-fillet construction, a few % of rho, invisible at real scale --
-    # but it makes the boundary briefly non-monotonic in u. Clamp u to
-    # non-increasing walking from p_tan to p_root so the boundary stays
-    # monotonic; both tangent points and the fillet radius are unaffected.
-    running_max_u = p_tan[0]
-    for i in range(1, n_arc + 1):
-        a = a_start + (a_end - a_start) * i / n_arc
-        u = min(u_center + rho * math.cos(a), running_max_u)
-        v = v_center + rho * math.sin(a)
-        running_max_u = u
-        right_path.append((u, v))
+    if rho <= 1e-12:
+        right_path.append((half_u_at(-hf), -hf))  # no fillet: sharp corner straight onto the land
+    else:
+        v_center = -hf + rho
+        u_center = half_u_at(v_center) + rho / math.cos(alpha)
+        p_tan = (u_center - rho * math.cos(alpha), v_center - rho * math.sin(alpha))  # foot on the flank
+        p_root = (u_center, -hf)                                                     # foot on the land
+        a_start = math.atan2(p_tan[1] - v_center, p_tan[0] - u_center)  # = alpha - pi
+        a_end = -math.pi / 2.0                                          # straight down: sweep 90deg - alpha
+        right_path.append(p_tan)                  # down the flank to the fillet
+        for i in range(1, n_arc + 1):
+            a = a_start + (a_end - a_start) * i / n_arc
+            right_path.append((u_center + rho * math.cos(a), v_center + rho * math.sin(a)))
+        assert abs(right_path[-1][0] - p_root[0]) < 1e-9 and abs(right_path[-1][1] - p_root[1]) < 1e-9
     # right_path now ends at p_root; mirror for the left side (u -> -u), reversed
     left_path = [(-x, y) for (x, y) in reversed(right_path)]
     return right_path + left_path  # tip(+u) -> fillet -> root(u=u_center) -> root(-u_center) -> fillet -> tip(-u)

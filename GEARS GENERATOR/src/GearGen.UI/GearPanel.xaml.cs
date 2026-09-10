@@ -104,17 +104,18 @@ namespace GearGen.UI
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();
-            // The shared default camera direction looks along a diagonal that's
-            // nearly edge-on to a rack's own length axis (its teeth march along
-            // world X) -- fine for the other, roughly axisymmetric families, but
-            // it puts the outermost tooth at a genuine grazing/silhouette angle
-            // where WPF's rasterizer visibly mis-renders the fillet-to-backing
-            // curve as a notch (confirmed: the underlying geometry is correct --
-            // manifold, consistent winding, matches hand-calculated fillet points
-            // exactly -- the artifact tracks the viewing angle, not any geometry
-            // parameter). Nudging the view less edge-on to X fixes it cleanly, so
-            // give Rack its own angle rather than compromising everyone else's.
-            Viewport3D.ChangeCameraDirection(new Vector3D(-0.5, 1, -0.8), 300);
+            // No camera nudge here any more. There used to be one, justified as
+            // working around a "rasterizer artifact": a notch where each end
+            // tooth's fillet met the backing bar, visible only at the default
+            // camera's near-grazing angle to the rack's length axis. The notch
+            // was real geometry -- rack.py's root fillet arc was inverted (its
+            // centre inside the tooth), curling back under every tooth and
+            // leaving a quarter-round groove that the end teeth showed in
+            // silhouette. The grazing angle didn't create it, it just made it
+            // the one place the eye could read the profile. With the fillet
+            // fixed the shared default view is fine for racks too, so racks no
+            // longer get a special angle (the worm keeps its nudge below for an
+            // unrelated, still-valid reason: it previews two mating parts).
         }
 
         private void OnInternalChecked(object sender, RoutedEventArgs e)

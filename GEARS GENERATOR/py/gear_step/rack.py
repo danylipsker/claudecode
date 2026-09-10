@@ -105,44 +105,58 @@ def rack_tooth_profile(rp: RackParams, n_arc: int = 12) -> list[tuple[float, flo
         # moving inward (toward -v/dedendum) -- standard trapezoid taper
         return half_thick - v * math.tan(alpha)
 
-    # root fillet: tangent to the flank and to the root land (v = -hf)
-    v_center = -hf + rho
-    u_flank_at_vcenter = half_u_at(v_center)
-    u_center = u_flank_at_vcenter - rho / math.cos(alpha)
-    v_tan = v_center + rho * math.sin(alpha)  # flank/fillet tangent point (outward is +v)
-
-    p_tan = (half_u_at(v_tan), v_tan)
-    p_root = (u_center, v_center - rho)  # bottom of fillet, tangent to the flat root land
-    a_start = math.atan2(p_tan[1] - v_center, p_tan[0] - u_center)
-    a_end = math.atan2(p_root[1] - v_center, p_root[0] - u_center)
-    if a_end > a_start:
-        a_end -= 2 * math.pi
-    if a_start - a_end > math.pi:
-        a_end += 2 * math.pi
+    # Root fillet: a circle of radius rho tangent to BOTH the flank and the
+    # flat root land (v = -hf), with its centre on the tooth-SPACE side of
+    # the flank. The arc is therefore concave as seen from the space and ADDS
+    # material in the corner where the flank meets the land, flaring the
+    # tooth out into the land the way every real rack does (and ISO 53's
+    # basic rack, whose rho_fP this coefficient is). The centre sits rho
+    # above the land and rho/cos(alpha) outboard of the flank at that height
+    # (a line alpha from vertical is a perpendicular distance rho away when
+    # the horizontal offset is rho/cos(alpha)); the two tangent points are
+    # the perpendicular feet: straight down onto the land, and rho*(cos(alpha),
+    # sin(alpha)) back toward the flank. The sharp corner they replace sits
+    # rho*tan(45deg - alpha/2) from each -- the textbook tangent length for a
+    # fillet in a corner of interior angle 90deg + alpha (self-tested below).
+    #
+    # Which SIDE the centre is on is the whole fillet, and it was wrong
+    # before: an earlier version put it inside the tooth (u_flank -
+    # rho/cos(alpha)) -- the placement that is right for the convex TIP
+    # rounding of a cutting tool in involute.rack_cutter_tooth_points, which
+    # this construction descends from, and inverted for a tooth's ROOT. That
+    # rounded the tooth's own base corner off and then curled the arc back
+    # under the tooth, leaving a quarter-round groove rho wide beneath every
+    # tooth: at module 2 the arc landed 1.09 mm INBOARD of the sharp corner
+    # and a point just above the land outboard of it was air (the "fillets
+    # not made right"). Two attempts at treating that shape's symptoms (a
+    # monotonic clamp on u; a camera nudge for the silhouette it produced at
+    # the end teeth) are gone with it. Guarded by the self-tests below, which
+    # check the geometry against the textbook, not against these variables.
+    #
+    # The fillet must also FIT: neighbouring teeth's fillets meet at the
+    # land's midpoint when rho reaches rho_max (a full-round root) and would
+    # overlap beyond it. Clamp rather than fail -- the coefficient is a user
+    # knob. (u_center = half_thick + hf*tan(alpha) + rho*(1-sin(alpha))/cos(alpha)
+    # must not exceed half a pitch.)
+    pitch = rp.circular_pitch_mm
+    rho_max = (pitch / 2.0 - half_thick - hf * math.tan(alpha)) * math.cos(alpha) / (1.0 - math.sin(alpha))
+    rho = max(0.0, min(rho, rho_max))
 
     right_path = [(half_u_at(ha), ha)]            # tip, right side
-    right_path.append(p_tan)                       # down the flank to the fillet
-    # The tangent circle's own rightmost point (angle 0, i.e. u_center+rho) is
-    # tangibly wider than p_tan itself whenever alpha>0 -- an unavoidable
-    # property of ANY circle tangent to a tilted line and a horizontal one:
-    # the minor arc from p_tan to p_root necessarily sweeps THROUGH that
-    # max-u point (0 always lies between a_start=+alpha and a_end=-90deg).
-    # That's the textbook tangent-fillet construction and the excess is tiny
-    # (a few % of rho, submillimeter at any normal module) -- shapely is fine
-    # with the resulting polygon (still simple/valid) -- but it makes the
-    # boundary briefly non-monotonic in u right at the fillet, which reads as
-    # a visible notch once lit/shaded at an angle (confirmed by comparing the
-    # rendered solid against this exact spot). Clamp u to non-increasing as
-    # the arc walks from p_tan to p_root so the boundary stays monotonic; the
-    # clamp only ever pulls a point inward by that same tiny excess, so the
-    # fillet's radius and tangency at both ends are unaffected.
-    running_max_u = p_tan[0]
-    for i in range(1, n_arc + 1):
-        a = a_start + (a_end - a_start) * i / n_arc
-        u = min(u_center + rho * math.cos(a), running_max_u)
-        v = v_center + rho * math.sin(a)
-        running_max_u = u
-        right_path.append((u, v))
+    if rho <= 1e-12:
+        right_path.append((half_u_at(-hf), -hf))   # no fillet: sharp corner straight onto the land
+    else:
+        v_center = -hf + rho
+        u_center = half_u_at(v_center) + rho / math.cos(alpha)
+        p_tan = (u_center - rho * math.cos(alpha), v_center - rho * math.sin(alpha))  # foot on the flank
+        p_root = (u_center, -hf)                                                     # foot on the land
+        a_start = math.atan2(p_tan[1] - v_center, p_tan[0] - u_center)  # = alpha - pi
+        a_end = -math.pi / 2.0                                          # straight down: sweep 90deg - alpha
+        right_path.append(p_tan)                   # down the flank to the fillet
+        for i in range(1, n_arc + 1):
+            a = a_start + (a_end - a_start) * i / n_arc
+            right_path.append((u_center + rho * math.cos(a), v_center + rho * math.sin(a)))
+        assert abs(right_path[-1][0] - p_root[0]) < 1e-9 and abs(right_path[-1][1] - p_root[1]) < 1e-9
     # right_path now ends at p_root; mirror for the left side (u -> -u), reversed
     left_path = [(-x, y) for (x, y) in reversed(right_path)]
     return right_path + left_path  # tip(+u) -> fillet -> root(u_center) -> root(-u_center) -> fillet -> tip(-u)
@@ -225,16 +239,81 @@ def _selftest_flank_is_a_straight_line_at_the_pressure_angle():
 
 
 def _selftest_root_fillet_is_tangent_to_flank_and_root_land():
+    """The fillet circle must touch the flank AND the root land, from the
+    tooth-SPACE side (a concave fillet that adds material at the tooth's
+    base). Checked against the geometry itself, not the construction's own
+    variables: the flank tangent point lies on the flank line; every arc
+    point is rho from one centre; that centre is outboard of the flank and
+    rho above the land; both tangent points sit rho*tan(45deg - alpha/2)
+    from the sharp corner (the textbook tangent length for a fillet in a
+    corner of interior angle 90deg + alpha); and the arc ends exactly on the
+    land, arriving parallel to it."""
     rp = RackParams(z=6, module_mm=2.5, pressure_angle_deg=20.0, root_fillet_coeff=0.3)
-    tooth = rack_tooth_profile(rp, n_arc=20)
+    n_arc = 20
+    tooth = rack_tooth_profile(rp, n_arc=n_arc)
+    alpha = rp.pressure_angle_rad
     hf = rp.dedendum_height_mm
     rho = rp.root_fillet_coeff * rp.module_mm
-    # the fillet's own bottom point must sit exactly at v = -hf (the flat
-    # root land) -- tooth[len//2 - 1] is the last arc point on the right side
-    right_half = tooth[: len(tooth) // 2]
-    bottom_v = right_half[-1][1]
-    assert abs(bottom_v - (-hf)) < 1e-9, (bottom_v, -hf)
-    print(f"  [ok] fillet reaches exactly v=-hf={-hf:.4f} (rho={rho})")
+    half_thick = rp.circular_tooth_thickness_mm / 2.0
+
+    def flank_u(v):
+        return half_thick - v * math.tan(alpha)
+
+    right = tooth[: n_arc + 2]  # tip, p_tan, arc points..., p_root
+    p_tan, arc, p_root = right[1], right[2:], right[-1]
+    assert abs(p_tan[0] - flank_u(p_tan[1])) < 1e-9, "flank tangent point must lie on the flank line"
+    assert abs(p_root[1] - (-hf)) < 1e-9, (p_root[1], -hf)
+    cu, cv = p_root[0], -hf + rho  # centre: straight above the land's tangent point
+    assert cu > flank_u(cv) + 1e-9, "centre must be on the tooth-space side of the flank (concave fillet)"
+    for (u, v) in arc:
+        assert abs(math.hypot(u - cu, v - cv) - rho) < 1e-9, (u, v)
+    corner = (flank_u(-hf), -hf)  # the sharp flank/land corner the fillet replaces
+    t_len = rho * math.tan(math.pi / 4.0 - alpha / 2.0)
+    assert abs(math.hypot(p_tan[0] - corner[0], p_tan[1] - corner[1]) - t_len) < 1e-9
+    assert abs((p_root[0] - corner[0]) - t_len) < 1e-9
+    (u1, v1), (u2, v2) = arc[-2], arc[-1]  # last chord: within half an arc step of horizontal
+    assert abs(math.degrees(math.atan2(v2 - v1, u2 - u1))) <= (90.0 - rp.pressure_angle_deg) / n_arc / 2.0 + 1e-9
+    print(f"  [ok] fillet tangent to flank and land from the space side; tangent length "
+          f"{t_len:.4f} = rho*tan(45-alpha/2) (rho={rho})")
+
+
+def _selftest_root_fillet_adds_material_outboard_of_the_sharp_corner():
+    """Regression test for the inverted fillet (see rack_tooth_profile): the
+    fillet must FLARE the tooth into the root land -- its landing point on
+    the land outboard of where the sharp flank/land corner would be, the
+    half-profile monotone (never narrowing again on the way down), and the
+    corner region under the arc solid material in the actual rack outline.
+    The inverted version failed all three at these exact parameters: landing
+    point 1.09 mm inboard, a curl-back, and air under the arc."""
+    from shapely.geometry import Point
+    rp = RackParams(z=3, module_mm=2.0, pressure_angle_deg=20.0)
+    hf = rp.dedendum_height_mm
+    rho = rp.root_fillet_coeff * rp.module_mm
+    tooth = rack_tooth_profile(rp, n_arc=12)
+    right = tooth[: len(tooth) // 2]
+    corner_u = rp.circular_tooth_thickness_mm / 2.0 + hf * math.tan(rp.pressure_angle_rad)
+    p_root = right[-1]
+    assert p_root[0] > corner_u + 1e-9, (p_root[0], corner_u)
+    for (u0, v0), (u1, v1) in zip(right, right[1:]):
+        assert u1 >= u0 - 1e-12 and v1 <= v0 + 1e-12, "the tooth must only widen on the way down"
+    outline = Polygon(rack_outline(rp))  # z=3: the middle tooth is centred on u=0
+    for f in (0.25, 0.5, 0.75):
+        u = corner_u + f * (p_root[0] - corner_u)
+        assert outline.contains(Point(u, -hf + 0.01 * rho)), "under the arc must be material"
+    assert not outline.contains(Point(p_root[0], -hf + rho)), "the circle's centre is in the space"
+    print(f"  [ok] fillet lands {p_root[0] - corner_u:.4f} mm outboard of the sharp corner, material beneath")
+
+
+def _selftest_oversized_root_fillet_is_clamped_to_a_full_round_root():
+    """rho beyond what the land can hold is clamped so neighbouring fillets
+    meet at the land's midpoint instead of overlapping: the outline stays a
+    valid polygon and the landing point sits exactly half a pitch out."""
+    rp = RackParams(z=4, module_mm=2.0, pressure_angle_deg=20.0, root_fillet_coeff=5.0)
+    tooth = rack_tooth_profile(rp, n_arc=12)
+    p_root = tooth[: len(tooth) // 2][-1]
+    assert abs(p_root[0] - rp.circular_pitch_mm / 2.0) < 1e-9, (p_root[0], rp.circular_pitch_mm / 2.0)
+    assert Polygon(rack_outline(rp)).is_valid
+    print(f"  [ok] oversized fillet clamped: lands at u={p_root[0]:.4f} = pitch/2")
 
 
 def _selftest_outline_is_valid_with_correct_bounds():
@@ -293,11 +372,43 @@ def _selftest_curvature_limit_matches_a_gear_at_very_large_z():
     print("  [ok] flank curvature diverges (-> straight line) as z grows, matching the rack limit")
 
 
+def _selftest_fillet_is_tangent_continuous_no_crease():
+    """The flank-fillet-land path must be tangent-continuous: from the tip
+    down to p_root, no direction change between consecutive segments may
+    exceed the arc's own discretization step ((90 - alpha)/n_arc deg), and
+    the worst one must shrink as n_arc grows -- a crease is resolution-
+    independent, a smooth arc is not. (An earlier version briefly had a
+    monotonic clamp on u here that produced a resolution-independent 20deg
+    crease at the flank junction; this is what would catch it again.)"""
+    rp = RackParams(z=4, module_mm=2.0, pressure_angle_deg=20.0)
+    sweep_deg = 90.0 - rp.pressure_angle_deg  # arc runs from angle alpha-180deg up to -90deg
+    worst_prev = None
+    for n_arc in (12, 48):
+        prof = rack_tooth_profile(rp, n_arc=n_arc)
+        right = prof[:n_arc + 2]  # tip, p_tan, arc points..., p_root
+        worst = 0.0
+        for i in range(1, len(right) - 1):
+            (x0, y0), (x1, y1), (x2, y2) = right[i - 1], right[i], right[i + 1]
+            d = math.atan2(y2 - y1, x2 - x1) - math.atan2(y1 - y0, x1 - x0)
+            d = abs((d + math.pi) % (2 * math.pi) - math.pi)
+            worst = max(worst, math.degrees(d))
+        step = sweep_deg / n_arc
+        assert worst <= step * 1.05 + 0.01, (n_arc, worst, step)
+        if worst_prev is not None:
+            assert worst < worst_prev, (worst, worst_prev)
+        worst_prev = worst
+    print(f"  [ok] fillet is tangent-continuous: worst turn {worst:.2f}deg at n_arc=48 "
+          f"(arc step {sweep_deg / 48:.2f}deg), no crease")
+
+
 if __name__ == "__main__":
     print("Running rack self-tests...")
     _selftest_pitch_and_thickness_formulas()
     _selftest_flank_is_a_straight_line_at_the_pressure_angle()
     _selftest_root_fillet_is_tangent_to_flank_and_root_land()
+    _selftest_root_fillet_adds_material_outboard_of_the_sharp_corner()
+    _selftest_oversized_root_fillet_is_clamped_to_a_full_round_root()
+    _selftest_fillet_is_tangent_continuous_no_crease()
     _selftest_outline_is_valid_with_correct_bounds()
     _selftest_curvature_limit_matches_a_gear_at_very_large_z()
     print("All rack self-tests passed.")

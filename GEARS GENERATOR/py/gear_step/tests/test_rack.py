@@ -108,6 +108,86 @@ def test_full_solid_is_manifold_across_several_parameter_combinations():
         assert solid.volume > 0
 
 
+def test_root_fillet_is_concave_and_flares_the_tooth_into_the_root_land():
+    """Regression test for the inverted fillet: an earlier version placed the
+    fillet circle's centre INSIDE the tooth (right for a cutting tool's
+    convex tip rounding, which the construction descends from; wrong for a
+    tooth root), which rounded the base corner off and curled the arc back
+    under the tooth, leaving a quarter-round groove rho wide beneath every
+    tooth -- the 'fillets not made right'. Checked against the textbook, not
+    the construction: the centre is on the space side of the flank, both
+    tangent points sit rho*tan(45deg - alpha/2) from the sharp corner (the
+    tangent length for a fillet in a 90deg + alpha corner), the landing
+    point is OUTBOARD of that corner, the half-profile only ever widens on
+    the way down, and the corner region under the arc is solid material in
+    the actual rack outline (probed with point-in-polygon on the real
+    union). At module 2 the old version landed 1.09 mm inboard with air
+    under the arc."""
+    from shapely.geometry import Point
+    for pa in (20.0, 14.5):
+        rp = RackParams(z=3, module_mm=2.0, pressure_angle_deg=pa)
+        alpha, hf = rp.pressure_angle_rad, rp.dedendum_height_mm
+        rho = rp.root_fillet_coeff * rp.module_mm
+        half_thick = rp.circular_tooth_thickness_mm / 2.0
+        n_arc = 16
+        right = rack_tooth_profile(rp, n_arc=n_arc)[: n_arc + 2]  # tip, p_tan, arc..., p_root
+        p_tan, arc, p_root = right[1], right[2:], right[-1]
+        corner = (half_thick + hf * math.tan(alpha), -hf)
+        t_len = rho * math.tan(math.pi / 4 - alpha / 2)
+        assert abs(p_tan[0] - (half_thick - p_tan[1] * math.tan(alpha))) < 1e-9  # on the flank
+        assert abs(p_root[1] + hf) < 1e-9                                          # on the land
+        assert abs(math.hypot(p_tan[0] - corner[0], p_tan[1] - corner[1]) - t_len) < 1e-9
+        assert abs(p_root[0] - corner[0] - t_len) < 1e-9
+        assert p_root[0] > corner[0]  # material added outboard of the sharp corner
+        cu, cv = p_root[0], -hf + rho
+        assert cu > half_thick - cv * math.tan(alpha)  # centre on the space side
+        assert all(abs(math.hypot(u - cu, v - cv) - rho) < 1e-9 for (u, v) in arc)
+        for (u0, v0), (u1, v1) in zip(right, right[1:]):
+            assert u1 >= u0 - 1e-12 and v1 <= v0 + 1e-12, (pa, "must only widen going down")
+        outline = Polygon(rack_outline(rp))  # z=3: middle tooth centred on u=0
+        for f in (0.25, 0.5, 0.75):
+            assert outline.contains(Point(corner[0] + f * t_len, -hf + 0.01 * rho)), (pa, f)
+        assert not outline.contains(Point(cu, cv)), "the centre lies in the space"
+
+
+def test_oversized_root_fillet_is_clamped_to_a_full_round_root():
+    """A fillet coefficient the land can't hold is clamped so neighbouring
+    fillets meet at the land's midpoint (landing point exactly half a pitch
+    out) rather than overlapping into an invalid outline."""
+    rp = RackParams(z=4, module_mm=2.0, pressure_angle_deg=20.0, root_fillet_coeff=5.0)
+    tooth = rack_tooth_profile(rp, n_arc=12)
+    p_root = tooth[: len(tooth) // 2][-1]
+    assert abs(p_root[0] - rp.circular_pitch_mm / 2.0) < 1e-9
+    assert Polygon(rack_outline(rp)).is_valid
+
+
+def test_root_fillet_is_tangent_continuous_no_crease():
+    """From the tip down to the root point, no direction change between
+    consecutive segments may exceed the arc's own discretization step
+    ((90 - alpha)/n_arc deg), and the worst one must shrink as n_arc grows
+    -- a crease is resolution-independent, a smooth arc is not. (Catches
+    what an earlier, briefly present monotonic clamp on u did: a
+    resolution-independent 20deg crease at the flank junction.) Two
+    pressure angles, since the sweep (and so the step) depends on alpha."""
+    for pa in (20.0, 14.5):
+        rp = RackParams(z=4, module_mm=2.0, pressure_angle_deg=pa)
+        sweep_deg = 90.0 - pa
+        worst_prev = None
+        for n_arc in (12, 48):
+            prof = rack_tooth_profile(rp, n_arc=n_arc)
+            right = prof[:n_arc + 2]  # tip, p_tan, arc points..., p_root
+            worst = 0.0
+            for i in range(1, len(right) - 1):
+                (x0, y0), (x1, y1), (x2, y2) = right[i - 1], right[i], right[i + 1]
+                d = math.atan2(y2 - y1, x2 - x1) - math.atan2(y1 - y0, x1 - x0)
+                d = abs((d + math.pi) % (2 * math.pi) - math.pi)
+                worst = max(worst, math.degrees(d))
+            assert worst <= (sweep_deg / n_arc) * 1.05 + 0.01, (pa, n_arc, worst)
+            if worst_prev is not None:
+                assert worst < worst_prev, (pa, worst, worst_prev)
+            worst_prev = worst
+
+
 if __name__ == "__main__":
     import pytest
     raise SystemExit(pytest.main([__file__, "-v"]))

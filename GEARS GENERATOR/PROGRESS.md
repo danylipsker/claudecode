@@ -1,6 +1,59 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## Helical flank was 359 µm off the true helicoid between loft sections; now an exact sweep (latest)
+## Rack and worm root fillets were inverted (circle centre inside the tooth); rebuilt from the textbook construction (latest)
+
+User, on the rack: "the rack tooth fillets are not made right — fix it please" —
+the third report on the same fillet, after "the fillet that connects the teeth
+to the ruler are drawn in a wrong way" and, on the worm, "the fillets are the
+joints between the central cylinder and the spiral tooth… made wrong… the
+fillet serves as a merging geometry between the elements". Each earlier time a
+symptom got fixed and the cause didn't:
+
+- **The cause: `rack_tooth_profile` (and `worm.thread_axial_profile`, its
+  template) put the fillet circle's centre on the TOOTH side of the flank**
+  (`u_c = u_flank − ρ/cos α`). That is the right placement for the convex
+  *tip* rounding of the generating cutter in `involute.rack_cutter_tooth_
+  points` — which both functions descend from — and inverted for a tooth's
+  own *root*. It rounded the tooth's base corner off and then curled the arc
+  back under the tooth: at module 2 the arc landed 1.09 mm *inboard* of the
+  sharp flank/land corner, and a point just above the root land outboard of
+  it was air — a quarter-round groove ρ = 0.76 mm wide beneath every tooth,
+  and along both sides of the worm thread's junction with the core. Found by
+  a point-in-polygon probe on the real outline while writing the docs
+  paragraph for the construction — not by any check run before (validity,
+  simplicity, segment crossings, manifoldness, "matches the hand-calculated
+  points"), all of which the inverted shape passes, because it is a perfectly
+  valid polygon of the wrong shape.
+- **The fix is the textbook construction**: centre ρ above the land and
+  ρ/cos α outboard of the flank, tangent points the perpendicular feet, arc
+  sweep 90° − α. Its tangent length from the sharp corner is ρ·tan(45° − α/2)
+  — the standard formula for a fillet in a 90° + α corner — and the new
+  self-tests and pytest checks compare the built points against that formula,
+  plus: centre on the space side, landing point outboard of the corner,
+  half-profile only widening on the way down, material under the arc
+  (point-in-polygon on the actual union), the circle's centre in air. ρ is
+  clamped where neighbouring fillets would meet at the land's midpoint
+  (full-round root) instead of overlapping. Same code in worm.py, same tests
+  in test_worm.py. docs/gear-math.md §9.1 and §10.2 carry the construction
+  and the history. 50 tests pass.
+- **Both earlier "fixes" retracted** (their entries below are annotated, not
+  rewritten). (1) The "tiny non-monotonic wobble" clamp: the arc's pass-
+  through of its rightmost point was a symptom of the inverted centre, and
+  clamping it produced a 20° crease. (2) The rack-only camera angle: the
+  "rasterizer artifact" at the end teeth was the groove seen in silhouette —
+  the grazing angle didn't create it, it made it the one place the profile
+  could be read. `OnRackChecked` no longer nudges the camera and the rack
+  renders clean under the shared default view. The tangent-length check done
+  at the time verified the *tooth's own* acute base corner
+  (90° − α → ρ·tan(45° + α/2)), i.e. it confirmed the construction against
+  itself. Lesson, recorded in the memory notes too: validity, manifoldness and
+  self-consistency cannot tell a valid polygon of the wrong shape from the
+  right one — a fillet needs a check of *which side the material is on*,
+  against an external formula.
+- Rack and worm thumbnails regenerated; both families re-rendered through the
+  WPF pipeline and re-imported into SolidWorks.
+
+## Helical flank was 359 µm off the true helicoid between loft sections; now an exact sweep
 
 User's note: "helical gears are a smooth transient." Taken as: the twist along
 the face width should be one continuous sweep, and it read as banded. Started
@@ -164,6 +217,11 @@ genuinely hangs (10+ min) on spiral-vs-already-spiralled intersections.
 
 ## Checked every other gear family for the same fillet bug class as rack; found and fixed it in worm too
 
+*Annotation (2026-09-10): the "wobble" this entry fixes in worm was a symptom
+of the inverted fillet circle described in the top entry, and the monotonic
+clamp applied here was later removed; the finding that spur/helical/bevel/
+internal use a different, sound construction stands.*
+
 Following up the rack fillet fix (below): checked whether spur/helical/bevel/
 worm/internal share the same underlying construction, rather than assuming
 "fixed one, done." They split cleanly into two groups:
@@ -206,6 +264,16 @@ worm/internal share the same underlying construction, rather than assuming
   shows no artifact at either thread end. All 44 tests still pass.
 
 ## Rack fillet-to-backing render fixed: one real (tiny) geometry bug, one real camera bug
+
+*Annotation (2026-09-10): both conclusions below were wrong, and are retracted
+in the top entry. The notch the user saw was real geometry — the fillet circle
+was on the wrong side of the flank, leaving a groove under every tooth — which
+the end teeth showed in silhouette at the default camera angle. The "tiny
+non-monotonic wobble" was a symptom of the same inversion, and the camera nudge
+hid the evidence rather than fixing anything; both changes have been removed.
+The investigation's checks (validity, crossings, manifoldness, matching
+hand-calculated points) all pass on a wrong-shaped but valid polygon, which is
+why they found nothing. Kept as written for the record.*
 
 User report: "the rack solution teeth are awkward, the fillet that connects
 the teeth to the ruler [backing bar] are drawn in a wrong way." The live 3D
