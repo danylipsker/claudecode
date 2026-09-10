@@ -53,7 +53,7 @@
   <r x="1152 272 1152 352" f="0" r="270"/>
   <x x="1124 306 1138 310" f="0" si="13" te="R6" co="#e0e0a0"/>
   <r x="1152 352 1152 560" f="0" r="8"/>
-  <x x="1176 400 1242 404" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
+  <x x="1176 400 1255 404" f="0" si="12" te="AUDIO OUTPUT" co="#c8c8c8"/>
   <p x="480 272 480 560" f="1" me="0" sc="0" re="0"/>
   <p x="1008 272 1008 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 272 96" f="0"/>
@@ -76,7 +76,7 @@
   <x x="1230 120 1282 124" f="0" si="12" te="POSITION\n1\n2\n3" co="#c8c8c8"/>
   <x x="1342 120 1414 124" f="0" si="12" te="SOUND\nTONE BURST\nSTEADY TONE\nTWO-TONE" co="#c8c8c8"/>
   <o en="55" sp="64" f="x20a" p="0" x="modulator"><p v="0" sc="2"/></o>
-  <o en="56" sp="64" f="x20a" p="1" x="audio out"><p v="0" sc="2"/></o>
+  <o en="56" sp="64" f="x20a" p="1" x="AUDIO OUTPUT"><p v="0" sc="2"/></o>
   <adj e="7" ei="0" en="Resistance (ohms)" mn="10000" mx="500000" st="R2 modulation rate" stp="0" log="0"/>
   <adj e="20" ei="0" en="Resistance (ohms)" mn="1000" mx="20000" st="R4 pitch" stp="0" log="0"/>
 </cir>

@@ -438,10 +438,10 @@ def c09():
     c.w(T.out, (720, T.out[1]))
     c.r((720, T.out[1]), (720, 176), 1000)
     c.w((720, 176), (720, VP_Y)); vr.tap(720)
-    c.text((744, 240), "PIEZO BUZZER\\n(a 1k load stands in --\\nCircuitJS has no buzzer)",
+    c.text((744, 240), "AUDIO OUTPUT\\n(a 1k load stands in --\\nCircuitJS has no piezo buzzer)",
            11, "#c8c8c8")
     p = vprobe(c, (720, T.out[1]), gr)
-    c.scope(p, 0, ((0, 2),), label="buzzer drive")
+    c.scope(p, 0, ((0, 2),), label="AUDIO OUTPUT drive")
     c.scope(c1, 1, ((0, 2),), label="charge on C1")
     c.slider(r2, "Resistance (ohms)", 100000, 4000000, "R2 deadline")
     vr.build(); gr.build()
@@ -507,7 +507,7 @@ def c11():
     # +V -> R1 220 -> 8 ohm speaker -> pin 3
     c.r((768, VP_Y), (768, 176), 220, ref="R1")
     c.r((768, 176), (768, 240), 8)
-    c.text((792, 200), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((792, 200), "AUDIO OUTPUT", 12, "#c8c8c8")
     c.w((768, 240), (768, T.out[1]))
     c.w((768, T.out[1]), T.out)
     vr.tap(768)
@@ -521,7 +521,7 @@ def c11():
     c.text((96, 400), "INPUT (CONTROL) VOLTAGE", 11, "#e0e0a0")
 
     p = vprobe(c, T.out, gr)
-    c.scope(p, 0, ((0, 2),), label="pin 3 / speaker")
+    c.scope(p, 0, ((0, 2),), label="pin 3 / AUDIO OUTPUT")
     c.scope(c1, 1, ((0, 2),), label="charge on C1")
     c.slider(r2, "Resistance (ohms)", 10000, 200000, "R2 pitch")
     vr.build(); gr.build()
@@ -631,11 +631,11 @@ def c14():
     c.w(T.out, (640, T.out[1]))
     c.r((640, T.out[1]), (640, 176), 4700)
     c.w((640, 176), (640, VP_Y)); vr.tap(640)
-    c.text((664, 150), "PIEZO ELEMENT  (black to pin 3, red to +9V)", 11, "#c8c8c8")
+    c.text((664, 150), "AUDIO OUTPUT (piezo)  (black to pin 3, red to +9V)", 11, "#c8c8c8")
 
     c.r((640, T.out[1]), (720, T.out[1]), 100, ref="R3")
     c.r((720, T.out[1]), (720, 400), 8)
-    c.text((744, 330), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((744, 330), "AUDIO OUTPUT (8 ohm)", 12, "#c8c8c8")
     c.pc((720, 400), (720, gr.y), 4.7e-6, ref="C2")
     gr.tap(720)
 

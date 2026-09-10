@@ -19,7 +19,7 @@ def xfmr_posts(a, width=32):
     return (x, y), (x + 64, y), (x, y + width), (x + 64, y + width)
 
 
-def speaker(c, gr, x, y_top, series_r=8, label="SPKR"):
+def speaker(c, gr, x, y_top, series_r=8, label="AUDIO OUTPUT"):
     """8 ohm speaker load plus an Audio Output tap so it can be heard."""
     c.r((x, y_top), (x, y_top + 64), series_r)
     c.node((x, y_top + 32), (x + 64, y_top + 32), label)
@@ -66,7 +66,7 @@ def c15():
     # pin 3 -> 8 ohm speaker -> C8 -> ground
     c.w(T.out, (880, T.out[1]))
     c.r((880, T.out[1]), (880, 336), 8)
-    c.text((904, 290), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((904, 290), "AUDIO OUTPUT", 12, "#c8c8c8")
     c.pc((880, 336), (880, gr.y), 4.7e-6, ref="C8")
     gr.tap(880)
 
@@ -111,7 +111,7 @@ def c16():
 
     c.w(T.out, (784, T.out[1]))
     c.r((784, T.out[1]), (784, 400), 8)
-    c.text((808, 356), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((808, 356), "AUDIO OUTPUT", 12, "#c8c8c8")
     c.pc((784, 400), (784, gr.y), 4.7e-6, ref="C2")
     gr.tap(784)
 
@@ -180,7 +180,7 @@ def c17():
     c.w(B.out, (1184, B.out[1]))
     c.r((1184, B.out[1]), (1184, gr.y), 1000)
     gr.tap(1184)
-    c.text((1208, 300), "PIEZO BUZZER\\n(1k load stands in)", 11, "#c8c8c8")
+    c.text((1208, 300), "AUDIO OUTPUT\\n(1k load stands in)", 11, "#c8c8c8")
 
     p1 = vprobe(c, A.out, gr)
     p2 = vprobe(c, B.out, gr)
@@ -235,7 +235,7 @@ def c18():
     c.pc((1152, B.out[1]), (1152, 224), 1e-5, ref="C3")
     r4 = c.r((1152, 224), (1152, 160), 5000, ref="R4")
     c.r((1152, 160), (1152, VP_Y), 8)
-    c.text((1176, 128), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((1176, 128), "AUDIO OUTPUT", 12, "#c8c8c8")
     vr.tap(1152)
 
     p1 = vprobe(c, A.out, gr)
@@ -302,13 +302,13 @@ def c19():
     c.w(B.out, (1152, B.out[1]))
     c.r((1152, B.out[1]), (1152, 352), 270, ref="R6")
     c.r((1152, 352), (1152, gr.y), 8)
-    c.text((1176, 400), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((1176, 400), "AUDIO OUTPUT", 12, "#c8c8c8")
     gr.tap(1152)
 
     p1 = vprobe(c, A.out, gr)
     p2 = vprobe(c, B.out, gr)
     c.scope(p1, 0, ((0, 2),), label="modulator")
-    c.scope(p2, 1, ((0, 2),), label="audio out")
+    c.scope(p2, 1, ((0, 2),), label="AUDIO OUTPUT")
     c.slider(r2, "Resistance (ohms)", 10000, 500000, "R2 modulation rate")
     c.slider(r4, "Resistance (ohms)", 1000, 20000, "R4 pitch")
     vr.build(); gr.build()
@@ -354,7 +354,7 @@ def c20():
     c.r(coll, (coll[0], 208), 100, ref="R6")
     c.w((coll[0], 208), (coll[0], VP_Y)); vr.tap(coll[0])
     c.r(emit, (emit[0], gr.y), 8)
-    c.text((emit[0] + 24, 500), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((emit[0] + 24, 500), "AUDIO OUTPUT", 12, "#c8c8c8")
     gr.tap(emit[0])
 
     p = vprobe(c, T.out, gr, lane=624)
@@ -409,7 +409,7 @@ def c21():
 
     # speaker from +V through R4 down to pin 3 of 555 (2)
     c.r((1056, VP_Y), (1056, 208), 8)
-    c.text((1080, 170), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((1080, 170), "AUDIO OUTPUT", 12, "#c8c8c8")
     c.r((1056, 208), (1056, B.out[1]), 220, ref="R4")
     c.w((1056, B.out[1]), B.out)
     vr.tap(1056)
@@ -417,7 +417,7 @@ def c21():
     p1 = vprobe(c, (688, 448), gr, lane=640)
     p2 = vprobe(c, B.out, gr)
     c.scope(p1, 0, ((0, 2),), label="charge on C2")
-    c.scope(p2, 1, ((0, 2),), label="speaker tone")
+    c.scope(p2, 1, ((0, 2),), label="AUDIO OUTPUT tone")
     c.slider(r1, "Resistance (ohms)", 10000, 500000, "R1 sweep rate")
     c.slider(r7, "Resistance (ohms)", 10000, 500000, "R7 pitch")
     c.slider(r3, "Resistance (ohms)", 1000, 200000, "R3 warble depth")
@@ -554,11 +554,11 @@ def c24():
     c.w(T.out, (880, T.out[1]))
     c.pc((880, T.out[1]), (880, 352), 4.7e-6, ref="C2")
     c.r((880, 352), (880, gr.y), 8)
-    c.text((904, 400), "8 ohm SPKR", 12, "#c8c8c8")
+    c.text((904, 400), "AUDIO OUTPUT", 12, "#c8c8c8")
     gr.tap(880)
 
     p = vprobe(c, T.out, gr)
-    c.scope(p, 0, ((0, 2),), label="speaker drive")
+    c.scope(p, 0, ((0, 2),), label="AUDIO OUTPUT drive")
     c.slider(r1, "Resistance (ohms)", 10000, 200000, "R1 tone")
     c.slider(r3, "Resistance (ohms)", 1000, 100000, "R3 trip point", log=True)
     vr.build(); gr.build()
@@ -630,10 +630,10 @@ def c25():
     c.w(B.out, (1184, B.out[1]))
     c.r((1184, B.out[1]), (1184, 208), 1000)
     c.w((1184, 208), (1184, VP_Y)); vr.tap(1184)
-    c.text((1208, 300), "PIEZO BUZZER\\n(1k load stands in)", 11, "#c8c8c8")
+    c.text((1208, 300), "AUDIO OUTPUT\\n(1k load stands in)", 11, "#c8c8c8")
 
     p = vprobe(c, (1184, B.out[1]), gr)
-    c.scope(p, 0, ((0, 2),), label="buzzer drive")
+    c.scope(p, 0, ((0, 2),), label="AUDIO OUTPUT drive")
     c.scope(c3, 1, ((0, 2),), label="charge on C3")
     c.slider(r5, "Resistance (ohms)", 100000, 4000000, "R5 alarm delay")
     c.text((96, 700), "The transmitter is as drawn.  The receiver's phototransistor stage does not "

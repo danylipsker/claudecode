@@ -36,7 +36,7 @@
   <pc x="880 272 880 352" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
   <x x="852 306 866 310" f="0" si="13" te="C2" co="#e0e0a0"/>
   <r x="880 352 880 560" f="0" r="8"/>
-  <x x="904 400 970 404" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
+  <x x="904 400 983 404" f="0" si="12" te="AUDIO OUTPUT" co="#c8c8c8"/>
   <p x="528 272 528 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 272 96" f="0"/>
   <w x="272 96 464 96" f="0"/>
@@ -53,7 +53,7 @@
   <x x="96 640 668 644" f="0" si="13" te="When S1 is in position L the speaker emits a tone when light strikes the\nphotoresistor.  When S1 is in position D the speaker emits a tone when the\nphotoresistor is not illuminated.  It is OK to alter R1 and C1 to change the\nfrequency of the tone.\n\nPress L to throw both linked halves of S1, and drag the Light slider to test.\nCircuitJS's photoresistor covers only about 5.9K to 98K where a real cell covers\nfar more, so R3 is on a slider: about 4.7K suits position L, about 82K suits D." co="#c8d8c8"/>
   <x x="96 774 577 778" f="0" si="12" te="Book waveform, p.28:  with S1 at L, TONE ON follows LIGHT.  With S1 at D,\nTONE ON follows DARK instead." co="#9fb8c8"/>
   <x x="96 824 525 828" f="0" si="13" te="'OK to alter R1 and C1 to change the frequency of the tone.'\n        -- Mims, 555 Timer IC Circuits" co="#e8b8b8"/>
-  <o en="38" sp="64" f="x20a" p="0" x="speaker drive"><p v="0" sc="2"/></o>
+  <o en="38" sp="64" f="x20a" p="0" x="AUDIO OUTPUT drive"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="200000" st="R1 tone" stp="0" log="0"/>
   <adj e="20" ei="0" en="Resistance (ohms)" mn="1000" mx="100000" st="R3 trip point" stp="0" log="1"/>
 </cir>

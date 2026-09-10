@@ -54,7 +54,7 @@
   <x x="1176 470 1235 474" f="0" si="12" te="Q1 2N3904" co="#e0e0a0"/>
   <w x="944 272 1184 272" f="0"/>
   <r x="1184 272 1184 560" f="0" r="1000"/>
-  <x x="1208 300 1322 304" f="0" si="11" te="PIEZO BUZZER\n(1k load stands in)" co="#c8c8c8"/>
+  <x x="1208 300 1322 304" f="0" si="11" te="AUDIO OUTPUT\n(1k load stands in)" co="#c8c8c8"/>
   <p x="480 272 480 560" f="1" me="0" sc="0" re="0"/>
   <p x="944 272 944 560" f="1" me="0" sc="0" re="0"/>
   <x x="96 700 1336 704" f="0" si="11" te="Mims labels Q1's leads E to pins 12/13 and C to ground; built here the conventional way round -- collector on C3, emitter grounded -- which is the discharge switch across C3 that the page's text describes." co="#c08080"/>

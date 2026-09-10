@@ -279,7 +279,7 @@ class Cir:
         return self.add('<ln x="%d %d %d %d" f="0" te="%s"/>'
                         % (a[0], a[1], b[0], b[1], name))
 
-    def audio(self, a, name="Speaker"):
+    def audio(self, a, name="Audio Output"):
         return self.add('<aout x="%d %d %d %d" f="0" du="1" sa="8000" la="1"/>'
                         % (a[0], a[1], a[0] + 32, a[1]))
 

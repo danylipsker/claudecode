@@ -22,7 +22,7 @@
   <r x="768 96 768 176" f="0" r="220"/>
   <x x="740 130 754 134" f="0" si="13" te="R1" co="#e0e0a0"/>
   <r x="768 176 768 240" f="0" r="8"/>
-  <x x="792 200 858 204" f="0" si="12" te="8 ohm SPKR" co="#c8c8c8"/>
+  <x x="792 200 871 204" f="0" si="12" te="AUDIO OUTPUT" co="#c8c8c8"/>
   <w x="768 240 768 272" f="0"/>
   <w x="768 272 624 272" f="0"/>
   <pt x="208 432 240 560" f="0" ma="100000" po="0.5" sl="Control Voltage"/>
@@ -45,7 +45,7 @@
   <x x="96 640 696 644" f="0" si="13" te="The 555 oscillates at a frequency determined by R2 and C1.  A voltage applied to the\ninput changes the oscillation frequency: as the input voltage increases, the\noscillation frequency decreases.\n\nThe 100K potentiometer provides a variable input voltage for testing.  For more\nvolume, omit R1 and connect the speaker to ground through a 4.7 uF capacitor." co="#c8d8c8"/>
   <x x="96 748 704 752" f="0" si="14" te="free-running f = 1.44 / ((R2 + 2 R3) C1)\npin 5 moves both comparator thresholds, so f falls as the control voltage rises" co="#ffe08a"/>
   <x x="96 806 558 810" f="0" si="12" te="Book waveform, p.15:  as INPUT VOLTAGE ramps up and down, SPEAKER TONE\nFREQUENCY moves the opposite way." co="#9fb8c8"/>
-  <o en="31" sp="64" f="x20a" p="0" x="pin 3 / speaker"><p v="0" sc="2"/></o>
+  <o en="31" sp="64" f="x20a" p="0" x="pin 3 / AUDIO OUTPUT"><p v="0" sc="2"/></o>
   <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="200000" st="R2 pitch" stp="0" log="0"/>
 </cir>

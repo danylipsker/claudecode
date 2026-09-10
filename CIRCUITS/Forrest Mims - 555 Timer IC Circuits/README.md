@@ -58,8 +58,10 @@ Loading a circuit gives you the whole page, not just a runnable schematic:
   **1–8** exactly as Mims draws them, instead of CircuitJS's usual `dis`/`tr`/`th`.
 * **Component designators.** Every part the book names carries its label — R1, R2,
   C1, Q1, D1, T1, M1 — drawn beside it, with the value alongside from *Show Values*.
-  Parts that are only in this build (bleed resistors, base resistors, the speaker
-  load) are deliberately left unlabelled, because Mims doesn't name them either.
+  Parts that are only in this build (bleed resistors, base resistors) are
+  deliberately left unlabelled, because Mims doesn't name them either. The one
+  exception is the audio-output load, labelled **AUDIO OUTPUT** so it reads
+  clearly on screen.
 * **The explanation**, under the schematic, carrying the same technical content as
   the page's prose.
 * **The formulas**, in yellow — `t = 1.1 × R1 × C1`, `f = 1.44 / ((R1 + 2R2)C1)`
@@ -96,8 +98,11 @@ Loading a circuit gives you the whole page, not just a runnable schematic:
   network is drawn to the left of every chip. Mims puts it on the right on
   several pages -- same parts, same connections, mirrored placement.
 * **Component values** are the book's, except where noted below.
-* **Speakers** are an 8 Ω resistor plus an Audio Output tap, so the tone circuits
-  can actually be heard.
+* **AUDIO OUTPUT** labels the 8 Ω resistor that stands in for the physical speaker
+  or buzzer — the precise CircuitJS term (`aout` = AudioOutput), used as the label
+  everywhere one of these appears. It is a label only: none of these circuits is
+  actually wired to CircuitJS's own Audio Output element, so they run silently in
+  the simulator.
 
 ## Fidelity to the drawings
 
