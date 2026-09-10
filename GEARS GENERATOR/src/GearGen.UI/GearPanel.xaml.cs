@@ -91,6 +91,17 @@ namespace GearGen.UI
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();
+            // The shared default camera direction looks along a diagonal that's
+            // nearly edge-on to a rack's own length axis (its teeth march along
+            // world X) -- fine for the other, roughly axisymmetric families, but
+            // it puts the outermost tooth at a genuine grazing/silhouette angle
+            // where WPF's rasterizer visibly mis-renders the fillet-to-backing
+            // curve as a notch (confirmed: the underlying geometry is correct --
+            // manifold, consistent winding, matches hand-calculated fillet points
+            // exactly -- the artifact tracks the viewing angle, not any geometry
+            // parameter). Nudging the view less edge-on to X fixes it cleanly, so
+            // give Rack its own angle rather than compromising everyone else's.
+            Viewport3D.ChangeCameraDirection(new Vector3D(-0.5, 1, -0.8), 300);
         }
 
         private void OnInternalChecked(object sender, RoutedEventArgs e)

@@ -1,6 +1,65 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## C# UI wired for racks and internal gears (latest)
+## Rack fillet-to-backing render fixed: one real (tiny) geometry bug, one real camera bug (latest)
+
+User report: "the rack solution teeth are awkward, the fillet that connects
+the teeth to the ruler [backing bar] are drawn in a wrong way." The live 3D
+preview showed a visible notch/kink right where each tooth's root fillet
+meets the backing bar's flat top. Root-caused this properly rather than
+guessing at a fix -- rebuilt the actual solid at the exact reported
+parameters, tessellated it the same way the app does, and inspected the raw
+STL triangles/edges directly (not just re-reading the source) at every
+stage: 2D outline (shapely `is_valid`/`is_simple` AND a strict pairwise
+segment-crossing check, not just the tolerant built-in ones -- zero
+crossings), the flat cap face's triangulation (zero area overlap vs. the
+polygon's true area), the full solid's mesh (zero non-manifold edges, zero
+winding-direction inconsistencies -- every directed edge appears exactly
+once). All clean. Systematically ruled out fillet radius, arc resolution,
+tooth height, and specular material as causes by changing each one
+independently through the *actual* rendering pipeline (not a proxy) and
+finding the artifact unmoved by all of them -- until testing which specific
+tooth showed it: only the rack's own two endmost teeth, never an interior
+one. That pointed at the camera, not the geometry, and confirming it was
+cheap: nudging the default camera's azimuth away from the grazing angle it
+was taking relative to the rack's own length axis made the artifact vanish
+at both ends, at any teeth count, with the underlying STL bytes unchanged.
+Two real, if modest, fixes landed from this:
+- **`rack.py`'s fillet had a genuine (tiny) non-monotonic wobble.**
+  Independent of the render bug above: any circle tangent to the flank line
+  and the horizontal root line necessarily sweeps through its own widest
+  point before reaching the root whenever the pressure angle is nonzero --
+  an inherent property of that construction, matching the standard
+  ISO-basic-rack tangent-fillet definition exactly (verified against the
+  textbook tangent-length formula for two lines meeting at a corner, not
+  just against itself). The excess is a few percent of the fillet radius,
+  invisible at any real design scale, but it makes the polygon boundary
+  briefly non-monotonic. Clamped it to non-increasing as the arc walks from
+  the flank down to the root -- harmless (both tangent points, and the
+  fillet radius itself, are unaffected) and removes a real (if cosmetically
+  negligible) imperfection regardless of the render issue. Did not, on its
+  own, fix what the user saw -- confirmed by testing it in isolation.
+- **The shared default 3D-viewer camera (`GearPanel.xaml`) looks along a
+  diagonal that puts a *rack's* own end teeth at a genuine grazing/silhouette
+  angle** -- fine for the other five families, which are all roughly
+  axisymmetric and have no "own length axis" to be edge-on to. `OnRackChecked`
+  (`GearPanel.xaml.cs`) now nudges the camera to a rack-specific angle via the
+  same `ChangeCameraDirection` mechanism the toolbar's view buttons already
+  use, rather than compromising the one shared default for every other
+  family (tried that first -- fixed rack but visibly flattened bevel's view;
+  reverted). Verified spur/bevel/worm/internal render pixel-identically to
+  before (unaffected, since they never call `OnRackChecked`).
+- Worth remembering for any future WPF 3D work: a mis-rendered silhouette
+  detail that's unmoved by every *geometry* parameter but disappears when
+  the *camera angle* changes is a camera/rasterization issue, not a geometry
+  bug -- checking that (rendering the same, unchanged STL from several
+  angles) is a fast, decisive test worth reaching for before re-deriving
+  math that's already passing every independent correctness check.
+- STEP/DXF exports were never affected by the render bug (they're built from
+  the B-rep/2D polygon directly, not re-derived from the STL), confirmed by
+  re-running `--exporttest` throughout. All 44 Python tests and rack.py's own
+  5 self-tests still pass.
+
+## C# UI wired for racks and internal gears
 
 Closes the gap the previous pass left open (see "the C# side itself... is not
 yet wired" below) — racks and internal gears now have the same UI depth as

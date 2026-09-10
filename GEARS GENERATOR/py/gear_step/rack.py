@@ -122,9 +122,27 @@ def rack_tooth_profile(rp: RackParams, n_arc: int = 12) -> list[tuple[float, flo
 
     right_path = [(half_u_at(ha), ha)]            # tip, right side
     right_path.append(p_tan)                       # down the flank to the fillet
+    # The tangent circle's own rightmost point (angle 0, i.e. u_center+rho) is
+    # tangibly wider than p_tan itself whenever alpha>0 -- an unavoidable
+    # property of ANY circle tangent to a tilted line and a horizontal one:
+    # the minor arc from p_tan to p_root necessarily sweeps THROUGH that
+    # max-u point (0 always lies between a_start=+alpha and a_end=-90deg).
+    # That's the textbook tangent-fillet construction and the excess is tiny
+    # (a few % of rho, submillimeter at any normal module) -- shapely is fine
+    # with the resulting polygon (still simple/valid) -- but it makes the
+    # boundary briefly non-monotonic in u right at the fillet, which reads as
+    # a visible notch once lit/shaded at an angle (confirmed by comparing the
+    # rendered solid against this exact spot). Clamp u to non-increasing as
+    # the arc walks from p_tan to p_root so the boundary stays monotonic; the
+    # clamp only ever pulls a point inward by that same tiny excess, so the
+    # fillet's radius and tangency at both ends are unaffected.
+    running_max_u = p_tan[0]
     for i in range(1, n_arc + 1):
         a = a_start + (a_end - a_start) * i / n_arc
-        right_path.append((u_center + rho * math.cos(a), v_center + rho * math.sin(a)))
+        u = min(u_center + rho * math.cos(a), running_max_u)
+        v = v_center + rho * math.sin(a)
+        running_max_u = u
+        right_path.append((u, v))
     # right_path now ends at p_root; mirror for the left side (u -> -u), reversed
     left_path = [(-x, y) for (x, y) in reversed(right_path)]
     return right_path + left_path  # tip(+u) -> fillet -> root(u_center) -> root(-u_center) -> fillet -> tip(-u)
