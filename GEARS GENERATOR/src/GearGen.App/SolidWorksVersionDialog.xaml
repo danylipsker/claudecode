@@ -1,14 +1,22 @@
 <Window x:Class="GearGen.App.SolidWorksVersionDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Export to SolidWorks" Height="220" Width="380"
+        Title="Export to SolidWorks" Width="380" SizeToContent="Height"
         WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
         Background="#F9FAFB">
+    <!-- SizeToContent="Height", not a fixed Height: this dialog used to be a
+         fixed 220px tall while its content wants ~287px (measured, headless:
+         the Export/Cancel row's bottom edge landed 28px below the visible
+         area), so the buttons were clipped clean off the bottom; this is the
+         export flow's only entry point, and the one place no automated test
+         ever reached, since the swtest flag bypasses this dialog. See the
+         swdialogsmoke flag in App.xaml.cs. (No double hyphens in this comment:
+         XML forbids them, and that once broke the build.) -->
     <StackPanel Margin="24">
         <TextBlock Text="Save as SolidWorks version" FontSize="15" FontWeight="Bold" Foreground="#111827"/>
         <TextBlock Text="A native .sldprt can only be written by that version's own SolidWorks -- there's no &quot;save as older version&quot; for native parts. Pick the version installed on this machine you want to drive; if it isn't installed, the currently running one is used instead and you'll be told."
                    TextWrapping="Wrap" FontSize="11" Foreground="#6B7280" Margin="0,8,0,16"/>
-        <ComboBox x:Name="VersionCombo" FontSize="14" Padding="8,6" SelectedIndex="6"/>
+        <ComboBox x:Name="VersionCombo" FontSize="14" Padding="8,6"/>
         <TextBlock x:Name="AvailabilityText" FontSize="11" Foreground="#9CA3AF" Margin="0,8,0,0"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
             <Button Content="Cancel" Padding="14,8" Margin="0,0,8,0" Click="OnCancel"/>

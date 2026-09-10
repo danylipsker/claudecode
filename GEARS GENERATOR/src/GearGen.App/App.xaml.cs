@@ -55,6 +55,12 @@ namespace GearGen.App
                 return;
             }
 
+            if (e.Args.Length >= 2 && e.Args[0] == "--swdialogsmoke")
+            {
+                RunSolidWorksDialogSmokeTest(e.Args[1]);
+                return;
+            }
+
             if (e.Args.Length >= 2 && e.Args[0] == "--uismoke")
             {
                 int? teeth = null;
@@ -174,6 +180,89 @@ namespace GearGen.App
             Shutdown(0);
         }
 
+        /// <summary>Headless check of the SolidWorks version-picker dialog. The
+        /// interactive export flow is the ONLY place it is shown, and every
+        /// automated SolidWorks test (--swtest) bypasses it, so until this
+        /// existed nothing had ever actually constructed it. Instantiates it
+        /// off-screen, logs what the ComboBox really ended up selecting (its
+        /// SelectedIndex is set in XAML while it is still empty), whether the
+        /// content fits the fixed window height (where the Export button's
+        /// bottom edge lands vs. the client area), and any exception -- then
+        /// renders it to a PNG. Invoke as: GearsGenerator.exe --swdialogsmoke out.png</summary>
+        private void RunSolidWorksDialogSmokeTest(string outputPngPath)
+        {
+            string logPath = outputPngPath + ".log";
+            var log = new System.Text.StringBuilder();
+            void Log(string s) { log.AppendLine(s); File.WriteAllText(logPath, log.ToString()); }
+            try
+            {
+                var dlg = new SolidWorksVersionDialog
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    Left = -5000,
+                    Top = -5000,
+                    ShowInTaskbar = false,
+                };
+                Log("constructed OK");
+                dlg.Show();
+                // SizeToContent grows the window through a WM_SIZE round trip
+                // that UpdateLayout() alone does not pump; without pumping,
+                // every measurement below reads the PRE-resize layout. Found
+                // the hard way: after the fix, this log still said "CLIPPED"
+                // with numbers identical to the broken build, while the
+                // rendered PNG showed the buttons fully inside the window.
+                var settle = DateTime.UtcNow.AddMilliseconds(500);
+                while (DateTime.UtcNow < settle)
+                {
+                    Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new Action(() => { }));
+                    Thread.Sleep(20);
+                }
+                dlg.UpdateLayout();
+
+                var combo = (System.Windows.Controls.ComboBox)dlg.FindName("VersionCombo");
+                var avail = (System.Windows.Controls.TextBlock)dlg.FindName("AvailabilityText");
+                var ok = (System.Windows.Controls.Button)dlg.FindName("OkButton");
+                Log($"combo items={combo.Items.Count} selectedIndex={combo.SelectedIndex} text='{combo.Text}'");
+                foreach (var it in combo.Items) Log("  item: " + it);
+                Log($"availability='{avail.Text}'");
+
+                var content = (FrameworkElement)dlg.Content;
+                content.Measure(new Size(content.ActualWidth > 0 ? content.ActualWidth : dlg.ActualWidth, double.PositiveInfinity));
+                // The visible area is the window's CLIENT rectangle, i.e. the
+                // root visual under the Window (its ActualHeight excludes the
+                // title bar and borders, which dlg.ActualHeight includes). The
+                // button edge is transformed into that same frame, so the two
+                // are directly comparable. An earlier version compared the
+                // edge against dlg.Content's ActualHeight instead -- that's the
+                // StackPanel's own height WITHOUT its 24px Margin, a different
+                // frame, and it reported CLIPPED for a dialog whose render
+                // plainly showed both buttons inside the window.
+                var clientRoot = VisualTreeHelper.GetChildrenCount(dlg) > 0
+                    ? VisualTreeHelper.GetChild(dlg, 0) as FrameworkElement : null;
+                var clientHeight = clientRoot?.ActualHeight ?? double.NaN;
+                var okBottom = ok.TransformToAncestor(dlg).Transform(new Point(0, ok.ActualHeight)).Y;
+                Log($"window ActualHeight={dlg.ActualHeight}; client-area height={clientHeight}; content ActualHeight (excl. margin)={content.ActualHeight}; content DesiredHeight (unconstrained, incl. margin)={content.DesiredSize.Height}");
+                Log($"Export button bottom edge at y={okBottom} in client coordinates" +
+                    (okBottom > clientHeight ? "  <-- CLIPPED (below the visible client area)" : "  (visible)"));
+
+                var rtb = new RenderTargetBitmap(
+                    Math.Max(1, (int)dlg.ActualWidth), Math.Max(1, (int)dlg.ActualHeight), 96, 96, PixelFormats.Pbgra32);
+                rtb.Render(dlg);
+                var encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(rtb));
+                using (var fs = File.Create(outputPngPath))
+                    encoder.Save(fs);
+                Log("saved png");
+                dlg.Close();
+                Shutdown(0);
+            }
+            catch (Exception ex)
+            {
+                Log("EXCEPTION: " + ex);
+                Shutdown(1);
+            }
+        }
+
         /// <summary>Self-contained visual smoke test: shows the window off-screen,
         /// pumps the dispatcher long enough for the first debounced preview
         /// round-trip to the Python engine to complete, renders it to a PNG via
@@ -231,6 +320,10 @@ namespace GearGen.App
                     "; geom bounds=" + geom?.Bounds + "; geom null=" + (geom == null) +
                     "; Model3D null=" + (win.Panel?.ViewModel?.Model3D == null) +
                     "; IsMeshBusy=" + win.Panel?.ViewModel?.IsMeshBusy);
+                // The default export file name for this family/parameters --
+                // logged so every smoke run also checks the self-describing
+                // naming (GearParameters.SuggestedFileName) for that family.
+                Log("suggested file name: " + win.Panel?.ViewModel?.SuggestedFileName(".step"));
 
                 // Force a fresh Measure/Arrange against the final (post-binding-update)
                 // geometry -- otherwise the Viewbox can still be holding the scale
