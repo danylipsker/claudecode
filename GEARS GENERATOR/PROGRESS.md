@@ -1,6 +1,44 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Helical racks (latest)
+## Crossed-helical (screw) gear pairs (latest)
+
+Third of the requested additions. Two helical gears on shafts that cross
+without intersecting; each member is the existing helical gear, so what
+the family adds is the pair relationship and a correct meshing placement,
+previewed and exported together (`crossed_helical.py`, docs/gear-math.md
+§7.5):
+
+- **Relationship**: `Σ = β1 + β2` for the same hand, common normal module and
+  pressure angle, `d_i = m_n z_i / cos β_i`, `a = (d1 + d2)/2`, ratio
+  `z2/z1` (independent of the helix angles, unlike a worm pair). Given gear
+  1 and the shaft angle, `β2 = Σ − β1`: same hand when positive, opposite
+  hand with `|β2|` when negative, a spur gear 2 at zero — all handled and
+  each flagged in the warnings.
+- **Placement**: the common perpendicular of the axes is Y, gear 1 on Z at
+  the origin, gear 2's centre at `(0, a, 0)`; each gear centred on its
+  mid-face and turned by minus half its twist so the mid-face profile is in
+  the "tooth centred on +Y" frame the outline is generated in; gear 2 shows
+  a *space* to the pitch point (half a pitch of rotation when z2 is even);
+  then rotated about Y by `−Σ` for a right-hand gear 1 — derived from the
+  two tooth traces at the pitch point having to coincide, not assumed.
+- **Checks** (`tests/test_crossed_helical.py`, 7 tests; suite 65): the
+  formulas against hand-computed numbers; gear 2's centre and axis; and the
+  decisive one — the boolean intersection of the correctly placed pair is
+  below 2·10⁻⁴ of a gear's volume while the same pair with gear 2 turned
+  half a pitch collides by at least 20× more, for right- and left-hand
+  pairs, 30°/60° at 90°, and an opposite-hand 45° vs Σ = 30° pair (so the
+  sign derivation, the even/odd phase and the centre distance are all
+  verified by a test that is known to be able to fail); the two-body STEP
+  round-trips as two solids.
+- **UI**: a Screw gears card, the HELIX section under "HELIX (gear 1; gear
+  2's follows from the shaft angle)", a SCREW GEAR PAIR section (gear 2
+  teeth, shaft angle), a derived row with gear 2's helix/hand/diameter,
+  centre distance and ratio, `screwpair_z18x20_m2_pa20_helix45R_shaft90_fw10`
+  names, thumbnail, the worm's 3/4 camera nudge (same reason: two mating
+  parts), `--uismoke --screw`. STEP export writes both members in mesh as a
+  two-body part. Verified headless and by SolidWorks import.
+
+## Helical racks
 
 Second of the requested additions. A helical rack is the straight rack
 with its teeth inclined by the helix angle across the face — the rack a

@@ -25,7 +25,14 @@ namespace GearGen.Geometry
         /// axial thrust cancels -- see docs/gear-math.md section 7.4. Uses
         /// the cylindrical family's parameters (HelixAngleDeg must be > 0;
         /// Hand is the half at z=0) plus GapWidthMm.</summary>
-        Herringbone
+        Herringbone,
+        /// <summary>Crossed-helical (screw) gear PAIR: two helical gears on
+        /// non-parallel, non-intersecting shafts -- see docs/gear-math.md
+        /// section 7.5. Teeth/HelixAngleDeg/Hand describe gear 1; MateTeeth
+        /// is gear 2's tooth count and ShaftAngleDeg the angle between the
+        /// shafts, from which gear 2's helix and hand follow. Exports both
+        /// members in mesh as a two-body STEP.</summary>
+        CrossedHelical
     }
 
     /// <summary>
@@ -143,6 +150,12 @@ namespace GearGen.Geometry
 
         public bool IsHerringbone => Family == GearFamily.Herringbone;
 
+        // ---- crossed-helical / screw pair (docs/gear-math.md section 7.5) -- Family == CrossedHelical only ----
+        // Reuses Teeth/HelixAngleDeg/Hand (gear 1), MateTeeth (gear 2) and
+        // ShaftAngleDeg (the bevel field, same meaning: angle between shafts).
+
+        public bool IsCrossedHelical => Family == GearFamily.CrossedHelical;
+
         /// <summary>Centre groove between the two helical halves, at the root
         /// diameter: 0 = a true herringbone (the halves meet at a sharp V
         /// apex); > 0 = the hob-runout clearance a machined double-helical
@@ -204,6 +217,14 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.CrossedHelical:
+                    // gear 1's helix/hand; gear 2's follow from the shaft angle (docs/gear-math.md 7.5)
+                    parts.Add("screwpair"); parts.Add("z" + Teeth + "x" + MateTeeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("helix" + N(Math.Abs(HelixAngleDeg)) + hand);
+                    parts.Add("shaft" + N(ShaftAngleDeg));
+                    parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.Herringbone:
                     // hand letter = the half at z=0 (the other half is the opposite by construction)

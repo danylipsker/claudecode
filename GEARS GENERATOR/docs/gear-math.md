@@ -314,6 +314,46 @@ faces are what the formulas say; the result is one manifold solid whose volume i
 Cavalieri's `A·(b − g) + π·r_f²·g − bore` to 0.2 % (a twist-extrude's sections are all
 congruent, so its volume is exactly area × length); the STEP round-trips as one solid.
 
+### 7.5 Crossed-helical (screw) gear pairs
+
+Two helical gears on non-parallel, non-intersecting shafts. Each member is exactly
+§7's helical gear — nothing changes in the tooth — so what the pair adds is the
+relationship between the two and their placement:
+
+```
+Sigma = beta1 + beta2        same hand (the usual case); Sigma = |beta1 - beta2| for opposite hands
+m_n, alpha_n                 common to both members (NORMAL quantities)
+d_i = m_n * z_i / cos(beta_i)        a = (d1 + d2) / 2        ratio = z2 / z1
+```
+
+The ratio does not depend on the helix angles (unlike a worm pair, §9), and the pitch
+cylinders touch at a single point on the common perpendicular of the axes, so contact is
+a point — the reason screw gears carry little load, and the reason the mesh is fully
+fixed by the numbers above plus the tooth phase at that point. Given gear 1's `beta1`,
+hand and the shaft angle, `beta2 = Sigma − beta1`: positive → same hand; negative →
+gear 2 takes the opposite hand with `|beta2|`; zero → gear 2 is a spur gear.
+
+**Placement** (`crossed_helical.build_crossed_helical_pair`). The common perpendicular
+is the Y axis: gear 1 on Z centred at the origin, gear 2's centre at `(0, a, 0)`, the
+pitch point `P = (0, r1, 0)`. Each gear is centred on its mid-face and turned by minus
+half its twist, so its mid-face profile sits in the "tooth centred on +Y" frame the
+outline is generated in (§5): gear 1 presents a tooth to P, and gear 2 must present a
+space on its −Y side — automatic for odd `z2`, half a pitch of extra rotation for even.
+Gear 2 is then rotated about Y by `theta = −Sigma` for a right-hand gear 1 (`+Sigma`
+for left), which is derived rather than assumed: with §7.3's convention a right-hand
+profile turns counter-clockwise with `z`, so gear 1's tooth trace at P runs
+`(−sin β1, 0, cos β1)` and gear 2's on its −Y side runs `(sin β2, 0, cos β2)`, which the
+Y rotation turns into `(sin(β2 + θ), 0, cos(β2 + θ))`; the two traces must coincide, so
+`β2 + θ = −β1`. The same `θ` falls out for an opposite-hand gear 2.
+
+Checks (`tests/test_crossed_helical.py`): the formulas against hand-computed numbers
+(45/45 at 90°, 30/60 at 90°, an opposite-hand 45° vs Σ = 30°, a spur gear 2 at Σ = β1);
+gear 2's centre at `(0, a, 0)` with its vertices spanning exactly `b` along the placed
+axis; **no interpenetration** — the boolean intersection of the correctly placed pair
+is below 2·10⁻⁴ of a gear's volume while the same pair with gear 2 turned half a pitch
+shows a collision at least 20× larger, so the check is known to be able to fail; and
+the two-body STEP round-trips as two solids of the right total volume.
+
 ## 8. Straight bevel gears (Tredgold's approximation)
 
 A bevel gear's teeth sit on a **cone**, not a cylinder: two gears on intersecting

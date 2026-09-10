@@ -128,6 +128,54 @@ def herringbone_derived_values(gp: GearParams, gap_mm: float) -> tuple[dict, lis
     return derived, warnings
 
 
+def screw_params_from_request(p: dict):
+    """Crossed-helical (screw) pair -- docs/gear-math.md 7.5. z = gear 1,
+    mate_teeth = gear 2, helix_angle_deg/hand = gear 1's, shaft_angle_deg =
+    Sigma; gear 2's helix and hand follow. module_mm is the NORMAL module,
+    already converted client-side for inch input (as bevel/worm/rack)."""
+    from crossed_helical import CrossedHelicalPairParams
+    return CrossedHelicalPairParams(
+        z1=int(p["z"]),
+        z2=int(p.get("mate_teeth") or p["z"]),
+        module_mm=float(p["module_mm"]),
+        helix1_deg=float(p.get("helix_angle_deg", 45.0)),
+        shaft_angle_deg=float(p.get("shaft_angle_deg", 90.0)),
+        hand=str(p.get("hand", "right")),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        profile_shift=float(p.get("profile_shift", 0.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        backlash_mm=float(p.get("backlash_mm", 0.0)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def screw_derived_values(pp) -> tuple[dict, list]:
+    """Gear 1's own cylindrical derived values plus the pair relationship."""
+    derived, warnings = derived_values(pp.gear1_params())
+    derived.update({
+        "shaft_angle_deg": pp.shaft_angle_deg,
+        "helix2_deg": pp.helix2_deg,
+        "hand2_is_left": 1.0 if pp.hand2 == "left" else 0.0,
+        "pitch_diameter2_mm": pp.pitch_diameter2_mm,
+        "center_distance_mm": pp.center_distance_mm,
+        "ratio": pp.ratio,
+    })
+    if abs(pp.helix1_deg) < 1e-9:
+        warnings.append("Gear 1 has no helix angle -- a crossed pair needs at least one helical member.")
+    if pp.helix2_deg < 1e-9:
+        warnings.append("Shaft angle equals gear 1's helix angle, so gear 2 comes out as a spur gear (0deg helix).")
+    elif pp.hand2 != pp.hand:
+        warnings.append(f"Shaft angle is smaller than gear 1's helix angle, so gear 2 takes the OPPOSITE hand "
+                        f"({pp.hand2}-hand, {pp.helix2_deg:.1f}deg).")
+    if pp.helix2_deg > 60.0:
+        warnings.append(f"Gear 2's helix angle comes out at {pp.helix2_deg:.1f}deg -- screw gears above ~60deg are "
+                        f"rarely practical (very low efficiency); consider a smaller shaft angle or a larger helix on gear 1.")
+    return derived, warnings
+
+
 def bevel_params_from_request(p: dict) -> BevelGearParams:
     return BevelGearParams(
         z=int(p["z"]),
@@ -350,6 +398,11 @@ def handle(req: dict) -> dict:
             outline = full_gear_outline(gp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
             derived, warnings = herringbone_derived_values(gp, gap_mm)
             return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "screw":
+            pp = screw_params_from_request(req)
+            outline = full_gear_outline(pp.gear1_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
+            derived, warnings = screw_derived_values(pp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "bevel":
             bp = bevel_params_from_request(req)
             outline = bevel_heel_tooth_outline(bp)
@@ -397,6 +450,9 @@ def handle(req: dict) -> dict:
             from build_gear import export_double_helical_step
             gp = params_from_request(req)
             export_double_helical_step(gp, gap_mm, path)
+        elif gear_type == "screw":
+            from build_gear import export_crossed_helical_pair_step
+            export_crossed_helical_pair_step(screw_params_from_request(req), path)  # both members, in mesh
         else:
             from build_gear import export_step
             gp = params_from_request(req)
@@ -421,6 +477,9 @@ def handle(req: dict) -> dict:
             from build_gear import export_internal_gear_profile_dxf
             ip = internal_params_from_request(req)
             export_internal_gear_profile_dxf(ip, path)
+        elif gear_type == "screw":
+            from build_gear import export_dxf_profile
+            export_dxf_profile(screw_params_from_request(req).gear1_params(), path)  # gear 1's transverse section
         else:
             # cylindrical AND herringbone: the DXF is the transverse section,
             # which a double-helical gear shares with its helical halves
@@ -509,6 +568,12 @@ def handle(req: dict) -> dict:
             solid = build_double_helical_solid(gp, gap_mm=gap_mm, simplify_tolerance_mm=0.03)
             # curved helicoidal flanks: same fine tessellation as the helical branch below
             bd.export_stl(solid, path, tolerance=0.002, angular_tolerance=0.3)
+        elif gear_type == "screw":
+            from crossed_helical import build_crossed_helical_pair
+            import build123d as bd
+            pp = screw_params_from_request(req)
+            s1, s2 = build_crossed_helical_pair(pp, simplify_tolerance_mm=0.03)
+            bd.export_stl(bd.Compound(children=[s1, s2]), path, tolerance=0.002, angular_tolerance=0.3)
         else:
             from build_gear import build_gear_solid
             import build123d as bd

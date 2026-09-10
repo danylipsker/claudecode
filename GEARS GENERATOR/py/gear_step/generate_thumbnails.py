@@ -94,4 +94,10 @@ if __name__ == "__main__":
                                           bore_diameter_mm=8.0, helix_angle_deg=30.0, hand="right")
     render_solid_thumbnail(build_double_helical_solid(herringbone, gap_mm=0.0), f"{out_dir}/thumb_herringbone.png")
 
+    from crossed_helical import CrossedHelicalPairParams, build_crossed_helical_pair
+    screw = CrossedHelicalPairParams(z1=18, z2=24, module_mm=2.0, helix1_deg=45.0, shaft_angle_deg=90.0,
+                                     face_width_mm=12.0, bore_diameter_mm=6.0)
+    s1, s2 = build_crossed_helical_pair(screw)
+    render_solid_thumbnail(bd.Compound(children=[s1, s2]), f"{out_dir}/thumb_screw.png", elev=25, azim=-60)
+
     print("done")

@@ -192,6 +192,18 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsCrossedHelical)
+            {
+                // Same reasoning as bevel/worm: CrossedHelicalPairParams has no
+                // separate inch constructor, so convert client-side. Helix/hand
+                // (gear 1) are already in the base request above.
+                req.GearType = "screw";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;      // gear 2's tooth count
+                req.ShaftAngleDeg = p.ShaftAngleDeg;
+                return req;
+            }
+
             // Cylindrical (spur/helical) and herringbone share params_from_
             // request on the Python side, which has its own inch constructor,
             // so these two send the raw unit-specific size unconverted.

@@ -302,6 +302,15 @@ def export_double_helical_step(gp: GearParams, gap_mm: float, path: str | Path) 
     _export_step_for_solidworks(build_double_helical_solid(gp, gap_mm=gap_mm), path)
 
 
+def export_crossed_helical_pair_step(pp, path: str | Path) -> None:
+    """Both members of a screw-gear pair, positioned in mesh (docs/gear-math.md
+    7.5), as ONE two-body STEP -- SolidWorks opens it as a multi-body part
+    to split or drop into an assembly. pp: crossed_helical.CrossedHelicalPairParams."""
+    from crossed_helical import build_crossed_helical_pair
+    s1, s2 = build_crossed_helical_pair(pp)
+    _export_step_for_solidworks(bd.Compound(children=[s1, s2]), path)
+
+
 def export_bevel_step(bp: BevelGearParams, path: str | Path) -> None:
     solid = build_bevel_gear_solid(bp)
     _export_step_for_solidworks(solid, path)

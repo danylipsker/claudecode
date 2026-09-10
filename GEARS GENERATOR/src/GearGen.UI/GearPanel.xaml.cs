@@ -133,6 +133,16 @@ namespace GearGen.UI
             ViewModel?.SelectHelicalRackCard();
         }
 
+        private void OnScrewChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectCrossedHelicalCard();
+            // Two mating parts on crossed shafts (gear 2 sits along +Y with its
+            // axis tilted in XZ): the same 3/4 nudge the worm+wheel preview
+            // uses, for the same reason -- the shared default looks nearly
+            // down one of the two axes.
+            Viewport3D.ChangeCameraDirection(new Vector3D(0.55, 0.8, -0.35), 300);
+        }
+
         private async void OnExportStepClick(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog

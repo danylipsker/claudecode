@@ -159,6 +159,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsCrossedHelical, Mode=OneWay}" Checked="OnScrewChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_screw.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Screw gears" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsBevel, Mode=OneWay}" Checked="OnBevelChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_bevel.png" Height="76" Stretch="Uniform"/>
@@ -279,6 +286,14 @@
                         <local:NumericSpinner Label="Backing height" Value="{Binding BackingHeightDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
+                    <StackPanel Visibility="{Binding IsCrossedHelical, Converter={StaticResource B2V}}">
+                        <TextBlock Text="SCREW GEAR PAIR (CROSSED HELICAL)" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Two helical gears on shafts that cross without intersecting. 'Number of teeth', helix angle and hand above describe gear 1; gear 2's helix and hand follow from the shaft angle (same hand when the shaft angle exceeds gear 1's helix, e.g. 45° + 45° = 90°). Both share the normal module and pressure angle; the ratio is z2/z1. Contact is a single point, so screw gears suit light loads. STEP export writes both gears in mesh as a two-body part."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Gear 2 teeth (z2)" Value="{Binding MateTeeth}" Minimum="4" Maximum="500" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Shaft angle" Value="{Binding ShaftAngleDeg}" Minimum="10" Maximum="170" Step="1" DecimalPlaces="1" Suffix="°"/>
+                    </StackPanel>
+
                     <StackPanel Visibility="{Binding IsHerringbone, Converter={StaticResource B2V}}">
                         <TextBlock Text="DOUBLE HELICAL (HERRINGBONE)" Style="{StaticResource SectionHeader}"/>
                         <TextBlock Text="Two opposite-hand helical halves on one blank, mirror-symmetric about the mid-face so the axial thrust cancels. The helix angle and hand above describe the half at one face; the other half is the opposite hand. Centre gap 0 = a true herringbone (sharp V apex); larger = the hob-runout groove a machined double-helical gear carries, cut at the root diameter."
@@ -393,6 +408,20 @@
                     <StackPanel>
                         <TextBlock Text="TWIST" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding TwistText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsCrossedHelical, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="GEAR 2" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Gear2Text}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CENTRE DISTANCE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CenterDistanceText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="RATIO" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding RatioText}" FontSize="13" Foreground="#111827"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsBevel, Converter={StaticResource B2V}}">

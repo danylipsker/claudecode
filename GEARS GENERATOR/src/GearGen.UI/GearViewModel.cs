@@ -110,9 +110,18 @@ namespace GearGen.UI
         /// 0deg means spur), the herringbone (each half's helix, must be
         /// nonzero) and the rack (0deg = straight rack, else a helical rack,
         /// docs/gear-math.md 10.4) -- one section, three headers.</summary>
-        public bool ShowHelixSection => IsCylindrical || IsHerringbone || IsRack;
+        public bool ShowHelixSection => IsCylindrical || IsHerringbone || IsRack || IsCrossedHelical;
         public string HelixSectionHeader =>
-            IsHerringbone ? "HELIX (each half)" : IsRack ? "HELIX (0° = straight rack)" : "HELIX (0° = spur gear)";
+            IsHerringbone ? "HELIX (each half)"
+            : IsRack ? "HELIX (0° = straight rack)"
+            : IsCrossedHelical ? "HELIX (gear 1; gear 2's follows from the shaft angle)"
+            : "HELIX (0° = spur gear)";
+
+        public bool IsCrossedHelical
+        {
+            get => _p.Family == GearFamily.CrossedHelical;
+            set { if (value) { _p.Family = GearFamily.CrossedHelical; OnChanged(); FamilyChanged(); } }
+        }
 
         /// <summary>Rack and Helical rack are separate cards over one
         /// GearFamily.Rack, split by HelixAngleDeg -- the same arrangement
@@ -134,6 +143,7 @@ namespace GearGen.UI
             OnChanged(nameof(HelixSectionHeader));
             OnChanged(nameof(IsRackStraight));
             OnChanged(nameof(IsRackHelical));
+            OnChanged(nameof(IsCrossedHelical));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -161,6 +171,20 @@ namespace GearGen.UI
             IsRack = true;
             if (!IsHelical) HelixAngleDeg = 20.0;
         }
+
+        /// <summary>The classic screw-gear pair is 45deg/45deg on 90deg
+        /// shafts; land there from a spur state, and give gear 2 the same
+        /// tooth count as gear 1 if none was set (docs/gear-math.md 7.5).</summary>
+        public void SelectCrossedHelicalCard()
+        {
+            IsCrossedHelical = true;
+            if (!IsHelical) HelixAngleDeg = 45.0;
+            if (MateTeeth < 4) MateTeeth = Teeth;
+        }
+
+        private string _gear2Text = "-", _ratioText = "-";
+        public string Gear2Text { get => _gear2Text; private set { _gear2Text = value; OnChanged(); } }
+        public string RatioText { get => _ratioText; private set { _ratioText = value; OnChanged(); } }
 
         public void SelectInternalCard()
         {
@@ -637,6 +661,14 @@ namespace GearGen.UI
                         TwistText = IsHerringbone
                             ? $"{dv("twist_per_half_deg"):0.##}° per half, V apex at mid-face"
                             : $"{dv("twist_total_deg"):0.##}° across face width";
+                    }
+                    if (IsCrossedHelical)
+                    {
+                        // screw_derived_values (server.py): gear 1's values above,
+                        // plus the pair relationship
+                        Gear2Text = $"z{MateTeeth}, helix {dv("helix2_deg"):0.##}° {(dv("hand2_is_left") > 0.5 ? "left" : "right")}-hand, d {L(dv("pitch_diameter2_mm"))}";
+                        CenterDistanceText = L(dv("center_distance_mm"));
+                        RatioText = $"{dv("ratio"):0.###} : 1 at {dv("shaft_angle_deg"):0.#}° shafts";
                     }
                 }
 
