@@ -180,6 +180,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsCycloidalDrive, Mode=OneWay}" Checked="OnCycloidalDriveChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_cycdrive.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Cycloidal drive" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsBevel, Mode=OneWay}" Checked="OnBevelChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_bevel.png" Height="76" Stretch="Uniform"/>
@@ -231,12 +238,13 @@
 
                     <TextBlock Text="BASIC" Style="{StaticResource SectionHeader}"/>
                     <local:NumericSpinner Visibility="{Binding IsNotWorm, Converter={StaticResource B2V}}"
-                                           Label="Number of teeth (z)" Value="{Binding Teeth}" Minimum="4" Maximum="500" Step="1" DecimalPlaces="0"/>
+                                           Label="{Binding TeethLabel}" Value="{Binding Teeth}" Minimum="4" Maximum="500" Step="1" DecimalPlaces="0"/>
                     <StackPanel Visibility="{Binding IsWorm, Converter={StaticResource B2V}}">
                         <local:NumericSpinner Label="Thread starts (z1)" Value="{Binding WormStarts}" Minimum="1" Maximum="10" Step="1" DecimalPlaces="0"/>
                         <local:NumericSpinner Label="Pitch diameter" Value="{Binding PitchDiameterDisplay}" Minimum="1" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
-                    <local:NumericSpinner Label="{Binding ModuleOrDpLabel}" Value="{Binding ModuleOrDp}" Minimum="0.05" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                    <local:NumericSpinner Visibility="{Binding IsNotCycloidalDrive, Converter={StaticResource B2V}}"
+                                           Label="{Binding ModuleOrDpLabel}" Value="{Binding ModuleOrDp}" Minimum="0.05" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
 
                     <StackPanel Visibility="{Binding IsNotCycloidal, Converter={StaticResource B2V}}">
                     <TextBlock Text="Pressure angle" FontSize="12" Foreground="#374151" Margin="0,0,0,3"/>
@@ -300,6 +308,18 @@
                         <TextBlock Text="A gear track -- 'Number of teeth' above sets how many fit along its length. The mounting-hole spinner above (SIZE section) drills one hole per tooth pitch through the backing bar. A helix angle (HELIX section) inclines the teeth across the face for meshing with a helical pinion of the OPPOSITE hand: module and pressure angle are then the normal values, pitch and thickness along the bar are transverse."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Backing height" Value="{Binding BackingHeightDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsCycloidalDrive, Converter={StaticResource B2V}}">
+                        <TextBlock Text="CYCLOIDAL DRIVE (SPEED REDUCER)" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="An eccentric input turns a lobed disc rolling inside a ring of (lobes + 1) rollers; the disc turns back one lobe per input revolution, so the reduction is lobes : 1 with zero backlash. Keep the eccentricity below (pin circle radius) / (lobes + 1) or the profile cusps. Output pins fixed to the output shaft run in holes (pin + 2 x eccentricity) in the disc. STEP export writes the disc, rollers and output pins in mesh as one multi-body part."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Pin (roller) circle diameter" Value="{Binding PinCircleDisplay}" Minimum="1" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Roller diameter" Value="{Binding RollerDiameterDisplay}" Minimum="0.1" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Eccentricity" Value="{Binding EccentricityDisplay}" Minimum="0.01" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Output pins (0 = no output holes)" Value="{Binding OutputPinCount}" Minimum="0" Maximum="24" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Output pin diameter" Value="{Binding OutputPinDiameterDisplay}" Minimum="0.1" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Output pin circle diameter" Value="{Binding OutputCircleDisplay}" Minimum="0.1" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsCycloidal, Converter={StaticResource B2V}}">
@@ -440,6 +460,20 @@
                     <StackPanel>
                         <TextBlock Text="TWIST" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding TwistText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsCycloidalDrive, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="REDUCTION" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding DriveRatioText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="PROFILE LIMITS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding DriveLimitsText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="OUTPUT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding DriveOutputText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsCycloidal, Converter={StaticResource B2V}}">

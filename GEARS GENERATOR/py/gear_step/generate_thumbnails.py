@@ -110,4 +110,11 @@ if __name__ == "__main__":
     cycloidal = CycloidalGearParams(z=8, module_mm=3.0, face_width_mm=10.0, bore_diameter_mm=6.0)
     render_solid_thumbnail(build_cycloidal_gear_solid(cycloidal), f"{out_dir}/thumb_cycloidal.png")
 
+    from cycloidal_drive import CycloidalDriveParams, build_drive_assembly
+    drive = CycloidalDriveParams(lobes=10, pin_circle_diameter_mm=60.0, roller_diameter_mm=6.0, eccentricity_mm=1.5,
+                                 face_width_mm=8.0, bore_diameter_mm=20.0,
+                                 output_pin_count=6, output_pin_diameter_mm=6.0, output_circle_diameter_mm=30.0)
+    disc, rollers, out_pins = build_drive_assembly(drive)
+    render_solid_thumbnail(bd.Compound(children=[disc, *rollers, *out_pins]), f"{out_dir}/thumb_cycdrive.png", elev=45, azim=-50)
+
     print("done")

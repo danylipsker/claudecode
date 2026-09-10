@@ -77,7 +77,8 @@ namespace GearGen.App
                 bool screw = e.Args.Any(a => a == "--screw");
                 bool planetary = e.Args.Any(a => a == "--planetary");
                 bool cycloidal = e.Args.Any(a => a == "--cycloidal");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal);
+                bool cycdrive = e.Args.Any(a => a == "--cycdrive");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive);
                 return;
             }
 
@@ -274,7 +275,8 @@ namespace GearGen.App
         /// then exits. Invoke as: GearsGenerator.exe --uismoke out.png</summary>
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
             double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
-            bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false)
+            bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
+            bool cycdrive = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -312,6 +314,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectPlanetaryCard();
                 if (cycloidal)
                     win.Panel.ViewModel.SelectCycloidalCard();
+                if (cycdrive)
+                    win.Panel.ViewModel.SelectCycloidalDriveCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)

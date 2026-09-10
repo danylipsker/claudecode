@@ -302,6 +302,35 @@ def export_double_helical_step(gp: GearParams, gap_mm: float, path: str | Path) 
     _export_step_for_solidworks(build_double_helical_solid(gp, gap_mm=gap_mm), path)
 
 
+def export_cycloidal_drive_step(dp, path: str | Path) -> None:
+    """Disc (at input angle 0), every roller and every output pin of a
+    cycloidal drive, in mesh (docs/gear-math.md 15), as ONE multi-body
+    STEP. dp: cycloidal_drive.CycloidalDriveParams."""
+    from cycloidal_drive import build_drive_assembly
+    disc, rollers, out_pins = build_drive_assembly(dp)
+    _export_step_for_solidworks(bd.Compound(children=[disc, *rollers, *out_pins]), path)
+
+
+def export_cycloidal_drive_profile_dxf(dp, path: str | Path) -> None:
+    """The disc's own section (its frame): lobed outline, bore, output holes
+    -- the flat pattern to cut the disc from -- plus the roller and output
+    pin circles in the fixed frame for reference."""
+    from cycloidal_drive import disc_outline
+    pts = disc_outline(dp)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(list(pts) + [pts[0]], format="xy", dxfattribs={"closed": True, "layer": "DISC"})
+    if dp.bore_diameter_mm > 0:
+        msp.add_circle((0, 0), dp.bore_diameter_mm / 2.0, dxfattribs={"layer": "DISC"})
+    for c in (dp.output_hole_centers_disc_frame() if dp.output_pin_count > 0 else []):
+        msp.add_circle(c, dp.output_hole_diameter_mm / 2.0, dxfattribs={"layer": "DISC"})
+    doc.layers.add("ROLLERS")
+    for (px, py) in dp.pin_centers():
+        msp.add_circle((px - dp.E, py), dp.R_r, dxfattribs={"layer": "ROLLERS"})  # ring centre at (-E, 0) in the disc frame
+    doc.saveas(str(path))
+
+
 def export_cycloidal_step(cp, path: str | Path) -> None:
     """cp: cycloidal.CycloidalGearParams (docs/gear-math.md 14)."""
     from cycloidal import build_cycloidal_gear_solid

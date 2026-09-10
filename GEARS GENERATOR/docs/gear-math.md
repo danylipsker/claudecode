@@ -1022,3 +1022,39 @@ for z = 6/12/40; **a conjugate pair sharing one rolling circle meshes with (near
 zero boolean interpenetration at the exact centre distance while a half-pitch phase
 error collides** (12/18 and 8/24 at the automatic circle, 10/15 at a chosen one); the
 STEP round-trips.
+
+## 15. Cycloidal drives (hypocycloid speed reducers)
+
+An eccentric input turns a lobed disc that rolls inside a ring of `N` fixed rollers
+(pins); the disc has `N − 1` lobes and turns back by one lobe per input revolution, so
+the reduction is `(N − 1) : 1`, with zero backlash and every roller sharing the load.
+`cycloidal_drive.py`.
+
+**The profile is derived, not copied.** The disc's pitch circle, radius `(N − 1)E`,
+rolls inside the ring's, radius `NE` (centre distance `E`, the eccentricity), so when
+the input carries the disc centre round by `φ` the disc turns by `θ = −φ/(N − 1)`. A
+roller centre `P = (R, 0)` on the fixed ring then traces, in the disc's own frame,
+
+```
+u(phi) = Rot(phi/(N-1)) . (R - E cos phi, -E sin phi)        phi in [0, 2 pi (N-1)]
+```
+
+— a closed curve with `N − 1` lobes — and the disc profile is that curve offset
+*toward* the disc centre by the roller radius `R_r`: the inner envelope of the roller
+circles carried along it. The tangent is analytic, `du/dφ = Rot(β)·(J v/(N−1) + v')`
+with `β = φ/(N−1)`, `v = (R − E cos φ, −E sin φ)` and `J` the quarter turn; setting it
+to zero gives the cusp condition `E N = R`, so `E < R/N` is the design limit, and the
+offset profile self-intersects wherever the curve's radius of curvature falls below
+`R_r` (both are reported). Output: `N_out` pins fixed to the output shaft, coaxial
+with the ring and turning with the disc's *rotation*, run in holes of diameter
+`d_out + 2E` — the disc's orbit is exactly what the extra `2E` absorbs.
+
+Checks (`tests/test_cycloidal_drive.py`): **the envelope property itself** — at eight
+input angles, every one of the `N` rollers is tangent to the placed disc (its centre is
+`R_r` from the outline to < 3 µm, neither penetrating nor lifted off), for three
+`(N, R, R_r, E)` sets; a wrong sign anywhere in the kinematics, the offset direction,
+the lobe count or the ratio fails this at the first angle. Also: `N − 1` radial maxima
+and lobe height `2E`; one input turn moves the disc back exactly one lobe; the cusp
+limit (curvature radius → 0 at `E = R/N`); output pins sitting exactly `E` from their
+hole centres at every angle; a manifold disc whose volume matches its section; the
+multi-body STEP round-trips with `1 + N + N_out` solids.

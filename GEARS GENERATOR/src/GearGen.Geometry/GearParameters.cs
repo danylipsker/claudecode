@@ -43,7 +43,14 @@ namespace GearGen.Geometry
         /// traced by one rolling circle -- clock and instrument gearing), see
         /// docs/gear-math.md section 14. No pressure angle; the tooth form is
         /// set by RollingCircleDiameterMm.</summary>
-        Cycloidal
+        Cycloidal,
+        /// <summary>Cycloidal drive / hypocycloid speed reducer: a lobed disc
+        /// (Teeth = lobes = the reduction ratio) rolling inside a ring of
+        /// lobes+1 rollers on an eccentric -- see docs/gear-math.md section
+        /// 15. No module or pressure angle; sized by PinCircleDiameterMm,
+        /// RollerDiameterMm and EccentricityMm, with optional output pins.
+        /// Exports disc + rollers + output pins as one multi-body STEP.</summary>
+        CycloidalDrive
     }
 
     /// <summary>
@@ -184,6 +191,29 @@ namespace GearGen.Geometry
         /// mm regardless of Unit.</summary>
         public double RollingCircleDiameterMm { get; set; } = 0.0;
 
+        // ---- cycloidal drive (docs/gear-math.md section 15) -- Family == CycloidalDrive only ----
+        // Reuses Teeth (= lobes = ratio), FaceWidthMm (disc thickness = roller
+        // length) and BoreDiameterMm (the eccentric bearing's seat). All in mm.
+
+        public bool IsCycloidalDrive => Family == GearFamily.CycloidalDrive;
+
+        /// <summary>The rollers' centre circle.</summary>
+        public double PinCircleDiameterMm { get; set; } = 60.0;
+
+        public double RollerDiameterMm { get; set; } = 6.0;
+
+        /// <summary>Input eccentricity E (= half the lobe height). Must stay
+        /// below (pin circle radius)/(lobes+1) or the profile cusps.</summary>
+        public double EccentricityMm { get; set; } = 1.5;
+
+        /// <summary>Output pins fixed to the output shaft, running in holes of
+        /// (pin diameter + 2E) in the disc. 0 = no output holes.</summary>
+        public int OutputPinCount { get; set; } = 6;
+
+        public double OutputPinDiameterMm { get; set; } = 6.0;
+
+        public double OutputCircleDiameterMm { get; set; } = 30.0;
+
         /// <summary>Number of equally spaced planets. (z_sun + z_ring) must
         /// divide by it for them all to mesh -- the engine warns otherwise.</summary>
         public int PlanetCount { get; set; } = 3;
@@ -249,6 +279,12 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.CycloidalDrive:
+                    parts.Add("cycdrive"); parts.Add("lobes" + Teeth);
+                    parts.Add("pcd" + Len(PinCircleDiameterMm)); parts.Add("roller" + Len(RollerDiameterMm));
+                    parts.Add("e" + Len(EccentricityMm)); parts.Add("fw" + Len(FaceWidthMm));
+                    if (OutputPinCount > 0) parts.Add("out" + OutputPinCount + "x" + Len(OutputPinDiameterMm) + "on" + Len(OutputCircleDiameterMm));
                     break;
                 case GearFamily.Cycloidal:
                     parts.Add("cycloidal"); parts.Add("z" + Teeth); parts.Add(size);

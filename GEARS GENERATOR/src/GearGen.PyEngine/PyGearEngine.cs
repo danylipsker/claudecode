@@ -192,6 +192,20 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsCycloidalDrive)
+            {
+                // No module: every length is already stored in mm on
+                // GearParameters (the UI converts at the binding boundary).
+                req.GearType = "cycloidal_drive";
+                req.PinCircleDiameterMm = p.PinCircleDiameterMm;
+                req.RollerDiameterMm = p.RollerDiameterMm;
+                req.EccentricityMm = p.EccentricityMm;
+                req.OutputPinCount = p.OutputPinCount;
+                req.OutputPinDiameterMm = p.OutputPinDiameterMm;
+                req.OutputCircleDiameterMm = p.OutputCircleDiameterMm;
+                return req;
+            }
+
             if (p.IsCycloidal)
             {
                 // Same reasoning as bevel/worm: CycloidalGearParams has no

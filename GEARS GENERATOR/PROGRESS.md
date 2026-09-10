@@ -1,6 +1,54 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Cycloidal gears (latest)
+## Cycloidal drives — hypocycloid speed reducers (latest)
+
+Sixth and last of the first-priority additions (`cycloidal_drive.py`,
+docs/gear-math.md §15): an eccentric input turns a lobed disc rolling
+inside a ring of `N` fixed rollers; `N − 1` lobes, reduction `(N − 1) : 1`,
+zero backlash, every roller sharing the load. Previewed and exported as
+disc + rollers + output pins in mesh.
+
+- **The profile is derived, not copied from a formula.** With the disc's
+  pitch circle `(N−1)E` rolling inside the ring's `NE`, a roller centre
+  traces `u(φ) = Rot(φ/(N−1))·(R − E cos φ, −E sin φ)` in the disc frame,
+  and the disc is that curve offset *toward* its centre by the roller
+  radius (the inner envelope of the rollers). The tangent is analytic; from
+  it the cusp condition `E N = R` falls out (so `E < R/N` is the design
+  limit) and a convex-side curvature guard flags rollers too big for the
+  profile. Output pins fixed to the output shaft run in holes of
+  `d + 2E` — the disc's orbit is exactly what the `2E` absorbs.
+- **Checks** (`tests/test_cycloidal_drive.py`, 7 tests; suite 89): **the
+  envelope property itself** — at eight input angles every one of the `N`
+  rollers is tangent to the placed disc to < 3 µm, neither penetrating nor
+  lifted off, for three `(N, R, R_r, E)` sets (a sign error anywhere in the
+  kinematics, offset direction, lobe count or ratio fails this at the first
+  angle); `N−1` radial maxima and lobe height `2E`; one input turn moves the
+  disc back exactly one lobe; the cusp limit; output pins exactly `E` from
+  their hole centres at every angle; manifold disc; the multi-body STEP
+  round-trips with `1 + N + N_out` solids. The tangency test passed first
+  time; the curvature guard needed one correction — it must consider convex
+  stretches only, since an inward offset never self-intersects in the
+  concave valleys (the default disc has 1.2 mm valleys and a perfectly
+  valid 3 mm-roller profile; convex minimum 9.9 mm).
+- **UI**: Cycloidal drive card; module and pressure-angle blocks hidden
+  for it (it has neither), the teeth spinner relabelled "Number of lobes
+  (= reduction ratio)", the bore relabelled as the eccentric bearing seat
+  (defaulting to 20 mm on entry); a CYCLOIDAL DRIVE section (pin circle,
+  roller diameter, eccentricity, output pin count/diameter/circle); a
+  derived row with the reduction, the profile limits (max eccentricity,
+  convex flank radius vs roller) and the output holes; warnings for the
+  cusp limit, undercut, and output holes breaking into the bore or the
+  lobes or each other; `cycdrive_lobes10_pcd60_roller6_e1.5_fw10_out6x6on30
+  _bore20` names; thumbnail; `--uismoke --cycdrive`; a DXF with the disc's
+  flat pattern plus the rollers for reference. Verified headless and by
+  SolidWorks import of the 18-body STEP.
+
+That closes the agreed first tier of the user's list (herringbone, helical
+rack, screw pair, planetary, cycloidal gear, cycloidal reducer). Still
+open from it: spiral and zerol bevel, face gears, hypoid, globoid and
+double-enveloping worms, eccentrically-cycloidal and hyperboloidal gears.
+
+## Cycloidal gears
 
 Fifth of the requested additions: the clock/instrument tooth form
 (`cycloidal.py`, docs/gear-math.md §14) — epicycloid above the pitch

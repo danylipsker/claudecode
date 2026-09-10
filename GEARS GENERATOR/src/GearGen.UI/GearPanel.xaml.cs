@@ -143,6 +143,11 @@ namespace GearGen.UI
             ViewModel?.SelectCycloidalCard();
         }
 
+        private void OnCycloidalDriveChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectCycloidalDriveCard();
+        }
+
         private void OnScrewChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectCrossedHelicalCard();

@@ -64,7 +64,10 @@ namespace GearGen.UI
         public string ModuleOrDpLabel =>
             (IsInch ? "Diametral pitch" : "Module") + (IsBevel ? " (outer/heel)" : IsWorm ? " (axial)" : "");
         public string FaceWidthLabel => IsWorm ? "Threaded length" : "Face width";
-        public string BoreOrHoleLabel => IsRack ? "Mounting hole diameter (0 = none)" : "Bore diameter (0 = none)";
+        public string BoreOrHoleLabel =>
+            IsRack ? "Mounting hole diameter (0 = none)"
+            : IsCycloidalDrive ? "Eccentric bearing bore (0 = none)"
+            : "Bore diameter (0 = none)";
         public string LengthSuffix => IsInch ? "in" : "mm";
 
         // ---- gear family (cylindrical vs bevel) -----------------------------
@@ -132,10 +135,72 @@ namespace GearGen.UI
             get => _p.Family == GearFamily.Cycloidal;
             set { if (value) { _p.Family = GearFamily.Cycloidal; OnChanged(); FamilyChanged(); } }
         }
-        /// <summary>A cycloidal gear has no pressure angle (its flanks are
-        /// traced by a rolling circle, docs/gear-math.md 14), so the pressure
-        /// angle block is hidden for it rather than shown and ignored.</summary>
-        public bool IsNotCycloidal => !IsCycloidal;
+        /// <summary>"Has a pressure angle": a cycloidal gear's flanks are
+        /// traced by a rolling circle (docs/gear-math.md 14) and a cycloidal
+        /// drive's by its rollers (15), so the pressure-angle block is hidden
+        /// for both rather than shown and ignored.</summary>
+        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive;
+
+        public bool IsCycloidalDrive
+        {
+            get => _p.Family == GearFamily.CycloidalDrive;
+            set { if (value) { _p.Family = GearFamily.CycloidalDrive; OnChanged(); FamilyChanged(); } }
+        }
+        /// <summary>"Has a module": a cycloidal drive is sized by its pin
+        /// circle, rollers and eccentricity instead.</summary>
+        public bool IsNotCycloidalDrive => !IsCycloidalDrive;
+        public string TeethLabel =>
+            IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
+            : IsPlanetary ? "Sun teeth"
+            : IsCrossedHelical ? "Gear 1 teeth (z1)"
+            : "Number of teeth (z)";
+
+        // ---- cycloidal drive (docs/gear-math.md section 15) -- Family == CycloidalDrive only ----
+
+        public double PinCircleDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.PinCircleDiameterMm) : _p.PinCircleDiameterMm;
+            set { _p.PinCircleDiameterMm = Math.Max(1.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double RollerDiameterDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.RollerDiameterMm) : _p.RollerDiameterMm;
+            set { _p.RollerDiameterMm = Math.Max(0.1, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double EccentricityDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.EccentricityMm) : _p.EccentricityMm;
+            set { _p.EccentricityMm = Math.Max(0.01, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public int OutputPinCount
+        {
+            get => _p.OutputPinCount;
+            set { _p.OutputPinCount = Math.Max(0, Math.Min(24, value)); OnChanged(); ScheduleRefresh(); }
+        }
+        public double OutputPinDiameterDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.OutputPinDiameterMm) : _p.OutputPinDiameterMm;
+            set { _p.OutputPinDiameterMm = Math.Max(0.1, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double OutputCircleDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.OutputCircleDiameterMm) : _p.OutputCircleDiameterMm;
+            set { _p.OutputCircleDiameterMm = Math.Max(0.1, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>Land on a classic 10:1 unit: a 20 mm bearing seat if no
+        /// bore was set (the disc needs one), lobes from Teeth.</summary>
+        public void SelectCycloidalDriveCard()
+        {
+            IsCycloidalDrive = true;
+            HelixAngleDeg = 0.0;
+            if (_p.BoreDiameterMm <= 0) { _p.BoreDiameterMm = 20.0; OnChanged(nameof(BoreDiameterDisplay)); }
+        }
+
+        private string _driveRatioText = "-", _driveLimitsText = "-", _driveOutputText = "-";
+        public string DriveRatioText { get => _driveRatioText; private set { _driveRatioText = value; OnChanged(); } }
+        public string DriveLimitsText { get => _driveLimitsText; private set { _driveLimitsText = value; OnChanged(); } }
+        public string DriveOutputText { get => _driveOutputText; private set { _driveOutputText = value; OnChanged(); } }
 
         // ---- cycloidal (docs/gear-math.md section 14) -- Family == Cycloidal only ----
 
@@ -213,6 +278,9 @@ namespace GearGen.UI
             OnChanged(nameof(IsPlanetary));
             OnChanged(nameof(IsCycloidal));
             OnChanged(nameof(IsNotCycloidal));
+            OnChanged(nameof(IsCycloidalDrive));
+            OnChanged(nameof(IsNotCycloidalDrive));
+            OnChanged(nameof(TeethLabel));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -485,6 +553,11 @@ namespace GearGen.UI
             OnChanged(nameof(RimThicknessDisplay));
             OnChanged(nameof(GapWidthDisplay));
             OnChanged(nameof(RollingCircleDisplay));
+            OnChanged(nameof(PinCircleDisplay));
+            OnChanged(nameof(RollerDiameterDisplay));
+            OnChanged(nameof(EccentricityDisplay));
+            OnChanged(nameof(OutputPinDiameterDisplay));
+            OnChanged(nameof(OutputCircleDisplay));
         }
 
         // ---- preview / derived values ---------------------------------------
@@ -699,6 +772,23 @@ namespace GearGen.UI
                         LeadText = $"normal pitch {L(dv("normal_pitch_mm"))}, thickness {L(dv("normal_tooth_thickness_mm"))}";
                         TwistText = $"teeth at {dv("helix_angle_deg"):0.##}° to the face";
                     }
+                }
+                else if (IsCycloidalDrive)
+                {
+                    // cycloidal_drive_derived_values (server.py): a disc, not a
+                    // gear -- the generic gear fields don't apply except the
+                    // disc's outer and root diameters.
+                    PitchDiameterText = "-";
+                    BaseDiameterText = "-";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = "-";
+                    AddendumDiameterText = L(dv("disc_outer_diameter_mm"));
+                    DedendumDiameterText = L(dv("disc_root_diameter_mm"));
+                    DriveRatioText = $"{dv("ratio"):0} : 1 ({dv("pin_count"):0} rollers, lobe height {L(2 * dv("eccentricity_mm"))})";
+                    DriveLimitsText = $"eccentricity < {L(dv("max_eccentricity_mm"))}; flank radius min {L(dv("min_curvature_radius_mm"))} vs roller {L(dv("roller_diameter_mm") / 2)}";
+                    DriveOutputText = OutputPinCount > 0
+                        ? $"{OutputPinCount} pins Ø{L(_p.OutputPinDiameterMm)} in Ø{L(dv("output_hole_diameter_mm"))} holes on Ø{L(_p.OutputCircleDiameterMm)}"
+                        : "none";
                 }
                 else if (IsCycloidal)
                 {

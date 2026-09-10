@@ -176,6 +176,60 @@ def screw_derived_values(pp) -> tuple[dict, list]:
     return derived, warnings
 
 
+def cycloidal_drive_params_from_request(p: dict):
+    """Cycloidal drive -- docs/gear-math.md 15. z = lobes (= ratio); no
+    module or pressure angle. Lengths already in mm (converted client-side)."""
+    from cycloidal_drive import CycloidalDriveParams
+    return CycloidalDriveParams(
+        lobes=max(2, int(p.get("z", 10))),
+        pin_circle_diameter_mm=float(p.get("pin_circle_diameter_mm") or 60.0),
+        roller_diameter_mm=float(p.get("roller_diameter_mm") or 6.0),
+        eccentricity_mm=float(p.get("eccentricity_mm") or 1.5),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        output_pin_count=int(p.get("output_pin_count") or 0),
+        output_pin_diameter_mm=float(p.get("output_pin_diameter_mm") or 6.0),
+        output_circle_diameter_mm=float(p.get("output_circle_diameter_mm") or 30.0),
+    )
+
+
+def cycloidal_drive_derived_values(dp) -> tuple[dict, list]:
+    from cycloidal_drive import min_radius_of_curvature, disc_profile
+    warnings = []
+    if dp.E >= dp.max_eccentricity_mm:
+        warnings.append(f"Eccentricity {dp.E:g} mm reaches the cusp limit R/N = {dp.max_eccentricity_mm:.3f} mm "
+                        f"(pin circle radius / roller count): the profile develops cusps. Reduce it.")
+    rho = min_radius_of_curvature(dp)
+    if rho <= dp.R_r:
+        warnings.append(f"Roller radius {dp.R_r:g} mm exceeds the profile's minimum radius of curvature "
+                        f"({rho:.3f} mm): the flanks would undercut. Use smaller rollers or a smaller eccentricity.")
+    radii = [math.hypot(x, y) for x, y in disc_profile(dp, n_samples=1200)]
+    r_min, r_max = min(radii), max(radii)
+    if dp.bore_diameter_mm > 0 and dp.bore_diameter_mm / 2.0 >= r_min - 1.0:
+        warnings.append("Bore diameter leaves less than 1 mm of disc below the lobe roots.")
+    if dp.output_pin_count > 0:
+        hole_r = dp.output_hole_diameter_mm / 2.0
+        rc = dp.output_circle_diameter_mm / 2.0
+        if rc - hole_r <= dp.bore_diameter_mm / 2.0:
+            warnings.append("Output holes break into the central bore: move the output circle out or shrink the pins.")
+        if rc + hole_r >= r_min:
+            warnings.append("Output holes break through the lobe roots: move the output circle in or shrink the pins.")
+        if dp.output_pin_count > 1 and 2.0 * rc * math.sin(math.pi / dp.output_pin_count) <= 2.0 * hole_r:
+            warnings.append("Adjacent output holes overlap: fewer pins, or a larger output circle.")
+    return {
+        "ratio": dp.ratio,
+        "pin_count": float(dp.n_pins),
+        "disc_outer_diameter_mm": 2.0 * r_max,
+        "disc_root_diameter_mm": 2.0 * r_min,
+        "max_eccentricity_mm": dp.max_eccentricity_mm,
+        "min_curvature_radius_mm": rho,
+        "output_hole_diameter_mm": dp.output_hole_diameter_mm,
+        "pin_circle_diameter_mm": dp.pin_circle_diameter_mm,
+        "roller_diameter_mm": dp.roller_diameter_mm,
+        "eccentricity_mm": dp.E,
+    }, warnings
+
+
 def cycloidal_params_from_request(p: dict):
     """Cycloidal gear -- docs/gear-math.md 14. No pressure angle; the tooth
     form is set by the rolling circle (0 = auto: r_g = R/2, radial flanks).
@@ -498,6 +552,12 @@ def handle(req: dict) -> dict:
             outline = cycloidal_gear_outline(cp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.005)))
             derived, warnings = cycloidal_derived_values(cp)
             return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "cycloidal_drive":
+            from cycloidal_drive import disc_outline
+            dp = cycloidal_drive_params_from_request(req)
+            outline = disc_outline(dp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.005)))
+            derived, warnings = cycloidal_drive_derived_values(dp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "bevel":
             bp = bevel_params_from_request(req)
             outline = bevel_heel_tooth_outline(bp)
@@ -554,6 +614,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "cycloidal":
             from build_gear import export_cycloidal_step
             export_cycloidal_step(cycloidal_params_from_request(req), path)
+        elif gear_type == "cycloidal_drive":
+            from build_gear import export_cycloidal_drive_step
+            export_cycloidal_drive_step(cycloidal_drive_params_from_request(req), path)  # disc + rollers + output pins
         else:
             from build_gear import export_step
             gp = params_from_request(req)
@@ -587,6 +650,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "cycloidal":
             from build_gear import export_cycloidal_profile_dxf
             export_cycloidal_profile_dxf(cycloidal_params_from_request(req), path)
+        elif gear_type == "cycloidal_drive":
+            from build_gear import export_cycloidal_drive_profile_dxf
+            export_cycloidal_drive_profile_dxf(cycloidal_drive_params_from_request(req), path)
         else:
             # cylindrical AND herringbone: the DXF is the transverse section,
             # which a double-helical gear shares with its helical halves
@@ -692,6 +758,11 @@ def handle(req: dict) -> dict:
             import build123d as bd
             solid = build_cycloidal_gear_solid(cycloidal_params_from_request(req), simplify_tolerance_mm=0.01)
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "cycloidal_drive":
+            from cycloidal_drive import build_drive_assembly
+            import build123d as bd
+            disc, rollers, out_pins = build_drive_assembly(cycloidal_drive_params_from_request(req), simplify_tolerance_mm=0.01)
+            bd.export_stl(bd.Compound(children=[disc, *rollers, *out_pins]), path, tolerance=0.02, angular_tolerance=0.3)
         else:
             from build_gear import build_gear_solid
             import build123d as bd
