@@ -426,7 +426,13 @@ def handle(req: dict) -> dict:
                 cd = wp.center_distance(mate_teeth)
                 wheel_positioned = wheel_centered.rotate(bd.Axis.X, 90).translate((cd, 0, 0))
                 solid = bd.Compound(children=[solid, wheel_positioned])
-            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+            # The preview wheel is a helical gear (helix = lead angle), so
+            # its twisted flanks need the same finer tessellation the
+            # cylindrical branch below uses for helical gears, or they band.
+            # The worm's own flanks are flat loft strips and tessellate
+            # exactly at any tolerance, so tightening costs it little.
+            tol = 0.002 if mate_teeth > 0 else 0.02
+            bd.export_stl(solid, path, tolerance=tol, angular_tolerance=0.3)
         elif gear_type == "rack":
             from build_gear import build_rack_solid
             import build123d as bd
@@ -444,7 +450,20 @@ def handle(req: dict) -> dict:
             import build123d as bd
             gp = params_from_request(req)
             solid = build_gear_solid(gp, simplify_tolerance_mm=0.03)
-            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+            # A helical gear's flanks are now an exact helicoidal sweep
+            # (build_gear_solid) -- genuinely curved, and the viewer flat-
+            # shades each triangle, so how smooth the twist LOOKS is purely
+            # how finely that curved surface is tessellated here. Measured,
+            # not guessed: at the 0.02 mm used for everything else the
+            # surface comes out at ~1.4k triangles (it tessellates
+            # economically -- each is within tolerance, but the normal jumps
+            # between them read as bands); 0.002 mm gives ~4-9k triangles
+            # and an in-tolerance mesh in ~0.05 s. Angular tolerance turned
+            # out to have no effect on this surface at all (identical
+            # output at 0.3/0.1/0.05). Spur gears keep 0.02: flat faces
+            # tessellate exactly regardless.
+            tol = 0.002 if abs(gp.twist_total_rad) > 1e-9 else 0.02
+            bd.export_stl(solid, path, tolerance=tol, angular_tolerance=0.3)
         return {"ok": True, "path": path}
 
     return {"ok": False, "error": f"unknown cmd: {cmd!r}"}

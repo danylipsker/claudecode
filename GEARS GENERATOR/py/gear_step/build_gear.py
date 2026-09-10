@@ -77,17 +77,19 @@ def build_gear_solid(gp: GearParams, simplify_tolerance_mm: float | None = None)
     """Build the validated 2D outline into a solid, cut the bore if any.
 
     A spur gear (helix_angle_deg == 0) is a plain straight extrusion. A
-    helical gear is a loft through N copies of the same transverse profile,
-    each progressively rotated -- see docs/gear-math.md section 7.3 for why
-    ruled=True and how N is chosen from the twist magnitude.
+    helical gear is an exact helicoidal sweep of the same transverse profile
+    (OpenCASCADE's twist-extrude) -- see docs/gear-math.md section 7.3,
+    including why this replaced the earlier ruled loft through rotated
+    copies (measured flank error between copies, not just shading).
 
     simplify_tolerance_mm trims the boolean-sweep's dense point sampling down
     to a CAD-reasonable polyline before extrusion (involute.full_gear_outline's
     docstring). Default: 10 microns (spur) -- well under any real machining
-    tolerance -- or 50 microns for a helical gear, since the loft repeats
-    every point once per section and file size scales with points x
-    sections; still far tighter than machining tolerance, just less
-    unnecessarily dense given the multiplier."""
+    tolerance -- or 50 microns for a helical gear: the sweep turns every
+    polyline edge into one continuous swept face, so a finer polyline means
+    proportionally more faces in the STEP file for no gain in flank accuracy
+    (the sweep itself is exact along the twist); 50 microns is still far
+    tighter than any machining tolerance."""
     twist = gp.twist_total_rad
     if simplify_tolerance_mm is None:
         simplify_tolerance_mm = 0.01 if abs(twist) < 1e-9 else 0.05
@@ -104,17 +106,33 @@ def build_gear_solid(gp: GearParams, simplify_tolerance_mm: float | None = None)
                 bd.make_face()
             bd.extrude(amount=gp.face_width_mm)
         else:
-            # ~1 loft section per 3 degrees of local twist -- straight-line
-            # (ruled) segments between finely-spaced rotated copies converge
-            # to the true helicoid flank (docs/gear-math.md 7.3), the same
-            # "dense sampling of an exact construction" principle used for
-            # the root-fillet envelope.
-            n_sections = max(2, min(40, math.ceil(abs(twist) / math.radians(3))))
-            sections = [
-                _face_at(pts, (i / n_sections) * twist, (i / n_sections) * gp.face_width_mm)
-                for i in range(n_sections + 1)
-            ]
-            bd.loft(sections, ruled=True)
+            # An exact helicoidal sweep: the transverse profile extruded
+            # along +Z while rotating by the total twist -- OpenCASCADE's
+            # own twist-extrude, so every point of the profile follows its
+            # true helix, not a chord between sampled copies.
+            #
+            # This replaced a ruled loft through ~1 rotated copy per 3deg of
+            # twist, and the reason is a measurement, not a preference: that
+            # loft passes through each copy exactly (so checking twist at the
+            # end faces, as the original verification did, sees nothing
+            # wrong) but BETWEEN copies the surface is not the helicoid --
+            # sectioning the built solid at 25/50/75% of the face width and
+            # measuring against the exactly-rotated profile found 359 um
+            # (14% of module) of flank error at mid-facet on a routine
+            # 25deg/16mm gear and 1.3 mm (53% of module) on a 35deg/40mm
+            # one, versus 0 um at every section plane. The error scaled
+            # linearly with the per-copy rotation, not quadratically like a
+            # chord's sagitta, i.e. the loft was not pairing profile points
+            # one-to-one between rotated copies; a smooth (ruled=False) loft
+            # was no better (270 um - 3.4 mm, and +2% volume overshoot at
+            # some section counts). The twist-extrude measured 0.0 um on
+            # both gears by the same check, is ~10x faster to build, and
+            # yields one continuous face per profile edge (~290) instead of
+            # one flat strip per edge per section (1700-5200). The check is
+            # now a regression test (tests/test_involute.py).
+            base = _face_at(pts, 0.0, 0.0)
+            bd.add(bd.Solid.extrude_linear_with_rotation(
+                base, (0, 0, 0), (0, 0, gp.face_width_mm), math.degrees(twist)))
 
         if gp.bore_diameter_mm > 0:
             with bd.BuildSketch(part.faces().sort_by(bd.Axis.Z)[-1]) as bore_sk:

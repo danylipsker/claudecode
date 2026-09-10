@@ -1,6 +1,61 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## Worm's live preview now shows the matching wheel too, like every real worm-gear reference drawing (latest)
+## Helical flank was 359 µm off the true helicoid between loft sections; now an exact sweep (latest)
+
+User's note: "helical gears are a smooth transient." Taken as: the twist along
+the face width should be one continuous sweep, and it read as banded. Started
+by measuring whether the banding was cosmetic (shading) or geometric — it was
+both, and the geometric part was the real finding:
+
+- **The build was wrong between sections, not just band-shaded.** The helical
+  solid was a `ruled=True` loft through ~1 rotated copy of the profile per 3°
+  of twist — a routine 25°/16 mm gear got only 6 copies. Sectioning the built
+  solid at 25/50/75% of the face and measuring against the profile rotated by
+  exactly `twist·z/b`: **359 µm (14% of module) at mid-facet**, and **1.3 mm
+  (53% of module)** on a 35°/40 mm gear — versus exactly 0 µm at every section
+  plane. That zero is precisely why the original verification (twist measured
+  at the two end faces) passed: it only ever looked at section planes. The
+  error grew linearly with per-copy rotation, not quadratically like a chord's
+  sagitta (which would have been ~8 µm): the loft wasn't pairing profile
+  points one-to-one between rotated copies but re-aligning wires, shearing the
+  surface between them. docs/gear-math.md §7.3 had explained the loft as
+  "straight patches converge to the true flank" — a sound-sounding argument
+  that measurement contradicted; rewritten to say so, with the numbers.
+- **A smooth (`ruled=False`) loft is not the fix**, checked rather than
+  assumed: 270 µm–3.4 mm by the same measure, plus a +1.4% to +2.0% *volume*
+  overshoot at intermediate section counts (spline bulge), with only a narrow,
+  fragile window of section counts that happened to fit.
+- **The fix is OpenCASCADE's twist-extrude** (`Solid.extrude_linear_with_
+  rotation`): **0.0 µm** on the routine gear and 0.1 µm on the steep one by
+  the same check (a zero that also validates the check itself), ~10× faster
+  to build (0.14 s vs 1.8–5 s), and one continuous face per profile edge
+  (~290) instead of one flat strip per edge per copy (1,700–5,200) — the
+  helical STEP dropped to ~1.1 MB. Hand/sign convention unchanged: the sweep
+  matched the existing rotation reference to 0 µm.
+- **The measurement is now a regression test** (`test_helical_flank_is_the_
+  true_helicoid_between_the_end_faces`): sub-10 µm at 25/50/75% of the face,
+  both hands, including the steep/wide case — the check the end-face twist
+  test structurally could not make. 45 tests pass.
+- **The visible smoothness is a preview-tessellation setting, now that the
+  surface is genuinely curved**: the viewer flat-shades each triangle, and at
+  the 0.02 mm tolerance used elsewhere the exact surface tessellates
+  economically to ~1.4k triangles — each in tolerance, but the normal jumps
+  read as bands. Swept a tolerance grid: 0.002 mm gives ~4–9k triangles in
+  ~0.05 s; angular tolerance had no effect at all. Helical previews (and the
+  worm's preview wheel, which is a helical gear) now tessellate at 0.002 mm;
+  spur keeps 0.02. Before/after crops through the real app: facet patchwork
+  with jagged banding → continuous shading gradients along the twist.
+- Verified beyond the tests: the swept helical STEP imports into real
+  SolidWorks as a single body (its curved swept faces were new to that path);
+  spur, worm+wheel previews unaffected; mosaic thumbnails regenerated (the
+  helical card depicted the old loft, the worm card predated its fuse).
+- **Flagged, not yet done**: the worm thread (~9° per loft station) and the
+  bevel tooth's two-station loft rely on the same loft operation. Bevel's
+  two-station ruling is exact by proof, but the point-pairing hazard is a
+  property of the loft, so both should get the same section-plane
+  measurement before it's assumed absent.
+
+## Worm's live preview now shows the matching wheel too, like every real worm-gear reference drawing
 
 User reported the worm still didn't "look like" reference illustrations of a
 worm gear (attached several -- all show the worm and its wheel together,

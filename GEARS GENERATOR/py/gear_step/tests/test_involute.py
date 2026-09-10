@@ -175,6 +175,53 @@ def test_spur_and_helical_solids_are_manifold_single_bodies():
         assert solid.volume > 0
 
 
+def test_helical_flank_is_the_true_helicoid_between_the_end_faces():
+    """Regression test for a real bug the test above could not see. The
+    helical solid used to be a ruled loft through ~1 rotated copy of the
+    profile per 3deg of twist. It passes through every copy exactly -- so
+    checking twist at the END faces (as the original verification did)
+    looks perfect -- but BETWEEN copies the flank was not the helicoid:
+    sectioning the built solid at 25/50/75% of the face width and measuring
+    against the exactly-rotated profile found 359 um (14% of module) of
+    error at mid-facet on a routine 25deg/16mm gear and 1.3 mm (53% of
+    module) on a 35deg/40mm one, versus 0 um at every section plane. The
+    error scaled linearly with per-copy rotation (a loft not pairing profile
+    points one-to-one between rotated copies), not quadratically like a
+    chord would; a smooth loft was no better. The build is now an exact
+    twist-extrude, which measured 0.0 um by this same check.
+
+    So: build, cut real cross-sections at heights that are NOT section
+    planes of any plausible loft, and require sub-10um agreement with the
+    profile rotated by exactly twist * z/face_width. Bore-free cases only --
+    a bore adds an inner section edge that is legitimately far from the
+    outer profile. Both hands, including a steep/wide case."""
+    import build123d as bd
+    from shapely.affinity import rotate as sh_rotate
+    from shapely.geometry import Point
+    from build_gear import build_gear_solid
+
+    cases = [
+        dict(z=18, module_mm=2.5, face_width_mm=16.0, helix_angle_deg=25.0, hand="right"),
+        dict(z=18, module_mm=2.5, face_width_mm=40.0, helix_angle_deg=35.0, hand="left"),
+    ]
+    for kwargs in cases:
+        gp = GearParams(**kwargs)
+        solid = build_gear_solid(gp)
+        # build_gear_solid's own helical profile tolerance -- the built
+        # solid's base face IS this polyline, so this is the exact reference
+        pts = [tuple(p) for p in full_gear_outline(gp, simplify_tolerance_mm=0.05)]
+        twist = gp.twist_total_rad
+        worst = 0.0
+        for zfrac in (0.25, 0.5, 0.75):
+            exact = sh_rotate(Polygon(pts), math.degrees(twist * zfrac), origin=(0, 0))
+            section = solid.intersect(bd.Plane((0, 0, zfrac * gp.face_width_mm)))
+            for edge in section.edges():
+                for t in (0.0, 0.25, 0.5, 0.75, 1.0):
+                    v = edge.position_at(t)
+                    worst = max(worst, exact.exterior.distance(Point(v.X, v.Y)))
+        assert worst < 0.010, (kwargs, f"flank deviates {worst*1000:.1f} um from the true helicoid")
+
+
 def test_single_tooth_polygon_tip_lands_exactly_on_the_addendum_circle():
     """Regression test: single_tooth_polygon's blank used to be sized
     ra*1.05 (a leftover mix-up with the UNRELATED rack_swept_cutter_union

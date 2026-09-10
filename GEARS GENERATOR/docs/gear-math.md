@@ -225,15 +225,62 @@ twist_total = b * tan(beta) / r        (radians, r = transverse pitch radius)
 ```
 
 signed by hand (right-hand positive, left-hand negative, by convention here).
-The solid is built (`build_gear.py`) by lofting **`ruled=True`** through `N`
-copies of the same validated transverse profile, the k-th copy rotated by
-`k/N * twist_total` and placed at `z = k/N * b`. `ruled=True` connects each
-consecutive pair with a straight-line (ruled) surface patch -- and a helicoid
-*is* a ruled surface, so straight patches between finely-spaced rotated copies
-converge to the true helical flank, the same "dense sampling of an exact
-kinematic construction" principle used for the root-fillet envelope in section
-4.3. `N` is chosen from the twist magnitude (more twist -> more sections),
-not fixed, so accuracy doesn't degrade for a large helix angle or wide face.
+The solid is built (`build_gear.py`) as an **exact helicoidal sweep**: the
+validated transverse profile extruded along the axis by `b` while rotating by
+`twist_total` (OpenCASCADE's twist-extrude, `extrude_linear_with_rotation`),
+so every profile point follows its true helix.
+
+**This replaced a ruled loft, and the replacement is a measurement, not a
+preference -- recorded here because the original reasoning sounded right and
+wasn't.** The earlier build lofted `ruled=True` through `N` copies of the
+profile (one per ~3° of twist), the k-th rotated by `k/N * twist_total` at
+`z = k/N * b`, on the argument that a helicoid *is* a ruled surface, so
+straight patches between finely-spaced rotated copies converge to the true
+flank. The verification at the time checked the twist at the two END faces
+(and found it exact) -- which every such loft satisfies by construction, since
+it passes through each copy. Sectioning the built solid *between* copies, at
+25/50/75% of the face width, and measuring against the profile rotated by
+exactly `twist_total * z/b` found:
+
+- ruled loft, routine gear (25° helix, 16 mm face, m=2.5): **359 µm** of
+  flank error at mid-facet (14% of module), exactly 0 µm at each copy;
+- ruled loft, steep/wide gear (35°, 40 mm): **1.3 mm** (53% of module);
+- the error grew *linearly* with the per-copy rotation, not quadratically as
+  a chord's sagitta would (which would have been ~8 µm) -- i.e. the loft was
+  not pairing profile points one-to-one between rotated copies, but
+  re-aligning wires and shearing the surface in between;
+- a smooth (`ruled=False`) loft was no better: 270 µm - 3.4 mm, and at
+  intermediate section counts a +1.4% to +2.0% *volume* overshoot (spline
+  bulge between sections), while very few sections happened to fit and many
+  tessellated coarsely -- a fragile window, not a fix;
+- the twist-extrude: **0.0 µm** on the routine gear, 0.1 µm on the steep one,
+  by the same check (which also validates the check itself); ~10x faster to
+  build (0.14 s vs 1.8-5 s); and one continuous face per profile edge
+  (~290) instead of one flat strip per edge per copy (1,700-5,200), which
+  also shrinks the STEP file.
+
+That section-plane check is now a regression test
+(`tests/test_involute.py`, `test_helical_flank_is_the_true_helicoid_between_
+the_end_faces`): sub-10 µm at 25/50/75% of the face, both hands, including
+the steep/wide case -- the measurement the end-face twist check could not
+make.
+
+One consequence for the live 3D preview only (STEP carries the exact B-rep):
+the flank is now genuinely curved and the viewer flat-shades each triangle,
+so how smooth the twist *looks* is purely tessellation density. At the
+0.02 mm chordal tolerance used elsewhere the exact surface tessellates
+economically to ~1.4k triangles -- each within tolerance, but the normal
+jumps between them read as bands; 0.002 mm gives ~4-9k triangles in ~0.05 s.
+Angular tolerance turned out to have no effect on this surface at all.
+Helical gears (and the worm's preview wheel, which is one) use 0.002 mm for
+the preview mesh; spur keeps 0.02 (flat faces tessellate exactly).
+
+The "dense straight patches converge" principle is still what the worm thread
+(§9.2-9.3, ~9° per station) and the bevel tooth's two-station loft (§8.3)
+rely on. The point-pairing hazard found here is a property of the loft
+operation, so it applies to those too in principle; it has **not yet been
+measured** there and should be, by the same section-plane method, before
+being assumed absent.
 
 ## 8. Straight bevel gears (Tredgold's approximation)
 
@@ -300,9 +347,12 @@ the helical case) — only its size and radial/axial position change. Checked, n
 assumed: for a **fixed** point identity (`dr_heel`, `heel_theta`), every term above is
 linear in `s`, so the true 3D path from toe to heel is an exact straight line — i.e.
 Tredgold's approximation makes the tooth surface a **ruled surface** between toe and
-heel, the same "straight patches between stations, dense enough to be exact" principle
-used for the helical twist (section 7.3), except here it's exactly two stations
-(toe, heel) rather than many, since there's no curvature to approximate away.
+heel -- exactly two stations (toe, heel), since there's no curvature to approximate
+away. (Section 7.3's helical case used to lean on the same "dense straight patches
+converge" idea and turned out, by measurement, not to: OpenCASCADE's loft does not
+pair profile points one-to-one between stations. That hazard belongs to the loft
+operation, not to the two-station proof above, but it has not yet been measured for
+the bevel tooth either -- see the end of 7.3.)
 
 `actual_angle = heel_theta / cos(gamma)` is cross-checked two independent ways, not
 just derived once: (a) at `gamma=90°` (crown/flat limit) the formula for the
