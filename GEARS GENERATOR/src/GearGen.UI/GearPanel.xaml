@@ -173,6 +173,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsCycloidal, Mode=OneWay}" Checked="OnCycloidalChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_cycloidal.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Cycloidal" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsBevel, Mode=OneWay}" Checked="OnBevelChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_bevel.png" Height="76" Stretch="Uniform"/>
@@ -231,12 +238,14 @@
                     </StackPanel>
                     <local:NumericSpinner Label="{Binding ModuleOrDpLabel}" Value="{Binding ModuleOrDp}" Minimum="0.05" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
 
+                    <StackPanel Visibility="{Binding IsNotCycloidal, Converter={StaticResource B2V}}">
                     <TextBlock Text="Pressure angle" FontSize="12" Foreground="#374151" Margin="0,0,0,3"/>
                     <local:NumericSpinner Value="{Binding PressureAngleDeg}" Minimum="5" Maximum="45" Step="0.5" DecimalPlaces="1" Suffix="°"/>
                     <StackPanel Orientation="Horizontal" Margin="0,-4,0,0">
                         <Button Content="14.5°" Padding="8,3" Margin="0,0,6,0" Command="{Binding SetPressureAnglePresetCommand}" CommandParameter="14.5"/>
                         <Button Content="20°" Padding="8,3" Margin="0,0,6,0" Command="{Binding SetPressureAnglePresetCommand}" CommandParameter="20"/>
                         <Button Content="25°" Padding="8,3" Command="{Binding SetPressureAnglePresetCommand}" CommandParameter="25"/>
+                    </StackPanel>
                     </StackPanel>
 
                     <TextBlock Text="SIZE" Style="{StaticResource SectionHeader}"/>
@@ -291,6 +300,13 @@
                         <TextBlock Text="A gear track -- 'Number of teeth' above sets how many fit along its length. The mounting-hole spinner above (SIZE section) drills one hole per tooth pitch through the backing bar. A helix angle (HELIX section) inclines the teeth across the face for meshing with a helical pinion of the OPPOSITE hand: module and pressure angle are then the normal values, pitch and thickness along the bar are transverse."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Backing height" Value="{Binding BackingHeightDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsCycloidal, Converter={StaticResource B2V}}">
+                        <TextBlock Text="CYCLOIDAL" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Clock and instrument gearing: the flank above the pitch circle is an epicycloid and below it a hypocycloid, both traced by one rolling circle -- there is no pressure angle. 0 = automatic: the rolling circle diameter equals this gear's pitch radius, which makes the dedendum flanks straight radial lines (the classic clock pinion). Two gears mesh only if they share the same rolling circle and run at the exact centre distance."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Rolling circle diameter (0 = auto)" Value="{Binding RollingCircleDisplay}" Minimum="0" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsPlanetary, Converter={StaticResource B2V}}">
@@ -424,6 +440,12 @@
                     <StackPanel>
                         <TextBlock Text="TWIST" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding TwistText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsCycloidal, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="ROLLING CIRCLE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding RollingCircleText}" FontSize="13" Foreground="#111827"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsPlanetary, Converter={StaticResource B2V}}">

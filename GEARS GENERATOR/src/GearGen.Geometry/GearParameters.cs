@@ -38,7 +38,12 @@ namespace GearGen.Geometry
         /// MateTeeth = planet, PlanetCount, RimThicknessMm = the ring's rim;
         /// the ring's tooth count follows (z_s + 2 z_p). Exports every member
         /// as one multi-body STEP.</summary>
-        Planetary
+        Planetary,
+        /// <summary>Cycloidal gear (epicycloid addendum / hypocycloid dedendum
+        /// traced by one rolling circle -- clock and instrument gearing), see
+        /// docs/gear-math.md section 14. No pressure angle; the tooth form is
+        /// set by RollingCircleDiameterMm.</summary>
+        Cycloidal
     }
 
     /// <summary>
@@ -168,6 +173,17 @@ namespace GearGen.Geometry
 
         public bool IsPlanetary => Family == GearFamily.Planetary;
 
+        // ---- cycloidal (docs/gear-math.md section 14) -- Family == Cycloidal only ----
+
+        public bool IsCycloidal => Family == GearFamily.Cycloidal;
+
+        /// <summary>Diameter of the rolling (generating) circle that traces the
+        /// tooth flanks. 0 = auto: this gear's own pitch radius (r_g = R/2),
+        /// which makes the dedendum flanks straight radial lines -- the classic
+        /// clock pinion. A mating pair must share one rolling circle. Stored in
+        /// mm regardless of Unit.</summary>
+        public double RollingCircleDiameterMm { get; set; } = 0.0;
+
         /// <summary>Number of equally spaced planets. (z_sun + z_ring) must
         /// divide by it for them all to mesh -- the engine warns otherwise.</summary>
         public int PlanetCount { get; set; } = 3;
@@ -233,6 +249,11 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.Cycloidal:
+                    parts.Add("cycloidal"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("roll" + (RollingCircleDiameterMm > 0 ? Len(RollingCircleDiameterMm) : "auto"));
+                    parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.Planetary:
                     parts.Add("planetary"); parts.Add("s" + Teeth + "_p" + MateTeeth + "x" + PlanetCount + "_r" + (Teeth + 2 * MateTeeth));

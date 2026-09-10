@@ -1,6 +1,41 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Planetary (epicyclic) sets (latest)
+## Cycloidal gears (latest)
+
+Fifth of the requested additions: the clock/instrument tooth form
+(`cycloidal.py`, docs/gear-math.md §14) — epicycloid above the pitch
+circle, hypocycloid below, both traced by one rolling circle. No pressure
+angle, no base circle: the rolling circle is the tooth-form parameter
+(0 = automatic, this gear's pitch radius, i.e. `r_g = R/2`, which makes the
+dedendum flanks straight radial lines — the classic clock pinion; clamped
+to `[hf/2, R)`).
+
+- **Construction**: the monotonic-radius arcs of both curves (`t ∈ [0,
+  π r_g/R]` rising to `R + 2r_g`, `t ∈ [−π r_g/R, 0]` falling to `R − 2r_g`
+  — cusps every `2π r_g/R`) are bisected for the tip and root crossings;
+  right flank = hypocycloid up to the pitch point, epicycloid to the tip,
+  rotated to `−s/(2R)`; mirror, tip arc, root arc; `z` wedges unioned with
+  the root disk. Flanks that cross before the addendum circle are trimmed
+  to a pointed tooth instead of self-crossing.
+- **Checks** (`tests/test_cycloidal.py`, 11 tests; suite 82): the
+  **fundamental law of gearing on the curves themselves** — the profile
+  normal at every sampled point passes through the rolling circle's contact
+  point on the pitch circle, four `(R, r_g)` combinations; tooth angular
+  thickness `s/R` centred on +Y and thinned by exactly the backlash; tip/
+  root radii; the radial-flank special case; valid polygons and manifold
+  solids at z = 6/12/40; **a conjugate pair sharing one rolling circle
+  meshes with (near) zero boolean interpenetration at the exact centre
+  distance while a half-pitch phase error collides** (12/18, 8/24 at the
+  automatic circle; 10/15 at a chosen one); STEP round-trip. All passed
+  first time.
+- **UI**: Cycloidal card, the pressure-angle block hidden for it (rather
+  than shown and ignored), a CYCLOIDAL section with the rolling-circle
+  spinner, a derived row with the rolling circle (and "radial dedendum
+  flanks" when it applies), "n/a (cycloidal)" for the base circle,
+  `cycloidal_z8_m3_rollauto_fw10` names, thumbnail, `--uismoke
+  --cycloidal`. Verified headless and by SolidWorks import.
+
+## Planetary (epicyclic) sets
 
 Fourth of the requested additions: sun + n planets + ring, all in mesh,
 previewed and exported together (`planetary.py`, docs/gear-math.md §11.4).

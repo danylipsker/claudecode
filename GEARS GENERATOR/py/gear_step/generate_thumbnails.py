@@ -106,4 +106,8 @@ if __name__ == "__main__":
     sun, planets, ring = build_planetary_set(planetary)
     render_solid_thumbnail(bd.Compound(children=[sun, *planets, ring]), f"{out_dir}/thumb_planetary.png", elev=40, azim=-50)
 
+    from cycloidal import CycloidalGearParams, build_cycloidal_gear_solid
+    cycloidal = CycloidalGearParams(z=8, module_mm=3.0, face_width_mm=10.0, bore_diameter_mm=6.0)
+    render_solid_thumbnail(build_cycloidal_gear_solid(cycloidal), f"{out_dir}/thumb_cycloidal.png")
+
     print("done")

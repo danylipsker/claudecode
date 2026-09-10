@@ -176,6 +176,46 @@ def screw_derived_values(pp) -> tuple[dict, list]:
     return derived, warnings
 
 
+def cycloidal_params_from_request(p: dict):
+    """Cycloidal gear -- docs/gear-math.md 14. No pressure angle; the tooth
+    form is set by the rolling circle (0 = auto: r_g = R/2, radial flanks).
+    module_mm already converted client-side for inch input."""
+    from cycloidal import CycloidalGearParams
+    return CycloidalGearParams(
+        z=int(p["z"]),
+        module_mm=float(p["module_mm"]),
+        rolling_circle_diameter_mm=float(p.get("rolling_circle_diameter_mm") or 0.0),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        backlash_mm=float(p.get("backlash_mm", 0.0)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def cycloidal_derived_values(cp) -> tuple[dict, list]:
+    warnings = []
+    requested = cp.rolling_circle_diameter_mm / 2.0 if cp.rolling_circle_diameter_mm > 0 else cp.pitch_radius / 2.0
+    if abs(requested - cp.rolling_radius) > 1e-9:
+        warnings.append(f"Rolling circle clamped to diameter {2 * cp.rolling_radius:.3f} mm: it must be at least the "
+                        f"dedendum depth (so the hypocycloid reaches the root) and smaller than the pitch diameter.")
+    if cp.bore_diameter_mm > 0 and cp.bore_diameter_mm >= 2 * cp.dedendum_radius * 0.9:
+        warnings.append("Bore diameter is close to or exceeds the root diameter.")
+    if cp.z < 4:
+        warnings.append("Tooth count below 4 is not supported.")
+    return {
+        "pitch_diameter_mm": 2 * cp.pitch_radius,
+        "addendum_diameter_mm": 2 * cp.addendum_radius,
+        "dedendum_diameter_mm": 2 * cp.dedendum_radius,
+        "circular_tooth_thickness_mm": cp.circular_tooth_thickness,
+        "circular_pitch_mm": cp.circular_pitch,
+        "module_mm": cp.module_mm,
+        "diametral_pitch": 25.4 / cp.module_mm,
+        "rolling_circle_diameter_mm": 2 * cp.rolling_radius,
+        "dedendum_is_radial": 1.0 if cp.dedendum_is_radial else 0.0,
+    }, warnings
+
+
 def planetary_params_from_request(p: dict):
     """Planetary set -- docs/gear-math.md 11.4. z = sun, mate_teeth = planet,
     planet_count, rim_thickness_mm = the ring's rim; the ring's tooth count
@@ -452,6 +492,12 @@ def handle(req: dict) -> dict:
             outline = full_gear_outline(pp.sun_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
             derived, warnings = planetary_derived_values(pp)
             return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "cycloidal":
+            from cycloidal import cycloidal_gear_outline
+            cp = cycloidal_params_from_request(req)
+            outline = cycloidal_gear_outline(cp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.005)))
+            derived, warnings = cycloidal_derived_values(cp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "bevel":
             bp = bevel_params_from_request(req)
             outline = bevel_heel_tooth_outline(bp)
@@ -505,6 +551,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "planetary":
             from build_gear import export_planetary_step
             export_planetary_step(planetary_params_from_request(req), path)  # sun + planets + ring, in mesh
+        elif gear_type == "cycloidal":
+            from build_gear import export_cycloidal_step
+            export_cycloidal_step(cycloidal_params_from_request(req), path)
         else:
             from build_gear import export_step
             gp = params_from_request(req)
@@ -535,6 +584,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "planetary":
             from build_gear import export_planetary_profile_dxf
             export_planetary_profile_dxf(planetary_params_from_request(req), path)  # the whole set's section
+        elif gear_type == "cycloidal":
+            from build_gear import export_cycloidal_profile_dxf
+            export_cycloidal_profile_dxf(cycloidal_params_from_request(req), path)
         else:
             # cylindrical AND herringbone: the DXF is the transverse section,
             # which a double-helical gear shares with its helical halves
@@ -635,6 +687,11 @@ def handle(req: dict) -> dict:
             pp = planetary_params_from_request(req)
             sun, planets, ring = build_planetary_set(pp, simplify_tolerance_mm=0.03)
             bd.export_stl(bd.Compound(children=[sun, *planets, ring]), path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "cycloidal":
+            from cycloidal import build_cycloidal_gear_solid
+            import build123d as bd
+            solid = build_cycloidal_gear_solid(cycloidal_params_from_request(req), simplify_tolerance_mm=0.01)
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         else:
             from build_gear import build_gear_solid
             import build123d as bd

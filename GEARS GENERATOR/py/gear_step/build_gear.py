@@ -302,6 +302,24 @@ def export_double_helical_step(gp: GearParams, gap_mm: float, path: str | Path) 
     _export_step_for_solidworks(build_double_helical_solid(gp, gap_mm=gap_mm), path)
 
 
+def export_cycloidal_step(cp, path: str | Path) -> None:
+    """cp: cycloidal.CycloidalGearParams (docs/gear-math.md 14)."""
+    from cycloidal import build_cycloidal_gear_solid
+    _export_step_for_solidworks(build_cycloidal_gear_solid(cp), path)
+
+
+def export_cycloidal_profile_dxf(cp, path: str | Path) -> None:
+    from cycloidal import cycloidal_gear_outline
+    pts = cycloidal_gear_outline(cp)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(list(pts) + [pts[0]], format="xy", dxfattribs={"closed": True})
+    if cp.bore_diameter_mm > 0:
+        msp.add_circle((0, 0), cp.bore_diameter_mm / 2.0)
+    doc.saveas(str(path))
+
+
 def export_planetary_step(pp, path: str | Path) -> None:
     """Sun, every planet and the ring of a planetary set, in mesh (docs/gear-
     math.md 11.4), as ONE multi-body STEP. pp: planetary.PlanetaryParams."""

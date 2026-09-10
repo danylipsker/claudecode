@@ -138,6 +138,11 @@ namespace GearGen.UI
             ViewModel?.SelectPlanetaryCard();
         }
 
+        private void OnCycloidalChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectCycloidalCard();
+        }
+
         private void OnScrewChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectCrossedHelicalCard();

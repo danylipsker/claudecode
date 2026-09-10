@@ -192,6 +192,16 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsCycloidal)
+            {
+                // Same reasoning as bevel/worm: CycloidalGearParams has no
+                // separate inch constructor, so convert client-side.
+                req.GearType = "cycloidal";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.RollingCircleDiameterMm = p.RollingCircleDiameterMm;
+                return req;
+            }
+
             if (p.IsPlanetary)
             {
                 // Same reasoning as bevel/worm: PlanetaryParams has no separate

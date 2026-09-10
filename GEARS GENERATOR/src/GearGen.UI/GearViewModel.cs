@@ -127,6 +127,32 @@ namespace GearGen.UI
             get => _p.Family == GearFamily.Planetary;
             set { if (value) { _p.Family = GearFamily.Planetary; OnChanged(); FamilyChanged(); } }
         }
+        public bool IsCycloidal
+        {
+            get => _p.Family == GearFamily.Cycloidal;
+            set { if (value) { _p.Family = GearFamily.Cycloidal; OnChanged(); FamilyChanged(); } }
+        }
+        /// <summary>A cycloidal gear has no pressure angle (its flanks are
+        /// traced by a rolling circle, docs/gear-math.md 14), so the pressure
+        /// angle block is hidden for it rather than shown and ignored.</summary>
+        public bool IsNotCycloidal => !IsCycloidal;
+
+        // ---- cycloidal (docs/gear-math.md section 14) -- Family == Cycloidal only ----
+
+        public double RollingCircleDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.RollingCircleDiameterMm) : _p.RollingCircleDiameterMm;
+            set { _p.RollingCircleDiameterMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public void SelectCycloidalCard()
+        {
+            IsCycloidal = true;
+            HelixAngleDeg = 0.0;
+        }
+
+        private string _rollingCircleText = "-";
+        public string RollingCircleText { get => _rollingCircleText; private set { _rollingCircleText = value; OnChanged(); } }
 
         // ---- planetary set (docs/gear-math.md section 11.4) -- Family == Planetary only ----
 
@@ -185,6 +211,8 @@ namespace GearGen.UI
             OnChanged(nameof(IsRackHelical));
             OnChanged(nameof(IsCrossedHelical));
             OnChanged(nameof(IsPlanetary));
+            OnChanged(nameof(IsCycloidal));
+            OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -456,6 +484,7 @@ namespace GearGen.UI
             OnChanged(nameof(BackingHeightDisplay));
             OnChanged(nameof(RimThicknessDisplay));
             OnChanged(nameof(GapWidthDisplay));
+            OnChanged(nameof(RollingCircleDisplay));
         }
 
         // ---- preview / derived values ---------------------------------------
@@ -670,6 +699,21 @@ namespace GearGen.UI
                         LeadText = $"normal pitch {L(dv("normal_pitch_mm"))}, thickness {L(dv("normal_tooth_thickness_mm"))}";
                         TwistText = $"teeth at {dv("helix_angle_deg"):0.##}° to the face";
                     }
+                }
+                else if (IsCycloidal)
+                {
+                    // cycloidal_derived_values (server.py): no base circle (that's
+                    // an involute concept) and no pressure angle.
+                    PitchDiameterText = L(dv("pitch_diameter_mm"));
+                    BaseDiameterText = "n/a (cycloidal)";
+                    AddendumDiameterText = L(dv("addendum_diameter_mm"));
+                    DedendumDiameterText = L(dv("dedendum_diameter_mm"));
+                    ToothThicknessText = L(dv("circular_tooth_thickness_mm"));
+                    ModuleOrDpEquivalentText = IsInch
+                        ? $"module {dv("module_mm"):0.####} mm"
+                        : $"DP {dv("diametral_pitch"):0.###} /in";
+                    RollingCircleText = $"{L(dv("rolling_circle_diameter_mm"))}"
+                        + (dv("dedendum_is_radial") > 0.5 ? " (radial dedendum flanks)" : "");
                 }
                 else if (IsInternal)
                 {

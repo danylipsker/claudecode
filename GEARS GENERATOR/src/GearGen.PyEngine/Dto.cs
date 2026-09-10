@@ -33,6 +33,7 @@ namespace GearGen.PyEngine
         [JsonProperty("rim_thickness_mm")] public double? RimThicknessMm;
         [JsonProperty("gap_mm")] public double? GapMm;
         [JsonProperty("planet_count")] public int? PlanetCount;
+        [JsonProperty("rolling_circle_diameter_mm")] public double? RollingCircleDiameterMm;
     }
 
     internal class EngineResponse

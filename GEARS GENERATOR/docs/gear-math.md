@@ -969,3 +969,56 @@ validated against a known cut.
     volume is meaningfully less (not just "less") than a bore-less disk of the same
     outer dimensions — the regression test for the silent-missing-bore bug
     described in §11.3.
+16. Every multi-member family (screw pair §7.5, planetary set §11.4, cycloidal pair
+    §14) is checked by the *boolean intersection* of its members as placed: (near)
+    zero for the correct placement, and a clear collision for the same members with
+    one of them turned half a pitch — so each test is known to be able to fail.
+17. A cycloidal gear's profile normals pass through the rolling circle's instantaneous
+    contact point at every sampled parameter on both curves (§14) — the fundamental
+    law of gearing checked on the curves themselves.
+
+## 14. Cycloidal gears
+
+The tooth form of clock and instrument gearing (`cycloidal.py`): above the pitch
+circle the flank is an **epicycloid**, below it a **hypocycloid**, both traced by one
+rolling (generating) circle of radius `r_g` rolling on the pitch circle — outside it
+for the addendum, inside it for the dedendum. There is no pressure angle and no base
+circle; the rolling circle *is* the tooth-form parameter.
+
+```
+R = m z / 2
+epicycloid    p(t) = (R + r_g)(cos t, sin t) - r_g (cos k t,  sin k t),   k  = (R + r_g) / r_g
+hypocycloid   p(t) = (R - r_g)(cos t, sin t) + r_g (cos k't, -sin k't),   k' = (R - r_g) / r_g
+```
+
+Both start at the pitch point `(R, 0)` at `t = 0`; `t` is the angle of the rolling
+circle's centre about the gear centre, and the rolling circle touches the pitch circle
+at `(R cos t, R sin t)`. The epicycloid's radius rises monotonically from `R` to
+`R + 2r_g` over `t ∈ [0, π r_g/R]` and the hypocycloid's falls from `R` to `R − 2r_g`
+over `t ∈ [−π r_g/R, 0]` (cusps every `2π r_g/R`), so the tip and root crossings are
+found by bisection on those arcs. The right flank of a tooth of angular half-thickness
+`s/(2R)` is the hypocycloid (`t ≤ 0`, inward and away from the tooth centre) joined to
+the epicycloid (`t ≥ 0`, outward and toward the centre) at the pitch point rotated to
+`−s/(2R)`; the left flank is its mirror; a tip land arc and a root arc close the wedge,
+and `z` wedges are unioned with the root disk. Flanks that cross before the addendum
+circle are trimmed to the crossing (a pointed tooth) rather than left self-crossing.
+
+**Conjugacy.** Two cycloidal gears mesh exactly when each one's addendum was traced by
+the rolling circle that traced the other's dedendum — in practice a pair shares one
+`r_g` — and the centre distance is exactly `R_1 + R_2` (cycloidal gears, unlike
+involute ones, are not tolerant of centre-distance error). The classic choice
+`r_g = R/2` makes that gear's hypocycloid a straight radial line (the "radial flank"
+clock pinion); the code's automatic value is that, and `r_g` is clamped to
+`[hf/2, R)` so the hypocycloid can still reach the root and remains a curve.
+
+Checks (`tests/test_cycloidal.py`): the **fundamental law of gearing on the curves
+themselves** — at every sampled point of both curves the profile normal passes through
+the rolling circle's contact point on the pitch circle (a sign or factor error in
+either parametrisation fails this at once), for four `(R, r_g)` combinations; tooth
+angular thickness `s/R` at the pitch circle, centred on +Y, thinned by exactly the
+backlash; tip and root radii; the radial-flank special case (dedendum points collinear
+with the centre at `r_g = R/2`, curved otherwise); valid polygons and manifold solids
+for z = 6/12/40; **a conjugate pair sharing one rolling circle meshes with (near)
+zero boolean interpenetration at the exact centre distance while a half-pitch phase
+error collides** (12/18 and 8/24 at the automatic circle, 10/15 at a chosen one); the
+STEP round-trips.
