@@ -68,9 +68,9 @@
   <w x="880 560 912 560" f="0"/>
   <w x="912 560 1056 560" f="0"/>
   <w x="1056 560 1152 560" f="0"/>
-  <x x="96 640 696 644" f="0" si="13" te="Timer 1 is connected as an astable oscillator whose frequency is set by R1 and C1.\nTimer 2 is a one-shot that drives a relay through D1.  Timer 1 triggers timer 2 once\nper cycle, for 3 to 5 seconds.\n\nDrawn as two 555s in place of the book's 556." co="#c8d8c8"/>
-  <x x="96 735 365 739" f="0" si="14" te="interval  = 1.44 / ((R1 + 2 R2) C1)\nrelay time = 1.1 x R3 x C2" co="#ffe08a"/>
-  <x x="96 793 511 797" f="0" si="12" te="Book waveform, p.11:  timer 1 (pin 5) pulses once per interval;\ntimer 2 (relay) pulls in on each of those pulses." co="#9fb8c8"/>
+  <x x="96 640 696 644" f="0" si="13" te="Timer 1 is connected as an astable oscillator whose frequency is set by R1 and C1.\nTimer 2 is a one-shot that drives a relay through D1.  Timer 1 triggers timer 2 once\nper cycle; the default R3 and C2 hold it in for about 2.4 seconds, adjustable via\nthe R3 slider.\n\nDrawn as two 555s in place of the book's 556." co="#c8d8c8"/>
+  <x x="96 748 365 752" f="0" si="14" te="interval  = 1.44 / ((R1 + 2 R2) C1)\nrelay time = 1.1 x R3 x C2" co="#ffe08a"/>
+  <x x="96 806 511 810" f="0" si="12" te="Book waveform, p.11:  timer 1 (pin 5) pulses once per interval;\ntimer 2 (relay) pulls in on each of those pulses." co="#9fb8c8"/>
   <o en="51" sp="64" f="x20a" p="0" x="timer 1, pin 5"><p v="0" sc="4"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="100000" mx="2000000" st="R1 interval" stp="0" log="0"/>
   <adj e="27" ei="0" en="Resistance (ohms)" mn="10000" mx="500000" st="R3 relay time" stp="0" log="0"/>

@@ -23,7 +23,7 @@ C["01-basic-monostable"] = dict(
         "itself.  Trigger must be momentarily low to restart the timing cycle; otherwise",
         "keep reset (pin 4) at Vcc.",
     ],
-    formulas=["t = R1 x C1        (t is independent of Vcc)"],
+    formulas=["t = 1.1 x R1 x C1        (t is independent of Vcc)"],
     tables=[("TIME DELAY t = 1.1 x R1 x C1",
              [["C1", "0.1 uF", "1 uF", "10 uF", "100 uF"],
               ["R1 = 10K", "1.1 ms", "11 ms", "110 ms", "1.1 s"],
@@ -63,7 +63,7 @@ C["03-bouncefree-switch"] = dict(
     formulas=["delay = 1.1 x R1 x C1,  R1 = 100K"],
     tables=[("DELAY vs C1  (R1 = 100K)",
              [["C1 (uF)", ".1", "1", "10"],
-              ["DELAY (SEC)", ".01", ".1", "1.0"]])],
+              ["DELAY (SEC)", ".011", ".11", "1.1"]])],
 )
 
 C["04-touch-activated-switch"] = dict(
@@ -111,7 +111,8 @@ C["07-intervalometer"] = dict(
     notes=[
         "Timer 1 is connected as an astable oscillator whose frequency is set by R1 and C1.",
         "Timer 2 is a one-shot that drives a relay through D1.  Timer 1 triggers timer 2 once",
-        "per cycle, for 3 to 5 seconds.",
+        "per cycle; the default R3 and C2 hold it in for about 2.4 seconds, adjustable via",
+        "the R3 slider.",
         "",
         "Drawn as two 555s in place of the book's 556.",
     ],
@@ -153,10 +154,10 @@ C["10-frequency-divider"] = dict(
     notes=[
         "In this circuit the 555 is connected as a monostable multivibrator.  Once a timing",
         "cycle is initiated by an input pulse, subsequent input pulses have no effect until",
-        "the cycle is completed.  For the waveforms shown the output frequency is half the",
-        "input frequency.  This circuit also squares slowly rising input pulses.",
+        "the cycle is completed, so the output toggles less often than the input.  This",
+        "circuit also squares slowly rising input pulses.",
         "",
-        "Stretch R1 and the same circuit divides by 3, then 5, and so on.",
+        "Stretch R1 and the divide ratio grows: IN/1, then IN/2, then IN/5, and so on.",
     ],
     formulas=["cycle = 1.1 x R1 x C1;  divide ratio follows from cycle / input period"],
     graph=["Book waveform, p.14, with C1 = 0.1 uF and R1 varied:  IN, then IN/1,",

@@ -20,7 +20,7 @@ python netlist.py '../Forrest Mims - 555 Timer IC Circuits/02-basic-astable.txt'
 | `build_all.py` | runs every builder and writes the `.txt` files |
 | `netlist.py` | collapses wires into nodes, so a file can be diffed against the drawing |
 
-## Two rules that are easy to break
+## Three rules that are easy to break
 
 **One `key` per linked switch group.** The dispatcher toggles *every* switch
 matching a pressed key, and `Switch2Elm.toggle()` then reassigns position across
@@ -31,3 +31,10 @@ Circuit 24 regressed this way six times; see the comment in `part2.py`.
 **The 555 needs `f="14"`.** Flags 2 and 4 create the reset and ground pins; without
 them the chip drops to six posts and wires to pins 4 and 1 dangle with no error.
 Bit 8 labels the pins 1–8 as Mims draws them.
+
+**AudioOutputElm has one real post.** `getPostCount()` returns 1 (verified against
+the upstream Java source, not just the file format): it just reads whatever voltage
+sits at its single point, relative to ground. Tap the *driven* end of a load, never
+the grounded or rail-tied end — the grounded end is a constant 0 V, which records
+as silence with no error either. `Cir.audio()` in `lib.py` takes a `labelnum` for
+pages with more than one output, so their "Play Audio" buttons don't collide.

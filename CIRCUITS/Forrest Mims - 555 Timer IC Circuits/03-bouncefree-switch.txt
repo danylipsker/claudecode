@@ -39,7 +39,7 @@
   <x x="96 735 350 739" f="0" si="14" te="delay = 1.1 x R1 x C1,  R1 = 100K" co="#ffe08a"/>
   <x x="1230 96 1414 100" f="0" si="14" te="DELAY vs C1  (R1 = 100K)" co="#ffffff"/>
   <x x="1230 120 1276 124" f="0" si="12" te="C1 (uF)\n.1\n1\n10" co="#c8c8c8"/>
-  <x x="1342 120 1414 124" f="0" si="12" te="DELAY (SEC)\n.01\n.1\n1.0" co="#c8c8c8"/>
+  <x x="1342 120 1414 124" f="0" si="12" te="DELAY (SEC)\n.011\n.11\n1.1" co="#c8c8c8"/>
   <o en="24" sp="64" f="x20a" p="0" x="output pulse"><p v="0" sc="2"/></o>
   <o en="9" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="9" ei="0" en="Capacitance (F)" mn="1e-08" mx="1e-05" st="C1 delay" stp="0" log="1"/>
