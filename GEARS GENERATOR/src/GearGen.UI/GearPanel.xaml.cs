@@ -127,7 +127,7 @@ namespace GearGen.UI
             var dlg = new SaveFileDialog
             {
                 Filter = "STEP files (*.step;*.stp)|*.step;*.stp",
-                FileName = $"gear_z{ViewModel.Teeth}.step",
+                FileName = ViewModel.SuggestedFileName(".step"),
             };
             if (dlg.ShowDialog() == true)
             {
@@ -150,7 +150,7 @@ namespace GearGen.UI
             var dlg = new SaveFileDialog
             {
                 Filter = "DXF files (*.dxf)|*.dxf",
-                FileName = $"gear_z{ViewModel.Teeth}_profile.dxf",
+                FileName = ViewModel.SuggestedFileName(".dxf"),
             };
             if (dlg.ShowDialog() == true)
             {

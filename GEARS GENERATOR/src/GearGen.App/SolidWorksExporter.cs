@@ -44,7 +44,7 @@ namespace GearGen.App
             var saveDlg = new SaveFileDialog
             {
                 Filter = "SolidWorks Part (*.sldprt)|*.sldprt",
-                FileName = $"gear_z{parameters.Teeth}.sldprt",
+                FileName = parameters.SuggestedFileName(".sldprt"),
             };
             if (saveDlg.ShowDialog() != true)
                 return "Cancelled.";

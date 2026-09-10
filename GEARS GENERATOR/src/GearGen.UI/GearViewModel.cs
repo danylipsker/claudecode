@@ -219,6 +219,12 @@ namespace GearGen.UI
 
         // ---- basic parameters ----------------------------------------------
 
+        /// <summary>Default export file name describing the current part --
+        /// family plus every geometry-determining property (see
+        /// GearParameters.SuggestedFileName). Used by every save dialog so
+        /// STEP, DXF and SLDPRT of the same part share one self-describing stem.</summary>
+        public string SuggestedFileName(string extension) => _p.SuggestedFileName(extension);
+
         public int Teeth
         {
             get => _p.Teeth;

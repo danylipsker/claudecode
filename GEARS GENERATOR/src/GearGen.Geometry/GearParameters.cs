@@ -141,6 +141,70 @@ namespace GearGen.Geometry
         {
             return (GearParameters)MemberwiseClone();
         }
+
+        /// <summary>A default file name that says what the part IS: the family
+        /// and every property that determines its geometry, so a folder of
+        /// exports is self-describing instead of a pile of "gear_z20"s. Same
+        /// stem for STEP/DXF/SLDPRT, differing only by extension (DXF gets a
+        /// "_profile" marker, since it's the 2D section, not the solid).
+        /// Sizes follow the active unit: "m2.5" (module, mm) or "dp12"
+        /// (diametral pitch, 1/in), with lengths in mm or "in" to match.
+        /// Invariant culture throughout -- in a de-DE locale a 2.5 mm module
+        /// would otherwise put a stray comma in the file name.</summary>
+        public string SuggestedFileName(string extension)
+        {
+            var inv = System.Globalization.CultureInfo.InvariantCulture;
+            bool inch = Unit == UnitSystem.Inch;
+            string N(double v) => v.ToString("0.###", inv);
+            string Len(double mm) => inch ? N(UnitConversion.MmToInch(mm)) + "in" : N(mm);
+            string size = inch ? "dp" + N(DiametralPitch) : "m" + N(ModuleMm);
+            string hand = Hand == "left" ? "L" : "R";
+
+            var parts = new System.Collections.Generic.List<string>();
+            switch (Family)
+            {
+                case GearFamily.Bevel:
+                    parts.Add("bevel"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("mate" + MateTeeth); parts.Add("shaft" + N(ShaftAngleDeg));
+                    if (PitchAngleOverrideDeg.HasValue) parts.Add("pitchang" + N(PitchAngleOverrideDeg.Value));
+                    parts.Add("fw" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.Worm:
+                    parts.Add("worm"); parts.Add("starts" + WormStarts); parts.Add(size);
+                    parts.Add("pd" + Len(PitchDiameterMm)); parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("len" + Len(FaceWidthMm)); parts.Add(hand + "H");
+                    if (MateTeeth > 0) parts.Add("wheel" + MateTeeth);
+                    break;
+                case GearFamily.Rack:
+                    parts.Add("rack"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("fw" + Len(FaceWidthMm)); parts.Add("backing" + Len(BackingHeightMm));
+                    if (BoreDiameterMm > 0) parts.Add("holes" + Len(BoreDiameterMm));
+                    break;
+                case GearFamily.Internal:
+                    parts.Add("internal"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
+                    if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                default:
+                    parts.Add(IsHelical ? "helical" : "spur"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    if (IsHelical) parts.Add("helix" + N(Math.Abs(HelixAngleDeg)) + hand);
+                    parts.Add("fw" + Len(FaceWidthMm));
+                    break;
+            }
+            if (Family != GearFamily.Rack && BoreDiameterMm > 0) parts.Add("bore" + Len(BoreDiameterMm));
+            if (Family != GearFamily.Worm && Math.Abs(ProfileShift) > 1e-9) parts.Add("x" + N(ProfileShift));
+            if (Math.Abs(AddendumCoeff - 1.0) > 1e-9 || Math.Abs(DedendumCoeff - 1.25) > 1e-9)
+                parts.Add("ha" + N(AddendumCoeff) + "hf" + N(DedendumCoeff));
+            if (BacklashMm > 1e-9) parts.Add("bl" + Len(BacklashMm));
+
+            string ext = extension.StartsWith(".") ? extension : "." + extension;
+            if (ext.Equals(".dxf", StringComparison.OrdinalIgnoreCase)) parts.Add("profile");
+            return string.Join("_", parts) + ext;
+        }
     }
 
     public static class UnitConversion
