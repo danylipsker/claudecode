@@ -1,6 +1,44 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Crossed-helical (screw) gear pairs (latest)
+## Planetary (epicyclic) sets (latest)
+
+Fourth of the requested additions: sun + n planets + ring, all in mesh,
+previewed and exported together (`planetary.py`, docs/gear-math.md §11.4).
+Every member is an existing gear (the ring is §11's internal gear,
+generated with the planet itself as its cutter so it is exactly conjugate
+to what runs in it); the set adds the relationships and a fully phased
+placement:
+
+- **Relationships**: `z_r = z_s + 2z_p`, `a = m(z_s + z_p)/2` (the same for
+  ring–planet), assembly condition `(z_s + z_r)/n` integer, adjacent-planet
+  clearance `2a·sin(π/n) > m(z_p + 2)`, and the three ratios (ring fixed,
+  sun fixed, carrier fixed). Both the assembly and the clearance failures
+  are warnings in the UI, and the Planetary card lands on a planet count
+  that satisfies the assembly condition instead of on the other families'
+  default mate count.
+- **Phase**: the outlines' "tooth centred on +Y" frame was *measured* for
+  both members first (sun: tip radius on +Y; ring: root radius on +Y, tip
+  half a pitch over — i.e. the ring has a space there), not assumed. An
+  odd planet meshes as-is; for an even planet the sun is turned half a
+  pitch. Planet k is planet 0's configuration carried round by `Δ_k =
+  360k/n`, then spun by `(Δ_k mod p_s)·z_s/z_p` to re-mesh with the real
+  (un-carried) sun — and the assembly condition is exactly what makes the
+  ring's own correction agree modulo a planet pitch (derived in §11.4).
+- **Checks** (`tests/test_planetary.py`, 6 tests; suite 71): the formulas
+  and a failing assembly case; **no interpenetration** of any planet with
+  the sun or with the ring for 3 odd planets, 4 even planets and a 5→3
+  fallback case, while planet 0 turned half a pitch collides with both;
+  planets clear each other and sit at `a`; the multi-body STEP round-trips
+  with `n + 2` solids. All passed first time, which is what the probe of
+  the frames beforehand bought.
+- **UI**: Planetary card, PLANETARY SET section (planet teeth, planet
+  count, ring rim), derived row with the ring's tooth count/OD, the centre
+  distance and all three ratios, `planetary_s12_p9x3_r30_m2_pa20_rim6_fw10`
+  names, thumbnail, `--uismoke --planetary`; DXF export writes the whole
+  set's section. Verified headless and by SolidWorks import of the
+  five-body STEP.
+
+## Crossed-helical (screw) gear pairs
 
 Third of the requested additions. Two helical gears on shafts that cross
 without intersecting; each member is the existing helical gear, so what

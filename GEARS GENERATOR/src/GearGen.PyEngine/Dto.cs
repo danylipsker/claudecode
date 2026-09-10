@@ -32,6 +32,7 @@ namespace GearGen.PyEngine
         [JsonProperty("cutter_teeth")] public int? CutterTeeth;
         [JsonProperty("rim_thickness_mm")] public double? RimThicknessMm;
         [JsonProperty("gap_mm")] public double? GapMm;
+        [JsonProperty("planet_count")] public int? PlanetCount;
     }
 
     internal class EngineResponse

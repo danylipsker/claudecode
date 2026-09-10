@@ -122,6 +122,46 @@ namespace GearGen.UI
             get => _p.Family == GearFamily.CrossedHelical;
             set { if (value) { _p.Family = GearFamily.CrossedHelical; OnChanged(); FamilyChanged(); } }
         }
+        public bool IsPlanetary
+        {
+            get => _p.Family == GearFamily.Planetary;
+            set { if (value) { _p.Family = GearFamily.Planetary; OnChanged(); FamilyChanged(); } }
+        }
+
+        // ---- planetary set (docs/gear-math.md section 11.4) -- Family == Planetary only ----
+
+        public int PlanetCount
+        {
+            get => _p.PlanetCount;
+            set { _p.PlanetCount = Math.Max(1, Math.Min(12, value)); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>Land on a set that can actually be assembled: keep the
+        /// sun and the planet count, and if the current planet tooth count
+        /// (MateTeeth, shared with the other families' "mate" meaning) fails
+        /// the assembly condition (z_sun + z_ring) % n == 0, move it to the
+        /// nearest count that satisfies it -- otherwise the very first thing
+        /// the card shows is a warning about a set nobody chose.</summary>
+        public void SelectPlanetaryCard()
+        {
+            IsPlanetary = true;
+            HelixAngleDeg = 0.0;   // spur members only (the ring gear is spur)
+            int n = Math.Max(1, PlanetCount);
+            bool Assembles(int zp) => zp >= 4 && (2 * Teeth + 2 * zp) % n == 0;  // z_ring = z_sun + 2 z_planet
+            if (!Assembles(MateTeeth))
+            {
+                int start = Math.Max(4, Math.Min(MateTeeth, 9));
+                for (int d = 0; d < 24; d++)
+                {
+                    if (Assembles(start + d)) { MateTeeth = start + d; break; }
+                    if (Assembles(start - d)) { MateTeeth = start - d; break; }
+                }
+            }
+        }
+
+        private string _ringText = "-", _ratiosText = "-";
+        public string RingText { get => _ringText; private set { _ringText = value; OnChanged(); } }
+        public string RatiosText { get => _ratiosText; private set { _ratiosText = value; OnChanged(); } }
 
         /// <summary>Rack and Helical rack are separate cards over one
         /// GearFamily.Rack, split by HelixAngleDeg -- the same arrangement
@@ -144,6 +184,7 @@ namespace GearGen.UI
             OnChanged(nameof(IsRackStraight));
             OnChanged(nameof(IsRackHelical));
             OnChanged(nameof(IsCrossedHelical));
+            OnChanged(nameof(IsPlanetary));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -661,6 +702,14 @@ namespace GearGen.UI
                         TwistText = IsHerringbone
                             ? $"{dv("twist_per_half_deg"):0.##}° per half, V apex at mid-face"
                             : $"{dv("twist_total_deg"):0.##}° across face width";
+                    }
+                    if (IsPlanetary)
+                    {
+                        // planetary_derived_values (server.py): the sun's values
+                        // above, plus the set relationships
+                        RingText = $"z{dv("ring_teeth"):0} internal, OD {L(dv("ring_outer_diameter_mm"))}";
+                        CenterDistanceText = $"{L(dv("center_distance_mm"))} (sun-planet = ring-planet)";
+                        RatiosText = $"{dv("ratio_ring_fixed"):0.###}:1 ring fixed, {dv("ratio_sun_fixed"):0.###}:1 sun fixed, {dv("ratio_carrier_fixed"):0.###}:1 star";
                     }
                     if (IsCrossedHelical)
                     {

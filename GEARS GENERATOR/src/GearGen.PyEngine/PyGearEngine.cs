@@ -192,6 +192,18 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsPlanetary)
+            {
+                // Same reasoning as bevel/worm: PlanetaryParams has no separate
+                // inch constructor, so convert client-side.
+                req.GearType = "planetary";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;          // planet teeth
+                req.PlanetCount = p.PlanetCount;
+                req.RimThicknessMm = p.RimThicknessMm; // the ring's rim
+                return req;
+            }
+
             if (p.IsCrossedHelical)
             {
                 // Same reasoning as bevel/worm: CrossedHelicalPairParams has no

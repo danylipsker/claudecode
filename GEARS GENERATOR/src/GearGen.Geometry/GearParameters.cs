@@ -32,7 +32,13 @@ namespace GearGen.Geometry
         /// is gear 2's tooth count and ShaftAngleDeg the angle between the
         /// shafts, from which gear 2's helix and hand follow. Exports both
         /// members in mesh as a two-body STEP.</summary>
-        CrossedHelical
+        CrossedHelical,
+        /// <summary>Planetary (epicyclic) SET: sun + n planets + ring, all in
+        /// mesh -- see docs/gear-math.md section 11.4. Teeth = sun,
+        /// MateTeeth = planet, PlanetCount, RimThicknessMm = the ring's rim;
+        /// the ring's tooth count follows (z_s + 2 z_p). Exports every member
+        /// as one multi-body STEP.</summary>
+        Planetary
     }
 
     /// <summary>
@@ -156,6 +162,16 @@ namespace GearGen.Geometry
 
         public bool IsCrossedHelical => Family == GearFamily.CrossedHelical;
 
+        // ---- planetary set (docs/gear-math.md section 11.4) -- Family == Planetary only ----
+        // Reuses Teeth (sun), MateTeeth (planet), RimThicknessMm (ring rim),
+        // BoreDiameterMm (sun and planets), FaceWidthMm (all members).
+
+        public bool IsPlanetary => Family == GearFamily.Planetary;
+
+        /// <summary>Number of equally spaced planets. (z_sun + z_ring) must
+        /// divide by it for them all to mesh -- the engine warns otherwise.</summary>
+        public int PlanetCount { get; set; } = 3;
+
         /// <summary>Centre groove between the two helical halves, at the root
         /// diameter: 0 = a true herringbone (the halves meet at a sharp V
         /// apex); > 0 = the hob-runout clearance a machined double-helical
@@ -217,6 +233,11 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.Planetary:
+                    parts.Add("planetary"); parts.Add("s" + Teeth + "_p" + MateTeeth + "x" + PlanetCount + "_r" + (Teeth + 2 * MateTeeth));
+                    parts.Add(size); parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.CrossedHelical:
                     // gear 1's helix/hand; gear 2's follow from the shaft angle (docs/gear-math.md 7.5)

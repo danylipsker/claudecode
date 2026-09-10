@@ -75,7 +75,8 @@ namespace GearGen.App
                 bool internalGear = e.Args.Any(a => a == "--internal");
                 bool herringbone = e.Args.Any(a => a == "--herringbone");
                 bool screw = e.Args.Any(a => a == "--screw");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw);
+                bool planetary = e.Args.Any(a => a == "--planetary");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary);
                 return;
             }
 
@@ -272,7 +273,7 @@ namespace GearGen.App
         /// then exits. Invoke as: GearsGenerator.exe --uismoke out.png</summary>
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
             double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
-            bool herringbone = false, bool screw = false)
+            bool herringbone = false, bool screw = false, bool planetary = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -306,6 +307,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectHerringboneCard();
                 if (screw)
                     win.Panel.ViewModel.SelectCrossedHelicalCard();
+                if (planetary)
+                    win.Panel.ViewModel.SelectPlanetaryCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)

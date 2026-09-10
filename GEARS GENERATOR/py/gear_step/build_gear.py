@@ -302,6 +302,45 @@ def export_double_helical_step(gp: GearParams, gap_mm: float, path: str | Path) 
     _export_step_for_solidworks(build_double_helical_solid(gp, gap_mm=gap_mm), path)
 
 
+def export_planetary_step(pp, path: str | Path) -> None:
+    """Sun, every planet and the ring of a planetary set, in mesh (docs/gear-
+    math.md 11.4), as ONE multi-body STEP. pp: planetary.PlanetaryParams."""
+    from planetary import build_planetary_set
+    sun, planets, ring = build_planetary_set(pp)
+    _export_step_for_solidworks(bd.Compound(children=[sun, *planets, ring]), path)
+
+
+def export_planetary_profile_dxf(pp, path: str | Path) -> None:
+    """The whole set's cross-section -- sun, planets (positioned) and the
+    ring's two boundaries -- as closed polylines in one DXF."""
+    from shapely.affinity import rotate as sh_rotate, translate as sh_translate
+    from shapely.geometry import Polygon
+    from internal import internal_gear_outline, internal_gear_outer_outline
+
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+
+    def add(pts):
+        pts = list(pts)
+        msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+
+    sun = Polygon(full_gear_outline(pp.sun_params(), simplify_tolerance_mm=0.01))
+    if pp.z_planet % 2 == 0:
+        sun = sh_rotate(sun, 180.0 / pp.z_sun, origin=(0, 0))
+    add(sun.exterior.coords[:-1])
+    planet = Polygon(full_gear_outline(pp.planet_params(), simplify_tolerance_mm=0.01))
+    for k in range(pp.n_planets):
+        placed = sh_rotate(sh_translate(sh_rotate(planet, pp.planet_spin_deg(k), origin=(0, 0)),
+                                        yoff=pp.center_distance_mm),
+                           360.0 * k / pp.n_planets, origin=(0, 0))
+        add(placed.exterior.coords[:-1])
+    ring = pp.ring_params()
+    add(internal_gear_outer_outline(ring))
+    add(internal_gear_outline(ring, simplify_tolerance_mm=0.01))
+    doc.saveas(str(path))
+
+
 def export_crossed_helical_pair_step(pp, path: str | Path) -> None:
     """Both members of a screw-gear pair, positioned in mesh (docs/gear-math.md
     7.5), as ONE two-body STEP -- SolidWorks opens it as a multi-body part

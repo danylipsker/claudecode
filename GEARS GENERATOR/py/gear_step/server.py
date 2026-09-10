@@ -176,6 +176,50 @@ def screw_derived_values(pp) -> tuple[dict, list]:
     return derived, warnings
 
 
+def planetary_params_from_request(p: dict):
+    """Planetary set -- docs/gear-math.md 11.4. z = sun, mate_teeth = planet,
+    planet_count, rim_thickness_mm = the ring's rim; the ring's tooth count
+    follows (z_s + 2 z_p). module_mm already converted client-side for
+    inch input (as bevel/worm/rack)."""
+    from planetary import PlanetaryParams
+    return PlanetaryParams(
+        z_sun=int(p["z"]),
+        z_planet=int(p.get("mate_teeth") or 9),
+        n_planets=max(1, int(p.get("planet_count") or 3)),
+        module_mm=float(p["module_mm"]),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        backlash_mm=float(p.get("backlash_mm", 0.0)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        rim_thickness_mm=float(p.get("rim_thickness_mm", 6.0)),
+    )
+
+
+def planetary_derived_values(pp) -> tuple[dict, list]:
+    derived, warnings = derived_values(pp.sun_params())
+    derived.update({
+        "ring_teeth": float(pp.z_ring),
+        "planet_count": float(pp.n_planets),
+        "center_distance_mm": pp.center_distance_mm,
+        "ring_outer_diameter_mm": 2.0 * pp.ring_params().outer_radius,
+        "ratio_ring_fixed": pp.ratio_ring_fixed,
+        "ratio_sun_fixed": pp.ratio_sun_fixed,
+        "ratio_carrier_fixed": pp.ratio_carrier_fixed,
+        "assembly_ok": 1.0 if pp.assembly_ok else 0.0,
+        "planet_gap_mm": pp.planet_gap_mm,
+    })
+    if not pp.assembly_ok:
+        warnings.append(f"{pp.n_planets} equally spaced planets cannot all mesh: (z_sun + z_ring) = "
+                        f"{pp.z_sun + pp.z_ring} is not divisible by {pp.n_planets}. Change a tooth count or the planet count.")
+    if pp.planet_gap_mm <= 0:
+        warnings.append(f"Adjacent planets collide (tip circles overlap by {-pp.planet_gap_mm:.2f} mm): "
+                        f"fewer planets, or a bigger sun relative to the planets.")
+    return derived, warnings
+
+
 def bevel_params_from_request(p: dict) -> BevelGearParams:
     return BevelGearParams(
         z=int(p["z"]),
@@ -403,6 +447,11 @@ def handle(req: dict) -> dict:
             outline = full_gear_outline(pp.gear1_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
             derived, warnings = screw_derived_values(pp)
             return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "planetary":
+            pp = planetary_params_from_request(req)
+            outline = full_gear_outline(pp.sun_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
+            derived, warnings = planetary_derived_values(pp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "bevel":
             bp = bevel_params_from_request(req)
             outline = bevel_heel_tooth_outline(bp)
@@ -453,6 +502,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "screw":
             from build_gear import export_crossed_helical_pair_step
             export_crossed_helical_pair_step(screw_params_from_request(req), path)  # both members, in mesh
+        elif gear_type == "planetary":
+            from build_gear import export_planetary_step
+            export_planetary_step(planetary_params_from_request(req), path)  # sun + planets + ring, in mesh
         else:
             from build_gear import export_step
             gp = params_from_request(req)
@@ -480,6 +532,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "screw":
             from build_gear import export_dxf_profile
             export_dxf_profile(screw_params_from_request(req).gear1_params(), path)  # gear 1's transverse section
+        elif gear_type == "planetary":
+            from build_gear import export_planetary_profile_dxf
+            export_planetary_profile_dxf(planetary_params_from_request(req), path)  # the whole set's section
         else:
             # cylindrical AND herringbone: the DXF is the transverse section,
             # which a double-helical gear shares with its helical halves
@@ -574,6 +629,12 @@ def handle(req: dict) -> dict:
             pp = screw_params_from_request(req)
             s1, s2 = build_crossed_helical_pair(pp, simplify_tolerance_mm=0.03)
             bd.export_stl(bd.Compound(children=[s1, s2]), path, tolerance=0.002, angular_tolerance=0.3)
+        elif gear_type == "planetary":
+            from planetary import build_planetary_set
+            import build123d as bd
+            pp = planetary_params_from_request(req)
+            sun, planets, ring = build_planetary_set(pp, simplify_tolerance_mm=0.03)
+            bd.export_stl(bd.Compound(children=[sun, *planets, ring]), path, tolerance=0.02, angular_tolerance=0.3)
         else:
             from build_gear import build_gear_solid
             import build123d as bd

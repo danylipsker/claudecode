@@ -100,4 +100,10 @@ if __name__ == "__main__":
     s1, s2 = build_crossed_helical_pair(screw)
     render_solid_thumbnail(bd.Compound(children=[s1, s2]), f"{out_dir}/thumb_screw.png", elev=25, azim=-60)
 
+    from planetary import PlanetaryParams, build_planetary_set
+    planetary = PlanetaryParams(z_sun=12, z_planet=9, n_planets=3, module_mm=2.0, face_width_mm=8.0,
+                                bore_diameter_mm=5.0, rim_thickness_mm=5.0)
+    sun, planets, ring = build_planetary_set(planetary)
+    render_solid_thumbnail(bd.Compound(children=[sun, *planets, ring]), f"{out_dir}/thumb_planetary.png", elev=40, azim=-50)
+
     print("done")
