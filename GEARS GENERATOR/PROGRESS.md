@@ -1,6 +1,64 @@
-# GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/bevel/worm/rack/internal gears + real 3D viewer
 
-## Rack and worm root fillets were inverted (circle centre inside the tooth); rebuilt from the textbook construction (latest)
+## Seventh family: double-helical (herringbone) gears (latest)
+
+First of the user's requested additions (their list: spiral/zerol bevel,
+screw gears, herringbone, helical rack, face gears, double-enveloping worm,
+hypoid, planetary, cycloidal, globoid, hypocycloid reducer, eccentrically
+cycloidal, hyperboloidal; agreed order: herringbone, helical rack, crossed-
+helical pair, planetary set, cycloidal gear, cycloidal reducer disc first).
+
+- **Geometry** (`build_gear.build_double_helical_solid`, docs/gear-math.md
+  §7.4): two opposite-hand helical halves of one transverse profile,
+  mirror-symmetric about the mid-face. Each half is the same exact
+  twist-extrude the helical gear uses; the upper half starts from the
+  profile pre-rotated by the per-half twist and twists back to zero, so the
+  halves meet at the mid-plane in one fully-twisted profile (the V apex) and
+  both end faces carry the un-rotated profile. Optional centre gap (the hob-
+  runout groove a machined double-helical gear carries) filled by a root-
+  diameter cylinder so the part stays one solid; `hand` is the half at z=0.
+- **Checks** (`tests/test_herringbone.py`, 4 tests; suite now 54): sections
+  at 20/50/80 % of each half match the exactly-rotated profile to < 10 µm and
+  the section at `b − z` equals the one at `z` (both hands, with and without
+  a gap); end faces and apex faces as the formulas say; one manifold body
+  whose volume is Cavalieri's `A·(b−g) + π r_f² g − bore` to 0.2 %; STEP
+  round-trips as one solid. server.py gets a `herringbone` gear_type (outline
+  = the transverse profile, derived values + per-half twist and two input
+  warnings, STEP/DXF/mesh).
+- **UI**: a Herringbone card (mosaic now three columns — the set is past six
+  and two columns pushed the form below the fold), the HELIX section shared
+  with the cylindrical family under a family-specific header, a
+  DOUBLE HELICAL section with the centre-gap spinner, "twist per half, V apex
+  at mid-face" in the derived panel, `herringbone_z18_m2_pa20_helix30R_fw10`
+  file names, thumbnail, `--uismoke --herringbone`. Verified headless: the
+  render shows the V teeth with all derived values filled; STEP/DXF export;
+  fresh-launch SolidWorks import saved a native .sldprt in 21 s.
+- The UI smoke's fixed 9 s pump wasn't enough for this family (the engine's
+  first request pays the Python import cost, and two curved sweeps
+  tessellate slower than a spur gear): it rendered "Rebuilding 3D model..."
+  with every derived value "-". The smoke now pumps until the view model
+  reports idle with a model in hand (40 s cap).
+
+## SolidWorks export: 3D Interconnect was turning every export into a linked part (and popping a template dialog)
+
+Found while re-testing the rack in SolidWorks: every import into a freshly
+launched SolidWorks (and, it turned out, into an attached one too) blocked
+on a modal "New SOLIDWORKS Document" template dialog in SolidWorks' own
+window. Headless that is a hang; interactively it looks like the export
+stalling while a dialog waits in another app. Forcing "always use default
+templates" (with a stock template if none is set) was the first guess and
+measured as NOT the cause -- the exporter now logs what it found, and on
+this machine the toggle was already on with a valid template. The cause is
+**3D Interconnect**: with it on, SolidWorks opens a STEP by creating a new
+part (that's the template prompt) and inserting the STEP as a *linked*
+feature -- so every .sldprt this tool had produced referenced its own
+temporary STEP file instead of owning a native body. The exporter now turns
+3D Interconnect off for the duration of the import and restores it; the
+next fresh-launch import completed in 21 s with no dialog and saved a
+native body (477 KB for the herringbone vs 240 KB for a linked rack).
+Every user-facing setting touched is restored in a finally block.
+
+## Rack and worm root fillets were inverted (circle centre inside the tooth); rebuilt from the textbook construction
 
 User, on the rack: "the rack tooth fillets are not made right — fix it please" —
 the third report on the same fillet, after "the fillet that connects the teeth

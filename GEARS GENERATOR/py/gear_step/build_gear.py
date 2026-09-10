@@ -142,6 +142,59 @@ def build_gear_solid(gp: GearParams, simplify_tolerance_mm: float | None = None)
     return part.part
 
 
+def build_double_helical_solid(gp: GearParams, gap_mm: float = 0.0,
+                               simplify_tolerance_mm: float | None = None) -> bd.Part:
+    """A double-helical (herringbone) gear: two helical halves of opposite
+    hand sharing one transverse profile, mirror-symmetric about the
+    mid-plane of the face so the axial thrust each half generates cancels
+    -- docs/gear-math.md section 7.4.
+
+    Each half is the same exact helicoidal sweep build_gear_solid uses (so
+    the flank-accuracy argument there carries over unchanged; it is also
+    re-measured by tests/test_herringbone.py the same way). The lower half
+    sweeps the un-rotated profile from z=0 to z=half_fw, twisting by
+    twist_half = twist_total * half_fw / face_width in gp's hand; the upper
+    half starts at z = half_fw + gap_mm from the profile PRE-rotated by that
+    same twist_half and sweeps back to zero twist at z = face_width. So the
+    two meet (gap_mm == 0) at the mid-plane in the same rotated profile --
+    the apex of the V -- and both end faces carry the un-rotated profile.
+    gp.hand is the LOWER half's hand (the upper is the opposite by
+    construction): a herringbone as a whole has no hand.
+
+    gap_mm > 0 leaves a centre groove between the halves (the runout
+    clearance a hobbed double-helical gear needs; a true herringbone cut in
+    one piece has none), filled by a cylinder at the root diameter so the
+    part stays one solid. The bore is cut through everything last."""
+    if abs(gp.helix_angle_deg) < 1e-9:
+        raise ValueError("a double-helical gear needs a nonzero helix angle (0deg is a spur gear)")
+    if gap_mm < 0 or gap_mm >= gp.face_width_mm:
+        raise ValueError("the centre gap must be >= 0 and smaller than the face width")
+    if simplify_tolerance_mm is None:
+        simplify_tolerance_mm = 0.05  # same reasoning as build_gear_solid's helical default
+
+    outline = full_gear_outline(gp, simplify_tolerance_mm=simplify_tolerance_mm)
+    pts = [tuple(p) for p in outline]
+    half_fw = (gp.face_width_mm - gap_mm) / 2.0
+    twist_half = gp.twist_total_rad * half_fw / gp.face_width_mm
+    z_upper = half_fw + gap_mm
+
+    with bd.BuildPart() as part:
+        lower = _face_at(pts, 0.0, 0.0)
+        bd.add(bd.Solid.extrude_linear_with_rotation(
+            lower, (0, 0, 0), (0, 0, half_fw), math.degrees(twist_half)))
+        upper = _face_at(pts, twist_half, z_upper)
+        bd.add(bd.Solid.extrude_linear_with_rotation(
+            upper, (0, 0, z_upper), (0, 0, half_fw), math.degrees(-twist_half)))
+        if gap_mm > 0:
+            bd.add(bd.Solid.make_cylinder(gp.dedendum_radius, gap_mm, bd.Plane((0, 0, half_fw))))
+        if gp.bore_diameter_mm > 0:
+            with bd.BuildSketch(part.faces().sort_by(bd.Axis.Z)[-1]) as bore_sk:
+                bd.Circle(gp.bore_diameter_mm / 2.0)
+            bd.extrude(amount=-gp.face_width_mm, mode=bd.Mode.SUBTRACT)
+
+    return part.part
+
+
 def _make_bevel_tooth_solid(toe: list, heel: list) -> bd.Solid:
     """One tooth as a proper closed, manifold solid.
 
@@ -242,6 +295,10 @@ def build_bevel_gear_solid(bp: BevelGearParams, n_phi: int = 240,
 def export_step(gp: GearParams, path: str | Path) -> None:
     solid = build_gear_solid(gp)
     _export_step_for_solidworks(solid, path)
+
+
+def export_double_helical_step(gp: GearParams, gap_mm: float, path: str | Path) -> None:
+    _export_step_for_solidworks(build_double_helical_solid(gp, gap_mm=gap_mm), path)
 
 
 def export_bevel_step(bp: BevelGearParams, path: str | Path) -> None:

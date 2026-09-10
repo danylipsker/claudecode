@@ -192,6 +192,14 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            // Cylindrical (spur/helical) and herringbone share params_from_
+            // request on the Python side, which has its own inch constructor,
+            // so these two send the raw unit-specific size unconverted.
+            if (p.IsHerringbone)
+            {
+                req.GearType = "herringbone";
+                req.GapMm = p.GapWidthMm;
+            }
             if (p.Unit == UnitSystem.Inch)
                 req.DiametralPitch = p.DiametralPitch;
             else

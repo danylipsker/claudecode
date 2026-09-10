@@ -131,10 +131,12 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="18,16,18,16">
                 <StackPanel>
                     <TextBlock Text="Gear Parameters" FontSize="16" FontWeight="Bold" Foreground="#111827"/>
-                    <TextBlock Text="External involute spur, helical, bevel, worm, rack &amp; internal gears" FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0"/>
+                    <TextBlock Text="External involute spur, helical, herringbone, bevel, worm, rack &amp; internal gears" FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0"/>
 
                     <TextBlock Text="GEAR FAMILY" Style="{StaticResource SectionHeader}"/>
-                    <UniformGrid Columns="2" Rows="3">
+                    <!-- Three columns: the family set is growing past six, and two
+                         columns would push the parameter form below the fold. -->
+                    <UniformGrid Columns="3">
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsCylindricalSpur, Mode=OneWay}" Checked="OnCylindricalChecked">
                             <StackPanel>
@@ -147,6 +149,13 @@
                             <StackPanel>
                                 <Image Source="Assets/thumb_helical.png" Height="76" Stretch="Uniform"/>
                                 <TextBlock Text="Helical" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsHerringbone, Mode=OneWay}" Checked="OnHerringboneChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_herringbone.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Herringbone" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
@@ -214,8 +223,8 @@
                     <local:NumericSpinner Visibility="{Binding IsNotInternal, Converter={StaticResource B2V}}"
                                            Label="{Binding BoreOrHoleLabel}" Value="{Binding BoreDiameterDisplay}" Minimum="0" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
 
-                    <StackPanel Visibility="{Binding IsCylindrical, Converter={StaticResource B2V}}">
-                    <TextBlock Text="HELIX (0° = spur gear)" Style="{StaticResource SectionHeader}"/>
+                    <StackPanel Visibility="{Binding ShowHelixSection, Converter={StaticResource B2V}}">
+                    <TextBlock Text="{Binding HelixSectionHeader}" Style="{StaticResource SectionHeader}"/>
                     <local:NumericSpinner Label="Helix angle" Value="{Binding HelixAngleDeg}" Minimum="0" Maximum="45" Step="0.5" DecimalPlaces="1" Suffix="°"/>
                     <Grid Visibility="{Binding IsHelical, Converter={StaticResource B2V}}" Margin="0,6,0,0">
                         <Grid.ColumnDefinitions>
@@ -261,6 +270,13 @@
                         <TextBlock Text="A straight gear track -- 'Number of teeth' above sets how many fit along its length. The mounting-hole spinner above (SIZE section) drills one hole per tooth pitch through the backing bar."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Backing height" Value="{Binding BackingHeightDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsHerringbone, Converter={StaticResource B2V}}">
+                        <TextBlock Text="DOUBLE HELICAL (HERRINGBONE)" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Two opposite-hand helical halves on one blank, mirror-symmetric about the mid-face so the axial thrust cancels. The helix angle and hand above describe the half at one face; the other half is the opposite hand. Centre gap 0 = a true herringbone (sharp V apex); larger = the hob-runout groove a machined double-helical gear carries, cut at the root diameter."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Centre gap (0 = none)" Value="{Binding GapWidthDisplay}" Minimum="0" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsInternal, Converter={StaticResource B2V}}">
@@ -368,7 +384,7 @@
                         <TextBlock Text="{Binding LeadText}" FontSize="13" Foreground="#111827"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Text="TOTAL TWIST" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="TWIST" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding TwistText}" FontSize="13" Foreground="#111827"/>
                     </StackPanel>
                 </UniformGrid>

@@ -123,6 +123,11 @@ namespace GearGen.UI
             ViewModel?.SelectInternalCard();
         }
 
+        private void OnHerringboneChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectHerringboneCard();
+        }
+
         private async void OnExportStepClick(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog

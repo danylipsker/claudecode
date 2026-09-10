@@ -73,7 +73,8 @@ namespace GearGen.App
                 bool worm = e.Args.Any(a => a == "--worm");
                 bool rack = e.Args.Any(a => a == "--rack");
                 bool internalGear = e.Args.Any(a => a == "--internal");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear);
+                bool herringbone = e.Args.Any(a => a == "--herringbone");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone);
                 return;
             }
 
@@ -269,7 +270,8 @@ namespace GearGen.App
         /// RenderTargetBitmap (screen capture is unavailable in this environment),
         /// then exits. Invoke as: GearsGenerator.exe --uismoke out.png</summary>
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
-            double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false)
+            double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
+            bool herringbone = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -299,6 +301,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.IsRack = true;
                 if (internalGear)
                     win.Panel.ViewModel.IsInternal = true;
+                if (herringbone)
+                    win.Panel.ViewModel.SelectHerringboneCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)
@@ -314,7 +318,23 @@ namespace GearGen.App
                     }
                 }
 
-                PumpFor(9000); // let the debounce timer fire and both the fast outline AND the slower mesh round-trip finish
+                // Let the debounce timer fire and both the fast outline AND the
+                // slower mesh round-trip finish. Not a fixed 9 s any more: the
+                // Python engine pays its import cost on the first request and
+                // a herringbone's two curved sweeps tessellate slower than a
+                // spur gear, and a fixed pump rendered "Rebuilding 3D model..."
+                // with every derived value still "-". Pump until the view
+                // model reports idle with a 3D model in hand, capped at 40 s.
+                PumpFor(1500); // the 220 ms debounce must fire before "idle" means anything
+                var deadline = DateTime.UtcNow.AddSeconds(40);
+                while (DateTime.UtcNow < deadline)
+                {
+                    var vm = win.Panel?.ViewModel;
+                    if (vm != null && !vm.IsBusy && !vm.IsMeshBusy && vm.Model3D != null && vm.PreviewGeometry != null)
+                        break;
+                    PumpFor(100);
+                }
+                PumpFor(300); // one more layout/render pass after the last property change
                 var geom = win.Panel?.ViewModel?.PreviewGeometry;
                 Log("pumped; StatusMessage=" + win.Panel?.ViewModel?.StatusMessage +
                     "; geom bounds=" + geom?.Bounds + "; geom null=" + (geom == null) +

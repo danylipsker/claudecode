@@ -101,6 +101,33 @@ def derived_values(gp: GearParams) -> dict:
     }, warnings
 
 
+def herringbone_derived_values(gp: GearParams, gap_mm: float) -> tuple[dict, list]:
+    """A double-helical gear is two helical halves (docs/gear-math.md 7.4):
+    the cylindrical derived values apply unchanged (same transverse profile,
+    same lead), plus the per-half numbers the build actually uses."""
+    derived, warnings = derived_values(gp)
+    fw = gp.face_width_mm
+    if abs(gp.helix_angle_deg) < 1e-9:
+        warnings.append("A double-helical gear needs a helix angle -- at 0deg this is just a spur gear.")
+    if gap_mm < 0 or gap_mm >= fw:
+        warnings.append(f"Centre gap ({gap_mm:g} mm) must be smaller than the face width ({fw:g} mm).")
+        gap_mm = 0.0
+    half = (fw - gap_mm) / 2.0
+    derived["gap_mm"] = gap_mm
+    derived["half_face_width_mm"] = half
+    derived["twist_per_half_deg"] = derived["twist_total_deg"] * half / fw if fw > 0 else 0.0
+    # Every twist warning derived_values() emits is about the WHOLE face; for
+    # a herringbone each half only twists by half the gap-less amount, so
+    # re-issue it against the per-half figure instead.
+    warnings = [w for w in warnings if not w.startswith("This helix angle and face width twist")]
+    if abs(derived["twist_per_half_deg"]) > 170:
+        warnings.append(
+            f"This helix angle and face width twist each half by "
+            f"{abs(derived['twist_per_half_deg']):.0f}deg -- unusually large; "
+            f"double-check the helix angle and face width.")
+    return derived, warnings
+
+
 def bevel_params_from_request(p: dict) -> BevelGearParams:
     return BevelGearParams(
         z=int(p["z"]),
@@ -300,9 +327,18 @@ def handle(req: dict) -> dict:
     if cmd == "ping":
         return {"ok": True, "pong": True}
 
-    gear_type = req.get("gear_type", "cylindrical")  # "cylindrical" | "bevel" | "worm" | "rack" | "internal"
+    gear_type = req.get("gear_type", "cylindrical")  # "cylindrical" | "herringbone" | "bevel" | "worm" | "rack" | "internal"
+    # A herringbone is the cylindrical family's transverse profile built
+    # into two opposite-hand halves (docs/gear-math.md 7.4) -- same params
+    # plus the centre gap.
+    gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "herringbone":
+            gp = params_from_request(req)
+            outline = full_gear_outline(gp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
+            derived, warnings = herringbone_derived_values(gp, gap_mm)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "bevel":
             bp = bevel_params_from_request(req)
             outline = bevel_heel_tooth_outline(bp)
@@ -346,6 +382,10 @@ def handle(req: dict) -> dict:
             from build_gear import export_internal_gear_step
             ip = internal_params_from_request(req)
             export_internal_gear_step(ip, path)
+        elif gear_type == "herringbone":
+            from build_gear import export_double_helical_step
+            gp = params_from_request(req)
+            export_double_helical_step(gp, gap_mm, path)
         else:
             from build_gear import export_step
             gp = params_from_request(req)
@@ -371,6 +411,8 @@ def handle(req: dict) -> dict:
             ip = internal_params_from_request(req)
             export_internal_gear_profile_dxf(ip, path)
         else:
+            # cylindrical AND herringbone: the DXF is the transverse section,
+            # which a double-helical gear shares with its helical halves
             from build_gear import export_dxf_profile
             gp = params_from_request(req)
             export_dxf_profile(gp, path)
@@ -445,6 +487,17 @@ def handle(req: dict) -> dict:
             ip = internal_params_from_request(req)
             solid = build_internal_gear_solid(ip)
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "herringbone":
+            from build_gear import build_double_helical_solid
+            import build123d as bd
+            gp = params_from_request(req)
+            if abs(gp.helix_angle_deg) < 1e-9:
+                gp.helix_angle_deg = 30.0  # the outline/derived call already warned; still show SOMETHING sensible
+            if gap_mm < 0 or gap_mm >= gp.face_width_mm:
+                gap_mm = 0.0
+            solid = build_double_helical_solid(gp, gap_mm=gap_mm, simplify_tolerance_mm=0.03)
+            # curved helicoidal flanks: same fine tessellation as the helical branch below
+            bd.export_stl(solid, path, tolerance=0.002, angular_tolerance=0.3)
         else:
             from build_gear import build_gear_solid
             import build123d as bd

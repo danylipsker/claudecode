@@ -282,6 +282,38 @@ operation, so it applies to those too in principle; it has **not yet been
 measured** there and should be, by the same section-plane method, before
 being assumed absent.
 
+### 7.4 Double-helical (herringbone) gears
+
+A double-helical gear is two helical gears of opposite hand on one blank, sharing one
+transverse profile and mirror-symmetric about the mid-plane of the face, so the axial
+thrust of one half cancels the other's. Everything in 7.1–7.3 applies to each half
+unchanged — same normal/transverse module and pressure angle, same lead, same exact
+helicoidal sweep. With total face width `b`, centre gap `g` (0 for a true herringbone;
+> 0 for the hob-runout groove a machined double-helical gear carries) and
+`b_half = (b − g)/2`:
+
+```
+twist_half   = b_half * tan(beta) / r                    (7.3's formula over half the face)
+rotation(z)  = twist_half * z / b_half                    0 <= z <= b_half
+rotation(z)  = twist_half * (b - z) / b_half              b - b_half <= z <= b
+             (the gap b_half < z < b - b_half is a plain cylinder at the root radius)
+```
+
+`build_gear.build_double_helical_solid` builds the lower half as 7.3's twist-extrude
+from the un-rotated profile, and the upper half as the same twist-extrude started from
+the profile *pre-rotated* by `twist_half` and twisting by `−twist_half` — so the two
+meet at the mid-plane (or face the gap from either side) in the same fully-twisted
+profile, the apex of the V, and both end faces carry the un-rotated profile. `hand` is
+the hand of the half at `z = 0`; the other half is the opposite hand by construction,
+and the gear as a whole has none. The bore is cut through the fused result.
+
+Checks (`tests/test_herringbone.py`): sections at 20/50/80 % of each half match the
+exactly-rotated profile to < 10 µm, and the section at `b − z` equals the one at `z`
+(mirror symmetry; both hands; with and without a gap); both end faces and both apex
+faces are what the formulas say; the result is one manifold solid whose volume is
+Cavalieri's `A·(b − g) + π·r_f²·g − bore` to 0.2 % (a twist-extrude's sections are all
+congruent, so its volume is exactly area × length); the STEP round-trips as one solid.
+
 ## 8. Straight bevel gears (Tredgold's approximation)
 
 A bevel gear's teeth sit on a **cone**, not a cylinder: two gears on intersecting

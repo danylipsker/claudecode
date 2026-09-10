@@ -15,7 +15,7 @@ from rack import RackParams
 from internal import InternalGearParams
 from build_gear import (
     build_gear_solid, build_bevel_gear_solid, build_worm_solid,
-    build_rack_solid, build_internal_gear_solid,
+    build_rack_solid, build_internal_gear_solid, build_double_helical_solid,
 )
 
 
@@ -86,5 +86,9 @@ if __name__ == "__main__":
 
     internal = InternalGearParams(z=32, module_mm=2.5, face_width_mm=12.0, rim_thickness_mm=6.0, cutter_teeth=16)
     render_solid_thumbnail(build_internal_gear_solid(internal), f"{out_dir}/thumb_internal.png")
+
+    herringbone = GearParams.from_metric(z=18, module_mm=2.5, face_width_mm=20.0,
+                                          bore_diameter_mm=8.0, helix_angle_deg=30.0, hand="right")
+    render_solid_thumbnail(build_double_helical_solid(herringbone, gap_mm=0.0), f"{out_dir}/thumb_herringbone.png")
 
     print("done")

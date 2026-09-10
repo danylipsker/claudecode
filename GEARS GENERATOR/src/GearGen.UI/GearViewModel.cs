@@ -101,6 +101,17 @@ namespace GearGen.UI
         /// ignored: server.py's internal_params_from_request doesn't even
         /// read a bore_diameter_mm field).</summary>
         public bool IsNotInternal => !IsInternal;
+        public bool IsHerringbone
+        {
+            get => _p.Family == GearFamily.Herringbone;
+            set { if (value) { _p.Family = GearFamily.Herringbone; OnChanged(); FamilyChanged(); } }
+        }
+        /// <summary>The HELIX section serves both the cylindrical family
+        /// (where 0deg means spur) and the herringbone (where the angle is
+        /// each half's helix and must be nonzero) -- one section, two
+        /// headers.</summary>
+        public bool ShowHelixSection => IsCylindrical || IsHerringbone;
+        public string HelixSectionHeader => IsHerringbone ? "HELIX (each half)" : "HELIX (0° = spur gear)";
 
         private void FamilyChanged()
         {
@@ -111,6 +122,9 @@ namespace GearGen.UI
             OnChanged(nameof(IsRack));
             OnChanged(nameof(IsInternal));
             OnChanged(nameof(IsNotInternal));
+            OnChanged(nameof(IsHerringbone));
+            OnChanged(nameof(ShowHelixSection));
+            OnChanged(nameof(HelixSectionHeader));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -132,6 +146,23 @@ namespace GearGen.UI
         public void SelectInternalCard()
         {
             IsInternal = true;
+        }
+
+        /// <summary>A herringbone with a 0deg helix is a spur gear, so picking
+        /// the card from a spur state jumps to a visibly V-shaped default
+        /// (30deg) -- same reasoning as SelectHelicalCard's 25deg.</summary>
+        public void SelectHerringboneCard()
+        {
+            IsHerringbone = true;
+            if (!IsHelical) HelixAngleDeg = 30.0;
+        }
+
+        // ---- double-helical / herringbone (docs/gear-math.md section 7.4) -- Family == Herringbone only ----
+
+        public double GapWidthDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.GapWidthMm) : _p.GapWidthMm;
+            set { _p.GapWidthMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
         }
 
         // ---- worm (docs/gear-math.md section 9) -- Family == Worm only ------
@@ -338,6 +369,7 @@ namespace GearGen.UI
             OnChanged(nameof(PitchDiameterDisplay));
             OnChanged(nameof(BackingHeightDisplay));
             OnChanged(nameof(RimThicknessDisplay));
+            OnChanged(nameof(GapWidthDisplay));
         }
 
         // ---- preview / derived values ---------------------------------------
@@ -569,7 +601,12 @@ namespace GearGen.UI
                     {
                         TransverseModuleText = $"{L(dv("transverse_module_mm"))} ({dv("transverse_pressure_angle_deg"):0.##}° PA)";
                         LeadText = L(dv("lead_mm"));
-                        TwistText = $"{dv("twist_total_deg"):0.##}° across face width";
+                        // herringbone_derived_values (server.py) adds the per-half
+                        // twist the build actually uses; the whole-face figure
+                        // would describe a gear that doesn't exist.
+                        TwistText = IsHerringbone
+                            ? $"{dv("twist_per_half_deg"):0.##}° per half, V apex at mid-face"
+                            : $"{dv("twist_total_deg"):0.##}° across face width";
                     }
                 }
 

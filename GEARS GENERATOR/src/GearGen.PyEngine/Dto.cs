@@ -31,6 +31,7 @@ namespace GearGen.PyEngine
         [JsonProperty("backing_height_mm")] public double? BackingHeightMm;
         [JsonProperty("cutter_teeth")] public int? CutterTeeth;
         [JsonProperty("rim_thickness_mm")] public double? RimThicknessMm;
+        [JsonProperty("gap_mm")] public double? GapMm;
     }
 
     internal class EngineResponse

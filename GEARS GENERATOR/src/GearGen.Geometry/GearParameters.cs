@@ -19,7 +19,13 @@ namespace GearGen.Geometry
         /// <summary>Linear gear track -- see docs/gear-math.md section 10.</summary>
         Rack,
         /// <summary>Internal (ring) gear, teeth pointing inward -- see docs/gear-math.md section 11.</summary>
-        Internal
+        Internal,
+        /// <summary>Double-helical (herringbone): two opposite-hand helical
+        /// halves on one blank, mirror-symmetric about the mid-face so the
+        /// axial thrust cancels -- see docs/gear-math.md section 7.4. Uses
+        /// the cylindrical family's parameters (HelixAngleDeg must be > 0;
+        /// Hand is the half at z=0) plus GapWidthMm.</summary>
+        Herringbone
     }
 
     /// <summary>
@@ -133,6 +139,16 @@ namespace GearGen.Geometry
         /// out to the ring's outer diameter.</summary>
         public double RimThicknessMm { get; set; } = 6.0;
 
+        // ---- double-helical / herringbone (docs/gear-math.md section 7.4) -- Family == Herringbone only ----
+
+        public bool IsHerringbone => Family == GearFamily.Herringbone;
+
+        /// <summary>Centre groove between the two helical halves, at the root
+        /// diameter: 0 = a true herringbone (the halves meet at a sharp V
+        /// apex); > 0 = the hob-runout clearance a machined double-helical
+        /// gear usually has. Stored in mm regardless of Unit.</summary>
+        public double GapWidthMm { get; set; } = 0.0;
+
         public double ModuleFromDiametralPitch => 25.4 / DiametralPitch;
 
         public double EffectiveModuleMm => Unit == UnitSystem.Inch ? ModuleFromDiametralPitch : ModuleMm;
@@ -187,6 +203,14 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.Herringbone:
+                    // hand letter = the half at z=0 (the other half is the opposite by construction)
+                    parts.Add("herringbone"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("helix" + N(Math.Abs(HelixAngleDeg)) + hand);
+                    parts.Add("fw" + Len(FaceWidthMm));
+                    if (GapWidthMm > 0) parts.Add("gap" + Len(GapWidthMm));
                     break;
                 default:
                     parts.Add(IsHelical ? "helical" : "spur"); parts.Add("z" + Teeth); parts.Add(size);
