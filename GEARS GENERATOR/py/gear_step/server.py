@@ -33,6 +33,8 @@ import traceback
 from involute import GearParams, full_gear_outline, single_tooth_polygon
 from bevel import BevelGearParams
 from worm import WormParams, thread_axial_profile
+from rack import RackParams, rack_outline
+from internal import InternalGearParams, internal_gear_outline
 
 
 def params_from_request(p: dict) -> GearParams:
@@ -229,12 +231,75 @@ def worm_axial_outline(wp: WormParams):
     return thread_axial_profile(wp)
 
 
+def rack_params_from_request(p: dict) -> RackParams:
+    return RackParams(
+        z=int(p.get("z", 10)),
+        module_mm=float(p["module_mm"]),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        backlash_mm=float(p.get("backlash_mm", 0.0)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        backing_height_mm=float(p.get("backing_height_mm", 5.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def rack_derived_values(rp: RackParams) -> dict:
+    warnings = []
+    if rp.z < 2:
+        warnings.append("Fewer than 2 teeth -- a rack needs at least 2 to be meaningful.")
+    return {
+        "circular_pitch_mm": rp.circular_pitch_mm,
+        "circular_tooth_thickness_mm": rp.circular_tooth_thickness_mm,
+        "addendum_height_mm": rp.addendum_height_mm,
+        "dedendum_height_mm": rp.dedendum_height_mm,
+        "total_length_mm": rp.total_length_mm,
+        "total_height_mm": rp.total_height_mm,
+        "module_mm": rp.module_mm,
+        "diametral_pitch": 25.4 / rp.module_mm,
+    }, warnings
+
+
+def internal_params_from_request(p: dict) -> InternalGearParams:
+    return InternalGearParams(
+        z=int(p.get("z", 40)),
+        module_mm=float(p["module_mm"]),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        cutter_teeth=int(p.get("cutter_teeth", 0)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        rim_thickness_mm=float(p.get("rim_thickness_mm", 6.0)),
+        backlash_mm=float(p.get("backlash_mm", 0.0)),
+    )
+
+
+def internal_derived_values(ip: InternalGearParams, pinion_teeth: int = 0) -> dict:
+    warnings = []
+    if ip.cutter_teeth >= ip.z:
+        warnings.append("Construction cutter tooth count should be smaller than the ring's own tooth count.")
+    if pinion_teeth > 0 and pinion_teeth >= ip.z:
+        warnings.append("Mating pinion must have fewer teeth than the ring gear.")
+    center_distance = (ip.pitch_radius - (ip.module_mm * pinion_teeth / 2.0)) if pinion_teeth > 0 else 0.0
+    return {
+        "pitch_diameter_mm": 2 * ip.pitch_radius,
+        "addendum_diameter_mm": 2 * ip.addendum_radius,
+        "dedendum_diameter_mm": 2 * ip.dedendum_radius,
+        "outer_diameter_mm": 2 * ip.outer_radius,
+        "cutter_teeth": ip.cutter_teeth,
+        "center_distance_mm": center_distance,
+    }, warnings
+
+
 def handle(req: dict) -> dict:
     cmd = req.get("cmd")
     if cmd == "ping":
         return {"ok": True, "pong": True}
 
-    gear_type = req.get("gear_type", "cylindrical")  # "cylindrical" (spur/helical) | "bevel" | "worm"
+    gear_type = req.get("gear_type", "cylindrical")  # "cylindrical" | "bevel" | "worm" | "rack" | "internal"
 
     if cmd == "outline":
         if gear_type == "bevel":
@@ -246,6 +311,16 @@ def handle(req: dict) -> dict:
             wp = worm_params_from_request(req)
             outline = worm_axial_outline(wp)
             derived, warnings = worm_derived_values(wp, wheel_teeth=int(req.get("mate_teeth", 0)))
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "rack":
+            rp = rack_params_from_request(req)
+            outline = rack_outline(rp)
+            derived, warnings = rack_derived_values(rp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "internal":
+            ip = internal_params_from_request(req)
+            outline = internal_gear_outline(ip)
+            derived, warnings = internal_derived_values(ip, pinion_teeth=int(req.get("mate_teeth", 0)))
             return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         gp = params_from_request(req)
         outline = full_gear_outline(gp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
@@ -262,6 +337,14 @@ def handle(req: dict) -> dict:
             from build_gear import export_worm_step
             wp = worm_params_from_request(req)
             export_worm_step(wp, path)
+        elif gear_type == "rack":
+            from build_gear import export_rack_step
+            rp = rack_params_from_request(req)
+            export_rack_step(rp, path)
+        elif gear_type == "internal":
+            from build_gear import export_internal_gear_step
+            ip = internal_params_from_request(req)
+            export_internal_gear_step(ip, path)
         else:
             from build_gear import export_step
             gp = params_from_request(req)
@@ -278,6 +361,14 @@ def handle(req: dict) -> dict:
             from build_gear import export_worm_profile_dxf
             wp = worm_params_from_request(req)
             export_worm_profile_dxf(wp, path)
+        elif gear_type == "rack":
+            from build_gear import export_rack_profile_dxf
+            rp = rack_params_from_request(req)
+            export_rack_profile_dxf(rp, path)
+        elif gear_type == "internal":
+            from build_gear import export_internal_gear_profile_dxf
+            ip = internal_params_from_request(req)
+            export_internal_gear_profile_dxf(ip, path)
         else:
             from build_gear import export_dxf_profile
             gp = params_from_request(req)
@@ -301,6 +392,18 @@ def handle(req: dict) -> dict:
             import build123d as bd
             wp = worm_params_from_request(req)
             solid = build_worm_solid(wp, n_per_turn=40)
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "rack":
+            from build_gear import build_rack_solid
+            import build123d as bd
+            rp = rack_params_from_request(req)
+            solid = build_rack_solid(rp)
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "internal":
+            from build_gear import build_internal_gear_solid
+            import build123d as bd
+            ip = internal_params_from_request(req)
+            solid = build_internal_gear_solid(ip)
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         else:
             from build_gear import build_gear_solid

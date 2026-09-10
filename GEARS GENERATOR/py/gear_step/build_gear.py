@@ -20,6 +20,8 @@ import ezdxf
 from involute import GearParams, full_gear_outline
 from bevel import BevelGearParams, bevel_tooth_stations, root_cone_profile
 from worm import WormParams, build_worm_solid, thread_axial_profile
+from rack import RackParams, rack_outline, rack_hole_centres
+from internal import InternalGearParams, internal_gear_outline, internal_gear_outer_outline
 
 
 def _rotate_points(pts: list[tuple[float, float]], angle_rad: float) -> list[tuple[float, float]]:
@@ -228,6 +230,101 @@ def export_worm_profile_dxf(wp: WormParams, path: str | Path) -> None:
     msp = doc.modelspace()
     closed = list(pts) + [pts[0]]
     msp.add_lwpolyline(closed, format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
+def build_rack_solid(rp: RackParams) -> bd.Part:
+    """A rack: the validated 2D cross-section (rack.rack_outline -- see
+    docs/gear-math.md section 10) extruded along face_width_mm (the axis the
+    mating gear's own face width runs along, same convention as a spur
+    gear's own extrusion), with mounting holes cut through the backing bar
+    if bore_diameter_mm > 0 -- one per tooth pitch, through the full
+    thickness (same direction as the extrusion, not through the profile)."""
+    pts = rack_outline(rp)
+    closed = pts + [pts[0]]
+    with bd.BuildPart() as part:
+        with bd.BuildSketch() as sk:
+            with bd.BuildLine():
+                bd.Polyline(*closed)
+            bd.make_face()
+        bd.extrude(amount=rp.face_width_mm)
+
+        holes = rack_hole_centres(rp)
+        if holes:
+            with bd.BuildSketch(part.faces().sort_by(bd.Axis.Z)[-1]) as hole_sk:
+                with bd.Locations(*holes):
+                    bd.Circle(rp.bore_diameter_mm / 2.0)
+            bd.extrude(amount=-rp.face_width_mm, mode=bd.Mode.SUBTRACT)
+
+    return part.part
+
+
+def export_rack_step(rp: RackParams, path: str | Path) -> None:
+    solid = build_rack_solid(rp)
+    bd.export_step(solid, str(path))
+
+
+def export_rack_profile_dxf(rp: RackParams, path: str | Path) -> None:
+    """Flat 2D rack cross-section -- a true flat pattern (the rack profile is
+    constant along its own length), for the user's own CAD/CAM."""
+    pts = rack_outline(rp)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    closed = list(pts) + [pts[0]]
+    msp.add_lwpolyline(closed, format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
+def build_internal_gear_solid(ip: InternalGearParams, simplify_tolerance_mm: float = 0.03) -> bd.Part:
+    """An internal (ring) gear: the validated annulus-with-inward-teeth
+    cross-section (internal.py -- see docs/gear-math.md section 11)
+    extruded along face_width_mm. Built from an outer circular wire plus a
+    genuinely separate INNER toothed wire (a real hole, not a solid disk)
+    via bd.Face(outer_wire, [inner_wire]) -- confirmed by checking the
+    volume against a bore-less disk of the same outer dimensions and
+    finding it meaningfully smaller (an earlier version of this recipe
+    silently produced a solid disk with NO bore at all, its volume within
+    0.1% of the holeless figure -- caught by measuring, not by eyeballing a
+    render at a scale where the missing bore wasn't obvious).
+
+    simplify_tolerance_mm loosens internal_gear_outline's own tight default
+    (1 micron, meant for on-screen 2D preview) before extrusion -- a whole
+    ring's inner boundary repeats that density z times, so left at the tight
+    default a single z=40 ring's STEP file came out at 16.6MB (vs ~1MB for
+    a comparable external gear); 30 microns is still far tighter than any
+    real machining tolerance and cut that by an order of magnitude."""
+    outer_pts = internal_gear_outer_outline(ip)
+    inner_pts = internal_gear_outline(ip, simplify_tolerance_mm=simplify_tolerance_mm)
+
+    outer_wire = bd.Wire.make_polygon([(*p, 0) for p in outer_pts], close=True)
+    inner_wire = bd.Wire.make_polygon([(*p, 0) for p in inner_pts], close=True)
+    face = bd.Face(outer_wire, [inner_wire])
+
+    with bd.BuildPart() as part:
+        with bd.BuildSketch() as sk:
+            bd.add(face)
+        bd.extrude(amount=ip.face_width_mm)
+
+    return part.part
+
+
+def export_internal_gear_step(ip: InternalGearParams, path: str | Path) -> None:
+    solid = build_internal_gear_solid(ip)
+    bd.export_step(solid, str(path))
+
+
+def export_internal_gear_profile_dxf(ip: InternalGearParams, path: str | Path) -> None:
+    """Flat 2D cross-section (outer circle + inner toothed bore) for the
+    user's own CAD/CAM -- both boundaries in one file, as two closed
+    polylines."""
+    outer_pts = internal_gear_outer_outline(ip)
+    inner_pts = internal_gear_outline(ip)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(list(outer_pts) + [outer_pts[0]], format="xy", dxfattribs={"closed": True})
+    msp.add_lwpolyline(list(inner_pts) + [inner_pts[0]], format="xy", dxfattribs={"closed": True})
     doc.saveas(str(path))
 
 

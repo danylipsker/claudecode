@@ -456,7 +456,207 @@ pieces sidesteps the hang entirely (effectively instant) and is still a fully va
 STL/STEP export — SolidWorks opens it as a multi-body part rather than one fused
 solid, a documented, deliberate tradeoff (§ PROGRESS.md "Known limitations").
 
-## 10. Cross-checks every implementation must pass
+## 10. Racks
+
+A rack is a gear whose pitch radius has gone to infinity: the pitch circle becomes
+a straight pitch **line**, and — this is the whole reason a rack is useful, not just
+a curiosity — the involute of a circle whose radius has gone to infinity degenerates
+to a **straight line** inclined at the pressure angle. This isn't an approximation
+taken *because* a rack is simple; it's the exact reason involute gears can be cut by
+a straight-flanked hob or rack cutter at all (`rack_cutter_tooth_points`, used
+throughout sections 1-9, already *is* this fact in action — it just wasn't, until
+now, exposed as a gear family in its own right).
+
+### 10.1 The flank is exactly straight — proved, not assumed
+
+Take `involute_point(rb, t) = rb*(sin(t) - t*cos(t), cos(t) + t*sin(t))` and the
+radius of curvature of that curve at parameter `t` is `rb*t` (a standard result for
+the involute — arc length from `t=0` is `rb*t²/2`, and the curve's radius of
+curvature is arc-length-derivative-related to exactly `rb*t`). Holding the point's
+*height above the pitch line* fixed (physically, the fillet-to-tip band a real tooth
+uses) while `z → ∞`: `rb = m*z*cos(alpha)/2` grows without bound, so **the radius of
+curvature at that fixed relative height grows without bound too** — the flank
+literally straightens out in the limit. Section 10's own cross-check (§13.11) does
+this numerically: an independent 3-point circle fit on `involute.py`'s own
+closed-form flank, at increasing `z`, confirms the fitted radius diverges (not just
+"gets large") as `z` grows.
+
+### 10.2 The tooth itself
+
+Circular pitch `p = pi*m` and tooth thickness `s = pi*m/2 - backlash` — *unchanged*
+from a gear's own formulas (§1, §2), because both are already independent of `z`:
+`p = 2*pi*R/z = 2*pi*(m*z/2)/z = pi*m` for *any* `z`, so no limit is even needed
+there, unlike the flank. Addendum `ha = ha**m` above the pitch line, dedendum
+`hf = hf**m` below it, and a root fillet tangent to both the flank and the flat root
+land — the same "tangent circle between two known lines" construction section 9.1's
+worm thread uses, since a rack tooth and a worm thread's axial section are the exact
+same shape (`rack.py`'s `rack_tooth_profile` is a direct adaptation of
+`worm.thread_axial_profile`, just parametrized by the rack's own circular tooth
+thickness instead of a quarter axial pitch).
+
+This tooth is **not** the same shape as `rack_cutter_tooth_points` (section 4's
+generating rack *cutter*) produces, despite both being straight-flanked racks —
+confirmed by inspection, not assumed: the cutter's own "tip" reaches down to the
+*workpiece's dedendum* depth (`rack_tip_depth = (hf*-x)*m`, so the tool can carve a
+properly deep root), and its far "back" edge is an arbitrary 3-module margin, well
+past where a real rack tooth's own addendum would end. A standalone rack gear needs
+its *own* addendum/dedendum, not the cutting tool's — the same reasoning
+`worm.py`'s own docstring already gives for why it writes its thread profile fresh
+rather than reusing that function.
+
+### 10.3 The solid, and mounting holes
+
+`z` copies of the tooth (`rack_tooth_profile`, shifted by one circular pitch each)
+plus a backing bar, combined the same way `full_gear_polygon` builds a whole spur
+gear cross-section: as a shapely **union** of the individual pieces, not by manually
+stitching boundary points edge-to-edge — robust against exactly the kind of
+"does this segment actually connect to the next one" bug hand-stitching risks.
+Extruded along `face_width_mm` (the same axis a mating gear's own face width runs
+along); through-holes for mounting bolts, one per tooth pitch through the backing
+bar, are a straight extrude-and-subtract, the same construction a normal gear's bore
+uses.
+
+## 11. Internal (ring) gears
+
+An internal gear has its teeth cut into an annular ring, pointing **inward**, and
+meshes with an external pinion running *inside* it — a real, checkable consequence
+of this: the ring and the pinion inside it turn the **same direction** (unlike any
+two external gears, which always turn opposite ways). The involute flank math is
+identical to an external gear's own (same base circle `rb = R*cos(alpha)`), reusing
+`single_tooth_polygon` completely unchanged as the *cutter's* tooth shape (exactly
+like bevel gears reuse it for their own non-integer-z tooth, §8.1) — what's
+genuinely new is the **generating kinematics**.
+
+### 11.1 Shaping kinematics: a cutter's pitch circle rolling inside the ring's
+
+Real internal gears are *shaped*, not hobbed — a rack (infinite radius) can't reach
+inside a ring, so an external pinion-shaped cutter is used instead, its pitch circle
+rolling without slip along the **inside** of the workpiece's own pitch circle.
+Unlike rack generation (§4, where the rack translates), both axes are **fixed** in
+space here: center distance `d = R - rc` (an internal mesh subtracts radii; an
+external mesh, §7 and any two ordinary gears, adds them), and because `rc < R` the
+geometric contact point between the two pitch circles is itself a fixed point in
+space, not one that travels as the parts turn.
+
+Rolling without slip at that fixed contact point requires matching arc length,
+`rc*theta_c = R*theta_w`, with `theta_c` and `theta_w` carrying the **same sign** —
+the same-rotation-direction fact above, falling directly out of the kinematics
+rather than assumed independently of it. For a cutter-local point `(px, py)`
+(cutter axis fixed at `(0, d)` in the fixed frame, cutter itself rotated by
+`theta_c` about that axis) mapped into the ring's own rotating frame (ring axis at
+the origin, rotated by `theta_w`):
+
+```
+theta_c = (R/rc) * theta_w
+(sx, sy) = rotate((px,py), theta_c) + (0, d)          cutter-local -> fixed frame
+(rx, ry) = rotate((sx,sy), -theta_w)                  fixed frame -> ring's own frame
+```
+
+**Checked directly, not assumed from the construction**: rolling without slip means
+a cutter-material point instantaneously *at* the contact location must have exactly
+**zero velocity relative to the ring's own frame** — the literal definition of
+rolling contact, and the check that actually pins the sign of `theta_c` down (get it
+backwards and this same construction would put the two gears turning opposite ways,
+which is wrong for an internal mesh but would still *look* plausible without this
+specific check). Confirmed by finite difference before anything else in this section
+was built on top of the transform, not after: `(x(theta_w=+eps) - x(theta_w=-eps)) /
+2*eps -> 0` as `eps -> 0`, to floating-point noise.
+
+### 11.2 The cutter's own addendum/dedendum are swapped
+
+The shaper cutter's tooth uses this ring's own module and pressure angle, but with
+addendum and dedendum coefficients **swapped**: the cutter's tip (its own addendum)
+is what reaches the ring's *deepest* cut — the dedendum, the farther-out root circle
+— and the cutter's own root (dedendum) is what stops short at the ring's addendum
+(tooth tip, the nearer-in circle). The same "cutter tip cuts the workpiece's
+dedendum" relationship section 4's rack cutter already has
+(`rack_tip_depth` uses `hf*`, not `ha*`), just for a gear-shaped cutter instead of a
+rack-shaped one.
+
+**The fundamental law of gearing** — the generated flank shape must not depend on
+which cutter tooth count did the generating, since `cutter_teeth` is a construction
+parameter only, not a property of the finished ring — is checked directly: the same
+ring generated with three different `cutter_teeth` values must match the
+closed-form involute to the same tight tolerance in every case (§13.14), not merely
+each individually "look about right."
+
+### 11.3 The solid
+
+An annulus from `addendum_radius` (tooth-tip circle, the bore-ward boundary) out to
+an outer rim, with `z` tooth gaps cut by the cutter sweep patterned around — the
+same `blank.difference(all_gaps)` structure `full_gear_polygon` uses for an external
+gear, just with an annulus instead of a plain disk for the blank. Built from a plain
+outer circular wire plus a *genuinely separate* inner toothed wire
+(`bd.Face(outer_wire, [inner_wire])`) — checked, this time by measuring rather than
+looking at a render at a scale where it wouldn't have been obvious: an earlier
+version of this recipe silently produced a **solid disk with no bore at all**, its
+volume within 0.1% of the holeless figure. The fix, and the regression test
+(§13.15), both compare the built solid's volume against a plain holeless disk of the
+same outer dimensions and require it to be *meaningfully* smaller, not just
+different.
+
+## 12. Spiral and hypoid bevel gears — not implemented; this is the plan
+
+Deliberately **not built**, on the judgment that a version worth trusting needs more
+than this pass had time for — and that writing that down honestly is worth more than
+shipping something plausible-looking that turns out wrong, which is exactly what
+happened once already with straight bevel gears earlier in this project (two real
+geometry bugs, found only by actually rendering the solid and measuring it — see
+PROGRESS.md). This section is the reasoning and the math, kept for whoever picks it
+up next.
+
+### 12.1 Why straight bevel's approach doesn't extend
+
+Section 8's Tredgold approximation works by unrolling the back cone into a **flat**
+virtual spur gear, wrapping that flat tooth shape onto the real cone, and tapering
+linearly heel-to-toe — a pure coordinate transform on an already-flat, already-valid
+involute tooth. It's exact enough to be the real industry method for **straight**
+bevel gears specifically because a straight bevel tooth's own generator (an imaginary
+crown/flat gear) doesn't itself need any curvature along the face width — the tooth
+lies in radial planes through the cone apex.
+
+A spiral bevel tooth does not: its whole purpose is a curved (commonly circular-arc,
+in the classic Gleason system) lengthwise tooth trace, which changes the contact
+pattern and lets teeth engage gradually instead of across their whole length at
+once (quieter, more load capacity — why spiral bevel is the real-world default over
+straight bevel outside of low-speed/low-cost applications). That curvature is not a
+coordinate transform on a flat tooth; it comes from the actual **kinematics of the
+cutting machine** — a rotating circular cutter head, itself offset and tilted
+(cradle angle), generating the tooth as a *real* three-dimensional motion, not
+foldable back onto a 2D construction the way straight bevel's cone-unwrap is.
+
+### 12.2 What a correct implementation would actually need
+
+1. **Cutter-head kinematics**: a circular cutter (face-mill or face-hob) of a
+   chosen radius, generating the tooth surface as the envelope of its cutting edges
+   swept through the cradle's rotation — this is a genuine 3D generation process
+   (structurally closer to section 11's shaper-cutter envelope than to section 8's
+   flat-tooth wrap), not a formula applied to an already-known flat shape.
+2. **Two more free parameters than straight bevel has**: spiral angle (the
+   mean tooth-trace angle, analogous to a helical gear's helix angle but varying
+   along the face rather than constant) and cutter radius (or, in the hypoid case, an
+   offset between the two axes — hypoid gears' axes don't even intersect, unlike
+   every other family in this project, which breaks several assumptions sections
+   1-11 all share about a common apex or a pair of coplanar axes).
+3. **A real validation target**: sections 1-11 each had an independent
+   closed-form or classical result to check the generated geometry against
+   (the closed-form involute, the classical undercut cutoff, the AGMA outside-
+   diameter formula, a from-scratch rolling-contact velocity check). Spiral
+   bevel's equivalent would be checking the generated tooth against the
+   published Gleason summary-of-cut equations for a chosen cutter radius and
+   spiral angle — necessary before trusting a generated tooth shape at all,
+   and not yet sourced.
+4. **Hypoid's axis offset specifically** changes the pitch surfaces from cones to
+   hyperboloids of revolution — a further, separate generalization beyond spiral
+   bevel with intersecting axes, and not needed at all if only spiral (intersecting-
+   axis) bevel gears are actually wanted.
+
+Given the size of 1-3 alone, a first real attempt should almost certainly target
+plain spiral bevel (intersecting axes) only, and treat hypoid as a distinct,
+later extension once spiral bevel's own cutter-head kinematics are implemented and
+validated against a known cut.
+
+## 13. Cross-checks every implementation must pass
 
 1. `z=20, m=2, alpha=20°, x=0` produces **no** undercut (root fillet stays a smooth
    tangent curve above `rb`).
@@ -482,3 +682,27 @@ solid, a documented, deliberate tradeoff (§ PROGRESS.md "Known limitations").
    tooth, none dropped or merged) and every body is individually manifold, across
    several different z/module/bore/shaft-angle combinations — the regression test
    for the loft-capping and fuse-robustness bugs described in §8.3.
+10. A rack's flank angle, measured directly on the generated tooth, matches the
+    pressure angle exactly (§10.1) — not approximately, since it's constructed as
+    a literal straight line, not sampled from a curve.
+11. An independent numerical 3-point circle fit on `involute.py`'s own closed-form
+    flank shows the radius of curvature strictly increasing, and diverging (more
+    than 50x over a 64x increase in `z`), confirming the rack limit (§10.1) against
+    the gear formula it's a limit of, not just against the rack module's own math.
+12. A rack's built solid is manifold with exactly one body across several
+    z/module/backing/bore combinations (the same class of check §8.3's bugs were
+    found by, applied to the family that hadn't had it yet).
+13. An internal gear's rolling-contact transform (§11.1) gives a contact-point
+    velocity, relative to the ring's own frame, of zero to floating-point noise —
+    the check that pins the transform's sign, found before anything else in that
+    module was built on top of it.
+14. An internal gear's generated flank matches the closed-form involute of its own
+    base circle to <0.05° over many sampled points on one isolated flank, **and**
+    that match holds independently of which construction `cutter_teeth` value
+    produced it (the fundamental law of gearing, §11.2) — checked by generating
+    the same ring three different ways and confirming they agree with each other,
+    not just that each individually looks right.
+15. An internal gear's built solid is manifold with exactly one body, and its
+    volume is meaningfully less (not just "less") than a bore-less disk of the same
+    outer dimensions — the regression test for the silent-missing-bore bug
+    described in §11.3.

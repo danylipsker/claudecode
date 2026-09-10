@@ -1,6 +1,83 @@
-# GEARS GENERATOR — status: v1 complete + helical/bevel/worm gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## SolidWorks add-in: two real registration bugs found and fixed; one open question (latest)
+## Racks and internal (ring) gears: added, validated end-to-end; spiral bevel documented as a plan only (latest)
+
+Extends the Python geometry engine (`py/gear_step/`) with the two gear families
+PROGRESS.md previously listed as "out of scope for now" that were most tractable
+to actually finish, plus an honest writeup of the third (spiral/hypoid bevel —
+see below) rather than a rushed, unvalidated attempt at it. Full technical
+writeup: `docs/gear-math.md` §10 (racks), §11 (internal gears), §12 (spiral bevel
+plan).
+
+- **Racks** (`rack.py`) — the z→∞ limit of a spur gear: the involute flank
+  degenerates to a straight line at exactly the pressure angle (proved via the
+  involute's own radius-of-curvature formula, then cross-checked numerically
+  against an independent 3-point circle fit on the actual gear code across
+  z=20..1280, confirming genuine divergence). The tooth itself is a fresh
+  straight-sided trapezoid (`rack_tooth_profile`), a direct adaptation of
+  `worm.py`'s `thread_axial_profile` rather than a reuse of
+  `rack_cutter_tooth_points` — confirmed by inspection that the latter is
+  specifically a cutting-tool shape (its own "tip" reaches the *workpiece's*
+  dedendum depth, not a standalone rack's own addendum), the same reasoning
+  `worm.py` already used for the same fork. Full profile built as a shapely
+  union of z tooth wedges plus a backing bar (mirroring `full_gear_polygon`'s
+  own construction), not hand-stitched boundary points. 3D solid (extrusion +
+  optional mounting holes through the backing bar) built and measured
+  (`is_manifold`, single body, sane volume) across 4 parameter combinations.
+- **Internal (ring) gears** (`internal.py`) — teeth cut inward into an annular
+  ring, meshing with a pinion running inside it. Reuses `single_tooth_polygon`
+  completely unchanged as the shaper-cutter tooth shape (same principle bevel
+  gears already use it for their own non-integer-z tooth), but needed a
+  genuinely new generating transform: a cutter's pitch circle rolling *inside*
+  the ring's (both axes fixed, center distance = difference of radii, same
+  rotation direction for both parts — a real, checkable fact about internal
+  gearing, unlike any two external gears). Derived from the rolling-without-
+  slip condition at the (here, spatially fixed) contact point, and validated
+  the right way *before* building anything on top of it: checked that a
+  cutter-material point at the contact location has zero velocity relative to
+  the ring's own frame, to floating-point noise. Confirmed the generated flank
+  matches the closed-form involute to <0.05°, and — the fundamental law of
+  gearing — that this holds independently of which construction `cutter_teeth`
+  value was used. The solid is built from an outer circular wire plus a
+  genuinely separate inner toothed wire (`bd.Face(outer_wire, [inner_wire])`)
+  specifically because the naive alternative (a single combined wire) is a
+  documented trap for this shape: it can silently produce a bore-less disk
+  whose volume looks unremarkable at a glance (within a fraction of a percent
+  of the holeless figure) instead of a genuine ring with a hole. The
+  regression test for this (§13.15) compares the built solid's volume against
+  a plain holeless disk of the same outer dimensions and requires it to be
+  meaningfully smaller, not just different — the check that would catch this
+  specific failure mode if it ever recurred, not just a generic manifold check.
+- **Spiral/hypoid bevel gears — not implemented.** Straight bevel's own method
+  (Tredgold: unroll a flat virtual gear, wrap it onto the cone) doesn't extend,
+  because a spiral tooth's curved lengthwise trace comes from real cutter-head
+  kinematics (a rotating cutter, cradle angle, tilt), not a coordinate
+  transform on an already-flat tooth. Rather than ship an unvalidated
+  approximation, wrote up what a correct implementation actually needs
+  (`docs/gear-math.md` §12): the cutter-head generation process itself, the
+  additional free parameters (spiral angle, cutter radius, and for hypoid
+  specifically a non-intersecting axis offset that turns the pitch surfaces
+  into hyperboloids rather than cones), and — critically — what a correct
+  implementation could even be validated against, which hasn't been sourced
+  yet. This project already shipped one plausible-looking-but-wrong bevel
+  gear implementation earlier and found out the hard way; not repeating that
+  for a family with substantially less time invested and no clear validation
+  target yet.
+- Both new families' `server.py` commands (outline / export_step / export_dxf
+  / export_mesh) are wired following the exact existing dispatch pattern, so
+  the C# UI has a working protocol to connect to; the C# side itself (mosaic
+  cards, parameter panels, live preview) is not yet wired — this pass was
+  Python-only.
+- Internal gears' solid-construction default tolerance is deliberately looser
+  than the 2D preview default (30 microns vs. 1): left at the tight default,
+  a single z=40 ring's STEP file came out at 16.6MB (a whole ring's toothed
+  boundary repeats that per-point density z times, unlike an external gear's
+  much shorter perimeter) — still far tighter than any real machining
+  tolerance, and cut the file to 4.1MB.
+- All 44 tests pass (28 original + 6 rack + 10 internal); `involute.py` itself
+  was not touched by this pass.
+
+## SolidWorks add-in: two real registration bugs found and fixed; one open question
 
 Actually launched SolidWorks and checked whether the add-in loads (not just
 "is the code present") -- it didn't, and not for a superficial reason. Found
@@ -349,8 +426,12 @@ rendering the live WPF window via `RenderTargetBitmap` (not a screenshot tool)
   importing the same validated STEP is far more reliable. The part is fully
   correct and usable, just not re-editable via SolidWorks' own sketch/feature
   history.
-- External spur, helical, straight bevel, and worm gears. Spiral/hypoid
-  bevel, and internal/ring gears and racks are out of scope for now.
+- External spur, helical, straight bevel, and worm gears, plus racks and
+  internal (ring) gears -- the last two Python-only so far, not yet wired
+  into the C# UI (see the top section). Spiral/hypoid bevel is out of scope
+  for now -- attempted and deliberately not implemented; see
+  docs/gear-math.md section 12 for the full reasoning and what a correct
+  implementation would actually need.
 - **Worm gears: fully wired end-to-end** -- mosaic card, parameter UI, live
   3D preview, STEP/DXF export, and SolidWorks import all working. The 3D
   solid build was completely blocked at first, then fixed:
