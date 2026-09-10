@@ -1,11 +1,14 @@
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using GearGen.Geometry;
 using Microsoft.Win32;
 using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 
 namespace GearGen.App
 {
@@ -133,27 +136,111 @@ namespace GearGen.App
                     }
                 }
 
-                int loadErrors = 0;
-                ModelDoc2 model = swApp.LoadFile4(stepPath, "r", null, ref loadErrors) as ModelDoc2;
-                if (model == null)
-                    throw new InvalidOperationException(
-                        $"SolidWorks could not import the generated STEP file (error code {loadErrors}).");
+                // Importing a STEP creates a new part from the default part
+                // template, and on this machine every fresh-launched (and
+                // every attached) SolidWorks answered LoadFile4 with a modal
+                // "New SOLIDWORKS Document" dialog -- in ITS window, not ours
+                // -- blocking the import until someone clicked it (four runs
+                // in a row through the headless harness; interactively it
+                // looks like the export hanging while a dialog waits in
+                // another app). Two things are done about it, both restored
+                // afterwards so the user's own options are untouched:
+                //  1) "Always use default templates" is forced on, with a real
+                //     part template if none is configured. Measured: this
+                //     alone did NOT stop the prompt here (the toggle was
+                //     already on and the template valid -- see the diagnostic
+                //     in the result message), so:
+                //  2) 3D Interconnect is turned off for the import. With it
+                //     on, SolidWorks opens a STEP by creating a new part and
+                //     inserting the STEP as a LINKED feature -- the new-part
+                //     step is what pops the template dialog -- and the saved
+                //     .sldprt then references our temporary STEP file instead
+                //     of owning a native body. Off, the classic translator
+                //     imports a plain body, which is what "export to
+                //     SolidWorks" should mean anyway.
+                bool alwaysDefault = swApp.GetUserPreferenceToggle((int)swUserPreferenceToggle_e.swAlwaysUseDefaultTemplates);
+                string partTemplate = swApp.GetUserPreferenceStringValue((int)swUserPreferenceStringValue_e.swDefaultTemplatePart);
+                bool interconnect = swApp.GetUserPreferenceToggle((int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect);
+                string stockTemplate = null;
+                if (string.IsNullOrWhiteSpace(partTemplate) || !File.Exists(partTemplate))
+                    stockTemplate = FindStockPartTemplate(swApp);
+                string templateNote = $" [defaults toggle was {(alwaysDefault ? "on" : "off")}, part template '{partTemplate}', 3D Interconnect was {(interconnect ? "on" : "off")}]";
+                try
+                {
+                    if (!alwaysDefault)
+                    {
+                        swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swAlwaysUseDefaultTemplates, true);
+                        templateNote += " Suppressed SolidWorks' document-template prompt for the import.";
+                    }
+                    if (stockTemplate != null)
+                    {
+                        swApp.SetUserPreferenceStringValue((int)swUserPreferenceStringValue_e.swDefaultTemplatePart, stockTemplate);
+                        templateNote += $" Used part template {stockTemplate} (none was configured).";
+                    }
+                    if (interconnect)
+                    {
+                        swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect, false);
+                        templateNote += " 3D Interconnect switched off for the import (native body, no link to the STEP).";
+                    }
 
-                int saveErrors = 0, saveWarnings = 0;
-                bool saved = model.Extension.SaveAs(
-                    sldprtPath, 0 /* current version -- see class remarks: no per-year native option exists */,
-                    1 /* silent */, null, ref saveErrors, ref saveWarnings);
+                    int loadErrors = 0;
+                    ModelDoc2 model = swApp.LoadFile4(stepPath, "r", null, ref loadErrors) as ModelDoc2;
+                    if (model == null)
+                        throw new InvalidOperationException(
+                            $"SolidWorks could not import the generated STEP file (error code {loadErrors}).");
 
-                if (!saved)
-                    throw new InvalidOperationException($"SolidWorks Save As failed (error code {saveErrors}).");
+                    int saveErrors = 0, saveWarnings = 0;
+                    bool saved = model.Extension.SaveAs(
+                        sldprtPath, 0 /* current version -- see class remarks: no per-year native option exists */,
+                        1 /* silent */, null, ref saveErrors, ref saveWarnings);
 
-                return $"Saved to {sldprtPath} -- used {versionNote}";
+                    if (!saved)
+                        throw new InvalidOperationException($"SolidWorks Save As failed (error code {saveErrors}).");
+
+                    return $"Saved to {sldprtPath} -- used {versionNote}{templateNote}";
+                }
+                finally
+                {
+                    if (!alwaysDefault)
+                        swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swAlwaysUseDefaultTemplates, false);
+                    if (stockTemplate != null)
+                        swApp.SetUserPreferenceStringValue((int)swUserPreferenceStringValue_e.swDefaultTemplatePart, partTemplate ?? "");
+                    if (interconnect)
+                        swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect, true);
+                }
             }
             finally
             {
                 if (swApp != null)
                     Marshal.ReleaseComObject(swApp);
             }
+        }
+
+        /// <summary>The first *.prtdot in SolidWorks' own configured template
+        /// folders (Tools > Options > File Locations > Document Templates),
+        /// falling back to the stock ProgramData location; null if none.</summary>
+        private static string FindStockPartTemplate(ISldWorks swApp)
+        {
+            var folders = new System.Collections.Generic.List<string>();
+            string configured = swApp.GetUserPreferenceStringValue((int)swUserPreferenceStringValue_e.swFileLocationsDocumentTemplates);
+            if (!string.IsNullOrWhiteSpace(configured))
+                folders.AddRange(configured.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries));
+            // System.Environment spelled out: the sldworks interop has its own Environment type.
+            string programData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData);
+            if (Directory.Exists(Path.Combine(programData, "SolidWorks")))
+                folders.AddRange(Directory.GetDirectories(Path.Combine(programData, "SolidWorks"), "SOLIDWORKS *")
+                    .Select(d => Path.Combine(d, "templates")));
+            foreach (var folder in folders)
+            {
+                try
+                {
+                    if (!Directory.Exists(folder)) continue;
+                    var hit = Directory.GetFiles(folder, "*.prtdot").FirstOrDefault();
+                    if (hit != null) return hit;
+                }
+                catch (Exception) { /* unreadable folder: try the next one */ }
+            }
+            return null;
         }
 
         private static ISldWorks WaitForActiveObject(TimeSpan timeout)
