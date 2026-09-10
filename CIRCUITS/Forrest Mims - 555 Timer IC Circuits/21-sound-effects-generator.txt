@@ -45,6 +45,7 @@
   <w x="992 240 992 96" f="0"/>
   <r x="1056 96 1056 208" f="0" r="8"/>
   <x x="1080 170 1159 174" f="0" si="12" te="AUDIO OUTPUT" co="#c8c8c8"/>
+  <aout x="1056 272 1088 272" f="0" du="1" sa="44100" la="1"/>
   <r x="1056 208 1056 272" f="0" r="220"/>
   <x x="1028 234 1042 238" f="0" si="13" te="R4" co="#e0e0a0"/>
   <w x="1056 272 960 272" f="0"/>
@@ -69,8 +70,8 @@
   <w x="960 560 1152 560" f="0"/>
   <x x="96 640 703 644" f="0" si="13" te="The first 555 oscillates at a frequency determined by R1 and C1.  Its output charges\nC2 through R3.  The second 555 oscillates at a frequency determined by R7, C3 and the\nvoltage at pin 5, which is the charge on C2.\n\nExperiment with the settings of R1 and R7 and the values of R3 and C2 to obtain\nwarble effects." co="#c8d8c8"/>
   <x x="96 748 558 752" f="0" si="12" te="Book waveform, p.25:  the charge on C2 rises and resets in a sawtooth,\nand SPEAKER TONE FREQUENCY falls as it rises, giving the swoop." co="#9fb8c8"/>
-  <o en="50" sp="64" f="x20a" p="0" x="charge on C2"><p v="0" sc="2"/></o>
-  <o en="51" sp="64" f="x20a" p="1" x="AUDIO OUTPUT tone"><p v="0" sc="2"/></o>
+  <o en="51" sp="64" f="x20a" p="0" x="charge on C2"><p v="0" sc="2"/></o>
+  <o en="52" sp="64" f="x20a" p="1" x="AUDIO OUTPUT tone"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="10000" mx="500000" st="R1 sweep rate" stp="0" log="0"/>
   <adj e="28" ei="0" en="Resistance (ohms)" mn="10000" mx="500000" st="R7 pitch" stp="0" log="0"/>
   <adj e="21" ei="0" en="Resistance (ohms)" mn="1000" mx="200000" st="R3 warble depth" stp="0" log="0"/>

@@ -29,6 +29,7 @@
   <w x="592 304 784 304" f="0"/>
   <r x="784 304 784 400" f="0" r="8"/>
   <x x="808 356 887 360" f="0" si="12" te="AUDIO OUTPUT" co="#c8c8c8"/>
+  <aout x="784 304 816 304" f="0" du="1" sa="44100" la="1"/>
   <pc x="784 400 784 560" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
   <x x="756 474 770 478" f="0" si="13" te="C2" co="#e0e0a0"/>
   <p x="592 304 592 560" f="1" me="0" sc="0" re="0"/>
@@ -46,7 +47,7 @@
   <x x="1230 96 1260 100" f="0" si="14" te="GATE" co="#ffffff"/>
   <x x="1230 120 1256 124" f="0" si="12" te="IN\nLOW\nHIGH" co="#c8c8c8"/>
   <x x="1318 120 1344 124" f="0" si="12" te="TONE\nOFF\nON" co="#c8c8c8"/>
-  <o en="32" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
+  <o en="33" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
   <o en="20" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="10" ei="0" en="Resistance (ohms)" mn="100000" mx="2000000" st="R1 tone" stp="0" log="0"/>
 </cir>

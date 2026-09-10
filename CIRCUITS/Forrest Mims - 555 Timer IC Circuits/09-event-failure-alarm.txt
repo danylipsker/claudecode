@@ -32,6 +32,7 @@
   <r x="720 272 720 176" f="0" r="1000"/>
   <w x="720 176 720 96" f="0"/>
   <x x="744 240 925 244" f="0" si="11" te="AUDIO OUTPUT\n(a 1k load stands in --\nCircuitJS has no piezo buzzer)" co="#c8c8c8"/>
+  <aout x="720 272 752 272" f="0" du="1" sa="44100" la="1"/>
   <p x="720 272 720 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 176 96" f="0"/>
   <w x="176 96 304 96" f="0"/>
@@ -49,7 +50,7 @@
   <x x="96 640 682 644" f="0" si="13" te="When power is applied, C1 begins to charge through R2.  Unless S1 is closed before\nthe 555 timing cycle is completed, the buzzer will sound.  S1 can be any external\nswitch, so the circuit watches for an event that should keep happening.\n\nC1 and R2 control the delay; C1 is typically 2.2 uF to 47 uF." co="#c8d8c8"/>
   <x x="96 735 280 739" f="0" si="14" te="deadline = 1.1 x R2 x C1" co="#ffe08a"/>
   <x x="96 779 571 783" f="0" si="12" te="Book waveform, p.13:  while S1 keeps closing, the charge on C1 is dumped\nbefore it reaches the threshold.  Miss one and the charge crosses the\nthreshold line and the tone comes on." co="#9fb8c8"/>
-  <o en="33" sp="64" f="x20a" p="0" x="AUDIO OUTPUT drive"><p v="0" sc="2"/></o>
+  <o en="34" sp="64" f="x20a" p="0" x="AUDIO OUTPUT drive"><p v="0" sc="2"/></o>
   <o en="9" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="100000" mx="4000000" st="R2 deadline" stp="0" log="0"/>
 </cir>

@@ -279,9 +279,21 @@ class Cir:
         return self.add('<ln x="%d %d %d %d" f="0" te="%s"/>'
                         % (a[0], a[1], b[0], b[1], name))
 
-    def audio(self, a, name="Audio Output"):
-        return self.add('<aout x="%d %d %d %d" f="0" du="1" sa="8000" la="1"/>'
-                        % (a[0], a[1], a[0] + 32, a[1]))
+    def audio(self, a, b=None, labelnum=1, duration=1, rate=44100):
+        """Falstad's real Audio Output element (AudioOutputElm, getPostCount()==1):
+        a single-post instrument that reads the voltage at `a` relative to ground
+        and lets the running app play or save it as a .wav -- verified against the
+        upstream Java source, not just the file format.  `b` only aims the on-canvas
+        "Audio Out" text and its lead line; it is not a second electrical terminal,
+        so it never needs to be wired anywhere.  `labelnum` distinguishes multiple
+        audio outputs on one page (1 draws "Audio Out", >1 draws "Audio N") -- give
+        each one on the same circuit its own number or their Play buttons collide.
+        44.1 kHz beats the app's original 8 kHz default: several of these circuits
+        tune well above the 4 kHz Nyquist limit that 8 kHz would alias against."""
+        if b is None:
+            b = (a[0] + 32, a[1])
+        return self.add('<aout x="%d %d %d %d" f="0" du="%s" sa="%d" la="%d"/>'
+                        % (a[0], a[1], b[0], b[1], _fmt(duration), rate, labelnum))
 
     def text(self, a, s, size=16, color=None):
         """One text element.  `s` may be a list of lines, or contain \n --

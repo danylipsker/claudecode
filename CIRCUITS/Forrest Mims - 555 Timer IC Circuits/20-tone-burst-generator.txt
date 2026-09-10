@@ -39,6 +39,7 @@
   <w x="576 208 576 96" f="0"/>
   <r x="544 464 544 560" f="0" r="8"/>
   <x x="568 500 647 504" f="0" si="12" te="AUDIO OUTPUT" co="#c8c8c8"/>
+  <aout x="544 464 576 464" f="0" du="1" sa="44100" la="1"/>
   <w x="560 272 624 272" f="0"/>
   <p x="624 272 624 560" f="1" me="0" sc="0" re="0"/>
   <w x="96 96 304 96" f="0"/>
@@ -55,7 +56,7 @@
   <x x="96 640 689 644" f="0" si="13" te="When S1 is closed, the speaker emits a tone whose frequency is determined by R1 and\nC1.  When S1 is opened, the tone continues for several seconds, the time required\nfor C2 to discharge through R4.  Increase C2 to increase burst duration.\n\nPress S to close S1." co="#c8d8c8"/>
   <x x="96 735 357 739" f="0" si="14" te="tone f   = 1.44 / ((R1 + 2 R2) C1)\nburst tail = R4 x C2" co="#ffe08a"/>
   <x x="96 793 544 797" f="0" si="12" te="Book waveform, p.24:  CLOSE S1 then OPEN S1; TONE ON begins with the\nclosure and stays on well past the release before going off." co="#9fb8c8"/>
-  <o en="41" sp="64" f="x20a" p="0" x="tone out"><p v="0" sc="2"/></o>
+  <o en="42" sp="64" f="x20a" p="0" x="tone out"><p v="0" sc="2"/></o>
   <o en="23" sp="64" f="x20a" p="1" x="C2 burst envelope"><p v="0" sc="2"/></o>
   <adj e="13" ei="0" en="Capacitance (F)" mn="1e-08" mx="1e-06" st="C1 tone" stp="0" log="1"/>
   <adj e="23" ei="0" en="Capacitance (F)" mn="1e-05" mx="0.001" st="C2 burst length" stp="0" log="1"/>

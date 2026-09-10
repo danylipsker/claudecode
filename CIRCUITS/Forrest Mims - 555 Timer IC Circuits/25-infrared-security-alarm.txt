@@ -58,6 +58,7 @@
   <r x="1184 304 1184 208" f="0" r="1000"/>
   <w x="1184 208 1184 96" f="0"/>
   <x x="1208 300 1322 304" f="0" si="11" te="AUDIO OUTPUT\n(1k load stands in)" co="#c8c8c8"/>
+  <aout x="1184 304 1216 304" f="0" du="1" sa="44100" la="1"/>
   <p x="1184 304 1184 560" f="1" me="0" sc="0" re="0"/>
   <x x="96 700 1402 704" f="0" si="11" te="The transmitter is as drawn.  The receiver's phototransistor stage does not resolve at this scan resolution; it is built as the missing-pulse detector the page's text describes, with the beam modelled by switch BEAM." co="#c08080"/>
   <w x="96 96 272 96" f="0"/>
@@ -80,7 +81,7 @@
   <w x="1184 560 1216 560" f="0"/>
   <x x="96 640 696 644" f="0" si="13" te="The alarm sounds when the insert is moved from between the LED, an infrared emitter,\nand Q1.  Monitor doors, windows and so on by attaching the insert to them.  Shield\nQ1 from external light.  The gap is about 1 inch.\n\n555 (1) pulses the emitter; 555 (2) is a missing-pulse detector that keeps quiet\nwhile pulses arrive.  CircuitJS has no phototransistor, so the optical path is a\nswitch: press B to break the beam and trip the alarm." co="#c8d8c8"/>
   <x x="96 761 303 765" f="0" si="14" te="alarm delay = 1.1 x R5 x C3" co="#ffe08a"/>
-  <o en="59" sp="64" f="x20a" p="0" x="AUDIO OUTPUT drive"><p v="0" sc="2"/></o>
+  <o en="60" sp="64" f="x20a" p="0" x="AUDIO OUTPUT drive"><p v="0" sc="2"/></o>
   <o en="40" sp="64" f="x20a" p="1" x="charge on C3"><p v="0" sc="2"/></o>
   <adj e="34" ei="0" en="Resistance (ohms)" mn="100000" mx="4000000" st="R5 alarm delay" stp="0" log="0"/>
 </cir>

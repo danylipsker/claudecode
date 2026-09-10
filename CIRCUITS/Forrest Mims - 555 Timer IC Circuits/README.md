@@ -26,23 +26,23 @@ on-canvas notes all travel with it.
 | 06 | `06-cascaded-timer.txt` | 10 | **T** = trigger · two delay sliders |
 | 07 | `07-intervalometer.txt` | 11 | R1 interval, R3 relay-time sliders |
 | 08 | `08-missing-pulse-detector.txt` | 12 | R2 window slider |
-| 09 | `09-event-failure-alarm.txt` | 13 | **S** = the event · R2 deadline slider |
+| 09 | `09-event-failure-alarm.txt` | 13 | **S** = the event · R2 deadline slider · Play Audio |
 | 10 | `10-frequency-divider.txt` | 14 | R1 divide-ratio slider |
-| 11 | `11-voltage-controlled-oscillator.txt` | 15 | Control Voltage pot · R2 pitch slider |
+| 11 | `11-voltage-controlled-oscillator.txt` | 15 | Control Voltage pot · R2 pitch slider · Play Audio |
 | 12 | `12-pulse-generator.txt` | 16 | R1, C1 sliders (log) |
 | 13 | `13-frequency-meter.txt` | 17 | R3 range slider · 0–1 mA meter |
-| 14 | `14-audio-oscillator-metronome.txt` | 18 | R1 pitch, C1 tone/metronome sliders |
-| 15 | `15-toy-organ.txt` | 19 | **1**–**7** = the seven keys · R1 master pitch |
-| 16 | `16-gated-oscillator.txt` | 20 | **G** = gate on/off · R1 tone slider |
-| 17 | `17-chirp-generator.txt` | 21 | R1 chirp rate, C3 chirp length sliders |
-| 18 | `18-stepped-tone-generator.txt` | 22 | R1, R3 sliders (the Atari Punk Console) |
-| 19 | `19-3-state-tone-generator.txt` | 23 | **1** = S1 mode · R2 modulation-rate slider |
-| 20 | `20-tone-burst-generator.txt` | 24 | **S** = S1 · C2 burst-length slider |
-| 21 | `21-sound-effects-generator.txt` | 25 | R1 sweep, R7 pitch, R3 warble sliders |
+| 14 | `14-audio-oscillator-metronome.txt` | 18 | R1 pitch, C1 tone/metronome sliders · Play Audio x2 |
+| 15 | `15-toy-organ.txt` | 19 | **1**–**7** = the seven keys · R1 master pitch · Play Audio |
+| 16 | `16-gated-oscillator.txt` | 20 | **G** = gate on/off · R1 tone slider · Play Audio |
+| 17 | `17-chirp-generator.txt` | 21 | R1 chirp rate, R3/C3 chirp length sliders · Play Audio |
+| 18 | `18-stepped-tone-generator.txt` | 22 | R1, R3 sliders (the Atari Punk Console) · Play Audio |
+| 19 | `19-3-state-tone-generator.txt` | 23 | **1** = S1 mode · R2 modulation-rate slider · Play Audio |
+| 20 | `20-tone-burst-generator.txt` | 24 | **S** = S1 · C1 tone, C2 burst-length sliders · Play Audio |
+| 21 | `21-sound-effects-generator.txt` | 25 | R1 sweep, R7 pitch, R3 warble sliders · Play Audio |
 | 22 | `22-led-flasher.txt` | 26 | R1 flash-rate slider · live LED |
 | 23 | `23-power-fet-lamp-dimmer.txt` | 27 | R2 brightness slider · live lamp |
-| 24 | `24-light-dark-detector.txt` | 28 | **L** = swap L/D · Light slider · R3 trip point |
-| 25 | `25-infrared-security-alarm.txt` | 29 | **B** = break the beam · R5 alarm-delay slider |
+| 24 | `24-light-dark-detector.txt` | 28 | **L** = swap L/D · Light slider · R3 trip point · Play Audio |
+| 25 | `25-infrared-security-alarm.txt` | 29 | **B** = break the beam · R5 alarm-delay slider · Play Audio |
 | 26 | `26-analog-lightwave-transmitter.txt` | 30 | Light slider drives the pulse rate |
 | 27 | `27-analog-lightwave-receiver.txt` | 31 | R9 calibrate slider · 0–1 mA meter |
 | 28 | `28-dc-dc-converter.txt` | 32 | R1 switching-rate slider · ~230 V output |
@@ -100,9 +100,12 @@ Loading a circuit gives you the whole page, not just a runnable schematic:
 * **Component values** are the book's, except where noted below.
 * **AUDIO OUTPUT** labels the 8 Ω resistor that stands in for the physical speaker
   or buzzer — the precise CircuitJS term (`aout` = AudioOutput), used as the label
-  everywhere one of these appears. It is a label only: none of these circuits is
-  actually wired to CircuitJS's own Audio Output element, so they run silently in
-  the simulator.
+  everywhere one of these appears. Every one is also wired to a real `AudioOutputElm`
+  (verified against the upstream Java source: it is a single-post instrument that
+  reads the driven end of the load, never the grounded or rail-tied end -- tapping
+  the wrong end reads a constant voltage and records silence), so **Play Audio** in
+  the app's side panel actually plays the tone. Confirmed by loading a modified
+  circuit in the live app and playing it back.
 
 ## Fidelity to the drawings
 

@@ -19,11 +19,13 @@ def xfmr_posts(a, width=32):
     return (x, y), (x + 64, y), (x, y + width), (x + 64, y + width)
 
 
-def speaker(c, gr, x, y_top, series_r=8, label="AUDIO OUTPUT"):
-    """8 ohm speaker load plus an Audio Output tap so it can be heard."""
+def speaker(c, gr, x, y_top, series_r=8, label="AUDIO OUTPUT", labelnum=1):
+    """Load resistor to ground plus a real Audio Output tap, so it can be heard.
+    The tap and the label both sit at the DRIVEN end (y_top): the grounded end
+    is a constant 0 V, so tapping it there would read silence."""
     c.r((x, y_top), (x, y_top + 64), series_r)
-    c.node((x, y_top + 32), (x + 64, y_top + 32), label)
-    c.audio((x, y_top + 64))
+    c.node((x, y_top), (x + 64, y_top), label)
+    c.audio((x, y_top), labelnum=labelnum)
     c.w((x, y_top + 64), (x, gr.y))
     gr.tap(x)
 
@@ -67,6 +69,7 @@ def c15():
     c.w(T.out, (880, T.out[1]))
     c.r((880, T.out[1]), (880, 336), 8)
     c.text((904, 290), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio((880, T.out[1]))
     c.pc((880, 336), (880, gr.y), 4.7e-6, ref="C8")
     gr.tap(880)
 
@@ -112,6 +115,7 @@ def c16():
     c.w(T.out, (784, T.out[1]))
     c.r((784, T.out[1]), (784, 400), 8)
     c.text((808, 356), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio((784, T.out[1]))
     c.pc((784, 400), (784, gr.y), 4.7e-6, ref="C2")
     gr.tap(784)
 
@@ -181,6 +185,7 @@ def c17():
     c.r((1184, B.out[1]), (1184, gr.y), 1000)
     gr.tap(1184)
     c.text((1208, 300), "AUDIO OUTPUT\\n(1k load stands in)", 11, "#c8c8c8")
+    c.audio((1184, B.out[1]))
 
     p1 = vprobe(c, A.out, gr)
     p2 = vprobe(c, B.out, gr)
@@ -236,6 +241,7 @@ def c18():
     r4 = c.r((1152, 224), (1152, 160), 5000, ref="R4")
     c.r((1152, 160), (1152, VP_Y), 8)
     c.text((1176, 128), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio((1152, 160))
     vr.tap(1152)
 
     p1 = vprobe(c, A.out, gr)
@@ -303,6 +309,7 @@ def c19():
     c.r((1152, B.out[1]), (1152, 352), 270, ref="R6")
     c.r((1152, 352), (1152, gr.y), 8)
     c.text((1176, 400), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio((1152, B.out[1]))
     gr.tap(1152)
 
     p1 = vprobe(c, A.out, gr)
@@ -355,6 +362,7 @@ def c20():
     c.w((coll[0], 208), (coll[0], VP_Y)); vr.tap(coll[0])
     c.r(emit, (emit[0], gr.y), 8)
     c.text((emit[0] + 24, 500), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio(emit)
     gr.tap(emit[0])
 
     p = vprobe(c, T.out, gr, lane=624)
@@ -410,6 +418,7 @@ def c21():
     # speaker from +V through R4 down to pin 3 of 555 (2)
     c.r((1056, VP_Y), (1056, 208), 8)
     c.text((1080, 170), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio((1056, B.out[1]))
     c.r((1056, 208), (1056, B.out[1]), 220, ref="R4")
     c.w((1056, B.out[1]), B.out)
     vr.tap(1056)
@@ -555,6 +564,7 @@ def c24():
     c.pc((880, T.out[1]), (880, 352), 4.7e-6, ref="C2")
     c.r((880, 352), (880, gr.y), 8)
     c.text((904, 400), "AUDIO OUTPUT", 12, "#c8c8c8")
+    c.audio((880, 352))
     gr.tap(880)
 
     p = vprobe(c, T.out, gr)
@@ -631,6 +641,7 @@ def c25():
     c.r((1184, B.out[1]), (1184, 208), 1000)
     c.w((1184, 208), (1184, VP_Y)); vr.tap(1184)
     c.text((1208, 300), "AUDIO OUTPUT\\n(1k load stands in)", 11, "#c8c8c8")
+    c.audio((1184, B.out[1]))
 
     p = vprobe(c, (1184, B.out[1]), gr)
     c.scope(p, 0, ((0, 2),), label="AUDIO OUTPUT drive")

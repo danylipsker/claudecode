@@ -23,10 +23,12 @@
   <r x="640 272 640 176" f="0" r="4700"/>
   <w x="640 176 640 96" f="0"/>
   <x x="664 150 966 154" f="0" si="11" te="AUDIO OUTPUT (piezo)  (black to pin 3, red to +9V)" co="#c8c8c8"/>
+  <aout x="640 272 672 272" f="0" du="1" sa="44100" la="1"/>
   <r x="640 272 720 272" f="0" r="100"/>
   <x x="674 250 688 254" f="0" si="13" te="R3" co="#e0e0a0"/>
   <r x="720 272 720 400" f="0" r="8"/>
   <x x="744 330 876 334" f="0" si="12" te="AUDIO OUTPUT (8 ohm)" co="#c8c8c8"/>
+  <aout x="720 272 752 272" f="0" du="1" sa="44100" la="2"/>
   <pc x="720 400 720 560" f="0" c="4.7e-06" iv="0" sr="0" vd="0"/>
   <x x="692 474 706 478" f="0" si="13" te="C2" co="#e0e0a0"/>
   <p x="528 272 528 560" f="1" me="0" sc="0" re="0"/>
@@ -48,7 +50,7 @@
   <x x="1230 319 1399 323" f="0" si="14" te="METRONOME  (C1 = 1 uF)" co="#ffffff"/>
   <x x="1230 343 1256 347" f="0" si="12" te="R1\n1M\n680K\n470K\n220K\n100K" co="#c8c8c8"/>
   <x x="1366 343 1458 347" f="0" si="12" te="FREQUENCY (Hz)\n1.2\n1.8\n2.9\n6.1\n9.4" co="#c8c8c8"/>
-  <o en="30" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
+  <o en="32" sp="64" f="x20a" p="0" x="pin 3 out"><p v="0" sc="2"/></o>
   <o en="13" sp="64" f="x20a" p="1" x="charge on C1"><p v="0" sc="2"/></o>
   <adj e="4" ei="0" en="Resistance (ohms)" mn="1000" mx="1000000" st="R1 pitch" stp="0" log="1"/>
   <adj e="13" ei="0" en="Capacitance (F)" mn="1e-08" mx="1e-06" st="C1 tone / metronome" stp="0" log="1"/>
