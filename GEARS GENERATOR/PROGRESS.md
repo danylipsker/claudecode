@@ -1,6 +1,60 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## Checked every other gear family for the same fillet bug class as rack; found and fixed it in worm too (latest)
+## Worm now a single fused solid (not a multi-body Compound); found and fixed a SolidWorks-import bug affecting 4 of 6 gear families along the way (latest)
+
+User report: "in the worm gear generator, the fillets are the joints between
+the central cylinder and the spiral tooth. those fillets are made wrong. the
+fillet serves as merging geometry between the elements. just fix the fillets,
+merge the elements into one solid file." Correct: `build_worm_solid` returned
+an unfused `Compound` (core cylinder + one loft per thread, touching but never
+topologically joined) — a real, deliberate tradeoff from earlier in the
+project, made because sequential pairwise fusing (`core.fuse(t1).fuse(t2)...`)
+genuinely hangs (10+ min) on spiral-vs-already-spiralled intersections.
+
+- **The actual fix, found by testing the operation that was never actually
+  tried**: a single N-ary fuse — `core.fuse(*threads)`, every thread passed to
+  ONE call, not fused in sequentially — resolves all the intersections
+  together and is fast (timed across starts=1..4 and two lengths: a few
+  seconds, worst case ~11s for a 60mm-long worm). `build_worm_solid` now
+  returns one true fused `Solid`; the thread genuinely merges into the shaft
+  instead of sitting next to it. Bevel gears hit what looked like the
+  identical problem and, checked directly rather than assumed, its own N-ary
+  fuse really does fail differently there (empty/non-manifold results on real
+  cases) — bevel's Compound stands on its own, this isn't a "the same fix
+  applies everywhere" story.
+- **Along the way, testing the fused worm's STEP export in real SolidWorks
+  surfaced a separate, much bigger bug**: a bare `bd.Solid`/`Part` (spur,
+  helical, rack, internal, and now the fused worm) exports via this OCCT
+  version as an `ADVANCED_BREP_SHAPE_REPRESENTATION` STEP entity — valid
+  STEP AP214, round-trips fine through build123d/OCCT itself — but
+  SolidWorks' own translator rejects it outright with a generic "error code
+  1". Reproduced for 4 of 6 families; bevel and the old worm were accidentally
+  fine only because they already happened to export as Compounds. First fix
+  attempt (`if not isinstance(shape, Compound): wrap it`) looked right and
+  wasn't — build123d's own `BuildPart().part` result is ALREADY a Compound
+  instance (and already `TopAbs_COMPOUND` at the raw OCCT level, confirmed via
+  `.wrapped.ShapeType()`, not just the Python class) — so the check silently
+  skipped the exact families that needed it. The actual fix: unconditionally
+  extract every solid via `.solids()` and rebuild a fresh `Compound` from
+  those raw `Solid` objects, regardless of what the input's own type claims —
+  a Compound built with no `BuildPart` lineage exports via the plain
+  `SHAPE_REPRESENTATION` entity SolidWorks accepts. Applied uniformly (one
+  helper, `_export_step_for_solidworks`, used by all 5 `export_*_step`
+  functions) rather than only to the families caught failing.
+- **Verified against real SolidWorks, not just re-derived from source, for
+  all 6 families**: spur, helical, bevel, rack, internal, and worm all now
+  import successfully (previously: spur, rack, and internal failed; helical
+  was untested but shares spur's code path). Confirmed the worm is genuinely
+  one body, not just "SolidWorks didn't error": counted `MANIFOLD_SOLID_BREP`
+  entities directly in the exported STEP — worm: 1 (was: core + one per
+  thread start); bevel: 17 for z=16 (unaffected, still the intentional
+  blank+z-teeth Compound). All 44 Python tests pass, including a rewritten
+  worm test (previously asserted `1 + starts` bodies as the *correct*
+  expectation — inverted to assert exactly 1 fused body, plus a volume-bound
+  check that the fuse actually removed the core/thread overlap rather than
+  either no-op'ing or double-counting it).
+
+## Checked every other gear family for the same fillet bug class as rack; found and fixed it in worm too
 
 Following up the rack fillet fix (below): checked whether spur/helical/bevel/
 worm/internal share the same underlying construction, rather than assuming
@@ -599,6 +653,11 @@ rendering the live WPF window via `RenderTargetBitmap` (not a screenshot tool)
      `n_per_turn` than full circular accuracy would otherwise use). Confirmed
      the multi-body approach still imports into SolidWorks as a usable
      `.sldprt` via the same `--swtest` path used for the other families.
+     **Superseded (see the top "latest" section of this file)**: the
+     Compound-vs-fuse conclusion here was narrower than it looked -- a
+     single N-ary fuse (`core.fuse(*threads)`, all threads in one call) is
+     actually fast and reliable; the hang was specifically SEQUENTIAL
+     pairwise fusing. `build_worm_solid` now returns one true fused `Solid`.
   2. *Correctness*: a real bug in the multi-start (`starts` > 1) case --
      the second thread's angular phase offset was folded into the same
      calculation that derives Z from the lead, so instead of just rotating

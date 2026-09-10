@@ -214,31 +214,31 @@ def worm_thread_stations(wp: WormParams, start_index: int = 0, n_per_turn: int =
     return stations
 
 
-def build_worm_solid(wp: WormParams, n_per_turn: int = 40) -> bd.Compound:
-    """The worm as a solid: a core cylinder (root diameter) plus one ruled
-    loft per thread start.
+def build_worm_solid(wp: WormParams, n_per_turn: int = 40) -> bd.Solid:
+    """The worm as a single fused solid: a core cylinder (root diameter)
+    boolean-unioned with one ruled loft per thread start, so the thread
+    actually merges into the shaft (one continuous body, the join a real
+    machined/printed part would have) instead of sitting next to it as a
+    separate touching-but-unconnected piece.
 
-    This is a Compound, not a single boolean-fused Solid -- found (by
-    actually timing it, not assumed) that OpenCASCADE's boolean fuse hangs
-    (10+ minutes, killed rather than left running) when unioning multiple
-    spiral thread solids together or onto an already-threaded body, even
-    though each individual thread's loft alone takes about a second. Fusing
-    one thread onto a plain cylinder core IS fast (~4s); it's specifically
-    spiral-vs-spiral (or spiral-vs-already-spiralled) near-tangent surface
-    intersection that OpenCASCADE's boolean algorithm struggles with here.
-    A Compound of the unfused pieces sidesteps that entirely (effectively
-    instant) and is still a valid, correct STL/STEP export -- SolidWorks
-    opens it as a multi-body part rather than one fused solid body. The
-    tradeoff: without the fuse merging away the touching internal faces, the
-    exported file is larger than a true single-body part would be (bigger at
-    higher n_per_turn) -- n_per_turn's default here is deliberately lower
-    than full-accuracy would use, to keep that in check."""
+    An earlier version of this function returned an unfused bd.Compound
+    here, reporting that OpenCASCADE's boolean fuse hung (10+ minutes) on
+    spiral-vs-spiral intersections when unioning multiple thread solids --
+    correct as far as it went (sequential pairwise fusing, core.fuse(t1)
+    .fuse(t2)... , really does hang: fusing thread 2 onto an ALREADY-
+    spiralled result is the slow "spiral-vs-already-spiralled" case), but
+    wrong about the actual fix: passing every thread to ONE fuse call --
+    core.fuse(*threads), a genuine N-ary union, not sequential pairwise --
+    lets OpenCASCADE resolve every intersection together and is fast (under
+    ~4s at the default n_per_turn even at 4 starts, ~11s for a 60mm-long
+    worm; timed across starts=1..4 and two lengths, not assumed). The
+    Compound was a workaround for a real slowdown, but the workaround was
+    solving the wrong operation -- reported here so this doesn't get
+    silently reintroduced by someone re-hitting the sequential-fuse case
+    and assuming the same conclusion still holds."""
     core = bd.Solid.make_cylinder(
         wp.dedendum_radius_mm, wp.length_mm, bd.Plane((0, 0, -wp.length_mm / 2)))
     if wp.bore_diameter_mm > 0:
-        # Cylinder-minus-cylinder is a trivial, always-fast boolean op --
-        # nothing like the spiral-vs-spiral case above -- so this one IS a
-        # real subtract, not folded into the Compound.
         bore = bd.Solid.make_cylinder(
             wp.bore_diameter_mm / 2.0, wp.length_mm, bd.Plane((0, 0, -wp.length_mm / 2)))
         core = core.cut(bore)
@@ -249,4 +249,4 @@ def build_worm_solid(wp: WormParams, n_per_turn: int = 40) -> bd.Compound:
         wires = [bd.Wire.make_polygon(pts, close=True) for pts in stations]
         threads.append(bd.Solid.make_loft(wires, ruled=True))
 
-    return bd.Compound(children=[core, *threads])
+    return core.fuse(*threads)

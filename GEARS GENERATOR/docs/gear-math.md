@@ -348,11 +348,18 @@ found by measuring (`is_manifold`, body count, volume), not by eye:
   fuse and finding it collapse mid-loop, after which every remaining tooth just
   becomes its own disconnected fragment); a single N-ary fuse is more robust but
   not universally so either (confirmed failing differently — an empty result, or a
-  non-manifold one — on other combinations). The fix follows the same precedent
-  worm gears already established for the identical class of problem (section
-  9.3): don't fuse at all. The solid is a `Compound` of the blank plus each
-  individually-built, individually-manifold tooth. The tradeoff is the same as
-  worm's: SolidWorks sees a multi-body part, not one fused solid.
+  non-manifold one — on other combinations). Worm gears hit what looked like the
+  identical class of problem (section 9.3) and, for a while, took the same fix
+  here: don't fuse at all, return a `Compound`. Worm's later turned out to be a
+  narrower problem than it looked — a single N-ary fuse (all threads unioned
+  onto the core in one call, not fused in sequentially) was fast and reliable
+  there, so worm now returns one true fused `Solid` — but that fix does NOT
+  apply here: bevel's own N-ary fuse (the "more robust but not universally so"
+  attempt above) was tried and genuinely fails differently on real cases, not
+  just slowly. The solid stays a `Compound` of the blank plus each
+  individually-built, individually-manifold tooth. The tradeoff: SolidWorks
+  sees a multi-body part, not one fused solid (worm no longer has this
+  tradeoff — see section 9.3).
 
 A tooth's own on-axis (tangentially centered) addendum point, at the heel, must
 land at exactly `R + ha*cos(gamma)` — the standard AGMA outside-diameter formula —
@@ -442,19 +449,30 @@ throated/globoid wheel wrapped around the worm for full-length contact — still
 correctly meshing in module/helix-angle/hand.) Center distance for a given wheel
 tooth count is simply `pitch_radius(worm) + pitch_radius(wheel)`.
 
-The solid is a core cylinder (at the dedendum/root radius, bored if requested) plus
-one ruled loft per thread start, built from many stations around the helical sweep
-(§9.2) — dense enough per turn that the `ruled=True` straight segments between
-stations converge to the true helix, the same "dense sampling of an exact
-construction" principle sections 4 and 7 use. **Found by measuring, not assumed**:
-the loft solids are combined as a `Compound`, *not* a boolean-fused `Solid` —
-OpenCASCADE's boolean fuse hangs indefinitely (10+ minutes, killed rather than left
-running) when unioning multiple spiral thread solids together, even though each
-individual thread's own loft takes about a second; isolated by timing each stage
-separately rather than guessing which step was slow. A `Compound` of the unfused
-pieces sidesteps the hang entirely (effectively instant) and is still a fully valid
-STL/STEP export — SolidWorks opens it as a multi-body part rather than one fused
-solid, a documented, deliberate tradeoff (§ PROGRESS.md "Known limitations").
+The solid is a core cylinder (at the dedendum/root radius, bored if requested)
+boolean-fused with one ruled loft per thread start, built from many stations
+around the helical sweep (§9.2) — dense enough per turn that the `ruled=True`
+straight segments between stations converge to the true helix, the same "dense
+sampling of an exact construction" principle sections 4 and 7 use — so the
+thread actually merges into the shaft as one continuous body, the join a real
+machined/printed part would have, not a separate piece that merely touches it.
+
+**Found by measuring, not assumed, and revised once already** (worth recording
+the correction, not just the current answer): an earlier version returned a
+`Compound` of the unfused core + thread solids, reporting that OpenCASCADE's
+boolean fuse hangs indefinitely (10+ minutes, killed rather than left running)
+when unioning multiple spiral thread solids together. That measurement was
+real but the diagnosis was incomplete — it only tested SEQUENTIAL pairwise
+fusing (`core.fuse(thread1).fuse(thread2)...`), which genuinely does hang:
+fusing a second thread onto an ALREADY-spiral-shaped result is the slow
+"spiral-vs-already-spiralled" case. A single N-ary fuse — `core.fuse(*threads)`,
+every thread passed to ONE call — resolves all the intersections together and
+is fast (timed across starts=1..4 and two lengths: consistently a few seconds,
+worst case ~11s for a 60mm-long worm), so the Compound workaround is gone and
+`build_worm_solid` now returns one true fused `Solid`. (Bevel gears hit what
+looked like the identical problem — §8.3 — but there the N-ary fuse genuinely
+does fail on real cases, not just slowly; that's a narrower, unrelated
+failure mode and bevel's own Compound tradeoff stands on its own.)
 
 ## 10. Racks
 

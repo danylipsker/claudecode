@@ -9,6 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import build123d as bd
 from worm import WormParams, thread_axial_profile, worm_thread_stations, build_worm_solid
 
 
@@ -53,11 +54,12 @@ def test_multi_start_threads_are_z_symmetric_and_not_offset():
 
 
 def test_full_solid_builds_fast_with_correct_bounds():
-    """End-to-end: the actual build123d Compound builds quickly (regression
-    test for a real performance bug: boolean-fusing multiple spiral thread
-    solids together hung for 10+ minutes and was killed rather than left
-    running; the Compound-of-unfused-solids approach that replaced it must
-    stay fast) and has bounds matching the requested dimensions."""
+    """End-to-end: the actual fused solid builds quickly (regression test
+    for a real performance bug: SEQUENTIAL pairwise fusing -- core.fuse(t1)
+    .fuse(t2)... -- hung for 10+ minutes on spiral-vs-already-spiralled
+    intersections; the N-ary core.fuse(*threads) that replaced it, all
+    threads unioned in one call, must stay fast) and has bounds matching
+    the requested dimensions."""
     wp = WormParams(starts=2, axial_module_mm=2.0, pitch_diameter_mm=20.0, length_mm=30.0)
     t0 = time.time()
     solid = build_worm_solid(wp, n_per_turn=20)
@@ -81,14 +83,17 @@ def test_full_solid_builds_fast_with_correct_bounds():
     assert abs((bb.max.Z + bb.min.Z) / 2.0) < 1.0
 
 
-def test_full_solid_bodies_are_all_manifold_with_correct_count():
+def test_full_solid_is_a_single_fused_manifold_body():
     """Same class of check the bevel gear bug (docs/gear-math.md 8.3) was
-    found by. Unlike bevel/spur/helical, ONE body per solid is the wrong
-    expectation here -- build_worm_solid deliberately returns a Compound of
-    the (unfused) core plus one solid per thread start (see its own
-    docstring): the check is that every individual body is still genuinely
-    manifold, and that none were dropped or silently merged, across a few
-    different start counts and with/without a bore."""
+    found by. build_worm_solid now boolean-fuses the core and every thread
+    into ONE body (core.fuse(*threads), an N-ary union -- see its own
+    docstring for why an earlier Compound-of-unfused-pieces version was a
+    workaround for the wrong operation, not a real constraint): the thread
+    must actually merge into the shaft rather than sit next to it as a
+    separate touching body, so the check here is exactly the OPPOSITE of
+    what it used to assert -- exactly one manifold solid, not core+starts
+    separate ones -- across a few different start counts and with/without
+    a bore."""
     cases = [
         dict(starts=1, axial_module_mm=2.0, pitch_diameter_mm=20.0, length_mm=30.0),
         dict(starts=2, axial_module_mm=2.0, pitch_diameter_mm=20.0, length_mm=30.0, bore_diameter_mm=6.0),
@@ -98,9 +103,26 @@ def test_full_solid_bodies_are_all_manifold_with_correct_count():
         wp = WormParams(**kwargs)
         solid = build_worm_solid(wp, n_per_turn=30)
         bodies = solid.solids()
-        assert len(bodies) == 1 + kwargs["starts"], kwargs  # core + one per thread start
+        assert len(bodies) == 1, kwargs  # core + every thread fused into ONE body
         assert all(b.is_manifold for b in bodies), kwargs
         assert solid.volume > 0
+        # The fused volume must land strictly between core_vol (a no-op fuse
+        # that silently dropped every thread) and core_vol + sum(thread_vol)
+        # (the naive, non-overlapping sum -- true fused volume is always
+        # less, since the thread genuinely overlaps the core at its root, so
+        # equalling the naive sum would mean the fuse didn't actually merge
+        # anything). Catches a fuse that no-ops OR one that double-counts.
+        core = bd.Solid.make_cylinder(
+            wp.dedendum_radius_mm, wp.length_mm, bd.Plane((0, 0, -wp.length_mm / 2)))
+        if wp.bore_diameter_mm > 0:
+            core = core.cut(bd.Solid.make_cylinder(
+                wp.bore_diameter_mm / 2.0, wp.length_mm, bd.Plane((0, 0, -wp.length_mm / 2))))
+        thread_vol_sum = 0.0
+        for k in range(kwargs["starts"]):
+            stations = worm_thread_stations(wp, start_index=k, n_per_turn=30)
+            wires = [bd.Wire.make_polygon(pts, close=True) for pts in stations]
+            thread_vol_sum += bd.Solid.make_loft(wires, ruled=True).volume
+        assert core.volume < solid.volume < core.volume + thread_vol_sum, kwargs
 
 
 if __name__ == "__main__":

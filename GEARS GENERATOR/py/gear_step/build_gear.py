@@ -29,6 +29,40 @@ def _rotate_points(pts: list[tuple[float, float]], angle_rad: float) -> list[tup
     return [(c * x - s * y, s * x + c * y) for (x, y) in pts]
 
 
+def _export_step_for_solidworks(shape, path: str | Path) -> None:
+    """Export to STEP in the specific shape SolidWorks' translator actually
+    accepts. Found by testing real SolidWorks import, and revised once
+    already after the first fix looked right but wasn't (worth recording the
+    correction, not just the final answer):
+
+    1) First measurement: a bare bd.Solid exports via OCCT 7.9 as an
+       ADVANCED_BREP_SHAPE_REPRESENTATION -- valid STEP AP214, round-trips
+       fine through build123d/OCCT itself -- but SolidWorks' translator
+       rejects it with a generic "error code 1". Reproduced for spur, rack,
+       and a freshly-fused worm alike.
+    2) First fix attempt: `if not isinstance(shape, bd.Compound): wrap it`.
+       Looked right, wasn't: build123d's own `BuildPart().part` result is
+       ALREADY an instance of Compound (its `Part` return type subclasses
+       Compound, and its underlying OCCT shape is already TopAbs_COMPOUND
+       too -- confirmed via .wrapped.ShapeType(), not just the Python class),
+       so the isinstance check skipped spur/rack/internal entirely and they
+       kept failing. The bug wasn't "is it a Compound" at all -- it's some
+       provenance/tagging OCCT's STEP writer attaches to a BuildPart-built
+       shape specifically, invisible at the Python-type or raw-topology
+       level.
+    3) Actual fix, confirmed by testing every family, not just the one that
+       prompted this: unconditionally extract every solid via `.solids()`
+       and rebuild a FRESH Compound from those raw Solid objects. A Compound
+       built this way -- with no BuildPart lineage at all -- exports via the
+       plainer SHAPE_REPRESENTATION entity that SolidWorks accepts, whether
+       the input was a bare Solid (spur, rack, a fused worm) or already a
+       multi-body Compound (bevel, a multi-start worm): `.solids()` recurses
+       through either correctly, and re-wrapping an already-fine multi-body
+       Compound this way is a harmless no-op for SolidWorks (same body
+       count, still opens as a multi-body part)."""
+    bd.export_step(bd.Compound(children=list(shape.solids())), str(path))
+
+
 def _face_at(pts: list[tuple[float, float]], angle_rad: float, z: float) -> bd.Face:
     rotated = _rotate_points(pts, angle_rad)
     closed = rotated + [rotated[0]]
@@ -136,12 +170,18 @@ def build_bevel_gear_solid(bp: BevelGearParams, n_phi: int = 240,
     the blank's revolve profile (root_cone_profile), not a separate cut.
 
     This is a Compound of the blank + z separately-built tooth solids, NOT
-    one boolean-fused Solid -- the same tradeoff already made for worm gears
-    (build_worm_solid), and for the same underlying reason: found by
-    measuring, not assumed, that OpenCASCADE's boolean fuse is not reliable
-    here. Both fuse strategies were tried and both have real failure modes,
-    confirmed by testing a spread of z/module/bore/shaft-angle combinations,
-    not just the one case that first surfaced the bug:
+    one boolean-fused Solid -- a tradeoff worm gears (build_worm_solid) also
+    made for a while, for what looked like the same reason, but turned out
+    NOT to be the same reason on closer inspection: worm's fuse hang was
+    specifically sequential pairwise fusing, and a single N-ary fuse
+    (core.fuse(*threads)) turned out to be fast and reliable there, so it now
+    returns one true fused Solid. That fix does NOT apply here -- bevel's own
+    N-ary fuse was tried too (case 2 below) and genuinely fails differently
+    on real cases, not just slowly. Found by measuring, not assumed, that
+    OpenCASCADE's boolean fuse is not reliable here specifically. Both fuse
+    strategies were tried and both have real failure modes, confirmed by
+    testing a spread of z/module/bore/shaft-angle combinations, not just the
+    one case that first surfaced the bug:
       1. A loop of z sequential pairwise fuses (solid = solid.fuse(tooth))
          fuses cleanly for the first several teeth on some gears (e.g. z=12,
          small module, bored), then a later fuse against the now-more-
@@ -160,8 +200,9 @@ def build_bevel_gear_solid(bp: BevelGearParams, n_phi: int = 240,
     manifold, with exactly z+1 bodies (none dropped, none merged) and a
     sane total volume, across every case that broke one or both fuse
     strategies above -- and is faster besides (no boolean work at all).
-    The tradeoff, as with the worm: SolidWorks sees a multi-body part (one
-    body per tooth plus the blank) rather than one fused solid."""
+    The tradeoff: SolidWorks sees a multi-body part (one body per tooth
+    plus the blank) rather than one fused solid -- unlike the worm, which
+    no longer has this tradeoff (see build_worm_solid's own docstring)."""
     profile_pts = root_cone_profile(bp)
     with bd.BuildPart() as blank_part:
         with bd.BuildSketch(bd.Plane.XZ):
@@ -182,12 +223,12 @@ def build_bevel_gear_solid(bp: BevelGearParams, n_phi: int = 240,
 
 def export_step(gp: GearParams, path: str | Path) -> None:
     solid = build_gear_solid(gp)
-    bd.export_step(solid, str(path))
+    _export_step_for_solidworks(solid, path)
 
 
 def export_bevel_step(bp: BevelGearParams, path: str | Path) -> None:
     solid = build_bevel_gear_solid(bp)
-    bd.export_step(solid, str(path))
+    _export_step_for_solidworks(solid, path)
 
 
 def export_bevel_heel_profile_dxf(bp: BevelGearParams, path: str | Path) -> None:
@@ -215,7 +256,7 @@ def export_bevel_heel_profile_dxf(bp: BevelGearParams, path: str | Path) -> None
 
 def export_worm_step(wp: WormParams, path: str | Path, n_per_turn: int = 40) -> None:
     solid = build_worm_solid(wp, n_per_turn=n_per_turn)
-    bd.export_step(solid, str(path))
+    _export_step_for_solidworks(solid, path)
 
 
 def export_worm_profile_dxf(wp: WormParams, path: str | Path) -> None:
@@ -261,7 +302,7 @@ def build_rack_solid(rp: RackParams) -> bd.Part:
 
 def export_rack_step(rp: RackParams, path: str | Path) -> None:
     solid = build_rack_solid(rp)
-    bd.export_step(solid, str(path))
+    _export_step_for_solidworks(solid, path)
 
 
 def export_rack_profile_dxf(rp: RackParams, path: str | Path) -> None:
@@ -311,7 +352,7 @@ def build_internal_gear_solid(ip: InternalGearParams, simplify_tolerance_mm: flo
 
 def export_internal_gear_step(ip: InternalGearParams, path: str | Path) -> None:
     solid = build_internal_gear_solid(ip)
-    bd.export_step(solid, str(path))
+    _export_step_for_solidworks(solid, path)
 
 
 def export_internal_gear_profile_dxf(ip: InternalGearParams, path: str | Path) -> None:
