@@ -1,6 +1,49 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## Rack fillet-to-backing render fixed: one real (tiny) geometry bug, one real camera bug (latest)
+## Checked every other gear family for the same fillet bug class as rack; found and fixed it in worm too (latest)
+
+Following up the rack fillet fix (below): checked whether spur/helical/bevel/
+worm/internal share the same underlying construction, rather than assuming
+"fixed one, done." They split cleanly into two groups:
+
+- **Worm — same bug, fixed the same way.** `worm.py`'s `thread_axial_profile`
+  is line-for-line the same tangent-circle fillet construction as rack.py's
+  (rack.py's own docstring says as much: it's *the* template rack's fillet
+  was adapted from). Same non-monotonic wobble, same fix: clamp u to
+  non-increasing walking from the flank's tangent point to the root. Checked
+  whether it was *visibly* causing anything first (rendered the actual solid
+  at multiple angles, zoomed on the thread root) -- clean before and after,
+  which makes sense: a worm thread doesn't have rack's "endmost tooth at a
+  grazing camera angle" situation (the thread simply fades into the shaft at
+  each end, not a repeated-and-then-abruptly-bounded element), so there was
+  no camera-driven amplification to reveal it visually. Fixed anyway since
+  it's a genuine, if cosmetically negligible, correctness issue independent
+  of whether anything currently makes it visible.
+- **Spur, helical, bevel, internal — different construction, not susceptible
+  at all.** These don't use a tangent-circle polygon as the tooth boundary
+  directly. They compute the fillet by literally simulating a rack cutter
+  rolling across the gear blank (`rack_swept_cutter_union` in involute.py):
+  the cutter tooth is swept through ~240 angular positions and the boolean
+  union's envelope becomes the tooth boundary -- a genuine trochoid, not a
+  single circular arc. The cutter's own static tooth shape (`rack_cutter_
+  tooth_points`) has a similarly-constructed fillet arc and, in isolation,
+  the same theoretical property -- but it's never used as a final boundary,
+  only swept and enveloped, and that operation doesn't inherit the wobble
+  (confirmed, not just reasoned: ran the same strict pairwise segment-
+  crossing check used to root-cause the rack bug against an actual spur
+  gear's full output polygon -- 12,756 boundary points, zero crossings).
+  Bevel and internal both call `single_tooth_polygon` -- the same envelope
+  machinery -- confirmed by checking their imports directly rather than
+  trusting memory of "they reuse it." Left `rack_cutter_tooth_points` alone:
+  changing validated, real-SolidWorks-tested code for a property that
+  provably doesn't propagate to its actual output isn't a fix, it's just
+  risk with no matching benefit.
+- All five non-rack families rendered clean at multiple zoom levels through
+  the actual WPF pipeline (not just re-derived from source) -- spur/helical/
+  bevel/internal show smooth root fillets with no notch at any tooth; worm
+  shows no artifact at either thread end. All 44 tests still pass.
+
+## Rack fillet-to-backing render fixed: one real (tiny) geometry bug, one real camera bug
 
 User report: "the rack solution teeth are awkward, the fillet that connects
 the teeth to the ruler [backing bar] are drawn in a wrong way." The live 3D

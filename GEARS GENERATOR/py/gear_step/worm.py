@@ -141,9 +141,23 @@ def thread_axial_profile(wp: WormParams, n_arc: int = 12) -> list[tuple[float, f
 
     right_path = [(half_u_at(ha), ha)]           # tip, right side
     right_path.append(p_tan)                      # down the flank to the fillet
+    # Same tiny-but-real non-monotonic wobble as rack.py's rack_tooth_profile
+    # (this function is its direct template -- see module docstring): the
+    # tangent circle's own widest point (angle 0) sits at a slightly larger u
+    # than p_tan itself whenever alpha>0, an unavoidable property of any
+    # circle tangent to a tilted line and a horizontal one, since the minor
+    # arc from p_tan to p_root always sweeps through that point. Textbook
+    # tangent-fillet construction, a few % of rho, invisible at real scale --
+    # but it makes the boundary briefly non-monotonic in u. Clamp u to
+    # non-increasing walking from p_tan to p_root so the boundary stays
+    # monotonic; both tangent points and the fillet radius are unaffected.
+    running_max_u = p_tan[0]
     for i in range(1, n_arc + 1):
         a = a_start + (a_end - a_start) * i / n_arc
-        right_path.append((u_center + rho * math.cos(a), v_center + rho * math.sin(a)))
+        u = min(u_center + rho * math.cos(a), running_max_u)
+        v = v_center + rho * math.sin(a)
+        running_max_u = u
+        right_path.append((u, v))
     # right_path now ends at p_root; mirror for the left side (u -> -u), reversed
     left_path = [(-x, y) for (x, y) in reversed(right_path)]
     return right_path + left_path  # tip(+u) -> fillet -> root(u=u_center) -> root(-u_center) -> fillet -> tip(-u)
