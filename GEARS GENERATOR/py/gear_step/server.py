@@ -389,10 +389,43 @@ def handle(req: dict) -> dict:
             solid = build_bevel_gear_solid(bp, n_phi=150, simplify_tolerance_mm=0.04)
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "worm":
-            from build_gear import build_worm_solid
+            from build_gear import build_worm_solid, build_gear_solid
             import build123d as bd
             wp = worm_params_from_request(req)
             solid = build_worm_solid(wp, n_per_turn=40)
+            # If a mating wheel tooth count is set (MateTeeth, already sent
+            # with every worm request for the center-distance hint text --
+            # no new UI wiring needed), show the two the way every reference
+            # illustration of a worm gear actually draws it: worm AND wheel
+            # together, correctly meshing, not the worm in isolation.
+            # wheel_gear_params() already computes the exact matching wheel
+            # (same module/hand, helix = worm's lead angle); the wheel's own
+            # axis is Z like the worm's own, so rotating it 90deg onto Y and
+            # translating out by the center distance puts the two pitch
+            # circles exactly tangent -- a real, geometrically correct mesh
+            # position, not just a schematic placeholder. STEP/DXF export is
+            # untouched (still the worm alone, per the existing "build the
+            # wheel separately via the Helical card" convention) -- this
+            # only changes what the live preview shows.
+            mate_teeth = int(req.get("mate_teeth", 0))
+            if mate_teeth > 0:
+                wheel_gp = wp.wheel_gear_params(mate_teeth)
+                wheel_gp.face_width_mm = max(6.0, 8.0 * wp.axial_module_mm)
+                wheel_gp.bore_diameter_mm = wp.bore_diameter_mm
+                wheel_solid = build_gear_solid(wheel_gp)
+                # build_gear_solid's own extrusion is NOT centered on its
+                # sketch plane -- it spans local Z=[0, face_width_mm], not
+                # [-face_width/2, +face_width/2] (confirmed by checking the
+                # built solid's own bounding box, not assumed) -- so
+                # rotating it as-is lands the wheel offset by a whole
+                # face-width to one side of the worm's own center instead of
+                # straddling it, which is what actually produced the
+                # confusing, seemingly-non-meshing render this was caught
+                # from. Center it first.
+                wheel_centered = wheel_solid.translate((0, 0, -wheel_gp.face_width_mm / 2.0))
+                cd = wp.center_distance(mate_teeth)
+                wheel_positioned = wheel_centered.rotate(bd.Axis.X, 90).translate((cd, 0, 0))
+                solid = bd.Compound(children=[solid, wheel_positioned])
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "rack":
             from build_gear import build_rack_solid

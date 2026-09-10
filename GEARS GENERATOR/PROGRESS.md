@@ -1,6 +1,59 @@
 # GEARS GENERATOR — status: v1 complete + helical/bevel/worm/rack/internal gears + real 3D viewer
 
-## Worm now a single fused solid (not a multi-body Compound); found and fixed a SolidWorks-import bug affecting 4 of 6 gear families along the way (latest)
+## Worm's live preview now shows the matching wheel too, like every real worm-gear reference drawing (latest)
+
+User reported the worm still didn't "look like" reference illustrations of a
+worm gear (attached several -- all show the worm and its wheel together,
+meshing, never the worm alone). Verified first rather than assuming a
+plausible-sounding fix would be needed: the *underlying worm geometry itself*
+(profile, fillet, fused solid) had already been fixed and re-verified this
+session; what every reference image has that the app didn't was the **wheel**,
+shown at all. `wheel_gear_params()` already computes the exact matching wheel
+(reused for the existing "Matching Wheel" hint text) and `mate_teeth` was
+already flowing through every worm request (for the center-distance hint) --
+so the live 3D preview now builds that wheel too, positions it at the real
+geometric mesh point, and shows it alongside the worm, purely in
+`server.py`'s `export_mesh` handler. No C# wiring needed for the data path
+(mate_teeth was already there); STEP/DXF export is untouched -- still the
+worm alone, per the existing "build the wheel separately via the Helical
+card" convention -- so nothing about what gets manufactured/exported changed,
+only what the live preview shows.
+
+- **Positioning is real, not schematic**: the wheel's own axis (rotated 90°
+  from the worm's) is placed exactly `pitch_radius(worm) + pitch_radius(wheel)`
+  from the worm's axis -- true pitch-circle tangency, the actual definition
+  of "just meshing," not an eyeballed offset.
+- **A real bug caught before it shipped, not after**: the wheel's own
+  extrusion isn't centered on its sketch plane (confirmed by checking the
+  built solid's bounding box directly: it spans local Z=[0, face_width], not
+  [-face_width/2, +face_width/2]) -- naively rotating it 90° as-is put the
+  wheel offset by a whole face-width to one side of the worm's own centerline
+  instead of straddling it, which produced a confusing, non-meshing-looking
+  render that's what actually surfaced this. Fixed by centering the wheel on
+  its own axis before rotating.
+- **The default camera needed its own nudge, same precedent as the rack
+  card**: the shared default camera stares nearly straight down what became
+  the wheel's own axis, which reads fine for a lone gear but buries a much
+  smaller worm in front of a large flat-on wheel face. Iterated through
+  several LookDirection values, checking the actual rendered screenshot each
+  time rather than guessing once and moving on, until landing on one that
+  reads as two clearly distinct, correctly-meshing parts.
+- Verified: all 44 Python tests pass; `mate_teeth=0` still falls back to the
+  worm alone (fewer triangles, checked directly, not just "no crash"); starts
+  1/2/4 and both hands all build correctly; spur/bevel/rack/internal renders
+  are pixel-identical to before (unaffected, since only worm's own code path
+  changed); the worm's own STEP export still imports into real SolidWorks
+  (both a warm session and a freshly-launched one).
+- Separately, re-examined the rack's tooth/root-fillet shape against a
+  reference illustration (a generic gear+rack icon) at the user's request --
+  no changes needed. A flat 2D outline render and a composed gear+rack
+  comparison (using the already-validated spur and rack outline code
+  directly, no new geometry) both confirm the existing trapezoidal-tooth,
+  filleted-root shape already matches the reference's general form; this
+  was already established mathematically (§10, and the fillet fix earlier
+  this session) rather than newly discovered here.
+
+## Worm now a single fused solid (not a multi-body Compound); found and fixed a SolidWorks-import bug affecting 4 of 6 gear families along the way
 
 User report: "in the worm gear generator, the fillets are the joints between
 the central cylinder and the spiral tooth. those fillets are made wrong. the

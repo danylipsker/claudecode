@@ -81,6 +81,19 @@ namespace GearGen.UI
         private void OnWormChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectWormCard();
+            // The live preview now shows the worm together with its matching
+            // wheel (server.py's export_mesh, whenever MateTeeth > 0 -- true
+            // by default) so it actually looks like a worm gear SET, the way
+            // every reference illustration of one draws it, not the worm
+            // alone. The wheel's own axis lands on Y (perpendicular to the
+            // worm's Z), and the shared default camera looks nearly straight
+            // down Y -- fine for a lone worm, but it stares the wheel dead
+            // in the face and buries the (much smaller) worm in front of it.
+            // Nudge toward a 3/4 view that reads as two distinct meshing
+            // parts, matching the rack card's own precedent of a
+            // family-specific camera nudge instead of changing the shared
+            // default for everyone else.
+            Viewport3D.ChangeCameraDirection(new Vector3D(0.55, 0.8, -0.35), 300);
         }
 
         private void OnBevelChecked(object sender, RoutedEventArgs e)
