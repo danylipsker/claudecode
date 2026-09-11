@@ -79,7 +79,8 @@ namespace GearGen.App
                 bool cycloidal = e.Args.Any(a => a == "--cycloidal");
                 bool cycdrive = e.Args.Any(a => a == "--cycdrive");
                 bool resetTest = e.Args.Any(a => a == "--resettest");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest);
+                bool tall = e.Args.Any(a => a == "--tall");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall);
                 return;
             }
 
@@ -277,7 +278,7 @@ namespace GearGen.App
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
             double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
             bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
-            bool cycdrive = false, bool resetTest = false)
+            bool cycdrive = false, bool resetTest = false, bool tall = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -295,6 +296,11 @@ namespace GearGen.App
                     Top = -5000,
                     ShowInTaskbar = false,
                 };
+                // --tall: a window high enough that the whole parameter form
+                // (mosaic, reset button, unit toggle, every section) is on
+                // screen, so a render shows controls that sit below the fold at
+                // the default size.
+                if (tall) win.Height = 1500;
                 Log("window created");
                 win.Show();
                 Log("window shown");
