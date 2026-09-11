@@ -96,9 +96,12 @@
             <Setter Property="Padding" Value="8,10"/>
         </Style>
 
+        <!-- The view-preset buttons float over the 3D ground, which is now light:
+             dark text on a near-opaque white chip (they used to be white text on
+             a translucent chip over a near-black ground). -->
         <Style x:Key="ViewBtn" TargetType="Button">
-            <Setter Property="Background" Value="#33E5E7EB"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#E6FFFFFF"/>
+            <Setter Property="Foreground" Value="#111827"/>
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="Padding" Value="9,5"/>
             <Setter Property="Margin" Value="0,0,4,0"/>
@@ -106,12 +109,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="4" BorderBrush="#6B7280" BorderThickness="1">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="4" BorderBrush="#9CA3AF" BorderThickness="1">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bd" Property="Background" Value="#374151"/>
+                                <Setter TargetName="bd" Property="Background" Value="#DBEAFE"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -397,7 +400,17 @@
                  cross-section. Orbit (drag), pan (right/middle-drag) and zoom
                  (wheel) are already built into HelixViewport3D; the buttons
                  below add orthographic view presets and zoom-to-fit. -->
-            <Border Grid.Row="0" Background="#1F2937" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="6" ClipToBounds="True">
+            <!-- A light, slightly graded ground (the CAD-viewer convention) in
+                 place of the earlier near-black one: a mid-blue gear shades
+                 visibly against it, and the dark feature edges drawn over the
+                 model read as outlines instead of vanishing into the ground. -->
+            <Border Grid.Row="0" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" ClipToBounds="True">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#FAFBFC" Offset="0"/>
+                        <GradientStop Color="#C9D2DE" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Grid ClipToBounds="True">
                     <hx:HelixViewport3D x:Name="Viewport3D" Background="Transparent"
                                          ShowCoordinateSystem="True" ShowViewCube="True"
@@ -407,6 +420,14 @@
                         </hx:HelixViewport3D.Camera>
                         <hx:SunLight/>
                         <ModelVisual3D Content="{Binding Model3D}"/>
+                        <!-- "Shaded with edges": the model's feature edges (tooth
+                             outlines on both faces, tip/root corners along the face
+                             width, a herringbone's apex, cone rims; see
+                             FeatureEdges.cs) as thin dark lines over the shading.
+                             Screen-space thickness, so they stay one line wide at
+                             any zoom. (No double hyphens in this comment: XML
+                             forbids them and it has broken this build before.) -->
+                        <hx:LinesVisual3D Points="{Binding EdgePoints}" Color="#1F2937" Thickness="1.2"/>
                     </hx:HelixViewport3D>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">

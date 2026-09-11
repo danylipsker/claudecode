@@ -364,7 +364,8 @@ namespace GearGen.App
                 Log("pumped; StatusMessage=" + win.Panel?.ViewModel?.StatusMessage +
                     "; geom bounds=" + geom?.Bounds + "; geom null=" + (geom == null) +
                     "; Model3D null=" + (win.Panel?.ViewModel?.Model3D == null) +
-                    "; IsMeshBusy=" + win.Panel?.ViewModel?.IsMeshBusy);
+                    "; IsMeshBusy=" + win.Panel?.ViewModel?.IsMeshBusy +
+                    "; feature edges=" + win.Panel?.ViewModel?.EdgeSegmentCount + " segments");
                 // The default export file name for this family/parameters --
                 // logged so every smoke run also checks the self-describing
                 // naming (GearParameters.SuggestedFileName) for that family.

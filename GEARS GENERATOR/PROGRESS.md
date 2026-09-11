@@ -1,6 +1,38 @@
 # GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## "Reset <kind> to default values" button (latest)
+## Light 3D ground, a mid-blue gear, and "shaded with edges" (latest)
+
+User: "do some GUI changes to the background of the display and the color
+of the gears so the user can see them with ease" and "add edges to the 3d
+model to emphasize the geometry."
+
+- **Ground**: the viewport's near-black panel is now a light, slightly
+  graded ground (#FAFBFC → #C9D2DE), the CAD-viewer convention; the view-
+  preset chips went from white-on-translucent to dark-on-white so they
+  stay legible on it.
+- **Gear**: the pale #93C5FD, which shaded almost flat on the dark ground
+  (every face the same tint), is now a mid steel blue (#5B8FD6) with a
+  white specular — the faces shade visibly against the ground and against
+  the edges drawn over them.
+- **Edges** (`FeatureEdges.cs`): the STL triangle soup is welded by
+  position, every shared edge is classified by the crease angle between
+  its two faces, and edges over 30° (plus open or over-shared ones) become
+  line segments drawn by a screen-space `LinesVisual3D` over the model.
+  30° sits between tessellation and geometry: adjacent facets of a curved
+  flank, fillet or bore differ by a few degrees (the tightest previewed
+  curve, a 3 mm rack mounting hole at the 0.02 mm preview tolerance,
+  reaches ~19°), while tooth tip corners, a rack's flank-to-land corners
+  and end-face outlines are 55°+. So the tooth outlines on both faces, the
+  tip/root corners along the face width, a herringbone's V apex and the
+  bevel cone rims appear, and the tangent fillet-to-flank joins correctly
+  do not. Computed off the UI thread from the frozen mesh after the model
+  is shown, so the model never waits for its edges; the smoke logs the
+  count (742 segments for a 20-tooth spur, 3,871 for a planetary set).
+- The planetary preview — previously one flat blue disc from the default
+  camera, all members flush and one colour — now reads as sun, planets and
+  ring; the edges do what a per-body colour would have.
+
+## "Reset <kind> to default values" button
 
 User: "add a reset button to 'default values' for each kind of gears." One
 button under the family mosaic, labelled for whichever card is selected

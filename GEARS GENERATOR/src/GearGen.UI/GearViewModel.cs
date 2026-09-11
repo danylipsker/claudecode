@@ -653,8 +653,16 @@ namespace GearGen.UI
                 loaded.Freeze();
 
                 if (myGen != _meshGeneration) return;
+                EdgePoints = new Point3DCollection();  // never show the previous model's edges on this one
                 Model3D = loaded;
                 ModelReplaced?.Invoke();
+
+                // The "shaded with edges" overlay (FeatureEdges): computed off
+                // the UI thread from the frozen (thread-safe) mesh, so the model
+                // shows as soon as it is read and its edges follow a moment later.
+                var edges = await Task.Run(() => FeatureEdges.Compute(loaded)).ConfigureAwait(true);
+                if (myGen != _meshGeneration) return;
+                EdgePoints = edges;
 
                 try { File.Delete(stlPath); } catch { /* best effort */ }
             }
@@ -670,12 +678,28 @@ namespace GearGen.UI
             }
         }
 
+        private Point3DCollection _edgePoints = new Point3DCollection();
+        /// <summary>Feature edges of Model3D as line segments (consecutive
+        /// pairs of points), drawn over the shaded model by the view's
+        /// LinesVisual3D -- the CAD "shaded with edges" look. See FeatureEdges.</summary>
+        public Point3DCollection EdgePoints
+        {
+            get => _edgePoints;
+            private set { _edgePoints = value; OnChanged(); OnChanged(nameof(EdgeSegmentCount)); }
+        }
+        public int EdgeSegmentCount => _edgePoints == null ? 0 : _edgePoints.Count / 2;
+
         private static readonly Material GearMaterial = BuildGearMaterial();
 
         private static Material BuildGearMaterial()
         {
-            var diffuse = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(0x93, 0xC5, 0xFD)));
-            var specular = new SpecularMaterial(new SolidColorBrush(Color.FromRgb(0xE5, 0xE7, 0xEB)), 60);
+            // A mid-tone steel blue for the light viewport ground: enough
+            // contrast for the shaded faces to read against the background AND
+            // against the dark feature edges drawn over them. The previous pale
+            // #93C5FD on a near-black ground shaded almost flat -- every face
+            // the same tint, which is what made the teeth hard to make out.
+            var diffuse = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(0x5B, 0x8F, 0xD6)));
+            var specular = new SpecularMaterial(new SolidColorBrush(Color.FromRgb(0xFF, 0xFF, 0xFF)), 45);
             var group = new MaterialGroup();
             group.Children.Add(diffuse);
             group.Children.Add(specular);
