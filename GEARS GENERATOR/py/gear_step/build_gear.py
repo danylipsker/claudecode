@@ -397,6 +397,25 @@ def export_crossed_helical_pair_step(pp, path: str | Path) -> None:
     _export_step_for_solidworks(bd.Compound(children=[s1, s2]), path)
 
 
+def export_spiral_bevel_step(sp, path: str | Path, n_stations: int = 12) -> None:
+    """sp: spiral_bevel.SpiralBevelParams (docs/gear-math.md 16). Blank plus
+    z lofted teeth, the same multi-body arrangement as the straight bevel."""
+    from spiral_bevel import build_spiral_bevel_gear_solid
+    _export_step_for_solidworks(build_spiral_bevel_gear_solid(sp, n_stations=n_stations), path)
+
+
+def export_spiral_bevel_heel_profile_dxf(sp, path: str | Path) -> None:
+    """The heel's flat virtual-gear tooth section (transverse), as for the
+    straight bevel -- the lengthwise curvature is not a 2D quantity."""
+    from spiral_bevel import flat_tooth_coords
+    pts = flat_tooth_coords(sp)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(list(pts) + [pts[0]], format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
 def export_bevel_step(bp: BevelGearParams, path: str | Path) -> None:
     solid = build_bevel_gear_solid(bp)
     _export_step_for_solidworks(solid, path)

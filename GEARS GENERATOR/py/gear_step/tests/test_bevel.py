@@ -181,3 +181,34 @@ def test_tooth_addendum_tip_matches_agma_outside_diameter_formula():
 if __name__ == "__main__":
     import pytest
     raise SystemExit(pytest.main([__file__, "-v"]))
+
+
+def test_pair_meshes_without_interpenetration_and_a_half_pitch_error_collides():
+    """The conjugacy check every multi-member family gets, applied to the
+    straight bevel pair for the first time: a 30-tooth gear and its 12-tooth
+    pinion (same module, 90deg shafts, same face width) placed by
+    bevel.place_bevel_pinion must overlap by no more than sliver contact at
+    three rotation phases (measured 0.12 mm^3, 0.001 % of the gear -- the
+    Tredgold approximation is conjugate to that level) and collide two
+    orders of magnitude more with the pinion turned half a pitch (111 mm^3).
+    Done solid by solid: as compounds the boolean returns nothing for BOTH
+    placements (see meshcheck.py), which is how an earlier probe read
+    'no interpenetration' for a mis-phased pair."""
+    from meshcheck import interpenetration_volume, total_volume
+    from bevel import place_bevel_pinion
+    from build_gear import build_bevel_gear_solid
+    z1, z2 = 12, 30
+    gear = build_bevel_gear_solid(BevelGearParams(z=z2, module_mm=2.0, mate_teeth=z1, shaft_angle_deg=90.0, face_width_mm=8.0),
+                                  n_phi=120, simplify_tolerance_mm=0.03)
+    pinion = build_bevel_gear_solid(BevelGearParams(z=z1, module_mm=2.0, mate_teeth=z2, shaft_angle_deg=90.0, face_width_mm=8.0),
+                                    n_phi=120, simplify_tolerance_mm=0.03)
+    ref = total_volume(gear)
+    import build123d as bd
+    worst = 0.0
+    for turn in (0.0, 4.0, 8.0):
+        g = gear.rotate(bd.Axis.Z, turn)
+        p = place_bevel_pinion(pinion, z2, z1, 90.0, gear_turn_deg=turn)
+        worst = max(worst, interpenetration_volume(g, p))
+    bad = interpenetration_volume(gear, place_bevel_pinion(pinion, z2, z1, 90.0, phase_error_deg=180.0 / z1))
+    assert worst < 5e-5 * ref, (worst, ref)
+    assert bad > 2e-3 * ref and bad > 50 * max(worst, 1e-9), (worst, bad, ref)

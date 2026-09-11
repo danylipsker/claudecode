@@ -57,6 +57,19 @@ def params_from_request(p: dict) -> GearParams:
     return GearParams.from_metric(z=z, module_mm=float(p["module_mm"]), **kw)
 
 
+def pointed_cutter_warning(alpha_rad: float, dedendum_coeff: float, label: str) -> list:
+    """At standard depth the generating rack's tooth is pointed once
+    tan(alpha) >= pi / (4 hf*) -- 32.1deg for hf* = 1.25 (involute.
+    rack_cutter_tooth_points then cuts it off at its point): the gear's
+    root becomes a sharp V and the flanks are cut short of full depth."""
+    if math.pi / 4.0 - dedendum_coeff * math.tan(alpha_rad) > 1e-9:
+        return []
+    limit = math.degrees(math.atan(math.pi / (4.0 * dedendum_coeff)))
+    return [f"{label} {math.degrees(alpha_rad):.1f}deg is beyond {limit:.1f}deg, where the generating rack's tooth "
+            f"becomes pointed at this dedendum: the root is a sharp V and the flanks are cut short. "
+            f"Reduce the pressure angle (or the helix/spiral angle that raises the transverse one)."]
+
+
 def derived_values(gp: GearParams) -> dict:
     warnings = []
     is_helical = abs(gp.helix_angle_deg) > 1e-9
@@ -64,6 +77,7 @@ def derived_values(gp: GearParams) -> dict:
 
     if gp.z < 4:
         warnings.append("Tooth count below 4 is not supported.")
+    warnings += pointed_cutter_warning(gp.alpha_rad, gp.dedendum_coeff, pa_label.capitalize())
     # z_min uses alpha_rad, which is already the TRANSVERSE pressure angle for
     # a helical gear (docs/gear-math.md 7.1-7.2) -- this warning is correct
     # for both spur and helical without any extra branching.
@@ -314,6 +328,59 @@ def planetary_derived_values(pp) -> tuple[dict, list]:
     return derived, warnings
 
 
+def spiral_bevel_params_from_request(p: dict):
+    """Spiral / zerol bevel -- docs/gear-math.md 16. The straight bevel's
+    request fields plus spiral_angle_deg (0 = zerol), cutter_radius_mm (0 =
+    auto: the mean cone distance) and hand."""
+    from spiral_bevel import SpiralBevelParams
+    return SpiralBevelParams(
+        z=int(p["z"]),
+        module_mm=float(p["module_mm"]),
+        mate_teeth=int(p.get("mate_teeth", p["z"])),
+        shaft_angle_deg=float(p.get("shaft_angle_deg", 90.0)),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        pitch_angle_deg_override=(float(p["pitch_angle_deg_override"])
+                                   if p.get("pitch_angle_deg_override") is not None else None),
+        spiral_angle_deg=float(p.get("spiral_angle_deg", 35.0)),
+        cutter_radius_mm=float(p.get("cutter_radius_mm") or 0.0),
+        hand=str(p.get("hand", "right")),
+    )
+
+
+def spiral_bevel_derived_values(sp) -> tuple[dict, list]:
+    """The straight bevel's derived values (SpiralBevelParams is a
+    BevelGearParams) plus the trace: spiral angle at toe/mean/heel, cutter
+    radius, transverse pressure angle."""
+    derived, warnings = bevel_derived_values(sp)
+    re = sp.outer_cone_distance
+    toe = re - sp.face_width_mm
+    derived.update({
+        "mean_cone_distance_mm": sp.mean_cone_distance,
+        "cutter_radius_mm": sp.cutter_radius,
+        "spiral_angle_mean_deg": sp.spiral_angle_deg,
+        "spiral_angle_toe_deg": math.degrees(sp.spiral_angle_at(toe)),
+        "spiral_angle_heel_deg": math.degrees(sp.spiral_angle_at(re)),
+        "transverse_pressure_angle_deg": math.degrees(sp.transverse_pressure_angle_rad),
+        "hand_is_left": 1.0 if sp.hand == "left" else 0.0,
+    })
+    if sp.spiral_angle_deg > 50.0:
+        warnings.append(f"Spiral angle {sp.spiral_angle_deg:g}deg is unusually large (35deg is the common choice); "
+                        f"the transverse pressure angle is already {derived['transverse_pressure_angle_deg']:.1f}deg.")
+    warnings += pointed_cutter_warning(sp.transverse_pressure_angle_rad, sp.dedendum_coeff, "Transverse pressure angle")
+    if abs(math.degrees(sp.spiral_angle_at(re))) > 60.0 or abs(math.degrees(sp.spiral_angle_at(toe))) > 60.0:
+        warnings.append("The tooth trace exceeds 60deg at one end of the face: use a larger cutter radius "
+                        "or a narrower face.")
+    if sp.cutter_radius < sp.face_width_mm:
+        warnings.append("Cutter radius is smaller than the face width -- the tooth trace curls tightly; "
+                        "0 (automatic = mean cone distance) or a larger value is usual.")
+    return derived, warnings
+
+
 def bevel_params_from_request(p: dict) -> BevelGearParams:
     return BevelGearParams(
         z=int(p["z"]),
@@ -335,6 +402,8 @@ def bevel_derived_values(bp: BevelGearParams) -> dict:
     warnings = []
     if bp.z < 4:
         warnings.append("Tooth count below 4 is not supported.")
+    # the normal angle: a spiral bevel's transverse one is checked by its own derived values
+    warnings += pointed_cutter_warning(math.radians(bp.pressure_angle_deg), bp.dedendum_coeff, "Pressure angle")
     if bp.pitch_angle_deg <= 1.0 or bp.pitch_angle_deg >= 89.0:
         warnings.append(
             f"Pitch angle is {bp.pitch_angle_deg:.1f}deg -- very close to the flat (crown, 90deg) or "
@@ -531,6 +600,11 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "spiral_bevel":
+            sp = spiral_bevel_params_from_request(req)
+            outline = bevel_heel_tooth_outline(sp)  # the heel section, at the transverse pressure angle
+            derived, warnings = spiral_bevel_derived_values(sp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "herringbone":
             gp = params_from_request(req)
             outline = full_gear_outline(gp, simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
@@ -589,6 +663,9 @@ def handle(req: dict) -> dict:
             from build_gear import export_bevel_step
             bp = bevel_params_from_request(req)
             export_bevel_step(bp, path)
+        elif gear_type == "spiral_bevel":
+            from build_gear import export_spiral_bevel_step
+            export_spiral_bevel_step(spiral_bevel_params_from_request(req), path)
         elif gear_type == "worm":
             from build_gear import export_worm_step
             wp = worm_params_from_request(req)
@@ -629,6 +706,9 @@ def handle(req: dict) -> dict:
             from build_gear import export_bevel_heel_profile_dxf
             bp = bevel_params_from_request(req)
             export_bevel_heel_profile_dxf(bp, path)
+        elif gear_type == "spiral_bevel":
+            from build_gear import export_spiral_bevel_heel_profile_dxf
+            export_spiral_bevel_heel_profile_dxf(spiral_bevel_params_from_request(req), path)
         elif gear_type == "worm":
             from build_gear import export_worm_profile_dxf
             wp = worm_params_from_request(req)
@@ -673,6 +753,12 @@ def handle(req: dict) -> dict:
             bp = bevel_params_from_request(req)
             solid = build_bevel_gear_solid(bp, n_phi=150, simplify_tolerance_mm=0.04)
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "spiral_bevel":
+            from spiral_bevel import build_spiral_bevel_gear_solid
+            import build123d as bd
+            sp = spiral_bevel_params_from_request(req)
+            solid = build_spiral_bevel_gear_solid(sp, n_stations=8, n_phi=150, simplify_tolerance_mm=0.04)
+            bd.export_stl(solid, path, tolerance=0.01, angular_tolerance=0.3)  # curved flanks: finer than straight bevel
         elif gear_type == "worm":
             from build_gear import build_worm_solid, build_gear_solid
             import build123d as bd

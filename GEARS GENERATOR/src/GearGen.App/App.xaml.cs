@@ -80,7 +80,9 @@ namespace GearGen.App
                 bool cycdrive = e.Args.Any(a => a == "--cycdrive");
                 bool resetTest = e.Args.Any(a => a == "--resettest");
                 bool tall = e.Args.Any(a => a == "--tall");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall);
+                bool spiralBevel = e.Args.Any(a => a == "--spiralbevel");
+                bool zerol = e.Args.Any(a => a == "--zerol");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol);
                 return;
             }
 
@@ -278,7 +280,7 @@ namespace GearGen.App
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
             double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
             bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
-            bool cycdrive = false, bool resetTest = false, bool tall = false)
+            bool cycdrive = false, bool resetTest = false, bool tall = false, bool spiralBevel = false, bool zerol = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -323,6 +325,10 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectCycloidalCard();
                 if (cycdrive)
                     win.Panel.ViewModel.SelectCycloidalDriveCard();
+                if (spiralBevel)
+                    win.Panel.ViewModel.SelectSpiralBevelCard();
+                if (zerol)
+                    win.Panel.ViewModel.SelectZerolBevelCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)
@@ -388,8 +394,10 @@ namespace GearGen.App
                         : planetary ? GearGen.Geometry.GearFamily.Planetary
                         : cycloidal ? GearGen.Geometry.GearFamily.Cycloidal
                         : cycdrive ? GearGen.Geometry.GearFamily.CycloidalDrive
+                        : (spiralBevel || zerol) ? GearGen.Geometry.GearFamily.SpiralBevel
                         : GearGen.Geometry.GearFamily.Cylindrical;
-                    bool helical = helixOverride.HasValue && helixOverride.Value > 0;
+                    // the card split within a family: a helix for Spur/Helical and Rack/Helical rack, the spiral card for spiral/zerol
+                    bool helical = (helixOverride.HasValue && helixOverride.Value > 0) || spiralBevel;
                     string expected = GearGen.Geometry.GearParameters
                         .CreateDefaults(family, helical, GearGen.Geometry.UnitSystem.Metric).SuggestedFileName(".step");
                     Log("reset test: label='" + vm.ResetLabel + "' before=" + vm.SuggestedFileName(".step"));

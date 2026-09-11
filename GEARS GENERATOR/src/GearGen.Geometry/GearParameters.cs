@@ -50,7 +50,12 @@ namespace GearGen.Geometry
         /// 15. No module or pressure angle; sized by PinCircleDiameterMm,
         /// RollerDiameterMm and EccentricityMm, with optional output pins.
         /// Exports disc + rollers + output pins as one multi-body STEP.</summary>
-        CycloidalDrive
+        CycloidalDrive,
+        /// <summary>Spiral bevel gear (curved, Gleason circular-arc tooth
+        /// trace), and zerol bevel when SpiralAngleDeg == 0 -- see
+        /// docs/gear-math.md section 16. The straight bevel's parameters plus
+        /// SpiralAngleDeg, CutterRadiusMm and Hand.</summary>
+        SpiralBevel
     }
 
     /// <summary>
@@ -197,6 +202,25 @@ namespace GearGen.Geometry
 
         public bool IsCycloidalDrive => Family == GearFamily.CycloidalDrive;
 
+        // ---- spiral / zerol bevel (docs/gear-math.md section 16) -- Family == SpiralBevel only ----
+        // Reuses every straight-bevel field (MateTeeth, ShaftAngleDeg,
+        // PitchAngleOverrideDeg) and Hand.
+
+        public bool IsSpiralBevel => Family == GearFamily.SpiralBevel;
+
+        /// <summary>Straight or spiral: the families that share the cone geometry.</summary>
+        public bool IsAnyBevel => IsBevel || IsSpiralBevel;
+
+        /// <summary>Mean spiral angle psi_m at the middle of the face. 0 = a
+        /// zerol bevel gear (curved teeth, zero mean spiral angle).</summary>
+        public double SpiralAngleDeg { get; set; } = 35.0;
+
+        /// <summary>Gleason cutter radius, which sets the tooth trace's
+        /// curvature. 0 = automatic: the mean cone distance.</summary>
+        public double CutterRadiusMm { get; set; } = 0.0;
+
+        public bool IsZerol => IsSpiralBevel && Math.Abs(SpiralAngleDeg) < 1e-9;
+
         /// <summary>The rollers' centre circle.</summary>
         public double PinCircleDiameterMm { get; set; } = 60.0;
 
@@ -267,6 +291,11 @@ namespace GearGen.Geometry
                     break;
                 case GearFamily.Bevel:
                     p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    break;
+                case GearFamily.SpiralBevel:
+                    // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
+                    p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    p.SpiralAngleDeg = helical ? 35.0 : 0.0; p.CutterRadiusMm = 0.0;
                     break;
                 case GearFamily.Worm:
                     p.WormStarts = 2; p.PitchDiameterMm = 20.0; p.FaceWidthMm = 30.0; p.MateTeeth = 20;  // 30 mm: ~5 threads, not the 10 mm stub the shared default gives
@@ -339,6 +368,16 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.SpiralBevel:
+                    parts.Add(IsZerol ? "zerolbevel" : "spiralbevel"); parts.Add("z" + Teeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add("mate" + MateTeeth); parts.Add("shaft" + N(ShaftAngleDeg));
+                    if (PitchAngleOverrideDeg.HasValue) parts.Add("pitchang" + N(PitchAngleOverrideDeg.Value));
+                    if (!IsZerol) parts.Add("spiral" + N(SpiralAngleDeg));
+                    parts.Add(hand + "H");
+                    if (CutterRadiusMm > 0) parts.Add("cutter" + Len(CutterRadiusMm));
+                    parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.CycloidalDrive:
                     parts.Add("cycdrive"); parts.Add("lobes" + Teeth);

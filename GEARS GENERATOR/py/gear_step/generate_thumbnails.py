@@ -117,4 +117,14 @@ if __name__ == "__main__":
     disc, rollers, out_pins = build_drive_assembly(drive)
     render_solid_thumbnail(bd.Compound(children=[disc, *rollers, *out_pins]), f"{out_dir}/thumb_cycdrive.png", elev=45, azim=-50)
 
+    from spiral_bevel import SpiralBevelParams, build_spiral_bevel_gear_solid
+    spiral = SpiralBevelParams(z=16, module_mm=3.0, mate_teeth=16, shaft_angle_deg=90.0,
+                               face_width_mm=10.0, bore_diameter_mm=6.0, spiral_angle_deg=35.0)
+    render_solid_thumbnail(build_spiral_bevel_gear_solid(spiral, n_stations=8, n_phi=120, simplify_tolerance_mm=0.05),
+                           f"{out_dir}/thumb_spiral_bevel.png")
+    zerol = SpiralBevelParams(z=16, module_mm=3.0, mate_teeth=16, shaft_angle_deg=90.0,
+                              face_width_mm=10.0, bore_diameter_mm=6.0, spiral_angle_deg=0.0)
+    render_solid_thumbnail(build_spiral_bevel_gear_solid(zerol, n_stations=8, n_phi=120, simplify_tolerance_mm=0.05),
+                           f"{out_dir}/thumb_zerol_bevel.png")
+
     print("done")

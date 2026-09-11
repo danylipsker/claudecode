@@ -1,6 +1,69 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Light 3D ground, a mid-blue gear, and "shaded with edges" (latest)
+## Spiral and zerol bevel gears (latest)
+
+The user asked for "the rest of the gears missing"; spiral bevel first,
+with zerol as its zero-spiral-angle case. Docs §12 had argued against
+building this without cutter-head kinematics; what is built is narrower and
+says so: **the straight bevel tooth swept along the Gleason circular-arc
+trace**, judged by the same pair check as every other multi-member family
+(`spiral_bevel.py`, docs/gear-math.md §16).
+
+- **Trace**: in the pitch cone's development, a circle of cutter radius
+  `r_c` through the mean point, tangent there at the spiral angle `ψ_m`;
+  Gleason's `sin ψ(s) = (s² − R_m² + 2 R_m r_c sin ψ_m)/(2 s r_c)` and the
+  offset `φ_dev(s)` from the circle/circle intersection, `φ = ±φ_dev/sin γ`
+  by hand. Every station across the face is §8's Tredgold section at that
+  cone distance turned by `φ(s)`; the section uses the transverse pressure
+  angle `tan α_t = tan α_n / cos ψ_m`. Zerol: `ψ_m = 0`, curved teeth
+  (−8.8° toe → +7.6° heel on the test gear).
+- **The loft finding that made it possible**: build123d's `make_loft`
+  leaves OpenCASCADE's vertex-compatibility check ON, which re-pairs the
+  vertices of *rotated* sections by proximity and shears the surface —
+  this is the mechanism behind the helical gear's 359 µm (§7.3). Measured
+  on those same six rotated sections: 359.4 µm with the check on, 8.6 µm
+  (ruled, = the chord sagitta) and **0.0 µm (smooth)** with it off, at a
+  sixth of the face count. So spiral teeth are smooth lofts driven through
+  `BRepOffsetAPI_ThruSections` directly with `CheckCompatibility(False)`.
+  The worm thread's loft was measured too: 18.5 µm between stations at
+  9°/station — chord sagitta, not shear; that old open thread is closed.
+- **Pair check, and a shared helper** (`meshcheck.py`): OpenCASCADE's
+  common of two *compounds* whose members touch tangentially silently
+  returns nothing — for a mis-phased straight-bevel pair it read 0 mm³
+  while solid by solid the teeth overlap by 111 mm³. Every pair check now
+  runs solid by solid with a bounding-box prefilter, and the straight bevel
+  got the pair test it never had: 0.12 mm³ (0.001 % of the gear) in phase
+  at three rotation phases, 111 mm³ mis-phased. Spiral (35°) and zerol
+  pairs pass the same thresholds (< 5·10⁻⁵ of the gear in phase, > 2·10⁻³
+  and 50× more mis-phased). `bevel.place_bevel_pinion` derives the
+  placement (contact generatrix, even-pinion spin, ω₁ = −ω₂ z₂/z₁).
+- **A pre-existing bug found by the transverse angle**: the generating
+  cutter's outline self-intersected above ~23.5° pressure angle because its
+  two tip fillets crossed (tip land 0.26 mm at 20°, 0.013 mm at 23°,
+  negative beyond) — so the 25° preset had been feeding an invalid cutter
+  to every family, and shapely's sweep union threw for the spiral bevel.
+  `rack_cutter_tooth_points` now clamps the fillet to a full-round tip
+  (`ρ ≤ 0.999·flank_u(tip)/tan(45°−α/2)`), and past ~32.1° (where the
+  standard-depth rack tooth is pointed, `tan α ≥ π/(4 hf*)`) cuts the tooth
+  off at its point instead of crashing, with a warning in every family's
+  derived values. A 40° spur gear now builds and warns.
+- **Checks** (`tests/test_spiral_bevel.py`, 7 tests; suite 100): trace
+  by numeric differentiation equals Gleason's closed form at toe/mean/heel
+  for 35°, 20°, 0°; toe/heel stations are exactly the straight-bevel
+  stations turned by the trace; a 10-station tooth's loft passes through
+  its stations to < 2 µm and through a 37-station build's intermediate
+  stations to < 10 µm; blank + z manifold teeth, STEP round-trip; the pair
+  check for spiral and zerol.
+- **UI**: Spiral bevel and Zerol bevel cards over one family (split by the
+  spiral angle, as Spur/Helical), a SPIRAL BEVEL section (spiral angle,
+  cutter radius, hand), the BEVEL CONE section and derived rows shared with
+  straight bevel plus a spiral row (mean/toe/heel angles, hand, cutter
+  radius, transverse PA), reset defaults for both cards,
+  `spiralbevel_z16_m2_pa20_mate20_shaft90_spiral35_RH_fw10` names,
+  thumbnails, `--uismoke --spiralbevel|--zerol`. Verified headless and by a
+  fresh-launch SolidWorks import (native body).
+
+## Light 3D ground, a mid-blue gear, and "shaded with edges"
 
 User: "do some GUI changes to the background of the display and the color
 of the gears so the user can see them with ease" and "add edges to the 3d

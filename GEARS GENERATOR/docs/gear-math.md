@@ -248,7 +248,11 @@ exactly `twist_total * z/b` found:
 - the error grew *linearly* with the per-copy rotation, not quadratically as
   a chord's sagitta would (which would have been ~8 µm) -- i.e. the loft was
   not pairing profile points one-to-one between rotated copies, but
-  re-aligning wires and shearing the surface in between;
+  re-aligning wires and shearing the surface in between (the mechanism was
+  pinned down later, in §16: OpenCASCADE's `ThruSections` vertex-compatibility
+  check, which build123d leaves on, re-pairs a rotated section's vertices by
+  proximity; with it off the same six sections loft to 8.6 µm ruled and
+  0.0 µm smooth);
 - a smooth (`ruled=False`) loft was no better: 270 µm - 3.4 mm, and at
   intermediate section counts a +1.4% to +2.0% *volume* overshoot (spline
   bulge between sections), while very few sections happened to fit and many
@@ -1058,3 +1062,68 @@ and lobe height `2E`; one input turn moves the disc back exactly one lobe; the c
 limit (curvature radius → 0 at `E = R/N`); output pins sitting exactly `E` from their
 hole centres at every angle; a manifold disc whose volume matches its section; the
 multi-body STEP round-trips with `1 + N + N_out` solids.
+
+## 16. Spiral and zerol bevel gears
+
+Section 12 argued against building spiral bevel gears without cutter-head kinematics.
+What is built here is narrower than that and is stated as such: **the straight bevel
+tooth of §8, swept along the classic Gleason circular-arc trace** — every station across
+the face is the Tredgold section at that cone distance, turned about the axis by the
+trace's offset there. It is the construction most parametric CAD generators use, and
+its coherence is checked the way every pair in this project is checked, by boolean
+interpenetration of a gear with its pinion in mesh (below); it does not reproduce the
+lengthwise crowning a real Gleason cut carries for localized contact.
+
+**Trace.** In the pitch cone's development — a flat sector with polar coordinates
+`(s, φ_dev)`, `φ_dev = φ·sin γ` for the true angle `φ` about the axis — the trace is a
+circle of cutter radius `r_c` through the mean point `M = (R_m, 0)` whose tangent there
+makes the mean spiral angle `ψ_m` with the radial direction, centre
+`C = M + r_c(−sin ψ_m, cos ψ_m)`:
+
+```
+sin psi(s) = (s^2 - R_m^2 + 2 R_m r_c sin psi_m) / (2 s r_c)          Gleason's spiral angle at cone distance s
+phi_dev(s) = atan2(C_y, C_x) - acos((s^2 + |C|^2 - r_c^2) / (2 s |C|))   the trace's offset from M
+phi(s)     = ± phi_dev(s) / sin gamma                                   right-hand: the heel end counter-clockwise of M
+```
+
+`r_c = 0` means the mean cone distance (a common choice). A **zerol** gear is `ψ_m = 0`:
+curved teeth, negative spiral angle at the toe, zero at the mean point, positive at the
+heel. The section uses the transverse pressure angle `tan α_t = tan α_n / cos ψ_m` (the
+user's angle is the normal one, as for helical gears); the module stays the outer
+transverse module so pitch diameters are those of §8.
+
+**Solid.** Each tooth is a smooth loft through `n` stations from toe to heel, driven
+through OpenCASCADE's `ThruSections` directly with vertex-compatibility checking **off**,
+so the stations' vertices pair by index. This matters: with the check on (build123d's
+default) OCCT re-pairs the vertices of rotated sections by proximity and shears the
+surface — measured on the helical gear as 359 µm, against 8.6 µm for a ruled and 0.0 µm
+for a smooth loft with it off (the mechanism behind §7.3's finding). The smooth loft
+also gives one face per profile edge rather than one per edge per station. Blank and
+teeth stay separate bodies, for §8.3's fuse reasons.
+
+**Pair.** The pinion has the same module, shaft angle, face width, spiral angle and
+cutter radius and the opposite hand; both members share the apex and the outer cone
+distance, so their traces coincide along the common pitch-cone generatrix. Placement
+(`bevel.place_bevel_pinion`, shared with straight bevel): the pinion's axis is
+`(sin Σ, 0, cos Σ)`; its own `−X` generatrix is the contact one, so it must show a space
+there (half a pitch of spin for an even pinion); from rolling without slip along the
+generatrix, `ω_pinion = −ω_gear·z_gear/z_pinion` about its own axis.
+
+Checks (`tests/test_spiral_bevel.py`): the constructed trace's spiral angle by numeric
+differentiation equals Gleason's closed form at toe, mean and heel (35°, 20°, 0°); toe
+and heel stations are exactly §8's stations turned by the trace; a 10-station tooth's
+loft passes through its stations to < 2 µm and through the *intermediate* stations of a
+37-station build — points it never saw — to < 10 µm; blank + z manifold teeth, STEP
+round-trip; and the pair check, solid by solid (`meshcheck.py` — as compounds the boolean
+silently returns nothing for touching members): a 30/12 pair at 90° in mesh at three
+rotation phases overlaps by less than 5·10⁻⁵ of the gear's volume while the pinion
+turned half a pitch collides by more than 2·10⁻³ and 50× more — for 35° spiral, for
+zerol, and (added with this work) for the straight bevel, which measures 0.12 mm³
+(0.001 %) in phase and 111 mm³ mis-phased.
+
+A side finding fixed on the way: the generating cutter's outline (§4.2) self-intersected
+above ~23.5° pressure angle because its two tip fillets crossed (the tip land is 0.26 mm
+at 20°, 0.013 mm at 23°, negative beyond) — so the 25° preset had been feeding an
+invalid cutter to every family. `rack_cutter_tooth_points` now clamps the fillet to a
+full-round tip, `ρ ≤ 0.999·flank_u(tip)/tan(45° − α/2)`, exactly as §10.2 clamps the
+rack's root fillet.

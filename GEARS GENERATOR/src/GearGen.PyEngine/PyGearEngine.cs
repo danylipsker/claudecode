@@ -192,6 +192,20 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsSpiralBevel)
+            {
+                // As bevel: SpiralBevelParams has no inch constructor, convert
+                // client-side. Hand is already in the base request.
+                req.GearType = "spiral_bevel";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;
+                req.ShaftAngleDeg = p.ShaftAngleDeg;
+                req.PitchAngleOverrideDeg = p.PitchAngleOverrideDeg;
+                req.SpiralAngleDeg = p.SpiralAngleDeg;
+                req.CutterRadiusMm = p.CutterRadiusMm;
+                return req;
+            }
+
             if (p.IsCycloidalDrive)
             {
                 // No module: every length is already stored in mm on

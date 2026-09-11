@@ -192,6 +192,32 @@ def rack_cutter_tooth_points(gp: GearParams, n_arc: int = 24) -> list[tuple[floa
     def flank_u(v: float) -> float:
         return half_t - v * math.tan(alpha)
 
+    # The two tip fillets must fit on the cutter's tip land, which narrows
+    # with the pressure angle: each takes rho*tan(45deg - alpha/2) of the
+    # half-width flank_u(tip_v) (the tangent length for a fillet in the
+    # tooth's 90deg + alpha tip corner). Past that they cross and the outline
+    # self-intersects -- measured: at module 2, hf* 1.25, rho* 0.38 the land
+    # is 0.26 mm at 20deg, 0.013 mm at 23deg and negative from ~23.5deg, so
+    # the 25deg preset and any spiral bevel's transverse angle produced an
+    # invalid polygon (shapely's sweep union then fails with a "side location
+    # conflict", or worse, silently unions garbage). Clamp to a full-round
+    # tip, exactly as rack.py clamps its root fillet.
+    # (0.999: at the limit itself the two arcs end on one point and floating-
+    # point noise can cross them by 1e-17 -- shapely then rejects the outline
+    # -- so leave a land a thousandth of the half-width wide, ~1 um.)
+    if flank_u(tip_v) <= 1e-9:
+        # The flanks meet BEFORE the tip depth: at standard depth the rack
+        # tooth is pointed once tan(alpha) >= pi/(4 hf*) -- 32.1deg for hf* =
+        # 1.25 -- which a large helix or spiral angle reaches through the
+        # transverse pressure angle (and the pressure-angle spinner allows
+        # 45deg outright). Cut the tooth off at its point rather than build
+        # a self-crossing outline; server.py warns that the gear's root is
+        # then a sharp V. (Pointed-rack teeth are a real, if rare, thing.)
+        tip_v = half_t / math.tan(alpha) - 1e-6
+        rho = 0.0
+    rho_max = 0.999 * flank_u(tip_v) / math.tan(math.pi / 4.0 - alpha / 2.0)
+    rho = max(0.0, min(rho, rho_max))
+
     v_center = tip_v - rho
     u_flank_at_vcenter = half_t - v_center * math.tan(alpha)
     u_center = u_flank_at_vcenter - rho / math.cos(alpha)
@@ -207,7 +233,7 @@ def rack_cutter_tooth_points(gp: GearParams, n_arc: int = 24) -> list[tuple[floa
         a_end -= 2 * math.pi
 
     right_path = [(flank_u(v_top), v_top), (flank_u(v_tan), v_tan)]
-    for i in range(1, n_arc + 1):
+    for i in range(1, n_arc + 1 if rho > 1e-12 else 1):  # no arc at all for a sharp (pointed) tip
         a = a_start + (a_end - a_start) * i / n_arc
         right_path.append((u_center + rho * math.cos(a), v_center + rho * math.sin(a)))
 
@@ -237,7 +263,20 @@ def rack_swept_cutter_union(gp: GearParams, n_phi: int = 240, phi_margin: float 
         phi = phi_lo + (phi_hi - phi_lo) * i / n_phi
         coords = [rack_point_to_gear_frame(phi, u, v, r) for (u, v) in pts]
         polys.append(Polygon(coords))
-    return unary_union(polys)
+    try:
+        return unary_union(polys)
+    except Exception as exc:  # shapely.errors.GEOSException: "side location conflict"
+        # GEOS's exact-arithmetic overlay can still hit a topology conflict
+        # when two swept positions' edges land (near-)coincident -- first seen
+        # for a virtual tooth count of 80.8 at a 23.96deg transverse pressure
+        # angle (a spiral bevel's section), never for the integer-z spur
+        # gears. Snap-rounding to a 1 nm grid makes the overlay robust at no
+        # geometric cost; done only on failure so every previously-working
+        # case computes exactly as before.
+        if "GEOS" not in type(exc).__name__ and "Topology" not in str(exc):
+            raise
+        import shapely  # shapely >= 2: union_all takes grid_size; shapely.ops.unary_union does not
+        return shapely.union_all(polys, grid_size=1e-9)
 
 
 def full_gear_polygon(gp: GearParams, n_phi: int = 240, blank_segments: int = 720):

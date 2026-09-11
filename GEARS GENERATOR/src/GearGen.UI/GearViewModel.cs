@@ -63,7 +63,7 @@ namespace GearGen.UI
         public bool IsMetric { get => !IsInch; set => IsInch = !value; }
 
         public string ModuleOrDpLabel =>
-            (IsInch ? "Diametral pitch" : "Module") + (IsBevel ? " (outer/heel)" : IsWorm ? " (axial)" : "");
+            (IsInch ? "Diametral pitch" : "Module") + (IsAnyBevel ? " (outer/heel)" : IsWorm ? " (axial)" : "");
         public string FaceWidthLabel => IsWorm ? "Threaded length" : "Face width";
         public string BoreOrHoleLabel =>
             IsRack ? "Mounting hole diameter (0 = none)"
@@ -147,6 +147,59 @@ namespace GearGen.UI
             get => _p.Family == GearFamily.CycloidalDrive;
             set { if (value) { _p.Family = GearFamily.CycloidalDrive; OnChanged(); FamilyChanged(); } }
         }
+
+        // ---- spiral / zerol bevel (docs/gear-math.md section 16) -- Family == SpiralBevel only ----
+
+        public bool IsSpiralBevel
+        {
+            get => _p.Family == GearFamily.SpiralBevel;
+            set { if (value) { _p.Family = GearFamily.SpiralBevel; OnChanged(); FamilyChanged(); } }
+        }
+        /// <summary>Straight and spiral bevel share the BEVEL CONE section
+        /// (mate teeth, shaft angle) and the cone-derived values.</summary>
+        public bool IsAnyBevel => _p.IsAnyBevel;
+        /// <summary>Spiral bevel and Zerol bevel are two cards over one family,
+        /// split by the spiral angle (0 = zerol) -- as Spur/Helical are.</summary>
+        public bool IsSpiralBevelSpiral => IsSpiralBevel && !_p.IsZerol;
+        public bool IsSpiralBevelZerol => IsSpiralBevel && _p.IsZerol;
+
+        public double SpiralAngleDeg
+        {
+            get => _p.SpiralAngleDeg;
+            set
+            {
+                _p.SpiralAngleDeg = Clamp(value, 0, 60); OnChanged();
+                OnChanged(nameof(IsSpiralBevelSpiral));
+                OnChanged(nameof(IsSpiralBevelZerol));
+                OnChanged(nameof(CurrentCardName));
+                OnChanged(nameof(ResetLabel));
+                ScheduleRefresh();
+            }
+        }
+
+        public double CutterRadiusDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.CutterRadiusMm) : _p.CutterRadiusMm;
+            set { _p.CutterRadiusMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public void SelectSpiralBevelCard()
+        {
+            IsSpiralBevel = true;
+            HelixAngleDeg = 0.0;
+            if (_p.IsZerol) SpiralAngleDeg = 35.0;
+        }
+
+        public void SelectZerolBevelCard()
+        {
+            IsSpiralBevel = true;
+            HelixAngleDeg = 0.0;
+            SpiralAngleDeg = 0.0;
+        }
+
+        private string _spiralText = "-", _cutterText = "-";
+        public string SpiralText { get => _spiralText; private set { _spiralText = value; OnChanged(); } }
+        public string CutterText { get => _cutterText; private set { _cutterText = value; OnChanged(); } }
         /// <summary>"Has a module": a cycloidal drive is sized by its pin
         /// circle, rollers and eccentricity instead.</summary>
         public bool IsNotCycloidalDrive => !IsCycloidalDrive;
@@ -276,6 +329,7 @@ namespace GearGen.UI
             : IsCycloidal ? "Cycloidal"
             : IsCycloidalDrive ? "Cycloidal drive"
             : IsBevel ? "Bevel"
+            : IsSpiralBevel ? (_p.IsZerol ? "Zerol bevel" : "Spiral bevel")
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -291,7 +345,10 @@ namespace GearGen.UI
         /// preview refresh follow as for any family change.</summary>
         public void ResetToDefaults()
         {
-            _p.CopyFrom(GearParameters.CreateDefaults(_p.Family, _p.IsHelical, _p.Unit));
+            // the card split within a family: helix angle for Spur/Helical and
+            // Rack/Helical rack, spiral angle for Spiral bevel/Zerol bevel
+            bool variant = _p.IsSpiralBevel ? !_p.IsZerol : _p.IsHelical;
+            _p.CopyFrom(GearParameters.CreateDefaults(_p.Family, variant, _p.Unit));
             OnChanged(string.Empty);
             FamilyChanged();
         }
@@ -319,6 +376,10 @@ namespace GearGen.UI
             OnChanged(nameof(IsCycloidalDrive));
             OnChanged(nameof(IsNotCycloidalDrive));
             OnChanged(nameof(TeethLabel));
+            OnChanged(nameof(IsSpiralBevel));
+            OnChanged(nameof(IsAnyBevel));
+            OnChanged(nameof(IsSpiralBevelSpiral));
+            OnChanged(nameof(IsSpiralBevelZerol));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -598,6 +659,7 @@ namespace GearGen.UI
             OnChanged(nameof(EccentricityDisplay));
             OnChanged(nameof(OutputPinDiameterDisplay));
             OnChanged(nameof(OutputCircleDisplay));
+            OnChanged(nameof(CutterRadiusDisplay));
         }
 
         // ---- preview / derived values ---------------------------------------
@@ -786,7 +848,7 @@ namespace GearGen.UI
                 double dv(string k) => result.Derived.TryGetValue(k, out var v) ? v : 0;
                 string L(double mm) => IsInch ? $"{UnitConversion.MmToInch(mm):0.####} in" : $"{mm:0.###} mm";
 
-                if (IsBevel)
+                if (IsAnyBevel)
                 {
                     // bevel_derived_values (server.py) returns a different key
                     // set entirely -- no base circle / tooth thickness / DP
@@ -797,6 +859,12 @@ namespace GearGen.UI
                     PitchAngleText = $"{dv("pitch_angle_deg"):0.##}°";
                     ConeDistanceText = L(dv("outer_cone_distance_mm"));
                     ZVirtualText = dv("z_virtual").ToString("0.##");
+                    if (IsSpiralBevel)
+                    {
+                        // spiral_bevel_derived_values adds the trace (server.py)
+                        SpiralText = $"{dv("spiral_angle_mean_deg"):0.#}° mean ({dv("spiral_angle_toe_deg"):0.#}° toe → {dv("spiral_angle_heel_deg"):0.#}° heel), {(dv("hand_is_left") > 0.5 ? "left" : "right")}-hand";
+                        CutterText = $"{L(dv("cutter_radius_mm"))} ({(_p.CutterRadiusMm > 0 ? "set" : "auto = mean cone distance")}); transverse PA {dv("transverse_pressure_angle_deg"):0.##}°";
+                    }
                 }
                 else if (IsWorm)
                 {

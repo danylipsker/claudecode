@@ -121,6 +121,28 @@ def bevel_tooth_stations(bp: BevelGearParams, tooth_index: int = 0, n_phi: int =
     return toe_pts, heel_pts
 
 
+def place_bevel_pinion(pinion, z_gear: int, z_pinion: int, shaft_angle_deg: float,
+                       gear_turn_deg: float = 0.0, phase_error_deg: float = 0.0):
+    """Put a pinion built on its own Z axis (apex at the origin) in mesh with
+    a gear also on Z with its apex at the origin -- straight or spiral, the
+    placement is the same. Both pitch cones share the apex and the outer
+    cone distance, and touch along the generatrix in the +X half of the XZ
+    plane: the pinion's axis is Z turned about Y by the shaft angle S, i.e.
+    (sin S, 0, cos S). In the pinion's own frame the contact generatrix is
+    its -X one, so it must show a SPACE there; its tooth 0 is centred on +X
+    (flat_point_to_cone maps the flat tooth centred on +Y to actual_angle 0),
+    which puts a tooth on -X exactly when z_pinion is even -- hence half a
+    pitch of spin in that case. Rolling without slip along the generatrix
+    gives omega_pinion = -omega_gear * z_gear / z_pinion about the pinion's
+    own axis (z x g and d_p x g point opposite ways along Y), so a gear turn
+    of delta comes with a pinion spin of -delta z_gear / z_pinion.
+    phase_error_deg is for tests: a deliberate extra spin so a wrong mesh
+    can be shown to collide where the right one doesn't."""
+    import build123d as bd
+    spin = (180.0 / z_pinion if z_pinion % 2 == 0 else 0.0) + phase_error_deg - gear_turn_deg * z_gear / z_pinion
+    return pinion.rotate(bd.Axis.Z, spin).rotate(bd.Axis.Y, shaft_angle_deg)
+
+
 def root_cone_profile(bp: BevelGearParams):
     """The (radius, z) axial half-profile of the root cone -- the frustum
     every tooth sits on -- as 4 points ready for a 360deg revolve: bore/axis

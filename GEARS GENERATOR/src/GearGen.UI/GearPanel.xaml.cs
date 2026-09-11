@@ -101,6 +101,16 @@ namespace GearGen.UI
             if (ViewModel != null) ViewModel.IsBevel = true;
         }
 
+        private void OnSpiralBevelChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectSpiralBevelCard();
+        }
+
+        private void OnZerolBevelChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectZerolBevelCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

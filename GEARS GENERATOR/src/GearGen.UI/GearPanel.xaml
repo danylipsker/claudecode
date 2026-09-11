@@ -197,6 +197,20 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsSpiralBevelSpiral, Mode=OneWay}" Checked="OnSpiralBevelChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_spiral_bevel.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Spiral bevel" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsSpiralBevelZerol, Mode=OneWay}" Checked="OnZerolBevelChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_zerol_bevel.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Zerol bevel" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
@@ -285,7 +299,26 @@
                     </Grid>
                     </StackPanel>
 
-                    <StackPanel Visibility="{Binding IsBevel, Converter={StaticResource B2V}}">
+                    <StackPanel Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
+                        <TextBlock Text="SPIRAL BEVEL" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Teeth curve across the face along a circular arc (the Gleason trace): the spiral angle is the tooth's inclination at mid-face (35° is usual; 0° makes a zerol gear, curved teeth with no mean inclination), and the cutter radius sets how tightly the arc bends (0 = automatic, the mean cone distance). The pressure angle above is the normal one. A mating pinion has the opposite hand."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Spiral angle (0 = zerol)" Value="{Binding SpiralAngleDeg}" Minimum="0" Maximum="60" Step="1" DecimalPlaces="1" Suffix="°"/>
+                        <local:NumericSpinner Label="Cutter radius (0 = auto)" Value="{Binding CutterRadiusDisplay}" Minimum="0" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <Grid Margin="0,6,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" GroupName="spiralhand" Content="Right-hand" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsRightHand, Mode=OneWay}" Checked="OnRightHandChecked"/>
+                            <RadioButton Grid.Column="2" GroupName="spiralhand" Content="Left-hand" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsLeftHand, Mode=OneWay}" Checked="OnLeftHandChecked"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsAnyBevel, Converter={StaticResource B2V}}">
                         <TextBlock Text="BEVEL CONE" Style="{StaticResource SectionHeader}"/>
                         <TextBlock Text="Mating gear's tooth count, and the angle between the two shafts (90° for the usual right-angle drive), set the cone angle this gear needs to mesh correctly."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
@@ -536,7 +569,17 @@
                         <TextBlock Text="{Binding RatioText}" FontSize="13" Foreground="#111827"/>
                     </StackPanel>
                 </UniformGrid>
-                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsBevel, Converter={StaticResource B2V}}">
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="SPIRAL ANGLE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SpiralText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CUTTER RADIUS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CutterText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsAnyBevel, Converter={StaticResource B2V}}">
                     <StackPanel>
                         <TextBlock Text="PITCH ANGLE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding PitchAngleText}" FontSize="13" Foreground="#111827"/>

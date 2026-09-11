@@ -40,6 +40,8 @@ namespace GearGen.PyEngine
         [JsonProperty("output_pin_count")] public int? OutputPinCount;
         [JsonProperty("output_pin_diameter_mm")] public double? OutputPinDiameterMm;
         [JsonProperty("output_circle_diameter_mm")] public double? OutputCircleDiameterMm;
+        [JsonProperty("spiral_angle_deg")] public double? SpiralAngleDeg;
+        [JsonProperty("cutter_radius_mm")] public double? CutterRadiusMm;
     }
 
     internal class EngineResponse
