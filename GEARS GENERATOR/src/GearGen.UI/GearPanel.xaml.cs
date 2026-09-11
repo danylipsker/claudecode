@@ -111,6 +111,14 @@ namespace GearGen.UI
             ViewModel?.SelectZerolBevelCard();
         }
 
+        private void OnFaceGearChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectFaceGearCard();
+            // Two mating parts (the pinion stands on the face): the same 3/4
+            // nudge the worm and screw-pair previews use.
+            Viewport3D.ChangeCameraDirection(new Vector3D(0.55, 0.8, -0.35), 300);
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

@@ -42,6 +42,8 @@ namespace GearGen.PyEngine
         [JsonProperty("output_circle_diameter_mm")] public double? OutputCircleDiameterMm;
         [JsonProperty("spiral_angle_deg")] public double? SpiralAngleDeg;
         [JsonProperty("cutter_radius_mm")] public double? CutterRadiusMm;
+        [JsonProperty("face_inner_radius_mm")] public double? FaceInnerRadiusMm;
+        [JsonProperty("face_outer_radius_mm")] public double? FaceOuterRadiusMm;
     }
 
     internal class EngineResponse

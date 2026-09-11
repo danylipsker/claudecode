@@ -1127,3 +1127,148 @@ at 20°, 0.013 mm at 23°, negative beyond) — so the 25° preset had been feed
 invalid cutter to every family. `rack_cutter_tooth_points` now clamps the fillet to a
 full-round tip, `ρ ≤ 0.999·flank_u(tip)/tan(45° − α/2)`, exactly as §10.2 clamps the
 rack's root fillet.
+
+## 17. Face gears
+
+A spur pinion on an axis perpendicular to, and intersecting, the axis of a disc whose
+teeth are cut into its face. The pinion's pitch cylinder rolls on the face gear's pitch
+**plane**, so the face gear has no pitch cone or cylinder of its own: its tooth changes
+shape along the radius — thinner and eventually pointed toward the outer end, undercut
+toward the inner end — and its tooth surface is not a formula but the **envelope of the
+shaper pinion's involute flanks** under the generating motion, the shaper turning by
+`θ_s` about its own axis while the face gear turns by `θ_f = θ_s·z_s/z_f` (rolling
+without slip at the nominal radius `R_0 = m·z_f/2`, where the pinion's pitch-circle speed
+matches the face gear's: `ω_s r_s = ω_f R_0`).
+
+### 17.1 The envelope, one radial station at a time
+
+`face_gear.py` builds that envelope literally — the union of the shaper's positions, §4.3's
+method — but in 2D, section by section, and lofts the sections. In the face gear's frame
+the shaper at generating angle `φ` is spun by `φ` about its own axis and *carried* by
+`ψ = −φ·z_s/z_f` about the face gear's axis, so the plane `x = R` (a radial station of
+the ring) cuts its extruded outline in an **affine image of the transverse outline**:
+
+```
+y = R·tan ψ + y'/cos ψ,   z = z'          (y', z': the spun outline, laid along X)
+```
+
+— sheared and shifted by the carry angle, nothing more (the shaper is a cylinder along its
+axis, and the station plane meets that axis obliquely). The union of a few hundred such
+images, clipped to one pitch of the ring and the tooth-height band, is the *exact*
+tooth-space section at that station, for a few milliseconds of shapely. Only the part
+below the blank's top matters: above `z = h_a` the tool is just a strip over the space
+itself (its walls leaning inward from the tooth-tip corners), which keeps every station's
+boundary to the same four edges — that strip's top and two walls and **one sweep profile
+from tooth-tip corner to tooth-tip corner** — so a loft through ten stations pairs them
+by index (§16's ThruSections with compatibility checking off) into one B-spline face per
+side of the space instead of one facet per sweep position: a six-face tool. It is
+patterned `z_f` times and cut from the blank in one N-ary boolean — a revolve whose disc
+inside the ring is relieved a fifth of a module below the space floor, so the floor
+(tangent to the plane `z = −h_f` along the space centre) never touches a blank face; the
+tool's flat ends, 0.3 mm inside and outside the ring, are in the air over that relief and
+beyond the rim (the rim's cylinder bows in by at most 0.2 mm across the tool's width), and
+below the blank's top each section is clipped to its own pitch wedge, so no tool can
+reach a neighbour. The shaper is the pinion's own tooth form with the face gear's dedendum
+as its addendum (so the pinion's tips clear the roots) and may have a few more teeth than
+the pinion — the usual way to localize contact.
+
+**Sweep range.** The bottom shaper tooth cuts until its tip rises out of the addendum
+plane, at `T = acos((r_s − h_a)/(r_s + h_as))`, and the *neighbouring* tooth goes on
+cutting the inner end of the same space — the undercut region — until one shaper pitch
+later, so `φ` runs over `±(T + 2π/z_s)` plus a margin. A first version swept ±1.5 shaper
+pitches and trimmed the cutter short of the half-pitch plane; the uncut material it left
+at the inner end was found by the mesh check below (the pinion's neighbouring tooth
+collided with it, 3.6 mm³ a side) — the kind of construction error only a
+solid-against-solid test catches.
+
+### 17.2 Design limits: undercut inside L1, pointed beyond L2
+
+Litvin's limiting radii, here from the **rack-equivalent section**: at radius `R` the face
+gear moves past the shaper like a rack at the shaper's equivalent pitch radius
+`r_s' = r_s·R/R_0`, so the shaper's involute (base radius `r_s cos α`) works there at
+
+```
+cos α_R = cos α · R_0/R,   pitch line at z_p = r_s − r_s'   (above the face for R < R_0)
+```
+
+The tooth top, `h_a` above the face, is reached by the involute only while it lies within
+the involute's reach from the pitch point, `h_a − z_p ≤ r_s' sin²α_R`; solving,
+
+```
+L1 = R_0 cos²α / (1 − h_a/r_s)
+```
+
+— inside it the shaper's non-involute fillet cuts the tooth tops (undercut). The top land
+follows from the rack tooth thickness at the pitch line (the shaper's *space* width at
+`r_s'`, i.e. its pitch there minus its tooth thickness) minus the two flanks' rise:
+
+```
+t_top(R) = 2 r_s' (π/(2 z_s) − inv α + inv α_R) − 2 (h_a − z_p) tan α_R
+```
+
+and `L2` is its zero (bisection; it falls monotonically). At `R_0` this is exactly the
+standard rack's `πm/2 − 2m tan α = 0.843 m`. For the test's z = 40 / 20-tooth pinion,
+m = 2: L1 = 39.25, L2 = 46.20 — a usable ring only 7 mm wide at ratio 2, which is why
+face gears want high ratios. The **auto ring** is `[L1, L2]` with 10 % of the usable width
+kept clear at each end; a hand-set ring is accepted as given, and the derived values
+report both limits, the top land at each end of the ring, and warn when the ring crosses
+a limit (the generated geometry then shows the undercut or the knife edge itself).
+
+**Phase.** A spur gear from `build_gear_solid` has a tooth centred on its own +Y; after
+the rotation that lays its axis along X its own +X points *down*, at the face gear, and a
+tooth centre sits there only when `z` is divisible by 4 — so both shaper and pinion are
+first spun so that a tooth centre is exactly at the bottom. The space generated at
+face-gear angle 0 is then the one the pinion's bottom tooth enters at phase 0, and a
+pinion turn of `δ` goes with a face-gear turn of `δ·z_p/z_f`.
+
+### 17.3 Checks
+
+`tests/test_face_gear.py`: the section formula is the standard rack at `R_0`, L1 is the
+closed form, `t_top(L2) = 0`, the auto ring sits inside the limits and the sweep reaches
+a shaper pitch past the exit angle; the space tool is one valid solid of a handful of
+faces whose floor is at the shaper's addendum below the pitch plane and which stays
+within the ring's margin; the built gear is one valid manifold body of a few faces per
+space whose removed volume per space is within 50 % of a crude tooth-space estimate,
+**whose measured top lands at both ends of the ring agree with `t_top(R)`** (the
+rack-equivalent model checked against the exact envelope), and which round-trips as a
+STEP file of a few megabytes at most; and **the pinion meshes through the built face
+gear** — placed at four rotation phases a quarter of a pinion pitch apart it overlaps the
+gear by less than 10⁻⁴ of its own volume (measured 0.012 mm³ of 11 800: 10⁻⁶, the
+same as the ruled loft's 0.009), while turned half a pitch it collides by more than
+5·10⁻³ and 50× more (measured 117 mm³) — both with the pinion's own tooth count as
+shaper and with a 22-tooth shaper for a 20-tooth pinion. That one check fails if the
+envelope, the kinematic ratio, the phase, the sweep range or the clearances are wrong,
+and it did, twice, on the way here: the first cutter rotated the placed shaper about the
+*global* X axis, 20 mm below its own, swinging it through the blank (spaces 1.8× too
+wide); the second swept too little and trimmed too much (§17.1).
+
+**Booleans, and why the tools must not touch.** Two earlier shapes of the same tool
+broke the N-ary cut. Trimmed to exact half-pitch wedges, the 40 copies shared coincident
+planar faces and the cut came back as an invalid two-solid shape; trimmed 0.005° short
+of the plane (4 µm at the ring) they stopped sharing faces but left 40 pairs of parallel
+planes 4 µm apart, and the general-fuse engine then returned a null shape in parallel
+mode and took 140–196 s single-threaded. With the strip above the blank spanning the
+space alone, neighbouring tools are a tooth's top land apart everywhere (touching at most
+along the crest line of a pointed tooth, outside L2) and each tool only ever meets the
+blank: one N-ary cut (23–27 s for z = 40 before the knot-vector fix below, 3–4 s after it), and cutting the same tools one after
+another gives the same volumes to the last digit (the fallback if the N-ary result is
+ever not one valid solid). The loft wobble noted above was found the same way — a
+profile that included the long straight runs of a wedge-wide section let the
+arc-length correspondence wander between features from station to station, and the
+booleans on that surface disagreed with each other about the volume they removed. The
+first attempt of all, a 3D boolean sweep of 40 shaper positions, had one facet per
+position: ~16 000 faces and a 61 MB STEP file, against 6 faces per tool now.
+
+**Knot vectors.** Six faces can still be enormous: interpolating each station's 120
+profile points with the default chord-length parametrisation gave every station its own
+knot vector, and the loft, which must express all twelve sections on one knot vector,
+merged them into a ~1400-span surface per face — a 96 MB STEP file for one gear, and a
+default `volume` that was 35 % low (the tessellated volume, the arbiter, was right).
+The profile points are equally spaced along the arc, so every station is interpolated on
+the same uniform parameter vector; the sections then share one knot vector, the loft
+carries only the profile's own spans (an 82 × 12 control net for 80 profile points and
+ten stations), and the N-ary cut drops from 23 s to 4 s. Two more measures in `export_face_gear_step` finish the job: the boolean's intersection edges come out with ~750 poles each and are re-approximated to 2 µm (`slim_edge_curves`, edge tolerance widened to match, surfaces untouched), and the file is written without pcurves (build123d's `export_step(write_pcurves=False)`; setting OpenCASCADE's static beforehand is overridden by that call) — 4.9 MB for the z = 40 gear, 48 000 control points, from 21.7 MB. A caution for future probes: OpenCASCADE's default
+volume of a B-spline solid is only as good as its parametrisation (10 % low even on the
+compact surfaces) — judge such a solid by its tessellation (`meshcheck.tessellated_volume`:
+`export_stl` and the divergence theorem, 0.2 % of the exact boolean volumes here) — and
+`VolumeProperties` with an explicit tolerance can crawl for minutes on a bad surface.

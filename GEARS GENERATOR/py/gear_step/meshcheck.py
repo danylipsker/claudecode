@@ -46,3 +46,30 @@ def interpenetration_volume(a: bd.Shape, b: bd.Shape) -> float:
 
 def total_volume(shape: bd.Shape) -> float:
     return sum(s.volume for s in shape.solids())
+
+
+def tessellated_volume(shape, tolerance: float = 0.005, angular_tolerance: float = 0.2) -> float:
+    """The volume of a shape from its own tessellation (divergence theorem
+    over the STL triangles). OpenCASCADE's default `Shape.volume` integrates
+    each face on its parametrisation and was 10-35 % low on the face gear's
+    lofted B-spline faces while this agreed with the exact boolean volumes
+    to 0.2 % -- use this to judge a B-spline solid, and the default only for
+    analytic ones."""
+    import os
+    import struct
+    import tempfile
+
+    import numpy as np
+    import build123d as bd
+
+    with tempfile.NamedTemporaryFile(suffix=".stl", delete=False) as f:
+        path = f.name
+    try:
+        bd.export_stl(shape, path, tolerance=tolerance, angular_tolerance=angular_tolerance)
+        data = open(path, "rb").read()
+    finally:
+        os.unlink(path)
+    n = struct.unpack("<I", data[80:84])[0]
+    tris = np.frombuffer(data[84:84 + n * 50], dtype=np.dtype([("n", "<3f4"), ("v", "<9f4"), ("a", "<u2")]))
+    v = tris["v"].astype(np.float64).reshape(-1, 3, 3)
+    return float(np.einsum("ij,ij->i", v[:, 0], np.cross(v[:, 1], v[:, 2])).sum() / 6.0)

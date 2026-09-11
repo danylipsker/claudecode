@@ -211,6 +211,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsFaceGear, Mode=OneWay}" Checked="OnFaceGearChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_face_gear.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Face gear" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
@@ -297,6 +304,17 @@
                         <RadioButton Grid.Column="2" GroupName="hand" Content="Left-hand" Style="{StaticResource ToggleBtn}"
                                      IsChecked="{Binding IsLeftHand, Mode=OneWay}" Checked="OnLeftHandChecked"/>
                     </Grid>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsFaceGear, Converter={StaticResource B2V}}">
+                        <TextBlock Text="FACE GEAR" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Teeth cut into the face of a disc, driven by a spur pinion on a perpendicular axis. The teeth are generated exactly as a shaper pinion would cut them, so they change shape along the radius: thinner toward the outer end (pointed if the ring is too wide), undercut toward the inner end. A shaper with a few more teeth than the pinion localizes the contact. The preview shows the pinion in mesh; STEP export is the face gear alone (the pinion is an ordinary spur gear)."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Pinion teeth" Value="{Binding MateTeeth}" Minimum="4" Maximum="200" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Shaper teeth (0 = same as pinion)" Value="{Binding CutterTeeth}" Minimum="0" Maximum="200" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Ring inner radius (0 = auto)" Value="{Binding FaceInnerRadiusDisplay}" Minimum="0" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Ring outer radius (0 = auto)" Value="{Binding FaceOuterRadiusDisplay}" Minimum="0" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Rim below the root" Value="{Binding RimThicknessDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
@@ -567,6 +585,20 @@
                     <StackPanel>
                         <TextBlock Text="RATIO" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding RatioText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsFaceGear, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="PINION AND SHAPER" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding FaceGearText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="TOOTHED RING" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding FaceRingText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="RING LIMITS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding FaceLimitsText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">

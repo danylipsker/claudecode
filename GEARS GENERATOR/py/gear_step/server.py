@@ -328,6 +328,72 @@ def planetary_derived_values(pp) -> tuple[dict, list]:
     return derived, warnings
 
 
+def face_gear_params_from_request(p: dict):
+    """Face gear -- docs/gear-math.md 17. z = the face gear's teeth,
+    mate_teeth = the pinion's, cutter_teeth = the shaper's (0 = pinion's),
+    face_inner/outer_radius_mm (0 = auto), rim_thickness_mm."""
+    from face_gear import FaceGearParams
+    return FaceGearParams(
+        z=int(p["z"]),
+        pinion_teeth=int(p.get("mate_teeth") or 20),
+        module_mm=float(p["module_mm"]),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        shaper_teeth=int(p.get("cutter_teeth") or 0),
+        inner_radius_mm=float(p.get("face_inner_radius_mm") or 0.0),
+        outer_radius_mm=float(p.get("face_outer_radius_mm") or 0.0),
+        rim_thickness_mm=float(p.get("rim_thickness_mm", 6.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def face_gear_derived_values(fp) -> tuple[dict, list]:
+    warnings = []
+    r0 = fp.nominal_radius
+    l1, l2 = fp.undercut_radius, fp.pointing_radius
+    if fp.inner_radius >= fp.outer_radius:
+        warnings.append("Inner radius must be smaller than the outer radius.")
+    if l2 - l1 < 0.5 * fp.module_mm:
+        warnings.append(f"Almost no usable ring: undercut limit L1 = {l1:.1f} mm and pointing limit L2 = {l2:.1f} mm "
+                        f"nearly coincide -- use a higher ratio (more face-gear teeth per pinion tooth) or a "
+                        f"larger pressure angle.")
+    if fp.inner_radius < l1 - 1e-6:
+        warnings.append(f"Inner radius {fp.inner_radius:.1f} mm is inside the undercut limit L1 = {l1:.1f} mm: "
+                        f"the shaper's fillet cuts into the tooth tops there (the generated geometry shows it).")
+    if fp.outer_radius > l2 + 1e-6:
+        warnings.append(f"Outer radius {fp.outer_radius:.1f} mm is beyond the pointing limit L2 = {l2:.1f} mm: "
+                        f"the teeth come to a knife edge there (the generated geometry shows it).")
+    if fp.z_shaper < fp.pinion_teeth:
+        warnings.append("A shaper with fewer teeth than the pinion cuts a space the pinion cannot enter; "
+                        "use the pinion's count or a few more.")
+    if fp.z_shaper > fp.pinion_teeth + 3:
+        warnings.append("More than three extra shaper teeth is unusual (contact becomes very localized).")
+    if fp.bore_diameter_mm > 0 and fp.bore_diameter_mm / 2.0 >= fp.inner_radius:
+        warnings.append("Bore reaches the toothed ring.")
+    warnings += pointed_cutter_warning(math.radians(fp.pressure_angle_deg), fp.dedendum_coeff, "Pressure angle")
+    return {
+        "nominal_radius_mm": r0,
+        "inner_radius_mm": fp.inner_radius,
+        "outer_radius_mm": fp.outer_radius,
+        "face_width_mm": fp.outer_radius - fp.inner_radius,
+        "undercut_radius_mm": l1,
+        "pointing_radius_mm": l2,
+        # the rack-equivalent top-land width at the ring's ends (0 = pointed or no involute contact)
+        "top_land_inner_mm": max(0.0, fp.top_land_at(fp.inner_radius)) if fp.top_land_at(fp.inner_radius) == fp.top_land_at(fp.inner_radius) else 0.0,
+        "top_land_outer_mm": max(0.0, fp.top_land_at(fp.outer_radius)) if fp.top_land_at(fp.outer_radius) == fp.top_land_at(fp.outer_radius) else 0.0,
+        "pinion_teeth": float(fp.pinion_teeth),
+        "shaper_teeth": float(fp.z_shaper),
+        "pinion_pitch_diameter_mm": 2.0 * fp.pinion_pitch_radius,
+        "ratio": fp.ratio,
+        "addendum_height_mm": fp.addendum,
+        "dedendum_height_mm": fp.dedendum,
+        "module_mm": fp.module_mm,
+        "diametral_pitch": 25.4 / fp.module_mm,
+    }, warnings
+
+
 def spiral_bevel_params_from_request(p: dict):
     """Spiral / zerol bevel -- docs/gear-math.md 16. The straight bevel's
     request fields plus spiral_angle_deg (0 = zerol), cutter_radius_mm (0 =
@@ -600,6 +666,11 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "face_gear":
+            fp = face_gear_params_from_request(req)
+            outline = full_gear_outline(fp.pinion_params(), simplify_tolerance_mm=0.01)  # the pinion's section
+            derived, warnings = face_gear_derived_values(fp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "spiral_bevel":
             sp = spiral_bevel_params_from_request(req)
             outline = bevel_heel_tooth_outline(sp)  # the heel section, at the transverse pressure angle
@@ -666,6 +737,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "spiral_bevel":
             from build_gear import export_spiral_bevel_step
             export_spiral_bevel_step(spiral_bevel_params_from_request(req), path)
+        elif gear_type == "face_gear":
+            from build_gear import export_face_gear_step
+            export_face_gear_step(face_gear_params_from_request(req), path)
         elif gear_type == "worm":
             from build_gear import export_worm_step
             wp = worm_params_from_request(req)
@@ -709,6 +783,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "spiral_bevel":
             from build_gear import export_spiral_bevel_heel_profile_dxf
             export_spiral_bevel_heel_profile_dxf(spiral_bevel_params_from_request(req), path)
+        elif gear_type == "face_gear":
+            from build_gear import export_face_gear_profile_dxf
+            export_face_gear_profile_dxf(face_gear_params_from_request(req), path)
         elif gear_type == "worm":
             from build_gear import export_worm_profile_dxf
             wp = worm_params_from_request(req)
@@ -759,6 +836,17 @@ def handle(req: dict) -> dict:
             sp = spiral_bevel_params_from_request(req)
             solid = build_spiral_bevel_gear_solid(sp, n_stations=8, n_phi=150, simplify_tolerance_mm=0.04)
             bd.export_stl(solid, path, tolerance=0.01, angular_tolerance=0.3)  # curved flanks: finer than straight bevel
+        elif gear_type == "face_gear":
+            from face_gear import build_face_gear_solid, place_pinion
+            from build_gear import build_gear_solid
+            import build123d as bd
+            fp = face_gear_params_from_request(req)
+            # the preview shows the pair in mesh (the way the worm shows its
+            # wheel); STEP export is the face gear alone. Fewer sweep positions,
+            # stations and profile points than the export (11 s vs 25 s for z = 40): this is rebuilt on every tweak.
+            gear = build_face_gear_solid(fp, n_positions=120, n_stations=6, simplify_tolerance_mm=0.05, n_profile=40)
+            pinion = place_pinion(build_gear_solid(fp.pinion_params(), simplify_tolerance_mm=0.04), fp)
+            bd.export_stl(bd.Compound(children=[gear, pinion]), path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "worm":
             from build_gear import build_worm_solid, build_gear_solid
             import build123d as bd

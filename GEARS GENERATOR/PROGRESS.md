@@ -1,6 +1,87 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Spiral and zerol bevel gears (latest)
+## Face gears (latest)
+
+Next family from "the rest of the gears missing": a spur pinion driving a
+disc with teeth cut into its face (`face_gear.py`, docs/gear-math.md §17).
+The face gear has no pitch cylinder or cone; its tooth surface is the
+envelope of the shaper pinion's involute under the generating motion
+(shaper spins θ_s, face gear turns θ_s·z_s/z_f), and this build makes that
+envelope literally.
+
+- **Envelope in 2D, lofted**: in the face gear's frame the shaper at
+  generating angle φ is spun by φ and carried by −φ·z_s/z_f, so a radial
+  station plane `x = R` cuts its extruded outline in an affine image
+  `y = R·tan ψ + y'/cos ψ` of the transverse outline; the union of 240 such
+  images (shapely, milliseconds) is the exact tooth-space section at that
+  station, and a smooth loft through 10 stations (ThruSections, edges paired
+  by index) is the space — **6 faces per space tool, 84 for the gear**,
+  against the ~16 000 faces and 61 MB STEP of the first 3D boolean-sweep
+  attempt (one facet per sweep position). Above the addendum plane the
+  tool is just a strip over the space, so every station is the same four
+  edges with one sweep profile from tooth-tip corner to tooth-tip corner:
+  a profile that included the straight runs let the arc-length
+  correspondence wander between features and the loft wobbled between
+  stations by enough to break the booleans.
+- **Two construction errors caught by the mesh check** (pinion vs built
+  gear, solid by solid): the first cutter rotated the placed shaper about
+  the *global* X axis, 20 mm below its own — it swung through the blank
+  and cut spaces 1.8× too wide; then a ±1.5-pitch sweep trimmed short of
+  the half-pitch plane left uncut material at the inner end (3.6 mm³ a
+  side, exactly where the pinion's neighbouring tooth passes): the
+  neighbouring shaper tooth finishes the undercut one shaper pitch after
+  the bottom tooth's exit angle `T = acos((r_s−h_a)/(r_s+h_as))`, so the
+  sweep now runs ±(T + 2π/z_s + 3°).
+- **Design limits, and a sane auto ring**: Litvin's L1/L2 from the
+  rack-equivalent section (`cos α_R = cos α·R_0/R`, pitch line
+  `z_p = r_s − r_s'`): undercut inside `L1 = R_0 cos²α/(1 − h_a/r_s)`,
+  pointed beyond L2 where `t_top(R) = 2r_s'(π/2z_s − inv α + inv α_R) −
+  2(h_a − z_p)tan α_R` vanishes. The old auto ring (R_0 ± 5 m) sat far
+  outside both for any low ratio (z = 40/20, m = 2: L1 = 39.25, L2 = 46.20
+  — 7 mm usable); the auto ring is now [L1, L2] less 10 % each end, the
+  derived values show both limits and the top land at each end, and warn
+  when a hand-set ring crosses a limit. **The formula was checked against
+  the exact envelope**: the built gear's measured top lands at both ring
+  ends agree with `t_top(R)`: 1.695 vs 1.699 mm at the inner end, 0.276 vs
+  0.212 at the outer (the section formula errs on the safe side there).
+- **Booleans — the tools must not touch**: trimmed to half-pitch wedges
+  the 40 tools shared coincident planar faces and the N-ary cut returned
+  an invalid two-solid shape; trimmed 4 µm short of the plane they left 40
+  pairs of near-parallel planes and the cut returned null (parallel) or
+  took 140–196 s (single-threaded). Now the strip above the blank spans
+  the space alone, tools are a top land apart, each meets only the blank:
+  one N-ary cut — 23–27 s until the knot-vector fix below, 3–4 s after
+  it — with a sequential fallback of identical volumes. The disc inside the ring is relieved 0.2 m below the space
+  floor so the floor (tangent to `z = −h_f`) never touches a blank face.
+- **Knot vectors**: six faces were still a 96 MB STEP — each station's
+  spline had its own chord-length knots and the loft merged twelve of them
+  into ~1400-span surfaces (and OCCT's default `volume` came out 35 % low
+  on them; a tessellated volume was the arbiter). Interpolating every
+  station on the same uniform parameter vector (the points are equally
+  spaced along the arc) gives the loft one knot vector, the
+  boolean's ~750-pole intersection edges are re-approximated to 2 µm and
+  the STEP is written without pcurves (`export_step(write_pcurves=False)`
+  — the static set beforehand is overridden by build123d): 4.9 MB, from
+  21.7 MB, 96 MB before that.
+- **Checks** (`tests/test_face_gear.py`, 5 tests; suite 102):
+  section formula = standard rack at R_0, closed-form L1, `t_top(L2) = 0`,
+  auto ring inside the limits, sweep range; the space tool is one valid
+  solid of six faces with its floor at −h_f, within its own pitch wedge; one
+  valid manifold body of < 6 faces per space, removed volume per space
+  within 50 % of a crude estimate and within 1 % of one tool-in-blank
+  volume, top lands vs formula, STEP round-trip under 8 MB and equal in
+  volume to 0.1 %; **the pinion meshes through the built gear** at four phases
+  with < 10⁻⁴ of its volume overlapping (measured 0.012 mm³ of 11 800 —
+  10⁻⁶) and collides by 117 mm³ turned half a pitch, with the pinion's
+  own count and with a 22-tooth shaper.
+- **UI**: Face gear card, FACE GEAR section (pinion teeth, shaper teeth,
+  ring inner/outer radius, rim), derived rows PINION AND SHAPER / TOOTHED
+  RING / RING LIMITS, reset defaults, names like
+  `facegear_z40_pinion20_m2_pa20_ringautotoauto_rim6`, thumbnail,
+  `--uismoke --facegear`. Live preview shows the pinion in mesh. Verified
+  headless (export + reset) and by a SolidWorks import (19 s to a 1.6 MB native .sldprt from the 4.9 MB pcurve-less STEP, fresh SolidWorks session, 3D Interconnect off).
+
+## Spiral and zerol bevel gears
 
 The user asked for "the rest of the gears missing"; spiral bevel first,
 with zerol as its zero-spiral-angle case. Docs §12 had argued against

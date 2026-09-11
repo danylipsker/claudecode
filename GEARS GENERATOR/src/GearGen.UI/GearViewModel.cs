@@ -148,6 +148,42 @@ namespace GearGen.UI
             set { if (value) { _p.Family = GearFamily.CycloidalDrive; OnChanged(); FamilyChanged(); } }
         }
 
+        // ---- face gear (docs/gear-math.md section 17) -- Family == FaceGear only ----
+
+        public bool IsFaceGear
+        {
+            get => _p.Family == GearFamily.FaceGear;
+            set { if (value) { _p.Family = GearFamily.FaceGear; OnChanged(); FamilyChanged(); } }
+        }
+
+        public double FaceInnerRadiusDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.FaceInnerRadiusMm) : _p.FaceInnerRadiusMm;
+            set { _p.FaceInnerRadiusMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double FaceOuterRadiusDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.FaceOuterRadiusMm) : _p.FaceOuterRadiusMm;
+            set { _p.FaceOuterRadiusMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>A 40/20 face gear: the pinion count comes from MateTeeth
+        /// (shared with the other "mate" meanings), the shaper from
+        /// CutterTeeth (shared with the internal gear's construction count,
+        /// 0 = default in both).</summary>
+        public void SelectFaceGearCard()
+        {
+            IsFaceGear = true;
+            HelixAngleDeg = 0.0;
+            if (MateTeeth < 4) MateTeeth = 20;
+            if (Teeth <= MateTeeth) Teeth = 2 * MateTeeth;
+        }
+
+        private string _faceGearText = "-", _faceRingText = "-", _faceLimitsText = "-";
+        public string FaceGearText { get => _faceGearText; private set { _faceGearText = value; OnChanged(); } }
+        public string FaceRingText { get => _faceRingText; private set { _faceRingText = value; OnChanged(); } }
+        public string FaceLimitsText { get => _faceLimitsText; private set { _faceLimitsText = value; OnChanged(); } }
+
         // ---- spiral / zerol bevel (docs/gear-math.md section 16) -- Family == SpiralBevel only ----
 
         public bool IsSpiralBevel
@@ -206,6 +242,7 @@ namespace GearGen.UI
         public string TeethLabel =>
             IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
             : IsPlanetary ? "Sun teeth"
+            : IsFaceGear ? "Face gear teeth"
             : IsCrossedHelical ? "Gear 1 teeth (z1)"
             : "Number of teeth (z)";
 
@@ -330,6 +367,7 @@ namespace GearGen.UI
             : IsCycloidalDrive ? "Cycloidal drive"
             : IsBevel ? "Bevel"
             : IsSpiralBevel ? (_p.IsZerol ? "Zerol bevel" : "Spiral bevel")
+            : IsFaceGear ? "Face gear"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -380,6 +418,7 @@ namespace GearGen.UI
             OnChanged(nameof(IsAnyBevel));
             OnChanged(nameof(IsSpiralBevelSpiral));
             OnChanged(nameof(IsSpiralBevelZerol));
+            OnChanged(nameof(IsFaceGear));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -660,6 +699,8 @@ namespace GearGen.UI
             OnChanged(nameof(OutputPinDiameterDisplay));
             OnChanged(nameof(OutputCircleDisplay));
             OnChanged(nameof(CutterRadiusDisplay));
+            OnChanged(nameof(FaceInnerRadiusDisplay));
+            OnChanged(nameof(FaceOuterRadiusDisplay));
         }
 
         // ---- preview / derived values ---------------------------------------
@@ -904,6 +945,26 @@ namespace GearGen.UI
                         LeadText = $"normal pitch {L(dv("normal_pitch_mm"))}, thickness {L(dv("normal_tooth_thickness_mm"))}";
                         TwistText = $"teeth at {dv("helix_angle_deg"):0.##}° to the face";
                     }
+                }
+                else if (IsFaceGear)
+                {
+                    // face_gear_derived_values (server.py): the face gear has no
+                    // pitch circle of its own -- a nominal radius where the
+                    // pinion's pitch circle rolls, and a toothed ring.
+                    PitchDiameterText = $"{L(2 * dv("nominal_radius_mm"))} (nominal)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = "-";
+                    DedendumDiameterText = "-";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = IsInch
+                        ? $"module {dv("module_mm"):0.####} mm"
+                        : $"DP {dv("diametral_pitch"):0.###} /in";
+                    FaceGearText = $"pinion z{dv("pinion_teeth"):0} (Ø{L(dv("pinion_pitch_diameter_mm"))}), shaper z{dv("shaper_teeth"):0}, ratio {dv("ratio"):0.###} : 1";
+                    FaceRingText = $"{L(dv("inner_radius_mm"))} to {L(dv("outer_radius_mm"))} (face width {L(dv("face_width_mm"))}); teeth {L(dv("addendum_height_mm"))} above / {L(dv("dedendum_height_mm"))} below the pitch plane";
+                    // Litvin's design limits by the rack-equivalent section
+                    // (docs/gear-math.md 17): undercut inside L1, pointed
+                    // beyond L2; the auto ring sits inside them.
+                    FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
                 }
                 else if (IsCycloidalDrive)
                 {

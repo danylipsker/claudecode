@@ -55,7 +55,13 @@ namespace GearGen.Geometry
         /// trace), and zerol bevel when SpiralAngleDeg == 0 -- see
         /// docs/gear-math.md section 16. The straight bevel's parameters plus
         /// SpiralAngleDeg, CutterRadiusMm and Hand.</summary>
-        SpiralBevel
+        SpiralBevel,
+        /// <summary>Face gear: teeth cut into the face of a disc, meshing
+        /// with a spur pinion on a perpendicular axis -- see docs/gear-math.md
+        /// section 17. Teeth = the face gear's, MateTeeth = the pinion's,
+        /// CutterTeeth = the shaper's (0 = pinion's), FaceInnerRadiusMm /
+        /// FaceOuterRadiusMm (0 = auto), RimThicknessMm, BoreDiameterMm.</summary>
+        FaceGear
     }
 
     /// <summary>
@@ -221,6 +227,15 @@ namespace GearGen.Geometry
 
         public bool IsZerol => IsSpiralBevel && Math.Abs(SpiralAngleDeg) < 1e-9;
 
+        // ---- face gear (docs/gear-math.md section 17) -- Family == FaceGear only ----
+
+        public bool IsFaceGear => Family == GearFamily.FaceGear;
+
+        /// <summary>Radial extent of the toothed ring; 0 = automatic
+        /// (nominal radius m z/2 minus / plus five modules).</summary>
+        public double FaceInnerRadiusMm { get; set; } = 0.0;
+        public double FaceOuterRadiusMm { get; set; } = 0.0;
+
         /// <summary>The rollers' centre circle.</summary>
         public double PinCircleDiameterMm { get; set; } = 60.0;
 
@@ -291,6 +306,10 @@ namespace GearGen.Geometry
                     break;
                 case GearFamily.Bevel:
                     p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    break;
+                case GearFamily.FaceGear:
+                    p.Teeth = 40; p.MateTeeth = 20; p.CutterTeeth = 0; p.FaceInnerRadiusMm = 0.0; p.FaceOuterRadiusMm = 0.0;
+                    p.RimThicknessMm = 6.0;
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
@@ -368,6 +387,13 @@ namespace GearGen.Geometry
                     parts.Add("pa" + N(PressureAngleDeg));
                     parts.Add("rim" + Len(RimThicknessMm)); parts.Add("fw" + Len(FaceWidthMm));
                     if (MateTeeth > 0) parts.Add("pinion" + MateTeeth);
+                    break;
+                case GearFamily.FaceGear:
+                    parts.Add("facegear"); parts.Add("z" + Teeth); parts.Add("pinion" + MateTeeth); parts.Add(size);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    if (CutterTeeth > 0) parts.Add("shaper" + CutterTeeth);
+                    parts.Add("ring" + (FaceInnerRadiusMm > 0 ? Len(FaceInnerRadiusMm) : "auto") + "to" + (FaceOuterRadiusMm > 0 ? Len(FaceOuterRadiusMm) : "auto"));
+                    parts.Add("rim" + Len(RimThicknessMm));
                     break;
                 case GearFamily.SpiralBevel:
                     parts.Add(IsZerol ? "zerolbevel" : "spiralbevel"); parts.Add("z" + Teeth); parts.Add(size);

@@ -30,7 +30,7 @@ def _rotate_points(pts: list[tuple[float, float]], angle_rad: float) -> list[tup
     return [(c * x - s * y, s * x + c * y) for (x, y) in pts]
 
 
-def _export_step_for_solidworks(shape, path: str | Path) -> None:
+def _export_step_for_solidworks(shape, path: str | Path, write_pcurves: bool = True) -> None:
     """Export to STEP in the specific shape SolidWorks' translator actually
     accepts. Found by testing real SolidWorks import, and revised once
     already after the first fix looked right but wasn't (worth recording the
@@ -61,7 +61,7 @@ def _export_step_for_solidworks(shape, path: str | Path) -> None:
        through either correctly, and re-wrapping an already-fine multi-body
        Compound this way is a harmless no-op for SolidWorks (same body
        count, still opens as a multi-body part)."""
-    bd.export_step(bd.Compound(children=list(shape.solids())), str(path))
+    bd.export_step(bd.Compound(children=list(shape.solids())), str(path), write_pcurves=write_pcurves)
 
 
 def _face_at(pts: list[tuple[float, float]], angle_rad: float, z: float) -> bd.Face:
@@ -395,6 +395,35 @@ def export_crossed_helical_pair_step(pp, path: str | Path) -> None:
     from crossed_helical import build_crossed_helical_pair
     s1, s2 = build_crossed_helical_pair(pp)
     _export_step_for_solidworks(bd.Compound(children=[s1, s2]), path)
+
+
+def export_face_gear_step(fp, path: str | Path, n_positions: int = 240) -> None:
+    """fp: face_gear.FaceGearParams (docs/gear-math.md 17): the face gear
+    alone, one solid (the pinion is an ordinary spur gear).
+
+    Two file-size measures specific to this family's lofted B-spline faces
+    (docs/gear-math.md 17.3, "Knot vectors"): the boolean's intersection
+    edges are re-approximated to 2 microns (face_gear.slim_edge_curves),
+    and the STEP is written without pcurves (build123d's export_step sets
+    OpenCASCADE's write.surfacecurve.mode from its own write_pcurves
+    argument on every call, so it has to be passed through, not set on the
+    static beforehand). A 21.7 MB file becomes a few MB; the round-trip
+    and the SolidWorks import are checked on the slimmed, pcurve-less file."""
+    from face_gear import build_face_gear_solid, slim_edge_curves
+    gear = build_face_gear_solid(fp, n_positions=n_positions)
+    slim_edge_curves(gear)
+    _export_step_for_solidworks(gear, path, write_pcurves=False)
+
+
+def export_face_gear_profile_dxf(fp, path: str | Path) -> None:
+    """The mating pinion's transverse profile -- the face gear's own teeth
+    have no single 2D section (they change shape along the radius)."""
+    pts = [tuple(p) for p in full_gear_outline(fp.pinion_params(), simplify_tolerance_mm=0.01)]
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(list(pts) + [pts[0]], format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
 
 
 def export_spiral_bevel_step(sp, path: str | Path, n_stations: int = 12) -> None:

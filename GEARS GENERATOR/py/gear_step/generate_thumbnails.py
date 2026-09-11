@@ -127,4 +127,10 @@ if __name__ == "__main__":
     render_solid_thumbnail(build_spiral_bevel_gear_solid(zerol, n_stations=8, n_phi=120, simplify_tolerance_mm=0.05),
                            f"{out_dir}/thumb_zerol_bevel.png")
 
+    from face_gear import FaceGearParams, build_face_gear_solid, place_pinion
+    face = FaceGearParams(z=32, pinion_teeth=16, module_mm=2.5, rim_thickness_mm=5.0, bore_diameter_mm=14.0)
+    fg = build_face_gear_solid(face, simplify_tolerance_mm=0.05)
+    fp_pin = place_pinion(build_gear_solid(face.pinion_params(), simplify_tolerance_mm=0.05), face)
+    render_solid_thumbnail(bd.Compound(children=[fg, fp_pin]), f"{out_dir}/thumb_face_gear.png", elev=28, azim=-55)
+
     print("done")

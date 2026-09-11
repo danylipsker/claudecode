@@ -192,6 +192,19 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsFaceGear)
+            {
+                // As bevel: FaceGearParams has no inch constructor, convert client-side.
+                req.GearType = "face_gear";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;        // the pinion
+                req.CutterTeeth = p.CutterTeeth;    // the shaper (0 = pinion's count)
+                req.FaceInnerRadiusMm = p.FaceInnerRadiusMm;
+                req.FaceOuterRadiusMm = p.FaceOuterRadiusMm;
+                req.RimThicknessMm = p.RimThicknessMm;
+                return req;
+            }
+
             if (p.IsSpiralBevel)
             {
                 // As bevel: SpiralBevelParams has no inch constructor, convert
