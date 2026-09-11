@@ -47,7 +47,7 @@ trace**, judged by the same pair check as every other multi-member family
   standard-depth rack tooth is pointed, `tan α ≥ π/(4 hf*)`) cuts the tooth
   off at its point instead of crashing, with a warning in every family's
   derived values. A 40° spur gear now builds and warns.
-- **Checks** (`tests/test_spiral_bevel.py`, 7 tests; suite 100): trace
+- **Checks** (`tests/test_spiral_bevel.py`, 7 tests; suite 97): trace
   by numeric differentiation equals Gleason's closed form at toe/mean/heel
   for 35°, 20°, 0°; toe/heel stations are exactly the straight-bevel
   stations turned by the trace; a 10-station tooth's loft passes through
