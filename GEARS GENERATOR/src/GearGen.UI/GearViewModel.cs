@@ -33,6 +33,7 @@ namespace GearGen.UI
 
             ExportSolidWorksCommand = new RelayCommand(async _ => await ExportSolidWorksAsync(), _ => SolidWorksExportAsync != null);
             SetPressureAnglePresetCommand = new RelayCommand(v => PressureAngleDeg = Convert.ToDouble(v, CultureInfo.InvariantCulture));
+            ResetToDefaultsCommand = new RelayCommand(_ => ResetToDefaults());
 
             ScheduleRefresh();
         }
@@ -260,8 +261,45 @@ namespace GearGen.UI
         public bool IsRackStraight => IsRack && !IsHelical;
         public bool IsRackHelical => IsRack && IsHelical;
 
+        // ---- reset to the selected card's defaults -----------------------------
+
+        public RelayCommand ResetToDefaultsCommand { get; }
+
+        /// <summary>The mosaic card the current parameters belong to, by name
+        /// -- Spur/Helical and Rack/Helical rack are told apart by the helix
+        /// angle, as the cards themselves are.</summary>
+        public string CurrentCardName =>
+            IsCylindrical ? (IsHelical ? "Helical" : "Spur")
+            : IsHerringbone ? "Herringbone"
+            : IsCrossedHelical ? "Screw gears"
+            : IsPlanetary ? "Planetary"
+            : IsCycloidal ? "Cycloidal"
+            : IsCycloidalDrive ? "Cycloidal drive"
+            : IsBevel ? "Bevel"
+            : IsWorm ? "Worm"
+            : IsRack ? (IsHelical ? "Helical rack" : "Rack")
+            : "Internal";
+
+        public string ResetLabel => $"Reset {CurrentCardName} to default values";
+
+        /// <summary>Every parameter of the current card back to that card's
+        /// canonical values (GearParameters.CreateDefaults). The unit system
+        /// is kept: it is a preference, not a parameter. The view model binds
+        /// to one long-lived GearParameters, so the defaults are copied INTO
+        /// it and every binding is told to re-read (an empty property name
+        /// means "all of them" to WPF), then the family-dependent state and a
+        /// preview refresh follow as for any family change.</summary>
+        public void ResetToDefaults()
+        {
+            _p.CopyFrom(GearParameters.CreateDefaults(_p.Family, _p.IsHelical, _p.Unit));
+            OnChanged(string.Empty);
+            FamilyChanged();
+        }
+
         private void FamilyChanged()
         {
+            OnChanged(nameof(CurrentCardName));
+            OnChanged(nameof(ResetLabel));
             OnChanged(nameof(IsCylindrical));
             OnChanged(nameof(IsBevel));
             OnChanged(nameof(IsWorm));
@@ -523,6 +561,8 @@ namespace GearGen.UI
                 OnChanged(nameof(IsCylindricalHelical));
                 OnChanged(nameof(IsRackStraight));
                 OnChanged(nameof(IsRackHelical));
+                OnChanged(nameof(CurrentCardName));  // Spur <-> Helical, Rack <-> Helical rack
+                OnChanged(nameof(ResetLabel));
                 ScheduleRefresh();
             }
         }

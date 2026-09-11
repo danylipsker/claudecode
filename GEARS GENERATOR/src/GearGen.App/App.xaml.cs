@@ -78,7 +78,8 @@ namespace GearGen.App
                 bool planetary = e.Args.Any(a => a == "--planetary");
                 bool cycloidal = e.Args.Any(a => a == "--cycloidal");
                 bool cycdrive = e.Args.Any(a => a == "--cycdrive");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive);
+                bool resetTest = e.Args.Any(a => a == "--resettest");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest);
                 return;
             }
 
@@ -276,7 +277,7 @@ namespace GearGen.App
         private void RunUiSmokeTest(string outputPngPath, int? teethOverride = null, bool exportTest = false,
             double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
             bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
-            bool cycdrive = false)
+            bool cycdrive = false, bool resetTest = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -338,16 +339,21 @@ namespace GearGen.App
                 // spur gear, and a fixed pump rendered "Rebuilding 3D model..."
                 // with every derived value still "-". Pump until the view
                 // model reports idle with a 3D model in hand, capped at 40 s.
-                PumpFor(1500); // the 220 ms debounce must fire before "idle" means anything
-                var deadline = DateTime.UtcNow.AddSeconds(40);
-                while (DateTime.UtcNow < deadline)
+                void PumpUntilIdle()
                 {
-                    var vm = win.Panel?.ViewModel;
-                    if (vm != null && !vm.IsBusy && !vm.IsMeshBusy && vm.Model3D != null && vm.PreviewGeometry != null)
-                        break;
-                    PumpFor(100);
+                    PumpFor(1500); // the 220 ms debounce must fire before "idle" means anything
+                    var deadline = DateTime.UtcNow.AddSeconds(40);
+                    while (DateTime.UtcNow < deadline)
+                    {
+                        var vm = win.Panel?.ViewModel;
+                        if (vm != null && !vm.IsBusy && !vm.IsMeshBusy && vm.Model3D != null && vm.PreviewGeometry != null)
+                            break;
+                        PumpFor(100);
+                    }
+                    PumpFor(300); // one more layout/render pass after the last property change
                 }
-                PumpFor(300); // one more layout/render pass after the last property change
+
+                PumpUntilIdle();
                 var geom = win.Panel?.ViewModel?.PreviewGeometry;
                 Log("pumped; StatusMessage=" + win.Panel?.ViewModel?.StatusMessage +
                     "; geom bounds=" + geom?.Bounds + "; geom null=" + (geom == null) +
@@ -357,6 +363,36 @@ namespace GearGen.App
                 // logged so every smoke run also checks the self-describing
                 // naming (GearParameters.SuggestedFileName) for that family.
                 Log("suggested file name: " + win.Panel?.ViewModel?.SuggestedFileName(".step"));
+
+                if (resetTest)
+                {
+                    // "Reset <card> to default values": after the overrides above
+                    // moved the parameters off the card's defaults, the button
+                    // must bring the name (and so every parameter it encodes)
+                    // back to exactly what GearParameters.CreateDefaults says
+                    // for this card, and the preview must rebuild.
+                    var vm = win.Panel.ViewModel;
+                    var family = bevel ? GearGen.Geometry.GearFamily.Bevel
+                        : worm ? GearGen.Geometry.GearFamily.Worm
+                        : rack ? GearGen.Geometry.GearFamily.Rack
+                        : internalGear ? GearGen.Geometry.GearFamily.Internal
+                        : herringbone ? GearGen.Geometry.GearFamily.Herringbone
+                        : screw ? GearGen.Geometry.GearFamily.CrossedHelical
+                        : planetary ? GearGen.Geometry.GearFamily.Planetary
+                        : cycloidal ? GearGen.Geometry.GearFamily.Cycloidal
+                        : cycdrive ? GearGen.Geometry.GearFamily.CycloidalDrive
+                        : GearGen.Geometry.GearFamily.Cylindrical;
+                    bool helical = helixOverride.HasValue && helixOverride.Value > 0;
+                    string expected = GearGen.Geometry.GearParameters
+                        .CreateDefaults(family, helical, GearGen.Geometry.UnitSystem.Metric).SuggestedFileName(".step");
+                    Log("reset test: label='" + vm.ResetLabel + "' before=" + vm.SuggestedFileName(".step"));
+                    vm.ResetToDefaultsCommand.Execute(null);
+                    PumpUntilIdle();
+                    string after = vm.SuggestedFileName(".step");
+                    Log("reset test: after=" + after + " expected=" + expected + " -> " +
+                        (after == expected && vm.Model3D != null ? "RESET OK" : "RESET MISMATCH") +
+                        "; StatusMessage=" + vm.StatusMessage);
+                }
 
                 // Force a fresh Measure/Arrange against the final (post-binding-update)
                 // geometry -- otherwise the Viewbox can still be holding the scale

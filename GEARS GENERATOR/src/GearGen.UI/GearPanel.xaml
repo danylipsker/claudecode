@@ -222,6 +222,11 @@
                             </StackPanel>
                         </RadioButton>
                     </UniformGrid>
+                    <!-- One button, labelled for whichever card is selected: each kind of
+                         gear has its own canonical values (GearParameters.CreateDefaults). -->
+                    <Button Content="{Binding ResetLabel}" Command="{Binding ResetToDefaultsCommand}"
+                            Padding="10,5" Margin="0,2,6,0" HorizontalAlignment="Stretch" FontSize="12"
+                            ToolTip="Put every parameter of the selected gear kind back to its default value. The unit system is kept."/>
 
                     <TextBlock Text="UNIT SYSTEM" Style="{StaticResource SectionHeader}"/>
                     <Grid>

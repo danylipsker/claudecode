@@ -233,6 +233,66 @@ namespace GearGen.Geometry
             return (GearParameters)MemberwiseClone();
         }
 
+        /// <summary>The canonical starting point for one card of the family
+        /// mosaic -- what "Reset to default values" restores. The class's own
+        /// property initialisers are the spur defaults; each card overrides
+        /// the handful that make its kind of gear sensible (the same values
+        /// the card-selection methods in GearViewModel jump to, plus the ones
+        /// they leave alone). Spur/Helical and Rack/Helical rack are separate
+        /// cards over one family, split by 'helical'. The unit system is a
+        /// preference, not a parameter, so it is passed through unchanged.</summary>
+        public static GearParameters CreateDefaults(GearFamily family, bool helical, UnitSystem unit)
+        {
+            var p = new GearParameters { Unit = unit, Family = family };
+            switch (family)
+            {
+                case GearFamily.Cylindrical:
+                    p.HelixAngleDeg = helical ? 25.0 : 0.0;
+                    break;
+                case GearFamily.Herringbone:
+                    p.HelixAngleDeg = 30.0; p.GapWidthMm = 0.0;
+                    break;
+                case GearFamily.CrossedHelical:
+                    p.HelixAngleDeg = 45.0; p.MateTeeth = 20; p.ShaftAngleDeg = 90.0;   // the classic 45/45 at 90deg
+                    break;
+                case GearFamily.Planetary:
+                    p.Teeth = 12; p.MateTeeth = 9; p.PlanetCount = 3; p.RimThicknessMm = 6.0;  // 12/9/30, (12+30)/3 = 14
+                    break;
+                case GearFamily.Cycloidal:
+                    p.Teeth = 12; p.RollingCircleDiameterMm = 0.0;  // automatic rolling circle: radial flanks
+                    break;
+                case GearFamily.CycloidalDrive:
+                    p.Teeth = 10; p.PinCircleDiameterMm = 60.0; p.RollerDiameterMm = 6.0; p.EccentricityMm = 1.5;
+                    p.BoreDiameterMm = 20.0; p.OutputPinCount = 6; p.OutputPinDiameterMm = 6.0; p.OutputCircleDiameterMm = 30.0;
+                    break;
+                case GearFamily.Bevel:
+                    p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    break;
+                case GearFamily.Worm:
+                    p.WormStarts = 2; p.PitchDiameterMm = 20.0; p.FaceWidthMm = 30.0; p.MateTeeth = 20;  // 30 mm: ~5 threads, not the 10 mm stub the shared default gives
+                    break;
+                case GearFamily.Rack:
+                    p.Teeth = 10; p.BackingHeightMm = 5.0; p.HelixAngleDeg = helical ? 20.0 : 0.0;
+                    break;
+                case GearFamily.Internal:
+                    p.Teeth = 40; p.MateTeeth = 20; p.RimThicknessMm = 6.0; p.CutterTeeth = 0;  // a ring must be bigger than its pinion
+                    break;
+            }
+            return p;
+        }
+
+        /// <summary>Overwrite every parameter from another instance. The view
+        /// model binds to one long-lived instance, so a reset copies values
+        /// INTO it rather than swapping it out. Reflection over the public
+        /// settable properties, so a parameter added later can't be forgotten
+        /// here (they are all plain values and strings).</summary>
+        public void CopyFrom(GearParameters other)
+        {
+            foreach (var prop in typeof(GearParameters).GetProperties())
+                if (prop.CanRead && prop.CanWrite && prop.GetIndexParameters().Length == 0)
+                    prop.SetValue(this, prop.GetValue(other));
+        }
+
         /// <summary>A default file name that says what the part IS: the family
         /// and every property that determines its geometry, so a folder of
         /// exports is self-describing instead of a pile of "gear_z20"s. Same

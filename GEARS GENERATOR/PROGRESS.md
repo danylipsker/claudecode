@@ -1,6 +1,33 @@
 # GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Cycloidal drives — hypocycloid speed reducers (latest)
+## "Reset <kind> to default values" button (latest)
+
+User: "add a reset button to 'default values' for each kind of gears." One
+button under the family mosaic, labelled for whichever card is selected
+("Reset Helical rack to default values"), that puts every parameter back
+to that kind's canonical values while keeping the unit system (a
+preference, not a parameter):
+
+- `GearParameters.CreateDefaults(family, helical, unit)` is the single
+  source of those values: the class's own initialisers are the spur
+  defaults and each card overrides what makes its kind sensible — the
+  same values the card-selection methods jump to, plus the ones they
+  leave alone (worm length 30 mm rather than the shared 10 mm stub, an
+  internal ring of 40 teeth around a 20-tooth pinion, a 12/9/30 planetary
+  that satisfies the assembly condition, the 10-lobe cycloidal drive with
+  its 20 mm bearing seat). Spur/Helical and Rack/Helical rack are separate
+  cards over one family, so `helical` picks between them.
+- The view model binds to one long-lived `GearParameters`, so the reset
+  copies the defaults INTO it (`CopyFrom`, reflection over the settable
+  properties so a parameter added later can't be forgotten) and raises a
+  blanket property-changed (empty name = "all"), then the usual
+  family-changed notifications and a preview refresh.
+- Verified headless: `--uismoke ... --resettest` moves the parameters off
+  the defaults with the usual overrides, presses the button, and compares
+  the resulting export name (which encodes every geometry parameter)
+  against `CreateDefaults` for that card — run for all twelve cards.
+
+## Cycloidal drives — hypocycloid speed reducers
 
 Sixth and last of the first-priority additions (`cycloidal_drive.py`,
 docs/gear-math.md §15): an eccentric input turns a lobed disc rolling
