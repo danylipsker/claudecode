@@ -205,6 +205,18 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsSprocket)
+            {
+                // No module/pressure angle: sized entirely by chain pitch
+                // and roller diameter (both already in mm regardless of
+                // Unit, same convention as PitchDiameterMm above).
+                req.GearType = "sprocket";
+                req.ChainPitchMm = p.ChainPitchMm;
+                req.RollerDiameterMm = p.RollerDiameterMm;
+                req.OutsideDiameterMm = p.OutsideDiameterMm;
+                return req;
+            }
+
             if (p.IsSpiralBevel)
             {
                 // As bevel: SpiralBevelParams has no inch constructor, convert

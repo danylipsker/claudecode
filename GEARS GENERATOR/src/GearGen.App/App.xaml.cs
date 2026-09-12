@@ -83,7 +83,8 @@ namespace GearGen.App
                 bool spiralBevel = e.Args.Any(a => a == "--spiralbevel");
                 bool zerol = e.Args.Any(a => a == "--zerol");
                 bool faceGear = e.Args.Any(a => a == "--facegear");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear);
+                bool sprocket = e.Args.Any(a => a == "--sprocket");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket);
                 return;
             }
 
@@ -282,7 +283,7 @@ namespace GearGen.App
             double? helixOverride = null, bool bevel = false, bool worm = false, bool rack = false, bool internalGear = false,
             bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
             bool cycdrive = false, bool resetTest = false, bool tall = false, bool spiralBevel = false, bool zerol = false,
-            bool faceGear = false)
+            bool faceGear = false, bool sprocket = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -333,6 +334,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectZerolBevelCard();
                 if (faceGear)
                     win.Panel.ViewModel.SelectFaceGearCard();
+                if (sprocket)
+                    win.Panel.ViewModel.SelectSprocketCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)
@@ -400,6 +403,7 @@ namespace GearGen.App
                         : cycdrive ? GearGen.Geometry.GearFamily.CycloidalDrive
                         : (spiralBevel || zerol) ? GearGen.Geometry.GearFamily.SpiralBevel
                         : faceGear ? GearGen.Geometry.GearFamily.FaceGear
+                        : sprocket ? GearGen.Geometry.GearFamily.Sprocket
                         : GearGen.Geometry.GearFamily.Cylindrical;
                     // the card split within a family: a helix for Spur/Helical and Rack/Helical rack, the spiral card for spiral/zerol
                     bool helical = (helixOverride.HasValue && helixOverride.Value > 0) || spiralBevel;

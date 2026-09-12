@@ -1,6 +1,66 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Face gears (latest)
+## Sprocket wheels for roller chain (latest)
+
+First of a new pair the user asked for -- "sprocket gears", "timing wheels",
+"sprocket gear links (only one link)", "timing belts", all "according to
+standards" -- two chain/belt drive systems, each a toothed wheel plus its
+flexible mate. Sprockets first: a wheel for ANSI B29.1 / ISO 606 roller
+chain (`sprocket.py`, docs/gear-math.md §18).
+
+- **Two wrong tooth shapes on the way, found by measuring, not by argument**:
+  first, the natural instinct (matching every other family here) was to
+  generate the tooth as the envelope of the roller's own approach motion,
+  the way a rack or a shaper cuts a gear tooth -- but a seated chain roller
+  moves *rigidly* with the sprocket, no sliding left to sweep, and the real
+  transient engagement depends on which direction the chain approaches
+  from, which a sprocket's own tooth form cannot. Second, a plain circle at
+  each pitch vertex (correct for seating) never tapers: scanning the built
+  profile's own top land over the seat circle's whole radial reach found
+  the minimum bottoms out around one roller radius regardless of where the
+  outside diameter sits -- rendered, it's a disc with round notches, not a
+  sprocket.
+- **What works**: the gap must *widen* outward from the root -- the mirror
+  of how an ordinary gear tooth narrows -- so the tooth between two gaps
+  tapers to a tip. Built directly: the seat circle (roller radius +
+  clearance) handles the root, blended into a wedge that widens at a fixed
+  `flank_angle_deg` (20° default) out past the outside diameter. Confirmed
+  by rendering at 15–45°, all of them look like a real sprocket.
+- **Checks** (`tests/test_sprocket.py`, 12 tests; suite 114): pitch
+  diameter matches the closed-form regular-polygon formula for every
+  entry in the ANSI chain-number table (#25–#240); the built profile is
+  one valid, z-fold-symmetric polygon over four tooth-count/chain
+  combinations spanning z = 11 to 60; **a real chain roller -- exactly
+  the chain's own diameter, no clearance added -- placed at every pitch
+  position overlaps the built profile by nothing beyond floating-point
+  noise**, while the same roller half a pitch off collides by more than
+  30% of its own area; the tooth measured at the root is wider than at
+  the tip (the taper, confirmed directly); root clearance is shown to
+  depend only on the chain, not the tooth count; the solid round-trips
+  through STEP.
+- **UI**: Sprocket card, SPROCKET section (chain-number combo -- picking
+  one sets pitch and roller diameter together from the standard table,
+  both stay directly editable -- plus outside diameter, 0 = auto), CHAIN /
+  ROOT-OUTSIDE-DIAMETER derived rows, reset defaults, names like
+  `sprocket_z20_chain40_pitch12.7_roller7.925_odauto_fw6_bore10`,
+  thumbnail, `--uismoke --sprocket`. Two real bugs caught by the smoke
+  test's own file-name check, not by eye: `SelectSprocketCard` left
+  `RollerDiameterMm` at whatever the previously-selected family's shared
+  field held (6 mm from the cycloidal drive, not #40 chain's 7.925) --
+  fixed by re-running the chain-number lookup on entry; the Sprocket
+  file-name case additionally appended its own "bore" segment on top of
+  the shared trailing rule every other family already relies on,
+  duplicating it (`..._bore10_bore10`) -- fixed by removing the redundant
+  one. Verified headless (export + reset) and by a SolidWorks import
+  (21 s to a 649 KB native .sldprt from the 2.9 MB STEP, fresh SolidWorks session, 3D Interconnect off).
+- **v1 simplification, stated in the docs**: a flat-plate ("type A")
+  sprocket, no hub; the tooth form is derived and verified against the one
+  requirement the standard's own tables exist to satisfy (a real roller
+  seats without interference), not transcribed from those tables' exact
+  arc radii -- a specific certified sprocket's outside diameter should be
+  checked against its manufacturer's own table.
+
+## Face gears
 
 Next family from "the rest of the gears missing": a spur pinion driving a
 disc with teeth cut into its face (`face_gear.py`, docs/gear-math.md §17).

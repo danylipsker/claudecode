@@ -140,7 +140,7 @@ namespace GearGen.UI
         /// traced by a rolling circle (docs/gear-math.md 14) and a cycloidal
         /// drive's by its rollers (15), so the pressure-angle block is hidden
         /// for both rather than shown and ignored.</summary>
-        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive;
+        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive && !IsSprocket;
 
         public bool IsCycloidalDrive
         {
@@ -183,6 +183,83 @@ namespace GearGen.UI
         public string FaceGearText { get => _faceGearText; private set { _faceGearText = value; OnChanged(); } }
         public string FaceRingText { get => _faceRingText; private set { _faceRingText = value; OnChanged(); } }
         public string FaceLimitsText { get => _faceLimitsText; private set { _faceLimitsText = value; OnChanged(); } }
+
+        // ---- sprocket (docs/gear-math.md section 18) -- Family == Sprocket only ----
+
+        public bool IsSprocket
+        {
+            get => _p.Family == GearFamily.Sprocket;
+            set { if (value) { _p.Family = GearFamily.Sprocket; OnChanged(); FamilyChanged(); } }
+        }
+
+        /// <summary>ANSI B29.1 standard single-strand chain: (pitch_in,
+        /// max_roller_diameter_in) -- the C# side's own copy of
+        /// sprocket.py's ANSI_CHAIN_TABLE_IN, kept identical so the combo
+        /// box's choice matches what the geometry engine assumes for the
+        /// same chain number.</summary>
+        public static readonly (string Number, double PitchIn, double RollerIn)[] AnsiChainTable =
+        {
+            ("25", 0.250, 0.130), ("35", 0.375, 0.200), ("40", 0.500, 0.312),
+            ("41", 0.500, 0.306), ("50", 0.625, 0.400), ("60", 0.750, 0.469),
+            ("80", 1.000, 0.625), ("100", 1.250, 0.750), ("120", 1.500, 0.875),
+            ("140", 1.750, 1.000), ("160", 2.000, 1.125), ("180", 2.250, 1.406),
+            ("200", 2.500, 1.562), ("240", 3.000, 1.875),
+        };
+        public string[] ChainNumbers => Array.ConvertAll(AnsiChainTable, e => e.Number);
+
+        /// <summary>Picking a chain number sets ChainPitchMm/RollerDiameterMm
+        /// from the standard table; both stay directly editable afterward
+        /// (e.g. for a chain not in the table), same "standard default,
+        /// freely overridable" pattern as every other family's parameters.</summary>
+        public string ChainNumber
+        {
+            get => _p.ChainNumber;
+            set
+            {
+                _p.ChainNumber = value;
+                foreach (var e in AnsiChainTable)
+                {
+                    if (e.Number != value) continue;
+                    _p.ChainPitchMm = e.PitchIn * 25.4;
+                    _p.RollerDiameterMm = e.RollerIn * 25.4;
+                    OnChanged(nameof(ChainPitchDisplay));
+                    OnChanged(nameof(RollerDiameterDisplay));
+                    break;
+                }
+                OnChanged();
+                ScheduleRefresh();
+            }
+        }
+
+        public double ChainPitchDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.ChainPitchMm) : _p.ChainPitchMm;
+            set { _p.ChainPitchMm = Math.Max(0.1, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double OutsideDiameterDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.OutsideDiameterMm) : _p.OutsideDiameterMm;
+            set { _p.OutsideDiameterMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public void SelectSprocketCard()
+        {
+            IsSprocket = true;
+            HelixAngleDeg = 0.0;
+            if (Teeth < 6) Teeth = 20;
+            // ChainPitchMm/RollerDiameterMm (the latter shared with the
+            // cycloidal drive's own roller pins) can be left mutually
+            // inconsistent with ChainNumber by whatever family was selected
+            // before -- re-running the chain-number lookup fixes both to a
+            // matched set, the same "arriving family gets consistent
+            // defaults" fix SelectCycloidalDriveCard applies to its own bore.
+            ChainNumber = _p.ChainNumber;
+            if (_p.BoreDiameterMm <= 0) { _p.BoreDiameterMm = 10.0; OnChanged(nameof(BoreDiameterDisplay)); }
+        }
+
+        private string _sprocketChainText = "-", _sprocketDiametersText = "-";
+        public string SprocketChainText { get => _sprocketChainText; private set { _sprocketChainText = value; OnChanged(); } }
+        public string SprocketDiametersText { get => _sprocketDiametersText; private set { _sprocketDiametersText = value; OnChanged(); } }
 
         // ---- spiral / zerol bevel (docs/gear-math.md section 16) -- Family == SpiralBevel only ----
 
@@ -239,10 +316,14 @@ namespace GearGen.UI
         /// <summary>"Has a module": a cycloidal drive is sized by its pin
         /// circle, rollers and eccentricity instead.</summary>
         public bool IsNotCycloidalDrive => !IsCycloidalDrive;
+        /// <summary>A sprocket, like a cycloidal drive, is sized without a
+        /// module or diametral pitch at all (chain pitch takes that role).</summary>
+        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket;
         public string TeethLabel =>
             IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
             : IsPlanetary ? "Sun teeth"
             : IsFaceGear ? "Face gear teeth"
+            : IsSprocket ? "Sprocket teeth"
             : IsCrossedHelical ? "Gear 1 teeth (z1)"
             : "Number of teeth (z)";
 
@@ -368,6 +449,7 @@ namespace GearGen.UI
             : IsBevel ? "Bevel"
             : IsSpiralBevel ? (_p.IsZerol ? "Zerol bevel" : "Spiral bevel")
             : IsFaceGear ? "Face gear"
+            : IsSprocket ? "Sprocket"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -413,12 +495,14 @@ namespace GearGen.UI
             OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCycloidalDrive));
             OnChanged(nameof(IsNotCycloidalDrive));
+            OnChanged(nameof(HasModuleField));
             OnChanged(nameof(TeethLabel));
             OnChanged(nameof(IsSpiralBevel));
             OnChanged(nameof(IsAnyBevel));
             OnChanged(nameof(IsSpiralBevelSpiral));
             OnChanged(nameof(IsSpiralBevelZerol));
             OnChanged(nameof(IsFaceGear));
+            OnChanged(nameof(IsSprocket));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -965,6 +1049,20 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsSprocket)
+                {
+                    // sprocket_derived_values (server.py): a chain-driven
+                    // wheel, not an involute gear -- no base circle, tooth
+                    // thickness, or module/pressure-angle-derived fields.
+                    PitchDiameterText = L(dv("pitch_diameter_mm"));
+                    BaseDiameterText = "n/a (chain-driven)";
+                    AddendumDiameterText = L(dv("outside_diameter_mm"));
+                    DedendumDiameterText = L(dv("root_diameter_mm"));
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = "-";
+                    SprocketChainText = $"#{_p.ChainNumber} -- pitch {L(dv("chain_pitch_mm"))}, roller Ø{L(dv("roller_diameter_mm"))}";
+                    SprocketDiametersText = $"root {L(dv("root_diameter_mm"))} / outside {L(dv("outside_diameter_mm"))} (clearance {L(dv("root_clearance_mm"))})";
                 }
                 else if (IsCycloidalDrive)
                 {

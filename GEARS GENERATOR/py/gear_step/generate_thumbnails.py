@@ -133,4 +133,9 @@ if __name__ == "__main__":
     fp_pin = place_pinion(build_gear_solid(face.pinion_params(), simplify_tolerance_mm=0.05), face)
     render_solid_thumbnail(bd.Compound(children=[fg, fp_pin]), f"{out_dir}/thumb_face_gear.png", elev=28, azim=-55)
 
+    from sprocket import SprocketParams
+    from build_gear import build_sprocket_solid
+    sprocket = SprocketParams.from_ansi_chain_number("40", z=20, face_width_mm=8.0, bore_diameter_mm=10.0)
+    render_solid_thumbnail(build_sprocket_solid(sprocket), f"{out_dir}/thumb_sprocket.png", elev=35, azim=-25)
+
     print("done")

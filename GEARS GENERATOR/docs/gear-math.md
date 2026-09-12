@@ -1272,3 +1272,108 @@ volume of a B-spline solid is only as good as its parametrisation (10 % low even
 compact surfaces) — judge such a solid by its tessellation (`meshcheck.tessellated_volume`:
 `export_stl` and the divergence theorem, 0.2 % of the exact boolean volumes here) — and
 `VolumeProperties` with an explicit tolerance can crawl for minutes on a bad surface.
+
+## 18. Sprocket wheels for roller chain
+
+A sprocket carries no involute or other analytic flank of its own. Its one real
+job is to seat a chain roller — a plain cylinder of the chain's own diameter — at
+each pitch position without interference, and to hold the chain's straight, taut
+free span from sliding as it enters and leaves the wrap. `sprocket.py`, per
+ANSI B29.1 / ISO 606.
+
+### 18.1 The pitch circle
+
+*N* rollers, chain pitch *p*, connected by rigid pitch-length links: fully
+wrapped and taut, they sit at the *N* vertices of a regular *N*-gon of side *p*,
+so the pitch circle radius is the standard
+
+```
+R = p / (2 sin(pi/N))
+```
+
+unchanged whether the chain is ANSI-inch or ISO-metric. `SprocketParams.from_ansi_chain_number`
+carries the standard single-strand chain-number table (#25 through #240: pitch
+and maximum roller diameter, in inches, converted to mm) as reference defaults;
+`chain_pitch_mm` / `roller_diameter_mm` can always be set directly instead.
+
+### 18.2 Two wrong tooth shapes, and why
+
+**First attempt — envelope of the roller's approach motion.** Every other
+family in this project generates its tooth form as the envelope of a moving
+generating element (the rack, the shaper, the Hindley worm's own straight
+edge), verified by direct contact simulation, so the natural first move here
+was the same: model the incoming roller as riding a straight line rolling
+without slip against the pitch circle (exactly `involute.rack_point_to_gear_frame`,
+with a roller disc — no offset, no profile — standing in for the rack's own
+tooth cross-section) and sweep it through the roll angle. This does not apply
+to a sprocket: once a roller is seated it moves **rigidly** with the sprocket,
+with no further sliding to sweep, so there is no continuous generating motion
+between engagements the way a hobbing or shaping cutter has one throughout. The
+transient swing-in as a roller first engages is a real, separate effect (chain
+"polygon action"), but it depends on which direction the chain approaches
+from — and a sprocket's own tooth form cannot depend on that. That is exactly
+why the real standard's tooth form is a fixed, direction-independent
+construction (a seating arc plus a separately specified topping arc), not a
+literal envelope.
+
+**Second attempt — a plain circle at each vertex.** Correct for seating (a
+roller of radius `roller_radius` nests in a circle of that radius, by
+construction), but for realistic roller/pitch ratios two adjacent seat circles
+never come close to touching at *any* radius — confirmed by scanning the
+built profile's own top land over the seat circle's full radial extent and
+finding its minimum bottoms out around one roller radius no matter where the
+outside diameter is placed, not by argument. The result, rendered, is a plain
+disc with round notches punched in it: every roller seats correctly, but there
+is no tapering tooth between them, because nothing in the construction ever
+narrows the remaining material as radius grows.
+
+### 18.3 What works: a gap that widens outward
+
+The fix is the mirror image of an ordinary gear tooth: material a gap removes
+must **widen** outward from the root, so the material left between two
+adjacent gaps — the tooth — narrows to a tip, just as an ordinary tooth's own
+flank narrows outward from its base. `gap_polygon` builds this directly: the
+seat circle (radius `seat_radius` = roller radius + a running clearance,
+`clearance_mm`) handles the root exactly as before, blended (shapely union)
+into a wedge whose half-width equals the seat radius where it meets the
+circle and grows at a fixed rate — `flank_angle_deg`, the tooth's taper — out
+past the outside diameter, so the blank's own outer circle, not the wedge,
+cleanly bounds the tip. Patterned `z` times and subtracted from an
+outside-diameter blank (`full_sprocket_polygon`), this produces a clean,
+correctly-tapered sprocket profile at every flank angle tried (15–45°); 20°
+is the default.
+
+Outside diameter is a free design choice — nothing here pulls it to one
+specific value the way an addendum coefficient does for an involute gear —
+and the auto default follows the widely-published quick-reference
+approximation `OD = PD + 0.8 * D_roller`, overridable directly.
+
+### 18.4 Checks
+
+`tests/test_sprocket.py`: the pitch diameter matches the closed-form
+regular-polygon formula, for every table entry; the built profile is one
+valid, simply-connected polygon whose rotation by one pitch angle reproduces
+itself (z-fold symmetry) over four different tooth-count/chain combinations
+spanning an order of magnitude in *z* (11 to 60) and two chain sizes; **a
+real chain roller — diameter exactly `roller_diameter_mm`, no clearance
+added — placed at every pitch position overlaps the built profile by
+nothing beyond floating-point noise** (it seats with exactly the design
+clearance and no more, the same "does the real mating part actually fit"
+check every other family in this project runs), while the same roller
+placed half a pitch off (squarely on a tooth) collides by more than 30% of
+its own area; the tooth measured at the root is wider than the same tooth
+measured near the tip, directly confirming the taper the construction is
+built to produce; `root_clearance_mm` (chain pitch less two seat radii) is
+shown to depend only on the chain, not the tooth count, and goes negative
+only for a hand-set, physically nonsensical roller/pitch combination; the
+solid is one valid manifold body that round-trips through STEP.
+
+**v1 simplification, stated plainly**: this is a flat-plate (ANSI "type A")
+sprocket — a toothed disc of `face_width_mm` with a central bore, no hub —
+not a hubbed type B/C casting. The tooth form itself is derived, not
+transcribed from the standard's own numeric tooth tables, and is checked
+against the one requirement those tables exist to satisfy (a real chain
+roller seats without interference and a mis-timed one collides), not
+against the tables' exact arc radii; a specific certified/purchased
+sprocket's outside diameter should be checked against its manufacturer's
+own table (`outside_diameter_mm` overrides the auto value directly).

@@ -61,7 +61,13 @@ namespace GearGen.Geometry
         /// section 17. Teeth = the face gear's, MateTeeth = the pinion's,
         /// CutterTeeth = the shaper's (0 = pinion's), FaceInnerRadiusMm /
         /// FaceOuterRadiusMm (0 = auto), RimThicknessMm, BoreDiameterMm.</summary>
-        FaceGear
+        FaceGear,
+        /// <summary>Sprocket wheel for roller chain, per ANSI B29.1 / ISO 606
+        /// -- see docs/gear-math.md section 18. No module/pressure angle;
+        /// sized by ChainPitchMm and RollerDiameterMm (ChainNumber sets both
+        /// from the standard table), OutsideDiameterMm (0 = auto).
+        /// FaceWidthMm, BoreDiameterMm as usual.</summary>
+        Sprocket
     }
 
     /// <summary>
@@ -236,6 +242,20 @@ namespace GearGen.Geometry
         public double FaceInnerRadiusMm { get; set; } = 0.0;
         public double FaceOuterRadiusMm { get; set; } = 0.0;
 
+        // ---- sprocket (docs/gear-math.md section 18) -- Family == Sprocket only ----
+
+        public bool IsSprocket => Family == GearFamily.Sprocket;
+
+        /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
+        /// picking one sets ChainPitchMm and RollerDiameterMm from the
+        /// standard table (GearViewModel's own copy of sprocket.py's); both
+        /// stay directly editable afterward for a non-standard chain.</summary>
+        public string ChainNumber { get; set; } = "40";
+        public double ChainPitchMm { get; set; } = 12.7;
+
+        /// <summary>0 = automatic (pitch diameter + 0.8 roller diameters).</summary>
+        public double OutsideDiameterMm { get; set; } = 0.0;
+
         /// <summary>The rollers' centre circle.</summary>
         public double PinCircleDiameterMm { get; set; } = 60.0;
 
@@ -310,6 +330,10 @@ namespace GearGen.Geometry
                 case GearFamily.FaceGear:
                     p.Teeth = 40; p.MateTeeth = 20; p.CutterTeeth = 0; p.FaceInnerRadiusMm = 0.0; p.FaceOuterRadiusMm = 0.0;
                     p.RimThicknessMm = 6.0;
+                    break;
+                case GearFamily.Sprocket:
+                    p.Teeth = 20; p.ChainNumber = "40"; p.ChainPitchMm = 12.7; p.RollerDiameterMm = 7.9248;
+                    p.OutsideDiameterMm = 0.0; p.FaceWidthMm = 6.0; p.BoreDiameterMm = 10.0;
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
@@ -394,6 +418,14 @@ namespace GearGen.Geometry
                     if (CutterTeeth > 0) parts.Add("shaper" + CutterTeeth);
                     parts.Add("ring" + (FaceInnerRadiusMm > 0 ? Len(FaceInnerRadiusMm) : "auto") + "to" + (FaceOuterRadiusMm > 0 ? Len(FaceOuterRadiusMm) : "auto"));
                     parts.Add("rim" + Len(RimThicknessMm));
+                    break;
+                case GearFamily.Sprocket:
+                    // bore is added by the shared trailing rule below, like every
+                    // other non-Rack family -- not repeated here.
+                    parts.Add("sprocket"); parts.Add("z" + Teeth); parts.Add("chain" + ChainNumber);
+                    parts.Add("pitch" + Len(ChainPitchMm)); parts.Add("roller" + Len(RollerDiameterMm));
+                    parts.Add("od" + (OutsideDiameterMm > 0 ? Len(OutsideDiameterMm) : "auto"));
+                    parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.SpiralBevel:
                     parts.Add(IsZerol ? "zerolbevel" : "spiralbevel"); parts.Add("z" + Teeth); parts.Add(size);

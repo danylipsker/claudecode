@@ -623,6 +623,37 @@ def export_dxf_profile(gp: GearParams, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def build_sprocket_solid(sp) -> bd.Part:
+    """sp: sprocket.SprocketParams (docs/gear-math.md 18). A plain straight
+    extrusion of the validated 2D cross-section -- a sprocket, unlike a
+    gear, has no helix/lead of its own, so this is exactly a spur gear's
+    own flat-extrusion case, nothing more."""
+    from sprocket import full_sprocket_outline
+    pts = [tuple(p) for p in full_sprocket_outline(sp)]
+    with bd.BuildPart() as part:
+        with bd.BuildSketch() as sk:
+            with bd.BuildLine():
+                bd.Polyline(*pts, pts[0])
+            bd.make_face()
+        bd.extrude(amount=sp.face_width_mm)
+    return part.part
+
+
+def export_sprocket_step(sp, path: str | Path) -> None:
+    _export_step_for_solidworks(build_sprocket_solid(sp), path)
+
+
+def export_sprocket_profile_dxf(sp, path: str | Path) -> None:
+    """Flat 2D tooth profile (constant along the face width) as a DXF."""
+    from sprocket import full_sprocket_outline
+    pts = [tuple(p) for p in full_sprocket_outline(sp)]
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
 if __name__ == "__main__":
     out = Path(__file__).parent / "out"
     out.mkdir(exist_ok=True)

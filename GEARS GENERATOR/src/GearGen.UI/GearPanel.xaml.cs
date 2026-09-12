@@ -119,6 +119,11 @@ namespace GearGen.UI
             Viewport3D.ChangeCameraDirection(new Vector3D(0.55, 0.8, -0.35), 300);
         }
 
+        private void OnSprocketChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectSprocketCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

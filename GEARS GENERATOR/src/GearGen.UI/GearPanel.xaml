@@ -218,6 +218,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsSprocket, Mode=OneWay}" Checked="OnSprocketChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_sprocket.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Sprocket" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
@@ -272,7 +279,7 @@
                         <local:NumericSpinner Label="Thread starts (z1)" Value="{Binding WormStarts}" Minimum="1" Maximum="10" Step="1" DecimalPlaces="0"/>
                         <local:NumericSpinner Label="Pitch diameter" Value="{Binding PitchDiameterDisplay}" Minimum="1" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
-                    <local:NumericSpinner Visibility="{Binding IsNotCycloidalDrive, Converter={StaticResource B2V}}"
+                    <local:NumericSpinner Visibility="{Binding HasModuleField, Converter={StaticResource B2V}}"
                                            Label="{Binding ModuleOrDpLabel}" Value="{Binding ModuleOrDp}" Minimum="0.05" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
 
                     <StackPanel Visibility="{Binding IsNotCycloidal, Converter={StaticResource B2V}}">
@@ -315,6 +322,17 @@
                         <local:NumericSpinner Label="Ring inner radius (0 = auto)" Value="{Binding FaceInnerRadiusDisplay}" Minimum="0" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Ring outer radius (0 = auto)" Value="{Binding FaceOuterRadiusDisplay}" Minimum="0" Maximum="2000" Step="1" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Rim below the root" Value="{Binding RimThicknessDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsSprocket, Converter={StaticResource B2V}}">
+                        <TextBlock Text="SPROCKET" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="A wheel for roller chain (ANSI B29.1 / ISO 606): the teeth seat a chain roller of the chosen chain's own diameter, one per pitch position, and taper between them to drive it. Pick a standard chain number to set pitch and roller diameter together, or set them directly for a non-standard chain. Outside diameter 0 = automatic."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <TextBlock Text="Chain number (ANSI B29.1)" FontSize="12" Foreground="#374151" Margin="0,0,0,3"/>
+                        <ComboBox ItemsSource="{Binding ChainNumbers}" SelectedItem="{Binding ChainNumber}" Margin="0,0,0,8" Padding="6,4"/>
+                        <local:NumericSpinner Label="Chain pitch" Value="{Binding ChainPitchDisplay}" Minimum="0.1" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Roller diameter" Value="{Binding RollerDiameterDisplay}" Minimum="0.1" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Outside diameter (0 = auto)" Value="{Binding OutsideDiameterDisplay}" Minimum="0" Maximum="2000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
@@ -599,6 +617,16 @@
                     <StackPanel>
                         <TextBlock Text="RING LIMITS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding FaceLimitsText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsSprocket, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="CHAIN" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SprocketChainText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="ROOT / OUTSIDE DIAMETER" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SprocketDiametersText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
