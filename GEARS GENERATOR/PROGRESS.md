@@ -1,6 +1,34 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/ec-gear/rack/helical-rack/internal gears + real 3D viewer
 
-## Double-enveloping (globoid) worm drive: the throated wheel, generated (latest)
+## Eccentrically-cycloidal (EC) gears (latest)
+
+The second of the three wish-list families. `ec_gear.py`, C# family
+`EccentricCycloidal` (card "EC gear", section, derived rows, reset,
+`--ecgear` smoke flag), docs §23, `tests/test_ec_gear.py` (9). Twenty-one
+families.
+
+- **A one-tooth pinion** -- an eccentric cylinder twisted into a screw --
+  against a wheel of z lobes: ratio z : 1 in one stage. The wheel's
+  transverse profile is the envelope of the eccentric circle, i.e. the
+  inward equidistant of the epitrochoid its centre traces: the cycloidal
+  drive's disc profile with the eccentric as the one roller, reused as it
+  is (turned back by half a pitch). Both members are exact twist-extrusions
+  (§7.3): the pinion turns a full lead across the face, the wheel one lobe
+  the other way, so every transverse section is the conjugate pair.
+- **Two limits, refused with the reason**: the path loops unless e < r_1
+  = a / (z + 1); the profile crosses itself unless the pinion radius is
+  below the path's least radius of curvature at the lobe tips (about
+  (a/z + e)² / (e + a/z²)). Auto sizes e = 0.6 r_1 and r_c = 0.8 of that
+  limit; the first default (r_c = a / 4) was refused by its own check on
+  the first run.
+- **Measured**: tangency to 1 µm at every phase (8000 profile samples;
+  2000 left 15 µm in the valleys), pinion volume exact to 1e-6, one face
+  per lobe (32 for 30), sections between the faces the twisted profile to
+  the tessellation, **in-phase overlap 1.1e-7 of the wheel, 57 mm³ half a
+  lobe off**; the pair builds in 0.2 s, STEP 0.35 MB.
+- Left on the list: hyperboloidal gears.
+
+## Double-enveloping (globoid) worm drive: the throated wheel, generated
 
 The wish-list item that was "worm builds, wheel WIP" for three sessions.
 `throated_wheel.py`, `generation.py` (the sweep machinery factored out of

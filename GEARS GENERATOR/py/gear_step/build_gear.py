@@ -752,6 +752,35 @@ def export_hypoid_step(hp, path: str | Path, n_positions: int = 240, n_stations:
     _export_step_for_solidworks(pair, path, write_pcurves=False)
 
 
+def build_ec_pair_solid(ep, per_lobe: int = 24) -> bd.Compound:
+    """ep: ec_gear.ECGearParams (docs/gear-math.md 23): the eccentric
+    pinion and its wheel, in mesh in the wheel frame."""
+    from ec_gear import build_ec_pair
+    pinion, wheel = build_ec_pair(ep, 0.0, 0.0, per_lobe)
+    return bd.Compound(children=[pinion, wheel])
+
+
+def export_ec_step(ep, path: str | Path) -> None:
+    _export_step_for_solidworks(build_ec_pair_solid(ep), path, write_pcurves=False)
+
+
+def export_ec_profile_dxf(ep, path: str | Path) -> None:
+    """The wheel's transverse profile and, on the centre distance, the
+    eccentric circle at pinion turn 0 -- the pair's central section."""
+    from ec_gear import wheel_outline, pinion_outline
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    w = wheel_outline(ep, simplify_tolerance_mm=0.005)
+    msp.add_lwpolyline(w + [w[0]], format="xy", dxfattribs={"closed": True})
+    msp.add_circle((ep.a + ep.e, 0.0), ep.r_c)
+    if ep.pinion_bore_diameter_mm > 0:
+        msp.add_circle((ep.a, 0.0), 0.5 * ep.pinion_bore_diameter_mm)
+    if ep.bore_diameter_mm > 0:
+        msp.add_circle((0.0, 0.0), 0.5 * ep.bore_diameter_mm)
+    doc.saveas(str(path))
+
+
 def build_globoid_pair_solid(gp, n_positions: int = 120, n_stations: int = 13, n_profile: int = 80, n_per_turn: int = 48) -> bd.Compound:
     """gp: globoid_worm.GloboidWormParams (docs/gear-math.md 22): the worm
     (one fused solid) and its throated wheel (one solid), in mesh in the

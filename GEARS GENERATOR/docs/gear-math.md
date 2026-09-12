@@ -2061,3 +2061,79 @@ blank's; **the pair meshes: overlap below 1e-6 of the wheel at three
 phases (1.5e-8 measured at export quality, 2e-8 coarse), a half-pitch
 error collides at 448 mm³**; the pair round-trips through STEP as two
 solids (10 MB, the wheel 122 faces); the derived values and warnings.
+
+## 23. Eccentrically-cycloidal (EC) gears
+
+`ec_gear.py`, `tests/test_ec_gear.py`. EC gearing (Stanovskoy's
+eccentrically-cycloidal engagement) puts a *one-tooth* pinion against a
+lobed wheel: the pinion's transverse sections are circles of radius
+`r_c` whose centre sits `e` off the pinion's axis, and that eccentric
+direction turns along a helix of lead `p_z`, so the pinion is an
+eccentric cylinder twisted into a screw. The ratio is `z_w : 1` in one
+stage, the contact rolls with little sliding, and there is nothing to
+undercut. Both members are exact twist-extrusions (§7.3); the wheel's
+transverse profile is a curve this project already had.
+
+### 23.1 The wheel is the envelope of the eccentric
+
+Pitch radii from the ratio at the centre distance *a*: `r_1 = a / (z_w +
+1)` for the pinion, `r_2 = a z_w / (z_w + 1)` for the wheel. The pinion
+turns by *θ*, the wheel by `−θ / z_w`; in the wheel's frame the
+eccentric's centre is at `Rot(θ / z_w) · (a + e cos θ, e sin θ)` -- the
+epitrochoid a circle of radius `r_1` rolling on one of radius `r_2`
+traces with a point *e* off its centre (checked point for point against
+that rolling construction). The wheel's profile is the envelope of the
+circle of radius `r_c` about that path: its inward equidistant at `r_c`.
+That is exactly the cycloidal drive's disc profile (§15) with `z_w`
+lobes, the pin circle at *a*, the eccentric as the one roller -- the
+drive's `disc_profile` and its convex-stretch curvature check are reused
+as they are, the profile turned back by half a pitch (the disc has its
+roller in a valley at angle 0; this wheel has the eccentric farthest
+away and a tip there). Measured: the eccentric's centre is `r_c` from
+the profile to 1 µm at every phase (8000 samples; 2000 left 15 µm in
+the valleys, where the inward offset stretches the sampling) and its
+circle is never inside the wheel.
+
+Two limits, both refused with the reason: the path loops unless `e <
+r_1`; the equidistant crosses itself (sharp tips) unless `r_c` is below
+the path's least radius of curvature on its convex stretches, which is
+at the lobe tips, about `(a / z_w + e)² / (e + a / z_w²)`. The auto
+sizes sit inside both: `e = 0.6 r_1`, `r_c = 0.8` of that limit (the
+tips keep a radius of a fifth of the path's tightest bend). Tooth height
+`2 e`: tips at `a + e − r_c`, roots at `a − e − r_c`. The reference
+set, 20 lobes at *a* = 50: `r_1` = 2.38, *e* = 1.43, `r_c` = 7.21 (limit
+9.01), a Ø14 eccentric on a Ø88 wheel with 2.9 mm lobes.
+
+### 23.2 The twist
+
+Across the face the eccentric turns `2π b / p_z` (a full turn for the
+default `p_z = b`, so the single contact point of each section wraps once
+round the pinion and the wheel is held in both directions -- a face
+shorter than a lead is warned about). At height *z* the pinion's phase is
+`θ + 2π z / p_z`; the wheel's section there must mate with that phase at
+the *same* wheel turn `−θ / z_w`, so it is the base profile turned by
+`−(2π z / p_z) / z_w`: one lobe per lead, against the pinion. Both
+helices have `tan β = 2π r_1 / p_z` at their pitch radii, opposite hands,
+as an external helical pair. The pinion is the exact circle swept with
+that rotation (3 faces, volume `π r_c² b` to 1e-6); the wheel's face is
+one spline per lobe through exact equidistant points (24 a lobe: the
+interpolation error on a 7 mm valley is 1e-7 mm), swept the same way, so
+the solid has one face per lobe (32 for 30 lobes) and its sections at
+a quarter, half and three quarters of the face are the profile turned by
+the twist so far to within the tessellation (18 µm, 1e-4 of the area);
+the eccentric's centre in those sections is where the pinion's own twist
+puts it, to 1e-4 mm.
+
+### 23.3 Checks
+
+`tests/test_ec_gear.py`: the pitch radii, ratio, auto sizes and twist
+angles; the centre's path is the rolling epitrochoid; the profile's tip
+and root radii, `z_w`-fold symmetry, tangency and non-penetration at 37
+phases, and the lobe runs the solid is built from lie on it; the five
+refusals name their limit; the solids are exact twisted extrusions (the
+volumes, the face count, the sections between the faces); bores remove
+exactly their cylinders and leave nothing on either axis; **the pair
+meshes: overlap below 1e-6 of the wheel at four phases (1.1e-7
+measured, the tangent contact's sliver), 57 mm³ when the wheel is
+turned half a lobe off**; STEP round trip as two solids (0.35 MB, 0.2 s
+to build); the derived values and the short-face warning.

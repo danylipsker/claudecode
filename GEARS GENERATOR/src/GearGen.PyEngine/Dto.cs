@@ -51,6 +51,10 @@ namespace GearGen.PyEngine
         [JsonProperty("curvilinear")] public bool? Curvilinear;
         [JsonProperty("offset_mm")] public double? OffsetMm;
         [JsonProperty("envelope_teeth")] public double? EnvelopeTeeth;
+        [JsonProperty("centre_distance_mm")] public double? CentreDistanceMm;
+        [JsonProperty("pinion_diameter_mm")] public double? PinionDiameterMm;
+        [JsonProperty("lead_mm")] public double? LeadMm;
+        [JsonProperty("pinion_bore_diameter_mm")] public double? PinionBoreDiameterMm;
     }
 
     internal class EngineResponse

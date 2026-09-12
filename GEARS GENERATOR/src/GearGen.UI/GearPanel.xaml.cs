@@ -149,6 +149,11 @@ namespace GearGen.UI
             ViewModel?.SelectGloboidWormCard();
         }
 
+        private void OnEccentricCycloidalChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectEccentricCycloidalCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

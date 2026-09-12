@@ -159,4 +159,8 @@ if __name__ == "__main__":
     glob = GloboidWormParams(starts=1, wheel_teeth=30)
     render_solid_thumbnail(build_globoid_pair_solid(glob, n_positions=48, n_stations=7, n_profile=60), f"{out_dir}/thumb_globoid_worm.png", elev=25, azim=-50)
 
+    from ec_gear import ECGearParams
+    from build_gear import build_ec_pair_solid
+    render_solid_thumbnail(build_ec_pair_solid(ECGearParams()), f"{out_dir}/thumb_ec_gear.png", elev=30, azim=-50)
+
     print("done")

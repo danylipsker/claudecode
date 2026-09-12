@@ -458,6 +458,59 @@ def chain_link_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def ec_gear_params_from_request(p: dict):
+    """Eccentrically-cycloidal pair -- docs/gear-math.md 23. teeth = the
+    wheel's; centre_distance_mm; eccentricity_mm, pinion_diameter_mm and
+    lead_mm at 0 mean auto (0.6 of the pinion's pitch radius, 0.8 of the
+    largest the profile allows, the face width)."""
+    from ec_gear import ECGearParams
+    return ECGearParams(
+        wheel_teeth=int(p.get("z") or 20),
+        centre_distance_mm=float(p.get("centre_distance_mm") or 50.0),
+        eccentricity_mm=float(p.get("eccentricity_mm") or 0.0),
+        pinion_diameter_mm=float(p.get("pinion_diameter_mm") or 0.0),
+        face_width_mm=float(p.get("face_width_mm") or 20.0),
+        lead_mm=float(p.get("lead_mm") or 0.0),
+        hand=str(p.get("hand", "right")),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        pinion_bore_diameter_mm=float(p.get("pinion_bore_diameter_mm", 0.0)),
+    )
+
+
+def ec_gear_derived_values(ep) -> tuple[dict, list]:
+    import math as _m
+    ep.validate()
+    warnings = []
+    if ep.face_width_mm < ep.lead - 1e-9:
+        warnings.append(f"The eccentric turns {ep.face_width_mm / ep.lead:.2f} of a turn across the {ep.face_width_mm:g} mm face -- "
+                        f"less than a turn, so the contact does not wrap all the way round and the wheel is not held in both directions; "
+                        f"a face of at least one lead ({ep.lead:g} mm) is usual.")
+    if ep.e > 0.85 * ep.max_eccentricity:
+        warnings.append(f"Eccentricity {ep.e:.3f} mm is close to the {ep.max_eccentricity:.3f} mm at which the eccentric centre's path loops.")
+    if ep.r_c > 0.95 * ep.max_pinion_radius:
+        warnings.append(f"Pinion radius {ep.r_c:.3f} mm is close to the {ep.max_pinion_radius:.3f} mm at which the wheel's tips go sharp.")
+    derived = {
+        "ratio": ep.ratio,
+        "wheel_teeth": float(ep.z),
+        "centre_distance_mm": ep.a,
+        "pinion_pitch_diameter_mm": 2.0 * ep.pinion_pitch_radius,
+        "wheel_pitch_diameter_mm": 2.0 * ep.wheel_pitch_radius,
+        "eccentricity_mm": ep.e,
+        "max_eccentricity_mm": ep.max_eccentricity,
+        "pinion_diameter_mm": 2.0 * ep.r_c,
+        "max_pinion_diameter_mm": 2.0 * ep.max_pinion_radius,
+        "tooth_height_mm": ep.tooth_height,
+        "wheel_tip_diameter_mm": 2.0 * ep.wheel_tip_radius,
+        "wheel_root_diameter_mm": 2.0 * ep.wheel_root_radius,
+        "face_width_mm": ep.face_width_mm,
+        "lead_mm": ep.lead,
+        "pinion_twist_deg": _m.degrees(ep.pinion_twist_rad),
+        "wheel_twist_deg": _m.degrees(ep.wheel_twist_rad),
+        "helix_angle_deg": _m.degrees(ep.helix_angle_rad),
+    }
+    return derived, warnings
+
+
 def globoid_worm_params_from_request(p: dict):
     """Double-enveloping worm + throated wheel -- docs/gear-math.md 22.
     starts, mate_teeth = the wheel's, module_mm = axial at the throat,
@@ -913,6 +966,12 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "ec_gear":
+            from ec_gear import wheel_outline
+            ep = ec_gear_params_from_request(req)
+            derived, warnings = ec_gear_derived_values(ep)
+            outline = wheel_outline(ep, simplify_tolerance_mm=0.01)     # the wheel's transverse profile
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "globoid_worm":
             from globoid_worm import thread_section
             gp = globoid_worm_params_from_request(req)
@@ -1013,7 +1072,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_step":
         path = req["path"]
-        if gear_type == "globoid_worm":
+        if gear_type == "ec_gear":
+            from build_gear import export_ec_step
+            export_ec_step(ec_gear_params_from_request(req), path)     # the pair
+        elif gear_type == "globoid_worm":
             from build_gear import export_globoid_worm_step
             export_globoid_worm_step(globoid_worm_params_from_request(req), path)   # the pair, generated at export quality
         elif gear_type == "hypoid":
@@ -1077,7 +1139,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_dxf":
         path = req["path"]
-        if gear_type == "globoid_worm":
+        if gear_type == "ec_gear":
+            from build_gear import export_ec_profile_dxf
+            export_ec_profile_dxf(ec_gear_params_from_request(req), path)
+        elif gear_type == "globoid_worm":
             from build_gear import export_globoid_worm_profile_dxf
             export_globoid_worm_profile_dxf(globoid_worm_params_from_request(req), path)
         elif gear_type == "hypoid":
@@ -1143,7 +1208,12 @@ def handle(req: dict) -> dict:
         # helix twist, cone taper etc. are all visible exactly as they'll
         # export, not just implied by 2D parameters.
         path = req["path"]
-        if gear_type == "globoid_worm":
+        if gear_type == "ec_gear":
+            from build_gear import build_ec_pair_solid
+            import build123d as bd
+            solid = build_ec_pair_solid(ec_gear_params_from_request(req))
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "globoid_worm":
             from build_gear import build_globoid_pair_solid
             import build123d as bd
             solid = build_globoid_pair_solid(globoid_worm_params_from_request(req), n_positions=48, n_stations=7, n_profile=60)

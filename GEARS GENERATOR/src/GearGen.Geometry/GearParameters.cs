@@ -96,7 +96,16 @@ namespace GearGen.Geometry
         /// = how many wheel pitches the worm wraps (sets its length), Hand,
         /// PressureAngleDeg, BoreDiameterMm (the worm's). The wheel is
         /// generated from the worm. Exports the pair as one multi-body STEP.</summary>
-        GloboidWorm
+        GloboidWorm,
+        /// <summary>Eccentrically-cycloidal (EC) gearing -- see docs/gear-math.md
+        /// section 23. A one-tooth pinion whose sections are circles set
+        /// EccentricityMm off its axis, turning along a helix of LeadMm, and a
+        /// wheel of Teeth lobes whose profile is the envelope of that circle
+        /// (an equidistant of an epitrochoid, as the cycloidal drive's disc).
+        /// CentreDistanceMm, PinionDiameterMm, Hand, FaceWidthMm, BoreDiameterMm
+        /// (the wheel's), PinionBoreDiameterMm. Exports the pair as one
+        /// multi-body STEP.</summary>
+        EccentricCycloidal
     }
 
     /// <summary>
@@ -324,6 +333,26 @@ namespace GearGen.Geometry
         /// (4 is usual); its length follows: 2 r_g sin(wrap/2).</summary>
         public double EnvelopeTeeth { get; set; } = 4.0;
 
+        // ---- eccentrically-cycloidal gear (docs/gear-math.md section 23) -- Family == EccentricCycloidal only ----
+
+        public bool IsEccentricCycloidal => Family == GearFamily.EccentricCycloidal;
+
+        /// <summary>Axis to axis. The pitch radii follow from the ratio Teeth : 1.</summary>
+        public double CentreDistanceMm { get; set; } = 50.0;
+
+        /// <summary>The eccentric circle's diameter; 0 = auto (0.8 of the largest
+        /// the wheel profile allows before its tips go sharp). EccentricityMm
+        /// is shared with the cycloidal drive; here 0 = auto (0.6 of the
+        /// pinion's pitch radius).</summary>
+        public double PinionDiameterMm { get; set; } = 0.0;
+
+        /// <summary>The eccentric direction's lead along the axis; 0 = the face
+        /// width, one full turn of the eccentric across the face.</summary>
+        public double LeadMm { get; set; } = 0.0;
+
+        /// <summary>A bore on the pinion's axis, inside the eccentric (0 = none).</summary>
+        public double PinionBoreDiameterMm { get; set; } = 0.0;
+
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
         /// standard table (GearViewModel's own copy of sprocket.py's); both
@@ -423,6 +452,10 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     p.BeltType = "T5"; p.BeltPitchMm = 5.0; p.BeltCurvilinear = false;
                     p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
+                    break;
+                case GearFamily.EccentricCycloidal:
+                    p.Teeth = 20; p.CentreDistanceMm = 50.0; p.EccentricityMm = 0.0; p.PinionDiameterMm = 0.0; p.LeadMm = 0.0;
+                    p.FaceWidthMm = 20.0; p.BoreDiameterMm = 0.0; p.PinionBoreDiameterMm = 0.0; p.Hand = "right";
                     break;
                 case GearFamily.GloboidWorm:
                     p.WormStarts = 1; p.MateTeeth = 30; p.ModuleMm = 2.0; p.PitchDiameterMm = 24.0; p.EnvelopeTeeth = 4.0;
@@ -545,6 +578,14 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     parts.Add("timingbelt"); parts.Add(BeltTypeSlug); parts.Add("beltpitch" + Len(BeltPitchMm));
                     parts.Add("teeth" + CutterTeeth); parts.Add("w" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.EccentricCycloidal:
+                    parts.Add("ecgear"); parts.Add("z" + Teeth); parts.Add("a" + Len(CentreDistanceMm));
+                    parts.Add(EccentricityMm > 0 ? "e" + Len(EccentricityMm) : "eauto");
+                    parts.Add(PinionDiameterMm > 0 ? "dp" + Len(PinionDiameterMm) : "dpauto");
+                    parts.Add("fw" + Len(FaceWidthMm));
+                    if (LeadMm > 0) parts.Add("lead" + Len(LeadMm));
+                    parts.Add(hand + "H");
                     break;
                 case GearFamily.GloboidWorm:
                     parts.Add("globoidworm"); parts.Add("starts" + WormStarts); parts.Add("wheel" + MateTeeth); parts.Add(size);

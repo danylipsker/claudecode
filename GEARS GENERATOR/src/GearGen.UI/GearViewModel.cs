@@ -272,6 +272,71 @@ namespace GearGen.UI
             OnChanged(nameof(BoreDiameterDisplay));
         }
 
+        // ---- eccentrically-cycloidal gear (docs/gear-math.md section 23) -- Family == EccentricCycloidal only ----
+
+        public bool IsEccentricCycloidal
+        {
+            get => _p.Family == GearFamily.EccentricCycloidal;
+            set { if (value) { _p.Family = GearFamily.EccentricCycloidal; OnChanged(); FamilyChanged(); } }
+        }
+
+        public double CentreDistanceDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.CentreDistanceMm) : _p.CentreDistanceMm;
+            set { _p.CentreDistanceMm = Math.Max(1.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>The same model field as the cycloidal drive's EccentricityDisplay,
+        /// but 0 is allowed and means auto.</summary>
+        public double EcEccentricityDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.EccentricityMm) : _p.EccentricityMm;
+            set { _p.EccentricityMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public double PinionDiameterDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.PinionDiameterMm) : _p.PinionDiameterMm;
+            set { _p.PinionDiameterMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public double LeadDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.LeadMm) : _p.LeadMm;
+            set { _p.LeadMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public double PinionBoreDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.PinionBoreDiameterMm) : _p.PinionBoreDiameterMm;
+            set { _p.PinionBoreDiameterMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>A 20-lobe wheel 50 mm from a one-tooth eccentric pinion, the
+        /// eccentricity, pinion size and lead auto. EccentricityMm is shared
+        /// with the cycloidal drive, where it is an absolute size; here it is
+        /// reset to auto rather than carried over.</summary>
+        public void SelectEccentricCycloidalCard()
+        {
+            IsEccentricCycloidal = true;
+            HelixAngleDeg = 0.0;
+            if (Teeth < 3) Teeth = 20;
+            if (_p.CentreDistanceMm <= 0) _p.CentreDistanceMm = 50.0;
+            _p.EccentricityMm = 0.0;
+            _p.PinionDiameterMm = 0.0;
+            _p.LeadMm = 0.0;
+            OnChanged(nameof(CentreDistanceDisplay));
+            OnChanged(nameof(EcEccentricityDisplay));
+            OnChanged(nameof(PinionDiameterDisplay));
+            OnChanged(nameof(LeadDisplay));
+            OnChanged(nameof(PinionBoreDisplay));
+            ScheduleRefresh();
+        }
+
+        private string _ecText = "-", _ecTwistText = "-";
+        public string EcText { get => _ecText; private set { _ecText = value; OnChanged(); } }
+        public string EcTwistText { get => _ecTwistText; private set { _ecTwistText = value; OnChanged(); } }
+
         // ---- globoid worm (docs/gear-math.md section 22) -- Family == GloboidWorm only ----
 
         public bool IsGloboidWorm
@@ -484,7 +549,7 @@ namespace GearGen.UI
         public bool IsNotCycloidalDrive => !IsCycloidalDrive;
         /// <summary>A sprocket, like a cycloidal drive, is sized without a
         /// module or diametral pitch at all (chain pitch takes that role).</summary>
-        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket && !IsChainLink && !IsTimingWheel && !IsTimingBelt;
+        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket && !IsChainLink && !IsTimingWheel && !IsTimingBelt && !IsEccentricCycloidal;
         public string TeethLabel =>
             IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
             : IsPlanetary ? "Sun teeth"
@@ -621,6 +686,7 @@ namespace GearGen.UI
             : IsTimingWheel ? "Timing wheel"
             : IsTimingBelt ? "Timing belt"
             : IsHypoid ? "Hypoid"
+            : IsEccentricCycloidal ? "EC gear"
             : IsGloboidWorm ? "Globoid worm"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
@@ -683,6 +749,7 @@ namespace GearGen.UI
             OnChanged(nameof(IsTimingBelt));
             OnChanged(nameof(IsHypoid));
             OnChanged(nameof(IsGloboidWorm));
+            OnChanged(nameof(IsEccentricCycloidal));
             OnChanged(nameof(HasFaceWidthSpinner));
             OnChanged(nameof(HasModuleField));
             OnChanged(nameof(IsNotCycloidal));
@@ -963,6 +1030,11 @@ namespace GearGen.UI
             OnChanged(nameof(PinCircleDisplay));
             OnChanged(nameof(RollerDiameterDisplay));
             OnChanged(nameof(EccentricityDisplay));
+            OnChanged(nameof(CentreDistanceDisplay));
+            OnChanged(nameof(EcEccentricityDisplay));
+            OnChanged(nameof(PinionDiameterDisplay));
+            OnChanged(nameof(LeadDisplay));
+            OnChanged(nameof(PinionBoreDisplay));
             OnChanged(nameof(OutputPinDiameterDisplay));
             OnChanged(nameof(OutputCircleDisplay));
             OnChanged(nameof(CutterRadiusDisplay));
@@ -1232,6 +1304,21 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsEccentricCycloidal)
+                {
+                    // ec_gear_derived_values (server.py)
+                    PitchDiameterText = $"{L(dv("wheel_pitch_diameter_mm"))} (wheel)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = $"{L(dv("wheel_tip_diameter_mm"))} (wheel)";
+                    DedendumDiameterText = $"{L(dv("wheel_root_diameter_mm"))} (wheel)";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = "-";
+                    EcText = $"ratio {dv("ratio"):0.##} : 1 (one-tooth pinion, {dv("wheel_teeth"):0} lobes), pitch Ø {L(dv("pinion_pitch_diameter_mm"))} / {L(dv("wheel_pitch_diameter_mm"))}; "
+                           + $"eccentricity {L(dv("eccentricity_mm"))} (max {L(dv("max_eccentricity_mm"))}), pinion Ø {L(dv("pinion_diameter_mm"))} (max {L(dv("max_pinion_diameter_mm"))}), "
+                           + $"tooth height {L(dv("tooth_height_mm"))}";
+                    EcTwistText = $"lead {L(dv("lead_mm"))}: the eccentric turns {dv("pinion_twist_deg"):0.#}° across the face, the wheel {dv("wheel_twist_deg"):0.##}° "
+                                + $"(one lobe per pinion turn), helix angle {dv("helix_angle_deg"):0.#}° at the pitch radii";
                 }
                 else if (IsGloboidWorm)
                 {

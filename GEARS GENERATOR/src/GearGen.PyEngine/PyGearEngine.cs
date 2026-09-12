@@ -205,6 +205,19 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsEccentricCycloidal)
+            {
+                // Everything in mm regardless of Unit (converted client-side); 0 = auto
+                // for the eccentricity, the pinion diameter and the lead.
+                req.GearType = "ec_gear";
+                req.CentreDistanceMm = p.CentreDistanceMm;
+                req.EccentricityMm = p.EccentricityMm;
+                req.PinionDiameterMm = p.PinionDiameterMm;
+                req.LeadMm = p.LeadMm;
+                req.PinionBoreDiameterMm = p.PinionBoreDiameterMm;
+                return req;
+            }
+
             if (p.IsGloboidWorm)
             {
                 // As the cylindrical worm: no inch constructor, convert client-side;
