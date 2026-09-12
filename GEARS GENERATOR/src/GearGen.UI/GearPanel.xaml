@@ -253,6 +253,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsGloboidWorm, Mode=OneWay}" Checked="OnGloboidWormChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_globoid_worm.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Globoid worm" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
@@ -322,7 +329,8 @@
 
                     <StackPanel Visibility="{Binding ShowFaceWidthField, Converter={StaticResource B2V}}">
                     <TextBlock Text="SIZE" Style="{StaticResource SectionHeader}"/>
-                    <local:NumericSpinner Label="{Binding FaceWidthLabel}" Value="{Binding FaceWidthDisplay}" Minimum="0.5" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    <local:NumericSpinner Visibility="{Binding HasFaceWidthSpinner, Converter={StaticResource B2V}}"
+                                           Label="{Binding FaceWidthLabel}" Value="{Binding FaceWidthDisplay}" Minimum="0.5" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     <local:NumericSpinner Visibility="{Binding ShowBoreField, Converter={StaticResource B2V}}"
                                            Label="{Binding BoreOrHoleLabel}" Value="{Binding BoreDiameterDisplay}" Minimum="0" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
@@ -392,6 +400,27 @@
                         <ComboBox ItemsSource="{Binding BeltTypes}" SelectedItem="{Binding BeltType}" Margin="0,0,0,8" Padding="6,4"/>
                         <local:NumericSpinner Label="Belt pitch" Value="{Binding BeltPitchDisplay}" Minimum="0.5" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Teeth shown" Value="{Binding CutterTeeth}" Minimum="3" Maximum="60" Step="1" DecimalPlaces="0"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsGloboidWorm, Converter={StaticResource B2V}}">
+                        <TextBlock Text="GLOBOID (DOUBLE-ENVELOPING) WORM" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="A worm turned to wrap its wheel -- an hourglass whose every thread turn is in mesh, not just the throat -- with a wheel throated around the worm in turn (Hindley / cone-drive). The thread flanks are straight lines in the central plane, tangent to a base circle about the wheel centre; the wheel is generated from the built worm, so the pair meshes by construction. The preview and the STEP are the pair in mesh."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Thread starts (z1)" Value="{Binding WormStarts}" Minimum="1" Maximum="6" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Wheel teeth (z2)" Value="{Binding MateTeeth}" Minimum="12" Maximum="200" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Throat pitch diameter (worm)" Value="{Binding PitchDiameterDisplay}" Minimum="1" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Wrapped wheel pitches" Value="{Binding EnvelopeTeeth}" Minimum="1" Maximum="12" Step="0.5" DecimalPlaces="1"/>
+                        <Grid Margin="0,6,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" GroupName="globoidhand" Content="Right-hand" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsRightHand, Mode=OneWay}" Checked="OnRightHandChecked"/>
+                            <RadioButton Grid.Column="2" GroupName="globoidhand" Content="Left-hand" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsLeftHand, Mode=OneWay}" Checked="OnLeftHandChecked"/>
+                        </Grid>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsHypoid, Converter={StaticResource B2V}}">
@@ -729,6 +758,16 @@
                     <StackPanel>
                         <TextBlock Text="BELT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding TimingBeltText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsGloboidWorm, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="WORM AND WHEEL" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding GloboidText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="WRAP" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding GloboidWrapText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsHypoid, Converter={StaticResource B2V}}">

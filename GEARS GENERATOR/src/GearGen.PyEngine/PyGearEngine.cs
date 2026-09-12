@@ -205,6 +205,19 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsGloboidWorm)
+            {
+                // As the cylindrical worm: no inch constructor, convert client-side;
+                // PitchDiameterMm is already in mm regardless of Unit.
+                req.GearType = "globoid_worm";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.Starts = p.WormStarts;
+                req.MateTeeth = p.MateTeeth;          // the wheel
+                req.PitchDiameterMm = p.PitchDiameterMm;
+                req.EnvelopeTeeth = p.EnvelopeTeeth;
+                return req;
+            }
+
             if (p.IsHypoid)
             {
                 // As spiral bevel: HypoidParams has no inch constructor, convert

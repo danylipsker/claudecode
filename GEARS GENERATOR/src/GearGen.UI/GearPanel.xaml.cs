@@ -144,6 +144,11 @@ namespace GearGen.UI
             ViewModel?.SelectHypoidCard();
         }
 
+        private void OnGloboidWormChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectGloboidWormCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

@@ -88,7 +88,15 @@ namespace GearGen.Geometry
         /// section 21. The pinion's spiral angle, pitch angle and size
         /// follow from the offset; its teeth are generated from the gear.
         /// Exports the pair as one multi-body STEP.</summary>
-        Hypoid
+        Hypoid,
+        /// <summary>Double-enveloping (globoid, Hindley) worm and its throated
+        /// wheel -- see docs/gear-math.md section 22. WormStarts, MateTeeth =
+        /// the wheel's teeth, ModuleMm = the axial module at the throat,
+        /// PitchDiameterMm = the worm's throat pitch diameter, EnvelopeTeeth
+        /// = how many wheel pitches the worm wraps (sets its length), Hand,
+        /// PressureAngleDeg, BoreDiameterMm (the worm's). The wheel is
+        /// generated from the worm. Exports the pair as one multi-body STEP.</summary>
+        GloboidWorm
     }
 
     /// <summary>
@@ -308,6 +316,14 @@ namespace GearGen.Geometry
         /// follows from the gear's hand.</summary>
         public double OffsetMm { get; set; } = 6.0;
 
+        // ---- globoid worm (docs/gear-math.md section 22) -- Family == GloboidWorm only ----
+
+        public bool IsGloboidWorm => Family == GearFamily.GloboidWorm;
+
+        /// <summary>How many wheel pitches the double-enveloping worm wraps
+        /// (4 is usual); its length follows: 2 r_g sin(wrap/2).</summary>
+        public double EnvelopeTeeth { get; set; } = 4.0;
+
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
         /// standard table (GearViewModel's own copy of sprocket.py's); both
@@ -407,6 +423,10 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     p.BeltType = "T5"; p.BeltPitchMm = 5.0; p.BeltCurvilinear = false;
                     p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
+                    break;
+                case GearFamily.GloboidWorm:
+                    p.WormStarts = 1; p.MateTeeth = 30; p.ModuleMm = 2.0; p.PitchDiameterMm = 24.0; p.EnvelopeTeeth = 4.0;
+                    p.PressureAngleDeg = 20.0; p.Hand = "right"; p.BoreDiameterMm = 0.0;
                     break;
                 case GearFamily.Hypoid:
                     // 30/12 at module 2, offset a tenth of the gear's pitch diameter: the pinion comes out
@@ -525,6 +545,11 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     parts.Add("timingbelt"); parts.Add(BeltTypeSlug); parts.Add("beltpitch" + Len(BeltPitchMm));
                     parts.Add("teeth" + CutterTeeth); parts.Add("w" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.GloboidWorm:
+                    parts.Add("globoidworm"); parts.Add("starts" + WormStarts); parts.Add("wheel" + MateTeeth); parts.Add(size);
+                    parts.Add("pd" + Len(PitchDiameterMm)); parts.Add("wrap" + N(EnvelopeTeeth)); parts.Add("pa" + N(PressureAngleDeg));
+                    parts.Add(hand + "H");
                     break;
                 case GearFamily.Hypoid:
                     parts.Add("hypoid"); parts.Add("z" + Teeth + "x" + MateTeeth); parts.Add(size);

@@ -752,6 +752,31 @@ def export_hypoid_step(hp, path: str | Path, n_positions: int = 240, n_stations:
     _export_step_for_solidworks(pair, path, write_pcurves=False)
 
 
+def build_globoid_pair_solid(gp, n_positions: int = 120, n_stations: int = 13, n_profile: int = 80, n_per_turn: int = 48) -> bd.Compound:
+    """gp: globoid_worm.GloboidWormParams (docs/gear-math.md 22): the worm
+    (one fused solid) and its throated wheel (one solid), in mesh in the
+    wheel frame."""
+    from throated_wheel import build_globoid_pair
+    worm, wheel = build_globoid_pair(gp, 0.0, 0.0, n_positions, n_stations, n_profile, n_per_turn)
+    return bd.Compound(children=[worm, wheel])
+
+
+def export_globoid_worm_step(gp, path: str | Path, n_positions: int = 120, n_stations: int = 13, n_profile: int = 80) -> None:
+    _export_step_for_solidworks(build_globoid_pair_solid(gp, n_positions, n_stations, n_profile), path, write_pcurves=False)
+
+
+def export_globoid_worm_profile_dxf(gp, path: str | Path) -> None:
+    """The thread's axial section at the throat (z along the worm axis, r
+    from it) -- the ZA trapezoid every cylindrical worm shares."""
+    from globoid_worm import thread_section
+    pts = [(z, r) for (z, r) in thread_section(gp, 0.0, n_arc=24)]
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
 def export_hypoid_profile_dxf(hp, path: str | Path) -> None:
     """The gear's heel tooth section, as the spiral bevel card exports it:
     the pinion's generated flanks are not a 2D quantity at all."""

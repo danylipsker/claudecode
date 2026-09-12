@@ -154,4 +154,9 @@ if __name__ == "__main__":
     render_solid_thumbnail(build_hypoid_pair_solid(hyp, n_positions=60, n_stations=5, n_profile=60, n_phi=120, simplify_tolerance_mm=0.04),
                            f"{out_dir}/thumb_hypoid.png", elev=25, azim=-50)
 
+    from globoid_worm import GloboidWormParams
+    from build_gear import build_globoid_pair_solid
+    glob = GloboidWormParams(starts=1, wheel_teeth=30)
+    render_solid_thumbnail(build_globoid_pair_solid(glob, n_positions=48, n_stations=7, n_profile=60), f"{out_dir}/thumb_globoid_worm.png", elev=25, azim=-50)
+
     print("done")

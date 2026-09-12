@@ -458,6 +458,58 @@ def chain_link_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def globoid_worm_params_from_request(p: dict):
+    """Double-enveloping worm + throated wheel -- docs/gear-math.md 22.
+    starts, mate_teeth = the wheel's, module_mm = axial at the throat,
+    pitch_diameter_mm = the worm's throat pitch diameter, envelope_teeth =
+    wheel pitches wrapped (sets the worm's length)."""
+    from globoid_worm import GloboidWormParams
+    return GloboidWormParams(
+        starts=int(p.get("starts") or 1),
+        wheel_teeth=int(p.get("mate_teeth") or 30),
+        axial_module_mm=float(p["module_mm"]),
+        pitch_diameter_mm=float(p.get("pitch_diameter_mm") or 24.0),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        envelope_teeth=float(p.get("envelope_teeth") or 4.0),
+        hand=str(p.get("hand", "right")),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def globoid_worm_derived_values(gp) -> tuple[dict, list]:
+    import math as _m
+    from throated_wheel import wheel_outer_radius_at, wheel_rim_radius, wheel_blank_radius_at
+    warnings = []
+    if gp.wheel_teeth < 20:
+        warnings.append(f"A {gp.wheel_teeth}-tooth wheel is few for a worm drive (undercut risk); 24+ is usual.")
+    if _m.degrees(gp.wrap_angle_rad) > 90.0:
+        warnings.append(f"Wrapping {gp.envelope_teeth:g} pitches of a {gp.wheel_teeth}-tooth wheel is a {_m.degrees(gp.wrap_angle_rad):.0f} degree wrap -- "
+                        f"long worms are hard to make and mount; 3-5 pitches is usual.")
+    derived = {
+        "module_mm": gp.axial_module_mm,
+        "diametral_pitch": 25.4 / gp.axial_module_mm,
+        "starts": float(gp.starts),
+        "wheel_teeth": float(gp.wheel_teeth),
+        "ratio": gp.ratio,
+        "centre_distance_mm": gp.centre_distance,
+        "lead_angle_deg": _m.degrees(gp.lead_angle_rad),
+        "envelope_teeth": gp.envelope_teeth,
+        "wrap_angle_deg": _m.degrees(gp.wrap_angle_rad),
+        "worm_length_mm": gp.length,
+        "worm_throat_pitch_diameter_mm": gp.pitch_diameter_mm,
+        "worm_throat_tip_diameter_mm": gp.pitch_diameter_mm + 2.0 * gp.addendum,
+        "worm_throat_root_diameter_mm": gp.pitch_diameter_mm - 2.0 * gp.dedendum,
+        "wheel_pitch_diameter_mm": 2.0 * gp.wheel_pitch_radius,
+        "wheel_face_width_mm": gp.wheel_face_width,
+        "wheel_throat_outer_diameter_mm": 2.0 * wheel_outer_radius_at(gp, 0.0),
+        "wheel_outside_diameter_mm": 2.0 * wheel_rim_radius(gp),
+        "wheel_face_outer_diameter_mm": 2.0 * wheel_blank_radius_at(gp, 0.5 * gp.wheel_face_width),
+    }
+    return derived, warnings
+
+
 def hypoid_params_from_request(p: dict):
     """Hypoid pair -- docs/gear-math.md 21. z = the gear's teeth, mate_teeth
     = the pinion's, offset_mm the hypoid offset (0 = an ordinary spiral
@@ -861,6 +913,12 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "globoid_worm":
+            from globoid_worm import thread_section
+            gp = globoid_worm_params_from_request(req)
+            outline = [(z, r) for (z, r) in thread_section(gp, 0.0, n_arc=24)]   # the thread's axial section at the throat
+            derived, warnings = globoid_worm_derived_values(gp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "hypoid":
             hp = hypoid_params_from_request(req)
             outline = bevel_heel_tooth_outline(hp.gear_params())   # the gear's heel section, as the spiral bevel card
@@ -955,7 +1013,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_step":
         path = req["path"]
-        if gear_type == "hypoid":
+        if gear_type == "globoid_worm":
+            from build_gear import export_globoid_worm_step
+            export_globoid_worm_step(globoid_worm_params_from_request(req), path)   # the pair, generated at export quality
+        elif gear_type == "hypoid":
             from build_gear import export_hypoid_step
             export_hypoid_step(hypoid_params_from_request(req), path)   # the pair, generated at export quality
         elif gear_type == "timing_wheel":
@@ -1016,7 +1077,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_dxf":
         path = req["path"]
-        if gear_type == "hypoid":
+        if gear_type == "globoid_worm":
+            from build_gear import export_globoid_worm_profile_dxf
+            export_globoid_worm_profile_dxf(globoid_worm_params_from_request(req), path)
+        elif gear_type == "hypoid":
             from build_gear import export_hypoid_profile_dxf
             export_hypoid_profile_dxf(hypoid_params_from_request(req), path)
         elif gear_type == "timing_wheel":
@@ -1079,7 +1143,12 @@ def handle(req: dict) -> dict:
         # helix twist, cone taper etc. are all visible exactly as they'll
         # export, not just implied by 2D parameters.
         path = req["path"]
-        if gear_type == "hypoid":
+        if gear_type == "globoid_worm":
+            from build_gear import build_globoid_pair_solid
+            import build123d as bd
+            solid = build_globoid_pair_solid(globoid_worm_params_from_request(req), n_positions=48, n_stations=7, n_profile=60)
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "hypoid":
             from build_gear import build_hypoid_pair_solid
             import build123d as bd
             # the preview is the pair in mesh, generated coarsely (60 sweep

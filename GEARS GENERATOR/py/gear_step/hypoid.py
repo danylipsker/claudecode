@@ -56,7 +56,8 @@ from shapely.ops import unary_union
 
 from bevel import flat_point_to_cone
 from spiral_bevel import SpiralBevelParams, build_spiral_bevel_gear_solid, flat_tooth_coords, loft_through_stations
-from face_gear import loft_solid, slim_edge_curves, _resample
+from face_gear import loft_solid, slim_edge_curves
+from generation import rot_z, section_triangles, one_piece, tidy, space_wires, cut_spaces
 
 
 @dataclass
@@ -267,11 +268,6 @@ def pinion_blank_local(hp: HypoidParams, geo: HypoidPitchGeometry) -> bd.Part:
 # generation: the gear swept past a plane fixed to the pinion
 # --------------------------------------------------------------------------
 
-def _rot_z(deg: float) -> np.ndarray:
-    c, s = math.cos(math.radians(deg)), math.sin(math.radians(deg))
-    return np.array([[c, -s, 0.0], [s, c, 0.0], [0.0, 0.0, 1.0]])
-
-
 def sweep_half_range_deg(tooth: bd.Solid, geo: HypoidPitchGeometry, z_lo: float, z_hi: float, r_max: float) -> float:
     """How far (gear degrees, either way from the mean position) gear tooth
     0 has to be swept before it is wholly clear of the pinion blank's
@@ -283,7 +279,7 @@ def sweep_half_range_deg(tooth: bd.Solid, geo: HypoidPitchGeometry, z_lo: float,
     for deg in range(1, 180):
         clear = True
         for sign in (1.0, -1.0):
-            pts = corners @ _rot_z(sign * deg).T
+            pts = corners @ rot_z(sign * deg).T
             lo, hi = pts.min(axis=0), pts.max(axis=0)
             nearest = np.clip(centre, lo, hi)
             if np.linalg.norm(nearest - centre) <= radius:
@@ -291,41 +287,6 @@ def sweep_half_range_deg(tooth: bd.Solid, geo: HypoidPitchGeometry, z_lo: float,
         if clear:
             return float(deg + 1)
     return 90.0
-
-
-def _section_triangles(solid: bd.Solid, plane: bd.Plane, half_size: float, tolerance: float):
-    """The solid's cross-section on the plane, as triangles in the plane's
-    own 2-D coordinates (the section face tessellated -- exact to
-    `tolerance`, and immune to the order OpenCASCADE hands back the
-    section's edges in)."""
-    window = bd.Face.make_rect(2.0 * half_size, 2.0 * half_size, plane)
-    try:
-        cut = window.intersect(solid)
-    except ValueError:      # build123d raises on some empty booleans ...
-        return []
-    if cut is None:         # ... and returns None on others (the tooth misses the plane)
-        return []
-    tris = []
-    for face in cut.faces():
-        try:
-            verts, faces = face.tessellate(tolerance, 0.2)
-        except AttributeError:
-            # BRepMesh produced no triangulation (measured once in ~2000
-            # sections: a sliver face where the plane just grazes a tooth
-            # edge): trace its outer wire instead -- a section face is
-            # planar and, for one tooth, without holes
-            if face.area < 1e-6:
-                continue
-            wire = face.outer_wire()
-            pts = [plane.to_local_coords(wire.position_at(t)) for t in np.linspace(0.0, 1.0, 64, endpoint=False)]
-            loop = [(p.X, p.Y) for p in pts]
-            for i in range(1, len(loop) - 1):
-                tris.append((loop[0], loop[i], loop[i + 1]))
-            continue
-        uv = [plane.to_local_coords(v) for v in verts]
-        for i, j, k in faces:
-            tris.append(((uv[i].X, uv[i].Y), (uv[j].X, uv[j].Y), (uv[k].X, uv[k].Y)))
-    return tris
 
 
 def space_sections(hp: HypoidParams, geo: HypoidPitchGeometry, gear_tooth: bd.Solid, z_stations: list[float],
@@ -345,11 +306,11 @@ def space_sections(hp: HypoidParams, geo: HypoidPitchGeometry, gear_tooth: bd.So
         C_i = geo.P_apex + z_i * geo.a_p
         tris = []
         for t in phases:
-            R = _rot_z(-t)
+            R = rot_z(-t)
             plane = bd.Plane(origin=tuple(R @ C_i), x_dir=tuple(R @ geo.e_x), z_dir=tuple(R @ geo.a_p))
             theta = -math.radians(geo.omega_ratio * t)
             c, s = math.cos(theta), math.sin(theta)
-            for tri in _section_triangles(gear_tooth, plane, R_i + 1.0, tolerance):
+            for tri in section_triangles(gear_tooth, plane, R_i + 1.0, tolerance):
                 tris.append(Polygon([(c * u - s * v, s * u + c * v) for u, v in tri]))
         if not tris:
             sections.append(Polygon())
@@ -358,138 +319,8 @@ def space_sections(hp: HypoidParams, geo: HypoidPitchGeometry, gear_tooth: bd.So
         # phase's sliver at r = 15 outside a 13.25 blank) are no concern
         # of the pinion's; only what is left inside the disc has to be one piece
         disc = Point(0.0, 0.0).buffer(R_i, quad_segs=720)
-        sections.append(_tidy(_one_piece(unary_union(tris).intersection(disc), z_i, "clipped")))
+        sections.append(tidy(one_piece(unary_union(tris).intersection(disc), z_i, "clipped")))
     return sections
-
-
-def _tidy(section: Polygon, eps: float = 0.01) -> Polygon:
-    """A 10-micron morphological close-then-open of the swept section, and
-    its exterior ring only.  The union of thousands of tessellation
-    triangles is a sound region with hairline blemishes: slits and holes
-    where triangles from different phases nearly coincide, and spikes
-    where one grazes the rim.  Measured at export quality: near-reversals
-    of 160 deg in the profile at the rim ends, up to five holes per
-    station, and a lofted tool OpenCASCADE calls invalid; after this, 30-
-    80 deg at most, no holes, a valid tool.  Closing fills concave features
-    smaller than eps and opening removes convex ones; the flanks (curvature
-    radius millimetres) and the root fillet (tenths of a millimetre) are
-    both far above eps and pass through unchanged, to O(eps^2/rho).  A hole
-    in the space would be an island of pinion material inside its own
-    tooth space -- impossible -- so the exterior ring is the space."""
-    if section.is_empty:
-        return section
-    tidy = section.buffer(eps, join_style=1).buffer(-2.0 * eps, join_style=1).buffer(eps, join_style=1)
-    if tidy.geom_type != "Polygon":
-        tidy = max((g for g in tidy.geoms if g.geom_type == "Polygon"), key=lambda g: g.area)
-    return Polygon(tidy.exterior)
-
-
-def _one_piece(geom, z: float, what: str) -> Polygon:
-    """The union of a sampled sweep is connected except for crumbs: at the
-    phases where the plane only grazes the tooth's edge the section is a
-    sliver that may not touch its neighbours (measured: a 0.004 mm^2 crumb
-    beside a 12 mm^2 space, 40 positions).  The true envelope of the
-    continuous motion is connected, so crumbs below 0.1 % of the main piece
-    (and below 0.001 mm^2) are dropped -- and anything bigger is an error,
-    not something to paper over with "keep the largest" (timing_belt.py
-    20.2 records what that reflex cost)."""
-    if geom.geom_type == "Polygon":
-        return geom
-    if geom.is_empty:
-        return Polygon()
-    pieces = sorted((g for g in geom.geoms if g.geom_type == "Polygon"), key=lambda g: g.area, reverse=True)
-    if not pieces:
-        return Polygon()
-    main, stray = pieces[0], sum(g.area for g in pieces[1:])
-    if stray > max(1e-3, 1e-3 * main.area):
-        raise ValueError(f"hypoid: the {what} section at z={z:.2f} is in {len(pieces)} pieces "
-                         f"(areas {[round(g.area, 4) for g in pieces]}) -- raise n_positions")
-    return main
-
-
-def _space_profile(section: Polygon, R: float):
-    """Split a clipped station section into its generated profile (inside
-    the disc, from one rim crossing to the other) and the two rim
-    crossings; the rest of its boundary is the disc's own arc, in the air."""
-    if section.is_empty or section.geom_type != "Polygon":
-        raise ValueError("hypoid: a station section is empty or in pieces -- the gear does not reach this station")
-    coords = list(section.exterior.coords)[:-1]
-    on_rim = [math.hypot(x, y) >= R - 1e-4 for x, y in coords]
-    if all(on_rim) or not any(on_rim):
-        raise ValueError("hypoid: a station section does not cross the blank rim")
-    n = len(coords)
-    # Every off-rim stretch of the boundary, each with its two bounding rim
-    # points; the profile is the LONGEST one.  The first version took the
-    # first stretch it met, and a single tessellation vertex a few tenths
-    # of a micron inside the rim circle made a spurious one-point "stretch"
-    # -- a 4-point, 0-degree profile that the loft dutifully swept into a
-    # tool the boolean then choked on (measured at 360 sweep positions).
-    runs = []
-    for start in (i for i in range(n) if on_rim[i] and not on_rim[(i + 1) % n]):
-        run = [coords[start]]
-        i = (start + 1) % n
-        while not on_rim[i]:
-            run.append(coords[i])
-            i = (i + 1) % n
-        run.append(coords[i])
-        runs.append(run)
-    lengths = [sum(math.dist(a, b) for a, b in zip(r[:-1], r[1:])) for r in runs]
-    best = runs[lengths.index(max(lengths))]
-    if len(best) < 4 or max(lengths) < 0.2:
-        raise ValueError(f"hypoid: the station section's generated profile is degenerate "
-                         f"({len(best)} points, {max(lengths):.3f} mm) -- the gear barely reaches this station")
-    return best
-
-
-def _smooth_profile(run, sigma_mm: float = 0.03, step_mm: float = 0.005):
-    """The generated profile with its facet noise taken out: densified to
-    step_mm by arc length and Gaussian-filtered with sigma_mm along it.
-    The gear's own tooth flanks are lofts through polygon stations,
-    faceted at the 0.02-0.03 mm level, and the swept union inherits
-    micro-corners at that scale; a spline INTERPOLATED through 80 samples
-    of such a boundary carries that noise into the pinion's flank as
-    waviness of the same size (measured: 0.25 mm^3 of in-phase overlap
-    from the export-quality gear against 0.003 from a smoother one).  A
-    30-micron filter is three orders of magnitude below any flank
-    curvature radius (it moves a 5 mm arc by sigma^2/2rho = 0.1 micron)
-    and two above the facets.  The ends are held ('nearest' padding) and
-    re-snapped to the rim by the caller."""
-    from scipy.ndimage import gaussian_filter1d
-    pts = np.array(run, dtype=float)
-    seg = np.hypot(np.diff(pts[:, 0]), np.diff(pts[:, 1]))
-    cum = np.concatenate([[0.0], np.cumsum(seg)])
-    n = max(int(cum[-1] / step_mm), 16)
-    t = np.linspace(0.0, cum[-1], n)
-    dense = np.c_[np.interp(t, cum, pts[:, 0]), np.interp(t, cum, pts[:, 1])]
-    s = sigma_mm / (cum[-1] / (n - 1))
-    smooth = gaussian_filter1d(dense, sigma=s, axis=0, mode="nearest")
-    smooth[0], smooth[-1] = dense[0], dense[-1]
-    return [tuple(p) for p in smooth]
-
-
-def space_wires(sections: list[Polygon], disc_radii: list[float], z_stations: list[float], n_profile: int) -> list[bd.Wire]:
-    """Each station as two edges in the same order -- the generated profile
-    (one spline, n_profile points by arc length, uniform parameters, as the
-    face gear's station_wire explains) and the rim arc closing it outside
-    the blank -- so the loft pairs them by index."""
-    wires = []
-    for section, R, z in zip(sections, disc_radii, z_stations):
-        run = _smooth_profile(_space_profile(section, R))
-        xs, ys = _resample(run, n_profile)
-        a, b = (xs[0], ys[0]), (xs[-1], ys[-1])
-        # both ends exactly on the rim circle, so the arc meets the spline
-        ra, rb = math.atan2(a[1], a[0]), math.atan2(b[1], b[0])
-        a = (R * math.cos(ra), R * math.sin(ra))
-        b = (R * math.cos(rb), R * math.sin(rb))
-        pts = [bd.Vector(a[0], a[1], z)] + [bd.Vector(x, y, z) for x, y in zip(xs[1:-1], ys[1:-1])] + [bd.Vector(b[0], b[1], z)]
-        params = list(np.linspace(0.0, 1.0, len(pts)))
-        # the rim arc from b back to a through the middle angle, the short way
-        dm = (ra - rb + math.pi) % (2 * math.pi) - math.pi
-        rm = rb + 0.5 * dm
-        mid = bd.Vector(R * math.cos(rm), R * math.sin(rm), z)
-        edges = [bd.Edge.make_spline(pts, parameters=params), bd.Edge.make_three_point_arc(pts[-1], mid, pts[0])]
-        wires.append(bd.Wire(edges))
-    return wires
 
 
 def hypoid_pinion_local(hp: HypoidParams, n_positions: int = 120, n_stations: int = 8, n_profile: int = 80,
@@ -514,21 +345,7 @@ def hypoid_pinion_local(hp: HypoidParams, n_positions: int = 120, n_stations: in
     cutter = loft_solid(space_wires(sections, radii, z_st, n_profile))
     if not cutter.is_valid:
         raise RuntimeError("hypoid: the lofted space tool is not a valid solid")
-    n = hp.pinion_teeth
-    tools = [cutter.rotate(bd.Axis.Z, k * 360.0 / n) for k in range(n)]
-    blank = pinion_blank_local(hp, geo)
-    pinion = None
-    try:
-        pinion = blank.cut(*tools)
-        if not (len(pinion.solids()) == 1 and pinion.is_valid):
-            pinion = None
-    except ValueError:
-        pinion = None
-    if pinion is None:
-        pinion = blank
-        for tool in tools:
-            pinion = pinion.cut(tool)
-    slim_edge_curves(pinion)
+    pinion = cut_spaces(pinion_blank_local(hp, geo), cutter, hp.pinion_teeth)
     return pinion, geo, gear
 
 

@@ -1,6 +1,63 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Timing belt and wheel fillets: the right senses (latest)
+## Double-enveloping (globoid) worm drive: the throated wheel, generated (latest)
+
+The wish-list item that was "worm builds, wheel WIP" for three sessions.
+`throated_wheel.py`, `generation.py` (the sweep machinery factored out of
+`hypoid.py`, shared), `globoid_worm.py` (hob extensions), the C# `GloboidWorm`
+family (card, section, derived rows, reset, `--globoid` smoke flag), docs
+§22, `tests/test_globoid_worm.py` (13). Twenty families.
+
+- **The wheel is generated from the built worm**, as the hypoid pinion is
+  from its gear (§21.2): the wheel's transverse station planes are
+  invariant under its own rotation, so each plane is pulled back through
+  the inverse of the worm's wheel-frame placement into the worm's static
+  frame and the hob is sectioned there; union over the phases, clip, loft
+  through the stations, pattern `z_g` times, cut. Frames: `place_worm` is
+  `(x, y, z) ↦ (a − x, z, y)`, checked to 1e-9; the pulled-back plane
+  round-trips a point exactly.
+- **Three things a worm adds to the hypoid's pipeline.** (1) A 4-turn
+  thread cuts several spaces per plane, and a period later the worm is the
+  same solid: sweep one period (`2π / z_w`, 120 samples) and fold the
+  neighbours back by whole pitches -- the same sweep at a seventh of the
+  sectioning. (2) The teeth are helical, so the wedge that isolates one
+  space must be centred on the space's measured mid-angle at the rim (0.83°
+  off at h = 5.4 mm against a 0.3° land; a wedge fixed at 0 left a 0.22 mm²
+  crumb that the one-piece policy caught). (3) Off the central plane the
+  thread's far turns widen every space toward the faces (10.8° of the 12°
+  pitch at the throat torus at h = 5, merging at 5.5), so the blank is the
+  throat torus turned down to DIN 3975's outside cylinder `d_e2 = d_a2 + m`,
+  and the face defaults to `1.2 r_f` -- measured over nine parameter sets,
+  ≤ 93 % of the pitch at the rim; the generation refuses at 97 % with the
+  reason (the first default, 90° of envelopment, hit that refusal in the
+  UI smoke on a 2-start worm with 20 teeth).
+- **Sectioning a mesh instead of a B-rep.** OpenCASCADE's plane ∩ thread
+  loft was 480-550 ms a section (BRepAlgoAPI_Section 20 s), ten minutes
+  per wheel. `generation.MeshSectioner` tessellates the hob once (29k
+  triangles at 5 µm, 0.4 s) and sections it in numpy at 3-4 ms a plane:
+  oriented segments chained into rings by bit-exact endpoint match
+  (canonical vertex order per edge), outer/hole by signed area, a ring that
+  does not close raises. Agrees with the exact section to 4 µm at the
+  throat plane and 0.3 % in area; the mesh is within 2.1 µm of the surface.
+  The hypoid still sections exactly; `swept_station` takes either.
+- **Measured**: export 120 × 13 × 80 to STEP in 16 s (hob 1 s, sections 6 s,
+  the 30-tool cut on the 5-face torus-and-cylinder blank; it was 60 s on a
+  32-facet polyline revolve), the wheel 122 faces, STEP 10 MB, two solids;
+  **in-phase overlap 1.5e-8 of the wheel at three phases, 448 mm³ when
+  mis-phased by half a pitch**; loft between stations 37 µm with 13
+  stations (79 with 9); preview 48 × 7 × 60 in 7.7 s. Headless smokes
+  (export + reset) and SolidWorks import pass.
+- **The hob** is the worm's thread through the same stations and flank
+  lines with the tip carried the clearance `h_f − h_a` toward the wheel
+  centre and the root 1 mm into the core: the wheel's root clears the
+  worm's tip by the clearance, and every station section reaches the clip
+  disc. The throat section is the straight-flanked (Hindley) wheel tooth's
+  space, its flanks at `α` to the radial lines from the wheel centre --
+  `α + π/(2 z_g)` = 23° to the worm's radial direction, not a ZA worm's 20°
+  (a test that assumed the trapezoid measured exactly that and was fixed).
+- Left on the list: eccentrically-cycloidal gears, hyperboloidal gears.
+
+## Timing belt and wheel fillets: the right senses
 
 The user's two-line review after the hypoid landed: "check timing belts
 fillets between body and teeth" and "check timing wheels fillets (they are

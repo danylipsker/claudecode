@@ -1,6 +1,6 @@
 """
 Double-enveloping (globoid, Hindley / cone-drive type) worm and its throated
-wheel. docs/gear-math.md section 18.
+wheel. docs/gear-math.md section 22.
 
 A cylindrical worm (worm.py) is a screw: its pitch surface is a cylinder and
 the wheel touches it along a line at the throat only. A double-enveloping
@@ -53,7 +53,7 @@ worm's length L = 2 r_g sin(wrap / 2). The wheel's face width default is
 2 (r_w - h_a) sin(60 deg)... (the throat arc of the wheel's tip, radius
 r_w - h_a about the worm axis, spans +-60 deg).
 
-THE WHEEL (section 18.2) is generated FROM the built worm, the way the
+THE WHEEL (section 22.2) is generated FROM the built worm, the way the
 face gear is from its shaper: the worm is the hob. Each transverse station
 of the wheel (a plane perpendicular to the wheel axis at height h) gets
 the union of the worm's sections by that plane over the generating
@@ -141,10 +141,24 @@ class GloboidWormParams:
         return 2.0 * self.wheel_pitch_radius * math.sin(0.5 * self.wrap_angle_rad)
 
     @property
+    def wheel_face_width_limit(self) -> float:
+        """The widest face the wheel can have: its rim must stay clear of
+        the worm's axis by the hob's root overlap plus the station margin
+        (throated_wheel.py), or the generation's last station has no rim."""
+        return 2.0 * ((self.pitch_radius - self.dedendum) - 1.6)
+
+    @property
     def wheel_face_width(self) -> float:
-        if self.wheel_face_width_mm > 0:
-            return self.wheel_face_width_mm
-        return 2.0 * (self.pitch_radius - self.addendum) * math.sin(math.radians(60.0))
+        """Auto: b = 1.2 r_f, the wheel enveloping the worm over 74 degrees of
+        its root circle. Off the central plane the thread's far turns widen
+        every space toward the faces (docs section 22.3); measured over nine
+        parameter sets, the space at the rim is at most 93 % of the pitch at
+        this height and the generation refuses at 97 % (a 2-start worm on 20
+        teeth reaches 96 % at 0.7 r_f). A value asked for is capped at
+        wheel_face_width_limit."""
+        r_f = self.pitch_radius - self.dedendum
+        b = self.wheel_face_width_mm if self.wheel_face_width_mm > 0 else 1.2 * r_f
+        return min(b, self.wheel_face_width_limit)
 
     @property
     def tip_rho(self) -> float:
@@ -179,7 +193,7 @@ class GloboidWormParams:
     def wheel_gear_params(self) -> GearParams:
         """The wheel's nominal proportions as a GearParams (module, teeth,
         pressure angle) for the derived-values display; the wheel solid
-        itself is generated from the worm (section 18.2)."""
+        itself is generated from the worm (section 22.2)."""
         return GearParams(z=self.wheel_teeth, module_mm=self.axial_module_mm,
                           pressure_angle_deg=self.pressure_angle_deg, addendum_coeff=self.addendum_coeff,
                           dedendum_coeff=self.dedendum_coeff, face_width_mm=self.wheel_face_width)
@@ -223,12 +237,14 @@ def _line_circle(gp: GloboidWormParams, p, d, rho: float) -> tuple[float, float]
     return p[0] + t * d[0], p[1] + t * d[1]
 
 
-def thread_section(gp: GloboidWormParams, beta: float, n_arc: int = 8, root_overlap_mm: float = 0.3):
+def thread_section(gp: GloboidWormParams, beta: float, n_arc: int = 8, root_overlap_mm: float = 0.3,
+                   tip_extension_mm: float = 0.0):
     """One start's thread section in an axial plane, as the wheel's tooth
     space centred at wheel angle beta: the facing flanks of the teeth at
     beta -/+ pi/z_g, between the tip circle (rho = r_g - h_a) and the root
     circle (rho = r_g + h_f) about C, the root side extended root_overlap_mm
-    into the core. Closed polygon of 2 (n_arc + 1) points in (z, r):
+    into the core and the tip side tip_extension_mm toward C (the hob that
+    generates the wheel: throated_wheel.hob_threads). Closed polygon of 2 (n_arc + 1) points in (z, r):
     tip arc (lower flank to upper), upper flank outward, root arc back,
     lower flank inward."""
     half_pitch = math.pi / gp.wheel_teeth
@@ -243,7 +259,7 @@ def thread_section(gp: GloboidWormParams, beta: float, n_arc: int = 8, root_over
     # showed it: +-2.2 mm wide at the tip, +-0.7 at the root.)
     lower_p, lower_d = flank_line(gp, beta - half_pitch + psi, -1)   # the lower tooth's upper flank
     upper_p, upper_d = flank_line(gp, beta + half_pitch - psi, +1)   # the upper tooth's lower flank
-    rho_tip, rho_root = gp.tip_rho, gp.root_rho + root_overlap_mm
+    rho_tip, rho_root = gp.tip_rho - tip_extension_mm, gp.root_rho + root_overlap_mm
     a_tip = _line_circle(gp, lower_p, lower_d, rho_tip)
     b_tip = _line_circle(gp, upper_p, upper_d, rho_tip)
     b_root = _line_circle(gp, upper_p, upper_d, rho_root)
@@ -269,7 +285,7 @@ def thread_beta_range(gp: GloboidWormParams, margin_rad: float | None = None) ->
     return -half_wrap - margin_rad, half_wrap + margin_rad
 
 
-def thread_stations(gp: GloboidWormParams, start_index: int = 0, n_per_turn: int = 48):
+def thread_stations(gp: GloboidWormParams, start_index: int = 0, n_per_turn: int = 48, **section_kw):
     """3D stations (lists of points) of one thread start: its wheel space
     (index start_index at phi = 0) carried through the wrap. Axis = +Z, the
     wheel centre on +X at the centre distance, right hand: the space moves
@@ -289,7 +305,7 @@ def thread_stations(gp: GloboidWormParams, start_index: int = 0, n_per_turn: int
     for i in range(n + 1):
         phi = phi_a + (phi_b - phi_a) * i / n
         beta = beta0 + sign * phi * ratio
-        sec = thread_section(gp, beta)
+        sec = thread_section(gp, beta, **section_kw)
         c, s = math.cos(phi), math.sin(phi)
         stations.append([(r * c, r * s, z) for (z, r) in sec])
     return stations
@@ -312,6 +328,16 @@ def worm_core_solid(gp: GloboidWormParams) -> bd.Part:
     return part.part
 
 
+def thread_solids(gp: GloboidWormParams, n_per_turn: int = 48, **section_kw) -> list[bd.Solid]:
+    """One smooth loft per start through its rotated stations -- the very
+    solids the worm is fused from, and the ones the throated wheel is
+    generated from (throated_wheel.py): the same surface on both sides of
+    the mesh check, to the micron, which is what a sliver-only result
+    depends on (the hypoid pinion's lesson, section 21.2)."""
+    from spiral_bevel import loft_through_stations
+    return [loft_through_stations(thread_stations(gp, k, n_per_turn, **section_kw), ruled=False) for k in range(gp.starts)]
+
+
 def build_globoid_worm_solid(gp: GloboidWormParams, n_per_turn: int = 48) -> bd.Solid:
     """Core plus one smooth loft per start (ThruSections through the
     rotated stations with compatibility checking off, as the spiral bevel:
@@ -319,9 +345,8 @@ def build_globoid_worm_solid(gp: GloboidWormParams, n_per_turn: int = 48) -> bd.
     true swept volume where the ruled loft cuts chords), fused in one
     N-ary fuse as the cylindrical worm, trimmed to the worm's length by
     its end planes."""
-    from spiral_bevel import loft_through_stations
     core = worm_core_solid(gp)
-    threads = [loft_through_stations(thread_stations(gp, k, n_per_turn), ruled=False) for k in range(gp.starts)]
+    threads = thread_solids(gp, n_per_turn)
     worm = core.fuse(*threads)
     half = 0.5 * gp.length
     envelope = bd.Solid.make_cylinder(gp.centre_distance, gp.length, bd.Plane((0, 0, -half)))

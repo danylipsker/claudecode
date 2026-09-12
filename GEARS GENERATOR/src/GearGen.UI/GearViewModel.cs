@@ -63,7 +63,7 @@ namespace GearGen.UI
         public bool IsMetric { get => !IsInch; set => IsInch = !value; }
 
         public string ModuleOrDpLabel =>
-            (IsInch ? "Diametral pitch" : "Module") + ((IsAnyBevel || IsHypoid) ? " (outer/heel)" : IsWorm ? " (axial)" : "");
+            (IsInch ? "Diametral pitch" : "Module") + ((IsAnyBevel || IsHypoid) ? " (outer/heel)" : (IsWorm || IsGloboidWorm) ? " (axial, at the throat)" : "");
         public string FaceWidthLabel => IsWorm ? "Threaded length" : IsTimingBelt ? "Belt width" : "Face width";
         public string BoreOrHoleLabel =>
             IsRack ? "Mounting hole diameter (0 = none)"
@@ -109,7 +109,10 @@ namespace GearGen.UI
         /// of its own -- every dimension comes from the chain itself.</summary>
         public bool ShowBoreField => !IsInternal && !IsChainLink && !IsTimingBelt;
         public bool ShowFaceWidthField => !IsChainLink;
-        public bool HasTeethField => !IsWorm && !IsChainLink && !IsTimingBelt;
+        public bool HasTeethField => !IsWorm && !IsChainLink && !IsTimingBelt && !IsGloboidWorm;
+        /// <summary>The globoid worm's length follows from the wrap and its
+        /// wheel's face width from the throat; neither is typed in.</summary>
+        public bool HasFaceWidthSpinner => !IsGloboidWorm;
         public bool IsHerringbone
         {
             get => _p.Family == GearFamily.Herringbone;
@@ -268,6 +271,37 @@ namespace GearGen.UI
             _p.AddendumCoeff = 1.0; _p.DedendumCoeff = 1.25; _p.BacklashMm = 0.0;
             OnChanged(nameof(BoreDiameterDisplay));
         }
+
+        // ---- globoid worm (docs/gear-math.md section 22) -- Family == GloboidWorm only ----
+
+        public bool IsGloboidWorm
+        {
+            get => _p.Family == GearFamily.GloboidWorm;
+            set { if (value) { _p.Family = GearFamily.GloboidWorm; OnChanged(); FamilyChanged(); } }
+        }
+
+        public double EnvelopeTeeth
+        {
+            get => _p.EnvelopeTeeth;
+            set { _p.EnvelopeTeeth = Math.Max(1.0, value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>A 1-start worm wrapping four pitches of a 30-tooth wheel:
+        /// the wheel count is MateTeeth (shared with the other "mate"
+        /// meanings), the starts and throat pitch diameter the cylindrical
+        /// worm's own fields.</summary>
+        public void SelectGloboidWormCard()
+        {
+            IsGloboidWorm = true;
+            HelixAngleDeg = 0.0;
+            if (WormStarts < 1) WormStarts = 1;
+            if (MateTeeth < 12) MateTeeth = 30;
+            if (_p.EnvelopeTeeth < 1) _p.EnvelopeTeeth = 4.0;
+        }
+
+        private string _globoidText = "-", _globoidWrapText = "-";
+        public string GloboidText { get => _globoidText; private set { _globoidText = value; OnChanged(); } }
+        public string GloboidWrapText { get => _globoidWrapText; private set { _globoidWrapText = value; OnChanged(); } }
 
         // ---- hypoid (docs/gear-math.md section 21) -- Family == Hypoid only ----
 
@@ -587,6 +621,7 @@ namespace GearGen.UI
             : IsTimingWheel ? "Timing wheel"
             : IsTimingBelt ? "Timing belt"
             : IsHypoid ? "Hypoid"
+            : IsGloboidWorm ? "Globoid worm"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -647,6 +682,8 @@ namespace GearGen.UI
             OnChanged(nameof(IsTimingWheel));
             OnChanged(nameof(IsTimingBelt));
             OnChanged(nameof(IsHypoid));
+            OnChanged(nameof(IsGloboidWorm));
+            OnChanged(nameof(HasFaceWidthSpinner));
             OnChanged(nameof(HasModuleField));
             OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCylindricalSpur));
@@ -1195,6 +1232,22 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsGloboidWorm)
+                {
+                    // globoid_worm_derived_values (server.py)
+                    PitchDiameterText = $"{L(dv("worm_throat_pitch_diameter_mm"))} (worm, throat)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = $"{L(dv("worm_throat_tip_diameter_mm"))} (worm, throat)";
+                    DedendumDiameterText = $"{L(dv("worm_throat_root_diameter_mm"))} (worm, throat)";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = IsInch
+                        ? $"module {dv("module_mm"):0.####} mm"
+                        : $"DP {dv("diametral_pitch"):0.###} /in";
+                    GloboidText = $"{dv("starts"):0} start(s) x wheel z{dv("wheel_teeth"):0}: ratio {dv("ratio"):0.##} : 1, centre distance {L(dv("centre_distance_mm"))}, "
+                                + $"lead angle {dv("lead_angle_deg"):0.##}° at the throat, wheel Ø{L(dv("wheel_pitch_diameter_mm"))}";
+                    GloboidWrapText = $"wraps {dv("envelope_teeth"):0.#} pitches ({dv("wrap_angle_deg"):0.#}°): worm length {L(dv("worm_length_mm"))}, "
+                                    + $"wheel face {L(dv("wheel_face_width_mm"))}, wheel Ø{L(dv("wheel_throat_outer_diameter_mm"))} at the throat / Ø{L(dv("wheel_face_outer_diameter_mm"))} at the face edge";
                 }
                 else if (IsHypoid)
                 {

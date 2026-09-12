@@ -50,6 +50,7 @@ namespace GearGen.PyEngine
         [JsonProperty("belt_type")] public string BeltType;
         [JsonProperty("curvilinear")] public bool? Curvilinear;
         [JsonProperty("offset_mm")] public double? OffsetMm;
+        [JsonProperty("envelope_teeth")] public double? EnvelopeTeeth;
     }
 
     internal class EngineResponse
