@@ -139,6 +139,11 @@ namespace GearGen.UI
             ViewModel?.SelectTimingBeltCard();
         }
 
+        private void OnHypoidChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectHypoidCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

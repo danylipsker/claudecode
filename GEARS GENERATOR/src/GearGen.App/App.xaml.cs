@@ -87,7 +87,8 @@ namespace GearGen.App
                 bool chainLink = e.Args.Any(a => a == "--chainlink");
                 bool timingWheel = e.Args.Any(a => a == "--timingwheel");
                 bool timingBelt = e.Args.Any(a => a == "--timingbelt");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket, chainLink, timingWheel, timingBelt);
+                bool hypoid = e.Args.Any(a => a == "--hypoid");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket, chainLink, timingWheel, timingBelt, hypoid);
                 return;
             }
 
@@ -287,7 +288,7 @@ namespace GearGen.App
             bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
             bool cycdrive = false, bool resetTest = false, bool tall = false, bool spiralBevel = false, bool zerol = false,
             bool faceGear = false, bool sprocket = false, bool chainLink = false,
-            bool timingWheel = false, bool timingBelt = false)
+            bool timingWheel = false, bool timingBelt = false, bool hypoid = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -346,6 +347,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectTimingWheelCard();
                 if (timingBelt)
                     win.Panel.ViewModel.SelectTimingBeltCard();
+                if (hypoid)
+                    win.Panel.ViewModel.SelectHypoidCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)
@@ -383,6 +386,12 @@ namespace GearGen.App
                 }
 
                 PumpUntilIdle();
+                // The viewer fits the camera with a 200 ms ZoomExtents animation
+                // when the model is replaced; a heavy mesh (the hypoid pair,
+                // 4000 feature edges) can arrive in the last pump tick, and the
+                // render would catch the camera mid-flight -- zoomed in on a
+                // corner of the part. Let it land.
+                PumpFor(400);
                 var geom = win.Panel?.ViewModel?.PreviewGeometry;
                 Log("pumped; StatusMessage=" + win.Panel?.ViewModel?.StatusMessage +
                     "; geom bounds=" + geom?.Bounds + "; geom null=" + (geom == null) +
@@ -417,6 +426,7 @@ namespace GearGen.App
                         : chainLink ? GearGen.Geometry.GearFamily.ChainLink
                         : timingWheel ? GearGen.Geometry.GearFamily.TimingWheel
                         : timingBelt ? GearGen.Geometry.GearFamily.TimingBelt
+                        : hypoid ? GearGen.Geometry.GearFamily.Hypoid
                         : GearGen.Geometry.GearFamily.Cylindrical;
                     // the card split within a family: a helix for Spur/Helical and Rack/Helical rack, the spiral card for spiral/zerol
                     bool helical = (helixOverride.HasValue && helixOverride.Value > 0) || spiralBevel;
@@ -425,6 +435,7 @@ namespace GearGen.App
                     Log("reset test: label='" + vm.ResetLabel + "' before=" + vm.SuggestedFileName(".step"));
                     vm.ResetToDefaultsCommand.Execute(null);
                     PumpUntilIdle();
+                    PumpFor(400);   // the same camera settle as above, for the render that follows
                     string after = vm.SuggestedFileName(".step");
                     Log("reset test: after=" + after + " expected=" + expected + " -> " +
                         (after == expected && vm.Model3D != null ? "RESET OK" : "RESET MISMATCH") +
@@ -458,7 +469,12 @@ namespace GearGen.App
 
                     win.Panel.ViewModel.DoExportStepAsync(stepOut)
                         .ContinueWith(t => { stepErr = t.Exception?.InnerException?.Message; stepDone = true; });
-                    var untilStep = DateTime.UtcNow.AddSeconds(30);
+                    // 180 s, not 30: the hypoid pair is generated at export quality
+                    // (240 sweep positions x 8 stations, ~55 s alone, longer with
+                    // other work on the machine); the face gear's 25 s fitted the old
+                    // cap and hid that this wait was a cap at all -- "done=False" with
+                    // an empty error is what an expired wait looks like.
+                    var untilStep = DateTime.UtcNow.AddSeconds(180);
                     while (!stepDone && DateTime.UtcNow < untilStep) PumpFor(100);
                     Log("STEP export done=" + stepDone + " err=" + stepErr + " exists=" + File.Exists(stepOut) +
                         " size=" + (File.Exists(stepOut) ? new FileInfo(stepOut).Length : -1));

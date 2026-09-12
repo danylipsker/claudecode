@@ -63,7 +63,7 @@ namespace GearGen.UI
         public bool IsMetric { get => !IsInch; set => IsInch = !value; }
 
         public string ModuleOrDpLabel =>
-            (IsInch ? "Diametral pitch" : "Module") + (IsAnyBevel ? " (outer/heel)" : IsWorm ? " (axial)" : "");
+            (IsInch ? "Diametral pitch" : "Module") + ((IsAnyBevel || IsHypoid) ? " (outer/heel)" : IsWorm ? " (axial)" : "");
         public string FaceWidthLabel => IsWorm ? "Threaded length" : IsTimingBelt ? "Belt width" : "Face width";
         public string BoreOrHoleLabel =>
             IsRack ? "Mounting hole diameter (0 = none)"
@@ -269,6 +269,36 @@ namespace GearGen.UI
             OnChanged(nameof(BoreDiameterDisplay));
         }
 
+        // ---- hypoid (docs/gear-math.md section 21) -- Family == Hypoid only ----
+
+        public bool IsHypoid
+        {
+            get => _p.Family == GearFamily.Hypoid;
+            set { if (value) { _p.Family = GearFamily.Hypoid; OnChanged(); FamilyChanged(); } }
+        }
+
+        public double OffsetDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.OffsetMm) : _p.OffsetMm;
+            set { _p.OffsetMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>A 30/12 hypoid: the pinion count is MateTeeth (shared
+        /// with the other "mate" meanings), the gear's spiral angle, cutter
+        /// radius and hand are the spiral bevel's own fields.</summary>
+        public void SelectHypoidCard()
+        {
+            IsHypoid = true;
+            HelixAngleDeg = 0.0;
+            if (MateTeeth < 4) MateTeeth = 12;
+            if (Teeth <= MateTeeth) Teeth = 30;
+            if (_p.OffsetMm <= 0) { _p.OffsetMm = 6.0; OnChanged(nameof(OffsetDisplay)); }
+        }
+
+        private string _hypoidPinionText = "-", _hypoidOffsetText = "-";
+        public string HypoidPinionText { get => _hypoidPinionText; private set { _hypoidPinionText = value; OnChanged(); } }
+        public string HypoidOffsetText { get => _hypoidOffsetText; private set { _hypoidOffsetText = value; OnChanged(); } }
+
         // ---- timing wheel / timing belt (docs/gear-math.md section 20) ----
 
         public bool IsTimingWheel
@@ -426,6 +456,7 @@ namespace GearGen.UI
             : IsPlanetary ? "Sun teeth"
             : IsFaceGear ? "Face gear teeth"
             : IsSprocket ? "Sprocket teeth"
+            : IsHypoid ? "Gear teeth"
             : IsCrossedHelical ? "Gear 1 teeth (z1)"
             : "Number of teeth (z)";
 
@@ -555,6 +586,7 @@ namespace GearGen.UI
             : IsChainLink ? "Chain link"
             : IsTimingWheel ? "Timing wheel"
             : IsTimingBelt ? "Timing belt"
+            : IsHypoid ? "Hypoid"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -614,6 +646,7 @@ namespace GearGen.UI
             OnChanged(nameof(IsSprocket));
             OnChanged(nameof(IsTimingWheel));
             OnChanged(nameof(IsTimingBelt));
+            OnChanged(nameof(IsHypoid));
             OnChanged(nameof(HasModuleField));
             OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCylindricalSpur));
@@ -1162,6 +1195,24 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsHypoid)
+                {
+                    // hypoid_derived_values (server.py): the gear is a spiral
+                    // bevel gear; the pinion's numbers follow from the offset.
+                    PitchDiameterText = $"{L(dv("gear_pitch_diameter_mm"))} (gear, heel)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = "-";
+                    DedendumDiameterText = "-";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = IsInch
+                        ? $"module {dv("module_mm"):0.####} mm"
+                        : $"DP {dv("diametral_pitch"):0.###} /in";
+                    HypoidPinionText = $"z{dv("pinion_teeth"):0}: pitch angle {dv("pinion_pitch_angle_deg"):0.##}° (gear {dv("gear_pitch_angle_deg"):0.##}°), "
+                                     + $"spiral {dv("pinion_spiral_angle_deg"):0.#}° (gear {dv("spiral_angle_mean_deg"):0.#}°), "
+                                     + $"mean radius {L(dv("pinion_mean_pitch_radius_mm"))} -- a bevel pinion would be {L(dv("bevel_pinion_mean_pitch_radius_mm"))}";
+                    HypoidOffsetText = $"{L(dv("offset_mm"))} = {dv("offset_ratio"):0.###} of the gear pitch diameter, "
+                                     + $"pinion {(dv("offset_below") > 0.5 ? "below" : "above")} centre for this hand; ratio {dv("ratio"):0.###} : 1";
                 }
                 else if (IsTimingWheel)
                 {

@@ -458,6 +458,62 @@ def chain_link_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def hypoid_params_from_request(p: dict):
+    """Hypoid pair -- docs/gear-math.md 21. z = the gear's teeth, mate_teeth
+    = the pinion's, offset_mm the hypoid offset (0 = an ordinary spiral
+    bevel pair), spiral_angle_deg the GEAR's; the pinion's spiral angle,
+    pitch angle and size follow from the offset."""
+    from hypoid import HypoidParams
+    return HypoidParams(
+        z=int(p["z"]),
+        pinion_teeth=int(p.get("mate_teeth") or 12),
+        module_mm=float(p["module_mm"]),
+        offset_mm=float(p.get("offset_mm") or 0.0),
+        spiral_angle_deg=float(p.get("spiral_angle_deg", 35.0)),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        cutter_radius_mm=float(p.get("cutter_radius_mm") or 0.0),
+        hand=str(p.get("hand", "right")),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def hypoid_derived_values(hp) -> tuple[dict, list]:
+    """The gear's spiral bevel values plus the pinion's pitch geometry --
+    the numbers a hypoid is designed by (docs 21.1)."""
+    import math as _m
+    gp = hp.gear_params()
+    derived, warnings = spiral_bevel_derived_values(gp)
+    geo = hp.pitch_geometry()
+    gear_pitch_diameter = 2.0 * gp.heel_pitch_radius
+    derived.update({
+        "module_mm": hp.module_mm,                    # the EQUIVALENT row (the bevel values carry neither)
+        "diametral_pitch": 25.4 / hp.module_mm,
+        "gear_pitch_diameter_mm": gear_pitch_diameter,
+        "gear_pitch_angle_deg": _m.degrees(geo.gamma_g),
+        "offset_mm": hp.offset_mm,
+        "offset_ratio": hp.offset_mm / gear_pitch_diameter,
+        "ratio": hp.z / hp.pinion_teeth,
+        "pinion_teeth": float(hp.pinion_teeth),
+        "pinion_pitch_angle_deg": _m.degrees(geo.gamma_p),
+        "pinion_spiral_angle_deg": _m.degrees(geo.psi_p),
+        "pinion_mean_pitch_radius_mm": geo.r_p,
+        "bevel_pinion_mean_pitch_radius_mm": geo.r_g * hp.pinion_teeth / hp.z,
+        "pinion_mean_cone_distance_mm": geo.A_mp,
+        "gear_mean_cone_distance_mm": geo.A_m,
+        "offset_below": 1.0 if geo.offset_signed < 0 else 0.0,
+    })
+    if hp.offset_mm == 0:
+        warnings.append("Offset 0 makes this an ordinary spiral bevel pair -- the Spiral bevel card builds that directly.")
+    elif hp.offset_mm > 0.25 * gear_pitch_diameter:
+        warnings.append(f"Offset {hp.offset_mm:g} mm is over a quarter of the gear pitch diameter ({gear_pitch_diameter:.1f} mm); "
+                        f"automotive practice stays under that (pinion spiral angle here {_m.degrees(geo.psi_p):.0f}deg).")
+    return derived, warnings
+
+
 def _belt_standard_fields(p: dict) -> dict:
     """belt_type (a timing_belt.TIMING_BELT_STANDARDS key, e.g. "GT2",
     "HTD 8M", "T5") picks the standard's pitch and its trapezoidal-vs-
@@ -801,6 +857,11 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "hypoid":
+            hp = hypoid_params_from_request(req)
+            outline = bevel_heel_tooth_outline(hp.gear_params())   # the gear's heel section, as the spiral bevel card
+            derived, warnings = hypoid_derived_values(hp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "timing_wheel":
             from timing_belt import full_pulley_outline
             tp = timing_wheel_params_from_request(req)
@@ -890,7 +951,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_step":
         path = req["path"]
-        if gear_type == "timing_wheel":
+        if gear_type == "hypoid":
+            from build_gear import export_hypoid_step
+            export_hypoid_step(hypoid_params_from_request(req), path)   # the pair, generated at export quality
+        elif gear_type == "timing_wheel":
             from build_gear import export_timing_wheel_step
             export_timing_wheel_step(timing_wheel_params_from_request(req), path)
         elif gear_type == "timing_belt":
@@ -948,7 +1012,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_dxf":
         path = req["path"]
-        if gear_type == "timing_wheel":
+        if gear_type == "hypoid":
+            from build_gear import export_hypoid_profile_dxf
+            export_hypoid_profile_dxf(hypoid_params_from_request(req), path)
+        elif gear_type == "timing_wheel":
             from build_gear import export_timing_wheel_profile_dxf
             export_timing_wheel_profile_dxf(timing_wheel_params_from_request(req), path)
         elif gear_type == "timing_belt":
@@ -1008,7 +1075,16 @@ def handle(req: dict) -> dict:
         # helix twist, cone taper etc. are all visible exactly as they'll
         # export, not just implied by 2D parameters.
         path = req["path"]
-        if gear_type == "timing_wheel":
+        if gear_type == "hypoid":
+            from build_gear import build_hypoid_pair_solid
+            import build123d as bd
+            # the preview is the pair in mesh, generated coarsely (60 sweep
+            # positions, 5 stations: ridges of a few hundredths of a mm on
+            # the pinion flanks, invisible here; the export uses 240 x 8)
+            solid = build_hypoid_pair_solid(hypoid_params_from_request(req), n_positions=60, n_stations=5, n_profile=60,
+                                            n_phi=120, simplify_tolerance_mm=0.04)
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "timing_wheel":
             from timing_belt import build_pulley_solid
             import build123d as bd
             solid = build_pulley_solid(timing_wheel_params_from_request(req))

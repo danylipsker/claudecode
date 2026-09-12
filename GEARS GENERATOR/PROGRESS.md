@@ -1,6 +1,81 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/chain-link/timing-wheel/timing-belt/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Timing belts according to standards -- and three bugs no validity check could see (latest)
+## Hypoid gears (latest)
+
+The user sent two pictures -- a zerol bevel gear and a hypoid set -- with
+"add these gear types too". Zerol was already in (the Zerol bevel card,
+§16). Hypoid was the one big family left on the original wish-list; it is
+in now: `hypoid.py`, docs/gear-math.md §21, the Hypoid card.
+
+- **What a hypoid is here**: this project's spiral bevel gear, unchanged,
+  driven by a pinion whose axis passes the gear's at the offset E instead
+  of meeting it. Everything hypoid lives in the pinion.
+- **Pitch geometry in closed form** (§21.1): with δ = ψ_g − ψ_p as the one
+  unknown, the shaft angle gives `tan γ_p = cos δ / tan γ_g`, equal normal
+  pitch at the mean point gives `r_p = r_g (n/N) cos ψ_g / cos ψ_p` (why
+  the hypoid pinion is larger), and the offset reduces to one equation
+  `E = sin δ (r_g cos γ_p + r_p cos γ_g)`, solved by bracketing. Checked
+  by rebuilding the axis in 3-D: distance E to 1e-9, 90° to 1e-12, and the
+  turn rate from equal tooth-normal velocities at the mean point -- a
+  fourth condition, not used in the solve -- exactly N/n. E = 0 reduces to
+  the spiral bevel pinion exactly. 6 mm on a 60 mm gear: pinion spiral
+  35° → 46.9°, mean radius +20 %; the automotive-like 41/11 at E = 25:
+  58° and +62 % -- the proportions design tables show.
+- **The pinion is generated, not designed** (§21.2): no closed-form tooth
+  surface is conjugate to a spiral bevel gear across an offset, so the
+  pinion is the envelope of the real gear solid under the offset relative
+  motion -- as the face gear is of its shaper -- with one gift from the
+  geometry: planes perpendicular to the pinion axis are invariant under
+  the pinion's own rotation, so per phase only the gear moves and the
+  section is the static gear cut by a plane turned the other way. One
+  tooth swept, sections unioned per station, one space lofted, patterned,
+  N-ary cut, edges slimmed.
+- **What it took to make that robust, all measured**: the real gear
+  tooth's reach fades over the last half-millimetre at each end, so the
+  pinion is generated from the gear tooth extended 20 % past its face
+  (the same surface continued -- the real tooth lies inside it to
+  0.0000 mm³ -- and what a cutter does to a real pinion); an inset face
+  and point-wise extrapolation of the end sections were both tried and
+  dropped (the latter 0.2-1.4 mm off: arc-length correspondence slides
+  along the flank, §17's index-wander lesson). The tessellated union
+  carries hairline slits, holes and spikes (160° reversals at the rim
+  ends, a tool OpenCASCADE called invalid at export quality): a 10 µm
+  close-then-open removes them, and smoothing the profile at σ = 30 µm
+  before resampling keeps the gear's own 0.02 mm facets out of the pinion
+  flank (0.25 → 0.008 mm³). A profile finder that took the first off-rim
+  stretch it met made a degenerate tool from a single vertex a few tenths
+  of a micron inside the rim; it takes the longest now. Crumbs under
+  0.1 % are dropped after clipping, anything larger is an error. A
+  `tessellate` with no triangulation (once in ~2000 sections) falls back
+  to the face's wire.
+- **Convergence**: sweep ridges go as the phase step squared and the loft
+  needs eight stations; 240 × 8 at export quality meshes at **0.0084 mm³ =
+  8.5e-7 of the gear** (mis-phased 97 mm³, four orders above), 42 s; the
+  60 × 5 preview at 5e-6 in 9 s.
+- **Checks** (`test_hypoid.py`, 12 tests; suite 161): the closed
+  form re-derived in 3-D; E = 0 → spiral bevel; monotone growth with E;
+  hand mirrors the side; impossible offsets refused with the reason;
+  one valid n-fold-symmetric pinion; the pair meshes below the spiral
+  bevel pair's own 5e-5 bar and collides half a pitch off; at E = 0 the
+  family's own pinion teeth lie inside the generated pinion where both
+  exist (the whole-solid comparison first written for this mistook a
+  ~7 % blank-definition difference for tooth error); STEP round trip as
+  z + 2 solids.
+- **UI**: Hypoid card (pinion teeth, offset, gear spiral angle, cutter
+  radius, hand), PINION / OFFSET derived rows (pinion pitch angle, spiral
+  angle and radius against the bevel pinion's, offset as a fraction of the
+  gear diameter, which side), names like `hypoid_z30x12_m2_e6_psi35R_pa20_fw8_bore10`,
+  thumbnail, `--uismoke --hypoid`. The preview and the STEP are the pair
+  in mesh. Headless export + reset both pass (the fresh-state 30/20 pair exports in 54 s to a 9.7 MB STEP; the first run's "done=False" was the harness's own 30 s export wait, sized for the face gear's 25 s -- now 180 s, plus a camera settle so a heavy mesh is not photographed mid-ZoomExtents); SolidWorks import
+  of the 8.4 MB no-pcurve STEP: 20 s to a 5.1 MB native 32-body part, 3D Interconnect off.
+- **Stated plainly**: a mean-point pitch-cone design in the manner of
+  Gleason's basic relations with the gear pitch angle at its bevel value
+  (Gleason's full method iterates it slightly); blank proportions per this
+  project's bevel conventions, pinion face bounded by planes perpendicular
+  to its axis; none of it affects conjugacy, which generation guarantees
+  for whatever blank is chosen. Pinion spiral angle capped at 75°.
+
+## Timing belts according to standards -- and three bugs no validity check could see
 
 The user's follow-up on the pair below: "timing wheels according to
 standards", then "check the timing belts geometry, something is weird".

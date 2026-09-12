@@ -81,7 +81,14 @@ namespace GearGen.Geometry
         /// section 20. No teeth count (CutterTeeth is how many teeth the
         /// segment shows); BeltPitchMm as TimingWheel; FaceWidthMm is the
         /// belt's own width.</summary>
-        TimingBelt
+        TimingBelt,
+        /// <summary>Hypoid pair: a spiral bevel gear (Teeth, SpiralAngleDeg,
+        /// CutterRadiusMm, Hand -- the gear's) driven by a pinion (MateTeeth)
+        /// whose axis passes the gear's at OffsetMm -- see docs/gear-math.md
+        /// section 21. The pinion's spiral angle, pitch angle and size
+        /// follow from the offset; its teeth are generated from the gear.
+        /// Exports the pair as one multi-body STEP.</summary>
+        Hypoid
     }
 
     /// <summary>
@@ -292,6 +299,15 @@ namespace GearGen.Geometry
         /// sets the engine's fillet radius; docs/gear-math.md 20.2.</summary>
         public bool BeltCurvilinear { get; set; } = false;
 
+        // ---- hypoid (docs/gear-math.md section 21) -- Family == Hypoid only ----
+
+        public bool IsHypoid => Family == GearFamily.Hypoid;
+
+        /// <summary>The hypoid offset E: the distance the pinion axis passes
+        /// the gear axis at (0 = an ordinary spiral bevel pair). Which side
+        /// follows from the gear's hand.</summary>
+        public double OffsetMm { get; set; } = 6.0;
+
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
         /// standard table (GearViewModel's own copy of sprocket.py's); both
@@ -391,6 +407,13 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     p.BeltType = "T5"; p.BeltPitchMm = 5.0; p.BeltCurvilinear = false;
                     p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
+                    break;
+                case GearFamily.Hypoid:
+                    // 30/12 at module 2, offset a tenth of the gear's pitch diameter: the pinion comes out
+                    // 20 % larger than the bevel pinion with a 47 deg spiral (docs/gear-math.md 21.1)
+                    p.Teeth = 30; p.MateTeeth = 12; p.ModuleMm = 2.0; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    p.SpiralAngleDeg = 35.0; p.CutterRadiusMm = 0.0; p.Hand = "right"; p.OffsetMm = 6.0;
+                    p.FaceWidthMm = 8.0; p.BoreDiameterMm = 10.0;
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
@@ -502,6 +525,13 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     parts.Add("timingbelt"); parts.Add(BeltTypeSlug); parts.Add("beltpitch" + Len(BeltPitchMm));
                     parts.Add("teeth" + CutterTeeth); parts.Add("w" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.Hypoid:
+                    parts.Add("hypoid"); parts.Add("z" + Teeth + "x" + MateTeeth); parts.Add(size);
+                    parts.Add("e" + Len(OffsetMm)); parts.Add("psi" + N(SpiralAngleDeg) + hand);
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    if (CutterRadiusMm > 0) parts.Add("rc" + Len(CutterRadiusMm));
+                    parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.SpiralBevel:
                     parts.Add(IsZerol ? "zerolbevel" : "spiralbevel"); parts.Add("z" + Teeth); parts.Add(size);

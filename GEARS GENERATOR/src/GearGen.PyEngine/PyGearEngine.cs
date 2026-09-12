@@ -205,6 +205,19 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsHypoid)
+            {
+                // As spiral bevel: HypoidParams has no inch constructor, convert
+                // client-side. Hand is already in the base request (the gear's).
+                req.GearType = "hypoid";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;          // the pinion
+                req.SpiralAngleDeg = p.SpiralAngleDeg;
+                req.CutterRadiusMm = p.CutterRadiusMm;
+                req.OffsetMm = p.OffsetMm;
+                return req;
+            }
+
             if (p.IsTimingWheel)
             {
                 // The displayed pitch is sent (not just the standard's name) so a

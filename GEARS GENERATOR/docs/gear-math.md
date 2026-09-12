@@ -1659,3 +1659,192 @@ alike**; the pulley solid has its bore (no material on the axis, and the
 volume difference to a bore-less build is exactly the bore cylinder); the
 belt strip is one valid manifold solid of the requested length; both
 solids round-trip through STEP.
+
+## 21. Hypoid gears
+
+A spiral bevel gear driven by a pinion whose axis does not meet the gear's:
+it passes it at the hypoid offset *E* -- the automotive final drive, where
+the offset lets the drive shaft sit lower and makes the pinion larger and
+stronger than a bevel pinion of the same ratio. `hypoid.py`. The gear is
+this project's spiral bevel gear (section 16), unchanged; everything hypoid
+lives in the pinion.
+
+### 21.1 The pinion's pitch geometry, in closed form
+
+The two pitch cones touch at the mean point *M* (the gear's, at its mean
+cone distance *A_m*, azimuth 0 in the +X half of the XZ plane, as
+`bevel.place_bevel_pinion` has it). Three conditions fix the pinion's cone
+and axis. Write γ for pitch angles, ψ for mean spiral angles, *r* for mean
+pitch radii, *N/n* for the tooth counts, and δ = ψ_g − ψ_p for the
+difference between the two spiral angles at *M* -- the one number a hypoid
+adds to a spiral bevel pair:
+
+1. **Shaft angle.** The pinion's generator through *M* is the gear's
+   generator turned by δ within the common tangent plane (the two tooth
+   traces coincide at *M* and each makes its own spiral angle with its own
+   generator). The pinion axis then makes γ_p with that generator, tilted
+   toward the tangent plane's normal; requiring it to be at 90° to the
+   gear axis gives `tan γ_p = cos δ / tan γ_g`.
+2. **Equal normal pitch.** Both teeth must advance at the same rate across
+   the common trace: `r_p cos ψ_p / n = r_g cos ψ_g / N`. With ψ_p > ψ_g
+   this is what makes the hypoid pinion larger than the bevel pinion
+   (`r_g n/N`); along the trace the two velocities differ -- the hypoid's
+   lengthwise sliding, which is why hypoid oil is a thing.
+3. **The offset.** The pinion apex is `P = M − A_mp g_p` with
+   `A_mp = r_p / sin γ_p`; the distance between the pinion axis line and
+   the gear axis reduces, after the substitutions, to
+
+   ```
+   E = sin δ · [ r_g cos γ_p + r_p cos γ_g ]
+   ```
+
+   a single equation in δ, solved by bracketing (the useful branch is
+   δ < 0: pinion spiral angle larger than the gear's; the other branch
+   exists and is not offered). For small offsets
+   `δ ≈ E A_m / (r_g² + r_p²)` -- 6 mm on a 60 mm gear gives 12°, the
+   classic 10-15° a hypoid adds to its pinion's spiral angle.
+
+Checked independently (tests): rebuilding the axis line in 3-D from the
+reported apex and direction, its distance from the gear axis is *E* to
+1e-9, its angle to the gear axis 90° to 1e-12, and the pinion turn rate
+implied by *equal tooth-normal velocity components at M* -- a fourth
+condition, not used in the solve -- comes out at exactly *N/n*. At *E* = 0
+every number reduces to the spiral bevel pinion's (γ_p, A_mp, r_p) and the
+axis lands exactly where `place_bevel_pinion` puts it. For 30/12 at module
+2 the offset of 6 mm raises the pinion's spiral angle from 35° to 46.9°
+and its mean radius from 10.5 to 12.6 mm (+20 %); the automotive-like
+41/11 at module 3 with *E* = 25 mm gives ψ_p = 58° and a 62 % larger
+pinion -- the proportions hypoid design tables show. The pinion spiral
+angle is capped at 75°: the formulas keep producing pinions right up to
+90° (an eight-metre one), so the cap is a design one, and for a usual pair
+it lands the largest offset near 0.4 gear pitch diameters, itself
+generous (practice stays under 0.25).
+
+**Stated plainly**: this is a pitch-cone design at the mean point in the
+manner of Gleason's basic hypoid relations, with the gear pitch angle kept
+at its bevel value (`tan γ_g = N/n`), which Gleason's full method
+iterates slightly; the blank proportions (pinion addendum = the gear's
+dedendum less the clearance, face bounded by planes perpendicular to the
+axis) follow this project's bevel conventions, not a transcribed Gleason
+blank sheet. None of that affects conjugacy, which the generation below
+guarantees for whatever blank is chosen.
+
+### 21.2 The pinion is generated, not designed
+
+No closed-form tooth surface is conjugate to a spiral bevel gear across an
+offset -- which is why real hypoid pinions are cut by generation. The
+pinion here is the **envelope of the real gear solid** under the offset
+relative motion: gear turning about its axis, pinion turning *N/n* times as
+fast about its own -- exactly as the face gear is the envelope of its
+shaper (section 17), with one simplification the geometry hands over:
+sections are taken on planes **perpendicular to the pinion axis**, and the
+pinion's own rotation leaves such a plane invariant. So per phase *t* only
+the gear moves, and the section in the pinion's frame is the *static* gear
+cut by the plane turned by −*t* about the gear axis, read in that plane's
+own axes and turned by the pinion's −(*N/n*)·*t*. Each section is the cut
+face tessellated to 5 µm (immune to the order OpenCASCADE hands section
+edges back in); one gear tooth is swept through its whole engagement
+(found by turning its bounding box until it clears the blank -- ±58° here)
+and the sections unioned per station; the space is the union clipped to a
+disc half a millimetre outside the blank's tip cone; its generated profile
+(one spline through 80 points by arc length, uniform parameters, section
+17's lesson) and the rim arc make a two-edge wire per station; the wires
+loft (section 17's `loft_solid`) into one space tool, patterned *n* times
+and cut from the tip-cone blank in one N-ary boolean with the sequential
+fallback, edge curves slimmed for STEP.
+
+**The generating tooth is the gear's, continued past its face.** The real
+gear tooth ends on its own toe and heel, so its reach into the pinion
+fades over the last half-millimetre at each end (measured at the pitch
+circle: full width to within 0.6 mm of the toe and 0.3 mm of the heel,
+then dropping), and half a millimetre past the heel plane the space is a
+sliver hugging the rim -- a 4-point, 0° "profile" no spline can pass
+through. Two remedies were tried and dropped: insetting the pinion face
+(it thickens the tooth ends the gear never touches -- and at *E* = 0 the
+face ends coincide with the gear's exactly, so no inset is right), and
+extrapolating the end sections point-wise from the last stations
+(0.2-1.4 mm errors: arc-length correspondence slides along the flank from
+station to station -- section 17's index-wander lesson -- so a profile
+point is not the same feature one station on). What works is what a
+cutter does to a real pinion: generate from the gear tooth **extended 20 %
+past its toe and heel** (`extended_gear_tooth`: the spiral bevel station
+mapping holds at any cone distance, so it is the same flank surface lofted
+over a longer range; the real tooth lies inside it to 0.0000 mm³). Every
+station of the pinion, out to the tool's overshoot past its own end
+planes, is then cut for real, and the pinion's flanks continue as
+conjugate surfaces beyond where the real gear's tooth ends. The real gear,
+not the extended one, does the meshing check.
+
+**The union has hairline blemishes; the flank must not inherit them.**
+The union of thousands of tessellation triangles is a sound region with
+slits and holes where triangles from different phases nearly coincide and
+spikes where one grazes the rim (measured at export quality: 160°
+near-reversals in the profile at the rim ends, five holes in one station,
+and a lofted tool OpenCASCADE calls invalid). A 10 µm morphological
+close-then-open (`_tidy`) removes both -- the flanks and root fillet, with
+curvature radii of millimetres and tenths, pass through unchanged to
+O(ε²/ρ) -- and the exterior ring is the space (a hole would be an island
+of pinion material inside its own tooth space). Then the profile is
+*smoothed* before it is resampled (`_smooth_profile`: densified to 5 µm
+along its arc length and Gaussian-filtered at σ = 30 µm): the gear's own
+flanks are lofts through polygon stations, faceted at 0.02-0.03 mm, and a
+spline *interpolated* through 80 samples of a boundary with that
+micro-structure carries it into the pinion flank as waviness of the same
+size (0.25 mm³ of in-phase overlap from the export-quality gear; 0.008
+after smoothing). Thirty microns is three orders below any flank
+curvature radius (it moves a 5 mm arc by σ²/2ρ = 0.1 µm) and two above the
+facets. Two smaller finds: the profile finder took the *first* off-rim
+stretch of the boundary it met, and a single tessellation vertex a few
+tenths of a micron inside the rim circle produced a spurious one-point
+stretch and a degenerate tool (at 360 positions -- 240 had simply never
+hit one); it now takes the longest stretch and refuses one shorter than
+0.2 mm. A grazing phase leaves crumbs (a 0.004 mm² sliver beside a 12 mm²
+space) the union does not join: crumbs under 0.1 % of the main piece are
+dropped after clipping and anything larger is an error -- never a silent
+"keep the largest" (section 20.2). A `tessellate` that returns no
+triangulation for a sliver face (once in ~2000 sections) falls back to
+tracing the face's wire.
+
+**Convergence, measured** (30/12, *E* = 6, in-phase interpenetration with
+the gear, `meshcheck`; the sampling study with a coarse gear used for both
+generation and check, then the final construction at export quality):
+
+| sweep positions × stations | overlap | of the gear | build |
+|---|---|---|---|
+| 40 × 5 | 2.1 mm³ | 2.1e-4 | 5 s |
+| 120 × 5 | 2.2 mm³ | 2.2e-4 | 12 s |
+| 240 × 5 | 0.21 mm³ | 2.1e-5 | 22 s |
+| 240 × 8 | 0.0034 mm³ | 3.4e-7 | 36 s |
+| **240 × 8, export-quality gear, final** | **0.0084 mm³** | **8.5e-7** | 42 s |
+| 60 × 5, preview | 0.05 mm³ | 5e-6 | 9 s |
+
+The un-cut ridges a sampled sweep leaves on a flank go as the square of
+the phase step, and the loft's own interpolation error along the face
+needs eight stations to vanish; 240 × 8 sits inside even the face gear's
+1e-6 and is the export setting; the preview's ridges are a few hundredths
+of a millimetre, invisible. Half a pitch off, the same pair collides by
+97 mm³ -- 9e-3 of the gear, four orders of magnitude above the in-phase
+figure.
+
+### 21.3 Checks
+
+`tests/test_hypoid.py`: the closed-form geometry (21.1) re-derived in 3-D
+-- offset, shaft angle, *M* on both cones, turn rate from the tooth-normal
+velocities; *E* = 0 reduces exactly to the spiral bevel pinion; the pinion
+grows and steepens monotonically with *E*; hand mirrors the offset side;
+an impossible offset is refused with the reason; the generated pinion is
+one valid solid with *n* spaces (n-fold symmetric about its axis, 15-35 %
+of the blank removed); **the pair meshes: in-phase overlap below the
+spiral bevel pair's own bar of 5e-5 of the gear at three phases (3.4e-7
+measured), a half-pitch error collides by orders of magnitude more**; at
+*E* = 0 the spiral bevel family's own pinion -- an entirely different
+construction -- and the generated one occupy the same space to within a
+few percent where both are fully defined (a slab along the axis from the
+toe sphere's on-axis point to where the heel sphere meets the tip cone:
+the family pinion's teeth end on those spheres and its blank body on
+other planes than this blank's, a definitional ~7 % that a whole-solid
+comparison mistook for tooth error; a shell between the two spheres was
+tried as the clip first, and OpenCASCADE returned a null boolean for every
+lofted tooth against it), and the generated one meshes with the gear; the
+pair round-trips through STEP as the gear's blank and *z* teeth plus one
+pinion.

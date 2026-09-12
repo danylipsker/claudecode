@@ -730,6 +730,34 @@ def export_timing_belt_profile_dxf(bp, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def build_hypoid_pair_solid(hp, n_positions: int = 240, n_stations: int = 8, n_profile: int = 80,
+                            n_phi: int = 240, simplify_tolerance_mm: float = 0.02) -> bd.Compound:
+    """hp: hypoid.HypoidParams (docs/gear-math.md 21). The pair in mesh as
+    one Compound: the gear's blank and z teeth (the spiral bevel's own
+    multi-body arrangement) plus the generated pinion, one solid, on its
+    offset axis. The pair, not the pinion alone: a hypoid pinion is
+    meaningless without the gear it was generated from, and the gear alone
+    is the Spiral bevel card."""
+    from hypoid import build_hypoid_pair
+    gear, pinion = build_hypoid_pair(hp, 0.0, 0.0, n_positions, n_stations, n_profile, n_phi, simplify_tolerance_mm)
+    return bd.Compound(children=[*gear.solids(), pinion])
+
+
+def export_hypoid_step(hp, path: str | Path, n_positions: int = 240, n_stations: int = 8, n_profile: int = 80,
+                       n_phi: int = 240, simplify_tolerance_mm: float = 0.02) -> None:
+    """Written without pcurves, as the face gear is (export_face_gear_step):
+    measured on the 30/12 pair, pinion 5.8 -> 3.3 MB and gear 7.1 -> 5.1 MB,
+    both re-importing as the same valid solids."""
+    pair = build_hypoid_pair_solid(hp, n_positions, n_stations, n_profile, n_phi, simplify_tolerance_mm)
+    _export_step_for_solidworks(pair, path, write_pcurves=False)
+
+
+def export_hypoid_profile_dxf(hp, path: str | Path) -> None:
+    """The gear's heel tooth section, as the spiral bevel card exports it:
+    the pinion's generated flanks are not a 2D quantity at all."""
+    export_spiral_bevel_heel_profile_dxf(hp.gear_params(), path)
+
+
 if __name__ == "__main__":
     out = Path(__file__).parent / "out"
     out.mkdir(exist_ok=True)

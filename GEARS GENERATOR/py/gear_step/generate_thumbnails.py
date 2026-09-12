@@ -148,4 +148,10 @@ if __name__ == "__main__":
     belt = TimingBeltParams.from_standard("T5", n_teeth=8, belt_width_mm=8.0)
     render_solid_thumbnail(build_timing_belt_solid(belt), f"{out_dir}/thumb_timing_belt.png", elev=20, azim=-30)
 
+    from hypoid import HypoidParams
+    from build_gear import build_hypoid_pair_solid
+    hyp = HypoidParams(z=30, pinion_teeth=12, module_mm=2.0, face_width_mm=8.0, offset_mm=6.0, spiral_angle_deg=35.0, bore_diameter_mm=10.0)
+    render_solid_thumbnail(build_hypoid_pair_solid(hyp, n_positions=60, n_stations=5, n_profile=60, n_phi=120, simplify_tolerance_mm=0.04),
+                           f"{out_dir}/thumb_hypoid.png", elev=25, azim=-50)
+
     print("done")
