@@ -105,6 +105,11 @@ namespace GearGen.UI
         /// ignored: server.py's internal_params_from_request doesn't even
         /// read a bore_diameter_mm field).</summary>
         public bool IsNotInternal => !IsInternal;
+        /// <summary>A chain link has no bore, teeth, or face-width concept
+        /// of its own -- every dimension comes from the chain itself.</summary>
+        public bool ShowBoreField => !IsInternal && !IsChainLink;
+        public bool ShowFaceWidthField => !IsChainLink;
+        public bool HasTeethField => !IsWorm && !IsChainLink;
         public bool IsHerringbone
         {
             get => _p.Family == GearFamily.Herringbone;
@@ -140,7 +145,7 @@ namespace GearGen.UI
         /// traced by a rolling circle (docs/gear-math.md 14) and a cycloidal
         /// drive's by its rollers (15), so the pressure-angle block is hidden
         /// for both rather than shown and ignored.</summary>
-        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive && !IsSprocket;
+        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive && !IsSprocket && !IsChainLink;
 
         public bool IsCycloidalDrive
         {
@@ -242,6 +247,28 @@ namespace GearGen.UI
             set { _p.OutsideDiameterMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
         }
 
+        // ---- chain link (docs/gear-math.md section 19) -- Family == ChainLink only ----
+
+        public bool IsChainLink
+        {
+            get => _p.Family == GearFamily.ChainLink;
+            set { if (value) { _p.Family = GearFamily.ChainLink; OnChanged(); FamilyChanged(); } }
+        }
+
+        /// <summary>A chain link has no teeth, bore, profile shift,
+        /// addendum/dedendum coefficients, or backlash -- reset every one
+        /// so a stale value from whatever family was selected before
+        /// cannot leak into this family's file name or (nonsensically)
+        /// its geometry request.</summary>
+        public void SelectChainLinkCard()
+        {
+            IsChainLink = true;
+            ChainNumber = _p.ChainNumber;
+            _p.BoreDiameterMm = 0.0; _p.ProfileShift = 0.0;
+            _p.AddendumCoeff = 1.0; _p.DedendumCoeff = 1.25; _p.BacklashMm = 0.0;
+            OnChanged(nameof(BoreDiameterDisplay));
+        }
+
         public void SelectSprocketCard()
         {
             IsSprocket = true;
@@ -318,7 +345,7 @@ namespace GearGen.UI
         public bool IsNotCycloidalDrive => !IsCycloidalDrive;
         /// <summary>A sprocket, like a cycloidal drive, is sized without a
         /// module or diametral pitch at all (chain pitch takes that role).</summary>
-        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket;
+        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket && !IsChainLink;
         public string TeethLabel =>
             IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
             : IsPlanetary ? "Sun teeth"
@@ -450,6 +477,7 @@ namespace GearGen.UI
             : IsSpiralBevel ? (_p.IsZerol ? "Zerol bevel" : "Spiral bevel")
             : IsFaceGear ? "Face gear"
             : IsSprocket ? "Sprocket"
+            : IsChainLink ? "Chain link"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -484,6 +512,10 @@ namespace GearGen.UI
             OnChanged(nameof(IsRack));
             OnChanged(nameof(IsInternal));
             OnChanged(nameof(IsNotInternal));
+            OnChanged(nameof(ShowBoreField));
+            OnChanged(nameof(ShowFaceWidthField));
+            OnChanged(nameof(HasTeethField));
+            OnChanged(nameof(IsChainLink));
             OnChanged(nameof(IsHerringbone));
             OnChanged(nameof(ShowHelixSection));
             OnChanged(nameof(HelixSectionHeader));
@@ -503,6 +535,8 @@ namespace GearGen.UI
             OnChanged(nameof(IsSpiralBevelZerol));
             OnChanged(nameof(IsFaceGear));
             OnChanged(nameof(IsSprocket));
+            OnChanged(nameof(HasModuleField));
+            OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCylindricalSpur));
             OnChanged(nameof(IsCylindricalHelical));
             OnChanged(nameof(ModuleOrDpLabel));
@@ -1049,6 +1083,21 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsChainLink)
+                {
+                    // chain_link_derived_values (server.py): not a gear at
+                    // all -- no pitch/base/addendum circle, no tooth
+                    // thickness, no module.
+                    PitchDiameterText = "n/a (chain link)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = "-";
+                    DedendumDiameterText = "-";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = "-";
+                    SprocketChainText = $"#{_p.ChainNumber} -- pitch {L(dv("chain_pitch_mm"))}, roller Ø{L(dv("roller_diameter_mm"))}";
+                    SprocketDiametersText = $"pin Ø{L(dv("pin_diameter_mm"))}, bushing Ø{L(dv("bushing_outer_diameter_mm"))}, "
+                                           + $"plate {L(dv("plate_thickness_mm"))} thick, {L(dv("total_width_mm"))} overall width";
                 }
                 else if (IsSprocket)
                 {

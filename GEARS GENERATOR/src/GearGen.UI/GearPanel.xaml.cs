@@ -124,6 +124,11 @@ namespace GearGen.UI
             ViewModel?.SelectSprocketCard();
         }
 
+        private void OnChainLinkChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectChainLinkCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

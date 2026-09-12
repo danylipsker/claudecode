@@ -67,7 +67,12 @@ namespace GearGen.Geometry
         /// sized by ChainPitchMm and RollerDiameterMm (ChainNumber sets both
         /// from the standard table), OutsideDiameterMm (0 = auto).
         /// FaceWidthMm, BoreDiameterMm as usual.</summary>
-        Sprocket
+        Sprocket,
+        /// <summary>One pitch length of roller chain (an outer link pinned
+        /// into an inner link -- ten parts) built to seat in a Sprocket of
+        /// the same chain -- see docs/gear-math.md section 19. No teeth;
+        /// ChainNumber/ChainPitchMm/RollerDiameterMm as Sprocket.</summary>
+        ChainLink
     }
 
     /// <summary>
@@ -246,6 +251,10 @@ namespace GearGen.Geometry
 
         public bool IsSprocket => Family == GearFamily.Sprocket;
 
+        // ---- chain link (docs/gear-math.md section 19) -- Family == ChainLink only ----
+
+        public bool IsChainLink => Family == GearFamily.ChainLink;
+
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
         /// standard table (GearViewModel's own copy of sprocket.py's); both
@@ -334,6 +343,9 @@ namespace GearGen.Geometry
                 case GearFamily.Sprocket:
                     p.Teeth = 20; p.ChainNumber = "40"; p.ChainPitchMm = 12.7; p.RollerDiameterMm = 7.9248;
                     p.OutsideDiameterMm = 0.0; p.FaceWidthMm = 6.0; p.BoreDiameterMm = 10.0;
+                    break;
+                case GearFamily.ChainLink:
+                    p.ChainNumber = "40"; p.ChainPitchMm = 12.7; p.RollerDiameterMm = 7.9248;
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
@@ -426,6 +438,10 @@ namespace GearGen.Geometry
                     parts.Add("pitch" + Len(ChainPitchMm)); parts.Add("roller" + Len(RollerDiameterMm));
                     parts.Add("od" + (OutsideDiameterMm > 0 ? Len(OutsideDiameterMm) : "auto"));
                     parts.Add("fw" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.ChainLink:
+                    parts.Add("chainlink"); parts.Add("chain" + ChainNumber);
+                    parts.Add("pitch" + Len(ChainPitchMm)); parts.Add("roller" + Len(RollerDiameterMm));
                     break;
                 case GearFamily.SpiralBevel:
                     parts.Add(IsZerol ? "zerolbevel" : "spiralbevel"); parts.Add("z" + Teeth); parts.Add(size);

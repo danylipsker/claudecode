@@ -138,4 +138,8 @@ if __name__ == "__main__":
     sprocket = SprocketParams.from_ansi_chain_number("40", z=20, face_width_mm=8.0, bore_diameter_mm=10.0)
     render_solid_thumbnail(build_sprocket_solid(sprocket), f"{out_dir}/thumb_sprocket.png", elev=35, azim=-25)
 
+    from chain_link import ChainLinkParams, build_chain_link_assembly
+    link = ChainLinkParams(chain_pitch_mm=12.7, roller_diameter_mm=7.9248)
+    render_solid_thumbnail(build_chain_link_assembly(link), f"{out_dir}/thumb_chain_link.png", elev=25, azim=-40)
+
     print("done")

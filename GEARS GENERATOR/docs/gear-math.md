@@ -1377,3 +1377,92 @@ roller seats without interference and a mis-timed one collides), not
 against the tables' exact arc radii; a specific certified/purchased
 sprocket's outside diameter should be checked against its manufacturer's
 own table (`outside_diameter_mm` overrides the auto value directly).
+
+## 19. One roller-chain link
+
+The repeating unit a sprocket (section 18) drives: an outer link (two plates,
+two pins) pinned into an inner link (two plates, two bushings, two rollers)
+-- ten parts per pitch length. `chain_link.py`.
+
+### 19.1 The five part types, and the two things that make them a chain
+
+The pin is a press fit in the outer plates and turns freely inside the
+bushing; the bushing is a press fit in the inner plates and the roller turns
+freely around it -- these two rotating pairs are what let a wrapped chain
+articulate at every pitch as it goes around a sprocket, and they are the two
+things this module actually builds and checks, not just asserts: a running
+clearance (`running_clearance_mm`, default 0.1 mm radius) on both, and an
+exact (zero-clearance, non-interference) nominal fit on the two press-fit
+pairs.
+
+Sizes not fixed by the chain's own two numbers (pitch, roller diameter) --
+pin diameter, plate thickness, bushing diameter -- follow simple, stated
+ratios of those two (pin = 0.5 x roller diameter, plate = 0.15 x pitch,
+bushing = 0.85 x roller diameter), the same "reference default, freely
+overridable" pattern as every other family's non-table-driven dimensions;
+`ChainLinkParams.from_sprocket_params` builds a link sized to seat in a
+*specific* `sprocket.SprocketParams` instance directly, pitch and roller
+diameter shared exactly.
+
+Plate shape: a stadium -- two equal-radius circular lobes around the pin (or
+bushing) holes, joined by straight tangent sides (trivial for equal radii:
+the tangent lines are just offset by the radius, no construction needed). A
+real chain plate is usually waisted narrower in the middle to save weight (a
+distinctive figure-8 silhouette); this is a stated v1 simplification, still
+correctly holed and pitched. The roller is modelled solid (not as a tube
+around the bushing with its own running clearance) -- the dimension that
+matters for meshing, its outer diameter, is exact; its own bore is not
+modelled.
+
+### 19.2 A real, deterministic bug a validity check could not see
+
+`_plate_solid` cuts two holes per plate -- `bd.Circle(r, mode=Mode.SUBTRACT)`
+at each pin position -- by calling `.located(...)` on the already-built
+Circle object to move it before subtracting. That does not work: a
+`Circle(mode=SUBTRACT)` inside a `BuildSketch` context applies its boolean
+the instant it is built, at the origin (wherever the *current* location
+context puts it) -- `.located(...)` afterward only returns a relocated copy
+of the object, it does not redo the subtraction there. Both holes landed at
+the same position (the second exactly on top of the first, redundant), and
+the position `chain_pitch_mm` away was left completely solid.
+
+This is exactly the kind of bug the project's own validity/manifoldness
+checks cannot see: a plate that is missing one of its two holes is still a
+single, perfectly valid, perfectly manifold solid -- `is_valid` and
+`is_manifold` both pass on the *wrong* shape, the same lesson the rack root
+fillet inversion taught earlier in this project (a validity check confirms
+the polygon is *a* polygon, never that it is the *right* one). It surfaced
+here only because a pin, built independently and placed at exactly that
+position, failed to pass through cleanly -- direct, physical interference
+checking again catching what a shape-quality check cannot. The fix: wrap
+each `Circle(...)` in its own `with Locations(...):` block, the pattern
+this project already uses everywhere else a sketch primitive needs
+placing away from the origin (`Locations` must wrap the primitive's own
+construction, not chase it afterward).
+
+A second, narrower thing this bug exposed: with the duplicate hole in
+place, `meshcheck.interpenetration_volume(pin_at_x, one_of_the_two_
+otherwise-identical plates)` returned a **false negative** (zero) for one
+specific pairing while correctly reporting the real collision for the
+other -- both plates had the identical defect, confirmed by direct
+`is_inside` probes, yet only one pairing's boolean intersection came back
+non-empty. Consistent with this project's standing note that OCCT's
+booleans can silently return nothing on tangential/degenerate/duplicate
+geometry (docs/gear-math.md's loft section, `meshcheck.py`'s own
+docstring) -- worth remembering that an interpenetration check reporting
+zero is not, by itself, proof of a clean fit when the geometry feeding it
+is suspect.
+
+### 19.3 Checks
+
+`tests/test_chain_link.py`: the two pin centres, the two bushing centres and
+the two roller centres are each exactly `chain_pitch_mm` apart; all ten
+parts are valid manifold solids and the ten-body assembly is one valid
+compound; every rotating pair (pin/bushing, bushing/roller) and every
+press-fit pair (pin/outer-plate, bushing/inner-plate) has exactly zero
+interpenetration; **the link's own roller, seated in a Sprocket built from
+the same chain_pitch_mm/roller_diameter_mm, overlaps it by nothing beyond
+floating-point noise at several pitch positions and collides by more than
+10% of its own volume turned half a pitch onto a tooth** -- the real link
+against the real wheel, both built by this project's own code, over two
+different chain sizes; the assembly round-trips through STEP as ten solids.

@@ -1,6 +1,67 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/chain-link/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Sprocket wheels for roller chain (latest)
+## One roller-chain link (latest)
+
+Second of the sprocket/chain pair (item 3 of the user's list: "sprocket
+gear links according to standards (only one link)"). One pitch length of
+roller chain -- an outer link (2 plates, 2 pins) pinned into an inner
+link (2 plates, 2 bushings, 2 rollers), ten parts, built to seat in the
+sprocket already committed (`chain_link.py`, docs/gear-math.md §19).
+
+- **A real, deterministic bug a validity check could not see**:
+  `_plate_solid` cut each plate's two pin holes with
+  `Circle(mode=SUBTRACT).located(...)` -- but `.located()` on an
+  already-built subtract-mode primitive only relocates the *returned
+  object*, it does not redo the boolean there; the subtraction already
+  happened at the origin the instant the circle was built. Both holes
+  landed at x=0 (the second redundant with the first), leaving the hole
+  a full pitch away completely solid. `is_valid`/`is_manifold` both pass
+  on a plate missing one of its two holes -- it's still a single,
+  perfectly good manifold solid, just the wrong one, the same lesson the
+  rack root-fillet inversion taught earlier in this project. Caught only
+  because an independently-built pin, placed where that hole should be,
+  failed to pass through cleanly. Fixed by wrapping each circle in its
+  own `with Locations(...):` block, the pattern already used elsewhere
+  in this codebase (`Locations` must wrap the primitive's own
+  construction, not chase it after the fact).
+- **A narrower, secondary finding**: with the duplicate-hole bug still
+  in place, the mesh-interference check gave a **false negative** for
+  one of the two (otherwise geometrically identical) defective plates
+  and correctly flagged the other -- consistent with this project's
+  standing note that OCCT's booleans can silently return nothing on
+  degenerate/duplicate geometry; a zero from an interference check isn't
+  proof of a clean fit when the geometry feeding it is already suspect.
+- **Checks** (`tests/test_chain_link.py`, 6 tests; suite 120): pin,
+  bushing and roller centres are each exactly one chain pitch apart; all
+  ten parts (and the ten-body assembly) are valid manifold solids; every
+  rotating pair (pin/bushing, bushing/roller) and press-fit pair
+  (pin/outer-plate, bushing/inner-plate) has exactly zero
+  interpenetration; **the link's own roller, seated in a sprocket built
+  from the same chain pitch and roller diameter, overlaps it by nothing
+  beyond floating-point noise and collides by over 10% of its own
+  volume turned half a pitch onto a tooth** -- the real link against the
+  real wheel, both built by this project's own code, over two chain
+  sizes; the assembly round-trips through STEP as ten solids.
+- **UI**: Chain link card, CHAIN LINK section (the same chain-number
+  combo as Sprocket -- a link and a sprocket built from the same chain
+  number are meant to mesh), CHAIN / LINK DIMENSIONS derived rows, no
+  teeth/module/bore fields (none apply, and every shared field that
+  doesn't -- bore, profile shift, addendum/dedendum coefficients,
+  backlash -- is explicitly reset on entry so a stale value from
+  whatever family was open before can't leak into this one, after the
+  same class of bug bit the sprocket card), reset defaults, names like
+  `chainlink_chain40_pitch12.7_roller7.925`, thumbnail,
+  `--uismoke --chainlink`. Verified headless (export + reset) and by a
+  SolidWorks import (13 s to a 329 KB native, ten-body .sldprt from the 1.1 MB STEP, fresh SolidWorks session, 3D Interconnect off).
+- **v1 simplification, stated in the docs**: stadium-shaped plates (a
+  real chain plate is usually waisted/figure-8 for weight, not modelled
+  here); the roller is solid, not a tube with its own bore -- only its
+  outer diameter (the dimension that actually meshes) is exact; pin/plate/
+  bushing sizes not fixed by the chain's own pitch and roller diameter
+  follow stated, overridable ratios rather than a transcribed standard
+  table.
+
+## Sprocket wheels for roller chain
 
 First of a new pair the user asked for -- "sprocket gears", "timing wheels",
 "sprocket gear links (only one link)", "timing belts", all "according to

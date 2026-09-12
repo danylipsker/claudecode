@@ -432,6 +432,32 @@ def sprocket_derived_values(sp) -> tuple[dict, list]:
     }, warnings
 
 
+def chain_link_params_from_request(p: dict):
+    """One roller-chain link -- docs/gear-math.md 19. Same chain_pitch_mm /
+    roller_diameter_mm request fields as a sprocket; the two are meant to
+    be built from the same values (chain_link.ChainLinkParams.from_sprocket_params)."""
+    from chain_link import ChainLinkParams
+    return ChainLinkParams(
+        chain_pitch_mm=float(p.get("chain_pitch_mm") or p["module_mm"]),
+        roller_diameter_mm=float(p.get("roller_diameter_mm") or 0.625 * float(p.get("chain_pitch_mm") or p["module_mm"])),
+    )
+
+
+def chain_link_derived_values(cp) -> tuple[dict, list]:
+    warnings = []
+    if cp.chain_pitch_mm - cp.roller_diameter_mm <= cp.pin_diameter:
+        warnings.append("Roller diameter leaves little room for the pin between adjacent rollers; "
+                        "check the pitch and roller diameter (they should come from the same chain number).")
+    return {
+        "chain_pitch_mm": cp.chain_pitch_mm,
+        "roller_diameter_mm": cp.roller_diameter_mm,
+        "pin_diameter_mm": cp.pin_diameter,
+        "plate_thickness_mm": cp.plate_thickness,
+        "total_width_mm": cp.total_width,
+        "bushing_outer_diameter_mm": cp.bushing_outer_diameter,
+    }, warnings
+
+
 def spiral_bevel_params_from_request(p: dict):
     """Spiral / zerol bevel -- docs/gear-math.md 16. The straight bevel's
     request fields plus spiral_angle_deg (0 = zerol), cutter_radius_mm (0 =
@@ -704,6 +730,12 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "chain_link":
+            from chain_link import _stadium_polygon
+            cp = chain_link_params_from_request(req)
+            outline = _stadium_polygon(cp.outer_lobe_diameter, cp.chain_pitch_mm)  # the outer plate's own profile
+            derived, warnings = chain_link_derived_values(cp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "sprocket":
             from sprocket import full_sprocket_outline
             sp = sprocket_params_from_request(req)
@@ -774,7 +806,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_step":
         path = req["path"]
-        if gear_type == "sprocket":
+        if gear_type == "chain_link":
+            from build_gear import export_chain_link_step
+            export_chain_link_step(chain_link_params_from_request(req), path)
+        elif gear_type == "sprocket":
             from build_gear import export_sprocket_step
             export_sprocket_step(sprocket_params_from_request(req), path)
         elif gear_type == "bevel":
@@ -823,7 +858,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_dxf":
         path = req["path"]
-        if gear_type == "sprocket":
+        if gear_type == "chain_link":
+            from build_gear import export_chain_link_plate_dxf
+            export_chain_link_plate_dxf(chain_link_params_from_request(req), path)
+        elif gear_type == "sprocket":
             from build_gear import export_sprocket_profile_dxf
             export_sprocket_profile_dxf(sprocket_params_from_request(req), path)
         elif gear_type == "bevel":
@@ -874,7 +912,12 @@ def handle(req: dict) -> dict:
         # helix twist, cone taper etc. are all visible exactly as they'll
         # export, not just implied by 2D parameters.
         path = req["path"]
-        if gear_type == "sprocket":
+        if gear_type == "chain_link":
+            from chain_link import build_chain_link_assembly
+            import build123d as bd
+            solid = build_chain_link_assembly(chain_link_params_from_request(req))
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "sprocket":
             from build_gear import build_sprocket_solid
             import build123d as bd
             solid = build_sprocket_solid(sprocket_params_from_request(req))

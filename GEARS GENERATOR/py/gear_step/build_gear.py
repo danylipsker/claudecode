@@ -654,6 +654,32 @@ def export_sprocket_profile_dxf(sp, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def export_chain_link_step(cp, path: str | Path) -> None:
+    """cp: chain_link.ChainLinkParams (docs/gear-math.md 19). The ten-part
+    assembly (2 outer plates, 2 pins, 2 inner plates, 2 bushings, 2
+    rollers) as one multi-body STEP -- the parts touch (rotating and
+    press-fit pairs, by construction, section 19) but are not fused, the
+    same multi-body-part tradeoff every other multi-member family here
+    makes (worm's threads onto its core being the one exception, fused
+    for a different, stated reason)."""
+    from chain_link import build_chain_link_assembly
+    _export_step_for_solidworks(build_chain_link_assembly(cp), path)
+
+
+def export_chain_link_plate_dxf(cp, path: str | Path) -> None:
+    """Flat 2D outline of the outer plate (the larger of the two, pin
+    holes) -- a real flat pattern, for the user's own CAD/CAM."""
+    from chain_link import _stadium_polygon
+    pts = _stadium_polygon(cp.outer_lobe_diameter, cp.chain_pitch_mm)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(pts, format="xy", dxfattribs={"closed": True})
+    for cx in (0.0, cp.chain_pitch_mm):
+        msp.add_circle((cx, 0.0), cp.pin_diameter / 2.0)
+    doc.saveas(str(path))
+
+
 if __name__ == "__main__":
     out = Path(__file__).parent / "out"
     out.mkdir(exist_ok=True)

@@ -225,6 +225,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsChainLink, Mode=OneWay}" Checked="OnChainLinkChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_chain_link.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Chain link" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
@@ -273,7 +280,7 @@
                     </Grid>
 
                     <TextBlock Text="BASIC" Style="{StaticResource SectionHeader}"/>
-                    <local:NumericSpinner Visibility="{Binding IsNotWorm, Converter={StaticResource B2V}}"
+                    <local:NumericSpinner Visibility="{Binding HasTeethField, Converter={StaticResource B2V}}"
                                            Label="{Binding TeethLabel}" Value="{Binding Teeth}" Minimum="4" Maximum="500" Step="1" DecimalPlaces="0"/>
                     <StackPanel Visibility="{Binding IsWorm, Converter={StaticResource B2V}}">
                         <local:NumericSpinner Label="Thread starts (z1)" Value="{Binding WormStarts}" Minimum="1" Maximum="10" Step="1" DecimalPlaces="0"/>
@@ -292,10 +299,12 @@
                     </StackPanel>
                     </StackPanel>
 
+                    <StackPanel Visibility="{Binding ShowFaceWidthField, Converter={StaticResource B2V}}">
                     <TextBlock Text="SIZE" Style="{StaticResource SectionHeader}"/>
                     <local:NumericSpinner Label="{Binding FaceWidthLabel}" Value="{Binding FaceWidthDisplay}" Minimum="0.5" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
-                    <local:NumericSpinner Visibility="{Binding IsNotInternal, Converter={StaticResource B2V}}"
+                    <local:NumericSpinner Visibility="{Binding ShowBoreField, Converter={StaticResource B2V}}"
                                            Label="{Binding BoreOrHoleLabel}" Value="{Binding BoreDiameterDisplay}" Minimum="0" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
 
                     <StackPanel Visibility="{Binding ShowHelixSection, Converter={StaticResource B2V}}">
                     <TextBlock Text="{Binding HelixSectionHeader}" Style="{StaticResource SectionHeader}"/>
@@ -333,6 +342,16 @@
                         <local:NumericSpinner Label="Chain pitch" Value="{Binding ChainPitchDisplay}" Minimum="0.1" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Roller diameter" Value="{Binding RollerDiameterDisplay}" Minimum="0.1" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Outside diameter (0 = auto)" Value="{Binding OutsideDiameterDisplay}" Minimum="0" Maximum="2000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsChainLink, Converter={StaticResource B2V}}">
+                        <TextBlock Text="CHAIN LINK" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="One pitch length of roller chain: an outer link (two plates, two pins) pinned into an inner link (two plates, two bushings, two rollers) -- the same repeating unit a Sprocket of this chain is built to drive. Pick the chain number to match a sprocket built from the same chain; pin diameter, plate thickness and the rest follow standard-typical proportions of the pitch and roller diameter."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <TextBlock Text="Chain number (ANSI B29.1)" FontSize="12" Foreground="#374151" Margin="0,0,0,3"/>
+                        <ComboBox ItemsSource="{Binding ChainNumbers}" SelectedItem="{Binding ChainNumber}" Margin="0,0,0,8" Padding="6,4"/>
+                        <local:NumericSpinner Label="Chain pitch" Value="{Binding ChainPitchDisplay}" Minimum="0.1" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Roller diameter" Value="{Binding RollerDiameterDisplay}" Minimum="0.1" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
@@ -626,6 +645,16 @@
                     </StackPanel>
                     <StackPanel>
                         <TextBlock Text="ROOT / OUTSIDE DIAMETER" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SprocketDiametersText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsChainLink, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="CHAIN" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SprocketChainText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="LINK DIMENSIONS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding SprocketDiametersText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>

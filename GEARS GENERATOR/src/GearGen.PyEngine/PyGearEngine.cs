@@ -205,6 +205,15 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsChainLink)
+            {
+                // No teeth, no module: entirely sized by the chain itself.
+                req.GearType = "chain_link";
+                req.ChainPitchMm = p.ChainPitchMm;
+                req.RollerDiameterMm = p.RollerDiameterMm;
+                return req;
+            }
+
             if (p.IsSprocket)
             {
                 // No module/pressure angle: sized entirely by chain pitch
