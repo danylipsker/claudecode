@@ -69,6 +69,8 @@ def tessellated_volume(shape, tolerance: float = 0.005, angular_tolerance: float
         data = open(path, "rb").read()
     finally:
         os.unlink(path)
+    if len(data) < 84:
+        raise ValueError("tessellated_volume: the shape tessellated to nothing (an empty or broken solid)")
     n = struct.unpack("<I", data[80:84])[0]
     tris = np.frombuffer(data[84:84 + n * 50], dtype=np.dtype([("n", "<3f4"), ("v", "<9f4"), ("a", "<u2")]))
     v = tris["v"].astype(np.float64).reshape(-1, 3, 3)

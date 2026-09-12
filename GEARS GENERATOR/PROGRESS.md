@@ -1,6 +1,42 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/ec-gear/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/ec-gear/hyperboloidal/rack/helical-rack/internal gears + real 3D viewer
 
-## Eccentrically-cycloidal (EC) gears (latest)
+## Hyperboloidal gears (latest)
+
+The last of the three wish-list families; the list is done. `hyperboloidal.py`,
+C# family `Hyperboloidal` (card, section, derived rows, reset, `--hyperboloidal`
+smoke flag), docs §24, `tests/test_hyperboloidal.py` (10). Twenty-two families.
+
+- **Pitch geometry in closed form**: the screw axis leans `tan Σ_1 = sin Σ /
+  (i + cos Σ)` from gear 1's axis and splits the centre distance as `a_1/a =
+  (1 + i cos Σ)/(1 + i² + 2i cos Σ)`; at the throat each gear is a helical
+  gear of helix angle `Σ_k` with the common normal module, and the two
+  statements agree. A test drives both gears and checks the relative motion
+  at the throat is a screw about that axis (residual 5e-15).
+- **Gear 1 is built exactly**: the throat outline (rack-generated involute,
+  fillets and all) carried along the hyperboloid generators -- every point
+  along its own tangent line inclined by `Σ_1` -- is linear in the parameter,
+  so the whole gear is one ruled loft between the two faces (321 faces,
+  0.2 s). OpenCASCADE's solid-mode ThruSections caps the planar ends; the
+  spiral bevel's filled caps on a 319-vertex outline took minutes and
+  gigabytes first.
+- **Gear 2 is generated** on the globoid wheel's pipeline, and taught it
+  three things: the cutter is the teeth alone (a whole gear's root land,
+  0.2 mm above its root circle where gear 2's margin ends, swept the rim
+  into a ring); the cutter's root extension keeps the tooth's width at
+  gear 2's tip (the real fillets flare to 98 % of the pitch in the margin)
+  and ends at gear 1's real faces (4 mm more reached gear 2's throat with
+  teeth that do not exist and widened every space by 5 % of the pitch);
+  and the wedge is threaded across stations from the middle outward
+  (`sweep_stations`, now shared with the globoid), because a 56° lean
+  shifts the space past half a pitch at the face edge and "nearest to
+  angle 0" flipped to the neighbour.
+- **Measured**: export 96 × 13 × 80 in 5.3 s (STEP 8.4 MB), preview pair
+  3.6 s; **overlap 6e-8 to 1e-7 of gear 2 at three phases, 135 mm³ half a
+  pitch off** -- and a gear 2 constructed like gear 1 collides by 142 mm³
+  in its place (its teeth 12 % of the pitch thicker at the tip), which is
+  why gear 2 is generated.
+
+## Eccentrically-cycloidal (EC) gears
 
 The second of the three wish-list families. `ec_gear.py`, C# family
 `EccentricCycloidal` (card "EC gear", section, derived rows, reset,
@@ -26,7 +62,7 @@ families.
   per lobe (32 for 30), sections between the faces the twisted profile to
   the tessellation, **in-phase overlap 1.1e-7 of the wheel, 57 mm³ half a
   lobe off**; the pair builds in 0.2 s, STEP 0.35 MB.
-- Left on the list: hyperboloidal gears.
+- Left on the list at the time: hyperboloidal gears (done next, above).
 
 ## Double-enveloping (globoid) worm drive: the throated wheel, generated
 

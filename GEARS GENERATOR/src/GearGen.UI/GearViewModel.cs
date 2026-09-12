@@ -63,7 +63,7 @@ namespace GearGen.UI
         public bool IsMetric { get => !IsInch; set => IsInch = !value; }
 
         public string ModuleOrDpLabel =>
-            (IsInch ? "Diametral pitch" : "Module") + ((IsAnyBevel || IsHypoid) ? " (outer/heel)" : (IsWorm || IsGloboidWorm) ? " (axial, at the throat)" : "");
+            (IsInch ? "Diametral pitch" : "Module") + ((IsAnyBevel || IsHypoid) ? " (outer/heel)" : (IsWorm || IsGloboidWorm) ? " (axial, at the throat)" : IsHyperboloidal ? " (normal)" : "");
         public string FaceWidthLabel => IsWorm ? "Threaded length" : IsTimingBelt ? "Belt width" : "Face width";
         public string BoreOrHoleLabel =>
             IsRack ? "Mounting hole diameter (0 = none)"
@@ -271,6 +271,46 @@ namespace GearGen.UI
             _p.AddendumCoeff = 1.0; _p.DedendumCoeff = 1.25; _p.BacklashMm = 0.0;
             OnChanged(nameof(BoreDiameterDisplay));
         }
+
+        // ---- hyperboloidal gears (docs/gear-math.md section 24) -- Family == Hyperboloidal only ----
+
+        public bool IsHyperboloidal
+        {
+            get => _p.Family == GearFamily.Hyperboloidal;
+            set { if (value) { _p.Family = GearFamily.Hyperboloidal; OnChanged(); FamilyChanged(); } }
+        }
+
+        public double MateFaceWidthDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.MateFaceWidthMm) : _p.MateFaceWidthMm;
+            set { _p.MateFaceWidthMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public double MateBoreDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.MateBoreDiameterMm) : _p.MateBoreDiameterMm;
+            set { _p.MateBoreDiameterMm = Math.Max(0.0, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        /// <summary>16 : 24 at a right angle, normal module 2, gear 1's face 12 mm.
+        /// Teeth and MateTeeth are the shared fields; the shaft angle the
+        /// bevel/screw families' own.</summary>
+        public void SelectHyperboloidalCard()
+        {
+            IsHyperboloidal = true;
+            HelixAngleDeg = 0.0;
+            if (Teeth < 4) Teeth = 16;
+            if (MateTeeth < 4) MateTeeth = 24;
+            if (_p.ShaftAngleDeg <= 0.0 || _p.ShaftAngleDeg >= 180.0) _p.ShaftAngleDeg = 90.0;
+            OnChanged(nameof(ShaftAngleDeg));
+            OnChanged(nameof(MateFaceWidthDisplay));
+            OnChanged(nameof(MateBoreDisplay));
+            ScheduleRefresh();
+        }
+
+        private string _hyperboloidalText = "-", _hyperboloidalMateText = "-";
+        public string HyperboloidalText { get => _hyperboloidalText; private set { _hyperboloidalText = value; OnChanged(); } }
+        public string HyperboloidalMateText { get => _hyperboloidalMateText; private set { _hyperboloidalMateText = value; OnChanged(); } }
 
         // ---- eccentrically-cycloidal gear (docs/gear-math.md section 23) -- Family == EccentricCycloidal only ----
 
@@ -686,6 +726,7 @@ namespace GearGen.UI
             : IsTimingWheel ? "Timing wheel"
             : IsTimingBelt ? "Timing belt"
             : IsHypoid ? "Hypoid"
+            : IsHyperboloidal ? "Hyperboloidal"
             : IsEccentricCycloidal ? "EC gear"
             : IsGloboidWorm ? "Globoid worm"
             : IsWorm ? "Worm"
@@ -750,6 +791,7 @@ namespace GearGen.UI
             OnChanged(nameof(IsHypoid));
             OnChanged(nameof(IsGloboidWorm));
             OnChanged(nameof(IsEccentricCycloidal));
+            OnChanged(nameof(IsHyperboloidal));
             OnChanged(nameof(HasFaceWidthSpinner));
             OnChanged(nameof(HasModuleField));
             OnChanged(nameof(IsNotCycloidal));
@@ -1031,6 +1073,8 @@ namespace GearGen.UI
             OnChanged(nameof(RollerDiameterDisplay));
             OnChanged(nameof(EccentricityDisplay));
             OnChanged(nameof(CentreDistanceDisplay));
+            OnChanged(nameof(MateFaceWidthDisplay));
+            OnChanged(nameof(MateBoreDisplay));
             OnChanged(nameof(EcEccentricityDisplay));
             OnChanged(nameof(PinionDiameterDisplay));
             OnChanged(nameof(LeadDisplay));
@@ -1304,6 +1348,23 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsHyperboloidal)
+                {
+                    // hyperboloidal_derived_values (server.py): both throats
+                    PitchDiameterText = $"{L(dv("throat_pitch_diameter_mm"))} / {L(dv("mate_throat_pitch_diameter_mm"))} (throats)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = $"{L(dv("tip_diameter_mm"))} / {L(dv("mate_tip_diameter_mm"))} (throats)";
+                    DedendumDiameterText = $"{L(dv("root_diameter_mm"))} / {L(dv("mate_root_diameter_mm"))} (throats)";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = IsInch
+                        ? $"module {dv("module_mm"):0.####} mm (normal)"
+                        : $"DP {dv("diametral_pitch"):0.###} /in (normal)";
+                    HyperboloidalText = $"shafts at {dv("shaft_angle_deg"):0.#}°, {L(dv("centre_distance_mm"))} apart, ratio {dv("ratio"):0.###} : 1: the screw axis leans "
+                                      + $"{dv("sigma1_deg"):0.##}° from gear 1's axis and {dv("sigma2_deg"):0.##}° from gear 2's; throat radii as 1 : {dv("throat_radius_ratio"):0.###}; "
+                                      + $"transverse modules {L(dv("transverse_module_mm"))} / {L(dv("mate_transverse_module_mm"))}";
+                    HyperboloidalMateText = $"gear 1 face {L(dv("face_width_mm"))} (tips Ø{L(dv("face_tip_diameter_mm"))} at the face edge), gear 2 face {L(dv("mate_face_width_mm"))} "
+                                          + $"(tips Ø{L(dv("mate_face_tip_diameter_mm"))} at the face edge); gear 2 is generated from gear 1";
                 }
                 else if (IsEccentricCycloidal)
                 {

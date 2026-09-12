@@ -1973,9 +1973,12 @@ The teeth are helical (the worm's lead angle), so at height *h* the space
 is not centred at angle 0: measured 0.83° off at *h* = 5.4 mm, and the
 tooth land there is 0.3° wide. A wedge fixed at angle 0 cut 0.22 mm² out
 of the neighbour (a crumb the 0.1 % policy refused, rightly). The wedge
-is now centred on the space's own mid-angle over the outermost 1 mm of
-the folded union's central piece; a space spanning more than 97 % of the
-pitch at the rim is refused as "teeth run pointed", with the reason.
+is now centred on the space's own mid-angle over the millimetre just
+inside the member's tip (not the margin beyond it, where a cutter's root
+extension may flare -- §24.2), threaded from the middle station outward
+so the loft follows one space (`sweep_stations`); a space spanning more
+than 97 % of the pitch there is refused as "teeth run pointed", with the
+reason.
 
 **Sectioning a mesh, not a B-rep.** OpenCASCADE's plane ∩ 4-turn thread
 loft costs 480-550 ms per section (BRepAlgoAPI_Section, edges only: 20
@@ -2137,3 +2140,147 @@ meshes: overlap below 1e-6 of the wheel at four phases (1.1e-7
 measured, the tangent contact's sliver), 57 mm³ when the wheel is
 turned half a lobe off**; STEP round trip as two solids (0.35 MB, 0.2 s
 to build); the derived values and the short-face warning.
+
+## 24. Hyperboloidal gears
+
+`hyperboloidal.py`, `tests/test_hyperboloidal.py`. Two shafts at a shaft
+angle Σ and a centre distance *a* along their common perpendicular. The
+relative motion of the two gears is a screw about the instantaneous
+screw axis (ISA), a fixed line skew to both shafts; each gear's pitch
+surface is that line revolved about the gear's own axis -- a hyperboloid
+of one sheet with throat radius `a_k` and asymptotic angle `Σ_k` to the
+axis. The two hyperboloids touch along the whole ISA and roll on each
+other across it while sliding along it. Crossed helical gears (§6)
+replace these surfaces by their throat cylinders and touch at a point;
+hypoid gears (§21) replace them by cones. Here the gears sit on the
+hyperboloids themselves, with straight teeth along the generators --
+the textbook skew-axis pair the other two approximate.
+
+### 24.1 The pitch geometry, in closed form
+
+With `i = z_2 / z_1` and the gears counter-rotating about axes at Σ:
+
+```
+tan Σ_1 = sin Σ / (i + cos Σ),        Σ_2 = Σ − Σ_1,
+a_1 / a = (1 + i cos Σ) / (1 + i² + 2 i cos Σ).
+```
+
+(The direction from the relative angular velocity `−ω_2 ẑ_2 − ω_1 ẑ_1`;
+the position from the point of the common perpendicular where the
+relative velocity is parallel to it.) At the throat, gear *k* is a
+helical gear of helix angle `Σ_k`, so the normal module `m_n` is common
+and `a_k = m_n z_k / (2 cos Σ_k)`; the two statements of `a_1 / a` agree
+(a test checks five shaft angles), and so does rolling at the throat:
+`a_1 cos Σ_1 / (a_2 cos Σ_2) = z_1 / z_2`. Perpendicular shafts put the
+throat radii as `1 : i²`; shafts nearly parallel as the `1 : i` of a
+parallel pair, with `Σ_1 → 0`. A test drives both gears at their speeds
+and checks, at the common throat point, that the relative velocity is
+along the ISA (residual 5e-15) and that the two surface velocities agree
+across it and differ only along it. Inputs: `z_1`, `z_2`, Σ, `m_n`, `α_n`,
+the face widths (gear 1's defaults to `6 m_n`, gear 2's to the reach of
+the contact line across gear 1's face, `b_1 cos Σ_2 / cos Σ_1`), bores,
+hand (the mirror image). Reference set 16 : 24 at Σ = 90°, `m_n` = 2:
+`Σ_1` = 33.7°, `Σ_2` = 56.3°, `a_1` = 19.2, `a_2` = 43.3, *a* = 62.5.
+
+### 24.2 Gear 1 is built, gear 2 is generated
+
+**Frames.** Gear 1's frame is the world: axis *Z*, throat plane *z* = 0.
+Gear 2's axis passes (*a*, 0, 0) along (0, sign·sin Σ, cos Σ); gear 2 is
+built in its own frame (axis *Z*, gear 1's axis on its +*X* side) and
+placed by a half-turn about *Z*, `R_x(−sign Σ)` and the translation
+(`place_gear2`; a box's centre lands where the matrix says to 1e-9). A
+turn `θ_1` of gear 1 goes with `−θ_1 / i` of gear 2 about its own axis.
+The ISA is (0, sign·sin Σ_1, cos Σ_1) in gear 1's frame and (0, sign·sin
+Σ_2, cos Σ_2) in gear 2's: the same construction seen from either side.
+
+**Gear 1 by construction.** Its transverse section at the throat is the
+ordinary involute gear of `z_1` teeth, normal module `m_n` and helix
+angle `Σ_1` -- §4's rack-generated outline, fillets included. Every
+point (*r*, θ) of that outline then moves along the straight line
+through it that is tangent to its own circle and inclined at `Σ_1` to
+the axis -- the generator, through that point, of the hyperboloid of
+that radius: at parameter *s* it is at `(r cos θ − s sin Σ_1 sin θ, r sin
+θ + s sin Σ_1 cos θ, s cos Σ_1)`, linear in *s*. So the whole gear is the
+*ruled* loft between the mapped outlines at the two faces, vertices
+paired by index: exact, one solid (321 faces, 0.2 s), no boolean but the
+bore; root and tip circles land on their own hyperboloids `r(z)² = r_0² +
+z² tan² Σ_1` (the sections between the faces match the mapped outline to
+30 µm and 0.2 % of area, the face-end radii the hyperboloids to 0.02
+mm). The loft is OpenCASCADE's ThruSections in solid mode, which caps the
+planar ends with plane faces; `spiral_bevel.loft_through_stations` fills
+its caps as free-form surfaces because a bevel station is not planar,
+and on a whole-gear outline of 319 vertices that took minutes and
+gigabytes before it was noticed. Teeth that lean 34° across the face and
+thin toward it -- the transverse section away from the throat is the
+throat section stretched along the tangents, not rotated.
+
+**Gear 2 generated.** The throated wheel's pipeline (§22.2) with gear 1's
+teeth as the hob: gear 2's station planes, invariant under its own
+rotation, are pulled back through the inverse of gear 1's placement in
+gear 2's rotating frame (`station_plane_in_gear1_frame`, exact round
+trip) and the cutter is sectioned there by `MeshSectioner` (10 280
+triangles); one period `2π / z_1` of gear 1's turn with pitch folding is
+the whole sweep; the `z_2` spaces are cut from the tip-hyperboloid
+blank. Three things this family taught the pipeline:
+
+- *Teeth alone, never the whole gear.* Gear 2's tip lies the clearance
+  `h_f − h_a` = 0.5 mm above gear 1's root circle, so the 0.3 mm clip
+  margin beyond gear 2's tip ends 0.2 mm above gear 1's root -- where a
+  whole gear is nearly all material, and its root land swept gear 2's rim
+  band into one ring (679 % of the pitch). The cutter is gear 1's teeth
+  one by one (each clipped to 0.96 of its pitch wedge), tips carried the
+  clearance further out so gear 2's roots clear gear 1's tips.
+- *The cutter's root extension keeps the width the tooth has at gear 2's
+  tip.* Below `r_f + 0.9 c` the real fillets are replaced by a sector of
+  that width: the fillets flare to nearly the whole pitch just above the
+  root circle, and swept they ran neighbouring spaces together in the
+  margin (98 % of the pitch at the clip disc against 85 % at gear 2's
+  tip). Gear 1's material below that radius never enters gear 2's blank
+  -- the root and tip hyperboloids only diverge away from the ISA -- so
+  the generated gear is unchanged; only the tool's rim beyond the blank
+  is. And the cutter ends at gear 1's faces: extended 4 mm past them it
+  reached gear 2's throat station with teeth that do not exist and
+  widened every space by 5 % of the pitch (57 % at the pitch line
+  against 52.6 % from the real, finite gear 1). The exact mate of the
+  exported gear 1 is the envelope of that gear 1.
+- *The wedge is threaded across the stations.* Gear 2's teeth lean 56°:
+  the space's centre shifts 9.5° at the face edge against a 7.5° half
+  pitch, so "the space nearest angle 0" flipped to the neighbour there and
+  the loft ran through spaces a pitch apart (an empty solid). Each
+  station's wedge is now centred on the space nearest the neighbouring
+  station's centre, from the middle outward (`sweep_stations`, shared
+  with the globoid wheel), and the centre is measured just inside the
+  tip, not in the margin; a zero-area sliver the union leaves behind is
+  never a candidate (one at 1.3° was picked over the space at 7° and
+  the wedge cut that space in two).
+
+Every station then reads the same: the space 4.80-4.83 mm deep (the
+dedendum plus the margin), 86 % of the pitch at the tip band, centres
+running −9.5° … +9.5° across the face. Gear 2: 50 faces, 5.3 s at export
+quality (96 × 13 × 80), 3.6 s for the preview pair (48 × 7 × 60), STEP
+8.4 MB. **The pair meshes: overlap 6e-8 to 1e-7 of gear 2 at three
+phases (1.3-1.8e-7 coarse), 135 mm³ when gear 2 is turned half a pitch
+off.** And the point of generating: a gear 2 *constructed* like gear 1
+(the same recipe with `z_2`, `Σ_2`) -- what a naive design would draw --
+collides with gear 1 by 142 mm³ in place of the generated one; its teeth
+are 2.3 % of the pitch thicker at the pitch line and 12 % at the tip
+(26 % of the pitch against 15 %), because gear 1's fillet zone, 0.9 mm
+tall against a 0.5 mm clearance, reaches gear 2's tips. Straight
+generators on both members are not conjugate; the generated gear 2 is.
+
+### 24.3 Checks
+
+`tests/test_hyperboloidal.py`: the closed-form split of Σ and of *a*
+against the normal-module statement and against rolling at the throat
+for five shaft angles, the `1 : i²` and `1 : i` limits; the relative
+motion at the throat point is a screw about the ISA (both hands); the
+placement and the pulled-back plane agree with the matrices and round
+trip exactly; the refusals; the generator map lands on the hyperboloid
+of each point's radius, tangent to its circle, inclined by `Σ_1`; gear 1
+is one valid solid between its root and tip hyperboloids whose sections
+are the mapped outline; the generated gear 2 is one valid solid,
+`z_2`-fold symmetric, the dedendum deep, smaller than the constructed
+one; **the pair meshes below 1e-6 of gear 2 at three phases, collides
+half a pitch off, and the constructed gear 2 collides in its place**;
+STEP round trip as two solids; the derived values and the
+nearly-parallel warning.

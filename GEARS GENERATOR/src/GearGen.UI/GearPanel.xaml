@@ -225,6 +225,13 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsHyperboloidal, Mode=OneWay}" Checked="OnHyperboloidalChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_hyperboloidal.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Hyperboloidal" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsFaceGear, Mode=OneWay}" Checked="OnFaceGearChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_face_gear.png" Height="76" Stretch="Uniform"/>
@@ -407,6 +414,27 @@
                         <ComboBox ItemsSource="{Binding BeltTypes}" SelectedItem="{Binding BeltType}" Margin="0,0,0,8" Padding="6,4"/>
                         <local:NumericSpinner Label="Belt pitch" Value="{Binding BeltPitchDisplay}" Minimum="0.5" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Teeth shown" Value="{Binding CutterTeeth}" Minimum="3" Maximum="60" Step="1" DecimalPlaces="0"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsHyperboloidal, Converter={StaticResource B2V}}">
+                        <TextBlock Text="HYPERBOLOIDAL GEARS (SKEW AXES)" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Two shafts at a shaft angle and a centre distance, each gear on its true pitch surface: the hyperboloid that the relative screw axis sweeps about the gear's axis. The two hyperboloids touch along the whole screw axis (crossed helical gears touch at a point, hypoids approximate them by cones). Gear 1 has straight teeth along its hyperboloid's generators -- its throat section is a helical gear at the screw axis's lean -- and gear 2 is generated from it, so the pair meshes by construction. The normal module is common; Teeth above is gear 1's. The preview and the STEP are the pair in mesh."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Gear 2 teeth (z2)" Value="{Binding MateTeeth}" Minimum="4" Maximum="300" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Shaft angle" Value="{Binding ShaftAngleDeg}" Minimum="5" Maximum="175" Step="1" DecimalPlaces="1" Suffix="°"/>
+                        <local:NumericSpinner Label="Gear 2 face width (0 = contact line's reach)" Value="{Binding MateFaceWidthDisplay}" Minimum="0" Maximum="1000" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Gear 2 bore (0 = none)" Value="{Binding MateBoreDisplay}" Minimum="0" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <Grid Margin="0,6,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" GroupName="hyphand" Content="Right-hand" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsRightHand, Mode=OneWay}" Checked="OnRightHandChecked"/>
+                            <RadioButton Grid.Column="2" GroupName="hyphand" Content="Left-hand" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsLeftHand, Mode=OneWay}" Checked="OnLeftHandChecked"/>
+                        </Grid>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsEccentricCycloidal, Converter={StaticResource B2V}}">
@@ -787,6 +815,16 @@
                     <StackPanel>
                         <TextBlock Text="BELT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding TimingBeltText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsHyperboloidal, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="SCREW AXIS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding HyperboloidalText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="FACES" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding HyperboloidalMateText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsEccentricCycloidal, Converter={StaticResource B2V}}">

@@ -105,7 +105,15 @@ namespace GearGen.Geometry
         /// CentreDistanceMm, PinionDiameterMm, Hand, FaceWidthMm, BoreDiameterMm
         /// (the wheel's), PinionBoreDiameterMm. Exports the pair as one
         /// multi-body STEP.</summary>
-        EccentricCycloidal
+        EccentricCycloidal,
+        /// <summary>Hyperboloidal gears -- skew-axis gears on their true pitch
+        /// surfaces, see docs/gear-math.md section 24. Teeth = gear 1,
+        /// MateTeeth = gear 2, ShaftAngleDeg, ModuleMm = the normal module,
+        /// PressureAngleDeg, FaceWidthMm = gear 1's, MateFaceWidthMm = gear 2's
+        /// (0 = auto), Hand (the mirror image), BoreDiameterMm,
+        /// MateBoreDiameterMm. Gear 2 is generated from gear 1. Exports the
+        /// pair as one multi-body STEP.</summary>
+        Hyperboloidal
     }
 
     /// <summary>
@@ -353,6 +361,16 @@ namespace GearGen.Geometry
         /// <summary>A bore on the pinion's axis, inside the eccentric (0 = none).</summary>
         public double PinionBoreDiameterMm { get; set; } = 0.0;
 
+        // ---- hyperboloidal gears (docs/gear-math.md section 24) -- Family == Hyperboloidal only ----
+
+        public bool IsHyperboloidal => Family == GearFamily.Hyperboloidal;
+
+        /// <summary>Gear 2's face width along its own axis; 0 = the reach of the
+        /// contact line across gear 1's face.</summary>
+        public double MateFaceWidthMm { get; set; } = 0.0;
+
+        public double MateBoreDiameterMm { get; set; } = 0.0;
+
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
         /// standard table (GearViewModel's own copy of sprocket.py's); both
@@ -452,6 +470,10 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     p.BeltType = "T5"; p.BeltPitchMm = 5.0; p.BeltCurvilinear = false;
                     p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
+                    break;
+                case GearFamily.Hyperboloidal:
+                    p.Teeth = 16; p.MateTeeth = 24; p.ShaftAngleDeg = 90.0; p.ModuleMm = 2.0; p.PressureAngleDeg = 20.0;
+                    p.FaceWidthMm = 12.0; p.MateFaceWidthMm = 0.0; p.BoreDiameterMm = 0.0; p.MateBoreDiameterMm = 0.0; p.Hand = "right";
                     break;
                 case GearFamily.EccentricCycloidal:
                     p.Teeth = 20; p.CentreDistanceMm = 50.0; p.EccentricityMm = 0.0; p.PinionDiameterMm = 0.0; p.LeadMm = 0.0;
@@ -578,6 +600,11 @@ namespace GearGen.Geometry
                 case GearFamily.TimingBelt:
                     parts.Add("timingbelt"); parts.Add(BeltTypeSlug); parts.Add("beltpitch" + Len(BeltPitchMm));
                     parts.Add("teeth" + CutterTeeth); parts.Add("w" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.Hyperboloidal:
+                    parts.Add("hyperboloidal"); parts.Add("z" + Teeth + "x" + MateTeeth); parts.Add(size);
+                    parts.Add("sigma" + N(ShaftAngleDeg)); parts.Add("pa" + N(PressureAngleDeg)); parts.Add("fw" + Len(FaceWidthMm));
+                    parts.Add(hand + "H");
                     break;
                 case GearFamily.EccentricCycloidal:
                     parts.Add("ecgear"); parts.Add("z" + Teeth); parts.Add("a" + Len(CentreDistanceMm));

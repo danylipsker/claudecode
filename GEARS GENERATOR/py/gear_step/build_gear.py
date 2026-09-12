@@ -752,6 +752,33 @@ def export_hypoid_step(hp, path: str | Path, n_positions: int = 240, n_stations:
     _export_step_for_solidworks(pair, path, write_pcurves=False)
 
 
+def build_hyperboloidal_pair_solid(hp, n_positions: int = 96, n_stations: int = 13, n_profile: int = 80) -> bd.Compound:
+    """hp: hyperboloidal.HyperboloidalParams (docs/gear-math.md 24): gear 1
+    by construction and gear 2 generated from it, in mesh in gear 1's frame."""
+    from hyperboloidal import build_hyperboloidal_pair
+    g1, g2 = build_hyperboloidal_pair(hp, 0.0, 0.0, n_positions, n_stations, n_profile)
+    return bd.Compound(children=[g1, g2])
+
+
+def export_hyperboloidal_step(hp, path: str | Path, n_positions: int = 96, n_stations: int = 13, n_profile: int = 80) -> None:
+    _export_step_for_solidworks(build_hyperboloidal_pair_solid(hp, n_positions, n_stations, n_profile), path, write_pcurves=False)
+
+
+def export_hyperboloidal_profile_dxf(hp, path: str | Path) -> None:
+    """Gear 1's transverse section at its throat -- the helical gear of
+    helix angle Sigma_1 it is there (gear 2's teeth are generated, not a
+    2-D quantity)."""
+    from hyperboloidal import throat_outline
+    pts = throat_outline(hp, 1, 0.005)
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    if hp.bore_diameter_mm > 0:
+        msp.add_circle((0.0, 0.0), 0.5 * hp.bore_diameter_mm)
+    doc.saveas(str(path))
+
+
 def build_ec_pair_solid(ep, per_lobe: int = 24) -> bd.Compound:
     """ep: ec_gear.ECGearParams (docs/gear-math.md 23): the eccentric
     pinion and its wheel, in mesh in the wheel frame."""

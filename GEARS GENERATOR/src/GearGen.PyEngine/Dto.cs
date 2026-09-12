@@ -55,6 +55,8 @@ namespace GearGen.PyEngine
         [JsonProperty("pinion_diameter_mm")] public double? PinionDiameterMm;
         [JsonProperty("lead_mm")] public double? LeadMm;
         [JsonProperty("pinion_bore_diameter_mm")] public double? PinionBoreDiameterMm;
+        [JsonProperty("mate_face_width_mm")] public double? MateFaceWidthMm;
+        [JsonProperty("mate_bore_diameter_mm")] public double? MateBoreDiameterMm;
     }
 
     internal class EngineResponse

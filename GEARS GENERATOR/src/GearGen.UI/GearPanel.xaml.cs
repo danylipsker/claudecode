@@ -154,6 +154,11 @@ namespace GearGen.UI
             ViewModel?.SelectEccentricCycloidalCard();
         }
 
+        private void OnHyperboloidalChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectHyperboloidalCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

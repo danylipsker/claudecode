@@ -49,7 +49,7 @@ import math
 import build123d as bd
 import numpy as np
 
-from generation import MeshSectioner, swept_station, space_tool, cut_spaces
+from generation import MeshSectioner, sweep_stations, space_tool, cut_spaces
 from globoid_worm import GloboidWormParams, thread_solids
 
 
@@ -195,9 +195,8 @@ def fold_copies(gp: GloboidWormParams) -> int:
 def wheel_space_sections(gp: GloboidWormParams, hob, z_stations, disc_radii, n_positions: int, tolerance: float = 0.005):
     turns = worm_turns_rad(gp, n_positions)
     pitch = 2.0 * math.pi / gp.wheel_teeth
-    return [swept_station(hob, [station_plane_in_worm_frame(gp, h, t) for t in turns], R, R + 1.0, h, tolerance,
-                          fold_pitch_rad=pitch, fold_copies=fold_copies(gp), wedge_half_angle_rad=0.5 * pitch)
-            for h, R in zip(z_stations, disc_radii)]
+    return sweep_stations(hob, lambda h, t: station_plane_in_worm_frame(gp, h, t), list(z_stations), list(disc_radii), turns,
+                          pitch, fold_copies(gp), 0.5 * pitch, tolerance)
 
 
 def wheel_stations(gp: GloboidWormParams, n_stations: int):

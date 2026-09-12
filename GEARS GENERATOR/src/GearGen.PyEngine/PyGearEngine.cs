@@ -205,6 +205,20 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsHyperboloidal)
+            {
+                // As the screw pair: the module is the NORMAL module, converted
+                // client-side; teeth, face width, bore, pressure angle and hand
+                // (gear 1's) are in the base request above.
+                req.GearType = "hyperboloidal";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;
+                req.ShaftAngleDeg = p.ShaftAngleDeg;
+                req.MateFaceWidthMm = p.MateFaceWidthMm;
+                req.MateBoreDiameterMm = p.MateBoreDiameterMm;
+                return req;
+            }
+
             if (p.IsEccentricCycloidal)
             {
                 // Everything in mm regardless of Unit (converted client-side); 0 = auto

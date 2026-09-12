@@ -458,6 +458,64 @@ def chain_link_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def hyperboloidal_params_from_request(p: dict):
+    """Hyperboloidal pair -- docs/gear-math.md 24. z = gear 1, mate_teeth =
+    gear 2, shaft_angle_deg = Sigma, module_mm = the NORMAL module (already
+    in mm), face_width_mm = gear 1's, mate_face_width_mm = gear 2's (0 =
+    the contact line's reach), bore_diameter_mm / mate_bore_diameter_mm."""
+    from hyperboloidal import HyperboloidalParams
+    return HyperboloidalParams(
+        z1=int(p["z"]),
+        z2=int(p.get("mate_teeth") or p["z"]),
+        shaft_angle_deg=float(p.get("shaft_angle_deg") or 90.0),
+        normal_module_mm=float(p["module_mm"]),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        face_width_mm=float(p.get("face_width_mm") or 0.0),
+        mate_face_width_mm=float(p.get("mate_face_width_mm") or 0.0),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        hand=str(p.get("hand", "right")),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        mate_bore_diameter_mm=float(p.get("mate_bore_diameter_mm", 0.0)),
+    )
+
+
+def hyperboloidal_derived_values(hp) -> tuple[dict, list]:
+    import math as _m
+    hp.validate()
+    warnings = []
+    s1, s2 = _m.degrees(hp.sigma1_rad), _m.degrees(hp.sigma2_rad)
+    if s1 < 5.0 or s2 < 5.0:
+        warnings.append(f"The screw axis is within {min(s1, s2):.1f} degrees of a shaft: the pair is nearly a parallel-axis helical pair; "
+                        f"a hyperboloidal pair earns its keep at larger skews.")
+    if hp.face_width(2) < 1.5 * hp.m_n:
+        warnings.append(f"Gear 2's face, {hp.face_width(2):.2f} mm at the contact line's reach, is under 1.5 modules -- a wider gear 1 face "
+                        f"(or an explicit mate face width) is usual.")
+    derived = {
+        "module_mm": hp.m_n,
+        "diametral_pitch": 25.4 / hp.m_n,
+        "ratio": hp.ratio,
+        "shaft_angle_deg": hp.shaft_angle_deg,
+        "sigma1_deg": s1,
+        "sigma2_deg": s2,
+        "centre_distance_mm": hp.centre_distance,
+        "throat_pitch_diameter_mm": 2.0 * hp.a1,
+        "mate_throat_pitch_diameter_mm": 2.0 * hp.a2,
+        "throat_radius_ratio": hp.a2 / hp.a1,
+        "transverse_module_mm": hp.m_n / _m.cos(hp.sigma1_rad),
+        "mate_transverse_module_mm": hp.m_n / _m.cos(hp.sigma2_rad),
+        "tip_diameter_mm": 2.0 * (hp.a1 + hp.addendum),
+        "root_diameter_mm": 2.0 * (hp.a1 - hp.dedendum),
+        "mate_tip_diameter_mm": 2.0 * (hp.a2 + hp.addendum),
+        "mate_root_diameter_mm": 2.0 * (hp.a2 - hp.dedendum),
+        "face_width_mm": hp.face_width(1),
+        "mate_face_width_mm": hp.face_width(2),
+        "face_tip_diameter_mm": 2.0 * hp.radius_at(1, hp.a1 + hp.addendum, 0.5 * hp.face_width(1)),
+        "mate_face_tip_diameter_mm": 2.0 * hp.radius_at(2, hp.a2 + hp.addendum, 0.5 * hp.face_width(2)),
+    }
+    return derived, warnings
+
+
 def ec_gear_params_from_request(p: dict):
     """Eccentrically-cycloidal pair -- docs/gear-math.md 23. teeth = the
     wheel's; centre_distance_mm; eccentricity_mm, pinion_diameter_mm and
@@ -966,6 +1024,12 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "hyperboloidal":
+            from hyperboloidal import throat_outline
+            hp = hyperboloidal_params_from_request(req)
+            derived, warnings = hyperboloidal_derived_values(hp)
+            outline = throat_outline(hp, 1, 0.01)                   # gear 1's transverse section at the throat
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "ec_gear":
             from ec_gear import wheel_outline
             ep = ec_gear_params_from_request(req)
@@ -1072,7 +1136,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_step":
         path = req["path"]
-        if gear_type == "ec_gear":
+        if gear_type == "hyperboloidal":
+            from build_gear import export_hyperboloidal_step
+            export_hyperboloidal_step(hyperboloidal_params_from_request(req), path)   # the pair, gear 2 generated at export quality
+        elif gear_type == "ec_gear":
             from build_gear import export_ec_step
             export_ec_step(ec_gear_params_from_request(req), path)     # the pair
         elif gear_type == "globoid_worm":
@@ -1139,7 +1206,10 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_dxf":
         path = req["path"]
-        if gear_type == "ec_gear":
+        if gear_type == "hyperboloidal":
+            from build_gear import export_hyperboloidal_profile_dxf
+            export_hyperboloidal_profile_dxf(hyperboloidal_params_from_request(req), path)
+        elif gear_type == "ec_gear":
             from build_gear import export_ec_profile_dxf
             export_ec_profile_dxf(ec_gear_params_from_request(req), path)
         elif gear_type == "globoid_worm":
@@ -1208,7 +1278,12 @@ def handle(req: dict) -> dict:
         # helix twist, cone taper etc. are all visible exactly as they'll
         # export, not just implied by 2D parameters.
         path = req["path"]
-        if gear_type == "ec_gear":
+        if gear_type == "hyperboloidal":
+            from build_gear import build_hyperboloidal_pair_solid
+            import build123d as bd
+            solid = build_hyperboloidal_pair_solid(hyperboloidal_params_from_request(req), n_positions=48, n_stations=7, n_profile=60)
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "ec_gear":
             from build_gear import build_ec_pair_solid
             import build123d as bd
             solid = build_ec_pair_solid(ec_gear_params_from_request(req))

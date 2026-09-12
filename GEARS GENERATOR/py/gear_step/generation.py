@@ -363,22 +363,36 @@ def space_wires(sections: list[Polygon], disc_radii: list[float], z_stations: li
 
 def swept_station(solid, planes: list[bd.Plane], R: float, half_size: float, z: float,
                   tolerance: float = 0.005, fold_pitch_rad: float | None = None, fold_copies: int = 0,
-                  wedge_half_angle_rad: float | None = None, rim_band_mm: float = 1.0,
-                  max_rim_fraction: float = 0.97) -> Polygon:
+                  wedge_half_angle_rad: float | None = None, band_mm: tuple[float, float] = (0.3, 1.3),
+                  max_rim_fraction: float = 0.97, centre_hint_rad: float = 0.0) -> Polygon:
     """One station of the generated member: the union over the phases of
     the generator's cross-sections (each plane the station plane pulled
     back into the generator's frame at that phase, its axes the member's
     own so the local coordinates are the member's), clipped to the disc of
     radius R about the station's axis point, made one piece and tidied.
     `solid` is an OpenCASCADE shape (sectioned exactly, then tessellated)
-    or a MeshSectioner (tessellated once, sectioned in numpy)."""
+    or a MeshSectioner (tessellated once, sectioned in numpy). With a
+    wedge, the target space is the one nearest centre_hint_rad (see
+    sweep_stations)."""
+    return _swept(solid, planes, R, half_size, z, tolerance, fold_pitch_rad, fold_copies, wedge_half_angle_rad,
+                  band_mm, max_rim_fraction, centre_hint_rad)[0]
+
+
+def _angle_gap(a: float, b: float) -> float:
+    return abs((a - b + math.pi) % (2.0 * math.pi) - math.pi)
+
+
+def _swept(solid, planes, R, half_size, z, tolerance, fold_pitch_rad, fold_copies, wedge_half_angle_rad,
+           band_mm, max_rim_fraction, centre_hint_rad):
+    """swept_station's body: (section, the space's centre angle or None)."""
     if isinstance(solid, MeshSectioner):
         tris = [poly for plane in planes for poly in solid.section_polygons(plane)]
     else:
         tris = [Polygon(tri) for plane in planes for tri in section_triangles(solid, plane, half_size, tolerance)]
     if not tris:
-        return Polygon()
+        return Polygon(), None
     swept = unary_union(tris)
+    centre = None
     if fold_pitch_rad and fold_copies > 0:
         # A hob spanning several pitches of the member (a worm's 4-turn
         # thread) cuts several identical spaces per plane; each neighbour's
@@ -394,18 +408,32 @@ def swept_station(solid, planes: list[bd.Plane], R: float, half_size: float, z: 
         # touched by the sweep -- so the clip removes only the neighbours.
         # The teeth are helical, so at this station the space's centre is
         # not at angle 0 but where the sweep puts it: the wedge is centred
-        # on the space's own mid-angle over the outermost rim_band_mm (a
-        # tooth land can be a few tenths of a degree, the helical shift a
-        # degree -- a wedge fixed at 0 cut into the neighbour). A space
-        # wider than max_rim_fraction of the pitch at the rim means the
-        # teeth have run pointed: refused, with the reason.
+        # on the space's own mid-angle over the band band_mm[0]..band_mm[1]
+        # below the rim -- just inside the member's tip, where neighbouring
+        # spaces are cleanly apart, not in the margin beyond it where a
+        # cutter's root extension may flare (a tooth land can be a few
+        # tenths of a degree, the helical shift a degree -- a wedge fixed
+        # at 0 cut into the neighbour). A space wider than max_rim_fraction
+        # of the pitch there means the teeth have run pointed: refused,
+        # with the reason.
         inside = swept.intersection(disc)
         pieces = [g for g in getattr(inside, "geoms", [inside]) if not g.is_empty]
         if not pieces:
-            return Polygon()
-        central = min(pieces, key=lambda g: abs(math.atan2(g.centroid.y, g.centroid.x)))
+            return Polygon(), None
+        # The target is the real piece nearest the hint -- never a zero-area
+        # sliver the union left behind (one such sliver at 1.3 deg was picked
+        # over the space at 7 deg and the wedge then cut that space in two),
+        # and never "the one nearest angle 0" when the helical shift passes
+        # half a pitch across the face (the neighbour is then nearer, and a
+        # loft through spaces a pitch apart is garbage).
+        biggest = max(g.area for g in pieces)
+        real = [g for g in pieces if g.area > 1e-3 * biggest]
+        central = min(real, key=lambda g: _angle_gap(math.atan2(g.centroid.y, g.centroid.x), centre_hint_rad))
         xs, ys = np.array(central.exterior.coords).T
-        band = np.arctan2(ys, xs)[np.hypot(xs, ys) > R - rim_band_mm]
+        rr_pts = np.hypot(xs, ys)
+        c0 = math.atan2(central.centroid.y, central.centroid.x)
+        band = np.arctan2(ys, xs)[(rr_pts > R - band_mm[1]) & (rr_pts < R - band_mm[0])]
+        band = (band - c0 + math.pi) % (2.0 * math.pi) - math.pi + c0      # unwrapped about the piece's own centre
         if band.size == 0:
             raise ValueError("generation: the swept space at z=%.2f does not reach the rim" % z)
         width = float(band.max() - band.min())
@@ -416,7 +444,31 @@ def swept_station(solid, planes: list[bd.Plane], R: float, half_size: float, z: 
         w, rr = wedge_half_angle_rad, 4.0 * R
         arc = [(rr * math.cos(a), rr * math.sin(a)) for a in np.linspace(centre - w, centre + w, 16)]
         swept = swept.intersection(Polygon([(0.0, 0.0)] + arc))
-    return tidy(one_piece(swept.intersection(disc), z, "clipped"))
+    return tidy(one_piece(swept.intersection(disc), z, "clipped")), centre
+
+
+def sweep_stations(solid, plane_fn, z_stations, disc_radii, turns, fold_pitch_rad: float, fold_copies: int,
+                   wedge_half_angle_rad: float, tolerance: float = 0.005, max_rim_fraction: float = 0.97) -> list[Polygon]:
+    """swept_station over every station, the target space threaded from
+    the middle station outward: each station's wedge is centred on the
+    space nearest the neighbouring station's centre, so the loft follows
+    ONE space across the face even where its helical shift passes half a
+    pitch (the hyperboloidal gear 2's teeth lean 56 degrees: 9.5 degrees
+    of shift at the face edge against a 7.5 degree half pitch, and "the
+    space nearest angle 0" flipped to the neighbour there). plane_fn(h,
+    turn) is the station plane pulled back into the generator's frame."""
+    order = sorted(range(len(z_stations)), key=lambda i: (abs(z_stations[i]), z_stations[i]))
+    sections, centres = [None] * len(z_stations), [None] * len(z_stations)
+    for i in order:
+        h = z_stations[i]
+        done = [j for j in range(len(z_stations)) if centres[j] is not None and (z_stations[j] == 0.0 or (z_stations[j] > 0) == (h > 0))]
+        hint = centres[min(done, key=lambda j: abs(z_stations[j] - h))] if done else 0.0
+        R = disc_radii[i]
+        sections[i], centres[i] = _swept(solid, [plane_fn(h, t) for t in turns], R, R + 1.0, h, tolerance, fold_pitch_rad,
+                                         fold_copies, wedge_half_angle_rad, (0.3, 1.3), max_rim_fraction, hint)
+        if centres[i] is None:
+            centres[i] = hint
+    return sections
 
 
 def space_tool(sections: list[Polygon], disc_radii: list[float], z_stations: list[float], n_profile: int = 80) -> bd.Solid:

@@ -90,7 +90,8 @@ namespace GearGen.App
                 bool hypoid = e.Args.Any(a => a == "--hypoid");
                 bool globoid = e.Args.Any(a => a == "--globoid");
                 bool ecgear = e.Args.Any(a => a == "--ecgear");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket, chainLink, timingWheel, timingBelt, hypoid, globoid, ecgear);
+                bool hyperboloidal = e.Args.Any(a => a == "--hyperboloidal");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket, chainLink, timingWheel, timingBelt, hypoid, globoid, ecgear, hyperboloidal);
                 return;
             }
 
@@ -290,7 +291,8 @@ namespace GearGen.App
             bool herringbone = false, bool screw = false, bool planetary = false, bool cycloidal = false,
             bool cycdrive = false, bool resetTest = false, bool tall = false, bool spiralBevel = false, bool zerol = false,
             bool faceGear = false, bool sprocket = false, bool chainLink = false,
-            bool timingWheel = false, bool timingBelt = false, bool hypoid = false, bool globoid = false, bool ecgear = false)
+            bool timingWheel = false, bool timingBelt = false, bool hypoid = false, bool globoid = false, bool ecgear = false,
+            bool hyperboloidal = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -355,6 +357,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectGloboidWormCard();
                 if (ecgear)
                     win.Panel.ViewModel.SelectEccentricCycloidalCard();
+                if (hyperboloidal)
+                    win.Panel.ViewModel.SelectHyperboloidalCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)
@@ -435,6 +439,7 @@ namespace GearGen.App
                         : hypoid ? GearGen.Geometry.GearFamily.Hypoid
                         : globoid ? GearGen.Geometry.GearFamily.GloboidWorm
                         : ecgear ? GearGen.Geometry.GearFamily.EccentricCycloidal
+                        : hyperboloidal ? GearGen.Geometry.GearFamily.Hyperboloidal
                         : GearGen.Geometry.GearFamily.Cylindrical;
                     // the card split within a family: a helix for Spur/Helical and Rack/Helical rack, the spiral card for spiral/zerol
                     bool helical = (helixOverride.HasValue && helixOverride.Value > 0) || spiralBevel;
