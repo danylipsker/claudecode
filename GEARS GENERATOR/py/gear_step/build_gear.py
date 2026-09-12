@@ -680,6 +680,38 @@ def export_chain_link_plate_dxf(cp, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def export_timing_wheel_step(tp, path: str | Path) -> None:
+    from timing_belt import build_pulley_solid
+    _export_step_for_solidworks(build_pulley_solid(tp), path)
+
+
+def export_timing_wheel_profile_dxf(tp, path: str | Path) -> None:
+    from timing_belt import full_pulley_outline
+    pts = [tuple(p) for p in full_pulley_outline(tp)]
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
+def export_timing_belt_step(bp, path: str | Path) -> None:
+    from timing_belt import build_timing_belt_solid
+    _export_step_for_solidworks(build_timing_belt_solid(bp), path)
+
+
+def export_timing_belt_profile_dxf(bp, path: str | Path) -> None:
+    """Flat 2D cross-section (the belt IS flat) as a DXF."""
+    from timing_belt import belt_strip_polygon
+    poly = belt_strip_polygon(bp).simplify(0.001, preserve_topology=True)
+    pts = [tuple(p) for p in poly.exterior.coords][:-1]
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    msp = doc.modelspace()
+    msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    doc.saveas(str(path))
+
+
 if __name__ == "__main__":
     out = Path(__file__).parent / "out"
     out.mkdir(exist_ok=True)

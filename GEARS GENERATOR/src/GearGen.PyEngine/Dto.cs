@@ -46,6 +46,7 @@ namespace GearGen.PyEngine
         [JsonProperty("face_outer_radius_mm")] public double? FaceOuterRadiusMm;
         [JsonProperty("chain_pitch_mm")] public double? ChainPitchMm;
         [JsonProperty("outside_diameter_mm")] public double? OutsideDiameterMm;
+        [JsonProperty("belt_pitch_mm")] public double? BeltPitchMm;
     }
 
     internal class EngineResponse

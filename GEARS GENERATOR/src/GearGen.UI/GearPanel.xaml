@@ -232,6 +232,20 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsTimingWheel, Mode=OneWay}" Checked="OnTimingWheelChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_timing_wheel.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Timing wheel" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsTimingBelt, Mode=OneWay}" Checked="OnTimingBeltChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_timing_belt.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Timing belt" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
@@ -352,6 +366,21 @@
                         <ComboBox ItemsSource="{Binding ChainNumbers}" SelectedItem="{Binding ChainNumber}" Margin="0,0,0,8" Padding="6,4"/>
                         <local:NumericSpinner Label="Chain pitch" Value="{Binding ChainPitchDisplay}" Minimum="0.1" Maximum="200" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Roller diameter" Value="{Binding RollerDiameterDisplay}" Minimum="0.1" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsTimingWheel, Converter={StaticResource B2V}}">
+                        <TextBlock Text="TIMING WHEEL" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="A toothed pulley for a timing belt: teeth = groove count, and the belt's own pitch sets the pulley's pitch circle (a true circle -- a belt is one continuous flexible band, not rigid links like a chain, so there is no polygon effect). Pick this together with a matching Timing belt (same belt pitch)."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Belt pitch" Value="{Binding BeltPitchDisplay}" Minimum="0.5" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="{Binding IsTimingBelt, Converter={StaticResource B2V}}">
+                        <TextBlock Text="TIMING BELT" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="A modelled segment of timing belt: a flexible band with trapezoidal teeth at the given pitch, wide at the backing and narrower at the tip -- the same shape a matching Timing wheel's grooves are cut to receive. 'Teeth shown' is just how much of the belt to model, not a meshing dimension."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <local:NumericSpinner Label="Belt pitch" Value="{Binding BeltPitchDisplay}" Minimum="0.5" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Teeth shown" Value="{Binding CutterTeeth}" Minimum="3" Maximum="60" Step="1" DecimalPlaces="0"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">
@@ -656,6 +685,18 @@
                     <StackPanel>
                         <TextBlock Text="LINK DIMENSIONS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding SprocketDiametersText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsTimingWheel, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="TIMING BELT FIT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding TimingWheelText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsTimingBelt, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="BELT" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding TimingBeltText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsSpiralBevel, Converter={StaticResource B2V}}">

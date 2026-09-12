@@ -205,6 +205,21 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsTimingWheel)
+            {
+                req.GearType = "timing_wheel";
+                req.BeltPitchMm = p.BeltPitchMm;
+                return req;
+            }
+
+            if (p.IsTimingBelt)
+            {
+                req.GearType = "timing_belt";
+                req.BeltPitchMm = p.BeltPitchMm;
+                req.CutterTeeth = p.CutterTeeth;   // how many teeth the modelled segment shows
+                return req;
+            }
+
             if (p.IsChainLink)
             {
                 // No teeth, no module: entirely sized by the chain itself.

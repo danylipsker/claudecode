@@ -1,6 +1,79 @@
-# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/chain-link/worm/rack/helical-rack/internal gears + real 3D viewer
+# GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/chain-link/timing-wheel/timing-belt/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## One roller-chain link (latest)
+## Timing wheels (pulleys) and timing belts (latest)
+
+The second drive-element pair the user asked for (item 2, clarified as
+"timing wheels", and item 4, "timing belts"), alongside the roller
+chain/sprocket pair already committed. `timing_belt.py`,
+docs/gear-math.md §20 -- two new families, Timing wheel and Timing belt.
+
+- **A belt is not a chain**: a chain is rigid pitch-length links, so
+  wrapped around a sprocket its rollers sit on a regular polygon (§18.1).
+  A timing belt is one continuous, flexible, inextensible band -- wrapped
+  around a pulley its pitch line lies on a **true circle**, `R = z p /
+  (2 pi)`, no polygon effect at all. That single fact is also exactly the
+  ordinary rolling-without-slip kinematics `involute.rack_point_to_gear_
+  frame` already implements for a rack rolling on a gear (§4) -- so the
+  belt's own trapezoidal tooth (wide at its root, the belt's backing,
+  narrower at its tip -- the ordinary ready-made-tooth shape, just without
+  an involute flank) IS the rack profile, and wrapping it onto the pulley
+  is that same function evaluated once at phi=0 across the tooth's own
+  four corners. **No envelope or union needed at all**, unlike every other
+  generated-tooth family here: the tooth's shape is *given*, not derived,
+  so a single evaluation of where its points sit when wrapped is the whole
+  answer -- and it worked correctly on the first build, no iteration
+  needed, confirmed by rendering.
+- Because the belt tooth narrows root-to-tip, the pulley's own tooth
+  (the material between two grooves) automatically widens the other way:
+  an ordinary tapering tooth falls out of the construction directly,
+  the opposite experience from the sprocket (§18.2), where a moving
+  generator does not apply at all and a bespoke widening-gap
+  construction was needed instead -- confirmation, not contradiction: a
+  belt genuinely is a flexible rack (conforms smoothly to the pulley at
+  every point), a chain genuinely is not (its rollers move rigidly with
+  the sprocket once seated), and the right construction for each follows
+  from which one actually holds.
+- The belt itself needs no wrapping at all -- flat, it is literally
+  `rack.py`'s own construction (a bar with a repeating tooth profile),
+  just thin, with teeth on one face.
+- **Checks** (`tests/test_timing_belt.py`, 9 tests; suite 129): the
+  pulley's pitch radius matches `z p/(2 pi)` exactly; the belt tooth's
+  own corner widths confirm the taper direction the pulley-tooth argument
+  depends on; the built pulley is one valid, z-fold-symmetric solid over
+  three tooth-count/pitch combinations; **a belt tooth -- wrapped by
+  `rack_point_to_gear_frame` called directly, not through this module's
+  own pulley-building wrapper -- seated in every groove overlaps the
+  pulley by nothing beyond floating-point noise, and collides by
+  essentially its whole own volume turned half a pitch onto the land**;
+  the belt strip is one valid manifold solid of the requested length;
+  both solids round-trip through STEP.
+- **UI**: Timing wheel and Timing belt cards, their own sections (belt
+  pitch; the belt also shows how many teeth to model, not a meshing
+  dimension), TIMING BELT FIT / BELT derived rows, no teeth/module/
+  pressure-angle fields for either (a timing belt has no bore either, and
+  -- like the chain link -- every field that genuinely does not apply to
+  it, bore/profile-shift/addendum-dedendum/backlash, is reset on entry),
+  reset defaults, names like
+  `timingwheel_z20_beltpitch5_fw8_bore6` /
+  `timingbelt_beltpitch5_teeth12_w8`, thumbnails, `--uismoke
+  --timingwheel` / `--timingbelt`. Verified headless (export + reset for
+  both) and by SolidWorks imports (wheel: 4 s, native, from an already-running SolidWorks session, 3D Interconnect off; belt:
+  4 s, native, same session, 3D Interconnect off).
+- **v1 simplifications, stated in the docs**: a plain trapezoidal tooth,
+  no root fillet; the belt's pitch line is assumed to coincide with the
+  pulley's outside diameter rather than a standard-specific pitch-line
+  differential; tooth proportions are simple, stated ratios of the belt
+  pitch, not a transcribed standard table; the curvilinear HTD/GT2 profile
+  (circular-arc teeth, now very common) is documented as a future
+  addition, not implemented here.
+
+This closes the second of the two drive-element pairs the user asked for
+("continue with the rest of the gears missing" extended to sprocket
+gears, timing wheels, one chain link, timing belts) -- 18 families now,
+each with math, tests, docs, server dispatch, UI, thumbnail, SolidWorks
+import and a PROGRESS entry.
+
+## One roller-chain link
 
 Second of the sprocket/chain pair (item 3 of the user's list: "sprocket
 gear links according to standards (only one link)"). One pitch length of

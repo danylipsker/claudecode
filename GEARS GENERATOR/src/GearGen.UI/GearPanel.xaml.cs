@@ -129,6 +129,16 @@ namespace GearGen.UI
             ViewModel?.SelectChainLinkCard();
         }
 
+        private void OnTimingWheelChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectTimingWheelCard();
+        }
+
+        private void OnTimingBeltChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectTimingBeltCard();
+        }
+
         private void OnRackChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectRackCard();

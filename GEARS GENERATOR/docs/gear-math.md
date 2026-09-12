@@ -1466,3 +1466,78 @@ floating-point noise at several pitch positions and collides by more than
 10% of its own volume turned half a pitch onto a tooth** -- the real link
 against the real wheel, both built by this project's own code, over two
 different chain sizes; the assembly round-trips through STEP as ten solids.
+
+## 20. Timing wheels (pulleys) and timing belts
+
+The second drive-element pair the user asked for, alongside the roller
+chain and sprocket (sections 18-19): a toothed pulley and the flexible
+toothed belt it drives, positive (form-fit, non-slip) engagement instead
+of friction. `timing_belt.py`.
+
+### 20.1 A belt is not a chain: a true circle, not a polygon
+
+A chain is rigid pitch-length links, so wrapped around a sprocket its
+rollers sit on a regular polygon (section 18.1). A timing belt is one
+continuous, flexible, inextensible band: wrapped around a pulley its pitch
+LINE lies exactly on a true circle, no polygon effect at all --
+
+```
+R = z p / (2 pi)
+```
+
+(z teeth, belt pitch p) -- which is exactly the ordinary rolling-without-
+slip kinematics `involute.rack_point_to_gear_frame` already implements for
+a rack rolling on a gear (section 4). That single fact is the entire
+construction here: the belt's own tooth cross-section -- a trapezoid, wide
+at its root (the belt's backing) and narrower at its tip, the ordinary
+wide-base tooth shape, just without an involute flank -- IS the rack
+profile. Wrapping it onto the pulley is `rack_point_to_gear_frame` evaluated
+at `phi = 0` across the tooth's own four corner points, which traces the
+groove's correctly-curved outline **directly, with no envelope or union
+needed at all** -- unlike an involute flank, which is *derived* by
+sweeping the rack through a range of roll angles, this tooth's shape is
+*given*, so a single evaluation of where each of its points sits when
+wrapped is the whole answer.
+
+Because the belt tooth narrows from root (at the pulley's outside diameter
+-- this module's stated simplification: the belt's backing rests directly
+on the OD, i.e. the pitch line coincides with it) to tip (toward the axis),
+the material a groove leaves *between* two adjacent grooves -- the pulley's
+own tooth -- automatically widens the other way and narrows toward the OD:
+an ordinary tapering tooth, produced directly by ordinary rack-and-pinion
+kinematics. This is the opposite experience from the sprocket (section
+18.2), where a moving generator does not apply at all and a bespoke
+widening-gap construction was needed instead -- confirmation, not
+contradiction: a timing belt genuinely IS a flexible rack (conforming
+smoothly to the pulley at every point, all the time), while a chain
+genuinely is not (its rollers move rigidly with the sprocket once seated,
+section 18.2's finding), and the right construction for each follows from
+which one actually holds.
+
+The belt itself (`build_timing_belt_solid`) needs no wrapping at all --
+flat, it is literally `rack.py`'s own construction, a bar with a repeating
+tooth profile, just thin and with teeth on one face only.
+
+### 20.2 Checks
+
+`tests/test_timing_belt.py`: the pulley's pitch radius matches `z p / (2
+pi)` exactly; the belt tooth's own corner widths confirm the root-wide,
+tip-narrow taper the pulley-tooth argument above depends on; the built
+pulley is one valid, z-fold-symmetric solid over three tooth-count/pitch
+combinations; **a belt tooth -- wrapped onto the pulley by
+`rack_point_to_gear_frame` called directly, not through this module's own
+pulley-building wrapper -- seated in every groove overlaps the pulley by
+nothing beyond floating-point noise, and collides by essentially its
+whole own volume turned half a pitch onto the land**; the belt strip is
+one valid manifold solid of the requested length; both solids round-trip
+through STEP.
+
+**v1 simplifications, stated plainly**: a plain trapezoidal tooth, no root
+fillet (real trapezoidal timing-belt standards, e.g. the T- or XL/L/H-
+series, round the root for stress relief); the pitch-line-at-OD
+convention above, rather than a standard-specific pitch-line differential;
+tooth proportions (height, root/tip width) are simple, stated ratios of
+the belt pitch, not transcribed from a specific standard's table -- the
+curvilinear HTD/GT2 profile (a circular-arc tooth, higher torque capacity,
+now extremely common) is a documented, un-implemented alternative for a
+future session, not this one.

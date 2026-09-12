@@ -64,7 +64,7 @@ namespace GearGen.UI
 
         public string ModuleOrDpLabel =>
             (IsInch ? "Diametral pitch" : "Module") + (IsAnyBevel ? " (outer/heel)" : IsWorm ? " (axial)" : "");
-        public string FaceWidthLabel => IsWorm ? "Threaded length" : "Face width";
+        public string FaceWidthLabel => IsWorm ? "Threaded length" : IsTimingBelt ? "Belt width" : "Face width";
         public string BoreOrHoleLabel =>
             IsRack ? "Mounting hole diameter (0 = none)"
             : IsCycloidalDrive ? "Eccentric bearing bore (0 = none)"
@@ -107,9 +107,9 @@ namespace GearGen.UI
         public bool IsNotInternal => !IsInternal;
         /// <summary>A chain link has no bore, teeth, or face-width concept
         /// of its own -- every dimension comes from the chain itself.</summary>
-        public bool ShowBoreField => !IsInternal && !IsChainLink;
+        public bool ShowBoreField => !IsInternal && !IsChainLink && !IsTimingBelt;
         public bool ShowFaceWidthField => !IsChainLink;
-        public bool HasTeethField => !IsWorm && !IsChainLink;
+        public bool HasTeethField => !IsWorm && !IsChainLink && !IsTimingBelt;
         public bool IsHerringbone
         {
             get => _p.Family == GearFamily.Herringbone;
@@ -145,7 +145,7 @@ namespace GearGen.UI
         /// traced by a rolling circle (docs/gear-math.md 14) and a cycloidal
         /// drive's by its rollers (15), so the pressure-angle block is hidden
         /// for both rather than shown and ignored.</summary>
-        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive && !IsSprocket && !IsChainLink;
+        public bool IsNotCycloidal => !IsCycloidal && !IsCycloidalDrive && !IsSprocket && !IsChainLink && !IsTimingWheel && !IsTimingBelt;
 
         public bool IsCycloidalDrive
         {
@@ -269,6 +269,52 @@ namespace GearGen.UI
             OnChanged(nameof(BoreDiameterDisplay));
         }
 
+        // ---- timing wheel / timing belt (docs/gear-math.md section 20) ----
+
+        public bool IsTimingWheel
+        {
+            get => _p.Family == GearFamily.TimingWheel;
+            set { if (value) { _p.Family = GearFamily.TimingWheel; OnChanged(); FamilyChanged(); } }
+        }
+        public bool IsTimingBelt
+        {
+            get => _p.Family == GearFamily.TimingBelt;
+            set { if (value) { _p.Family = GearFamily.TimingBelt; OnChanged(); FamilyChanged(); } }
+        }
+
+        public double BeltPitchDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.BeltPitchMm) : _p.BeltPitchMm;
+            set { _p.BeltPitchMm = Math.Max(0.1, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+
+        public void SelectTimingWheelCard()
+        {
+            IsTimingWheel = true;
+            HelixAngleDeg = 0.0;
+            if (Teeth < 8) Teeth = 20;
+            if (_p.BeltPitchMm <= 0) _p.BeltPitchMm = 5.0;
+            if (_p.BoreDiameterMm <= 0) { _p.BoreDiameterMm = 6.0; OnChanged(nameof(BoreDiameterDisplay)); }
+        }
+
+        /// <summary>Like ChainLink, a belt has no teeth/module/bore/profile-
+        /// shift/addendum/backlash concept -- reset every one so a stale
+        /// value from whatever family was open before cannot leak in.</summary>
+        public void SelectTimingBeltCard()
+        {
+            IsTimingBelt = true;
+            if (_p.BeltPitchMm <= 0) _p.BeltPitchMm = 5.0;
+            if (_p.CutterTeeth < 3) _p.CutterTeeth = 12;
+            _p.BoreDiameterMm = 0.0; _p.ProfileShift = 0.0;
+            _p.AddendumCoeff = 1.0; _p.DedendumCoeff = 1.25; _p.BacklashMm = 0.0;
+            OnChanged(nameof(BoreDiameterDisplay));
+            OnChanged(nameof(CutterTeeth));
+        }
+
+        private string _timingWheelText = "-", _timingBeltText = "-";
+        public string TimingWheelText { get => _timingWheelText; private set { _timingWheelText = value; OnChanged(); } }
+        public string TimingBeltText { get => _timingBeltText; private set { _timingBeltText = value; OnChanged(); } }
+
         public void SelectSprocketCard()
         {
             IsSprocket = true;
@@ -345,7 +391,7 @@ namespace GearGen.UI
         public bool IsNotCycloidalDrive => !IsCycloidalDrive;
         /// <summary>A sprocket, like a cycloidal drive, is sized without a
         /// module or diametral pitch at all (chain pitch takes that role).</summary>
-        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket && !IsChainLink;
+        public bool HasModuleField => !IsCycloidalDrive && !IsSprocket && !IsChainLink && !IsTimingWheel && !IsTimingBelt;
         public string TeethLabel =>
             IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
             : IsPlanetary ? "Sun teeth"
@@ -478,6 +524,8 @@ namespace GearGen.UI
             : IsFaceGear ? "Face gear"
             : IsSprocket ? "Sprocket"
             : IsChainLink ? "Chain link"
+            : IsTimingWheel ? "Timing wheel"
+            : IsTimingBelt ? "Timing belt"
             : IsWorm ? "Worm"
             : IsRack ? (IsHelical ? "Helical rack" : "Rack")
             : "Internal";
@@ -535,6 +583,8 @@ namespace GearGen.UI
             OnChanged(nameof(IsSpiralBevelZerol));
             OnChanged(nameof(IsFaceGear));
             OnChanged(nameof(IsSprocket));
+            OnChanged(nameof(IsTimingWheel));
+            OnChanged(nameof(IsTimingBelt));
             OnChanged(nameof(HasModuleField));
             OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCylindricalSpur));
@@ -1083,6 +1133,29 @@ namespace GearGen.UI
                     // (docs/gear-math.md 17): undercut inside L1, pointed
                     // beyond L2; the auto ring sits inside them.
                     FaceLimitsText = $"undercut inside {L(dv("undercut_radius_mm"))}, pointed beyond {L(dv("pointing_radius_mm"))}; top land {L(dv("top_land_inner_mm"))} at the inner end, {L(dv("top_land_outer_mm"))} at the outer end";
+                }
+                else if (IsTimingWheel)
+                {
+                    // timing_wheel_derived_values (server.py): a belt-driven
+                    // wheel, not an involute gear.
+                    PitchDiameterText = L(dv("pitch_diameter_mm"));
+                    BaseDiameterText = "n/a (belt-driven)";
+                    AddendumDiameterText = L(dv("outside_diameter_mm"));
+                    DedendumDiameterText = L(dv("root_diameter_mm"));
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = "-";
+                    TimingWheelText = $"belt pitch {L(dv("belt_pitch_mm"))}, groove depth {L(dv("tooth_height_mm"))}";
+                }
+                else if (IsTimingBelt)
+                {
+                    PitchDiameterText = "n/a (timing belt)";
+                    BaseDiameterText = "-";
+                    AddendumDiameterText = "-";
+                    DedendumDiameterText = "-";
+                    ToothThicknessText = "-";
+                    ModuleOrDpEquivalentText = "-";
+                    TimingBeltText = $"belt pitch {L(dv("belt_pitch_mm"))}, tooth height {L(dv("tooth_height_mm"))}, "
+                                    + $"backing {L(dv("belt_thickness_mm"))} thick, segment {L(dv("segment_length_mm"))} long";
                 }
                 else if (IsChainLink)
                 {

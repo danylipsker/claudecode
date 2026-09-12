@@ -72,7 +72,16 @@ namespace GearGen.Geometry
         /// into an inner link -- ten parts) built to seat in a Sprocket of
         /// the same chain -- see docs/gear-math.md section 19. No teeth;
         /// ChainNumber/ChainPitchMm/RollerDiameterMm as Sprocket.</summary>
-        ChainLink
+        ChainLink,
+        /// <summary>Timing pulley for a toothed belt -- see docs/gear-math.md
+        /// section 20. Teeth = groove count, BeltPitchMm the belt's own
+        /// pitch, FaceWidthMm/BoreDiameterMm as usual.</summary>
+        TimingWheel,
+        /// <summary>A modelled segment of timing belt -- see docs/gear-math.md
+        /// section 20. No teeth count (CutterTeeth is how many teeth the
+        /// segment shows); BeltPitchMm as TimingWheel; FaceWidthMm is the
+        /// belt's own width.</summary>
+        TimingBelt
     }
 
     /// <summary>
@@ -255,6 +264,13 @@ namespace GearGen.Geometry
 
         public bool IsChainLink => Family == GearFamily.ChainLink;
 
+        // ---- timing wheel / timing belt (docs/gear-math.md section 20) ----
+
+        public bool IsTimingWheel => Family == GearFamily.TimingWheel;
+        public bool IsTimingBelt => Family == GearFamily.TimingBelt;
+
+        public double BeltPitchMm { get; set; } = 5.0;
+
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
         /// standard table (GearViewModel's own copy of sprocket.py's); both
@@ -346,6 +362,12 @@ namespace GearGen.Geometry
                     break;
                 case GearFamily.ChainLink:
                     p.ChainNumber = "40"; p.ChainPitchMm = 12.7; p.RollerDiameterMm = 7.9248;
+                    break;
+                case GearFamily.TimingWheel:
+                    p.Teeth = 20; p.BeltPitchMm = 5.0; p.FaceWidthMm = 8.0; p.BoreDiameterMm = 6.0;
+                    break;
+                case GearFamily.TimingBelt:
+                    p.BeltPitchMm = 5.0; p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
@@ -442,6 +464,14 @@ namespace GearGen.Geometry
                 case GearFamily.ChainLink:
                     parts.Add("chainlink"); parts.Add("chain" + ChainNumber);
                     parts.Add("pitch" + Len(ChainPitchMm)); parts.Add("roller" + Len(RollerDiameterMm));
+                    break;
+                case GearFamily.TimingWheel:
+                    parts.Add("timingwheel"); parts.Add("z" + Teeth); parts.Add("beltpitch" + Len(BeltPitchMm));
+                    parts.Add("fw" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.TimingBelt:
+                    parts.Add("timingbelt"); parts.Add("beltpitch" + Len(BeltPitchMm));
+                    parts.Add("teeth" + CutterTeeth); parts.Add("w" + Len(FaceWidthMm));
                     break;
                 case GearFamily.SpiralBevel:
                     parts.Add(IsZerol ? "zerolbevel" : "spiralbevel"); parts.Add("z" + Teeth); parts.Add(size);

@@ -458,6 +458,56 @@ def chain_link_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def timing_wheel_params_from_request(p: dict):
+    """Timing pulley -- docs/gear-math.md 20. z = groove count, belt_pitch_mm
+    the belt's own pitch (reusing module_mm's request slot, as sprocket
+    reuses it for chain_pitch_mm)."""
+    from timing_belt import TimingWheelParams
+    return TimingWheelParams(
+        z=int(p["z"]),
+        belt_pitch_mm=float(p.get("belt_pitch_mm") or p["module_mm"]),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+    )
+
+
+def timing_wheel_derived_values(tp) -> tuple[dict, list]:
+    warnings = []
+    if tp.z < 10:
+        warnings.append(f"z={tp.z} is unusually low for a timing pulley (rough running); 10+ teeth is typical.")
+    if tp.bore_diameter_mm > 0 and tp.bore_diameter_mm / 2.0 >= tp.root_radius:
+        warnings.append("Bore reaches the tooth root.")
+    bp = tp._belt()
+    return {
+        "pitch_diameter_mm": tp.pitch_diameter,
+        "outside_diameter_mm": 2.0 * tp.outside_radius,
+        "root_diameter_mm": 2.0 * tp.root_radius,
+        "belt_pitch_mm": tp.belt_pitch_mm,
+        "tooth_height_mm": bp.tooth_height,
+    }, warnings
+
+
+def timing_belt_params_from_request(p: dict):
+    """Timing belt -- docs/gear-math.md 20. Same belt_pitch_mm as the
+    matching pulley; n_teeth is just how many teeth the modelled segment
+    shows, not a meshing dimension."""
+    from timing_belt import TimingBeltParams
+    return TimingBeltParams(
+        belt_pitch_mm=float(p.get("belt_pitch_mm") or p["module_mm"]),
+        belt_width_mm=float(p.get("face_width_mm", 10.0)),
+        n_teeth=int(p.get("cutter_teeth") or 12),
+    )
+
+
+def timing_belt_derived_values(bp) -> tuple[dict, list]:
+    return {
+        "belt_pitch_mm": bp.belt_pitch_mm,
+        "tooth_height_mm": bp.tooth_height,
+        "belt_thickness_mm": bp.belt_thickness,
+        "segment_length_mm": bp.n_teeth * bp.belt_pitch_mm,
+    }, []
+
+
 def spiral_bevel_params_from_request(p: dict):
     """Spiral / zerol bevel -- docs/gear-math.md 16. The straight bevel's
     request fields plus spiral_angle_deg (0 = zerol), cutter_radius_mm (0 =
@@ -730,6 +780,19 @@ def handle(req: dict) -> dict:
     gap_mm = float(req.get("gap_mm", 0.0) or 0.0)
 
     if cmd == "outline":
+        if gear_type == "timing_wheel":
+            from timing_belt import full_pulley_outline
+            tp = timing_wheel_params_from_request(req)
+            outline = full_pulley_outline(tp)
+            derived, warnings = timing_wheel_derived_values(tp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "timing_belt":
+            from timing_belt import belt_strip_polygon
+            bp = timing_belt_params_from_request(req)
+            poly = belt_strip_polygon(bp).simplify(0.001, preserve_topology=True)
+            outline = [tuple(p) for p in poly.exterior.coords][:-1]
+            derived, warnings = timing_belt_derived_values(bp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "chain_link":
             from chain_link import _stadium_polygon
             cp = chain_link_params_from_request(req)
@@ -806,7 +869,13 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_step":
         path = req["path"]
-        if gear_type == "chain_link":
+        if gear_type == "timing_wheel":
+            from build_gear import export_timing_wheel_step
+            export_timing_wheel_step(timing_wheel_params_from_request(req), path)
+        elif gear_type == "timing_belt":
+            from build_gear import export_timing_belt_step
+            export_timing_belt_step(timing_belt_params_from_request(req), path)
+        elif gear_type == "chain_link":
             from build_gear import export_chain_link_step
             export_chain_link_step(chain_link_params_from_request(req), path)
         elif gear_type == "sprocket":
@@ -858,7 +927,13 @@ def handle(req: dict) -> dict:
 
     if cmd == "export_dxf":
         path = req["path"]
-        if gear_type == "chain_link":
+        if gear_type == "timing_wheel":
+            from build_gear import export_timing_wheel_profile_dxf
+            export_timing_wheel_profile_dxf(timing_wheel_params_from_request(req), path)
+        elif gear_type == "timing_belt":
+            from build_gear import export_timing_belt_profile_dxf
+            export_timing_belt_profile_dxf(timing_belt_params_from_request(req), path)
+        elif gear_type == "chain_link":
             from build_gear import export_chain_link_plate_dxf
             export_chain_link_plate_dxf(chain_link_params_from_request(req), path)
         elif gear_type == "sprocket":
@@ -912,7 +987,17 @@ def handle(req: dict) -> dict:
         # helix twist, cone taper etc. are all visible exactly as they'll
         # export, not just implied by 2D parameters.
         path = req["path"]
-        if gear_type == "chain_link":
+        if gear_type == "timing_wheel":
+            from timing_belt import build_pulley_solid
+            import build123d as bd
+            solid = build_pulley_solid(timing_wheel_params_from_request(req))
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "timing_belt":
+            from timing_belt import build_timing_belt_solid
+            import build123d as bd
+            solid = build_timing_belt_solid(timing_belt_params_from_request(req))
+            bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
+        elif gear_type == "chain_link":
             from chain_link import build_chain_link_assembly
             import build123d as bd
             solid = build_chain_link_assembly(chain_link_params_from_request(req))

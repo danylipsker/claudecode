@@ -142,4 +142,10 @@ if __name__ == "__main__":
     link = ChainLinkParams(chain_pitch_mm=12.7, roller_diameter_mm=7.9248)
     render_solid_thumbnail(build_chain_link_assembly(link), f"{out_dir}/thumb_chain_link.png", elev=25, azim=-40)
 
+    from timing_belt import TimingWheelParams, TimingBeltParams, build_pulley_solid, build_timing_belt_solid
+    wheel = TimingWheelParams(z=20, belt_pitch_mm=5.0, face_width_mm=8.0, bore_diameter_mm=6.0)
+    render_solid_thumbnail(build_pulley_solid(wheel), f"{out_dir}/thumb_timing_wheel.png", elev=35, azim=-25)
+    belt = TimingBeltParams(belt_pitch_mm=5.0, n_teeth=8, belt_width_mm=8.0)
+    render_solid_thumbnail(build_timing_belt_solid(belt), f"{out_dir}/thumb_timing_belt.png", elev=20, azim=-30)
+
     print("done")
