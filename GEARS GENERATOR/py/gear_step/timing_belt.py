@@ -72,7 +72,7 @@ from dataclasses import dataclass
 
 import build123d as bd
 from shapely.affinity import rotate as shapely_rotate
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point, Polygon, box
 from shapely.ops import unary_union
 
 from involute import rack_point_to_gear_frame
@@ -113,6 +113,8 @@ class TimingBeltParams:
     tooth_root_width_mm: float = 0.0    # 0 = auto: 0.5 * pitch (at the belt's backing)
     tooth_tip_width_mm: float = 0.0     # 0 = auto: 0.35 * pitch (narrower, at the tooth's tip)
     fillet_radius_mm: float = 0.0       # 0 = auto: see fillet_radius
+    tip_fillet_mm: float = 0.0          # 0 = auto = fillet_radius: the convex fillet on the tooth's two tip corners
+    root_fillet_mm: float = 0.0         # 0 = auto = fillet_radius: the concave fillet where each flank meets the body
     belt_thickness_mm: float = 0.0      # 0 = auto: 0.4 * pitch (backing behind the teeth)
     belt_width_mm: float = 10.0
     n_teeth: int = 12                   # how many teeth the modelled belt segment has
@@ -146,6 +148,14 @@ class TimingBeltParams:
         return (0.35 if self.curvilinear else 0.15) * self.tooth_height
 
     @property
+    def tip_fillet(self) -> float:
+        return self.tip_fillet_mm if self.tip_fillet_mm > 0 else self.fillet_radius
+
+    @property
+    def root_fillet(self) -> float:
+        return self.root_fillet_mm if self.root_fillet_mm > 0 else self.fillet_radius
+
+    @property
     def belt_thickness(self) -> float:
         return self.belt_thickness_mm if self.belt_thickness_mm > 0 else 0.4 * self.belt_pitch_mm
 
@@ -160,6 +170,8 @@ class TimingWheelParams:
     tooth_root_width_mm: float = 0.0
     tooth_tip_width_mm: float = 0.0
     fillet_radius_mm: float = 0.0
+    tip_fillet_mm: float = 0.0
+    root_fillet_mm: float = 0.0
     clearance_mm: float = 0.1           # groove enlarged this much, each side, for a running fit
     face_width_mm: float = 10.0
     bore_diameter_mm: float = 0.0
@@ -172,7 +184,8 @@ class TimingWheelParams:
     def _belt(self) -> TimingBeltParams:
         return TimingBeltParams(belt_pitch_mm=self.belt_pitch_mm, belt_type=self.belt_type, curvilinear=self.curvilinear,
                                 tooth_height_mm=self.tooth_height_mm, tooth_root_width_mm=self.tooth_root_width_mm,
-                                tooth_tip_width_mm=self.tooth_tip_width_mm, fillet_radius_mm=self.fillet_radius_mm)
+                                tooth_tip_width_mm=self.tooth_tip_width_mm, fillet_radius_mm=self.fillet_radius_mm,
+                                tip_fillet_mm=self.tip_fillet_mm, root_fillet_mm=self.root_fillet_mm)
 
     @property
     def pitch_radius(self) -> float:
@@ -197,42 +210,82 @@ class TimingWheelParams:
         return self.outside_radius - self._belt().tooth_height
 
 
-def belt_tooth_points(bp: TimingBeltParams, clearance: float = 0.0) -> list[tuple[float, float]]:
-    """One tooth's boundary in the rack/belt's own flat frame -- v=0 at the
-    root (the belt's backing surface), v=+tooth_height at the tip
-    (rack_point_to_gear_frame's convention: v grows TOWARD the gear axis,
-    i.e. deeper into the pulley). The sharp trapezoid's 4 corners, rounded
-    by fillet_radius if positive (module docstring: erode then re-dilate,
-    not hand-placed tangent circles); clearance is then a further, PLAIN
-    outward offset of that already-rounded shape (buffer(+clearance)), not
-    a re-derivation from wider sharp corners -- so the pulley groove
-    (clearance > 0) is exactly the nominal tooth (clearance = 0) pushed
-    out uniformly, and the two can never disagree at the rounded corners
-    the way "widen the sharp trapezoid, then round the wider one" did (a
-    real, if small, mismatch this construction had until measured: seating
-    a nominal tooth showed a ~0.3% overlap at a clearance smaller than the
-    fillet radius, zero once the fix below was applied)."""
-    hw_root = bp.tooth_root_width / 2.0
-    hw_tip = bp.tooth_tip_width / 2.0
-    h = bp.tooth_height
-    sharp = [(hw_root, 0.0), (hw_tip, h), (-hw_tip, h), (-hw_root, 0.0)]
-    rho = bp.fillet_radius
-    shape = Polygon(sharp)
-    if rho > 1e-9:
-        rounded = shape.buffer(-rho, join_style=1, quad_segs=12).buffer(rho, join_style=1, quad_segs=12)
+def belt_tooth_profile(bp: TimingBeltParams) -> Polygon:
+    """One tooth as it stands on the belt body, everything above the backing
+    line (v = 0) within one pitch (|u| <= p/2): the two TIP corners rounded
+    by tip_fillet (a convex fillet -- material removed) and the two ROOT
+    corners, where each flank meets the body, filleted by root_fillet (a
+    concave fillet -- material ADDED, the tooth flaring into the body).
+
+    Both by morphology, neither by hand-placed arcs: the tip fillet is an
+    opening (erode, dilate) of the tooth ALONE, with the tooth's flanks
+    extended well below the body line so that the opening's rounding of
+    the trapezoid's bottom corners happens out of sight inside the body;
+    the root fillet is a closing (dilate, erode) of tooth UNION body, which
+    rounds only concave corners -- and the only concave corners there are
+    the two where the flanks meet the body.  The first version of this
+    profile opened the bare trapezoid, rounding its base corners too --
+    the wrong sense at the body: the tooth necked inward just before the
+    body (T5: 1.92 mm wide at the base, 2.37 mm just above it), and the
+    pulley groove, being this shape plus clearance, was pinched at its
+    mouth with overhanging land corners at the OD.  The user saw both
+    before the tests did ("opposite to logic")."""
+    p, h = bp.belt_pitch_mm, bp.tooth_height
+    r_tip, r_root = bp.tip_fillet, bp.root_fillet
+    hw_root, hw_tip = bp.tooth_root_width / 2.0, bp.tooth_tip_width / 2.0
+    extend = max(h, 2.0 * r_tip) + 0.5                      # flanks continued this far below the body line
+    slope = (hw_root - hw_tip) / h
+    hw_ext = hw_root + slope * extend
+    tooth = Polygon([(hw_ext, -extend), (hw_tip, h), (-hw_tip, h), (-hw_ext, -extend)])
+    if r_tip > 1e-9:
+        rounded = tooth.buffer(-r_tip, join_style=1, quad_segs=12).buffer(r_tip, join_style=1, quad_segs=12)
         if rounded.geom_type == "Polygon" and rounded.is_valid and not rounded.is_empty:
-            shape = rounded   # else: fillet too large for this tooth's own proportions -- degrade to sharp
+            tooth = rounded                                    # else: fillet too large for this tooth -- sharp tip
+    body = box(-p, -extend - 1.0, p, 0.0)                       # two pitches wide: the box ends are far from this tooth
+    strip = unary_union([body, tooth])
+    if r_root > 1e-9:
+        closed = strip.buffer(r_root, join_style=1, quad_segs=12).buffer(-r_root, join_style=1, quad_segs=12)
+        if closed.geom_type == "Polygon" and closed.is_valid and not closed.is_empty:
+            strip = closed
+    # The closing hands the body line back at v = +-1e-17 (an offset of an
+    # offset), and clipping such a boundary at v >= 0 leaves zero-area
+    # slivers along it -- one standard came out invalid, another in pieces.
+    # So: snap every vertex within 1e-9 of the body line to exactly 0 first,
+    # then subtract the SAME body box the union was built with (identical
+    # coordinates, so the overlay is exact) and keep this tooth's pitch
+    # window.  The base then sits at exactly v = 0, which is also what
+    # merging with the body in a union needs (a root line at +3e-17 once
+    # cost six standards all their teeth, docs 20.2).
+    strip = _snap_to_body_line(strip)
+    profile = strip.difference(body).intersection(box(-p / 2.0, -1.0, p / 2.0, h + 1.0))
+    if profile.geom_type != "Polygon":
+        pieces = [g for g in getattr(profile, "geoms", []) if g.geom_type == "Polygon" and g.area > 1e-9]
+        if len(pieces) != 1:
+            raise ValueError("timing belt: the tooth profile did not come out as one polygon")
+        profile = pieces[0]
+    if profile.is_empty or not profile.is_valid:
+        raise ValueError("timing belt: the tooth profile is empty or invalid")
+    return _snap_to_body_line(profile)
+
+
+def _snap_to_body_line(poly: Polygon, tol: float = 1e-9) -> Polygon:
+    return Polygon([(u, 0.0 if abs(v) < tol else v) for u, v in list(poly.exterior.coords)[:-1]])
+
+
+def belt_tooth_points(bp: TimingBeltParams, clearance: float = 0.0) -> list[tuple[float, float]]:
+    """belt_tooth_profile's boundary (v = 0 at the body, +tooth_height at
+    the tip -- rack_point_to_gear_frame's convention, v growing TOWARD the
+    gear axis, i.e. deeper into the pulley); with clearance > 0, that
+    finished profile pushed out uniformly by buffer(+clearance) -- so the
+    pulley groove is exactly the nominal tooth offset everywhere, fillets
+    included (a groove re-derived from a wider sharp trapezoid disagreed
+    with the tooth at the corners: 0.3 % seated overlap, until measured)."""
+    shape = belt_tooth_profile(bp)
     if clearance > 1e-9:
         shape = shape.buffer(clearance, join_style=1, quad_segs=12)
         if shape.geom_type != "Polygon" or not shape.is_valid:
             raise ValueError(f"timing belt: clearance {clearance} produced an invalid tooth outline")
-    # Snap the root line to exactly v = 0. buffer(-r).buffer(+r) hands the
-    # root edge back at v = +3e-17 for some pitches, and a tooth whose root
-    # floats 3e-17 ABOVE the backing's top edge does not merge with it in
-    # unary_union: six of the fifteen standard sizes silently lost every
-    # tooth that way while the other nine (root at exactly 0.0) were fine
-    # -- docs/gear-math.md 20.2.
-    return [(u, 0.0 if abs(v) < 1e-9 else v) for u, v in list(shape.exterior.coords)[:-1]]
+    return list(shape.exterior.coords)[:-1]
 
 
 def pulley_groove_polygon(tp: TimingWheelParams) -> Polygon:

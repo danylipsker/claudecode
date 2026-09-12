@@ -1,6 +1,55 @@
 # GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Hypoid gears (latest)
+## Timing belt and wheel fillets: the right senses (latest)
+
+The user's two-line review after the hypoid landed: "check timing belts
+fillets between body and teeth" and "check timing wheels fillets (they are
+opposite to logic)". Both correct. `timing_belt.py`, docs/gear-math.md
+§20.2.
+
+- **What was wrong**: the fillet was an *opening* of the bare tooth
+  trapezoid, which rounds all four of its convex corners -- including the
+  two at the tooth base. At the base the tooth meets the belt body in a
+  *concave* corner that a real fillet fills with material; rounding the
+  trapezoid's base corners removes material there instead, so the tooth
+  necked inward just before the body (T5: 1.92 mm wide at the base, 2.37 mm
+  a fillet radius above it; GT2: 0.46 against 0.88). The pulley groove is
+  that same shape plus clearance, so its mouth was *pinched* (T5: 8.89° at
+  the OD against 9.27° just below) with overhanging land corners at the OD
+  -- "opposite to logic" exactly.
+- **The fix**: two fillets with opposite senses, each by the morphological
+  operation that can only act in that sense. The tip fillet is an opening
+  of the tooth *alone*, with its flanks extended well below the body line
+  so the opening's rounding of the trapezoid's bottom corners happens out
+  of sight inside the body. The root fillet is a closing of tooth ∪ body,
+  which rounds only concave corners -- and the only concave corners there
+  are the two where the flanks meet the body. `belt_tooth_profile` is the
+  result above the body line within one pitch; the strip is the body plus
+  one profile per pitch, and the pulley groove is that profile pushed out
+  by the clearance, so the groove mouth flares with the belt's root fillet
+  and the land tips come out rounded. Separate `tip_fillet_mm` /
+  `root_fillet_mm` overrides; both derived rows show them.
+- **Measured after**, all fifteen standards: base flared above the sharp
+  root width (T5 2.85 vs 2.50), tip narrower than the sharp tip (1.39 vs
+  1.75), the straight flanks exactly the trapezoid's (0.000 µm), width
+  never increasing from body to tip; every groove widest at its mouth and
+  monotone to the bottom (T5 10.79° at the OD → 8.73° at mid-depth).
+- **Two smaller things on the way**: clipping the closed strip at v ≥ 0
+  against a body line the closing returns at ±1e-17 left zero-area
+  slivers (one standard invalid, another in pieces) -- snap to exactly 0,
+  subtract the *identical* body box, then window; and a test that checked
+  the *extent* of the added material was fooled by a zero-area appendix
+  shapely's `difference` leaves along exactly coincident flanks -- the
+  senses are now held by *area per zone* (added only in the root zone,
+  removed only in the tip zone, nothing in between).
+- **Checks**: `test_timing_belt.py` 28 → 33 (the senses per standard, the
+  curvilinear roundedness as tip loss + root gain, the groove widest at its
+  mouth); the earlier "rounded tooth lies inside the sharp one" claim is
+  gone -- a correct root fillet lies outside it by construction. Suite
+  166. Headless export + reset for wheel and belt pass; SolidWorks
+  imports of both: wheel 13 s (fresh session), belt 4 s, native parts, 3D Interconnect off.
+
+## Hypoid gears
 
 The user sent two pictures -- a zerol bevel gear and a hypoid set -- with
 "add these gear types too". Zerol was already in (the Zerol bevel card,

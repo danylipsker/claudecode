@@ -1226,7 +1226,7 @@ namespace GearGen.UI
                     ModuleOrDpEquivalentText = "-";
                     TimingWheelText = $"{_p.BeltType} ({(dv("curvilinear") > 0.5 ? "curvilinear" : "trapezoidal")}): "
                                     + $"belt pitch {L(dv("belt_pitch_mm"))}, groove depth {L(dv("tooth_height_mm"))}, "
-                                    + $"fillet r{L(dv("fillet_radius_mm"))}";
+                                    + $"tip fillet r{L(dv("tip_fillet_mm"))}, root fillet r{L(dv("root_fillet_mm"))}";
                 }
                 else if (IsTimingBelt)
                 {
@@ -1238,7 +1238,8 @@ namespace GearGen.UI
                     ModuleOrDpEquivalentText = "-";
                     TimingBeltText = $"{_p.BeltType} ({(dv("curvilinear") > 0.5 ? "curvilinear" : "trapezoidal")}): "
                                     + $"belt pitch {L(dv("belt_pitch_mm"))}, tooth height {L(dv("tooth_height_mm"))}, "
-                                    + $"backing {L(dv("belt_thickness_mm"))} thick, segment {L(dv("segment_length_mm"))} long";
+                                    + $"backing {L(dv("belt_thickness_mm"))} thick, segment {L(dv("segment_length_mm"))} long, "
+                                    + $"tip fillet r{L(dv("tip_fillet_mm"))}, root fillet r{L(dv("root_fillet_mm"))}";
                 }
                 else if (IsChainLink)
                 {

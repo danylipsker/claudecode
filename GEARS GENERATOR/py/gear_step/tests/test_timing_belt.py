@@ -11,9 +11,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import build123d as bd
+import numpy as np
 import pytest
 from shapely.affinity import rotate as shapely_rotate, translate as shapely_translate
-from shapely.geometry import Point, Polygon, box
+from shapely.geometry import LineString, Point, Polygon, box
 
 from involute import rack_point_to_gear_frame
 from timing_belt import (TIMING_BELT_STANDARDS, TimingWheelParams, TimingBeltParams, belt_tooth_points,
@@ -78,37 +79,6 @@ def test_every_standard_size_builds_a_valid_symmetric_pulley_and_a_valid_belt(na
         window = box(cx - bp.belt_pitch_mm / 2.0, 0.0, cx + bp.belt_pitch_mm / 2.0, bp.tooth_height + 1.0)
         cut = strip.intersection(window).buffer(0)          # buffer(0) drops the zero-area contact line
         assert cut.symmetric_difference(shapely_translate(tooth, cx, 0.0)).area < 1e-6, (name, k)
-
-
-def test_curvilinear_profiles_are_more_rounded_than_trapezoidal_ones():
-    gt2 = TimingBeltParams.from_standard("GT2")
-    t5 = TimingBeltParams.from_standard("T5")
-    assert gt2.curvilinear and not t5.curvilinear
-    assert gt2.fillet_radius / gt2.tooth_height > t5.fillet_radius / t5.tooth_height
-    # a rounded tooth loses more of the sharp trapezoid's corner area than a flat-sided one
-    sharp_gt2 = Polygon([(gt2.tooth_root_width / 2, 0.0), (gt2.tooth_tip_width / 2, gt2.tooth_height),
-                         (-gt2.tooth_tip_width / 2, gt2.tooth_height), (-gt2.tooth_root_width / 2, 0.0)])
-    sharp_t5 = Polygon([(t5.tooth_root_width / 2, 0.0), (t5.tooth_tip_width / 2, t5.tooth_height),
-                        (-t5.tooth_tip_width / 2, t5.tooth_height), (-t5.tooth_root_width / 2, 0.0)])
-    loss_gt2 = 1.0 - Polygon(belt_tooth_points(gt2)).area / sharp_gt2.area
-    loss_t5 = 1.0 - Polygon(belt_tooth_points(t5)).area / sharp_t5.area
-    assert loss_gt2 > loss_t5 > 0.0, (loss_gt2, loss_t5)
-
-
-def test_fillet_only_trims_the_corners_and_leaves_the_flanks_where_they_were():
-    """The erode-then-dilate rounding must not move the straight parts of
-    the tooth -- a fillet that shifted a flank would change the tooth's
-    width, i.e. its fit in the groove. Checked at mid-height on both
-    flanks and at the middle of the root and tip lines: those points of
-    the sharp trapezoid must still lie ON the rounded boundary."""
-    bp = TimingBeltParams.from_standard("HTD 8M")   # the most heavily rounded default
-    h, wr, wt = bp.tooth_height, bp.tooth_root_width / 2, bp.tooth_tip_width / 2
-    rounded = Polygon(belt_tooth_points(bp))
-    sharp = Polygon([(wr, 0.0), (wt, h), (-wt, h), (-wr, 0.0)])
-    assert rounded.difference(sharp).area < 1e-9                # never outside the sharp tooth
-    assert 1.0 - rounded.area / sharp.area < 0.10                # and loses only the corners
-    for probe in (Point((wr + wt) / 2, h / 2), Point(-(wr + wt) / 2, h / 2), Point(0.0, 0.0), Point(0.0, h)):
-        assert rounded.exterior.distance(probe) < 1e-6, probe    # flank/root/tip midpoints untouched
 
 
 def test_groove_is_the_nominal_tooth_offset_uniformly_by_the_clearance():
@@ -193,6 +163,81 @@ def test_solids_build_and_round_trip_as_step():
         p2 = Path(d) / "belt.step"
         export_timing_belt_step(bp, p2)
         assert len(bd.import_step(str(p2)).solids()) == 1
+
+
+def _sharp(bp):
+    h, wr, wt = bp.tooth_height, bp.tooth_root_width / 2, bp.tooth_tip_width / 2
+    return Polygon([(wr, 0.0), (wt, h), (-wt, h), (-wr, 0.0)])
+
+
+def _width(poly, v):
+    return poly.intersection(LineString([(-50.0, v), (50.0, v)])).length
+
+
+@pytest.mark.parametrize("name", ["T5", "GT2", "HTD 8M", "XL"])
+def test_fillets_have_the_right_sense_tip_removes_root_adds(name):
+    """The user's catch ("opposite to logic"): the first profile opened the
+    bare trapezoid, rounding its BASE corners too, so the tooth necked
+    inward just before the body.  The right senses: the tip fillet is
+    convex and removes material (the tooth narrows at the very tip), the
+    root fillet is concave and ADDS material (the tooth flares into the
+    body); between the two fillet zones the flanks are exactly the sharp
+    trapezoid's."""
+    bp = TimingBeltParams.from_standard(name)
+    h, r_tip, r_root = bp.tooth_height, bp.tip_fillet, bp.root_fillet
+    prof, sharp = Polygon(belt_tooth_points(bp)), _sharp(bp)
+    # material the fillets ADD lies only in the root zone; material they REMOVE only in the tip zone
+    # (by AREA per zone: where the two flanks coincide exactly, shapely's difference keeps a
+    # zero-area appendix along them, which fooled a bounds check -- the flanks measure 0.000 um off)
+    added, removed = prof.difference(sharp), sharp.difference(prof)
+    root_zone, tip_zone = box(-50, -1, 50, r_root + 0.02), box(-50, h - r_tip - 0.02, 50, h + 1)
+    assert added.intersection(root_zone).area > 1e-4 and added.difference(root_zone).area < 1e-9, name
+    assert removed.intersection(tip_zone).area > 1e-4 and removed.difference(tip_zone).area < 1e-9, name
+    # widths: flared at the base, narrower at the tip, the sharp trapezoid's in between
+    assert _width(prof, 1e-6) > bp.tooth_root_width and _width(prof, h - 1e-6) < bp.tooth_tip_width
+    for v in np.linspace(r_root + 0.02, h - r_tip - 0.02, 5):
+        assert abs(_width(prof, v) - _width(sharp, v)) < 1e-6, (name, v)
+    # and the base never necks: the width is non-increasing from the body to the tip
+    ws = [_width(prof, v) for v in np.linspace(1e-6, h - 1e-6, 40)]
+    assert all(b <= a + 1e-9 for a, b in zip(ws, ws[1:])), name
+
+
+def test_curvilinear_profiles_are_more_rounded_than_trapezoidal_ones():
+    gt2, t5 = TimingBeltParams.from_standard("GT2"), TimingBeltParams.from_standard("T5")
+    assert gt2.curvilinear and not t5.curvilinear
+    assert gt2.tip_fillet / gt2.tooth_height > t5.tip_fillet / t5.tooth_height
+    # a rounded tooth loses more of the sharp trapezoid at the tip and gains more at the root
+    def tip_loss_and_root_gain(bp):
+        prof, sharp, h = Polygon(belt_tooth_points(bp)), _sharp(bp), bp.tooth_height
+        upper, lower = box(-50, h / 2, 50, h + 1), box(-50, -1, 50, h / 2)
+        loss = 1.0 - prof.intersection(upper).area / sharp.intersection(upper).area
+        gain = prof.intersection(lower).area / sharp.intersection(lower).area - 1.0
+        return loss, gain
+    loss_gt2, gain_gt2 = tip_loss_and_root_gain(gt2)
+    loss_t5, gain_t5 = tip_loss_and_root_gain(t5)
+    assert loss_gt2 > loss_t5 > 0.0 and gain_gt2 > gain_t5 > 0.0, (loss_gt2, loss_t5, gain_gt2, gain_t5)
+
+
+@pytest.mark.parametrize("name", ["T5", "GT2"])
+def test_pulley_groove_is_widest_at_its_mouth_and_the_land_tips_are_rounded(name):
+    """The wheel's side of the same catch: with the belt's root flare in the
+    groove shape, the groove must be widest at the OD and narrow
+    monotonically toward its bottom -- so the land between two grooves has
+    rounded tips, not overhanging corners (the first version measured a
+    mouth 0.4 degrees narrower than the groove just below it)."""
+    tp = TimingWheelParams.from_standard(name, z=20)
+    poly, R, h = full_pulley_polygon(tp), tp.outside_radius, tp._belt().tooth_height
+    def groove_deg(r):
+        ring = Point(0, 0).buffer(r, quad_segs=1440).exterior
+        gaps = ring.difference(poly)
+        pieces = list(gaps.geoms) if hasattr(gaps, "geoms") else [gaps]
+        top = min(pieces, key=lambda g: abs(math.atan2(g.centroid.y, g.centroid.x) - math.pi / 2))   # groove 0 is centred on +Y
+        return math.degrees(top.length / r)
+    depths = [1e-4, 0.05, 0.1, 0.2, 0.3, 0.5 * h, 0.8 * h]
+    ws = [groove_deg(R - d) for d in depths]
+    assert all(b <= a + 1e-6 for a, b in zip(ws, ws[1:])), (name, list(zip(depths, ws)))
+    assert ws[0] > ws[3] + 0.05                                  # a real flare at the mouth, not just monotone
+
 
 
 if __name__ == "__main__":

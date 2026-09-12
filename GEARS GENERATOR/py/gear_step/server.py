@@ -557,6 +557,8 @@ def timing_wheel_derived_values(tp) -> tuple[dict, list]:
         "belt_pitch_mm": tp.belt_pitch_mm,
         "tooth_height_mm": bp.tooth_height,
         "fillet_radius_mm": bp.fillet_radius,
+        "tip_fillet_mm": bp.tip_fillet,
+        "root_fillet_mm": bp.root_fillet,
         "curvilinear": 1.0 if bp.curvilinear else 0.0,
     }, warnings
 
@@ -581,6 +583,8 @@ def timing_belt_derived_values(bp) -> tuple[dict, list]:
         "belt_thickness_mm": bp.belt_thickness,
         "segment_length_mm": bp.n_teeth * bp.belt_pitch_mm,
         "fillet_radius_mm": bp.fillet_radius,
+        "tip_fillet_mm": bp.tip_fillet,
+        "root_fillet_mm": bp.root_fillet,
         "curvilinear": 1.0 if bp.curvilinear else 0.0,
     }, []
 

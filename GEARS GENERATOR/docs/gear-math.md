@@ -1545,20 +1545,42 @@ scaled part, still free to override any dimension directly:
 The trapezoidal-vs-curvilinear distinction is real, not decorative -- a
 curvilinear (GT2, the 2 mm belt in almost every 3D printer; HTD) tooth is
 visibly rounded, a trapezoidal one is close to flat-sided -- and it is
-carried by one number: `fillet_radius` (0.15 tooth heights for a
-trapezoidal profile, 0.35 for a curvilinear one, overridable), applied to
-the plain trapezoid by **eroding and re-dilating** it (`Polygon.buffer(-r)`
-then `buffer(+r)`, round joins). That is shapely's own robust way to round a
-polygon's corners and it was chosen deliberately over hand-placing tangent
-arcs: this project has twice placed a root fillet backwards by hand (the
-rack and worm fillets, section 10 -- a "rendering notch" that was a real
-groove because the arc's centre sat on the wrong side), and a library
-operation that cannot be "backwards" removes that whole failure mode.
-Confirmed rather than assumed (`test_fillet_only_trims_the_corners...`):
-the rounded tooth lies entirely inside the sharp one, loses under 10 % of
-its area, and the mid-flank, mid-root and mid-tip points of the sharp
-trapezoid still lie exactly on the rounded boundary -- the fillet moves
-nothing but the corners, so the tooth's width, i.e. its fit, is unchanged.
+carried by the fillet radii (0.15 tooth heights for a trapezoidal profile,
+0.35 for a curvilinear one; `tip_fillet_mm` and `root_fillet_mm` override
+each separately). **The two fillets have opposite senses, and getting that
+wrong is exactly what a hand-placed arc gets wrong** -- so both are done by
+morphology, which cannot be "backwards" (this project placed the rack and
+worm root fillets backwards by hand, section 10): the *tip* fillet is a
+convex one that removes material, an opening (erode, then dilate) of the
+tooth alone, with the flanks extended well below the body line so the
+opening's rounding of the trapezoid's *bottom* corners happens out of sight
+inside the body; the *root* fillet, where each flank meets the belt body,
+is a concave one that ADDS material -- the tooth flares into the body -- a
+closing (dilate, then erode) of tooth ∪ body, which rounds concave corners
+only, and the only concave corners there are those two. `belt_tooth_profile`
+is the result above the body line within one pitch, base snapped to exactly
+v = 0; the belt strip is the body plus one such profile per pitch, and the
+pulley groove is that same profile pushed out by the clearance -- so the
+groove's mouth *flares* with the belt's root fillet and the pulley's land
+tips come out rounded, as a real pulley's do.
+
+**The first version had the root fillet in the wrong sense, and the user
+saw it before the tests did** ("check the fillets between body and teeth";
+"the timing wheel fillets are opposite to logic"). It opened the bare
+trapezoid, which rounded its base corners as well as its tip corners, so
+the tooth *necked* inward just before the body -- T5: 1.92 mm wide at the
+base against 2.37 mm a fillet radius above it -- and the pulley groove,
+being that shape plus clearance, was *pinched* at its mouth (8.89° at the
+OD, 9.27° just below) with overhanging land corners. Measured after the
+fix, every one of the fifteen standards flares at the base (T5: 2.85 mm
+against the sharp trapezoid's 2.50), narrows at the tip (1.39 against
+1.75), keeps the sharp flanks between the two fillet zones exactly, and
+has a width that never increases from body to tip; every pulley groove is
+widest at its mouth and narrows monotonically to its bottom (T5: 10.79° at
+the OD to 8.73° at mid-depth). The tests now hold precisely those
+statements -- the *senses* of the fillets, not just their presence -- and
+the rounded tooth is no longer claimed to lie inside the sharp one, since
+a correct root fillet lies outside it by construction.
 
 Four things found by measuring on the way -- none of them visible to a
 validity, manifoldness, length or STEP round-trip check, which every one
@@ -1645,8 +1667,11 @@ pulley-tooth argument above depends on); the standard table names the
 expected series at the expected pitches; **every one of the fifteen
 standard sizes builds a valid, z-fold-symmetric pulley and a valid belt
 strip**; curvilinear profiles are measurably more rounded than
-trapezoidal ones; the fillet trims only the corners (20.2); the groove is
-the nominal tooth offset uniformly by the clearance (20.2); **every built
+trapezoidal ones; the fillets have the right senses -- convex at the tip,
+concave and material-adding at the root, sharp flanks between, no neck
+(20.2); every pulley groove is widest at its mouth, so the land tips are
+rounded (20.2); the groove is the nominal tooth offset uniformly by the
+clearance (20.2); **every built
 belt strip has all its teeth and each one is exactly the nominal tooth**
 (area = backing + n × tooth; each tooth cut out of the strip matches the
 nominal to 10⁻⁶ mm² -- the check that would have caught both belt bugs of
