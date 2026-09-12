@@ -1366,7 +1366,16 @@ measured near the tip, directly confirming the taper the construction is
 built to produce; `root_clearance_mm` (chain pitch less two seat radii) is
 shown to depend only on the chain, not the tooth count, and goes negative
 only for a hand-set, physically nonsensical roller/pitch combination; the
-solid is one valid manifold body that round-trips through STEP.
+solid is one valid manifold body that round-trips through STEP; **and the
+solid actually has its bore** -- no material on the axis, the rim between
+bore and root present, the volume difference to a bore-less build exactly
+the bore cylinder. That last check exists because the first version had
+no bore at all: `full_sprocket_outline` returns the exterior ring of the
+shapely polygon, so the bore (an interior ring) never reached the solid,
+which came out as a solid disc for any bore -- visible in its own
+thumbnail, and passed by the round-trip test above hole or no hole. The
+bore is now cut in the sketch (section 20.2 records the same bug on the
+timing wheel, built the same way).
 
 **v1 simplification, stated plainly**: this is a flat-plate (ANSI "type A")
 sprocket — a toothed disc of `face_width_mm` with a central bore, no hub —
@@ -1516,28 +1525,137 @@ which one actually holds.
 
 The belt itself (`build_timing_belt_solid`) needs no wrapping at all --
 flat, it is literally `rack.py`'s own construction, a bar with a repeating
-tooth profile, just thin and with teeth on one face only.
+tooth profile, just thin and with teeth on one face only -- built as a
+union of the backing bar and one closed tooth polygon per position rather
+than by splicing tooth boundary points into one long outline by hand
+(see 20.2 for why that distinction matters once the tooth is filleted).
 
-### 20.2 Checks
+### 20.2 Standard sizes and the tooth profile
+
+`TIMING_BELT_STANDARDS` names the purchasable pitches, selected the same
+way `sprocket.py`'s chain-number table is -- pick a name, get a correctly
+scaled part, still free to override any dimension directly:
+
+| series | names | pitch | profile |
+|---|---|---|---|
+| classic inch (trapezoidal) | MXL, XL, L, H, XH, XXH | 0.080, 1/5, 3/8, 1/2, 7/8, 1 1/4 in | trapezoidal |
+| ISO 5296 T-series (metric trapezoidal) | T2.5, T5, T10, T20 | 2.5 / 5 / 10 / 20 mm | trapezoidal |
+| curvilinear | GT2; HTD 3M, 5M, 8M, 14M | 2; 3 / 5 / 8 / 14 mm | curvilinear |
+
+The trapezoidal-vs-curvilinear distinction is real, not decorative -- a
+curvilinear (GT2, the 2 mm belt in almost every 3D printer; HTD) tooth is
+visibly rounded, a trapezoidal one is close to flat-sided -- and it is
+carried by one number: `fillet_radius` (0.15 tooth heights for a
+trapezoidal profile, 0.35 for a curvilinear one, overridable), applied to
+the plain trapezoid by **eroding and re-dilating** it (`Polygon.buffer(-r)`
+then `buffer(+r)`, round joins). That is shapely's own robust way to round a
+polygon's corners and it was chosen deliberately over hand-placing tangent
+arcs: this project has twice placed a root fillet backwards by hand (the
+rack and worm fillets, section 10 -- a "rendering notch" that was a real
+groove because the arc's centre sat on the wrong side), and a library
+operation that cannot be "backwards" removes that whole failure mode.
+Confirmed rather than assumed (`test_fillet_only_trims_the_corners...`):
+the rounded tooth lies entirely inside the sharp one, loses under 10 % of
+its area, and the mid-flank, mid-root and mid-tip points of the sharp
+trapezoid still lie exactly on the rounded boundary -- the fillet moves
+nothing but the corners, so the tooth's width, i.e. its fit, is unchanged.
+
+Four things found by measuring on the way -- none of them visible to a
+validity, manifoldness, length or STEP round-trip check, which every one
+of these wrong shapes passed:
+
+- **The first belt had sawtooth-shaped teeth.** The strip was assembled by
+  splitting each tooth's four corners into a "right side" and a "left side"
+  and splicing them into one long outline -- and the right side was spliced
+  tip-first, so each tooth's outline ran *diagonally up to the tip corner,
+  down the flank to the root corner, then diagonally across to the far tip
+  corner*: a valid, non-self-intersecting polygon (nothing crossed), with 3
+  % too much area, whose "teeth" were spikes and wedges. Measured against
+  the nominal trapezoid, the committed tooth had 3.75 mm² of area to the
+  nominal 3.19, and a symmetric difference of 3.19 mm² -- the two shapes
+  barely overlapped. The user saw it before the tests did ("something is
+  weird"): the seating check, the one test that would have caught it, built
+  its tooth from `belt_tooth_points` directly rather than from the strip.
+
+- **The groove must be the nominal tooth offset, not a re-rounded wider
+  tooth.** The first version built the pulley groove by widening the
+  sharp trapezoid by the clearance and *then* rounding it. That is not the
+  same shape as the nominal (rounded) tooth pushed outward by the
+  clearance: the two differ at the corners, by an amount comparable to the
+  fillet radius, and seating a nominal GT2 tooth in such a groove showed a
+  real 0.3 % overlap at the default 0.1 mm clearance (zero once the
+  clearance exceeded the fillet radius -- the signature of a corner
+  mismatch, not a margin problem). `belt_tooth_points` now rounds the
+  nominal tooth first and offsets *that* by the clearance
+  (`buffer(+clearance)`); `test_groove_is_the_nominal_tooth_offset_
+  uniformly_by_the_clearance` pins it: every point of the nominal boundary
+  is the clearance from the groove boundary to within 1 %, and the seating
+  check reads exactly zero again on every standard profile.
+- **A filleted tooth's points come back in whatever order `buffer` likes**,
+  so even a corrected splice would have broken again for a rounded tooth,
+  whose 52 points start and wind wherever the buffer operation left them.
+  The strip is now a *union* of closed polygons (backing bar + one tooth
+  per position), which has no ordering to get wrong.
+- **Six of the fifteen standards then silently lost every tooth.** The
+  erode-and-re-dilate fillet returns the root edge at v = +2.8×10⁻¹⁷ for
+  some pitches (XL, L, and all four T-sizes) and at exactly 0.0 for the
+  others -- and a tooth whose root floats 3×10⁻¹⁷ above the backing's top
+  edge does not merge with it in `unary_union`. The union came back as a
+  MultiPolygon, and the builder's "keep the largest piece" fallback returned
+  the bare backing bar: a valid polygon of exactly the requested length, no
+  teeth. Two fixes: `belt_tooth_points` snaps the root line to exactly 0.0,
+  and the builder now *raises* if the union is not one polygon -- a silent
+  fallback that hides missing geometry is the wrong reflex.
+- **The pulley had no bore** (and neither did the sprocket, section 18 --
+  same construction). `full_pulley_outline` returns the polygon's exterior
+  ring only, so the bore, an interior ring of the shapely polygon, never
+  reached the solid: a solid disc for any bore, plainly visible in the
+  thumbnail, and valid/manifold/STEP round-trip all passed on it. The bore
+  is now cut in the sketch (`Circle(mode=SUBTRACT)`, centred, so no
+  `Locations` context is needed), drawn as its own circle in the DXF, and
+  checked by asking the solid whether there is material on the axis.
+
+The pattern across all four: a shape-quality check confirms the result is
+*a* solid, never that it is *the right* solid. The tests that now hold
+these are dimensional and comparative -- strip area equals backing plus
+n × tooth, every tooth cut out of the built strip equals the nominal tooth
+to 10⁻⁶ mm², no material on the axis when a bore is requested -- the same
+"ask the geometry a question with a known answer" habit the roller-seating
+and pin-through-plate checks of sections 18-19 already follow.
+
+**What is and is not standards-derived here, stated plainly.** The pitches
+are exact -- they are how each size is named and sold, and they set the
+pulley's pitch diameter (`z p / 2π`) exactly. The tooth height, root and
+tip widths and fillet radius are this module's own stated proportions of
+the pitch, chosen to *look and fit* like each series, not transcribed from
+a manufacturer's drawing: the real curvilinear geometry (Gates' GT and
+HTD arcs) is proprietary, and the trapezoidal standards' exact
+tooth-angle/height tables were not available to this author. A part that
+must mate with a specific purchased belt should have its tooth height and
+widths checked against that belt's datasheet and set directly. The
+pitch-line-at-OD convention of 20.1 also stands: a real pulley's OD sits
+one pitch-line differential (a few tenths of a millimetre) below the belt's
+pitch line, and this module does not model that offset.
+
+### 20.3 Checks
 
 `tests/test_timing_belt.py`: the pulley's pitch radius matches `z p / (2
-pi)` exactly; the belt tooth's own corner widths confirm the root-wide,
-tip-narrow taper the pulley-tooth argument above depends on; the built
-pulley is one valid, z-fold-symmetric solid over three tooth-count/pitch
-combinations; **a belt tooth -- wrapped onto the pulley by
+pi)` exactly; the belt tooth narrows root to tip (the taper the
+pulley-tooth argument above depends on); the standard table names the
+expected series at the expected pitches; **every one of the fifteen
+standard sizes builds a valid, z-fold-symmetric pulley and a valid belt
+strip**; curvilinear profiles are measurably more rounded than
+trapezoidal ones; the fillet trims only the corners (20.2); the groove is
+the nominal tooth offset uniformly by the clearance (20.2); **every built
+belt strip has all its teeth and each one is exactly the nominal tooth**
+(area = backing + n × tooth; each tooth cut out of the strip matches the
+nominal to 10⁻⁶ mm² -- the check that would have caught both belt bugs of
+20.2); **a belt tooth -- wrapped onto the pulley by
 `rack_point_to_gear_frame` called directly, not through this module's own
 pulley-building wrapper -- seated in every groove overlaps the pulley by
-nothing beyond floating-point noise, and collides by essentially its
-whole own volume turned half a pitch onto the land**; the belt strip is
-one valid manifold solid of the requested length; both solids round-trip
-through STEP.
-
-**v1 simplifications, stated plainly**: a plain trapezoidal tooth, no root
-fillet (real trapezoidal timing-belt standards, e.g. the T- or XL/L/H-
-series, round the root for stress relief); the pitch-line-at-OD
-convention above, rather than a standard-specific pitch-line differential;
-tooth proportions (height, root/tip width) are simple, stated ratios of
-the belt pitch, not transcribed from a specific standard's table -- the
-curvilinear HTD/GT2 profile (a circular-arc tooth, higher torque capacity,
-now extremely common) is a documented, un-implemented alternative for a
-future session, not this one.
+nothing beyond floating-point noise, and collides by essentially its whole
+own volume turned half a pitch onto the land, on T5, GT2, HTD 8M and XL
+alike**; the pulley solid has its bore (no material on the axis, and the
+volume difference to a bore-less build is exactly the bore cylinder); the
+belt strip is one valid manifold solid of the requested length; both
+solids round-trip through STEP.

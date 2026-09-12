@@ -269,7 +269,28 @@ namespace GearGen.Geometry
         public bool IsTimingWheel => Family == GearFamily.TimingWheel;
         public bool IsTimingBelt => Family == GearFamily.TimingBelt;
 
+        /// <summary>Named standard timing-belt sizes -- the C# side's own copy
+        /// of timing_belt.py's TIMING_BELT_STANDARDS (name, pitch in mm,
+        /// curvilinear profile?), kept identical so the combo box's choice
+        /// matches what the geometry engine assumes for the same name.
+        /// Trapezoidal: the classic inch series and ISO 5296 T-series;
+        /// curvilinear: GT2 and HTD.</summary>
+        public static readonly (string Name, double PitchMm, bool Curvilinear)[] TimingBeltStandards =
+        {
+            ("MXL", 2.032, false), ("XL", 5.08, false), ("L", 9.525, false), ("H", 12.7, false),
+            ("XH", 22.225, false), ("XXH", 31.75, false),
+            ("T2.5", 2.5, false), ("T5", 5.0, false), ("T10", 10.0, false), ("T20", 20.0, false),
+            ("GT2", 2.0, true), ("HTD 3M", 3.0, true), ("HTD 5M", 5.0, true), ("HTD 8M", 8.0, true), ("HTD 14M", 14.0, true),
+        };
+
+        /// <summary>A TimingBeltStandards name; picking one sets BeltPitchMm and
+        /// BeltCurvilinear from the table (GearViewModel.BeltType). The pitch
+        /// stays directly editable afterward for a non-standard belt.</summary>
+        public string BeltType { get; set; } = "T5";
         public double BeltPitchMm { get; set; } = 5.0;
+        /// <summary>Rounded (GT2/HTD) rather than flat-sided (T/XL/L/H) tooth --
+        /// sets the engine's fillet radius; docs/gear-math.md 20.2.</summary>
+        public bool BeltCurvilinear { get; set; } = false;
 
         /// <summary>ANSI B29.1 standard chain number ("40", "60", ...) --
         /// picking one sets ChainPitchMm and RollerDiameterMm from the
@@ -364,10 +385,12 @@ namespace GearGen.Geometry
                     p.ChainNumber = "40"; p.ChainPitchMm = 12.7; p.RollerDiameterMm = 7.9248;
                     break;
                 case GearFamily.TimingWheel:
-                    p.Teeth = 20; p.BeltPitchMm = 5.0; p.FaceWidthMm = 8.0; p.BoreDiameterMm = 6.0;
+                    p.Teeth = 20; p.BeltType = "T5"; p.BeltPitchMm = 5.0; p.BeltCurvilinear = false;
+                    p.FaceWidthMm = 8.0; p.BoreDiameterMm = 6.0;
                     break;
                 case GearFamily.TimingBelt:
-                    p.BeltPitchMm = 5.0; p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
+                    p.BeltType = "T5"; p.BeltPitchMm = 5.0; p.BeltCurvilinear = false;
+                    p.CutterTeeth = 12; p.FaceWidthMm = 8.0;
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
@@ -408,6 +431,11 @@ namespace GearGen.Geometry
         /// (diametral pitch, 1/in), with lengths in mm or "in" to match.
         /// Invariant culture throughout -- in a de-DE locale a 2.5 mm module
         /// would otherwise put a stray comma in the file name.</summary>
+        /// <summary>"HTD 8M" -> "htd8m": a file-name-safe form of the belt
+        /// standard's name (no spaces; the dot in "T2.5" is fine in a stem).</summary>
+        private string BeltTypeSlug =>
+            string.IsNullOrWhiteSpace(BeltType) ? "custom" : BeltType.Replace(" ", "").ToLowerInvariant();
+
         public string SuggestedFileName(string extension)
         {
             var inv = System.Globalization.CultureInfo.InvariantCulture;
@@ -466,11 +494,13 @@ namespace GearGen.Geometry
                     parts.Add("pitch" + Len(ChainPitchMm)); parts.Add("roller" + Len(RollerDiameterMm));
                     break;
                 case GearFamily.TimingWheel:
-                    parts.Add("timingwheel"); parts.Add("z" + Teeth); parts.Add("beltpitch" + Len(BeltPitchMm));
-                    parts.Add("fw" + Len(FaceWidthMm));
+                    // the standard's name ("htd8m", "gt2", "t5") says the profile; the pitch is
+                    // still spelled out because it stays editable independently of the name
+                    parts.Add("timingwheel"); parts.Add(BeltTypeSlug); parts.Add("z" + Teeth);
+                    parts.Add("beltpitch" + Len(BeltPitchMm)); parts.Add("fw" + Len(FaceWidthMm));
                     break;
                 case GearFamily.TimingBelt:
-                    parts.Add("timingbelt"); parts.Add("beltpitch" + Len(BeltPitchMm));
+                    parts.Add("timingbelt"); parts.Add(BeltTypeSlug); parts.Add("beltpitch" + Len(BeltPitchMm));
                     parts.Add("teeth" + CutterTeeth); parts.Add("w" + Len(FaceWidthMm));
                     break;
                 case GearFamily.SpiralBevel:

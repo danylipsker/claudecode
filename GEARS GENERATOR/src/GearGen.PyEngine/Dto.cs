@@ -47,6 +47,8 @@ namespace GearGen.PyEngine
         [JsonProperty("chain_pitch_mm")] public double? ChainPitchMm;
         [JsonProperty("outside_diameter_mm")] public double? OutsideDiameterMm;
         [JsonProperty("belt_pitch_mm")] public double? BeltPitchMm;
+        [JsonProperty("belt_type")] public string BeltType;
+        [JsonProperty("curvilinear")] public bool? Curvilinear;
     }
 
     internal class EngineResponse

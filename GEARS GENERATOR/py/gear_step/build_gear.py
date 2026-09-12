@@ -627,14 +627,24 @@ def build_sprocket_solid(sp) -> bd.Part:
     """sp: sprocket.SprocketParams (docs/gear-math.md 18). A plain straight
     extrusion of the validated 2D cross-section -- a sprocket, unlike a
     gear, has no helix/lead of its own, so this is exactly a spur gear's
-    own flat-extrusion case, nothing more."""
+    own flat-extrusion case, nothing more.
+
+    full_sprocket_outline is the EXTERIOR ring only (the 2-D view draws one
+    polyline), so the bore -- an interior ring of full_sprocket_polygon --
+    must be cut here explicitly. It was not, in the first version: the
+    sprocket came out as a solid disc no matter what bore was asked for,
+    and valid/manifold/STEP round-trip all passed on it (the thumbnail
+    showed it plainly; nobody read it for that). Caught only by asking
+    whether there is material on the axis -- test_sprocket.py."""
     from sprocket import full_sprocket_outline
     pts = [tuple(p) for p in full_sprocket_outline(sp)]
     with bd.BuildPart() as part:
-        with bd.BuildSketch() as sk:
+        with bd.BuildSketch():
             with bd.BuildLine():
                 bd.Polyline(*pts, pts[0])
             bd.make_face()
+            if sp.bore_diameter_mm > 0:
+                bd.Circle(sp.bore_diameter_mm / 2.0, mode=bd.Mode.SUBTRACT)   # centred on the axis: no Locations needed
         bd.extrude(amount=sp.face_width_mm)
     return part.part
 
@@ -644,13 +654,17 @@ def export_sprocket_step(sp, path: str | Path) -> None:
 
 
 def export_sprocket_profile_dxf(sp, path: str | Path) -> None:
-    """Flat 2D tooth profile (constant along the face width) as a DXF."""
+    """Flat 2D tooth profile (constant along the face width) as a DXF: the
+    outer outline plus the bore as its own circle (the outline is the
+    exterior ring only -- see build_sprocket_solid)."""
     from sprocket import full_sprocket_outline
     pts = [tuple(p) for p in full_sprocket_outline(sp)]
     doc = ezdxf.new(dxfversion="R2010")
     doc.units = ezdxf.units.MM
     msp = doc.modelspace()
     msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    if sp.bore_diameter_mm > 0:
+        msp.add_circle((0.0, 0.0), sp.bore_diameter_mm / 2.0)
     doc.saveas(str(path))
 
 
@@ -686,12 +700,16 @@ def export_timing_wheel_step(tp, path: str | Path) -> None:
 
 
 def export_timing_wheel_profile_dxf(tp, path: str | Path) -> None:
+    """Outer outline plus the bore as its own circle (the outline is the
+    exterior ring only -- see timing_belt.build_pulley_solid)."""
     from timing_belt import full_pulley_outline
     pts = [tuple(p) for p in full_pulley_outline(tp)]
     doc = ezdxf.new(dxfversion="R2010")
     doc.units = ezdxf.units.MM
     msp = doc.modelspace()
     msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True})
+    if tp.bore_diameter_mm > 0:
+        msp.add_circle((0.0, 0.0), tp.bore_diameter_mm / 2.0)
     doc.saveas(str(path))
 
 

@@ -207,15 +207,21 @@ namespace GearGen.PyEngine
 
             if (p.IsTimingWheel)
             {
+                // The displayed pitch is sent (not just the standard's name) so a
+                // user's edited pitch wins; the name still selects the profile.
                 req.GearType = "timing_wheel";
+                req.BeltType = p.BeltType;
                 req.BeltPitchMm = p.BeltPitchMm;
+                req.Curvilinear = p.BeltCurvilinear;
                 return req;
             }
 
             if (p.IsTimingBelt)
             {
                 req.GearType = "timing_belt";
+                req.BeltType = p.BeltType;
                 req.BeltPitchMm = p.BeltPitchMm;
+                req.Curvilinear = p.BeltCurvilinear;
                 req.CutterTeeth = p.CutterTeeth;   // how many teeth the modelled segment shows
                 return req;
             }

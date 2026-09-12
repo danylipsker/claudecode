@@ -458,14 +458,30 @@ def chain_link_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def _belt_standard_fields(p: dict) -> dict:
+    """belt_type (a timing_belt.TIMING_BELT_STANDARDS key, e.g. "GT2",
+    "HTD 8M", "T5") picks the standard's pitch and its trapezoidal-vs-
+    curvilinear profile; an explicit belt_pitch_mm / curvilinear in the
+    request overrides either (the UI sends the pitch it displays, so a
+    user's edited pitch wins -- same "standard default, freely
+    overridable" contract as the sprocket's chain number)."""
+    from timing_belt import TIMING_BELT_STANDARDS
+    belt_type = str(p.get("belt_type") or "")
+    entry = TIMING_BELT_STANDARDS.get(belt_type)
+    pitch = p.get("belt_pitch_mm") or (entry["pitch_mm"] if entry else None) or p["module_mm"]
+    curvilinear = p["curvilinear"] if p.get("curvilinear") is not None else (entry["curvilinear"] if entry else False)
+    return dict(belt_pitch_mm=float(pitch), belt_type=belt_type, curvilinear=bool(curvilinear))
+
+
 def timing_wheel_params_from_request(p: dict):
-    """Timing pulley -- docs/gear-math.md 20. z = groove count, belt_pitch_mm
-    the belt's own pitch (reusing module_mm's request slot, as sprocket
-    reuses it for chain_pitch_mm)."""
+    """Timing pulley -- docs/gear-math.md 20. z = groove count; belt
+    standard / pitch / profile per _belt_standard_fields (belt_pitch_mm
+    reuses module_mm's request slot as a last resort, as sprocket reuses
+    it for chain_pitch_mm)."""
     from timing_belt import TimingWheelParams
     return TimingWheelParams(
         z=int(p["z"]),
-        belt_pitch_mm=float(p.get("belt_pitch_mm") or p["module_mm"]),
+        **_belt_standard_fields(p),
         face_width_mm=float(p.get("face_width_mm", 10.0)),
         bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
     )
@@ -484,16 +500,19 @@ def timing_wheel_derived_values(tp) -> tuple[dict, list]:
         "root_diameter_mm": 2.0 * tp.root_radius,
         "belt_pitch_mm": tp.belt_pitch_mm,
         "tooth_height_mm": bp.tooth_height,
+        "fillet_radius_mm": bp.fillet_radius,
+        "curvilinear": 1.0 if bp.curvilinear else 0.0,
     }, warnings
 
 
 def timing_belt_params_from_request(p: dict):
-    """Timing belt -- docs/gear-math.md 20. Same belt_pitch_mm as the
-    matching pulley; n_teeth is just how many teeth the modelled segment
-    shows, not a meshing dimension."""
+    """Timing belt -- docs/gear-math.md 20. Same belt standard / pitch /
+    profile fields as the matching pulley (_belt_standard_fields); n_teeth
+    is just how many teeth the modelled segment shows, not a meshing
+    dimension."""
     from timing_belt import TimingBeltParams
     return TimingBeltParams(
-        belt_pitch_mm=float(p.get("belt_pitch_mm") or p["module_mm"]),
+        **_belt_standard_fields(p),
         belt_width_mm=float(p.get("face_width_mm", 10.0)),
         n_teeth=int(p.get("cutter_teeth") or 12),
     )
@@ -505,6 +524,8 @@ def timing_belt_derived_values(bp) -> tuple[dict, list]:
         "tooth_height_mm": bp.tooth_height,
         "belt_thickness_mm": bp.belt_thickness,
         "segment_length_mm": bp.n_teeth * bp.belt_pitch_mm,
+        "fillet_radius_mm": bp.fillet_radius,
+        "curvilinear": 1.0 if bp.curvilinear else 0.0,
     }, []
 
 

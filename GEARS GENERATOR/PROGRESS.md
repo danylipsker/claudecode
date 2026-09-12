@@ -1,6 +1,85 @@
 # GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/face/sprocket/chain-link/timing-wheel/timing-belt/worm/rack/helical-rack/internal gears + real 3D viewer
 
-## Timing wheels (pulleys) and timing belts (latest)
+## Timing belts according to standards -- and three bugs no validity check could see (latest)
+
+The user's follow-up on the pair below: "timing wheels according to
+standards", then "check the timing belts geometry, something is weird".
+Both were right. `timing_belt.py`, docs/gear-math.md §20.2.
+
+- **Standard sizes**: `TIMING_BELT_STANDARDS` -- the classic inch
+  trapezoidal series (MXL, XL, L, H, XH, XXH), the ISO 5296 metric T-series
+  (T2.5, T5, T10, T20), and the curvilinear series (GT2 -- the 2 mm belt in
+  almost every 3D printer -- and HTD 3M/5M/8M/14M). Picked by name, the
+  same way a sprocket picks its ANSI chain number: pitch and
+  trapezoidal-vs-curvilinear profile set together, pitch still directly
+  editable. The profile distinction is carried by a fillet radius (0.15
+  tooth heights trapezoidal, 0.35 curvilinear), applied by eroding and
+  re-dilating the sharp trapezoid -- chosen over hand-placed tangent arcs
+  because this project has twice placed a fillet backwards by hand (rack,
+  worm), and a library operation cannot be backwards. Confirmed by test:
+  the rounded tooth lies inside the sharp one, loses under 10 % of its
+  area, and its mid-flank/root/tip points are exactly where the sharp
+  tooth's were -- the fit is unchanged.
+- **Stated plainly**: the pitches are exact (they are how the sizes are
+  named and sold, and they set the pitch diameter exactly); tooth height,
+  widths and fillet are this module's own proportions of the pitch, chosen
+  to look and fit like each series, not transcribed from a manufacturer's
+  drawing -- the real GT/HTD arcs are proprietary. A part mating with a
+  specific purchased belt should have its tooth dimensions set from that
+  belt's datasheet.
+- **The "weird" belt** was real: the committed strip spliced each tooth's
+  four corners into the outline tip-first, so every tooth ran diagonally
+  up to a tip corner, down a flank, then diagonally across -- sawtooth
+  spikes and wedges, 3 % too much area, and a *valid* polygon (nothing
+  crossed). Measured: the middle tooth had 3.75 mm² where the nominal has
+  3.19, symmetric difference 3.19 -- the shapes barely overlapped. The one
+  test that would have caught it, the pulley-seating check, built its tooth
+  straight from `belt_tooth_points` rather than from the strip. Now a union
+  of closed tooth polygons (no ordering to get wrong), and a test that cuts
+  every tooth back out of the built strip and compares it to the nominal.
+- **Then six of the fifteen standards silently lost every tooth**: the
+  fillet operation returns the root edge at v = +2.8e-17 for XL, L and the
+  four T-sizes (exactly 0.0 for the other nine), and a tooth floating
+  3e-17 above the backing does not merge with it in `unary_union` -- the
+  builder's "keep the largest piece" fallback then returned the bare
+  backing bar, a valid polygon of exactly the right length. Root line
+  snapped to exactly 0; the builder now *raises* if the union is not one
+  polygon. A silent fallback that hides missing geometry is the wrong
+  reflex.
+- **The groove was not the tooth offset by the clearance**: widening the
+  sharp trapezoid and then rounding it is not the same shape as rounding
+  the nominal tooth and then offsetting it -- they differ at the corners,
+  and a seated nominal GT2 tooth showed a real 0.3 % overlap at the default
+  0.1 mm clearance (zero once clearance > fillet radius: the signature of a
+  corner mismatch, not a margin). Now: round first, then `buffer(+c)`; a
+  test pins every nominal boundary point at exactly the clearance from the
+  groove boundary.
+- **Neither the sprocket nor the timing wheel had a bore.** Both solids
+  were built from the shapely outline's *exterior ring*, so the bore -- an
+  interior ring -- never left shapely: a solid disc for any bore, plainly
+  visible in both thumbnails (not read for that), passed by every
+  validity/manifold/STEP round-trip test. The bore is now cut in the
+  sketch, drawn as its own circle in the DXF, and both families are checked
+  by asking the solid whether there is material on the axis and whether
+  the volume difference to a bore-less build is exactly the bore cylinder.
+- **Checks**: `test_timing_belt.py` 9 -> 28 (every standard builds a
+  valid, symmetric pulley and a belt with all its teeth, each exactly the
+  nominal tooth; curvilinear more rounded than trapezoidal; fillet trims
+  only corners; groove = tooth + clearance; seating on T5/GT2/HTD 8M/XL;
+  bore), `test_sprocket.py` 12 -> 13 (bore); suite 149. UI: a Belt
+  standard combo on both cards, profile and fillet in the derived rows,
+  names like `timingwheel_htd8m_z16_beltpitch8_fw10_bore8`. Headless export
+  + reset for wheel and belt, sprocket export; SolidWorks imports of all
+  three (wheel 12 s, belt 5 s, sprocket 5 s, all native, 3D Interconnect off).
+
+The pattern across all of them, now written into §20.2: a shape-quality
+check confirms the result is *a* solid, never that it is *the right* one;
+the tests that hold are dimensional and comparative -- area equals backing
+plus n × tooth, each cut-out tooth equals the nominal, no material on the
+axis -- the same "ask the geometry a question with a known answer" habit
+the roller-seating and pin-through-plate checks already follow.
+
+## Timing wheels (pulleys) and timing belts
 
 The second drive-element pair the user asked for (item 2, clarified as
 "timing wheels", and item 4, "timing belts"), alongside the roller

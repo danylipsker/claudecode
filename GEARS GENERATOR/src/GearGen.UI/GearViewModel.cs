@@ -288,12 +288,41 @@ namespace GearGen.UI
             set { _p.BeltPitchMm = Math.Max(0.1, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
         }
 
+        public string[] BeltTypes => Array.ConvertAll(GearParameters.TimingBeltStandards, e => e.Name);
+
+        /// <summary>Picking a standard sets BeltPitchMm and the trapezoidal/
+        /// curvilinear profile from GearParameters.TimingBeltStandards; the
+        /// pitch stays directly editable afterward (a non-standard belt keeps
+        /// the last-picked profile style). Same pattern as ChainNumber.</summary>
+        public string BeltType
+        {
+            get => _p.BeltType;
+            set
+            {
+                _p.BeltType = value;
+                foreach (var e in GearParameters.TimingBeltStandards)
+                {
+                    if (e.Name != value) continue;
+                    _p.BeltPitchMm = e.PitchMm;
+                    _p.BeltCurvilinear = e.Curvilinear;
+                    OnChanged(nameof(BeltPitchDisplay));
+                    break;
+                }
+                OnChanged();
+                ScheduleRefresh();
+            }
+        }
+
         public void SelectTimingWheelCard()
         {
             IsTimingWheel = true;
             HelixAngleDeg = 0.0;
             if (Teeth < 8) Teeth = 20;
-            if (_p.BeltPitchMm <= 0) _p.BeltPitchMm = 5.0;
+            // BeltType/BeltPitchMm/BeltCurvilinear are one matched set (the
+            // sprocket card's chain-number lesson: a genuine cross-field
+            // constraint, so re-run the lookup on entry) -- unlike, say,
+            // FaceWidthMm, which is just "a width" and is left alone.
+            BeltType = string.IsNullOrEmpty(_p.BeltType) ? "T5" : _p.BeltType;
             if (_p.BoreDiameterMm <= 0) { _p.BoreDiameterMm = 6.0; OnChanged(nameof(BoreDiameterDisplay)); }
         }
 
@@ -303,7 +332,7 @@ namespace GearGen.UI
         public void SelectTimingBeltCard()
         {
             IsTimingBelt = true;
-            if (_p.BeltPitchMm <= 0) _p.BeltPitchMm = 5.0;
+            BeltType = string.IsNullOrEmpty(_p.BeltType) ? "T5" : _p.BeltType;
             if (_p.CutterTeeth < 3) _p.CutterTeeth = 12;
             _p.BoreDiameterMm = 0.0; _p.ProfileShift = 0.0;
             _p.AddendumCoeff = 1.0; _p.DedendumCoeff = 1.25; _p.BacklashMm = 0.0;
@@ -1144,7 +1173,9 @@ namespace GearGen.UI
                     DedendumDiameterText = L(dv("root_diameter_mm"));
                     ToothThicknessText = "-";
                     ModuleOrDpEquivalentText = "-";
-                    TimingWheelText = $"belt pitch {L(dv("belt_pitch_mm"))}, groove depth {L(dv("tooth_height_mm"))}";
+                    TimingWheelText = $"{_p.BeltType} ({(dv("curvilinear") > 0.5 ? "curvilinear" : "trapezoidal")}): "
+                                    + $"belt pitch {L(dv("belt_pitch_mm"))}, groove depth {L(dv("tooth_height_mm"))}, "
+                                    + $"fillet r{L(dv("fillet_radius_mm"))}";
                 }
                 else if (IsTimingBelt)
                 {
@@ -1154,7 +1185,8 @@ namespace GearGen.UI
                     DedendumDiameterText = "-";
                     ToothThicknessText = "-";
                     ModuleOrDpEquivalentText = "-";
-                    TimingBeltText = $"belt pitch {L(dv("belt_pitch_mm"))}, tooth height {L(dv("tooth_height_mm"))}, "
+                    TimingBeltText = $"{_p.BeltType} ({(dv("curvilinear") > 0.5 ? "curvilinear" : "trapezoidal")}): "
+                                    + $"belt pitch {L(dv("belt_pitch_mm"))}, tooth height {L(dv("tooth_height_mm"))}, "
                                     + $"backing {L(dv("belt_thickness_mm"))} thick, segment {L(dv("segment_length_mm"))} long";
                 }
                 else if (IsChainLink)

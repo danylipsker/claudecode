@@ -370,15 +370,19 @@
 
                     <StackPanel Visibility="{Binding IsTimingWheel, Converter={StaticResource B2V}}">
                         <TextBlock Text="TIMING WHEEL" Style="{StaticResource SectionHeader}"/>
-                        <TextBlock Text="A toothed pulley for a timing belt: teeth = groove count, and the belt's own pitch sets the pulley's pitch circle (a true circle -- a belt is one continuous flexible band, not rigid links like a chain, so there is no polygon effect). Pick this together with a matching Timing belt (same belt pitch)."
+                        <TextBlock Text="A toothed pulley for a timing belt: teeth = groove count, and the belt's own pitch sets the pulley's pitch circle (a true circle -- a belt is one continuous flexible band, not rigid links like a chain, so there is no polygon effect). Pick a standard belt (MXL/XL/L/H and ISO T-series are flat-sided trapezoidal; GT2 and HTD are rounded curvilinear) to set the pitch and tooth profile together, or edit the pitch directly. Pair it with a Timing belt of the same standard."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <TextBlock Text="Belt standard" FontSize="12" Foreground="#374151" Margin="0,0,0,3"/>
+                        <ComboBox ItemsSource="{Binding BeltTypes}" SelectedItem="{Binding BeltType}" Margin="0,0,0,8" Padding="6,4"/>
                         <local:NumericSpinner Label="Belt pitch" Value="{Binding BeltPitchDisplay}" Minimum="0.5" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsTimingBelt, Converter={StaticResource B2V}}">
                         <TextBlock Text="TIMING BELT" Style="{StaticResource SectionHeader}"/>
-                        <TextBlock Text="A modelled segment of timing belt: a flexible band with trapezoidal teeth at the given pitch, wide at the backing and narrower at the tip -- the same shape a matching Timing wheel's grooves are cut to receive. 'Teeth shown' is just how much of the belt to model, not a meshing dimension."
+                        <TextBlock Text="A modelled segment of timing belt: a flexible band with teeth at the given pitch, wide at the backing and narrower at the tip -- flat-sided for the trapezoidal standards (MXL/XL/L/H, ISO T-series), rounded for the curvilinear ones (GT2, HTD) -- the same shape a matching Timing wheel's grooves are cut to receive. 'Teeth shown' is just how much of the belt to model, not a meshing dimension."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <TextBlock Text="Belt standard" FontSize="12" Foreground="#374151" Margin="0,0,0,3"/>
+                        <ComboBox ItemsSource="{Binding BeltTypes}" SelectedItem="{Binding BeltType}" Margin="0,0,0,8" Padding="6,4"/>
                         <local:NumericSpinner Label="Belt pitch" Value="{Binding BeltPitchDisplay}" Minimum="0.5" Maximum="100" Step="0.1" DecimalPlaces="3" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Teeth shown" Value="{Binding CutterTeeth}" Minimum="3" Maximum="60" Step="1" DecimalPlaces="0"/>
                     </StackPanel>

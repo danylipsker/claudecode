@@ -119,5 +119,22 @@ def test_solid_builds_and_round_trips_as_step():
         assert len(imported.solids()) == 1
 
 
+def test_solid_actually_has_its_bore():
+    """The first version built the solid from the outline's exterior ring
+    only, so the bore never left shapely: a solid disc for any bore -- and
+    the round-trip test above passed on it, hole or no hole. Ask the solid
+    directly: no material on the axis, material on the rim, and the volume
+    difference to a bore-less build is exactly the bore cylinder."""
+    from build_gear import build_sprocket_solid
+    sp = SprocketParams.from_ansi_chain_number("40", z=20, face_width_mm=6.0, bore_diameter_mm=10.0)
+    solid = build_sprocket_solid(sp)
+    z_mid = sp.face_width_mm / 2.0
+    assert not solid.is_inside(bd.Vector(0.0, 0.0, z_mid))
+    rim_r = 0.5 * (sp.bore_diameter_mm / 2.0 + (sp.pitch_radius - sp.seat_radius))
+    assert solid.is_inside(bd.Vector(0.0, rim_r, z_mid))
+    disc = build_sprocket_solid(SprocketParams.from_ansi_chain_number("40", z=20, face_width_mm=6.0))
+    assert disc.volume - solid.volume == pytest.approx(math.pi * 5.0 ** 2 * 6.0, rel=1e-3)
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-v"]))
