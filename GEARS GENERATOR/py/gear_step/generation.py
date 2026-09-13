@@ -441,6 +441,16 @@ def _swept(solid, planes, R, half_size, z, tolerance, fold_pitch_rad, fold_copie
             raise ValueError("generation: at z=%.2f the space spans %.1f%% of the pitch at the rim -- the teeth have run "
                              "pointed there (a narrower face, or a smaller outside diameter)" % (z, 100.0 * width / (2.0 * wedge_half_angle_rad)))
         centre = 0.5 * float(band.max() + band.min())
+        # The rim band can graze a thin, skewed finger of the space instead of
+        # sitting over its body: a throated (globoid) wheel's space reaches the
+        # clip rim near the throat only along one leaning edge, so its rim
+        # mid-angle lands a few degrees off the space's centre, the wedge shifts
+        # with it, clips the target and lets a neighbour's sliver in (a 2.6 mm^2
+        # piece beside a 12.5 mm^2 space, at z=1 of the default 1/30 globoid).
+        # When the rim centre disagrees with the piece's own centroid by more
+        # than a fraction of the wedge, the centroid is the reliable centre.
+        if _angle_gap(centre, c0) > 0.3 * wedge_half_angle_rad:
+            centre = c0
         w, rr = wedge_half_angle_rad, 4.0 * R
         arc = [(rr * math.cos(a), rr * math.sin(a)) for a in np.linspace(centre - w, centre + w, 16)]
         swept = swept.intersection(Polygon([(0.0, 0.0)] + arc))

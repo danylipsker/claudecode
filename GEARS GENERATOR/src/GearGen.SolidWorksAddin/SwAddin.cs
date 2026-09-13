@@ -567,10 +567,12 @@ namespace GearGen.SolidWorksAddin
                     Capture("selftest_1_pane.png");
                     break;
                 case 2:
-                    if (string.Equals(SelfTestSetting("GEARGEN_ADDIN_SELFTEST_FAMILY", "family"), "spur", StringComparison.OrdinalIgnoreCase))
-                    { vm.SelectSpurCard(); Log("selftest: spur card selected"); }
-                    else
-                    { vm.SelectCompoundPlanetaryCard(); Log("selftest: compound planetary card selected"); }
+                    // family=<X> selects Select<X>Card (e.g. GloboidWorm, Spur) by reflection;
+                    // empty falls back to the compound planetary set.
+                    string fam = SelfTestSetting("GEARGEN_ADDIN_SELFTEST_FAMILY", "family");
+                    var selectMethod = string.IsNullOrEmpty(fam) ? null : vm.GetType().GetMethod("Select" + fam + "Card", Type.EmptyTypes);
+                    if (selectMethod != null) { selectMethod.Invoke(vm, null); Log("selftest: selected " + fam); }
+                    else { vm.SelectCompoundPlanetaryCard(); Log("selftest: compound planetary card selected (family '" + fam + "' has no Select*Card)"); }
                     break;
                 case 3:
                     SelfTestCreate(vm, false);
