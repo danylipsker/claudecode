@@ -192,6 +192,12 @@ namespace GearGen.SolidWorksAddin
                     "GEARS GENERATOR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            // GEARGEN_ADDIN_SHOWPANE=1 opens our Task Pane on connect instead of
+            // leaving it to a click on the gear tab -- used to bring it up on
+            // demand; normal startups (no flag) leave SolidWorks' own pane choice alone.
+            if (_taskpaneView != null && SelfTestSetting("GEARGEN_ADDIN_SHOWPANE", "showpane") == "1")
+                StartShowPane();
+
             string selfTest = SelfTestSetting("GEARGEN_ADDIN_SELFTEST", "dir");
             if (!string.IsNullOrEmpty(selfTest) && _panelHost != null && _engine != null)
                 StartSelfTest(selfTest);
@@ -200,8 +206,27 @@ namespace GearGen.SolidWorksAddin
             return true;
         }
 
+        // GEARGEN_ADDIN_SHOWPANE: re-assert our pane for a few seconds so it ends
+        // up in front even when another startup add-in (the 3DEXPERIENCE
+        // Marketplace shows an "Update Available" pane) fronts its own after us.
+        private Timer _showPaneTimer;
+        private int _showPaneCount;
+        private void StartShowPane()
+        {
+            try { _taskpaneView.ShowView(); } catch { }
+            _showPaneTimer = new Timer { Interval = 4000 };
+            _showPaneTimer.Tick += (s, e) =>
+            {
+                try { _taskpaneView?.ShowView(); } catch { }
+                if (++_showPaneCount >= 6) _showPaneTimer.Stop();
+            };
+            _showPaneTimer.Start();
+            Log("ConnectToSW: ShowView (showpane; re-showing for ~24s past other add-ins' startup panes)");
+        }
+
         public bool DisconnectFromSW()
         {
+            try { _showPaneTimer?.Stop(); } catch { /* best effort */ }
             try { _selfTestTimer?.Stop(); } catch { /* best effort */ }
             try { _taskpaneView?.DeleteView(); } catch { /* best effort */ }
             _engine?.Dispose();
