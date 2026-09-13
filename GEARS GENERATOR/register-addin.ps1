@@ -1,4 +1,22 @@
 <#
+INSTALLING THE ADD-IN (SolidWorks 2020 ... 2026): build GearGen.SolidWorksAddin
+(x64), then register it MACHINE-WIDE from an elevated (Run as Administrator)
+prompt -- this is the registration SolidWorks' Tools > Add-Ins list reads:
+
+    & "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe" `
+        "<repo>\GEARS GENERATOR\src\GearGen.SolidWorksAddin\bin\x64\Debug\net48\GearGen.SolidWorksAddin.dll" /codebase /tlb
+
+Start SolidWorks: GEARS GENERATOR is pre-checked in Tools > Add-Ins and opens
+as a Task Pane (the gear icon on the right) with the generator on top and the
+LIBRARY underneath -- every part or assembly "Create in SolidWorks" makes,
+listed to be dragged into any SolidWorks window. To remove it: the same
+command with /unregister. (Python 3 with shapely, build123d and ezdxf must be
+on PATH: the add-in starts the same geometry engine the app uses.)
+
+The script below is the older PER-USER registration (no elevation), kept for
+COM activation tests; on this machine SolidWorks 2025/2026 did not list a
+per-user-registered add-in in Tools > Add-Ins, so use the command above.
+
 Registers the GEARS GENERATOR SolidWorks add-in for the CURRENT USER ONLY
 (writes to HKCU\Software\Classes and HKCU\Software\SolidWorks, not HKLM) --
 this works without administrator rights, which regasm's default (machine-wide)

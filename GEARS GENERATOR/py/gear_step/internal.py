@@ -54,6 +54,8 @@ class InternalGearParams:
     face_width_mm: float = 10.0
     rim_thickness_mm: float = 6.0       # solid material beyond the root (dedendum) circle, out to the outer rim
     backlash_mm: float = 0.0
+    helix_angle_deg: float = 0.0        # 0 = spur ring; else the transverse section is twisted along the face (docs 25)
+    hand: str = "right"                 # an internal mesh shares the hand of its pinion
 
     def __post_init__(self):
         if self.cutter_teeth <= 0:
@@ -72,13 +74,58 @@ class InternalGearParams:
     def pressure_angle_rad(self) -> float:
         return math.radians(self.pressure_angle_deg)
 
+    # ---- helical rings: normal vs transverse, as involute.GearParams (docs 7.1)
+    @property
+    def helix_angle_rad(self) -> float:
+        return math.radians(self.helix_angle_deg)
+
+    @property
+    def is_helical(self) -> bool:
+        return abs(self.helix_angle_deg) > 1e-9
+
+    @property
+    def transverse_module_mm(self) -> float:
+        return self.module_mm / math.cos(self.helix_angle_rad)
+
+    @property
+    def transverse_pressure_angle_rad(self) -> float:
+        return math.atan(math.tan(self.pressure_angle_rad) / math.cos(self.helix_angle_rad))
+
+    @property
+    def twist_total_rad(self) -> float:
+        """Profile rotation from one face to the other, the sign by hand --
+        the same rule as GearParams.twist_total_rad, on the ring's own
+        (transverse) pitch radius, so a ring and the pinion of the same hand
+        share one axial pitch and mesh."""
+        if not self.is_helical:
+            return 0.0
+        magnitude = self.face_width_mm * math.tan(self.helix_angle_rad) / self.pitch_radius
+        return -magnitude if self.hand == "left" else magnitude
+
+    def transverse_params(self) -> "InternalGearParams":
+        """The spur ring whose outline is this helical ring's transverse
+        section: the transverse module and pressure angle, the depth
+        coefficients scaled by cos(beta) so the tooth depths stay
+        ha* m_n and hf* m_n (the normal module's, as a hob cuts them). A
+        spur ring returns itself."""
+        if not self.is_helical:
+            return self
+        c = math.cos(self.helix_angle_rad)
+        return InternalGearParams(z=self.z, module_mm=self.transverse_module_mm,
+                                  pressure_angle_deg=math.degrees(self.transverse_pressure_angle_rad),
+                                  addendum_coeff=self.addendum_coeff * c, dedendum_coeff=self.dedendum_coeff * c,
+                                  root_fillet_coeff=self.root_fillet_coeff * c, cutter_teeth=self.cutter_teeth,
+                                  pinion_teeth=self.pinion_teeth, pinion_bore_diameter_mm=self.pinion_bore_diameter_mm,
+                                  face_width_mm=self.face_width_mm, rim_thickness_mm=self.rim_thickness_mm,
+                                  backlash_mm=self.backlash_mm)
+
     @property
     def pitch_radius(self) -> float:
-        return self.module_mm * self.z / 2.0
+        return self.transverse_module_mm * self.z / 2.0
 
     @property
     def base_radius(self) -> float:
-        return self.pitch_radius * math.cos(self.pressure_angle_rad)
+        return self.pitch_radius * math.cos(self.transverse_pressure_angle_rad)
 
     @property
     def addendum_radius(self) -> float:
@@ -102,6 +149,7 @@ class InternalGearParams:
         ring's addendum/dedendum that are inside out, not the pinion's."""
         return GearParams(
             z=self.pinion_teeth, module_mm=self.module_mm, pressure_angle_deg=self.pressure_angle_deg,
+            helix_angle_deg=self.helix_angle_deg, hand=self.hand,
             addendum_coeff=self.addendum_coeff, dedendum_coeff=self.dedendum_coeff, root_fillet_coeff=self.root_fillet_coeff,
             backlash_mm=self.backlash_mm, face_width_mm=self.face_width_mm, bore_diameter_mm=self.pinion_bore_diameter_mm)
 

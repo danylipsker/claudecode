@@ -123,10 +123,11 @@ namespace GearGen.UI
         /// 0deg means spur), the herringbone (each half's helix, must be
         /// nonzero) and the rack (0deg = straight rack, else a helical rack,
         /// docs/gear-math.md 10.4) -- one section, three headers.</summary>
-        public bool ShowHelixSection => IsCylindrical || IsHerringbone || IsRack || IsCrossedHelical;
+        public bool ShowHelixSection => IsCylindrical || IsHerringbone || IsRack || IsCrossedHelical || (IsCompoundPlanetary && IsHelical);
         public string HelixSectionHeader =>
             IsHerringbone ? "HELIX (each half)"
             : IsRack ? "HELIX (0° = straight rack)"
+            : IsCompoundPlanetary ? "HELIX (the sun's hand; planet gears the opposite, each ring as its planet gear)"
             : IsCrossedHelical ? "HELIX (gear 1; gear 2's follows from the shaft angle)"
             : "HELIX (0° = spur gear)";
 
@@ -134,6 +135,11 @@ namespace GearGen.UI
         {
             get => _p.Family == GearFamily.CrossedHelical;
             set { if (value) { _p.Family = GearFamily.CrossedHelical; OnChanged(); FamilyChanged(); } }
+        }
+        public bool IsCompoundPlanetary
+        {
+            get => _p.Family == GearFamily.CompoundPlanetary;
+            set { if (value) { _p.Family = GearFamily.CompoundPlanetary; OnChanged(); FamilyChanged(); } }
         }
         public bool IsPlanetary
         {
@@ -593,7 +599,7 @@ namespace GearGen.UI
         public bool HasModuleField => !IsCycloidalDrive && !IsSprocket && !IsChainLink && !IsTimingWheel && !IsTimingBelt && !IsEccentricCycloidal;
         public string TeethLabel =>
             IsCycloidalDrive ? "Number of lobes (= reduction ratio)"
-            : IsPlanetary ? "Sun teeth"
+            : IsPlanetary || IsCompoundPlanetary ? "Sun teeth"
             : IsFaceGear ? "Face gear teeth"
             : IsSprocket ? "Sprocket teeth"
             : IsHypoid ? "Gear teeth"
@@ -695,6 +701,110 @@ namespace GearGen.UI
             }
         }
 
+        // ---- compound (split-ring) planetary set (docs/gear-math.md section 25) -- Family == CompoundPlanetary only ----
+
+        public int PlanetTeeth2
+        {
+            get => _p.PlanetTeeth2;
+            set { _p.PlanetTeeth2 = Math.Max(4, value); OnChanged(); ScheduleRefresh(); }
+        }
+        public int RingTeeth2
+        {
+            get => _p.RingTeeth2;
+            set { _p.RingTeeth2 = Math.Max(0, value); OnChanged(); ScheduleRefresh(); }
+        }
+        /// <summary>Mesh 2's module, in mm whatever the unit (0 = auto: whatever closes the centre distance).</summary>
+        public double Module2Mm
+        {
+            get => _p.Module2Mm;
+            set { _p.Module2Mm = Math.Max(0.0, value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double FaceWidth2Display
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.FaceWidth2Mm) : _p.FaceWidth2Mm;
+            set { _p.FaceWidth2Mm = Math.Max(0.5, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public double StepGapDisplay
+        {
+            get => IsInch ? UnitConversion.MmToInch(_p.StepGapMm) : _p.StepGapMm;
+            set { _p.StepGapMm = Math.Max(0.5, IsInch ? UnitConversion.InchToMm(value) : value); OnChanged(); ScheduleRefresh(); }
+        }
+        public bool IsSplitRing
+        {
+            get => _p.SplitRing;
+            set { if (value && !_p.SplitRing) { _p.SplitRing = true; OnChanged(); OnChanged(nameof(IsCarrierOutput)); NudgeCompoundToAssemble(); ScheduleRefresh(); } }
+        }
+        public bool IsCarrierOutput
+        {
+            get => !_p.SplitRing;
+            set { if (value && _p.SplitRing) { _p.SplitRing = false; OnChanged(); OnChanged(nameof(IsSplitRing)); ScheduleRefresh(); } }
+        }
+        public bool IsToothFormSpur => !IsHelical;
+        public bool IsToothFormHelical => IsHelical && !_p.CompoundHerringbone;
+        public bool IsToothFormHerringbone => IsHelical && _p.CompoundHerringbone;
+
+        /// <summary>"spur", "helical" or "herringbone": the helix angle carries the
+        /// spur/helical split (a helical set keeps a nonzero angle it already has,
+        /// else 25 degrees; a herringbone one 30), the flag the double helix.</summary>
+        public void SetToothForm(string form)
+        {
+            _p.CompoundHerringbone = form == "herringbone";
+            if (form == "spur") HelixAngleDeg = 0.0;
+            else if (!IsHelical) HelixAngleDeg = form == "herringbone" ? 30.0 : 25.0;
+            OnChanged(nameof(IsToothFormSpur)); OnChanged(nameof(IsToothFormHelical)); OnChanged(nameof(IsToothFormHerringbone));
+            OnChanged(nameof(ShowHelixSection));
+            ScheduleRefresh();
+        }
+
+        /// <summary>Land on a set that assembles (docs 25): with the sun and the
+        /// planet count as they are, move planet gear 1 to a count that meets the
+        /// split ring's level-1 condition, then planet gear 2 to one that meets the
+        /// stepped-planet condition (ring 2 auto) -- so the card never opens on a
+        /// warning about a set nobody chose. Pinned ring-2 counts or modules are
+        /// left alone.</summary>
+        public void SelectCompoundPlanetaryCard()
+        {
+            bool arriving = !IsCompoundPlanetary;
+            IsCompoundPlanetary = true;
+            if (arriving)
+            {
+                // the card's tooth counts are a designed set (docs 25): arriving from
+                // another family lands on it, not on that family's sun with the rest nudged
+                var d = GearParameters.CreateDefaults(GearFamily.CompoundPlanetary, false, _p.Unit);
+                _p.Teeth = d.Teeth; _p.MateTeeth = d.MateTeeth; _p.PlanetTeeth2 = d.PlanetTeeth2; _p.PlanetCount = d.PlanetCount;
+                _p.RingTeeth2 = d.RingTeeth2; _p.Module2Mm = d.Module2Mm; _p.SplitRing = d.SplitRing;
+                OnChanged(string.Empty);
+            }
+            NudgeCompoundToAssemble();
+            ScheduleRefresh();
+        }
+
+        private void NudgeCompoundToAssemble()
+        {
+            if (!IsCompoundPlanetary || _p.RingTeeth2 > 0 || _p.Module2Mm > 0) return;
+            int zs = Teeth, n = Math.Max(1, PlanetCount);
+            bool Level1(int zp1) => zp1 >= 4 && (!_p.SplitRing || (2 * zs + 2 * zp1) % n == 0);
+            if (!Level1(MateTeeth))
+                for (int d = 0; d < 24; d++)
+                {
+                    if (Level1(MateTeeth + d)) { MateTeeth = MateTeeth + d; break; }
+                    if (Level1(MateTeeth - d)) { MateTeeth = MateTeeth - d; break; }
+                }
+            int zp1_ = MateTeeth;
+            bool Both(int zp2) => GearParameters.CompoundAssembles(zs, zp1_, zp2, zs + 2 * zp1_, zs + zp1_ + zp2, n, _p.SplitRing);
+            if (!Both(PlanetTeeth2))
+                for (int d = 0; d < 24; d++)
+                {
+                    if (Both(PlanetTeeth2 + d)) { PlanetTeeth2 = PlanetTeeth2 + d; break; }
+                    if (Both(PlanetTeeth2 - d)) { PlanetTeeth2 = PlanetTeeth2 - d; break; }
+                }
+        }
+
+        private string _compoundRingsText = "-", _compoundRatioText = "-", _compoundPlanetText = "-";
+        public string CompoundRingsText { get => _compoundRingsText; private set { _compoundRingsText = value; OnChanged(); } }
+        public string CompoundRatioText { get => _compoundRatioText; private set { _compoundRatioText = value; OnChanged(); } }
+        public string CompoundPlanetText { get => _compoundPlanetText; private set { _compoundPlanetText = value; OnChanged(); } }
+
         private string _ringText = "-", _ratiosText = "-";
         public string RingText { get => _ringText; private set { _ringText = value; OnChanged(); } }
         public string RatiosText { get => _ratiosText; private set { _ratiosText = value; OnChanged(); } }
@@ -716,6 +826,7 @@ namespace GearGen.UI
             IsCylindrical ? (IsHelical ? "Helical" : "Spur")
             : IsHerringbone ? "Herringbone"
             : IsCrossedHelical ? "Screw gears"
+            : IsCompoundPlanetary ? "Compound planetary"
             : IsPlanetary ? "Planetary"
             : IsCycloidal ? "Cycloidal"
             : IsCycloidalDrive ? "Cycloidal drive"
@@ -758,6 +869,7 @@ namespace GearGen.UI
                     IsCylindrical ? (IsHelical ? "thumb_helical.png" : "thumb_spur.png")
                     : IsHerringbone ? "thumb_herringbone.png"
                     : IsCrossedHelical ? "thumb_screw.png"
+                    : IsCompoundPlanetary ? "thumb_compound_planetary.png"
                     : IsPlanetary ? "thumb_planetary.png"
                     : IsCycloidal ? "thumb_cycloidal.png"
                     : IsCycloidalDrive ? "thumb_cycdrive.png"
@@ -820,6 +932,12 @@ namespace GearGen.UI
             OnChanged(nameof(IsRackHelical));
             OnChanged(nameof(IsCrossedHelical));
             OnChanged(nameof(IsPlanetary));
+            OnChanged(nameof(IsCompoundPlanetary));
+            OnChanged(nameof(IsSplitRing));
+            OnChanged(nameof(IsCarrierOutput));
+            OnChanged(nameof(IsToothFormSpur));
+            OnChanged(nameof(IsToothFormHelical));
+            OnChanged(nameof(IsToothFormHerringbone));
             OnChanged(nameof(IsCycloidal));
             OnChanged(nameof(IsNotCycloidal));
             OnChanged(nameof(IsCycloidalDrive));
@@ -1084,6 +1202,8 @@ namespace GearGen.UI
                 OnChanged(nameof(IsRackStraight));
                 OnChanged(nameof(IsRackHelical));
                 OnChanged(nameof(CurrentCardName));  // Spur <-> Helical, Rack <-> Helical rack
+                OnChanged(nameof(IsToothFormSpur)); OnChanged(nameof(IsToothFormHelical)); OnChanged(nameof(IsToothFormHerringbone));
+                OnChanged(nameof(ShowHelixSection));
                 OnChanged(nameof(ResetLabel));
                 ScheduleRefresh();
             }
@@ -1334,6 +1454,81 @@ namespace GearGen.UI
                 });
             }
             OnChanged(nameof(PlanetaryWhatIf));
+        }
+
+        // ---- compound planetary tables (tooth-count arithmetic, docs 25) ----
+
+        public sealed class CompoundWhatIfRow
+        {
+            public string PlanetGear2 { get; set; }
+            public string Ring2 { get; set; }
+            public string Assembles { get; set; }
+            public string Ratio { get; set; }
+            public string Note { get; set; }
+            public bool IsCurrent { get; set; }
+        }
+
+        /// <summary>Which member is held, which drives, which is driven, and the ratio, for the
+        /// arrangement chosen: split ring (ring 1 held: sun to ring 2, and the reverse; the
+        /// carrier's own speed; ring 2 held: sun to ring 1) or carrier output (the six Willis
+        /// arrangements with the stepped planet's z_r z_p1 / (z_s z_p2)).</summary>
+        public System.Collections.ObjectModel.ObservableCollection<PlanetaryRatioRow> CompoundRatios { get; } =
+            new System.Collections.ObjectModel.ObservableCollection<PlanetaryRatioRow>();
+
+        /// <summary>The sets around the current planet gear 2, ring 2 following at one module:
+        /// whether each assembles and the ratio it gives -- the table that shows how a tooth
+        /// more or less on gear 2 moves a split-ring set's ratio by hundreds.</summary>
+        public System.Collections.ObjectModel.ObservableCollection<CompoundWhatIfRow> CompoundWhatIf { get; } =
+            new System.Collections.ObjectModel.ObservableCollection<CompoundWhatIfRow>();
+
+        private static string CompoundRatioString(double i) => $"{Math.Abs(i):0.###} : 1";
+
+        private void RefreshCompoundTables()
+        {
+            int zs = Teeth, zp1 = MateTeeth, zp2 = PlanetTeeth2, n = PlanetCount;
+            int zr1 = _p.CompoundRing1Teeth, zr2 = _p.CompoundRing2Teeth;
+            bool split = _p.SplitRing;
+            CompoundRatios.Clear();
+            if (split)
+            {
+                double i = GearParameters.CompoundRatio(zs, zp1, zp2, zr1, zr2, true);
+                string sense = i < 0 ? "reversed" : "same way";
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Ring 1", Input = "Sun", Output = "Ring 2", Ratio = CompoundRatioString(i), Sense = sense + " (reduction)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Ring 1", Input = "Ring 2", Output = "Sun", Ratio = $"1 : {Math.Abs(i):0.###}", Sense = sense + " (overdrive)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Ring 1", Input = "Sun", Output = "Carrier", Ratio = CompoundRatioString(1.0 + (double)zr1 / zs), Sense = "same way (the carrier's own speed)" });
+                double k = (double)zp1 * zr2 / ((double)zs * zp2);
+                double i2 = (1.0 + k) / (1.0 - (double)zp1 * zr2 / ((double)zr1 * zp2));
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Ring 2", Input = "Sun", Output = "Ring 1", Ratio = CompoundRatioString(i2), Sense = (i2 < 0 ? "reversed" : "same way") + " (reduction)" });
+            }
+            else
+            {
+                double g = (double)zr2 * zp1 / ((double)zs * zp2);
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Ring", Input = "Sun", Output = "Carrier", Ratio = CompoundRatioString(1.0 + g), Sense = "same way (reduction)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Ring", Input = "Carrier", Output = "Sun", Ratio = $"1 : {1.0 + g:0.###}", Sense = "same way (overdrive)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Sun", Input = "Ring", Output = "Carrier", Ratio = CompoundRatioString(1.0 + 1.0 / g), Sense = "same way (reduction)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Sun", Input = "Carrier", Output = "Ring", Ratio = $"1 : {1.0 + 1.0 / g:0.###}", Sense = "same way (overdrive)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Carrier", Input = "Sun", Output = "Ring", Ratio = CompoundRatioString(g), Sense = "reversed (star)" });
+                CompoundRatios.Add(new PlanetaryRatioRow { Held = "Carrier", Input = "Ring", Output = "Sun", Ratio = $"1 : {g:0.###}", Sense = "reversed (star)" });
+            }
+            OnChanged(nameof(CompoundRatios));
+
+            CompoundWhatIf.Clear();
+            for (int z2 = Math.Max(4, zp2 - 6); z2 <= zp2 + 6; z2++)
+            {
+                int r2 = zs + zp1 + z2;
+                bool ok = GearParameters.CompoundAssembles(zs, zp1, z2, zr1, r2, n, split);
+                double i = GearParameters.CompoundRatio(zs, zp1, z2, zr1, r2, split);
+                string note = double.IsInfinity(i) || Math.Abs(i) > 1e6 ? "locked: the products are equal"
+                    : Math.Abs(i) > 500 ? "near the pole: the output barely turns"
+                    : i < 0 ? "output turns against the sun"
+                    : z2 < 17 && !IsHelical ? "gear 2 under 17 teeth: undercut" : "";
+                CompoundWhatIf.Add(new CompoundWhatIfRow
+                {
+                    PlanetGear2 = z2.ToString(), Ring2 = r2.ToString(), Assembles = ok ? "yes" : "no",
+                    Ratio = double.IsInfinity(i) ? "-" : $"{i:0.##}", Note = note, IsCurrent = z2 == zp2 && r2 == zr2,
+                });
+            }
+            OnChanged(nameof(CompoundWhatIf));
         }
 
         private string _bevelMateText = "-";
@@ -1660,6 +1855,24 @@ namespace GearGen.UI
                         TwistText = IsHerringbone
                             ? $"{dv("twist_per_half_deg"):0.##}° per half, V apex at mid-face"
                             : $"{dv("twist_total_deg"):0.##}° across face width";
+                    }
+                    if (IsCompoundPlanetary)
+                    {
+                        // compound_planetary_derived_values (server.py): the sun's values
+                        // above, plus the set (docs 25)
+                        bool split = dv("split_ring") > 0.5;
+                        CompoundRingsText = split
+                            ? $"ring 1 z{dv("ring_1_teeth"):0} held, OD {L(dv("ring_1_outer_diameter_mm"))}; ring 2 z{dv("ring_2_teeth"):0} output, module {dv("module_2_mm"):0.###}, OD {L(dv("ring_2_outer_diameter_mm"))}"
+                            : $"z{dv("ring_2_teeth"):0} held, module {dv("module_2_mm"):0.###}, OD {L(dv("ring_2_outer_diameter_mm"))}";
+                        double mism = dv("center_distance_mismatch_mm");
+                        CenterDistanceText = L(dv("center_distance_mm")) + (Math.Abs(mism) > 1e-6 ? $" -- ring 2 sits {L(Math.Abs(mism))} off it" : " (both meshes)");
+                        double i = dv("ratio_main");
+                        CompoundRatioText = split
+                            ? $"{Math.Abs(i):0.##} : 1 sun to ring 2{(i < 0 ? ", reversed" : "")}; carrier {dv("ratio_carrier"):0.###} : 1"
+                            : $"{i:0.###} : 1 sun to carrier; {dv("ratio_sun_fixed"):0.###} : 1 sun held; {Math.Abs(dv("ratio_carrier_fixed")):0.###} : 1 star, reversed";
+                        CompoundPlanetText = $"gears z{MateTeeth} and z{PlanetTeeth2}, {L(dv("planet_length_mm"))} long, hub Ø {L(dv("hub_diameter_mm"))}; " +
+                            $"{dv("planet_count"):0} planets {L(dv("planet_gap_mm"))} apart; assembles: {(dv("assembly_ok") > 0.5 ? "yes" : "NO")}";
+                        RefreshCompoundTables();
                     }
                     if (IsPlanetary)
                     {

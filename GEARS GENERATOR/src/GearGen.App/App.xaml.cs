@@ -45,7 +45,9 @@ namespace GearGen.App
 
             if (e.Args.Length >= 3 && e.Args[0] == "--swtest")
             {
-                RunSolidWorksTest(e.Args[1], e.Args[2]);
+                // --swtest step sldprt [year]: the year picks an installed SolidWorks (2020 ...) as the version dialog would
+                int? year = e.Args.Length >= 4 && int.TryParse(e.Args[3], out int y) ? y : (int?)null;
+                RunSolidWorksTest(e.Args[1], e.Args[2], year);
                 return;
             }
 
@@ -97,7 +99,8 @@ namespace GearGen.App
                 bool globoid = e.Args.Any(a => a == "--globoid");
                 bool ecgear = e.Args.Any(a => a == "--ecgear");
                 bool hyperboloidal = e.Args.Any(a => a == "--hyperboloidal");
-                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket, chainLink, timingWheel, timingBelt, hypoid, globoid, ecgear, hyperboloidal);
+                bool compoundPlanetary = e.Args.Any(a => a == "--compoundplanetary");
+                RunUiSmokeTest(e.Args[1], teeth, exportTest, helix, bevel, worm, rack, internalGear, herringbone, screw, planetary, cycloidal, cycdrive, resetTest, tall, spiralBevel, zerol, faceGear, sprocket, chainLink, timingWheel, timingBelt, hypoid, globoid, ecgear, hyperboloidal, compoundPlanetary);
                 return;
             }
 
@@ -106,12 +109,12 @@ namespace GearGen.App
             win.Show();
         }
 
-        private void RunSolidWorksTest(string stepPath, string sldprtPath)
+        private void RunSolidWorksTest(string stepPath, string sldprtPath, int? year = null)
         {
             string logPath = sldprtPath + ".log";
             try
             {
-                string result = SolidWorksExporter.ImportStepAndSaveAsSldprtAsync(stepPath, sldprtPath)
+                string result = SolidWorksExporter.ImportStepAndSaveAsSldprtAsync(stepPath, sldprtPath, year)
                     .GetAwaiter().GetResult();
                 File.WriteAllText(logPath, "OK: " + result);
             }
@@ -318,7 +321,7 @@ namespace GearGen.App
             bool cycdrive = false, bool resetTest = false, bool tall = false, bool spiralBevel = false, bool zerol = false,
             bool faceGear = false, bool sprocket = false, bool chainLink = false,
             bool timingWheel = false, bool timingBelt = false, bool hypoid = false, bool globoid = false, bool ecgear = false,
-            bool hyperboloidal = false)
+            bool hyperboloidal = false, bool compoundPlanetary = false)
         {
             string logPath = outputPngPath + ".log";
             var log = new System.Text.StringBuilder();
@@ -385,6 +388,8 @@ namespace GearGen.App
                     win.Panel.ViewModel.SelectEccentricCycloidalCard();
                 if (hyperboloidal)
                     win.Panel.ViewModel.SelectHyperboloidalCard();
+                if (compoundPlanetary)
+                    win.Panel.ViewModel.SelectCompoundPlanetaryCard();
                 if (teethOverride.HasValue)
                     win.Panel.ViewModel.Teeth = teethOverride.Value;
                 if (helixOverride.HasValue)
@@ -438,6 +443,10 @@ namespace GearGen.App
                 // logged so every smoke run also checks the self-describing
                 // naming (GearParameters.SuggestedFileName) for that family.
                 Log("suggested file name: " + win.Panel?.ViewModel?.SuggestedFileName(".step"));
+                if (win.Panel?.ViewModel?.IsCompoundPlanetary == true)
+                    Log($"compound planetary tables: {win.Panel.ViewModel.CompoundRatios.Count} ratio rows, {win.Panel.ViewModel.CompoundWhatIf.Count} what-if rows; " +
+                        $"first: {win.Panel.ViewModel.CompoundRatios[0].Held} held, {win.Panel.ViewModel.CompoundRatios[0].Input} in, {win.Panel.ViewModel.CompoundRatios[0].Output} out = {win.Panel.ViewModel.CompoundRatios[0].Ratio}; " +
+                        $"rings: {win.Panel.ViewModel.CompoundRingsText}; ratio: {win.Panel.ViewModel.CompoundRatioText}; planet: {win.Panel.ViewModel.CompoundPlanetText}");
                 if (win.Panel?.ViewModel?.IsPlanetary == true)
                     Log($"planetary tables: {win.Panel.ViewModel.PlanetaryRatios.Count} ratio rows, {win.Panel.ViewModel.PlanetaryWhatIf.Count} what-if rows; " +
                         $"first: {win.Panel.ViewModel.PlanetaryRatios[0].Held} held, {win.Panel.ViewModel.PlanetaryRatios[0].Input} in, {win.Panel.ViewModel.PlanetaryRatios[0].Output} out = {win.Panel.ViewModel.PlanetaryRatios[0].Ratio}");
@@ -469,6 +478,7 @@ namespace GearGen.App
                         : globoid ? GearGen.Geometry.GearFamily.GloboidWorm
                         : ecgear ? GearGen.Geometry.GearFamily.EccentricCycloidal
                         : hyperboloidal ? GearGen.Geometry.GearFamily.Hyperboloidal
+                        : compoundPlanetary ? GearGen.Geometry.GearFamily.CompoundPlanetary
                         : GearGen.Geometry.GearFamily.Cylindrical;
                     // the card split within a family: a helix for Spur/Helical and Rack/Helical rack, the spiral card for spiral/zerol
                     bool helical = (helixOverride.HasValue && helixOverride.Value > 0) || spiralBevel;

@@ -2372,3 +2372,93 @@ one; **the pair meshes below 1e-6 of gear 2 at three phases, collides
 half a pitch off, and the constructed gear 2 collides in its place**;
 STEP round trip as two solids; the derived values and the
 nearly-parallel warning.
+
+## 25. Compound (split-ring) planetary sets
+
+A planetary set whose planets are *stepped*: two gears on one shaft, planet
+gear 1 (`z_p1`) meshing the sun at level 1, planet gear 2 (`z_p2`) meshing
+the output ring one level along the axis. Two arrangements share that planet
+(`compound_planetary.py`):
+
+```
+split ring (default)   level 1:  sun - P1 - ring 1 (held)     a plain planetary stage
+                       level 2:  P2 - ring 2 (output)         the carrier only carries
+                       i = w_s / w_r2 = (1 + z_r1/z_s) / (1 - z_r1 z_p2 / (z_r2 z_p1))
+carrier output         level 1:  sun - P1                     no ring there
+                       level 2:  P2 - ring (held)             the carrier is the output
+                       i = w_s / w_c = 1 + z_r z_p1 / (z_s z_p2)
+```
+
+The split ring is the reducer the videos call a "split-ring compound
+planetary": the denominator is a difference of two products, and with
+`z_r1 z_p2` close to `z_r2 z_p1` the output ring creeps — the default
+18 / 24-23 ×3 / rings 66 and 65 gives 173 : 1 from four gear sizes, and a
+tooth more or less on gear 2 flips the sign or doubles it (the what-if table
+on the card walks through them). The carrier-output arrangement is
+MathWorks' *Compound Planetary Gear* block, whose `(1 + g_RP g_PS) ω_C = ω_S
++ g_RP g_PS ω_R` with `g_RP = z_r/z_p2`, `g_PS = z_p1/z_s` is the same
+formula with the ring held. With `z_p1 = z_p2` both collapse to §11.4.
+
+**Tooth counts.** One carrier, one centre distance:
+
+```
+a = m_1 (z_s + z_p1) / (2 cos β)             sun to planet, and every ring to its planet gear
+z_r1 = z_s + 2 z_p1                          ring 1 closes over P1 at module 1 (split ring)
+m_2 (z_r2 - z_p2) = m_1 (z_s + z_p1)         ring 2 sits at the same a: either z_r2
+                                             (0 = z_s + z_p1 + z_p2 at m_2 = m_1) or m_2
+                                             (0 = whatever closes a) is free; both given and
+                                             inconsistent, the set is refused with the module
+                                             or the count that would close it
+assembly 1 (split ring)   (z_s + z_r1) / n                          integer
+assembly 2 (both)         (z_s z_p2 + z_r2 z_p1) / (n gcd(z_p1, z_p2))  integer
+clearance                 2 a sin(π/n) > the larger planet gear's tip diameter
+```
+
+**Assembly 2, derived.** Carry the assembled planet 0 round to `Δ_k = 360k/n`
+(§11.4). The sun did not turn with it: turning it back by `−(Δ_k mod p_s)`
+spins planet gear 1 by `+(Δ_k mod p_s) z_s/z_p1`; ring 2 did not turn either:
+its correction `−(Δ_k mod p_r2)` through the internal mesh spins planet gear 2
+by `−(Δ_k mod p_r2) z_r2/z_p2`. In a plain set those two spins act on one gear
+and agree modulo a pitch by the assembly condition. Here they act on two gears
+keyed together, so their difference must be made up by whole pitches of gear 1
+(invisible to the sun) that are also whole pitches of gear 2 (invisible to ring
+2): `a · 360/z_p1 = b · 360/z_p2` for integers `a, b`, whose values are the
+multiples of `360/lcm(z_p1, z_p2)`. The difference is
+`Δ_k (z_s z_p2 + z_r2 z_p1) / (z_p1 z_p2)`, and with `Δ_k = 360 k/n` the
+requirement for every `k` is that `(z_s z_p2 + z_r2 z_p1) / gcd(z_p1, z_p2)`
+divide by `n`. `planet_spin_deg` does not trust the formula: it searches the
+whole-pitch turn for each planet and refuses the set when none exists, and
+`tests/test_compound_planetary.py` checks over 500 sets that the search
+succeeds exactly when the formula says so.
+
+**Tooth form.** Spur, helical or double helical (herringbone), from the
+existing builders (§6, §7.3, §7.4): the sun takes the chosen hand, both planet
+gears the opposite, each ring the hand of the planet gear it meshes. A helical
+ring is the internal gear of §11 with a transverse section
+(`InternalGearParams.transverse_params`: transverse module and pressure angle,
+depth coefficients scaled by `cos β` so the depths stay the normal module's)
+twist-extruded as the external gear is, the hole and all
+(`build_internal_gear_solid`); the herringbone ring is two such halves meeting
+at the mid-face (`build_double_helical_internal_solid`).
+
+**The build.** Sun and ring 1 span `z ∈ [0, b_1]`, planet gear 2 and ring 2
+`[b_1 + g, b_1 + g + b_2]`. Each planet is built once — gear 1, gear 2 a step
+`g` along, and a hub cylinder inside both root circles by a quarter module
+reaching a millimetre into each gear, fused (the hub crosses both end faces
+transversally; face-to-face gears are exactly the coincidence §8.4 warns
+about, so the step is at least 0.5 mm), the pin bore cut through everything
+— then copied to each position with the searched spin. The multi-body STEP
+holds the sun, every planet and the ring(s), labelled; the DXF holds both
+levels as two layers.
+
+Checks (`tests/test_compound_planetary.py`): the formulas against the default
+set and against MathWorks' equation; the assembly search against the
+closed-form condition over 500 sets; **no interpenetration** of any planet
+with the sun, with ring 2 and with ring 1 — a spur split ring, a spur
+carrier-output set with an even gear 1, a helical split ring and a herringbone
+carrier-output set — while planet 0 turned half a gear-1 pitch collides with
+the sun and with ring 2; planets clear each other; each planet is one valid
+manifold solid with its bore through both gears and the hub; the STEP round
+trips with `n + 3` (split ring) or `n + 2` solids; the refusals name the module
+or count that would close the centre distance, the hub a pin bore would eat,
+and the assembly condition a set fails.

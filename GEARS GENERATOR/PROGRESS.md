@@ -1,6 +1,65 @@
 # GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/ec-gear/hyperboloidal/rack/helical-rack/internal gears + real 3D viewer
 
-## Review of 2026-09-13: mates everywhere, one solid per gear, a readable window (latest)
+## Compound (split-ring) planetary sets, SolidWorks 2020, the add-in's library (latest)
+
+The user's afternoon list: a compound planetary family in spur, helical or
+herringbone teeth with a short explanation of why it exists; SolidWorks 2020
+alongside 2026; the add-in packaged so others can install it; and a Task Pane
+to drag parts and assemblies from.
+
+- **Family 23: compound planetary** (`compound_planetary.py`, docs 25).
+  Stepped planets -- gear 1 on the sun, gear 2 on the output ring a level
+  along the axis -- in two arrangements: the SPLIT RING (sun-P1-ring 1 held
+  at level 1, P2-ring 2 output at level 2; `i = (1 + z_r1/z_s) / (1 - z_r1
+  z_p2 / (z_r2 z_p1))`, the difference of two near-equal products, so the
+  default 18 / 24-23 x3 / rings 66-65 is 173 : 1 from four gear sizes) and
+  the CARRIER OUTPUT of MathWorks' block (`1 + z_r z_p1 / (z_s z_p2)`). Ring
+  counts follow from the one centre distance (ring 2's count or module may
+  be pinned; both pinned and inconsistent is refused naming the count or
+  module that closes it). The stepped-planet assembly condition
+  `(z_s z_p2 + z_r2 z_p1) / (n gcd(z_p1, z_p2))` integer was derived, and
+  the build does not trust it: each carried planet's whole-pitch turn is
+  found by search, and 500 sets confirm search and formula agree. Helical
+  and herringbone RINGS are new: the internal gear's transverse section
+  twist-extruded, hole and all (`InternalGearParams.transverse_params`,
+  `build_double_helical_internal_solid`). Each planet is one body: gear 1,
+  gear 2 and a hub inside both root circles, fused transversally, the pin
+  bore through all. Verified as every set is -- zero interpenetration of
+  every planet with the sun and each ring for spur, helical and herringbone
+  sets, collisions half a pitch off -- and a non-assembling set still builds
+  and shows its overlap (the planetary card's precedent) with the warning.
+  The card: arrangement and tooth-form toggles, both face widths, the step,
+  the pin bore, a ratio table and a "what if gear 2 changed" table where the
+  ratio swings by hundreds as the products cross; the explanation the user
+  asked for is the card's own text. Smoke: `--compoundplanetary`.
+- **SolidWorks 2020** (item d): the version helper only scanned one install
+  root, so 2020 in "SOLIDWORKS Corp 2020" was invisible to the version
+  dialog. It now scans every "SOLIDWORKS Corp*" root; and a requested year
+  is started through its own ProgID (`SldWorks.Application.28` = 2020, .34
+  = 2026): the exe-and-poll launch never saw its instance in the running
+  object table on this machine. `--swtest step sldprt 2020` imports the
+  compound set: 2020's translator ignores the multi-body mapping (and the
+  older "import multiple bodies as parts" toggle was already off) and opens
+  the STEP as an assembly of components -- but saving that document under a
+  .sldprt name makes SolidWorks convert every component to a body: reopened
+  (`--swopen`), the 2020 file is one part with six bodies. The exporter's
+  report now says so. Writing a flat one-product STEP was tried and dropped:
+  both OpenCASCADE writers structure a compound as an assembly, and a
+  single-product single-solid file is the one 2026 rejects (error 1).
+- **Add-in** (items e, f): the Task Pane now has a LIBRARY strip under the
+  generator -- Documents\GEARS GENERATOR, every part and assembly the add-in
+  created, newest first -- whose rows are OLE file drags (FileDrop): onto an
+  open assembly's graphics area SolidWorks inserts the part or sub-assembly,
+  onto an empty window it opens it. "Create in SolidWorks" asks part (one
+  body per gear) or ASSEMBLY (one component per gear: the neutral-file
+  mapping set to components for the import) and the name, saves into the
+  library and highlights the row. Machine-wide registration (the HKLM
+  RegAsm path, the one SolidWorks' Tools > Add-Ins reads) needs elevation,
+  which this session's policy blocked; `register-addin.ps1`'s header carries
+  the one-line command. NOT yet verified in a live SolidWorks: that the
+  add-in appears in Tools > Add-Ins after that command, and the drag itself.
+
+## Review of 2026-09-13: mates everywhere, one solid per gear, a readable window
 
 The user's nine-point review after the wish-list closed. Every point
 landed in one commit.

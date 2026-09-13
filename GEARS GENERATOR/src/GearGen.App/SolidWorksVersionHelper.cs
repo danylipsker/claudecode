@@ -40,17 +40,27 @@ namespace GearGen.App
         /// "SOLIDWORKS" and "SOLIDWORKS (2)").</summary>
         public static List<Install> FindInstalls()
         {
+            // Every install root, not one: this machine keeps 2025 and 2026 under
+            // "SOLIDWORKS Corp" and 2020 under "SOLIDWORKS Corp 2020" (its own
+            // root, one folder down) -- the single-root scan never saw 2020, and
+            // the version dialog called it "not found" while it was installed.
             var results = new List<Install>();
-            string root = @"C:\Program Files\SOLIDWORKS Corp";
-            if (!Directory.Exists(root)) return results;
-
-            foreach (var dir in Directory.GetDirectories(root))
+            string programFiles = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ProgramFiles);
+            if (!Directory.Exists(programFiles)) return results;
+            var candidates = new List<string>();
+            foreach (var root in Directory.GetDirectories(programFiles, "SOLIDWORKS Corp*"))
+            {
+                candidates.Add(root);
+                try { candidates.AddRange(Directory.GetDirectories(root)); } catch { /* unreadable root */ }
+            }
+            foreach (var dir in candidates)
             {
                 string exe = Path.Combine(dir, "SLDWORKS.exe");
                 if (!File.Exists(exe)) continue;
                 try
                 {
                     var vi = FileVersionInfo.GetVersionInfo(exe);
+                    if (results.Any(r => string.Equals(r.ExePath, exe, StringComparison.OrdinalIgnoreCase))) continue;
                     results.Add(new Install { ExePath = exe, MajorVersion = vi.FileMajorPart });
                 }
                 catch { /* skip unreadable */ }

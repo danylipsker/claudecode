@@ -401,6 +401,52 @@ def export_planetary_profile_dxf(pp, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def export_compound_planetary_step(cp, path: str | Path) -> None:
+    """Sun, every stepped planet and the ring(s) of a compound planetary set,
+    in mesh (docs/gear-math.md 25), as ONE multi-body STEP."""
+    from compound_planetary import labelled_compound_planetary
+    _export_step_for_solidworks(labelled_compound_planetary(cp), path)
+
+
+def export_compound_planetary_profile_dxf(cp, path: str | Path) -> None:
+    """Both levels' sections as closed polylines: layer MESH1 (sun, planet
+    gear 1 of every planet, ring 1 if any) at z = 0 and layer MESH2 (planet
+    gear 2 of every planet, ring 2) at the level-2 face, each in its own
+    frame at that face."""
+    from shapely.affinity import rotate as sh_rotate, translate as sh_translate
+    from shapely.geometry import Polygon
+    from internal import internal_gear_outline, internal_gear_outer_outline
+
+    doc = ezdxf.new(dxfversion="R2010")
+    doc.units = ezdxf.units.MM
+    doc.layers.add("MESH1", color=5)
+    doc.layers.add("MESH2", color=1)
+    msp = doc.modelspace()
+
+    def add(pts, layer):
+        pts = list(pts)
+        msp.add_lwpolyline(pts + [pts[0]], format="xy", dxfattribs={"closed": True, "layer": layer})
+
+    def placed(poly, k):
+        return sh_rotate(sh_translate(sh_rotate(poly, cp.planet_spin_deg(k), origin=(0, 0)), yoff=cp.center_distance_mm),
+                         360.0 * k / cp.n_planets, origin=(0, 0))
+
+    sun = Polygon(full_gear_outline(cp.sun_params(), simplify_tolerance_mm=0.01))
+    if cp.z_planet_1 % 2 == 0:
+        sun = sh_rotate(sun, 180.0 / cp.z_sun, origin=(0, 0))
+    add(sun.exterior.coords[:-1], "MESH1")
+    g1 = Polygon(full_gear_outline(cp.planet_1_params(), simplify_tolerance_mm=0.01))
+    g2 = Polygon(full_gear_outline(cp.planet_2_params(), simplify_tolerance_mm=0.01))
+    for k in range(cp.n_planets):
+        add(placed(g1, k).exterior.coords[:-1], "MESH1")
+        add(placed(g2, k).exterior.coords[:-1], "MESH2")
+    for ring, layer in ((cp.ring_2_params(), "MESH2"),) + (((cp.ring_1_params(), "MESH1"),) if cp.split_ring else ()):
+        section = ring.transverse_params()
+        add(internal_gear_outer_outline(section), layer)
+        add(internal_gear_outline(section, simplify_tolerance_mm=0.01), layer)
+    doc.saveas(str(path))
+
+
 def export_crossed_helical_pair_step(pp, path: str | Path) -> None:
     """Both members of a screw-gear pair, positioned in mesh (docs/gear-math.md
     7.5), as ONE two-body STEP -- SolidWorks opens it as a multi-body part
@@ -646,19 +692,56 @@ def build_internal_gear_solid(ip: InternalGearParams, simplify_tolerance_mm: flo
     ring's inner boundary repeats that density z times, so left at the tight
     default a single z=40 ring's STEP file came out at 16.6MB (vs ~1MB for
     a comparable external gear); 30 microns is still far tighter than any
-    real machining tolerance and cut that by an order of magnitude."""
-    outer_pts = internal_gear_outer_outline(ip)
-    inner_pts = internal_gear_outline(ip, simplify_tolerance_mm=simplify_tolerance_mm)
+    real machining tolerance and cut that by an order of magnitude.
 
-    outer_wire = bd.Wire.make_polygon([(*p, 0) for p in outer_pts], close=True)
-    inner_wire = bd.Wire.make_polygon([(*p, 0) for p in inner_pts], close=True)
-    face = bd.Face(outer_wire, [inner_wire])
+    A helical ring (ip.helix_angle_deg != 0, docs 25) is the same annulus
+    -- its transverse section, ip.transverse_params() -- twist-extruded
+    exactly as build_gear_solid twists an external gear, the hole and all
+    (extrude_linear_with_rotation takes a face's inner wires along)."""
+    section = ip.transverse_params()
+    outer_pts = internal_gear_outer_outline(section)
+    inner_pts = internal_gear_outline(section, simplify_tolerance_mm=simplify_tolerance_mm)
 
     with bd.BuildPart() as part:
-        with bd.BuildSketch() as sk:
-            bd.add(face)
-        bd.extrude(amount=ip.face_width_mm)
+        if not ip.is_helical:
+            outer_wire = bd.Wire.make_polygon([(*p, 0) for p in outer_pts], close=True)
+            inner_wire = bd.Wire.make_polygon([(*p, 0) for p in inner_pts], close=True)
+            with bd.BuildSketch() as sk:
+                bd.add(bd.Face(outer_wire, [inner_wire]))
+            bd.extrude(amount=ip.face_width_mm)
+        else:
+            face = _annulus_face_at(outer_pts, inner_pts, 0.0, 0.0)
+            bd.add(bd.Solid.extrude_linear_with_rotation(
+                face, (0, 0, 0), (0, 0, ip.face_width_mm), math.degrees(ip.twist_total_rad)))
 
+    return part.part
+
+
+def _annulus_face_at(outer_pts, inner_pts, angle_rad: float, z: float) -> bd.Face:
+    """The ring's annulus (outer circle, toothed hole) turned by angle_rad
+    about Z and lifted to z -- _face_at for a section with a hole."""
+    outer = bd.Wire.make_polygon([(*p, z) for p in _rotate_points(outer_pts, angle_rad)], close=True)
+    inner = bd.Wire.make_polygon([(*p, z) for p in _rotate_points(inner_pts, angle_rad)], close=True)
+    return bd.Face(outer, [inner])
+
+
+def build_double_helical_internal_solid(ip: InternalGearParams, simplify_tolerance_mm: float = 0.03) -> bd.Part:
+    """A double-helical (herringbone) ring: two opposite-hand helical
+    halves of one transverse section meeting at the mid-face, exactly as
+    build_double_helical_solid builds the external gear (no centre gap: a
+    ring is shaped, not hobbed). ip.hand is the lower half's hand."""
+    if not ip.is_helical:
+        raise ValueError("a double-helical ring needs a nonzero helix angle (0deg is a spur ring)")
+    section = ip.transverse_params()
+    outer_pts = internal_gear_outer_outline(section)
+    inner_pts = internal_gear_outline(section, simplify_tolerance_mm=simplify_tolerance_mm)
+    half = ip.face_width_mm / 2.0
+    twist_half = ip.twist_total_rad / 2.0
+    with bd.BuildPart() as part:
+        lower = _annulus_face_at(outer_pts, inner_pts, 0.0, 0.0)
+        bd.add(bd.Solid.extrude_linear_with_rotation(lower, (0, 0, 0), (0, 0, half), math.degrees(twist_half)))
+        upper = _annulus_face_at(outer_pts, inner_pts, twist_half, half)
+        bd.add(bd.Solid.extrude_linear_with_rotation(upper, (0, 0, half), (0, 0, half), math.degrees(-twist_half)))
     return part.part
 
 

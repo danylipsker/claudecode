@@ -57,6 +57,13 @@ namespace GearGen.PyEngine
         [JsonProperty("pinion_bore_diameter_mm")] public double? PinionBoreDiameterMm;
         [JsonProperty("mate_face_width_mm")] public double? MateFaceWidthMm;
         [JsonProperty("mate_bore_diameter_mm")] public double? MateBoreDiameterMm;
+        [JsonProperty("planet_teeth_2")] public int? PlanetTeeth2;
+        [JsonProperty("ring_teeth_2")] public int? RingTeeth2;
+        [JsonProperty("module_2_mm")] public double? Module2Mm;
+        [JsonProperty("face_width_2_mm")] public double? FaceWidth2Mm;
+        [JsonProperty("step_gap_mm")] public double? StepGapMm;
+        [JsonProperty("split_ring")] public bool? SplitRing;
+        [JsonProperty("herringbone")] public bool? Herringbone;
     }
 
     internal class EngineResponse

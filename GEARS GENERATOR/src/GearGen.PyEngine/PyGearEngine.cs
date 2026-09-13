@@ -341,6 +341,26 @@ namespace GearGen.PyEngine
                 return req;
             }
 
+            if (p.IsCompoundPlanetary)
+            {
+                // CompoundPlanetaryParams (docs 25) takes mm; helix, hand, bore and
+                // face width 1 are already in the base request
+                req.GearType = "compound_planetary";
+                req.ModuleMm = p.EffectiveModuleMm;
+                req.MateTeeth = p.MateTeeth;               // planet gear 1
+                req.PlanetTeeth2 = p.PlanetTeeth2;
+                req.RingTeeth2 = p.RingTeeth2;
+                req.Module2Mm = p.Module2Mm;
+                req.PlanetCount = p.PlanetCount;
+                req.SplitRing = p.SplitRing;
+                req.Herringbone = p.CompoundHerringbone;
+                req.FaceWidth2Mm = p.FaceWidth2Mm;
+                req.StepGapMm = p.StepGapMm;
+                req.PinionBoreDiameterMm = p.PinionBoreDiameterMm;   // the planets' pin bore
+                req.RimThicknessMm = p.RimThicknessMm;             // both rings
+                return req;
+            }
+
             if (p.IsPlanetary)
             {
                 // Same reasoning as bevel/worm: PlanetaryParams has no separate

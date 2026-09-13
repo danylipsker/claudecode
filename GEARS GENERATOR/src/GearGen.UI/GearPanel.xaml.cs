@@ -191,6 +191,17 @@ namespace GearGen.UI
             ViewModel?.SelectHelicalRackCard();
         }
 
+        private void OnCompoundPlanetaryChecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.SelectCompoundPlanetaryCard();
+        }
+
+        private void OnSplitRingChecked(object sender, RoutedEventArgs e) { if (ViewModel != null) ViewModel.IsSplitRing = true; }
+        private void OnCarrierOutputChecked(object sender, RoutedEventArgs e) { if (ViewModel != null) ViewModel.IsCarrierOutput = true; }
+        private void OnToothFormSpurChecked(object sender, RoutedEventArgs e) { if (ViewModel != null && !ViewModel.IsToothFormSpur) ViewModel.SetToothForm("spur"); }
+        private void OnToothFormHelicalChecked(object sender, RoutedEventArgs e) { if (ViewModel != null && !ViewModel.IsToothFormHelical) ViewModel.SetToothForm("helical"); }
+        private void OnToothFormHerringboneChecked(object sender, RoutedEventArgs e) { if (ViewModel != null && !ViewModel.IsToothFormHerringbone) ViewModel.SetToothForm("herringbone"); }
+
         private void OnPlanetaryChecked(object sender, RoutedEventArgs e)
         {
             ViewModel?.SelectPlanetaryCard();

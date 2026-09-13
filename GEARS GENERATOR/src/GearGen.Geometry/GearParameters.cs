@@ -113,7 +113,15 @@ namespace GearGen.Geometry
         /// (0 = auto), Hand (the mirror image), BoreDiameterMm,
         /// MateBoreDiameterMm. Gear 2 is generated from gear 1. Exports the
         /// pair as one multi-body STEP.</summary>
-        Hyperboloidal
+        Hyperboloidal,
+        /// <summary>Compound (split-ring) planetary SET: a sun, n stepped planets
+        /// (gear 1 on the sun, gear 2 on the output ring a level along the axis)
+        /// and one or two rings -- see docs/gear-math.md section 25. Teeth = sun,
+        /// MateTeeth = planet gear 1, PlanetTeeth2, RingTeeth2 (0 = auto), Module2Mm
+        /// (0 = auto), SplitRing, FaceWidth2Mm, StepGapMm; HelixAngleDeg/Hand and
+        /// CompoundHerringbone pick the tooth form. Exports every member as one
+        /// multi-body STEP.</summary>
+        CompoundPlanetary
     }
 
     /// <summary>
@@ -242,6 +250,7 @@ namespace GearGen.Geometry
         // BoreDiameterMm (sun and planets), FaceWidthMm (all members).
 
         public bool IsPlanetary => Family == GearFamily.Planetary;
+        public bool IsCompoundPlanetary => Family == GearFamily.CompoundPlanetary;
 
         // ---- cycloidal (docs/gear-math.md section 14) -- Family == Cycloidal only ----
 
@@ -408,6 +417,37 @@ namespace GearGen.Geometry
         /// gear usually has. Stored in mm regardless of Unit.</summary>
         public double GapWidthMm { get; set; } = 0.0;
 
+        // ---- compound (split-ring) planetary set (docs/gear-math.md section 25) ----
+        /// <summary>Planet gear 2's tooth count (the gear on the output ring); MateTeeth is gear 1's.</summary>
+        public int PlanetTeeth2 { get; set; } = 23;
+        /// <summary>Ring 2's tooth count; 0 = sun + gear 1 + gear 2 (module 2 = module 1).</summary>
+        public int RingTeeth2 { get; set; } = 0;
+        /// <summary>Mesh 2's normal module in mm; 0 = whatever puts ring 2 at the carrier's centre distance. Stored in mm regardless of Unit.</summary>
+        public double Module2Mm { get; set; } = 0.0;
+        /// <summary>Face width of mesh 2 (planet gear 2 and ring 2). Stored in mm regardless of Unit.</summary>
+        public double FaceWidth2Mm { get; set; } = 10.0;
+        /// <summary>The step between the two planet gears, bridged by a hub. Stored in mm regardless of Unit.</summary>
+        public double StepGapMm { get; set; } = 3.0;
+        /// <summary>true: fixed ring 1 on the sun's level, output ring 2 on gear 2's; false: one held ring, the carrier is the output.</summary>
+        public bool SplitRing { get; set; } = true;
+        /// <summary>Double-helical teeth on every member (HelixAngleDeg must be > 0).</summary>
+        public bool CompoundHerringbone { get; set; } = false;
+
+        public int CompoundRing1Teeth => Teeth + 2 * MateTeeth;
+        public int CompoundRing2Teeth => RingTeeth2 > 0 ? RingTeeth2
+            : Module2Mm > 0 ? PlanetTeeth2 + (int)Math.Round(EffectiveModuleMm * (Teeth + MateTeeth) / Module2Mm)
+            : Teeth + MateTeeth + PlanetTeeth2;
+        /// <summary>The set's ratio from tooth counts alone (compound_planetary.py): split ring, sun in / ring 2
+        /// out with ring 1 held; else sun in / carrier out with the ring held. Negative = the output turns against the sun.</summary>
+        public static double CompoundRatio(int zs, int zp1, int zp2, int zr1, int zr2, bool splitRing) =>
+            splitRing ? (1.0 + (double)zr1 / zs) / (1.0 - (double)zr1 * zp2 / ((double)zr2 * zp1))
+                      : 1.0 + (double)zr2 * zp1 / ((double)zs * zp2);
+        public static int Gcd(int a, int b) { a = Math.Abs(a); b = Math.Abs(b); while (b != 0) { int t = a % b; a = b; b = t; } return a == 0 ? 1 : a; }
+        /// <summary>Both assembly conditions of docs 25 for equally spaced planets.</summary>
+        public static bool CompoundAssembles(int zs, int zp1, int zp2, int zr1, int zr2, int n, bool splitRing) =>
+            n >= 1 && zp1 >= 4 && zp2 >= 4 && (!splitRing || (zs + zr1) % n == 0)
+            && ((zs * zp2 + zr2 * zp1) / Gcd(zp1, zp2)) % n == 0;
+
         public double ModuleFromDiametralPitch => 25.4 / DiametralPitch;
 
         public double EffectiveModuleMm => Unit == UnitSystem.Inch ? ModuleFromDiametralPitch : ModuleMm;
@@ -438,6 +478,13 @@ namespace GearGen.Geometry
                     break;
                 case GearFamily.CrossedHelical:
                     p.HelixAngleDeg = 45.0; p.MateTeeth = 20; p.ShaftAngleDeg = 90.0;   // the classic 45/45 at 90deg
+                    break;
+                case GearFamily.CompoundPlanetary:
+                    // 18 / 24-23 x3 / rings 66 and 65: 173 : 1 with ring 1 held, every gear above the
+                    // undercut line, both assembly conditions met, planets 20 mm apart (docs 25)
+                    p.Teeth = 18; p.MateTeeth = 24; p.PlanetTeeth2 = 23; p.PlanetCount = 3; p.RingTeeth2 = 0; p.Module2Mm = 0.0;
+                    p.FaceWidthMm = 10.0; p.FaceWidth2Mm = 10.0; p.StepGapMm = 3.0; p.SplitRing = true;
+                    p.HelixAngleDeg = 0.0; p.CompoundHerringbone = false; p.RimThicknessMm = 6.0; p.PinionBoreDiameterMm = 0.0;
                     break;
                 case GearFamily.Planetary:
                     // 18/18/54 with 3 planets: (18 + 54) / 3 = 24 assembles, no tooth count under
@@ -650,6 +697,18 @@ namespace GearGen.Geometry
                     parts.Add("cycloidal"); parts.Add("z" + Teeth); parts.Add(size);
                     parts.Add("roll" + (RollingCircleDiameterMm > 0 ? Len(RollingCircleDiameterMm) : "auto"));
                     parts.Add("fw" + Len(FaceWidthMm));
+                    break;
+                case GearFamily.CompoundPlanetary:
+                    parts.Add(SplitRing ? "splitringplanetary" : "compoundplanetary");
+                    parts.Add("s" + Teeth + "_p" + MateTeeth + "-" + PlanetTeeth2 + "x" + PlanetCount);
+                    parts.Add(SplitRing ? "r" + CompoundRing1Teeth + "-" + CompoundRing2Teeth : "r" + CompoundRing2Teeth);
+                    parts.Add(size);
+                    if (Module2Mm > 0) parts.Add("m2_" + N(Module2Mm));
+                    parts.Add("pa" + N(PressureAngleDeg));
+                    if (IsHelical) parts.Add((CompoundHerringbone ? "herringbone" : "helix") + N(Math.Abs(HelixAngleDeg)) + hand);
+                    parts.Add("fw" + Len(FaceWidthMm) + "-" + Len(FaceWidth2Mm)); parts.Add("step" + Len(StepGapMm));
+                    if (BoreDiameterMm > 0) parts.Add("bore" + Len(BoreDiameterMm));
+                    if (PinionBoreDiameterMm > 0) parts.Add("pin" + Len(PinionBoreDiameterMm));
                     break;
                 case GearFamily.Planetary:
                     parts.Add("planetary"); parts.Add("s" + Teeth + "_p" + MateTeeth + "x" + PlanetCount + "_r" + (Teeth + 2 * MateTeeth));

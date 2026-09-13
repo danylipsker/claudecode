@@ -98,13 +98,33 @@ namespace GearGen.App
                 // not just whichever happens to be default.
                 if (targetInstall != null)
                 {
-                    Process.Start(targetInstall.ExePath);
-                    swApp = WaitForActiveObject(TimeSpan.FromSeconds(90));
-                    if (swApp == null)
-                        throw new InvalidOperationException(
-                            $"Launched SOLIDWORKS {targetYear} but it never became ready for automation.");
-                    weLaunchedIt = true;
-                    versionNote = $"SOLIDWORKS {targetYear} (as requested).";
+                    // SolidWorks registers one ProgID per installed major version
+                    // ("SldWorks.Application.28" is 2020, ".34" is 2026; the plain
+                    // ProgID is whichever registered last) -- creating THAT class
+                    // starts the right year and hands its object back through COM's
+                    // class factory, no running-object table involved. (Starting the
+                    // exe by path and polling GetActiveObject, the earlier way, timed
+                    // out on this machine: a SolidWorks it launched never showed up
+                    // in the table within 90 s.) The exe-and-poll path stays as the
+                    // fallback for a version whose ProgID is missing.
+                    var versioned = Type.GetTypeFromProgID("SldWorks.Application." + targetInstall.MajorVersion);
+                    if (versioned != null)
+                    {
+                        swApp = (ISldWorks)Activator.CreateInstance(versioned);
+                        swApp.Visible = true;
+                        weLaunchedIt = true;
+                        versionNote = $"SOLIDWORKS {targetYear} (as requested, through its own ProgID SldWorks.Application.{targetInstall.MajorVersion}).";
+                    }
+                    else
+                    {
+                        Process.Start(targetInstall.ExePath);
+                        swApp = WaitForActiveObject(TimeSpan.FromSeconds(90));
+                        if (swApp == null)
+                            throw new InvalidOperationException(
+                                $"Launched SOLIDWORKS {targetYear} but it never became ready for automation.");
+                        weLaunchedIt = true;
+                        versionNote = $"SOLIDWORKS {targetYear} (as requested).";
+                    }
                 }
                 else
                 {
@@ -195,8 +215,28 @@ namespace GearGen.App
                         templateNote += $" Multiple solids mapped to one multi-body part for the import (the setting was {mapping}).";
                     }
 
+                    // SolidWorks 2020 ignores the mapping value above and still reads the
+                    // older toggle "Import multiple bodies as parts" (Import Options): left on,
+                    // the six solids of a compound planetary set came in as six components
+                    // and the "part" saved was an assembly under a .sldprt name. Cleared for
+                    // the import, restored after; 2026 honours both, so both are set.
+                    bool multiAsParts = swApp.GetUserPreferenceToggle((int)swUserPreferenceToggle_e.swImportMultBodyAsPartData);
+                    if (multiAsParts)
+                    {
+                        swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swImportMultBodyAsPartData, false);
+                        templateNote += " 'Import multiple bodies as parts' switched off for the import.";
+                    }
                     int loadErrors = 0;
-                    ModelDoc2 model = swApp.LoadFile4(stepPath, "r", null, ref loadErrors) as ModelDoc2;
+                    ModelDoc2 model;
+                    try
+                    {
+                        model = swApp.LoadFile4(stepPath, "r", null, ref loadErrors) as ModelDoc2;
+                    }
+                    finally
+                    {
+                        if (multiAsParts)
+                            swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swImportMultBodyAsPartData, true);
+                    }
                     if (model == null)
                         throw new InvalidOperationException(
                             $"SolidWorks could not import the generated STEP file (error code {loadErrors}).");
@@ -236,6 +276,14 @@ namespace GearGen.App
 
                     if (!saved)
                         throw new InvalidOperationException($"SolidWorks Save As failed (error code {saveErrors}).");
+                    // SolidWorks 2020's translator ignores the multi-body mapping and opens
+                    // a multi-solid STEP as an assembly of components; saving that document
+                    // under a .sldprt name makes SolidWorks convert every component into a
+                    // body of one part (measured: the six components of a compound
+                    // planetary set came back as six bodies when the file was reopened).
+                    // The body list above was read from the import document, so say so.
+                    if (model.GetType() == (int)swDocumentTypes_e.swDocASSEMBLY)
+                        bodiesNote += " (the STEP opened as an assembly of components in this SolidWorks; saved under a part name, SolidWorks converted each component into a body of the part)";
 
                     return $"Saved to {sldprtPath} -- used {versionNote}{templateNote}{bodiesNote}";
                 }

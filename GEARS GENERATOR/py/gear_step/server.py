@@ -284,6 +284,83 @@ def cycloidal_derived_values(cp) -> tuple[dict, list]:
     }, warnings
 
 
+def compound_planetary_params_from_request(p: dict):
+    """Compound (stepped-planet) planetary set -- docs/gear-math.md 25. z =
+    sun, mate_teeth = planet gear 1, planet_teeth_2 = planet gear 2,
+    ring_teeth_2 (0 = auto), module_2_mm (0 = auto), split_ring, planet_count,
+    face_width_2_mm, step_gap_mm, pinion_bore_diameter_mm = the planets' pin
+    bore, rim_thickness_mm = both rings' rim; helix_angle_deg / hand /
+    herringbone pick the tooth form. module_mm already in mm."""
+    from compound_planetary import CompoundPlanetaryParams
+    return CompoundPlanetaryParams(
+        z_sun=int(p["z"]),
+        z_planet_1=int(p.get("mate_teeth") or 18),
+        z_planet_2=int(p.get("planet_teeth_2") or 17),
+        n_planets=max(1, int(p.get("planet_count") or 3)),
+        split_ring=bool(p.get("split_ring", True)),
+        z_ring_2=int(p.get("ring_teeth_2") or 0),
+        module_mm=float(p["module_mm"]),
+        module_2_mm=float(p.get("module_2_mm") or 0.0),
+        pressure_angle_deg=float(p.get("pressure_angle_deg", 20.0)),
+        helix_angle_deg=float(p.get("helix_angle_deg", 0.0)),
+        herringbone=bool(p.get("herringbone", False)),
+        hand=str(p.get("hand") or "right"),
+        addendum_coeff=float(p.get("addendum_coeff", 1.0)),
+        dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
+        root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
+        backlash_mm=float(p.get("backlash_mm", 0.0)),
+        face_width_mm=float(p.get("face_width_mm", 10.0)),
+        face_width_2_mm=float(p.get("face_width_2_mm") or float(p.get("face_width_mm", 10.0))),
+        step_gap_mm=float(p.get("step_gap_mm") or 3.0),
+        bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        planet_bore_mm=float(p.get("pinion_bore_diameter_mm", 0.0)),
+        rim_thickness_mm=float(p.get("rim_thickness_mm", 6.0)),
+    )
+
+
+def compound_planetary_derived_values(cp) -> tuple[dict, list]:
+    """The sun's values plus the set: both rings, both centre distances,
+    the ratios of the arrangement, the two assembly conditions, the planet
+    clearance and the stepped planet's own figures. Warnings say what to
+    change; check() lists what the build would refuse outright."""
+    derived, warnings = derived_values(cp.sun_params())
+    derived.update({
+        "ring_1_teeth": float(cp.z_ring_1) if cp.split_ring else 0.0,
+        "ring_2_teeth": float(cp.ring_2_teeth),
+        "module_2_mm": cp.module_2,
+        "planet_count": float(cp.n_planets),
+        "split_ring": 1.0 if cp.split_ring else 0.0,
+        "center_distance_mm": cp.center_distance_mm,
+        "center_distance_2_mm": cp.center_distance_2_mm,
+        "center_distance_mismatch_mm": cp.center_distance_mismatch_mm,
+        "ring_1_outer_diameter_mm": 2.0 * cp.ring_1_params().outer_radius if cp.split_ring else 0.0,
+        "ring_2_outer_diameter_mm": 2.0 * cp.ring_2_params().outer_radius,
+        "ratio_main": cp.ratio_main,
+        "ratio_carrier": cp.ratio_carrier,
+        "ratio_split_ring_reverse": cp.ratio_split_ring_reverse if cp.split_ring else 0.0,
+        "ratio_sun_fixed": 0.0 if cp.split_ring else cp.ratio_sun_fixed,
+        "ratio_carrier_fixed": 0.0 if cp.split_ring else cp.ratio_carrier_fixed,
+        "assembly_ok_1": 1.0 if cp.assembly_ok_1 else 0.0,
+        "assembly_ok_2": 1.0 if cp.assembly_ok_2 else 0.0,
+        "assembly_ok": 1.0 if cp.assembly_ok else 0.0,
+        "planet_gap_mm": cp.planet_gap_mm,
+        "planet_1_tip_diameter_mm": cp.planet_1_tip_diameter_mm,
+        "planet_2_tip_diameter_mm": cp.planet_2_tip_diameter_mm,
+        "planet_length_mm": cp.planet_length_mm,
+        "hub_diameter_mm": 2.0 * cp.hub_radius_mm,
+        "level_2_z0_mm": cp.level_2_z0_mm,
+    })
+    for problem in cp.check():
+        warnings.append(problem)
+    if cp.planet_gap_mm <= 0:
+        warnings.append(f"Adjacent planets collide (tip circles overlap by {-cp.planet_gap_mm:.2f} mm): "
+                        f"fewer planets, or a bigger sun relative to the planet gears.")
+    for name, z in (("planet gear 1", cp.z_planet_1), ("planet gear 2", cp.z_planet_2)):
+        if z < 17 and abs(cp.helix_angle_deg) < 1e-9 and cp.pressure_angle_deg <= 20.0:
+            warnings.append(f"{name} has {z} teeth: under the 17-tooth undercut line at 20 degrees (a warning, not a refusal).")
+    return derived, warnings
+
+
 def planetary_params_from_request(p: dict):
     """Planetary set -- docs/gear-math.md 11.4. z = sun, mate_teeth = planet,
     planet_count, rim_thickness_mm = the ring's rim; the ring's tooth count
@@ -1118,6 +1195,11 @@ def handle(req: dict) -> dict:
             outline = full_gear_outline(pp.gear1_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
             derived, warnings = screw_derived_values(pp)
             return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
+        if gear_type == "compound_planetary":
+            cp = compound_planetary_params_from_request(req)
+            outline = full_gear_outline(cp.sun_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
+            derived, warnings = compound_planetary_derived_values(cp)
+            return {"ok": True, "outline": outline, "derived": derived, "warnings": warnings}
         if gear_type == "planetary":
             pp = planetary_params_from_request(req)
             outline = full_gear_outline(pp.sun_params(), simplify_tolerance_mm=float(req.get("simplify_tolerance_mm", 0.01)))
@@ -1215,6 +1297,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "screw":
             from build_gear import export_crossed_helical_pair_step
             export_crossed_helical_pair_step(screw_params_from_request(req), path)  # both members, in mesh
+        elif gear_type == "compound_planetary":
+            from build_gear import export_compound_planetary_step
+            export_compound_planetary_step(compound_planetary_params_from_request(req), path)  # sun + stepped planets + ring(s)
         elif gear_type == "planetary":
             from build_gear import export_planetary_step
             export_planetary_step(planetary_params_from_request(req), path)  # sun + planets + ring, in mesh
@@ -1281,6 +1366,9 @@ def handle(req: dict) -> dict:
         elif gear_type == "screw":
             from build_gear import export_dxf_profile
             export_dxf_profile(screw_params_from_request(req).gear1_params(), path)  # gear 1's transverse section
+        elif gear_type == "compound_planetary":
+            from build_gear import export_compound_planetary_profile_dxf
+            export_compound_planetary_profile_dxf(compound_planetary_params_from_request(req), path)  # both levels, two layers
         elif gear_type == "planetary":
             from build_gear import export_planetary_profile_dxf
             export_planetary_profile_dxf(planetary_params_from_request(req), path)  # the whole set's section
@@ -1445,6 +1533,14 @@ def handle(req: dict) -> dict:
             pp = screw_params_from_request(req)
             s1, s2 = build_crossed_helical_pair(pp, simplify_tolerance_mm=0.03)
             bd.export_stl(bd.Compound(children=[s1, s2]), path, tolerance=0.002, angular_tolerance=0.3)
+        elif gear_type == "compound_planetary":
+            from compound_planetary import build_compound_planetary_set
+            import build123d as bd
+            cp = compound_planetary_params_from_request(req)
+            # 50 microns: a herringbone set is two twist-extruded rings and n fused planets; finer buys nothing on screen
+            sun, planets, ring_2, ring_1 = build_compound_planetary_set(cp, simplify_tolerance_mm=0.05)
+            members = [sun, *planets, ring_2] + ([ring_1] if ring_1 is not None else [])
+            bd.export_stl(bd.Compound(children=members), path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "planetary":
             from planetary import build_planetary_set
             import build123d as bd

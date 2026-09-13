@@ -134,7 +134,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="18,16,18,16">
                 <StackPanel>
                     <TextBlock Text="Gear Parameters" FontSize="16" FontWeight="Bold" Foreground="#111827"/>
-                    <TextBlock Text="22 families -- parallel, intersecting and crossed shafts, chains and belts. Pick a family, set its values, read the derived figures, export." FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0" TextWrapping="Wrap"/>
+                    <TextBlock Text="23 families -- parallel, intersecting and crossed shafts, chains and belts. Pick a family, set its values, read the derived figures, export." FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0" TextWrapping="Wrap"/>
 
                     <!-- The family chooser: collapsed to the current family's name and
                          thumbnail once one is picked, so the parameter form sits right
@@ -203,6 +203,13 @@
                             <StackPanel>
                                 <Image Source="Assets/thumb_planetary.png" Height="76" Stretch="Uniform"/>
                                 <TextBlock Text="Planetary" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsCompoundPlanetary, Mode=OneWay}" Checked="OnCompoundPlanetaryChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_compound_planetary.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Compound planetary" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
@@ -681,6 +688,109 @@
                         </ItemsControl>
                     </StackPanel>
 
+                    <StackPanel Visibility="{Binding IsCompoundPlanetary, Converter={StaticResource B2V}}">
+                        <TextBlock Text="COMPOUND (SPLIT-RING) PLANETARY SET" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="A planetary set with stepped planets: each planet is two gears on one shaft -- gear 1 meshing the sun, gear 2 meshing the output ring one level along the axis. Split ring: gear 1 also runs in a fixed ring on the sun's level and the output is the second ring; its ratio is (1 + R1/S) / (1 - R1·P2 / (R2·P1)), a difference of two near-equal products, so four gear sizes in one compact housing reach ratios in the hundreds, and a tooth more or less on gear 2 sets the ratio at will (the tables below walk through the neighbours). Carrier output: one held ring, the carrier drives out at 1 + R·P1 / (S·P2) -- the arrangement of MathWorks' Compound Planetary Gear block. Spur, helical or herringbone teeth: the sun takes the hand chosen in the helix section, the planet gears the opposite, each ring the hand of its planet gear. 'Number of teeth' above is the sun's; ring counts follow from the one centre distance unless you pin ring 2's count or module. STEP export writes every member in mesh as one multi-body part."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
+                        <Grid Margin="0,0,0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/><ColumnDefinition Width="6"/><ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" GroupName="compoundarr" Content="Split ring (ring 2 out)" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsSplitRing, Mode=OneWay}" Checked="OnSplitRingChecked"/>
+                            <RadioButton Grid.Column="2" GroupName="compoundarr" Content="Carrier output" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsCarrierOutput, Mode=OneWay}" Checked="OnCarrierOutputChecked"/>
+                        </Grid>
+                        <Grid Margin="0,0,0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/><ColumnDefinition Width="6"/><ColumnDefinition Width="*"/><ColumnDefinition Width="6"/><ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" GroupName="compoundform" Content="Spur" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsToothFormSpur, Mode=OneWay}" Checked="OnToothFormSpurChecked"/>
+                            <RadioButton Grid.Column="2" GroupName="compoundform" Content="Helical" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsToothFormHelical, Mode=OneWay}" Checked="OnToothFormHelicalChecked"/>
+                            <RadioButton Grid.Column="4" GroupName="compoundform" Content="Herringbone" Style="{StaticResource ToggleBtn}"
+                                         IsChecked="{Binding IsToothFormHerringbone, Mode=OneWay}" Checked="OnToothFormHerringboneChecked"/>
+                        </Grid>
+                        <local:NumericSpinner Label="Planet gear 1 teeth (on the sun)" Value="{Binding MateTeeth}" Minimum="4" Maximum="200" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Planet gear 2 teeth (on ring 2)" Value="{Binding PlanetTeeth2}" Minimum="4" Maximum="200" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Number of planets" Value="{Binding PlanetCount}" Minimum="1" Maximum="12" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Ring 2 teeth (0 = sun + gear 1 + gear 2)" Value="{Binding RingTeeth2}" Minimum="0" Maximum="500" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Module of mesh 2, mm (0 = auto: closes the centre distance)" Value="{Binding Module2Mm}" Minimum="0" Maximum="50" Step="0.05" DecimalPlaces="3" Suffix="mm"/>
+                        <local:NumericSpinner Label="Face width of mesh 2 (gear 2 and ring 2)" Value="{Binding FaceWidth2Display}" Minimum="0.5" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Step between the planet gears" Value="{Binding StepGapDisplay}" Minimum="0.5" Maximum="100" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Planet pin bore (0 = none)" Value="{Binding PinionBoreDisplay}" Minimum="0" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+                        <local:NumericSpinner Label="Ring rim thickness" Value="{Binding RimThicknessDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+
+                        <TextBlock Text="RATIOS OF THIS SET" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Hold one member, drive another: the ratio each arrangement gives for the tooth counts above. A negative sense means the output turns against the input."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,6"/>
+                        <Grid Margin="0,0,0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="46"/><ColumnDefinition Width="50"/><ColumnDefinition Width="50"/><ColumnDefinition Width="72"/><ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="HELD" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="1" Text="IN" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="2" Text="OUT" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="3" Text="RATIO" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="4" Text="SENSE" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                        </Grid>
+                        <ItemsControl ItemsSource="{Binding CompoundRatios}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="46"/><ColumnDefinition Width="50"/><ColumnDefinition Width="50"/><ColumnDefinition Width="72"/><ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Held}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Input}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Output}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Ratio}" FontSize="11" FontWeight="SemiBold" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding Sense}" FontSize="10" Foreground="#6B7280" TextWrapping="Wrap"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <TextBlock Text="WHAT IF PLANET GEAR 2 CHANGED" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="The sets around the current gear 2, ring 2 following at one module, with the same sun, gear 1 and planet count: whether they assemble and the ratio they give. Watch the ratio swing as the two products cross."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,6"/>
+                        <Grid Margin="0,0,0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="46"/><ColumnDefinition Width="44"/><ColumnDefinition Width="62"/><ColumnDefinition Width="60"/><ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="GEAR 2" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="1" Text="RING 2" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="2" Text="ASSEMBLES" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="3" Text="RATIO" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                        </Grid>
+                        <ItemsControl ItemsSource="{Binding CompoundWhatIf}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,1">
+                                        <Grid.Style>
+                                            <Style TargetType="Grid">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                                                        <Setter Property="Background" Value="#DBEAFE"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="46"/><ColumnDefinition Width="44"/><ColumnDefinition Width="62"/><ColumnDefinition Width="60"/><ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding PlanetGear2}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Ring2}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Assembles}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Ratio}" FontSize="11" FontWeight="SemiBold" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding Note}" FontSize="9" Foreground="#B45309" TextWrapping="Wrap"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
                     <StackPanel Visibility="{Binding IsCrossedHelical, Converter={StaticResource B2V}}">
                         <TextBlock Text="SCREW GEAR PAIR (CROSSED HELICAL)" Style="{StaticResource SectionHeader}"/>
                         <TextBlock Text="Two helical gears on shafts that cross without intersecting. 'Number of teeth', helix angle and hand above describe gear 1; gear 2's helix and hand follow from the shaft angle (same hand when the shaft angle exceeds gear 1's helix, e.g. 45° + 45° = 90°). Both share the normal module and pressure angle; the ratio is z2/z1. Contact is a single point, so screw gears suit light loads. STEP export writes both gears in mesh as a two-body part."
@@ -843,6 +953,24 @@
                     <StackPanel>
                         <TextBlock Text="ROLLING CIRCLE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding RollingCircleText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                </UniformGrid>
+                <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsCompoundPlanetary, Converter={StaticResource B2V}}">
+                    <StackPanel>
+                        <TextBlock Text="RINGS" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CompoundRingsText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CENTRE DISTANCE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CenterDistanceText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="RATIO" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CompoundRatioText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,8,0,0">
+                        <TextBlock Text="STEPPED PLANET" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CompoundPlanetText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
                 <UniformGrid Columns="3" Margin="0,10,0,0" Visibility="{Binding IsPlanetary, Converter={StaticResource B2V}}">
