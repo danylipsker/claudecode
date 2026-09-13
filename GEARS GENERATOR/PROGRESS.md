@@ -53,11 +53,71 @@ to drag parts and assemblies from.
   onto an empty window it opens it. "Create in SolidWorks" asks part (one
   body per gear) or ASSEMBLY (one component per gear: the neutral-file
   mapping set to components for the import) and the name, saves into the
-  library and highlights the row. Machine-wide registration (the HKLM
-  RegAsm path, the one SolidWorks' Tools > Add-Ins reads) needs elevation,
-  which this session's policy blocked; `register-addin.ps1`'s header carries
-  the one-line command. NOT yet verified in a live SolidWorks: that the
-  add-in appears in Tools > Add-Ins after that command, and the drag itself.
+  library and highlights the row. Machine-wide registration is
+  `install-addin.ps1` (self-elevating: run it from any PowerShell, one UAC
+  prompt); it runs `RegAsm /codebase` and writes the HKLM `AddIns` listing
+  (with the `(Default)` DWORD SolidWorks' loader requires) and the HKCU
+  `AddInsStartup` pre-check.
+
+### Add-in: made it load, then made "Create in SolidWorks" not hang
+
+Getting the add-in to actually work in a normally started SolidWorks took
+running down three separate causes, each of which hid the next:
+
+1. **It silently never connected.** `PyGearEngine`'s constructor located
+   `py/gear_step/server.py` by walking up from the process base directory --
+   which, hosted in `SLDWORKS.exe`, is SolidWorks' own install folder, so the
+   walk found nothing and threw. Thrown from the constructor, *outside*
+   `ConnectToSW`'s try, SolidWorks dropped the add-in with no dialog and no
+   event (`LoadAddIn` even returned 0). Fixed by locating the script from the
+   add-in assembly's OWN folder first (`PyGearEngine.LocateServerScript`), and
+   by starting the engine inside `ConnectToSW`'s try so a failure becomes a
+   message with the panel still docked.
+2. **Every automated check launched SolidWorks the wrong way.** A SolidWorks
+   started through COM automation (`Activator.CreateInstance`) does NOT load
+   startup add-ins, and a normally started one does not register in the
+   running-object table, so it cannot be attached to from outside. So
+   `--swloadaddin` / `--swaddincheck` (and any out-of-process harness) are NOT
+   valid tests of a startup load. The add-in can only be exercised from
+   *inside* itself: `GEARGEN_ADDIN_SELFTEST=<folder>` (or a `dir=` line in
+   `%TEMP%\GearGen.selftest.txt`, since an automation-started instance
+   inherits no environment) makes it drive its own pane a few seconds after
+   connecting -- select the card, create the set as a part and an assembly,
+   capture the window at each step. That is how everything below was verified.
+3. **`LoadFile4` hung forever, then failed intermittently.** With the add-in
+   loaded, "Create in SolidWorks" imported the STEP but `LoadFile4` never
+   returned -- a stack dump showed SolidWorks' main thread parked in
+   `su_CDialog::DoModal` inside the ACIS/STEP translator, with the body
+   already imported and no visible dialog. It was not the diagnostics prompt
+   (its toggles made no difference), not the translator choice (3D
+   Interconnect on or off both hung), not the WPF/async nesting (a synchronous
+   call hung too), not the thread (a worker on a marshalled proxy hung on the
+   main thread anyway and only added `InvalidCastException`s). The translator's
+   modal step needs **SolidWorks to be the foreground window**; driven while
+   another app was in front it waited on an activation that never came. The
+   standalone exporter never saw it only because an automation-launched
+   SolidWorks runs without needing the foreground. Fix: `BringSolidWorksToFront`
+   at the top of the import (`ShowWindow(SW_RESTORE)` + `SetForegroundWindow`
+   through an `AttachThreadInput` to the current foreground thread, the
+   standard way past Windows' foreground lock). A user clicking the Task Pane
+   button already has SolidWorks in front, so this is the fix for the
+   programmatic case and belt-and-braces for theirs. Also: the import is
+   silent (`GetImportFileData` import-data object passed to `LoadFile4`, the
+   auto-run import-diagnostics toggles off and restored), and the self-test
+   guards against re-entrancy -- `LoadFile4`'s modal loop pumps the WinForms
+   timer, so without a one-step-at-a-time flag the next tick started a second
+   overlapping import (two `LoadFile4`s, the second failing with error 1;
+   only seen on the slower six-body compound set, not the one-body spur).
+
+Verified in a normally started SolidWorks **2026 and 2020**: the add-in
+connects (full `ConnectToSW` log), the Task Pane opens with the gear icon,
+and "Create in SolidWorks" builds the compound set as a part (six bodies) and
+as an assembly (six components, its component parts saved in a subfolder of
+its own so two assemblies do not overwrite each other's `SOLID.SLDPRT`s),
+listing each in the library. 2020's translator opens a multi-solid STEP as an
+assembly and turns it into a multi-body part on Save As, which the message
+notes. `EmbedInteropTypes=True` on the three SolidWorks interop references so
+the one add-in DLL binds to whichever version (v28..v34) hosts it.
 
 ## Review of 2026-09-13: mates everywhere, one solid per gear, a readable window
 

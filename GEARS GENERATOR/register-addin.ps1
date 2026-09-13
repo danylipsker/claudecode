@@ -1,7 +1,8 @@
 <#
 INSTALLING THE ADD-IN (SolidWorks 2020 ... 2026): build GearGen.SolidWorksAddin
-(x64), then register it MACHINE-WIDE from an elevated (Run as Administrator)
-prompt -- this is the registration SolidWorks' Tools > Add-Ins list reads:
+(x64), then run install-addin.ps1 (it elevates itself: one UAC prompt) -- or,
+by hand from an elevated prompt, the registration SolidWorks' Tools > Add-Ins
+list reads:
 
     & "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe" `
         "<repo>\GEARS GENERATOR\src\GearGen.SolidWorksAddin\bin\x64\Debug\net48\GearGen.SolidWorksAddin.dll" /codebase /tlb

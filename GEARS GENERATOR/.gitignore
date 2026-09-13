@@ -13,3 +13,7 @@ ui-shots/
 py/gear_step/out/
 *.sldprt.log
 *.export-test.*
+
+# add-in installer / stray SolidWorks logs
+install-addin.log
+console.log

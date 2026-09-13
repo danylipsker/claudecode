@@ -63,6 +63,12 @@ namespace GearGen.App
                 return;
             }
 
+            if (e.Args.Length >= 2 && e.Args[0] == "--swloadaddin")
+            {
+                RunSolidWorksLoadAddin(e.Args[1], e.Args.Length >= 3 && int.TryParse(e.Args[2], out int ly) ? ly : (int?)null);
+                return;
+            }
+
             if (e.Args.Length >= 2 && e.Args[0] == "--swdialogsmoke")
             {
                 RunSolidWorksDialogSmokeTest(e.Args[1]);
@@ -163,6 +169,77 @@ namespace GearGen.App
         /// connection state -- to a file rather than Console.WriteLine
         /// (doesn't work for a WinExe subsystem app; see --uismoke's own
         /// remarks).</summary>
+        /// <summary>--swloadaddin log: what SolidWorks itself says when asked to
+        /// load the add-in DLL (ISldWorks.LoadAddIn: 0 = loaded, 1 = failed,
+        /// 2 = already loaded), then whether GetAddInObject finds it -- the
+        /// error a startup load swallows, made visible. Also lists the AddIns
+        /// registry entries SolidWorks scans, both hives, so a wrong key name
+        /// shows up here rather than in a dialog nobody captured.</summary>
+        private void RunSolidWorksLoadAddin(string logPath, int? year = null)
+        {
+            var thread = new Thread(() =>
+            {
+                var sb = new System.Text.StringBuilder();
+                ISldWorks swApp = null;
+                try
+                {
+                    foreach (var hive in new[] { Microsoft.Win32.Registry.LocalMachine, Microsoft.Win32.Registry.CurrentUser })
+                        foreach (var sub in new[] { @"SOFTWARE\SolidWorks\AddIns", @"SOFTWARE\SolidWorks\AddInsStartup" })
+                            using (var key = hive.OpenSubKey(sub))
+                            {
+                                if (key == null) { sb.AppendLine($"{hive.Name}\\{sub}: absent"); continue; }
+                                foreach (var name in key.GetSubKeyNames())
+                                    using (var k = key.OpenSubKey(name))
+                                        sb.AppendLine($"{hive.Name}\\{sub}\\{name}: Title='{k?.GetValue("Title")}' default='{k?.GetValue(null)}'");
+                            }
+                    string dll = Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(typeof(App).Assembly.Location))))),
+                        "GearGen.SolidWorksAddin", "bin", "x64", "Debug", "net48", "GearGen.SolidWorksAddin.dll");
+                    sb.AppendLine("add-in dll: " + dll + (File.Exists(dll) ? "" : " (MISSING)"));
+                    try
+                    {
+                        swApp = (ISldWorks)Marshal.GetActiveObject("SldWorks.Application");
+                        sb.AppendLine("attached to a running SolidWorks " + swApp.RevisionNumber());
+                    }
+                    catch (COMException)
+                    {
+                        // a year picks that install through its versioned ProgID (2020 = .28 ... 2026 = .34)
+                        var t = Type.GetTypeFromProgID(year.HasValue ? "SldWorks.Application." + (year.Value - 1992) : "SldWorks.Application");
+                        swApp = (ISldWorks)Activator.CreateInstance(t);
+                        swApp.Visible = true;
+                        for (int i = 0; i < 60; i++) { try { var _ = swApp.ActiveDoc; break; } catch { Thread.Sleep(500); } }
+                        Thread.Sleep(3000);
+                        sb.AppendLine("launched SolidWorks " + swApp.RevisionNumber());
+                    }
+                    object before = null;
+                    try { before = swApp.GetAddInObject("GearGen.SolidWorksAddin.SwAddin"); } catch (Exception ex) { sb.AppendLine("GetAddInObject before: " + ex.Message); }
+                    try { before = before ?? swApp.GetAddInObject("{A3D4E5F6-1B2C-4D3E-9F8A-7C6B5A4D3E2F}"); } catch (Exception ex) { sb.AppendLine("GetAddInObject(CLSID) before: " + ex.Message); }
+                    sb.AppendLine("GetAddInObject before LoadAddIn: " + (before == null ? "null" : before.GetType().FullName));
+                    int rc = swApp.LoadAddIn(dll);
+                    sb.AppendLine("LoadAddIn returned " + rc + " (0 = loaded, 1 = failed, 2 = already loaded)");
+                    swApp.UserControl = true; // the loaded add-in keeps running after this harness lets go
+                    Thread.Sleep(2000);
+                    object after = null;
+                    try { after = swApp.GetAddInObject("GearGen.SolidWorksAddin.SwAddin"); } catch (Exception ex) { sb.AppendLine("GetAddInObject after: " + ex.Message); }
+                    try { after = after ?? swApp.GetAddInObject("{A3D4E5F6-1B2C-4D3E-9F8A-7C6B5A4D3E2F}"); } catch (Exception ex) { sb.AppendLine("GetAddInObject(CLSID) after: " + ex.Message); }
+                    sb.AppendLine("GetAddInObject after LoadAddIn: " + (after == null ? "null" : after.GetType().FullName));
+                    File.WriteAllText(logPath, sb.ToString());
+                }
+                catch (Exception ex)
+                {
+                    File.WriteAllText(logPath, sb.ToString() + "FAIL: " + ex);
+                }
+                finally
+                {
+                    if (swApp != null) Marshal.ReleaseComObject(swApp);
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.IsBackground = false;
+            thread.Start();
+            thread.Join(TimeSpan.FromSeconds(180));
+            Shutdown(0);
+        }
+
         private void RunSolidWorksAddinCheck(string logPath)
         {
             var thread = new Thread(() =>

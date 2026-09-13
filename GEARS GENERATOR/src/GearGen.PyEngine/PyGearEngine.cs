@@ -31,26 +31,47 @@ namespace GearGen.PyEngine
             _serverScript = serverScriptPath ?? LocateServerScript();
         }
 
-        /// <summary>Walks up from this assembly's directory looking for
-        /// py/gear_step/server.py -- works regardless of Debug/Release build
-        /// depth as long as the repo layout stays intact.</summary>
+        /// <summary>Finds py/gear_step/server.py: GEARGEN_PY_SERVER if set;
+        /// else walking up from THIS assembly's own folder (the repo layout:
+        /// src/&lt;project&gt;/bin/.../GearGen.PyEngine.dll lies under the repo
+        /// root that holds py/), and only then from the process's base
+        /// directory. The order matters for the SolidWorks add-in: hosted in
+        /// SLDWORKS.exe the base directory is SolidWorks' own install folder,
+        /// and a walk up from there found nothing -- thrown from this
+        /// constructor, outside the add-in's own try, that silently unloaded
+        /// the add-in at every SolidWorks start (LoadAddIn said 0, no Task
+        /// Pane ever appeared, no dialog, no event). Measured by creating
+        /// the add-in through COM from C:\ and calling ConnectToSW.</summary>
         public static string LocateServerScript()
         {
-            var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
             var envOverride = Environment.GetEnvironmentVariable("GEARGEN_PY_SERVER");
             if (!string.IsNullOrEmpty(envOverride) && File.Exists(envOverride))
                 return envOverride;
 
-            while (dir != null)
+            var starts = new System.Collections.Generic.List<string>();
+            try
             {
-                var candidate = Path.Combine(dir.FullName, "py", "gear_step", "server.py");
-                if (File.Exists(candidate))
-                    return candidate;
-                dir = dir.Parent;
+                string here = typeof(PyGearEngine).Assembly.Location;
+                if (!string.IsNullOrEmpty(here)) starts.Add(Path.GetDirectoryName(here));
+            }
+            catch { /* dynamic or shadow-copied: fall through to the base directory */ }
+            starts.Add(AppDomain.CurrentDomain.BaseDirectory);
+            var tried = new System.Collections.Generic.List<string>();
+            foreach (var start in starts)
+            {
+                var dir = new DirectoryInfo(start);
+                while (dir != null)
+                {
+                    var candidate = Path.Combine(dir.FullName, "py", "gear_step", "server.py");
+                    if (File.Exists(candidate))
+                        return candidate;
+                    dir = dir.Parent;
+                }
+                tried.Add(start);
             }
             throw new FileNotFoundException(
-                "Could not locate py/gear_step/server.py by walking up from " +
-                AppDomain.CurrentDomain.BaseDirectory + ". Set GEARGEN_PY_SERVER to override.");
+                "Could not locate py/gear_step/server.py by walking up from " + string.Join(" or ", tried) +
+                ". Set GEARGEN_PY_SERVER to override.");
         }
 
         public void Start()

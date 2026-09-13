@@ -40,6 +40,16 @@ namespace GearGen.SolidWorksAddin
         public static string LibraryFolder =>
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GEARS GENERATOR");
 
+        /// <summary>Where a file of that name goes in the library: a part at the
+        /// top, an assembly in a subfolder of its own name -- SolidWorks saves
+        /// the assembly's component parts (SOLID.SLDPRT, SOLID_2.SLDPRT...)
+        /// beside it, and two assemblies in one folder would overwrite each
+        /// other's components.</summary>
+        public static string LibraryTargetFor(string fileName, bool assembly) =>
+            assembly
+                ? Path.Combine(LibraryFolder, Path.GetFileNameWithoutExtension(fileName), fileName)
+                : Path.Combine(LibraryFolder, fileName);
+
         public GearPanelHost()
         {
             var host = new ElementHost { Dock = DockStyle.Fill };
@@ -93,6 +103,9 @@ namespace GearGen.SolidWorksAddin
 
         private string SelectedFile() => _library.SelectedItems.Count > 0 ? _library.SelectedItems[0].Tag as string : null;
 
+        /// <summary>How many parts and assemblies the library lists right now.</summary>
+        public int LibraryCount => _library.Items.Count;
+
         /// <summary>Re-read the library folder: parts and assemblies, newest first.</summary>
         public void RefreshLibrary()
         {
@@ -102,8 +115,11 @@ namespace GearGen.SolidWorksAddin
             {
                 if (Directory.Exists(LibraryFolder))
                 {
+                    // parts and assemblies at the top, plus each subfolder's assembly
+                    // (its component parts stay out of the list: they are the assembly's)
                     var files = Directory.GetFiles(LibraryFolder, "*.sld*")
                         .Where(f => f.EndsWith(".sldprt", StringComparison.OrdinalIgnoreCase) || f.EndsWith(".sldasm", StringComparison.OrdinalIgnoreCase))
+                        .Concat(Directory.GetDirectories(LibraryFolder).SelectMany(d => Directory.GetFiles(d, "*.sldasm")))
                         .Where(f => !Path.GetFileName(f).StartsWith("~$"))
                         .OrderByDescending(File.GetLastWriteTime);
                     foreach (var f in files)
