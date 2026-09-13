@@ -564,7 +564,10 @@ namespace GearGen.SolidWorksAddin
                     Capture("selftest_2_part.png");
                     break;
                 case 5:
-                    SelfTestCreate(vm, true);
+                    if (string.Equals(SelfTestSetting("GEARGEN_ADDIN_SELFTEST_WHAT", "what"), "part", StringComparison.OrdinalIgnoreCase))
+                    { Log("selftest: done (part only); the library lists " + _panelHost.LibraryCount + " files"); _selfTestTimer.Stop(); }
+                    else
+                        SelfTestCreate(vm, true);
                     break;
                 case 6:
                     Capture("selftest_3_assembly.png");
