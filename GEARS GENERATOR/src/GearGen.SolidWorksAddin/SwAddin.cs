@@ -289,6 +289,11 @@ namespace GearGen.SolidWorksAddin
                 // clicking the Task Pane button already has SolidWorks in front,
                 // so this is belt-and-braces there and the real fix when the
                 // call is driven programmatically.
+                // Windows refuses SetForegroundWindow from a background app while
+                // the foreground-lock timeout is in force; set it to 0 for the
+                // duration so the steal is allowed. (Saved and left at 0 for the
+                // session -- benign, the usual developer setting.)
+                try { SystemParametersInfo(SPI_SETFOREGROUNDLOCKTIMEOUT, 0, IntPtr.Zero, SPIF_SENDCHANGE); } catch { }
                 IntPtr fg = GetForegroundWindow();
                 uint fgThread = GetWindowThreadProcessId(fg, out _);
                 uint thisThread = GetCurrentThreadId();
@@ -297,7 +302,14 @@ namespace GearGen.SolidWorksAddin
                 try { BringWindowToTop(h); ok = SetForegroundWindow(h); }
                 finally { if (fgThread != thisThread) AttachThreadInput(thisThread, fgThread, false); }
                 if (GetForegroundWindow() != h)
-                    Log("insert: warning -- SolidWorks did not take the foreground (SetForegroundWindow=" + ok + "); the STEP import may block");
+                {
+                    // last resort: a minimize + restore reliably fronts the window
+                    ShowWindow(h, 6 /* SW_MINIMIZE */);
+                    ShowWindow(h, 9 /* SW_RESTORE */);
+                    SetForegroundWindow(h);
+                    if (GetForegroundWindow() != h)
+                        Log("insert: warning -- SolidWorks did not take the foreground (SetForegroundWindow=" + ok + "); the STEP import may block");
+                }
             }
             catch (Exception ex) { Log("insert: bring to front: " + ex.Message); }
         }
@@ -517,6 +529,8 @@ namespace GearGen.SolidWorksAddin
         {
             _selfTestDir = dir;
             Directory.CreateDirectory(dir);
+            if (string.Equals(SelfTestSetting("GEARGEN_ADDIN_SELFTEST_FAMILY", "family"), "all", StringComparison.OrdinalIgnoreCase))
+                BuildFamilyQueue();
             _selfTestTimer = new Timer { Interval = 8000 };
             _selfTestTimer.Tick += (s, e) =>
             {
@@ -537,11 +551,12 @@ namespace GearGen.SolidWorksAddin
             // import on top of the first (two overlapping LoadFile4 calls, the
             // second failing). One step at a time.
             if (_selfTestInStep) return;
-            var vm = _panelHost.Panel.ViewModel;
-            if (vm.IsBusy) return; // a preview or an insert is still running
             _selfTestInStep = true;
             try
             {
+            if (_familyQueue != null) { RunFamilyQueue(); return; }
+            var vm = _panelHost.Panel.ViewModel;
+            if (vm.IsBusy) return; // a preview or an insert is still running
             switch (_selfTestStep++)
             {
                 case 0:
@@ -579,6 +594,69 @@ namespace GearGen.SolidWorksAddin
             finally { _selfTestInStep = false; }
         }
 
+        // GEARGEN_ADDIN_SELFTEST_FAMILY=all: create one library PART for every
+        // family the panel offers -- each Select*Card method by reflection, plus
+        // straight bevel (IsBevel, which has no Select*Card). One family per
+        // pass: select it, wait for its preview to build, build the STEP and
+        // import it; a family that refuses or errors is logged and skipped.
+        private System.Collections.Generic.List<Tuple<string, Action<GearGen.UI.GearViewModel>>> _familyQueue;
+        private int _famIndex, _famCreated, _famFailed;
+        private int _famPhase;
+        private DateTime _famSelectedAt;
+
+        private void BuildFamilyQueue()
+        {
+            var vm = _panelHost.Panel.ViewModel;
+            _familyQueue = new System.Collections.Generic.List<Tuple<string, Action<GearGen.UI.GearViewModel>>>();
+            foreach (var mi in vm.GetType().GetMethods()
+                .Where(m => m.Name.StartsWith("Select") && m.Name.EndsWith("Card") && m.GetParameters().Length == 0)
+                .OrderBy(m => m.Name))
+            {
+                var method = mi;
+                _familyQueue.Add(Tuple.Create(method.Name.Substring(6), (Action<GearGen.UI.GearViewModel>)(v => method.Invoke(v, null))));
+            }
+            // straight bevel: selected by the IsBevel setter, no Select*Card of its own
+            _familyQueue.Add(Tuple.Create("Bevel(straight)", (Action<GearGen.UI.GearViewModel>)(v => v.IsBevel = true)));
+            Log("selftest: family queue built -- " + _familyQueue.Count + " families: " + string.Join(", ", _familyQueue.Select(f => f.Item1)));
+        }
+
+        private void RunFamilyQueue()
+        {
+            var vm = _panelHost.Panel.ViewModel;
+            if (_famIndex >= _familyQueue.Count)
+            {
+                Capture("selftest_all_done.png");
+                Log("selftest: ALL FAMILIES DONE -- created " + _famCreated + ", failed " + _famFailed + "; the library lists " + _panelHost.LibraryCount + " files");
+                _selfTestTimer.Stop();
+                return;
+            }
+            var fam = _familyQueue[_famIndex];
+            if (_famPhase == 0)
+            {
+                try { fam.Item2(vm); Log("selftest: [" + (_famIndex + 1) + "/" + _familyQueue.Count + "] selected " + fam.Item1); }
+                catch (Exception ex) { Log("selftest: [" + fam.Item1 + "] select failed: " + ex.Message); _famFailed++; _famIndex++; return; }
+                _famSelectedAt = DateTime.Now;
+                _famPhase = 1;
+                return;
+            }
+            // phase 1: let the preview settle (a slow family's build can take a while), then create the part
+            if (vm.IsBusy && (DateTime.Now - _famSelectedAt).TotalSeconds < 180) return;
+            try
+            {
+                string target = GearPanelHost.LibraryTargetFor(vm.SnapshotParameters().SuggestedFileName(".sldprt"), false);
+                string step = Path.Combine(Path.GetTempPath(), "geargen_all_" + Guid.NewGuid().ToString("N") + ".step");
+                _engine.ExportStepAsync(vm.SnapshotParameters(), step).GetAwaiter().GetResult();
+                string msg = InsertCore(_swApp, step, target, false);
+                _panelHost.HighlightInLibrary(target);
+                Log("selftest: [" + (_famIndex + 1) + "/" + _familyQueue.Count + "] " + fam.Item1 + " -> " + msg);
+                _famCreated++;
+                try { File.Delete(step); } catch { }
+            }
+            catch (Exception ex) { Log("selftest: [" + fam.Item1 + "] create FAILED: " + (ex.InnerException ?? ex).Message); _famFailed++; }
+            _famIndex++;
+            _famPhase = 0;
+        }
+
         /// <summary>Create the current set into the library the same way the
         /// button's handler does (build the STEP, then InsertCore). Synchronous
         /// here (it blocks this timer tick), which is fine: the file is on disk
@@ -608,6 +686,9 @@ namespace GearGen.SolidWorksAddin
         [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr hwnd, out uint pid);
         [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
         [DllImport("user32.dll")] private static extern bool AttachThreadInput(uint attach, uint attachTo, bool doAttach);
+        [DllImport("user32.dll", SetLastError = true)] private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);
+        private const uint SPI_SETFOREGROUNDLOCKTIMEOUT = 0x2001;
+        private const uint SPIF_SENDCHANGE = 0x0002;
         [StructLayout(LayoutKind.Sequential)] private struct RECT { public int Left, Top, Right, Bottom; }
 
         /// <summary>The SolidWorks frame as it is painted (PrintWindow with
