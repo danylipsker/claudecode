@@ -27,6 +27,16 @@ landed in one commit.
   size, no sliver on 51 builds nor on the 78.7-degree gear. The compound
   stays behind fuse=False for the conjugacy tests: two 1000-face gears
   take minutes to intersect, small teeth seconds.
+- **`--swopen part.sldprt`**: the harness opens a native part in a
+  visible SolidWorks (left running) and logs its solid bodies -- count,
+  names, face/edge/vertex counts, volume, area, centroid, box -- through
+  IPartDoc.GetBodies2. Added when the user asked to see the bevel pair's
+  bodies: late binding to SolidWorks is dead on this machine (its
+  dispatch answers TYPE_E_ELEMENTNOTFOUND to `Visible` itself, from
+  PowerShell 5.1 and 7 alike, and every attempt leaves a hidden
+  SLDWORKS.exe), so the check lives early-bound in the app. The default
+  bevel pair: two bodies of 662 faces, 1580 edges, 920 vertices each,
+  7480.6 mm³ against the generator's 7481.0, centroids on the two axes.
 - **The internal gear builds its pinion** (item 1): `pinion_params` (an
   ordinary spur gear of the same module, its own bore), placed on +Y at
   R − r_p -- both the ring's gap and the pinion's tooth 0 sit on +Y, so

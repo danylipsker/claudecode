@@ -258,6 +258,99 @@ namespace GearGen.App
             }
         }
 
+        /// <summary>Opens a native part in a VISIBLE SolidWorks -- the running
+        /// one, else a newly launched one that is left running under the
+        /// user's control -- and describes its solid bodies: count, names,
+        /// face/edge/vertex counts, volume, surface area, centroid and
+        /// bounding box (IPartDoc.GetBodies2, IBody2.GetMassProperties and
+        /// GetBodyBox, SI units converted to mm). The check to make after an
+        /// export: is each gear ONE body, and is it the body the generator
+        /// built. Late binding cannot do this on this machine (SolidWorks'
+        /// dispatch interface answers TYPE_E_ELEMENTNOTFOUND to everything,
+        /// even `Visible`, from either PowerShell), so it lives here, early-
+        /// bound through the interop like the import. STA thread, as the
+        /// import.</summary>
+        public static Task<string> OpenPartAndDescribeBodiesAsync(string sldprtPath)
+        {
+            var tcs = new TaskCompletionSource<string>();
+            var thread = new Thread(() =>
+            {
+                try
+                {
+                    tcs.SetResult(DoOpenAndDescribe(sldprtPath));
+                }
+                catch (Exception ex)
+                {
+                    tcs.SetException(ex);
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.IsBackground = true;
+            thread.Start();
+            return tcs.Task;
+        }
+
+        private static string DoOpenAndDescribe(string sldprtPath)
+        {
+            ISldWorks swApp = null;
+            try
+            {
+                string note;
+                try
+                {
+                    swApp = (ISldWorks)Marshal.GetActiveObject("SldWorks.Application");
+                    note = "the running SolidWorks";
+                }
+                catch (COMException)
+                {
+                    var t = Type.GetTypeFromProgID("SldWorks.Application");
+                    if (t == null)
+                        throw new InvalidOperationException("SolidWorks is not installed (or not registered) on this machine.");
+                    swApp = (ISldWorks)Activator.CreateInstance(t);
+                    note = "a newly launched SolidWorks";
+                }
+                swApp.Visible = true;
+                swApp.UserControl = true;   // ours to open, the user's to keep: it does not quit when we let go
+                int errors = 0, warnings = 0;
+                ModelDoc2 model = swApp.OpenDoc6(sldprtPath, (int)swDocumentTypes_e.swDocPART,
+                    (int)swOpenDocOptions_e.swOpenDocOptions_Silent, "", ref errors, ref warnings) as ModelDoc2;
+                if (model == null)
+                    throw new InvalidOperationException($"SolidWorks could not open {sldprtPath} (error code {errors}).");
+                model.ViewZoomtofit2();
+
+                var sb = new System.Text.StringBuilder();
+                sb.Append($"Opened {Path.GetFileName(sldprtPath)} in {note} (SolidWorks {swApp.RevisionNumber()}, process {swApp.GetProcessID()}).");
+                PartDoc part = model as PartDoc;
+                if (part == null)
+                {
+                    sb.Append(" The document is not a part (IPartDoc refused) -- an assembly?");
+                    return sb.ToString();
+                }
+                object[] bodies = part.GetBodies2((int)swBodyType_e.swSolidBody, true) as object[];
+                int n = bodies?.Length ?? 0;
+                sb.Append($" Solid bodies: {n}.");
+                double total = 0.0;
+                for (int i = 0; i < n; i++)
+                {
+                    Body2 b = bodies[i] as Body2;
+                    double[] mp = b.GetMassProperties(0.0) as double[];   // cx, cy, cz, volume, area, mass, ...
+                    double[] box = b.GetBodyBox() as double[];           // xmin, ymin, zmin, xmax, ymax, zmax
+                    double vol = mp[3] * 1e9, area = mp[4] * 1e6;
+                    total += vol;
+                    sb.Append($"\n  body {i + 1}: '{b.Name}'  faces {b.GetFaceCount()}  edges {b.GetEdgeCount()}  vertices {b.GetVertexCount()}");
+                    sb.Append($"\n    volume {vol:F1} mm^3  area {area:F1} mm^2  centroid ({mp[0] * 1e3:F2}, {mp[1] * 1e3:F2}, {mp[2] * 1e3:F2}) mm");
+                    sb.Append($"\n    box x [{box[0] * 1e3:F2}, {box[3] * 1e3:F2}]  y [{box[1] * 1e3:F2}, {box[4] * 1e3:F2}]  z [{box[2] * 1e3:F2}, {box[5] * 1e3:F2}] mm");
+                }
+                sb.Append($"\n  all bodies together: {total:F1} mm^3. SolidWorks stays open on the part.");
+                return sb.ToString();
+            }
+            finally
+            {
+                if (swApp != null)
+                    Marshal.ReleaseComObject(swApp);
+            }
+        }
+
         /// <summary>The first *.prtdot in SolidWorks' own configured template
         /// folders (Tools > Options > File Locations > Document Templates),
         /// falling back to the stock ProgramData location; null if none.</summary>

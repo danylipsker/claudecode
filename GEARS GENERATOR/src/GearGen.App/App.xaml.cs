@@ -49,6 +49,12 @@ namespace GearGen.App
                 return;
             }
 
+            if (e.Args.Length >= 2 && e.Args[0] == "--swopen")
+            {
+                RunSolidWorksOpen(e.Args[1]);
+                return;
+            }
+
             if (e.Args.Length >= 2 && e.Args[0] == "--swaddincheck")
             {
                 RunSolidWorksAddinCheck(e.Args[1]);
@@ -106,6 +112,26 @@ namespace GearGen.App
             try
             {
                 string result = SolidWorksExporter.ImportStepAndSaveAsSldprtAsync(stepPath, sldprtPath)
+                    .GetAwaiter().GetResult();
+                File.WriteAllText(logPath, "OK: " + result);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText(logPath, "FAIL: " + ex);
+            }
+            Shutdown(0);
+        }
+
+        /// <summary>--swopen part.sldprt: open a native part in a visible
+        /// SolidWorks (left running) and log its solid bodies to
+        /// part.sldprt.open.log -- the after-export check
+        /// (SolidWorksExporter.OpenPartAndDescribeBodiesAsync).</summary>
+        private void RunSolidWorksOpen(string sldprtPath)
+        {
+            string logPath = sldprtPath + ".open.log";
+            try
+            {
+                string result = SolidWorksExporter.OpenPartAndDescribeBodiesAsync(sldprtPath)
                     .GetAwaiter().GetResult();
                 File.WriteAllText(logPath, "OK: " + result);
             }
