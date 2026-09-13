@@ -3,6 +3,8 @@ Automated checks for straight bevel gears (docs/gear-math.md section 8).
 Run with: python -m pytest gear_step/tests/test_bevel.py -v
 """
 import math
+
+import pytest
 import sys
 from pathlib import Path
 
@@ -110,7 +112,7 @@ def test_full_solid_builds_and_has_sane_volume():
     assert solid.volume > blank_volume  # teeth add material on top of the blank
 
 
-def test_full_solid_is_manifold_with_one_body_per_tooth_plus_blank():
+def test_full_solid_is_one_manifold_body():
     """Regression test for two real bugs, both found by measuring (volume,
     is_manifold, body count), not by eye:
 
@@ -131,10 +133,11 @@ def test_full_solid_is_manifold_with_one_body_per_tooth_plus_blank():
        volume after each fuse and finding it collapse to zero mid-loop),
        and even a single N-ary fuse (blank.fuse(*teeth)) -- more robust,
        but not universally so -- fails differently on other combinations
-       (an empty result; a non-manifold result). Fixed by NOT fusing at
-       all: the returned Compound holds the blank and each tooth as
-       separate, individually-manifold bodies (the same tradeoff already
-       accepted for worm gears, and for the same reason).
+       (an empty result; a non-manifold result). Fixed first by NOT
+       fusing at all (a Compound of the blank and each tooth, the tradeoff
+       worm gears had accepted), and since the 2026-09-13 review by
+       lofting the full outline, z teeth and root lands as one loop per
+       station: one solid with no boolean in it (docs 8.4).
 
     Checked across several z/module/bore/shaft-angle combinations, since
     both bugs were parameter-dependent -- a single passing case would not
@@ -147,12 +150,15 @@ def test_full_solid_is_manifold_with_one_body_per_tooth_plus_blank():
         dict(z=8, module_mm=2.0, mate_teeth=30, shaft_angle_deg=90.0, face_width_mm=5.0),
         dict(z=16, module_mm=3.0, mate_teeth=16, shaft_angle_deg=60.0, face_width_mm=8.0),
     ]
+    # Since the 2026-09-13 review (docs 8.4) the gear is one loft of its full
+    # outline -- one valid, manifold solid, on the very combinations that
+    # broke both fuse strategies when teeth were fused onto a blank.
     for kwargs in cases:
         bp = BevelGearParams(**kwargs)
         solid = build_bevel_gear_solid(bp, n_phi=120, simplify_tolerance_mm=0.03)
         bodies = solid.solids()
-        assert len(bodies) == bp.z + 1, (kwargs, len(bodies))
-        assert all(b.is_manifold for b in bodies), kwargs
+        assert solid.label == "solid" and len(bodies) == 1, (kwargs, solid.label, len(bodies))
+        assert bodies[0].is_manifold and bodies[0].is_valid, kwargs
         assert solid.volume > 0
 
 
@@ -199,9 +205,9 @@ def test_pair_meshes_without_interpenetration_and_a_half_pitch_error_collides():
     from build_gear import build_bevel_gear_solid
     z1, z2 = 12, 30
     gear = build_bevel_gear_solid(BevelGearParams(z=z2, module_mm=2.0, mate_teeth=z1, shaft_angle_deg=90.0, face_width_mm=8.0),
-                                  n_phi=120, simplify_tolerance_mm=0.03)
+                                  n_phi=120, simplify_tolerance_mm=0.03, fuse=False)     # compound: solid-by-solid check, fast
     pinion = build_bevel_gear_solid(BevelGearParams(z=z1, module_mm=2.0, mate_teeth=z2, shaft_angle_deg=90.0, face_width_mm=8.0),
-                                    n_phi=120, simplify_tolerance_mm=0.03)
+                                    n_phi=120, simplify_tolerance_mm=0.03, fuse=False)
     ref = total_volume(gear)
     import build123d as bd
     worst = 0.0
@@ -212,3 +218,64 @@ def test_pair_meshes_without_interpenetration_and_a_half_pitch_error_collides():
     bad = interpenetration_volume(gear, place_bevel_pinion(pinion, z2, z1, 90.0, phase_error_deg=180.0 / z1))
     assert worst < 5e-5 * ref, (worst, ref)
     assert bad > 2e-3 * ref and bad > 50 * max(worst, 1e-9), (worst, bad, ref)
+
+
+def test_gear_is_one_solid_on_the_cases_that_used_to_break():
+    """The gear is one solid by construction: its full outline -- z teeth
+    and their root lands -- lofted through the stations and capped
+    (spiral_bevel.one_solid_from_stations), no blank-plus-teeth boolean.
+    The very cases build_bevel_gear_solid's history names, plus the
+    default and the pinion of the pair test, and the 40/8 gear (pitch
+    angle 78.7 deg) on which the boolean's last two fixes broke."""
+    from build_gear import build_bevel_gear_solid
+    from meshcheck import tessellated_volume
+    for bp in (BevelGearParams(z=16, module_mm=3.0, mate_teeth=16, shaft_angle_deg=90.0, face_width_mm=10.0, bore_diameter_mm=6.0),
+               BevelGearParams(z=12, module_mm=1.0, mate_teeth=30, shaft_angle_deg=90.0, face_width_mm=4.0, bore_diameter_mm=3.0),
+               BevelGearParams(z=8, module_mm=2.0, mate_teeth=30, shaft_angle_deg=90.0, face_width_mm=8.0),
+               BevelGearParams(z=30, module_mm=2.0, mate_teeth=8, shaft_angle_deg=90.0, face_width_mm=8.0, bore_diameter_mm=10.0),
+               BevelGearParams(z=40, module_mm=2.0, mate_teeth=8, shaft_angle_deg=90.0, face_width_mm=8.0, bore_diameter_mm=20.0)):
+        g = build_bevel_gear_solid(bp, n_phi=120, simplify_tolerance_mm=0.03)
+        assert g.label == "solid" and len(g.solids()) == 1 and g.is_valid and g.is_manifold, (bp.z, g.label)
+        assert not [f for f in g.faces() if f.area < 1e-3]                    # no sliver faces anywhere
+        blank_r = bp.heel_pitch_radius
+        assert tessellated_volume(g, 0.02) > 0.0
+
+
+def test_pair_builder_places_the_mate_and_round_trips_as_two_solids(tmp_path):
+    """bp.pinion_params is the mate (teeth swapped, its own bore); the pair
+    export writes exactly two solids, and they mesh like the hand-placed
+    pair above."""
+    import build123d as bd
+    from build_gear import build_bevel_pair_solid, export_bevel_step
+    from meshcheck import interpenetration_volume, total_volume
+    bp = BevelGearParams(z=30, module_mm=2.0, mate_teeth=12, shaft_angle_deg=90.0, face_width_mm=8.0, bore_diameter_mm=10.0, mate_bore_diameter_mm=5.0)
+    pin = bp.pinion_params()
+    assert (pin.z, pin.mate_teeth, pin.bore_diameter_mm, pin.mate_bore_diameter_mm) == (12, 30, 5.0, 10.0)
+    assert pin.pitch_angle_deg + bp.pitch_angle_deg == pytest.approx(90.0)
+    pair = build_bevel_pair_solid(bp, n_phi=120, simplify_tolerance_mm=0.03)
+    solids = pair.solids()
+    assert len(solids) == 2 and all(s.is_valid for s in solids)
+    assert sorted(c.label for c in pair.children) == ["bevel gear z30", "mate z12"]
+    path = tmp_path / "bevel_pair.step"
+    export_bevel_step(bp, path)
+    assert len(bd.import_step(str(path)).solids()) == 2
+    # one unnamed product: a STEP with named products opens in SolidWorks as an assembly
+    assert "bevel gear z30" not in path.read_text(encoding="utf-8", errors="ignore")
+
+
+def test_server_derived_values_describe_the_gear_and_its_mate():
+    """The card's derived rows come from server.bevel_derived_values -- the
+    2026-09-13 review's mate rows were first spliced in before a `return {...}`
+    that never had a `derived` name, and the card showed a NameError while
+    the tests, which never called it, stayed green."""
+    import server
+    bp = BevelGearParams(z=30, module_mm=2.0, mate_teeth=12, shaft_angle_deg=90.0, face_width_mm=8.0, mate_bore_diameter_mm=5.0)
+    d, w = server.bevel_derived_values(bp)
+    assert d["pitch_angle_deg"] == pytest.approx(bp.pitch_angle_deg)
+    assert d["mate_teeth"] == 12.0 and d["ratio"] == pytest.approx(0.4)
+    assert d["mate_pitch_angle_deg"] == pytest.approx(90.0 - bp.pitch_angle_deg)
+    assert d["mate_heel_pitch_diameter_mm"] == pytest.approx(2.0 * bp.pinion_params().heel_pitch_radius)
+    assert d["mate_bore_diameter_mm"] == 5.0
+    sd, sw = server.spiral_bevel_derived_values(server.spiral_bevel_params_from_request(
+        {"z": 16, "module_mm": 3.0, "mate_teeth": 16, "spiral_angle_deg": 35.0, "mate_bore_diameter_mm": 8.0}))
+    assert sd["mate_teeth"] == 16.0 and sd["mate_bore_diameter_mm"] == 8.0 and "spiral_angle_mean_deg" in sd

@@ -499,6 +499,67 @@ correct flat tip. Caught by comparing the tip radius directly against
 `GearParams.addendum_radius`, not by eye (the effect is far easier to miss once
 the tooth is wrapped onto a cone than it is on a flat profile).
 
+### 8.4 One solid, and the mate
+
+Since the 2026-09-13 review a bevel-family gear is one solid, not a
+compound of the blank and *z* teeth -- and one solid by construction,
+not by a boolean. The full outline of the gear, *z* teeth with their
+root lands, is one closed loop at every station (`full_gear_station`:
+`tooth_outline_pitch_to_pitch` carried to the cone *z* times, the
+pitch-boundary points exact on the root circle), lofted through the
+stations as the teeth always were (ThruSections, vertices paired by
+index) and closed at each end by `gear_end_faces`: a planar *z*-gon
+through the boundary points, per tooth two triangles over the root-land
+strip and a filling face for the tooth end, bounded on the back cone by
+the outline and an arc along the tooth base and pinned to the cone by a
+grid of interior points -- through its boundary alone the plate surface
+bulged 0.49 mm in the dedendum (the per-tooth caps of old, 0.18 mm);
+pinned, 0.03 mm. The bore is a cylinder cut through two planes, the one
+boolean, refused when it would reach the root land at the toe. The
+straight gear's loft is ruled between its toe and heel stations, exact;
+the spiral and zerol gears' runs through 8-12 stations turned by the
+trace. A gear builds in one to six seconds and the pair STEP is a third
+the size of the fused one.
+
+The boolean was tried first, in this same review, and is worth the
+record. Both fuse strategies had failed for years (a pairwise loop
+collapsing part way, an N-ary fuse coming back empty or non-manifold)
+because every tooth's root edge lay exactly on the blank's root cone,
+the same mapping having built both, and OpenCASCADE's booleans go
+silent on face-on-face coincidence. A root band 0.5 mm into the blank
+cured that, and every cure found the next sliver: the band's corners
+left 1e-5 mm² faces that came and went with the tolerance (clip the
+outline to the tooth's footprint wedge, never union a sector under a
+circle cut); a band point carried along the back cone landed
+0.5 sin γ past the end plane; the tooth cap, the root cone and the end
+plane all passed through the rim circle, and the fuse of that was valid
+at 11 stations and not at the export's 12; recessing the root zone
+0.15 modules at the faces moved the crossing, but a filling cap through
+the recessed loop overshot the plane by 2 µm from points 77 µm inside,
+on which the fuse handed back all 41 bodies untouched with no error;
+planar-triangle caps had no overshoot, and their triangles from an
+outline centroid that lies outside the end plane crossed the root cone
+5 µm from the rim. Fifty-one builds passed at the end of that road, and
+a module-1 gear still had twelve 1e-3 mm² faces. The loft has no
+intersection to get wrong. `fuse=False` keeps the old compound of blank
+and separate teeth for the conjugacy tests, which intersect it solid by
+solid (`meshcheck`) in seconds where one 1000-face gear takes minutes.
+
+The mating gear is built too (`pinion_params`: teeth swapped, the same
+module, pressure angle and face width, its own bore, a pitch-angle
+override complemented) and placed in mesh by `place_bevel_pinion`; the
+preview and the STEP are the pair, two solids. The members are labelled
+on the in-memory compound; the STEP itself stays one unnamed product,
+because build123d writes a labelled child as a product of its own and
+SolidWorks then opens the file as an assembly of parts (measured:
+components "bevel gear z20-1" and "mate z20-1") where the app promises a
+multi-body part. SolidWorks' *default* did the same to an unnamed
+two-solid product (components "SOLID-1", "SOLID-0-1"), so the app's
+export now sets the neutral-file structure mapping to "multi-body part"
+for the import and restores it: the pair then arrives as one part with
+two base bodies, Imported1 and Imported2 -- one body per gear, checked
+by the headless harness, which lists what the import made.
+
 ## 9. Worm gears
 
 A worm is, geometrically, a **screw**: a helical thread wrapped around a cylinder.
@@ -863,6 +924,19 @@ collides with both — so every carried planet's spin, the even-planet sun shift
 ring's frame are verified by a check that can fail; planets clear each other and sit at
 `a`; the multi-body STEP round-trips with `n + 2` solids.
 
+### 11.5 The pinion
+
+Since the 2026-09-13 review the ring's mating pinion is built too
+(`pinion_params`: an ordinary spur gear of the same module, pressure
+angle, coefficients and face width, its own bore -- nothing swapped, it
+is the ring's addendum and dedendum that are inside out) and placed by
+`place_internal_pinion` on +Y at `R − r_p = m (z − z_p) / 2`: both the
+ring's gap and the pinion's tooth 0 are centred on +Y, so the pinion's
++Y tooth sits in the ring's +Y gap with no phase adjustment; both turn
+the same way, the pinion `z / z_p` times as fast. Checked as every pair
+is: sliver-only overlap at three phases, a collision half a pitch off,
+two solids in the STEP. Zero pinion teeth keeps the ring alone.
+
 ## 12. Spiral and hypoid bevel gears — not implemented; this is the plan
 
 Deliberately **not built**, on the judgment that a version worth trusting needs more
@@ -1128,6 +1202,10 @@ at 20°, 0.013 mm at 23°, negative beyond) — so the 25° preset had been feed
 invalid cutter to every family. `rack_cutter_tooth_points` now clamps the fillet to a
 full-round tip, `ρ ≤ 0.999·flank_u(tip)/tan(45° − α/2)`, exactly as §10.2 clamps the
 rack's root fillet.
+
+The spiral and zerol gears are fused into one solid the same way as the
+straight bevel (§8.4), and export with their mate (opposite hand, its
+own bore) in mesh.
 
 ## 17. Face gears
 
@@ -2104,8 +2182,18 @@ at the lobe tips, about `(a / z_w + e)² / (e + a / z_w²)`. The auto
 sizes sit inside both: `e = 0.6 r_1`, `r_c = 0.8` of that limit (the
 tips keep a radius of a fifth of the path's tightest bend). Tooth height
 `2 e`: tips at `a + e − r_c`, roots at `a − e − r_c`. The reference
-set, 20 lobes at *a* = 50: `r_1` = 2.38, *e* = 1.43, `r_c` = 7.21 (limit
-9.01), a Ø14 eccentric on a Ø88 wheel with 2.9 mm lobes.
+set, 12 lobes at *a* = 50: `r_1` = 3.85, *e* = 2.31, `r_c` = 11.0 (limit
+13.75), a Ø22 eccentric on a Ø83 wheel with 4.6 mm lobes (the first
+default, 20 lobes, gave 2.9 mm ripples against a Ø14 peg: correct, and
+hard to read as a gear). Note that `r_1 = a / (z_w + 1)` caps both the
+eccentricity and the lobe height, so high ratios mean shallow lobes and
+a slim pinion -- the nature of the gearing, not a fault. The pair is
+shown and exported at pinion turn 180°: the eccentric then points into
+the wheel at both faces (where a viewer looks) and away at mid-face; at
+turn 0 it is the other way round and the pinion looks, from above, like
+a peg on the rim touching one tooth tip. Either way the contact wraps
+once round the pinion across the face (checked: at every height the
+centre is `r_c` ± 1 µm from the profile with no overlap).
 
 ### 23.2 The twist
 

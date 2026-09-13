@@ -35,7 +35,7 @@ from cycloidal_drive import CycloidalDriveParams, disc_profile, min_radius_of_cu
 
 @dataclass
 class ECGearParams:
-    wheel_teeth: int = 20
+    wheel_teeth: int = 12
     centre_distance_mm: float = 50.0
     eccentricity_mm: float = 0.0            # 0 = auto: 0.6 r_1
     pinion_diameter_mm: float = 0.0         # 0 = auto: 0.8 of the largest the profile allows

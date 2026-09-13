@@ -26,7 +26,20 @@ class BevelGearParams:
     root_fillet_coeff: float = 0.38
     face_width_mm: float = 10.0
     bore_diameter_mm: float = 0.0
+    mate_bore_diameter_mm: float = 0.0     # the mating gear's bore (it is built too: pinion_params)
     pitch_angle_deg_override: float | None = None  # skip mate/shaft calc if given directly
+
+    def pinion_params(self) -> "BevelGearParams":
+        """The mating gear: the same module, shaft angle, pressure angle,
+        coefficients and face width, the tooth counts swapped, its own bore;
+        a pitch-angle override becomes the complement to the shaft angle."""
+        override = None if self.pitch_angle_deg_override is None else self.shaft_angle_deg - self.pitch_angle_deg_override
+        return BevelGearParams(
+            z=self.mate_teeth, module_mm=self.module_mm, mate_teeth=self.z, shaft_angle_deg=self.shaft_angle_deg,
+            pressure_angle_deg=self.pressure_angle_deg, addendum_coeff=self.addendum_coeff, dedendum_coeff=self.dedendum_coeff,
+            root_fillet_coeff=self.root_fillet_coeff, face_width_mm=self.face_width_mm,
+            bore_diameter_mm=self.mate_bore_diameter_mm, mate_bore_diameter_mm=self.bore_diameter_mm,
+            pitch_angle_deg_override=override)
 
     @property
     def pitch_angle_rad(self) -> float:

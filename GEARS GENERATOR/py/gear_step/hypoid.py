@@ -324,14 +324,17 @@ def space_sections(hp: HypoidParams, geo: HypoidPitchGeometry, gear_tooth: bd.So
 
 
 def hypoid_pinion_local(hp: HypoidParams, n_positions: int = 120, n_stations: int = 8, n_profile: int = 80,
-                        n_phi: int = 240, simplify_tolerance_mm: float = 0.02, gear=None):
+                        n_phi: int = 240, simplify_tolerance_mm: float = 0.02, gear=None, fuse: bool = True):
     """The generated pinion in its own frame (apex at the origin, axis +Z,
     tooth space 0 centred on +X): tip-cone blank minus n patterned copies
     of the lofted space, one N-ary cut (sequential fallback), edge curves
     slimmed for STEP.  `gear` may be passed to reuse an already-built gear."""
     geo = hp.pitch_geometry()
+    # fuse=False keeps the gear a compound of blank + teeth: the conjugacy checks
+    # intersect it solid by solid (seconds), where one 800-face gear
+    # against the pinion takes minutes per phase
     gear = gear if gear is not None else build_spiral_bevel_gear_solid(hp.gear_params(), n_stations=10, n_phi=n_phi,
-                                                                       simplify_tolerance_mm=simplify_tolerance_mm)
+                                                                       simplify_tolerance_mm=simplify_tolerance_mm, fuse=fuse)
     # the generating tooth: gear tooth 0 (centred on +X at the mean point,
     # where the pinion's space must be) continued past both ends of the
     # gear's face, so the pinion is cut for real out to the tool's overshoot
@@ -359,7 +362,7 @@ def place_hypoid_pinion(pinion_local, geo: HypoidPitchGeometry, gear_turn_deg: f
 
 def build_hypoid_pair(hp: HypoidParams, gear_turn_deg: float = 0.0, phase_error_deg: float = 0.0,
                       n_positions: int = 120, n_stations: int = 8, n_profile: int = 80,
-                      n_phi: int = 240, simplify_tolerance_mm: float = 0.02):
+                      n_phi: int = 240, simplify_tolerance_mm: float = 0.02, fuse: bool = True):
     """(gear, pinion) in mesh, the gear turned by gear_turn_deg about +Z."""
-    pinion_local, geo, gear = hypoid_pinion_local(hp, n_positions, n_stations, n_profile, n_phi, simplify_tolerance_mm)
+    pinion_local, geo, gear = hypoid_pinion_local(hp, n_positions, n_stations, n_profile, n_phi, simplify_tolerance_mm, fuse=fuse)
     return gear.rotate(bd.Axis.Z, gear_turn_deg), place_hypoid_pinion(pinion_local, geo, gear_turn_deg, phase_error_deg)

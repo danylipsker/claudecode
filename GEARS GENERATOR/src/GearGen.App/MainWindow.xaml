@@ -15,7 +15,7 @@
                 <TextBlock Text="⚙" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
                 <TextBlock Text="GEARS GENERATOR" FontSize="16" FontWeight="Bold" Foreground="White"
                            Margin="10,0,0,0" VerticalAlignment="Center"/>
-                <TextBlock Text="parametric involute spur, helical, bevel &amp; worm gears — exact geometry, STEP / DXF / SolidWorks"
+                <TextBlock Text="22 gear families on exact geometry — meshing pairs, STEP / DXF / SolidWorks"
                            FontSize="11" Foreground="#9CA3AF" Margin="14,3,0,0" VerticalAlignment="Center"/>
             </StackPanel>
         </Border>

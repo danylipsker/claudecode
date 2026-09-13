@@ -130,7 +130,10 @@ class SpiralBevelParams(BevelGearParams):
             shaft_angle_deg=self.shaft_angle_deg, pressure_angle_deg=self.pressure_angle_deg,
             addendum_coeff=self.addendum_coeff, dedendum_coeff=self.dedendum_coeff,
             root_fillet_coeff=self.root_fillet_coeff, face_width_mm=self.face_width_mm,
-            bore_diameter_mm=0.0, spiral_angle_deg=self.spiral_angle_deg,
+            bore_diameter_mm=self.mate_bore_diameter_mm, mate_bore_diameter_mm=self.bore_diameter_mm,
+            pitch_angle_deg_override=(None if self.pitch_angle_deg_override is None
+                                      else self.shaft_angle_deg - self.pitch_angle_deg_override),
+            spiral_angle_deg=self.spiral_angle_deg,
             cutter_radius_mm=self.cutter_radius_mm, hand="left" if self.hand != "left" else "right")
 
 
@@ -191,11 +194,190 @@ def loft_through_stations(stations: list[list[tuple[float, float, float]]], rule
     return bd.Solid(bd.Shell(list(side.faces()) + caps))
 
 
+def tooth_outline_pitch_to_pitch(sp: BevelGearParams, n_phi: int = 240,
+                                 simplify_tolerance_mm: float = 0.02) -> list[tuple[float, float]]:
+    """flat_tooth_coords from the pitch boundary at -pi/z_v to the one at
+    +pi/z_v, ordered by increasing angle from +Y, the two boundary points
+    exact and on the root circle (the root land). The last point is the
+    next tooth's first: full_gear_station lays z of these end to end."""
+    coords = flat_tooth_coords(sp, n_phi, simplify_tolerance_mm)
+    flat_gp = sp.to_flat_gear_params()
+    rf, half = flat_gp.dedendum_radius, math.pi / sp.z_virtual
+    theta = [math.atan2(x, y) for x, y in coords]
+    i0 = min(range(len(coords)), key=lambda i: theta[i])
+    ring = [coords[(i0 + j) % len(coords)] for j in range(len(coords))]
+    # the tooth above the root land: the land's own points sit 1e-5 mm off
+    # the root circle, so the cut is a few hundredths up (the fillet foot
+    # the simplification keeps is 0.04-0.07 mm up; a chord from the
+    # boundary point to it stands in for the land and the fillet's toe)
+    lift = min(0.01 * sp.module_mm, 0.02)
+    body = [(x, y) for (x, y) in ring if math.hypot(x, y) > rf + lift]
+    if math.atan2(body[0][0], body[0][1]) > math.atan2(body[-1][0], body[-1][1]):
+        body.reverse()
+    return [(rf * math.sin(-half), rf * math.cos(-half))] + body + [(rf * math.sin(half), rf * math.cos(half))]
+
+
+def full_gear_station(tooth: list[tuple[float, float]], sp: BevelGearParams, s: float,
+                      offset_rad: float) -> list[tuple[float, float, float]]:
+    """The whole gear's outline at cone distance s -- z copies of `tooth`
+    (tooth_outline_pitch_to_pitch) carried to the cone and turned by
+    offset_rad -- as one closed loop: tooth k at indices [k n, (k+1) n)
+    with n = len(tooth) - 1, its boundary point first."""
+    gamma, re = sp.pitch_angle_rad, sp.outer_cone_distance
+    pts = []
+    for k in range(sp.z):
+        ang = offset_rad + k * 2 * math.pi / sp.z
+        pts += [flat_point_to_cone(x, y, s, gamma, re, sp.heel_pitch_radius, ang) for (x, y) in tooth[:-1]]
+    return pts
+
+
+def _tri(a, b, c) -> bd.Face:
+    return bd.Face(bd.Wire.make_polygon([a, b, c], close=True))
+
+
+def tooth_base_arc(tooth: list[tuple[float, float]], n: int = 4) -> list[tuple[float, float]]:
+    """n flat points along the tooth's base between the two fillet feet
+    (tooth[1] and tooth[-2] of tooth_outline_pitch_to_pitch), radius and
+    angle interpolated: carried to the cone they lie on the back cone, and
+    gear_end_faces bounds each tooth's end face with them."""
+    (xl, yl), (xr, yr) = tooth[1], tooth[-2]
+    rl, tl = math.hypot(xl, yl), math.atan2(xl, yl)
+    rr, tr = math.hypot(xr, yr), math.atan2(xr, yr)
+    out = []
+    for j in range(1, n + 1):
+        u = j / (n + 1)
+        r, t = rl + (rr - rl) * u, tl + (tr - tl) * u
+        out.append((r * math.sin(t), r * math.cos(t)))
+    return out
+
+
+def tooth_end_support(tooth: list[tuple[float, float]], arc: list[tuple[float, float]],
+                      module_mm: float, n: int = 9) -> list[tuple[float, float]]:
+    """Flat points inside the tooth's end face (the outline above the fillet
+    feet and the base arc), an n x n polar grid kept 0.05 modules clear of
+    the boundary. Carried to the cone they pin the filling face to the back
+    cone: through the boundary alone the plate surface bulged 0.49 mm in
+    the dedendum of a 16/16 m3 gear (the committed per-tooth caps, 0.18);
+    a 7 x 7 grid 0.15 modules clear still let it bulge 0.12 mm just above
+    the base arc."""
+    from shapely.geometry import Point, Polygon
+    outline = tooth[1:-1] + list(reversed(arc))
+    poly = Polygon(outline).buffer(-0.05 * module_mm)
+    if poly.is_empty:
+        return []
+    rs = [math.hypot(x, y) for x, y in outline]
+    ts = [math.atan2(x, y) for x, y in outline]
+    pts = []
+    # the grid's rows, plus two close above the base arc, where the plate
+    # bulged 0.07 mm in the strip below the first row
+    levels = [min(rs) + (max(rs) - min(rs)) * (i + 0.5) / n for i in range(n)]
+    levels += [min(rs) + 0.09 * module_mm, min(rs) + 0.2 * module_mm]
+    for r in levels:
+        for j in range(n):
+            t = min(ts) + (max(ts) - min(ts)) * (j + 0.5) / n
+            x, y = r * math.sin(t), r * math.cos(t)
+            if poly.contains(Point(x, y)):
+                pts.append((x, y))
+    return pts
+
+
+def gear_end_faces(station: list[tuple[float, float, float]], z: int,
+                   arcs: list[list[tuple[float, float, float]]],
+                   support: list[list[tuple[float, float, float]]] | None = None) -> list[bd.Face]:
+    """The end face of the one-solid gear at a full_gear_station: a planar
+    z-gon through the pitch-boundary points (on the root cone at this cone
+    distance, all at one z); per tooth a fan of planar triangles from its
+    first boundary point over the root land strip -- fillet foot, the base
+    arc (tooth_base_arc carried to the cone), fillet foot, next boundary
+    point -- and a filling face for the tooth's end proper, bounded by the
+    outline and that arc, every boundary point of it on the back cone, so
+    the face is the back cone to a few microns. (A fan of planar triangles
+    from the outline's centroid was tried first: the centroid of points on
+    a cone lies inside it, and the tooth ends came out dished 0.2 mm.)"""
+    n = len(station) // z
+    faces = [bd.Face(bd.Wire.make_polygon([station[k * n] for k in range(z)], close=True))]
+    for k in range(z):
+        i0 = k * n
+        b0, b1 = station[i0], station[(i0 + n) % len(station)]
+        upper = station[i0 + 1: i0 + n]                       # fillet foot to fillet foot, on the back cone
+        ring = [upper[0]] + list(arcs[k]) + [upper[-1]]
+        faces += [_tri(b0, ring[j], ring[j + 1]) for j in range(len(ring) - 1)] + [_tri(b0, upper[-1], b1)]
+        pins = [bd.Vector(*q) for q in support[k]] if support else None
+        faces.append(bd.Face.make_surface(bd.Wire.make_polygon(upper + list(reversed(arcs[k])), close=True), surface_points=pins))
+    return faces
+
+
+def one_solid_from_stations(stations: list[list[tuple[float, float, float]]], z: int,
+                            end_arcs: tuple[list, list], ruled: bool = False,
+                            end_support: tuple[list, list] | None = None) -> bd.Solid:
+    """The gear as one solid: OpenCASCADE's ThruSections through the full
+    outline stations (vertices paired by index, CheckCompatibility off, as
+    loft_through_stations) and gear_end_faces at both ends (end_arcs: the
+    teeth's base arcs at the first and the last station), sewn into a
+    shell. No boolean anywhere -- see docs 8.4 for the years of them."""
+    wires = [bd.Wire.make_polygon(pts, close=True) for pts in stations]
+    builder = BRepOffsetAPI_ThruSections(False, ruled)
+    builder.CheckCompatibility(False)
+    for w in wires:
+        builder.AddWire(w.wrapped)
+    builder.Build()
+    if not builder.IsDone() or builder.Shape().IsNull():
+        raise RuntimeError("loft through the gear's stations failed")
+    side = bd.Shell(builder.Shape())
+    sup = end_support or (None, None)
+    caps = gear_end_faces(stations[0], z, end_arcs[0], sup[0]) + gear_end_faces(stations[-1], z, end_arcs[1], sup[1])
+    return bd.Solid(bd.Shell(list(side.faces()) + caps))
+
+
+def gear_base_arcs(tooth: list[tuple[float, float]], sp: BevelGearParams, s: float, offset_rad: float):
+    """(arcs, support): tooth_base_arc and tooth_end_support for every
+    tooth, carried to cone distance s as full_gear_station does."""
+    gamma, re = sp.pitch_angle_rad, sp.outer_cone_distance
+    arc = tooth_base_arc(tooth)
+    pins = tooth_end_support(tooth, arc, sp.module_mm)
+
+    def carry(flat, k):
+        return [flat_point_to_cone(x, y, s, gamma, re, sp.heel_pitch_radius, offset_rad + k * 2 * math.pi / sp.z) for (x, y) in flat]
+    return [carry(arc, k) for k in range(sp.z)], [carry(pins, k) for k in range(sp.z)]
+
+
+def bore_cut(solid: bd.Solid, sp: BevelGearParams) -> bd.Solid:
+    """The bore, cut through the two end faces (the one boolean that is
+    trivial: a cylinder through two planes). Refused when it would reach
+    the root land's z-gon at the toe, where the rim is thinnest."""
+    if sp.bore_diameter_mm <= 0.0:
+        return solid
+    (_, z_toe), (r_root_toe, _), _, (_, z_heel) = root_cone_profile(sp)
+    inradius = r_root_toe * math.cos(math.pi / sp.z)
+    r = sp.bore_diameter_mm / 2.0
+    if r >= inradius - 0.05:
+        raise ValueError("bore diameter %.2f mm reaches the root cone at the toe (root land %.2f mm across there)"
+                         % (sp.bore_diameter_mm, 2.0 * inradius))
+    cyl = bd.Solid.make_cylinder(r, (z_heel - z_toe) + 2.0, bd.Plane.XY.offset(z_toe - 1.0))
+    out = solid.cut(cyl)
+    bodies = out.solids()
+    if len(bodies) != 1:
+        raise RuntimeError("the bore cut left %d solids" % len(bodies))
+    return bodies[0]
+
+
 def build_spiral_bevel_gear_solid(sp: SpiralBevelParams, n_stations: int = 10, n_phi: int = 240,
-                                  simplify_tolerance_mm: float = 0.02) -> bd.Compound:
-    """Root-cone blank plus z lofted teeth, as a Compound (the same blank/
-    tooth arrangement as build_gear.build_bevel_gear_solid, for the same
-    boolean-fuse reasons documented there)."""
+                                  simplify_tolerance_mm: float = 0.02, fuse: bool = True):
+    """One solid (fuse=True, the default, labelled "solid"): the full gear
+    outline -- z teeth and their root lands -- lofted through n_stations,
+    turned by the trace offset at each, capped with gear_end_faces, the
+    bore cut (docs/gear-math.md 8.4). Or, fuse=False, the older Compound
+    of the root-cone blank and z separate tooth lofts (labelled
+    "compound"), which the conjugacy tests intersect solid by solid
+    (meshcheck) in seconds where one 1000-face gear takes minutes."""
+    if fuse:
+        tooth = tooth_outline_pitch_to_pitch(sp, n_phi, simplify_tolerance_mm)
+        distances = station_cone_distances(sp, n_stations)
+        stations = [full_gear_station(tooth, sp, s, sp.trace_offset_rad(s)) for s in distances]
+        ends = [gear_base_arcs(tooth, sp, s, sp.trace_offset_rad(s)) for s in (distances[0], distances[-1])]
+        solid = bore_cut(one_solid_from_stations(stations, sp.z, (ends[0][0], ends[1][0]), end_support=(ends[0][1], ends[1][1])), sp)
+        solid.label = "solid"
+        return solid
     profile_pts = root_cone_profile(sp)
     with bd.BuildPart() as blank_part:
         with bd.BuildSketch(bd.Plane.XZ):
@@ -215,14 +397,16 @@ def build_spiral_bevel_gear_solid(sp: SpiralBevelParams, n_stations: int = 10, n
         stations = [[flat_point_to_cone(x, y, s, gamma, re, sp.heel_pitch_radius, base + off) for (x, y) in coords]
                     for s, off in zip(distances, trace)]
         teeth.append(loft_through_stations(stations))
-    return bd.Compound(children=[blank, *teeth])
+    comp = bd.Compound(children=[blank, *teeth])
+    comp.label = "compound"
+    return comp
 
 
 def build_spiral_bevel_pair(sp: SpiralBevelParams, gear_turn_deg: float = 0.0, phase_error_deg: float = 0.0,
-                            n_stations: int = 10, n_phi: int = 240, simplify_tolerance_mm: float = 0.02):
+                            n_stations: int = 10, n_phi: int = 240, simplify_tolerance_mm: float = 0.02, fuse: bool = True):
     """(gear, pinion) in mesh: the gear on Z turned by gear_turn_deg, the
     pinion placed by bevel.place_bevel_pinion (shared with straight bevel --
     the placement is the same; only the teeth differ)."""
-    gear = build_spiral_bevel_gear_solid(sp, n_stations, n_phi, simplify_tolerance_mm).rotate(bd.Axis.Z, gear_turn_deg)
-    pinion = build_spiral_bevel_gear_solid(sp.pinion_params(), n_stations, n_phi, simplify_tolerance_mm)
+    gear = build_spiral_bevel_gear_solid(sp, n_stations, n_phi, simplify_tolerance_mm, fuse).rotate(bd.Axis.Z, gear_turn_deg)
+    pinion = build_spiral_bevel_gear_solid(sp.pinion_params(), n_stations, n_phi, simplify_tolerance_mm, fuse)
     return gear, place_bevel_pinion(pinion, sp.z, sp.mate_teeth, sp.shaft_angle_deg, gear_turn_deg, phase_error_deg)

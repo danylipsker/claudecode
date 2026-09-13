@@ -134,12 +134,28 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="18,16,18,16">
                 <StackPanel>
                     <TextBlock Text="Gear Parameters" FontSize="16" FontWeight="Bold" Foreground="#111827"/>
-                    <TextBlock Text="External involute spur, helical, herringbone, bevel, worm, rack &amp; internal gears" FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0"/>
+                    <TextBlock Text="22 families -- parallel, intersecting and crossed shafts, chains and belts. Pick a family, set its values, read the derived figures, export." FontSize="11" Foreground="#9CA3AF" Margin="0,2,0,0" TextWrapping="Wrap"/>
 
-                    <TextBlock Text="GEAR FAMILY" Style="{StaticResource SectionHeader}"/>
-                    <!-- Three columns: the family set is growing past six, and two
-                         columns would push the parameter form below the fold. -->
-                    <UniformGrid Columns="3">
+                    <!-- The family chooser: collapsed to the current family's name and
+                         thumbnail once one is picked, so the parameter form sits right
+                         below it instead of under eight rows of cards; open it to change.
+                         Cards are grouped by shaft arrangement. -->
+                    <Expander IsExpanded="{Binding IsFamilyChooserOpen, Mode=TwoWay}" Margin="0,14,0,0"
+                              BorderBrush="#E5E7EB" BorderThickness="1" Background="#F9FAFB" Padding="6,4"
+                              ToolTip="Pick the kind of gear. The chooser folds away after a choice; open it here to change.">
+                        <Expander.Header>
+                            <DockPanel LastChildFill="True">
+                                <Image DockPanel.Dock="Left" Source="{Binding CurrentCardThumb}" Height="36" Width="46" Stretch="Uniform" Margin="0,0,8,0"/>
+                                <TextBlock DockPanel.Dock="Right" Text="change" FontSize="10" Foreground="#2563EB" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="GEAR FAMILY" FontSize="9" FontWeight="Bold" Foreground="#9CA3AF"/>
+                                    <TextBlock Text="{Binding CurrentCardName}" FontSize="14" FontWeight="Bold" Foreground="#111827"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </Expander.Header>
+                        <StackPanel Margin="0,6,0,0">
+                            <TextBlock Text="PARALLEL SHAFTS" FontSize="9" FontWeight="Bold" Foreground="#6B7280" Margin="2,6,0,4"/>
+                            <UniformGrid Columns="3">
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsCylindricalSpur, Mode=OneWay}" Checked="OnCylindricalChecked">
                             <StackPanel>
@@ -162,10 +178,24 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsCrossedHelical, Mode=OneWay}" Checked="OnScrewChecked">
+                                     IsChecked="{Binding IsInternal, Mode=OneWay}" Checked="OnInternalChecked">
                             <StackPanel>
-                                <Image Source="Assets/thumb_screw.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Screw gears" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                                <Image Source="Assets/thumb_internal.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Internal" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsRackStraight, Mode=OneWay}" Checked="OnRackChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_rack.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsRackHelical, Mode=OneWay}" Checked="OnHelicalRackChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_helical_rack.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Helical rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
@@ -196,6 +226,9 @@
                                 <TextBlock Text="EC gear" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
+                            </UniformGrid>
+                            <TextBlock Text="INTERSECTING SHAFTS" FontSize="9" FontWeight="Bold" Foreground="#6B7280" Margin="2,6,0,4"/>
+                            <UniformGrid Columns="3">
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsBevel, Mode=OneWay}" Checked="OnBevelChecked">
                             <StackPanel>
@@ -218,6 +251,37 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsFaceGear, Mode=OneWay}" Checked="OnFaceGearChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_face_gear.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Face gear" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                            </UniformGrid>
+                            <TextBlock Text="CROSSED SHAFTS" FontSize="9" FontWeight="Bold" Foreground="#6B7280" Margin="2,6,0,4"/>
+                            <UniformGrid Columns="3">
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsCrossedHelical, Mode=OneWay}" Checked="OnScrewChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_screw.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Screw gears" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Worm" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
+                                     IsChecked="{Binding IsGloboidWorm, Mode=OneWay}" Checked="OnGloboidWormChecked">
+                            <StackPanel>
+                                <Image Source="Assets/thumb_globoid_worm.png" Height="76" Stretch="Uniform"/>
+                                <TextBlock Text="Globoid worm" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsHypoid, Mode=OneWay}" Checked="OnHypoidChecked">
                             <StackPanel>
                                 <Image Source="Assets/thumb_hypoid.png" Height="76" Stretch="Uniform"/>
@@ -231,13 +295,9 @@
                                 <TextBlock Text="Hyperboloidal" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
-                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsFaceGear, Mode=OneWay}" Checked="OnFaceGearChecked">
-                            <StackPanel>
-                                <Image Source="Assets/thumb_face_gear.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Face gear" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </RadioButton>
+                            </UniformGrid>
+                            <TextBlock Text="CHAINS AND BELTS" FontSize="9" FontWeight="Bold" Foreground="#6B7280" Margin="2,6,0,4"/>
+                            <UniformGrid Columns="3">
                         <RadioButton GroupName="family" Style="{StaticResource GearCard}"
                                      IsChecked="{Binding IsSprocket, Mode=OneWay}" Checked="OnSprocketChecked">
                             <StackPanel>
@@ -266,42 +326,9 @@
                                 <TextBlock Text="Timing belt" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
                             </StackPanel>
                         </RadioButton>
-                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsGloboidWorm, Mode=OneWay}" Checked="OnGloboidWormChecked">
-                            <StackPanel>
-                                <Image Source="Assets/thumb_globoid_worm.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Globoid worm" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </RadioButton>
-                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsWorm, Mode=OneWay}" Checked="OnWormChecked">
-                            <StackPanel>
-                                <Image Source="Assets/thumb_worm.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Worm" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </RadioButton>
-                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsRackStraight, Mode=OneWay}" Checked="OnRackChecked">
-                            <StackPanel>
-                                <Image Source="Assets/thumb_rack.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </RadioButton>
-                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsRackHelical, Mode=OneWay}" Checked="OnHelicalRackChecked">
-                            <StackPanel>
-                                <Image Source="Assets/thumb_helical_rack.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Helical rack" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </RadioButton>
-                        <RadioButton GroupName="family" Style="{StaticResource GearCard}"
-                                     IsChecked="{Binding IsInternal, Mode=OneWay}" Checked="OnInternalChecked">
-                            <StackPanel>
-                                <Image Source="Assets/thumb_internal.png" Height="76" Stretch="Uniform"/>
-                                <TextBlock Text="Internal" HorizontalAlignment="Center" FontSize="12" FontWeight="SemiBold" Margin="0,4,0,0"/>
-                            </StackPanel>
-                        </RadioButton>
-                    </UniformGrid>
+                            </UniformGrid>
+                        </StackPanel>
+                    </Expander>
                     <!-- One button, labelled for whichever card is selected: each kind of
                          gear has its own canonical values (GearParameters.CreateDefaults). -->
                     <Button Content="{Binding ResetLabel}" Command="{Binding ResetToDefaultsCommand}"
@@ -521,11 +548,12 @@
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsAnyBevel, Converter={StaticResource B2V}}">
-                        <TextBlock Text="BEVEL CONE" Style="{StaticResource SectionHeader}"/>
-                        <TextBlock Text="Mating gear's tooth count, and the angle between the two shafts (90° for the usual right-angle drive), set the cone angle this gear needs to mesh correctly."
+                        <TextBlock Text="BEVEL CONE AND MATE" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="The mating gear's tooth count and the angle between the two shafts (90° for the usual right-angle drive) set the cone angle this gear needs. The mate is built as well -- same module, pressure angle and face width, its own bore -- and placed in mesh at the shaft angle: the preview and the STEP are the pair, one solid each."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Mate gear teeth" Value="{Binding MateTeeth}" Minimum="4" Maximum="500" Step="1" DecimalPlaces="0"/>
                         <local:NumericSpinner Label="Shaft angle" Value="{Binding ShaftAngleDeg}" Minimum="10" Maximum="170" Step="1" DecimalPlaces="1" Suffix="°"/>
+                        <local:NumericSpinner Label="Mate gear bore (0 = none)" Value="{Binding MateBoreDisplay}" Minimum="0" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsWorm, Converter={StaticResource B2V}}">
@@ -579,6 +607,78 @@
                         <local:NumericSpinner Label="Planet teeth" Value="{Binding MateTeeth}" Minimum="4" Maximum="200" Step="1" DecimalPlaces="0"/>
                         <local:NumericSpinner Label="Number of planets" Value="{Binding PlanetCount}" Minimum="1" Maximum="12" Step="1" DecimalPlaces="0"/>
                         <local:NumericSpinner Label="Ring rim thickness" Value="{Binding RimThicknessDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
+
+                        <TextBlock Text="RATIOS OF THIS SET" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="Hold one member, drive another: the ratio each arrangement gives (Willis' formula), for the tooth counts above."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,6"/>
+                        <Grid Margin="0,0,0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="46"/><ColumnDefinition Width="50"/><ColumnDefinition Width="50"/><ColumnDefinition Width="62"/><ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="HELD" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="1" Text="IN" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="2" Text="OUT" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="3" Text="RATIO" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="4" Text="SENSE" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                        </Grid>
+                        <ItemsControl ItemsSource="{Binding PlanetaryRatios}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="46"/><ColumnDefinition Width="50"/><ColumnDefinition Width="50"/><ColumnDefinition Width="62"/><ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Held}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Input}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Output}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Ratio}" FontSize="11" FontWeight="SemiBold" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding Sense}" FontSize="10" Foreground="#6B7280"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <TextBlock Text="WHAT IF THE SUN CHANGED" Style="{StaticResource SectionHeader}"/>
+                        <TextBlock Text="The sets around the current one, with the same planet teeth and planet count: whether they assemble and the ratio they give (ring held; sun held)."
+                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,6"/>
+                        <Grid Margin="0,0,0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="34"/><ColumnDefinition Width="44"/><ColumnDefinition Width="36"/><ColumnDefinition Width="60"/><ColumnDefinition Width="48"/><ColumnDefinition Width="48"/><ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="SUN" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="1" Text="PLANET" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="2" Text="RING" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="3" Text="ASSEMBLES" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="4" Text="RING HELD" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                            <TextBlock Grid.Column="5" Text="SUN HELD" FontSize="9" FontWeight="Bold" Foreground="#6B7280"/>
+                        </Grid>
+                        <ItemsControl ItemsSource="{Binding PlanetaryWhatIf}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,1">
+                                        <Grid.Style>
+                                            <Style TargetType="Grid">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                                                        <Setter Property="Background" Value="#DBEAFE"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="34"/><ColumnDefinition Width="44"/><ColumnDefinition Width="36"/><ColumnDefinition Width="60"/><ColumnDefinition Width="48"/><ColumnDefinition Width="48"/><ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Sun}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Planet}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Ring}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Assembles}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding RatioRingFixed}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="5" Text="{Binding RatioSunFixed}" FontSize="11" Foreground="#111827"/>
+                                        <TextBlock Grid.Column="6" Text="{Binding Note}" FontSize="9" Foreground="#B45309"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </StackPanel>
 
                     <StackPanel Visibility="{Binding IsCrossedHelical, Converter={StaticResource B2V}}">
@@ -598,13 +698,13 @@
 
                     <StackPanel Visibility="{Binding IsInternal, Converter={StaticResource B2V}}">
                         <TextBlock Text="INTERNAL (RING) GEAR" Style="{StaticResource SectionHeader}"/>
-                        <TextBlock Text="Teeth point inward -- 'Number of teeth' above is the ring's own tooth count. Meshes with an external pinion running inside it (same rotation direction, unlike two external gears)."
+                        <TextBlock Text="Teeth point inward -- 'Number of teeth' above is the ring's own tooth count. The mating external pinion is built too -- same module, pressure angle and face width, its own bore -- and placed in mesh inside the ring (both turn the same way): the preview and the STEP are the pair, one solid each. Set its teeth to 0 for the ring alone."
                                    TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,0,0,8"/>
                         <local:NumericSpinner Label="Rim thickness" Value="{Binding RimThicknessDisplay}" Minimum="0.5" Maximum="200" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                         <local:NumericSpinner Label="Construction cutter teeth (0 = auto)" Value="{Binding CutterTeeth}" Minimum="0" Maximum="200" Step="1" DecimalPlaces="0"/>
-                        <TextBlock Text="Mating pinion tooth count -- for center-distance info only, no separate 'pinion' mode: build the actual pinion with the Spur/Helical card."
-                                   TextWrapping="Wrap" FontSize="10" Foreground="#9CA3AF" Margin="0,8,0,8"/>
-                        <local:NumericSpinner Label="Pinion teeth (0 = skip)" Value="{Binding MateTeeth}" Minimum="0" Maximum="500" Step="1" DecimalPlaces="0"/>
+                        <TextBlock Text="PINION" Style="{StaticResource SectionHeader}"/>
+                        <local:NumericSpinner Label="Pinion teeth (0 = ring alone)" Value="{Binding MateTeeth}" Minimum="0" Maximum="500" Step="1" DecimalPlaces="0"/>
+                        <local:NumericSpinner Label="Pinion bore (0 = none)" Value="{Binding MateBoreDisplay}" Minimum="0" Maximum="500" Step="0.5" DecimalPlaces="2" Suffix="{Binding LengthSuffix}"/>
                     </StackPanel>
 
                     <Expander Header="ADVANCED" Margin="0,14,0,0" Foreground="#6B7280" FontSize="11" FontWeight="Bold">
@@ -672,6 +772,8 @@
                         <Button Content="Iso" Style="{StaticResource ViewBtn}" Click="OnViewIso"/>
                         <Button Content="⤢ Fit" Style="{StaticResource ViewBtn}" Click="OnZoomExtents"/>
                     </StackPanel>
+                    <TextBlock Text="left-drag rotate  ·  right-drag pan  ·  wheel zoom" FontSize="10" Foreground="#6B7280"
+                               HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,14,16"/>
 
                     <Border Background="#CC111827" CornerRadius="4" Padding="10,6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12"
                             Visibility="{Binding IsMeshBusy, Converter={StaticResource B2V}}">
@@ -880,6 +982,10 @@
                         <TextBlock Text="VIRTUAL TEETH" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding ZVirtualText}" FontSize="13" Foreground="#111827"/>
                     </StackPanel>
+                    <StackPanel Margin="0,8,0,0">
+                        <TextBlock Text="MATE GEAR" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding BevelMateText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
+                    </StackPanel>
                 </UniformGrid>
                 <StackPanel Visibility="{Binding IsWorm, Converter={StaticResource B2V}}" Margin="0,10,0,0">
                     <UniformGrid Columns="3">
@@ -931,6 +1037,10 @@
                     <StackPanel>
                         <TextBlock Text="CENTER DISTANCE" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
                         <TextBlock Text="{Binding CenterDistanceText}" FontSize="13" Foreground="#111827"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,8,0,0">
+                        <TextBlock Text="PINION" FontSize="9" Foreground="#9CA3AF" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding InternalPinionText}" FontSize="13" Foreground="#111827" TextWrapping="Wrap"/>
                     </StackPanel>
                 </UniformGrid>
               </StackPanel>

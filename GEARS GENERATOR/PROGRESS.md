@@ -1,6 +1,75 @@
 # GEARS GENERATOR — status: v1 complete + helical/herringbone/screw-pair/planetary/cycloidal/cycloidal-drive/bevel/spiral-bevel/zerol/hypoid/face/sprocket/chain-link/timing-wheel/timing-belt/worm/globoid-worm/ec-gear/hyperboloidal/rack/helical-rack/internal gears + real 3D viewer
 
-## Hyperboloidal gears (latest)
+## Review of 2026-09-13: mates everywhere, one solid per gear, a readable window (latest)
+
+The user's nine-point review after the wish-list closed. Every point
+landed in one commit.
+
+- **Bevel, spiral and zerol gears bring their mate** (items 2-4). The
+  pair placement existed in Python (`place_bevel_pinion`,
+  `build_spiral_bevel_pair`) but the UI and the STEP showed one gear;
+  now `pinion_params` carries the mate's own bore (a new field on both
+  param classes, a pitch-angle override complemented), the preview and
+  the STEP are the pair, the derived rows show the mate, and the section
+  has a mate-bore spinner. docs §8.4, §16.
+- **Bevel-family gears are one solid** (item 7: "teeth separated
+  into sub elements" in SolidWorks). For years the blank and z teeth were
+  a compound because both fuse strategies failed on real cases; the cause
+  was that every tooth's root edge lay exactly on the root cone -- the
+  oldest lesson here, face-on-face coincidence. The review first fixed
+  the fuse (a root band into the blank, then a wedge clip, a radial band,
+  a recess at the faces, triangle caps -- each found the next sliver;
+  docs 8.4 keeps the list) and then dropped it: the gear is one loft of
+  its FULL outline, z teeth and root lands as one loop per station,
+  closed by a planar z-gon, land triangles and tooth-end filling faces
+  pinned to the back cone, the bore cut through two planes. One solid by
+  construction, one to six seconds a gear, the pair STEP a third the
+  size, no sliver on 51 builds nor on the 78.7-degree gear. The compound
+  stays behind fuse=False for the conjugacy tests: two 1000-face gears
+  take minutes to intersect, small teeth seconds.
+- **The internal gear builds its pinion** (item 1): `pinion_params` (an
+  ordinary spur gear of the same module, its own bore), placed on +Y at
+  R − r_p -- both the ring's gap and the pinion's tooth 0 sit on +Y, so
+  no phase adjustment -- sliver-only overlap at three phases, a collision
+  half a pitch off; a PINION sub-section and derived row; 0 teeth keeps
+  the ring alone.
+- **Names** (items 7-8). The pair compounds label their members in
+  memory ("spiral bevel gear z16", "mate z12", "internal gear z40",
+  "pinion z20"); the STEP deliberately stays one unnamed multi-body
+  product -- build123d writes a labelled child as its own product and
+  SolidWorks then opens the file as an ASSEMBLY of parts (measured:
+  components "bevel gear z20-1", "mate z20-1" and a mate group), where
+  the app promises a .sldprt -- and SolidWorks' default did the same to
+  an unnamed two-solid file ("SOLID-1", "SOLID-0-1"). The SolidWorks
+  export therefore sets the neutral-file structure mapping to
+  "multi-body part" for the import (restored after): a pair now arrives
+  as one part with two base bodies, Imported1 and Imported2, one per
+  gear, and the headless harness logs what the import made. The
+  suggested file names were collected for all 21 flags after a reset:
+  every one describes the set.
+- **Planetary** (item 6): defaults 18/18/54 with 3 planets (assembles,
+  nothing under the 17-tooth undercut line -- 12/9/30 assembled but
+  warned on both), a RATIOS OF THIS SET table (held / in / out / ratio /
+  sense for the six Willis arrangements) and a WHAT IF THE SUN CHANGED
+  table (the sets around the current one: assembles, ratios), both
+  computed in the view model as the values change.
+- **EC gear** (item 5): the geometry between the elements was checked
+  at six heights -- centre r_c ± 1 µm from the profile, gap ≤ 5 µm, no
+  overlap, the eccentric turning once across the face. What looked
+  wrong was the view: at pinion turn 0 the eccentric points away from
+  the wheel at both faces, where a viewer looks, so from above the
+  pinion looked like a peg on the rim touching one tooth tip. The pair
+  is now shown and exported at turn 180 (eccentric into the wheel at the
+  faces) and the default set is 12 lobes (4.6 mm lobes, a Ø22 eccentric)
+  instead of 20 (2.9 mm ripples against a Ø14 peg). docs §23.1.
+- **The window** (item 9): the 23 family cards were eight rows above the
+  parameter form. The chooser is now an Expander that folds to the
+  current family's thumbnail and name after a choice (open it to change),
+  with the cards grouped by shaft arrangement -- parallel, intersecting,
+  crossed, chains and belts; fresh subtitles (22 families), and a
+  mouse-navigation hint under the 3D view.
+
+## Hyperboloidal gears
 
 The last of the three wish-list families; the list is done. `hyperboloidal.py`,
 C# family `Hyperboloidal` (card, section, derived rows, reset, `--hyperboloidal`

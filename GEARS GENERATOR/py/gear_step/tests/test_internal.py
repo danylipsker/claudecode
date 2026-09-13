@@ -132,3 +132,39 @@ def test_full_solid_is_manifold_and_has_a_genuine_bore_across_several_combinatio
 if __name__ == "__main__":
     import pytest
     raise SystemExit(pytest.main([__file__, "-v"]))
+
+
+def test_pinion_is_built_placed_in_mesh_and_exported_with_the_ring(tmp_path):
+    """The mating pinion (ip.pinion_params: an ordinary spur gear of the
+    same module, its own bore) at R - r_p on +Y: sliver-only overlap with
+    the ring at three phases (both turning the same way, the pinion z/z_p
+    times as fast), a collision half a pitch off, two named solids in the
+    STEP, and the derived rows describe it."""
+    import build123d as bd
+    from build_gear import build_internal_pair, build_internal_pair_solid, export_internal_gear_step
+    from internal import place_internal_pinion
+    from meshcheck import interpenetration_volume, total_volume
+    ip = InternalGearParams(z=40, module_mm=2.0, face_width_mm=10.0, rim_thickness_mm=6.0, pinion_teeth=20, pinion_bore_diameter_mm=8.0)
+    assert ip.pinion_centre_distance == 20.0
+    pin = ip.pinion_params()
+    assert (pin.z, pin.module_mm, pin.bore_diameter_mm, pin.face_width_mm) == (20, 2.0, 8.0, 10.0)
+    ring, pinion = build_internal_pair(ip)
+    ref = total_volume(ring)
+    worst = 0.0
+    for turn in (0.0, 3.0, 6.5):
+        r = ring.rotate(bd.Axis.Z, turn)
+        p = build_internal_pair(ip, ring_turn_deg=turn)[1]
+        worst = max(worst, interpenetration_volume(r, p))
+    bad = interpenetration_volume(ring, place_internal_pinion(pinion.translate((0.0, -ip.pinion_centre_distance, 0.0)), ip, phase_error_deg=180.0 / 20))
+    assert worst < 5e-5 * ref, (worst, ref)
+    assert bad > 100 * max(worst, 1e-9) and bad > 5.0, (worst, bad)
+    pair = build_internal_pair_solid(ip)
+    assert len(pair.solids()) == 2 and sorted(c.label for c in pair.children) == ["internal gear z40", "pinion z20"]
+    path = tmp_path / "internal_pair.step"
+    export_internal_gear_step(ip, path)
+    assert len(bd.import_step(str(path)).solids()) == 2
+    import server
+    d, w = server.internal_derived_values(ip, pinion_teeth=20)
+    assert d["pinion_pitch_diameter_mm"] == 40.0 and d["pinion_centre_distance_mm"] == 20.0 and d["ratio"] == 2.0
+    # no pinion asked for: the ring alone, one solid
+    assert len(build_internal_pair_solid(InternalGearParams(z=40, module_mm=2.0)).solids()) == 1

@@ -49,6 +49,8 @@ class InternalGearParams:
     dedendum_coeff: float = 1.25        # hf* -- points OUTWARD here
     root_fillet_coeff: float = 0.38
     cutter_teeth: int = 0               # shaper cutter tooth count (construction param only); 0 = auto (z // 2)
+    pinion_teeth: int = 0               # the mating external pinion, built and placed with the ring; 0 = none
+    pinion_bore_diameter_mm: float = 0.0
     face_width_mm: float = 10.0
     rim_thickness_mm: float = 6.0       # solid material beyond the root (dedendum) circle, out to the outer rim
     backlash_mm: float = 0.0
@@ -92,6 +94,21 @@ class InternalGearParams:
     @property
     def outer_radius(self) -> float:
         return self.dedendum_radius + self.rim_thickness_mm
+
+    def pinion_params(self) -> GearParams:
+        """The mating external pinion: the same module, pressure angle,
+        coefficients, backlash and face width as the ring, its own bore --
+        an ordinary spur gear (involute.py), nothing swapped: it is the
+        ring's addendum/dedendum that are inside out, not the pinion's."""
+        return GearParams(
+            z=self.pinion_teeth, module_mm=self.module_mm, pressure_angle_deg=self.pressure_angle_deg,
+            addendum_coeff=self.addendum_coeff, dedendum_coeff=self.dedendum_coeff, root_fillet_coeff=self.root_fillet_coeff,
+            backlash_mm=self.backlash_mm, face_width_mm=self.face_width_mm, bore_diameter_mm=self.pinion_bore_diameter_mm)
+
+    @property
+    def pinion_centre_distance(self) -> float:
+        """R - r_p = m (z - z_p) / 2: the pinion's axis lies inside the ring's pitch circle."""
+        return self.module_mm * (self.z - self.pinion_teeth) / 2.0
 
     def shaper_gear_params(self) -> GearParams:
         """The external shaper-cutter tooth, as an ordinary GearParams --
@@ -346,3 +363,17 @@ if __name__ == "__main__":
     _selftest_generated_flank_matches_the_closed_form_involute()
     _selftest_tooth_flank_shape_does_not_depend_on_the_construction_cutter_tooth_count()
     print("All internal gear self-tests passed.")
+
+
+def place_internal_pinion(pinion, ip: "InternalGearParams", ring_turn_deg: float = 0.0, phase_error_deg: float = 0.0):
+    """The pinion (its own frame: axis Z, tooth 0 centred on +Y, as
+    involute.full_gear_polygon builds it) in mesh with the ring (axis Z,
+    a gap centred on +Y, as full_internal_gear_polygon builds it): its
+    axis on +Y at the centre distance R - r_p, so its +Y tooth sits in
+    the ring's +Y gap. Both turn the same way, the pinion z / z_p times
+    as fast: a ring turn of delta comes with a pinion spin of delta z /
+    z_p. phase_error_deg is for tests -- a deliberate extra spin so a
+    wrong mesh can be shown to collide where the right one does not."""
+    import build123d as bd
+    spin = ring_turn_deg * ip.z / ip.pinion_teeth + phase_error_deg
+    return pinion.rotate(bd.Axis.Z, spin).translate((0.0, ip.pinion_centre_distance, 0.0))

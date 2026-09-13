@@ -95,7 +95,7 @@ def test_hand_mirrors_the_offset_side():
 # the gear (meshing partner) and the generating tooth are built at the same
 # n_phi / simplify settings by hypoid_pinion_local itself, so what the
 # pinion is cut by and what it is checked against are the same surface
-COARSE = dict(n_phi=120, simplify_tolerance_mm=0.03)
+COARSE = dict(n_phi=120, simplify_tolerance_mm=0.03, fuse=False)     # the gear as blank + teeth: solid-by-solid checks, fast
 
 
 def test_generated_pinion_is_one_valid_solid_with_n_spaces_cut_from_its_blank():
@@ -148,7 +148,7 @@ def test_zero_offset_generates_the_spiral_bevel_pinion():
     hp = _hp(offset_mm=0.0)
     pinion, geo, gear = hypoid_pinion_local(hp, n_positions=240, n_stations=8, n_profile=80, **COARSE)
     from spiral_bevel import build_spiral_bevel_pair
-    _, sb_pinion = build_spiral_bevel_pair(hp.gear_params(), n_stations=8, n_phi=120, simplify_tolerance_mm=0.03)
+    _, sb_pinion = build_spiral_bevel_pair(hp.gear_params(), n_stations=8, n_phi=120, simplify_tolerance_mm=0.03, fuse=False)
     placed = place_hypoid_pinion(pinion, geo, 0.0)
     gp = hp.gear_params()
     x0 = gp.outer_cone_distance - gp.face_width_mm + 0.1                         # the pinion axis is +X at E = 0
@@ -172,7 +172,7 @@ def test_pair_round_trips_as_step():
         path = Path(d) / "hypoid.step"
         export_hypoid_step(hp, path, n_positions=60, n_stations=5, n_profile=60, n_phi=120, simplify_tolerance_mm=0.03)
         imported = bd.import_step(str(path))
-        assert len(imported.solids()) == hp.z + 2       # the gear's blank and z teeth, plus the pinion
+        assert len(imported.solids()) == 2               # the gear (one fused solid since docs 8.4) and the pinion
 
 
 if __name__ == "__main__":

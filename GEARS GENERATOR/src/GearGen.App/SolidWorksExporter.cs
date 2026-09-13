@@ -161,6 +161,13 @@ namespace GearGen.App
                 bool alwaysDefault = swApp.GetUserPreferenceToggle((int)swUserPreferenceToggle_e.swAlwaysUseDefaultTemplates);
                 string partTemplate = swApp.GetUserPreferenceStringValue((int)swUserPreferenceStringValue_e.swDefaultTemplatePart);
                 bool interconnect = swApp.GetUserPreferenceToggle((int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect);
+                // How a neutral file with several solids comes in: SolidWorks' default made
+                // an ASSEMBLY of one part per solid out of every pair this app exports
+                // (measured: components "SOLID-1", "SOLID-0-1" and a mate group, saved
+                // under a .sldprt name). The app promises a multi-body part, so the
+                // mapping is set to that for the import and put back afterwards.
+                const int multibody = (int)swImportNeutralAssemblyStructureMapping_e.swImportNeutralAssemblyStructureMapping_MultibodyPart;
+                int mapping = swApp.GetUserPreferenceIntegerValue((int)swUserPreferenceIntegerValue_e.swImportNeutralAssemblyStructureMapping);
                 string stockTemplate = null;
                 if (string.IsNullOrWhiteSpace(partTemplate) || !File.Exists(partTemplate))
                     stockTemplate = FindStockPartTemplate(swApp);
@@ -182,6 +189,11 @@ namespace GearGen.App
                         swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect, false);
                         templateNote += " 3D Interconnect switched off for the import (native body, no link to the STEP).";
                     }
+                    if (mapping != multibody)
+                    {
+                        swApp.SetUserPreferenceIntegerValue((int)swUserPreferenceIntegerValue_e.swImportNeutralAssemblyStructureMapping, multibody);
+                        templateNote += $" Multiple solids mapped to one multi-body part for the import (the setting was {mapping}).";
+                    }
 
                     int loadErrors = 0;
                     ModelDoc2 model = swApp.LoadFile4(stepPath, "r", null, ref loadErrors) as ModelDoc2;
@@ -190,6 +202,34 @@ namespace GearGen.App
                             $"SolidWorks could not import the generated STEP file (error code {loadErrors}).");
 
                     int saveErrors = 0, saveWarnings = 0;
+                    // What came in: one body per gear, named as the STEP names them
+                    // (build_gear.labelled_solids) -- the evidence the review asked for
+                    // What came in: the bodies under the feature tree's Solid Bodies folder
+                    // (their names are what SolidWorks shows; IPartDoc itself refuses this
+                    // document's wrapper with E_NOINTERFACE, and late binding lands on
+                    // DISP_E_BADINDEX -- the feature interfaces answer).
+                    string bodiesNote;
+                    try
+                    {
+                        var names = new System.Collections.Generic.List<string>();
+                        var all = new System.Collections.Generic.List<string>();
+                        Feature f = model.FirstFeature() as Feature;
+                        while (f != null)
+                        {
+                            string tn = f.GetTypeName2();
+                            all.Add(f.Name + ":" + tn);
+                            // a multi-body part lists one BaseBody feature per imported solid
+                            // ("Imported1", "Imported2"); an assembly lists Reference components instead
+                            if (tn == "BaseBody" || tn == "Reference")
+                                names.Add(f.Name + (tn == "Reference" ? " (component)" : ""));
+                            f = f.GetNextFeature() as Feature;
+                        }
+                        bodiesNote = $" bodies: {names.Count} [{string.Join(", ", names)}] features: [{string.Join(", ", all)}]";
+                    }
+                    catch (Exception bodiesEx)
+                    {
+                        bodiesNote = " bodies: could not list (" + bodiesEx.GetType().Name + ": " + bodiesEx.Message + ")";
+                    }
                     bool saved = model.Extension.SaveAs(
                         sldprtPath, 0 /* current version -- see class remarks: no per-year native option exists */,
                         1 /* silent */, null, ref saveErrors, ref saveWarnings);
@@ -197,10 +237,12 @@ namespace GearGen.App
                     if (!saved)
                         throw new InvalidOperationException($"SolidWorks Save As failed (error code {saveErrors}).");
 
-                    return $"Saved to {sldprtPath} -- used {versionNote}{templateNote}";
+                    return $"Saved to {sldprtPath} -- used {versionNote}{templateNote}{bodiesNote}";
                 }
                 finally
                 {
+                    if (mapping != multibody)
+                        swApp.SetUserPreferenceIntegerValue((int)swUserPreferenceIntegerValue_e.swImportNeutralAssemblyStructureMapping, mapping);
                     if (!alwaysDefault)
                         swApp.SetUserPreferenceToggle((int)swUserPreferenceToggle_e.swAlwaysUseDefaultTemplates, false);
                     if (stockTemplate != null)

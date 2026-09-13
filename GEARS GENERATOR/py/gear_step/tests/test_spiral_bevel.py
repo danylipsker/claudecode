@@ -96,20 +96,23 @@ def test_tooth_loft_passes_through_its_stations_and_is_accurate_between_them():
     assert worst_between < 0.010, worst_between
 
 
-def test_full_gear_is_a_blank_plus_z_manifold_teeth_and_round_trips_as_step():
+def test_full_gear_is_one_manifold_solid_and_round_trips_as_step_with_its_mate():
+    """Since docs 8.4 the gear is one solid: its full outline lofted
+    through the stations, no blank-plus-teeth boolean -- and the STEP is
+    the pair: this gear and its mate, two solids."""
     from build_gear import export_spiral_bevel_step
     for kwargs in (dict(), dict(spiral_angle_deg=0.0, bore_diameter_mm=8.0), dict(z=13, mate_teeth=20, hand="left")):
         sp = _gear(**kwargs)
         g = build_spiral_bevel_gear_solid(sp, n_stations=6)
         bodies = g.solids()
-        assert len(bodies) == sp.z + 1, kwargs
-        assert all(b.is_manifold for b in bodies), kwargs
+        assert g.label == "solid" and len(bodies) == 1, (kwargs, g.label, len(bodies))
+        assert bodies[0].is_manifold and bodies[0].is_valid, kwargs
     sp = _gear(z=16, mate_teeth=16)
     with tempfile.TemporaryDirectory() as d:
         path = Path(d) / "spiral_bevel.step"
         export_spiral_bevel_step(sp, path)
         imported = bd.import_step(str(path))
-        assert len(imported.solids()) == sp.z + 1
+        assert len(imported.solids()) == 2
 
 
 @pytest.mark.parametrize("psi_m", [35.0, 0.0])
@@ -126,10 +129,10 @@ def test_pair_meshes_without_interpenetration_and_a_half_pitch_error_collides(ps
     ref = None
     worst = 0.0
     for turn in (0.0, 4.0, 8.0):
-        gear, pinion = build_spiral_bevel_pair(sp, gear_turn_deg=turn, n_stations=8, n_phi=120, simplify_tolerance_mm=0.03)
+        gear, pinion = build_spiral_bevel_pair(sp, gear_turn_deg=turn, n_stations=8, n_phi=120, simplify_tolerance_mm=0.03, fuse=False)
         ref = ref or total_volume(gear)
         worst = max(worst, interpenetration_volume(gear, pinion))
-    gear, pinion = build_spiral_bevel_pair(sp, phase_error_deg=180.0 / sp.mate_teeth, n_stations=8, n_phi=120, simplify_tolerance_mm=0.03)
+    gear, pinion = build_spiral_bevel_pair(sp, phase_error_deg=180.0 / sp.mate_teeth, n_stations=8, n_phi=120, simplify_tolerance_mm=0.03, fuse=False)
     bad = interpenetration_volume(gear, pinion)
     assert worst < 5e-5 * ref, (psi_m, worst, ref)
     assert bad > 2e-3 * ref and bad > 50 * max(worst, 1e-9), (psi_m, worst, bad, ref)
@@ -137,3 +140,23 @@ def test_pair_meshes_without_interpenetration_and_a_half_pitch_error_collides(ps
 
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-v"]))
+
+
+def test_spiral_and_zerol_gears_are_one_solid_and_the_pair_exports_two():
+    """As the straight bevel (test_bevel.py): the full outline lofted
+    through the stations is one valid solid -- the spiral default, which
+    the boolean fuse first returned as a compound and then fused only at
+    some station counts -- and the pair export is the gear plus its mate,
+    two solids."""
+    import build123d as bd
+    from spiral_bevel import build_spiral_bevel_gear_solid
+    from build_gear import build_spiral_bevel_pair_solid
+    for psi in (35.0, 0.0):
+        sp = SpiralBevelParams(z=16, module_mm=3.0, mate_teeth=16, shaft_angle_deg=90.0, face_width_mm=10.0,
+                               bore_diameter_mm=6.0, spiral_angle_deg=psi, mate_bore_diameter_mm=8.0)
+        g = build_spiral_bevel_gear_solid(sp, n_stations=8, n_phi=120, simplify_tolerance_mm=0.02)
+        assert g.label == "solid" and len(g.solids()) == 1 and g.is_valid, (psi, g.label)
+        assert sp.pinion_params().bore_diameter_mm == 8.0 and sp.pinion_params().hand == "left"
+    pair = build_spiral_bevel_pair_solid(SpiralBevelParams(z=16, module_mm=3.0, mate_teeth=12, shaft_angle_deg=90.0, face_width_mm=8.0,
+                                                           spiral_angle_deg=35.0), n_stations=6, n_phi=120, simplify_tolerance_mm=0.03)
+    assert len(pair.solids()) == 2 and sorted(c.label for c in pair.children) == ["mate z12", "spiral bevel gear z16"]

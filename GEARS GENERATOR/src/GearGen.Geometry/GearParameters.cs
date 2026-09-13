@@ -440,7 +440,9 @@ namespace GearGen.Geometry
                     p.HelixAngleDeg = 45.0; p.MateTeeth = 20; p.ShaftAngleDeg = 90.0;   // the classic 45/45 at 90deg
                     break;
                 case GearFamily.Planetary:
-                    p.Teeth = 12; p.MateTeeth = 9; p.PlanetCount = 3; p.RimThicknessMm = 6.0;  // 12/9/30, (12+30)/3 = 14
+                    // 18/18/54 with 3 planets: (18 + 54) / 3 = 24 assembles, no tooth count under
+                    // the 17-tooth undercut line (12/9/30 assembled too, but warned on both)
+                    p.Teeth = 18; p.MateTeeth = 18; p.PlanetCount = 3; p.RimThicknessMm = 6.0;
                     break;
                 case GearFamily.Cycloidal:
                     p.Teeth = 12; p.RollingCircleDiameterMm = 0.0;  // automatic rolling circle: radial flanks
@@ -450,7 +452,7 @@ namespace GearGen.Geometry
                     p.BoreDiameterMm = 20.0; p.OutputPinCount = 6; p.OutputPinDiameterMm = 6.0; p.OutputCircleDiameterMm = 30.0;
                     break;
                 case GearFamily.Bevel:
-                    p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null; p.MateBoreDiameterMm = 0.0;
                     break;
                 case GearFamily.FaceGear:
                     p.Teeth = 40; p.MateTeeth = 20; p.CutterTeeth = 0; p.FaceInnerRadiusMm = 0.0; p.FaceOuterRadiusMm = 0.0;
@@ -476,7 +478,9 @@ namespace GearGen.Geometry
                     p.FaceWidthMm = 12.0; p.MateFaceWidthMm = 0.0; p.BoreDiameterMm = 0.0; p.MateBoreDiameterMm = 0.0; p.Hand = "right";
                     break;
                 case GearFamily.EccentricCycloidal:
-                    p.Teeth = 20; p.CentreDistanceMm = 50.0; p.EccentricityMm = 0.0; p.PinionDiameterMm = 0.0; p.LeadMm = 0.0;
+                    // 12 lobes at 50 mm: r_1 = 3.85, e = 2.31, a 22 mm eccentric on an 83 mm wheel with 4.6 mm lobes --
+                    // a set whose lobes read as teeth (20 lobes gave 2.9 mm ripples on a 14 mm peg)
+                    p.Teeth = 12; p.CentreDistanceMm = 50.0; p.EccentricityMm = 0.0; p.PinionDiameterMm = 0.0; p.LeadMm = 0.0;
                     p.FaceWidthMm = 20.0; p.BoreDiameterMm = 0.0; p.PinionBoreDiameterMm = 0.0; p.Hand = "right";
                     break;
                 case GearFamily.GloboidWorm:
@@ -492,7 +496,7 @@ namespace GearGen.Geometry
                     break;
                 case GearFamily.SpiralBevel:
                     // 'helical' here means the Spiral card (35deg, the common choice); false = the Zerol card
-                    p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null;
+                    p.MateTeeth = 20; p.ShaftAngleDeg = 90.0; p.PitchAngleOverrideDeg = null; p.MateBoreDiameterMm = 0.0;
                     p.SpiralAngleDeg = helical ? 35.0 : 0.0; p.CutterRadiusMm = 0.0;
                     break;
                 case GearFamily.Worm:
@@ -502,7 +506,7 @@ namespace GearGen.Geometry
                     p.Teeth = 10; p.BackingHeightMm = 5.0; p.HelixAngleDeg = helical ? 20.0 : 0.0;
                     break;
                 case GearFamily.Internal:
-                    p.Teeth = 40; p.MateTeeth = 20; p.RimThicknessMm = 6.0; p.CutterTeeth = 0;  // a ring must be bigger than its pinion
+                    p.Teeth = 40; p.MateTeeth = 20; p.RimThicknessMm = 6.0; p.CutterTeeth = 0; p.MateBoreDiameterMm = 0.0;  // a ring must be bigger than its pinion
                     break;
             }
             return p;

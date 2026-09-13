@@ -36,6 +36,7 @@ namespace GearGen.UI
             ResetToDefaultsCommand = new RelayCommand(_ => ResetToDefaults());
 
             ScheduleRefresh();
+            IsFamilyChooserOpen = true;     // open at first sight; folds after the first choice
         }
 
         // ---- host integration -------------------------------------------------
@@ -735,6 +736,49 @@ namespace GearGen.UI
 
         public string ResetLabel => $"Reset {CurrentCardName} to default values";
 
+        /// <summary>The family chooser starts open and folds away once a card is
+        /// picked (FamilyChanged), leaving the current family's name and thumbnail
+        /// as the header; the user reopens it to change.</summary>
+        private bool _familyChooserOpen = true;
+        public bool IsFamilyChooserOpen
+        {
+            get => _familyChooserOpen;
+            set { if (_familyChooserOpen != value) { _familyChooserOpen = value; OnChanged(); } }
+        }
+
+        /// <summary>The current card's thumbnail, as the pack URI of the UI
+        /// assembly's asset (a bound string resolves against the application,
+        /// not this assembly, so the relative "Assets/..." the cards use would
+        /// not do).</summary>
+        public string CurrentCardThumb
+        {
+            get
+            {
+                string file =
+                    IsCylindrical ? (IsHelical ? "thumb_helical.png" : "thumb_spur.png")
+                    : IsHerringbone ? "thumb_herringbone.png"
+                    : IsCrossedHelical ? "thumb_screw.png"
+                    : IsPlanetary ? "thumb_planetary.png"
+                    : IsCycloidal ? "thumb_cycloidal.png"
+                    : IsCycloidalDrive ? "thumb_cycdrive.png"
+                    : IsBevel ? "thumb_bevel.png"
+                    : IsSpiralBevel ? (_p.IsZerol ? "thumb_zerol_bevel.png" : "thumb_spiral_bevel.png")
+                    : IsFaceGear ? "thumb_face_gear.png"
+                    : IsSprocket ? "thumb_sprocket.png"
+                    : IsChainLink ? "thumb_chain_link.png"
+                    : IsTimingWheel ? "thumb_timing_wheel.png"
+                    : IsTimingBelt ? "thumb_timing_belt.png"
+                    : IsHypoid ? "thumb_hypoid.png"
+                    : IsHyperboloidal ? "thumb_hyperboloidal.png"
+                    : IsEccentricCycloidal ? "thumb_ec_gear.png"
+                    : IsGloboidWorm ? "thumb_globoid_worm.png"
+                    : IsWorm ? "thumb_worm.png"
+                    : IsRack ? (IsHelical ? "thumb_helical_rack.png" : "thumb_rack.png")
+                    : "thumb_internal.png";
+                return "pack://application:,,,/GearGen.UI;component/Assets/" + file;
+            }
+        }
+
         /// <summary>Every parameter of the current card back to that card's
         /// canonical values (GearParameters.CreateDefaults). The unit system
         /// is kept: it is a preference, not a parameter. The view model binds
@@ -755,7 +799,9 @@ namespace GearGen.UI
         private void FamilyChanged()
         {
             OnChanged(nameof(CurrentCardName));
+            OnChanged(nameof(CurrentCardThumb));
             OnChanged(nameof(ResetLabel));
+            IsFamilyChooserOpen = false;
             OnChanged(nameof(IsCylindrical));
             OnChanged(nameof(IsBevel));
             OnChanged(nameof(IsWorm));
@@ -1221,6 +1267,77 @@ namespace GearGen.UI
         private string _pitchAngleText = "-", _coneDistanceText = "-", _zVirtualText = "-";
         public string PitchAngleText { get => _pitchAngleText; private set { _pitchAngleText = value; OnChanged(); } }
         public string ConeDistanceText { get => _coneDistanceText; private set { _coneDistanceText = value; OnChanged(); } }
+        private string _internalPinionText = "-";
+        public string InternalPinionText { get => _internalPinionText; private set { _internalPinionText = value; OnChanged(); } }
+        // ---- planetary ratio tables (pure tooth-count arithmetic, no server round trip) ----
+
+        public sealed class PlanetaryRatioRow
+        {
+            public string Held { get; set; }
+            public string Input { get; set; }
+            public string Output { get; set; }
+            public string Ratio { get; set; }
+            public string Sense { get; set; }
+        }
+
+        public sealed class PlanetaryWhatIfRow
+        {
+            public string Sun { get; set; }
+            public string Planet { get; set; }
+            public string Ring { get; set; }
+            public string Assembles { get; set; }
+            public string RatioRingFixed { get; set; }
+            public string RatioSunFixed { get; set; }
+            public string Note { get; set; }
+            public bool IsCurrent { get; set; }
+        }
+
+        /// <summary>Which member is held, which drives, which is driven, and the ratio
+        /// (Willis: with the ring held, sun in / carrier out is 1 + z_r/z_s; with the sun
+        /// held, ring in / carrier out is 1 + z_s/z_r; with the carrier held, sun in /
+        /// ring out is -z_r/z_s, reversing). Recomputed with every refresh.</summary>
+        public System.Collections.ObjectModel.ObservableCollection<PlanetaryRatioRow> PlanetaryRatios { get; } =
+            new System.Collections.ObjectModel.ObservableCollection<PlanetaryRatioRow>();
+
+        /// <summary>What the ratio would be for the sun tooth counts around the current one,
+        /// with the current planet teeth and planet count -- and whether each set assembles
+        /// ((sun + ring) divisible by the planet count) and stays above the undercut line.</summary>
+        public System.Collections.ObjectModel.ObservableCollection<PlanetaryWhatIfRow> PlanetaryWhatIf { get; } =
+            new System.Collections.ObjectModel.ObservableCollection<PlanetaryWhatIfRow>();
+
+        private void RefreshPlanetaryTables()
+        {
+            int zs = Teeth, zp = MateTeeth, n = PlanetCount;
+            int zr = zs + 2 * zp;
+            PlanetaryRatios.Clear();
+            PlanetaryRatios.Add(new PlanetaryRatioRow { Held = "Ring", Input = "Sun", Output = "Carrier", Ratio = $"{1.0 + (double)zr / zs:0.###} : 1", Sense = "same way (reduction)" });
+            PlanetaryRatios.Add(new PlanetaryRatioRow { Held = "Ring", Input = "Carrier", Output = "Sun", Ratio = $"1 : {1.0 + (double)zr / zs:0.###}", Sense = "same way (overdrive)" });
+            PlanetaryRatios.Add(new PlanetaryRatioRow { Held = "Sun", Input = "Ring", Output = "Carrier", Ratio = $"{1.0 + (double)zs / zr:0.###} : 1", Sense = "same way (reduction)" });
+            PlanetaryRatios.Add(new PlanetaryRatioRow { Held = "Sun", Input = "Carrier", Output = "Ring", Ratio = $"1 : {1.0 + (double)zs / zr:0.###}", Sense = "same way (overdrive)" });
+            PlanetaryRatios.Add(new PlanetaryRatioRow { Held = "Carrier", Input = "Sun", Output = "Ring", Ratio = $"{(double)zr / zs:0.###} : 1", Sense = "reversed (star)" });
+            PlanetaryRatios.Add(new PlanetaryRatioRow { Held = "Carrier", Input = "Ring", Output = "Sun", Ratio = $"1 : {(double)zr / zs:0.###}", Sense = "reversed (star)" });
+            OnChanged(nameof(PlanetaryRatios));
+
+            PlanetaryWhatIf.Clear();
+            for (int s = Math.Max(4, zs - 6); s <= zs + 6; s++)
+            {
+                int r = s + 2 * zp;
+                bool ok = (s + r) % n == 0;
+                string note = s < 17 ? "sun under 17 teeth: undercut" : "";
+                PlanetaryWhatIf.Add(new PlanetaryWhatIfRow
+                {
+                    Sun = s.ToString(), Planet = zp.ToString(), Ring = r.ToString(),
+                    Assembles = ok ? "yes" : "no",
+                    RatioRingFixed = $"{1.0 + (double)r / s:0.###}",
+                    RatioSunFixed = $"{1.0 + (double)s / r:0.###}",
+                    Note = note, IsCurrent = s == zs,
+                });
+            }
+            OnChanged(nameof(PlanetaryWhatIf));
+        }
+
+        private string _bevelMateText = "-";
+        public string BevelMateText { get => _bevelMateText; private set { _bevelMateText = value; OnChanged(); } }
         public string ZVirtualText { get => _zVirtualText; private set { _zVirtualText = value; OnChanged(); } }
 
         private string _leadAngleText = "-", _centerDistanceText = "-", _wheelHintText = "-";
@@ -1283,6 +1400,9 @@ namespace GearGen.UI
                     PitchAngleText = $"{dv("pitch_angle_deg"):0.##}°";
                     ConeDistanceText = L(dv("outer_cone_distance_mm"));
                     ZVirtualText = dv("z_virtual").ToString("0.##");
+                    BevelMateText = $"z{dv("mate_teeth"):0}, ratio {dv("ratio"):0.###} : 1: pitch angle {dv("mate_pitch_angle_deg"):0.##}°, "
+                                  + $"pitch Ø {L(dv("mate_heel_pitch_diameter_mm"))} at the heel, bore {(dv("mate_bore_diameter_mm") > 0 ? L(dv("mate_bore_diameter_mm")) : "none")}; "
+                                  + "built and placed in mesh";
                     if (IsSpiralBevel)
                     {
                         // spiral_bevel_derived_values adds the trace (server.py)
@@ -1512,6 +1632,12 @@ namespace GearGen.UI
                     OuterDiameterText = L(dv("outer_diameter_mm"));
                     CutterTeethText = dv("cutter_teeth").ToString("0");
                     CenterDistanceText = MateTeeth > 0 ? L(dv("center_distance_mm")) : "set pinion teeth";
+                    InternalPinionText = MateTeeth <= 0
+                        ? "none (ring alone)"
+                        : MateTeeth >= Teeth
+                            ? $"z{MateTeeth}: not built -- a pinion needs fewer teeth than the ring's {Teeth}"
+                            : $"z{dv("pinion_teeth"):0}, ratio {dv("ratio"):0.###} : 1: pitch Ø {L(dv("pinion_pitch_diameter_mm"))}, tip Ø {L(dv("pinion_tip_diameter_mm"))}, "
+                              + $"bore {(dv("pinion_bore_diameter_mm") > 0 ? L(dv("pinion_bore_diameter_mm")) : "none")}; built and placed in mesh";
                 }
                 else
                 {
@@ -1542,6 +1668,7 @@ namespace GearGen.UI
                         RingText = $"z{dv("ring_teeth"):0} internal, OD {L(dv("ring_outer_diameter_mm"))}";
                         CenterDistanceText = $"{L(dv("center_distance_mm"))} (sun-planet = ring-planet)";
                         RatiosText = $"{dv("ratio_ring_fixed"):0.###}:1 ring fixed, {dv("ratio_sun_fixed"):0.###}:1 sun fixed, {dv("ratio_carrier_fixed"):0.###}:1 star";
+                        RefreshPlanetaryTables();
                     }
                     if (IsCrossedHelical)
                     {

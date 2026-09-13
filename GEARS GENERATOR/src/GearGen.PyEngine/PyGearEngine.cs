@@ -149,6 +149,7 @@ namespace GearGen.PyEngine
                 req.MateTeeth = p.MateTeeth;
                 req.ShaftAngleDeg = p.ShaftAngleDeg;
                 req.PitchAngleOverrideDeg = p.PitchAngleOverrideDeg;
+                req.MateBoreDiameterMm = p.MateBoreDiameterMm;
                 return req;
             }
 
@@ -188,7 +189,8 @@ namespace GearGen.PyEngine
                 req.ModuleMm = p.EffectiveModuleMm;
                 req.CutterTeeth = p.CutterTeeth;
                 req.RimThicknessMm = p.RimThicknessMm;
-                req.MateTeeth = p.MateTeeth; // mating pinion teeth, for center-distance info only
+                req.MateTeeth = p.MateTeeth;                      // the mating pinion: built and placed with the ring (0 = none)
+                req.MateBoreDiameterMm = p.MateBoreDiameterMm;    // its bore
                 return req;
             }
 
@@ -311,6 +313,7 @@ namespace GearGen.PyEngine
                 req.PitchAngleOverrideDeg = p.PitchAngleOverrideDeg;
                 req.SpiralAngleDeg = p.SpiralAngleDeg;
                 req.CutterRadiusMm = p.CutterRadiusMm;
+                req.MateBoreDiameterMm = p.MateBoreDiameterMm;
                 return req;
             }
 

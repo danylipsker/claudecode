@@ -61,7 +61,31 @@ def _export_step_for_solidworks(shape, path: str | Path, write_pcurves: bool = T
        through either correctly, and re-wrapping an already-fine multi-body
        Compound this way is a harmless no-op for SolidWorks (same body
        count, still opens as a multi-body part)."""
+    # The fresh solids carry NO labels on purpose: build123d writes a labelled
+    # child as its own STEP product, and SolidWorks then opens the file as an
+    # ASSEMBLY of parts (measured on the bevel pair: components "bevel gear
+    # z20-1", "mate z20-1" and a mate group) -- while the app promises a
+    # multi-body .sldprt. One unnamed product it stays; the members' labels
+    # live on the in-memory Compound's children (labelled_solids) for the
+    # tests and any caller that wants them.
     bd.export_step(bd.Compound(children=list(shape.solids())), str(path), write_pcurves=write_pcurves)
+
+
+def labelled_solids(shape) -> list:
+    """Every solid of the shape as a fresh Solid (see above), each carrying
+    the name of the member it came from: a child's `label` if the shape is
+    a Compound of labelled members (a fallback compound of blank + teeth
+    passes its one label to all its solids), else the shape's own. Used for
+    the in-memory pair compounds; the STEP export deliberately drops the
+    labels (see _export_step_for_solidworks)."""
+    members = list(shape.children) if isinstance(shape, bd.Compound) and list(shape.children) else [shape]
+    out = []
+    for m in members:
+        name = getattr(m, "label", "") or getattr(shape, "label", "")
+        for s in m.solids():
+            s.label = name
+            out.append(s)
+    return out
 
 
 def _face_at(pts: list[tuple[float, float]], angle_rad: float, z: float) -> bd.Face:
@@ -235,46 +259,36 @@ def _make_bevel_tooth_solid(toe: list, heel: list) -> bd.Solid:
 
 
 def build_bevel_gear_solid(bp: BevelGearParams, n_phi: int = 240,
-                            simplify_tolerance_mm: float = 0.02) -> bd.Compound:
-    """Build a straight bevel gear solid: a root-cone blank (revolve) plus all
-    z teeth, each an exact ruled loft between its toe and heel 3D point loops
-    -- see docs/gear-math.md section 8. A bore, if any, is already built into
-    the blank's revolve profile (root_cone_profile), not a separate cut.
+                            simplify_tolerance_mm: float = 0.02, fuse: bool = True):
+    """A straight bevel gear as one solid (fuse=True, the default, labelled
+    "solid"): the full outline -- z teeth and their root lands, docs/
+    gear-math.md section 8 -- as an exact ruled loft between its toe and
+    heel stations, the ends capped with planar triangles, the bore cut
+    (spiral_bevel.one_solid_from_stations; 8.4 for why not a boolean).
 
-    This is a Compound of the blank + z separately-built tooth solids, NOT
-    one boolean-fused Solid -- a tradeoff worm gears (build_worm_solid) also
-    made for a while, for what looked like the same reason, but turned out
-    NOT to be the same reason on closer inspection: worm's fuse hang was
-    specifically sequential pairwise fusing, and a single N-ary fuse
-    (core.fuse(*threads)) turned out to be fast and reliable there, so it now
-    returns one true fused Solid. That fix does NOT apply here -- bevel's own
-    N-ary fuse was tried too (case 2 below) and genuinely fails differently
-    on real cases, not just slowly. Found by measuring, not assumed, that
-    OpenCASCADE's boolean fuse is not reliable here specifically. Both fuse
-    strategies were tried and both have real failure modes, confirmed by
-    testing a spread of z/module/bore/shaft-angle combinations, not just the
-    one case that first surfaced the bug:
-      1. A loop of z sequential pairwise fuses (solid = solid.fuse(tooth))
-         fuses cleanly for the first several teeth on some gears (e.g. z=12,
-         small module, bored), then a later fuse against the now-more-
-         complex accumulated body silently collapses to a degenerate
-         zero-volume result -- every remaining tooth then just becomes its
-         own disconnected fragment (traced step-by-step by printing volume
-         and solid count after each fuse and finding the exact tooth where
-         it broke).
-      2. A single N-ary fuse (blank.fuse(*teeth), one call) avoids that
-         particular failure and IS reliable for several cases -- but fails
-         differently on others (an empty zero-solid result for the same
-         z=12 bored case at a different point count; a non-manifold result
-         for a shallow-angle small pinion, z=8 mating a 30-tooth gear).
-    A Compound of the individually-built pieces sidesteps OpenCASCADE's
-    boolean algorithm entirely for the blank/tooth join, and was confirmed
-    manifold, with exactly z+1 bodies (none dropped, none merged) and a
-    sane total volume, across every case that broke one or both fuse
-    strategies above -- and is faster besides (no boolean work at all).
-    The tradeoff: SolidWorks sees a multi-body part (one body per tooth
-    plus the blank) rather than one fused solid -- unlike the worm, which
-    no longer has this tradeoff (see build_worm_solid's own docstring)."""
+    fuse=False keeps the older arrangement: a Compound of the root-cone
+    blank (revolve, the bore in its profile) and z separate tooth solids,
+    each an exact ruled loft between its toe and heel loops -- what the
+    conjugacy tests intersect solid by solid (meshcheck), seconds against
+    small teeth where one 1000-face gear takes minutes. For years that
+    Compound was the only result, because fusing the blank and the teeth
+    failed on real cases (a pairwise loop collapsing part way, an N-ary
+    fuse coming back empty or non-manifold): every tooth's root edge lay
+    exactly on the blank's root cone, and OpenCASCADE's booleans go silent
+    on face-on-face coincidence. The 2026-09-13 review tried to fix the
+    fuse (a root band into the blank, a recess at the faces, triangle
+    caps) and each fix found the next sliver; the loft has none to find."""
+    if fuse:
+        from spiral_bevel import tooth_outline_pitch_to_pitch, full_gear_station, one_solid_from_stations, bore_cut, gear_base_arcs
+        tooth = tooth_outline_pitch_to_pitch(bp, n_phi, simplify_tolerance_mm)
+        re = bp.outer_cone_distance
+        distances = (re - bp.face_width_mm, re)
+        stations = [full_gear_station(tooth, bp, s, 0.0) for s in distances]
+        ends = [gear_base_arcs(tooth, bp, s, 0.0) for s in distances]
+        solid = bore_cut(one_solid_from_stations(stations, bp.z, (ends[0][0], ends[1][0]), ruled=True,
+                                                 end_support=(ends[0][1], ends[1][1])), bp)
+        solid.label = "solid"
+        return solid
     profile_pts = root_cone_profile(bp)
     with bd.BuildPart() as blank_part:
         with bd.BuildSketch(bd.Plane.XZ):
@@ -286,12 +300,11 @@ def build_bevel_gear_solid(bp: BevelGearParams, n_phi: int = 240,
 
     teeth = []
     for k in range(bp.z):
-        toe, heel = bevel_tooth_stations(bp, tooth_index=k, n_phi=n_phi,
-                                          simplify_tolerance_mm=simplify_tolerance_mm)
+        toe, heel = bevel_tooth_stations(bp, tooth_index=k, n_phi=n_phi, simplify_tolerance_mm=simplify_tolerance_mm)
         teeth.append(_make_bevel_tooth_solid(toe, heel))
-
-    return bd.Compound(children=[blank, *teeth])
-
+    comp = bd.Compound(children=[blank, *teeth])
+    comp.label = "compound"
+    return comp
 
 def export_step(gp: GearParams, path: str | Path) -> None:
     solid = build_gear_solid(gp)
@@ -427,10 +440,8 @@ def export_face_gear_profile_dxf(fp, path: str | Path) -> None:
 
 
 def export_spiral_bevel_step(sp, path: str | Path, n_stations: int = 12) -> None:
-    """sp: spiral_bevel.SpiralBevelParams (docs/gear-math.md 16). Blank plus
-    z lofted teeth, the same multi-body arrangement as the straight bevel."""
-    from spiral_bevel import build_spiral_bevel_gear_solid
-    _export_step_for_solidworks(build_spiral_bevel_gear_solid(sp, n_stations=n_stations), path)
+    """The pair in mesh (docs/gear-math.md 16): this gear and its mate."""
+    _export_step_for_solidworks(build_spiral_bevel_pair_solid(sp, n_stations), path)
 
 
 def export_spiral_bevel_heel_profile_dxf(sp, path: str | Path) -> None:
@@ -445,9 +456,42 @@ def export_spiral_bevel_heel_profile_dxf(sp, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def build_bevel_pair(bp: BevelGearParams, gear_turn_deg: float = 0.0, phase_error_deg: float = 0.0,
+                     n_phi: int = 240, simplify_tolerance_mm: float = 0.02):
+    """(gear, pinion) in mesh: the gear on Z turned by gear_turn_deg, its
+    mate (bp.pinion_params) placed by bevel.place_bevel_pinion."""
+    from bevel import place_bevel_pinion
+    gear = build_bevel_gear_solid(bp, n_phi, simplify_tolerance_mm).rotate(bd.Axis.Z, gear_turn_deg)
+    pinion = build_bevel_gear_solid(bp.pinion_params(), n_phi, simplify_tolerance_mm)
+    return gear, place_bevel_pinion(pinion, bp.z, bp.mate_teeth, bp.shaft_angle_deg, gear_turn_deg, phase_error_deg)
+
+
+def _labelled_pair(gear, mate, gear_name: str, mate_name: str) -> bd.Compound:
+    """The two members as one Compound, each solid labelled (the STEP
+    carries the labels as the bodies' names)."""
+    solids = []
+    for shape, name in ((gear, gear_name), (mate, mate_name)):
+        for s in shape.solids():
+            s.label = name
+            solids.append(s)
+    return bd.Compound(children=solids)
+
+
+def build_bevel_pair_solid(bp: BevelGearParams, n_phi: int = 240, simplify_tolerance_mm: float = 0.02) -> bd.Compound:
+    gear, pinion = build_bevel_pair(bp, 0.0, 0.0, n_phi, simplify_tolerance_mm)
+    return _labelled_pair(gear, pinion, "bevel gear z%d" % bp.z, "mate z%d" % bp.mate_teeth)
+
+
+def build_spiral_bevel_pair_solid(sp, n_stations: int = 10, n_phi: int = 240, simplify_tolerance_mm: float = 0.02) -> bd.Compound:
+    from spiral_bevel import build_spiral_bevel_pair
+    gear, pinion = build_spiral_bevel_pair(sp, 0.0, 0.0, n_stations, n_phi, simplify_tolerance_mm)
+    kind = "zerol" if sp.is_zerol else "spiral bevel"
+    return _labelled_pair(gear, pinion, "%s gear z%d" % (kind, sp.z), "mate z%d" % sp.mate_teeth)
+
+
 def export_bevel_step(bp: BevelGearParams, path: str | Path) -> None:
-    solid = build_bevel_gear_solid(bp)
-    _export_step_for_solidworks(solid, path)
+    """The pair in mesh (docs/gear-math.md 8.4): this gear and its mate."""
+    _export_step_for_solidworks(build_bevel_pair_solid(bp), path)
 
 
 def export_bevel_heel_profile_dxf(bp: BevelGearParams, path: str | Path) -> None:
@@ -558,6 +602,33 @@ def export_rack_profile_dxf(rp: RackParams, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
+def build_internal_pair(ip: InternalGearParams, ring_turn_deg: float = 0.0, phase_error_deg: float = 0.0,
+                        simplify_tolerance_mm: float = 0.03):
+    """(ring, pinion) in mesh: the ring on Z turned by ring_turn_deg, its
+    pinion (ip.pinion_params) placed by internal.place_internal_pinion."""
+    from internal import place_internal_pinion
+    if not (0 < ip.pinion_teeth < ip.z):
+        raise ValueError("internal gear: the pinion must have fewer teeth than the ring (%d against %d)" % (ip.pinion_teeth, ip.z))
+    ring = build_internal_gear_solid(ip, simplify_tolerance_mm).rotate(bd.Axis.Z, ring_turn_deg)
+    pinion = build_gear_solid(ip.pinion_params(), simplify_tolerance_mm=max(0.01, simplify_tolerance_mm / 3.0))
+    return ring, place_internal_pinion(pinion, ip, ring_turn_deg, phase_error_deg)
+
+
+def build_internal_pair_solid(ip: InternalGearParams, simplify_tolerance_mm: float = 0.03) -> bd.Compound:
+    """The ring and, when pinion_teeth > 0, its pinion in mesh, each solid
+    named (the STEP carries the names)."""
+    if not (0 < ip.pinion_teeth < ip.z):
+        # no pinion asked for -- or one that cannot mesh (as many teeth as the
+        # ring or more; the derived values warn): the ring alone
+        ring = build_internal_gear_solid(ip, simplify_tolerance_mm)
+        solids = list(ring.solids())
+        for s in solids:
+            s.label = "internal gear z%d" % ip.z
+        return bd.Compound(children=solids)
+    ring, pinion = build_internal_pair(ip, 0.0, 0.0, simplify_tolerance_mm)
+    return _labelled_pair(ring, pinion, "internal gear z%d" % ip.z, "pinion z%d" % ip.pinion_teeth)
+
+
 def build_internal_gear_solid(ip: InternalGearParams, simplify_tolerance_mm: float = 0.03) -> bd.Part:
     """An internal (ring) gear: the validated annulus-with-inward-teeth
     cross-section (internal.py -- see docs/gear-math.md section 11)
@@ -592,8 +663,8 @@ def build_internal_gear_solid(ip: InternalGearParams, simplify_tolerance_mm: flo
 
 
 def export_internal_gear_step(ip: InternalGearParams, path: str | Path) -> None:
-    solid = build_internal_gear_solid(ip)
-    _export_step_for_solidworks(solid, path)
+    """The ring and, when pinion_teeth > 0, its pinion in mesh (docs/gear-math.md 11.5)."""
+    _export_step_for_solidworks(build_internal_pair_solid(ip), path)
 
 
 def export_internal_gear_profile_dxf(ip: InternalGearParams, path: str | Path) -> None:
@@ -779,12 +850,17 @@ def export_hyperboloidal_profile_dxf(hp, path: str | Path) -> None:
     doc.saveas(str(path))
 
 
-def build_ec_pair_solid(ep, per_lobe: int = 24) -> bd.Compound:
+def build_ec_pair_solid(ep, per_lobe: int = 24, pinion_turn_deg: float = 180.0) -> bd.Compound:
     """ep: ec_gear.ECGearParams (docs/gear-math.md 23): the eccentric
-    pinion and its wheel, in mesh in the wheel frame."""
+    pinion and its wheel, in mesh in the wheel frame. Shown at pinion turn
+    180 deg: the eccentric then points INTO the wheel at both faces, where
+    a viewer looks, and away from it at mid-face -- at turn 0 it is the
+    other way round and the pinion looks, from above, like a peg hung on
+    the rim touching one tooth tip (the geometry is the same either way:
+    the contact wraps once round the pinion across the face)."""
     from ec_gear import build_ec_pair
-    pinion, wheel = build_ec_pair(ep, 0.0, 0.0, per_lobe)
-    return bd.Compound(children=[pinion, wheel])
+    pinion, wheel = build_ec_pair(ep, pinion_turn_deg, 0.0, per_lobe)
+    return _labelled_pair(wheel, pinion, "EC wheel z%d" % ep.z, "eccentric pinion")
 
 
 def export_ec_step(ep, path: str | Path) -> None:

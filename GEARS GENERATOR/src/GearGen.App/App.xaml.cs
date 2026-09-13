@@ -412,6 +412,9 @@ namespace GearGen.App
                 // logged so every smoke run also checks the self-describing
                 // naming (GearParameters.SuggestedFileName) for that family.
                 Log("suggested file name: " + win.Panel?.ViewModel?.SuggestedFileName(".step"));
+                if (win.Panel?.ViewModel?.IsPlanetary == true)
+                    Log($"planetary tables: {win.Panel.ViewModel.PlanetaryRatios.Count} ratio rows, {win.Panel.ViewModel.PlanetaryWhatIf.Count} what-if rows; " +
+                        $"first: {win.Panel.ViewModel.PlanetaryRatios[0].Held} held, {win.Panel.ViewModel.PlanetaryRatios[0].Input} in, {win.Panel.ViewModel.PlanetaryRatios[0].Output} out = {win.Panel.ViewModel.PlanetaryRatios[0].Ratio}");
 
                 if (resetTest)
                 {

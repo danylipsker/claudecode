@@ -768,6 +768,7 @@ def spiral_bevel_params_from_request(p: dict):
         root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
         face_width_mm=float(p.get("face_width_mm", 10.0)),
         bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        mate_bore_diameter_mm=float(p.get("mate_bore_diameter_mm", 0.0)),
         pitch_angle_deg_override=(float(p["pitch_angle_deg_override"])
                                    if p.get("pitch_angle_deg_override") is not None else None),
         spiral_angle_deg=float(p.get("spiral_angle_deg", 35.0)),
@@ -817,6 +818,7 @@ def bevel_params_from_request(p: dict) -> BevelGearParams:
         root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
         face_width_mm=float(p.get("face_width_mm", 10.0)),
         bore_diameter_mm=float(p.get("bore_diameter_mm", 0.0)),
+        mate_bore_diameter_mm=float(p.get("mate_bore_diameter_mm", 0.0)),
         pitch_angle_deg_override=(float(p["pitch_angle_deg_override"])
                                    if p.get("pitch_angle_deg_override") is not None else None),
     )
@@ -867,14 +869,24 @@ def bevel_derived_values(bp: BevelGearParams) -> dict:
     if heel_dedendum_radius <= 0:
         warnings.append("Root (dedendum) radius at the heel is zero or negative -- reduce dedendum or increase teeth/module.")
 
-    return {
+    derived = {
         "pitch_angle_deg": bp.pitch_angle_deg,
         "heel_pitch_diameter_mm": 2 * bp.heel_pitch_radius,
         "outer_cone_distance_mm": bp.outer_cone_distance,
         "z_virtual": bp.z_virtual,
         "heel_addendum_diameter_mm": 2 * heel_addendum_radius,
         "heel_dedendum_diameter_mm": 2 * heel_dedendum_radius,
-    }, warnings
+    }
+    # the mate (bp.pinion_params) is built and placed with this gear
+    pin = bp.pinion_params()
+    derived.update({
+        "mate_teeth": float(bp.mate_teeth),
+        "mate_pitch_angle_deg": pin.pitch_angle_deg,
+        "mate_heel_pitch_diameter_mm": 2.0 * pin.heel_pitch_radius,
+        "mate_bore_diameter_mm": bp.mate_bore_diameter_mm,
+        "ratio": bp.mate_teeth / bp.z,
+    })
+    return derived, warnings
 
 
 def bevel_heel_tooth_outline(bp: BevelGearParams, simplify_tolerance_mm: float = 0.01):
@@ -988,6 +1000,8 @@ def internal_params_from_request(p: dict) -> InternalGearParams:
         dedendum_coeff=float(p.get("dedendum_coeff", 1.25)),
         root_fillet_coeff=float(p.get("root_fillet_coeff", 0.38)),
         cutter_teeth=int(p.get("cutter_teeth", 0)),
+        pinion_teeth=int(p.get("mate_teeth") or 0),
+        pinion_bore_diameter_mm=float(p.get("mate_bore_diameter_mm", 0.0)),
         face_width_mm=float(p.get("face_width_mm", 10.0)),
         rim_thickness_mm=float(p.get("rim_thickness_mm", 6.0)),
         backlash_mm=float(p.get("backlash_mm", 0.0)),
@@ -1001,7 +1015,7 @@ def internal_derived_values(ip: InternalGearParams, pinion_teeth: int = 0) -> di
     if pinion_teeth > 0 and pinion_teeth >= ip.z:
         warnings.append("Mating pinion must have fewer teeth than the ring gear.")
     center_distance = (ip.pitch_radius - (ip.module_mm * pinion_teeth / 2.0)) if pinion_teeth > 0 else 0.0
-    return {
+    derived = {
         "pitch_diameter_mm": 2 * ip.pitch_radius,
         "base_diameter_mm": 2 * ip.base_radius,
         "addendum_diameter_mm": 2 * ip.addendum_radius,
@@ -1009,7 +1023,19 @@ def internal_derived_values(ip: InternalGearParams, pinion_teeth: int = 0) -> di
         "outer_diameter_mm": 2 * ip.outer_radius,
         "cutter_teeth": ip.cutter_teeth,
         "center_distance_mm": center_distance,
-    }, warnings
+    }
+    if ip.pinion_teeth > 0:
+        pin = ip.pinion_params()
+        derived.update({
+            "pinion_teeth": float(ip.pinion_teeth),
+            "pinion_pitch_diameter_mm": 2.0 * pin.pitch_radius,
+            "pinion_tip_diameter_mm": 2.0 * pin.addendum_radius,
+            "pinion_root_diameter_mm": 2.0 * pin.dedendum_radius,
+            "pinion_bore_diameter_mm": ip.pinion_bore_diameter_mm,
+            "pinion_centre_distance_mm": ip.pinion_centre_distance,
+            "ratio": ip.z / ip.pinion_teeth,
+        })
+    return derived, warnings
 
 
 def handle(req: dict) -> dict:
@@ -1323,16 +1349,16 @@ def handle(req: dict) -> dict:
             solid = build_sprocket_solid(sprocket_params_from_request(req))
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "bevel":
-            from build_gear import build_bevel_gear_solid
+            from build_gear import build_bevel_pair_solid
             import build123d as bd
             bp = bevel_params_from_request(req)
-            solid = build_bevel_gear_solid(bp, n_phi=150, simplify_tolerance_mm=0.04)
+            solid = build_bevel_pair_solid(bp, n_phi=150, simplify_tolerance_mm=0.04)     # the pair in mesh
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "spiral_bevel":
-            from spiral_bevel import build_spiral_bevel_gear_solid
+            from build_gear import build_spiral_bevel_pair_solid
             import build123d as bd
             sp = spiral_bevel_params_from_request(req)
-            solid = build_spiral_bevel_gear_solid(sp, n_stations=8, n_phi=150, simplify_tolerance_mm=0.04)
+            solid = build_spiral_bevel_pair_solid(sp, n_stations=8, n_phi=150, simplify_tolerance_mm=0.04)   # the pair in mesh
             bd.export_stl(solid, path, tolerance=0.01, angular_tolerance=0.3)  # curved flanks: finer than straight bevel
         elif gear_type == "face_gear":
             from face_gear import build_face_gear_solid, place_pinion
@@ -1397,10 +1423,10 @@ def handle(req: dict) -> dict:
             solid = build_rack_solid(rp)
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "internal":
-            from build_gear import build_internal_gear_solid
+            from build_gear import build_internal_pair_solid
             import build123d as bd
             ip = internal_params_from_request(req)
-            solid = build_internal_gear_solid(ip)
+            solid = build_internal_pair_solid(ip)          # the ring and its pinion in mesh
             bd.export_stl(solid, path, tolerance=0.02, angular_tolerance=0.3)
         elif gear_type == "herringbone":
             from build_gear import build_double_helical_solid
