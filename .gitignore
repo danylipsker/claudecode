@@ -24,3 +24,6 @@ sokoban/boxoban-levels-master/
 # Python bytecode
 __pycache__/
 *.pyc
+
+# Separate repository checked out inside this one (danylipsker/fasteners-catalog, own remote and history)
+FASTENERS/
