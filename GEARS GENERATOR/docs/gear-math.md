@@ -1973,7 +1973,7 @@ ratio (2 starts into 20 teeth): one worm revolution advances the wheel
 two teeth, so the loop closes every revolution. Rendered from the built
 geometry -- the worm placed and the wheel rotated by the meshing
 relationship the checks in §22.5 verify -- by `render_globoid.py`; the
-1080p H.264 version is [`media/globoid_mesh_1080p.mp4`](media/globoid_mesh_1080p.mp4).*
+smooth 1080p, 30 fps version is [`media/globoid_mesh_1080p.mp4`](media/globoid_mesh_1080p.mp4).*
 
 ### 22.1 The worm
 
