@@ -575,7 +575,10 @@ namespace GearGen.SolidWorksAddin
                     else { vm.SelectCompoundPlanetaryCard(); Log("selftest: compound planetary card selected (family '" + fam + "' has no Select*Card)"); }
                     break;
                 case 3:
-                    SelfTestCreate(vm, false);
+                    if (string.Equals(SelfTestSetting("GEARGEN_ADDIN_SELFTEST_WHAT", "what"), "assembly", StringComparison.OrdinalIgnoreCase))
+                        Log("selftest: assembly only, skipping the part");
+                    else
+                        SelfTestCreate(vm, false);
                     break;
                 case 4:
                     Capture("selftest_2_part.png");
