@@ -1966,6 +1966,15 @@ blank's proportions). The worm builds directly from its definition; the
 wheel is *generated* from the built worm, the way the hypoid pinion is
 generated from its gear (§21.2), on the same machinery.
 
+![The globoid worm driving its throated wheel in mesh](media/globoid_mesh.gif)
+
+*The double-enveloping worm driving its throated wheel at the 10:1 mesh
+ratio (2 starts into 20 teeth): one worm revolution advances the wheel
+two teeth, so the loop closes every revolution. Rendered from the built
+geometry -- the worm placed and the wheel rotated by the meshing
+relationship the checks in §22.5 verify -- by `render_globoid.py`; the
+1080p H.264 version is [`media/globoid_mesh_1080p.mp4`](media/globoid_mesh_1080p.mp4).*
+
 ### 22.1 The worm
 
 Worm frame: axis *Z*, throat at *z* = 0, the wheel centre *C* on +*X* at
