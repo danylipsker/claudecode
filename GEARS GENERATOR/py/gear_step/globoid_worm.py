@@ -318,6 +318,16 @@ def worm_core_solid(gp: GloboidWormParams) -> bd.Part:
     half = 0.5 * gp.length
     prof = [(gp.root_radius_at(-half + gp.length * i / n), -half + gp.length * i / n) for i in range(n + 1)]
     r_in = gp.bore_diameter_mm / 2.0
+    # The hourglass core narrows to its throat; a bore wider than the root
+    # there inverts the section (bore radius past the outer radius) and the
+    # revolve/fuse then fails deep in OpenCASCADE (Standard_TypeMismatch:
+    # TopoDS::Face). Refuse it with the limit named, leaving a 0.5 mm wall.
+    min_root = min(r for r, _ in prof)
+    if r_in > min_root - 0.5:
+        raise ValueError(
+            "globoid worm: a bore of %.1f mm is too large -- the hourglass worm's root "
+            "narrows to %.1f mm across at the throat; use a bore under %.1f mm, or none"
+            % (gp.bore_diameter_mm, 2.0 * min_root, 2.0 * (min_root - 0.5)))
     pts = [(r_in, -half)] + prof + [(r_in, half)]
     with bd.BuildPart() as part:
         with bd.BuildSketch(bd.Plane.XZ):

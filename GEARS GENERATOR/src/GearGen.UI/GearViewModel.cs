@@ -409,6 +409,11 @@ namespace GearGen.UI
             if (WormStarts < 1) WormStarts = 1;
             if (MateTeeth < 12) MateTeeth = 30;
             if (_p.EnvelopeTeeth < 1) _p.EnvelopeTeeth = 4.0;
+            // Reset the worm's bore inherited from another family: the hourglass
+            // worm's root narrows to a few millimetres at the throat, so a bore
+            // sized for a big spur/internal gear (e.g. 20 mm) would exceed it and
+            // the build refuses. 0 = no bore; the user can add a valid one.
+            _p.BoreDiameterMm = 0.0;
         }
 
         private string _globoidText = "-", _globoidWrapText = "-";
