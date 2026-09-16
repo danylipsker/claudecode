@@ -25,5 +25,12 @@ sokoban/boxoban-levels-master/
 __pycache__/
 *.pyc
 
-# Separate repository checked out inside this one (danylipsker/fasteners-catalog, own remote and history)
+# Separate repositories checked out inside this one (own remotes and history):
+# danylipsker/fasteners-catalog, danylipsker/gears-generator, danylipsker/wpfCalculator
 FASTENERS/
+GEARS GENERATOR/
+wpfCalculator/
+
+# runtime log of scripts/solidworks-monitor-watchdog.ps1
+scripts/*.log
+scripts/_taskview.txt
