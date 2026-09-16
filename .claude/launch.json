@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "apps",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve.js", "8172"],
+      "port": 8172
+    },
+    {
       "name": "galaxies",
       "runtimeExecutable": "node",
       "runtimeArgs": ["GALAXIES/tools/serve.js", "8171"],
