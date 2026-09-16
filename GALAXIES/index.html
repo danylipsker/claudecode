@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Galaxies</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%233b5bdb'/%3E%3Ccircle cx='16' cy='16' r='5' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="galaxies.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true"></span><h1>GALAXIES</h1></div>
+    <div class="toolbar">
+      <button id="btnNew" class="btn primary" title="New puzzle (N)">✦ <span class="label">New</span></button>
+      <button id="btnDaily" class="btn" title="Today's puzzle (D)">📅 <span class="label">Daily</span></button>
+      <span class="sep"></span>
+      <button id="btnUndo" class="btn icon" title="Undo (Ctrl+Z)">↶</button>
+      <button id="btnRedo" class="btn icon" title="Redo (Ctrl+Y)">↷</button>
+      <span class="sep"></span>
+      <button id="btnHint" class="btn" title="Hint (H)">💡 <span class="label">Hint</span></button>
+      <button id="btnCheck" class="btn" title="Check for mistakes (C)">✓ <span class="label">Check</span></button>
+      <span class="sep"></span>
+      <div class="seg" id="toolSeg" role="group" aria-label="Tool">
+        <button data-tool="paint" class="active" title="Paint cells (1)">🖌 <span class="label">Paint</span></button>
+        <button data-tool="wall" title="Draw walls (2)">▦ <span class="label">Walls</span></button>
+        <button data-tool="erase" title="Erase (3)">⌫ <span class="label">Erase</span></button>
+      </div>
+      <span class="spacer"></span>
+      <div class="menu-wrap">
+        <button id="btnMore" class="btn icon" title="More">⋯</button>
+        <div id="menu" class="menu" role="menu">
+          <button id="mRestart">Restart puzzle <span class="k">R</span></button>
+          <button id="mPause">Pause <span class="k">Space</span></button>
+          <hr>
+          <button id="mEnterCode">Enter a puzzle code…</button>
+          <button id="mCopyCode">Copy puzzle code</button>
+          <button id="mCopyLink">Copy share link</button>
+          <hr>
+          <button id="mStats">Statistics…</button>
+          <button id="mSolve" class="danger">Show solution</button>
+        </div>
+      </div>
+      <button id="btnHelp" class="btn icon" title="How to play (?)">?</button>
+      <button id="btnSettings" class="btn icon" title="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="board-wrap">
+      <canvas id="board" aria-label="Galaxies board"></canvas>
+      <div id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <div id="genOverlay" class="overlay">
+      <div class="card">
+        <div class="spinner"></div>
+        <h2 id="genTitle">Generating…</h2>
+        <p id="genSub">Looking for a puzzle with a unique solution</p>
+        <div class="progress"><i id="genBar"></i></div>
+        <button id="genCancel" class="btn">Cancel</button>
+      </div>
+    </div>
+    <div id="pauseOverlay" class="overlay">
+      <div class="card">
+        <h2>Paused</h2>
+        <p>The board is hidden while the clock is stopped.</p>
+        <button id="btnResume" class="btn primary">Resume</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="statusbar">
+    <span id="stTimer" class="timer">00:00</span>
+    <span id="stSize" class="pill">10×10</span>
+    <span id="stRating" class="pill rating-normal">Normal</span>
+    <span id="stProgressText">0 / 0 galaxies</span>
+    <span class="progressbar"><i id="stProgressBar"></i></span>
+    <span id="stSource" class="src"></span>
+  </footer>
+
+</div>
+
+<!-- New puzzle -->
+<dialog id="dlgNew">
+  <div class="dlg-head"><h2>New puzzle</h2><button class="close" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body">
+    <div class="field">
+      <label class="title">Size</label>
+      <div class="chips" id="sizeChips">
+        <button class="chip" data-size="7x7">7 × 7<small>quick</small></button>
+        <button class="chip" data-size="10x10">10 × 10<small>classic</small></button>
+        <button class="chip" data-size="15x15">15 × 15<small>long</small></button>
+        <button class="chip" data-size="20x20">20 × 20<small>epic</small></button>
+        <button class="chip" data-size="custom">Custom</button>
+      </div>
+      <div class="inline" id="customSize" style="margin-top:10px; display:none;">
+        <label>Width <input type="number" id="inW" min="5" max="30" value="12"></label>
+        <label>Height <input type="number" id="inH" min="5" max="30" value="12"></label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="title">Difficulty</label>
+      <div class="chips" id="diffChips">
+        <button class="chip" data-diff="easy">Easy<small>direct deductions</small></button>
+        <button class="chip" data-diff="normal">Normal<small>connect the dots</small></button>
+        <button class="chip" data-diff="hard">Hard<small>needs what-ifs</small></button>
+        <button class="chip" data-diff="unreasonable">Unreasonable<small>may need guessing</small></button>
+      </div>
+      <p class="help">Every puzzle has exactly one solution. The generator keeps searching until it finds one of the requested difficulty, then labels the result with the difficulty it actually achieved.</p>
+    </div>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" data-close>Cancel</button>
+    <button id="btnGenerate" class="btn primary">Generate</button>
+  </div>
+</dialog>
+
+<!-- Enter code -->
+<dialog id="dlgCode">
+  <div class="dlg-head"><h2>Enter a puzzle code</h2><button class="close" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body">
+    <p class="help" style="margin-top:0">Paste a code from this game or a Galaxies game ID from Simon Tatham's Puzzles, for example <code>7x7:dcgeaaqddebbfab</code>.</p>
+    <input type="text" id="inCode" placeholder="10x10:…" spellcheck="false" autocomplete="off" autofocus>
+    <div class="error" id="codeError"></div>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" data-close>Cancel</button>
+    <button id="btnLoadCode" class="btn primary">Load</button>
+  </div>
+</dialog>
+
+<!-- Settings -->
+<dialog id="dlgSettings">
+  <div class="dlg-head"><h2>Settings</h2><button class="close" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body">
+    <div class="field">
+      <label class="title">Appearance</label>
+      <select id="selTheme">
+        <option value="auto">Follow system</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="title">Play</label>
+      <label class="check"><input type="checkbox" id="chkPrefill"><span>Fill the cells that touch a dot<span class="desc">Those cells always belong to the dot's galaxy, so they start painted. Applies to the next puzzle.</span></span></label>
+      <label class="check"><input type="checkbox" id="chkAutoCheck"><span>Highlight mistakes as I play<span class="desc">Marks any cell or wall that disagrees with the solution.</span></span></label>
+      <label class="check"><input type="checkbox" id="chkHover"><span>Preview the mirror cell<span class="desc">When painting, show where the symmetric partner of the hovered cell will land.</span></span></label>
+      <label class="check"><input type="checkbox" id="chkTimer"><span>Show the clock</span></label>
+    </div>
+  </div>
+  <div class="dlg-foot"><button class="btn primary" data-close>Done</button></div>
+</dialog>
+
+<!-- Help -->
+<dialog id="dlgHelp">
+  <div class="dlg-head"><h2>How to play</h2><button class="close" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body rules">
+    <p>Divide the grid into regions so that <b>every region contains exactly one dot</b> and is <b>symmetric under a 180° rotation about that dot</b>. Every cell must belong to a region. A dot may sit on a cell, on an edge or on a corner; the cells touching it always belong to its galaxy.</p>
+    <h3>Painting (recommended)</h3>
+    <ul>
+      <li>Click a dot to pick its galaxy, then click or drag over cells to claim them. The mirror-image cell is filled for you.</li>
+      <li>Drag straight from a dot into the grid to claim cells on the way.</li>
+      <li>Click a painted cell to pick up its galaxy; click a cell of the current galaxy again to clear it. Right-click clears too.</li>
+      <li>A region that is closed, symmetric and holds one dot lights up. Light up the whole board to win.</li>
+    </ul>
+    <h3>Walls</h3>
+    <ul>
+      <li>With the Walls tool, click or drag along grid lines to draw region borders, just like the Nikoli and Simon Tatham versions. Click again to remove.</li>
+      <li>Walls and paint work together: borders between differently painted cells count as walls.</li>
+    </ul>
+    <h3>Helpers</h3>
+    <ul>
+      <li><b>Hint</b> explains one logical next step and can apply it for you.</li>
+      <li><b>Check</b> marks anything that contradicts the solution.</li>
+      <li><b>Undo</b> and <b>Redo</b> step through every move.</li>
+    </ul>
+    <h3>Keyboard</h3>
+    <p><kbd>1</kbd> Paint · <kbd>2</kbd> Walls · <kbd>3</kbd> Erase · <kbd>Esc</kbd> drop brush · <kbd>Ctrl</kbd>+<kbd>Z</kbd> undo · <kbd>Ctrl</kbd>+<kbd>Y</kbd> redo · <kbd>H</kbd> hint · <kbd>C</kbd> check · <kbd>N</kbd> new · <kbd>D</kbd> daily · <kbd>R</kbd> restart · <kbd>Space</kbd> pause</p>
+    <h3>About</h3>
+    <p class="credit">Galaxies was invented by <a href="https://www.nikoli.co.jp/en/puzzles/tentai_show/" target="_blank" rel="noopener">Nikoli</a> under the name Tentai Show (天体ショー). It appears in <a href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/galaxies.html" target="_blank" rel="noopener">Simon Tatham's Portable Puzzle Collection</a>, contributed by James Harvey, and on Android through <a href="https://chris.boyle.name/puzzles" target="_blank" rel="noopener">Chris Boyle's port</a>. Puzzle codes here use the same game-ID format, so puzzles can be exchanged both ways. Every generated puzzle is verified to have a single solution.</p>
+  </div>
+  <div class="dlg-foot"><button class="btn primary" data-close>Got it</button></div>
+</dialog>
+
+<!-- Statistics -->
+<dialog id="dlgStats">
+  <div class="dlg-head"><h2>Statistics</h2><button class="close" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body" id="statsBody"></div>
+  <div class="dlg-foot"><button class="btn" id="btnResetStats">Reset</button><button class="btn primary" data-close>Close</button></div>
+</dialog>
+
+<!-- Solved -->
+<dialog id="dlgSolved">
+  <div class="dlg-body">
+    <h2 class="solved-title" id="solvedTitle">Solved!</h2>
+    <p class="solved-sub" id="solvedSub"></p>
+    <div class="solved-stats" id="solvedStats"></div>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" data-close>Admire</button>
+    <button class="btn" id="btnSolvedShare">Share</button>
+    <button class="btn primary" id="btnSolvedNext">New puzzle</button>
+  </div>
+</dialog>
+
+<script src="galaxies-core.js"></script>
+<script src="galaxies-ui.js"></script>
+</body>
+</html>

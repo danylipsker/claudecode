@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "galaxies",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["GALAXIES/tools/serve.js", "8171"],
+      "port": 8171
+    }
+  ]
+}
