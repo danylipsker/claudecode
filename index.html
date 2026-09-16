@@ -8,21 +8,28 @@
 <style>
   html, body { height: 100%; margin: 0; }
   body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #0f1220;
     color: #e8eaf6;
     font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    padding: 24px;
+    padding: 32px 24px 48px;
+    display: flex;
+    justify-content: center;
   }
-  main { width: 100%; max-width: 620px; }
-  h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; letter-spacing: .02em; }
-  .sub { color: #969db8; font-size: 14px; margin: 0 0 22px; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  main { width: 100%; max-width: 900px; }
+  h1 { font-size: 24px; font-weight: 600; margin: 0 0 4px; letter-spacing: .02em; }
+  .sub { color: #969db8; font-size: 14px; margin: 0 0 30px; }
+  h2 {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
+    color: #6b7390; margin: 28px 0 12px;
+  }
+  h2:first-of-type { margin-top: 0; }
+  /* auto-fill, not auto-fit: a group with fewer cards than columns keeps the
+     same card width as the groups above instead of stretching to fill. */
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
   a.app {
     display: block;
-    padding: 16px 18px;
+    height: 100%;
+    padding: 15px 17px;
     border-radius: 10px;
     background: #181c2e;
     border: 1px solid #2a3050;
@@ -33,29 +40,83 @@
   a.app:hover { background: #1e2340; border-color: #6c7bff; }
   a.app:active { transform: translateY(1px); }
   a.app:focus-visible { outline: 2px solid #38d9d3; outline-offset: 2px; }
-  a.app .name { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 9px; }
+  a.app .name { font-size: 15.5px; font-weight: 600; display: flex; align-items: center; gap: 9px; }
   a.app .desc { color: #969db8; font-size: 13.5px; margin-top: 5px; line-height: 1.45; }
   .dot {
-    width: 11px; height: 11px; border-radius: 50%; flex: none;
+    width: 10px; height: 10px; border-radius: 50%; flex: none;
     background: radial-gradient(circle at 35% 35%, #fff 0, #6c7bff 55%, #2a3aa0 100%);
   }
+  .dot.g { background: radial-gradient(circle at 35% 35%, #fff 0, #3ccf8e 55%, #157a52 100%); }
+  .dot.o { background: radial-gradient(circle at 35% 35%, #fff 0, #e2a03f 55%, #8a5300 100%); }
 </style>
 </head>
 <body>
   <main>
     <h1>Apps</h1>
-    <p class="sub">Things built in this repository that run in a browser.</p>
+    <p class="sub">Things built in this repository that run in a browser. No installation, nothing leaves the page.</p>
+
+    <h2>Puzzles and games</h2>
+    <ul>
+      <li>
+        <a class="app" href="GALAXIES/index.html">
+          <span class="name"><span class="dot g" aria-hidden="true"></span>Galaxies</span>
+          <span class="desc">Nikoli&rsquo;s Tentai Show. Puzzles generated on the spot, each with a single solution, and a hint that explains its reasoning.</span>
+        </a>
+      </li>
+      <li>
+        <a class="app" href="sokoban/sokoban.html">
+          <span class="name"><span class="dot g" aria-hidden="true"></span>Sokoban</span>
+          <span class="desc">Push every crate onto a glowing pad. Level picker, move and push counters, saved progress.</span>
+        </a>
+      </li>
+      <li>
+        <a class="app" href="tic-tac-toe/tic-tac-toe.html">
+          <span class="name"><span class="dot g" aria-hidden="true"></span>Tic Tac Toe</span>
+          <span class="desc">Play a friend or the computer, at three levels, as either side.</span>
+        </a>
+      </li>
+    </ul>
+
+    <h2>Drawing and geometry</h2>
     <ul>
       <li>
         <a class="app" href="VECTOR-EDITOR/vector-editor.html">
           <span class="name"><span class="dot" aria-hidden="true"></span>VectorLab</span>
-          <span class="desc">A vector drawing editor.</span>
+          <span class="desc">A vector graphics editor: shape tools, corner rounding, transforms and boolean corners.</span>
         </a>
       </li>
       <li>
-        <a class="app" href="GALAXIES/index.html">
-          <span class="name"><span class="dot" aria-hidden="true"></span>Galaxies</span>
-          <span class="desc">Nikoli&rsquo;s Tentai Show, with puzzles generated on the spot and a hint that explains itself.</span>
+        <a class="app" href="CURVES/CURVES.html">
+          <span class="name"><span class="dot" aria-hidden="true"></span>CURVES</span>
+          <span class="desc">A parametric curve lab. Drive a curve from its parameters and domain, then trace and fit the result.</span>
+        </a>
+      </li>
+      <li>
+        <a class="app" href="afine transformations/afine-transformations.html">
+          <span class="name"><span class="dot" aria-hidden="true"></span>Affine Transformations</span>
+          <span class="desc">Stack matrices, multiply them into a composite, and watch what each step does to the figure.</span>
+        </a>
+      </li>
+      <li>
+        <a class="app" href="Linear Half Tone/LinearHalfToner.html">
+          <span class="name"><span class="dot" aria-hidden="true"></span>Linear Half Toner</span>
+          <span class="desc">Turns a picture into a line halftone where line width carries the tone, then into V-bit cut depths for a CNC router.</span>
+        </a>
+      </li>
+    </ul>
+
+    <h2>CNC</h2>
+    <ul>
+      <li>
+        <a class="app" href="GCODE-VIEWER/gcode-viewer.html">
+          <span class="name"><span class="dot o" aria-hidden="true"></span>G-code Viewer</span>
+          <span class="desc">Open or paste a program and inspect the toolpath, coloured by move type, with a run-time estimate.</span>
+        </a>
+      </li>
+      <li>
+        <a class="app" href="GCODE-SIMULATOR/GCODE SIMULATOR.html">
+          <span class="name"><span class="dot o" aria-hidden="true"></span>G-code Simulator</span>
+          <span class="desc">Run a program against a block of stock in 3D, from orthographic or perspective views.</span>
         </a>
       </li>
     </ul>
