@@ -34,3 +34,7 @@ wpfCalculator/
 # runtime log of scripts/solidworks-monitor-watchdog.ps1
 scripts/*.log
 scripts/_taskview.txt
+
+# Visual Studio workspace state (index databases, per-user settings). Several
+# megabytes rewritten on every IDE run, and specific to this machine.
+.vs/
