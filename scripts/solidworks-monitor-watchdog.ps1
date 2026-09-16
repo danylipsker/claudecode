@@ -8,6 +8,9 @@
   -Install    registers a per-user scheduled task "SOLIDWORKS Resource Monitor watchdog" that runs
               this file (from where it is now) at every sign-in, and starts it right away. A
               PowerShell console may flash for a moment at sign-in; the loop then runs hidden.
+              The task also re-launches the loop every 10 minutes if it is not running (verified:
+              a killed loop came back on the next tick), so a killed loop comes back on its own.
+              The restart-on-failure setting only covers failed launches, not a killed loop.
               Keep this file where it is; moving it breaks the task (re-run -Install after moving).
   -Uninstall  removes the task and stops the watchdog.
   -Status     shows whether the task exists and the watchdog is running, plus the last kills.
@@ -42,30 +45,36 @@ function Get-WatchdogProcess {
 
 function Show-Status {
     $task = Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
-    Write-Host ('Scheduled task : ' + $(if ($task) { "installed, state $($task.State)" } else { 'not installed' }))
+    Write-Host ('Scheduled task : ' + $(if ($task) { "installed, state $($task.State), $($task.Triggers.Count) triggers" } else { 'not installed' }))
     $wp = @(Get-WatchdogProcess)
     Write-Host ('Watchdog loop  : ' + $(if ($wp) { "running (PID $($wp[0].ProcessId))" } else { 'not running' }))
     if (Test-Path $Log) {
-        Write-Host 'Last kills     :'
+        Write-Host 'Last entries   :'
         Get-Content -LiteralPath $Log -Tail 5 | ForEach-Object { Write-Host "  $_" }
     } else {
-        Write-Host 'Last kills     : none logged yet'
+        Write-Host 'Last entries   : none logged yet'
     }
+}
+
+function Write-Log([string]$text) {
+    if ((Test-Path $Log) -and (Get-Item $Log).Length -gt 200KB) {
+        Get-Content -LiteralPath $Log -Tail 100 | Set-Content -LiteralPath $Log
+    }
+    Add-Content -LiteralPath $Log -Value ('{0:yyyy-MM-dd HH:mm:ss}  {1}' -f (Get-Date), $text)
 }
 
 if ($Run) {
     $mutex = New-Object System.Threading.Mutex($false, 'Local\SolidWorksQuietWatchdog')
     if (-not $mutex.WaitOne(0)) { return }   # another watchdog is already running
+    try { [Console]::TreatControlCAsInput = $true } catch { }   # stray Ctrl+C must not end the loop
+    Write-Log "watchdog started (PID $PID)"
     while ($true) {
         try {
             foreach ($p in @(Get-Process -Name sldProcMon -ErrorAction SilentlyContinue)) {
                 $started = try { $p.StartTime.ToString('HH:mm:ss') } catch { '?' }
                 $cpu     = try { [math]::Round($p.CPU, 0) } catch { '?' }
                 Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
-                if ((Test-Path $Log) -and (Get-Item $Log).Length -gt 200KB) {
-                    Get-Content -LiteralPath $Log -Tail 100 | Set-Content -LiteralPath $Log
-                }
-                Add-Content -LiteralPath $Log -Value ('{0:yyyy-MM-dd HH:mm:ss}  killed sldProcMon.exe PID {1} (started {2}, {3} CPU-s)' -f (Get-Date), $p.Id, $started, $cpu)
+                Write-Log "killed sldProcMon.exe PID $($p.Id) (started $started, $cpu CPU-s)"
             }
         } catch { }
         Start-Sleep -Seconds 5
@@ -73,15 +82,19 @@ if ($Run) {
 }
 
 if ($Install) {
-    $action    = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "{0}" -Run' -f $PSCommandPath)
-    $trigger   = New-ScheduledTaskTrigger -AtLogOn -User $User
-    $settings  = New-ScheduledTaskSettingsSet -ExecutionTimeLimit ([TimeSpan]::Zero) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -MultipleInstances IgnoreNew
-    $principal = New-ScheduledTaskPrincipal -UserId $User -LogonType Interactive -RunLevel Limited
-    Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger $trigger -Settings $settings -Principal $principal -Description ('Kills the SOLIDWORKS Resource Monitor (sldProcMon.exe) whenever it appears, because it spins one CPU core at 100 %. Runs {0}; run that script with -Uninstall to remove.' -f $PSCommandPath) -Force | Out-Null
+    $action     = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "{0}" -Run' -f $PSCommandPath)
+    $atLogon    = New-ScheduledTaskTrigger -AtLogOn -User $User
+    # daily trigger that repeats every 10 minutes for the whole day = "every 10 minutes, forever"
+    # (an unbounded RepetitionDuration is rejected by Task Scheduler on this Windows build)
+    $every10min = New-ScheduledTaskTrigger -Daily -At '00:00'
+    $every10min.Repetition = (New-ScheduledTaskTrigger -Once -At '00:00' -RepetitionInterval (New-TimeSpan -Minutes 10) -RepetitionDuration (New-TimeSpan -Days 1)).Repetition
+    $settings   = New-ScheduledTaskSettingsSet -ExecutionTimeLimit ([TimeSpan]::Zero) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -MultipleInstances IgnoreNew -RestartCount 99 -RestartInterval (New-TimeSpan -Minutes 1)
+    $principal  = New-ScheduledTaskPrincipal -UserId $User -LogonType Interactive -RunLevel Limited
+    Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger @($atLogon, $every10min) -Settings $settings -Principal $principal -Description ('Kills the SOLIDWORKS Resource Monitor (sldProcMon.exe) whenever it appears, because it spins one CPU core at 100 %. Runs {0}; run that script with -Uninstall to remove.' -f $PSCommandPath) -Force | Out-Null
 
     Start-ScheduledTask -TaskName $TaskName
     Start-Sleep -Seconds 3
-    Write-Host "Task registered to run $PSCommandPath at sign-in."
+    Write-Host "Task registered to run $PSCommandPath at sign-in and every 10 minutes if not already running."
     Show-Status
     return
 }
