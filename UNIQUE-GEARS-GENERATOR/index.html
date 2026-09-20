@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Gears &mdash; Conjugate Shape Workbench</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='11' cy='16' r='9' fill='none' stroke='%23ffb020' stroke-width='3'/%3E%3Ccircle cx='24' cy='16' r='5' fill='none' stroke='%232ec4b6' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ══════════════════════════════════════════════════ top bar ══ -->
+  <header id="top">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="11" cy="16" r="8.5" fill="none" stroke="#ffb020" stroke-width="2.6"/>
+        <circle cx="24.5" cy="16" r="4.8" fill="none" stroke="#2ec4b6" stroke-width="2.6"/>
+      </svg>
+      <span>Unique Gears<small>conjugate shape workbench</small></span>
+    </div>
+    <button class="tbtn narrowOnly" id="togL2" title="Show or hide the controls" aria-label="Toggle controls">&#9776;</button>
+    <nav id="tabs">
+      <button data-tab="studio" class="on">Workbench</button>
+      <button data-tab="learn">Learn</button>
+      <button data-tab="lab">Labs</button>
+    </nav>
+    <div class="spacer"></div>
+    <button class="tbtn" id="helpBtn" title="Keyboard shortcuts and notes (?)">Help</button>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════ workbench ══ -->
+  <div id="studio" class="view on">
+
+    <!-- ───────────────────────── left ───────────────────────── -->
+    <aside class="side" id="sideL">
+      <div class="scroll">
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>Shape of gear 1</h3>
+          <div class="body">
+            <div id="gallery"></div>
+            <p class="hint" id="shapeBlurb"></p>
+
+            <div id="customFormula" style="display:none;margin-top:10px">
+              <label class="hint" style="display:block;margin-bottom:5px"><b>r(t) =</b></label>
+              <textarea class="code" id="formulaSrc" spellcheck="false">1 + 0.3*cos(3*t)</textarea>
+              <div class="err" id="formulaErr"></div>
+              <p class="hint">t runs 0 to 2&pi;. Keep r(t) positive everywhere, or there is no shape to turn.</p>
+            </div>
+
+            <div id="customDraw" style="display:none;margin-top:10px">
+              <div class="btnrow">
+                <button class="tbtn" id="drawArm">Sketch</button>
+                <button class="tbtn" id="drawReset">Clear</button>
+                <button class="tbtn" id="drawRound">Circle</button>
+              </div>
+              <p class="hint">Arm <b>Sketch</b>, then drag around gear 1&rsquo;s axle on the canvas. Raise <b>Smoothing</b> afterwards to make it manufacturable.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>Parameters</h3>
+          <div class="body"><div id="params"></div></div>
+        </section>
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>Pairing</h3>
+          <div class="body">
+            <div class="seg" style="margin-bottom:10px">
+              <button data-mode="roll" class="on" title="Treat the outline itself as the pitch curve and roll it">Roll</button>
+              <button data-mode="mesh" title="Put teeth on the pitch curve and generate the true conjugate">Mesh</button>
+            </div>
+
+            <div class="row" id="rowLobes">
+              <label class="w" title="How many lobes gear 2 should have. Only whole numbers can close.">Gear 2 lobes</label>
+              <input type="range" id="lobesRng" min="1" max="12" step="1" value="4">
+              <input type="text" class="num" id="lobesNum" value="4">
+            </div>
+            <div class="row" id="rowFree" style="display:none">
+              <label class="w" title="Turns of gear 2 per turn of gear 1">Ratio</label>
+              <input type="range" id="freeRng" min="0.2" max="4" step="0.005" value="1">
+              <input type="text" class="num" id="freeNum" value="1.000">
+            </div>
+            <div class="row" id="rowZ2" style="display:none">
+              <label class="w" title="Tooth count of the generated mate">Mate teeth</label>
+              <input type="range" id="z2Rng" min="6" max="60" step="1" value="18">
+              <input type="text" class="num" id="z2Num" value="18">
+            </div>
+            <p class="hint" id="ratioTxt"></p>
+
+            <label class="chk" style="margin-top:9px">
+              <input type="checkbox" id="autoA" checked>
+              Solve centre distance so the pair closes
+            </label>
+            <div class="row">
+              <label class="w" title="Distance between the two axles">Centre dist.</label>
+              <input type="range" id="aSlider" min="1" max="6" step="0.005" value="2.4" disabled>
+              <input type="text" class="num" id="aNum" value="2.400" disabled>
+            </div>
+            <div class="btnrow"><button class="tbtn prime" id="solveA">Solve for closure</button></div>
+          </div>
+        </section>
+
+        <section class="sect" id="teethSect" style="display:none">
+          <h3><span class="caret">&#9660;</span>Teeth on gear 1</h3>
+          <div class="body">
+            <div id="teethRows">
+            <div class="row">
+              <label title="Teeth are spaced evenly in arc length along the pitch curve">Count</label>
+              <input type="range" id="tZRng" min="3" max="90" step="1" value="24">
+              <input type="text" class="num" id="tZNum" value="24">
+            </div>
+            <div class="row">
+              <label title="Offset amplitude either side of the pitch curve">Height</label>
+              <input type="range" id="tHRng" min="0" max="0.3" step="0.002" value="0.055">
+              <input type="text" class="num" id="tHNum" value="0.055">
+            </div>
+            <div class="row">
+              <label title="Slides the tooth pattern along the pitch curve">Phase</label>
+              <input type="range" id="tPRng" min="0" max="1" step="0.005" value="0">
+              <input type="text" class="num" id="tPNum" value="0.000">
+            </div>
+            </div>
+            <div class="row">
+              <label title="Extra depth cut into gear 2's roots so tips do not rub. A fraction of tooth height; real gears use about 0.25.">Clearance</label>
+              <input type="range" id="tCRng" min="0" max="0.5" step="0.005" value="0.25">
+              <input type="text" class="num" id="tCNum" value="0.250">
+            </div>
+            <div class="row" id="rowProfile">
+              <label>Profile</label>
+              <select id="tProfile">
+                <option value="trapezoid">Trapezoid</option>
+                <option value="sine">Sine</option>
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="pin">Round pins</option>
+              </select>
+            </div>
+            <p class="hint">Gear 2&rsquo;s teeth are never designed &mdash; they come out of the envelope.</p>
+          </div>
+        </section>
+
+        <section class="sect closed">
+          <h3><span class="caret">&#9660;</span>Overlays</h3>
+          <div class="body">
+            <label class="chk"><input type="checkbox" data-ov="centrodes"><span class="sw" style="background:#a78bfa"></span>Pitch curves <span style="color:#4a5268">(C)</span></label>
+            <label class="chk"><input type="checkbox" data-ov="pitch"><span class="sw" style="background:#a78bfa"></span>Pitch point</label>
+            <label class="chk"><input type="checkbox" data-ov="contact"><span class="sw" style="background:#ff5c7a"></span>Contact points</label>
+            <label class="chk"><input type="checkbox" data-ov="normals"><span class="sw" style="background:#ff5c7a"></span>Common normals <span style="color:#4a5268">(N)</span></label>
+            <label class="chk"><input type="checkbox" data-ov="path"><span class="sw" style="background:#ff5c7a"></span>Path of contact</label>
+            <label class="chk"><input type="checkbox" data-ov="sliding"><span class="sw" style="background:#5b8dff"></span>Sliding velocity</label>
+            <label class="chk"><input type="checkbox" data-ov="ghosts"><span class="sw" style="background:#ffb020"></span>Envelope family <span style="color:#4a5268">(G)</span></label>
+            <label class="chk"><input type="checkbox" data-ov="blank"><span class="sw" style="background:#6b7488"></span>Blank circles</label>
+            <label class="chk"><input type="checkbox" data-ov="grid"><span class="sw" style="background:#39415a"></span>Grid</label>
+            <label class="chk"><input type="checkbox" data-ov="labels"><span class="sw" style="background:#98a1b5"></span>Labels</label>
+
+            <p class="hint" style="margin-top:11px"><b>Watch from</b></p>
+            <div class="seg">
+              <button data-frame="world" class="on">World</button>
+              <button data-frame="g1">Gear 1</button>
+              <button data-frame="g2">Gear 2</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+
+    <!-- ───────────────────────── stage ───────────────────────── -->
+    <main id="stage">
+      <canvas id="cv"></canvas>
+      <div id="banner"></div>
+      <div id="toast"></div>
+      <div id="hud">
+        <button class="icobtn" id="togL" title="Hide or show the left panel">&#9776;</button>
+        <button class="icobtn" id="play" title="Play"></button>
+        <button class="icobtn" id="stepB" title="Step back (&larr;)">&#8249;</button>
+        <button class="icobtn" id="stepF" title="Step forward (&rarr;)">&#8250;</button>
+        <input type="range" id="speed" min="0" max="2.2" step="0.01" value="0.55" title="Speed">
+        <button class="icobtn" id="fit" title="Fit to view (F)">&#9974;</button>
+        <span class="pill">&phi;<sub>1</sub> <b id="lvPhi">0&deg;</b></span>
+        <span class="pill">&phi;<sub>2</sub> <b id="lvPhi2">0&deg;</b></span>
+        <span class="pill">&omega;<sub>2</sub>/&omega;<sub>1</sub> <b id="lvK">1.000</b></span>
+        <div class="spacer"></div>
+        <button class="icobtn" id="togR" title="Hide or show the analysis panel">&#9636;</button>
+      </div>
+    </main>
+
+    <!-- ───────────────────────── right ───────────────────────── -->
+    <aside class="side right" id="sideR">
+      <div class="scroll">
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>The pair</h3>
+          <div class="body">
+            <div class="kv"><span class="k">ratio &omega;<sub>2</sub>/&omega;<sub>1</sub>, mean</span><span class="v g2" id="roRatio">&mdash;</span></div>
+            <div class="kv"><span class="k">as a fraction</span><span class="v" id="roRatioF">&mdash;</span></div>
+            <div class="kv"><span class="k">centre distance</span><span class="v" id="roA">&mdash;</span></div>
+            <div class="kv"><span class="k">gear 1 symmetry</span><span class="v g1" id="roSym">&mdash;</span></div>
+            <div class="kv"><span class="k">gear 1 pitch radius</span><span class="v g1" id="roR1">&mdash;</span></div>
+            <div class="kv"><span class="k">gear 2 pitch radius</span><span class="v g2" id="roR2">&mdash;</span></div>
+            <div class="kv"><span class="k">ratio swing</span><span class="v" id="roKrange">&mdash;</span></div>
+          </div>
+        </section>
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>Does it work?</h3>
+          <div class="body">
+            <div class="kv"><span class="k">closure error</span><span class="v" id="roClose">&mdash;</span></div>
+            <div class="kv"><span class="k" id="roInterfLbl">interference removed</span><span class="v" id="roInterf">&mdash;</span></div>
+            <div class="kv"><span class="k">gear 2 tooth count</span><span class="v" id="roTeeth">&mdash;</span></div>
+            <div class="kv"><span class="k">normal misses pitch pt</span><span class="v" id="lvMiss">&mdash;</span></div>
+            <p class="hint">The last number is the law of gearing being checked numerically, every frame. For a true conjugate mate it sits at the noise floor.</p>
+          </div>
+        </section>
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>Right now</h3>
+          <div class="body">
+            <div class="kv"><span class="k">contact points</span><span class="v" id="lvContacts">&mdash;</span></div>
+            <div class="kv"><span class="k">pitch radii</span><span class="v" id="lvRp">&mdash;</span></div>
+            <div class="kv"><span class="k">sliding speed</span><span class="v" id="lvSlide">&mdash;</span></div>
+            <div class="kv"><span class="k">pressure angle</span><span class="v" id="lvPress">&mdash;</span></div>
+            <div class="plotlbl"><span>Gear ratio over one cycle</span></div>
+            <canvas class="plot" id="plotK"></canvas>
+            <div class="plotlbl"><span>Sliding speed at contact</span><span id="lblSlide"></span></div>
+            <canvas class="plot" id="plotSlide"></canvas>
+            <div class="plotlbl"><span>Pressure angle</span><span id="lblPress"></span></div>
+            <canvas class="plot" id="plotPress"></canvas>
+          </div>
+        </section>
+
+        <section class="sect">
+          <h3><span class="caret">&#9660;</span>Export</h3>
+          <div class="body">
+            <div class="btnrow">
+              <button class="tbtn prime" id="openExport" style="padding:9px 12px">Export &hellip;</button>
+            </div>
+            <p class="hint">SVG and DXF flat, <b>STEP</b> solids, or a script that builds native
+            <b>SOLIDWORKS</b> parts and an assembly. Plus JSON and PNG.</p>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ learn ══ -->
+  <div id="learn" class="view">
+    <div id="toc"></div>
+    <div class="wrap">
+      <p class="lead" style="margin-bottom:22px">
+        Ten short chapters that build the whole construction from one idea &mdash; rolling &mdash; to a
+        working pair of gears of any shape. Every figure is live and computed by the same engine as the
+        workbench, so you can break each one and see what breaks.
+      </p>
+      <div id="chapters"></div>
+      <p class="lead" style="margin-top:30px;color:#6b7488;font-size:12.5px">
+        The approach here follows the one popularised by <b>Morphocular</b> in
+        <a href="https://www.youtube.com/watch?v=eG-z-791_ak" target="_blank" rel="noopener">&ldquo;What Gear Shape Meshes With a Square?&rdquo;</a>
+        (April 2024) &mdash; rolling centrodes first, then conjugate profiles as an envelope. The
+        underlying theory is classical: Euler on the involute, and Willis&rsquo; law of gearing from 1841.
+        The wording, the figures and every number on this page are this app&rsquo;s own.
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════ lab ══ -->
+  <div id="lab" class="view">
+    <div class="wrap">
+      <p class="lead" style="margin-bottom:22px">
+        Three sandboxes, each isolating one mechanism so you can push it until it misbehaves.
+      </p>
+      <div class="labgrid" id="labgrid"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ modal ══ -->
+<div id="modal">
+  <div class="sheet">
+    <header>
+      <h3>Unique Gears</h3>
+      <button class="tbtn" id="modalClose">Close</button>
+    </header>
+    <div class="inner">
+      <p>Pick a shape for gear 1, choose how many lobes its mate should have, and the workbench
+      computes the mate that meshes with it &mdash; the centre distance that makes the pair close, the
+      pitch curves that roll on each other, and the conjugate outline itself as an envelope.</p>
+      <p><b>Roll</b> treats the outline as the pitch curve. <b>Mesh</b> puts teeth on that curve and
+      generates the true conjugate profile, teeth and all.</p>
+      <table class="keytbl">
+        <tr><td><span class="kbd">Space</span></td><td>play / pause</td></tr>
+        <tr><td><span class="kbd">&larr;</span> <span class="kbd">&rarr;</span></td><td>step one frame (hold Shift for a fine step)</td></tr>
+        <tr><td><span class="kbd">F</span></td><td>fit the pair to the view</td></tr>
+        <tr><td><span class="kbd">C</span></td><td>pitch curves on / off</td></tr>
+        <tr><td><span class="kbd">N</span></td><td>common normals on / off</td></tr>
+        <tr><td><span class="kbd">G</span></td><td>envelope family on / off</td></tr>
+        <tr><td><span class="kbd">?</span></td><td>this panel</td></tr>
+        <tr><td>drag / wheel</td><td>pan and zoom the canvas</td></tr>
+      </table>
+      <p><b>Export</b> writes SVG and DXF flat outlines, <b>STEP</b> solids extruded to a
+      thickness you choose, JSON and PNG &mdash; all in millimetres. For <b>SOLIDWORKS</b> it
+      writes a PowerShell script: <code>.sldprt</code> and <code>.sldasm</code> are proprietary
+      binary formats that only SOLIDWORKS itself can write, so the script carries the geometry,
+      starts SOLIDWORKS, saves a part per gear and builds the meshed assembly.</p>
+      <p style="margin-top:16px;color:#6b7488;font-size:12.5px">
+        Everything runs in this page. Nothing is uploaded and nothing is fetched.
+        Inspired by Morphocular&rsquo;s gear videos; the mathematics is classical conjugate gearing.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ export ══ -->
+<div id="exportModal">
+  <div class="sheet wide">
+    <header>
+      <h3>Export</h3>
+      <button class="tbtn" id="exClose">Close</button>
+    </header>
+    <div id="exFormats" class="fmtbar"></div>
+    <div class="exgrid">
+      <div class="exopts">
+        <p class="hint" id="exBlurb" style="margin:0 0 14px"></p>
+
+        <div class="row" id="exScaleRow">
+          <label class="w" title="One app length unit becomes this many millimetres. Everything exported is in mm.">1 unit =</label>
+          <input type="number" class="num wide" id="exScale" step="any" min="0.01">
+          <span class="unit">mm</span>
+        </div>
+
+        <div class="row" id="exBodiesRow">
+          <label class="w">Bodies</label>
+          <div class="seg" style="flex:1">
+            <button data-bodies="both" class="on">Both</button>
+            <button data-bodies="g1">Gear 1</button>
+            <button data-bodies="g2">Gear 2</button>
+          </div>
+        </div>
+
+        <div id="ex3d">
+          <div class="row">
+            <label class="w" title="How far the profile is extruded along the axle">Thickness</label>
+            <input type="number" class="num wide" id="exThick" step="any" min="0.1">
+            <span class="unit">mm</span>
+          </div>
+          <div class="row">
+            <label class="w" title="Diameter of the hole through the middle. 0 leaves it solid.">Bore &#8960;</label>
+            <input type="number" class="num wide" id="exBore" step="any" min="0">
+            <span class="unit">mm</span>
+          </div>
+          <div class="row">
+            <label class="w" title="How many points the profile is sampled at before it becomes a curve">Points</label>
+            <input type="number" class="num wide" id="exPoints" step="1" min="48" max="2000">
+            <span class="unit">per body</span>
+          </div>
+          <label class="chk" title="A polyline wall is exact and always imports as a solid. A cubic wall gives genuinely curved faces but needs 720+ points, or CAD will not knit it.">
+            <input type="checkbox" id="exSmooth">Curved wall instead of faceted (needs 720+ points)</label>
+        </div>
+
+        <div class="row" id="exPitchRow">
+          <label class="w">Pitch curves</label>
+          <label class="chk" style="flex:1"><input type="checkbox" id="exPitch">include them on their own layer</label>
+        </div>
+
+        <div class="note" id="exSwNote">
+          <b>.sldprt and .sldasm are proprietary binary formats</b> &mdash; nothing but SOLIDWORKS
+          can write them, so this downloads a PowerShell script with the geometry inside it.
+          Run the script and it starts SOLIDWORKS, imports both bodies, saves a part for each, and
+          builds an assembly with them a centre distance apart, already in mesh.
+        </div>
+      </div>
+
+      <div class="exsum">
+        <h4>What you get</h4>
+        <div id="exSummary"></div>
+        <button class="tbtn prime" id="exGo">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/gears.js"></script>
+<script src="js/view.js"></script>
+<script src="js/studio.js"></script>
+<script src="js/learn.js"></script>
+<script src="js/lab.js"></script>
+<script src="js/step.js"></script>
+<script src="js/swscript.js"></script>
+<script src="js/export.js"></script>
+<script>
+/* ── tabs ─────────────────────────────────────────────────────── */
+let learnBuilt = false, labBuilt = false;
+function showTab(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === name));
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
+  if (name === 'learn' && !learnBuilt) { learnBuilt = true; buildLearn(); }
+  if (name === 'lab' && !labBuilt) { labBuilt = true; buildLab(); }
+  if (name === 'studio' && view) { view.resize(); }
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('#tabs button').forEach(b => { b.onclick = () => showTab(b.dataset.tab); });
+
+/* ── help ─────────────────────────────────────────────────────── */
+function openHelp() { document.getElementById('modal').classList.add('on'); }
+document.getElementById('helpBtn').onclick = openHelp;
+document.getElementById('modalClose').onclick = () => document.getElementById('modal').classList.remove('on');
+document.getElementById('modal').onclick = (e) => { if (e.target.id === 'modal') e.currentTarget.classList.remove('on'); };
+window.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.getElementById('modal').classList.remove('on'); });
+
+/* ── export ───────────────────────────────────────────────────── */
+bindExportUI();
+document.getElementById('openExport').onclick = openExport;
+
+/* ── go ───────────────────────────────────────────────────────── */
+initStudio();
+requestAnimationFrame(figLoop);
+</script>
+</body>
+</html>

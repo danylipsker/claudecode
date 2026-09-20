@@ -27,6 +27,7 @@ Serve the folder with `node scripts/serve.js 8172` and open http://localhost:817
 | [CURVES](CURVES/CURVES.html) | A parametric curve lab: drive a curve from its parameters and domain, then trace and fit the result. |
 | [Affine Transformations](afine%20transformations/afine-transformations.html) | Stack matrices, multiply them into a composite, and watch what each step does to the figure. |
 | [Linear Half Toner](Linear%20Half%20Tone/LinearHalfToner.html) | Turns a picture into a line halftone where line width carries the tone, then into V-bit cut depths for a CNC router. |
+| [Unique Gears](UNIQUE-GEARS-GENERATOR/index.html) | Pick a shape - a square, an ellipse, a star, your own formula or a freehand sketch - and it works out the gear that meshes with it: the centre distance that makes the pair close, the pitch curves that roll on each other, and the conjugate outline itself as an envelope. Ten illustrated chapters, three labs (the envelope condition, rack generation and undercut, inverse ratio design) and SVG / DXF / JSON export. |
 | [555 Timer Sims](CIRCUITS/555-circuitjs-sims/index.html) | Twenty-eight circuits from Forrest Mims's 555 notebook, each opening live in CircuitJS1 with its sliders and switches working. |
 | [G-code Viewer](GCODE-VIEWER/gcode-viewer.html) | Open or paste a program and inspect the toolpath, coloured by move type, with a run-time estimate. |
 | [G-code Simulator](GCODE-SIMULATOR/GCODE%20SIMULATOR.html) | Run a program against a block of stock in 3D, from orthographic or perspective views. |
