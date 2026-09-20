@@ -302,11 +302,28 @@ function render() {
   updateLive(q);
 }
 
+/* Set while the canvas has not been laid out yet, so the frame loop can try
+   again. Fitting against a 1x1 canvas yields a scale near zero and the gears
+   end up invisible, which is exactly what happened on a cold load. */
+let fitPending = true;
+
 function fitView() {
   if (!model || !view) return;
+  view.resize();
+  if (view.w < 40 || view.h < 40) { fitPending = true; return; }
   const a = model.a, r1 = model.topP, r2 = rMax(model.r2);
   const pad = Math.max(r1, r2) * 1.12;
   view.fit([-r1 * 1.12, -pad, a + r2 * 1.12, pad], 0.07);
+  if (fitPending) { fitPending = false; applyNarrow(); }
+}
+
+/* The panel overlays the stage below this width, so it starts hidden there.
+   Decided from a media query rather than a one-shot innerWidth read at start-up,
+   which can be taken before the window has settled. */
+const narrowMQ = window.matchMedia('(max-width: 880px)');
+function applyNarrow() {
+  const el = document.getElementById('sideL');
+  if (el) el.classList.toggle('hide', narrowMQ.matches);
 }
 
 /* ══════════════════════════════════════════════════════ animation ═══ */
@@ -319,6 +336,7 @@ function frame(t) {
     S.anim.phi1 = (S.anim.phi1 + dt * S.anim.speed) % (model.span || TAU);
   }
   view.resize();
+  if (fitPending) fitView();
   render();
   requestAnimationFrame(frame);
 }
@@ -708,7 +726,7 @@ function initStudio() {
   $('togL2').onclick = toggleL;
   $('togR').onclick = () => $('sideR').classList.toggle('hide');
   /* on a narrow screen the panel covers the stage, so start with the view */
-  if (window.innerWidth < 880) $('sideL').classList.add('hide');
+  narrowMQ.addEventListener('change', applyNarrow);
   syncPlay();
 
   /* ── keyboard ── */
