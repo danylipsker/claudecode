@@ -27,11 +27,12 @@ __pycache__/
 
 # Separate repositories checked out inside this one (own remotes and history):
 # danylipsker/fasteners-catalog, danylipsker/gears-generator, danylipsker/wpfCalculator,
-# danylipsker/springs-generator
+# danylipsker/springs-generator, danylipsker/gaskets-seals-profiles
 FASTENERS/
 GEARS GENERATOR/
 wpfCalculator/
 SPRINGS/
+GASKETS AND SEALS/
 
 # runtime log of scripts/solidworks-monitor-watchdog.ps1
 scripts/*.log
