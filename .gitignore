@@ -41,3 +41,6 @@ scripts/_taskview.txt
 # Visual Studio workspace state (index databases, per-user settings). Several
 # megabytes rewritten on every IDE run, and specific to this machine.
 .vs/
+
+# third-party PDFs kept beside the projects, not part of them (96 MB)
+STUDY CLAUDE CODE/
