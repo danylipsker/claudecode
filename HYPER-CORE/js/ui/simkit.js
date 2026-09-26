@@ -258,6 +258,13 @@
     cv.addEventListener('pointerup', up);
     cv.addEventListener('pointercancel', up);
   }
+  /* clicks on the stage: fn(p) with p = {x, y} in canvas pixels; hover(p) may return true
+     to show a pointer cursor over something clickable */
+  function click(st, fn, hover) {
+    const cv = st.canvas;
+    cv.addEventListener('click', e => fn(st.pos(e)));
+    if (hover) cv.addEventListener('pointermove', e => { cv.style.cursor = hover(st.pos(e)) ? 'pointer' : ''; });
+  }
   /* a second canvas for a graph under or beside the scene */
   function plot(el, opts, height) {
     const cv = document.createElement('canvas');
@@ -270,11 +277,14 @@
   }
 
   const kit = H.kit = {
-    stage, controls, readout, loop, arrow, label, grid, dot, drag, plot,
+    stage, controls, readout, loop, arrow, label, grid, dot, drag, click, plot,
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),
     hue: (h, a) => ui.colors().hue(h, a),
-    TAU: Math.PI * 2
+    TAU: Math.PI * 2,
+    schem: H.schem,                 // circuit symbols and an oscilloscope screen (schematic.js)
+    Circuit: H.Circuit,             // the circuit simulator (circuit.js)
+    eng: (v, unit) => H.schem ? H.schem.fmt(v, unit) : H.util.fmt(v) + ' ' + unit   // 4700, 'Ω' -> '4.7 kΩ'
   };
 
   /* ---------------------------------------------------------------- the card */

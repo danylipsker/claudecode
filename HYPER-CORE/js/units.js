@@ -50,7 +50,7 @@
     temperature: { name: 'temperature', units: [['K', 1, 0], ['°C', 1, 273.15], ['°F', 5 / 9, 273.15 - 32 * 5 / 9], ['°R', 5 / 9, 0], ['mK', 1e-3, 0], ['MK', 1e6, 0]] },
     dtemp:       { name: 'temperature difference', units: [['K', 1], ['mK', 1e-3], ['µK', 1e-6], ['°C', 1], ['°F', 5 / 9]] },
     charge:      { name: 'charge', units: [['C', 1], ['mC', 1e-3], ['µC', 1e-6], ['nC', 1e-9], ['pC', 1e-12], ['e', 1.602176634e-19], ['A·h', 3600], ['mA·h', 3.6]] },
-    current:     { name: 'current', units: [['A', 1], ['mA', 1e-3], ['µA', 1e-6], ['nA', 1e-9], ['kA', 1e3]] },
+    current:     { name: 'current', units: [['A', 1], ['mA', 1e-3], ['µA', 1e-6], ['nA', 1e-9], ['pA', 1e-12], ['kA', 1e3]] },
     voltage:     { name: 'voltage', units: [['V', 1], ['mV', 1e-3], ['µV', 1e-6], ['kV', 1e3], ['MV', 1e6]] },
     resistance:  { name: 'resistance', units: [['Ω', 1], ['mΩ', 1e-3], ['kΩ', 1e3], ['MΩ', 1e6], ['GΩ', 1e9]] },
     resistivity: { name: 'resistivity', units: [['Ω·m', 1], ['Ω·cm', 1e-2], ['µΩ·cm', 1e-8], ['Ω·mm²/m', 1e-6]] },
@@ -102,6 +102,13 @@
     energydensity: { name: 'energy density', units: [['J/m³', 1], ['kJ/m³', 1e3], ['MJ/m³', 1e6]] },
     specificenergy: { name: 'specific energy', units: [['J/kg', 1], ['kJ/kg', 1e3], ['MJ/kg', 1e6], ['kWh/kg', 3.6e6]] },
     pressureGrad:{ name: 'pressure gradient', units: [['Pa/m', 1], ['kPa/m', 1e3]] },
+    gain:        { name: 'gain in decibels', units: [['dB', 1]] },
+    apparentpower: { name: 'apparent power', units: [['VA', 1], ['kVA', 1e3], ['MVA', 1e6]] },
+    reactivepower: { name: 'reactive power', units: [['var', 1], ['kvar', 1e3], ['Mvar', 1e6]] },
+    datarate:    { name: 'data rate', units: [['bit/s', 1], ['kbit/s', 1e3], ['Mbit/s', 1e6], ['Gbit/s', 1e9], ['baud', 1], ['B/s', 8], ['kB/s', 8e3], ['MB/s', 8e6]] },
+    slewrate:    { name: 'slew rate', units: [['V/s', 1], ['V/ms', 1e3], ['V/µs', 1e6]] },
+    thermalres:  { name: 'thermal resistance', units: [['K/W', 1], ['°C/W', 1]] },
+    rate:        { name: 'rate', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['kHz', 1e3]] },
     hubble:      { name: 'Hubble parameter', units: [['km/s/Mpc', 1e3 / 3.0856775814913673e22], ['1/s', 1]] },
     gravparam:   { name: 'gravitational parameter', units: [['m³/s²', 1], ['km³/s²', 1e9]] }
   };

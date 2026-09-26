@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Electronics</title>
+<meta name="description" content="Electronics as a web of connected concepts: explanations, live formulas you can solve for any variable, circuit simulations and practice.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 22 16 9l8 12z' fill='none' stroke='%23f0a830' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='9' r='5' fill='%23f0a830'/%3E%3Ccircle cx='8.5' cy='22.5' r='4' fill='%233ccf8e'/%3E%3Ccircle cx='24' cy='21.5' r='4' fill='%23ff7a8a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Electronics needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/dc-basics.js"></script>
+<script src="content/circuit-analysis.js"></script>
+<script src="content/measurement.js"></script>
+<script src="content/passive-components.js"></script>
+<script src="content/switching-protection.js"></script>
+<script src="content/sensors.js"></script>
+<script src="content/waveforms.js"></script>
+<script src="content/transients.js"></script>
+<script src="content/ac-analysis.js"></script>
+<script src="content/frequency-response.js"></script>
+<script src="content/diode-basics.js"></script>
+<script src="content/diode-circuits.js"></script>
+<script src="content/optoelectronics.js"></script>
+<script src="content/bjt.js"></script>
+<script src="content/mosfet.js"></script>
+<script src="content/transistor-circuits.js"></script>
+<script src="content/opamp-basics.js"></script>
+<script src="content/opamp-circuits.js"></script>
+<script src="content/opamp-real.js"></script>
+<script src="content/power-supplies.js"></script>
+<script src="content/switching-converters.js"></script>
+<script src="content/energy-storage.js"></script>
+<script src="content/logic-basics.js"></script>
+<script src="content/combinational.js"></script>
+<script src="content/sequential.js"></script>
+<script src="content/mixed-signal.js"></script>
+<script src="content/oscillators.js"></script>
+<script src="content/rf.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/fundamentals.js"></script>
+<script src="sims/components-power.js"></script>
+<script src="sims/ac-filters.js"></script>
+<script src="sims/diodes.js"></script>
+<script src="sims/transistors-osc.js"></script>
+<script src="sims/opamps.js"></script>
+<script src="sims/digital.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'electronics' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

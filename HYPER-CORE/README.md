@@ -1,6 +1,6 @@
 # HYPER-CORE — the engine behind the Hyper apps
 
-Hyper Physics, Hyper Math — and later Hyper Electronics and Hyper Chemistry — are one
+Hyper Physics, Hyper Math, Hyper Electronics — and later Hyper Chemistry — are one
 engine with different content. This folder is the engine: the concept graph, a TeX to
 MathML renderer, an expression engine that solves any formula for any variable, units
 and constants, the calculators, concept maps, simulations kit, practice and progress.
@@ -27,6 +27,8 @@ only its content.
 | `js/units.js` | 90 quantities with their units (SI plus common alternatives) and 45 physical constants |
 | `js/text.js` | The content's Markdown dialect: inline/display math, `[[concept]]` links, callouts, tables |
 | `js/formula.js` | A formula as a calculator: solve for any variable, all roots in a range, generated practice problems with worked solutions |
+| `js/circuit.js` | A circuit simulator (modified nodal analysis): DC operating point, transient steps, small-signal AC; R, C, L, sources, diodes (LED, Zener), switches, BJTs, MOSFETs, op-amps with rails and gain–bandwidth; E-series values |
+| `js/schematic.js` | Circuit symbols (passives, sources, diodes, transistors, op-amp, logic gates, meters), moving current dots and an oscilloscope screen, for simulations |
 | `js/ui/app.js` | Shell, router, contents tree, search, link previews, saved progress, theme, home page, shortcuts |
 | `js/ui/concept.js` | The concept page: map, explanation, formulas, simulations, examples, practice, connections |
 | `js/ui/calc.js` | The formula card (calculator, sliders, units, relationship graph, inline practice) |
@@ -42,6 +44,7 @@ only its content.
 
 ```bash
 node HYPER-CORE/tools/test-core.js                    # unit tests of the engine (TeX, expressions, units, formulas)
+node HYPER-CORE/tools/test-circuit.js                 # the circuit simulator against textbook results
 node HYPER-CORE/tools/validate.js HYPER-PHYSICS       # checks all content: links, TeX, formulas solve both ways, quizzes
 node HYPER-CORE/tools/simtest.js HYPER-PHYSICS        # runs every simulation headless, every control to its ends
 node HYPER-CORE/tools/catalog.js --all                # regenerates each discipline's catalog.js (titles for cross-links)

@@ -81,6 +81,8 @@ ctx.Symbol = Symbol; ctx.Promise = Promise; ctx.Proxy = Proxy; ctx.Reflect = Ref
 let clock = 0;
 
 const H = loadCore(ctx);
+run(ctx, path.join(__dirname, '..', 'js', 'circuit.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'schematic.js'));
 
 /* ---------------------------------------------------------------- the stand-in kit */
 function makeKit(record) {
@@ -129,6 +131,7 @@ function makeKit(record) {
     dot(c, x, y, r) { if (![x, y, r].every(Number.isFinite)) bad.push(current + ': dot() got ' + [x, y, r].join(',')); },
     grid() {},
     drag(st, o) { record.drags.push(o); },
+    click(st, fn, hover) { record.clicks.push(fn); if (hover) hover({ x: 100, y: 100 }); },
     plot(el, opts) {
       const p = { o: opts || {}, set(o) {
         Object.assign(p.o, o);
@@ -136,7 +139,8 @@ function makeKit(record) {
       }, draw() {}, destroy() {} };
       return p;
     },
-    colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2
+    colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
+    schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u)
   };
 }
 
@@ -179,7 +183,7 @@ for (const [id, def, variant] of runs) {
   if (only && !only.has(fileOf.get(id))) continue;
   tested++;
   current = id + (Object.keys(variant).length ? ' ' + JSON.stringify(variant) : '');
-  const rec = { stages: [], controls: [], loops: [], drags: [], errors: [], readoutBad: new Set() };
+  const rec = { stages: [], controls: [], loops: [], drags: [], clicks: [], errors: [], readoutBad: new Set() };
   const kit = makeKit(rec);
   const box = { stage: fakeEl(), side: fakeEl(), card: fakeEl(), node: null };
   const problems = [];
@@ -214,6 +218,7 @@ for (const [id, def, variant] of runs) {
         if (t != null) { o.start && o.start(t, p); o.move(t, { x: p.x + 40, y: p.y - 30 }); o.move(t, { x: 5, y: 5 }); o.end && o.end(t); frames(10); }
       }
     }
+    for (const fn of rec.clicks) for (let y = 20; y < 440; y += 60) for (let x = 20; x < 760; x += 60) { fn({ x, y }); frames(2); }
     frames(120);
     if (typeof cleanup === 'function') cleanup();
   } catch (e) {

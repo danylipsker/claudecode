@@ -219,8 +219,8 @@
         // "\Delta x" is one symbol (a change in x): one element, one key, so it can be
         // highlighted and clicked as a whole
         const prev = items[items.length - 1];
-        if (prev && prev.src === '\\Delta' && !prev.merged && a.k && /^(\\[a-zA-Z]+|[A-Za-z])/.test(a.k) && !a.fn) {
-          items[items.length - 1] = { m: '<mrow data-k="' + escA(norm('\\Delta' + a.k)) + '">' + prev.m + a.m + '</mrow>', src: '\\Delta ' + a.src, k: norm('\\Delta' + a.k), merged: true };
+        if (prev && (prev.src === '\\Delta' || prev.src === '\\delta') && !prev.merged && a.k && /^(\\[a-zA-Z]+|[A-Za-z])/.test(a.k) && !a.fn) {
+          items[items.length - 1] = { m: '<mrow data-k="' + escA(norm(prev.src + a.k)) + '">' + prev.m + a.m + '</mrow>', src: prev.src + ' ' + a.src, k: norm(prev.src + a.k), merged: true };
           continue;
         }
         items.push(a);

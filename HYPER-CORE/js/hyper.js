@@ -27,7 +27,7 @@
   H.DISCIPLINES = {
     physics:     { id: 'physics',     title: 'Hyper Physics',     short: 'Physics',     folder: 'HYPER-PHYSICS',     hue: 228, ready: true },
     math:        { id: 'math',        title: 'Hyper Math',        short: 'Math',        folder: 'HYPER-MATH',        hue: 168, ready: true },
-    electronics: { id: 'electronics', title: 'Hyper Electronics', short: 'Electronics', folder: 'HYPER-ELECTRONICS', hue: 38,  ready: false },
+    electronics: { id: 'electronics', title: 'Hyper Electronics', short: 'Electronics', folder: 'HYPER-ELECTRONICS', hue: 38,  ready: true },
     chemistry:   { id: 'chemistry',   title: 'Hyper Chemistry',   short: 'Chemistry',   folder: 'HYPER-CHEMISTRY',   hue: 320, ready: false }
   };
 

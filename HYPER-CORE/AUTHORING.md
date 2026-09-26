@@ -170,7 +170,8 @@ Anything else is reported by the validator as an unknown command.
   latent, thermcond, heattransfer, thermres, expansion, intensity, soundlevel, amount,
   molarmass, concentration, numberdensity, viscosity, kinvisc, flowrate, massflow,
   wavenumber, optpower, activity, decayconst, dose, doseeq, luminousflux, illuminance,
-  luminousint, stress, strain, energydensity, specificenergy, pressureGrad, hubble, gravparam.
+  luminousint, stress, strain, energydensity, specificenergy, pressureGrad, hubble, gravparam,
+  gain (dB), apparentpower (VA), reactivepower (var), datarate, slewrate, thermalres (K/W, °C/W), rate.
   The unit must be one of that quantity's units (see `HYPER-CORE/js/units.js`); aliases
   such as `deg`, `ohm`, `m/s^2` are accepted. A variable with a unit outside these
   (e.g. `N·m²/C²`) may give just `unit: '...'` without `q`: it is then shown fixed, in SI.
@@ -253,6 +254,7 @@ Hyper.sim('pendulum', {
 Helpers: `kit.arrow(ctx, x1, y1, x2, y2, color, width)`, `kit.label(ctx, text, x, y, {size, color, align, baseline, weight, bg})`,
 `kit.dot(ctx, x, y, r, color, stroke)`, `kit.grid(ctx, x0, y0, w, h, step, color)`,
 `kit.drag(st, { hit(p) → thing|null, move(thing, p), end(thing), hover: true })` for dragging with the pointer (`p = {x, y}`),
+`kit.click(st, p => {...}, p => isClickable)` for clicking things on the canvas,
 `kit.plot(el, opts, height)` → a `Hyper.Plot` (a live graph: `plot.set({ series: [{ pts: [[x, y], ...], label, dash, fill, dots, line: false }], x: {label, min, max, log}, y: {...}, marks: [{x, y, label}], vlines: [{x, label}], hlines: [{y, label}] })`),
 `ctl.show(id, false)` / `ro.show(false)` / `ro.show(key, false)` to hide controls or read-outs (for sims with modes), `st.onResize(fn)`, `st.pos(event)`, `loop.once()` (draw one frame while stopped), `loop.running`, `kit.fmt(v, sig)`.
 `Hyper.niceStep(span, n)` gives round grid spacings.
@@ -263,6 +265,64 @@ fixed sub-steps (a pendulum should not gain energy); keep a sim to one clear ide
 a handful of controls; include a short "try this" list in the blurb. Plain canvas 2-D
 only — no libraries. `mount` must not throw; guard divisions by zero. A good branch has a
 simulation on each of its most visual concepts — typically 4–8 per author.
+
+Wrap a whole sims file in `(function () { 'use strict'; ... })();` so its helper names
+cannot collide with another author's file, and give scratch files you create elsewhere
+unique names (the scratchpad is shared).
+
+### Circuits: the simulator and the schematic kit
+
+For anything electrical, do not approximate a circuit by hand: build it and let the
+simulator solve it (`HYPER-CORE/js/circuit.js`, modified nodal analysis, tested against
+textbook results). `HYPER-ELECTRONICS/sims/reference.js` shows both tools in use.
+
+```js
+const c = new kit.Circuit();                 // nodes are strings; ground is 'gnd' (or '0')
+                                             //   new kit.Circuit({ method: 'trap' }) for ringing LC/RLC (no numerical damping)
+const V1 = c.V('in', 'gnd', 12);              // + first. Value, or a function of time: t => 5*Math.sin(2*Math.PI*50*t)
+                                             //   options: { r: internal resistance, ac: amplitude for c.ac(), phase }
+const R1 = c.R('in', 'out', 10e3);            // R(a, b, ohms)       .i current a→b, .p power
+c.C('out', 'gnd', 100e-9, 0);                 // C(a, b, farads, v0) .vc voltage, .i current
+c.L('x', 'y', 10e-3, 0);                      // L(a, b, henries, i0)
+c.I('gnd', 'a', 1e-3);                        // current source, from → to
+c.D('a', 'k');                                // diode anode → cathode; { is, n, rs } — LED: { is: 1e-18, n: 2 }; Zener: { vz: 5.1 } (1 mA at vz)
+c.VCVS('op', 'on', 'ip', 'in', 100);         // ideal voltage-controlled voltage source (out+, out−, in+, in−, gain)
+c.XFMR('p1', 'n1', 'p2', 'n2', 0.05);         // ideal transformer, v2 = ratio · v1 (N2/N1); .i secondary, .i1 primary current
+c.SW('a', 'b', true);                         // switch (closed); change .closed and solve again
+c.NPN('c', 'b', 'e', { beta: 100 });          // also PNP — .ic .ib .ie .vce
+c.NMOS('d', 'g', 's', { vt: 2, k: 0.5 });     // also PMOS (vt as a positive number) — .id .vgs .vds
+c.OPAMP('p', 'n', 'out', { vpos: 15, vneg: -15, gain: 1e5, gbw: 1e6 });   // + input, − input, output; clips at the rails
+                                             //   add { sr: 0.5e6 } (V/s) for a slew-limited integrator model in transients
+c.dc();                                       // the operating point: c.v('out'), R1.i, V1.i (out of +), c.ok
+c.reset(); c.step(1e-6);                      // transient, from the initial conditions: c.t, c.v(...)
+c.ac(1000).v('out')                           // small-signal AC -> { mag, phase (°), re, im }; sources need { ac: 1 }
+c.ac(1000).i(R1)                              // the AC current of any element, same direction as its DC .i
+Hyper.circuit.eSeries(4700, 'E12')            // nearest standard resistor value
+```
+
+Build a new circuit (or change element values and call `dc()` / `step()` again) when a
+control changes. For transients step with a small fixed `dt` (a hundredth of the fastest
+time constant or period) several times per frame. `kit.eng(4700, 'Ω')` formats
+engineering values ("4.7 kΩ"). Draw with `kit.schem` (`HYPER-CORE/js/schematic.js`):
+
+```js
+const S = kit.schem;
+S.wire(ctx, [[x1, y1], [x2, y1], [x2, y2]]);  S.node(ctx, x, y);  S.ground(ctx, x, y);  S.rail(ctx, x, y, '+5 V');
+S.resistor(ctx, x1, y1, x2, y2, { label: 'R1', value: '10 kΩ' });     // parts go between two points, any angle
+S.capacitor(..., { polarized }); S.inductor(..., { core }); S.pot(..., { wiper: 0..1 }); S.fuse(...);
+S.battery / S.vsource(..., { ac: true }) / S.isource   (+ at the first point; current source arrow first → second)
+S.diode(..., { kind: 'led' | 'zener' | 'schottky' | 'photo', on, glow }); S.switch(..., { closed }); S.lamp(..., { on, brightness });
+S.motor / S.speaker; S.meter(ctx, x, y, 'V', '5.00 V');
+const q = S.npn(ctx, x, y, { pnp, label });      // returns pins { b, c, e } as [x, y]; S.nmos(...) -> { g, d, s }
+const a = S.opamp(ctx, x, y, { flip });          // -> { inp, inn, out }  (− input on top unless flip)
+const g = S.gate(ctx, 'nand', x, y, { inputs: 2 });   // and or not nand nor xor xnor buf -> { in: [...], out }
+S.led(ctx, x, y, on);                            // a logic-level indicator
+S.flow(ctx, pts, phase, { color });              // current as moving dots: phase += speed(current) * dt
+S.scope(ctx, x, y, w, h, { tdiv, traces: [{ pts: [[t, v], ...] | fn: t => v, vdiv, offset, label, unit: 'A' }] });
+```
+
+Symbols use the theme's text colour unless given `color`; keep live quantities (current,
+logic levels) in the accent/warn/ok colours so they stand out.
 
 ## Checking your work
 

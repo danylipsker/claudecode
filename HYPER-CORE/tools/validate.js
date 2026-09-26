@@ -269,7 +269,9 @@ for (const n of H.list) {
     if (!made && f.def.practice !== false) W(wh, 'no practice problem could be generated');
     if (f.def.stories) for (const [k, t] of Object.entries(f.def.stories)) {
       if (!f.byName[k]) E(wh, 'story for unknown variable "' + k + '"');
-      for (const m of t.match(/\{(\w+)\}/g) || []) if (!f.byName[m.slice(1, -1)]) E(wh, 'story mentions {' + m.slice(1, -1) + '} which is not a variable');
+      // placeholders are only filled outside $…$ (braces inside maths are TeX)
+      const outside = t.replace(/\$\$[\s\S]*?\$\$|\$[^$]*\$/g, '');
+      for (const m of outside.match(/\{(\w+)\}/g) || []) if (!f.byName[m.slice(1, -1)]) E(wh, 'story mentions {' + m.slice(1, -1) + '} which is not a variable');
     }
   });
 }

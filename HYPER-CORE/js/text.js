@@ -40,7 +40,7 @@
     t = t.replace(/\$([^$]+?)\$/g, (m, x) => hold(H.texSafe(x.trim(), false)));
     if (!plain) {
       t = t.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, label) => hold(link(id.trim(), label)));
-      t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, (m, label, url) =>
+      t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+|\.\.\/[^)\s]+)\)/g, (m, label, url) =>
         hold('<a class="xlink" href="' + escA(url) + '" target="_blank" rel="noopener">' + inline(label, true) + '</a>'));
     }
     t = esc(t);
