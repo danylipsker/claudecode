@@ -233,6 +233,13 @@ for (const n of H.list) {
     checkText(wh + ' note', f.def.note, true);
     checkTex(wh + ' tex', f.displayTex, true);
     for (const v of f.vars) { checkTex(wh + ' var ' + v.id, v.tex, false); checkText(wh + ' var ' + v.id + ' name', v.name, false); }
+    // two variables drawn as the same symbol cannot be told apart when clicked
+    const seenKeys = new Map();
+    for (const v of f.vars) {
+      const key = H.texKey(v.tex);
+      if (seenKeys.has(key)) W(wh, 'variables "' + seenKeys.get(key) + '" and "' + v.id + '" have the same symbol (' + v.tex + '); give one a subscript');
+      else seenKeys.set(key, v.id);
+    }
     if (f.def.tex) {
       // every variable should be visible in the written formula (for the symbol highlight)
       for (const v of f.vars) {

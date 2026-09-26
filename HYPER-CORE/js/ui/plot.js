@@ -94,8 +94,10 @@
       const x0 = pl, x1 = W - pr, y0 = pt, y1 = Hh - pb;
       const r = this.range();
       const lx = !!o.x.log && r.xmin > 0, ly = !!o.y.log && r.ymin > 0;
-      const tx = lx ? v => x0 + (Math.log(v) - Math.log(r.xmin)) / (Math.log(r.xmax) - Math.log(r.xmin)) * (x1 - x0)
-                    : v => x0 + (v - r.xmin) / (r.xmax - r.xmin) * (x1 - x0);
+      // x: { reverse: true } runs the axis from right to left (IR spectra, 4000 → 400 cm⁻¹)
+      const rev = !!o.x.reverse, fx = f => rev ? x1 - f * (x1 - x0) : x0 + f * (x1 - x0);
+      const tx = lx ? v => fx((Math.log(v) - Math.log(r.xmin)) / (Math.log(r.xmax) - Math.log(r.xmin)))
+                    : v => fx((v - r.xmin) / (r.xmax - r.xmin));
       const ty = ly ? v => y1 - (Math.log(v) - Math.log(r.ymin)) / (Math.log(r.ymax) - Math.log(r.ymin)) * (y1 - y0)
                     : v => y1 - (v - r.ymin) / (r.ymax - r.ymin) * (y1 - y0);
       this.map = { tx, ty, r, x0, x1, y0, y1, lx, ly };
@@ -220,7 +222,8 @@
       // hover: a vertical line and the value of each series there
       if (this.hover && this.hover.x >= x0 && this.hover.x <= x1 && o.hoverRead !== false) {
         const hx = this.hover.x;
-        const xv = lx ? Math.exp(Math.log(r.xmin) + (hx - x0) / (x1 - x0) * (Math.log(r.xmax) - Math.log(r.xmin))) : r.xmin + (hx - x0) / (x1 - x0) * (r.xmax - r.xmin);
+        const hf = rev ? (x1 - hx) / (x1 - x0) : (hx - x0) / (x1 - x0);
+        const xv = lx ? Math.exp(Math.log(r.xmin) + hf * (Math.log(r.xmax) - Math.log(r.xmin))) : r.xmin + hf * (r.xmax - r.xmin);
         ctx.strokeStyle = C.faint; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
         ctx.beginPath(); ctx.moveTo(hx, y0); ctx.lineTo(hx, y1); ctx.stroke(); ctx.setLineDash([]);
         const lines = [(o.x.name || 'x') + ' = ' + (o.fmtX ? o.fmtX(xv) : H.util.fmt(xv, 4))];

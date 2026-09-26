@@ -11,6 +11,8 @@
  * showing NaN.
  */
 'use strict';
+// a number gone wrong, but not a chemical formula such as NaN₃ (sodium azide)
+const BAD = /(?:^|[^A-Za-z])(?:NaN|-?Infinity|undefined)(?![A-Za-z0-9₀-₉])/;
 const fs = require('fs');
 const path = require('path');
 const { makeContext, loadCore, run } = require('./load');
@@ -83,6 +85,8 @@ let clock = 0;
 const H = loadCore(ctx);
 run(ctx, path.join(__dirname, '..', 'js', 'circuit.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'schematic.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'chem.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'molecule.js'));
 
 /* ---------------------------------------------------------------- the stand-in kit */
 function makeKit(record) {
@@ -117,7 +121,7 @@ function makeKit(record) {
       return api;
     },
     readout(el, rows) {
-      const api = { el: fakeEl(), show() {}, set(k, v) { if (/NaN|Infinity|undefined/.test(String(v))) record.readoutBad.add(k + ' = ' + v); } };
+      const api = { el: fakeEl(), show() {}, set(k, v) { if (BAD.test(String(v))) record.readoutBad.add(k + ' = ' + v); } };
       return api;
     },
     loop(step) {
@@ -127,7 +131,7 @@ function makeKit(record) {
       return api;
     },
     arrow(c, x1, y1, x2, y2) { for (const a of [x1, y1, x2, y2]) if (!Number.isFinite(a)) { bad.push(current + ': arrow() got ' + a); break; } },
-    label(c, text, x, y) { if (!Number.isFinite(x) || !Number.isFinite(y)) bad.push(current + ': label() at ' + x + ',' + y); if (/NaN/.test(String(text))) record.readoutBad.add('label "' + text + '"'); },
+    label(c, text, x, y) { if (!Number.isFinite(x) || !Number.isFinite(y)) bad.push(current + ': label() at ' + x + ',' + y); if (BAD.test(String(text))) record.readoutBad.add('label "' + text + '"'); },
     dot(c, x, y, r) { if (![x, y, r].every(Number.isFinite)) bad.push(current + ': dot() got ' + [x, y, r].join(',')); },
     grid() {},
     drag(st, o) { record.drags.push(o); },
@@ -140,7 +144,8 @@ function makeKit(record) {
       return p;
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
-    schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u)
+    schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
+    mol: Object.assign({}, H.mol, { rotator(st, v, fn) { record.drags.push({ hit: () => 1, move: () => { v.rotY += 0.1; fn && fn(); } }); return v; } })
   };
 }
 

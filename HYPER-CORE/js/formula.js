@@ -191,7 +191,15 @@
         else all = [primary].concat(all.filter(r => Math.abs(r - primary) > 1e-7 * Math.max(1, Math.abs(r))));
       }
       let good = all.filter(acceptable);
-      if (v.int) good = good.filter(x => Math.abs(x - Math.round(x)) < 1e-6);
+      if (v.int) {
+        const whole = good.filter(x => Math.abs(x - Math.round(x)) < 1e-6);
+        // from measured values a count rarely comes out exact: give it, and the whole number it is closest to
+        if (!whole.length && good.length) {
+          const x = good[0];
+          return { ok: true, value: x, all: good, method: iso ? 'explicit' : 'numeric', note: 'not a whole number: the nearest is ' + Math.round(x) };
+        }
+        good = whole;
+      }
       if (!good.length) {
         const why = all.length ? (all.every(x => x < 0) && !v.signed ? 'the only solution is negative' : 'the solution falls outside the allowed range')
                                : (iso ? 'no real solution for these values' : 'no solution found for these values');

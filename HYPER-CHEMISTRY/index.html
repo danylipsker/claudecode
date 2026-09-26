@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Chemistry</title>
+<meta name="description" content="Chemistry as a web of connected concepts: explanations, live formulas you can solve for any variable, molecules to turn in 3-D, reactions to run, and practice.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M12.5 4h7M13 4v8.5L6 25a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 26 25l-7-12.5V4' fill='none' stroke='%23ff5fb4' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M9.3 19.5h13.4L25 24.5a1.4 1.4 0 0 1-1.2 2H8.2a1.4 1.4 0 0 1-1.2-2z' fill='%23ff5fb4'/%3E%3Ccircle cx='14' cy='23' r='1.4' fill='%23fff'/%3E%3Ccircle cx='18.5' cy='21.5' r='1' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Chemistry needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/atomic-structure.js"></script>
+<script src="content/electrons-in-atoms.js"></script>
+<script src="content/periodicity.js"></script>
+<script src="content/nuclear-chemistry.js"></script>
+<script src="content/ionic-metallic.js"></script>
+<script src="content/covalent.js"></script>
+<script src="content/molecular-shape.js"></script>
+<script src="content/intermolecular.js"></script>
+<script src="content/coordination.js"></script>
+<script src="content/moles.js"></script>
+<script src="content/reactions.js"></script>
+<script src="content/solution-stoichiometry.js"></script>
+<script src="content/gases.js"></script>
+<script src="content/liquids-solids.js"></script>
+<script src="content/solutions.js"></script>
+<script src="content/thermochemistry.js"></script>
+<script src="content/chemical-thermodynamics.js"></script>
+<script src="content/rates.js"></script>
+<script src="content/mechanisms.js"></script>
+<script src="content/equilibrium-basics.js"></script>
+<script src="content/solubility-equilibria.js"></script>
+<script src="content/acid-base-theory.js"></script>
+<script src="content/buffers-titrations.js"></script>
+<script src="content/redox.js"></script>
+<script src="content/cells.js"></script>
+<script src="content/electrolysis.js"></script>
+<script src="content/organic-structure.js"></script>
+<script src="content/organic-reactions.js"></script>
+<script src="content/biomolecules.js"></script>
+<script src="content/analysis.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/atoms.js"></script>
+<script src="sims/bonding.js"></script>
+<script src="sims/stoichiometry.js"></script>
+<script src="sims/states.js"></script>
+<script src="sims/thermo-kinetics.js"></script>
+<script src="sims/equilibrium.js"></script>
+<script src="sims/acids-bases.js"></script>
+<script src="sims/electrochemistry.js"></script>
+<script src="sims/organic.js"></script>
+<script src="sims/analysis.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'chemistry' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

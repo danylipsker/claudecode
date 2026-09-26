@@ -103,6 +103,7 @@
       if (r.ok) {
         vals[target] = r.value;
         lastAll = r.all;
+        if (r.note) msg = '<span class="notemsg">' + esc(v.name.charAt(0).toUpperCase() + v.name.slice(1)) + ' is ' + esc(r.note) + '.</span>';
       } else {
         vals[target] = NaN;
         lastAll = [];

@@ -284,6 +284,8 @@
     TAU: Math.PI * 2,
     schem: H.schem,                 // circuit symbols and an oscilloscope screen (schematic.js)
     Circuit: H.Circuit,             // the circuit simulator (circuit.js)
+    chem: H.chem,                   // elements, formulas, molar mass, balancing, VSEPR (chem.js)
+    mol: H.mol,                     // 3-D molecules: view, rotator, draw, angle (molecule.js)
     eng: (v, unit) => H.schem ? H.schem.fmt(v, unit) : H.util.fmt(v) + ' ' + unit   // 4700, 'Ω' -> '4.7 kΩ'
   };
 

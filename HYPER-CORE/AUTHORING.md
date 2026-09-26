@@ -1,6 +1,6 @@
 # Writing content for the Hyper apps
 
-The Hyper apps (Hyper Physics, Hyper Math, later Hyper Electronics and Hyper Chemistry)
+The Hyper apps (Hyper Physics, Hyper Math, Hyper Electronics and Hyper Chemistry)
 are interactive study maps in the spirit of HyperPhysics: every concept is a page that
 shows where it sits in a web of ideas, explains it properly, turns each formula into a
 calculator that solves for any variable, lets you play with a simulation, and gives
@@ -13,7 +13,9 @@ other site. Write every explanation, example and question yourself; standard phy
 facts, formulas and constants are of course fine.
 
 Read `HYPER-PHYSICS/content/kinematics.js` and `HYPER-PHYSICS/sims/kinematics.js`
-first: they are the reference for depth, tone and layout.
+first: they are the reference for depth, tone and layout. Each later discipline has its
+own reference concept and simulations in `content/reference.js` and `sims/reference.js`
+(the voltage divider in Electronics, the limiting reagent and a VSEPR lab in Chemistry).
 
 ## Files
 
@@ -90,6 +92,7 @@ clash (check both outlines).
 | `$$E = mc^2$$` (own line, may span lines) | display math |
 | `[[free-fall]]`, `[[free-fall\|falling freely]]` | link to a concept (title or your words) |
 | `[[math:derivative\|derivative]]` | link into the other discipline |
+| `[the periodic table](#/tools/periodic)` | link to a view of the app (`#/tools/chemcalc`, `#/formulas`, `#/map`) |
 | `### Heading`, `#### Smaller` | headings |
 | `- item`, `1. item` | lists |
 | `> [!tip] text` — also `note`, `warn`, `key`, `fact`, `history`, `why` | coloured callout |
@@ -171,7 +174,9 @@ Anything else is reported by the validator as an unknown command.
   molarmass, concentration, numberdensity, viscosity, kinvisc, flowrate, massflow,
   wavenumber, optpower, activity, decayconst, dose, doseeq, luminousflux, illuminance,
   luminousint, stress, strain, energydensity, specificenergy, pressureGrad, hubble, gravparam,
-  gain (dB), apparentpower (VA), reactivepower (var), datarate, slewrate, thermalres (K/W, °C/W), rate.
+  gain (dB), apparentpower (VA), reactivepower (var), datarate, slewrate, thermalres (K/W, °C/W), rate,
+  molality, molarenergy, molarvolume, reactionrate, rateconst2, molarabs, henry, colligative
+  (see the Chemistry section below).
   The unit must be one of that quantity's units (see `HYPER-CORE/js/units.js`); aliases
   such as `deg`, `ohm`, `m/s^2` are accepted. A variable with a unit outside these
   (e.g. `N·m²/C²`) may give just `unit: '...'` without `q`: it is then shown fixed, in SI.
@@ -255,7 +260,7 @@ Helpers: `kit.arrow(ctx, x1, y1, x2, y2, color, width)`, `kit.label(ctx, text, x
 `kit.dot(ctx, x, y, r, color, stroke)`, `kit.grid(ctx, x0, y0, w, h, step, color)`,
 `kit.drag(st, { hit(p) → thing|null, move(thing, p), end(thing), hover: true })` for dragging with the pointer (`p = {x, y}`),
 `kit.click(st, p => {...}, p => isClickable)` for clicking things on the canvas,
-`kit.plot(el, opts, height)` → a `Hyper.Plot` (a live graph: `plot.set({ series: [{ pts: [[x, y], ...], label, dash, fill, dots, line: false }], x: {label, min, max, log}, y: {...}, marks: [{x, y, label}], vlines: [{x, label}], hlines: [{y, label}] })`),
+`kit.plot(el, opts, height)` → a `Hyper.Plot` (a live graph: `plot.set({ series: [{ pts: [[x, y], ...], label, dash, fill, dots, line: false }], x: {label, min, max, log, reverse}, y: {...}, marks: [{x, y, label}], vlines: [{x, label}], hlines: [{y, label}] })`; `reverse: true` runs the x-axis right to left, as IR spectra do),
 `ctl.show(id, false)` / `ro.show(false)` / `ro.show(key, false)` to hide controls or read-outs (for sims with modes), `st.onResize(fn)`, `st.pos(event)`, `loop.once()` (draw one frame while stopped), `loop.running`, `kit.fmt(v, sig)`.
 `Hyper.niceStep(span, n)` gives round grid spacings.
 
@@ -323,6 +328,98 @@ S.scope(ctx, x, y, w, h, { tdiv, traces: [{ pts: [[t, v], ...] | fn: t => v, vdi
 
 Symbols use the theme's text colour unless given `color`; keep live quantities (current,
 logic levels) in the accent/warn/ok colours so they stand out.
+
+### Chemistry: formulas, elements and molecules
+
+**Chemical notation** goes in `\\ce{...}` inside maths, in text, formulas, quizzes and
+examples alike: `$\\ce{2H2 + O2 -> 2H2O}$`. It follows mhchem:
+
+| Write | You get |
+|---|---|
+| `\\ce{H2SO4}`, `\\ce{Ca(OH)2}`, `\\ce{[Cu(NH3)4]^2+}` | subscripts from the digits, brackets with counts |
+| `\\ce{SO4^2-}`, `\\ce{Fe^3+}`, `\\ce{NH4+}`, `\\ce{OH-}`, `\\ce{e-}` | charges (write `Fe^3+`, not `Fe3+`, when the digit is the charge) |
+| `\\ce{2H2O}`, `\\ce{1/2 O2}` | coefficients |
+| `\\ce{NaCl(aq)}`, `\\ce{H2O(l)}`, `\\ce{CO2(g)}`, `\\ce{AgCl(s)}` | states |
+| `->`, `<-`, `<=>`, `<=>>`, `<<=>`, `<->` | reaction, equilibrium (and lying to one side), resonance arrows |
+| `\\ce{CaCO3 ->[\\Delta] CaO + CO2}`, `->[Pt][500 °C]` | text above and below an arrow |
+| `\\ce{CuSO4.5H2O}` or `\\ce{CuSO4·5H2O}` | a hydrate dot |
+| `\\ce{^{235}_{92}U}`, `\\ce{^{14}_{6}C}`, `\\ce{^{0}_{-1}e}`, `\\ce{^{A}_{Z}X}` | isotopes and particles (mass number and atomic number) |
+| `\\ce{C_xH_yO_z}`, `\\ce{(CH2)_n}` | counts written as letters |
+| `\\ce{CH3-CH3}`, `\\ce{CH2=CH2}`, `\\ce{HC#CH}` | single, double and triple bonds between atoms |
+
+Separate the species of an equation with **" + " (spaces on both sides)**, so that the
+charge sign in `Fe^3+ + e-` stays attached. In a formula's `tex` (and a variable's), wrap
+a concentration as one symbol, `\\mathrm{[\\ce{H3O+}]}`, and a p-quantity as `{\\mathrm{p}K}_a`,
+so the calculator can highlight and click it. Everything in `\\ce` is upright, as chemical
+formulas should be; for a variable such as $K_c$ or $[\\ce{H+}]$ use ordinary TeX outside
+or around `\\ce`: `K_c = \\frac{[\\ce{NH3}]^2}{[\\ce{N2}][\\ce{H2}]^3}`.
+
+**Formulas with chemistry quantities.** The quantities you will use most: `amount` (mol,
+mmol), `molarmass` (g/mol), `mass`, `volume` (L, mL), `concentration` (M = mol/L, mM, µM),
+`molality` (mol/kg), `molarenergy` (kJ/mol, J/mol, kcal/mol), `molarheat` (J/(mol·K), for
+entropy and heat capacity per mole), `molarvolume` (L/mol), `pressure` (atm, bar, kPa,
+mmHg), `temperature` (K, °C; use `dtemp` for a difference), `rate` (1/s: first-order rate
+constants), `reactionrate` (M/s), `rateconst2` (1/(M·s): second-order rate constants),
+`molarabs` (L/(mol·cm)), `henry` (M/atm), `colligative` (K·kg/mol: Kb and Kf),
+`voltage` (cell potentials), `charge`, `current`, `time`. Constants: `R`, `NA`, `F`, `kB`,
+`h`, `c`, `atm`, `T0`, `Vm`. Equilibrium constants, pH, pKa and mole fractions are pure
+numbers (no `q`).
+
+> **Concentrations inside a logarithm or an equilibrium constant must be dimensionless.**
+> The calculator evaluates every formula in SI, and the SI unit of concentration is
+> mol/m³ — so `pH = -log(H)` with `q: 'concentration', unit: 'M'` would take the log of
+> 1000 × [H⁺]. Declare such a variable without `q`, named in mol/L:
+> `H: { name: '[H⁺] (mol/L)', value: 1e-4, tex: '\\mathrm{[\\ce{H+}]}' }`. The same goes for `Kc`,
+> `Ka`, `Ksp`, `Q` and the concentrations that appear in them. Concentrations that are only
+> multiplied or divided (`n = c*V`, dilution, rate = k·[A]) should keep
+> `q: 'concentration'`, so the reader can pick units.
+
+Mark stoichiometric coefficients `int: true` (and `fixed: true` when the story names a
+particular reaction, so that practice problems keep them).
+
+**The chemistry module** (`HYPER-CORE/js/chem.js`, as `kit.chem` in simulations and
+`Hyper.chem` anywhere) knows all 118 elements and does the arithmetic of formulas:
+
+```js
+const C = kit.chem;
+C.el('Fe')              // or C.el(26): { z, sym, name, mass, group, period, block, cat, en, ie (eV), r (pm, covalent),
+                        //   ox: [common oxidation states], config: '[Ar] 3d6 4s2', color: CPK '#rrggbb', radioactive }
+C.elements              // all 118, in order;  C.bySym.Na
+C.fullConfig(11)        // '1s2 2s2 2p6 3s1'
+C.parse('Ca(OH)2')      // { atoms: { Ca: 1, O: 2, H: 2 }, charge: 0 };  C.parse('SO4^2-').charge === -2
+C.molarMass('CuSO4·5H2O')        // 249.68 (g/mol)
+C.composition('H2O')             // [{ sym, n, mass, fraction }, ...]
+C.balance('Fe + O2 -> Fe2O3')    // { ok, coefficients: [4, 3, 2], reactants, products, text: '4 Fe + 3 O2 -> 2 Fe2O3', elements }
+                                 //   ions and electrons too: 'MnO4- + Fe^2+ + H+ -> Mn^2+ + Fe^3+ + H2O'
+C.vsepr(3, 1)                    // bonding pairs, lone pairs -> { name: 'trigonal pyramidal', angle, electronGeometry, dirs, lone }
+C.molecule('H2O')                // a 3-D model: H2O NH3 CH4 CO2 BF3 SF6 PCl5 XeF4 SF4 ClF3 H2 HCl N2 O2 C2H4 C2H2 C6H6 C2H5OH
+C.fromVsepr('S', ['F','F','F','F'], 1)   // build one: central atom, ligands, lone pairs (optional bond orders)
+```
+
+Never type atomic masses or electronegativities into a simulation: read them from
+`kit.chem`, so every page agrees with the periodic table (Tools → Periodic table).
+
+**Molecules in 3-D** (`HYPER-CORE/js/molecule.js`, `kit.mol`). A molecule is
+`{ atoms: [{ el, x, y, z, label?, charge?, radius? }], bonds: [[i, j, order]], lone: [{ atom, dir: [x, y, z] }] }`
+(`radius` in ångström overrides the drawn size, e.g. for touching spheres in a unit cell)
+with coordinates in ångström; draw it on a stage and let the reader turn it:
+
+```js
+const view = kit.mol.view({ rotX: -0.4, rotY: 0.6, scale: 70 });   // scale: pixels per ångström
+kit.mol.rotator(st, view, () => loop.once());                       // drag to turn
+kit.mol.draw(ctx, mol, view, { cx: st.W / 2, cy: st.H / 2, style: 'ball' /* or 'space' */, labels: true,
+                               lone: true, highlight: [0], angle: [1, 0, 2] });   // an arc and the angle 1–0–2 in degrees
+kit.mol.angle(mol, 1, 0, 2)                                         // the bond angle, degrees
+kit.mol.project([x, y, z], view, { cx, cy })                        // a point (Å, from the drawing centre — pass
+                                                                    //   centre: [0, 0, 0] to draw) on the canvas, for arrows and labels
+```
+
+Atoms are shaded in their CPK colours and sorted by depth, bonds are drawn single, double
+or triple, lone pairs as lobes. For a flat picture (a reaction in a flask, a lattice
+seen from above, a titration beaker) draw your own circles, still coloured with
+`kit.chem.el(sym).color`. `HYPER-CHEMISTRY/sims/reference.js` shows both: particles
+reacting in a flask with bars and a graph, and a VSEPR lab whose shapes come from electron
+pairs repelling on a sphere.
 
 ## Checking your work
 

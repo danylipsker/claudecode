@@ -42,6 +42,8 @@
       t = t.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, label) => hold(link(id.trim(), label)));
       t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+|\.\.\/[^)\s]+)\)/g, (m, label, url) =>
         hold('<a class="xlink" href="' + escA(url) + '" target="_blank" rel="noopener">' + inline(label, true) + '</a>'));
+      // a view of this app: [the periodic table](#/tools/periodic)
+      t = t.replace(/\[([^\]]+)\]\((#\/[^)\s]*)\)/g, (m, label, url) => hold('<a class="xlink" href="' + escA(url) + '">' + inline(label, true) + '</a>'));
     }
     t = esc(t);
     t = t.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');

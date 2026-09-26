@@ -6,7 +6,7 @@ const path = require('path');
 const vm = require('vm');
 
 const CORE = path.join(__dirname, '..', 'js');
-const CORE_FILES = ['hyper.js', 'tex.js', 'expr.js', 'units.js', 'text.js', 'formula.js'];
+const CORE_FILES = ['hyper.js', 'tex.js', 'expr.js', 'units.js', 'text.js', 'formula.js', 'chem.js'];
 
 function makeContext() {
   const ctx = { console, Math, JSON, Date, Map, Set, Number, String, Array, Object, Error, RegExp, isFinite, parseFloat, parseInt };

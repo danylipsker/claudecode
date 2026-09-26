@@ -269,9 +269,11 @@
       if (!sub && !sup) { if (base.k == null && base.src != null && !base.fn && !base.movable) base.k = norm(base.src); return base; }
       const end = this.peek() ? this.peek().p : this.src.length;
       const src = this.src.slice(t0.p, end);
-      // x′ is its own symbol, distinct from x; x² is still x
-      const key = base.src == null ? null : (sub ? norm(base.src + '_' + sub.src) : norm(base.src)) + '\''.repeat(primes);
-      const k = (sub || primes) && key != null ? ' data-k="' + escA(key) + '"' : '';
+      // x′ is its own symbol, distinct from x, and so are E° (standard), E‡ and x*; x² is still x
+      const dm = sup && sup.src != null && /^\{?\s*(?:\\(circ|ominus|standardstate|ddagger|dagger|ast|star)|(\*))\s*\}?$/.exec(sup.src);
+      const decor = dm ? ({ circ: '°', ominus: '°', standardstate: '°', ddagger: '‡', dagger: '†', ast: '*', star: '*' })[dm[1]] || '*' : '';
+      const key = base.src == null ? null : (sub ? norm(base.src + '_' + sub.src) : norm(base.src)) + '\''.repeat(primes) + decor;
+      const k = (sub || primes || decor) && key != null ? ' data-k="' + escA(key) + '"' : '';
       const over = base.limits === true || (base.limits !== false && base.movable);
       let m;
       if (over) {
@@ -306,6 +308,8 @@
       }
       const a = this.atom(st);
       if (!a) this.err('Missing argument', t);
+      // an operator as a script (z_+, x^*) still has a source, so the symbol gets a proper key
+      if (a.src == null) a.src = this.src.slice(t.p, this.peek() ? this.peek().p : this.src.length).trim();
       return a;
     }
 
@@ -616,26 +620,133 @@
       this.err('Unknown environment ' + name, t);
     }
 
-    /* \ce{2H2 + O2 -> 2H2O}, \ce{Fe^3+}, \ce{SO4^2-} : enough for reactions and ions */
+    /* Chemical notation, in the spirit of mhchem:
+         \ce{2H2 + O2 -> 2H2O}   \ce{SO4^2-}  \ce{Fe^{3+}}  \ce{NH4+}  \ce{Fe3+}  \ce{CuSO4.5H2O}
+         \ce{NaCl(aq)}  \ce{N2 + 3H2 <=> 2NH3}  \ce{CaCO3 ->[\Delta] CaO + CO2}  \ce{->[above][below]}
+         \ce{^{235}_{92}U}  \ce{Cu^2+ + 2e- -> Cu}  \ce{[Cu(NH3)4]^2+}
+       Species are separated by spaces; a "+" between spaces is the plus of the equation. */
     chem(raw) {
-      let h = '';
-      const s = raw.replace(/<->|<=>/g, '⇌').replace(/->/g, '→').replace(/<-/g, '←');
-      const parts = s.match(/⇌|→|←|\+(?=\s)|\s+|[A-Z][a-z]?|\(|\)|\[|\]|\^[0-9]*[+-]?|[0-9]+|[a-z]+|./g) || [];
-      let prevElem = false;
-      for (let i = 0; i < parts.length; i++) {
-        const p = parts[i];
-        if (/^\s+$/.test(p)) { prevElem = false; continue; }
-        if (p === '→' || p === '⇌' || p === '←') { h += '<mo lspace="0.35em" rspace="0.35em">' + p + '</mo>'; prevElem = false; continue; }
-        if (p === '+' && !prevElem) { h += '<mo>+</mo>'; continue; }
-        if (/^\^/.test(p)) { h += '<msup><mrow></mrow><mn>' + esc(p.slice(1).replace('-', '−')) + '</mn></msup>'; continue; }
-        if (/^[0-9]+$/.test(p)) { h += prevElem ? '<msub><mrow></mrow><mn>' + p + '</mn></msub>' : '<mn>' + p + '</mn>'; continue; }
-        if (/^[A-Z][a-z]?$/.test(p)) { h += '<mi mathvariant="normal">' + p + '</mi>'; prevElem = true; continue; }
-        if (p === ')' || p === ']') { h += '<mo stretchy="false">' + p + '</mo>'; prevElem = true; continue; }
-        if (p === '(' || p === '[') { h += '<mo stretchy="false">' + p + '</mo>'; prevElem = false; continue; }
-        if (p === '+' || p === '-') { h += '<mo>' + (p === '-' ? '−' : '+') + '</mo>'; prevElem = false; continue; }
-        h += '<mi mathvariant="normal">' + esc(p) + '</mi>'; prevElem = false;
+      const ARROWS = [['<=>>', '⇌'], ['<<=>', '⇌'], ['<=>', '⇌'], ['<->', '↔'], ['->', '→'], ['<-', '←']];
+      let h = '', i = 0;
+      const s = raw;
+      const cond = txt => {
+        if (!txt) return '';
+        if (/[\\^_$]/.test(txt)) { try { const p = new Parser(txt.replace(/\$/g, ''), false); return mrow(p.seq(() => false, {})) || ''; } catch (e) { /* fall through */ } }
+        return '<mtext>' + esc(txt) + '</mtext>';
+      };
+      while (i < s.length) {
+        if (/\s/.test(s[i])) { i++; continue; }
+        const ar = ARROWS.find(a => s.startsWith(a[0], i));
+        if (ar) {
+          i += ar[0].length;
+          const brackets = [];
+          while (s[i] === '[') {
+            let depth = 0, j = i;
+            for (; j < s.length; j++) { if (s[j] === '[') depth++; else if (s[j] === ']' && --depth === 0) break; }
+            brackets.push(s.slice(i + 1, j));
+            i = j + 1;
+          }
+          const mo = '<mo stretchy="true" lspace="0.4em" rspace="0.4em" minsize="2.2em">' + ar[1] + '</mo>';
+          const over = brackets[0] ? '<mstyle scriptlevel="1">' + cond(brackets[0]) + '</mstyle>' : '';
+          const under = brackets[1] ? '<mstyle scriptlevel="1">' + cond(brackets[1]) + '</mstyle>' : '';
+          h += under ? '<munderover>' + mo + under + (over || '<mrow></mrow>') + '</munderover>' : over ? '<mover>' + mo + over + '</mover>' : mo;
+          continue;
+        }
+        // the + of the equation: a lone plus with spaces around it
+        if (s[i] === '+' && (i === 0 || /\s/.test(s[i - 1])) && (i + 1 >= s.length || /\s/.test(s[i + 1]))) { h += '<mo lspace="0.3em" rspace="0.3em">+</mo>'; i++; continue; }
+        let j = i;
+        while (j < s.length && !/\s/.test(s[j]) && !ARROWS.some(a => s.startsWith(a[0], j))) j++;
+        h += this.species(s.slice(i, j));
+        i = j;
       }
       return { m: '<mrow class="tx-ce">' + h + '</mrow>' };
+    }
+
+    /* one species: coefficient, isotope, formula with subscripts, hydrate dots, charge, state */
+    species(tok) {
+      const N = x => '<mi mathvariant="normal">' + esc(x) + '</mi>';
+      const num = x => '<mn>' + esc(x) + '</mn>';
+      const chargeM = c => '<mrow><mn>' + esc(c.replace(/^([+-])$/, '$1').replace(/-/g, '−')) + '</mn></mrow>';
+      let h = '', t = tok;
+      // electron
+      if (/^e(\^?-|\^\{-\})$/.test(t)) return '<msup>' + N('e') + '<mo>−</mo></msup>';
+      // coefficient (before a capital letter, a bracket, an isotope or an electron)
+      let m = /^(\d+\/\d+|\d*\.\d+|\d+)(?=[A-Z(\[^]|e[-^])/.exec(t);
+      if (m) { h += num(m[1]) + '<mspace width="0.1667em"></mspace>'; t = t.slice(m[1].length); }
+      if (/^e(\^?-|\^\{-\})$/.test(t)) return h + '<msup>' + N('e') + '<mo>−</mo></msup>';
+      // state at the end
+      let state = '';
+      m = /\((aq|s|l|g|cr|sln)\)$/.exec(t);
+      if (m) { state = '<mtext>(' + m[1] + ')</mtext>'; t = t.slice(0, m.index); }
+      // charge at the end
+      let charge = '';
+      m = /\^\{([^}]*)\}$/.exec(t) || /\^(\d*[+-]+|\d+)$/.exec(t);
+      if (m) { charge = m[1]; t = t.slice(0, m.index); }
+      else {
+        m = /([+-]+)$/.exec(t);
+        if (m && t.length > m[1].length) {
+          charge = m[1].length > 1 ? m[1].length + m[1][0] : m[1];
+          t = t.slice(0, m.index);
+          const single = /^([A-Z][a-z]?)(\d+)$/.exec(t);                 // Fe3+ : the digits are the charge
+          if (single && m[1].length === 1) { charge = single[2] + m[1]; t = single[1]; }
+        }
+      }
+      if (charge && /^\d+$/.test(charge)) charge = charge + '+';          // ^2 alone reads as 2+
+      // isotope prefix ^{A}_{Z} / ^A_Z / ^A
+      let pre = null;
+      m = /^\^\{?(\d+|[A-Za-z])\}?(?:_\{?([+-]?\d+|[A-Za-z])\}?)?/.exec(t);   // ^{0}_{-1}e, a beta particle; ^{A}_{Z}X, the notation itself
+      if (m) { pre = { A: m[1], Z: m[2] }; t = t.slice(m[0].length); }
+      // the formula: elements, brackets and counts; dots for hydrates
+      const items = [];
+      let k = 0;
+      while (k < t.length) {
+        const c = t[k];
+        if (/[A-Z]/.test(c)) { let sym = c; k++; if (k < t.length && /[a-z]/.test(t[k])) { sym += t[k]; k++; } items.push({ m: N(sym), sub: true }); }
+        else if (/[a-z]/.test(c)) { let w = ''; while (k < t.length && /[a-z]/.test(t[k])) w += t[k++]; items.push({ m: N(w), sub: false }); }
+        else if (/\d/.test(c)) {
+          // a count after an element is whole (CuSO4.5H2O is a hydrate); a free number may have a decimal point
+          const last = items[items.length - 1];
+          const count = last && last.sub && !last.done;
+          let d = ''; while (k < t.length && (/\d/.test(t[k]) || (!count && t[k] === '.' && /\d/.test(t[k + 1] || '')))) d += t[k++];
+          if (count) { last.m = '<msub>' + last.m + num(d) + '</msub>'; last.done = true; }
+          else items.push({ m: num(d), sub: false, coef: true });
+        } else if (c === '(' || c === '[' || c === '{') { items.push({ m: '<mo stretchy="false">' + c + '</mo>', sub: false, open: true }); k++; }
+        else if (c === ')' || c === ']' || c === '}') {
+          // the count after a bracket subscripts the whole group
+          k++;
+          let d = ''; while (k < t.length && /\d/.test(t[k])) d += t[k++];
+          const close = '<mo stretchy="false">' + c + '</mo>';
+          if (d) items.push({ m: '<msub>' + close + num(d) + '</msub>', sub: false, done: true });
+          else items.push({ m: close, sub: true });
+        } else if (c === '.' || c === '*' || c === '·' || c === '•') { items.push({ m: '<mo lspace="0.1em" rspace="0.1em">·</mo>', sub: false }); k++; }
+        else if (c === '\\') {
+          // a TeX command inside a species (e.g. \alpha)
+          let w = '\\'; k++; while (k < t.length && /[A-Za-z]/.test(t[k])) w += t[k++];
+          try { const p = new Parser(w, false); items.push({ m: mrow(p.seq(() => false, {})) || '', sub: false }); } catch (e) { items.push({ m: N(w), sub: false }); }
+        } else if (c === '_' && items.length && k + 1 < t.length) {
+          // a letter count: C_xH_yO_z, (CH2)_n
+          k++;
+          let d = '';
+          if (t[k] === '{') { const e = t.indexOf('}', k); d = t.slice(k + 1, e < 0 ? t.length : e); k = e < 0 ? t.length : e + 1; } else d = t[k++];
+          const last = items[items.length - 1];
+          const sm = /^[\d.]+$/.test(d) ? num(d) : '<mi>' + esc(d) + '</mi>';
+          if (!last.done) { last.m = '<msub>' + last.m + sm + '</msub>'; last.done = true; } else items.push({ m: '<msub><mrow></mrow>' + sm + '</msub>', sub: false });
+        } else if ((c === '-' || c === '=' || c === '#') && items.length && k + 1 < t.length) {
+          // a bond drawn between atoms: CH3-CH3, CH2=CH2, HC#CH
+          items.push({ m: '<mo lspace="0.05em" rspace="0.05em">' + ({ '-': '−', '=': '=', '#': '≡' })[c] + '</mo>', sub: false }); k++;
+        } else { items.push({ m: '<mo>' + esc(c) + '</mo>', sub: false }); k++; }
+      }
+      if (pre && items.length) {
+        const pv = x => /^[A-Za-z]$/.test(x) ? '<mi>' + x + '</mi>' : num(x.replace('-', '−'));
+        items[0].m = '<mmultiscripts>' + items[0].m + '<mprescripts></mprescripts>' + (pre.Z ? pv(pre.Z) : '<mrow></mrow>') + pv(pre.A) + '</mmultiscripts>';
+      }
+      if (charge && items.length) {
+        const last = items[items.length - 1];
+        const cm = chargeM(charge);
+        const sm = /^<msub>([\s\S]*)<\/msub>$/.exec(last.m);
+        last.m = sm ? '<msubsup>' + sm[1] + cm + '</msubsup>' : '<msup>' + last.m + cm + '</msup>';
+      }
+      return h + items.map(x => x.m).join('') + state;
     }
   }
 

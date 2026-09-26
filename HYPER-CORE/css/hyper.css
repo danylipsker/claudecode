@@ -366,6 +366,7 @@ button.chip.on { background: var(--accent-bg); color: var(--accent); border-colo
 .fres .rearr { color: var(--text2); }
 .fres .rearr math { font-size: 1.05em; }
 .fres .warnmsg { color: var(--bad); }
+.fres .notemsg { color: var(--warn); }
 .fres .alt { color: var(--accent); cursor: pointer; border-bottom: 1px dashed; }
 .fgraph { border-top: 1px solid var(--border); padding: 10px 14px 14px; background: var(--surface); }
 .fgraph .gctl { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13.5px; color: var(--muted); margin-bottom: 6px; }
@@ -410,7 +411,7 @@ button.chip.on { background: var(--accent-bg); color: var(--accent); border-colo
 .btn[disabled] { opacity: .45; pointer-events: none; }
 .readout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 4px 10px; line-height: 1.35; font-size: 13px; background: var(--surface2); border-radius: 8px; padding: 8px 10px; }
 .readout span:nth-child(odd) { color: var(--muted); }
-.readout span:nth-child(even) { font-family: var(--font-mono); text-align: right; color: var(--text); font-size: 12.5px; }
+.readout span:nth-child(even) { font-family: var(--font-mono); text-align: right; color: var(--text); font-size: 12.5px; overflow-wrap: anywhere; }
 
 /* ---------- worked examples & derivations */
 .excard { padding: 16px 18px; margin: 0 0 14px; }
@@ -618,6 +619,26 @@ textarea.notes:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--
 .h2 { font: 650 22px/1.3 var(--font-display); margin: 30px 0 12px; }
 .h3 { font: 650 17px/1.3 var(--font-display); margin: 22px 0 10px; }
 
+/* periodic table */
+.ptwrap { overflow-x: auto; padding-bottom: 6px; }
+.ptable { display: grid; grid-template-columns: repeat(18, minmax(42px, 1fr)); grid-template-rows: repeat(7, auto) 12px repeat(2, auto); gap: 3px; min-width: 780px; }
+.pel { position: relative; aspect-ratio: 1 / 1.08; border: 1px solid var(--border2); border-radius: 6px; padding: 2px 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text); line-height: 1.05; transition: transform .08s, box-shadow .12s; min-width: 0; }
+.pel:hover { transform: scale(1.12); z-index: 2; box-shadow: var(--shadow); border-color: var(--text2); }
+.pel.on { outline: 2.5px solid var(--accent); outline-offset: 1px; z-index: 1; }
+.pel.dim { opacity: .22; }
+.pel .pz { position: absolute; top: 2px; left: 4px; font-size: 9.5px; color: var(--text2); }
+.pel .ps { font: 700 17px var(--font-display); }
+.pel .pm { font-size: 9px; color: var(--text2); overflow: hidden; max-width: 100%; white-space: nowrap; }
+.pgap { font-size: 10px; color: var(--muted); display: grid; place-items: center; border: 1px dashed var(--border2); border-radius: 6px; }
+.plegend { margin: 8px 0; display: flex; gap: 5px; flex-wrap: wrap; align-items: center; color: var(--muted); }
+.plegend .chip { color: var(--text); border-color: transparent; }
+.cfg { font-family: var(--font-display); font-size: 1.08em; word-spacing: .12em; }
+.cfg sup { font-size: .7em; }
+.pbig { position: relative; width: 108px; height: 116px; border-radius: 12px; border: 1px solid var(--border2); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.pbig .pz { position: absolute; top: 6px; left: 9px; font-size: 13px; color: var(--text2); }
+.pbig .ps { font: 800 42px var(--font-display); }
+.pbig .pm { font-size: 12px; color: var(--text2); }
+
 /* timeline for learning paths */
 .tline { list-style: none; margin: 0; padding: 0; position: relative; }
 .tline::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--border2); }
@@ -699,3 +720,7 @@ dialog.modal h2 { margin: 0 0 14px; font: 650 20px var(--font-display); }
   .card { box-shadow: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* molar mass and balancing tool */
+.chemcalc .ftable { font-size: 13.5px; }
+.chemcalc .ftable td, .chemcalc .ftable th { white-space: nowrap; padding-left: 6px; padding-right: 6px; }

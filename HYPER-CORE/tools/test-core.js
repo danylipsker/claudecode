@@ -120,6 +120,10 @@ ok(f.solutionSteps(p).length >= 3, 'solution steps');
 const q = new H.Formula({ name: 'quad', expr: 'a*x^2 + b*x + c = 0', vars: { a: { value: 1 }, b: { value: -3 }, c: { value: 2 }, x: { signed: true } }, solveFor: 'x' });
 const qs = q.solve('x', Object.assign(q.defaults(), { x: 0 }));
 ok(qs.ok && qs.all.length === 2, 'quadratic has two roots ' + JSON.stringify(qs.all));
+// a whole-number unknown from measured values: the value, and the nearest whole number
+const cnt = new H.Formula({ name: 'count', expr: 'N = m/m1', vars: { N: { int: true }, m: { value: 10.3 }, m1: { value: 1 } }, solveFor: 'N' });
+const cs = cnt.solve('N', cnt.defaults());
+ok(cs.ok && Math.abs(cs.value - 10.3) < 1e-9 && /nearest is 10/.test(cs.note || ''), 'non-integer count reported with the nearest whole number');
 const bad = new H.Formula({ name: 'bad', expr: 'y = m*x + c2', vars: { y: {}, m: {}, x: {} } });
 ok(bad.errors.length === 1, 'undeclared variable reported');
 
@@ -131,6 +135,12 @@ H.build();
 const html = H.text('A **bold** $x^2$ link [[force]] and [[math:derivative|slope]].\n\n- one\n- two\n\n$$E = mc^2$$\n\n> [!tip] Remember\n\n| a | b |\n|---|---|\n| 1 | 2 |');
 ok(html.includes('<strong>bold</strong>') && html.includes('<math') && html.includes('href="#/c/force"') && html.includes('../HYPER-MATH/index.html#/c/derivative'), 'text render');
 ok(html.includes('<ul>') && html.includes('mathblock') && html.includes('callout co-tip') && html.includes('<table'), 'text blocks');
+ok(H.text('[the periodic table](#/tools/periodic)').includes('href="#/tools/periodic"'), 'link to a view');
+
+// symbols that are different quantities get different keys; a power does not make a new symbol
+const keysOf = list => list.map(t => H.texKey(t));
+ok(new Set(keysOf(['E', 'E^\\circ', 'z_+', 'z_-', 'P_A', 'P_A^*', "x'", 'k^\\ddagger'])).size === 8, 'distinct symbol keys (° * ‡ charges primes)');
+ok(H.texKey('x^2') === 'x' && H.texKey('E^{\\circ}') === H.texKey('E^\\circ') && H.texKey('z_{+}') === H.texKey('z_+'), 'equivalent spellings share a key');
 
 console.log(pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

@@ -1,7 +1,8 @@
 /* HYPER-CORE · ui/views.js
  *
  *   #/formulas    every formula on one sheet, filterable, each one opening as a calculator
- *   #/tools       constants · unit converter · calculator · symbol glossary
+ *   #/tools       constants · unit converter · calculator · periodic table · symbol glossary
+ *                 (the chemistry app adds molar mass and equation balancing)
  *   #/progress    what you have explored and mastered; bookmarks; export and reset
  *   #/path/<id>   the prerequisites of a concept in the order to learn them
  */
@@ -69,13 +70,136 @@
   /* ================================================================ tools */
   H.views.tools = function (parts, params) {
     ui.setTitle('Tools');
-    const tab = parts[0] || 'plot';
-    const tabs = [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['symbols', 'Symbols'], ['az', 'Index A–Z']];
+    const chemApp = H.discipline && H.discipline.id === 'chemistry';
+    const tab = parts[0] || (chemApp ? 'periodic' : 'plot');
+    const tabs = [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
+      .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
+      .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
     const page = ui.page('<h1 class="h2" style="margin-top:6px;font-size:30px">Tools</h1><nav class="tabs">' +
       tabs.map(([k, t]) => '<a href="#/tools/' + k + '" class="' + (k === tab ? 'on' : '') + '">' + t + '</a>').join('') + '</nav><div class="tbody"></div>', 'wide');
     const el = ui.$('.tbody', page);
-    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az }[tab] || plotter)(el, params);
+    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc }[tab] || plotter)(el, params);
   };
+
+  /* ---------------------------------------------------------------- periodic table */
+  const CAT_HUE = { 'alkali': 5, 'alkaline-earth': 30, 'transition': 205, 'post-transition': 170, 'metalloid': 95, 'nonmetal': 55, 'halogen': 135, 'noble': 270, 'lanthanide': 320, 'actinide': 345 };
+  const CAT_NAME = { 'alkali': 'Alkali metal', 'alkaline-earth': 'Alkaline-earth metal', 'transition': 'Transition metal', 'post-transition': 'Post-transition metal', 'metalloid': 'Metalloid',
+    'nonmetal': 'Reactive non-metal', 'halogen': 'Halogen', 'noble': 'Noble gas', 'lanthanide': 'Lanthanide', 'actinide': 'Actinide' };
+  // "[Ar] 3d6 4s2" -> [Ar] 3d⁶ 4s², as text that can wrap
+  const cfgTex = s => '<span class="cfg">' + s.split(' ').map(t => t.replace(/^(\d)([spdf])(\d+)$/, '$1$2<sup>$3</sup>')).join(' ') + '</span>';
+  const PROPS = { cat: 'Category', block: 'Block', en: 'Electronegativity (Pauling)', ie: 'First ionisation energy (eV)', r: 'Covalent radius (pm)', mass: 'Atomic mass (u)' };
+  function periodic(el, params) {
+    const C = H.chem;
+    if (!C) { el.innerHTML = '<p class="muted">The chemistry module is not loaded.</p>'; return; }
+    const st = { by: (params && params.get('by')) || 'cat', sel: +((params && params.get('z')) || 26), q: '' };
+    // row and column of each element in the usual 18-column layout, f-block below
+    const place = e => {
+      if (e.z >= 57 && e.z <= 71) return [9, e.z - 57 + 3];
+      if (e.z >= 89 && e.z <= 103) return [10, e.z - 89 + 3];
+      return [e.period, e.group];
+    };
+    el.innerHTML = '<div class="toolbar"><label class="small muted">Colour by</label><select class="inp pby">' + Object.entries(PROPS).map(([k, t]) => '<option value="' + k + '"' + (k === st.by ? ' selected' : '') + '>' + t + '</option>').join('') + '</select>' +
+      '<input type="search" class="inp pq" placeholder="Find an element: name, symbol or number" style="flex:1;min-width:180px"></div>' +
+      '<div class="ptwrap"><div class="ptable"></div></div><div class="plegend small"></div><div class="pdetail boxy mt"></div>';
+    const grid = ui.$('.ptable', el), legend = ui.$('.plegend', el), detail = ui.$('.pdetail', el);
+    const vals = k => C.elements.map(e => e[k]).filter(v => v != null);
+    const colour = e => {
+      if (st.by === 'cat') return 'hsl(' + CAT_HUE[e.cat] + ' 65% ' + (ui.colors().dark ? '38%' : '80%') + ')';
+      if (st.by === 'block') return 'hsl(' + ({ s: 5, p: 45, d: 205, f: 320 })[e.block] + ' 60% ' + (ui.colors().dark ? '38%' : '80%') + ')';
+      const v = e[st.by];
+      if (v == null) return 'transparent';
+      const vs = vals(st.by), lo = Math.min(...vs), hi = Math.max(...vs);
+      const f = (v - lo) / (hi - lo || 1);
+      return 'hsl(' + (230 - 230 * f) + ' 70% ' + (ui.colors().dark ? 36 + 12 * f : 82 - 22 * f) + '%)';
+    };
+    const draw = () => {
+      const q = st.q.trim().toLowerCase();
+      grid.innerHTML = C.elements.map(e => {
+        const [r, c] = place(e);
+        const hit = q && (e.name.toLowerCase().includes(q) || e.sym.toLowerCase() === q || String(e.z) === q);
+        const dim = q && !hit;
+        const val = st.by !== 'cat' && st.by !== 'block' && e[st.by] != null ? (st.by === 'mass' ? (e.radioactive ? '[' + e.mass + ']' : e.mass.toFixed(e.mass < 100 ? 2 : 1)) : e[st.by]) : (e.radioactive ? '[' + e.mass + ']' : Number(e.mass.toPrecision(4)));
+        return '<button class="pel' + (e.z === st.sel ? ' on' : '') + (dim ? ' dim' : '') + '" data-z="' + e.z + '" style="grid-row:' + r + ';grid-column:' + c + ';background:' + colour(e) + '" title="' + esc(e.name) + '">' +
+          '<span class="pz">' + e.z + '</span><span class="ps">' + e.sym + '</span><span class="pm">' + val + '</span></button>';
+      }).join('') + '<div class="pgap" style="grid-row:6;grid-column:3">57–71</div><div class="pgap" style="grid-row:7;grid-column:3">89–103</div>';
+      if (st.by === 'cat') legend.innerHTML = Object.entries(CAT_NAME).map(([k, t]) => '<span class="chip" style="background:hsl(' + CAT_HUE[k] + ' 65% ' + (ui.colors().dark ? '38%' : '80%') + ')">' + t + '</span>').join(' ');
+      else if (st.by === 'block') legend.innerHTML = 's p d f blocks: the orbital being filled';
+      else { const vs = vals(st.by); legend.innerHTML = PROPS[st.by] + ': from <b>' + Math.min(...vs) + '</b> (blue) to <b>' + Math.max(...vs) + '</b> (red); blank where not measured.'; }
+      show(st.sel);
+    };
+    const show = z => {
+      const e = C.el(z);
+      if (!e) return;
+      // the chemistry pages about the table, in this app or in Hyper Chemistry
+      const links = ['periodic-table', 'electron-configuration', 'periodic-trends', 'electronegativity', 'ionization-energy']
+        .map(id => (H.discipline && H.discipline.id === 'chemistry' ? '' : 'chemistry:') + id)
+        .filter(ref => H.exists(ref)).map(ref => '<a class="chip" href="' + esc(H.href(ref)) + '">' + esc(H.titleOf(ref)) + '</a>').join(' ');
+      detail.innerHTML = '<div class="row" style="gap:18px;align-items:flex-start;flex-wrap:wrap">' +
+        '<div class="pbig" style="background:' + colour(e) + '"><span class="pz">' + e.z + '</span><span class="ps">' + e.sym + '</span><span class="pm">' + (e.radioactive ? '[' + e.mass + ']' : e.mass) + '</span></div>' +
+        '<div style="flex:1;min-width:240px"><h3 style="margin:0 0 4px;font:650 22px var(--font-display)">' + esc(e.name) + '</h3>' +
+        '<div class="muted small">' + CAT_NAME[e.cat] + ' · group ' + e.group + (e.z >= 57 && e.z <= 71 || e.z >= 89 && e.z <= 103 ? ' (f-block)' : '') + ' · period ' + e.period + ' · ' + e.block + '-block' + (e.radioactive ? ' · radioactive' : '') + (e.z > 103 ? ' · synthetic, properties predicted' : '') + '</div>' +
+        '<table class="ftable mt" style="max-width:560px"><tbody>' +
+        '<tr><td>Electron configuration</td><td>' + cfgTex(e.config) + '</td></tr>' +
+        '<tr><td>Written out</td><td class="small">' + cfgTex(C.fullConfig(e.z)) + '</td></tr>' +
+        '<tr><td>Atomic mass</td><td>' + (e.radioactive ? e.mass + ' (mass number of the longest-lived isotope)' : e.mass + ' u · molar mass ' + e.mass + ' g/mol') + '</td></tr>' +
+        '<tr><td>Electronegativity</td><td>' + (e.en != null ? e.en + ' (Pauling)' : '—') + '</td></tr>' +
+        '<tr><td>First ionisation energy</td><td>' + (e.ie != null ? e.ie + ' eV = ' + Math.round(e.ie * 96.485) + ' kJ/mol' : '—') + '</td></tr>' +
+        '<tr><td>Covalent radius</td><td>' + (e.r != null ? e.r + ' pm' : '—') + '</td></tr>' +
+        '<tr><td>Common oxidation states</td><td>' + (e.ox.length ? e.ox.map(o => (o > 0 ? '+' : '') + o).join(', ') : '—') + '</td></tr>' +
+        '</tbody></table>' + (links ? '<div class="row mt">' + links + '</div>' : '') + '</div></div>';
+    };
+    grid.addEventListener('click', ev => { const b = ev.target.closest('[data-z]'); if (b) { st.sel = +b.dataset.z; ui.$$('.pel.on', grid).forEach(x => x.classList.remove('on')); b.classList.add('on'); show(st.sel); detail.scrollIntoView({ block: 'nearest' }); } });
+    ui.$('.pby', el).onchange = e => { st.by = e.target.value; draw(); };
+    ui.$('.pq', el).oninput = e => {
+      st.q = e.target.value; draw();
+      const q = st.q.trim().toLowerCase();
+      const m = q && C.elements.find(x => x.sym.toLowerCase() === q || x.name.toLowerCase().startsWith(q) || String(x.z) === q);
+      if (m) { st.sel = m.z; show(m.z); }
+    };
+    draw();
+    document.addEventListener('hyper:theme', draw);
+    ui.onLeave(() => document.removeEventListener('hyper:theme', draw));
+  }
+
+  /* ---------------------------------------------------------------- molar mass and balancing */
+  function chemcalc(el) {
+    const C = H.chem;
+    el.innerHTML = '<div class="cols2 chemcalc" style="margin-top:0;align-items:start">' +
+      '<div class="boxy"><h3>Molar mass</h3><input class="inp cf" style="width:100%;font-family:var(--font-mono);font-size:16px;height:40px" value="CuSO4·5H2O" spellcheck="false" placeholder="a formula, e.g. Ca(OH)2">' +
+      '<div class="cout mt"></div><div class="row mt small"><span>Mass</span><input class="inp cm" style="width:110px" value="10"><span>g =</span><b class="cn"></b><span>mol</span></div>' +
+      '<p class="small faint mt">Brackets, hydrates (· or .) and charges (SO4^2-) are understood. Radioactive elements use the mass number of their longest-lived isotope.</p></div>' +
+      '<div class="boxy"><h3>Balance an equation</h3><input class="inp ce2" style="width:100%;font-family:var(--font-mono);font-size:16px;height:40px" value="C3H8 + O2 -> CO2 + H2O" spellcheck="false">' +
+      '<div class="bout mt"></div><p class="small faint mt">Separate species with " + " and the sides with "->". Ions need their charges (Fe^3+, MnO4-) and electrons are written e-. Coefficients you type are ignored.</p></div></div>';
+    const cf = ui.$('.cf', el), cout = ui.$('.cout', el), cm = ui.$('.cm', el), cn = ui.$('.cn', el), ce = ui.$('.ce2', el), bout = ui.$('.bout', el);
+    let M = NaN;
+    const mm = () => {
+      try {
+        const f = cf.value.trim();
+        if (!f) { cout.innerHTML = ''; return; }
+        M = C.molarMass(f);
+        const comp = C.composition(f);
+        cout.innerHTML = '<div style="font-size:1.3em">' + H.texSafe('\\ce{' + f.replace(/\s+/g, '') + '}', false) + ' &nbsp; <b>' + U.fmt(M, 6) + ' g/mol</b></div>' +
+          '<table class="ftable mt"><thead><tr><th>Element</th><th style="text-align:right">Atoms</th><th style="text-align:right">Mass (g/mol)</th><th style="text-align:right">By mass</th></tr></thead><tbody>' +
+          comp.map(c => '<tr><td>' + c.sym + ' <span class="faint small">' + esc(C.el(c.sym).name) + '</span></td><td class="num">' + c.n + '</td><td class="num">' + U.fmt(c.mass, 6) + '</td><td class="num">' + (100 * c.fraction).toFixed(2) + ' %</td></tr>').join('') + '</tbody></table>';
+      } catch (e) { M = NaN; cout.innerHTML = '<span style="color:var(--bad)">' + esc(e.message) + '</span>'; }
+      const g = parseFloat(cm.value);
+      cn.textContent = Number.isFinite(M) && Number.isFinite(g) ? U.fmt(g / M, 5) : '—';
+    };
+    const bal = () => {
+      const s = ce.value.trim();
+      if (!s) { bout.innerHTML = ''; return; }
+      const r = C.balance(s);
+      if (!r.ok) { bout.innerHTML = '<span style="color:var(--bad)">' + esc(r.error) + '</span>'; return; }
+      const count = (list, off) => { const t = {}; list.forEach((sp, i) => { const p = C.parse(sp); for (const [k, v] of Object.entries(p.atoms)) t[k] = (t[k] || 0) + v * r.coefficients[i + off]; t._q = (t._q || 0) + p.charge * r.coefficients[i + off]; }); return t; };
+      const L = count(r.reactants, 0), R = count(r.products, r.reactants.length);
+      bout.innerHTML = '<div style="font-size:1.12em;overflow-x:auto;padding-bottom:4px">' + H.texSafe('\\ce{' + r.text + '}', false) + '</div>' +
+        '<table class="ftable mt"><thead><tr><th>Element</th><th style="text-align:right">Left</th><th style="text-align:right">Right</th></tr></thead><tbody>' +
+        r.elements.map(k => '<tr><td>' + k + '</td><td class="num">' + L[k] + '</td><td class="num">' + R[k] + '</td></tr>').join('') +
+        (L._q || R._q ? '<tr><td>charge</td><td class="num">' + L._q + '</td><td class="num">' + R._q + '</td></tr>' : '') + '</tbody></table>';
+    };
+    cf.oninput = mm; cm.oninput = mm; ce.oninput = bal;
+    mm(); bal();
+  }
 
   /* ---------------------------------------------------------------- function plotter */
   const GREEKN = ['alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'rho', 'sigma', 'tau', 'phi', 'chi', 'psi', 'omega'];

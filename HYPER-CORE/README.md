@@ -1,7 +1,7 @@
 # HYPER-CORE — the engine behind the Hyper apps
 
-Hyper Physics, Hyper Math, Hyper Electronics — and later Hyper Chemistry — are one
-engine with different content. This folder is the engine: the concept graph, a TeX to
+Hyper Physics, Hyper Math, Hyper Electronics and Hyper Chemistry are one engine with
+different content. This folder is the engine: the concept graph, a TeX to
 MathML renderer, an expression engine that solves any formula for any variable, units
 and constants, the calculators, concept maps, simulations kit, practice and progress.
 
@@ -22,19 +22,21 @@ only its content.
 | File | What it does |
 |---|---|
 | `js/hyper.js` | Namespace, registry (`Hyper.add`, `Hyper.sim`, `Hyper.catalog`), the graph (children, "leads to", branches, reading order, learning paths), utilities |
-| `js/tex.js` | TeX subset → MathML, drawn natively by the browser. Every symbol carries `data-k` so formulas can be highlighted and clicked |
+| `js/tex.js` | TeX subset → MathML, drawn natively by the browser. Every symbol carries `data-k` so formulas can be highlighted and clicked. `\ce{...}` renders chemical formulas and equations (mhchem-like: charges, states, isotopes, hydrates, arrows with conditions) |
 | `js/expr.js` | Expression parser (implicit multiplication, functions), compiler, symbolic isolation of a variable, TeX output, numeric root finder, answer equivalence |
-| `js/units.js` | 90 quantities with their units (SI plus common alternatives) and 45 physical constants |
-| `js/text.js` | The content's Markdown dialect: inline/display math, `[[concept]]` links, callouts, tables |
+| `js/units.js` | 100 quantities with their units (SI plus common alternatives, including molarity, molality, kJ/mol and rate constants) and 43 physical constants |
+| `js/text.js` | The content's Markdown dialect: inline/display math, `[[concept]]` links, links to other apps and to views, callouts, tables |
 | `js/formula.js` | A formula as a calculator: solve for any variable, all roots in a range, generated practice problems with worked solutions |
 | `js/circuit.js` | A circuit simulator (modified nodal analysis): DC operating point, transient steps, small-signal AC; R, C, L, sources, diodes (LED, Zener), switches, BJTs, MOSFETs, op-amps with rails and gain–bandwidth; E-series values |
+| `js/chem.js` | The chemistry module: the 118 elements (masses, electronegativity, ionisation energy, radii, oxidation states, electron configurations with the exceptions, CPK colours), formula parsing (brackets, hydrates, charges), molar mass and composition, exact equation balancing (BigInt row reduction, ions and electrons), VSEPR geometry and a small library of 3-D molecules |
+| `js/molecule.js` | Molecules in 3-D on a canvas: perspective, drag to turn, depth-sorted ball-and-stick or space-filling atoms, multiple bonds, lone-pair lobes, bond-angle arcs |
 | `js/schematic.js` | Circuit symbols (passives, sources, diodes, transistors, op-amp, logic gates, meters), moving current dots and an oscilloscope screen, for simulations |
 | `js/ui/app.js` | Shell, router, contents tree, search, link previews, saved progress, theme, home page, shortcuts |
 | `js/ui/concept.js` | The concept page: map, explanation, formulas, simulations, examples, practice, connections |
 | `js/ui/calc.js` | The formula card (calculator, sliders, units, relationship graph, inline practice) |
 | `js/ui/map.js` | The local concept map on every page, and the zoomable radial map of the whole discipline |
 | `js/ui/practice.js` | Questions (multiple choice, true/false, typed expressions, numbers with units), sessions, flashcards, daily review |
-| `js/ui/views.js` | Formula sheet, tools (function plotter, calculator, unit converter, constants, symbol glossary, A–Z index), progress, learning paths |
+| `js/ui/views.js` | Formula sheet, tools (function plotter, calculator, unit converter, constants, interactive periodic table, symbol glossary, A–Z index; in Hyper Chemistry also a molar-mass calculator and equation balancer), progress, learning paths |
 | `js/ui/plot.js` | A canvas plotter (nice ticks, log axes, hover read-out) |
 | `js/ui/simkit.js` | The kit simulations are built with, and the card they live in |
 | `css/hyper.css` | The look: light and dark themes, discipline and branch hues, responsive down to phones |
@@ -45,6 +47,7 @@ only its content.
 ```bash
 node HYPER-CORE/tools/test-core.js                    # unit tests of the engine (TeX, expressions, units, formulas)
 node HYPER-CORE/tools/test-circuit.js                 # the circuit simulator against textbook results
+node HYPER-CORE/tools/test-chem.js                    # elements, configurations, molar masses, balancing, VSEPR, \ce notation
 node HYPER-CORE/tools/validate.js HYPER-PHYSICS       # checks all content: links, TeX, formulas solve both ways, quizzes
 node HYPER-CORE/tools/simtest.js HYPER-PHYSICS        # runs every simulation headless, every control to its ends
 node HYPER-CORE/tools/catalog.js --all                # regenerates each discipline's catalog.js (titles for cross-links)
