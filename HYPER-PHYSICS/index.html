@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Physics</title>
+<meta name="description" content="Physics as a web of connected concepts: explanations, live formulas you can solve for any variable, simulations and practice.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 22 16 9l8 12z' fill='none' stroke='%237b8cff' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='9' r='5' fill='%237b8cff'/%3E%3Ccircle cx='8.5' cy='22.5' r='4' fill='%233ccf8e'/%3E%3Ccircle cx='24' cy='21.5' r='4' fill='%23ff7a8a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Physics needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/kinematics.js"></script>
+<script src="content/kinematics-more.js"></script>
+<script src="content/dynamics.js"></script>
+<script src="content/work-energy.js"></script>
+<script src="content/momentum-collisions.js"></script>
+<script src="content/rotation.js"></script>
+<script src="content/gravitation.js"></script>
+<script src="content/oscillations.js"></script>
+<script src="content/fluids.js"></script>
+<script src="content/elasticity.js"></script>
+<script src="content/electrostatics.js"></script>
+<script src="content/dc-circuits.js"></script>
+<script src="content/magnetism.js"></script>
+<script src="content/induction.js"></script>
+<script src="content/ac-circuits.js"></script>
+<script src="content/em-waves.js"></script>
+<script src="content/geometric-optics.js"></script>
+<script src="content/wave-optics.js"></script>
+<script src="content/vision-color.js"></script>
+<script src="content/temperature-heat.js"></script>
+<script src="content/heat-transfer.js"></script>
+<script src="content/kinetic-theory.js"></script>
+<script src="content/thermodynamics.js"></script>
+<script src="content/wave-basics.js"></script>
+<script src="content/sound-waves.js"></script>
+<script src="content/hearing-music.js"></script>
+<script src="content/special-relativity.js"></script>
+<script src="content/general-relativity.js"></script>
+<script src="content/quantum-origins.js"></script>
+<script src="content/atomic-physics.js"></script>
+<script src="content/quantum-mechanics.js"></script>
+<script src="content/the-nucleus.js"></script>
+<script src="content/radioactivity.js"></script>
+<script src="content/nuclear-reactions.js"></script>
+<script src="content/particle-physics.js"></script>
+<script src="content/solid-state.js"></script>
+<script src="content/material-properties.js"></script>
+<script src="content/solar-system.js"></script>
+<script src="content/stars.js"></script>
+<script src="content/cosmology.js"></script>
+
+<!-- simulations -->
+<script src="sims/kinematics.js"></script>
+<script src="sims/mechanics-1.js"></script>
+<script src="sims/mechanics-2.js"></script>
+<script src="sims/em-1.js"></script>
+<script src="sims/em-2.js"></script>
+<script src="sims/light.js"></script>
+<script src="sims/heat.js"></script>
+<script src="sims/sound.js"></script>
+<script src="sims/relativity-astro.js"></script>
+<script src="sims/quantum.js"></script>
+<script src="sims/nuclear-condensed.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-MATH/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'physics' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

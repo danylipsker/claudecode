@@ -21,6 +21,8 @@ Serve the folder with `node scripts/serve.js 8172` and open http://localhost:817
 
 | App | What it is |
 |---|---|
+| [Hyper Physics](HYPER-PHYSICS/index.html) | Physics as a map of connected concepts, in the spirit of HyperPhysics: 258 concepts in 10 branches, each with its concept map, an original explanation, formulas that solve for any variable (711 of them, with units, sliders and graphs), 82 simulations, worked examples and practice with worked solutions; progress, notes, learning paths, a function plotter. |
+| [Hyper Math](HYPER-MATH/index.html) | The same for the mathematics of science: 153 concepts from algebra to differential equations, typed-expression exercises, 48 simulations, and links both ways with Hyper Physics. |
 | [Galaxies](GALAXIES/index.html) | Nikoli's Tentai Show: puzzles generated on the spot, each with a single solution, and a hint that explains its reasoning. |
 | [Sokoban](sokoban/sokoban.html) | Push every crate onto a glowing pad: level picker, move and push counters, saved progress. |
 | [Tic Tac Toe](tic-tac-toe/tic-tac-toe.html) | Play a friend or the computer, at three levels, as either side. |
@@ -35,6 +37,9 @@ Serve the folder with `node scripts/serve.js 8172` and open http://localhost:817
 
 ### Other folders
 
+* `HYPER-CORE/` - the engine shared by Hyper Physics, Hyper Math and the disciplines to come
+  (Hyper Electronics, Hyper Chemistry): concept graph, TeX to MathML, the solver behind the
+  calculators, simulation kit, practice, and the authoring guide and checking tools.
 * `scripts/` - `serve.js` (the local server for the apps page) and the SOLIDWORKS 2020 helper scripts
   that keep its resource monitor quiet.
 * `sessions/` - records of the Claude Code sessions that built these projects.

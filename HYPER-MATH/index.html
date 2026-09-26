@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Math</title>
+<meta name="description" content="The mathematics of science as a web of connected ideas: explanations, live formulas you can solve for any variable, simulations and practice.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 22 16 9l8 12z' fill='none' stroke='%232ec4a6' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='9' r='5' fill='%232ec4a6'/%3E%3Ccircle cx='8.5' cy='22.5' r='4' fill='%233ccf8e'/%3E%3Ccircle cx='24' cy='21.5' r='4' fill='%23ff7a8a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Math needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/numbers.js"></script>
+<script src="content/equations-inequalities.js"></script>
+<script src="content/polynomials.js"></script>
+<script src="content/functions.js"></script>
+<script src="content/exp-log.js"></script>
+<script src="content/plane-geometry.js"></script>
+<script src="content/solid-geometry.js"></script>
+<script src="content/analytic-geometry.js"></script>
+<script src="content/trig-functions.js"></script>
+<script src="content/trig-relations.js"></script>
+<script src="content/vector-algebra.js"></script>
+<script src="content/vector-calculus.js"></script>
+<script src="content/limits.js"></script>
+<script src="content/differentiation.js"></script>
+<script src="content/derivative-applications.js"></script>
+<script src="content/integration.js"></script>
+<script src="content/integral-applications.js"></script>
+<script src="content/multivariable.js"></script>
+<script src="content/series.js"></script>
+<script src="content/first-order-odes.js"></script>
+<script src="content/second-order-odes.js"></script>
+<script src="content/pdes.js"></script>
+<script src="content/complex.js"></script>
+<script src="content/linear-algebra.js"></script>
+<script src="content/probability.js"></script>
+<script src="content/distributions.js"></script>
+<script src="content/statistics.js"></script>
+
+<!-- simulations -->
+<script src="sims/algebra.js"></script>
+<script src="sims/geometry-trig.js"></script>
+<script src="sims/vectors-linalg-complex.js"></script>
+<script src="sims/calculus.js"></script>
+<script src="sims/series-odes.js"></script>
+<script src="sims/probability-statistics.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'math' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>
