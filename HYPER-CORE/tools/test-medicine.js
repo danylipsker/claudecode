@@ -41,6 +41,8 @@ const rest = M.hh({ I: 0, tEnd: 50 });
 ok(rest.spikes.length === 0 && Math.abs(rest.V[rest.V.length - 1] + 65) < 1, 'Hodgkin–Huxley rests at −65 mV');
 const fire = M.hh({ I: 10, tEnd: 100 });
 ok(fire.spikes.length >= 5 && Math.max(...fire.V) > 30, 'a steady current makes it fire repetitively (' + fire.spikes.length + ' spikes)');
+const blocked = M.hh({ I: 200, tEnd: 30, gNa: 0 });
+ok(blocked.spikes.length === 0 && Math.max(...blocked.V) > 0, 'with sodium channels blocked, a strong current depolarises but makes no spikes');
 near(M.nernst(1, 5, 140), -89.0, 0.5, 'Nernst potential of potassium');
 near(M.nernst(1, 145, 12), 66.6, 0.5, 'Nernst potential of sodium');
 near(M.goldman({ pK: 1, pNa: 0.04, pCl: 0.45, Ko: 5, Ki: 140, Nao: 145, Nai: 12, Clo: 110, Cli: 10 }), -67.3, 0.1, 'Goldman resting potential');
@@ -84,6 +86,7 @@ const ep = M.sir({ R0: 3, N: 1e6, I0: 10, days: 300 });
 near(ep.infected, 0.9405, 0.005, 'final size of an epidemic with R0 = 3');
 near(ep.herd, 2 / 3, 1e-12, 'herd-immunity threshold');
 ok(M.sir({ R0: 3, N: 1e6, I0: 10, days: 300, vaccinated: 0.7 }).infected < 0.01, 'above the threshold the outbreak fizzles');
+ok(M.sir({ R0: 0, N: 1e6, I0: 10, days: 60 }).infected < 1e-4 && M.sir({ R0: 0.5 }).herd === 0, 'R0 of zero or below one: no epidemic and no herd threshold');
 
 // units
 const U = H.units;

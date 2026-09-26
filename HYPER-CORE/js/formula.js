@@ -39,6 +39,8 @@
     let unit = v.unit != null ? String(v.unit) : null;
     if (unit != null && ALIAS[unit]) unit = ALIAS[unit];
     if (unit && /^u./.test(unit) && !u.UNIT_INDEX[unit] && u.UNIT_INDEX['µ' + unit.slice(1)]) unit = 'µ' + unit.slice(1);
+    // q: false keeps the unit as a plain label ("mg", "L") with no conversion — for empirical formulas
+    if (v.q === false) return { q: null, unit: unit || '', fixed: true };
     let q = v.q;
     if (!q && unit != null) q = u.UNIT_INDEX[unit] || null;
     if (q && !u.Q[q]) return { q: null, unit: unit || '', fixed: true, error: 'unknown quantity "' + q + '"' };

@@ -139,7 +139,7 @@
     datarate:    { name: 'data rate', units: [['bit/s', 1], ['kbit/s', 1e3], ['Mbit/s', 1e6], ['Gbit/s', 1e9], ['baud', 1], ['B/s', 8], ['kB/s', 8e3], ['MB/s', 8e6]] },
     slewrate:    { name: 'slew rate', units: [['V/s', 1], ['V/ms', 1e3], ['V/µs', 1e6]] },
     thermalres:  { name: 'thermal resistance', units: [['K/W', 1], ['°C/W', 1]] },
-    rate:        { name: 'rate', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['kHz', 1e3]] },
+    rate:        { name: 'rate', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['1/day', 1 / 86400], ['1/week', 1 / 604800], ['1/yr', 1 / 3.15576e7], ['kHz', 1e3]] },
     hubble:      { name: 'Hubble parameter', units: [['km/s/Mpc', 1e3 / 3.0856775814913673e22], ['1/s', 1]] },
     gravparam:   { name: 'gravitational parameter', units: [['m³/s²', 1], ['km³/s²', 1e9]] }
   };

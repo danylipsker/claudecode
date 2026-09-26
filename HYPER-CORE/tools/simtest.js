@@ -139,6 +139,7 @@ function makeKit(record) {
     click(st, fn, hover) { record.clicks.push(fn); if (hover) hover({ x: 100, y: 100 }); },
     plot(el, opts) {
       const p = { o: opts || {}, set(o) {
+        record.plots.push(1);
         Object.assign(p.o, o);
         for (const s of (o.series || [])) { if (!Array.isArray(s.pts)) record.errors.push('plot series without pts array'); else if (s.pts.length && !Array.isArray(s.pts[0])) record.errors.push('plot pts must be [[x, y], ...]'); }
       }, draw() {}, destroy() {} };
@@ -196,7 +197,7 @@ for (const [id, def, variant] of runs) {
   if (only && !only.has(fileOf.get(id))) continue;
   tested++;
   current = id + (Object.keys(variant).length ? ' ' + JSON.stringify(variant) : '');
-  const rec = { stages: [], controls: [], loops: [], drags: [], clicks: [], errors: [], readoutBad: new Set() };
+  const rec = { stages: [], plots: [], controls: [], loops: [], drags: [], clicks: [], errors: [], readoutBad: new Set() };
   const kit = makeKit(rec);
   const box = { stage: fakeEl(), side: fakeEl(), card: fakeEl(), node: null };
   const problems = [];
@@ -237,8 +238,8 @@ for (const [id, def, variant] of runs) {
   } catch (e) {
     problems.push('throws: ' + e.message + where(e));
   }
-  if (!rec.stages.length) problems.push('never called kit.stage (nothing is drawn)');
-  if (!rec.loops.length && !rec.stages.length) problems.push('no loop and no stage');
+  if (!rec.stages.length && !rec.plots.length) problems.push('never called kit.stage or kit.plot (nothing is drawn)');
+  if (!rec.loops.length && !rec.stages.length && !rec.plots.length) problems.push('no loop, no stage and no plot');
   problems.push(...rec.errors);
   const nans = bad.slice(badBefore);
   if (nans.length) problems.push(nans.length + ' drawing call(s) with NaN/Infinity, e.g. ' + [...new Set(nans)].slice(0, 3).join('; '));

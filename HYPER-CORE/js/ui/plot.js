@@ -99,8 +99,10 @@
       const rev = !!o.x.reverse, fx = f => rev ? x1 - f * (x1 - x0) : x0 + f * (x1 - x0);
       const tx = lx ? v => fx((Math.log(v) - Math.log(r.xmin)) / (Math.log(r.xmax) - Math.log(r.xmin)))
                     : v => fx((v - r.xmin) / (r.xmax - r.xmin));
-      const ty = ly ? v => y1 - (Math.log(v) - Math.log(r.ymin)) / (Math.log(r.ymax) - Math.log(r.ymin)) * (y1 - y0)
-                    : v => y1 - (v - r.ymin) / (r.ymax - r.ymin) * (y1 - y0);
+      // y: { reverse: true } puts the minimum at the top (audiograms: hearing loss grows downwards)
+      const yrev = !!o.y.reverse, fy = f => yrev ? y0 + f * (y1 - y0) : y1 - f * (y1 - y0);
+      const ty = ly ? v => fy((Math.log(v) - Math.log(r.ymin)) / (Math.log(r.ymax) - Math.log(r.ymin)))
+                    : v => fy((v - r.ymin) / (r.ymax - r.ymin));
       this.map = { tx, ty, r, x0, x1, y0, y1, lx, ly };
       ctx.font = '11.5px ' + getComputedStyle(document.body).fontFamily;
       // grid and ticks

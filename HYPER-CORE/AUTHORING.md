@@ -263,7 +263,7 @@ Helpers: `kit.arrow(ctx, x1, y1, x2, y2, color, width)`, `kit.label(ctx, text, x
 `kit.dot(ctx, x, y, r, color, stroke)`, `kit.grid(ctx, x0, y0, w, h, step, color)`,
 `kit.drag(st, { hit(p) → thing|null, move(thing, p), end(thing), hover: true })` for dragging with the pointer (`p = {x, y}`),
 `kit.click(st, p => {...}, p => isClickable)` for clicking things on the canvas,
-`kit.plot(el, opts, height)` → a `Hyper.Plot` (a live graph: `plot.set({ series: [{ pts: [[x, y], ...], label, dash, fill, dots, line: false }], x: {label, min, max, log, reverse}, y: {...}, marks: [{x, y, label}], vlines: [{x, label}], hlines: [{y, label}] })`; `reverse: true` runs the x-axis right to left, as IR spectra do),
+`kit.plot(el, opts, height)` → a `Hyper.Plot` (a live graph: `plot.set({ series: [{ pts: [[x, y], ...], label, dash, fill, dots, line: false }], x: {label, min, max, log, reverse}, y: {...}, marks: [{x, y, label}], vlines: [{x, label}], hlines: [{y, label}] })`; `reverse: true` runs the x-axis right to left, as IR spectra do, and the y-axis downwards, as audiograms do),
 `ctl.show(id, false)` / `ro.show(false)` / `ro.show(key, false)` to hide controls or read-outs (for sims with modes), `st.onResize(fn)`, `st.pos(event)`, `loop.once()` (draw one frame while stopped), `loop.running`, `kit.fmt(v, sig)`.
 `Hyper.niceStep(span, n)` gives round grid spacings.
 
@@ -514,7 +514,9 @@ kind about fear: the aim is that a worried reader finishes a page calmer and mor
 `pressure` has mmHg and cmH₂O; `frequency` has bpm and breaths/min; `flowrate` has mL/min,
 mL/h and L/min; `concentration` has mmol/L and mEq/L (= mmol/L for ions of charge 1);
 `massconc` (mg/L, µg/mL, ng/mL, mg/dL) for drug levels; `doseperkg` (mg/kg); `volperkg`
-(mL/kg); `vascres` (mmHg·min/L = Wood units); `power` has kcal/day. Laboratory analytes are
+(mL/kg) — these three are counted in their first unit, not SI, so they combine directly with
+kilograms and with variables declared without q in mg, L or mL (`LD = Css*Vd` with Css in
+mg/L and Vd "(L)" gives mg; `BV = k*m` with k in mL/kg and m in kg gives mL); `vascres` (mmHg·min/L = Wood units); `power` has kcal/day. Laboratory analytes are
 quantities of their own, so the reader can switch between conventional and SI units — each
 lists **the unit its standard formulas use first**, and your expression must be written in
 that unit: `glucose` (mmol/L | mg/dL), `creatinine` (**mg/dL** | µmol/L), `cholesterol` and
@@ -525,6 +527,9 @@ a flow in m³/s, which is right for physical laws (MAP = CO × SVR with `vascres
 empirical formulas with fitted constants (eGFR, QTc, BMR, Parkland). For those, declare the
 variables **without q**, named with their unit — `scr: { name: 'serum creatinine (mg/dL)' }`,
 `qt: { name: 'QT interval (ms)' }` — or use the analyte quantities above, which are not SI.
+Better still, give such a variable a plain unit label with `q: false`:
+`LD: { name: 'loading dose', q: false, unit: 'mg' }` is shown as "500 mg" in the calculator,
+the practice problems and the worked solutions, with no conversion.
 
 **The medicine module** (`HYPER-CORE/js/medicine.js`; `kit.med` in simulations, `Hyper.med`
 anywhere; tested by `tools/test-medicine.js`):

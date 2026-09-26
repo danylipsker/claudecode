@@ -105,9 +105,15 @@
       h += dt * (ah(V) * (1 - h) - bh(V) * h);
       n += dt * (an(V) * (1 - n) - bn(V) * n);
     }
-    // spikes: upward crossings of 0 mV
+    // spikes: upward crossings of 0 mV driven by a real inward sodium current (a strong stimulus alone,
+    // with the sodium channels blocked, can also push V past 0 — that is not an action potential)
     const spikes = [];
-    for (let k = 1; k < out.V.length; k++) if (out.V[k - 1] < 0 && out.V[k] >= 0) spikes.push(out.t[k]);
+    for (let k = 1; k < out.V.length; k++) {
+      if (!(out.V[k - 1] < 0 && out.V[k] >= 0)) continue;
+      let peakINa = 0;
+      for (let j = Math.max(0, k - 20); j < Math.min(out.V.length, k + 20); j++) peakINa = Math.min(peakINa, out.INa[j]);
+      if (peakINa < -100) spikes.push(out.t[k]);
+    }
     out.spikes = spikes;
     return out;
   }
@@ -199,7 +205,8 @@
   /* ---------------------------------------------------------------- epidemics */
   // SIR with R0 and a mean infectious period (days); a fraction vaccinated starts immune
   function sir(o) {
-    const N = o.N || 1e6, gamma = 1 / (o.infectious || 7), beta = (o.R0 || 2.5) * gamma, days = o.days || 180, dt = o.dt || 0.1;
+    const R0 = o.R0 != null ? o.R0 : 2.5;                            // (R0 = 0 is allowed: nothing spreads)
+    const N = o.N || 1e6, gamma = 1 / (o.infectious || 7), beta = R0 * gamma, days = o.days || 180, dt = o.dt || 0.1;
     let I = o.I0 || 10, R = N * (o.vaccinated || 0), S = N - I - R;
     const out = [{ day: 0, S, I, R }];
     const f = (s, i) => [-beta * s * i / N, beta * s * i / N - gamma * i];
@@ -212,7 +219,7 @@
     }
     const peak = out.reduce((m, r) => r.I > m.I ? r : m, out[0]);
     const infected = (out[out.length - 1].R - N * (o.vaccinated || 0)) / N;
-    return { series: out, peak, infected, herd: 1 - 1 / (o.R0 || 2.5) };
+    return { series: out, peak, infected, herd: R0 > 1 ? 1 - 1 / R0 : 0 };
   }
 
   /* ---------------------------------------------------------------- clinical formulas */

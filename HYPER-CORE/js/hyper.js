@@ -116,7 +116,13 @@
   /* What a reference is called: the node's title, the catalog's, or a tidied id. */
   H.titleOf = function (s) {
     const r = H.ref(s);
-    if (r.local) { const n = H.nodes.get(r.id); return n ? n.title : H.util.prettyId(r.id); }
+    if (r.local) {
+      const n = H.nodes.get(r.id);
+      if (n) return n.title;
+      // a concept that is planned but not written yet: its title from the outline's plan
+      if (!H._planned) { H._planned = new Map(); for (const x of H.list) for (const p of (x.plan || [])) H._planned.set(p[0], p[1]); }
+      return H._planned.get(r.id) || H.util.prettyId(r.id);
+    }
     const c = H.catalogs[r.disc];
     const e = c && c.get(r.id);
     return e ? e.title : H.util.prettyId(r.id);
