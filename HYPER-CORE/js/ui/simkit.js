@@ -305,6 +305,7 @@
     fin: H.finance,                 // loans, savings, NPV/IRR, bonds, options, Monte Carlo (finance.js)
     money: (v, dec, compact) => H.util.money(v, dec, compact),   // 1234.5 -> "$1,234.50" in the reader's currency
     pct: (f, dec) => H.util.pct(f, dec),                          // 0.0525 -> "5.25 %"
+    med: H.med,                     // ECG, neurons, oxygen, drug levels, test statistics, epidemics, clinical formulas (medicine.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),
     hue: (h, a) => ui.colors().hue(h, a),

@@ -1,6 +1,6 @@
 # Writing content for the Hyper apps
 
-The Hyper apps (Hyper Physics, Hyper Math, Hyper Electronics, Hyper Chemistry and Hyper Finances)
+The Hyper apps (Hyper Physics, Hyper Math, Hyper Electronics, Hyper Chemistry, Hyper Finances and Hyper Medicine)
 are interactive study maps in the spirit of HyperPhysics: every concept is a page that
 shows where it sits in a web of ideas, explains it properly, turns each formula into a
 calculator that solves for any variable, lets you play with a simulation, and gives
@@ -16,7 +16,8 @@ Read `HYPER-PHYSICS/content/kinematics.js` and `HYPER-PHYSICS/sims/kinematics.js
 first: they are the reference for depth, tone and layout. Each later discipline has its
 own reference concept and simulations in `content/reference.js` and `sims/reference.js`
 (the voltage divider in Electronics, the limiting reagent and a VSEPR lab in Chemistry,
-amortization with a loan explorer and the compound-interest snowball in Finances).
+amortization with a loan explorer and the compound-interest snowball in Finances,
+blood pressure with a cuff simulation and an ECG monitor in Medicine).
 
 ## Files
 
@@ -178,7 +179,7 @@ Anything else is reported by the validator as an unknown command.
   luminousint, stress, strain, energydensity, specificenergy, pressureGrad, hubble, gravparam,
   gain (dB), apparentpower (VA), reactivepower (var), datarate, slewrate, thermalres (K/W, °C/W), rate,
   molality, molarenergy, molarvolume, reactionrate, rateconst2, molarabs, henry, colligative
-  (see the Chemistry section below), money and years (see the Finance section).
+  (see the Chemistry section below), money and years (see the Finance section), and the clinical quantities of the Medicine section.
   The unit must be one of that quantity's units (see `HYPER-CORE/js/units.js`); aliases
   such as `deg`, `ohm`, `m/s^2` are accepted. A variable with a unit outside these
   (e.g. `N·m²/C²`) may give just `unit: '...'` without `q`: it is then shown fixed, in SI.
@@ -506,6 +507,75 @@ and give historical figures as approximate ranges with their period ("over 1926�
 large company shares returned roughly 10 % a year before inflation"). Never recommend a
 product, fund, broker or company by name. Be frank about risk, especially leverage, and
 kind about fear: the aim is that a worried reader finishes a page calmer and more capable.
+
+### Medicine: the body, units and safety
+
+**Units.** Clinical formulas are written in clinical units, and the quantities follow them:
+`pressure` has mmHg and cmH₂O; `frequency` has bpm and breaths/min; `flowrate` has mL/min,
+mL/h and L/min; `concentration` has mmol/L and mEq/L (= mmol/L for ions of charge 1);
+`massconc` (mg/L, µg/mL, ng/mL, mg/dL) for drug levels; `doseperkg` (mg/kg); `volperkg`
+(mL/kg); `vascres` (mmHg·min/L = Wood units); `power` has kcal/day. Laboratory analytes are
+quantities of their own, so the reader can switch between conventional and SI units — each
+lists **the unit its standard formulas use first**, and your expression must be written in
+that unit: `glucose` (mmol/L | mg/dL), `creatinine` (**mg/dL** | µmol/L), `cholesterol` and
+`triglycerides` (mmol/L | mg/dL), `urea` (mmol/L | mg/dL BUN), `calcium` (mmol/L | mg/dL),
+`bilirubin` (µmol/L | mg/dL), `hemoglobin` (**g/dL** | g/L | mmol/L), `albumin` (g/dL | g/L).
+Remember that formulas are evaluated in SI: a pressure variable in mmHg arrives in pascals and
+a flow in m³/s, which is right for physical laws (MAP = CO × SVR with `vascres`) but wrong for
+empirical formulas with fitted constants (eGFR, QTc, BMR, Parkland). For those, declare the
+variables **without q**, named with their unit — `scr: { name: 'serum creatinine (mg/dL)' }`,
+`qt: { name: 'QT interval (ms)' }` — or use the analyte quantities above, which are not SI.
+
+**The medicine module** (`HYPER-CORE/js/medicine.js`; `kit.med` in simulations, `Hyper.med`
+anywhere; tested by `tools/test-medicine.js`):
+
+```js
+const M = kit.med;
+M.ecg({ rhythm, hr, seconds, seed })   // rhythm: sinus brady tachy afib aflutter pvc block1 block3 vt vf asystole
+                                       // -> { at(t) -> mV (lead II), beats: [{ t, kind, rr, p }], hr }
+M.hh({ I: t => µA/cm², tEnd: ms, dt, gNa, gK })   // Hodgkin–Huxley: { t, V, m, h, n, INa, IK, spikes }
+M.nernst(z, cOut, cIn, T)  M.goldman({ pK, pNa, pCl, Ko, Ki, Nao, Nai, Clo, Cli })   // mV
+M.sat(po2, { pH, T, p50 })  M.p50({ pH, T })  M.o2content(hb, sat, po2)  M.alveolarO2({ fio2, patm, paco2, rq })
+M.pk({ halfLife: h, Vd: L, doses: [{ t, amount: mg, route: 'iv' | 'oral' | 'infusion', F, ka, duration }] })   // -> { at(t) mg/L, k, clearance }
+M.steadyState({ dose, tau, halfLife, Vd, F })  M.loadingDose(C, Vd, F)  M.maintenanceDose(C, CL, tau, F)  M.emax(C, Emax, EC50, n)
+M.bayes({ prevalence, sensitivity, specificity, N })   // -> { ppv, npv, lrPos, lrNeg, counts: { tp, fn, fp, tn } }
+M.postTest(pre, lr)  M.risk({ cer, eer })  /* -> { arr, rrr, rr, or, nnt } */  M.wilson(k, n)
+M.sir({ R0, infectious: days, N, I0, vaccinated, days })   // -> { series: [{ day, S, I, R }], peak, infected, herd }
+M.bmi(kg, m)  M.bsa(kg, cm)  M.egfr(scrMgDl, age, female)  M.cockcroftGault(age, kg, scr, female)  M.map(s, d)
+M.qtc(qtMs, hr, 'bazett' | 'fridericia')  M.anionGap(na, cl, hco3)  M.correctedCalcium(caMgDl, albGdl)  M.ibw(cm, female)
+M.bmr(kg, cm, age, female)  M.maxHR(age)  M.karvonen(rest, max, intensity)  M.parkland(kg, tbsa)  M.maintenanceFluids(kg)
+M.dripRate(mL, minutes, dropFactor)  M.winters(hco3)  M.cardiacOutput(hr, svMl)
+```
+
+`HYPER-MEDICINE/sims/reference.js` shows a blood-pressure cuff measured beat by beat and an
+ECG monitor on standard paper (`sim: { id: 'ref-ecg', params: { rhythm: 'afib' } }` opens it
+on a rhythm). The app's tools — link to them: the **body map** (`[the body map](#/tools/body)`)
+and the **medical calculators** (`#/tools/clinical/body`, `kidney`, `heart`, `blood`, `test`,
+`risk`, `fluids`).
+
+**Writing about health — the rules.**
+
+- **Explain; never diagnose or prescribe.** Describe how conditions and treatments work and
+  what the evidence shows; never tell the reader what they have or what they should take.
+  Frame decisions as questions to discuss with a doctor, nurse or pharmacist.
+- **Emergencies first.** Wherever a condition can be an emergency, give its warning signs in a
+  `> [!warn]` callout ending with "call your local emergency number". Never suggest waiting
+  or treating at home when the guidance is to seek care.
+- **Medicines by their generic names** (paracetamol/acetaminophen, ibuprofen, metformin),
+  never brand names; describe classes and mechanisms. No dosing instructions for the public;
+  pharmacology calculations use clearly hypothetical examples. First-aid steps follow the
+  current resuscitation guidelines (ERC/AHA/ILCOR) and say so.
+- **Numbers with their source and date**: prevalence, mortality, survival and guideline
+  thresholds are approximate and dated ("WHO estimates, 2021"; "the 2017 American
+  guideline"). Reference ranges vary by laboratory: say so wherever you quote one. Give lab
+  values in both conventional and SI units.
+- **Mental health and suicide**: follow safe-messaging practice — no method details, no
+  sensational language, stress that help works and how to find it (local emergency number;
+  crisis lines such as 988 in the US, Samaritans 116 123 in the UK and Ireland, ERAN 1201 in
+  Israel). On eating disorders avoid numbers (calories, weights) that could be misused.
+- **People first, without stigma**: "a person with diabetes", not "a diabetic"; describe
+  addiction and mental illness as health conditions.
+- **Visuals are schematic**, never graphic.
 
 ## Checking your work
 

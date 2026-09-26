@@ -146,7 +146,7 @@ function makeKit(record) {
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
-    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d),
+    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med,
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }

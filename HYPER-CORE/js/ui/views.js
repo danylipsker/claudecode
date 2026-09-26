@@ -71,10 +71,12 @@
   H.views.tools = function (parts, params) {
     ui.setTitle('Tools');
     const disc = H.discipline ? H.discipline.id : '';
-    const chemApp = disc === 'chemistry', moneyApp = disc === 'finance';
-    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : 'plot');
+    const chemApp = disc === 'chemistry', moneyApp = disc === 'finance', medApp = disc === 'medicine';
+    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : 'plot');
     const tabs = moneyApp
       ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
+      : medApp
+      ? [['body', 'Body map'], ['clinical', 'Medical calculators'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
       : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
         .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
         .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
@@ -82,7 +84,9 @@
       tabs.map(([k, t]) => '<a href="#/tools/' + k + '" class="' + (k === tab ? 'on' : '') + '">' + t + '</a>').join('') + '</nav><div class="tbody"></div>', 'wide');
     const el = ui.$('.tbody', page);
     const money = (e, p) => H.moneyTools ? H.moneyTools(e, p, parts[1]) : plotter(e, p);
-    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money }[tab] || plotter)(el, params);
+    const body = e => H.medTools ? H.medTools.bodyMap(e) : plotter(e);
+    const clinical = e => H.medTools ? H.medTools.clinical(e, parts[1]) : plotter(e);
+    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical }[tab] || plotter)(el, params);
   };
 
   /* ---------------------------------------------------------------- periodic table */
