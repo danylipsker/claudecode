@@ -51,7 +51,7 @@
     abs: Math.abs, floor: Math.floor, ceil: Math.ceil, round: Math.round, sign: Math.sign, sgn: Math.sign,
     atan2: Math.atan2, hypot: Math.hypot, min: Math.min, max: Math.max, pow: Math.pow,
     root: (x, n) => (x < 0 && Math.round(n) % 2 === 1) ? -Math.pow(-x, 1 / n) : Math.pow(x, 1 / n),
-    fact, gamma, erf,
+    fact, gamma, erf, ncdf: x => 0.5 * (1 + erf(x / Math.SQRT2)),   // the standard normal distribution function
     deg: x => x * 180 / Math.PI, rad: x => x * Math.PI / 180,
     logb: (x, b) => Math.log(x) / Math.log(b),
     nCr: (n, k) => fact(n) / (fact(k) * fact(n - k)), nPr: (n, k) => fact(n) / fact(n - k)
@@ -407,7 +407,7 @@
     arcsin: '\\arcsin', arccos: '\\arccos', arctan: '\\arctan', sinh: '\\sinh', cosh: '\\cosh', tanh: '\\tanh',
     sec: '\\sec', csc: '\\csc', cot: '\\cot', ln: '\\ln', log: '\\log', log10: '\\log_{10}', log2: '\\log_{2}',
     asinh: '\\operatorname{arsinh}', acosh: '\\operatorname{arcosh}', atanh: '\\operatorname{artanh}', exp: '\\exp',
-    erf: '\\operatorname{erf}', sign: '\\operatorname{sgn}', sgn: '\\operatorname{sgn}' };
+    erf: '\\operatorname{erf}', ncdf: 'N', sign: '\\operatorname{sgn}', sgn: '\\operatorname{sgn}' };
 
   /* texOf(name) gives a variable's TeX, or nothing to fall back on the defaults */
   function toTex(n, texOf) {

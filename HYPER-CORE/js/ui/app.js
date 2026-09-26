@@ -78,6 +78,22 @@
     ph: '<path d="M7 3.5h10M8 3.5v12a4 4 0 0 0 8 0v-12"/><path d="M8 11h8" /><path d="M11 14.5h.01M13.5 17h.01"/>',
     spectrum: '<path d="M3.5 20.5V3.5M3.5 20.5h17"/><path d="M6 19c1.5 0 2-11 3.2-11S10.6 19 12 19s1.5-6 2.6-6 1.4 6 2.7 6h3"/>',
     crystal: '<path d="M12 2.5 20 7v10l-8 4.5L4 17V7z"/><path d="M4 7l8 4.5L20 7M12 11.5v10"/>',
+    coin: '<ellipse cx="12" cy="7" rx="7.5" ry="3"/><path d="M4.5 7v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V7M4.5 12v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"/>',
+    wallet: '<path d="M4 7.5h14.5a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A2.5 2.5 0 0 1 3 17V7a2.5 2.5 0 0 1 2.5-2.5H16v3"/><path d="M20 11.5h-4a1.75 1.75 0 0 0 0 3.5h4z"/>',
+    bank: '<path d="M3 9.5 12 4l9 5.5M4.5 9.5h15M6 10v7M10 10v7M14 10v7M18 10v7M3.5 20h17M4.5 17.5h15"/>',
+    house: '<path d="M3.5 11 12 4l8.5 7M6 9.5V20h12V9.5"/><path d="M10 20v-5.5h4V20"/>',
+    loan: '<circle cx="12" cy="12" r="9"/><path d="M8.5 15.5l7-7"/><circle cx="9" cy="9" r="1.3"/><circle cx="15" cy="15" r="1.3"/>',
+    trend: '<path d="M3.5 20.5h17M3.5 20.5v-17"/><path d="m6.5 15.5 4-4 3 2.5 6-6.5"/><path d="M15.5 7.5h4v4"/>',
+    candles: '<path d="M6 3.5v3M6 15v5.5M12 6v2.5M12 16v3M18 3v4M18 13.5v4"/><rect x="4" y="6.5" width="4" height="8.5" rx=".8"/><rect x="10" y="8.5" width="4" height="7.5" rx=".8"/><rect x="16" y="7" width="4" height="6.5" rx=".8"/>',
+    certificate: '<rect x="3" y="4" width="18" height="13" rx="1.8"/><path d="M7 8.5h10M7 12h6"/><circle cx="16.5" cy="15.5" r="2.5"/><path d="m15.2 17.6-.7 3.4 2-1.1 2 1.1-.7-3.4"/>',
+    lever: '<path d="M3 17.5 21 9"/><path d="M11 13.7 8.5 20.5h5z"/><rect x="16" y="4.5" width="4.5" height="4.5" rx=".8"/><circle cx="4.5" cy="15.5" r="1.4"/>',
+    pie: '<path d="M11 3.5a8.5 8.5 0 1 0 9.5 9.5H11z"/><path d="M14 2.5A8 8 0 0 1 21.5 10H14z"/>',
+    seedling: '<path d="M12 21v-9"/><path d="M12 12c0-4 2.7-6.5 7.5-6.5 0 4.3-3 6.5-7.5 6.5zM12 14.5C12 11.2 9.8 9 5 9c0 3.6 2.6 5.5 7 5.5z"/><path d="M7.5 21h9"/>',
+    supply: '<path d="M3.5 20.5v-17M3.5 20.5h17"/><path d="M6 17 19 6M6 6.5 19 17.5" /><circle cx="12.5" cy="11.8" r="1.5" fill="currentColor"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
+    shield: '<path d="M12 3 4.5 6v5.5c0 4.5 3.2 8 7.5 9.5 4.3-1.5 7.5-5 7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.3-4.6"/>',
+    brain: '<path d="M9.5 4.5a3 3 0 0 0-3 3 3 3 0 0 0-2 5.2A3.2 3.2 0 0 0 7 18a3 3 0 0 0 5 1.5V6a2.5 2.5 0 0 0-2.5-1.5zM14.5 4.5a3 3 0 0 1 3 3 3 3 0 0 1 2 5.2A3.2 3.2 0 0 1 17 18a3 3 0 0 1-5 1.5"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="12.5" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18M11 12.5v2h2v-2"/>',
     check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
     x: '<path d="M6 6l12 12M18 6 6 18"/>',
     info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/>',
@@ -566,6 +582,8 @@
           (last ? '<a class="btn pri lg" href="#/c/' + last.id + '">' + H.icon('play', 18) + 'Continue: ' + esc(last.title) + '</a>'
                 : '<a class="btn pri lg" href="#/c/' + (H.branches[0] ? H.branches[0].id : root.id) + '">' + H.icon('play', 18) + 'Start with ' + esc(H.branches[0] ? H.branches[0].title : '') + '</a>') +
           '<a class="btn lg" href="#/map">' + H.icon('map', 18) + 'Explore the map</a>' +
+          // a discipline's own entry points: root.links = [[label, href, icon], ...]
+          (root.links || []).map(([t, href, ic]) => '<a class="btn lg" href="' + esc(href) + '">' + H.icon(ic || 'right', 18) + esc(t) + '</a>').join('') +
           (due ? '<a class="btn lg" href="#/practice/review">' + H.icon('refresh', 18) + 'Review (' + due + ')</a>' : '') +
         '</div>' +
         '<div class="stats">' +
@@ -587,7 +605,7 @@
     return '<h2 class="h2">How to use it</h2><div class="pgrid">' +
       [['map', 'Follow the map', 'Every page opens with its neighbourhood: what it builds on, what it leads to. Click any bubble.'],
        ['formulas', 'Solve for anything', 'Each formula is a calculator. Click a symbol to make it the unknown; drag sliders and watch the graph.'],
-       ['play', 'Play with it', 'Simulations let you change the physics and see what happens before you calculate it.'],
+       ['play', 'Play with it', 'Simulations let you change the conditions and see what happens before you calculate it.'],
        ['practice', 'Practise', 'Quick checks, problems generated from the formulas with worked solutions, flashcards and a daily review.'],
        ['route', 'Plan a path', 'Pick a concept and get the prerequisites in the order to learn them.'],
        ['keyboard', 'Shortcuts', '<kbd>Ctrl K</kbd> or <kbd>/</kbd> search · <kbd>M</kbd> map · <kbd>[</kbd> <kbd>]</kbd> previous / next · <kbd>?</kbd> all shortcuts']]

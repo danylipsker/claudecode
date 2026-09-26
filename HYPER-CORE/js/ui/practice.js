@@ -118,7 +118,7 @@
       };
       const check = () => {
         if (finished) return;
-        const s = inp.value.trim();
+        const s = H.util.cleanNum(inp.value.trim());
         if (!s) { inp.focus(); return; }
         let x;
         try { x = H.expr.evaluate(H.expr.parse(s), {}); } catch (e) { x = NaN; }

@@ -10,6 +10,7 @@
  *     marks:  [{ x, y, color, label }],
  *     vlines: [{ x, color, label }], hlines: [...],
  *     fmtX, fmtY                                      // read-out formatting
+ *     x: { fmt: v => … }, y: { fmt }                   // tick labels (e.g. money: v => Hyper.util.money(v, 0, true))
  *   });
  *   p.set({ series: [...] });                         // merge and redraw
  */
@@ -123,13 +124,13 @@
       for (const v of XT.vals) {
         const X = Math.round(tx(v)) + 0.5;
         ctx.beginPath(); ctx.moveTo(X, y0); ctx.lineTo(X, y1); ctx.stroke();
-        ctx.fillText(lx ? tickLabel(v, v) : tickLabel(v, XT.step), X, y1 + 5);
+        ctx.fillText(o.x.fmt ? o.x.fmt(v) : lx ? tickLabel(v, v) : tickLabel(v, XT.step), X, y1 + 5);
       }
       ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
       for (const v of YT.vals) {
         const Y = Math.round(ty(v)) + 0.5;
         ctx.beginPath(); ctx.moveTo(x0, Y); ctx.lineTo(x1, Y); ctx.stroke();
-        ctx.fillText(ly ? tickLabel(v, v) : tickLabel(v, YT.step), x0 - 6, Y);
+        ctx.fillText(o.y.fmt ? o.y.fmt(v) : ly ? tickLabel(v, v) : tickLabel(v, YT.step), x0 - 6, Y);
       }
       // axes through zero when visible, else the frame
       ctx.strokeStyle = C.axis;

@@ -28,7 +28,7 @@ const only = onlyArg ? new Set(onlyArg.split(',').map(s => path.resolve(discDir,
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -48,7 +48,7 @@ for (const sub of ['content', 'sims']) {
   for (const f of list) files.push(path.join(dir, f));
 }
 // other disciplines' catalogs
-for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY']) {
+for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES']) {
   const c = path.join(discDir, '..', d, 'catalog.js');
   if (d !== path.basename(discDir) && fs.existsSync(c)) { try { run(ctx, c); } catch (e) { W(d + '/catalog.js', e.message); } }
 }
@@ -138,6 +138,11 @@ function lostBackslash(where, s) {
   for (const m of maths) {
     const x = lost.exec(m);
     if (x) { W(where, 'maths contains the bare word "' + x[2] + '": a TeX command that lost its backslash? In: ' + m.slice(0, 80)); break; }
+  }
+  // money written with a dollar sign: "$250,000" or "$1,500 a month" starts maths instead
+  if (DISC === 'finance') {
+    const cash = /(^|[\s(])\$\d{1,3}(,\d{3})+(\.\d\d)?(?![\d}])|(^|[\s(])\$\d+(\.\d\d)?\s+(a|per|each|every|of|in|to|and|or|for)\s/.exec(s);
+    if (cash) W(where, 'an amount written with "$" (' + cash[0].trim().slice(0, 20) + '): write money as ¤250,000 — "$" starts maths, and ¤ is shown in the reader\'s currency');
   }
 }
 function checkTex(where, tex, display) {
@@ -289,6 +294,11 @@ for (const [id, def] of Object.entries(H.sims)) {
   if (!def.title) W('sim ' + id, 'no title');
   checkText('sim ' + id + ' blurb', def.blurb, true);
   if (!H.list.some(n => n.sims.some(s => s.id === id))) W('sim ' + id, 'is not used by any concept');
+}
+// a planned concept may not take the id of a branch or topic (ids are unique, so it could never be written)
+for (const n of H.list) for (const [id] of (n.plan || [])) {
+  const other = H.nodes.get(id);
+  if (other && other.kind !== 'concept') errors.push(n.id + ' plans a concept "' + id + '", but that is the id of the ' + other.kind + ' "' + other.title + '": give the concept another id');
 }
 // planned concepts
 const missing = [];

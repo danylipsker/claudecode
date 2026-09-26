@@ -30,7 +30,8 @@
                   'N*m': 'N·m', 'N m': 'N·m', 'N*s': 'N·s', 'kg*m/s': 'kg·m/s', 'kg/m^3': 'kg/m³', 'g/cm^3': 'g/cm³',
                   'W/m^2': 'W/m²', 'rad/s^2': 'rad/s²', 'J/(kg*K)': 'J/(kg·K)', 'J/(mol*K)': 'J/(mol·K)', 'W/(m*K)': 'W/(m·K)',
                   'Ohm': 'Ω', 'Ω*m': 'Ω·m', 'ohm*m': 'Ω·m', 'ohm m': 'Ω·m', 'A*m^2': 'A·m²', 'T*m^2': 'T·m²', 'Pa*s': 'Pa·s',
-                  'ang': 'Å', 'angstrom': 'Å', 'years': 'yr', 'year': 'yr', 'days': 'day', 'hr': 'h', 'sec': 's', 'lbs': 'lb' };
+                  'ang': 'Å', 'angstrom': 'Å', 'years': 'yr', 'year': 'yr', 'days': 'day', 'hr': 'h', 'sec': 's', 'lbs': 'lb',
+                  'month': 'mo', 'months': 'mo', 'week': 'wk', 'weeks': 'wk', 'percent': '%' };
 
   /* the quantity and the unit a variable is shown in */
   function resolveUnit(v) {
@@ -42,6 +43,7 @@
     if (!q && unit != null) q = u.UNIT_INDEX[unit] || null;
     if (q && !u.Q[q]) return { q: null, unit: unit || '', fixed: true, error: 'unknown quantity "' + q + '"' };
     if (q && unit == null) unit = u.Q[q].units[0][0];
+    if (q === 'money' && u.moneyUnit) unit = u.moneyUnit(unit);        // '$' is the reader's currency
     if (q && !u.unitRow(q, unit)) return { q, unit, fixed: true, error: 'unit "' + unit + '" is not a unit of ' + q };
     return { q, unit: unit || '', fixed: !q };
   }
@@ -268,13 +270,22 @@
     static show(si, v, unit) {
       unit = unit != null ? unit : v.unit;
       const x = v.q ? U().fromSI(si, v.q, unit) : si;
+      if (v.q === 'money') return Formula.moneyText(x, unit);
       const n = H.util.fmt(x, 4);
       if (!unit) return n;
       return n + (unit === '°' || unit === '′' || unit === '″' ? '' : ' ') + unit;
     }
+    /* money as the reader writes it: "$1,234.56", or "$250k" in thousands */
+    static moneyText(x, unit) {
+      const cur = U().currency, suf = String(U().moneyUnit(unit || cur)).slice(cur.length);
+      if (!suf) return H.util.money(x);
+      return (x < 0 ? '−' : '') + cur + (/^[A-Za-z]/.test(cur) ? ' ' : '') + H.util.fmt(Math.abs(x), 4) + suf;
+    }
     static showTex(si, v, unit) {
       unit = unit != null ? unit : v.unit;
       const x = v.q ? U().fromSI(si, v.q, unit) : si;
+      // money: the currency as ¤ (drawn as the reader's symbol), never a literal "$", which would end the maths
+      if (v.q === 'money') return '\\text{' + Formula.moneyText(x, unit).replace(U().currency, '¤') + '}';
       const n = H.util.fmtTex(x, 4);
       if (!unit) return n;
       if (unit === '°') return n + '^{\\circ}';

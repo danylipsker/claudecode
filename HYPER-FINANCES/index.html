@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Finances</title>
+<meta name="description" content="Money without the fear: interest, loans and mortgages, budgeting, investing, the stock exchange, risk and economics — explained, with calculators for every decision.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='16' cy='9' rx='10' ry='4' fill='%2325b86a'/%3E%3Cpath d='M6 9v7c0 2.2 4.5 4 10 4s10-1.8 10-4V9' fill='none' stroke='%2325b86a' stroke-width='2'/%3E%3Cpath d='M6 16v7c0 2.2 4.5 4 10 4s10-1.8 10-4v-7' fill='none' stroke='%2325b86a' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Finances needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/money.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/budgeting.js"></script>
+<script src="content/debt.js"></script>
+<script src="content/protection.js"></script>
+<script src="content/behavioral.js"></script>
+<script src="content/banks.js"></script>
+<script src="content/accounts.js"></script>
+<script src="content/money-basics.js"></script>
+<script src="content/interest.js"></script>
+<script src="content/time-value.js"></script>
+<script src="content/loan-basics.js"></script>
+<script src="content/bonds.js"></script>
+<script src="content/mortgages.js"></script>
+<script src="content/real-estate.js"></script>
+<script src="content/investing-basics.js"></script>
+<script src="content/funds.js"></script>
+<script src="content/stock-exchange.js"></script>
+<script src="content/stock-valuation.js"></script>
+<script src="content/leverage.js"></script>
+<script src="content/derivatives.js"></script>
+<script src="content/portfolio-theory.js"></script>
+<script src="content/wealth-building.js"></script>
+<script src="content/markets.js"></script>
+<script src="content/firms-competition.js"></script>
+<script src="content/macro-measures.js"></script>
+<script src="content/money-policy.js"></script>
+<script src="content/crises.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/personal.js"></script>
+<script src="sims/mind-banking.js"></script>
+<script src="sims/money-interest.js"></script>
+<script src="sims/loans-bonds.js"></script>
+<script src="sims/mortgages.js"></script>
+<script src="sims/investing.js"></script>
+<script src="sims/stocks.js"></script>
+<script src="sims/leverage.js"></script>
+<script src="sims/portfolio-wealth.js"></script>
+<script src="sims/micro.js"></script>
+<script src="sims/macro.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'finance' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

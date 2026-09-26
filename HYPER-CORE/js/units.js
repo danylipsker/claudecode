@@ -16,8 +16,17 @@
   'use strict';
   const H = root.Hyper = root.Hyper || {};
 
+  /* Money is shown in the reader's currency (a setting; no exchange rates — an amount is an
+     amount). Content writes '$' (and '$k', '$M', '$bn'), which always means "the reader's currency". */
+  const CURRENCIES = [['$', 'dollar'], ['€', 'euro'], ['£', 'pound'], ['₪', 'shekel'], ['¥', 'yen / yuan'], ['₹', 'rupee'], ['CHF', 'Swiss franc'], ['kr', 'krona / krone'], ['R$', 'real'], ['₩', 'won']];
+  const CUR = (() => {
+    try { const c = JSON.parse(root.localStorage.getItem('hyper:settings') || '{}').currency; return CURRENCIES.some(x => x[0] === c) ? c : '$'; } catch (e) { return '$'; }
+  })();
+
   const Q = {
     none:        { name: 'dimensionless', units: [['', 1]] },
+    money:       { name: 'money', units: [[CUR, 1], [CUR + 'k', 1e3], [CUR + 'M', 1e6], [CUR + 'bn', 1e9]] },
+    years:       { name: 'time (years)', units: [['yr', 1], ['mo', 1 / 12], ['wk', 7 / 365.25], ['day', 1 / 365.25]] },
     ratio:       { name: 'ratio', units: [['', 1], ['%', 0.01], ['‰', 0.001], ['ppm', 1e-6]] },
     count:       { name: 'count', units: [['', 1]] },
     length:      { name: 'length', units: [['m', 1], ['km', 1e3], ['cm', 1e-2], ['mm', 1e-3], ['µm', 1e-6], ['nm', 1e-9], ['pm', 1e-12], ['fm', 1e-15], ['Å', 1e-10], ['dm', 0.1],
@@ -127,10 +136,14 @@
     def.id = q;
     for (const u of def.units) if (u[0] && !(u[0] in UNIT_INDEX)) UNIT_INDEX[u[0]] = q;
   }
+  for (const s of ['$', '$k', '$M', '$bn']) UNIT_INDEX[s] = 'money';
 
+  // '$…' in content is the reader's currency, whatever it is
+  const moneyUnit = u => (typeof u === 'string' && u[0] === '$' && CUR !== '$') ? CUR + u.slice(1) : u;
   function unitRow(q, u) {
     const d = Q[q];
     if (!d) return null;
+    if (q === 'money') u = moneyUnit(u);
     return d.units.find(r => r[0] === u) || null;
   }
   function toSI(v, q, u) {
@@ -148,6 +161,7 @@
   /* A unit as TeX: m/s² -> \mathrm{m/s^{2}} */
   function unitTex(u) {
     if (!u) return '';
+    if (UNIT_INDEX[u] === 'money' || Q.money.units.some(r => r[0] === u)) return '\\text{' + moneyUnit(u) + '}';
     if (u === '°' || u === '′' || u === '″') return u === '°' ? '^{\\circ}' : u;
     let s = u.replace(/²/g, '^{2}').replace(/³/g, '^{3}').replace(/⁴/g, '^{4}').replace(/⁻¹/g, '^{-1}')
       .replace(/·/g, '\\cdot ').replace(/µ/g, '\\mu ').replace(/Ω/g, '\\Omega ').replace(/°/g, '^{\\circ}\\!')
@@ -205,5 +219,5 @@
   // quantity of a constant, from its unit when not given
   for (const k in C) if (!C[k].q && UNIT_INDEX[C[k].u]) C[k].q = UNIT_INDEX[C[k].u];
 
-  H.units = { Q, C, UNIT_INDEX, unitRow, toSI, fromSI, convert, unitTex };
+  H.units = { Q, C, UNIT_INDEX, unitRow, toSI, fromSI, convert, unitTex, currency: CUR, CURRENCIES, moneyUnit };
 })(typeof window !== 'undefined' ? window : globalThis);

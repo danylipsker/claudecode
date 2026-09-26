@@ -142,5 +142,15 @@ const keysOf = list => list.map(t => H.texKey(t));
 ok(new Set(keysOf(['E', 'E^\\circ', 'z_+', 'z_-', 'P_A', 'P_A^*', "x'", 'k^\\ddagger'])).size === 8, 'distinct symbol keys (° * ‡ charges primes)');
 ok(H.texKey('x^2') === 'x' && H.texKey('E^{\\circ}') === H.texKey('E^\\circ') && H.texKey('z_{+}') === H.texKey('z_+'), 'equivalent spellings share a key');
 
+// every engine file parses (the UI files are not run by these tests, so a syntax slip would only show in a browser)
+{
+  const fs = require('fs'), path = require('path'), vm = require('vm');
+  const dirs = [path.join(__dirname, '..', 'js'), path.join(__dirname, '..', 'js', 'ui')];
+  for (const d of dirs) for (const f of fs.readdirSync(d).filter(x => x.endsWith('.js'))) {
+    try { new vm.Script(fs.readFileSync(path.join(d, f), 'utf8'), { filename: f }); pass++; }
+    catch (e) { fail++; console.log('FAIL syntax', path.relative(path.join(__dirname, '..'), path.join(d, f)), e.message); }
+  }
+}
+
 console.log(pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

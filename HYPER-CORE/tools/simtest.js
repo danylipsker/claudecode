@@ -87,6 +87,7 @@ run(ctx, path.join(__dirname, '..', 'js', 'circuit.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'schematic.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'chem.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'molecule.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'finance.js'));
 
 /* ---------------------------------------------------------------- the stand-in kit */
 function makeKit(record) {
@@ -145,6 +146,13 @@ function makeKit(record) {
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
+    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d),
+    table(el, cols) {
+      return { el: fakeEl(), set(rows) {
+        if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }
+        for (const r of rows) for (const c of cols) { const v = typeof c.key === 'function' ? c.key(r) : r[c.key]; const t = String(c.fmt ? c.fmt(v, r) : v); if (BAD.test(t)) record.readoutBad.add('table ' + c.label + ' = ' + t); }
+      } };
+    },
     mol: Object.assign({}, H.mol, { rotator(st, v, fn) { record.drags.push({ hit: () => 1, move: () => { v.rotY += 0.1; fn && fn(); } }); return v; } })
   };
 }

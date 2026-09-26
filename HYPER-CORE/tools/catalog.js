@@ -11,7 +11,7 @@ const path = require('path');
 const { makeContext, loadCore, run } = require('./load');
 
 const ROOT = path.join(__dirname, '..', '..');
-const DISCS = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry' };
+const DISCS = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance' };
 const args = process.argv.slice(2);
 const targets = args.includes('--all') ? Object.keys(DISCS).filter(d => fs.existsSync(path.join(ROOT, d, 'content'))) : args.map(a => path.basename(path.resolve(a)));
 

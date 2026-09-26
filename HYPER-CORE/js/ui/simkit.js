@@ -75,24 +75,24 @@
       if (d.type === 'buttons') {
         row = ui.el('<div class="btnrow"></div>');
         for (const b of d.items) {
-          const btn = ui.el('<button class="btn sm' + (b.primary ? ' pri' : '') + '">' + H.util.esc(b.label) + '</button>');
+          const btn = ui.el('<button class="btn sm' + (b.primary ? ' pri' : '') + '">' + H.util.esc(cur(b.label)) + '</button>');
           btn.onclick = () => onChange && onChange(b.id, true, values);
           if (b.id) api.rows[b.id] = btn;
           row.appendChild(btn);
         }
       } else if (d.type === 'check') {
         values[d.id] = !!d.value;
-        row = ui.el('<label class="ctl chk"><input type="checkbox"' + (d.value ? ' checked' : '') + '>' + H.util.esc(d.label) + '</label>');
+        row = ui.el('<label class="ctl chk"><input type="checkbox"' + (d.value ? ' checked' : '') + '>' + H.util.esc(cur(d.label)) + '</label>');
         const inp = row.querySelector('input');
         inp.onchange = () => { values[d.id] = inp.checked; onChange && onChange(d.id, inp.checked, values); };
         api.rows[d.id] = { row, set: v => { inp.checked = !!v; values[d.id] = !!v; } };
       } else if (d.type === 'select') {
         values[d.id] = d.value != null ? d.value : d.options[0][1];
-        row = ui.el('<div class="ctl"><div class="cl"><span>' + H.util.esc(d.label) + '</span></div><select></select></div>');
+        row = ui.el('<div class="ctl"><div class="cl"><span>' + H.util.esc(cur(d.label)) + '</span></div><select></select></div>');
         const sel = row.querySelector('select');
         d.options.forEach((o, i) => {
           const opt = document.createElement('option');
-          opt.value = i; opt.textContent = o[0];
+          opt.value = i; opt.textContent = cur(o[0]);
           if (o[1] === values[d.id]) opt.selected = true;
           sel.appendChild(opt);
         });
@@ -106,7 +106,7 @@
         const log = !!d.log;
         const toPos = v => log ? Math.log(v / d.min) / Math.log(d.max / d.min) * 1000 : v;
         const fromPos = p => log ? d.min * Math.pow(d.max / d.min, p / 1000) : +p;
-        row = ui.el('<div class="ctl"><div class="cl"><span>' + H.util.esc(d.label) + '</span><b></b></div><input type="range"></div>');
+        row = ui.el('<div class="ctl"><div class="cl"><span>' + H.util.esc(cur(d.label)) + '</span><b></b></div><input type="range"></div>');
         const inp = row.querySelector('input'), out = row.querySelector('b');
         inp.min = log ? 0 : d.min; inp.max = log ? 1000 : d.max; inp.step = log ? 1 : (d.step || (d.max - d.min) / 200);
         inp.value = toPos(d.value);
@@ -136,6 +136,9 @@
     return api;
   }
 
+  // ¤ in a sim's text is the reader's currency, as in the pages
+  const cur = t => typeof t === 'string' && t.indexOf('¤') >= 0 ? t.replace(/¤/g, (H.units && H.units.currency) || '$') : t;
+
   function readout(el, rows) {
     const box = ui.el('<div class="readout"></div>');
     const cells = {};
@@ -148,7 +151,7 @@
     el.appendChild(box);
     return {
       el: box,
-      set(k, v) { if (cells[k]) cells[k].textContent = v; },
+      set(k, v) { if (cells[k]) cells[k].textContent = cur(v); },
       /* show(false) hides the whole read-out; show(key, false) one row of it */
       show(k, on) {
         if (typeof k === 'boolean' || k == null) { box.style.display = k === false ? 'none' : ''; return; }
@@ -210,6 +213,7 @@
   }
   function label(ctx, text, x, y, o) {
     o = o || {};
+    text = cur(text);
     ctx.save();
     ctx.font = (o.weight || 500) + ' ' + (o.size || 12.5) + 'px ' + (o.font || getComputedStyle(document.body).fontFamily);
     ctx.textAlign = o.align || 'left';
@@ -276,8 +280,31 @@
     return p;
   }
 
+  /* a small table in a sim (an amortization schedule, a comparison):
+       const t = kit.table(box.side, [{ label: 'Year', key: 'year', align: 'left' }, { label: 'Interest', key: 'interest', fmt: v => kit.money(v) }], { maxHeight: 240 });
+       t.set(rows);   // rows: objects; a column's key may be a function of the row; row._cls adds a class (e.g. 'hl') */
+  function table(el, cols, opts) {
+    const esc = H.util.esc;
+    const box = ui.el('<div class="simtable"><table class="ftable"><thead><tr>' + cols.map(c => '<th style="text-align:' + (c.align || 'right') + '">' + esc(c.label) + '</th>').join('') + '</tr></thead><tbody></tbody></table></div>');
+    if (opts && opts.maxHeight) box.style.maxHeight = opts.maxHeight + 'px';
+    el.appendChild(box);
+    const tb = box.querySelector('tbody');
+    return {
+      el: box,
+      set(rows) {
+        tb.innerHTML = rows.map(r => '<tr' + (r._cls ? ' class="' + esc(r._cls) + '"' : '') + '>' + cols.map(c => {
+          const v = typeof c.key === 'function' ? c.key(r) : r[c.key];
+          return '<td' + (c.align === 'left' ? '' : ' class="num"') + '>' + esc(c.fmt ? c.fmt(v, r) : v == null ? '' : String(v)) + '</td>';
+        }).join('') + '</tr>').join('');
+      }
+    };
+  }
+
   const kit = H.kit = {
-    stage, controls, readout, loop, arrow, label, grid, dot, drag, click, plot,
+    stage, controls, readout, loop, arrow, label, grid, dot, drag, click, plot, table,
+    fin: H.finance,                 // loans, savings, NPV/IRR, bonds, options, Monte Carlo (finance.js)
+    money: (v, dec, compact) => H.util.money(v, dec, compact),   // 1234.5 -> "$1,234.50" in the reader's currency
+    pct: (f, dec) => H.util.pct(f, dec),                          // 0.0525 -> "5.25 %"
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),
     hue: (h, a) => ui.colors().hue(h, a),

@@ -46,6 +46,8 @@
       t = t.replace(/\[([^\]]+)\]\((#\/[^)\s]*)\)/g, (m, label, url) => hold('<a class="xlink" href="' + escA(url) + '">' + inline(label, true) + '</a>'));
     }
     t = esc(t);
+    // ¤ is the reader's currency: ¤250,000 reads $250,000, €250,000 or ₪250,000
+    t = t.replace(/¤/g, esc((H.units && H.units.currency) || '$') + (/^[A-Za-z]/.test((H.units && H.units.currency) || '$') ? ' ' : ''));
     t = t.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
     t = t.replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\*)/g, '$1<em>$2</em>');
     t = t.replace(/ -- /g, ' – ');

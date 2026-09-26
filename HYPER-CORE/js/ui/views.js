@@ -70,15 +70,19 @@
   /* ================================================================ tools */
   H.views.tools = function (parts, params) {
     ui.setTitle('Tools');
-    const chemApp = H.discipline && H.discipline.id === 'chemistry';
-    const tab = parts[0] || (chemApp ? 'periodic' : 'plot');
-    const tabs = [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
-      .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
-      .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
+    const disc = H.discipline ? H.discipline.id : '';
+    const chemApp = disc === 'chemistry', moneyApp = disc === 'finance';
+    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : 'plot');
+    const tabs = moneyApp
+      ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
+      : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
+        .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
+        .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
     const page = ui.page('<h1 class="h2" style="margin-top:6px;font-size:30px">Tools</h1><nav class="tabs">' +
       tabs.map(([k, t]) => '<a href="#/tools/' + k + '" class="' + (k === tab ? 'on' : '') + '">' + t + '</a>').join('') + '</nav><div class="tbody"></div>', 'wide');
     const el = ui.$('.tbody', page);
-    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc }[tab] || plotter)(el, params);
+    const money = (e, p) => H.moneyTools ? H.moneyTools(e, p, parts[1]) : plotter(e, p);
+    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money }[tab] || plotter)(el, params);
   };
 
   /* ---------------------------------------------------------------- periodic table */

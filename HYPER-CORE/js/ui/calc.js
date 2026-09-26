@@ -19,6 +19,12 @@
     return q.units.map(u => '<option' + (u[0] === sel ? ' selected' : '') + ' value="' + esc(u[0]) + '">' + (u[0] ? esc(u[0]) : '—') + '</option>').join('');
   }
   const toShow = (si, v, unit) => v.q ? units().fromSI(si, v.q, unit) : si;
+  // what an input box shows: money grouped with cents (1,610.46), everything else to a few figures
+  const showNum = (x, v, isTarget) => {
+    if (v.q === 'money' && Math.abs(x) < 1e12) return U.group(x, Math.abs(x) >= 1e5 || Math.abs(x - Math.round(x)) < 1e-9 ? 0 : 2);
+    return U.fmtInput(x, isTarget ? 5 : 6);
+  };
+  const cleanNum = s => U.cleanNum(s);
   const toSI = (x, v, unit) => v.q ? units().toSI(x, v.q, unit) : x;
 
   /* slider range for a variable, in SI: [lo, hi, log] */
@@ -76,7 +82,7 @@
     const showRow = (id) => {
       const v = f.byName[id], r = rows[id];
       const x = toShow(vals[id], v, unitOf[id]);
-      if (document.activeElement !== r.inp || id === target) r.inp.value = Number.isFinite(vals[id]) ? U.fmtInput(x, id === target ? 5 : 6) : '—';
+      if (document.activeElement !== r.inp || id === target) r.inp.value = Number.isFinite(vals[id]) ? showNum(x, v, id === target) : '—';
       r.inp.classList.toggle('none', !Number.isFinite(vals[id]));
       const [lo, hi, lg] = r.range;
       const cur = vals[id];
@@ -167,7 +173,7 @@
     f.vars.forEach(v => {
       const r = rows[v.id];
       const read = () => {
-        const s = r.inp.value.trim();
+        const s = cleanNum(r.inp.value.trim());
         if (!s) return;
         let x;
         try {

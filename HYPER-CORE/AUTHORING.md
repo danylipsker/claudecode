@@ -1,6 +1,6 @@
 # Writing content for the Hyper apps
 
-The Hyper apps (Hyper Physics, Hyper Math, Hyper Electronics and Hyper Chemistry)
+The Hyper apps (Hyper Physics, Hyper Math, Hyper Electronics, Hyper Chemistry and Hyper Finances)
 are interactive study maps in the spirit of HyperPhysics: every concept is a page that
 shows where it sits in a web of ideas, explains it properly, turns each formula into a
 calculator that solves for any variable, lets you play with a simulation, and gives
@@ -15,7 +15,8 @@ facts, formulas and constants are of course fine.
 Read `HYPER-PHYSICS/content/kinematics.js` and `HYPER-PHYSICS/sims/kinematics.js`
 first: they are the reference for depth, tone and layout. Each later discipline has its
 own reference concept and simulations in `content/reference.js` and `sims/reference.js`
-(the voltage divider in Electronics, the limiting reagent and a VSEPR lab in Chemistry).
+(the voltage divider in Electronics, the limiting reagent and a VSEPR lab in Chemistry,
+amortization with a loan explorer and the compound-interest snowball in Finances).
 
 ## Files
 
@@ -145,7 +146,8 @@ Anything else is reported by the validator as an unknown command.
 ```
 
 - **expr** uses `+ - * / ^`, parentheses, and `sqrt cbrt exp ln log (base 10) log2 sin cos tan
-  asin acos atan sinh cosh tanh sec csc cot abs atan2(y,x) hypot min max fact`, and `pi`, `e`.
+  asin acos atan sinh cosh tanh sec csc cot abs atan2(y,x) hypot min max fact erf ncdf` (ncdf is the
+  standard normal distribution function, drawn as N), and `pi`, `e`.
   Angles inside `sin(...)` are radians internally; an angle variable with `q: 'angle'` and
   `unit: '°'` is converted for you.
 - **Every identifier in expr must be declared in vars**, and every var must appear in expr.
@@ -176,7 +178,7 @@ Anything else is reported by the validator as an unknown command.
   luminousint, stress, strain, energydensity, specificenergy, pressureGrad, hubble, gravparam,
   gain (dB), apparentpower (VA), reactivepower (var), datarate, slewrate, thermalres (K/W, °C/W), rate,
   molality, molarenergy, molarvolume, reactionrate, rateconst2, molarabs, henry, colligative
-  (see the Chemistry section below).
+  (see the Chemistry section below), money and years (see the Finance section).
   The unit must be one of that quantity's units (see `HYPER-CORE/js/units.js`); aliases
   such as `deg`, `ohm`, `m/s^2` are accepted. A variable with a unit outside these
   (e.g. `N·m²/C²`) may give just `unit: '...'` without `q`: it is then shown fixed, in SI.
@@ -420,6 +422,90 @@ seen from above, a titration beaker) draw your own circles, still coloured with
 `kit.chem.el(sym).color`. `HYPER-CHEMISTRY/sims/reference.js` shows both: particles
 reacting in a flask with bars and a graph, and a VSEPR lab whose shapes come from electron
 pairs repelling on a sphere.
+
+### Finance: money, rates and time
+
+Hyper Finances is read all over the world, and every reader picks a currency (Tools →
+Money calculators). So **an amount is never written with a real currency sign**:
+
+- **In text** (body, ideas, pitfalls, quizzes, examples, notes) write amounts with `¤`:
+  `¤250,000`, `¤1,461.48 a month`. It is shown as the reader's currency ($, €, ₪ …). Never
+  write `$250` — a dollar sign starts maths. Inside maths `¤` works too, with TeX
+  thousands separators: `$M = ¤1{,}461.48$`.
+- **In formulas** a money variable is `q: 'money', unit: '$'` (the `$` there means "the
+  reader's currency", whatever it is; `'$k'`, `'$M'` are thousands and millions). The
+  calculator shows it grouped with cents ($1,461.48) and accepts "250,000" as input.
+- **Rates** are `q: 'ratio', unit: '%'`: the reader types 5 and the formula receives 0.05,
+  so the expression uses the fraction — `A = P*(1 + r)^t`, `M = P*(r/12)/(1 - (1 + r/12)^(-12*T))`.
+  `value`, `min` and `max` are given in the unit: `value: 5, min: 0.01, max: 50` (per cent).
+- **Time** is `q: 'years'` (units yr, mo, wk, day; the formula receives years). Never use
+  `q: 'time'` for finance — its SI unit is the second. A number of payments is a count
+  (`int: true`); write formulas with a term in years and `12*T` payments where possible.
+- Coefficients that a story fixes (12 payments a year, a particular product's fee) are
+  `fixed: true` so practice problems keep them.
+
+```js
+{ name: 'Future value with compound interest', expr: 'A = P*(1 + r)^t',
+  vars: { A: { name: 'value at the end', q: 'money', unit: '$' },
+          P: { name: 'amount invested', q: 'money', unit: '$', value: 10000 },
+          r: { name: 'yearly return', q: 'ratio', unit: '%', value: 6, min: -90, max: 100 },
+          t: { name: 'years invested', q: 'years', unit: 'yr', value: 20 } },
+  stories: { A: 'You invest {P} at {r} a year for {t}. What is it worth at the end?' } }
+```
+
+**The finance module** (`HYPER-CORE/js/finance.js`; `kit.fin` in simulations, `Hyper.finance`
+anywhere, tested by `tools/test-finance.js`) does the arithmetic, so simulations never
+re-derive it. Rates are fractions; `i` is a rate per period.
+
+```js
+const F = kit.fin;
+F.payment(250000, 0.05 / 12, 300)            // 1461.48: the level payment (annuity; French; Spitzer)
+F.amortize({ principal, annual, years, method: 'annuity' | 'linear' | 'interest-only',
+             extra, lumps: [{ k: 60, amount }], prepay: 'shorten' | 'reduce',
+             rates: [[1, 0.05], [61, 0.065]], inflation /* index-linked */, balloon, fees })
+   // -> { rows: [{ k, year, rate, payment, interest, principal, extra, indexation, balance }],
+   //      totals: { interest, principal, extra, indexation, paid, cost }, periods, firstPayment, maxPayment, years }
+F.yearly(schedule)                           // the same, summed per year
+F.fv(pv, i, n)  F.pv(fv, i, n)  F.fvAnnuity(pmt, i, n, due)  F.pvAnnuity(pmt, i, n, due)  F.nper(P, i, pmt)  F.rateOf(P, n, pmt)
+F.effective(annual, m)  F.nominal(eff, m)  F.real(nominal, inflation)  F.cagr(start, end, years)  F.doublingTime(r)
+F.npv(rate, flows, times?)  F.irr(flows, times?)  F.irrAll(flows, times?)  F.apr({ principal, fees, payments | payment + n, perYear })
+F.grow({ initial, contribution, raise, annual, years, perYear, fee, inflation })   // a savings plan, period by period (+ real values)
+F.timeToGoal({ goal, initial, contribution, annual })  F.drawdown({ balance, withdrawal, annual, inflation, years })
+F.monteCarlo({ initial, contribution, withdrawal, inflation, years, mean, sd, runs, seed, percentiles })   // -> { years: [{ year, p }], success }
+F.normals(seed)  F.uniforms(seed)            // reproducible sources of standard normal and of uniform [0, 1) numbers
+F.bond({ face, coupon, ytm, years, freq })   // -> { price, macaulay, modified, convexity, currentYield }   F.bondYield({ price, … })
+F.blackScholes({ S, K, r, sigma, T, type })  F.payoff(type, S, K, premium, short)  F.ncdf(x)
+F.mix2({ w, mu1, mu2, s1, s2, rho })  F.sharpe(mu, sd, rf)  F.leveraged(ret, L, borrowRate)  F.marginCallPrice(p0, m0, mm)  F.leveragedPath(returns, L)
+F.minimumPayoff({ balance, apr, minPct, minFloor, fixed })   F.affordable(pmt, i, n)
+```
+
+In Hyper Finances the accent colour is green, like `C.ok`: for a neutral series next to
+ok/bad/warn use `kit.hue(215)` (blue). `¤` in `kit.label` text, control labels and read-out
+values is also shown as the reader's currency. Show money with `kit.money(v)` ("$1,461.48" in the reader's currency; `kit.money(v, 0, true)`
+is compact, "$250k", for axes), rates with `kit.pct(0.0525)` ("5.25 %"). A money axis on a
+`kit.plot`: `y: { label, min: 0, fmt: v => kit.money(v, 0, true) }` and `fmtY: v => kit.money(v)`
+for the hover read-out. Schedules and comparisons go in `kit.table(el, columns, opts)`.
+For seeded randomness (market paths) use `kit.fin.normals(seed)` so a simulation is
+reproducible. `HYPER-FINANCES/sims/reference.js` shows a loan drawn year by year with its
+schedule, and the compound-interest snowball.
+
+**The Money calculators** (Tools) already cover loans and mortgages with full schedules,
+comparing offers, savings plans, financial independence with Monte Carlo, CAGR and IRR,
+inflation and credit cards. Link to them from pages where a reader would want to try their
+own numbers: `[the loan calculator](#/tools/money/loan)` (also `compare`, `save`, `retire`,
+`returns`, `inflation`, `card`). Your simulations should teach one idea visually rather
+than repeat a general calculator.
+
+**Writing about money.** Explain, never advise: show the trade-offs, the numbers and the
+questions to ask, and leave the decision to the reader. Write for every country: describe
+the common patterns (fixed, variable and inflation-linked mortgages; tax-advantaged
+retirement accounts; deposit insurance) and, where a country does something distinctive,
+name it ("in the US…", "in the UK…", "in Israel…", "in the euro area…"). Do not state
+today's rates, prices or index levels as current facts — use round illustrative numbers,
+and give historical figures as approximate ranges with their period ("over 1926–2020, US
+large company shares returned roughly 10 % a year before inflation"). Never recommend a
+product, fund, broker or company by name. Be frank about risk, especially leverage, and
+kind about fear: the aim is that a worried reader finishes a page calmer and more capable.
 
 ## Checking your work
 

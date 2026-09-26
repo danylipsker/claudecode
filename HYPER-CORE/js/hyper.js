@@ -28,7 +28,8 @@
     physics:     { id: 'physics',     title: 'Hyper Physics',     short: 'Physics',     folder: 'HYPER-PHYSICS',     hue: 228, ready: true },
     math:        { id: 'math',        title: 'Hyper Math',        short: 'Math',        folder: 'HYPER-MATH',        hue: 168, ready: true },
     electronics: { id: 'electronics', title: 'Hyper Electronics', short: 'Electronics', folder: 'HYPER-ELECTRONICS', hue: 38,  ready: true },
-    chemistry:   { id: 'chemistry',   title: 'Hyper Chemistry',   short: 'Chemistry',   folder: 'HYPER-CHEMISTRY',   hue: 320, ready: true }
+    chemistry:   { id: 'chemistry',   title: 'Hyper Chemistry',   short: 'Chemistry',   folder: 'HYPER-CHEMISTRY',   hue: 320, ready: true },
+    finance:     { id: 'finance',     title: 'Hyper Finances',    short: 'Finances',    folder: 'HYPER-FINANCES',    hue: 140, ready: true }
   };
 
   H.use = function (id) {
@@ -273,6 +274,39 @@
       const a = Math.abs(v);
       if (a >= 1e-4 && a < 1e9) return String(Number(v.toPrecision(sig)));
       return v.toExponential(sig - 1).replace(/\.?0+e/, 'e');
+    },
+    /* Money in the reader's currency: "$1,234.56", "−€250,000", "₪1.2M" (compact).
+       Cents are shown below 100 000 unless `dec` says otherwise. */
+    money(v, dec, compact) {
+      if (v == null || Number.isNaN(v)) return '—';
+      if (!Number.isFinite(v)) return v > 0 ? '∞' : '−∞';
+      const cur = (H.units && H.units.currency) || '$';
+      const a = Math.abs(v), sign = v < 0 ? '−' : '';
+      const pre = cur + (/^[A-Za-z]/.test(cur) ? ' ' : '');
+      if (compact && a >= 1e4) {
+        const [d, s] = a >= 1e9 ? [1e9, 'bn'] : a >= 1e6 ? [1e6, 'M'] : [1e3, 'k'];
+        return sign + pre + Number((a / d).toPrecision(3)) + s;
+      }
+      const d = dec != null ? dec : (a >= 1e5 ? 0 : 2);
+      return sign + pre + H.util.group(a, d);
+    },
+    /* What a reader typed, made readable by the expression parser: "250,000", "$1,200.50" and
+       "1 200" are numbers; an expression such as max(1,200) or 2*pi is left alone */
+    cleanNum(s) {
+      s = String(s).trim();
+      if (/[()*/^]/.test(s) || /[a-df-z]/i.test(s.replace(/CHF|kr|R\$/g, ''))) return s;
+      return s.replace(/(\d)[,   ](?=\d{3}(?!\d))/g, '$1').replace(/^[^\d.\-+]+/, '').replace(/[^\d.eE]+$/, '');
+    },
+    /* 1234567.891 -> "1,234,567.89" */
+    group(a, dec) {
+      const s = Math.abs(a).toFixed(dec || 0);
+      const [i, f] = s.split('.');
+      return (a < 0 ? '−' : '') + i.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (f ? '.' + f : '');
+    },
+    /* A percentage: 0.0525 -> "5.25 %" */
+    pct(frac, dec) {
+      if (frac == null || !Number.isFinite(frac)) return '—';
+      return (frac < 0 ? '−' : '') + Math.abs(frac * 100).toFixed(dec != null ? dec : 2) + ' %';
     },
     /* Round to a "nice" value with `sig` significant figures (for generated problems) */
     nice(v, sig) {

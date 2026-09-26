@@ -490,8 +490,13 @@
           const tag = v === 'underset' ? 'munder' : 'mover';
           return { m: '<' + tag + '>' + b.m + '<mrow>' + a.m + '</mrow></' + tag + '>' };
         }
+        case 'currency': {
+          const cur = (H.units && H.units.currency) || '$';
+          if (this.peek() && this.peek().t === '{') { this.i++; this.expect('}'); }
+          return { m: '<mi mathvariant="normal">' + esc(cur) + '</mi>', src: '\\currency' };
+        }
         case 'text': case 'textrm': case 'textit': case 'mbox': case 'textnormal': case 'textsf': case 'texttt': {
-          const raw = this.rawBraced().replace(/\\([%$&#_{}])/g, '$1');
+          const raw = this.rawBraced().replace(/\\currency\{\}/g, (H.units && H.units.currency) || '$').replace(/\\([%$&#_{}])/g, '$1');
           const s = esc(raw).replace(/^ /, ' ').replace(/ $/, ' ');
           return { m: '<mtext data-k="' + escA(norm(raw)) + '"' + (v === 'textit' ? ' style="font-style:italic"' : '') + '>' + s + '</mtext>', src: raw };
         }
@@ -777,7 +782,8 @@
   }
 
   function render(src, display) {
-    const p = new Parser(String(src), !!display);
+    // ¤ is the reader's currency ($, €, ₪ …): a command in maths, the symbol inside \text{}
+    const p = new Parser(String(src).replace(/¤/g, '\\currency{}'), !!display);
     const rows = p.rows(() => false, {});
     if (p.i < p.toks.length) p.err('Unexpected ' + p.peek().v, p.peek());
     let body;
