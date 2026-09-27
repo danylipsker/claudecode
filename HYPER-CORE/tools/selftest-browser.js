@@ -12,6 +12,9 @@ window.HyperSelfTest = async function (opts) {
   const onErr = e => errors.push({ page: location.hash, msg: e.message || String(e.reason || e) });
   window.addEventListener('error', onErr);
   window.addEventListener('unhandledrejection', onErr);
+  // simulation loops catch their own exceptions and log them: count those too
+  const origError = console.error;
+  console.error = function () { errors.push({ page: location.hash, msg: Array.from(arguments).map(a => a && a.message ? a.message : String(a)).join(' ').slice(0, 300) }); return origError.apply(console, arguments); };
   const report = { pages: 0, texErrors: [], missingLinks: [], failingFormulas: [], simFailures: [], crashes: [], errors };
   const view = document.querySelector('#view');
   for (const id of H.order) {
@@ -41,6 +44,7 @@ window.HyperSelfTest = async function (opts) {
   }
   window.removeEventListener('error', onErr);
   window.removeEventListener('unhandledrejection', onErr);
+  console.error = origError;
   location.hash = '#/';
   return report;
 };

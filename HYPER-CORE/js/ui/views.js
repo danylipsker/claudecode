@@ -72,11 +72,16 @@
     ui.setTitle('Tools');
     const disc = H.discipline ? H.discipline.id : '';
     const chemApp = disc === 'chemistry', moneyApp = disc === 'finance', medApp = disc === 'medicine';
-    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : 'plot');
+    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics';
+    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : 'plot');
+    const common = [['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['constants', 'Constants'], ['symbols', 'Symbols'], ['az', 'Index A–Z']];
     const tabs = moneyApp
       ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
       : medApp
       ? [['body', 'Body map'], ['clinical', 'Medical calculators'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
+      : aeroApp ? [['airfoil', 'Airfoil lab'], ['flight', 'Atmosphere & flight']].concat(common)
+      : hydApp ? [['hydro', 'Pipes, pumps & channels'], ['fpower', 'Fluid-power calculators'], ['iso', 'ISO 1219 symbols']].concat(common)
+      : pneuApp ? [['pneu', 'Pneumatics calculators'], ['iso', 'ISO 1219 symbols']].concat(common)
       : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
         .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
         .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
@@ -86,7 +91,9 @@
     const money = (e, p) => H.moneyTools ? H.moneyTools(e, p, parts[1]) : plotter(e, p);
     const body = e => H.medTools ? H.medTools.bodyMap(e) : plotter(e);
     const clinical = e => H.medTools ? H.medTools.clinical(e, parts[1]) : plotter(e);
-    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical }[tab] || plotter)(el, params);
+    const fl = k => (e, p) => H.fluidTools ? H.fluidTools[k](e, p, parts[1]) : plotter(e, p);
+    ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical,
+      airfoil: fl('airfoil'), flight: fl('flight'), hydro: fl('hydro'), fpower: fl('fpower'), pneu: fl('pneu'), iso: fl('iso') }[tab] || plotter)(el, params);
   };
 
   /* ---------------------------------------------------------------- periodic table */

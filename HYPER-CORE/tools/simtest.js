@@ -88,6 +88,7 @@ run(ctx, path.join(__dirname, '..', 'js', 'schematic.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'chem.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'molecule.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'finance.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'fluidsym.js'));
 
 /* ---------------------------------------------------------------- the stand-in kit */
 function makeKit(record) {
@@ -147,7 +148,7 @@ function makeKit(record) {
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
-    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med,
+    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym,
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }
@@ -166,8 +167,9 @@ const fileOf = new Map();
 const origSim = H.sim;
 let curFile = null;
 H.sim = (id, def) => { origSim.call(H, id, def); fileOf.set(id, curFile); };
-const loadErr = [];
-for (const f of files) { curFile = f; try { run(ctx, f); } catch (e) { loadErr.push(path.relative(discDir, f) + ': ' + e.message); } }
+const loadErr = [], otherErr = [];
+// with --only, files outside the list that fail to load (another author's work in progress) are a note, not a failure
+for (const f of files) { curFile = f; try { run(ctx, f); } catch (e) { (only && !only.has(f) ? otherErr : loadErr).push(path.relative(discDir, f) + ': ' + e.message); } }
 // the params each concept opens a simulation with, so every variant is exercised
 const variants = new Map();
 {
@@ -248,6 +250,7 @@ for (const [id, def, variant] of runs) {
   else report.push('✓ ' + id);
 }
 if (loadErr.length) { console.log('FILES THAT FAILED TO LOAD\n  ' + loadErr.join('\n  ')); failures += loadErr.length; }
+if (otherErr.length) console.log('Note: other files that did not load (not counted): ' + otherErr.map(s => s.split(':')[0]).join(', '));
 console.log(report.join('\n'));
 console.log('\n' + tested + ' simulations tested, ' + (failures ? failures + ' with problems' : 'all fine'));
 process.exit(failures ? 1 : 0);

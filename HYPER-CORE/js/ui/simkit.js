@@ -306,6 +306,8 @@
     money: (v, dec, compact) => H.util.money(v, dec, compact),   // 1234.5 -> "$1,234.50" in the reader's currency
     pct: (f, dec) => H.util.pct(f, dec),                          // 0.0525 -> "5.25 %"
     med: H.med,                     // ECG, neurons, oxygen, drug levels, test statistics, epidemics, clinical formulas (medicine.js)
+    fluid: H.fluid,                 // atmosphere, gas dynamics, airfoils, pipes, pumps, channels, water hammer, compressed air (fluid.js)
+    fsym: H.fsym,                   // ISO 1219 fluid-power symbols: valves, pumps, cylinders, lines (fluidsym.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),
     hue: (h, a) => ui.colors().hue(h, a),

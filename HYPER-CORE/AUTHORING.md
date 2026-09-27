@@ -1,6 +1,6 @@
 # Writing content for the Hyper apps
 
-The Hyper apps (Hyper Physics, Hyper Math, Hyper Electronics, Hyper Chemistry, Hyper Finances and Hyper Medicine)
+The Hyper apps (Hyper Physics, Math, Electronics, Chemistry, Finances, Medicine, Aerodynamics, Hydraulics and Pneumatics)
 are interactive study maps in the spirit of HyperPhysics: every concept is a page that
 shows where it sits in a web of ideas, explains it properly, turns each formula into a
 calculator that solves for any variable, lets you play with a simulation, and gives
@@ -17,7 +17,9 @@ first: they are the reference for depth, tone and layout. Each later discipline 
 own reference concept and simulations in `content/reference.js` and `sims/reference.js`
 (the voltage divider in Electronics, the limiting reagent and a VSEPR lab in Chemistry,
 amortization with a loan explorer and the compound-interest snowball in Finances,
-blood pressure with a cuff simulation and an ECG monitor in Medicine).
+blood pressure with a cuff simulation and an ECG monitor in Medicine, the lift equation with an airfoil
+in a stream in Aerodynamics, the hydraulic cylinder and its circuit in Hydraulics, the pneumatic cylinder and
+its air consumption in Pneumatics).
 
 ## Files
 
@@ -581,6 +583,152 @@ and the **medical calculators** (`#/tools/clinical/body`, `kidney`, `heart`, `bl
 - **People first, without stigma**: "a person with diabetes", not "a diabetic"; describe
   addiction and mental illness as health conditions.
 - **Visuals are schematic**, never graphic.
+
+### Fluids: aerodynamics, hydraulics and pneumatics
+
+Hyper Aerodynamics, Hyper Hydraulics and Hyper Pneumatics share one fluid engine and one
+symbol kit. Their references: the lift equation with an airfoil in a stream and a lift balance
+(Aerodynamics); the hydraulic cylinder with a working 4/3-valve circuit (Hydraulics); the
+pneumatic cylinder with a 5/2 valve, meter-out throttles and its air consumption (Pneumatics).
+
+**Units.**
+
+- **Pressure is always measured from something — say which.** Gas laws, compression ratios,
+  ISO 6358 valve flow and dew points need **absolute** pressure; forces on pistons, relief
+  settings and pressure drops use **gauge** pressure or differences. Catalogues and gauges read
+  gauge: "6 bar" in a workshop is 7.0 bar absolute. Name the variable accordingly
+  (`p1: { name: 'supply pressure (absolute)', q: 'pressure', unit: 'bar' }`) and write the
+  conversion into the formula with an atmosphere variable where needed. `pressure` has Pa, hPa,
+  kPa, MPa, bar, mbar, psi, atm, mmHg, inHg, inH₂O, mmH₂O, mH₂O, kgf/cm².
+- **Flow.** Liquids: `flowrate` (L/min, L/s, m³/h, gal/min, cfm, cm³/min). Compressed air is
+  counted as **free air**: `airflow` in `L/min ANR`, `L/s ANR`, `m³/min ANR`, `m³/h ANR` or `SCFM` —
+  the volume the air would fill at the ISO 8778 reference atmosphere (20 °C, 100 kPa). A
+  compressed volume V at absolute pressure p is V·p/p_ref of free air (at the same temperature).
+  Mass flow: `massflow`.
+- **Pumps and motors.** `displacement` per revolution (cm³/rev, cc/rev, L/rev); shaft speed as
+  `frequency` in **rpm** (revolutions, so $Q = V_g n$ works directly); angular speed as
+  `angvel` only in $P = T\omega$. Torque from displacement per revolution is
+  $T = V_g\,\Delta p/(2\pi)$.
+- **Valves.** Sonic conductance `flowcond` (dm³/(s·bar)) with the critical pressure ratio *b*
+  (dimensionless). Kv (m³/h of water at 1 bar drop) and Cv (US gal/min at 1 psi) are
+  empirical: declare the flow, the coefficient and the pressure drop with `q: false` labels
+  (`Q: { name: 'flow', q: false, unit: 'm³/h' }`, `dp: { name: 'pressure drop', q: false, unit: 'bar' }`)
+  so the formula is evaluated in those units. Kv = 0.865 Cv.
+- **Air and flight.** Speeds in m/s, km/h, kt, mph, ft/min (climb rates); altitude as `length`
+  (m, ft); angles as `angle` in ° (converted to radians inside the expression, so a lift slope of
+  2π per radian works); viscosity `viscosity` (Pa·s, mPa·s, cP) and `kinvisc` (m²/s, mm²/s, cSt).
+  Reynolds and Mach numbers, coefficients ($C_L$, $C_D$, $C_p$), efficiencies and ratios have no q.
+  Head is a `length`; specific weight (N/m³) and Manning's *n* go without q, their unit in the name.
+- **Constants:** `g`, `atm` (101 325 Pa), `Rair` (287.058 J/(kg·K)), `rhoSL` (1.225 kg/m³, ISA sea
+  level), `aSL` (340.3 m/s), `rhoW` (1000 kg/m³), `R`.
+- **Keep symbols apart.** $C_L$ (wing) and $c_l$ (section), $C_D$, $C_{D,0}$ and $C_{D,i}$; $p$,
+  $p_0$ (stagnation) and $p^*$ (sonic); $T$ and $T_0$; $\rho$ and $\rho_0$; $A$ and $A^*$ (throat);
+  $Q$ (volume flow), $q$ (dynamic pressure) and $\dot m$; piston area $A_1$ and annulus $A_2$;
+  $\eta_v$, $\eta_{hm}$, $\eta_t$. The validator warns when one formula uses two symbols with the
+  same key. (In content files every backslash is doubled, as always.)
+
+**The fluid module** (`HYPER-CORE/js/fluid.js`; `kit.fluid` in simulations, `Hyper.fluid`
+anywhere; tested by `tools/test-fluid.js` against published tables). SI throughout, angles in
+radians:
+
+```js
+const F = kit.fluid;
+F.isa(h)                        // standard atmosphere to 84.85 km (ISA, US 1976 above 47 km) -> { T, p, rho, a, mu, nu }
+F.isentropic(M, g)              // -> { T0T, p0p, rho0rho, AAstar, mu }   (g = γ, default 1.4)
+F.machFromArea(AAstar, g, supersonic)   F.normalShock(M) -> { M2, p2p1, rho2rho1, T2T1, p02p01 }
+F.obliqueShock(M, theta) -> { beta, M2, p2p1, …, strong: {…}, thetaMax, detached }
+F.prandtlMeyer(M)  F.machFromNu(nu)
+F.naca4(m, p, t, n) -> [[x, y], …]    // a NACA four-digit airfoil, chord 1 (m, p, t as fractions)
+F.panel(points, alpha) -> { cl, cm, cp: [{ x, y, cp, upper }], velAt(x, y) -> [u, v] }   // inviscid, V∞ = 1
+F.thinAirfoil(m, p) -> { alpha0, cmc4, clAt(alpha) }
+F.liftingLine({ AR, taper, alpha, alpha0, twist, a0 }) -> { CL, CDi, e, dist: [{ y, gamma, cl }] }
+F.flatPlate(Re) -> { cfLam, cfTurb }  F.blasiusDelta(x, Rex)  F.turbDelta(x, Rex)
+F.friction(Re, eps/D)           // Darcy friction factor: 64/Re, Colebrook, blended 2300–4000
+F.colebrook(Re, rr)  F.swameeJain(Re, rr)  F.headLoss({ f, L, D, V })
+F.operatingPoint(pumpH(Q), systemH(Q), Qmax) -> { Q, H }   F.affinity({ Q, H, P }, n1, n2, D1, D2)
+F.section(y, b, z)  F.manningQ(y, { b, z, n, S })  F.normalDepth({ Q, b, z, n, S })  F.criticalDepth({ Q, b, z })
+F.froude(V, D)  F.hydraulicJump(y1, Fr1) -> { y2, loss }  F.weirRect(Cd, b, H)  F.weirV(Cd, thetaDeg, H)
+F.waveSpeed({ K, rho, D, e, E })  F.joukowsky(rho, a, dv)  F.orifice(Cd, A, dp, rho)
+F.oilViscosity(46 | { v40, v100 }, T°C) -> m²/s    // ISO VG grade, Walther/ASTM D341
+F.iso6358({ C, b, p1, p2, T1 }) -> { mdot, qANR, choked }   // absolute pressures in Pa
+F.dewPoint(T°C, RH)  F.pressureDewPoint(T°C, RH, p1, p2) -> { pdp, condenses }
+F.compressorWork(p1, p2, V1, n)   // J; n = 1 isothermal, 1.4 adiabatic
+F.pneuCylinder({ bore, rod, stroke, mass, load, psupply, patm, Cvalve, bvalve, CthrottleA, CthrottleB, dead, fc, fv })
+   // -> { state: { x, v, pA, pB, t, air }, step(dt, cmd), AA, AB, airNl() }  a cylinder, 5/2 valve and
+   //    meter-out throttles; chamber pressures by the adiabatic energy balance, valve flow by ISO 6358
+```
+
+**The fluid-power symbol kit** (`HYPER-CORE/js/fluidsym.js`; `kit.fsym`), drawn in the manner of
+ISO 1219-1. Every symbol returns its ports as `[x, y]` points to draw lines between:
+
+```js
+const S = kit.fsym;
+S.line(ctx, [[x1, y1], [x2, y1], [x2, y2]], { state: 'pressure' })   // pressure return pilot metered suction air exhaust idle
+                                                               // kind: 'pilot' (long dashes) or 'drain' (short) is set by state 'pilot' or given
+S.flow(ctx, pts, phase, { color: S.col('pressure') })          // moving dots; advance phase (px) by speed × dt
+S.junction(ctx, x, y)   S.plug(ctx, x, y)   S.col(state)   S.bar(pascals) -> '6.0 bar'
+const v = S.valve(ctx, x, y, { spec: '4/3 closed', state: 1, left: 'solenoid', right: 'solenoid', labels: true })
+   // spec: '2/2 NC' '2/2 NO' '3/2 NC' '3/2 NO' '4/2' '5/2' '4/3 closed' '4/3 tandem' '4/3 float' '4/3 open'
+   //       '5/3 closed' '5/3 exhaust' '5/3 pressure' (or your own { top, bottom, boxes, normal })
+   // state: which box sits at the ports, 0 = leftmost; the normal (spring) box is 1; fractional while shifting
+   // left / right: 'spring' 'solenoid' 'prop' 'lever' 'pushbutton' 'roller' 'pilot' 'detent' 'manual', joined with '+'
+   // pneumatic: true (hollow pilot triangles, port numbers 1 2 4 3 5 with labels), exhaust: true | 'silencer'
+   // -> { P, T, A, B, R, S, pilotL, pilotR, left, right }   the ports stay put while the boxes slide
+S.pump(ctx, x, y, { variable, bidir, motor: true })  S.compressor(…)  -> { in, out }
+S.motor(ctx, x, y, { pneumatic, bidir, angle })  -> { a, b, shaft }   S.emotor(ctx, x, y) -> { shaft }
+S.cylinder(ctx, x, y, { len, h, pos: 0..1, single: 'retract' | 'extend', through, cushion, fillA, fillB, rot }) -> { A, B, tip }
+S.check(ctx, x, y, { open, spring, pilot, rot }) -> { in, out, X }        // free flow in (bottom) -> out (top)
+S.pressureValve(ctx, x, y, { kind: 'relief' | 'reducing' | 'sequence' | 'regulator', open: 0..1 }) -> { in, out, L }
+S.throttle(ctx, x, y, { adjustable }) -> { a, b }   S.flowControl(ctx, x, y, { free: 'up' | 'down', compensated }) -> { a, b }
+S.accumulator(ctx, x, y, { level }) -> { P }   S.tank(ctx, x, y) -> { T }   S.filter / S.cooler -> { a, b }
+S.gauge(ctx, x, y, { frac, value: S.bar(p) }) -> { P }   S.source(ctx, x, y, { pneumatic }) -> { P }
+S.exhaust(ctx, x, y, { silencer, rot })   S.frl(ctx, x, y) -> { in, out }
+S.shuttle(ctx, x, y, { side }) (OR) · S.andValve (two-pressure, AND) · S.quickExhaust · S.ejector -> { P, V } · S.cup -> { V }
+```
+
+Conventions: hydraulic ports are P (pressure), T (tank), A and B (to the actuator), X and Y
+(pilots), L (drain); pneumatic ports are numbered 1 (supply), 2 and 4 (outputs), 3 and 5
+(exhausts), 12 and 14 (pilot signals: 14 connects 1 to 4). Working lines are solid, pilot lines
+long-dashed, drain lines short-dashed; a dot marks a connection, lines that cross without a
+dot are not connected. Draw the circuit in the state it is in — the working box of each valve
+at its ports — and colour the lines by what they carry (`S.col`): pressure red, return blue,
+pilot orange, metered yellow, suction green; compressed air blue, exhausting air light blue.
+Show gauges with the pressure in bar (and psi where American practice matters).
+
+**Modelling fluid-power circuits.** For most sims a *quasi-steady* model is right and robust:
+the pump flow divides between the open paths so that the pressures balance — a cylinder moves
+at flow/area, its pressure is load/area plus the losses in its paths (orifice law
+$Q = C_d A\sqrt{2\Delta p/\rho}$), and when the pressure it needs exceeds the relief setting
+the relief valve takes the surplus flow and the cylinder slows or stops. Use a dynamic model
+with oil compressibility ($\dot p = \beta/V\,(\sum Q - A\dot x)$, $\beta \approx 1$–1.5 GPa)
+only when the transient is the point — pressure spikes, a load running away, water hammer —
+and then integrate in fixed sub-steps of 10–50 µs. For pneumatics, where compressibility *is*
+the point, use `kit.fluid.pneuCylinder` or its pattern (`HYPER-PNEUMATICS/sims/reference.js`).
+
+**Tools to link to.** Aerodynamics: the airfoil lab (`#/tools/airfoil`) and the atmosphere and
+flight calculators (`#/tools/flight/atmosphere`, `airspeed`, `isentropic`, `normal`, `oblique`,
+`wing`). Hydraulics: pipes, pumps and channels (`#/tools/hydro/pipe`, `pump`, `channel`,
+`hammer`), fluid-power calculators (`#/tools/fpower/cylinder`, `pump`, `motor`, `orifice`,
+`accumulator`, `oil`) and the ISO 1219 symbol chart (`#/tools/iso`). Pneumatics: the pneumatics
+calculators (`#/tools/pneu/cylinder`, `valve`, `air`, `leak`, `vacuum`, `receiver`) and
+`#/tools/iso`.
+
+**Writing about machines that can hurt — the rules.**
+
+- **Stored energy first.** Wherever work on a system is described, say that pressure must be
+  released, accumulators discharged, raised loads supported and energy sources locked out
+  first (lock-out/tag-out), in a `> [!warn]` callout.
+- **Hydraulic injection.** Oil at hundreds of bar can pierce the skin through a pinhole leak;
+  an injection injury looks small but is a surgical emergency — "seek emergency medical care
+  at once". Never feel for a leak with a hand; hoses can whip when a fitting fails; oil can be
+  hot enough to burn.
+- **Compressed air** is never pointed at people or used to blow dust off skin or clothes; a
+  receiver and its lines store energy; cylinders can jump when a system is first pressurised
+  (soft-start valves); exhausts are loud (silencers, hearing protection).
+- **Standards and figures are dated and typical**: ISO 1219-1:2012, ISO 4406:2021, ISO 4413 and
+  ISO 4414:2010, ISO 6358-1:2013, ISO 8573-1:2010, ISO 15552; aircraft and machine figures are
+  rounded examples. Aerodynamics explains; flying follows the aircraft's approved manuals and
+  the rules of the air, and drones the local rules.
 
 ## Checking your work
 

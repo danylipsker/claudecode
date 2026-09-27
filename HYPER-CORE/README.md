@@ -31,6 +31,8 @@ only its content.
 | `js/chem.js` | The chemistry module: the 118 elements (masses, electronegativity, ionisation energy, radii, oxidation states, electron configurations with the exceptions, CPK colours), formula parsing (brackets, hydrates, charges), molar mass and composition, exact equation balancing (BigInt row reduction, ions and electrons), VSEPR geometry and a small library of 3-D molecules |
 | `js/finance.js` | The arithmetic of money: level and equal-capital loans with extras, rate changes, index-linking and balloons; APR, NPV and IRR; savings plans, drawdown and Monte Carlo futures; bonds (price, yield, duration, convexity); Black–Scholes; two-asset portfolios; leverage and margin |
 | `js/medicine.js` | Physiology and clinical arithmetic: a synthetic ECG in eleven rhythms, the Hodgkin–Huxley neuron, Nernst and Goldman potentials, oxygen saturation, one-compartment drug levels, Bayes for test results, risk and NNT, an SIR epidemic, and the standard clinical formulas (BMI, BSA, eGFR 2021, Cockcroft–Gault, MAP, QTc, anion gap, fluids …) |
+| `js/fluid.js` | Fluid mechanics for engineers: the standard atmosphere, isentropic flow, normal and oblique shocks, Prandtl–Meyer; NACA airfoils and a Hess–Smith panel method, thin-airfoil and lifting-line theory; boundary layers; pipe friction (Colebrook), pumps and affinity laws, open channels, water hammer, orifices, oil viscosity; ISO 6358 valve flow, dew points, compression work and a simulated pneumatic cylinder |
+| `js/fluidsym.js` | Fluid-power symbols in the manner of ISO 1219-1 for simulations (kit.fsym): directional valves with sliding boxes and actuators, pumps, motors, cylinders, pressure and flow valves, accumulators, conditioning, pneumatic logic, vacuum, lines coloured by what they carry and moving flow dots |
 | `js/molecule.js` | Molecules in 3-D on a canvas: perspective, drag to turn, depth-sorted ball-and-stick or space-filling atoms, multiple bonds, lone-pair lobes, bond-angle arcs |
 | `js/schematic.js` | Circuit symbols (passives, sources, diodes, transistors, op-amp, logic gates, meters), moving current dots and an oscilloscope screen, for simulations |
 | `js/ui/app.js` | Shell, router, contents tree, search, link previews, saved progress, theme, home page, shortcuts |
@@ -40,6 +42,7 @@ only its content.
 | `js/ui/practice.js` | Questions (multiple choice, true/false, typed expressions, numbers with units), sessions, flashcards, daily review |
 | `js/ui/money.js` | Tools → Money calculators (Hyper Finances): loan and mortgage with its schedule and CSV, comparing offers, savings, financial independence, CAGR and IRR, inflation, credit cards; the reader's currency |
 | `js/ui/medtools.js` | Hyper Medicine's tools: a clickable body map of the organs, and medical calculators (body size, kidney function, blood pressure and QTc, blood chemistry and lab units, test results as 1 000 people, treatment benefit, fluids) |
+| `js/ui/fluidtools.js` | The tools of Hyper Aerodynamics, Hydraulics and Pneumatics: an airfoil lab (panel method, lift curve, critical Mach, coordinates for CAD), atmosphere and gas-dynamics calculators, a finite wing; pipes, pumps, channels and water hammer; cylinder, pump, motor, orifice, accumulator and oil calculators; pneumatics calculators (air and cost, valve flow, condensate, leaks, vacuum cups, receivers); the ISO 1219 symbol chart |
 | `js/ui/views.js` | Formula sheet, tools (function plotter, calculator, unit converter, constants, interactive periodic table, symbol glossary, A–Z index; in Hyper Chemistry also a molar-mass calculator and equation balancer), progress, learning paths |
 | `js/ui/plot.js` | A canvas plotter (nice ticks, log axes, hover read-out) |
 | `js/ui/simkit.js` | The kit simulations are built with, and the card they live in |
@@ -53,6 +56,7 @@ node HYPER-CORE/tools/test-core.js                    # unit tests of the engine
 node HYPER-CORE/tools/test-circuit.js                 # the circuit simulator against textbook results
 node HYPER-CORE/tools/test-finance.js                 # loans, APR, NPV/IRR, savings, Monte Carlo, bonds, options, money formatting
 node HYPER-CORE/tools/test-medicine.js                # clinical formulas against published values, ECG, neuron, oxygen, drug levels, Bayes, SIR, lab units
+node HYPER-CORE/tools/test-fluid.js                   # atmosphere, shock tables, panel method, Moody chart, channels, water hammer, ISO 6358, the symbol kit
 node HYPER-CORE/tools/test-chem.js                    # elements, configurations, molar masses, balancing, VSEPR, \ce notation
 node HYPER-CORE/tools/validate.js HYPER-PHYSICS       # checks all content: links, TeX, formulas solve both ways, quizzes
 node HYPER-CORE/tools/simtest.js HYPER-PHYSICS        # runs every simulation headless, every control to its ends
