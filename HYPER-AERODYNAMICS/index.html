@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Aerodynamics</title>
+<meta name="description" content="How air flows and what it does to everything that moves through it: the atmosphere, airfoils and wings, drag, high-speed flight, performance, stability, propulsion, rotors and wind energy — explained, with formula calculators, simulations and an airfoil lab.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 18.5c4-7.5 12-9.5 26-3.5-10 2-19 4.3-26 3.5z' fill='%2338a8e0'/%3E%3Cpath d='M2 10.5h10M2 25.5h8' stroke='%2338a8e0' stroke-width='2.2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Aerodynamics needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/fluidtools.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/airfoils.js"></script>
+<script src="content/atmosphere.js"></script>
+<script src="content/basics.js"></script>
+<script src="content/compressible.js"></script>
+<script src="content/drag.js"></script>
+<script src="content/flow.js"></script>
+<script src="content/highspeed-testing.js"></script>
+<script src="content/performance.js"></script>
+<script src="content/potential.js"></script>
+<script src="content/propulsion.js"></script>
+<script src="content/rotors-nature.js"></script>
+<script src="content/stability.js"></script>
+<script src="content/viscous.js"></script>
+<script src="content/wings.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/airfoils.js"></script>
+<script src="sims/atmosphere.js"></script>
+<script src="sims/basics.js"></script>
+<script src="sims/compressible.js"></script>
+<script src="sims/drag.js"></script>
+<script src="sims/flow.js"></script>
+<script src="sims/highspeed-testing.js"></script>
+<script src="sims/performance.js"></script>
+<script src="sims/potential.js"></script>
+<script src="sims/propulsion.js"></script>
+<script src="sims/rotors-nature.js"></script>
+<script src="sims/stability.js"></script>
+<script src="sims/viscous.js"></script>
+<script src="sims/wings.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'aerodynamics' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

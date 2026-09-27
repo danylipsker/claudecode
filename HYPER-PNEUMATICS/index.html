@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Pneumatics</title>
+<meta name="description" content="Compressed air at work: gas laws and humidity, compressors, air treatment and distribution, cylinders, valves and circuits in ISO 1219 symbols, sequences, electro-pneumatics, vacuum, sizing and energy efficiency — with calculators and simulations.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='12' fill='none' stroke='%237fbf1d' stroke-width='2.6'/%3E%3Cpath d='M16 17l6.5-6.5' stroke='%237fbf1d' stroke-width='2.8' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='17' r='2.6' fill='%237fbf1d'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Pneumatics needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/fluidtools.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/actuators.js"></script>
+<script src="content/air-physics.js"></script>
+<script src="content/applications.js"></script>
+<script src="content/distribution-energy.js"></script>
+<script src="content/electro.js"></script>
+<script src="content/function-control.js"></script>
+<script src="content/production.js"></script>
+<script src="content/sequences-safety.js"></script>
+<script src="content/sizing.js"></script>
+<script src="content/treatment.js"></script>
+<script src="content/vacuum.js"></script>
+<script src="content/valves.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/actuators.js"></script>
+<script src="sims/air-physics.js"></script>
+<script src="sims/applications.js"></script>
+<script src="sims/distribution-energy.js"></script>
+<script src="sims/electro.js"></script>
+<script src="sims/function-control.js"></script>
+<script src="sims/production.js"></script>
+<script src="sims/sequences-safety.js"></script>
+<script src="sims/sizing.js"></script>
+<script src="sims/treatment.js"></script>
+<script src="sims/vacuum.js"></script>
+<script src="sims/valves.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'pneumatics' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

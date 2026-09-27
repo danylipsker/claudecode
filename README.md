@@ -27,6 +27,9 @@ Serve the folder with `node scripts/serve.js 8172` and open http://localhost:817
 | [Hyper Chemistry](HYPER-CHEMISTRY/index.html) | General chemistry the same way: 146 concepts from atoms and bonding to equilibrium, acids, electrochemistry, organic and analytical chemistry, 362 formula calculators, 73 simulations, an interactive periodic table, an exact equation balancer and molecules to turn in 3-D. |
 | [Hyper Finances](HYPER-FINANCES/index.html) | Money without the fear: 155 concepts on interest, loans and mortgages (fixed, variable, inflation-linked, mixed), budgeting, banking, investing, the stock exchange, margin and derivatives, retirement, micro and macroeconomics; 452 formula calculators, 90 simulations, and money calculators (loan schedules, comparisons, savings, financial independence, IRR) in the reader's own currency. |
 | [Hyper Medicine](HYPER-MEDICINE/index.html) | The human body in health and disease: 165 concepts across every organ system, mental health, infection, cancer, medicines, diagnosis and evidence, prevention and first aid; 345 formula calculators, 108 simulations (an ECG monitor, a blood-pressure cuff, a neuron, drug levels, epidemics …), a clickable body map and medical calculators. For learning, not diagnosis. |
+| [Hyper Aerodynamics](HYPER-AERODYNAMICS/index.html) | How air flows and what it does to everything that moves through it: 171 concepts on the atmosphere, flow and boundary layers, airfoils and wings, drag, high-speed flight and shock waves, performance, stability and control, propulsion, rotors, wind energy and flight in nature; 535 formula calculators, 103 simulations, an airfoil lab (panel method, critical Mach, coordinates for CAD) and atmosphere and gas-dynamics calculators. |
+| [Hyper Hydraulics](HYPER-HYDRAULICS/index.html) | Liquids that carry, lift and push: 163 concepts on fluid properties, hydrostatics, pipe flow, pumps and turbines, water hammer, open channels, and oil hydraulics — pumps, motors, cylinders, valves and working circuits drawn in ISO 1219 symbols; 485 formula calculators, 96 simulations, pipe/pump/channel and fluid-power calculators and an ISO 1219 symbol chart. |
+| [Hyper Pneumatics](HYPER-PNEUMATICS/index.html) | Compressed air at work: 137 concepts on gas laws and humidity, compressors, air treatment and distribution, cylinders, valves, circuits and sequences (cascade, step sequencers), electro-pneumatics, vacuum, sizing and dynamics, energy and safety; 350 formula calculators, 85 simulations with simulated cylinders, and pneumatics calculators. |
 | [Galaxies](GALAXIES/index.html) | Nikoli's Tentai Show: puzzles generated on the spot, each with a single solution, and a hint that explains its reasoning. |
 | [Sokoban](sokoban/sokoban.html) | Push every crate onto a glowing pad: level picker, move and push counters, saved progress. |
 | [Tic Tac Toe](tic-tac-toe/tic-tac-toe.html) | Play a friend or the computer, at three levels, as either side. |
@@ -41,12 +44,7 @@ Serve the folder with `node scripts/serve.js 8172` and open http://localhost:817
 
 ### Other folders
 
-* `HYPER-CORE/` - the engine shared by Hyper Physics, Hyper Math, Hyper Electronics and Hyper
-  Chemistry: concept graph, TeX and chemical notation to MathML, the solver behind the calculators,
-  a circuit simulator, the elements and a 3-D molecule viewer, simulation kit, practice, and the
-  authoring guide and checking tools.
-* `scripts/` - `serve.js` (the local server for the apps page) and the SOLIDWORKS 2020 helper scripts
-  that keep its resource monitor quiet.
-* `sessions/` - records of the Claude Code sessions that built these projects.
-* `NOVELTECH/` - a separate checkout (ignored here): documents on platforms, 3D engines and a
-  mechanical-arm cutting simulator.
+* `HYPER-CORE/` - the engine shared by the nine Hyper apps: concept graph, TeX and chemical notation to MathML,
+  the solver behind the calculators, a circuit simulator, the elements and a 3-D molecule viewer, money,
+  medicine and fluid mechanics (atmosphere, airfoils, pipes, pumps, compressed air) with ISO 1219 symbols,
+  simulation kit, practice, and the authoring guide and checking tools.
