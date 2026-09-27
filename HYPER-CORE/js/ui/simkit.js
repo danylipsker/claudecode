@@ -308,6 +308,8 @@
     med: H.med,                     // ECG, neurons, oxygen, drug levels, test statistics, epidemics, clinical formulas (medicine.js)
     fluid: H.fluid,                 // atmosphere, gas dynamics, airfoils, pipes, pumps, channels, water hammer, compressed air (fluid.js)
     fsym: H.fsym,                   // ISO 1219 fluid-power symbols: valves, pumps, cylinders, lines (fluidsym.js)
+    pharma: H.pharma,               // ionisation, dissolution, stability, dosage forms, sterilisation, PK models, bioequivalence (pharma.js)
+    bio: H.bio,                     // sequences and the genetic code, genetics, populations, enzymes, drift, lab numbers (bio.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),
     hue: (h, a) => ui.colors().hue(h, a),

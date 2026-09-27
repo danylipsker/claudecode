@@ -115,6 +115,19 @@
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function escA(s) { return esc(s).replace(/"/g, '&quot;'); }
   const norm = s => s.replace(/[\s{}]/g, '');
+  // the marks of a superscript that name a different quantity (E°, E‡, x*, x′, ΔG°′) as key characters; '' when the
+  // superscript holds anything else (an exponent)
+  const DECOR = { circ: '°', ominus: '°', standardstate: '°', ddagger: '‡', dagger: '†', ast: '*', star: '*', prime: '\'' };
+  function decorOf(src) {
+    const toks = String(src).replace(/[\s{}]/g, '').match(/\\[a-zA-Z]+|./g) || [];
+    let out = '';
+    for (const t of toks) {
+      if (t === '*' || t === '\'') out += t;
+      else if (t[0] === '\\' && DECOR[t.slice(1)]) out += DECOR[t.slice(1)];
+      else return '';
+    }
+    return out;
+  }
 
   /* ---------------------------------------------------------------- tokens */
 
@@ -262,6 +275,9 @@
         if (t.t === 'cmd' && (t.v === 'limits' || t.v === 'nolimits')) { this.i++; base.limits = t.v === 'limits'; continue; }
         break;
       }
+      // x′ is its own symbol, distinct from x, and so are E° (standard), E‡, x* and ΔG°′ (any superscript made only
+      // of such marks, primes included, in the order written); x² is still x
+      const decor = sup && sup.src != null ? decorOf(sup.src) : '';
       if (primes) {
         const pr = { m: '<mo>' + ['′', '″', '‴', '⁗'][Math.min(primes, 4) - 1] + '</mo>' };
         sup = sup ? { m: '<mrow>' + pr.m + sup.m + '</mrow>' } : pr;
@@ -269,10 +285,8 @@
       if (!sub && !sup) { if (base.k == null && base.src != null && !base.fn && !base.movable) base.k = norm(base.src); return base; }
       const end = this.peek() ? this.peek().p : this.src.length;
       const src = this.src.slice(t0.p, end);
-      // x′ is its own symbol, distinct from x, and so are E° (standard), E‡ and x*; x² is still x
-      const dm = sup && sup.src != null && /^\{?\s*(?:\\(circ|ominus|standardstate|ddagger|dagger|ast|star)|(\*))\s*\}?$/.exec(sup.src);
-      const decor = dm ? ({ circ: '°', ominus: '°', standardstate: '°', ddagger: '‡', dagger: '†', ast: '*', star: '*' })[dm[1]] || '*' : '';
-      const key = base.src == null ? null : (sub ? norm(base.src + '_' + sub.src) : norm(base.src)) + '\''.repeat(primes) + decor;
+      const marks = '\''.repeat(primes) + decor, canon = marks.replace(/'/g, '') + marks.replace(/[^']/g, '');   // primes last: ^{\circ\prime} = ^{\circ}'
+      const key = base.src == null ? null : (sub ? norm(base.src + '_' + sub.src) : norm(base.src)) + canon;
       const k = (sub || primes || decor) && key != null ? ' data-k="' + escA(key) + '"' : '';
       const over = base.limits === true || (base.limits !== false && base.movable);
       let m;

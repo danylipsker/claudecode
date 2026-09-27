@@ -72,8 +72,8 @@
     ui.setTitle('Tools');
     const disc = H.discipline ? H.discipline.id : '';
     const chemApp = disc === 'chemistry', moneyApp = disc === 'finance', medApp = disc === 'medicine';
-    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics';
-    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : 'plot');
+    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology';
+    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : 'plot');
     const common = [['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['constants', 'Constants'], ['symbols', 'Symbols'], ['az', 'Index A–Z']];
     const tabs = moneyApp
       ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
@@ -82,6 +82,8 @@
       : aeroApp ? [['airfoil', 'Airfoil lab'], ['flight', 'Atmosphere & flight']].concat(common)
       : hydApp ? [['hydro', 'Pipes, pumps & channels'], ['fpower', 'Fluid-power calculators'], ['iso', 'ISO 1219 symbols']].concat(common)
       : pneuApp ? [['pneu', 'Pneumatics calculators'], ['iso', 'ISO 1219 symbols']].concat(common)
+      : pharmApp ? [['pharmcalc', 'Pharmacy calculations'], ['formulation', 'Formulation'], ['pk', 'Pharmacokinetics']].concat(common)
+      : bioApp ? [['sequence', 'Sequences'], ['genetics', 'Genetics'], ['cell', 'Cells & life']].concat(common)
       : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
         .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
         .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
@@ -92,8 +94,11 @@
     const body = e => H.medTools ? H.medTools.bodyMap(e) : plotter(e);
     const clinical = e => H.medTools ? H.medTools.clinical(e, parts[1]) : plotter(e);
     const fl = k => (e, p) => H.fluidTools ? H.fluidTools[k](e, p, parts[1]) : plotter(e, p);
+    const ph = k => (e, p) => H.pharmaTools ? H.pharmaTools[k](e, p, parts[1]) : plotter(e, p);
+    const bi = k => (e, p) => H.bioTools ? H.bioTools[k](e, p, parts[1]) : plotter(e, p);
     ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical,
-      airfoil: fl('airfoil'), flight: fl('flight'), hydro: fl('hydro'), fpower: fl('fpower'), pneu: fl('pneu'), iso: fl('iso') }[tab] || plotter)(el, params);
+      airfoil: fl('airfoil'), flight: fl('flight'), hydro: fl('hydro'), fpower: fl('fpower'), pneu: fl('pneu'), iso: fl('iso'),
+      pharmcalc: ph('pharmcalc'), formulation: ph('formulation'), pk: ph('pk'), sequence: bi('sequence'), genetics: bi('genetics'), cell: bi('cell') }[tab] || plotter)(el, params);
   };
 
   /* ---------------------------------------------------------------- periodic table */

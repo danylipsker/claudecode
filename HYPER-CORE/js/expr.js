@@ -544,10 +544,23 @@
       if (opts.log && lo > 0) for (let k = 0; k <= N; k++) xs.push(lo * Math.pow(hi / lo, k / N));
       else for (let k = 0; k <= N; k++) xs.push(lo + (hi - lo) * k / N);
       scan(xs);
-      // a root exactly on an end of the range has no sign change beside it
-      let fmax = 0;
-      for (const x of xs) { const v = Math.abs(f(x)); if (ok(v) && v > fmax) fmax = v; }
-      for (const x of [lo, hi]) { const v = Math.abs(f(x)); if (ok(v) && v <= 1e-11 * fmax) found.push(x); }
+      // a range over many decades (0 … 1e9) hides small roots inside its first linear step: scan it logarithmically too
+      if (!opts.log && lo >= 0 && hi > 0 && (lo === 0 || hi / lo > 1e3)) {
+        const a = lo > 0 ? lo : hi * 1e-12, ls = [];
+        for (let k = 0; k <= N; k++) ls.push(a * Math.pow(hi / a, k / N));
+        scan(ls);
+      }
+      // a root exactly on an end of the range has no sign change beside it. Judge it against how much f changes
+      // next to that end, not against the largest |f| on the grid: a function that grows to 1e18 across the range
+      // would otherwise make f(end) = −10 look like zero
+      const n = xs.length;
+      for (const [x, near] of [[lo, [xs[1], xs[2]]], [hi, [xs[n - 2], xs[n - 3]]]]) {
+        const v = f(x);
+        if (!ok(v)) continue;
+        if (v === 0) { found.push(x); continue; }
+        const d = Math.max(...near.map(y => { const w = f(y); return ok(w) ? Math.abs(w - v) : 0; }));
+        if (Math.abs(v) <= 1e-9 * d) found.push(x);
+      }
     } else {
       // near the guess first, finely (2 % steps, ×0.05 … ×20), so close pairs of roots are both seen
       const g = opts.guess;

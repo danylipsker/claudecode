@@ -33,7 +33,9 @@
     medicine:    { id: 'medicine',    title: 'Hyper Medicine',    short: 'Medicine',    folder: 'HYPER-MEDICINE',    hue: 352, ready: true },
     aerodynamics:{ id: 'aerodynamics', title: 'Hyper Aerodynamics', short: 'Aerodynamics', folder: 'HYPER-AERODYNAMICS', hue: 198, ready: true },
     hydraulics:  { id: 'hydraulics',  title: 'Hyper Hydraulics',  short: 'Hydraulics',  folder: 'HYPER-HYDRAULICS',  hue: 268, ready: true },
-    pneumatics:  { id: 'pneumatics',  title: 'Hyper Pneumatics',  short: 'Pneumatics',  folder: 'HYPER-PNEUMATICS',  hue: 88,  ready: true }
+    pneumatics:  { id: 'pneumatics',  title: 'Hyper Pneumatics',  short: 'Pneumatics',  folder: 'HYPER-PNEUMATICS',  hue: 88,  ready: true },
+    pharmaceutics: { id: 'pharmaceutics', title: 'Hyper Pharmaceutics', short: 'Pharmaceutics', folder: 'HYPER-PHARMACEUTICS', hue: 294, ready: true },
+    biology:     { id: 'biology',     title: 'Hyper Biology',     short: 'Biology',     folder: 'HYPER-BIOLOGY',     hue: 114, ready: true }
   };
 
   H.use = function (id) {

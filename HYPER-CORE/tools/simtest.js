@@ -58,6 +58,9 @@ function fakeCtx() {
       if (k in t) return t[k];
       return function () {
         if (numeric.has(k)) for (const a of arguments) if (typeof a === 'number' && !Number.isFinite(a)) { bad.push(current + ': ' + k + '() got ' + a); break; }
+        // browsers throw IndexSizeError on a negative radius
+        const radii = { arc: [2], arcTo: [4], ellipse: [2, 3] }[k];
+        if (radii && radii.some(i => arguments[i] < 0)) bad.push(current + ': ' + k + '() got a negative radius ' + radii.map(i => arguments[i]).join(', ') + ' (throws in a browser)');
         return undefined;
       };
     },
@@ -148,7 +151,7 @@ function makeKit(record) {
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
-    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym,
+    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio,
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }

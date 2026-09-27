@@ -32,9 +32,9 @@
     length:      { name: 'length', units: [['m', 1], ['km', 1e3], ['cm', 1e-2], ['mm', 1e-3], ['µm', 1e-6], ['nm', 1e-9], ['pm', 1e-12], ['fm', 1e-15], ['Å', 1e-10], ['dm', 0.1],
                    ['in', 0.0254], ['ft', 0.3048], ['yd', 0.9144], ['mi', 1609.344], ['nmi', 1852], ['AU', 1.495978707e11], ['ly', 9.4607304725808e15], ['pc', 3.0856775814913673e16], ['kpc', 3.0856775814913673e19], ['Mpc', 3.0856775814913673e22], ['Gpc', 3.0856775814913673e25], ['R⊕', 6.371e6], ['R☉', 6.957e8]] },
     area:        { name: 'area', units: [['m²', 1], ['cm²', 1e-4], ['mm²', 1e-6], ['µm²', 1e-12], ['nm²', 1e-18], ['km²', 1e6], ['ha', 1e4], ['in²', 6.4516e-4], ['ft²', 0.09290304], ['acre', 4046.8564224], ['barn', 1e-28]] },
-    volume:      { name: 'volume', units: [['m³', 1], ['L', 1e-3], ['mL', 1e-6], ['cm³', 1e-6], ['mm³', 1e-9], ['dm³', 1e-3], ['in³', 1.6387064e-5], ['ft³', 0.028316846592], ['gal', 3.785411784e-3], ['qt', 9.46352946e-4]] },
+    volume:      { name: 'volume', units: [['m³', 1], ['L', 1e-3], ['mL', 1e-6], ['cm³', 1e-6], ['mm³', 1e-9], ['µL', 1e-9], ['dm³', 1e-3], ['in³', 1.6387064e-5], ['ft³', 0.028316846592], ['gal', 3.785411784e-3], ['qt', 9.46352946e-4]] },
     mass:        { name: 'mass', units: [['kg', 1], ['g', 1e-3], ['mg', 1e-6], ['µg', 1e-9], ['t', 1e3], ['lb', 0.45359237], ['oz', 0.028349523125], ['u', 1.66053906660e-27], ['MeV/c²', 1.78266192e-30], ['M⊕', 5.9722e24], ['M☉', 1.98847e30]] },
-    time:        { name: 'time', units: [['s', 1], ['ms', 1e-3], ['µs', 1e-6], ['ns', 1e-9], ['ps', 1e-12], ['min', 60], ['h', 3600], ['day', 86400], ['yr', 3.15576e7], ['kyr', 3.15576e10], ['Myr', 3.15576e13], ['Gyr', 3.15576e16]] },
+    time:        { name: 'time', units: [['s', 1], ['ms', 1e-3], ['µs', 1e-6], ['ns', 1e-9], ['ps', 1e-12], ['min', 60], ['h', 3600], ['day', 86400], ['wk', 604800], ['mo', 2629800], ['yr', 3.15576e7], ['kyr', 3.15576e10], ['Myr', 3.15576e13], ['Gyr', 3.15576e16]] },
     frequency:   { name: 'frequency', units: [['Hz', 1], ['kHz', 1e3], ['MHz', 1e6], ['GHz', 1e9], ['THz', 1e12], ['PHz', 1e15], ['1/min', 1 / 60], ['rpm', 1 / 60], ['bpm', 1 / 60], ['breaths/min', 1 / 60]] },
     angle:       { name: 'angle', units: [['rad', 1], ['°', Math.PI / 180], ['rev', 2 * Math.PI], ['mrad', 1e-3], ['′', Math.PI / 10800], ['″', Math.PI / 648000]] },
     solidangle:  { name: 'solid angle', units: [['sr', 1], ['deg²', Math.pow(Math.PI / 180, 2)]] },
@@ -116,11 +116,14 @@
     doseperkg:   { name: 'dose per body weight', units: [['mg/kg', 1], ['µg/kg', 1e-3], ['g/kg', 1e3]] },
     volperkg:    { name: 'volume per body weight', units: [['mL/kg', 1], ['L/kg', 1e3]] },
     vascres:     { name: 'vascular resistance', units: [['Pa·s/m³', 1], ['mmHg·min/L', 133.322387415 * 60 / 1e-3], ['dyn·s/cm⁵', 1e5]] },
-    numberdensity: { name: 'number density', units: [['1/m³', 1], ['1/cm³', 1e6]] },
+    numberdensity: { name: 'number density', units: [['1/m³', 1], ['1/cm³', 1e6], ['1/mL', 1e6], ['1/µL', 1e9], ['1/L', 1e3]] },
+    // osmolarity is counted in its clinical unit (like massconc): mOsm/L = mmol of particles per litre
+    osmol:       { name: 'osmolarity', units: [['mOsm/L', 1], ['Osm/L', 1000], ['mOsm/kg', 1]] },
+    enzymeactivity: { name: 'enzyme activity', units: [['kat', 1], ['µkat', 1e-6], ['nkat', 1e-9], ['U', 1e-6 / 60], ['mU', 1e-9 / 60]] },
     viscosity:   { name: 'dynamic viscosity', units: [['Pa·s', 1], ['mPa·s', 1e-3], ['P', 0.1], ['cP', 1e-3]] },
     kinvisc:     { name: 'kinematic viscosity', units: [['m²/s', 1], ['mm²/s', 1e-6], ['St', 1e-4], ['cSt', 1e-6]] },
     flowrate:    { name: 'volume flow rate', units: [['m³/s', 1], ['L/s', 1e-3], ['L/min', 1e-3 / 60], ['mL/min', 1e-6 / 60], ['mL/h', 1e-6 / 3600], ['L/h', 1e-3 / 3600], ['m³/h', 1 / 3600], ['mL/s', 1e-6], ['gal/min', 3.785411784e-3 / 60], ['cm³/s', 1e-6], ['dm³/min', 1e-3 / 60], ['cm³/min', 1e-6 / 60], ['cfm', 0.028316846592 / 60]] },
-    massflow:    { name: 'mass flow rate', units: [['kg/s', 1], ['g/s', 1e-3], ['g/min', 1e-3 / 60], ['kg/h', 1 / 3600], ['t/h', 1 / 3.6], ['lb/s', 0.45359237], ['lb/h', 0.45359237 / 3600]] },
+    massflow:    { name: 'mass flow rate', units: [['kg/s', 1], ['g/s', 1e-3], ['g/min', 1e-3 / 60], ['g/h', 1e-3 / 3600], ['mg/h', 1e-6 / 3600], ['kg/h', 1 / 3600], ['t/h', 1 / 3.6], ['lb/s', 0.45359237], ['lb/h', 0.45359237 / 3600]] },
     // compressed air as free air: the volume it would fill at the ISO 8778 reference atmosphere (ANR: 20 °C, 100 kPa, 65 % RH);
     // SCFM is at 60 °F and 14.696 psi, which is 2.9 % more air than the same number of cubic feet ANR
     airflow:     { name: 'free-air flow (ANR)', units: [['m³/s ANR', 1], ['L/min ANR', 1e-3 / 60], ['L/s ANR', 1e-3], ['m³/min ANR', 1 / 60], ['m³/h ANR', 1 / 3600], ['SCFM', 0.028316846592 / 60 * 1.0288]] },
@@ -130,7 +133,7 @@
     optpower:    { name: 'optical power', units: [['D', 1], ['1/m', 1]] },
     activity:    { name: 'activity', units: [['Bq', 1], ['kBq', 1e3], ['MBq', 1e6], ['GBq', 1e9], ['TBq', 1e12], ['Ci', 3.7e10], ['mCi', 3.7e7], ['µCi', 3.7e4]] },
     decayconst:  { name: 'decay constant', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['1/day', 1 / 86400], ['1/yr', 1 / 3.15576e7]] },
-    dose:        { name: 'absorbed dose', units: [['Gy', 1], ['mGy', 1e-3], ['µGy', 1e-6], ['rad', 1e-2]] },
+    dose:        { name: 'absorbed dose', units: [['Gy', 1], ['kGy', 1e3], ['mGy', 1e-3], ['µGy', 1e-6], ['rad', 1e-2]] },
     doseeq:      { name: 'equivalent dose', units: [['Sv', 1], ['mSv', 1e-3], ['µSv', 1e-6], ['rem', 1e-2], ['mrem', 1e-5]] },
     luminousflux:{ name: 'luminous flux', units: [['lm', 1]] },
     illuminance: { name: 'illuminance', units: [['lx', 1], ['fc', 10.763910417]] },
@@ -146,7 +149,7 @@
     datarate:    { name: 'data rate', units: [['bit/s', 1], ['kbit/s', 1e3], ['Mbit/s', 1e6], ['Gbit/s', 1e9], ['baud', 1], ['B/s', 8], ['kB/s', 8e3], ['MB/s', 8e6]] },
     slewrate:    { name: 'slew rate', units: [['V/s', 1], ['V/ms', 1e3], ['V/µs', 1e6]] },
     thermalres:  { name: 'thermal resistance', units: [['K/W', 1], ['°C/W', 1]] },
-    rate:        { name: 'rate', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['1/day', 1 / 86400], ['1/week', 1 / 604800], ['1/yr', 1 / 3.15576e7], ['kHz', 1e3]] },
+    rate:        { name: 'rate', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['1/day', 1 / 86400], ['1/week', 1 / 604800], ['1/month', 1 / 2629800], ['1/yr', 1 / 3.15576e7], ['kHz', 1e3]] },
     hubble:      { name: 'Hubble parameter', units: [['km/s/Mpc', 1e3 / 3.0856775814913673e22], ['1/s', 1]] },
     gravparam:   { name: 'gravitational parameter', units: [['m³/s²', 1], ['km³/s²', 1e9]] }
   };

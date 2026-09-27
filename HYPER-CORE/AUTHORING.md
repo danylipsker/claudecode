@@ -125,7 +125,9 @@ or `\\unit{m/s^2}`; spacing `\\, \\; \\quad`; environments `pmatrix`, `bmatrix`,
 `\\boxed{…}`, `\\underbrace{…}_{…}`, `\\overset{…}{…}`, `\\color{red}{…}`, `\\hl{…}`
 (highlight), `\\ce{2H2 + O2 -> 2H2O}` (simple chemistry), `\\dv{f}{x}`, `\\pdv{f}{x}`,
 `\\dv[2]{x}{t}`, `\\xrightarrow{…}`. In tables write a literal bar as `\\|` (bars inside
-`$…$` and inside `[[link|text]]` are fine).
+`$…$` and inside `[[link|text]]` are fine and must **not** be escaped: `[[medicine:gfr|text]]` in a table
+cell is right, `[[medicine:gfr\|text]]` is not — the `\|` in the quick-reference table above is only
+Markdown's own escape).
 Anything else is reported by the validator as an unknown command.
 
 ## Formulas: every one is a calculator
@@ -192,7 +194,10 @@ Anything else is reported by the validator as an unknown command.
 - **tex** should show every variable with the same TeX as its `vars[..].tex` (the default
   is derived from the name: `v0` → `v_0`, `theta` → `\\theta`, `k_B` → `k_{B}`), so pointing
   at a row lights the symbol up and clicking the symbol solves for it. `\\Delta x` works as
-  one symbol. The validator warns when a symbol is missing from the tex.
+  one symbol. A variable's tex must parse as **one** symbol: several letters in a row are
+  several symbols, so write clearance as `\\mathrm{CL}`, EC₅₀ as `\\mathrm{EC}_{50}` and log P as
+  `{\\log P}_{\\text{o/w}}` (a braced group needs a subscript to count as one symbol). The validator warns
+  when a symbol is missing from the tex.
 - **stories** are optional word problems per unknown; `{name}` is replaced by the value
   with its unit. Put placeholders outside `$…$` (inside maths, braces belong to TeX). Without a story the problem reads "Given …, find …".
 - Choose formulas that teach: the defining relation, the one or two results people
@@ -729,6 +734,69 @@ calculators (`#/tools/pneu/cylinder`, `valve`, `air`, `leak`, `vacuum`, `receive
   ISO 4414:2010, ISO 6358-1:2013, ISO 8573-1:2010, ISO 15552; aircraft and machine figures are
   rounded examples. Aerodynamics explains; flying follows the aircraft's approved manuals and
   the rules of the air, and drones the local rules.
+
+### Pharmaceutics and biology
+
+Hyper Pharmaceutics and Hyper Biology have their own modules. References: shelf life and the Arrhenius
+equation with a stability study and a dissolving powder (Pharmaceutics); enzyme kinetics with enzymes as
+particles and genetic drift in replicate populations (Biology).
+
+**Units.** `concentration` (mM, µM, mol/L), `massconc` (mg/L first, mg/mL, µg/mL — not SI, as in Medicine),
+`osmol` (mOsm/L — counted in its clinical unit), `enzymeactivity` (kat, U), `numberdensity` (1/mL, 1/µL for
+cells), `rate` (1/s … 1/mo), `time` (… wk, mo, yr), `molarenergy` (kJ/mol), `reactionrate`, `rateconst2`.
+Write concentrations in TeX as `\\mathrm{[S]}` and `\\mathrm{[E]}_0` (brackets alone cannot be clicked).
+Pharmacy formulas with mixed practical units (mg, mL, h, mg/(mL·day)) use `q: false` labels throughout the
+formula, as the Medicine section explains.
+
+```js
+const P = kit.pharma;      // pharma.js, tested by tools/test-pharma.js
+P.ionised(pKa, pH, acid)  P.solubility({ S0, pKa, pH, acid })  P.logD(logP, pKa, pH, acid)  P.bufferCapacity(C, pKa, pH)
+P.noyesWhitney({ D, A, h, Cs, C, V })  P.dissolve({ dose, r0, rho, Cs, D, h, V, T, dt }) -> [[t s, fraction], …]
+P.release.zero|first|higuchi|korsmeyer|weibull|hixson  P.f2(ref, test)
+P.degrade({ order, k, C0, t })  P.t90({ order, k, C0 })  P.arrhenius({ k1, T1, T2, Ea })  P.shelfLife({ order, kRef, TRef, Ea, T })
+P.carr(bulk, tapped)  P.hausner  P.flowClass(ci)  P.heckel(D)  P.stokes({ d, rhoP, rhoF, eta })  P.hlbMix  P.fickFlux  P.aerodynamic
+P.naclToAdd({ volume, drugs: [[g, E]] })  P.fpdMethod({ a, b })  P.osmolarity({ gPerL, MW, n })  P.mEq({ mg, MW, valence })  P.dilute  P.alligation
+P.f0(profile, z, Tref)  P.logReduction(t, D)  P.dAtT({ D121, z, T })
+P.twoComp({ dose, V1, k10, k12, k21 })  P.mmPK({ dose, Vd, Vmax, Km, tau, n })  P.nca(times, concs, nz)  P.be(test, ref, seq)  P.occupancy  P.hill  P.ti
+// and kit.med.pk / steadyState / loadingDose / maintenanceDose / emax / cockcroftGault / bsa (medicine.js)
+
+const B = kit.bio;         // bio.js, tested by tools/test-bio.js
+B.translate(seq, frame)  B.transcribe  B.revComp  B.gc  B.tm  B.orfs  B.mwProtein  B.mwDNA  B.sites(seq, 'EcoRI')  B.CODE  B.AA  B.ENZYMES  B.CUT  B.ends('EcoRI') (cut, overhang, end type)
+B.punnett('AaBb', 'aabb')  B.hardyWeinberg(p)  B.hwTest(nAA, nAa, naa)  B.chiSquare(obs, exp)  B.chiP(chi2, df)  B.haldane(r)  B.kosambi(r)
+B.exponential  B.logistic  B.growthCurve  B.lotkaVolterra({ x, y, a, b, c, d, T })  B.competition(…)  B.rk4(f, y, T, dt)
+B.mm(S, Vmax, Km, { I, Ki, type })  B.hill  B.wrightFisher({ N, p0, gens, s, h, seed })  B.rng(seed)  B.binomial(n, p, rng)  B.poisson(λ, rng)
+B.pcr(N0, cycles, eff)  B.cfu  B.shannon(counts)  B.simpson  B.kleiber(kg)  B.diffusionTime(x, D)  B.osmoticPressure(i, C, T)  B.gelDistance(bp)
+```
+
+**Tools to link to** (each has sub-pages, e.g. `[the dilution calculator](#/tools/pharmcalc/dilution)`).
+Pharmaceutics: `#/tools/pharmcalc/` dilution, alligation, isotonic, electrolytes, infusion, sterile (F₀ and SAL);
+`#/tools/formulation/` solubility (pH profile, log D, BCS), dissolution, release (model fitting, f₂), stability
+(Arrhenius, MKT), powder (Carr, Hausner, tensile strength), emulsion (HLB, Stokes); `#/tools/pk/` dosing, nca,
+twocomp, nonlinear, be (90 % CI), pd (antagonists, therapeutic index).
+Biology: `#/tools/sequence/` analyse, translate (six frames, ORFs, the code table), digest (map and gel), primers
+(PCR); `#/tools/genetics/` cross (Punnett), hardy, drift, linkage, chi; `#/tools/cell/` explorer (animal, plant and
+bacterial cells), growth (curve, plate count), enzyme (inhibitors, Lineweaver–Burk), predator, competition,
+ecology (diversity, mark–recapture), scale (diffusion, Kleiber).
+
+**Writing about medicines — the rules** (in addition to the Medicine section's):
+
+- **Examples are hypothetical.** Dose, dilution, infusion and compounding calculations use clearly
+  illustrative drugs and numbers, never real dosing guidance; say that real preparation and dosing follow
+  the product information, local protocols and an independent check.
+- **Generic names only**, mechanisms and classes; no brand promotion; no advice to start, stop or change a
+  medicine — refer to a pharmacist or doctor.
+- **No recipes for harm**: never describe how to synthesise, extract, purify or concentrate controlled,
+  illicit or dangerous substances, how to defeat abuse-deterrent formulations, or how to obtain medicines
+  outside the law. Overdose and toxicity are explained as pharmacology, with emergency callouts and poison
+  centre advice.
+- Regulatory facts (FDA, EMA, ICH guidelines, pharmacopoeia chapters) are named with their dates and
+  described generally.
+
+**Writing about living things — the rules.** Biotechnology, microbiology and virology pages explain how
+techniques and organisms work; they are not protocols. No step-by-step methods for culturing pathogens,
+enhancing transmissibility or virulence, producing toxins or modifying viruses; biosafety described
+generally. Human genetics is accurate and respectful (human variation is mostly within populations;
+"races" are not discrete biological categories); people-first language for genetic conditions.
 
 ## Checking your work
 

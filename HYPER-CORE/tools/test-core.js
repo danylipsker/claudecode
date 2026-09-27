@@ -93,6 +93,9 @@ const r2 = X.roots(x => x * x - 2, { positive: false, guess: -1 });
 ok(r2.length === 2, 'both roots when signed');
 const r3 = X.roots(x => Math.tan(x) - 1, { min: 0, max: 1.5 });
 ok(r3.length === 1, 'tan root without the pole');
+const r4 = X.roots(N => 0.5 * N * (1 - N / 1000) - 10, { min: 0, max: 1e9 });
+ok(r4.length === 2 && !r4.includes(0) && r4.some(x => Math.abs(x - 20.4168) < 1e-3), 'a wide range: no false root at its end, small roots found');
+ok(X.roots(x => x, { min: 0, max: 5 })[0] === 0 && X.roots(x => x - 5, { min: 0, max: 5 })[0] === 5, 'a true root on the end of a range');
 ok(X.toTex(X.parse('v0^2*sin(2*theta)/g')).includes('\\frac'), 'toTex fraction');
 
 /* ---------- units */
@@ -141,6 +144,8 @@ ok(H.text('[the periodic table](#/tools/periodic)').includes('href="#/tools/peri
 const keysOf = list => list.map(t => H.texKey(t));
 ok(new Set(keysOf(['E', 'E^\\circ', 'z_+', 'z_-', 'P_A', 'P_A^*', "x'", 'k^\\ddagger'])).size === 8, 'distinct symbol keys (° * ‡ charges primes)');
 ok(H.texKey('x^2') === 'x' && H.texKey('E^{\\circ}') === H.texKey('E^\\circ') && H.texKey('z_{+}') === H.texKey('z_+'), 'equivalent spellings share a key');
+ok(H.texKey('\\Delta G^{\\circ\\prime}') !== H.texKey('\\Delta G') && H.texKey('\\Delta G^{\\circ\\prime}') !== H.texKey('\\Delta G^{\\circ}') &&
+   H.texKey('\\Delta G^{\\circ\\prime}') === H.texKey("\\Delta G^{\\circ}'") && H.texKey('x^{\\prime}') === H.texKey("x'"), 'ΔG°′ is its own symbol, however the prime is written');
 
 // every engine file parses (the UI files are not run by these tests, so a syntax slip would only show in a browser)
 {
