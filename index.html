@@ -28,6 +28,7 @@
   ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
   a.app {
     display: block;
+    box-sizing: border-box; /* height 100% includes the padding, so a card stays inside its grid cell */
     height: 100%;
     padding: 15px 17px;
     border-radius: 10px;
@@ -59,6 +60,7 @@
   .dot.f { background: radial-gradient(circle at 35% 35%, #fff 0, #f08a4b 55%, #8c3a0e 100%); }
   .dot.q { background: radial-gradient(circle at 35% 35%, #fff 0, #6d5ff0 55%, #2f2296 100%); }
   .dot.y { background: radial-gradient(circle at 35% 35%, #fff 0, #cfc33a 55%, #6d650c 100%); }
+  .dot.d { background: radial-gradient(circle at 35% 35%, #fff 0, #2ec4b6 55%, #0e6b63 100%); }
 </style>
 </head>
 <body>
@@ -150,6 +152,12 @@
         <a class="app" href="HYPER-ERGONOMICS/index.html">
           <span class="name"><span class="dot y" aria-hidden="true"></span>Hyper Ergonomics</span>
           <span class="desc">Designing for people: body sizes and their spread, the dimensions of furniture, rooms, workplaces, machines and vehicles given as ranges with their reasons and limits, lifting, noise, vibration, heat, cold and light — at home, in the office, the workshop, the military and the field.</span>
+        </a>
+      </li>
+      <li>
+        <a class="app" href="HYPER-DRIVING/index.html">
+          <span class="name"><span class="dot d" aria-hidden="true"></span>Hyper Driving</span>
+          <span class="desc">Driving theory for Israel, in Hebrew and English: traffic law, all 401 road signs, good driving practice and knowing your vehicle — maintenance, warning lights, troubleshooting and handling faults for cars, motorcycles, trucks and buses — with practice questions and a mock theory test.</span>
         </a>
       </li>
     </ul>
