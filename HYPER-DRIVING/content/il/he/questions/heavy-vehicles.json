@@ -36,7 +36,7 @@
     "{{fact:speed.urban}}",
     "{{fact:speed.heavy.nonurban}}",
     "{{fact:speed.freeway}}",
-    "{{fact:speed.nonurban}}"
+    "{{fact:speed.nonurban_divided}}"
    ],
    "answer": 1,
    "explain": "רכב מסחרי מעל {{fact:speed.heavy_threshold}} מוגבל ל-{{fact:speed.heavy.nonurban}} בכל דרך שאינה עירונית, גם בדרך מהירה וגם אם תמרור מתיר יותר (תקנה 54).",
@@ -364,11 +364,11 @@
    "options": [
     "גיל 17 בלבד, בלי ותק קודם",
     "ותק של 10 שנים בכל רישיון רכב",
-    "גיל {{fact:licence.ce.min_age}} וותק {{fact:licence.ce.seniority_c}} שנה לפחות ברישיון C",
+    "גיל {{fact:licence.ce.min_age|n}} וותק {{fact:licence.ce.seniority_c}} לפחות ברישיון C",
     "כל בעל רישיון B יכול לקבלו מיד"
    ],
    "answer": 2,
-   "explain": "רישיון C+E דורש גיל {{fact:licence.ce.min_age}} וותק {{fact:licence.ce.seniority_c}} שנה לפחות ברישיון C (תקנה 189).",
+   "explain": "רישיון C+E דורש גיל {{fact:licence.ce.min_age|n}} וותק {{fact:licence.ce.seniority_c}} לפחות ברישיון C (תקנה 189).",
    "shuffled": true
   },
   {
@@ -483,7 +483,7 @@
     "18"
    ],
    "answer": 0,
-   "explain": "רישיון דרגה 1 ניתן מגיל {{fact:licence.tractor.min_age}} (תקנה 188).",
+   "explain": "רישיון דרגה 1 ניתן מגיל {{fact:licence.tractor.min_age|n}} (תקנה 188).",
    "shuffled": true
   },
   {

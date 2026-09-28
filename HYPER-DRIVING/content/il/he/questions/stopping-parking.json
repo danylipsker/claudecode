@@ -81,7 +81,7 @@
    "q": "באיזה מרחק לפני מעבר חצייה אסור לעצור, להעמיד או להחנות רכב?",
    "options": [
     "{{fact:park.no_stop.bus_stop_m}}",
-    "{{fact:park.no_stop.railway_crossing_m}}",
+    "{{fact:park.no_stop.train_station_platform_m}}",
     "{{fact:park.no_stop.bridge_tunnel_m}}",
     "{{fact:park.no_stop.pedestrian_crossing_m}}"
    ],
@@ -117,7 +117,7 @@
     "{{fact:park.no_stop.railway_crossing_m}}",
     "{{fact:park.no_stop.bridge_tunnel_m}}",
     "{{fact:park.no_stop.train_station_platform_m}}",
-    "{{fact:park.no_stop.bus_stop_m}}"
+    "{{fact:park.no_stop.junction_m}}"
    ],
    "answer": 1,
    "explain": "האיסור חל על הגשר או במנהרה עצמם, וכן {{fact:park.no_stop.bridge_tunnel_m}} לפניהם ואחריהם (תקנה 72(א)(11)).",
@@ -149,23 +149,29 @@
    ],
    "answer": 3,
    "explain": "אסור לעצור, להעמיד או להחנות רכב בצד רכב אחר שכבר עומד או חונה בצדה של הדרך (תקנה 72(א)(10)).",
-   "shuffled": true
+   "shuffled": true,
+   "facts": [
+    "park.no_stop.bus_stop_m",
+    "park.no_stop.pedestrian_crossing_m",
+    "park.no_stop.junction_m"
+   ]
   },
   {
    "id": "q-sp-011",
    "lesson": "sp-forbidden",
    "facts": [
-    "park.no_stop.bus_stop_m"
+    "park.no_stop.bus_stop_m",
+    "park.bus_stop.opposite_min_width"
    ],
    "q": "מתי מותר לעצור או לחנות בצד הדרך שממול לתחנת אוטובוס?",
    "options": [
     "רק לרכב פרטי",
-    "אם רוחב הכביש באותו מקום 12 מטר לפחות",
+    "אם רוחב הכביש באותו מקום {{fact:park.bus_stop.opposite_min_width}} לפחות",
     "לעולם לא",
     "רק בלילה"
    ],
    "answer": 1,
-   "explain": "כשהכביש רחב 12 מטר ומעלה, מותר לעצור או לחנות בצד הנגדי לתחנת האוטובוס (תקנה 72(א)(12)).",
+   "explain": "כשהכביש רחב {{fact:park.bus_stop.opposite_min_width}} ומעלה, מותר לעצור או לחנות בצד הנגדי לתחנת האוטובוס (תקנה 72(א)(12)).",
    "shuffled": true
   },
   {
@@ -264,7 +270,7 @@
     "{{fine:parking-disabled-space-obstruct}}",
     "{{fine:parking-sidewalk}}",
     "{{fine:parking-disabled-blocking}}",
-    "{{fine:parking-general-prohibited-sign}}"
+    "{{fine:bus-lane-designated-lane}}"
    ],
    "answer": 2,
    "explain": "חסימת רכב עם תג נכה במקום השמור לו גוררת קנס של {{fine:parking-disabled-blocking}}.",

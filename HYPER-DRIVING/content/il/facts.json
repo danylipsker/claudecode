@@ -4753,6 +4753,21 @@
     "clause": "72(ג)"
    },
    "confidence": "high"
+  },
+  {
+   "id": "licence.moto.b_road_test_exempt_years",
+   "value": 3,
+   "unit": "years",
+   "label": {
+    "he": "ותק ברישיון B שמזכה בפטור ממבחן ההתנהגות בדרך ברישיון אופנוע",
+    "en": "Seniority on a B licence that exempts from the road-behaviour part of the motorcycle test"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 203",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "203(ב)"
+   },
+   "confidence": "high"
   }
  ],
  "offences": [

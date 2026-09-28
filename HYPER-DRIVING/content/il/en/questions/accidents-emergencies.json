@@ -57,13 +57,13 @@
    ],
    "q": "A driver did not show their insurance certificate within {{fact:accident.insurance_certificate.report_hours}}. How many more days do they still have to show it themselves at the station, to avoid conviction for not showing it?",
    "options": [
-    "A further {{fact:accident.insurance_certificate.late_presentation_days}} days",
+    "A further {{fact:accident.insurance_certificate.late_presentation_days}}",
     "No further option",
     "A further month",
     "One further day"
    ],
    "answer": 0,
-   "explain": "The Motor Vehicle Insurance Ordinance, section 40, allows a further {{fact:accident.insurance_certificate.late_presentation_days}} days to show it in person at the station where the report was filed.",
+   "explain": "The Motor Vehicle Insurance Ordinance, section 40, allows a further {{fact:accident.insurance_certificate.late_presentation_days}} to show it in person at the station where the report was filed.",
    "shuffled": true
   },
   {
@@ -77,10 +77,10 @@
     "The duty applies to every passenger, at any age",
     "From age 12",
     "From age 21",
-    "From age {{fact:accident.passenger_duty.min_age}}"
+    "From age {{fact:accident.passenger_duty.min_age|n}}"
    ],
    "answer": 3,
-   "explain": "Traffic Ordinance, section 64A1, places the duty on a passenger aged {{fact:accident.passenger_duty.min_age}} or older, and only if the driver themselves did not stop and call for help.",
+   "explain": "Traffic Ordinance, section 64A1, places the duty on a passenger aged {{fact:accident.passenger_duty.min_age|n}} or older, and only if the driver themselves did not stop and call for help.",
    "shuffled": true
   },
   {

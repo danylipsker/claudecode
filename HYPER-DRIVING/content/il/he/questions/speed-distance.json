@@ -117,7 +117,7 @@
     "{{fact:speed.bus.freeway}}",
     "{{fact:speed.freeway}}",
     "{{fact:speed.heavy.nonurban}}",
-    "{{fact:speed.nonurban}}"
+    "{{fact:speed.nonurban_divided}}"
    ],
    "answer": 0,
    "explain": "אוטובוס מוגבל בדרך מהירה ל-{{fact:speed.bus.freeway}}, וגם מגביל המהירות שבו מכוון ל-{{fact:speed.limiter.bus}}.",

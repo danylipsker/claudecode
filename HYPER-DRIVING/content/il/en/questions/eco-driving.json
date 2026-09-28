@@ -181,7 +181,7 @@
    "q": "What is the fine for misusing the horn?",
    "options": [
     "{{fine:horn-misuse}}",
-    "{{fine:parking-general-prohibited-sign}}",
+    "{{fine:phone-handheld}}",
     "{{fine:continuous-line}}",
     "There is no fine for this"
    ],

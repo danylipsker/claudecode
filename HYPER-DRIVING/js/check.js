@@ -41,7 +41,20 @@
       VAL.lastIndex = 0;
       while ((m = VAL.exec(s))) {
         const k = m[1], id = m[2].trim();
-        if (k === 'fact') { if (!d.facts.has(id)) err(where, 'missing fact "' + id + '"'); }
+        if (k === 'fact') {
+          if (!d.facts.has(id)) err(where, 'missing fact "' + id + '"');
+          else if (!/\|\s*n\s*\}\}$/.test(m[0])) {
+            // "{{fact:x}} שנים" prints the unit twice ("5 שנים שנים") — use {{fact:x|n}}
+            // the next two words, without a possessive or a Hebrew prefix letter ("השעות", "valid points")
+            const after = (s.slice(VAL.lastIndex).match(/^(?:\s+[^\s.,;:!?()[\]{}|—–]+){1,2}/) || [''])[0].trim().split(/\s+/);
+            const units = unitWords(d.facts.get(id).unit);
+            // (only the article ה marks a repeat: "5 שעות השעות"; "מיום", "בשעות" are ordinary words)
+            const hit = after.find((wd, i) => { const x = wd.replace(/[’']s?$/, '').toLowerCase(); return units.has(x) || (i === 0 && /^ה[א-ת]/.test(x) && units.has(x.slice(1))); });
+            if (hit) err(where, 'unit "' + hit + '" written after {{fact:' + id + '}}, which prints its own — use {{fact:' + id + '|n}} or drop the word');
+            // "גיל 17 שנים" / "age 17 years": after an age word the number stands alone
+            if (d.facts.get(id).unit === 'years' && /(^|[\s(„"“—*_-])((?:ב|ל|מ)?גיל|[Aa]ges?|[Aa]ged) $/.test(s.slice(0, m.index))) err(where, 'age word before {{fact:' + id + '}} — use {{fact:' + id + '|n}} ("גיל 17", "age 17")');
+          }
+        }
         else if (k === 'fine' || k === 'points') {
           const o = d.offences.get(id);
           if (!o) err(where, 'missing offence "' + id + '"');
@@ -54,6 +67,42 @@
       if (/\[\[[^\]]*$|^[^[]*\]\]/.test(s.replace(/\[\[[^\]]*\]\]/g, ''))) warn(where, 'unbalanced [[ ]]');
       const colons = (s.match(/^:::/gm) || []).length;
       if (colons % 2) err(where, 'unclosed ::: callout');
+    };
+
+    // every spelling a unit is printed with, in any language ("שנה", "שנים", "year", "years")
+    function unitWords(unit) {
+      const out = new Set();
+      const add = (u) => Object.entries(D.content.UNITS[u] || {}).forEach(([k, v]) => { if (k.length === 2) [].concat(v).forEach((w) => w && out.add(String(w).toLowerCase())); });
+      add(unit);
+      if (unit === 'ym') { add('years'); add('months'); }
+      return out;
+    }
+    // a text with its values filled in as they read on a given date (for comparing options)
+    const valueAt = (text, lang, date) => String(text || '').replace(/\{\{(fact|fine|points):([^}|]+)(?:\|([^}]*))?\}\}/g, (m0, k, id, arg) => {
+      id = id.trim();
+      if (k === 'fact') {
+        const f = d.facts.get(id);
+        return f ? D.content.fmtValue(D.content.factValue(f, date), f.unit, lang, { numberOnly: arg === 'n' }) : m0;
+      }
+      const o = d.offences.get(id); if (!o) return m0;
+      const key = k === 'fine' ? 'fine' : 'points';
+      return String(D.content.factValue({ value: o[key], changes: (o.changes || []).filter((c) => c[key] != null).map((c) => ({ from: c.from, value: c[key] })) }, date));
+    });
+    // option text for comparing: unit spellings made equal ("30 m" = "30 metres" = "30 מטרים"), no thousands separators
+    const UNITFORM = new Map();
+    Object.entries(D.content.UNITS).forEach(([u, def]) => ['he', 'en'].forEach((l) => [].concat(def[l] || []).forEach((w) => { if (w) UNITFORM.set(D.content.norm(w), u); })));
+    [['מטרים', 'm'], ['מ׳', 'm'], ['metres', 'm'], ['metre', 'm'], ['meters', 'm'], ['meter', 'm'], ['kilometres', 'km'], ['centimetres', 'cm'], ['millimetres', 'mm'],
+      ['kilograms', 'kg'], ['kilogram', 'kg'], ['tonnes', 't'], ['tonne', 't'], ['tons', 't'], ['שניה', 's']].forEach(([w, u]) => UNITFORM.set(D.content.norm(w), u));
+    const canon = (s) => D.content.norm(s).replace(/(\d),(?=\d{3}\b)/g, '$1').split(' ').map((w) => UNITFORM.get(w) || w).join(' ');
+    // the dates on which any value used in these texts changes (from today on)
+    const changeDates = (texts) => {
+      const today = D.util.today(), dates = new Set([today]);
+      texts.forEach((t) => String(t || '').replace(/\{\{(fact|fine|points):([^}|]+)[^}]*\}\}/g, (m0, k, id) => {
+        const x = k === 'fact' ? d.facts.get(id.trim()) : d.offences.get(id.trim());
+        ((x && x.changes) || []).forEach((c) => { if (c.from > today) dates.add(c.from); });
+        return m0;
+      }));
+      return [...dates].sort();
     };
 
     const langs = Object.keys(d.text);
@@ -102,6 +151,16 @@
           if (!(q.answer >= 0 && q.answer < q.options.length)) err(w, 'answer index out of range');
           const seen = new Set();
           q.options.forEach((o, i) => { if (!String(o).trim()) err(w, 'empty option ' + i); const n = D.content.norm(o); if (seen.has(n)) err(w, 'duplicate option "' + o + '"'); seen.add(n); refs(o, w + ' option'); });
+          // two options that read the same once the values are filled in — today, or after a scheduled change
+          // (a typed wrong answer can collide with a fact whose value changed)
+          changeDates(q.options).forEach((date) => {
+            const read = new Map();
+            q.options.forEach((o, i) => {
+              const n = canon(valueAt(o, l, date));
+              if (read.has(n)) err(w, 'options ' + (read.get(n) + 1) + ' and ' + (i + 1) + ' read the same ("' + valueAt(o, l, date) + '")' + (date !== D.util.today() ? ' from ' + date : ''));
+              else read.set(n, i);
+            });
+          });
         }
         if (!q.explain) warn(w, 'no explanation');
         if (q.lesson && !D.content.lesson(q.lesson)) err(w, 'missing lesson "' + q.lesson + '"');

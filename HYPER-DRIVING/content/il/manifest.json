@@ -39,8 +39,8 @@
    "path": "en/lessons/accidents-emergencies.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "42a777c85c5a57ed2d2cd452408161464a9352f5698ee7e93a6cd5702cc29e66",
-   "bytes": 15202
+   "sha256": "c4c806ca370bb4a0f174e8cd68ef1918a6b61f73a06ca89f72d27102ad72a29d",
+   "bytes": 15194
   },
   {
    "path": "en/lessons/brakes.json",
@@ -60,8 +60,8 @@
    "path": "en/lessons/buses.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "848f8b79aeff2200adaaf801337abf639924d75a0a4c6e7484fe770605cf58b0",
-   "bytes": 15837
+   "sha256": "9c66792b7862b29112595cea013dde4ee23084742f6defe73d79ca93e2cfbbf4",
+   "bytes": 15833
   },
   {
    "path": "en/lessons/dashboard.json",
@@ -123,15 +123,15 @@
    "path": "en/lessons/heavy-vehicles.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "63dc8bf2e2a7acdfc366fba0d3ecb30ff399d36683d7cf2057d17a35538c259a",
-   "bytes": 24178
+   "sha256": "b9419b2da7f909694b73bfaae40adbed076ba121688471c571e3c3d875b06466",
+   "bytes": 24166
   },
   {
    "path": "en/lessons/human-factor.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "9cb4fa76876c4f6c73a34effecedfeb6c4f9e4dd44916f3913fa6586b562fcad",
-   "bytes": 18754
+   "sha256": "e7ff26224a918fa937f1351e100fc6c2defcdb91da2740624904006c5dfd6d63",
+   "bytes": 18732
   },
   {
    "path": "en/lessons/lanes-overtaking.json",
@@ -144,8 +144,8 @@
    "path": "en/lessons/licensing.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "76a878eba9700d3a448a7642e7796d11999f85f044c0bf0e5a1b7485c9fc33e5",
-   "bytes": 19412
+   "sha256": "2342e0f40d1dbf6c20f95a8873d5177d1b633ba603dd61ff361cd95454cebe9b",
+   "bytes": 19426
   },
   {
    "path": "en/lessons/maintenance.json",
@@ -165,15 +165,15 @@
    "path": "en/lessons/motorcycles.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "f80fc278de0a2e0bbe17271d2a07867f4e691eabc8f3b927ab5a7e86bc1a44f5",
-   "bytes": 19985
+   "sha256": "abde0498a10c18379821e85e0e5fd976234deef2ffc96f23a4acf33a06aa2c98",
+   "bytes": 20020
   },
   {
    "path": "en/lessons/passenger-safety.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "ddd261ff914476047c09ed2e8be61cfd6bb7a23092948bfcd15f19081ed4e0c8",
-   "bytes": 15211
+   "sha256": "154107d3ababb1f6ed4d213d0d914046092a749bffa4b9adbf44ce9adcbb53d0",
+   "bytes": 15229
   },
   {
    "path": "en/lessons/right-of-way.json",
@@ -186,8 +186,8 @@
    "path": "en/lessons/road-basics.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "97c96db5ce1057f19cee108b800754df64a7d03df12c1bfebd85aeb9e12ffe9d",
-   "bytes": 21005
+   "sha256": "6c2cd82cfc334151d110b41e838b7fdfac1dbcad65ee48f27391fec01c1a001d",
+   "bytes": 21007
   },
   {
    "path": "en/lessons/safety-systems.json",
@@ -263,15 +263,15 @@
    "path": "en/lessons/vulnerable-users.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "894b181a9b60a9842ae17d865d47cd6823b5544d8117c2172d84019884f584d9",
-   "bytes": 19348
+   "sha256": "eacc59bf51489b66b52b5dafb55f604cc082e0fd5d3a76fe82da7c63b8845118",
+   "bytes": 19350
   },
   {
    "path": "en/questions/accidents-emergencies.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "409756908f8295060f4e1b2d00103151de989cccfc53116e8e8d931c815b4fdc",
-   "bytes": 14794
+   "sha256": "362cffd579f330d73b4f532e7c60d9dc74280f9711d26ddc0ebadf0584b55e87",
+   "bytes": 14788
   },
   {
    "path": "en/questions/brakes.json",
@@ -291,8 +291,8 @@
    "path": "en/questions/buses.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "5d7284518723176461d6555179feb65f545238c16e55bf43f58a89c9fec22df7",
-   "bytes": 10208
+   "sha256": "3cfd93e12628edc9d59f45c15372cbc3ff3400ed1fe3a62ae7917d6387a50994",
+   "bytes": 10263
   },
   {
    "path": "en/questions/dashboard.json",
@@ -319,8 +319,8 @@
    "path": "en/questions/eco-driving.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "fa46c4bed40ba374e348697eba4cd5993796860789e0fd1dcca7f00ebc3a4146",
-   "bytes": 7466
+   "sha256": "f8815f4ca805d1b2781fa14fd373e40b732ce630f0f122bd4adc91afeefceddc",
+   "bytes": 7449
   },
   {
    "path": "en/questions/electrical.json",
@@ -333,8 +333,8 @@
    "path": "en/questions/enforcement.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "8ee421862ef072f41621ab0f6acba5612d8ff7a04c6987d858413b15893e172f",
-   "bytes": 14900
+   "sha256": "6f24702ee328e972b1c48646357b107d14ab6ee0484bb517eb09fb4233c63276",
+   "bytes": 15576
   },
   {
    "path": "en/questions/engine.json",
@@ -354,36 +354,36 @@
    "path": "en/questions/heavy-vehicles.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "a7efddde042a33d5ddcf728c17e64ed17911252984d99491586b15931ebe40f0",
-   "bytes": 14542
+   "sha256": "f8ceef790405b7fccb68c04bf7eb3c2012c7ba2a0fbe0ea06a85cde3c3070b11",
+   "bytes": 14548
   },
   {
    "path": "en/questions/human-factor.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "622f1e7ef29eac66e4de2852242e5885d18eafcbbe52d3b5296189ec8020a395",
-   "bytes": 13942
+   "sha256": "4b4063de383589356ec4cd542af218850c39b9a7245f22815955d0de14af1daa",
+   "bytes": 13913
   },
   {
    "path": "en/questions/lanes-overtaking.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "c19b5af594dd6f62236852ac7ad2240aaea90cfb577f758918bd7164bb910cd9",
-   "bytes": 17233
+   "sha256": "967c042621478b8e92b64312d69e243b31f9408d708002ea77a7a97e47b7bd7f",
+   "bytes": 17367
   },
   {
    "path": "en/questions/licensing.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "30d3e710a0f92bf4b1796f21d2251d9950c5dccff3d3387a1e67dd3616760f31",
-   "bytes": 14000
+   "sha256": "5b173eccae14d3b3c2121e1bea578db7372b10ff01a1739a6dab3836300567fb",
+   "bytes": 14478
   },
   {
    "path": "en/questions/maintenance.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "cc035b58d929fb274e94f9f0e0f1a44ab20199a6b34d66a905bfab5619fb2ea7",
-   "bytes": 9920
+   "sha256": "a1994372cec986b0e7c7965eb0fd36b0af3a91b57ef39b6491f967264e4c150c",
+   "bytes": 9951
   },
   {
    "path": "en/questions/markings-signals.json",
@@ -396,15 +396,15 @@
    "path": "en/questions/motorcycles.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "87c98e11e661213432e75c52b69250c2317da0986f1841e74c33de3e9c8d9494",
-   "bytes": 12953
+   "sha256": "eebba2fec0fc8c856cf6e73215c768cf382df995203ec7e7616b8724a95742df",
+   "bytes": 13175
   },
   {
    "path": "en/questions/passenger-safety.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "ab2e79183eda89a0fed59d32d8111ce23d210fc3eca05b6c4dbd3a7bee838c47",
-   "bytes": 12956
+   "sha256": "77cd61a858303cbe80ac93870e0ac086c54cdce8b6bdcd3d868985a487f77d44",
+   "bytes": 12964
   },
   {
    "path": "en/questions/right-of-way.json",
@@ -417,8 +417,8 @@
    "path": "en/questions/road-basics.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "44f3b496c00ca0d7fceae3cde816d354de9c2deb4c4dce9e3e133e3c26453113",
-   "bytes": 14389
+   "sha256": "3018c56eb4be8ff254363bbba93c534ea7ae1bf6a25af18b5d2c2a7b39226cae",
+   "bytes": 14512
   },
   {
    "path": "en/questions/safety-systems.json",
@@ -445,8 +445,8 @@
    "path": "en/questions/speed-distance.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "1a8b8e124f79e52558124cd7806ae70c98243a9426c2d8dd617b5d0c5aa83ddf",
-   "bytes": 11149
+   "sha256": "c7ea254539ca4b2769fa3b3cc35cc893cc6948914eb61b6270739d9be4943934",
+   "bytes": 11157
   },
   {
    "path": "en/questions/steering-suspension.json",
@@ -459,8 +459,8 @@
    "path": "en/questions/stopping-parking.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "f439a0eba093d2b691c068c3b5a935d8e5515f1302a908f020155a6088d3b7fd",
-   "bytes": 13131
+   "sha256": "f1677d2c2d9ada09604aac7a15a2a03429552746b917a132f4de87c8b4ef2170",
+   "bytes": 13328
   },
   {
    "path": "en/questions/troubleshooting.json",
@@ -473,8 +473,8 @@
    "path": "en/questions/tyres.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "4d7f051071f18b99fec65a09255b3816c310833af417141d5d292f28697c40e0",
-   "bytes": 10073
+   "sha256": "7d531df783bfc1f845205564fb775c6003210440eb35ea069734cd1e74b70f61",
+   "bytes": 10118
   },
   {
    "path": "en/questions/vehicle-basics.json",
@@ -590,8 +590,8 @@
   {
    "path": "facts.json",
    "role": "facts",
-   "sha256": "b4803874f1f206c5382436d83fc3f612fd5d134f6197aa7546c173ff84ba9e9f",
-   "bytes": 219512
+   "sha256": "5c57578f674b709ded94dada28d3dbf7221581d73ee1e69e1f34a3a15d84354a",
+   "bytes": 219974
   },
   {
    "path": "figures.json",
@@ -609,8 +609,8 @@
    "path": "he/lessons/accidents-emergencies.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "957e01388384f400dcd3bde86fc8ec49ed0512791df554bfcdd519d82db713b5",
-   "bytes": 17408
+   "sha256": "b26769e03bb25a2328b9039abfc9daeb07ff192330e8207d10545d0e5d9f8d42",
+   "bytes": 17392
   },
   {
    "path": "he/lessons/brakes.json",
@@ -630,8 +630,8 @@
    "path": "he/lessons/buses.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "3717c20e2839897ba93967a92ab751393faf27af8f7580254217ad2febd867b3",
-   "bytes": 18811
+   "sha256": "8e35231fe355b6734eb2306454f57721b4bf13baca57f5c22d54455bf9f4fd82",
+   "bytes": 18801
   },
   {
    "path": "he/lessons/dashboard.json",
@@ -693,15 +693,15 @@
    "path": "he/lessons/heavy-vehicles.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "61475cb3ba8b502ac6776fe42f2885f2ffa63d111d5426c58469b9b660da3c88",
-   "bytes": 27756
+   "sha256": "4f819b242fd46f37e0bf5975b721b48388a790ff76d4800ad48be1a52b55e35f",
+   "bytes": 27736
   },
   {
    "path": "he/lessons/human-factor.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "533231146dc73a232ed4520b42f90f23eaa6589a99cfb28c98e7b0648a018d20",
-   "bytes": 22682
+   "sha256": "5e2d9e715571cf2128c6195274dd2f8fe58f509afa2877291098adbc295916ba",
+   "bytes": 22672
   },
   {
    "path": "he/lessons/lanes-overtaking.json",
@@ -714,8 +714,8 @@
    "path": "he/lessons/licensing.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "8317e14e7bc0a2dcb3856a1e86e4deee937ddba34fbecde214f6d9957be59c3a",
-   "bytes": 21820
+   "sha256": "1296a7460caf8c39a17b76492c1002c224e79bb55546c15783fe0f4bae7c64eb",
+   "bytes": 21834
   },
   {
    "path": "he/lessons/maintenance.json",
@@ -735,15 +735,15 @@
    "path": "he/lessons/motorcycles.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "69f52563ce8fd983c02d8746fd992e229f9d414a3c59d62704a33b015e280b15",
-   "bytes": 24220
+   "sha256": "094b62371edca5a7700f7ebc8738ec4abdc22fc0c12ae844d8f952dd9d0721e6",
+   "bytes": 24249
   },
   {
    "path": "he/lessons/passenger-safety.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "2a15a6265d5322fd0595629abdf9db948886787d621943017d9d957b2b25be70",
-   "bytes": 18494
+   "sha256": "61b20ff95e6ab5926853e5c96f101f180fcc341f03c3fd15da6b0536fde2181c",
+   "bytes": 18512
   },
   {
    "path": "he/lessons/right-of-way.json",
@@ -833,15 +833,15 @@
    "path": "he/lessons/vulnerable-users.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "6760294dd9a83f04e08baba36b3616dcdb26fe1c6ce94b271b35d83c236054a8",
-   "bytes": 23470
+   "sha256": "d80db6d7289fcca31fc630c1284b237d07482a7530662a135d0a43db497868ed",
+   "bytes": 23472
   },
   {
    "path": "he/questions/accidents-emergencies.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "3c7e9eeecd2de8f13e2c6b27b96c8415c320756c81289676d798aec5a7a0e2a2",
-   "bytes": 16332
+   "sha256": "42beb46b99806aa9daabaf3c457f453bbb87a03176945ad974d452b153b45bf7",
+   "bytes": 16318
   },
   {
    "path": "he/questions/brakes.json",
@@ -861,8 +861,8 @@
    "path": "he/questions/buses.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "644232098eecf244002db2667563edce74d5c91983bf66993fc3c84fa7df03cd",
-   "bytes": 11847
+   "sha256": "6e56e4d91d403555a91e2880fc2f024e2decd750fc9d336364e7d6604c6672ba",
+   "bytes": 11898
   },
   {
    "path": "he/questions/dashboard.json",
@@ -889,8 +889,8 @@
    "path": "he/questions/eco-driving.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "afda41d23811c2265393ee75b06d82aca2e6a58efd36083a572d5d06c0c1ac1c",
-   "bytes": 8929
+   "sha256": "b53b9b2488795af9c57baf0f59dd9d2c53f091c3496cda1f9e53f17c9a4793c1",
+   "bytes": 8912
   },
   {
    "path": "he/questions/electrical.json",
@@ -903,8 +903,8 @@
    "path": "he/questions/enforcement.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "77379d6b69c032a51acf94aac2ffff50ee837983749c69014f9a0657a9f82e64",
-   "bytes": 16241
+   "sha256": "185ca154e861d79f32aa063e35a4295cde7c906297fa3788d1ca9e12c23566fb",
+   "bytes": 16846
   },
   {
    "path": "he/questions/engine.json",
@@ -924,36 +924,36 @@
    "path": "he/questions/heavy-vehicles.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "4cafe2a2fa7e19e5897e91a69deecfab988af226065796373f38aeff0109f5a5",
+   "sha256": "a971f5a519f46cf17f9895f36fb390ceab121b8af08e3588abf0310be1493c2c",
    "bytes": 16168
   },
   {
    "path": "he/questions/human-factor.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "4a48b43bd61f40d0299fc7c894da5cccfaf06d235199336946eb30d1d11a68bd",
-   "bytes": 16200
+   "sha256": "5f009c63d0a90a174b0eac3a7b347ef79c4c4d31cadae3e9da929ecf67784607",
+   "bytes": 16173
   },
   {
    "path": "he/questions/lanes-overtaking.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "137b2efbe31fe2943a84b84cb458bcd9f1b55b0cc281e46508aff02c78d7b29a",
-   "bytes": 20223
+   "sha256": "fbee7cf994eaa947e09de65b7d13d8f8274addf74caae4eba815a2d7c5b0e2c9",
+   "bytes": 20345
   },
   {
    "path": "he/questions/licensing.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "d42840ca72725ea6a04d9dc2632a4b0e7c640a458165eef086f41a004aa2281d",
-   "bytes": 15764
+   "sha256": "50fbed9619103857e1f2bcd260ce16dd5d3a40defeec2519fd6e4e10aec64fbe",
+   "bytes": 16230
   },
   {
    "path": "he/questions/maintenance.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "6bb0a44a2a26cba67aec473bb727fc379f45d1012aa12d977d08805323e0500c",
-   "bytes": 11575
+   "sha256": "0d3d11d10361dc18a8130bc2b16e4967d7928c5ab210d0ee671da5ec5a9a9340",
+   "bytes": 11603
   },
   {
    "path": "he/questions/markings-signals.json",
@@ -966,15 +966,15 @@
    "path": "he/questions/motorcycles.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "38ac7a46b6de843b95ddd737d068de422ca8b664207582ecd7a5a0f30785c4c6",
-   "bytes": 14999
+   "sha256": "05a8608ab95a2eaca96991d31beaf3d418e31050db0482f10d217cd67611b026",
+   "bytes": 15195
   },
   {
    "path": "he/questions/passenger-safety.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "b1ea98f519f4554862fe72595f23a9f2bc3aae9f2d17f04c8ea4d8efc4bdcd80",
-   "bytes": 15284
+   "sha256": "abf931d511eb7d62140b1d32f83c31ae836390c4fe1a950d47a4bd7a816eb376",
+   "bytes": 15292
   },
   {
    "path": "he/questions/right-of-way.json",
@@ -987,8 +987,8 @@
    "path": "he/questions/road-basics.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "cdffcd0969d074b599cba03c93ef198f3fcf28c0c3cf7355d0fca7691a4ca795",
-   "bytes": 15634
+   "sha256": "bf7991e803f072b92d7c9e5b670b0242d6ff79f9152918770cfa3d1a4daea5a9",
+   "bytes": 15749
   },
   {
    "path": "he/questions/safety-systems.json",
@@ -1015,8 +1015,8 @@
    "path": "he/questions/speed-distance.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "9905f69bca1a36cd99ca0c0caffc55c439247cd02883c78b8da25113944695e9",
-   "bytes": 12675
+   "sha256": "ed55c620697e767027fb7cae90d636d6136a04b27a376166123188647ed94140",
+   "bytes": 12683
   },
   {
    "path": "he/questions/steering-suspension.json",
@@ -1029,8 +1029,8 @@
    "path": "he/questions/stopping-parking.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "97dc64143f780b7c7fe1e0d401276922b6181fcfa031ab1efe7963f22030169f",
-   "bytes": 14946
+   "sha256": "804c8edafac5109ee0579a5bff58420e997c6d90554e46faaae11a5000d2b939",
+   "bytes": 15143
   },
   {
    "path": "he/questions/troubleshooting.json",
@@ -1043,8 +1043,8 @@
    "path": "he/questions/tyres.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "828fbf0708c9472ad819f2a14b4c59cd6a7bb497e01f7ed57485a84ac52ec4f8",
-   "bytes": 11929
+   "sha256": "d3567396b8f5a7b30529174751896b45749134f815c6c15af3bfca5e0aaecc6d",
+   "bytes": 11968
   },
   {
    "path": "he/questions/vehicle-basics.json",

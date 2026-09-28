@@ -89,7 +89,8 @@
    "id": "q-ty-007",
    "lesson": "ty-markings",
    "facts": [
-    "tyre.max_age_fit_new"
+    "tyre.max_age_fit_new",
+    "tyre.max_age_fit_used"
    ],
    "q": "עד כמה שנים ממועד הייצור מותר למפעל לתיקון צמיגים להתקין צמיג חדש על רכב?",
    "options": [
@@ -99,7 +100,7 @@
     "3 שנים"
    ],
    "answer": 2,
-   "explain": "תקנה 322(ב1): לא יותקן צמיג שחלפו {{fact:tyre.max_age_fit_new}} ממועד ייצורו, או 24 חודשים אם הוא משומש.",
+   "explain": "תקנה 322(ב1): לא יותקן צמיג שחלפו {{fact:tyre.max_age_fit_new}} ממועד ייצורו, או {{fact:tyre.max_age_fit_used}} אם הוא משומש.",
    "shuffled": true
   },
   {

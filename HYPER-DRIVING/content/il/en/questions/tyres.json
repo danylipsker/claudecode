@@ -89,7 +89,8 @@
    "id": "q-ty-007",
    "lesson": "ty-markings",
    "facts": [
-    "tyre.max_age_fit_new"
+    "tyre.max_age_fit_new",
+    "tyre.max_age_fit_used"
    ],
    "q": "Up to how many years from the manufacturing date may a tyre repair shop fit a new tyre on a car?",
    "options": [
@@ -99,7 +100,7 @@
     "3 years"
    ],
    "answer": 2,
-   "explain": "Regulation 322(b1): a tyre must not be fitted if more than {{fact:tyre.max_age_fit_new}} have passed since its manufacture date, or 24 months if it is used.",
+   "explain": "Regulation 322(b1): a tyre must not be fitted if more than {{fact:tyre.max_age_fit_new}} have passed since its manufacture date, or {{fact:tyre.max_age_fit_used}} if it is used.",
    "shuffled": true
   },
   {

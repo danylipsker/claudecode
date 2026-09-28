@@ -215,12 +215,13 @@
    "id": "q-mt-016",
    "lesson": "mt-test",
    "facts": [
-    "vehicletest.private.first_test_years"
+    "vehicletest.private.first_test_years",
+    "vehicletest.private.interval_years"
    ],
    "q": "A new private car, first registered from 1 January 2023 — when does it undergo its first periodic vehicle test?",
    "options": [
     "After one year",
-    "After only {{fact:vehicletest.private.interval_years}} years",
+    "After only {{fact:vehicletest.private.interval_years}}",
     "Immediately upon registration",
     "After {{fact:vehicletest.private.first_test_years}} from first registration"
    ],

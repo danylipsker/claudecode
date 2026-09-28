@@ -270,6 +270,24 @@ If you are not sure a rule is current, say so in your report — do not guess.
   the tempting wrong one is wrong) and cites the regulation.
 - About 25 questions per chapter (specialised chapters 15–20), covering every
   lesson.
+- Numbers in questions: the right answer and the explanation take the value
+  from a fact; a wrong option that is another real legal value is that fact
+  (the neighbouring value); an invented wrong number is typed. Two facts can
+  share a value (non-urban and heavy-vehicle limits are both 80 km/h), so
+  pick neighbours that differ.
+- The validator compares the options as they read — today and on every
+  scheduled change date — and reports two options that would read the same,
+  with the date. That is how a law change that collides with a typed wrong
+  answer is caught before it reaches learners.
+- A scenario number ("a truck of 14,000 kg", "speeding by 35 km/h") stays
+  typed, but list the threshold it depends on in the question's `facts`, so
+  the editor's fact table shows the question under that fact.
+- Worked physics uses the speed it was worked out for ("at 50 km/h … about
+  28 m"), never `{{fact:speed.urban}}` — a change in the law must not change
+  the physics.
+- Never write the unit after a fact (`{{fact:x}} נקודות` prints "12 נקודות
+  נקודות"); after גיל / age use `{{fact:x|n}}` ("מגיל 17", "age 17"). The
+  validator reports both.
 
 ## 10. Troubleshooting trees
 

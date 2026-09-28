@@ -127,11 +127,14 @@
     "דבר נוסף לא יכול לקרות",
     "הרישיון נפסל אוטומטית לשנה",
     "חייבים לעבור בחינה עיונית מחדש באותו יום",
-    "לשוטר יש שיקול דעת לפסול את הרישיון מיידית עד 30 יום"
+    "לשוטר יש שיקול דעת לפסול את הרישיון מיידית עד {{fact:police.suspension.offence_days}}"
    ],
    "answer": 3,
-   "explain": "בחריגת מהירות של 31 עד 40 קמ״ש בדרך עירונית, לשוטר יש שיקול דעת לפסול את הרישיון מיידית עד 30 יום, בנוסף לקנס ולנקודות.",
-   "shuffled": true
+   "explain": "בחריגת מהירות של 31 עד 40 קמ״ש בדרך עירונית, לשוטר יש שיקול דעת לפסול את הרישיון מיידית עד {{fact:police.suspension.offence_days}}, בנוסף לקנס ולנקודות.",
+   "shuffled": true,
+   "facts": [
+    "police.suspension.offence_days"
+   ]
   },
   {
    "id": "q-en-010",
@@ -185,15 +188,15 @@
     "points.basic-course",
     "points.advanced-course"
    ],
-   "q": "נהג צבר {{fact:points.basic-course}} נקודות תקפות. מה חל עליו?",
+   "q": "נהג צבר {{fact:points.basic-course|n}} נקודות תקפות. מה חל עליו?",
    "options": [
-    "אין השלכה עד 24 נקודות",
+    "אין השלכה עד {{fact:points.advanced-course}}",
     "חובת קורס „נהיגה נכונה” בסיסי ומבחן בסופו",
     "פסילת רישיון מיידית",
     "חובת קורס מתקדם בלבד"
    ],
    "answer": 1,
-   "explain": "בין {{fact:points.basic-course}} ל-22 נקודות תקפות מחייב קורס בסיסי; הקורס המתקדם ({{fact:points.advanced-course}} נקודות ומעלה) מגיע רק אחרי שעברו את הבסיסי.",
+   "explain": "{{fact:points.basic-course}} תקפות ומעלה, ועד מתחת ל-{{fact:points.advanced-course|n}}, מחייבות קורס בסיסי; הקורס המתקדם ({{fact:points.advanced-course}} ומעלה) מגיע רק אחרי שעברו את הבסיסי.",
    "shuffled": true
   },
   {
@@ -201,23 +204,26 @@
    "lesson": "en-points",
    "facts": [
     "points.disqualification-3m",
-    "points.disqualification-9m"
+    "points.disqualification-9m",
+    "points.disqualification-3m.period",
+    "points.disqualification-9m.period",
+    "points.repeat_disqualification_window"
    ],
-   "q": "מה ההבדל בין פסילה בשל {{fact:points.disqualification-3m}} נקודות לפסילה בשל {{fact:points.disqualification-9m}} נקודות?",
+   "q": "מה ההבדל בין פסילה בשל {{fact:points.disqualification-3m}} לפסילה בשל {{fact:points.disqualification-9m}}?",
    "options": [
     "שתיהן פסילה לצמיתות",
-    "הראשונה היא פסילה ל-3 חודשים; השנייה — ל-9 חודשים עם חידוש רק אחרי בדיקות ובחינות מחדש",
+    "הראשונה היא פסילה ל-{{fact:points.disqualification-3m.period}}; השנייה — ל-{{fact:points.disqualification-9m.period}} עם חידוש רק אחרי בדיקות ובחינות מחדש",
     "אין הבדל, שתיהן זהות",
     "הראשונה חמורה מהשנייה"
    ],
    "answer": 1,
-   "explain": "{{fact:points.disqualification-3m}} נקודות תקפות — פסילה ל-3 חודשים. {{fact:points.disqualification-9m}} נקודות, או פסילה חוזרת תוך 6 שנים — פסילה ל-9 חודשים, עם חידוש רק אחרי בדיקות רפואיות ובחינות.",
+   "explain": "{{fact:points.disqualification-3m|n}} נקודות תקפות — פסילה ל-{{fact:points.disqualification-3m.period}}. {{fact:points.disqualification-9m}}, או פסילה חוזרת תוך {{fact:points.repeat_disqualification_window}} — פסילה ל-{{fact:points.disqualification-9m.period}}, עם חידוש רק אחרי בדיקות רפואיות ובחינות.",
    "shuffled": true
   },
   {
    "id": "q-en-015",
    "lesson": "en-points",
-   "q": "נהג נעדר מעל 20% משעות הקורס „נהיגה נכונה” שחויב בו. מה התוצאה?",
+   "q": "נהג נעדר מעל {{fact:points.course.max_absence}} משעות הקורס „נהיגה נכונה” שחויב בו. מה התוצאה?",
    "options": [
     "אין השלכה, כל עוד הגיע לרוב השיעורים",
     "מקבל הנחה בקנס העתידי",
@@ -225,8 +231,11 @@
     "מקבל אישור אוטומטי על סיום הקורס"
    ],
    "answer": 2,
-   "explain": "תקנה 551 קובעת שהיעדרות מעל 20% משעות הקורס, או כישלון שלוש פעמים במבחן שבסופו, נחשבים כאי-ביצוע אמצעי התיקון.",
-   "shuffled": true
+   "explain": "תקנה 551 קובעת שהיעדרות מעל {{fact:points.course.max_absence}} משעות הקורס, או כישלון שלוש פעמים במבחן שבסופו, נחשבים כאי-ביצוע אמצעי התיקון.",
+   "shuffled": true,
+   "facts": [
+    "points.course.max_absence"
+   ]
   },
   {
    "id": "q-en-016",
@@ -235,12 +244,15 @@
    "options": [
     "אין פסילה על עבירה זו",
     "3 חודשים",
-    "12 חודשים, בכפוף לשיקול דעת בית המשפט לקצר בנסיבות מיוחדות",
+    "{{fact:insurance.no_insurance.min_disqualification}}, בכפוף לשיקול דעת בית המשפט לקצר בנסיבות מיוחדות",
     "פסילה לצמיתות בלבד"
    ],
    "answer": 2,
-   "explain": "נהיגה בלי ביטוח חובה בתוקף עלולה לגרור פסילת רישיון של 12 חודשים לפחות, אלא אם בית המשפט מצא נסיבות מיוחדות לקצר.",
-   "shuffled": true
+   "explain": "נהיגה בלי ביטוח חובה בתוקף עלולה לגרור פסילת רישיון של {{fact:insurance.no_insurance.min_disqualification}} לפחות, אלא אם בית המשפט מצא נסיבות מיוחדות לקצר.",
+   "shuffled": true,
+   "facts": [
+    "insurance.no_insurance.min_disqualification"
+   ]
   },
   {
    "id": "q-en-017",

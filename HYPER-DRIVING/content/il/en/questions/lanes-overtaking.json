@@ -72,8 +72,11 @@
     "The middle lane only"
    ],
    "answer": 2,
-   "explain": "A commercial vehicle or a works vehicle with a permitted total weight over 10,000 kg, on a road with two or more lanes in its direction, must stay in the rightmost lane at a junction — unless sign 613 allows otherwise (reg. 36(e)).",
-   "shuffled": true
+   "explain": "A commercial vehicle or a works vehicle with a permitted total weight over {{fact:lanes.heavy_right_lane_gvw}}, on a road with two or more lanes in its direction, must stay in the rightmost lane at a junction — unless sign 613 allows otherwise (reg. 36(e)).",
+   "shuffled": true,
+   "facts": [
+    "lanes.heavy_right_lane_gvw"
+   ]
   },
   {
    "id": "q-lo-006",
@@ -224,14 +227,17 @@
    ],
    "q": "You are driving a commercial vehicle with a permitted total weight of 6 tonnes. May you overtake an overtaking vehicle?",
    "options": [
-    "No — a commercial vehicle weighing more than 3,500 kg must not overtake an overtaking vehicle, on any road and under any conditions",
+    "No — a commercial vehicle weighing more than {{fact:overtake.heavy_gvw}} must not overtake an overtaking vehicle, on any road and under any conditions",
     "Yes, if there are two lanes in your direction",
     "Yes, on a one-way road only",
     "Yes, on any road"
    ],
    "answer": 0,
-   "explain": "A bus (other than a minibus), a commercial vehicle, or a works vehicle weighing more than 3,500 kg must not overtake an overtaking vehicle, on any road and under any conditions (reg. 47(h)).",
-   "shuffled": true
+   "explain": "A bus (other than a minibus), a commercial vehicle, or a works vehicle weighing more than {{fact:overtake.heavy_gvw}} must not overtake an overtaking vehicle, on any road and under any conditions (reg. 47(h)).",
+   "shuffled": true,
+   "facts": [
+    "overtake.heavy_gvw"
+   ]
   },
   {
    "id": "q-lo-017",

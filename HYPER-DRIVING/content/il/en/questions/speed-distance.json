@@ -117,7 +117,7 @@
     "{{fact:speed.bus.freeway}}",
     "{{fact:speed.freeway}}",
     "{{fact:speed.heavy.nonurban}}",
-    "{{fact:speed.nonurban}}"
+    "{{fact:speed.nonurban_divided}}"
    ],
    "answer": 0,
    "explain": "A bus is restricted on an expressway to {{fact:speed.bus.freeway}}, and its speed limiter is also set to {{fact:speed.limiter.bus}}.",

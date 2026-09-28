@@ -28,10 +28,10 @@
    ],
    "q": "What is required to get a category C driving licence?",
    "options": [
-    "Age {{fact:licence.c.min_age}} and also {{fact:licence.c.seniority_c1}} of seniority in a C1 licence",
+    "Age {{fact:licence.c.min_age|n}} and also {{fact:licence.c.seniority_c1}} of seniority in a C1 licence",
     "A B licence only, with no further test",
     "Only a further theory exam, with no age requirement",
-    "Only age {{fact:licence.c.min_age}}, with no further conditions"
+    "Only age {{fact:licence.c.min_age|n}}, with no further conditions"
    ],
    "answer": 0,
    "explain": "Beyond the minimum age, a C licence also requires {{fact:licence.c.seniority_c1}} of seniority in a C1 licence — you cannot skip straight to it.",
@@ -75,9 +75,9 @@
    "q": "What is required to get a category D (bus) driving licence?",
    "options": [
     "No age requirement, only a professional exam",
-    "Age {{fact:licence.d.min_age}} and also {{fact:licence.d1.seniority_b}} of seniority in a B or C1 licence",
+    "Age {{fact:licence.d.min_age|n}} and also {{fact:licence.d1.seniority_b}} of seniority in a B or C1 licence",
     "A C+E licence only",
-    "Only age {{fact:licence.d.min_age}}"
+    "Only age {{fact:licence.d.min_age|n}}"
    ],
    "answer": 1,
    "explain": "A D licence requires both a minimum age and seniority in a B or C1 licence, similar to a D1 licence.",
@@ -97,7 +97,7 @@
     "There is no minimum age for the exam"
    ],
    "answer": 1,
-   "explain": "You can sit the theory exam from age {{fact:theory.min_age}}, even before starting actual driving lessons.",
+   "explain": "You can sit the theory exam from age {{fact:theory.min_age|n}}, even before starting actual driving lessons.",
    "shuffled": true
   },
   {
@@ -214,7 +214,7 @@
     "newdriver.passengers.age",
     "newdriver.passengers.max"
    ],
-   "q": "Up to age {{fact:newdriver.passengers.age}}, how many passengers may a new driver carry without an accompanying driver (after the escort period)?",
+   "q": "Up to age {{fact:newdriver.passengers.age|n}}, how many passengers may a new driver carry without an accompanying driver (after the escort period)?",
    "options": [
     "Only first-degree family members",
     "{{fact:newdriver.passengers.max}} only",
@@ -222,7 +222,7 @@
     "No limit"
    ],
    "answer": 1,
-   "explain": "Up to age {{fact:newdriver.passengers.age}}, a new driver may carry no more than {{fact:newdriver.passengers.max}} passengers without an accompanying driver.",
+   "explain": "Up to age {{fact:newdriver.passengers.age|n}}, a new driver may carry no more than {{fact:newdriver.passengers.max}} passengers without an accompanying driver.",
    "shuffled": true
   },
   {
@@ -375,16 +375,20 @@
   {
    "id": "q-lc-024",
    "lesson": "lc-fitness",
-   "q": "From age 70 and above, how often must a holder of a licence for categories C and above undergo repeat medical checks?",
+   "q": "From age {{fact:licence.medical.pro_frequent_from_age|n}} and above, how often must a holder of a licence for categories C and above undergo repeat medical checks?",
    "options": [
     "No further checks are needed",
     "Once every 10 years",
     "Once only, permanently",
-    "Once every two years"
+    "Once every {{fact:licence.medical.frequent_every_years}}"
    ],
    "answer": 3,
-   "explain": "A holder of a licence for categories C and above undergoes medical checks once every five years from age 60 to 70, and from age 70 — once every two years.",
-   "shuffled": true
+   "explain": "A holder of a licence for categories C and above undergoes medical checks once every {{fact:licence.medical.pro_every_years}} from age {{fact:licence.medical.pro_from_age|n}} to {{fact:licence.medical.pro_frequent_from_age|n}}, and from age {{fact:licence.medical.pro_frequent_from_age|n}} — once every {{fact:licence.medical.frequent_every_years}}.",
+   "shuffled": true,
+   "facts": [
+    "licence.medical.pro_frequent_from_age",
+    "licence.medical.frequent_every_years"
+   ]
   },
   {
    "id": "q-lc-025",
@@ -393,12 +397,15 @@
    "options": [
     "Can request a repeat check immediately, with no time limit",
     "Must go to court only",
-    "May appeal to an appeals committee within 30 days of being notified of the decision",
+    "May appeal to an appeals committee within {{fact:licence.medical.appeal_days}} of being notified of the decision",
     "Has no way to appeal at all"
    ],
    "answer": 2,
-   "explain": "Regulation 195 allows an appeal to an appeals committee within 30 days of the day the decision was given; the committee can confirm, change, cancel it, or order a repeat examination.",
-   "shuffled": true
+   "explain": "Regulation 195 allows an appeal to an appeals committee within {{fact:licence.medical.appeal_days}} of the day the decision was given; the committee can confirm, change, cancel it, or order a repeat examination.",
+   "shuffled": true,
+   "facts": [
+    "licence.medical.appeal_days"
+   ]
   }
  ]
 }

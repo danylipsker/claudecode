@@ -127,11 +127,14 @@
     "Nothing further can happen",
     "The licence is automatically disqualified for a year",
     "You must retake the theory test that same day",
-    "A police officer has the discretion to disqualify the licence immediately, for up to 30 days"
+    "A police officer has the discretion to disqualify the licence immediately, for up to {{fact:police.suspension.offence_days}}"
    ],
    "answer": 3,
-   "explain": "For a speeding excess of 31 to 40 km/h on an urban road, a police officer has the discretion to disqualify the licence immediately for up to 30 days, in addition to the fine and the points.",
-   "shuffled": true
+   "explain": "For a speeding excess of 31 to 40 km/h on an urban road, a police officer has the discretion to disqualify the licence immediately for up to {{fact:police.suspension.offence_days}}, in addition to the fine and the points.",
+   "shuffled": true,
+   "facts": [
+    "police.suspension.offence_days"
+   ]
   },
   {
    "id": "q-en-010",
@@ -185,15 +188,15 @@
     "points.basic-course",
     "points.advanced-course"
    ],
-   "q": "A driver has accumulated {{fact:points.basic-course}} valid points. What applies to them?",
+   "q": "A driver has accumulated {{fact:points.basic-course|n}} valid points. What applies to them?",
    "options": [
-    "No consequence until 24 points",
+    "No consequence until {{fact:points.advanced-course}}",
     "A compulsory basic \"Correct Driving\" course with a test at the end",
     "Immediate licence disqualification",
     "A compulsory advanced course only"
    ],
    "answer": 1,
-   "explain": "Between {{fact:points.basic-course}} and 22 valid points requires the basic course; the advanced course ({{fact:points.advanced-course}} points or more) comes only after passing the basic one.",
+   "explain": "From {{fact:points.basic-course|n}} valid points up to below {{fact:points.advanced-course|n}}, the basic course is required; the advanced course ({{fact:points.advanced-course}} or more) comes only after passing the basic one.",
    "shuffled": true
   },
   {
@@ -201,23 +204,26 @@
    "lesson": "en-points",
    "facts": [
     "points.disqualification-3m",
-    "points.disqualification-9m"
+    "points.disqualification-9m",
+    "points.disqualification-3m.period",
+    "points.disqualification-9m.period",
+    "points.repeat_disqualification_window"
    ],
-   "q": "What is the difference between disqualification for {{fact:points.disqualification-3m}} points and disqualification for {{fact:points.disqualification-9m}} points?",
+   "q": "What is the difference between disqualification for {{fact:points.disqualification-3m}} and disqualification for {{fact:points.disqualification-9m}}?",
    "options": [
     "Both are disqualification for life",
-    "The first is disqualification for 3 months; the second is for 9 months, with renewal only after medical checks and re-examination",
+    "The first is disqualification for {{fact:points.disqualification-3m.period}}; the second is for {{fact:points.disqualification-9m.period}}, with renewal only after medical checks and re-examination",
     "There is no difference, they are identical",
     "The first is more severe than the second"
    ],
    "answer": 1,
-   "explain": "{{fact:points.disqualification-3m}} valid points — disqualification for 3 months. {{fact:points.disqualification-9m}} points, or a repeat disqualification within 6 years — disqualification for 9 months, with renewal only after medical checks and re-examination.",
+   "explain": "{{fact:points.disqualification-3m|n}} valid points — disqualification for {{fact:points.disqualification-3m.period}}. {{fact:points.disqualification-9m}}, or a repeat disqualification within {{fact:points.repeat_disqualification_window}} — disqualification for {{fact:points.disqualification-9m.period}}, with renewal only after medical checks and re-examination.",
    "shuffled": true
   },
   {
    "id": "q-en-015",
    "lesson": "en-points",
-   "q": "A driver misses more than 20% of the hours of the \"Correct Driving\" course they were required to take. What is the result?",
+   "q": "A driver misses more than {{fact:points.course.max_absence}} of the hours of the \"Correct Driving\" course they were required to take. What is the result?",
    "options": [
     "No consequence, as long as they attended most of the sessions",
     "They receive a discount on a future fine",
@@ -225,8 +231,11 @@
     "They automatically receive confirmation of completing the course"
    ],
    "answer": 2,
-   "explain": "Regulation 551 provides that missing more than 20% of the course hours, or failing the closing test three times, counts as not completing the corrective measure.",
-   "shuffled": true
+   "explain": "Regulation 551 provides that missing more than {{fact:points.course.max_absence}} of the course hours, or failing the closing test three times, counts as not completing the corrective measure.",
+   "shuffled": true,
+   "facts": [
+    "points.course.max_absence"
+   ]
   },
   {
    "id": "q-en-016",
@@ -235,12 +244,15 @@
    "options": [
     "There is no disqualification for this offence",
     "3 months",
-    "12 months, subject to the court's discretion to shorten it in special circumstances",
+    "{{fact:insurance.no_insurance.min_disqualification}}, subject to the court's discretion to shorten it in special circumstances",
     "Disqualification for life only"
    ],
    "answer": 2,
-   "explain": "Driving without valid compulsory insurance can lead to a licence disqualification of at least 12 months, unless the court finds special circumstances to shorten it.",
-   "shuffled": true
+   "explain": "Driving without valid compulsory insurance can lead to a licence disqualification of at least {{fact:insurance.no_insurance.min_disqualification}}, unless the court finds special circumstances to shorten it.",
+   "shuffled": true,
+   "facts": [
+    "insurance.no_insurance.min_disqualification"
+   ]
   },
   {
    "id": "q-en-017",

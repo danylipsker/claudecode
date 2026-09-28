@@ -36,7 +36,7 @@
     "{{fact:speed.urban}}",
     "{{fact:speed.heavy.nonurban}}",
     "{{fact:speed.freeway}}",
-    "{{fact:speed.nonurban}}"
+    "{{fact:speed.nonurban_divided}}"
    ],
    "answer": 1,
    "explain": "A commercial vehicle over {{fact:speed.heavy_threshold}} is limited to {{fact:speed.heavy.nonurban}} on any non-urban road, even on a freeway and even if a sign allows more (reg. 54).",
@@ -364,11 +364,11 @@
    "options": [
     "Age 17 only, with no prior seniority",
     "10 years' seniority in any vehicle licence",
-    "Age {{fact:licence.ce.min_age}} and at least {{fact:licence.ce.seniority_c}} year's seniority in a C licence",
+    "Age {{fact:licence.ce.min_age|n}} and at least {{fact:licence.ce.seniority_c}} of seniority in a C licence",
     "Any holder of a B licence can get it immediately"
    ],
    "answer": 2,
-   "explain": "A C+E licence requires age {{fact:licence.ce.min_age}} and at least {{fact:licence.ce.seniority_c}} year's seniority in a C licence (reg. 189).",
+   "explain": "A C+E licence requires age {{fact:licence.ce.min_age|n}} and at least {{fact:licence.ce.seniority_c}} of seniority in a C licence (reg. 189).",
    "shuffled": true
   },
   {
@@ -483,7 +483,7 @@
     "18"
    ],
    "answer": 0,
-   "explain": "A class 1 licence is given from age {{fact:licence.tractor.min_age}} (reg. 188).",
+   "explain": "A class 1 licence is given from age {{fact:licence.tractor.min_age|n}} (reg. 188).",
    "shuffled": true
   },
   {

@@ -81,7 +81,7 @@
    "q": "At what distance before a pedestrian crossing is it forbidden to stop, stand or park a vehicle?",
    "options": [
     "{{fact:park.no_stop.bus_stop_m}}",
-    "{{fact:park.no_stop.railway_crossing_m}}",
+    "{{fact:park.no_stop.train_station_platform_m}}",
     "{{fact:park.no_stop.bridge_tunnel_m}}",
     "{{fact:park.no_stop.pedestrian_crossing_m}}"
    ],
@@ -117,7 +117,7 @@
     "{{fact:park.no_stop.railway_crossing_m}}",
     "{{fact:park.no_stop.bridge_tunnel_m}}",
     "{{fact:park.no_stop.train_station_platform_m}}",
-    "{{fact:park.no_stop.bus_stop_m}}"
+    "{{fact:park.no_stop.junction_m}}"
    ],
    "answer": 1,
    "explain": "The prohibition applies on the bridge or in the tunnel itself, and also {{fact:park.no_stop.bridge_tunnel_m}} before and after them (regulation 72(a)(11)).",
@@ -149,23 +149,29 @@
    ],
    "answer": 3,
    "explain": "You may not stop, stand or park a vehicle beside another vehicle that is already standing or parked at the side of the road (regulation 72(a)(10)).",
-   "shuffled": true
+   "shuffled": true,
+   "facts": [
+    "park.no_stop.bus_stop_m",
+    "park.no_stop.pedestrian_crossing_m",
+    "park.no_stop.junction_m"
+   ]
   },
   {
    "id": "q-sp-011",
    "lesson": "sp-forbidden",
    "facts": [
-    "park.no_stop.bus_stop_m"
+    "park.no_stop.bus_stop_m",
+    "park.bus_stop.opposite_min_width"
    ],
    "q": "When may you stop or park on the side of the road opposite a bus stop?",
    "options": [
     "Only for a private car",
-    "If the road there is at least 12 metres wide",
+    "If the road there is at least {{fact:park.bus_stop.opposite_min_width}} wide",
     "Never",
     "Only at night"
    ],
    "answer": 1,
-   "explain": "When the road is 12 metres wide or more, you may stop or park on the side opposite the bus stop (regulation 72(a)(12)).",
+   "explain": "When the road is {{fact:park.bus_stop.opposite_min_width}} wide or more, you may stop or park on the side opposite the bus stop (regulation 72(a)(12)).",
    "shuffled": true
   },
   {
@@ -264,7 +270,7 @@
     "{{fine:parking-disabled-space-obstruct}}",
     "{{fine:parking-sidewalk}}",
     "{{fine:parking-disabled-blocking}}",
-    "{{fine:parking-general-prohibited-sign}}"
+    "{{fine:bus-lane-designated-lane}}"
    ],
    "answer": 2,
    "explain": "Blocking a vehicle with a disabled badge in its reserved spot brings a fine of {{fine:parking-disabled-blocking}}.",

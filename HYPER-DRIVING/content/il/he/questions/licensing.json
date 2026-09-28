@@ -28,10 +28,10 @@
    ],
    "q": "מה נדרש כדי לקבל רישיון נהיגה מדרגה C?",
    "options": [
-    "גיל {{fact:licence.c.min_age}} וגם ותק של {{fact:licence.c.seniority_c1}} ברישיון C1",
+    "גיל {{fact:licence.c.min_age|n}} וגם ותק של {{fact:licence.c.seniority_c1}} ברישיון C1",
     "רישיון B בלבד, בלי בחינה נוספת",
     "רק בחינה עיונית נוספת, בלי דרישת גיל",
-    "רק גיל {{fact:licence.c.min_age}}, בלי תנאים נוספים"
+    "רק גיל {{fact:licence.c.min_age|n}}, בלי תנאים נוספים"
    ],
    "answer": 0,
    "explain": "מעבר לגיל המזערי, רישיון C דורש גם ותק של {{fact:licence.c.seniority_c1}} ברישיון C1 — לא ניתן לדלג ישירות אליו.",
@@ -75,9 +75,9 @@
    "q": "מה נדרש לקבלת רישיון נהיגה מדרגה D (אוטובוס)?",
    "options": [
     "אין דרישת גיל, רק בחינה מקצועית",
-    "גיל {{fact:licence.d.min_age}} וגם ותק של {{fact:licence.d1.seniority_b}} ברישיון B או C1",
+    "גיל {{fact:licence.d.min_age|n}} וגם ותק של {{fact:licence.d1.seniority_b}} ברישיון B או C1",
     "רישיון C+E בלבד",
-    "רק גיל {{fact:licence.d.min_age}}"
+    "רק גיל {{fact:licence.d.min_age|n}}"
    ],
    "answer": 1,
    "explain": "רישיון D דורש גם גיל מזערי וגם ותק ברישיון B או C1, בדומה לרישיון D1.",
@@ -97,7 +97,7 @@
     "אין גיל מזערי לבחינה"
    ],
    "answer": 1,
-   "explain": "ניתן להיבחן בבחינה העיונית מגיל {{fact:theory.min_age}}, גם לפני תחילת שיעורי הנהיגה בפועל.",
+   "explain": "ניתן להיבחן בבחינה העיונית מגיל {{fact:theory.min_age|n}}, גם לפני תחילת שיעורי הנהיגה בפועל.",
    "shuffled": true
   },
   {
@@ -214,7 +214,7 @@
     "newdriver.passengers.age",
     "newdriver.passengers.max"
    ],
-   "q": "עד גיל {{fact:newdriver.passengers.age}}, כמה נוסעים רשאי נהג חדש להסיע בלי מלווה (אחרי תקופת הליווי)?",
+   "q": "עד גיל {{fact:newdriver.passengers.age|n}}, כמה נוסעים רשאי נהג חדש להסיע בלי מלווה (אחרי תקופת הליווי)?",
    "options": [
     "רק בני משפחה מדרגה ראשונה",
     "{{fact:newdriver.passengers.max}} בלבד",
@@ -222,7 +222,7 @@
     "ללא הגבלה"
    ],
    "answer": 1,
-   "explain": "עד גיל {{fact:newdriver.passengers.age}}, נהג חדש רשאי להסיע עד {{fact:newdriver.passengers.max}} נוסעים בלבד ללא מלווה.",
+   "explain": "עד גיל {{fact:newdriver.passengers.age|n}}, נהג חדש רשאי להסיע עד {{fact:newdriver.passengers.max}} נוסעים בלבד ללא מלווה.",
    "shuffled": true
   },
   {
@@ -375,16 +375,20 @@
   {
    "id": "q-lc-024",
    "lesson": "lc-fitness",
-   "q": "מגיל 70 ומעלה, באיזו תדירות נדרש בעל רישיון לדרגות C ומעלה לעבור בדיקות רפואיות חוזרות?",
+   "q": "מגיל {{fact:licence.medical.pro_frequent_from_age|n}} ומעלה, באיזו תדירות נדרש בעל רישיון לדרגות C ומעלה לעבור בדיקות רפואיות חוזרות?",
    "options": [
     "אין צורך בבדיקות נוספות",
     "אחת ל-10 שנים",
     "פעם אחת בלבד, לצמיתות",
-    "אחת לשנתיים"
+    "אחת ל-{{fact:licence.medical.frequent_every_years}}"
    ],
    "answer": 3,
-   "explain": "בעל רישיון לדרגות C ומעלה עובר בדיקות רפואיות אחת לחמש שנים מגיל 60 עד 70, ומגיל 70 — אחת לשנתיים.",
-   "shuffled": true
+   "explain": "בעל רישיון לדרגות C ומעלה עובר בדיקות רפואיות אחת ל-{{fact:licence.medical.pro_every_years}} מגיל {{fact:licence.medical.pro_from_age|n}} עד {{fact:licence.medical.pro_frequent_from_age|n}}, ומגיל {{fact:licence.medical.pro_frequent_from_age|n}} — אחת ל-{{fact:licence.medical.frequent_every_years}}.",
+   "shuffled": true,
+   "facts": [
+    "licence.medical.pro_frequent_from_age",
+    "licence.medical.frequent_every_years"
+   ]
   },
   {
    "id": "q-lc-025",
@@ -393,12 +397,15 @@
    "options": [
     "יכול לבקש בדיקה חוזרת מיד, בלי הגבלת זמן",
     "חייב לפנות לבית משפט בלבד",
-    "רשאי לערור בפני ועדת ערר תוך 30 יום מהודעת ההחלטה",
+    "רשאי לערור בפני ועדת ערר תוך {{fact:licence.medical.appeal_days}} מהודעת ההחלטה",
     "אין לו שום דרך לערער"
    ],
    "answer": 2,
-   "explain": "תקנה 195 מאפשרת לערור בפני ועדת ערר תוך 30 יום מיום שנמסרה ההחלטה; הוועדה יכולה לאשר, לשנות, לבטל או להורות על בדיקה חוזרת.",
-   "shuffled": true
+   "explain": "תקנה 195 מאפשרת לערור בפני ועדת ערר תוך {{fact:licence.medical.appeal_days}} מיום שנמסרה ההחלטה; הוועדה יכולה לאשר, לשנות, לבטל או להורות על בדיקה חוזרת.",
+   "shuffled": true,
+   "facts": [
+    "licence.medical.appeal_days"
+   ]
   }
  ]
 }

@@ -85,7 +85,7 @@
     "14 שנה"
    ],
    "answer": 2,
-   "explain": "עד גיל {{fact:child.rear_facing_age}} חובה מושב פונה לאחור, כדי לפרוש את כוח הפגיעה על כל גב הילד (תקנה 83א(ג)).",
+   "explain": "עד גיל {{fact:child.rear_facing_age|n}} חובה מושב פונה לאחור, כדי לפרוש את כוח הפגיעה על כל גב הילד (תקנה 83א(ג)).",
    "shuffled": true
   },
   {
@@ -102,7 +102,7 @@
     "{{fact:child.booster_age_max}}"
    ],
    "answer": 3,
-   "explain": "מגיל {{fact:child.safety_seat_age}} עד גיל {{fact:child.booster_age_max}} מותר מושב בטיחות או מושב מגביה מתאים (תקנה 83א(ב)(2)).",
+   "explain": "מגיל {{fact:child.safety_seat_age|n}} עד גיל {{fact:child.booster_age_max|n}} מותר מושב בטיחות או מושב מגביה מתאים (תקנה 83א(ב)(2)).",
    "shuffled": true
   },
   {
@@ -195,7 +195,7 @@
    "facts": [
     "child.alone_max_age"
    ],
-   "q": "מהי החומרה המשפטית של השארת ילד עד גיל {{fact:child.alone_max_age}} בלא השגחה ראויה, באופן שמסכן את חייו?",
+   "q": "מהי החומרה המשפטית של השארת ילד עד גיל {{fact:child.alone_max_age|n}} בלא השגחה ראויה, באופן שמסכן את חייו?",
    "options": [
     "עבירה מנהלית שדינה עיכוב הרישיון בלבד",
     "אינה עבירה כלל אם משך הזמן קצר",

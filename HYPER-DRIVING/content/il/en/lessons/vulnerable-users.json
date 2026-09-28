@@ -64,7 +64,7 @@
     "A cyclist rides close to the right edge; must use a marked cycle path if there is one (regs. 128–129).",
     "Minimum age for riding a bicycle on a non-urban road: {{fact:bike.nonurban_min_age}}.",
     "Helmet: compulsory for a minor on every road; for an adult — on a non-urban road, on an e-bike, or in sport.",
-    "E-bikes: helmet always compulsory for every rider; minimum age {{fact:ebike.min_age}}.",
+    "E-bikes: helmet always compulsory for every rider; minimum age {{fact:ebike.min_age|n}}.",
     "Before opening a door — look behind you and check for approaching cyclists (reg. 80)."
    ]
   },

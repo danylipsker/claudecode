@@ -215,12 +215,13 @@
    "id": "q-mt-016",
    "lesson": "mt-test",
    "facts": [
-    "vehicletest.private.first_test_years"
+    "vehicletest.private.first_test_years",
+    "vehicletest.private.interval_years"
    ],
    "q": "רכב פרטי חדש שנרשם מ-1 בינואר 2023 — מתי הוא עובר את המבחן התקופתי הראשון שלו?",
    "options": [
     "כעבור שנה אחת",
-    "כעבור {{fact:vehicletest.private.interval_years}} שנים בלבד",
+    "כעבור {{fact:vehicletest.private.interval_years}} בלבד",
     "מיד עם הרישום",
     "כעבור {{fact:vehicletest.private.first_test_years}} מהרישום הראשון"
    ],

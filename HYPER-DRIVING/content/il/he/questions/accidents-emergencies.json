@@ -57,13 +57,13 @@
    ],
    "q": "נוהג לא הציג את תעודת הביטוח תוך {{fact:accident.insurance_certificate.report_hours}}. כמה ימים נוספים יש לו עדיין להציגה בעצמו בתחנה, כדי להימנע מהרשעה על אי-הצגתה?",
    "options": [
-    "{{fact:accident.insurance_certificate.late_presentation_days}} ימים נוספים",
+    "{{fact:accident.insurance_certificate.late_presentation_days}} נוספים",
     "אין אפשרות נוספת",
     "חודש נוסף",
     "יום אחד נוסף"
    ],
    "answer": 0,
-   "explain": "פקודת ביטוח רכב מנועי, סעיף 40, מאפשרת עוד {{fact:accident.insurance_certificate.late_presentation_days}} ימים להצגה עצמית בתחנה שאליה נמסרה ההודעה.",
+   "explain": "פקודת ביטוח רכב מנועי, סעיף 40, מאפשרת עוד {{fact:accident.insurance_certificate.late_presentation_days}} להצגה עצמית בתחנה שאליה נמסרה ההודעה.",
    "shuffled": true
   },
   {
@@ -77,10 +77,10 @@
     "החובה חלה על כל נוסע בכל גיל",
     "מגיל 12",
     "מגיל 21",
-    "מגיל {{fact:accident.passenger_duty.min_age}}"
+    "מגיל {{fact:accident.passenger_duty.min_age|n}}"
    ],
    "answer": 3,
-   "explain": "פקודת התעבורה, סעיף 64א1, מטילה את החובה על נוסע מגיל {{fact:accident.passenger_duty.min_age}}, ורק אם הנוהג עצמו לא עצר והזעיק עזרה.",
+   "explain": "פקודת התעבורה, סעיף 64א1, מטילה את החובה על נוסע מגיל {{fact:accident.passenger_duty.min_age|n}}, ורק אם הנוהג עצמו לא עצר והזעיק עזרה.",
    "shuffled": true
   },
   {

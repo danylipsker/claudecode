@@ -163,7 +163,7 @@
    "lesson": "rb-vehicles",
    "q": "What distinguishes a \"commercial vehicle\" from a \"private vehicle\"?",
    "options": [
-    "A commercial vehicle is always heavier than 3,500 kg",
+    "A commercial vehicle is always heavier than {{fact:licence.b.max_weight}}",
     "A commercial vehicle is used to carry goods for hire or for its owner's business; a private vehicle is neither public nor commercial",
     "A private vehicle cannot carry any cargo at all",
     "The colour of the licence plate alone"
@@ -212,7 +212,7 @@
     "Any vehicle owned by a company",
     "A vehicle that carries workers to a worksite",
     "A vehicle with work equipment permanently fitted, or whose structure is designed to perform work, and that is not intended to carry goods or passengers",
-    "A commercial vehicle over 3,500 kg only"
+    "A commercial vehicle over {{fact:licence.b.max_weight}} only"
    ],
    "answer": 2,
    "explain": "The definition focuses on purpose: permanent work equipment or a structure designed for work, as distinct from carrying goods or passengers.",
@@ -292,8 +292,11 @@
     "The percentage by which the gross vehicle weight is exceeded"
    ],
    "answer": 3,
-   "explain": "The greater the percentage by which the gross vehicle weight is exceeded, the more severe the penalty — from a fine and points up to immediate disqualification at 25% or more.",
-   "shuffled": true
+   "explain": "The greater the percentage by which the gross vehicle weight is exceeded, the more severe the penalty — from a fine and points up to immediate disqualification at {{fact:police.vehicle_ban.overload_pct}} or more.",
+   "shuffled": true,
+   "facts": [
+    "police.vehicle_ban.overload_pct"
+   ]
   },
   {
    "id": "q-rb-021",

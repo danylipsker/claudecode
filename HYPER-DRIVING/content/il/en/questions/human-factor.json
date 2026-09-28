@@ -144,10 +144,8 @@
   {
    "id": "q-hf-011",
    "lesson": "hf-distraction",
-   "facts": [
-    "speed.urban"
-   ],
-   "q": "A driver travels at {{fact:speed.urban}} in the city and glances sideways for about 2 seconds. About how many metres does he cover without looking at the road?",
+   "facts": [],
+   "q": "A driver travels at 50 km/h in the city and glances sideways for about 2 seconds. About how many metres does the driver cover without looking at the road?",
    "options": [
     "About 28 metres",
     "About 14 metres",
@@ -155,7 +153,7 @@
     "About 5 metres"
    ],
    "answer": 0,
-   "explain": "At {{fact:speed.urban}} the car covers about 14 metres per second; in 2 seconds of glancing sideways, it covers about 28 metres without seeing the road.",
+   "explain": "At 50 km/h the car covers about 14 metres per second; in 2 seconds of glancing sideways, it covers about 28 metres without seeing the road.",
    "shuffled": true
   },
   {
@@ -244,7 +242,7 @@
    ],
    "q": "What is the “presumption” the law establishes regarding an alcohol concentration measured in a test?",
    "options": [
-    "That the measured concentration was also in the driver’s body during the {{fact:alcohol.presumption_hours}} hours before the test, unless proven otherwise",
+    "That the measured concentration was also in the driver’s body during the {{fact:alcohol.presumption_hours|n}} hours before the test, unless proven otherwise",
     "That the concentration is valid for a week ahead",
     "That the concentration drops immediately after the test",
     "That the concentration was measured by mistake"

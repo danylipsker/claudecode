@@ -58,7 +58,7 @@
     "16"
    ],
    "answer": 2,
-   "explain": "An A licence, which doesn't limit the motorcycle's power, is granted from at least age {{fact:licence.a.min_age}} (regulation 189(g)).",
+   "explain": "An A licence, which doesn't limit the motorcycle's power, is granted from at least age {{fact:licence.a.min_age|n}} (regulation 189(g)).",
    "shuffled": true
   },
   {
@@ -214,8 +214,11 @@
     "There's no minimum requirement in law"
    ],
    "answer": 1,
-   "explain": "Regulation 328 requires two independent brake systems — one on the front wheel and one on the rear (or the two rear wheels on a tricycle), each able to decelerate the motorcycle by at least 1.5 metres per second squared.",
-   "shuffled": true
+   "explain": "Regulation 328 requires two independent brake systems — one on the front wheel and one on the rear (or the two rear wheels on a tricycle), each able to decelerate the motorcycle by at least {{fact:moto.brake.min_decel}}.",
+   "shuffled": true,
+   "facts": [
+    "moto.brake.min_decel"
+   ]
   },
   {
    "id": "q-mc-013",
@@ -360,17 +363,19 @@
     "moto"
    ],
    "facts": [
-    "licence.moto.passenger_rule"
+    "licence.moto.passenger_rule",
+    "moto.passenger.min_age",
+    "moto.passenger.min_licence_months"
    ],
    "q": "When is a holder of an A2 licence allowed to carry a passenger on the motorcycle?",
    "options": [
     "Only after a full year with the licence, with no age condition",
     "Carrying a passenger is absolutely forbidden on an A2 licence",
-    "Only from age 18, and after holding the licence for at least two months — whichever is later",
+    "Only from age {{fact:moto.passenger.min_age|n}}, and after holding the licence for at least {{fact:moto.passenger.min_licence_months}} — whichever is later",
     "From the very first day with the licence, at any age"
    ],
    "answer": 2,
-   "explain": "A holder of an A2 or A1 licence may not carry a passenger unless they have turned 18 or have held the licence for at least two months — whichever is later (regulation 120(c)).",
+   "explain": "A holder of an A2 or A1 licence may not carry a passenger unless they have turned {{fact:moto.passenger.min_age|n}} or have held the licence for at least {{fact:moto.passenger.min_licence_months}} — whichever is later (regulation 120(c)).",
    "shuffled": true
   },
   {

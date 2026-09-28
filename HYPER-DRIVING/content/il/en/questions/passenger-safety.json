@@ -85,7 +85,7 @@
     "14 years"
    ],
    "answer": 2,
-   "explain": "Up to age {{fact:child.rear_facing_age}}, a rear-facing seat is required, to spread the force of impact across the child’s whole back (reg. 83A(c)).",
+   "explain": "Up to age {{fact:child.rear_facing_age|n}}, a rear-facing seat is required, to spread the force of impact across the child’s whole back (reg. 83A(c)).",
    "shuffled": true
   },
   {
@@ -102,7 +102,7 @@
     "{{fact:child.booster_age_max}}"
    ],
    "answer": 3,
-   "explain": "From age {{fact:child.safety_seat_age}} up to age {{fact:child.booster_age_max}}, a suitable child safety seat or booster seat is permitted (reg. 83A(b)(2)).",
+   "explain": "From age {{fact:child.safety_seat_age|n}} up to age {{fact:child.booster_age_max|n}}, a suitable child safety seat or booster seat is permitted (reg. 83A(b)(2)).",
    "shuffled": true
   },
   {
@@ -195,7 +195,7 @@
    "facts": [
     "child.alone_max_age"
    ],
-   "q": "What is the legal severity of leaving a child up to age {{fact:child.alone_max_age}} without proper supervision, in a way that endangers their life?",
+   "q": "What is the legal severity of leaving a child up to age {{fact:child.alone_max_age|n}} without proper supervision, in a way that endangers their life?",
    "options": [
     "An administrative offence carrying only a licence suspension",
     "Not an offence at all if the time is short",
