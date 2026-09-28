@@ -5,6 +5,7 @@
  *   Paragraphs, blank-line separated     **bold**   *italic*   `code`
  *   $inline TeX$   $$display TeX$$ (may span lines)
  *   [[concept-id]]  [[concept-id|shown text]]  [[math:derivative|a derivative]]
+ *   [[?derivative]]  [[?derivative|rate of change]]  a math term from the glossary (glossary.js): click for what it means
  *   [text](https://...)                 external link, opens in a new tab
  *   ### Heading   #### Smaller heading
  *   - bullet      1. numbered
@@ -28,6 +29,15 @@
     return '<a class="' + cls + '" href="' + escA(H.href ? H.href(ref) : '#/c/' + ref) + '" data-ref="' + escA(ref) + '">' + inline(text, true) + '</a>';
   }
 
+  // a math term: a small button that opens the glossary card (ui/terms.js); inside a link label only the words
+  const termLabel = (id, label) => { const g = H.glossary && H.glossary.get(id); return label != null ? label : g ? g.title.replace(/^\S{1,3} — /, '') : id; };
+  function term(id, label, plain) {
+    const g = H.glossary && H.glossary.get(id), text = inline(termLabel(id, label), true);
+    if (!g && H.glossary && H.termErrors) H.termErrors.push(id);
+    if (plain) return text;
+    return '<button type="button" class="gterm' + (g ? '' : ' missing') + '" data-g="' + escA(id) + '" title="' + escA(g ? 'Math term: ' + g.title : 'Unknown math term') + '">' + text + '</button>';
+  }
+
   /* inline markup; `plain` skips links (used for link labels themselves) */
   function inline(s, plain) {
     if (s == null) return '';
@@ -38,6 +48,7 @@
     t = t.replace(/`([^`]+)`/g, (m, c) => hold('<code>' + esc(c) + '</code>'));
     t = t.replace(/\$\$([\s\S]+?)\$\$/g, (m, x) => hold(H.texSafe(x.trim(), true)));
     t = t.replace(/\$([^$]+?)\$/g, (m, x) => hold(H.texSafe(x.trim(), false)));
+    t = t.replace(/\[\[\?([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, label) => hold(term(id.trim(), label, plain)));
     if (!plain) {
       t = t.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, label) => hold(link(id.trim(), label)));
       t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+|\.\.\/[^)\s]+)\)/g, (m, label, url) =>
@@ -157,6 +168,7 @@
   H.inline = inline;
   H.plain = function (s) {           // text for search indexes and tooltips
     return String(s || '').replace(/\$\$?([^$]+)\$\$?/g, (m, x) => ' ' + x.replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}^_\\]/g, ' ') + ' ')
+      .replace(/\[\[\?([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, l) => termLabel(id.trim(), l))
       .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, l) => l || (H.titleOf ? H.titleOf(id) : id))
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*`#>|]/g, '').replace(/\s+/g, ' ').trim();
   };

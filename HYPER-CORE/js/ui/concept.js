@@ -114,7 +114,7 @@
     const branch = n.branch && n.branch !== id ? H.nodes.get(n.branch) : null;
     const hasPractice = n.quiz.length || fs.length || n.problems.length;
     const kids = n.children;
-    const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history);
+    const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history || n.sources.length);
     const sections = [
       ['understand', 'Understand', hasU],
       ['contents', 'Contents', kids.length > 0, kids.length],
@@ -145,6 +145,8 @@
         (n.derivation ? derivation(n.derivation) : '') +
         (n.applications.length ? '<div class="boxy apps mt"><h3>' + H.icon('sparkle', 16) + 'Where you meet it</h3><ul>' + n.applications.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '') +
         (n.history ? '<div class="callout co-history"><div class="co-h">History</div>' + H.text(n.history) + '</div>' : '') +
+        // where the idea is told in the original sources (Hyper Feynman: the lectures, volume and chapter)
+        (n.sources.length ? '<div class="boxy srcs mt"><h3>' + H.icon('book', 16) + esc((H.discipline && H.discipline.sourcesTitle) || 'Sources and further reading') + '</h3><ul>' + n.sources.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '') +
       '</section>') +
       (kids.length ? '<section class="sect" id="s-contents"><h2>' + H.icon('grid', 20) + 'In this ' + (n.kind === 'branch' ? 'branch' : 'topic') + '</h2><div class="kids">' + kids.map(kidCard).join('') + '</div></section>' : '') +
       (fs.length ? '<section class="sect" id="s-formulas"><h2>' + H.icon('formulas', 20) + 'Formulas <span class="n">click a symbol to solve for it</span></h2><div class="fslot"></div></section>' : '') +

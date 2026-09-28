@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Feynman</title>
+<meta name="description" content="The physics of Feynman's lectures, made visible: atoms and energy, least action, symmetry, relativity, light, heat and chance, electromagnetism, quantum behaviour, QED's arrows and Feynman's frontiers — every idea drawn and simulated, every math term explained.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 27 12 16 5 5M27 27 20 16 27 5' fill='none' stroke='%23e0703a' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 16q1-3 2 0t2 0 2 0 2 0' fill='none' stroke='%23e0703a' stroke-width='2.2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Feynman needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/pharma.js"></script>
+<script src="../HYPER-CORE/js/bio.js"></script>
+<script src="../HYPER-CORE/js/quantum.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/feyntools.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/em-fields.js"></script>
+<script src="content/feynman-way.js"></script>
+<script src="content/frontiers.js"></script>
+<script src="content/heat-chance.js"></script>
+<script src="content/least-action.js"></script>
+<script src="content/light.js"></script>
+<script src="content/matter.js"></script>
+<script src="content/maxwell.js"></script>
+<script src="content/motion-energy.js"></script>
+<script src="content/qed.js"></script>
+<script src="content/quantum-behaviour.js"></script>
+<script src="content/relativity.js"></script>
+<script src="content/spin-states.js"></script>
+<script src="content/symmetry.js"></script>
+<script src="content/vibrations-waves.js"></script>
+<script src="content/waves-in-matter.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/em-fields.js"></script>
+<script src="sims/feynman-way.js"></script>
+<script src="sims/frontiers.js"></script>
+<script src="sims/heat-chance.js"></script>
+<script src="sims/least-action.js"></script>
+<script src="sims/light.js"></script>
+<script src="sims/matter.js"></script>
+<script src="sims/maxwell.js"></script>
+<script src="sims/motion-energy.js"></script>
+<script src="sims/qed.js"></script>
+<script src="sims/quantum-behaviour.js"></script>
+<script src="sims/relativity.js"></script>
+<script src="sims/spin-states.js"></script>
+<script src="sims/symmetry.js"></script>
+<script src="sims/vibrations-waves.js"></script>
+<script src="sims/waves-in-matter.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'feynman' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

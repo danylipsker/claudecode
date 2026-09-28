@@ -62,6 +62,7 @@ Hyper.add(
   problems: [ ... ],                      // optional numeric word problems
   applications: ['Where this shows up in real life.'],             // optional, 2–4
   history: 'A short note on who and when.',                        // optional
+  sources: ['Where the idea is told: book, volume, chapter.'],     // optional; required in Hyper Feynman
   sim: 'projectile'                       // or ['a', 'b'] or { id: 'a', params: {...} }
 }
 );
@@ -268,7 +269,7 @@ Hyper.sim('pendulum', {
 
 Helpers: `kit.arrow(ctx, x1, y1, x2, y2, color, width)`, `kit.label(ctx, text, x, y, {size, color, align, baseline, weight, bg})`,
 `kit.dot(ctx, x, y, r, color, stroke)`, `kit.grid(ctx, x0, y0, w, h, step, color)`,
-`kit.drag(st, { hit(p) → thing|null, move(thing, p), end(thing), hover: true })` for dragging with the pointer (`p = {x, y}`),
+`kit.drag(st, { hit(p) → thing|null, move(thing, p), end(thing, p, moved), hover: true })` for dragging with the pointer (`p = {x, y}`),
 `kit.click(st, p => {...}, p => isClickable)` for clicking things on the canvas,
 `kit.plot(el, opts, height)` → a `Hyper.Plot` (a live graph: `plot.set({ series: [{ pts: [[x, y], ...], label, dash, fill, dots, line: false }], x: {label, min, max, log, reverse}, y: {...}, marks: [{x, y, label}], vlines: [{x, label}], hlines: [{y, label}] })`; `reverse: true` runs the x-axis right to left, as IR spectra do, and the y-axis downwards, as audiograms do),
 `ctl.show(id, false)` / `ro.show(false)` / `ro.show(key, false)` to hide controls or read-outs (for sims with modes), `st.onResize(fn)`, `st.pos(event)`, `loop.once()` (draw one frame while stopped), `loop.running`, `kit.fmt(v, sig)`.
@@ -797,6 +798,81 @@ techniques and organisms work; they are not protocols. No step-by-step methods f
 enhancing transmissibility or virulence, producing toxins or modifying viruses; biosafety described
 generally. Human genetics is accurate and respectful (human variation is mostly within populations;
 "races" are not discrete biological categories); people-first language for genetic conditions.
+
+### Math terms: [[?term]] (every app)
+
+Any text can mark a mathematical term so the reader can click it for a card saying **what it means** and
+**how to deal with it** (the dictionary is `HYPER-CORE/js/glossary.js`, 113 terms; the same cards are in
+Tools → Math terms, and every formula card automatically shows chips for the operators in its TeX):
+
+```
+the [[?derivative]] of x            the [[?curl|circulation]] of the field      a [[?complex-number|complex number]]
+```
+
+The ids, by group: *notation and algebra* — `delta-change approx proportional much-less plus-minus
+subscripts exponent square-root scientific-notation inverse absolute-value ellipse function logarithm exponential
+number-e pi factorial sum geometric-series product infinity`; *angles and waves* — `radian sine-cosine inverse-trig angular-frequency phase
+wave-equation wave-number orthogonality bessel spherical-harmonics fourier`; *calculus* — `limit differential derivative dot-notation second-derivative
+partial-derivative integral integration-by-parts differential-equation step-by-step taylor-series small-approximation
+stationary`; *vectors and fields* — `vector scalar components magnitude unit-vector dot-product
+cross-product field nabla gradient divergence curl laplacian line-integral closed-integral flux
+gauss-theorem stokes-theorem solid-angle gauge hodograph tensor`; *complex numbers* — `imaginary-unit complex-number conjugate
+absolute-square euler-formula rotating-arrow amplitude`; *matrices and quantum notation* — `matrix trace
+determinant eigenvalue hermitian bra-ket base-states superposition normalization operator commutator
+expectation-value wave-function probability-density kronecker-delta dirac-delta hbar`; *relativity* —
+`lorentz-factor hyperbolic rapidity four-vector invariant summation-convention`; *probability* — `least-squares chi-square bayes binomial-coefficient probability mean
+standard-deviation gaussian random-walk boltzmann-factor`; *action* — `action lagrangian functional stationary-phase variation`.
+An unknown id is an error. Mark a term where it first matters on a page (not every occurrence); a label
+after the bar may be any words, including `$…$` maths. If a term you need is missing, write it in plain
+words and say so in your report — do not invent ids.
+
+### Hyper Feynman
+
+The physics of Feynman's lectures, made visible. Three rules shape every page:
+
+1. **Show it.** Every concept has at least one simulation (the validator warns when one has none), most
+   their own, and the body points at what to look for in it. Sims are drawings that move and respond:
+   labelled arrows, fields, paths, particles, graphs — never a bare slider over a number.
+2. **Explain the maths.** Mark the math terms with `[[?term]]` (above); in derivations, say in words what
+   each step does. The validator warns about a body with no marked term.
+3. **Say where Feynman tells it.** Every concept has `sources: [...]`, shown as *Where Feynman tells it*:
+   the book, volume, chapter (and section when you are sure), and a few words on what is there —
+   `'*The Feynman Lectures on Physics*, Vol. I, ch. 26 (Optics: The Principle of Least Time) — the lifeguard
+   and the principle of least time.'` Cite only what you are sure is there; cite a chapter, not a page.
+
+**Words.** All text is original. **Do not quote Feynman** — not his books, lectures, talks, interviews or
+letters — and do not put words in his mouth: describe his ideas and his way of seeing in your own words
+("Feynman argued that…", "his picture was…"). Do not reproduce his figures, tables or exercises; draw your
+own. Titles of his books and lectures may be named. Stories about him only when well documented (say
+where), never invented; dates and facts checked.
+
+**kit.qm** (`HYPER-CORE/js/quantum.js`, tested by `tools/test-quantum.js`):
+
+```
+const Q = kit.qm;
+Q.cx(re, im)  Q.add Q.sub Q.mul Q.scale Q.conj Q.abs Q.abs2 Q.arg Q.expi(θ) Q.polar(r, θ)  Q.arrowSum(zs) -> { total, chain }
+Q.mirrorPaths({ src, det, y, x0, x1, n, lambda }) -> { pts: [{ x, L, phase, z }], total, chain }   QED's mirror, every point reflects
+Q.glassSimple({ n, d, lambda }) (QED's two arrows)   Q.glassExact({ n, d, lambda }) (full thin film)
+Q.slits({ n, d, a, lambda, L }) -> x -> intensity   Q.sampler(f, lo, hi, rng)   Q.rng(seed)   Q.gauss(rng)
+Q.wave1d({ N, L, V, m, hbar, dt }).setGaussian({ x0, sigma, k0 }).step(k); .prob() .norm() .mean() .re .im .x   (Crank–Nicolson)
+Q.eigen1d(V, { N, L, count }) -> { x, E, psi }   Q.barrierT({ E, V0, a })   Q.evolve2(H, c0, t)   Q.ammonia({ E0, A, t })
+Q.spinHalfP(θ)   Q.spinOneD(β) (3 × 3, states + 0 −)   Q.lorentz(β) -> { gamma, x(x, t), t(x, t) }   Q.addVelocity   Q.doppler   Q.interval
+Q.efield(charges, x, y)   Q.potential   Q.wireB(wires, x, y)   Q.traceField(f, x0, y0, { step, max, stop, backward })
+Q.action(xs, dt, L)   Q.stationaryPath({ x0, x1, T, n, m, dV, iters })   Q.planck(λ, T)  Q.wien  Q.hydrogenE(n)  Q.hydrogenR(n, l, r)
+Q.hermite(n, x)  Q.oscillatorPsi(n, x)  Q.deBroglie(m, v)  Q.photonE(λ)   constants Q.h Q.hbar Q.c Q.e Q.me Q.kB Q.a0
+```
+
+Natural units (ħ = m = 1, c = 1) where the function says so; convert for readouts. `wave1d` keeps the norm at
+any time step, but it is accurate only when E·dt ≪ 1 (with E the packet's energy, about k₀²/2) and dx ≪ 1/k₀:
+at k₀ = 2, dt = 0.05 and dx ≈ 0.02 keep the spreading within a percent. Start a packet at least 6σ from walls and barriers, or its tails show as false transmission. `mirrorPaths` takes one arrow per
+sample point: use enough points that neighbouring arrows differ by much less than a turn (at least ~20 per
+wavelength of change in path length, most needed at the ends of a mirror); group them into strips by adding. `kit.terms(tex)` returns
+the HTML chips of the math terms in a TeX string, for a sim that wants to explain its own equation.
+
+**Tools to link to:** `#/tools/arrows` (QED arrows: mirror, grating, glass), `#/tools/slits` (the two-slit
+lab), `#/tools/spacetime` (a Minkowski diagram with boosts), `#/tools/fields` (field lines and potentials of
+charges and currents), `#/tools/wells` (stationary states and wave packets in 1-D potentials),
+`#/tools/terms/<id>` (a math term).
 
 ## Checking your work
 

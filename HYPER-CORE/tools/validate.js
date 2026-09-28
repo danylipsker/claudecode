@@ -28,7 +28,7 @@ const only = onlyArg ? new Set(onlyArg.split(',').map(s => path.resolve(discDir,
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -48,7 +48,7 @@ for (const sub of ['content', 'sims']) {
   for (const f of list) files.push(path.join(dir, f));
 }
 // other disciplines' catalogs
-for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY']) {
+for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN']) {
   const c = path.join(discDir, '..', d, 'catalog.js');
   if (d !== path.basename(discDir) && fs.existsSync(c)) { try { run(ctx, c); } catch (e) { W(d + '/catalog.js', e.message); } }
 }
@@ -104,6 +104,7 @@ function checkText(where, s, block) {
   if (typeof s !== 'string') { E(where, 'expected text, got ' + typeof s); return; }
   H.texErrors = [];
   H.linkErrors = [];
+  H.termErrors = [];
   try { block ? H.text(s) : H.inline(s); } catch (e) { E(where, 'text failed to render: ' + e.message); }
   for (const t of H.texErrors) E(where, 'TeX error "' + t.error + '" in: ' + t.src.slice(0, 120));
   for (const l of H.linkErrors) {
@@ -112,7 +113,8 @@ function checkText(where, s, block) {
     if (r.local && planned && !FINAL) infos.push(where + ': link to planned [[' + l + ']] (not written yet)');
     else E(where, 'link to unknown concept [[' + l + ']]');
   }
-  H.texErrors = null; H.linkErrors = null;
+  for (const t of H.termErrors) E(where, 'unknown math term [[?' + t + ']] (see HYPER-CORE/js/glossary.js for the ids)');
+  H.texErrors = null; H.linkErrors = null; H.termErrors = null;
   // cross-discipline links: check against the other catalog when it is loaded
   const re = /\[\[([a-z]+):([^\]|]+)/g;
   let m;
@@ -172,6 +174,7 @@ for (const n of H.list) {
   n.pitfalls.forEach((x, i) => typeof x === 'string' ? checkText(w + ' pitfall ' + (i + 1), x, false) : (checkText(w + ' pitfall ' + (i + 1), x.wrong, false), checkText(w + ' pitfall ' + (i + 1), x.right, false)));
   n.applications.forEach((x, i) => checkText(w + ' application ' + (i + 1), x, false));
   checkText(w + ' history', n.history, true);
+  n.sources.forEach((x, i) => checkText(w + ' source ' + (i + 1), x, false));
   if (n.derivation) { checkText(w + ' derivation', n.derivation.intro, true); checkSteps(w + ' derivation', n.derivation.steps); checkText(w + ' derivation', n.derivation.outro, true); }
   if (n.kind === 'concept') {
     stats.concepts++;
@@ -186,6 +189,12 @@ for (const n of H.list) {
     if (n.quiz.length < 3) W(w, 'fewer than 3 quiz questions');
     if (!n.keywords.length) W(w, 'no keywords (they help search)');
     if (![1, 2, 3].includes(n.level)) E(w, 'level must be 1, 2 or 3');
+    // Hyper Feynman: every idea is placed in the lectures, and shown
+    if (DISC === 'feynman') {
+      if (!n.sources.length) W(w, 'no sources: say where Feynman tells it (lecture, volume and chapter)');
+      if (!n.sims.length) W(w, 'no simulation: every Hyper Feynman concept should be visualised');
+      if (n.body && !n.body.includes('[[?')) W(w, 'no [[?term]] in the body: mark the math terms so readers can click them');
+    }
   }
   n.examples.forEach((ex, i) => {
     stats.examples++;

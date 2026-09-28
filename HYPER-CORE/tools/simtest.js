@@ -118,6 +118,9 @@ function makeKit(record) {
         else values[d.id] = d.value;
         if (d.type == null && !(typeof d.value === 'number' && typeof d.min === 'number' && typeof d.max === 'number')) record.errors.push('slider "' + d.id + '" needs numeric value, min and max');
         if (d.type == null && d.log && d.min <= 0) record.errors.push('log slider "' + d.id + '" needs min > 0');
+        // the real controls show each value through its formatter while they are built — before kit.controls
+        // returns — so a formatter that reads ctl.values (or a variable set from it) fails there, as in a browser
+        if (typeof d.fmt === 'function') d.fmt(values[d.id]);
       }
       const api = { values, rows: {}, set(id, v, fire) { values[id] = v; if (fire && onChange) onChange(id, v, values); }, show() {} };
       for (const d of defs) if (d.id) api.rows[d.id] = { row: fakeEl(), set: v => { values[d.id] = v; } };
@@ -151,7 +154,7 @@ function makeKit(record) {
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
-    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio,
+    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio, qm: H.qm, terms: () => "",
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }

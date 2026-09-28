@@ -35,7 +35,8 @@
     hydraulics:  { id: 'hydraulics',  title: 'Hyper Hydraulics',  short: 'Hydraulics',  folder: 'HYPER-HYDRAULICS',  hue: 268, ready: true },
     pneumatics:  { id: 'pneumatics',  title: 'Hyper Pneumatics',  short: 'Pneumatics',  folder: 'HYPER-PNEUMATICS',  hue: 88,  ready: true },
     pharmaceutics: { id: 'pharmaceutics', title: 'Hyper Pharmaceutics', short: 'Pharmaceutics', folder: 'HYPER-PHARMACEUTICS', hue: 294, ready: true },
-    biology:     { id: 'biology',     title: 'Hyper Biology',     short: 'Biology',     folder: 'HYPER-BIOLOGY',     hue: 114, ready: true }
+    biology:     { id: 'biology',     title: 'Hyper Biology',     short: 'Biology',     folder: 'HYPER-BIOLOGY',     hue: 114, ready: true },
+    feynman:     { id: 'feynman',     title: 'Hyper Feynman',     short: 'Feynman',     folder: 'HYPER-FEYNMAN',     hue: 22,  ready: true, sourcesTitle: 'Where Feynman tells it' }
   };
 
   H.use = function (id) {
@@ -46,7 +47,7 @@
   };
 
   const ARRAYS = ['prereq', 'related', 'keywords', 'formulas', 'examples', 'quiz',
-                  'problems', 'ideas', 'pitfalls', 'applications'];
+                  'problems', 'ideas', 'pitfalls', 'applications', 'sources'];
 
   /* Register concept nodes. Accepts nodes, arrays of nodes, or both. */
   H.add = function () {

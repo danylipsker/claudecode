@@ -157,5 +157,28 @@ ok(H.texKey('\\Delta G^{\\circ\\prime}') !== H.texKey('\\Delta G') && H.texKey('
   }
 }
 
+// the math terms glossary and its [[?term]] markup
+{
+  const G = H.glossary;
+  ok(G.size >= 90 && G.list().every(t => t.title && t.sym && t.means && t.howto), 'glossary: every term has a symbol, a meaning and a way to deal with it');
+  ok(new Set(G.list().map(t => t.id)).size === G.size, 'glossary: ids are unique');
+  let texOk = true; H.texErrors = [];
+  for (const t of G.list()) { H.tex(t.sym, false); H.inline(t.means); H.inline(t.howto); if (t.example) H.inline(t.example); }
+  texOk = !H.texErrors.length; H.texErrors = null;
+  ok(texOk, 'glossary: every symbol and text renders without TeX errors');
+  const has = (tex, ids) => { const d = G.detect(tex); return ids.every(i => d.includes(i)); };
+  ok(has('\\oint \\vec E\\cdot d\\vec s=-\\frac{d\\Phi}{dt}', ['closed-integral', 'derivative', 'vector']), 'detect: ∮, d/dt and vectors');
+  ok(has('\\nabla\\cdot\\vec E=\\rho/\\epsilon_0', ['divergence']) && !G.detect('\\nabla\\cdot\\vec E').includes('gradient'), 'detect: divergence, not gradient');
+  ok(has('\\nabla\\times\\vec B=\\mu_0\\vec j', ['curl']) && has('P=|\\phi_1+\\phi_2|^2', ['absolute-square']), 'detect: curl and the absolute square');
+  ok(has('e^{i\\theta}=\\cos\\theta+i\\sin\\theta', ['euler-formula', 'sine-cosine']) && !G.detect('e^{i\\theta}').includes('exponential'), 'detect: Euler, not a plain exponential');
+  ok(has('\\langle\\chi|\\phi\\rangle', ['bra-ket']) && !G.detect('\\langle\\chi|\\phi\\rangle').includes('expectation-value') && has('\\langle x\\rangle', ['expectation-value']), 'detect: a bracket is not an average');
+  ok(has('\\frac{d^2x}{dt^2}=-\\omega^2 x', ['second-derivative']) && G.detect('F=ma').length === 0, 'detect: second derivative; nothing in F = ma');
+  const html = H.inline('the [[?derivative]] and the [[?curl|circulation]]');
+  ok(/class="gterm" data-g="derivative"[^>]*>Derivative</.test(html) && /data-g="curl"[^>]*>circulation</.test(html), 'markup: [[?term]] and [[?term|label]] make term buttons');
+  H.termErrors = []; H.inline('a [[?no-such-term]]'); ok(H.termErrors[0] === 'no-such-term', 'markup: an unknown term is reported'); H.termErrors = null;
+  ok(H.plain('the [[?curl|circulation]] of B') === 'the circulation of B', 'plain text keeps the term label');
+  ok(!/gterm/.test(H.inline('[[?derivative]]', true)), 'inside a link label a term is plain words');
+}
+
 console.log(pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

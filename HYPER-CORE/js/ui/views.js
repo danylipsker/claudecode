@@ -72,8 +72,8 @@
     ui.setTitle('Tools');
     const disc = H.discipline ? H.discipline.id : '';
     const chemApp = disc === 'chemistry', moneyApp = disc === 'finance', medApp = disc === 'medicine';
-    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology';
-    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : 'plot');
+    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology', feynApp = disc === 'feynman';
+    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : feynApp ? 'arrows' : 'plot');
     const common = [['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['constants', 'Constants'], ['symbols', 'Symbols'], ['az', 'Index A–Z']];
     const tabs = moneyApp
       ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
@@ -84,9 +84,12 @@
       : pneuApp ? [['pneu', 'Pneumatics calculators'], ['iso', 'ISO 1219 symbols']].concat(common)
       : pharmApp ? [['pharmcalc', 'Pharmacy calculations'], ['formulation', 'Formulation'], ['pk', 'Pharmacokinetics']].concat(common)
       : bioApp ? [['sequence', 'Sequences'], ['genetics', 'Genetics'], ['cell', 'Cells & life']].concat(common)
+      : feynApp ? [['arrows', 'QED arrows'], ['slits', 'Two-slit lab'], ['spacetime', 'Spacetime'], ['fields', 'Field lines'], ['wells', 'Quantum wells']].concat(common)
       : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
         .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
         .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
+    // every app: the math terms dictionary, just before the index
+    if (H.termsTool) tabs.splice(tabs.findIndex(t => t[0] === 'az') >= 0 ? tabs.findIndex(t => t[0] === 'az') : tabs.length, 0, ['terms', 'Math terms']);
     const page = ui.page('<h1 class="h2" style="margin-top:6px;font-size:30px">Tools</h1><nav class="tabs">' +
       tabs.map(([k, t]) => '<a href="#/tools/' + k + '" class="' + (k === tab ? 'on' : '') + '">' + t + '</a>').join('') + '</nav><div class="tbody"></div>', 'wide');
     const el = ui.$('.tbody', page);
@@ -96,9 +99,12 @@
     const fl = k => (e, p) => H.fluidTools ? H.fluidTools[k](e, p, parts[1]) : plotter(e, p);
     const ph = k => (e, p) => H.pharmaTools ? H.pharmaTools[k](e, p, parts[1]) : plotter(e, p);
     const bi = k => (e, p) => H.bioTools ? H.bioTools[k](e, p, parts[1]) : plotter(e, p);
+    const fy = k => (e, p) => H.feynTools ? H.feynTools[k](e, p, parts[1]) : plotter(e, p);
+    const terms = (e, p) => H.termsTool ? H.termsTool(e, p, parts[1]) : plotter(e, p);
     ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical,
       airfoil: fl('airfoil'), flight: fl('flight'), hydro: fl('hydro'), fpower: fl('fpower'), pneu: fl('pneu'), iso: fl('iso'),
-      pharmcalc: ph('pharmcalc'), formulation: ph('formulation'), pk: ph('pk'), sequence: bi('sequence'), genetics: bi('genetics'), cell: bi('cell') }[tab] || plotter)(el, params);
+      pharmcalc: ph('pharmcalc'), formulation: ph('formulation'), pk: ph('pk'), sequence: bi('sequence'), genetics: bi('genetics'), cell: bi('cell'), terms,
+      arrows: fy('arrows'), slits: fy('slits'), spacetime: fy('spacetime'), fields: fy('fields'), wells: fy('wells') }[tab] || plotter)(el, params);
   };
 
   /* ---------------------------------------------------------------- periodic table */

@@ -59,6 +59,7 @@
       '</div>' +
       '<div class="fdisp" title="Click a symbol to solve for it">' + H.texSafe(f.displayTex, true) + '</div>' +
       (f.def.note ? '<div class="fnote">' + H.text(f.def.note) + '</div>' : '') +
+      (H.termChips ? H.termChips(f.displayTex) : '') +
       '<div class="fcalc"><div class="fgrid">' + f.vars.map(v =>
         '<div class="frow" data-v="' + esc(v.id) + '">' +
           '<button class="fsym" title="Solve for ' + esc(v.name) + '">' + H.texSafe(v.tex, false) + '</button>' +

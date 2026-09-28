@@ -33,6 +33,7 @@ GEARS GENERATOR/
 wpfCalculator/
 SPRINGS/
 GASKETS AND SEALS/
+SUB-DIV-3D/
 
 # runtime log of scripts/solidworks-monitor-watchdog.ps1
 scripts/*.log

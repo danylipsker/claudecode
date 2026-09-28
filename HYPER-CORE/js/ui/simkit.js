@@ -243,22 +243,23 @@
     ctx.fillStyle = color; ctx.fill();
     if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 1.5; ctx.stroke(); }
   }
-  /* dragging things on a canvas: hit(p) returns what is under the pointer (or null) */
+  /* dragging things on a canvas: hit(p) returns what is under the pointer (or null);
+     end(what, p, moved) gets the last position and whether the pointer really moved (a click moves < 4 px) */
   function drag(st, o) {
-    let cur = null;
+    let cur = null, p0 = null, moved = false;
     const cv = st.canvas;
     cv.style.touchAction = 'none';
     cv.addEventListener('pointerdown', e => {
       const p = st.pos(e);
       cur = o.hit(p);
-      if (cur != null) { cv.setPointerCapture(e.pointerId); o.start && o.start(cur, p); e.preventDefault(); }
+      if (cur != null) { cv.setPointerCapture(e.pointerId); p0 = p; moved = false; o.start && o.start(cur, p); e.preventDefault(); }
     });
     cv.addEventListener('pointermove', e => {
       const p = st.pos(e);
-      if (cur != null) o.move(cur, p);
+      if (cur != null) { if (p0 && Math.hypot(p.x - p0.x, p.y - p0.y) > 4) moved = true; o.move(cur, p); }
       else if (o.hover) cv.style.cursor = o.hit(p) != null ? 'grab' : '';
     });
-    const up = () => { if (cur != null) { o.end && o.end(cur); cur = null; } };
+    const up = e => { if (cur != null) { o.end && o.end(cur, e && e.clientX != null ? st.pos(e) : p0, moved); cur = null; } };
     cv.addEventListener('pointerup', up);
     cv.addEventListener('pointercancel', up);
   }
@@ -310,6 +311,8 @@
     fsym: H.fsym,                   // ISO 1219 fluid-power symbols: valves, pumps, cylinders, lines (fluidsym.js)
     pharma: H.pharma,               // ionisation, dissolution, stability, dosage forms, sterilisation, PK models, bioequivalence (pharma.js)
     bio: H.bio,                     // sequences and the genetic code, genetics, populations, enzymes, drift, lab numbers (bio.js)
+    qm: H.qm,                       // complex arrows, QED paths, slits, Schrödinger, spin, two-state systems, Lorentz, fields, least action (quantum.js)
+    terms: tex => H.termChips ? H.termChips(tex) : '',   // chips of the math terms in a TeX string, which open their glossary cards (glossary.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),
     hue: (h, a) => ui.colors().hue(h, a),
