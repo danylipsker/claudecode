@@ -802,7 +802,7 @@ generally. Human genetics is accurate and respectful (human variation is mostly 
 ### Math terms: [[?term]] (every app)
 
 Any text can mark a mathematical term so the reader can click it for a card saying **what it means** and
-**how to deal with it** (the dictionary is `HYPER-CORE/js/glossary.js`, 113 terms; the same cards are in
+**how to deal with it** (the dictionary is `HYPER-CORE/js/glossary.js`, 122 terms; the same cards are in
 Tools → Math terms, and every formula card automatically shows chips for the operators in its TeX):
 
 ```
@@ -810,8 +810,8 @@ the [[?derivative]] of x            the [[?curl|circulation]] of the field      
 ```
 
 The ids, by group: *notation and algebra* — `delta-change approx proportional much-less plus-minus
-subscripts exponent square-root scientific-notation inverse absolute-value ellipse function logarithm exponential
-number-e pi factorial sum geometric-series product infinity`; *angles and waves* — `radian sine-cosine inverse-trig angular-frequency phase
+subscripts exponent square-root pythagoras scientific-notation inverse absolute-value ellipse function logarithm exponential
+number-e time-constant binary-number exclusive-or pi factorial sum geometric-series product infinity`; *angles and waves* — `radian sine-cosine inverse-trig angular-frequency rms natural-frequency damping-ratio phase
 wave-equation wave-number orthogonality bessel spherical-harmonics fourier`; *calculus* — `limit differential derivative dot-notation second-derivative
 partial-derivative integral integration-by-parts differential-equation step-by-step taylor-series small-approximation
 stationary`; *vectors and fields* — `vector scalar components magnitude unit-vector dot-product
@@ -821,7 +821,7 @@ absolute-square euler-formula rotating-arrow amplitude`; *matrices and quantum n
 determinant eigenvalue hermitian bra-ket base-states superposition normalization operator commutator
 expectation-value wave-function probability-density kronecker-delta dirac-delta hbar`; *relativity* —
 `lorentz-factor hyperbolic rapidity four-vector invariant summation-convention`; *probability* — `least-squares chi-square bayes binomial-coefficient probability mean
-standard-deviation gaussian random-walk boltzmann-factor`; *action* — `action lagrangian functional stationary-phase variation`.
+standard-deviation coefficient-of-variation correlation gaussian random-walk boltzmann-factor`; *action* — `action lagrangian functional stationary-phase variation`.
 An unknown id is an error. Mark a term where it first matters on a page (not every occurrence); a label
 after the bar may be any words, including `$…$` maths. If a term you need is missing, write it in plain
 words and say so in your report — do not invent ids.
@@ -873,6 +873,147 @@ the HTML chips of the math terms in a TeX string, for a sim that wants to explai
 lab), `#/tools/spacetime` (a Minkowski diagram with boosts), `#/tools/fields` (field lines and potentials of
 charges and currents), `#/tools/wells` (stationary states and wave packets in 1-D potentials),
 `#/tools/terms/<id>` (a math term).
+
+### Hyper Motors
+
+Every motor family — DC, brushless, induction, single-phase, synchronous, stepper, servo, special, hydraulic
+and air — explained for **choosing and using one**. The reader is an engineer or technician with a machine to
+build; every page ends in a decision. References: the DC torque–speed line (content) and a DC motor on the
+bench and an induction motor on the mains or a VFD (sims).
+
+**Every page gives real numbers**: typical voltages, currents, speeds, torques, powers, efficiencies, power
+factors, sizes and prices in *ranges*, for small and large examples (a 0.37 kW and a 37 kW motor behave
+differently). Say where they come from ("typical of IE3 4-pole motors", "a NEMA 23 stepper"). Tie the theory
+to what happens in real machines — heat, friction, noise, vibration, wear, faults — and to what the reader
+must check.
+
+**`choose`** — "Is it right for your application?", shown on the page as three columns:
+
+```js
+choose: {
+  good:  ['Battery and 12/24/48 V equipment: speed set simply by voltage or PWM …', …],   // a good choice for
+  avoid: ['Long continuous duty at high speed: brushes wear …', …],                      // think twice for
+  check: ['The rated (continuous) torque and speed at your voltage …', …]                // check before you choose
+}
+```
+
+Give it to every concept about a motor type, a drive, a sensor, a transmission element or a method (2–5 short
+items per column). The "Power factor (cos φ)" page explains why "COP" is not a motor rating (a coefficient of
+performance belongs to heat pumps), and what cos φ and efficiency mean on a nameplate.
+
+**Drivers and electronics**: give physical sizes (DIN-rail width, frame sizes), connections, supply ranges,
+control methods (step/dir, analogue 0–10 V and 4–20 mA, fieldbus, PWM), DIP-switch tables, limit switches
+(mechanical, inductive, optical; NPN/PNP; NC for safety), acceleration and deceleration ramps, braking and
+power consumption. DIP-switch tables are **generic and typical** ("a typical 2-phase stepper driver: SW1–SW3
+set the current, SW5–SW8 the microstepping") — never a copy of one maker's manual, no brand promotion; tell the
+reader to follow the actual driver's manual.
+
+**Hydraulics** is taught as a whole system: pump, reservoir, filters, relief and control valves,
+counterbalance and brake valves, accumulators, coolers, hoses — link to the Hyper Hydraulics concepts
+(`hydraulics:…`, ids in `HYPER-HYDRAULICS/catalog.js`) rather than repeating them, but explain what each element
+does for the motor.
+
+**Safety — the rules.** Mains voltages kill: say that work on mains wiring, motor terminal boxes, capacitors
+and VFDs is for qualified electricians, that capacitors and a VFD's DC bus stay charged for minutes after
+switch-off (wait, then measure), that machines are locked out and tagged out before work, that emergency stops
+and safety functions follow the machinery-safety standards (ISO 13849, IEC 60204-1, IEC 61800-5-2), and that
+local wiring codes apply. Wiring diagrams are for understanding; the motor's own nameplate and terminal-box
+diagram and the drive's manual govern. Use the `[!warn]` callout.
+
+**Units.** `torque` (N·m, mN·m, oz·in, kgf·cm, lbf·ft), `ktorque` (N·m/A), `kemf` (V·s/rad, V/krpm, mV/rpm),
+`inertia` (kg·m², kg·cm², kg·mm², oz·in²), `angvel` (rpm, rad/s), `power` (W, kW, hp), `voltage`, `current`,
+`resistance`, `inductance`, `capacitance`, `frequency`, `ratio` (%), `pressure` (bar), `flowrate` (L/min),
+`displacement` (cm³/rev). Nameplate horsepower is
+mechanical output (1 hp = 745.7 W; the metric PS = 735.5 W).
+
+```js
+const M = kit.motor;       // motors.js, tested by tools/test-motors.js
+M.rpm(ω) M.rad(n)  M.torqueFromPower(P, rpm)  M.powerFromTorque(T, rpm)  M.HP M.PS  M.power3(V_LL, I, pf)  M.current3(Pout, V_LL, eff, pf)
+M.dc({ V, R, K, I0 }) -> { stallCurrent, stallTorque, noLoadSpeed, noLoadRpm, at(T) -> { I, w, n, Pout, Pin, eff }, maxPower: { T, P }, maxEff, effPeakCurrent }
+M.dcSim({ V, R, L, K, J, b, TL, T, dt }) -> [[t, i, ω], …]   M.pwmRipple({ V, D, L, f })
+M.induction({ V_LL, f, poles, R1, X1, R2, X2, Xm, Rc, Pfw, delta, deepBar }) -> { ns, ws, at(s) -> { T, I1, pf, Pin, Pmech, eff, n }, sMax, Tmax, start }
+   // a typical 7.5 kW 4-pole 400 V motor: { V_LL: 400, f: 50, poles: 4, R1: 0.7, X1: 1.1, R2: 0.55, X2: 1.6, Xm: 45, Pfw: 120, deepBar: 1 }
+   // on a VFD scale X1, X2, Xm by f/50 and take V_LL from M.vf({ Vn: 400, fn: 50, f, boost: 20 })
+M.vf({ Vn, fn, f, boost })  M.starDelta() -> 1/3  M.syncRpm(f, poles)  M.slip(n, f, poles)
+M.stepper({ steps, I, R, L, Vs, Th, teeth }) -> { torque(rpm), avail, cornerRpm, stepRate(rpm, micro), stepAngle }   (an upper bound)
+M.move({ dist, vmax, acc, dec }) -> { tAcc, tConst, tDec, tTotal, vPeak, triangle, at(t) -> { x, v, a } }
+M.reflected(Jload, ratio, eff)  M.moveTorque({ Jm, Jload, ratio, eff, acc, Tload }) -> { Jreflected, inertiaRatio, Tacc, Tload, Tpeak }  M.rmsTorque([[T, t], …])
+M.screwTorque({ F, lead, eff })  M.screwRpm(v, lead)  M.beltSpeed(rpm, d)  M.encoder({ ppr, rpm }) -> { counts, resolutionDeg, lineFreq, countFreq }
+M.copperR(R20, T)  M.windingTemp({ Ploss, Rth, tau, t, Tamb })  M.INSULATION  M.dutyOverload(D)  M.IE  M.ieAt(cls, kW)  M.ieClass(kW, eff)  M.IEC_FRAMES
+M.hydMotor({ Vg, dp, Q, etaV, etaHM }) -> { T, n, Pout, Pin, eta }  M.hydPump({ Vg, n, dp, etaV, etaHM }) -> { Q, T, Pin, Phyd, eta }
+M.airMotor({ Pmax, n0, n }) -> { P, T, Tstall }  M.cableDrop({ I, L, A, pf, rho, x, phases })  M.brakeEnergy({ J, n1, n2 })  M.steinmetzC({ P, V, f })
+// kit.fluid (fluid.js) has pipes, pumps, compressed air and hydraulic cylinders; kit.circuit simulates circuits
+```
+
+**Tools to link to** (each has sub-pages): `#/tools/motorlab/` dc, induction, stepper, hydraulic, air;
+`#/tools/sizing/` axis (move profile, reflected inertia, RMS torque for a screw, belt or rack axis), conveyor,
+hoist, pumpfan, cable, choose (a selection guide); `#/tools/wiring/` threephase (star, delta, dual voltage,
+reversing), singlephase (capacitor start and run, PSC, reversing), starters (DOL and star–delta control
+circuits), stepper (4-, 6- and 8-wire), sensors (encoders, NPN/PNP proximity and limit switches);
+`#/tools/drives/` pwm, stepdir (step and direction, microstepping, DIP switches), vfd (ramps, V/f, parameters),
+softstart, homing.
+
+### Hyper Ergonomics
+
+Designing for people: body sizes and their spread, the dimensions of furniture, spaces, workplaces, machines
+and vehicles, the loads people can handle, and the environment they work in — in civil, office, workshop,
+military and field settings. References: designing for a range (content) and who fits the design, and a chair
+and desk fitted to a person (sims).
+
+**Everything in ranges.** Ergonomics never gives one number for everybody. Each recommendation is a range with
+the user who limits it (clearance from the largest, reach from the smallest, adjustment across both), what it
+protects or makes possible, and its limitations. Pages about dimensions carry them in **`ranges`**, shown as a
+"Recommended ranges" panel and collected into the Dimension finder tool:
+
+```js
+ranges: [
+  { dim: 'Office chair seat height (adjustment range)', range: [400, 510], unit: 'mm',
+    who: '5th-percentile woman to 95th-percentile man: popliteal height plus about 25 mm of shoe',
+    why: 'Feet flat on the floor and thighs level …', limits: 'At a fixed desk small users need a footrest …',
+    setting: 'office', src: 'EN 1335-1' },
+  { dim: 'Highest shelf for occasional use', range: [null, 1770], unit: 'mm', … }   // null: "at most" / "at least"
+]
+```
+
+`range` is `[lo, hi]` or a short text (`'15–20°'`); `setting` is one or more of `all civil office workshop
+military field vehicle health school`; `src` names the standard or data. Give ranges on every page that
+recommends a dimension, force, angle, level or time — typically 3–8 per page.
+
+**Data and wording — the rules.**
+
+- `kit.ergo.DIMS` holds **representative, rounded** adult data (in the spirit of ANSUR II and European
+  surveys, ISO 7250-1 definitions). Use it for examples and say so; tell the reader to use data for the real
+  user population (nation, age, occupation), clothing and PPE allowances, and a user trial for real designs.
+- Numbers from standards (EN 1335, ISO 9241, ISO 11226, ISO 11228, ISO 13857, ISO 14738, EN 527, ISO 7730,
+  ISO 7243, ISO 9612, EN ISO 5349, ISO 2631, EN 12464-1, building codes, MIL-STD-1472) are described and
+  cited by name, number and year when sure — never reproduce their tables wholesale; give the key values and
+  what they rest on. Where standards differ between countries, say so.
+- **Not medical advice.** Pain, injury and disability are explained ergonomically; symptoms that persist go to
+  a doctor or physiotherapist; legal limits (noise, vibration, lifting) are those of the reader's country.
+- **Military pages are human factors only**: fitting people to vehicles, equipment, loads, climates and
+  sustained work — nothing about weapons effects, tactics or harming people.
+- People-first, inclusive language; the full range of people — women and men, children, older people, people
+  with disabilities, large and small bodies — without stereotypes. Sex differences are population averages
+  with wide overlap.
+
+```js
+const E = kit.ergo;        // ergo.js, tested by tools/test-ergo.js; lengths in mm, masses in kg
+E.DIMS[id] -> { name, m: [mean, sd], f: [mean, sd], unit }   ids: stature eyeHeight shoulderHeight elbowHeight knuckleHeight gripReachUp
+   sittingHeight eyeHeightSit shoulderHeightSit elbowRest thighClearance kneeHeight popliteal buttockKnee buttockPopliteal
+   shoulderBreadth hipBreadthSit forwardReach handLength handBreadth footLength footBreadth headCirc weight
+E.z(p) (p as a fraction)  E.phi(z)  E.pct(id, 'm'|'f', p%)  E.pctMix(id, p%, shareMen)  E.fraction(id, sex, lo, hi)  E.fractionMix(id, lo, hi, shareMen)
+E.person({ sex, p }) -> every dimension at one percentile   E.SEGMENTS (link lengths as fractions of stature, for manikins)
+E.workstation(person) -> { seat, deskSit, keyboard, monitorTop, monitorCentre, seatDepthMax, kneeClearance, legroomDepth, standPrecision, standLight, standHeavy, reachComfort, reachMax }
+E.niosh({ H, V, D, A, F, hours, coupling, load }) -> { RWL, LI, HM, VM, DM, AM, FM, CM }   (H, V, D in cm; F lifts/min; hours 1, 2 or 8; coupling 'good'|'fair'|'poor')
+E.noiseDose([[dB(A), h], …], { criterion, exchange }) -> { dose, twa }   E.lex8([[dB, h], …])   E.addDb([dB, …])   E.NOISE_LIMITS
+E.a8([[m/s², h], …])   E.VIBRATION_LIMITS   E.pmv({ ta, tr, vel, rh, met, clo, wme }) -> { pmv, ppd, tcl }   E.ppd(pmv)
+E.wbgt({ tnw, tg, ta, outdoor })   E.windChill(ta °C, v km/h)   E.pandolf({ W, L, V, G, eta }) -> W   E.fitts({ a, b, D, W })   E.hick({ a, b, n })   E.blondel(rise, going)   E.LIGHTING
+```
+
+**Tools to link to**: `#/tools/bodysize/` explorer (a dimension's spread and who a range fits), person (every
+dimension of one percentile, with a manikin), `#/tools/workstation/` sitting, standing, `#/tools/lifting/`
+niosh, carry, `#/tools/environment/` noise, vibration, thermal, heat, cold, light, and `#/tools/ranges` (the
+Dimension finder: every recommended range in the app, searchable by setting).
 
 ## Checking your work
 

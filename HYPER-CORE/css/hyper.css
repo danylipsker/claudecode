@@ -810,3 +810,20 @@ canvas.iconarr, .mextra canvas { display: block; }
 .tgh { margin: 20px 0 10px; font: 650 18px var(--font-display); scroll-margin-top: 70px; }
 .srcs h3 { color: var(--accent); }
 .srcs li::before { content: "¶"; position: absolute; left: 6px; top: 5px; color: var(--accent); }
+/* recommended ranges (Ergonomics) and choosing for an application (Motors) */
+.rbox h3 { color: var(--bc, var(--accent)); }
+.rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.rcard { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: var(--bg2); font-size: 14px; line-height: 1.5; display: flex; flex-direction: column; gap: 4px; }
+.rdim { font-weight: 650; }
+.rval { font: 700 19px var(--font-display); color: var(--accent); font-variant-numeric: tabular-nums; }
+.rrow b { font-weight: 650; margin-right: 4px; }
+.rrow.ok b { color: var(--ok); } .rrow.warn b { color: var(--warn); }
+.rfoot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 2px; font-size: 12.5px; color: var(--muted); }
+.rfoot .chip { font-size: 11.5px; padding: 0 7px; }
+.cbox h3 { color: var(--accent); }
+.ccols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.ccol h4 { margin: 2px 0 4px; font: 650 13.5px var(--font-display); text-transform: uppercase; letter-spacing: .03em; }
+.ccol.good h4 { color: var(--ok); } .ccol.avoid h4 { color: var(--warn); } .ccol.check h4 { color: var(--accent); }
+.ccol.good li::before { content: "✓"; position: absolute; left: 4px; top: 5px; color: var(--ok); font-weight: 700; }
+.ccol.avoid li::before { content: "✕"; position: absolute; left: 4px; top: 5px; color: var(--warn); font-weight: 700; }
+.ccol.check li::before { content: "□"; position: absolute; left: 4px; top: 4px; color: var(--accent); }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Ergonomics</title>
+<meta name="description" content="Designing for people: body sizes as ranges and percentiles, seating, desks and workstations, furniture and buildings, lifting, workshops and machinery, controls and displays, noise, vibration, heat, cold and light, vehicles, military and field work — the dimensions, their limits and the reasons behind them.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='11' cy='6' r='3' fill='%23a8a21a'/%3E%3Cpath d='M11 10v9h7l2 8M11 14h9' fill='none' stroke='%23a8a21a' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 13h8M28 13v14' stroke='%23a8a21a' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Ergonomics needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/pharma.js"></script>
+<script src="../HYPER-CORE/js/bio.js"></script>
+<script src="../HYPER-CORE/js/quantum.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/motors.js"></script>
+<script src="../HYPER-CORE/js/ergo.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/ergotools.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/anthropometry.js"></script>
+<script src="content/biomech-handling.js"></script>
+<script src="content/environment.js"></script>
+<script src="content/foundations.js"></script>
+<script src="content/furniture-spaces.js"></script>
+<script src="content/machinery.js"></script>
+<script src="content/military-field.js"></script>
+<script src="content/mind-transport.js"></script>
+<script src="content/organisation.js"></script>
+<script src="content/workshop-services.js"></script>
+<script src="content/workstations.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/anthropometry.js"></script>
+<script src="sims/biomech-handling.js"></script>
+<script src="sims/environment.js"></script>
+<script src="sims/foundations.js"></script>
+<script src="sims/furniture-spaces.js"></script>
+<script src="sims/machinery.js"></script>
+<script src="sims/military-field.js"></script>
+<script src="sims/mind-transport.js"></script>
+<script src="sims/organisation.js"></script>
+<script src="sims/workshop-services.js"></script>
+<script src="sims/workstations.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+<script src="../HYPER-FEYNMAN/catalog.js"></script>
+<script src="../HYPER-MOTORS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'ergonomics' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

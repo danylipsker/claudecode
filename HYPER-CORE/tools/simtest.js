@@ -61,6 +61,8 @@ function fakeCtx() {
         // browsers throw IndexSizeError on a negative radius
         const radii = { arc: [2], arcTo: [4], ellipse: [2, 3] }[k];
         if (radii && radii.some(i => arguments[i] < 0)) bad.push(current + ': ' + k + '() got a negative radius ' + radii.map(i => arguments[i]).join(', ') + ' (throws in a browser)');
+        // browsers throw a TypeError unless the dash pattern is an array (or array-like) of numbers
+        if (k === 'setLineDash' && !(arguments[0] && typeof arguments[0] === 'object' && typeof arguments[0].length === 'number')) bad.push(current + ': setLineDash() got ' + JSON.stringify(arguments[0]) + ' — it needs an array (throws in a browser)');
         return undefined;
       };
     },
@@ -133,9 +135,11 @@ function makeKit(record) {
       return api;
     },
     loop(step) {
-      let on = false;
-      const api = { start() { on = true; return api; }, stop() { on = false; return api; }, toggle() { on = !on; return api; }, get running() { return on; }, get t() { return 0; }, reset() {}, once() { step(0, 0); } };
-      record.loops.push({ step, api });
+      // like the browser's loop: t is the time of the last frame, and once() redraws at that time
+      let on = false, last = 0;
+      const run = (dt, t) => { last = t; return step(dt, t); };
+      const api = { start() { on = true; return api; }, stop() { on = false; return api; }, toggle() { on = !on; return api; }, get running() { return on; }, get t() { return last; }, reset() { last = 0; }, once() { step(0, last); } };
+      record.loops.push({ step: run, api });
       return api;
     },
     arrow(c, x1, y1, x2, y2) { for (const a of [x1, y1, x2, y2]) if (!Number.isFinite(a)) { bad.push(current + ': arrow() got ' + a); break; } },
@@ -154,7 +158,7 @@ function makeKit(record) {
     },
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
-    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio, qm: H.qm, terms: () => "",
+    fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio, qm: H.qm, motor: H.motor, ergo: H.ergo, terms: () => "",
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }

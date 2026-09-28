@@ -312,6 +312,8 @@
     pharma: H.pharma,               // ionisation, dissolution, stability, dosage forms, sterilisation, PK models, bioequivalence (pharma.js)
     bio: H.bio,                     // sequences and the genetic code, genetics, populations, enzymes, drift, lab numbers (bio.js)
     qm: H.qm,                       // complex arrows, QED paths, slits, Schrödinger, spin, two-state systems, Lorentz, fields, least action (quantum.js)
+    motor: H.motor,                 // DC, induction and stepper motors, move profiles, sizing, heat, hydraulic and air motors (motors.js)
+    ergo: H.ergo,                   // anthropometry, workstations, NIOSH lifting, noise, vibration, thermal comfort, controls (ergo.js)
     terms: tex => H.termChips ? H.termChips(tex) : '',   // chips of the math terms in a TeX string, which open their glossary cards (glossary.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),

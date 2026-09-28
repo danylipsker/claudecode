@@ -786,7 +786,7 @@ The first sim is a grid of spins that favour their neighbours' direction (the Is
   short: 'Pull, bend or twist a solid a little and it springs back: stress is proportional to strain. Two numbers — Young\'s modulus and Poisson\'s ratio — describe an isotropic material, and from them follow the stretch of a wire, the twist of a torsion fibre and the curve of a bent beam.',
   keywords: ['Hooke\'s law', 'stress', 'strain', 'Young\'s modulus', 'Poisson\'s ratio', 'shear modulus', 'bulk modulus', 'torsion', 'torsion balance', 'bending', 'beam', 'curvature', 'neutral axis', 'second moment of area', 'cantilever', 'buckling', 'Euler'],
   prereq: ['tensors-feyn', 'crystal-geometry', 'physics:stress-strain', 'physics:hookes-law'],
-  related: ['harmonic-oscillator-feyn', 'wave-equation-sound', 'physics:shear-bulk-modulus', 'physics:elasticity', 'math:second-derivative'],
+  related: ['harmonic-oscillator-feyn', 'wave-equation-sound', 'physics:shear-bulk-modulus', 'physics:elasticity', 'math:higher-derivatives'],
   body: `
 ### Stress, strain and Hooke's law
 Hang a weight on a wire and it stretches. Double the weight, the stretch doubles; double the cross-section, it halves; double the length, it doubles. So the natural quantities are the force per area, the **stress** $F/A$, and the fractional stretch, the **strain** $\\Delta L/L$, and for small strains they are [[?proportional]]:

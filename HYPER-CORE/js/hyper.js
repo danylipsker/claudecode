@@ -36,7 +36,9 @@
     pneumatics:  { id: 'pneumatics',  title: 'Hyper Pneumatics',  short: 'Pneumatics',  folder: 'HYPER-PNEUMATICS',  hue: 88,  ready: true },
     pharmaceutics: { id: 'pharmaceutics', title: 'Hyper Pharmaceutics', short: 'Pharmaceutics', folder: 'HYPER-PHARMACEUTICS', hue: 294, ready: true },
     biology:     { id: 'biology',     title: 'Hyper Biology',     short: 'Biology',     folder: 'HYPER-BIOLOGY',     hue: 114, ready: true },
-    feynman:     { id: 'feynman',     title: 'Hyper Feynman',     short: 'Feynman',     folder: 'HYPER-FEYNMAN',     hue: 22,  ready: true, sourcesTitle: 'Where Feynman tells it' }
+    feynman:     { id: 'feynman',     title: 'Hyper Feynman',     short: 'Feynman',     folder: 'HYPER-FEYNMAN',     hue: 22,  ready: true, sourcesTitle: 'Where Feynman tells it' },
+    motors:      { id: 'motors',      title: 'Hyper Motors',      short: 'Motors',      folder: 'HYPER-MOTORS',      hue: 248, ready: true, sourcesTitle: 'Standards and further reading' },
+    ergonomics:  { id: 'ergonomics',  title: 'Hyper Ergonomics',  short: 'Ergonomics',  folder: 'HYPER-ERGONOMICS',  hue: 62,  ready: true, sourcesTitle: 'Standards and data sources' }
   };
 
   H.use = function (id) {
@@ -47,7 +49,7 @@
   };
 
   const ARRAYS = ['prereq', 'related', 'keywords', 'formulas', 'examples', 'quiz',
-                  'problems', 'ideas', 'pitfalls', 'applications', 'sources'];
+                  'problems', 'ideas', 'pitfalls', 'applications', 'sources', 'ranges'];
 
   /* Register concept nodes. Accepts nodes, arrays of nodes, or both. */
   H.add = function () {
@@ -63,6 +65,8 @@
       n.kind = n.kind || 'concept';
       for (const k of ARRAYS) if (n[k] == null) n[k] = []; else if (!Array.isArray(n[k])) n[k] = [n[k]];
       n.sims = normSims(n.sim);
+      // choosing for an application (Hyper Motors): { good: [...], avoid: [...], check: [...] }
+      if (n.choose) for (const k of ['good', 'avoid', 'check']) n.choose[k] = n.choose[k] == null ? [] : Array.isArray(n.choose[k]) ? n.choose[k] : [n.choose[k]];
       n.level = n.level || 1;
       H.nodes.set(n.id, n);
       H.list.push(n);

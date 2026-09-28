@@ -83,6 +83,35 @@
       (d.outro ? '<div class="prose">' + H.text(d.outro) + '</div>' : '') + '</div></details>';
   }
 
+  /* recommended dimension ranges (Hyper Ergonomics): { dim, range: [lo, hi] | 'text', unit, who, why, limits, setting, src } */
+  const SETTINGS = { all: 'Everywhere', civil: 'Home and public', office: 'Office', workshop: 'Workshop and industry', military: 'Military', field: 'Field work', vehicle: 'Vehicles', health: 'Health care', school: 'Schools' };
+  H.rangeSettings = SETTINGS;
+  H.rangeText = function (r) {
+    const u = r.unit ? ' ' + r.unit : '', f = v => typeof v === 'number' ? H.util.fmt(v, 4) : String(v);
+    if (Array.isArray(r.range)) {
+      const [lo, hi] = r.range;
+      if (lo == null) return '≤ ' + f(hi) + u;
+      if (hi == null) return '≥ ' + f(lo) + u;
+      return lo === hi ? f(lo) + u : f(lo) + '–' + f(hi) + u;
+    }
+    return String(r.range == null ? '' : r.range) + (r.unit && !String(r.range).includes(r.unit) ? u : '');
+  };
+  function rangesBox(rs) {
+    return '<div class="boxy rbox mt"><h3>' + H.icon('ruler', 16) + 'Recommended ranges</h3><div class="rgrid">' + rs.map(r =>
+      '<div class="rcard"><div class="rdim">' + H.inline(r.dim || '') + '</div><div class="rval">' + esc(H.rangeText(r)) + '</div>' +
+      (r.who ? '<div class="rrow"><b>Set by</b> ' + H.inline(r.who) + '</div>' : '') +
+      (r.why ? '<div class="rrow ok"><b>Why</b> ' + H.inline(r.why) + '</div>' : '') +
+      (r.limits ? '<div class="rrow warn"><b>Limits</b> ' + H.inline(r.limits) + '</div>' : '') +
+      ((r.setting || r.src) ? '<div class="rfoot">' + [].concat(r.setting || []).map(s => '<span class="chip">' + esc(SETTINGS[s] || s) + '</span>').join('') + (r.src ? '<span class="rsrc">' + H.inline(r.src) + '</span>' : '') + '</div>' : '') +
+      '</div>').join('') + '</div></div>';
+  }
+  /* choosing for an application (Hyper Motors): { good: [...], avoid: [...], check: [...] } */
+  function chooseBox(c) {
+    const col = (cls, title, xs) => xs.length ? '<div class="ccol ' + cls + '"><h4>' + title + '</h4><ul>' + xs.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '';
+    return '<div class="boxy cbox mt"><h3>' + H.icon('target', 16) + 'Is it right for your application?</h3><div class="ccols">' +
+      col('good', 'A good choice for', c.good) + col('avoid', 'Think twice for', c.avoid) + col('check', 'Check before you choose', c.check) + '</div></div>';
+  }
+
   function kidCard(id) {
     const n = H.nodes.get(id);
     const isC = n.kind === 'concept';
@@ -114,7 +143,7 @@
     const branch = n.branch && n.branch !== id ? H.nodes.get(n.branch) : null;
     const hasPractice = n.quiz.length || fs.length || n.problems.length;
     const kids = n.children;
-    const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history || n.sources.length);
+    const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history || n.sources.length || n.ranges.length || n.choose);
     const sections = [
       ['understand', 'Understand', hasU],
       ['contents', 'Contents', kids.length > 0, kids.length],
@@ -142,6 +171,8 @@
           (n.ideas.length ? '<div class="boxy ideas"><h3>' + H.icon('check', 16) + 'Key ideas</h3><ul>' + n.ideas.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '') +
           (n.pitfalls.length ? '<div class="boxy pits"><h3>' + H.icon('info', 16) + 'Common mix-ups</h3><ul>' + n.pitfalls.map(pitfall).join('') + '</ul></div>' : '') +
         '</div>' : '') +
+        (n.ranges.length ? rangesBox(n.ranges) : '') +
+        (n.choose ? chooseBox(n.choose) : '') +
         (n.derivation ? derivation(n.derivation) : '') +
         (n.applications.length ? '<div class="boxy apps mt"><h3>' + H.icon('sparkle', 16) + 'Where you meet it</h3><ul>' + n.applications.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '') +
         (n.history ? '<div class="callout co-history"><div class="co-h">History</div>' + H.text(n.history) + '</div>' : '') +

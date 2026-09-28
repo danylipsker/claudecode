@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Motors</title>
+<meta name="description" content="Every kind of motor, explained for choosing and using one: DC, brushless, induction, single-phase, synchronous, stepper and servo motors, drives, encoders, limit switches, starters and VFDs, gearing and sizing, heat, noise and vibration, hydraulic and air motors — with wiring, ratings and simulations.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='9' width='18' height='14' rx='2' fill='none' stroke='%235a4ad8' stroke-width='2.4'/%3E%3Cpath d='M22 16h7M8 9V6m5 3V6m5 3V6' stroke='%235a4ad8' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='13' cy='16' r='3' fill='%235a4ad8'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Motors needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/pharma.js"></script>
+<script src="../HYPER-CORE/js/bio.js"></script>
+<script src="../HYPER-CORE/js/quantum.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/motors.js"></script>
+<script src="../HYPER-CORE/js/ergo.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/motortools.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/air-selection.js"></script>
+<script src="content/basics.js"></script>
+<script src="content/brushless-sync.js"></script>
+<script src="content/dc.js"></script>
+<script src="content/feedback.js"></script>
+<script src="content/hydraulic.js"></script>
+<script src="content/induction.js"></script>
+<script src="content/mechanics.js"></script>
+<script src="content/real-world.js"></script>
+<script src="content/servos.js"></script>
+<script src="content/single-phase.js"></script>
+<script src="content/starting-vfd.js"></script>
+<script src="content/steppers.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/air-selection.js"></script>
+<script src="sims/basics.js"></script>
+<script src="sims/brushless-sync.js"></script>
+<script src="sims/dc.js"></script>
+<script src="sims/feedback.js"></script>
+<script src="sims/hydraulic.js"></script>
+<script src="sims/induction.js"></script>
+<script src="sims/mechanics.js"></script>
+<script src="sims/real-world.js"></script>
+<script src="sims/servos.js"></script>
+<script src="sims/single-phase.js"></script>
+<script src="sims/starting-vfd.js"></script>
+<script src="sims/steppers.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+<script src="../HYPER-FEYNMAN/catalog.js"></script>
+<script src="../HYPER-ERGONOMICS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'motors' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

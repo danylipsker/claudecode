@@ -28,7 +28,7 @@ const only = onlyArg ? new Set(onlyArg.split(',').map(s => path.resolve(discDir,
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -48,7 +48,7 @@ for (const sub of ['content', 'sims']) {
   for (const f of list) files.push(path.join(dir, f));
 }
 // other disciplines' catalogs
-for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN']) {
+for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS']) {
   const c = path.join(discDir, '..', d, 'catalog.js');
   if (d !== path.basename(discDir) && fs.existsSync(c)) { try { run(ctx, c); } catch (e) { W(d + '/catalog.js', e.message); } }
 }
@@ -124,6 +124,8 @@ function checkText(where, s, block) {
     else if (cat && !cat.has(m[2].trim())) W(where, 'link [[' + m[1] + ':' + m[2] + ']] is not in the ' + m[1] + ' catalog');
   }
   lostBackslash(where, s);
+  // Hyper Motors and Hyper Ergonomics: reader-facing text names methods, standards and tools, never the code
+  if ((DISC === 'motors' || DISC === 'ergonomics') && /\bkit\.(motor|ergo)\b|\bDIMS\b|\b(ergo|motors)\.js\b/.test(s)) W(where, 'names code (kit.motor / kit.ergo / DIMS / *.js) in reader-facing text: name the method, the standard or the tool instead');
   const dollars = (s.replace(/\\\$/g, '').match(/\$/g) || []).length;
   if (dollars % 2) E(where, 'odd number of $ signs: an unclosed math span');
 }
@@ -135,7 +137,8 @@ function lostBackslash(where, s) {
   const inl = s.replace(/\$\$[\s\S]*?\$\$/g, '').match(/\$[^$]+\$/g) || [];
   if (inl.some(m => /\n/.test(m))) W(where, 'a line break inside inline math: probably \\nu, \\nabla or \\neq written with a single backslash');
   // a command that lost its backslash silently becomes letters: "sqrt", "Delta" inside the maths
-  const maths = (s.match(/\$\$[\s\S]*?\$\$|\$[^$]+\$/g) || []).map(m => m.replace(/\\(text|mathrm|operatorname|textrm|mbox)\s*\{[^}]*\}/g, ''));
+  // (subscripts and superscripts made only of letters, like I_{lim} or T^{max}, are labels, not lost commands)
+  const maths = (s.match(/\$\$[\s\S]*?\$\$|\$[^$]+\$/g) || []).map(m => m.replace(/\\(text|mathrm|operatorname|textrm|mbox)\s*\{[^}]*\}/g, '').replace(/[_^]\{[A-Za-z]+\}/g, ''));
   const lost = /(^|[^\\A-Za-z])(frac|dfrac|sqrt|Delta|delta|mathrm|mathbf|theta|alpha|beta|lambda|omega|Omega|sigma|cdot|times|approx|infty|partial|nabla|vec|hat|left|right|sum|int|lim|varepsilon|epsilon|rho|mu|phi|psi|hbar|circ|quad)(?![A-Za-z])/;
   for (const m of maths) {
     const x = lost.exec(m);
@@ -169,12 +172,34 @@ for (const n of H.list) {
   if (n.kind !== 'root' && !n.short) W(w, 'no short summary');
   if (n.kind !== 'root' && !n.parent) E(w, 'no parent');
   checkText(w + ' short', n.short, false);
+  // prerequisites and related concepts in another discipline must exist in its catalog
+  for (const x of n.prereq.concat(n.related)) { const r = H.ref(x); if (!r.local && H.catalogs[r.disc] && !H.catalogs[r.disc].has(r.id)) W(w, '"' + x + '" is not in the ' + r.disc + ' catalog'); }
   checkText(w + ' body', n.body, true);
   n.ideas.forEach((x, i) => checkText(w + ' idea ' + (i + 1), x, false));
   n.pitfalls.forEach((x, i) => typeof x === 'string' ? checkText(w + ' pitfall ' + (i + 1), x, false) : (checkText(w + ' pitfall ' + (i + 1), x.wrong, false), checkText(w + ' pitfall ' + (i + 1), x.right, false)));
   n.applications.forEach((x, i) => checkText(w + ' application ' + (i + 1), x, false));
   checkText(w + ' history', n.history, true);
   n.sources.forEach((x, i) => checkText(w + ' source ' + (i + 1), x, false));
+  // recommended ranges (Ergonomics) and choosing for an application (Motors)
+  n.ranges.forEach((r, i) => {
+    const wr = w + ' range ' + (i + 1);
+    if (!r || typeof r !== 'object') { E(wr, 'a range is an object { dim, range, unit, who, why, limits, setting, src }'); return; }
+    if (!r.dim) E(wr, 'no dim (what the range is for)');
+    if (Array.isArray(r.range)) {
+      const [lo, hi] = r.range;
+      if (r.range.length !== 2 || (lo == null && hi == null) || [lo, hi].some(v => v != null && !Number.isFinite(v))) E(wr, 'range must be [lo, hi] numbers (one may be null for "at most"/"at least") or a text');
+      else if (lo != null && hi != null && lo > hi) E(wr, 'range [' + lo + ', ' + hi + '] is reversed');
+    } else if (typeof r.range !== 'string' || !r.range) E(wr, 'no range');
+    if (!r.why) W(wr, 'no why: say what the range protects or makes possible');
+    if (r.setting) [].concat(r.setting).forEach(s => { if (!H.rangeSettings || !H.rangeSettings[s]) { if (!['all', 'civil', 'office', 'workshop', 'military', 'field', 'vehicle', 'health', 'school'].includes(s)) E(wr, 'unknown setting "' + s + '" (all, civil, office, workshop, military, field, vehicle, health, school)'); } });
+    for (const k of ['dim', 'who', 'why', 'limits', 'src']) checkText(wr + ' ' + k, r[k], false);
+    if (typeof r.range === 'string') checkText(wr + ' range', r.range, false);
+  });
+  if (n.choose) {
+    const known = ['good', 'avoid', 'check'];
+    for (const k of Object.keys(n.choose)) if (!known.includes(k)) E(w + ' choose', 'unknown key "' + k + '" (good, avoid, check)');
+    known.forEach(k => n.choose[k].forEach((x, i) => checkText(w + ' choose ' + k + ' ' + (i + 1), x, false)));
+  }
   if (n.derivation) { checkText(w + ' derivation', n.derivation.intro, true); checkSteps(w + ' derivation', n.derivation.steps); checkText(w + ' derivation', n.derivation.outro, true); }
   if (n.kind === 'concept') {
     stats.concepts++;
@@ -194,6 +219,11 @@ for (const n of H.list) {
       if (!n.sources.length) W(w, 'no sources: say where Feynman tells it (lecture, volume and chapter)');
       if (!n.sims.length) W(w, 'no simulation: every Hyper Feynman concept should be visualised');
       if (n.body && !n.body.includes('[[?')) W(w, 'no [[?term]] in the body: mark the math terms so readers can click them');
+    }
+    // Hyper Motors and Hyper Ergonomics: every concept shown, and tied to its standards and data
+    if (DISC === 'motors' || DISC === 'ergonomics') {
+      if (!n.sources.length) W(w, 'no sources: name the standards, handbooks or data behind the page');
+      if (!n.sims.length) W(w, 'no simulation: every concept should be visualised');
     }
   }
   n.examples.forEach((ex, i) => {

@@ -31,6 +31,9 @@
     return v.toFixed(Math.min(dec, 6)).replace('-', '−');
   }
 
+  // a dash pattern: an array as given, true for the default dashes, anything else for the fallback
+  const dashOf = (d, fallback) => Array.isArray(d) ? d : d ? [5, 4] : fallback;
+
   class Plot {
     constructor(canvas, opts) {
       this.cv = canvas;
@@ -151,13 +154,13 @@
       const font = getComputedStyle(document.body).fontFamily;
       for (const L of o.hlines) {
         if (!Number.isFinite(L.y)) continue;
-        ctx.strokeStyle = L.color || C.faint; ctx.setLineDash(L.dash || [5, 4]); ctx.lineWidth = 1.2;
+        ctx.strokeStyle = L.color || C.faint; ctx.setLineDash(dashOf(L.dash, [5, 4])); ctx.lineWidth = 1.2;
         ctx.beginPath(); ctx.moveTo(x0, ty(L.y)); ctx.lineTo(x1, ty(L.y)); ctx.stroke();
         if (L.label) { ctx.fillStyle = L.color || C.muted; ctx.font = '11.5px ' + font; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom'; ctx.fillText(L.label, x1 - 4, ty(L.y) - 3); }
       }
       for (const L of o.vlines) {
         if (!Number.isFinite(L.x)) continue;
-        ctx.strokeStyle = L.color || C.faint; ctx.setLineDash(L.dash || [5, 4]); ctx.lineWidth = 1.2;
+        ctx.strokeStyle = L.color || C.faint; ctx.setLineDash(dashOf(L.dash, [5, 4])); ctx.lineWidth = 1.2;
         ctx.beginPath(); ctx.moveTo(tx(L.x), y0); ctx.lineTo(tx(L.x), y1); ctx.stroke();
         if (L.label) { ctx.fillStyle = L.color || C.muted; ctx.font = '11.5px ' + font; ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.fillText(L.label, tx(L.x) + 4, y0 + 3); }
       }
@@ -166,7 +169,7 @@
         const col = s.color || C.series[i % C.series.length];
         ctx.strokeStyle = col;
         ctx.lineWidth = s.width || 2.2;
-        ctx.setLineDash(s.dash || []);
+        ctx.setLineDash(dashOf(s.dash, []));
         ctx.lineJoin = 'round';
         if (s.line !== false) {
           ctx.beginPath();
@@ -216,7 +219,7 @@
         named.forEach(s => {
           const i = o.series.indexOf(s);
           ctx.strokeStyle = s.color || C.series[i % C.series.length];
-          ctx.lineWidth = 3; ctx.setLineDash(s.dash || []);
+          ctx.lineWidth = 3; ctx.setLineDash(dashOf(s.dash, []));
           ctx.beginPath(); ctx.moveTo(x0 + 10, lyy); ctx.lineTo(x0 + 28, lyy); ctx.stroke(); ctx.setLineDash([]);
           ctx.fillStyle = C.text2; ctx.fillText(s.label, x0 + 34, lyy);
           lyy += 17;
