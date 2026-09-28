@@ -1,0 +1,376 @@
+{
+ "chapter": "markings-signals",
+ "questions": [
+  {
+   "id": "q-ms-001",
+   "lesson": "ms-lines",
+   "sign": "801",
+   "q": "When may you cross a broken lane line?",
+   "options": [
+    "Only at night",
+    "When the road is clear, for example to overtake or change lane",
+    "At any time, even when the road isn't clear",
+    "Never"
+   ],
+   "answer": 1,
+   "explain": "You may cross a broken line (sign 801) when the road is clear, to overtake, change lane or comply with the law.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-002",
+   "lesson": "ms-lines",
+   "sign": "803",
+   "q": "What is forbidden at a double continuous white separation line?",
+   "options": [
+    "Crossing it with the whole vehicle or part of it, from either side",
+    "Crossing it only from the right",
+    "There's no restriction, it's decoration only",
+    "Crossing it only during daytime"
+   ],
+   "answer": 0,
+   "explain": "A double continuous separation line (803) forbids the vehicle from crossing, wholly or partly, in either direction.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-003",
+   "lesson": "ms-lines",
+   "fig": "line-crossing",
+   "q": "A road is marked with a double line: the line closer to your lane is broken, and the far line is continuous. May you cross to overtake, when the road is clear?",
+   "options": [
+    "Permitted only for a heavy vehicle",
+    "No, crossing is forbidden entirely",
+    "Permitted only on a non-urban road",
+    "Yes, you may cross from the side where the line closer to you is broken"
+   ],
+   "answer": 3,
+   "explain": "On a double line, you check the line closer to your lane: if it's broken, you may cross when the road is clear, even if the far line is continuous.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-004",
+   "lesson": "ms-lines",
+   "sign": "807",
+   "q": "What does a continuous yellow line at the side of the road mark, where there's no kerb?",
+   "options": [
+    "A public transport lane",
+    "A pedestrian crossing",
+    "A stop line",
+    "The edge of the carriageway; you drive to its left and don't cross to its right except in certain circumstances"
+   ],
+   "answer": 3,
+   "explain": "A continuous yellow line (807) marks the edge of the carriageway; you drive on its left-hand side and don't cross to its right, except to avoid an accident or a delay, or to comply with the law.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-005",
+   "lesson": "ms-lines",
+   "sign": "808",
+   "q": "What does a white block line on the road mark?",
+   "options": [
+    "A bicycle crossing",
+    "A dedicated lane - an exclusive turn, acceleration, deceleration or weaving lane",
+    "A stop line",
+    "An area where parking is forbidden"
+   ],
+   "answer": 1,
+   "explain": "A white block line (808) marks a dedicated lane; you drive in it according to the lane's purpose, not the lane you were in before.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-006",
+   "lesson": "ms-transverse",
+   "sign": "810",
+   "q": "Where must you stop when there's a duty to stop at a junction?",
+   "options": [
+    "There's no fixed line, it's at the driver's discretion",
+    "Exactly before the stop line",
+    "After the stop line, inside the junction",
+    "Anywhere convenient before the junction"
+   ],
+   "answer": 1,
+   "explain": "A stop line (810) marks exactly where a vehicle must stop when there's a duty to stop - at a red light, at a stop sign, or before a railway crossing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-007",
+   "lesson": "ms-transverse",
+   "q": "What is the purpose of the white triangles painted on the road before a stop line, known as give-way markings?",
+   "options": [
+    "To show a mandatory turning direction",
+    "To mark a cycle lane",
+    "To warn from a distance that you must give way, even before you see the sign",
+    "To mark a parking place"
+   ],
+   "answer": 2,
+   "explain": "Give-way markings warn an approaching driver that they must give way, even before they notice the sign itself.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-008",
+   "lesson": "ms-transverse",
+   "sign": "811",
+   "q": "A wide pedestrian crossing spanning the road is split into two. Which half do you cross in?",
+   "options": [
+    "The right-hand half",
+    "Anywhere you choose",
+    "The left-hand half",
+    "Exactly in the middle"
+   ],
+   "answer": 0,
+   "explain": "A pedestrian crossing (811) split into two halves - you cross in its right-hand half.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-009",
+   "lesson": "ms-transverse",
+   "sign": "815",
+   "q": "What is forbidden on a traffic island marked in white on the road?",
+   "options": [
+    "Driving over it, stopping on it or parking on it",
+    "There's no restriction, it's decorative marking only",
+    "Only parking on it, but stopping is allowed",
+    "Only stopping on it, but parking is allowed"
+   ],
+   "answer": 0,
+   "explain": "A traffic island marked in white (815) must not be driven over, stopped on or parked on.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-010",
+   "lesson": "ms-transverse",
+   "sign": "813",
+   "q": "A lane is marked with a white arrow showing a right turn only, ahead of the junction. What must you do?",
+   "options": [
+    "Continue straight ahead, because the arrow is only a recommendation",
+    "Ignore the arrow if there's no traffic light",
+    "Choose any convenient direction",
+    "Enter the junction and cross it only in the direction shown by the arrow marked in the lane"
+   ],
+   "answer": 3,
+   "explain": "A white arrow in a lane (813) is binding: you enter the junction and cross it only in the direction marked in the lane you entered from.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-011",
+   "lesson": "ms-kerbs",
+   "sign": "818",
+   "q": "What is permitted on the side of the road where the kerb is painted red-white?",
+   "options": [
+    "Paid parking",
+    "No stopping or parking, unless needed to comply with the law",
+    "Free parking without restriction",
+    "A short stop only"
+   ],
+   "answer": 1,
+   "explain": "A red-white kerb forbids all stopping and parking, unless needed to comply with the law - exactly like sign 433.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-012",
+   "lesson": "ms-kerbs",
+   "sign": "817",
+   "q": "What does a kerb painted alternately blue-white indicate?",
+   "options": [
+    "Parking permitted for a fee",
+    "An absolute stopping prohibition",
+    "Stopping for an authorised vehicle only",
+    "Highlighting only, with no parking restriction"
+   ],
+   "answer": 0,
+   "explain": "A blue-white kerb marks parking permitted for a fee, under sign 439 placed beside it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-013",
+   "lesson": "ms-kerbs",
+   "q": "What does a kerb painted red-yellow indicate?",
+   "options": [
+    "Stopping forbidden for every vehicle, except the type of vehicle allowed by the sign, and only to pick up or drop off passengers",
+    "Highlighting a traffic island, without restriction",
+    "A parking prohibition at night only",
+    "Paid parking for any vehicle"
+   ],
+   "answer": 0,
+   "explain": "A red-yellow kerb forbids stopping by every vehicle, except the type of vehicle allowed by the sign above it, and only to pick up or drop off passengers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-014",
+   "lesson": "ms-kerbs",
+   "sign": "816",
+   "q": "What does a kerb painted black-white indicate?",
+   "options": [
+    "Highlighting and emphasis only - not a parking prohibition",
+    "Parking permitted for a fee",
+    "An absolute parking prohibition",
+    "Stopping for a public transport vehicle only"
+   ],
+   "answer": 0,
+   "explain": "A black-white kerb is meant only to highlight pavements, dividers and built traffic islands, and doesn't set a parking prohibition.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-015",
+   "lesson": "ms-kerbs",
+   "q": "A kerb in grey, with no clear official paint. What does this mean for parking?",
+   "options": [
+    "An absolute parking prohibition, like red-white",
+    "Parking permitted only for disabled drivers",
+    "Paid parking, like blue-white",
+    "There's no such kerb colour in the regulations in Israel; the rule follows a sign if there is one, or otherwise the ordinary rules"
+   ],
+   "answer": 3,
+   "explain": "There's no grey kerb colour recognised in the regulations in Israel - that's a common misconception. A kerb that hasn't been painted at all says nothing by itself.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-016",
+   "lesson": "ms-lights",
+   "sign": "701",
+   "q": "What must you do at a red light?",
+   "options": [
+    "Only slow down, without stopping",
+    "Stop only if there's another vehicle at the junction",
+    "Stop before the stop line",
+    "Speed up to cross before it turns fully on"
+   ],
+   "answer": 2,
+   "explain": "A red light requires a full stop before the stop line or the traffic light, and you must not cross until the light changes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-017",
+   "lesson": "ms-lights",
+   "sign": "702",
+   "q": "What does red and amber together mean?",
+   "options": [
+    "You must stop only if you see traffic at the junction",
+    "You may already move off with care",
+    "You're still stopped as at red, but getting ready to drive off with the green",
+    "The light is about to change to flashing red"
+   ],
+   "answer": 2,
+   "explain": "Red and amber together - you continue to stop as at red, but this is preparation for the green that's about to appear.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-018",
+   "lesson": "ms-lights",
+   "sign": "706",
+   "q": "What is true about a flashing amber light on a traffic light?",
+   "options": [
+    "You must make a full stop in every case",
+    "It only appears on a expressway",
+    "It is completely identical to a red light",
+    "You proceed with care under the ordinary rules; this is the only light that doesn't override a priority sign"
+   ],
+   "answer": 3,
+   "explain": "A flashing amber light permits proceeding with care under the ordinary rules; it's the only light that doesn't override a sign setting priority (reg. 22(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-019",
+   "lesson": "ms-lights",
+   "sign": "718",
+   "q": "The pedestrian signal shows a red figure, and the pedestrian is already in the middle of the road. What should they do?",
+   "options": [
+    "Stop in the middle of the road and wait",
+    "Complete the crossing at once",
+    "Sit down and wait for a vehicle to stop",
+    "Go back at once to the side they came from"
+   ],
+   "answer": 1,
+   "explain": "A red pedestrian figure forbids starting to cross; anyone already on the road must complete the crossing at once.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-020",
+   "lesson": "ms-lights",
+   "sign": "723",
+   "q": "Above a lane on a busy road, a signal shows a red X. What does it mean?",
+   "options": [
+    "You must move into this lane at once",
+    "The lane is open for driving",
+    "You must not drive in the lane above which the signal is shown",
+    "The lane is for bicycles only"
+   ],
+   "answer": 2,
+   "explain": "A red X above a lane (sign 723, lane closed) forbids driving in that lane, until an open lane (724) is shown or until the next junction.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-021",
+   "lesson": "ms-lights",
+   "sign": "722",
+   "facts": [
+    "rail.stop_distance_min_m"
+   ],
+   "q": "A vehicle approaches a railway crossing where a double flashing red light is on, and there's no stop line or barrier. At what minimum distance from the nearest rail must the vehicle stop?",
+   "options": [
+    "{{fact:rail.stop_distance_min_m}}",
+    "Ten metres",
+    "One metre",
+    "There's no fixed minimum distance"
+   ],
+   "answer": 0,
+   "explain": "When there's no stop line and no barrier, you must stop at least {{fact:rail.stop_distance_min_m}} from the nearest rail (reg. 56).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-022",
+   "lesson": "ms-police",
+   "q": "A police officer stands at a junction and extends one arm parallel to the direction of traffic, palm open. What does the signal mean?",
+   "options": [
+    "Go",
+    "Turn left",
+    "Stop",
+    "Slow down only"
+   ],
+   "answer": 0,
+   "explain": "Extending one arm, or both, parallel to the direction of traffic, palm open, is the go signal (reg. 24(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-023",
+   "lesson": "ms-police",
+   "q": "A police officer raises a hand with an open palm towards your direction of travel. What must you do?",
+   "options": [
+    "Move off with care",
+    "Turn right",
+    "Sound the horn and wait for a further instruction",
+    "Stop"
+   ],
+   "answer": 3,
+   "explain": "A raised hand with an open palm facing the direction of traffic is the stop signal - you must stop (reg. 24(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-024",
+   "lesson": "ms-police",
+   "q": "A signal given by a police officer directing traffic partly overlaps with a sign at the junction, but isn't fully identical to it. Which instruction prevails?",
+   "options": [
+    "Whoever reached the junction first chooses",
+    "The police officer's instruction, even if it contradicts the sign",
+    "Neither of them, you must act only under the general rule",
+    "The sign, because it was placed in advance"
+   ],
+   "answer": 1,
+   "explain": "A road user must obey a police officer's instruction even when it contradicts the regulations, signs or other traffic instructions (reg. 23(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ms-025",
+   "lesson": "ms-police",
+   "q": "A municipal traffic warden in uniform, who is authorised, gives a traffic instruction at a junction. Must you obey them?",
+   "options": [
+    "Only during daytime",
+    "No, only a police officer has that authority",
+    "Only if they're wearing green uniform",
+    "Yes, the instruction is binding exactly like a police officer's"
+   ],
+   "answer": 3,
+   "explain": "A municipal traffic warden authorised by the police district commander or the head of the traffic division may give traffic instructions, and you must obey them (reg. 23(a)(1)).",
+   "shuffled": true
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "trees": [
+  {
+   "id": "electrical-fault",
+   "group": "Electrical",
+   "title": "An electrical fault",
+   "summary": "Something electrical in the car isn't working — everything, one device, or intermittently.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "A burning smell of plastic or rubber, or smoke from the dashboard, are always an emergency — stop, switch off the engine and the electrics, and get out of the car. In an electric or hybrid car, never touch the orange cables.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "What's the scope of the fault?",
+     "options": [
+      {
+       "label": "Nothing works, not even the dashboard lights",
+       "next": "r-dead-battery"
+      },
+      {
+       "label": "Only one device isn't working",
+       "next": "n2"
+      },
+      {
+       "label": "The headlights dim when you switch on another device, or the battery light comes on while driving",
+       "next": "r-alternator-fault"
+      },
+      {
+       "label": "The car loses power for a moment and it comes back, again and again",
+       "next": "r-intermittent-short"
+      },
+      {
+       "label": "You smell burning plastic or rubber, maybe see a little smoke from the dashboard",
+       "next": "r-wiring-fire-risk"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Have you checked the fuse box, according to the owner's manual?",
+     "options": [
+      {
+       "label": "There's a blown fuse — the wire is torn or blackened",
+       "next": "r-blown-fuse"
+      },
+      {
+       "label": "All the fuses look fine",
+       "next": "n3"
+      }
+     ]
+    },
+    "n3": {
+     "q": "When you gently move or lightly tap the device or its wire connector, does it work for a moment?",
+     "options": [
+      {
+       "label": "Yes, it works for a moment",
+       "next": "r-loose-connector"
+      },
+      {
+       "label": "No, it never works",
+       "next": "r-relay-or-switch"
+      }
+     ]
+    },
+    "r-dead-battery": {
+     "result": "Suspected flat battery or loose terminals",
+     "severity": "soon",
+     "text": "When the headlights are also very weak and the dashboard lights don't come on either, the battery is probably flat, or the terminals are corroded or loose and not passing current properly.",
+     "actions": [
+      "Check that the battery terminals are tight and clean.",
+      "Jump-start it with cables from another car, or a portable jump starter, in the correct order.",
+      "For more detail: [[tree:car-wont-start|the car won't start]]."
+     ],
+     "lesson": "el-battery"
+    },
+    "r-alternator-fault": {
+     "result": "Suspected fault in the charging system (alternator)",
+     "severity": "soon",
+     "text": "Headlights that dim when you switch on another electrical load, or a battery warning light that comes on while driving, point to a weak alternator or a loose drive belt — the car is currently running on what's left in the battery.",
+     "actions": [
+      "Switch off any electrical loads that aren't essential and drive straight to the nearest garage.",
+      "If the engine-temperature light also comes on, stop; the same belt may also drive the water pump."
+     ],
+     "lesson": "el-charging"
+    },
+    "r-intermittent-short": {
+     "result": "Suspected intermittent fault in the wiring harness",
+     "severity": "soon",
+     "text": "Electrics that cut out for a moment and come back, again and again, usually point to a loose contact or a damaged cable in the wiring harness — for example after water has got in, or a cable has chafed.",
+     "actions": [
+      "Go to a garage; this is a stubborn fault to trace, needing a thorough check.",
+      "If the fault recurs while driving at night or in rain, drive with extra care until it's checked."
+     ],
+     "lesson": "ts-electrical"
+    },
+    "r-wiring-fire-risk": {
+     "result": "Suspected dangerous electrical fault",
+     "severity": "stop",
+     "text": "A burning smell of plastic or rubber, and especially a little smoke from the dashboard, are a sign of a wire or electrical component overheating — a fire risk.",
+     "actions": [
+      "Stop immediately, switch off the engine and the electrics, and get out of the car with all the passengers.",
+      "Move away from the car and call for help."
+     ],
+     "lesson": "ts-electrical"
+    },
+    "r-blown-fuse": {
+     "result": "A blown fuse in that circuit",
+     "severity": "ok",
+     "text": "A blown fuse exactly explains why only one device has stopped working, while everything else is fine. A blown fuse has a metal wire that looks torn or blackened inside it.",
+     "actions": [
+      "Replace it with a new fuse of exactly the same amp rating, according to the owner's manual.",
+      "If the new fuse blows again, there's a deeper fault; go to a garage and don't keep replacing fuses."
+     ],
+     "lesson": "el-fuses"
+    },
+    "r-loose-connector": {
+     "result": "A loose contact in the connection to the device",
+     "severity": "ok",
+     "text": "When the device works for a moment in response to a tap or a gentle movement, the problem is probably a loose electrical contact in its plug or connector, not the component itself.",
+     "actions": [
+      "Go to a garage to repair or clean the contact.",
+      "Don't keep “fixing” it by tapping — this can make the looseness worse."
+     ]
+    },
+    "r-relay-or-switch": {
+     "result": "Suspected faulty relay or switch",
+     "severity": "soon",
+     "text": "When the fuse is fine but the device never works, and gently moving the connections doesn't help either, suspicion shifts to the relay that operates the circuit, or to the switch itself.",
+     "actions": [
+      "Go to a garage for a diagnosis and to replace the faulty component."
+     ],
+     "lesson": "el-fuses"
+    }
+   }
+  }
+ ]
+}

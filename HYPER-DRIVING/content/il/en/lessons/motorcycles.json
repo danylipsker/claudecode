@@ -1,0 +1,153 @@
+{
+ "chapter": "motorcycles",
+ "title": "Motorcycles and scooters",
+ "summary": "Licences, protective gear, controls, braking, turning and riding safely on two wheels.",
+ "lessons": [
+  {
+   "id": "mc-types",
+   "title": "Types of motorcycles and licences",
+   "summary": "A2, A1 and A — what each licence limits, and what two-wheeled vehicles you'll meet on the road.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "motorcycle",
+    "scooter",
+    "sidecar",
+    "tricycle"
+   ],
+   "body": "By law, a [[term:motorcycle|motorcycle]] is a motor vehicle with two wheels positioned one behind the other, with or without an attached [[term:sidecar|sidecar]]. A [[term:tricycle|tricycle]] has three wheels and a limited unladen weight. A [[term:scooter|scooter]] is usually a light motorcycle with a “step-through” frame (a flat floor between the seat and the handlebars) and a small engine — legally, it is a motorcycle like any other.\n\n# Three licence grades\n| Grade | Motorcycle limit | Minimum age |\n|---|---|---|\n| A2 | Up to {{fact:licence.a2.max_cc}}, power up to {{fact:licence.a2.max_kw}} | {{fact:licence.a2.min_age}} |\n| A1 | Power up to {{fact:licence.a1.max_kw}} | {{fact:licence.a1.min_age}} |\n| A | No power limit | {{fact:licence.a.min_age}} |\n\nIn addition to power, each grade also has a power-to-weight ceiling: for A2, no more than 0.1 kilowatts per kg of the motorcycle's weight, and for A1, no more than 0.2 — so that even an especially light motorcycle doesn't “escape” its grade because of its low weight (regulations 176, 177).\n\n:::remember Moving up a grade\nTo move from A1 to A you need at least {{fact:licence.a.seniority_a1}} of seniority on A1. Someone who already holds a B licence (see the [[chapter:licensing|licensing chapter]]) is exempt from the motorcycle theory test, and after three years on B is also exempt from the road-behaviour part of the practical test for A2 (regulation 203(b)).\n:::\n\n# Tricycles and sidecars\nA tricycle (for example, a motorcycle with two rear wheels) may require a licence restricted to it alone, if the practical test was taken on it. A [[term:sidecar|sidecar]] changes how the motorcycle behaves in a turn — it no longer leans the way an ordinary two-wheeled motorcycle does, and that needs a different riding technique.\n\n# Why grades exist at all\nPower and the power-to-weight ratio determine how fast a motorcycle accelerates and how hard it is to control — the graduated limits give new riders time to build experience on a less powerful motorcycle before they move up to greater power.",
+   "keyPoints": [
+    "A2: up to {{fact:licence.a2.max_cc}} and power up to {{fact:licence.a2.max_kw}}; A1: up to {{fact:licence.a1.max_kw}}; A: no power limit.",
+    "Each grade also has a power-to-weight ceiling, not just an absolute power limit.",
+    "Moving from A1 to A needs at least {{fact:licence.a.seniority_a1}} of seniority.",
+    "A [[term:scooter|scooter]], a [[term:tricycle|tricycle]] and a motorcycle with a [[term:sidecar|sidecar]] are all ridden under motorcycle rules."
+   ]
+  },
+  {
+   "id": "mc-gear",
+   "title": "Protective gear: the helmet and everything else",
+   "summary": "A fastened helmet is compulsory for both rider and passenger at all times — and the extra gear that reduces injury in a fall.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "full-face-helmet",
+    "open-face-helmet",
+    "protective-gear"
+   ],
+   "body": "A motorcyclist is completely exposed — there's no frame, seatbelt or airbag between them and the road. [[term:protective-gear|Protective gear]] is their only protection.\n\n:::law Compulsory helmet\nYou may not drive, ride or carry a passenger on a motorcycle or tricycle unless wearing a fastened protective helmet that covers the ear — both rider and passenger, at all times (regulation 119(c)). The Licensing Authority may, on safety grounds, exempt a particular type of vehicle from this duty (regulation 119(d)), but that's a rare exception.\n:::\n\nThe duty applies to the passenger exactly as it does to the rider — an unfastened helmet is as good as no helmet at all.\n\n:::fine\nDriving or riding without a helmet: {{fine:motorcycle-no-helmet}} and {{points:motorcycle-no-helmet}} points.\n:::\n\n# [[term:full-face-helmet|Full-face helmet]] versus [[term:open-face-helmet|open-face helmet]]\nA full-face helmet covers the whole head including the chin, and gives the greatest protection in a crash — especially against face and chin impacts, which are very common in motorcycle falls. An open-face helmet leaves the face exposed and is more comfortable in the heat, but protects less. Both are legal if they meet the standard and are fastened with a strap — but the real-world difference in protection is significant.\n\n# Beyond the helmet\n- **A jacket and gloves** padded at the shoulders, elbows and knuckles — protect in a slide, which is much more common than a head-on impact.\n- **Sturdy trousers and gloves**, unlike ordinary clothes, which tear within a few metres of sliding on asphalt.\n- **High boots** that cover the ankle — ankle and foot injuries are very common among motorcyclists.\n- **Bright, hi-vis clothing** — a motorcycle is small and hard to see; plenty of colour and reflectors help other drivers notice it sooner.\n\n:::tip\nThe heat of the Israeli summer tempts riders to skip the gear. The answer is ventilated gear, not less gear — a fall in a short-sleeved shirt on hot asphalt leaves a serious injury within a split second.\n:::",
+   "keyPoints": [
+    "A fastened helmet covering the ear is compulsory for both rider and passenger at all times (regulation 119).",
+    "Driving or riding without a helmet: {{fine:motorcycle-no-helmet}} and {{points:motorcycle-no-helmet}} points.",
+    "A [[term:full-face-helmet|full-face helmet]] protects much more than an [[term:open-face-helmet|open-face helmet]], especially the face and chin.",
+    "A jacket, gloves, trousers and high boots significantly reduce injury in a slide."
+   ]
+  },
+  {
+   "id": "mc-controls",
+   "title": "Motorcycle controls",
+   "summary": "Two levers, two brake systems, a gear pedal for the left foot — every control has a fixed hand or foot.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "throttle-grip",
+    "clutch-lever",
+    "brake-lever",
+    "footpeg",
+    "kickstand",
+    "center-stand",
+    "motorcycle-mirror"
+   ],
+   "fig": "mc-controls",
+   "body": "Unlike a car, a motorcycle's controls are spread across both hands and both feet at the same time — and the habit must become automatic, because there's no time to hunt for a control while riding.\n\n[[fig:mc-controls]]\n\n# Right hand\n**The [[term:throttle-grip|throttle grip]]** — twisting it toward the rider accelerates, releasing it slows down. The same hand also operates the front **[[term:brake-lever|brake lever]]**, worked with the fingers while the palm still holds the throttle grip.\n\n# Left hand\n**The [[term:clutch-lever|clutch lever]]** — you squeeze it to disconnect the engine from the rear wheel before changing gear or when stopping, just like a clutch pedal in a manual car, but worked by hand.\n\n# Right foot\nThe rear brake — a small pedal under the foot, worked by pressing down.\n\n# Left foot\nThe gear pedal — press down to shift to a lower gear, and lift with the toe of the boot to shift up. The feet rest on the [[term:footpeg|footpegs]], which also set the centre of weight and control in a turn.\n\n# Before you move off\nThe motorcycle stands on its [[term:kickstand|side stand]] or [[term:center-stand|centre stand]] — you must raise it fully before setting off; a side stand left down can strike the road in a turn and tip the motorcycle over. The [[term:motorcycle-mirror|mirrors]] are adjusted before heading out, just as in a car, but because a motorcycle is narrow, there's more blind area behind that the mirrors don't cover.\n\n:::tip Practice before your first ride\nBefore heading onto the road, practise in an empty lot: gentle acceleration with gradual clutch release, combined braking (front and rear together), shifting up and down — until hand and foot act without conscious thought.\n:::",
+   "keyPoints": [
+    "The [[term:throttle-grip|throttle grip]] and the front [[term:brake-lever|brake lever]] are on the right hand; the [[term:clutch-lever|clutch lever]] is on the left hand.",
+    "The rear brake and the gear pedal are worked with the feet, one on each side.",
+    "Raise the [[term:kickstand|side stand]] or [[term:center-stand|centre stand]] fully before moving off.",
+    "A motorcycle's mirrors have more blind area — you need to turn your head to check."
+   ]
+  },
+  {
+   "id": "mc-braking",
+   "title": "Braking on a motorcycle",
+   "summary": "Two independent brake systems, using both correctly together, and what ABS does in emergency braking.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "abs"
+   ],
+   "body": ":::law Two separate brake systems\nA motorcycle or tricycle must have two brake systems that don't depend on each other: one on the rear wheel (or the two rear wheels on a tricycle) and one on the front wheel, each able to decelerate the motorcycle by at least 1.5 metres per second squared (regulation 328). This ensures a fault in one doesn't leave the motorcycle without any brakes.\n:::\n\n# Why you use both brakes together\nThe front brake accounts for most of the braking power — when braking, the weight of the motorcycle and rider shifts forward, pressing the front wheel onto the road and increasing its grip. The rear brake alone can barely stop a motorcycle, and can cause the rear wheel to lock and slide sideways. The safe technique is **both brakes together**, with emphasis on the front, and gradual rather than sharp pressure.\n\n:::warn Front brake in a turn\nSqueezing the front brake hard while the motorcycle is leaned over in a turn increases the chance of the front wheel sliding out. First straighten the motorcycle as much as possible, and only then brake hard.\n:::\n\n# What [[term:abs|ABS]] does on a motorcycle\nJust as in a car, ABS stops the wheels from locking under hard braking — on a motorcycle this is far more critical, because a locked rear or front wheel can bring the motorcycle down instead of just extending the stopping distance. In emergency braking with ABS, squeeze both brakes hard and don't let go, even if you feel a pulse in the lever — that's the system working as it should.\n\n# Emergency braking in practice\n1. Both brakes together, with increasing force — not a sharp squeeze from the first instant.\n2. The motorcycle as upright as possible, not leaned over.\n3. Body weight stays steady, not leaning forward onto the levers.\n4. If the motorcycle has no ABS — release slightly if you feel a wheel lock, then squeeze again.",
+   "keyPoints": [
+    "The law requires two separate brake systems on a motorcycle — front and rear (regulation 328).",
+    "The front brake accounts for most of the braking power; use both brakes together.",
+    "Braking hard while leaned over in a turn increases the risk of sliding — straighten up first.",
+    "[[term:abs|ABS]] prevents wheel lock; in emergency braking, squeeze hard and don't let go."
+   ]
+  },
+  {
+   "id": "mc-cornering",
+   "title": "Turning, leaning and counter-steering",
+   "summary": "How a motorcycle actually turns, and why what your hands do is the opposite of what seems logical.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "counter-steering",
+    "lean-angle"
+   ],
+   "fig": "mc-countersteer",
+   "body": "A motorcycle turns by leaning — not just by turning the handlebars, as in a car. Above walking pace, every turn begins with [[term:counter-steering|counter-steering]].\n\n# What counter-steering is\nTo turn right, press lightly forward on the right handlebar grip (don't turn it left — push it forward). This makes the front wheel briefly turn slightly left, and the motorcycle begins to lean right. Once it's leaning, it turns right by itself. This feels like the opposite of all the logic of driving a car, so it's important to practise it consciously in an empty lot before relying on it on the road.\n\n[[fig:mc-countersteer]]\n\n# [[term:lean-angle|Lean angle]]\nThe sharper the turn or the higher the speed, the greater the [[term:lean-angle|lean angle]] — the motorcycle, the rider and the line through the turn lean further into it. In most everyday riding the lean angle is small; large angles are reserved for the racetrack and emergency situations.\n\n:::warn The road surface in a turn\nOil, gravel, wet paint markings, manhole covers and speed bumps — all of these reduce grip in exactly the worst place: inside a turn, when the motorcycle is already leaned over. Scan the road surface within the turn, not just before it.\n:::\n\n# Reading the turn ahead\n- Look far ahead, toward where you want to end up — not at the ground right in front of the wheel. A motorcycle tends to go where you're looking.\n- Slow down **before** the turn, not inside it — braking within a turn increases the risk of sliding.\n- Choose a line that lets you see as far as possible into the turn — usually from the outside, to the inside, and back out.\n\n:::remember\nA light press on the grip — not force. Counter-steering needs only a small movement; anyone who pushes too hard surprises themselves at how fast the motorcycle responds.\n:::",
+   "keyPoints": [
+    "Above walking pace, every turn begins with [[term:counter-steering|counter-steering]]: press the grip lightly toward the direction of the turn.",
+    "The sharper the turn or the higher the speed, the greater the [[term:lean-angle|lean angle]].",
+    "A slippery road surface within a turn is especially dangerous — scan for it ahead of time.",
+    "Look far ahead toward where you want to end up; slow down before the turn, not inside it."
+   ]
+  },
+  {
+   "id": "mc-traffic",
+   "title": "Riding in traffic",
+   "summary": "Being seen, positioning yourself in the lane, and knowing what is and isn't allowed among the cars.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "motorcyclist",
+    "lane-filtering",
+    "blind-spot"
+   ],
+   "body": "A motorcycle is small, fast and sometimes invisible to other drivers — riding in traffic needs double awareness: of the road, and of the fact that drivers around a [[term:motorcyclist|motorcyclist]] don't always see them.\n\n# Position in the lane\nRide in the part of the lane that gives the most forward visibility and the most visibility to other drivers — usually not exactly in the centre of the lane, where oil and grime from vehicles build up, but slightly to one side, changing position as needed (keeping distance from a parked car, seeing past the vehicle ahead).\n\n# [[term:lane-filtering|Lane filtering]]\n:::law\nA rider of a motorcycle or tricycle must not ride alongside another vehicle — including a bicycle or another motorcycle — except to overtake it or lawfully pass it (regulation 122). The law does not recognise steady “filtering” between two rows of slow or stationary cars as a permitted manoeuvre in its own right — being alongside another vehicle is allowed only during a lawful overtake, not as a regular way of moving through a jam.\n:::\n\nIn practice: there's no blanket permission in Israel for [[term:lane-filtering|lane filtering]] in a traffic jam, as is accepted in some other countries. Overtaking itself is allowed under the usual conditions for overtaking — not near a junction, not at a pedestrian crossing, not on a bend or at the crest of a hill, and not across a continuous dividing line (see the [[chapter:lanes-overtaking|overtaking chapter]]).\n\n# Passengers\n:::law\nA holder of an A2 or A1 licence may not carry a passenger until they turn 18, or until they have held the licence for at least two months — whichever is later (regulation 120(c)). The passenger must sit on the fixed seat behind the rider, with feet on the dedicated footpegs, and must not get on the motorcycle until they are in place.\n:::\n\n:::fine\nCarrying a passenger unlawfully: {{fine:motorcycle-passenger-illegal}}.\n:::\n\n# Lights on at all times\n:::law\nA motorcycle must move with its headlight (or a light meant only for daytime riding) lit — by day and by night alike, unlike other motor vehicles, which are only required to use lights during “lighting hours” (regulation 97(b)). A steady, lit light is the difference between a motorcycle someone sees from a distance and one that's spotted at the last moment.\n:::\n\n# Being seen and anticipating\n- Check twice at junctions and when entering a main road — a driver who checks once sees cars, but not always a motorcycle.\n- Keep a significantly larger distance from the vehicle ahead, because a motorcycle can stop in a much shorter distance than the driver behind expects.\n- Avoid riding in a vehicle's [[term:blind-spot|blind spot]] — if you can't see the driver's mirror, they can't see you either.",
+   "keyPoints": [
+    "Ride in the part of the lane that gives the most visibility, not necessarily its centre.",
+    "Regulation 122 bans riding alongside another vehicle except to overtake — there's no blanket permission for [[term:lane-filtering|lane filtering]] in a jam.",
+    "Carrying a passenger on A2/A1 is allowed only from age 18 or after two months with the licence — whichever is later (regulation 120).",
+    "A motorcycle rides with its headlight on at all times, by day and by night alike (regulation 97(b))."
+   ]
+  },
+  {
+   "id": "mc-maintenance",
+   "title": "Motorcycle maintenance: the rider's own checks",
+   "summary": "Chain, tyres and brakes — three things a rider checks personally, before they become a breakdown on the road.",
+   "licence": [
+    "moto"
+   ],
+   "terms": [
+    "motorcycle-chain",
+    "sprocket",
+    "swingarm",
+    "tyre-pressure",
+    "tread"
+   ],
+   "body": "Most motorcycle breakdowns on the road can be prevented with a few minutes' check before setting off.\n\n# [[term:motorcycle-chain|The drive chain]]\nThe chain transmits power from the gearbox to the rear [[term:sprocket|sprocket]], via the [[term:swingarm|swingarm]]. A dry or overly loose chain can be heard and seen: a rhythmic clicking noise, blackish-brown grime flung off it, or too much sag when you try to lift it with a finger midway between the sprockets. A chain needs periodic lubrication and tension adjustment — a chain that snaps while riding can catch in the rear wheel and lock it.\n\n:::danger A chain out of limits\nNever ride with a chain that looks very loose or damaged — this is not a fault you can “ride to the garage with”, but an immediate risk of a locked wheel.\n:::\n\n# Tyres\nA motorcycle has only two contact points with the road, much smaller than a car's four tyres — so tyre condition is even more critical. Check:\n- **[[term:tyre-pressure|Tyre pressure]]** — to the value on the sticker on the motorcycle, checked cold. Low pressure increases rolling resistance and shortens tyre life; too-high pressure reduces the contact patch.\n- **[[term:tread|The tread]]** — groove depth, uneven wear (which can point to a tracking or balance problem), and foreign objects stuck in it.\n- **Cracks in the sidewalls** — a sign of an old tyre, even if the grooves are still deep.\n\n# Brakes\nCheck visually that the pads have enough thickness through the caliper slots, the brake fluid level in the reservoir, and that the levers and pedal respond immediately and firmly, without too much “free travel” before the brake bites.\n\n:::tip A one-minute routine\nBefore every ride: squeeze both brake levers and check the response, a quick look at the tyres, check the chain isn't too loose, and check the lights. A routine like this takes less than a minute and catches most problems before they turn dangerous.\n:::",
+   "keyPoints": [
+    "A chain that's too loose or worn can catch and lock the rear wheel — only ride it to a garage if it's in perfectly sound condition.",
+    "[[term:tyre-pressure|Tyre pressure]] and [[term:tread|tread]] matter doubly on a motorcycle, because there are only two contact points with the road.",
+    "A brake check includes pad thickness, fluid level, and an immediate response from the lever and pedal.",
+    "A short check before every ride — brakes, tyres, chain, lights — prevents most breakdowns on the road."
+   ]
+  }
+ ]
+}

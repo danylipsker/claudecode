@@ -1,0 +1,285 @@
+{
+ "chapter": "safety-systems",
+ "questions": [
+  {
+   "id": "q-sy-001",
+   "lesson": "sy-passive",
+   "q": "What is the role of the crumple zones at the front and rear of the car?",
+   "options": [
+    "To improve normal braking",
+    "To strengthen the car so it does not deform at all",
+    "To reduce manufacturing cost",
+    "To absorb impact energy in a crash and protect the passenger cell"
+   ],
+   "answer": 3,
+   "explain": "Crumple zones are designed to fold and absorb impact energy, so that the passenger cell around the people stays rigid and protected.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-002",
+   "lesson": "sy-passive",
+   "q": "What does the seatbelt pretensioner do at the moment of a crash?",
+   "options": [
+    "It tightens the belt instantly to shorten how far the body moves forward",
+    "It applies the brakes automatically",
+    "It inflates an airbag instead of the belt",
+    "It loosens the belt to make it more comfortable"
+   ],
+   "answer": 0,
+   "explain": "The pretensioner tightens the belt within a fraction of a second, to reduce the distance the body travels forward before it stops.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-003",
+   "lesson": "sy-passive",
+   "q": "Why are airbags designed to work together with the seatbelt, rather than instead of it?",
+   "options": [
+    "Because airbags are too expensive to operate on their own",
+    "Because the law bans deploying an airbag without a fastened seatbelt",
+    "Because someone who is not belted can be injured by the airbag itself, reaching it at the wrong speed and angle",
+    "Because the airbag only inflates if the seatbelt is fastened"
+   ],
+   "answer": 2,
+   "explain": "The airbag is designed to catch a body that has already been partly slowed by the seatbelt. Without a belt, the body reaches it at too high a speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-004",
+   "lesson": "sy-passive",
+   "q": "What is the role of a correctly adjusted head restraint?",
+   "options": [
+    "To improve rear visibility",
+    "Comfort only, with no effect on safety",
+    "To replace the seatbelt in a minor crash",
+    "To prevent neck injury (\"whiplash\") in a rear-end collision"
+   ],
+   "answer": 3,
+   "explain": "A head restraint at the right height and distance stops the head from snapping backwards forcefully in a rear-end collision, reducing neck injury.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-005",
+   "lesson": "sy-passive",
+   "q": "Where must a rear-facing child seat never be placed?",
+   "options": [
+    "In a front seat with an active airbag there",
+    "In any seat with a three-point seatbelt",
+    "In the rear right seat",
+    "In the rear middle seat"
+   ],
+   "answer": 0,
+   "explain": "A front airbag inflating can badly injure a baby sitting in a rear-facing seat.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-006",
+   "lesson": "sy-esc",
+   "q": "When does the ESC light flash on the instrument cluster?",
+   "options": [
+    "When the engine overheats",
+    "When you need to refuel",
+    "When the system is switched off",
+    "When the system is actually acting to stabilise the car"
+   ],
+   "answer": 3,
+   "explain": "The ESC light flashes at exactly the moment the system intervenes to stabilise the car; it stays lit steadily when it is switched off or faulty.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-007",
+   "lesson": "sy-esc",
+   "q": "What does stability control (ESC) do when it detects that the car is drifting from the direction the steering wheel is asking for?",
+   "options": [
+    "It switches off the engine",
+    "It brakes a single wheel, and sometimes cuts engine power, to turn the car back towards the intended direction",
+    "It increases the car's speed to stabilise it",
+    "It inflates an airbag"
+   ],
+   "answer": 1,
+   "explain": "ESC brakes a single wheel in a targeted way, and sometimes also cuts engine power, to bring the car back to the intended direction of travel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-008",
+   "lesson": "sy-esc",
+   "q": "What does traction control (TCS) do when a driven wheel spins during acceleration?",
+   "options": [
+    "It increases engine power to pull away faster",
+    "It switches off the steering system",
+    "It cuts engine power or brakes the spinning wheel, to transfer drive to a wheel with grip",
+    "It has no effect on wheel spin"
+   ],
+   "answer": 2,
+   "explain": "TCS cuts engine power or brakes the spinning wheel, and transfers the drive to a wheel that has grip.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-009",
+   "lesson": "sy-esc",
+   "q": "What can ESC not do?",
+   "options": [
+    "Create grip between the tyre and the road that is not there",
+    "Act automatically without the driver's involvement",
+    "Brake a single wheel",
+    "Detect a deviation from the intended direction of travel"
+   ],
+   "answer": 0,
+   "explain": "ESC makes better use of the grip that exists, but it cannot increase the friction between the tyre and the road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-010",
+   "lesson": "sy-esc",
+   "q": "When is it justified to switch off stability control with its dedicated switch?",
+   "options": [
+    "In special situations like deep sand or mud",
+    "On every drive in the rain",
+    "Never — the switch is just decorative",
+    "In ordinary urban road driving"
+   ],
+   "answer": 0,
+   "explain": "Switching off stability control is meant for special situations like deep sand or mud, where the intervention actually gets in the way — not for ordinary driving.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-011",
+   "lesson": "sy-adas",
+   "q": "What does AEB do?",
+   "options": [
+    "It warns of a vehicle in the blind spot",
+    "It keeps a constant distance from the vehicle ahead only",
+    "It reads speed signs",
+    "It brakes the car automatically if it detects a hazard and the driver has not reacted in time"
+   ],
+   "answer": 3,
+   "explain": "AEB (autonomous emergency braking) brakes the car automatically to prevent or reduce a crash the driver has not reacted to in time.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-012",
+   "lesson": "sy-adas",
+   "q": "What is the difference between LDW and LKA?",
+   "options": [
+    "LDW only warns of lane drift; LKA also gently corrects the steering",
+    "Both only work while parking",
+    "LDW corrects the steering; LKA only warns",
+    "There is no difference, they are the same abbreviation"
+   ],
+   "answer": 0,
+   "explain": "LDW only warns with a sound or vibration; LKA goes a step further and gently corrects the steering to bring the car back into its lane.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-013",
+   "lesson": "sy-adas",
+   "q": "What is adaptive cruise control (ACC) used for?",
+   "options": [
+    "Detecting driver fatigue",
+    "Warning of lane drift only",
+    "Parking the car automatically",
+    "Holding a constant speed and slowing down automatically to keep a gap from the vehicle ahead"
+   ],
+   "answer": 3,
+   "explain": "ACC combines holding a constant speed with automatic slowing and accelerating to keep a gap from the vehicle ahead.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-014",
+   "lesson": "sy-adas",
+   "q": "What can make traffic sign recognition miss a sign or misread it?",
+   "options": [
+    "Driving at low speed",
+    "Running the air conditioning",
+    "A dirty, hidden or old sign",
+    "Driving on an urban road"
+   ],
+   "answer": 2,
+   "explain": "Traffic sign recognition relies on a camera, and a dirty, hidden or old sign makes it hard for it to read correctly.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-015",
+   "lesson": "sy-adas",
+   "q": "What is true about ADAS systems?",
+   "options": [
+    "They replace the need to check mirrors and signal",
+    "They amount to full autonomous driving",
+    "They are assistance only, and do not replace attention and checking the mirrors",
+    "They are only meant for electric vehicles"
+   ],
+   "answer": 2,
+   "explain": "Assistance systems complement each other, but none of them replaces attention, checking the mirrors and signalling in time.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-016",
+   "lesson": "sy-limits",
+   "q": "What harms the performance of the cameras and radar in assistance systems?",
+   "options": [
+    "Low speed",
+    "Driving on a sunny day",
+    "Driving on a straight road",
+    "Rain, fog, dirt and ice"
+   ],
+   "answer": 3,
+   "explain": "Exactly like the driver's eyes, cameras and radar lose accuracy in rain, fog, glare, and dirt or ice on the sensor.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-017",
+   "lesson": "sy-limits",
+   "q": "Why won't active lane keeping work well on a road with faded lane markings?",
+   "options": [
+    "The system uses only GPS",
+    "The system detects the lane from a line marked on the road, and without a clear line it has nothing to align to",
+    "Faded lane markings improve detection",
+    "The system is not affected by lane markings at all"
+   ],
+   "answer": 1,
+   "explain": "Lane keeping relies on visually detecting the lane lines; without a clear marking, the system has nothing to align to.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-018",
+   "lesson": "sy-limits",
+   "q": "What is the greatest risk in driver-assistance systems?",
+   "options": [
+    "They only work at night",
+    "The driver's over-reliance, stopping paying attention because they trust the system to catch every mistake",
+    "Their high price",
+    "They always cause a crash"
+   ],
+   "answer": 1,
+   "explain": "The main danger is not a system fault but a drop in the driver's alertness, wrongly assuming the system will correct every mistake.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-019",
+   "lesson": "sy-limits",
+   "q": "Who holds legal responsibility for safe driving in a car with advanced assistance systems?",
+   "options": [
+    "The car manufacturer alone",
+    "The insurance company",
+    "The driver, always",
+    "The system itself"
+   ],
+   "answer": 2,
+   "explain": "Israeli law does not recognise \"autonomous\" driving that releases the driver from responsibility — it always stays with the driver.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sy-020",
+   "lesson": "sy-limits",
+   "q": "What is true about a pedestrian who suddenly steps out from between two parked cars?",
+   "options": [
+    "This situation does not actually occur in Israel",
+    "Assistance systems will always detect them in time",
+    "The systems only detect vehicles, never pedestrians, under any circumstances",
+    "They may not always be detected in time by assistance systems, just as a driver might miss them"
+   ],
+   "answer": 3,
+   "explain": "Unusual obstacles that appear suddenly may not be detected in time, even by advanced assistance systems.",
+   "shuffled": true
+  }
+ ]
+}

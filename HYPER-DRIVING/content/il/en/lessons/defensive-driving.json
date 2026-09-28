@@ -1,0 +1,97 @@
+{
+ "chapter": "defensive-driving",
+ "title": "Defensive driving",
+ "summary": "A good driver doesn’t just keep the law - they anticipate other people’s mistakes and always leave themselves a way out.",
+ "lessons": [
+  {
+   "id": "dd-principles",
+   "title": "Defensive driving: anticipating other people’s mistakes",
+   "summary": "The core principle: assume someone else is about to make a mistake, and drive so that their mistake doesn’t hurt you.",
+   "terms": [
+    "defensive-driving",
+    "space-cushion"
+   ],
+   "body": "[[term:defensive-driving|Defensive driving]] is not fearful or especially slow driving - it’s an approach: driving on the assumption that another vehicle, a pedestrian or a cyclist might make a mistake, and always keeping yourself a way to react before it happens. The difference between a driver who is “careful on paper” and one who is genuinely defensive lies in the question they keep asking themselves: “What will I do if someone makes a mistake right now?”\n\n# Three working assumptions\n1. **Right of way is not protection.** Even when the law is on your side - a green light, a junction where you have right of way - another vehicle might not stop. Drive so that even if this happens, you’ll have time to react.\n2. **They might not see you.** Another driver might not notice you - in a blind spot, dazzled, or distracted. Don’t assume that everyone who is supposed to see you actually does.\n3. **Always leave yourself a way out.** Never drive so that the only option in an emergency is a sudden stop - keep open space ahead, and to the sides when you can.\n\n:::tech [[term:space-cushion|Space cushion]]\nA space cushion is the open space you keep around the car in every direction. Ahead - the gap from the vehicle in front, at least {{fact:following.min_time_gap}} and ideally {{fact:following.recommended_gap}}, as covered in the chapter [[chapter:speed-distance|Speed, distance and braking]]. To the sides and behind - as much as the traffic allows. The bigger the cushion, the more time and options you have when something goes wrong.\n:::\n\n# Why it works\nMost crashes are avoided not because the driver was “reactive” enough, but because they saw the risk early and were already at the space, speed and position that let them react calmly. Defensive driving is, in effect, managing space and time in advance, so that when the moment comes, you don’t need a perfect reaction - a reasonable one is enough.\n\n:::remember\nThe right question isn’t “who’s right?” but “how do I stay safe, even if the other side is wrong?” A driver who insists on their right instead of keeping themselves space may end up right - and injured.\n:::",
+   "keyPoints": [
+    "Defensive driving means driving on the assumption that someone else might make a mistake, and being ready for it in advance.",
+    "Right of way doesn’t guarantee the other side will actually respect it.",
+    "A space cushion - open space on every side - gives you time and options when something goes wrong.",
+    "The goal is to stay safe, not just to be legally “right”."
+   ]
+  },
+  {
+   "id": "dd-scanning",
+   "title": "Scanning and mirrors: where and when to look",
+   "summary": "Eyes that keep moving see danger early. Eyes fixed straight ahead see it too late.",
+   "terms": [
+    "blind-spot"
+   ],
+   "body": "Safe driving needs an active scanning pattern - your eyes keep moving between several ranges, not staying fixed on one point ahead.\n\n# Range of view\nLook far ahead - roughly a few seconds’ drive ahead, not only at the vehicle right in front of you - to spot braking, an obstacle or a change in traffic early. The higher the speed, the further ahead you need to look, exactly like the time-gap principle covered in the chapter [[chapter:speed-distance|Speed, distance and braking]]. At the same time, scan close too - your own lane and the road edges - and check the [[term:side-mirror|side mirrors]] and the [[term:rearview-mirror|rear-view mirror]] every few seconds, so you always know who’s around you, not just at the moment you need to turn.\n\n:::tip Good habit\nEvery few seconds - a quick glance at the mirrors and the dashboard, then straight back to the road. The goal is an up-to-date picture at all times, not a long look that takes your eyes off the road.\n:::\n\n# The blind spot\n:::warn\nThe [[term:blind-spot|blind spot]] is the area around the car that isn’t visible in the mirrors or in direct sight - mainly to the rear-side, on both sides of the car. A car, a motorcycle or a bicycle can travel there without you knowing about it at all. Before changing lanes, checking the mirror isn’t enough - you must **also** turn your head and check directly.\n:::\n\n[[widget:blind-spots]]\n\nIn a heavy vehicle, the blind spot is significantly larger, as covered later in the course. In a private car too, the blind spot grows when cargo blocks the rear windscreen or when a mirror isn’t correctly adjusted.\n\n# When scanning matters most\nBefore any change - a lane change, a turn, significant slowing or speeding up - look ahead of time to where you’re heading: forward, in the mirror, and in the blind spot if needed. The scanning habit is built through repetition: the same pattern, on every drive, even on the most familiar road - because it is exactly on a familiar road that the mind tends to “switch off” and stop really scanning.",
+   "keyPoints": [
+    "Keep scanning constantly: far ahead, close in your lane, mirrors and dashboard - never fixed on one point.",
+    "The higher the speed, the further ahead you look, to get enough reaction time.",
+    "The blind spot isn’t visible in the mirrors - before changing lanes you must also turn your head and check directly.",
+    "The scanning pattern must stay consistent even on the most familiar road."
+   ]
+  },
+  {
+   "id": "dd-hazards",
+   "title": "Spotting hazards on the ground: reading the road",
+   "summary": "A hazard almost always leaves a clue beforehand - the question is whether you notice it.",
+   "terms": [],
+   "body": "In the chapter [[chapter:human-factor|The driver: the human factor]] you learned what [[term:hazard-perception|hazard perception]] is - the ability to spot early what might develop into a hazard. Here you’ll see what that looks like in practice, on the road: small clues you can learn to read.\n\n# Common clues\n- **A ball rolling into the road** - almost always warns of a child about to run after it.\n- **A parked car’s door opening, or a driver sitting inside** - expect the door to open into your lane.\n- **A bus stopping at a stop** - may hide a pedestrian crossing in front of or behind it.\n- **Brake lights flashing far ahead of you**, even when the vehicle right in front of you hasn’t slowed yet - a sign that traffic is starting to slow down, sometimes because of a crash or a jam.\n- **A pedestrian at the roadside looking at their phone** and not at the traffic - don’t assume they’ll notice your car.\n- **A signal that starts late**, or a truck that starts turning slowly - give it space, don’t “push in” beside it.\n- **A patch of shade, wet leaves or puddles** on the road - may hide a slippery surface.\n\n:::tip Rule of thumb\nAny unusual movement in the surroundings - something moving, stopping, opening or flashing - deserves a quick question: “What could this lead to?” You don’t need a certain answer, just to be ready for the possibility.\n:::\n\n# Reading the traffic, not just the road\nGood hazard perception doesn’t look only at the road itself, but at everything around it: a school at pick-up time, a playground beside the road, a busy market, a sports event ending - all of these raise the chance of unexpected pedestrians, even without an immediate sign.\n\n:::remember\nA driver who spots a hazard early doesn’t need an emergency stop - they’ve already slowed, moved slightly, or simply had time to prepare. A driver who spots it at the last moment, even with a fast reaction, is already in a worse position.\n:::",
+   "keyPoints": [
+    "A hazard almost always leaves an early clue - a rolling ball, an open door, a bus at a stop, distant brake lights.",
+    "Don’t assume a pedestrian looking at their phone notices your car.",
+    "The surroundings - a school, a playground, a mass event - raise the chance of unexpected pedestrians.",
+    "A driver who spots a hazard early prepares for it calmly; one who spots it at the last moment is already worse off."
+   ]
+  },
+  {
+   "id": "dd-collisions",
+   "title": "Common crashes and how to avoid them",
+   "summary": "Most crashes repeat a few familiar patterns - and each one is avoided in a different way.",
+   "terms": [
+    "rear-end-collision",
+    "head-on-collision",
+    "run-off-road"
+   ],
+   "body": "You can learn a lot from the patterns that keep repeating in crashes - because each pattern is prevented in a slightly different way.\n\n# Rear-end collision\nA [[term:rear-end-collision|rear-end collision]] - the most common type - happens almost always because of too short a gap or too late a reaction. The prevention: keep a space cushion ahead, as covered in [[lesson:dd-principles|defensive driving]], and look **beyond** the vehicle in front of you - at the brake lights of the vehicles ahead of it, not only the one right in front.\n\n# Head-on collision\n:::danger\nA [[term:head-on-collision|head-on collision]] between two vehicles travelling in opposite directions is among the most severe crashes, because of the high relative speed between the vehicles. It usually happens from a dangerous overtake or drifting into the oncoming lane - from fatigue, distraction or over-correcting the steering. The rules for safe overtaking are covered in the chapter [[chapter:lanes-overtaking|Lanes, turns and overtaking]]; the defensive principle here is simple: if you’re not sure the oncoming lane is clear enough, don’t overtake.\n:::\n\n# Collision at a junction\nEven with right of way, enter a junction slowly enough to be able to stop, scan both sides - even on a green light - and look for eye contact with drivers who might cut across your path. The details of right of way itself are covered in the chapter [[chapter:right-of-way|Right of way and junctions]]; the defensive principle here: right of way doesn’t protect you from a vehicle that doesn’t stop.\n\n# Running off the road\nA [[term:run-off-road|run-off-road crash]] happens mainly from a speed unsuited to a bend, from fatigue causing a gradual drift, or from distraction. If the wheels have already drifted onto the shoulder, **don’t** yank the wheel sharply back onto the road; ease off the accelerator slightly, hold the wheel steady, and bring the car back into the lane gently and gradually once the speed allows it.\n\n:::tip\nThese four types of crash share a common thread: all of them are far easier to prevent **before** they start - with distance, a suitable speed and scanning - than to “fix” at the last moment.\n:::",
+   "keyPoints": [
+    "A rear-end collision is prevented by a space cushion ahead and looking beyond the vehicle right in front.",
+    "A head-on collision usually happens from a dangerous overtake or drifting into the oncoming lane - when in doubt, don’t overtake.",
+    "Right of way at a junction doesn’t protect you from a vehicle that doesn’t stop - enter slowly and scan both sides.",
+    "If you run off the road, don’t yank the wheel sharply - ease off the accelerator and bring the car back gently."
+   ]
+  },
+  {
+   "id": "dd-skids",
+   "title": "Skidding and loss of control",
+   "summary": "A skid almost always starts from a speed unsuited to the conditions - and dealing with it means easing off, not a sharp reaction.",
+   "terms": [
+    "understeer",
+    "oversteer"
+   ],
+   "body": "A skid happens when the tyres lose grip - usually a combination of speed too high for the bend or the conditions, hard braking or acceleration, and a road that is wet, covered in leaves, oily or icy. In most cases the skid can be prevented in advance, because it is a direct result of an unsuitable speed - exactly the principle covered in the chapter [[chapter:speed-distance|Speed, distance and braking]].\n\n# Two kinds of skid in a turn\n:::tech [[term:understeer|Understeer]]\nThe car turns **less** than expected - the front wheels slide wide of the bend. The fix: ease off the accelerator (don’t brake hard) and look where you want to go - the car tends to follow your gaze.\n:::\n\n:::tech [[term:oversteer|Oversteer]]\nThe rear of the car slides wider **than** the front - the car “tucks in” further into the turn than intended. The fix: gentle counter-steering toward the direction of the skid, without braking hard and without a sudden steering movement that reverses direction.\n:::\n\n# What ESC does\n[[term:esc|Electronic stability control]] detects a sideways skid and automatically brakes individual wheels to help the car return to the direction the driver is steering toward. It’s a significant aid, but it has a limit:\n\n:::warn What ESC can’t do\nESC doesn’t create grip that isn’t there. Worn tyres, an icy road or a speed too high for the bend - it can reduce the damage, but it can’t cancel the laws of physics. Relying too heavily on assistance systems, instead of on driving at a suitable speed, is a mistake.\n:::\n\n# The general principle in a skid\nIn every kind of skid: don’t brake hard, don’t make a sudden, sharp steering movement, and gently ease off the accelerator while looking in the direction you want to go. More technical detail - including dealing with aquaplaning - is in the chapter [[chapter:breakdowns|Breakdowns and vehicle emergencies]].",
+   "keyPoints": [
+    "A skid is almost always linked to a speed unsuited to the conditions - so it can be prevented in advance.",
+    "Understeer: the car turns less than expected - ease off the accelerator and look where you want to go.",
+    "Oversteer: the rear slides wider than the front - gentle counter-steering, without hard braking.",
+    "ESC helps you keep direction, but doesn’t create grip that isn’t there - a suitable speed remains the basis."
+   ]
+  },
+  {
+   "id": "dd-courtesy",
+   "title": "Cooperation and courtesy on the road",
+   "summary": "The road is a shared resource - a driver who signals early and makes room helps everyone, including themselves.",
+   "terms": [],
+   "body": "Proper driving isn’t only a technical matter of controlling the car - it’s also how you behave toward other drivers, riders and pedestrians. A road where everyone cooperates flows better and is safer than one where everyone “fights” for their own spot.\n\n# Early, clear signalling\n[[term:signaling|Signalling]] isn’t just a legal requirement - it’s a driver’s way of telling the surroundings “here’s what I’m about to do”. A signal given early, with enough time before the turn or lane change, gives other drivers time to react calmly, instead of having to correct at the last moment.\n\n:::tip\nTurn on the indicator before you start the manoeuvre, not in the middle of it. A signal that comes together with the start of the turn barely helps anyone.\n:::\n\n# Making room\nWhen someone is trying to merge from a lane that’s ending, pull out of a parking space or overtake - leave them space instead of sticking to “your place in the queue”. It costs a few seconds and prevents the pressured situations that cause mistakes. In the same way, give space to a slow vehicle, a cyclist or a motorcyclist - don’t “push in” beside them just because it’s legally allowed.\n\n# Don’t react to aggression\nAs covered in the chapter [[chapter:human-factor|The driver: the human factor]], a driver who behaves rudely isn’t worth reacting to - don’t honk back, don’t “teach them a lesson”, and don’t tailgate them in anger. Increase your distance and carry on.\n\n# Thanking safely\nSomeone who was given room can thank the other driver briefly - a short flash of the hazard lights, when conditions allow it safely, is accepted and understood. But the thanks is a nice extra, not an obligation that justifies risk - don’t stop in the middle of a traffic lane just to “thank properly”.\n\n:::remember\nAll roads are shared by everyone - cars, motorcycles, bicycles and pedestrians. A driver who drives out of cooperation, not just out of rights, reaches their destination at roughly the same time - far more relaxed.\n:::",
+   "keyPoints": [
+    "Signal early and clearly, before starting the manoeuvre - not in the middle of it.",
+    "Give space to someone merging, overtaking or pulling out of a parking space, and to a slow vehicle or a vulnerable rider like a motorcyclist or cyclist.",
+    "Don’t react to aggression - increase your distance and carry on.",
+    "Cooperation on the road lowers the pressure for everyone, and costs almost nothing."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+{
+ "chapter": "buses",
+ "title": "Buses and public transport vehicles",
+ "summary": "Standing passengers, stops, student transport and emergencies — what sets bus driving apart.",
+ "lessons": [
+  {
+   "id": "bs-passengers",
+   "title": "Passenger comfort and safety",
+   "summary": "A bus driver is responsible also for those standing behind them without a seatbelt.",
+   "licence": [
+    "bus"
+   ],
+   "terms": [
+    "standing-passenger",
+    "priority-seating"
+   ],
+   "body": "In a private car, every passenger sits and wears a seatbelt. On a bus, some passengers [[term:standing-passenger|stand]] — with no seatbelt, no airbag, and no preparation for a sudden stop. Smooth driving is not a comfort, it is a safety matter.\n\n# Doors and movement\nThe law forbids the driver from opening the bus doors while it is moving. At a stop, the doors are opened only after making sure this will not harm passengers, or after warning that they are about to open. Doors that were opened for passengers to get off are closed only after the passengers have finished getting off, and in a way that will not harm them. The vehicle does not move until the doors that are the driver's responsibility have closed (regs. 437–439).\n\n:::warn Boarding and alighting while moving\nA passenger must not be allowed to board or get off while the bus is moving, and must not be allowed to do so when it is stopped somewhere other than at its stop — unless it was necessary and it can be done without risk.\n:::\n\n# How many standing passengers are allowed\nThe permitted number of standing passengers is not uniform — it is set in each bus's route licence. Beside the driver there is a partition meant to stop interference with their field of view and to keep standing passengers from coming closer than 10 cm to their seat (reg. 477) — so that nothing limits control of the vehicle.\n\n:::tip\nGentle acceleration, braking and turning are a standing passenger's only protection. Imagine you are holding a full cup right to the brim — and drive so that it does not spill.\n:::\n\n# [[term:priority-seating|Priority seating]]\nA disabled person who boards a bus is entitled to ask that one of the two seats allocated and marked for this near the entrance be vacated for them (reg. 432). Such a request takes priority over any other consideration.\n\n:::remember\nThe duty to carry every passenger who is ready to pay, and not to refuse without reasonable cause, applies to both a bus and a taxi — though a police officer or inspector may restrict this under the conditions of the route licence.\n:::",
+   "keyPoints": [
+    "Doors are not opened while the bus is moving; they close only after passengers have finished getting off or on.",
+    "The bus does not move until the doors that are the driver's responsibility have closed.",
+    "The permitted number of [[term:standing-passenger|standing passengers]] is set in each bus's route licence.",
+    "Standing passengers must not crowd closer than 10 cm to the driver's seat.",
+    "A disabled person is entitled to ask for a [[term:priority-seating|priority seat]] near the entrance to be vacated."
+   ]
+  },
+  {
+   "id": "bs-stops",
+   "title": "Stops and bus bays",
+   "summary": "Where to stop, how to pull out safely, and why pedestrians around the bus are in special danger.",
+   "licence": [
+    "bus"
+   ],
+   "terms": [
+    "public-transport-lane"
+   ],
+   "signs": [
+    "505"
+   ],
+   "body": "[[widget:blind-spots vehicle=bus]]\n\nSign [[sign:505|icon]] marks a bus stop. A bus driver stops only at stops specified in the service route licence, but must stop at a stop if a passenger has signalled or asked to stop, and at an ordinary stop — if someone is waiting there, unless there is no room. The bus must not be left standing at a stop longer than is needed to set down and pick up passengers (reg. 428).\n\n# Pulling out from the stop\nBefore setting the bus moving from a stop, switch on the left-turn indicator and make sure it is possible to join the flow of traffic without risk or obstruction. The indicator is switched off as soon as the bus stops at the stop, and switched on again only when about to leave it — it is not left on for no reason (reg. 429).\n\n:::danger Pedestrians around the bus\nThe largest area a bus driver cannot see lies **ahead of the front, to the right of the doors, and above all behind**. A pedestrian who gets off the bus and crosses in front of it is not visible to drivers overtaking it — and not always to the bus driver either, when the bus pulls away again.\n:::\n\n# Public transport lane\nMost buses travel a large part of the way [[term:public-transport-lane|in a public transport lane]] — a lane marked for the exclusive use of buses, taxis and other authorised vehicles. Even inside the lane, all the ordinary rules of care apply: distance from the vehicle ahead, slowing near a crowded stop, and attention to the neighbouring lanes.\n\n:::tip\nAnother vehicle waiting to join the ordinary traffic from a public transport lane — or the other way round — needs exactly the same consideration that you want to receive when you pull out from a stop.\n:::\n\nAnyone driving behind a bus stopped at a stop, and especially behind a vehicle carrying children that stops to pick them up or set them down, must slow down in particular — covered in detail in the [[chapter:speed-distance|Speed, distance and braking]] chapter.",
+   "keyPoints": [
+    "Stop only at stops on the route licence, but you must stop if a passenger has signalled or if someone is waiting and there is room.",
+    "The left-turn indicator is on only while pulling out from the stop, not throughout the stop.",
+    "A bus's largest blind spot is ahead of the front, to the right of the doors, and behind.",
+    "A [[term:public-transport-lane|public transport lane]] does not exempt you from keeping distance and ordinary care."
+   ]
+  },
+  {
+   "id": "bs-rules",
+   "title": "Rules specific to a bus",
+   "summary": "Speed, the speed limiter, lanes and driving hours — what is different when the vehicle is a bus.",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "speed.bus.freeway",
+    "speed.limiter.bus"
+   ],
+   "terms": [
+    "speed-limiter"
+   ],
+   "body": "A bus is subject to all the ordinary speed rules taught in the [[chapter:speed-distance|Speed, distance and braking]] chapter — but with its own ceiling. On a freeway, a bus (that is not a minibus) is limited to {{fact:speed.bus.freeway}}, even if a sign allows more (reg. 54). A bus with a gross vehicle weight over 10,000 kg, and a bus first put into service from 1 January 2016 with a weight over 7,500 kg, has a [[term:speed-limiter|speed limiter]] fitted that does not let the engine accelerate past {{fact:speed.limiter.bus}} (reg. 364E).\n\n:::remember\nThe limiter is not a substitute for careful driving — it is only an upper ceiling. Within that ceiling, the duty to drive at a speed reasonable for the conditions still applies.\n:::\n\n# Lanes\nMost of the time, a bus travels in the right-hand lane or in a dedicated public transport lane. Changing lanes requires the same care that any vehicle requires — mirror, signal and a look at the blind spot — except that in a vehicle the length of a bus, the check takes longer and needs earlier planning.\n\n# Driving hours\nA bus driver is subject to the same driving-hours and rest limits, and the same tachograph duty, as a heavy truck driver — covered in detail in the [[lesson:hv-hours|Driving hours, rest, tachograph and speed limiter]] lesson. A tired bus driver endangers dozens of passengers at once, not just themselves.\n\n:::tip\nA lower speed and a larger distance from the vehicle ahead make up for the longer reaction time that a heavy vehicle full of passengers needs.\n:::",
+   "keyPoints": [
+    "A bus on a freeway is limited to {{fact:speed.bus.freeway}}, always — even if a sign allows more.",
+    "The [[term:speed-limiter|speed limiter]] caps a heavy bus at {{fact:speed.limiter.bus}}, but does not exempt you from driving at a reasonable speed.",
+    "Changing lanes in a vehicle the length of a bus needs earlier planning.",
+    "The driving-hours, rest and tachograph limits are identical to those of a heavy goods vehicle."
+   ]
+  },
+  {
+   "id": "bs-school",
+   "title": "Student transport",
+   "summary": "A vehicle that carries children to school is subject to especially strict rules — because those who make mistakes here are children.",
+   "licence": [
+    "bus"
+   ],
+   "terms": [
+    "student-transport-vehicle"
+   ],
+   "body": "A [[term:student-transport-vehicle|student-transport vehicle]] is a private or public bus that is designed, by its construction, to carry children up to age 18 to school or to an organised activity, and whose licence states that it may be used as such (reg. 1). Student transport is permitted only in such a vehicle, or in a taxi with a special-hire licence (reg. 83).\n\n# Boarding, alighting and marking\nA student-transport vehicle has a sign reading “Children” fitted on both sides, clearly visible from outside — and whoever does not have such a sign on their vehicle must not carry students. As long as the vehicle's doors are open, the driver switches on the indicator lights designated for this. Children board and alight only through the door designated for this on the vehicle's licence — on most vehicles, the front right-hand door (reg. 83).\n\n:::danger Before you drive on\nDo not start driving before you have made sure that every child has finished getting off the vehicle and has moved away from its path. A child who runs immediately after getting off — in front of the vehicle or behind it — is exactly the situation this rule is meant to prevent.\n:::\n\n# No standing passengers, and a check at the end of the trip\nThe law expressly forbids carrying children standing in a student-transport vehicle. At the end of the trip, whoever is driving the vehicle must check it to make sure no child has been left behind (reg. 83).\n\n# Child-left-behind alert system\nA student-transport vehicle must have an alert system for children left behind in the vehicle (Israel Standard 6400), since 1 April 2017 — and without an annual certificate confirming it works, the vehicle's licence will not be renewed (reg. 364G).\n\n:::remember\nThe duty to check the vehicle at the end of every trip exists precisely so that the alert system is never the only line of defence.\n:::",
+   "keyPoints": [
+    "Student transport is permitted only in a marked [[term:student-transport-vehicle|student-transport vehicle]], or in a taxi with a special-hire licence.",
+    "Boarding and alighting only through the door designated on the licence; carrying children standing is forbidden.",
+    "Do not drive on before every child has moved away from the vehicle's path.",
+    "At the end of the trip you must check the vehicle, and make sure the child-left-behind alert system is working."
+   ]
+  },
+  {
+   "id": "bs-emergency",
+   "title": "Emergencies on a bus",
+   "summary": "Evacuation, firefighting and first aid — the equipment and procedures when you are responsible for a full bus.",
+   "licence": [
+    "bus"
+   ],
+   "body": "A bus driver does not start their shift before checking that the steering and brakes work, the air pressure gauge, the electrical and lighting system, the opening and closing of the doors and of the emergency window, the horn and the wipers (reg. 425). Before taking on passengers, also make sure the bus has a full first-aid kit, two fire extinguishers and two hammers for breaking a window in an emergency.\n\n# Emergency exit\nIn an emergency, when the bus doors are not accessible or opening them is not safe, the window-breaking hammer is the way to evacuate passengers through a window. The emergency window itself is checked as part of the pre-trip check, just like the ordinary doors.\n\n:::danger In a fire\nPersonal safety comes before everything. Stop, get the passengers out quickly and in order through the doors or the windows, and move away from the vehicle. Use the fire extinguisher only if it is safe and does not delay the evacuation.\n:::\n\n# First-aid and firefighting equipment\nA fire extinguisher is not required in a private car, but it is required in a taxi, a commercial vehicle, a bus and other vehicles (reg. 370) — a passenger bus needs at least two extinguishers. A first-aid kit is required in a taxi, a tourist coach, a tour vehicle, a desert touring vehicle, a security vehicle and a public bus, even though it is not required in a private car (regs. 369A, 408).\n\n:::tip\nKnow in advance where the extinguishers, the hammers and the first-aid kit are on your bus — not once smoke is already filling the vehicle.\n:::\n\n# First aid in practice\nIn an accident or a medical event inside the bus: secure safety (stop, switch on the hazard lights), call Magen David Adom (MDA) at {{fact:emergency.mda}}, and act only within the limits of your knowledge — do not move a casualty who is not in further immediate danger. Full detail in the accidents and emergencies chapter.",
+   "keyPoints": [
+    "Before driving, check the steering, brakes, doors, emergency window, horn, wipers, first-aid kit, two extinguishers and two breaking hammers.",
+    "The window-breaking hammer is the way to evacuate when the doors are not available or safe.",
+    "A fire extinguisher and a first-aid kit are required on a bus, even though they are not required in a private car.",
+    "Personal safety first, then evacuation, then firefighting — not the other way round."
+   ]
+  },
+  {
+   "id": "bs-taxis",
+   "title": "Taxis",
+   "summary": "A D1 licence also covers a taxi — with its own rules on the trip, the fare and the duty to carry.",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "licence.d1.min_age",
+    "licence.d1.seniority_b"
+   ],
+   "body": "A D1 licence covers a taxi, a tour vehicle and a public minibus — given from age {{fact:licence.d1.min_age}}, subject to at least {{fact:licence.d1.seniority_b}} years' seniority in a B or C1 licence, completing a public-driver course, and a medical certificate.\n\n# Three kinds of trip\nA taxi runs in three different ways, which set who pays and how: **special hire** — placed entirely at the disposal of whoever ordered it, and no other passenger may be carried in it without their request; **tour hire** — placed entirely at the disposal of whoever ordered the tour or trip; **service ride** — travels a fixed route, and every passenger pays separately.\n\n:::law Duty to carry\nA taxi's owner and driver must use it only to provide a service to the public, and must not refuse, without reasonable cause — including a concern for their safety — to carry a passenger and their luggage (reg. 501).\n:::\n\n# The shortest route\nOn a special hire, you must drive by the shortest route possible in the circumstances, and not stay on the road longer than necessary. If the passenger has asked for a particular route, the driver takes them by that route (reg. 503).\n\n# The meter and the fare\nA passenger must not be carried in a taxi without a properly operating meter. The meter sets the fare by distance, trip time and waiting time, and is fitted so that its display is visible to every passenger throughout the ride (reg. 509). The light box on the taxi's roof is on when it is free, and off whenever a passenger is in it (reg. 507A).\n\n:::tip\nA taxi may also carry up to two children under five in addition to the passenger quota on its licence, provided no more than one passenger sits beside the driver.\n:::",
+   "keyPoints": [
+    "A D1 licence covers a taxi, a tour vehicle and a minibus, from age {{fact:licence.d1.min_age}} with {{fact:licence.d1.seniority_b}} years' seniority in B or C1.",
+    "Three kinds of trip: special hire (for the person who ordered it only), tour hire, and a service ride (fixed route, every passenger pays separately).",
+    "You must not refuse to carry a passenger without reasonable cause, and on a special hire you travel by the shortest route.",
+    "A ride must be by an operating meter, with a display visible to every passenger."
+   ]
+  }
+ ]
+}

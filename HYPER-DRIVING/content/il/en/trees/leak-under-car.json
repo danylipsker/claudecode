@@ -1,0 +1,176 @@
+{
+ "trees": [
+  {
+   "id": "leak-under-car",
+   "group": "General",
+   "title": "A fluid stain under the car",
+   "summary": "You find a fluid stain under the car after it has been parked — and want to know what it is.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "safety": "A brake fluid or fuel leak is always a reason not to drive. Whenever in doubt, don't start the engine and get help.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "Which part under the car do you see the stain?",
+     "options": [
+      {
+       "label": "Front, near the radiator or the engine",
+       "next": "n2"
+      },
+      {
+       "label": "Middle, roughly near the gearbox",
+       "next": "n3"
+      },
+      {
+       "label": "Near one of the wheels",
+       "next": "n4"
+      },
+      {
+       "label": "Middle of the car, after driving with the air conditioning on a hot day",
+       "next": "r-ac-condensation"
+      },
+      {
+       "label": "Rear, near the fuel tank area",
+       "next": "r-fuel-leak"
+      }
+     ]
+    },
+    "n2": {
+     "q": "What colour and texture is the fluid?",
+     "options": [
+      {
+       "label": "Green, orange or pink, watery",
+       "next": "r-coolant-leak"
+      },
+      {
+       "label": "Dark brown to black, oily",
+       "next": "r-oil-leak"
+      },
+      {
+       "label": "Completely clear, with no clear smell",
+       "next": "r-water-condenser"
+      }
+     ]
+    },
+    "n3": {
+     "q": "What colour is the fluid?",
+     "options": [
+      {
+       "label": "Red or pinkish, oily",
+       "next": "r-trans-fluid"
+      },
+      {
+       "label": "Dark brown to black",
+       "next": "r-oil-leak-rear"
+      }
+     ]
+    },
+    "n4": {
+     "q": "What colour is the fluid near the wheel?",
+     "options": [
+      {
+       "label": "Clear to yellowish, oily, near the wheel body",
+       "next": "r-brake-fluid-leak"
+      },
+      {
+       "label": "Clear to pinkish, near the front of the steering column",
+       "next": "r-power-steering-leak"
+      }
+     ]
+    },
+    "r-ac-condensation": {
+     "result": "Water from AC condensation — a normal occurrence",
+     "severity": "ok",
+     "text": "A clear fluid, with no colour and no smell, that collects roughly under the middle of the car after driving with the air conditioning on a hot day, is water condensed in the AC system — a completely normal occurrence.",
+     "actions": [
+      "No action is needed."
+     ]
+    },
+    "r-fuel-leak": {
+     "result": "Suspected fuel leak",
+     "severity": "stop",
+     "text": "A stain with a sharp fuel smell near the rear fuel tank area is a leak from the fuel system — a real fire risk.",
+     "actions": [
+      "Don't start the engine and don't drive.",
+      "Move away from the car, and don't light a flame or a cigarette near it.",
+      "Call roadside assistance or the fire service: {{fact:emergency.fire_and_rescue}}."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-coolant-leak": {
+     "result": "A coolant leak",
+     "severity": "soon",
+     "text": "A green, orange or pink, watery stain near the radiator or the front of the car is leaking coolant — from a hose, the radiator, or the water pump.",
+     "actions": [
+      "Check the coolant level before driving any further.",
+      "Go to a garage soon; a continuing leak leads to overheating.",
+      "For more detail: [[tree:engine-overheating|the engine is overheating]]."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-oil-leak": {
+     "result": "An engine oil leak",
+     "severity": "soon",
+     "text": "A dark brown to black, oily stain under the engine area indicates an oil leak — from a seal, a filter that isn't tightened properly, or the valve cover.",
+     "actions": [
+      "Check the oil level on the dipstick before driving any further.",
+      "Go to a garage; driving with too little oil can destroy the engine."
+     ],
+     "lesson": "eg-lubrication"
+    },
+    "r-water-condenser": {
+     "result": "Probably harmless water, not a car fluid",
+     "severity": "ok",
+     "text": "A completely clear fluid, with no colour, smell or oiliness, could simply be AC condensation or leftover rainwater — not a car fluid.",
+     "actions": [
+      "Check again on a dry day, after the car hasn't been driven for a few hours, to make sure there's no new stain.",
+      "If the stain reappears every day, it's still worth checking at a garage."
+     ]
+    },
+    "r-trans-fluid": {
+     "result": "An automatic transmission fluid leak",
+     "severity": "soon",
+     "text": "A red or pinkish, oily stain near the middle of the car indicates an automatic transmission fluid leak — from a seal, a cooling hose, or the gearbox itself.",
+     "actions": [
+      "Go to a garage soon; a low fluid level in an automatic gearbox can cause serious damage quickly.",
+      "Don't continue with long drives before it's checked."
+     ],
+     "lesson": "dt-automatic"
+    },
+    "r-oil-leak-rear": {
+     "result": "Suspected oil leak from the rear of the engine or the gearbox",
+     "severity": "soon",
+     "text": "A dark brown to black stain in the middle-rear of the car can indicate a leak from the rear crankshaft seal or from the gearbox area itself — the exact source needs checking at a garage.",
+     "actions": [
+      "Check the oil level.",
+      "Go to a garage to trace the exact source of the leak."
+     ],
+     "lesson": "eg-lubrication"
+    },
+    "r-brake-fluid-leak": {
+     "result": "A brake fluid leak",
+     "severity": "stop",
+     "text": "A clear-to-yellowish, oily stain near one of the wheels is brake fluid leaking from a sealed hydraulic system — it can harm braking ability.",
+     "actions": [
+      "Don't drive the car in this state.",
+      "For more detail: [[tree:brake-problems|a brake problem]]."
+     ],
+     "lesson": "bk-how"
+    },
+    "r-power-steering-leak": {
+     "result": "A power steering fluid leak",
+     "severity": "soon",
+     "text": "A clear-to-pinkish stain near the front of the steering column indicates a hydraulic power steering fluid leak — over time the steering can become very heavy, mainly at low speed.",
+     "actions": [
+      "Check the power steering fluid level.",
+      "Go to a garage soon — don't wait until the steering is completely heavy."
+     ],
+     "lesson": "ss-steering"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,356 @@
+{
+ "chapter": "brakes",
+ "questions": [
+  {
+   "id": "q-bk-001",
+   "lesson": "bk-how",
+   "q": "How does the force from the brake pedal reach the wheels in a hydraulic braking system?",
+   "options": [
+    "Through a taut metal cable",
+    "Through compressed air alone, in every private car",
+    "Through a rubber belt from the engine",
+    "Through pressure that travels in brake fluid, in pipes"
+   ],
+   "answer": 3,
+   "explain": "In a hydraulic system, pressure on the pedal becomes pressure in the brake fluid, which travels through pipes to every wheel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-002",
+   "lesson": "bk-how",
+   "q": "What does the brake servo (booster) do?",
+   "options": [
+    "Drain air from the system",
+    "Split pressure between front and rear",
+    "Prevent wheel lock",
+    "Boost the force of your foot on the pedal, so braking takes less effort"
+   ],
+   "answer": 3,
+   "explain": "The brake servo, using vacuum or pressure, boosts the force of your foot on the pedal so braking needs less effort.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-003",
+   "lesson": "bk-how",
+   "q": "Why is the braking system split into two separate hydraulic circuits?",
+   "options": [
+    "To save on brake fluid",
+    "It’s a requirement only for electric cars",
+    "So that even if one circuit leaks, some braking stays active",
+    "To increase the car’s speed"
+   ],
+   "answer": 2,
+   "explain": "Splitting into two separate circuits (for example diagonally) ensures a leak in one circuit doesn’t cancel all braking ability.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-004",
+   "lesson": "bk-how",
+   "q": "What is the main advantage of a disc brake over a drum brake?",
+   "options": [
+    "It doesn’t need pads at all",
+    "It cools faster and keeps stopping consistent with repeated use",
+    "It’s cheaper to manufacture",
+    "It’s heavier, so it’s more stable"
+   ],
+   "answer": 1,
+   "explain": "The brake disc is exposed to air and cools quickly, so it keeps performing consistently even with repeated braking, unlike the enclosed drum.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-005",
+   "lesson": "bk-wear",
+   "q": "What does a thin, steady squeal when braking mean?",
+   "options": [
+    "Low tyre pressure",
+    "A fault in the torque converter",
+    "A metal wear tab warning that the pad is close to its minimum",
+    "A problem with the clutch"
+   ],
+   "answer": 2,
+   "explain": "Most cars have a metal tab that touches the disc when the pad is nearly worn out, producing a warning squeal.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-006",
+   "lesson": "bk-wear",
+   "q": "The brake pedal sinks deep and feels “soft”. What does this suggest?",
+   "options": [
+    "Tyre pressure too high",
+    "Air in the pipes or a brake fluid leak",
+    "Pads that are too new",
+    "The gearbox has shifted into too high a gear"
+   ],
+   "answer": 1,
+   "explain": "A soft pedal that sinks deep usually points to air in the pipes or a fluid leak — the system needs bleeding.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-007",
+   "lesson": "bk-wear",
+   "q": "The car pulls sharply to one side on every stop. What’s the likely cause?",
+   "options": [
+    "Tyre pressure too high in all the tyres",
+    "A pad that’s too new on that side",
+    "Neutral gear while braking",
+    "A caliper stuck on that side, or oil/water on one pad"
+   ],
+   "answer": 3,
+   "explain": "Pulling to one side when braking usually points to a caliper stuck on that side, or contamination on one pad.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-008",
+   "lesson": "bk-wear",
+   "q": "You hear a deep metal grinding sound on every stop. What’s the right thing to do?",
+   "options": [
+    "Drive straight to a garage with maximum care, without pressing hard on the brakes",
+    "Add engine oil to the brakes",
+    "Keep driving normally until your next garage appointment",
+    "Ignore it — it’s normal in a new car"
+   ],
+   "answer": 0,
+   "explain": "Deep metal grinding means the pad is completely worn out and metal is damaging the disc — don’t wait with this.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-009",
+   "lesson": "bk-abs",
+   "q": "What does ABS do in an emergency stop?",
+   "options": [
+    "Drains air from the braking system",
+    "Always halves the stopping distance",
+    "Releases and reapplies the brake at the same wheel repeatedly, to prevent lock-up and preserve steering",
+    "Changes gear on its own"
+   ],
+   "answer": 2,
+   "explain": "ABS stops the wheels from locking under hard braking, so the driver can keep steering and swerve around an obstacle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-010",
+   "lesson": "bk-abs",
+   "q": "What does electronic brakeforce distribution (EBD) do?",
+   "options": [
+    "Warm up the brakes before driving",
+    "Lock the driveshaft when parked",
+    "Adjust the split of braking force between the front and rear wheels in real time, according to load",
+    "Increase the car’s speed"
+   ],
+   "answer": 2,
+   "explain": "EBD splits braking strength between front and rear according to the car’s load, to maximise stability and stopping power.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-011",
+   "lesson": "bk-abs",
+   "q": "How do you brake correctly in an emergency stop in a car with ABS?",
+   "options": [
+    "Press hard and keep pressing, even if you feel a pulsing in the pedal",
+    "Shift to neutral and then brake",
+    "Press gently so as not to trigger the ABS",
+    "Press and release alternately, like manual “pumping”"
+   ],
+   "answer": 0,
+   "explain": "In a car with ABS you press hard without easing off; the pulsing in the pedal is a sign the system is working normally.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-012",
+   "lesson": "bk-abs",
+   "q": "What does the brake assist system detect?",
+   "options": [
+    "A tyre with low pressure",
+    "D mode in an automatic gearbox",
+    "A pad that’s completely worn out",
+    "A fast, panicked emergency stamp on the pedal, and it automatically adds maximum braking pressure"
+   ],
+   "answer": 3,
+   "explain": "Brake assist detects the fast pedal push typical of a genuine panic, and adds maximum braking pressure automatically.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-013",
+   "lesson": "bk-parking",
+   "q": "What is the main difference between the parking brake and the regular hydraulic braking system?",
+   "options": [
+    "The parking brake only works when the ABS is faulty",
+    "There’s no difference, it’s exactly the same system",
+    "The parking brake works only with air pressure",
+    "The parking brake works entirely separately, usually mechanically and only on the rear wheels"
+   ],
+   "answer": 3,
+   "explain": "The parking brake is independent of the hydraulic system — it usually engages only the rear brakes, mechanically, by cable.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-014",
+   "lesson": "bk-parking",
+   "q": "When should you apply the parking brake?",
+   "options": [
+    "Only on an especially steep slope",
+    "Only in a car with a manual gearbox",
+    "Every time you park, even in an automatic car in P",
+    "Only when the engine is off for more than an hour"
+   ],
+   "answer": 2,
+   "explain": "Apply the parking brake every time you park, even in an automatic car in P — it doesn’t depend on the hydraulic brakes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-015",
+   "lesson": "bk-parking",
+   "q": "What is true about hill-hold assist?",
+   "options": [
+    "It prevents rolling backward for only a few seconds, between lifting off the brake and pressing the accelerator",
+    "It only works in a car with a manual gearbox",
+    "It’s a full substitute for the parking brake, even for extended parking",
+    "It applies the brakes permanently until the engine is switched off"
+   ],
+   "answer": 0,
+   "explain": "Hill-hold assist is temporary only — it helps during the switch from the brake to the accelerator on a slope, and isn’t a substitute for the parking brake when actually parked.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-016",
+   "lesson": "bk-parking",
+   "q": "What happens if you drive with the parking brake partly engaged without noticing?",
+   "options": [
+    "The rear brakes heat up and wear out fast",
+    "The car becomes more fuel-efficient",
+    "It has no effect at all",
+    "The car’s speed increases"
+   ],
+   "answer": 0,
+   "explain": "A parking brake that’s partly engaged while driving heats up the rear brakes and wears them out fast.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-017",
+   "lesson": "bk-fade",
+   "q": "What is brake fade?",
+   "options": [
+    "A temporary drop in braking effectiveness caused by overheating, mainly on a long descent",
+    "An automatic shift into a low gear",
+    "A fault in the torque converter",
+    "A light that warns of low air pressure"
+   ],
+   "answer": 0,
+   "explain": "Brake fade is a temporary drop in braking effectiveness caused by the pads and discs overheating.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-018",
+   "lesson": "bk-fade",
+   "q": "What’s the right way to slow down on a long, steep descent, to prevent brake fade?",
+   "options": [
+    "Drive in a high gear and brake hard at the last moment",
+    "Shift to neutral and avoid using the brakes entirely",
+    "Use engine braking with a low gear, and brake only with short, firm stops",
+    "Press gently and continuously on the brake for the whole descent"
+   ],
+   "answer": 2,
+   "explain": "Engine braking in a low gear keeps you at a safe speed with almost no need to touch the brake; a light, continuous push actually heats the brakes the most.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-019",
+   "lesson": "bk-fade",
+   "q": "What happens when the brake fluid boils from extreme heat?",
+   "options": [
+    "Tyre pressure rises",
+    "Air bubbles form in the pipes, and the pedal sinks deep and feels soft",
+    "The engine switches off automatically",
+    "The brakes become stronger"
+   ],
+   "answer": 1,
+   "explain": "Boiling brake fluid creates compressible air bubbles in the pipes; you’re pressing on air instead of fluid, and the pedal turns soft and sinks deep — brake failure.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-020",
+   "lesson": "bk-air",
+   "licence": [
+    "professional"
+   ],
+   "q": "Why do heavy vehicles need air brakes rather than hydraulic brakes?",
+   "options": [
+    "Because the law bans brake fluid in heavy vehicles",
+    "Because it allows far greater braking force, needed for the heavy vehicle’s weight",
+    "Because it’s easier to maintain than a hydraulic brake",
+    "Because air is cheaper than brake fluid"
+   ],
+   "answer": 1,
+   "explain": "Air brakes provide far greater braking force than a regular hydraulic brake — essential for a heavy vehicle’s weight.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-021",
+   "lesson": "bk-air",
+   "licence": [
+    "professional"
+   ],
+   "q": "The air pressure warning light and buzzer are on before you set off. What do you do?",
+   "options": [
+    "Set off and wait for the pressure to rise while driving",
+    "Turn off the buzzer and drive carefully",
+    "Add air at a petrol station before continuing",
+    "Don’t move until the pressure reaches the normal range"
+   ],
+   "answer": 3,
+   "explain": "You must not move when air pressure is below the normal range — the buzzer and light are warning exactly of this, and it’s a risk of losing your brakes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-022",
+   "lesson": "bk-air",
+   "licence": [
+    "professional"
+   ],
+   "q": "Why is the spring brake considered a “fail-safe” design?",
+   "options": [
+    "Because if air pressure suddenly drops, the spring locks the brakes on its own, without the driver doing anything",
+    "Because it renews itself automatically without maintenance",
+    "Because it doesn’t depend on air pressure at all",
+    "Because it’s meant only for parking on a gentle slope"
+   ],
+   "answer": 0,
+   "explain": "A strong spring pushes the spring brake into the locked position, and it’s air pressure that releases it; a sudden pressure drop makes it lock on its own — the fault stops the vehicle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-023",
+   "lesson": "bk-air",
+   "licence": [
+    "professional"
+   ],
+   "q": "Why do you drain water from a heavy vehicle’s air tanks as part of the daily check?",
+   "options": [
+    "Because moisture that collects as water can freeze in winter and rust the tank",
+    "Because the law only requires this once a year",
+    "To increase the vehicle’s speed",
+    "To reduce the vehicle’s weight"
+   ],
+   "answer": 0,
+   "explain": "The air entering the system carries moisture that collects as water at the bottom of the tank; daily draining prevents freezing in winter and rust.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bk-024",
+   "lesson": "bk-air",
+   "licence": [
+    "professional"
+   ],
+   "q": "What does a retarder do on a heavy vehicle?",
+   "options": [
+    "Slow the vehicle on long descents without wearing the brake pads",
+    "Raise the air pressure in the tanks",
+    "Lock the spring brake",
+    "Change gear automatically on an incline"
+   ],
+   "answer": 0,
+   "explain": "The retarder is an additional braking system, usually hydraulic or electric, that slows the vehicle on long descents without wearing the friction brakes.",
+   "shuffled": true
+  }
+ ]
+}

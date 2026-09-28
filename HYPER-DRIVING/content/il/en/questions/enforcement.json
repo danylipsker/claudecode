@@ -1,0 +1,381 @@
+{
+ "chapter": "enforcement",
+ "questions": [
+  {
+   "id": "q-en-001",
+   "lesson": "en-offences",
+   "q": "What happens if you completely ignore a traffic ticket — neither paying nor filing an objection?",
+   "options": [
+    "There is no consequence at all",
+    "The fine becomes final and can be collected through enforcement proceedings",
+    "You automatically receive a summons to trial",
+    "The fine is cancelled after a year"
+   ],
+   "answer": 1,
+   "explain": "Ignoring a notice of a decision to impose a fine does not cancel it — it becomes final and can be enforced.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-002",
+   "lesson": "en-offences",
+   "facts": [
+    "enforcement.violation.payment_days"
+   ],
+   "q": "Within how long of receiving the notice must you pay an administrative fine, if you do not file an objection?",
+   "options": [
+    "A year",
+    "There is no fixed deadline",
+    "{{fact:enforcement.violation.payment_days}}",
+    "7 days"
+   ],
+   "answer": 2,
+   "explain": "Under the Administrative Traffic Violations Law, you must pay within {{fact:enforcement.violation.payment_days}} from the day the notice was served, unless an objection or appeal is filed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-003",
+   "lesson": "en-offences",
+   "facts": [
+    "enforcement.violation.objection_days"
+   ],
+   "q": "Within how long can you file an objection to a decision to impose a fine?",
+   "options": [
+    "A year",
+    "{{fact:enforcement.violation.objection_days}}",
+    "There is no time limit",
+    "One day"
+   ],
+   "answer": 1,
+   "explain": "You must file an objection within {{fact:enforcement.violation.objection_days}} from the day the notice was served.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-004",
+   "lesson": "en-offences",
+   "q": "What is the main difference between an administrative traffic violation and a criminal traffic offence?",
+   "options": [
+    "A criminal offence is always cheaper",
+    "An administrative violation ends in a fixed fine with no trial; a criminal offence is handled by an indictment in court",
+    "There is no difference, both are handled the same way",
+    "An administrative violation applies only to new drivers"
+   ],
+   "answer": 1,
+   "explain": "Most traffic offences are administrative violations with a fixed fine; serious offences (such as drink driving or causing death) are criminal offences with an indictment and a court hearing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-005",
+   "lesson": "en-offences",
+   "q": "Who decides whether a particular offence is handled on the administrative track or the criminal track?",
+   "options": [
+    "The court decides in every case, before it is known which offence was committed",
+    "The law — the type of track is fixed in advance for each offence",
+    "The police officer on the spot, depending on their mood",
+    "The driver, according to their request"
+   ],
+   "answer": 1,
+   "explain": "The type of track (administrative or criminal) is fixed in advance by law for each offence, and is not left to the officer's discretion on the spot.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-006",
+   "lesson": "en-fines",
+   "q": "What is the fine for holding or using a handheld mobile phone without hands-free while driving?",
+   "options": [
+    "A verbal warning only",
+    "{{fine:wheel-two-hands}} only, with no points",
+    "{{fine:phone-handheld}}, and {{points:phone-handheld}} points",
+    "Automatic disqualification for six months, with no fine"
+   ],
+   "answer": 2,
+   "explain": "The offence carries a fine of {{fine:phone-handheld}} and {{points:phone-handheld}} points.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-007",
+   "lesson": "en-fines",
+   "q": "What is the fine for driving without a seatbelt fastened (the driver themselves)?",
+   "options": [
+    "No fine, just a note on the licence",
+    "{{fine:seatbelt-passenger}} only",
+    "{{fine:seatbelt-driver}}, and {{points:seatbelt-driver}} points",
+    "Immediate disqualification, with no fine"
+   ],
+   "answer": 2,
+   "explain": "Not wearing a seatbelt as the driver carries a fine of {{fine:seatbelt-driver}} and {{points:seatbelt-driver}} points.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-008",
+   "lesson": "en-fines",
+   "q": "How does the fine for carrying a child under 3 without a suitable child seat compare with the fine for driving through a red light?",
+   "options": [
+    "The two fines are exactly the same",
+    "There is no fine at all for carrying a child without a seat",
+    "The fine for the child is higher: {{fine:child-under-3-no-seat}} compared with {{fine:red-light-main}}",
+    "The fine for a red light is higher: {{fine:red-light-main}} compared with {{fine:child-under-3-no-seat}}"
+   ],
+   "answer": 3,
+   "explain": "The fine for driving through a red light ({{fine:red-light-main}}) is higher than the fine for carrying a child under 3 without a child seat ({{fine:child-under-3-no-seat}}), even though both offences are equally dangerous.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-009",
+   "lesson": "en-fines",
+   "q": "Speeding by 35 km/h over the limit on an urban road — what can happen in addition to the fine and the points?",
+   "options": [
+    "Nothing further can happen",
+    "The licence is automatically disqualified for a year",
+    "You must retake the theory test that same day",
+    "A police officer has the discretion to disqualify the licence immediately, for up to 30 days"
+   ],
+   "answer": 3,
+   "explain": "For a speeding excess of 31 to 40 km/h on an urban road, a police officer has the discretion to disqualify the licence immediately for up to 30 days, in addition to the fine and the points.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-010",
+   "lesson": "en-fines",
+   "q": "What is the fine for not letting a pedestrian finish crossing at a pedestrian crossing?",
+   "options": [
+    "No fine, just a warning",
+    "{{fine:crosswalk-vehicle-stopped}} only",
+    "Disqualification with no fine",
+    "{{fine:pedestrian-crossing}}, and {{points:pedestrian-crossing}} points"
+   ],
+   "answer": 3,
+   "explain": "Not letting a pedestrian finish crossing safely carries a fine of {{fine:pedestrian-crossing}} and {{points:pedestrian-crossing}} points.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-011",
+   "lesson": "en-points",
+   "q": "A driver is convicted of several offences included in a single indictment. How many points are recorded against them?",
+   "options": [
+    "Zero points, since it is one indictment and not several tickets",
+    "One symbolic point per indictment",
+    "The sum of the points for all the offences together",
+    "Only the points for the most serious of the offences"
+   ],
+   "answer": 3,
+   "explain": "Regulation 546 provides that when convicted of several offences in one indictment, only the points for the offence with the highest point count are recorded.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-012",
+   "lesson": "en-points",
+   "facts": [
+    "points.registry-lag"
+   ],
+   "q": "News of a conviction reaches the Licensing Authority {{fact:points.registry-lag}} after the date of the conviction. What happens?",
+   "options": [
+    "Only half the points are recorded",
+    "The driver is penalised with double points because of the delay",
+    "The points are recorded as usual",
+    "The points are not recorded at all"
+   ],
+   "answer": 3,
+   "explain": "Information that reaches the Licensing Authority {{fact:points.registry-lag}} or more after the date of the conviction is not recorded as points on the register.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-013",
+   "lesson": "en-points",
+   "facts": [
+    "points.basic-course",
+    "points.advanced-course"
+   ],
+   "q": "A driver has accumulated {{fact:points.basic-course}} valid points. What applies to them?",
+   "options": [
+    "No consequence until 24 points",
+    "A compulsory basic \"Correct Driving\" course with a test at the end",
+    "Immediate licence disqualification",
+    "A compulsory advanced course only"
+   ],
+   "answer": 1,
+   "explain": "Between {{fact:points.basic-course}} and 22 valid points requires the basic course; the advanced course ({{fact:points.advanced-course}} points or more) comes only after passing the basic one.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-014",
+   "lesson": "en-points",
+   "facts": [
+    "points.disqualification-3m",
+    "points.disqualification-9m"
+   ],
+   "q": "What is the difference between disqualification for {{fact:points.disqualification-3m}} points and disqualification for {{fact:points.disqualification-9m}} points?",
+   "options": [
+    "Both are disqualification for life",
+    "The first is disqualification for 3 months; the second is for 9 months, with renewal only after medical checks and re-examination",
+    "There is no difference, they are identical",
+    "The first is more severe than the second"
+   ],
+   "answer": 1,
+   "explain": "{{fact:points.disqualification-3m}} valid points — disqualification for 3 months. {{fact:points.disqualification-9m}} points, or a repeat disqualification within 6 years — disqualification for 9 months, with renewal only after medical checks and re-examination.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-015",
+   "lesson": "en-points",
+   "q": "A driver misses more than 20% of the hours of the \"Correct Driving\" course they were required to take. What is the result?",
+   "options": [
+    "No consequence, as long as they attended most of the sessions",
+    "They receive a discount on a future fine",
+    "They are treated as not having completed the corrective measure",
+    "They automatically receive confirmation of completing the course"
+   ],
+   "answer": 2,
+   "explain": "Regulation 551 provides that missing more than 20% of the course hours, or failing the closing test three times, counts as not completing the corrective measure.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-016",
+   "lesson": "en-disqualification",
+   "q": "A driver is convicted of driving without compulsory insurance. What is the minimum disqualification the court may impose?",
+   "options": [
+    "There is no disqualification for this offence",
+    "3 months",
+    "12 months, subject to the court's discretion to shorten it in special circumstances",
+    "Disqualification for life only"
+   ],
+   "answer": 2,
+   "explain": "Driving without valid compulsory insurance can lead to a licence disqualification of at least 12 months, unless the court finds special circumstances to shorten it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-017",
+   "lesson": "en-disqualification",
+   "q": "What allows a police officer to disqualify a driving licence immediately, even before a trial?",
+   "options": [
+    "Reasonable grounds to believe the driver committed an offence from the Fourth Schedule to the Ordinance, or that an accident with a casualty occurred because of them",
+    "Only if the driver admits to the offence",
+    "Only for a parking offence",
+    "Any traffic offence, minor or serious"
+   ],
+   "answer": 0,
+   "explain": "Section 47 of the Traffic Ordinance allows a police officer to take away a driving licence when there are reasonable grounds for an offence from the Fourth Schedule, or when the driver's offence caused an accident with a casualty.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-018",
+   "lesson": "en-disqualification",
+   "facts": [
+    "police.suspension.fatal_accident_days"
+   ],
+   "q": "What is the disqualification period a police officer of rank may impose for an offence that caused a fatal road accident?",
+   "options": [
+    "No disqualification, only a summons to trial",
+    "7 days",
+    "24 hours",
+    "{{fact:police.suspension.fatal_accident_days}}"
+   ],
+   "answer": 3,
+   "explain": "For an offence that caused an accident in which a person was killed, a police officer of rank will disqualify the driver for {{fact:police.suspension.fatal_accident_days}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-019",
+   "lesson": "en-disqualification",
+   "facts": [
+    "police.suspension.void_no_indictment_months"
+   ],
+   "q": "A driver is disqualified by a police officer of rank. {{fact:police.suspension.void_no_indictment_months}} pass and no indictment has been filed against them. What happens to the disqualification?",
+   "options": [
+    "It is cancelled automatically, unless the court orders otherwise",
+    "This has no effect on the disqualification at all",
+    "It automatically becomes a court disqualification",
+    "It remains in effect for life"
+   ],
+   "answer": 0,
+   "explain": "If no indictment is filed within {{fact:police.suspension.void_no_indictment_months}} of the disqualification, it is cancelled automatically, unless the court orders, for special reasons, that it be extended.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-020",
+   "lesson": "en-disqualification",
+   "q": "What is the difference between an expired driving licence and a disqualified driving licence?",
+   "options": [
+    "An expired licence is an administrative matter that can be renewed; disqualification is an active ban on use, even with a valid licence",
+    "Disqualification is less severe than expiry",
+    "An expired licence is always more severe than disqualification",
+    "There is no practical difference"
+   ],
+   "answer": 0,
+   "explain": "An expired licence can be renewed by paying a fee; disqualification bans use of the licence even if it is physically valid, and driving while disqualified is a serious offence in its own right.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-021",
+   "lesson": "en-police",
+   "q": "What is the correct action when you see a police officer signalling you to stop?",
+   "options": [
+    "Ignore it if you have not committed an offence",
+    "Stop in the middle of the lane immediately, regardless of safety",
+    "Slow down, move right and stop in a safe place",
+    "Speed up and drive away"
+   ],
+   "answer": 2,
+   "explain": "You must slow down, move right and stop in a safe place when signalled to stop — ignoring it or speeding up only makes things worse.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-022",
+   "lesson": "en-police",
+   "q": "What must a police officer do before requiring a driver to give a breath sample for a drink-driving test?",
+   "options": [
+    "Explain the purpose of the test, ask for the driver's consent, and make clear the legal meaning of refusal",
+    "Obtain a court order in advance",
+    "Nothing, they may require it directly with no explanation",
+    "Wait 24 hours before the test"
+   ],
+   "answer": 0,
+   "explain": "Section 64B of the Ordinance requires the officer to explain the purpose of the sample, ask for consent and explain the meaning of refusal, before requiring the sample.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-023",
+   "lesson": "en-police",
+   "q": "A driver refuses to give a breath sample for a drink-driving test. What is the legal meaning of this?",
+   "options": [
+    "They receive a warning only, the first time",
+    "There is no consequence at all, since no test was actually carried out",
+    "They are treated as if they had committed the drink-driving offence itself",
+    "They must return to the station a week later"
+   ],
+   "answer": 2,
+   "explain": "Section 64D of the Ordinance provides that refusing to give a sample is treated as if the driver had committed the drink-driving offence itself.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-024",
+   "lesson": "en-police",
+   "facts": [
+    "alcohol.detention_non_suspect"
+   ],
+   "q": "For how long at most can someone who is not a suspect be detained for a drink-driving test?",
+   "options": [
+    "24 hours",
+    "There is no time limit",
+    "{{fact:alcohol.detention_non_suspect}}",
+    "5 minutes"
+   ],
+   "answer": 2,
+   "explain": "Someone who is not a suspect can be detained for a drink-driving test for {{fact:alcohol.detention_non_suspect}} at most.",
+   "shuffled": true
+  },
+  {
+   "id": "q-en-025",
+   "lesson": "en-police",
+   "q": "A police officer not in uniform approaches a driver and asks for documents. What must the officer do first?",
+   "options": [
+    "Call for an additional patrol car",
+    "Identify themselves with a warrant card",
+    "They have no duty at all, the request is valid immediately",
+    "Wait for the driver to ask for identification"
+   ],
+   "answer": 1,
+   "explain": "A police officer not in uniform must identify themselves with a warrant card before giving instructions or requiring documents; an officer in uniform does not have to identify themselves separately.",
+   "shuffled": true
+  }
+ ]
+}

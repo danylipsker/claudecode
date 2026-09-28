@@ -1,0 +1,88 @@
+{
+ "chapter": "accidents-emergencies",
+ "title": "Accidents and emergencies",
+ "summary": "What to do in the first minutes after an accident, and how to help without putting yourself at risk.",
+ "lessons": [
+  {
+   "id": "ae-duties",
+   "title": "Your duties after an accident",
+   "summary": "When you must stop, who to notify and within how long — regardless of who is at fault.",
+   "terms": [
+    "road-accident"
+   ],
+   "body": "A [[term:road-accident|road accident]] can happen even to careful drivers. The law has clear rules for what happens in the minutes after one — and they apply to everyone involved, even someone who is sure they are not at fault.\n\n# An accident with casualties\n:::law\nA driver involved in an accident that caused a death or bodily injury must stop immediately at the scene, give help, call the emergency services and notify the police as soon as possible, by the fastest means available (Traffic Regulations, reg. 144).\n:::\n\nThe law sets no fixed number of hours here — \"as soon as possible\" means immediately, by phone, from the scene itself.\n\n:::danger Leaving the scene of an accident with casualties\nA driver who leaves the scene of an accident with casualties (\"hit and run\") commits an especially serious offence, even if they were not at fault for the accident itself. See the penalties in [[chapter:enforcement|Offences, fines and points]].\n:::\n\n# Property-damage-only accident\nWhen the accident damaged a vehicle or other property that was left unattended, and there was no bodily injury, you must notify the nearest police station within {{fact:accident.property_damage.report_hours}}, and also leave a written note on the vehicle if its owner was not present at the scene (reg. 145).\n\n# Insurance certificate\nA driver involved in an accident with bodily injury must show their insurance certificate at the scene. Anyone who did not show it there must report the accident and show the certificate at a police station within {{fact:accident.insurance_certificate.report_hours}}, and if even that is not done, it can still be shown independently at the station where the report was filed, within a further {{fact:accident.insurance_certificate.late_presentation_days}} days, to avoid conviction for not showing it (Motor Vehicle Insurance Ordinance, section 40).\n\n# The passengers' role\nSometimes the driver is themselves injured and unable to act. In that case, a passenger who has turned {{fact:accident.passenger_duty.min_age}} must call the emergency services themselves (Traffic Ordinance, section 64A1). A minor below that age is exempt from the duty, even if they are the only passenger able to act.\n\n# What else you need to do\nThe duties in this lesson are the legal basis; how to actually secure the scene is covered in [[lesson:ae-scene|Securing the scene and calling for help]], first aid in [[lesson:ae-first-aid|First aid at a driver's level]], and documentation and insurance in [[lesson:ae-insurance|Reporting, insurance, documentation and witnesses]].\n\n:::remember\nThe duty to stop and help exists even if you are sure the accident is not your fault. The question of fault is settled later, with the police and the insurance company — not at the scene.\n:::",
+   "keyPoints": [
+    "An accident with casualties: stop immediately, help, call the emergency services and notify the police as soon as possible (reg. 144).",
+    "Property-damage-only accident: notify the police within {{fact:accident.property_damage.report_hours}} if the owner of the damaged property was not present.",
+    "Insurance certificate not shown at the scene: you must report it within {{fact:accident.insurance_certificate.report_hours}}, with a further {{fact:accident.insurance_certificate.late_presentation_days}} days to show it yourself.",
+    "A passenger aged {{fact:accident.passenger_duty.min_age}} or older must call for help themselves if the driver is unable to."
+   ]
+  },
+  {
+   "id": "ae-scene",
+   "title": "Securing the scene and calling for help",
+   "summary": "Before rushing to help — mark the hazard, get off the road, and call the right emergency number.",
+   "terms": [
+    "hazard-lights",
+    "high-vis-vest",
+    "warning-triangle"
+   ],
+   "body": "The first moments after an accident decide whether the situation stays under control or gets worse. Before rushing to help an injured person, check that you are not creating another accident.\n\n# Mark the hazard immediately\nSwitch on the [[term:hazard-lights|hazard lights]] before you even get out of the vehicle. If you need to get out on a non-urban road, put on a [[term:high-vis-vest|high-visibility vest]] first — compulsory on any such road, day and night alike (Traffic Ordinance, section 65B).\n\nPlace a [[term:warning-triangle|warning triangle]] where it will be seen by approaching vehicles from at least {{fact:equip.triangle.visibility}} away (reg. 70) — walk to it with your back to the verge and your face to the oncoming traffic, not the other way round.\n\n:::note In a heavy vehicle\nIn a commercial or works vehicle whose permitted gross weight exceeds {{fact:equip.hazard_lights_heavy}}, and in a bus, you must also set out a flashing yellow lamp or switch on all the hazard lights while the vehicle is stationary during lit hours outside town (reg. 70).\n:::\n\n# Where to stand\nGet off the road itself: stand behind a safety barrier if there is one, on the verge or in open ground to the side — not between the vehicles and not in a traffic lane, even if that means moving away from the casualties for a moment. Face the oncoming traffic so you can see it coming.\n\n# Who to call\nCall the police, {{fact:emergency.police}}, for every road accident. If there are casualties — also [[term:mda|Magen David Adom]], {{fact:emergency.mda}}. And if there is a fire, a fuel leak or a trapped vehicle — also Fire and Rescue Services, {{fact:emergency.fire_and_rescue}}.\n\nWhen you speak to the dispatcher, give: the exact location (road name, kilometre marker, nearest junction or interchange), how many casualties and their condition (conscious? breathing?), and any special hazards in the area — fire, spilled fuel, a blocked lane.\n\n:::tip\nIf several passers-by have stopped to help, it is best for one person to talk to the dispatcher — not everyone at once. This avoids confusion and saves valuable time.\n:::",
+   "keyPoints": [
+    "Switch on the [[term:hazard-lights|hazard lights]] immediately, and before getting out on a non-urban road put on a [[term:high-vis-vest|high-visibility vest]].",
+    "Place a [[term:warning-triangle|warning triangle]] where it will be seen from at least {{fact:equip.triangle.visibility}} away.",
+    "Stand off the road, behind a barrier if there is one, and not between the vehicles.",
+    "Police {{fact:emergency.police}} always; Magen David Adom {{fact:emergency.mda}} if there are casualties; Fire and Rescue Services {{fact:emergency.fire_and_rescue}} if there is fire or a leak."
+   ]
+  },
+  {
+   "id": "ae-first-aid",
+   "title": "First aid at a driver's level",
+   "summary": "Not doctors and not paramedics — keep the injured person safe from further harm and help only with what is safe.",
+   "terms": [
+    "first-aid",
+    "first-aid-kit"
+   ],
+   "body": "A driver is not a medical professional. Their job is to keep the injured person safe from further harm, call for professional help, and give [[term:first-aid|first aid]] only for things that are safe and familiar — not beyond that.\n\n# Before you approach\n:::danger\nCheck for hazards before approaching the injured person: traffic that is still flowing, fire, the smell of fuel, an unstable vehicle. If you are not sure you can approach safely — do not, and wait for the emergency services, helping only by phone.\n:::\n\n# Call for professional help\nCall [[term:mda|Magen David Adom]], {{fact:emergency.mda}}, and give precise information: location, number of casualties, whether they are conscious and breathing, visible injuries. Stay on the line and follow the dispatcher's instructions — they may talk you through resuscitation over the phone if needed.\n\n# Do not move the injured person\n:::warn\nUnless there is immediate danger (fire, a vehicle that might move, approaching traffic) — do not move an injured person, and do not remove a helmet from an injured motorcyclist. Moving someone the wrong way can make a spinal injury worse. Cover them to keep them warm, and talk to them to reassure them and monitor their condition.\n:::\n\n# Bleeding\nFor heavy bleeding, press directly on the source of the bleeding, with a clean cloth or the palm of your hand, with steady, sustained pressure, until professional help arrives. If a fracture is suspected — do not splint or straighten it yourself.\n\n# Consciousness and breathing\nAn injured person who is conscious and breathing normally stays where they are (unless there is danger), and you talk to them. An injured person who does not respond: call loudly near their ear and check whether they are breathing. If they are not breathing, Magen David Adom will talk you through it by phone while you wait for the crew on the way.\n\n# First aid equipment\nThe law requires a [[term:first-aid-kit|first aid kit]] in a taxi, a touring vehicle, a desert vehicle, a tour bus, a security vehicle and a public bus — not in a private car (reg. 369A). It is recommended to keep one in a private car too, even though it is not compulsory.",
+   "keyPoints": [
+    "Check for hazards (traffic, fire, fuel) before approaching the injured person.",
+    "Call [[term:mda|Magen David Adom]] {{fact:emergency.mda}} with the exact location and the injured person's condition.",
+    "Do not move an injured person and do not remove a motorcycle helmet, except in immediate danger.",
+    "For bleeding — apply steady, direct pressure on the source of the bleeding.",
+    "A [[term:first-aid-kit|first aid kit]] is compulsory in a taxi, a tour bus and a public bus; not in a private car."
+   ]
+  },
+  {
+   "id": "ae-fire-water",
+   "title": "Vehicle fire and a vehicle in water",
+   "summary": "Two rare situations that call for quick action: get out and get away — before trying anything else.",
+   "terms": [
+    "vehicle-fire",
+    "fire-extinguisher"
+   ],
+   "body": "Two hazards that are rare, but deadly if you hesitate: a [[term:vehicle-fire|vehicle fire]] and a vehicle that goes into water.\n\n# Vehicle fire\n:::danger\nA burning smell, smoke from under the [[term:hood|bonnet]] or through the dashboard — get off the road, switch off the engine, get all the passengers out and move away to a safe distance. Only afterwards, if at all, consider doing anything else.\n:::\n\nDo not open the bonnet if thick smoke is coming out of it — a sudden rush of air can make the fire flare up much more fiercely.\n\nIf there is a [[term:fire-extinguisher|fire extinguisher]] in the vehicle and you can reach it safely, you can try to put out a small fire at an early stage, with a clear escape route behind you. A fire that has already spread — move away and call Fire and Rescue Services, {{fact:emergency.fire_and_rescue}}.\n\n:::note\nA fire extinguisher is not compulsory in a private car, a motorcycle or a tractor. It is compulsory in a taxi, a commercial vehicle, a bus and other additional vehicles (reg. 370).\n:::\n\n# A vehicle that goes into water\nA sudden flash flood or accidentally driving into deep water can sink a vehicle within a few minutes. The vehicle may float briefly and then sink gradually.\n\n:::danger\nOpen a window or door immediately, before the water covers them — in most vehicles, power windows stop working the moment water reaches the electrical system. If the window will not open, break it with a hard metal object or an emergency hammer, at a corner of the side window, not in the middle. A door is hard to open while there is still a large pressure difference between inside and outside; if there is still time, it is sometimes better to wait until the water inside equalises with the water outside, and only then push it open. Children and passengers who find it hard to move get out first.\n:::\n\nAn earlier decision — not to enter flowing floodwater at all — is covered in [[chapter:special-roads|Special roads and situations]].",
+   "keyPoints": [
+    "Fire: get off the road, switch off the engine, get all passengers out and move away — before anything else.",
+    "Do not open a bonnet with thick smoke coming out of it.",
+    "A fire extinguisher is compulsory in a taxi, a commercial vehicle and a bus; not in a private car.",
+    "A vehicle in water: open or break a window immediately, before the electrics fail and the water covers it."
+   ]
+  },
+  {
+   "id": "ae-insurance",
+   "title": "Reporting, insurance, documentation and witnesses",
+   "summary": "Two different kinds of insurance, and what is worth documenting at the scene so the claim goes through without arguments.",
+   "terms": [
+    "comprehensive-insurance",
+    "uninsured-driving"
+   ],
+   "body": "Once the scene is safe and the legal reports have been made (in [[lesson:ae-duties|Your duties after an accident]]), there are a few more steps that decide how the accident will be resolved financially.\n\n# Two kinds of insurance\n[[term:compulsory-insurance|Compulsory insurance]] is required by law for every vehicle, and covers bodily injury to the driver, passengers and pedestrians — not damage to property. [[term:comprehensive-insurance|Comprehensive insurance]] is voluntary, chosen by the owner, and also covers damage to the vehicle itself, and sometimes theft and weather damage too — depending on the specific policy's terms.\n\n:::warn\nDriving without valid [[term:compulsory-insurance|compulsory insurance]] is a serious [[term:uninsured-driving|offence]], even if no accident actually happened. See the penalties in [[chapter:enforcement|Offences, fines and points]].\n:::\n\n# What to document at the scene\nBefore the vehicles move, if it is possible and safe to do so: photograph both vehicles from several angles, their position relative to the road, the signs and the road markings, the damage and the number plates, and the road conditions — wetness, visibility, lighting. Note down the other party's name, ID and licence number, phone number, insurance policy number and insurance company.\n\n# Witnesses\nIf someone saw the accident, ask them for their name and phone number. The testimony of someone who was not involved can settle a dispute about who is at fault, when there is no camera that recorded the moment itself.\n\n# Reporting to the insurance company\nReport to the insurance company as soon as possible, even if it is still unclear who is at fault — some policies set a maximum time for reporting, and a delay can harm your cover.\n\n:::tip\nEven in a minor accident with no dispute, it is worth documenting — damage that looks minor can turn out to be more serious, and memory changes over time.\n:::",
+   "keyPoints": [
+    "[[term:compulsory-insurance|Compulsory insurance]] covers bodily injury only and is required for every vehicle; [[term:comprehensive-insurance|comprehensive insurance]] is voluntary and also covers the vehicle itself.",
+    "Driving without valid compulsory insurance is a serious [[term:uninsured-driving|offence]].",
+    "Photograph the damage, position and number plates, and note the other party's details, before the vehicles move.",
+    "An uninvolved witness's details can settle a dispute about fault."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "chapter": "passenger-safety",
+ "title": "Seatbelts, child seats and passengers",
+ "summary": "The seatbelt, the child seat and the airbag don’t work without you - how to belt, seat and secure every passenger in the car correctly.",
+ "lessons": [
+  {
+   "id": "ps-belts",
+   "title": "Seatbelts for everyone",
+   "summary": "A correctly worn seatbelt is the single most important protection in the car - for the driver and every passenger, in every seat.",
+   "terms": [
+    "seatbelt",
+    "seatbelt-pretensioner"
+   ],
+   "body": "In a crash, the car stops within a fraction of a second, but the body inside it keeps moving forward at the speed the car had. The [[term:seatbelt|seatbelt]] is what stops the body gradually and spreads the force across the strong bones - the pelvis and chest - instead of the body hitting the steering wheel, the windscreen, or being thrown out of the car.\n\n:::law\nThe driver and every passenger - in the front seats and the rear seats alike - must wear a seatbelt or be secured in a suitable child safety seat or booster seat (Traffic Regulations, reg. 83B).\n:::\n\n# How to wear it correctly\n- **The diagonal strap** goes over the collarbone, across the middle of the shoulder - not under the arm and not behind the back.\n- **The lap strap** sits low across the pelvic bones, not across the soft stomach.\n- The strap is **snug**, with no twist and no thick clothing underneath it creating slack.\n- A middle seat, when it is allowed to carry an extra passenger beside the driver, is worn with a lap-only strap.\n\n:::tech Seatbelt pretensioner\nThe [[term:seatbelt-pretensioner|seatbelt pretensioner]] tightens the strap instantly at the moment of impact, before the body has time to move - shortening the distance the body travels forward and improving protection.\n:::\n\n# Pregnancy\nBoth a pregnant driver and a pregnant passenger must wear a seatbelt. The lap strap goes **under the bump**, across the hips, and the diagonal strap goes between the breasts, beside the bump. Never remove the seatbelt “to protect the baby”: the opposite is true - the best way to protect the baby is to keep the mother belted and free from injury in a sudden stop or crash.\n\n# Exemptions and exceptions\nThe law exempts only specific cases: reversing, a taxi driver on an urban road with passengers (and the passengers in the rear seat), a written medical exemption from the Licensing Authority, and anyone aged 14 or over, weighing no more than 35 kg and no taller than 150 cm (reg. 83C). These are **not** general “excuses” - they are the only exceptions the law recognises.\n\nThe [[dash:seatbelt|seatbelt]] light on the dashboard reminds you who isn’t belted - it’s not a substitute for checking by eye that every passenger, including children in the back seat, is belted.\n\n:::fine\nDriving or riding without a seatbelt on: {{fine:seatbelt-driver}} and {{points:seatbelt-driver}} points for an unbelted driver; carrying an unbelted passenger: {{fine:seatbelt-passenger}} and {{points:seatbelt-passenger}} points for the driver.\n:::",
+   "keyPoints": [
+    "A seatbelt is compulsory for the driver and every passenger, in the front seats and rear seats alike (reg. 83B).",
+    "The diagonal strap goes over the collarbone, the lap strap sits low on the pelvis - not on the stomach.",
+    "When pregnant, always wear a belt: the lap strap goes under the bump, above the hips.",
+    "The exemptions from wearing a belt are few and defined by law - they’re not a general excuse.",
+    "The driver is responsible for every passenger in the car, including in the back seat, being belted."
+   ]
+  },
+  {
+   "id": "ps-children",
+   "title": "Child safety seats",
+   "summary": "A small child needs a seat suited to their age and weight - not just a belt - and an older child needs a booster seat.",
+   "terms": [
+    "child-safety-seat",
+    "booster-seat",
+    "isofix"
+   ],
+   "body": "A regular seatbelt is designed for an adult body. On a small child it may pass across the stomach or the neck instead of the strong bones, causing harm instead of protecting. That’s why the law requires a [[term:child-safety-seat|child safety seat]] or a [[term:booster-seat|booster seat]] suited to the child’s age and size.\n\n:::law Three ages, three requirements\n- **Up to age {{fact:child.rear_facing_age}}** - a child safety seat with its back facing the front of the car (the child facing backward).\n- **Up to age {{fact:child.safety_seat_age}}** - a child safety seat suited to the child’s height and weight.\n- **From age {{fact:child.safety_seat_age}} up to age {{fact:child.booster_age_max}}** - a suitable child safety seat or booster seat.\n\nThe requirement applies to the front seat and the rear seat alike, in most vehicles (Traffic Regulations, reg. 83A).\n:::\n\n# Why a rear-facing seat\nA rear-facing seat spreads the force of braking or a collision across the child’s whole back, including the area supporting the neck and head, which is not yet developed enough to absorb a frontal impact. This is why the law requires it in the first year, and safety organisations recommend keeping the child facing backward for longer still, as long as the seat allows it for their height.\n\n# Airbags\n:::danger\nYou must not seat a child in a child safety seat or booster seat facing an active airbag - it must be disconnected first (reg. 83A(d)). An airbag that deploys forcefully into a rear-facing seat can badly injure the child instead of protecting them.\n:::\n\n# Correct installation\n[[term:isofix|ISOFIX]] is a fixed anchoring standard in the car seat that lets you install a child safety seat without using the belt - more stable and easier to install correctly. Whether with ISOFIX or with a belt, it’s important: the harness straps are snug (the test: one finger barely fits under the strap), no thick coat underneath them, and the recline angle suited to the baby’s age.\n\n:::fine\nCarrying a child up to age 3 without a child safety seat: {{fine:child-under-3-no-seat}}. A child aged 3 to 8 without a suitable seat: {{fine:child-3-8-no-seat}}. A child aged 8 to 14 without a belt or booster seat: {{fine:child-8-14-no-belt}}.\n:::",
+   "keyPoints": [
+    "Up to age {{fact:child.rear_facing_age}}: a rear-facing seat. Up to age {{fact:child.safety_seat_age}}: a child safety seat. Up to age {{fact:child.booster_age_max}}: a child safety seat or booster seat.",
+    "You must not seat a child in a child safety seat or booster seat facing an active airbag - it must be disconnected.",
+    "ISOFIX installs a seat without a belt, more stably.",
+    "Snug harness straps, with no thick coat underneath - a simple test: one finger barely fits."
+   ]
+  },
+  {
+   "id": "ps-forgotten",
+   "title": "Children in a hot car: the silent danger",
+   "summary": "A car parked in the sun turns into an oven within minutes - and a child forgotten inside it is in real danger to their life.",
+   "terms": [],
+   "body": "Inside a closed car, the heat rises at a surprising speed - even on a mild day, and even with a window cracked open. The temperature in the cabin can jump by tens of degrees within just a few minutes, long before anything looks wrong from the outside. A child’s body heats up faster than an adult’s and finds it much harder to regulate the heat - what feels like “just a few minutes” to a driver can be dangerous for a child.\n\n:::danger This isn’t just negligence - it’s a serious offence\nLeaving a child up to age {{fact:child.alone_max_age}} without proper supervision, in a way that endangers their life or wellbeing, is a serious criminal offence carrying a prison sentence - up to three years, and an additional year if it was done negligently (Penal Law, 1977, section 361). This is true everywhere, and certainly in a closed, hot car.\n:::\n\n# How it actually happens\nMost cases aren’t deliberate neglect: a change in routine, fatigue, stress or a distraction at the critical moment causes a parent to “forget” that the child fell asleep in the back seat. This is exactly why the best protection is a **fixed habit**, not memory.\n\n:::tip Habits that prevent this\n- Leave something you must take with you - phone, bag, ID - **in the back seat**, so you have to look back every time you get out of the car.\n- A “look in the back” rule every time you lock the car, even on a routine trip.\n- Ask your child’s school or daycare to contact you if the child doesn’t arrive and no message was sent.\n- Never leave a child in the car “for a moment”, even with a window open and even in the shade.\n:::\n\n# What to do if you see a child alone in a hot car\n:::danger Immediate action\n1. Call the police immediately on **{{fact:emergency.police}}** or Magen David Adom on **{{fact:emergency.mda}}**.\n2. Try to open the car or find the parent nearby right away.\n3. If the child looks distressed and the car can’t be opened - act to get them out **immediately**, even if you need to break a window, and don’t wait.\n4. Move the child into the shade, cool them gently (water, a damp cloth) and wait for the medical team.\n\nIn a situation like this, every minute counts - it is better to act and err on the side of caution than to wait.\n:::",
+   "keyPoints": [
+    "The temperature inside a closed car rises very quickly, even on a mild day - and a child’s body heats up faster than an adult’s.",
+    "Leaving a child up to age {{fact:child.alone_max_age}} without proper supervision that endangers them is a serious criminal offence (Penal Law, section 361).",
+    "The best protection is a fixed habit - looking at the back seat every time you get out of the car.",
+    "A child alone in a hot car: call {{fact:emergency.police}} or {{fact:emergency.mda}} immediately and act to get them out without waiting."
+   ]
+  },
+  {
+   "id": "ps-airbags-restraints",
+   "title": "Airbags and headrests",
+   "summary": "The airbag and the headrest only protect you when they work together with a correctly worn seatbelt and a correctly adjusted seat.",
+   "terms": [
+    "airbag",
+    "headrest"
+   ],
+   "body": "The [[term:airbag|airbag]] and the [[term:headrest|headrest]] are part of one protective system, not separate components - and each one only works if the rest is in place.\n\n# How the airbag protects you\nIn a crash the airbag inflates within milliseconds, long before the body has time to reach the steering wheel or windscreen, and cushions the impact to the head and chest. But it is designed to work **together** with the seatbelt, not instead of it: without a belt, the body reaches the airbag at the wrong angle and speed, and may be injured by it more than protected.\n\n:::warn Children and airbags\nAs covered in the chapter on [[lesson:ps-children|child safety seats]], you must not seat a child in a child safety seat or booster seat facing an active airbag - it must be disconnected (reg. 83A(d)). An airbag that deploys forcefully into a rear-facing seat can severely injure the child.\n:::\n\nAn [[dash:airbag|airbag light]] that stays on permanently (not just flashing briefly at start-up and then going off) signals a fault in the system - an airbag that won’t deploy in a crash, or that might deploy when it shouldn’t. Keep driving as normal but get to a garage soon.\n\n# The headrest\nA headrest that is too low, or too far from the head, doesn’t do its job. The correct position: the top of the headrest level with the crown of the head (at least level with the eyes), and as close to the head as possible. In a rear-end (“whiplash”) collision, the body is pushed forward while the head lags behind for a moment - a correctly adjusted headrest supports the head early and reduces whiplash of the neck; a headrest that is too low doesn’t support it at all.\n\n:::tip\nWhen sitting in an unfamiliar car - a taxi, a rental car, a friend’s car - check the headrest height before setting off, just as you adjust the mirrors.\n:::",
+   "keyPoints": [
+    "The airbag works together with the seatbelt, not instead of it - without a belt, the body reaches it at the wrong angle and speed.",
+    "You must not seat a child in a child safety seat or booster seat facing an active airbag - it must be disconnected.",
+    "An airbag light that stays on signals a fault - get to a garage.",
+    "The correct headrest position: its top at least level with the crown of the head, as close to the head as possible, to reduce whiplash in a rear-end collision."
+   ]
+  },
+  {
+   "id": "ps-loads-inside",
+   "title": "Objects, pets and passenger behaviour",
+   "summary": "Anything unsecured in the car - an object or an animal - becomes a projectile in a crash.",
+   "terms": [],
+   "body": "A seatbelt protects passengers - but a heavy object or an animal that isn’t secured in the car isn’t belted, and in a sudden stop or crash it keeps moving forward at the speed of travel, exactly as explained about kinetic energy in the chapter [[chapter:speed-distance|Speed, distance and braking]]. A bag, a toolbox or a water bottle rolling freely on the back seat can badly injure the passengers in front of it.\n\n# Objects in the car\n- Heavy cargo belongs in the boot, tied down or in a cargo net - not on the back seat or the parcel shelf (where it also blocks the view through the rear-view mirror).\n- Don’t leave small, sharp objects (pens, writing tools, tools) loose in the driver’s area.\n- Doors are locked and secure before driving, especially with children in the car - so a door doesn’t open by accident while driving.\n\n# Animals in the car\n:::warn\nA dog or cat loose in the car is both a danger to itself and a serious distraction to the driver - jumping onto the driver’s lap at exactly the wrong moment can stop them controlling the car, just like a phone distraction. Carry an animal in a suitable safety harness, in a secured carrier, or in the boot behind a separating net.\n:::\n\n# Passenger behaviour\nThe driver is responsible for the car and its passengers throughout the drive: hands and heads stay inside the window, children don’t play with the door mechanisms while driving, and arguments or noisy games that distract the driver are stopped before they have an effect - not dealt with while driving. A passenger who distracts the driver, whether on purpose or absent-mindedly, endangers everyone, just like distraction that comes from the driver themselves (see [[chapter:human-factor|The driver: the human factor]]).\n\n# Getting children in and out\nWhen letting a child out of or into the car on the street - from the side nearest the pavement, not toward the traffic, and only once the car has come to a complete stop with the handbrake on. Wait until the child has moved away from the path of traffic before continuing. Organised school transport has its own additional rules, in the chapter [[chapter:buses|Buses and public transport]].",
+   "keyPoints": [
+    "An unsecured object or animal keeps moving forward in a crash, like a projectile - heavy cargo belongs in the boot, tied down or netted.",
+    "An animal travels in a safety harness, a secured carrier or the boot - not loose in the cabin.",
+    "The driver is responsible for passenger behaviour during the drive: hands and heads inside, no door mechanisms while driving.",
+    "Let children out and in only from the pavement side, once the car has come to a complete stop."
+   ]
+  }
+ ]
+}

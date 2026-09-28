@@ -1,0 +1,369 @@
+{
+ "chapter": "human-factor",
+ "questions": [
+  {
+   "id": "q-hf-001",
+   "lesson": "hf-perception",
+   "q": "How does a driver’s field of view change at high speed?",
+   "options": [
+    "It narrows, and the driver tends to focus far ahead and lose sensitivity to the sides",
+    "It widens and lets you see more at the sides",
+    "It stays exactly the same at every speed",
+    "It becomes sharper at the sides and blurred in the centre"
+   ],
+   "answer": 0,
+   "explain": "At high speed the central field of view narrows, so it’s important to actively scan the road and not focus only straight ahead.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-002",
+   "lesson": "hf-perception",
+   "q": "What is hazard perception?",
+   "options": [
+    "Seeing only warning signs on the road",
+    "Spotting early a situation that may develop into a hazard, not only a hazard that already exists",
+    "A skill only police officers need",
+    "Driving slowly enough to see everything"
+   ],
+   "answer": 1,
+   "explain": "An experienced driver spots signs that warn of danger - like a ball rolling into the road - before the hazard itself appears.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-003",
+   "lesson": "hf-perception",
+   "q": "A driver is having a complex work call on a hands-free device, eyes on the road. He doesn’t notice a pedestrian who crossed, even though he was looking that way. What is the correct explanation?",
+   "options": [
+    "This can’t happen if the hands are on the wheel",
+    "This only happens to inexperienced drivers",
+    "It’s a fault in the driver’s eyes, not his attention",
+    "Inattentional blindness - the brain, not just the eye, has to process what is seen, and a complex conversation takes up attention"
+   ],
+   "answer": 3,
+   "explain": "Inattentional blindness makes you miss something obvious even when your gaze is pointed at it, because the brain - not just the eye - has to process the information.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-004",
+   "lesson": "hf-perception",
+   "q": "Which of the following is a good example of early “hazard perception”, before the hazard itself actually happened?",
+   "options": [
+    "An advertising billboard at the side of the road",
+    "A ball rolling into the road near children playing",
+    "A tree a long way from the road",
+    "A parked car in an empty car park"
+   ],
+   "answer": 1,
+   "explain": "A rolling ball warns of the chance that a child will run after it into the road - a driver with good hazard perception will slow down and prepare for it in advance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-005",
+   "lesson": "hf-fatigue",
+   "q": "What are the early warning signs of fatigue while driving?",
+   "options": [
+    "Increased sweating alone",
+    "Improved concentration and reaction time",
+    "Heavy eyes, repeated yawning and a slight drift within the lane",
+    "Increased appetite and thirst"
+   ],
+   "answer": 2,
+   "explain": "Heavy eyes, yawning, trouble focusing your gaze and a slight drift within the lane are signs that must make a driver stop.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-006",
+   "lesson": "hf-fatigue",
+   "q": "What is microsleep?",
+   "options": [
+    "A planned nap at the roadside",
+    "A general feeling of tiredness throughout the drive",
+    "Falling asleep for just a few seconds, sometimes with eyes open, without the driver noticing",
+    "Deep sleep of at least an hour"
+   ],
+   "answer": 2,
+   "explain": "Microsleep lasts just a few seconds, and most drivers who experienced it don’t remember falling asleep at all.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-007",
+   "lesson": "hf-fatigue",
+   "q": "A driver feels very tired on a long night drive. What is the correct action?",
+   "options": [
+    "Speed up to finish the drive faster",
+    "Stop somewhere safe and sleep, even briefly",
+    "Drink strong coffee and keep going without stopping",
+    "Open a window and turn up the music until arriving"
+   ],
+   "answer": 1,
+   "explain": "The only solution to real fatigue is sleep; music, an open window and caffeine only delay the critical moment.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-008",
+   "lesson": "hf-fatigue",
+   "q": "During which hours is the risk of fatigue while driving highest?",
+   "options": [
+    "Only on weekends",
+    "During the body’s natural low points - the small hours of the morning and the early afternoon",
+    "The risk is the same at every hour",
+    "Only between 12:00 and 14:00"
+   ],
+   "answer": 1,
+   "explain": "In the small hours and mid-afternoon the body is at a natural low in alertness, and combined with accumulated lack of sleep, the risk is especially high.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-009",
+   "lesson": "hf-distraction",
+   "q": "What is a driver allowed to do with a mobile phone while the vehicle is moving?",
+   "options": [
+    "Read a text message when the car is moving slowly in traffic",
+    "Hold it and talk without a hands-free device",
+    "Take photos holding the phone while driving",
+    "Use it only through a hands-free device, without holding it"
+   ],
+   "answer": 3,
+   "explain": "Regulation 28(b) forbids holding or using a phone without a hands-free device, and forbids sending or reading a text message - {{fine:phone-handheld}} and {{points:phone-handheld}} points.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-010",
+   "lesson": "hf-distraction",
+   "q": "What is the difference between manual, visual and cognitive distraction?",
+   "options": [
+    "Cognitive is only when talking on the phone without a hands-free device",
+    "Visual is only driving at night",
+    "There’s no difference, they’re all the same thing",
+    "Manual - hands off the wheel; visual - eyes off the road; cognitive - the mind busy with something else even if the eyes and hands are fine"
+   ],
+   "answer": 3,
+   "explain": "A combination of all three types of distraction at once, like writing a text message, is the most dangerous.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-011",
+   "lesson": "hf-distraction",
+   "facts": [
+    "speed.urban"
+   ],
+   "q": "A driver travels at {{fact:speed.urban}} in the city and glances sideways for about 2 seconds. About how many metres does he cover without looking at the road?",
+   "options": [
+    "About 28 metres",
+    "About 14 metres",
+    "About 50 metres",
+    "About 5 metres"
+   ],
+   "answer": 0,
+   "explain": "At {{fact:speed.urban}} the car covers about 14 metres per second; in 2 seconds of glancing sideways, it covers about 28 metres without seeing the road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-012",
+   "lesson": "hf-distraction",
+   "q": "Why can even a hands-free conversation distract a driver, even though it is legal and their hands are on the wheel?",
+   "options": [
+    "A complex conversation takes up cognitive attention, even without manual or visual distraction",
+    "It is only forbidden in heavy vehicles",
+    "A hands-free device damages hearing",
+    "It doesn’t distract at all, that’s why it’s legal"
+   ],
+   "answer": 0,
+   "explain": "The brain has limited attention; a conversation that requires thinking - arguing, planning, remembering - takes attention away from the road even without holding a phone.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-013",
+   "lesson": "hf-distraction",
+   "q": "What does regulation 28A of the Traffic Regulations forbid?",
+   "options": [
+    "Operating a display visible from the driver’s seat while driving, that is not a control or navigation display",
+    "Wearing sunglasses",
+    "Operating a navigation display while driving",
+    "Holding a printed map in the car"
+   ],
+   "answer": 0,
+   "explain": "Regulation 28A forbids a display visible from the driver’s seat while driving, except a vehicle control or navigation display.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-014",
+   "lesson": "hf-alcohol",
+   "facts": [
+    "alcohol.general.breath"
+   ],
+   "q": "What is the maximum alcohol concentration allowed in a breath test for a regular driver (not a new driver, under 24, or driving a heavy or public vehicle)?",
+   "options": [
+    "100 micrograms per litre of exhaled breath",
+    "{{fact:alcohol.strict.breath}}",
+    "{{fact:alcohol.general.breath}}",
+    "500 micrograms per litre of exhaled breath"
+   ],
+   "answer": 2,
+   "explain": "The threshold for a regular driver is {{fact:alcohol.general.breath}}; the stricter threshold, {{fact:alcohol.strict.breath}}, applies to certain groups of drivers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-015",
+   "lesson": "hf-alcohol",
+   "facts": [
+    "alcohol.strict.breath",
+    "alcohol.strict.age",
+    "alcohol.strict.weight_threshold"
+   ],
+   "q": "Who does the strict alcohol threshold of {{fact:alcohol.strict.breath}} in breath apply to?",
+   "options": [
+    "Only bus drivers",
+    "Only drivers over 60",
+    "All drivers, with no exceptions",
+    "A new driver, a driver under {{fact:alcohol.strict.age}}, a driver of a commercial or work vehicle over {{fact:alcohol.strict.weight_threshold}}, and a driver of a public vehicle"
+   ],
+   "answer": 3,
+   "explain": "Traffic Ordinance, section 64B, sets a strict threshold, close to zero, for these groups.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-016",
+   "lesson": "hf-alcohol",
+   "q": "When is it permitted to drink an intoxicating beverage in any amount and drive immediately afterwards?",
+   "options": [
+    "Only when travelling a short distance",
+    "Never - impairment to driving ability begins from the first sip",
+    "When there’s another passenger in the car who can “keep watch”",
+    "After a large meal"
+   ],
+   "answer": 1,
+   "explain": "The legal threshold is an enforcement limit, not an assurance: impairment to reaction time and judgement begins even before the threshold.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-017",
+   "lesson": "hf-alcohol",
+   "facts": [
+    "alcohol.presumption_hours"
+   ],
+   "q": "What is the “presumption” the law establishes regarding an alcohol concentration measured in a test?",
+   "options": [
+    "That the measured concentration was also in the driver’s body during the {{fact:alcohol.presumption_hours}} hours before the test, unless proven otherwise",
+    "That the concentration is valid for a week ahead",
+    "That the concentration drops immediately after the test",
+    "That the concentration was measured by mistake"
+   ],
+   "answer": 0,
+   "explain": "Section 64B of the Ordinance sets a presumption that the measured concentration was also in the driver’s body during the hours before the test.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-018",
+   "lesson": "hf-alcohol",
+   "q": "A driver was required by a police officer to take a breath test, and refused. What is correct?",
+   "options": [
+    "There’s no consequence at all, you can simply refuse and keep driving",
+    "You may refuse only once a year",
+    "The refusal itself is a serious offence, carrying the same penalty as drunkenness",
+    "The refusal only results in a verbal warning"
+   ],
+   "answer": 2,
+   "explain": "Refusing to be tested is a separate, serious offence, {{points:refuse-sobriety-test}} points - “saving yourself” by refusing doesn’t help.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-019",
+   "lesson": "hf-alcohol",
+   "q": "One evening, a person drank a large amount of alcohol. The next morning he feels “fine” and plans to drive. What is correct?",
+   "options": [
+    "Strong coffee in the morning neutralises the remaining alcohol",
+    "Once he’s slept a bit, the alcohol has certainly left his body",
+    "The liver breaks down alcohol slowly and steadily - his alcohol concentration may still be above the legal threshold, even if he feels subjectively fine",
+    "It only depends on body weight, not on the time that has passed"
+   ],
+   "answer": 2,
+   "explain": "Breaking down alcohol in the liver is a relatively slow, steady process that cannot be sped up; heavy drinking in the evening can leave a concentration above the threshold even in the morning.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-020",
+   "lesson": "hf-drugs",
+   "q": "A driver is taking a prescription medicine whose leaflet says “may cause drowsiness and impair driving alertness”. What should he do?",
+   "options": [
+    "Drive only on slow urban roads",
+    "Take the warning seriously, and when in doubt consult a pharmacist or doctor before driving",
+    "Take a lower dose than prescribed and drive as usual",
+    "Ignore it, because the medicine is legal and prescribed"
+   ],
+   "answer": 1,
+   "explain": "A leaflet’s warning about driving was written exactly for this situation; when in doubt, ask a pharmacist or doctor before driving.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-021",
+   "lesson": "hf-drugs",
+   "q": "By law, when is a driver considered “drunk” because of drugs?",
+   "options": [
+    "The law doesn’t address drugs, only alcohol",
+    "Only if caught using a drug inside the vehicle itself",
+    "Only if he admitted to using a drug",
+    "When a dangerous drug or its breakdown products are in his body, or when he is under its influence"
+   ],
+   "answer": 3,
+   "explain": "Traffic Ordinance, section 64B(a), equates a dangerous drug with alcohol: both make a driver “drunk” for legal purposes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-022",
+   "lesson": "hf-drugs",
+   "q": "Which common types of medicine can impair alertness while driving?",
+   "options": [
+    "Vitamins and mineral supplements",
+    "Skin ointments",
+    "Sleeping pills, sedatives and older antihistamines for allergies",
+    "Moisturising eye drops alone"
+   ],
+   "answer": 2,
+   "explain": "Sleeping pills, sedatives and older-generation antihistamines are known to cause drowsiness and impair alertness.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-023",
+   "lesson": "hf-emotions",
+   "q": "What is the effect of anger and stress on driving?",
+   "options": [
+    "They improve reaction time",
+    "They narrow attention and increase the tendency to take risks, similar to fatigue",
+    "They have no effect on safe driving",
+    "They only affect older drivers"
+   ],
+   "answer": 1,
+   "explain": "Anger and stress impair judgement and patience and increase the tendency to take risks - exactly like fatigue.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-024",
+   "lesson": "hf-emotions",
+   "q": "Another driver behaves rudely toward you on the road - prolonged honking and dangerous tailgating. What is the correct behaviour?",
+   "options": [
+    "Honk back and slow down to “teach them a lesson”",
+    "Stop in the middle of the road and get out to talk to them",
+    "Increase your distance, don’t confront them, and if needed drive to a public place and call the police",
+    "Speed up to “beat” them on the road"
+   ],
+   "answer": 2,
+   "explain": "Confronting an aggressive driver escalates the risk; the safe way is to pull away and not react.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hf-025",
+   "lesson": "hf-emotions",
+   "q": "Why are young and new drivers at higher risk, beyond inexperience alone?",
+   "options": [
+    "They always drive too slowly",
+    "The law places no restrictions on them at all",
+    "Their confidence in their own driving ability is usually higher than their actual ability",
+    "They always drive with an accompanying driver"
+   ],
+   "answer": 2,
+   "explain": "A combination of overconfidence, excitement and peer pressure increases risk-taking among young drivers.",
+   "shuffled": true
+  }
+ ]
+}

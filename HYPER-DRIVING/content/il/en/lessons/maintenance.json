@@ -1,0 +1,111 @@
+{
+ "chapter": "maintenance",
+ "title": "Routine maintenance and the periodic vehicle test",
+ "summary": "Preventive servicing, checks a driver can do alone, filters and belts, the battery, the periodic test, and choosing a garage.",
+ "lessons": [
+  {
+   "id": "mt-schedule",
+   "title": "Scheduled servicing: why, what it includes, and who decides",
+   "summary": "Preventive servicing by the owner's handbook costs less than repairing after a breakdown.",
+   "terms": [
+    "service-interval",
+    "workshop"
+   ],
+   "body": "Preventive servicing on the schedule set by the vehicle manufacturer is the cheapest way to keep a car reliable — far cheaper than repairing it after something has already broken.\n\n# Why scheduled servicing matters\nConsumable parts — oil, filters, pads, fluids — lose effectiveness gradually, not in a single day. An engine running on old oil wears out faster; brake pads worn right down damage the discs too. [[term:service-interval|Scheduled servicing]] catches the problem before it becomes expensive or dangerous.\n\n# What a typical service includes\n- Checking and changing the engine oil and oil filter.\n- Checking fluid levels: coolant, brakes, power steering, washer.\n- Checking the condition of the tyres, brakes, suspension and exhaust.\n- Checking the lights, wipers and belts.\n- According to the schedule — replacing filters, belts and other items (next lesson).\n\n:::law\nThe manufacturer's handbook decides the exact service intervals — in kilometres and months, whichever comes first. Driving in harsh conditions — dust, heat, towing, lots of short trips — shortens them.\n:::\n\n# Where to get it serviced\nYou can have the service done at the importer's authorised garage or at a private [[term:workshop|garage]] — as long as you keep tidy records and use the right parts and fluids. See the last lesson in this chapter for details on choosing a garage.",
+   "keyPoints": [
+    "Preventive servicing by the owner's handbook is significantly cheaper than repairing after a breakdown.",
+    "A typical service includes oil and filter, checking fluids, tyres, brakes and lights.",
+    "Service intervals depend on driving conditions — harsh driving shortens them.",
+    "You can service the car at the importer's garage or a private garage, as long as you keep tidy records."
+   ]
+  },
+  {
+   "id": "mt-diy",
+   "title": "The checks a driver can do alone",
+   "summary": "Oil, coolant, brakes, washer fluid, tyres and lights — without opening up the engine for repair.",
+   "terms": [
+    "fluid-check",
+    "engine-oil",
+    "coolant",
+    "brake-fluid",
+    "washer-fluid",
+    "wiper"
+   ],
+   "body": "A few simple checks, taking just a few minutes, save unnecessary trips to the garage and catch a problem before it turns into a breakdown on the road.\n\n# Engine oil\nCheck it on the dipstick with the engine switched off for a few minutes and the car on level ground — between the MIN and MAX marks. [[term:engine-oil|Oil]] below MIN can leave engine parts without enough lubrication.\n\n# Coolant\nCheck the [[term:coolant|coolant]] level in the expansion tank, **only when the engine is cold**.\n\n:::danger\nNever open the radiator cap or the expansion tank cap while the engine is hot — the fluid is boiling and under pressure, and can cause severe burns. See the chapter [[chapter:engine|The engine and its systems]] for details on cooling and overheating.\n:::\n\n# Brake fluid\nCheck the level in the [[term:brake-fluid|fluid]] reservoir, near the bulkhead in the engine bay. A marked drop is a warning sign — advanced pad wear or a leak — and not something to wait on.\n\n# Washer fluid and wipers\n[[term:washer-fluid|Washer fluid]] is cheap, and impaired vision from a dirty windscreen is just as dangerous as any other fault. Also check the [[term:wiper|wiper]] blades — tears or streaks on the windscreen are a sign it's time to replace them.\n\n# Tyres and lights\nFull details on checking tyres are in the chapter [[chapter:tyres|Tyres and wheels]]. Check the lights all round the car — front, rear, brake and indicator — with the help of another person or a reflection off a wall.\n\n:::tip\nIt's worth setting yourself a routine: once a week, a five-minute check around the car — tyres, lights, washer fluid. It becomes a habit quickly.\n:::",
+   "keyPoints": [
+    "Check engine oil on the dipstick, with the engine off for a few minutes and the car on level ground.",
+    "Coolant is checked only when the engine is cold — never open a hot cap.",
+    "A drop in brake fluid level is a warning sign, not something to ignore.",
+    "A short weekly check of tyres, lights and washer fluid prevents surprises on the road."
+   ]
+  },
+  {
+   "id": "mt-filters-belts",
+   "title": "Filters and belts",
+   "summary": "What each filter cleans, and why the timing belt is the most dangerous of them.",
+   "terms": [
+    "oil-filter",
+    "air-filter",
+    "fuel-filter",
+    "cabin-filter",
+    "timing-belt",
+    "drive-belt"
+   ],
+   "body": "Filters and belts work quietly in the background, and when they are neglected, the damage arrives all at once.\n\n# Filters\n- **[[term:oil-filter|Oil filter]]** — filters metal particles and soot out of the engine oil; changed at every oil change.\n- **[[term:air-filter|Air filter]]** — stops dust and sand getting into the engine. A clogged filter restricts airflow and hurts performance and fuel consumption.\n- **[[term:fuel-filter|Fuel filter]]** — stops dirt and water before they reach the pump and the delicate injectors.\n- **[[term:cabin-filter|Cabin filter]]** — cleans the air entering the air conditioning and blower; clogged — weak air conditioning and a musty smell.\n\n# Timing belt and drive belt\nThe [[term:timing-belt|timing belt]] synchronises the rotation of the crankshaft with the rotation of the engine's valves. In most engines it is **critical**: if it snaps while driving, the valves and pistons can collide — damage that costs as much as a new engine.\n\n:::warn\nA timing belt does not sound or look worn — it simply snaps without warning. Replace it **by kilometres or years, whichever comes first**, as set by the vehicle manufacturer — not when you sense a problem.\n:::\n\nThe [[term:drive-belt|drive belt]] (\"auxiliary belt\") drives the alternator, the water pump and sometimes the air-conditioning compressor. A belt that squeals, especially on start-up, usually points to wear or incorrect tension.",
+   "keyPoints": [
+    "A clogged air filter hurts performance and fuel consumption; a clogged cabin filter hurts the air conditioning.",
+    "A snapped timing belt can wreck an entire engine — it is replaced on a schedule, not by feel.",
+    "A drive belt squealing on start-up usually points to wear or incorrect tension.",
+    "The replacement intervals for every filter and belt are set in the owner's handbook."
+   ]
+  },
+  {
+   "id": "mt-battery-care",
+   "title": "Caring for the 12V battery",
+   "summary": "What shortens battery life, and why a car left standing for a long time is at particular risk.",
+   "terms": [
+    "battery",
+    "12v-battery"
+   ],
+   "body": "The [[term:battery|battery]] supplies the large current needed for starting, and keeps the memory and clock running when the car is switched off. It is also the part that surprises you the most when it dies — usually on a cold morning, when you need it most.\n\n# What shortens battery life\n- **Only short, regular trips** — these don't let the battery recharge fully between one start and the next.\n- **Extreme heat** — the Israeli summer dries out the electrolyte inside the battery and shortens its life more than cold does.\n- **Electrical drain while the engine is off** — lights left on, a phone charger left plugged in, a door not fully closed.\n- **Age** — a typical [[term:12v-battery|12V battery]] in a private car lasts about three to five years; after that it is worth checking at every service.\n\n# A car left standing for a long time\nA car that does not drive for weeks — a trip abroad, a second car that hardly ever goes out — loses charge slowly even with nothing switched on, because the car's computer systems constantly draw a small current. A battery that has run completely flat and stayed empty for a long time deteriorates faster than a battery that is used regularly.\n\n:::tip\nIf you know in advance that the car will stand for weeks, check the owner's handbook to see whether it recommends disconnecting the negative battery terminal (in some cars, disconnecting it resets settings), or using a battery maintainer (\"trickle charger\").\n:::\n\n:::danger\nA battery contains acid and flammable hydrogen gas. Do not bring a flame or a spark near it, and do not tilt it — leaking acid causes burns. See the chapter [[chapter:electrical|The electrical and lighting system]] for details on safe jump-starting.\n:::",
+   "keyPoints": [
+    "Only short trips and extreme heat significantly shorten battery life.",
+    "A typical 12V battery lasts about three to five years.",
+    "A car left standing for weeks without driving loses charge slowly even with nothing switched on.",
+    "A battery contains acid and flammable hydrogen gas — it needs careful handling."
+   ]
+  },
+  {
+   "id": "mt-test",
+   "title": "The periodic vehicle test (\"the test\") and the vehicle licence",
+   "summary": "When the car must be tested, what is checked, and how to prepare.",
+   "terms": [
+    "vehicle-annual-test",
+    "vehicle-license"
+   ],
+   "body": "The [[term:vehicle-annual-test|periodic vehicle test]] (known as \"the test\") checks that the car is still fit to drive, from a safety and environmental point of view — not just that it runs.\n\n# When it's tested\nA new private car, first registered from 1 January 2023, is exempt from the periodic vehicle test between registration and its first test: {{fact:vehicletest.private.first_test_years}} from first registration (reg. 273(b2)(1)). After that, under the reform, the test repeats every {{fact:vehicletest.private.interval_years}}. An older car, and other vehicles — commercial, taxi, bus, motorcycle — are usually tested once a year.\n\n:::note\nThe exact test intervals by vehicle type and age vary and are sometimes updated. You can always check the exact date on the vehicle licence itself or on the Ministry of Transport website.\n:::\n\n# What is checked\n- The brake system and how it performs.\n- The steering and suspension.\n- The tyres — tread depth and general condition.\n- The lights and indicators.\n- The exhaust system and air pollution.\n- Windows, mirrors and seatbelts.\n- The bodywork — corrosion and damage that endangers the structure.\n\nA car that passes receives a **roadworthiness stamp** on the [[term:vehicle-license|vehicle licence]].\n\n# How to prepare\nA simple self-check — everything covered in the previous lesson — catches common problems in advance: a blown bulb, a torn wiper blade, a worn tyre, low brake fluid. Fixing it before the test saves a repeat visit.\n\n:::law\nThe validity of the [[term:vehicle-license|vehicle licence]] or its renewal is {{fact:vehiclelicence.validity}} by default, and {{fact:vehiclelicence.validity_tractor}} for a tractor (reg. 276).\n:::",
+   "keyPoints": [
+    "A new private car is exempt from the periodic vehicle test for {{fact:vehicletest.private.first_test_years}} from first registration.",
+    "The test checks brakes, steering, tyres, lights, emissions, seatbelts and the condition of the bodywork.",
+    "A car that passes receives a roadworthiness stamp on the vehicle licence.",
+    "The vehicle licence is valid for {{fact:vehiclelicence.validity}} by default, {{fact:vehiclelicence.validity_tractor}} for a tractor."
+   ]
+  },
+  {
+   "id": "mt-garage",
+   "title": "Choosing a garage, parts and record-keeping",
+   "summary": "What's worth checking before trusting a garage, and why it pays to keep receipts.",
+   "terms": [
+    "aftermarket-parts",
+    "safety-recall"
+   ],
+   "body": "A good garage saves money in the long run — even if it is not the cheapest for a single service.\n\n# Choosing a garage\n- A business licence and the mechanics' certificates.\n- Transparency: a detailed quote before the work, not after.\n- The old parts that were replaced are shown to the owner on request.\n- Recommendations from other drivers, not just a prominent advert.\n\n# Original parts versus aftermarket parts\nA part made or approved by the vehicle manufacturer is an \"original part\"; an [[term:aftermarket-parts|aftermarket part]] is made by another company. Its quality ranges from identical to significantly inferior — for safety parts (brakes, steering, seatbelts) it is better to stick with a trusted original, even if it costs a bit more.\n\n# Safety recalls\nSometimes a manufacturer discovers a safety defect in a particular model and invites owners in for a free repair — a [[term:safety-recall|safety recall]]. Check whether your car is included in such a recall by its chassis number, with the importer or on the Ministry of Transport website — it's a free service, and it's not worth ignoring.\n\n# Record-keeping\nKeeping receipts and a tidy service book not only helps you remember when the next service is due — it also significantly raises the car's resale value. A used-car buyer checks this history before closing a deal.\n\n# Seasonal preparation\nBefore summer, it's worth checking the cooling system and air conditioning; before winter — wipers, washer fluid, and the condition of the brakes and tyres. A sharp change in the weather is the moment when marginal components fail.",
+   "keyPoints": [
+    "A trustworthy garage gives a quote up front and shows replaced parts on request.",
+    "For safety parts, an original part is preferable; an [[term:aftermarket-parts|aftermarket part]] varies in quality.",
+    "It's worth checking whether your car is included in a [[term:safety-recall|safety recall]] — the repair is free.",
+    "Keeping receipts and a service book raises the car's value and makes tracking easier."
+   ]
+  }
+ ]
+}

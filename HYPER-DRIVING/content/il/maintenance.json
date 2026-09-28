@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "he": "מרווחי הזמן כאן אופייניים לרכב בשימוש רגיל. ספר הרכב של היצרן הוא הקובע — ובנסיעה בתנאים קשים (אבק, חום, גרירה, נסיעות קצרות) מקצרים אותם.",
+    "en": "The intervals here are typical for normal use. The manufacturer's handbook decides — and hard use (dust, heat, towing, short trips) shortens them."
+  },
+  "vehicleNames": {
+    "car": { "he": "רכב פרטי", "en": "Car" },
+    "motorcycle": { "he": "אופנוע", "en": "Motorcycle" },
+    "truck": { "he": "משאית", "en": "Truck" },
+    "ev": { "he": "רכב חשמלי", "en": "Electric car" }
+  },
+  "items": [
+    { "vehicles": ["car", "motorcycle", "truck", "ev"], "who": "driver", "when": { "he": "כל שבוע ולפני נסיעה ארוכה", "en": "Weekly and before a long trip" },
+      "name": { "he": "לחץ אוויר ומצב הצמיגים", "en": "Tyre pressure and condition" },
+      "what": { "he": "לחץ לפי המדבקה בפתח הדלת, כשהצמיגים קרים; חתכים, בליטות ועומק חריצים.", "en": "Pressure per the door-frame label, tyres cold; cuts, bulges and tread depth." } },
+    { "vehicles": ["car", "truck"], "who": "driver", "when": { "he": "כל שבועיים ולפני נסיעה ארוכה", "en": "Every two weeks and before a long trip" },
+      "name": { "he": "מפלס שמן מנוע", "en": "Engine-oil level" },
+      "what": { "he": "במדיד, כשהרכב במישור והמנוע כבוי כמה דקות — בין הסימנים MIN ו-MAX.", "en": "On the dipstick, car level, engine off for a few minutes — between MIN and MAX." } },
+    { "vehicles": ["car", "truck", "motorcycle"], "who": "driver", "when": { "he": "כל חודש", "en": "Monthly" },
+      "name": { "he": "נוזל קירור", "en": "Coolant" },
+      "what": { "he": "במיכל ההתפשטות, **רק כשהמנוע קר**.", "en": "In the expansion tank, **only with the engine cold**." } },
+    { "vehicles": ["car", "truck", "motorcycle", "ev"], "who": "driver", "when": { "he": "כל חודש", "en": "Monthly" },
+      "name": { "he": "נוזל בלמים", "en": "Brake fluid" },
+      "what": { "he": "מפלס במיכל. ירידה ניכרת — סימן לבלאי רפידות או לדליפה.", "en": "Level in the reservoir. A clear drop means worn pads or a leak." } },
+    { "vehicles": ["car", "truck", "motorcycle", "ev"], "who": "driver", "when": { "he": "כל חודש", "en": "Monthly" },
+      "name": { "he": "פנסים ואיתותים", "en": "Lights and indicators" },
+      "what": { "he": "כל הפנסים, פנסי הבלימה והאיתות — בעזרת אדם נוסף או השתקפות בקיר.", "en": "Every lamp, brake light and indicator — with a helper or a reflection in a wall." } },
+    { "vehicles": ["car", "truck", "ev"], "who": "driver", "when": { "he": "כל חודש, ותמיד לפני החורף", "en": "Monthly, and always before winter" },
+      "name": { "he": "מגבים ונוזל שמשות", "en": "Wipers and washer fluid" } },
+    { "vehicles": ["car"], "who": "garage", "km": 15000, "months": 12,
+      "name": { "he": "החלפת שמן מנוע ומסנן שמן", "en": "Engine oil and filter change" } },
+    { "vehicles": ["car", "ev"], "who": "garage", "km": 15000, "months": 12,
+      "name": { "he": "מסנן אוויר למנוע ומסנן מזגן", "en": "Engine air filter and cabin filter" } },
+    { "vehicles": ["car", "ev", "truck"], "who": "garage", "months": 24,
+      "name": { "he": "החלפת נוזל בלמים", "en": "Brake-fluid change" },
+      "what": { "he": "הנוזל סופג לחות, ונקודת הרתיחה שלו יורדת.", "en": "The fluid absorbs moisture and its boiling point drops." } },
+    { "vehicles": ["car"], "who": "garage", "km": 90000,
+      "name": { "he": "רצועת תזמון (טיימינג)", "en": "Timing belt" },
+      "what": { "he": "לפי ספר הרכב — רצועה שנקרעת עלולה להרוס את המנוע.", "en": "Per the handbook — a broken belt can wreck the engine." } },
+    { "vehicles": ["motorcycle"], "who": "driver", "km": 800,
+      "name": { "he": "שימון ומתיחת השרשרת", "en": "Chain lubrication and tension" } },
+    { "vehicles": ["truck"], "who": "driver", "when": { "he": "כל יום לפני יציאה", "en": "Daily before setting off" },
+      "name": { "he": "ניקוז מיכלי אוויר ובדיקת לחץ אוויר בבלמים", "en": "Drain air tanks and check brake air pressure" } }
+  ]
+}

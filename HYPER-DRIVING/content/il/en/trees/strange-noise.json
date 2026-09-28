@@ -1,0 +1,191 @@
+{
+ "trees": [
+  {
+   "id": "strange-noise",
+   "group": "General",
+   "title": "A new noise you don't recognise",
+   "summary": "You hear a squeal, a knock, a hum or a whistle that wasn't there before.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "A new metallic noise that's getting worse, or any noise accompanied by a loss of control over the car (steering, braking), are a reason to stop and check — not to keep going “to see if it goes away.”",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "When do you hear the noise?",
+     "options": [
+      {
+       "label": "While driving or accelerating",
+       "next": "n2"
+      },
+      {
+       "label": "Only when braking",
+       "next": "r-see-brakes"
+      },
+      {
+       "label": "Only when turning",
+       "next": "n5"
+      },
+      {
+       "label": "When the car is stationary, with the engine running",
+       "next": "n6"
+      }
+     ]
+    },
+    "n2": {
+     "q": "What kind of sound is it?",
+     "options": [
+      {
+       "label": "A rhythmic metallic knock, whose speed rises with engine RPM",
+       "next": "r-engine-knock"
+      },
+      {
+       "label": "A squeal from the front of the car, that changes with engine RPM",
+       "next": "r-belt-squeal"
+      },
+      {
+       "label": "A hum or drone that changes with road speed",
+       "next": "r-wheel-bearing"
+      },
+      {
+       "label": "A knock from underneath, only when going over a pothole or a speed bump",
+       "next": "r-suspension-clunk"
+      }
+     ]
+    },
+    "n5": {
+     "q": "What exactly happens when turning?",
+     "options": [
+      {
+       "label": "A rhythmic knock in a sharp turn, like pulling into a parking space",
+       "next": "r-cv-joint"
+      },
+      {
+       "label": "A squeal when turning the wheel all the way, almost stationary",
+       "next": "r-power-steering"
+      }
+     ]
+    },
+    "n6": {
+     "q": "What do you hear when the car is stationary with the engine running?",
+     "options": [
+      {
+       "label": "A thin whistle that changes when you press the accelerator pedal",
+       "next": "r-vacuum-hiss"
+      },
+      {
+       "label": "A rhythmic metallic noise, like a rattling sheet of metal",
+       "next": "r-exhaust-rattle"
+      },
+      {
+       "label": "A rhythmic blowing or popping noise under the car",
+       "next": "r-exhaust-leak"
+      }
+     ]
+    },
+    "r-see-brakes": {
+     "result": "A noise when braking — almost always a brake matter",
+     "severity": "soon",
+     "text": "A noise that appears only when you press the brake almost always belongs to the brake system — squealing or grinding.",
+     "actions": [
+      "Go to the dedicated diagnosis tree: [[tree:brake-problems|a brake problem]]."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-engine-knock": {
+     "result": "An internal engine knock — suspected mechanical fault",
+     "severity": "stop",
+     "text": "A rhythmic metallic knock whose speed rises with engine RPM can indicate a problem in the crankshaft bearings or another internal part. Continuing to drive can worsen internal damage quickly.",
+     "actions": [
+      "Stop in a safe place and switch off the engine at the first opportunity.",
+      "Don't keep driving — call for a tow or roadside assistance."
+     ],
+     "lesson": "eg-how"
+    },
+    "r-belt-squeal": {
+     "result": "Suspected loose or worn drive belt",
+     "severity": "soon",
+     "text": "A squeal from the front of the car that changes with engine RPM, especially on a cold start or under acceleration, hints at a drive belt that's loose, over-tensioned, or worn.",
+     "actions": [
+      "Go to a garage soon — a belt that snaps can knock out the power steering, the battery charging, or the cooling all at once.",
+      "Don't dismiss it even if the car still drives normally."
+     ],
+     "lesson": "el-charging"
+    },
+    "r-wheel-bearing": {
+     "result": "Suspected worn wheel bearing",
+     "severity": "soon",
+     "text": "A hum or drone that changes with road speed (not with engine RPM), and gets stronger when turning in one direction, is a classic sign of a worn wheel bearing.",
+     "actions": [
+      "Go to a garage for a check — a bearing worn all the way can seize and even affect wheel stability.",
+      "Don't ignore it even if the noise is still faint."
+     ],
+     "lesson": "ss-symptoms"
+    },
+    "r-suspension-clunk": {
+     "result": "Suspected loose or worn suspension part",
+     "severity": "soon",
+     "text": "A knock from underneath, heard only when going over a pothole or a speed bump, points to a shock absorber, an anti-roll bar, or a suspension joint that has loosened or worn.",
+     "actions": [
+      "Go to a garage to have the suspension checked — a loose part also harms control and braking.",
+      "Drive slowly on rough roads until it's checked."
+     ],
+     "lesson": "ss-suspension"
+    },
+    "r-cv-joint": {
+     "result": "Suspected worn CV joint",
+     "severity": "soon",
+     "text": "A rhythmic knock heard only in a sharp turn, mainly pulling into a parking space, points to a worn CV joint — mainly in front-wheel-drive cars.",
+     "actions": [
+      "Go to a garage soon; a joint that fails completely can leave the car unable to drive.",
+      "Avoid sharp, fast turns until it's checked."
+     ],
+     "lesson": "dt-driveline"
+    },
+    "r-power-steering": {
+     "result": "Suspected low power steering fluid, or a pump starting to wear",
+     "severity": "ok",
+     "text": "A squeal when turning the wheel all the way, almost stationary, is common with hydraulic power steering when the fluid level is low, or with a pump starting to wear.",
+     "actions": [
+      "Check the power steering fluid level, in cars with a separate reservoir.",
+      "If the noise continues, go to a garage; steering that suddenly becomes heavy is more dangerous than the noise itself."
+     ],
+     "lesson": "ss-steering"
+    },
+    "r-vacuum-hiss": {
+     "result": "Suspected vacuum leak",
+     "severity": "soon",
+     "text": "A thin whistle that changes when you press the accelerator pedal, while the car is stationary, points to a cracked or poorly connected vacuum hose — this can also cause an unstable idle and high fuel consumption.",
+     "actions": [
+      "Go to a garage to trace the leak.",
+      "Not an urgent fault, but it's best not to put it off."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-exhaust-rattle": {
+     "result": "Suspected loose heat shield in the exhaust system",
+     "severity": "ok",
+     "text": "A rhythmic metallic noise, like a rattling sheet of metal, that continues at idle too, usually comes from a heat shield that has loosened around the exhaust pipe — not dangerous, but annoying, and sometimes a sign of rust.",
+     "actions": [
+      "Go to a garage to have the shield tightened or replaced.",
+      "This usually doesn't affect driving safety."
+     ],
+     "lesson": "eg-exhaust"
+    },
+    "r-exhaust-leak": {
+     "result": "Suspected leak in the exhaust system",
+     "severity": "soon",
+     "text": "A rhythmic blowing or popping noise under the car, even at idle, hints at a loosened gasket or pipe in the exhaust system — a leak like this can let exhaust gases into the cabin.",
+     "actions": [
+      "Open a window for ventilation if you notice an unusual smell, and go to a garage soon.",
+      "Don't drive with all the windows closed if there's a suspected risk of exhaust gases in the cabin."
+     ],
+     "lesson": "eg-exhaust"
+    }
+   }
+  }
+ ]
+}

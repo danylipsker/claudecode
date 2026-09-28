@@ -1,0 +1,404 @@
+{
+ "chapter": "licensing",
+ "questions": [
+  {
+   "id": "q-lc-001",
+   "lesson": "lc-classes",
+   "facts": [
+    "licence.b.max_weight",
+    "licence.b.max_passengers"
+   ],
+   "q": "A category B driving licence allows driving a motor vehicle —",
+   "options": [
+    "Up to {{fact:licence.b.max_weight}} and up to {{fact:licence.b.max_passengers}} passengers besides the driver",
+    "Up to 12,000 kg only",
+    "Of any weight, as long as it has up to 4 passengers",
+    "Only a privately owned private car, not a leased one"
+   ],
+   "answer": 0,
+   "explain": "Regulation 180 defines a B licence as a licence for a motor vehicle whose gross vehicle weight is up to {{fact:licence.b.max_weight}} and up to {{fact:licence.b.max_passengers}} passengers besides the driver.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-002",
+   "lesson": "lc-classes",
+   "facts": [
+    "licence.c.min_age",
+    "licence.c.seniority_c1"
+   ],
+   "q": "What is required to get a category C driving licence?",
+   "options": [
+    "Age {{fact:licence.c.min_age}} and also {{fact:licence.c.seniority_c1}} of seniority in a C1 licence",
+    "A B licence only, with no further test",
+    "Only a further theory exam, with no age requirement",
+    "Only age {{fact:licence.c.min_age}}, with no further conditions"
+   ],
+   "answer": 0,
+   "explain": "Beyond the minimum age, a C licence also requires {{fact:licence.c.seniority_c1}} of seniority in a C1 licence — you cannot skip straight to it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-003",
+   "lesson": "lc-classes",
+   "q": "A category 1 driving licence allows driving, among other things —",
+   "options": [
+    "A taxi",
+    "A tractor, a mobile machine (except a forklift) and an off-road vehicle",
+    "A truck over 12,000 kg",
+    "A public minibus"
+   ],
+   "answer": 1,
+   "explain": "A category 1 licence allows driving a tractor, a mobile machine (other than a forklift, which requires separate conditions), a forklift up to the set weight, an off-road vehicle and an ATV with a permit.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-004",
+   "lesson": "lc-classes",
+   "q": "A B-licence holder with three or more years of seniority who wants an A2/A1 licence —",
+   "options": [
+    "Cannot get a motorcycle licence at all",
+    "Is exempt from the theory exam, and after the required seniority — also exempt from the road-behaviour test",
+    "Must wait until age 21",
+    "Must sit a full theory exam like any other applicant"
+   ],
+   "answer": 1,
+   "explain": "A B-licence holder is exempt from the theory exam for a motorcycle licence, and after the required seniority in the B licence is also exempt from the road-behaviour test for an A2/A1 licence.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-005",
+   "lesson": "lc-classes",
+   "facts": [
+    "licence.d.min_age",
+    "licence.d1.seniority_b"
+   ],
+   "q": "What is required to get a category D (bus) driving licence?",
+   "options": [
+    "No age requirement, only a professional exam",
+    "Age {{fact:licence.d.min_age}} and also {{fact:licence.d1.seniority_b}} of seniority in a B or C1 licence",
+    "A C+E licence only",
+    "Only age {{fact:licence.d.min_age}}"
+   ],
+   "answer": 1,
+   "explain": "A D licence requires both a minimum age and seniority in a B or C1 licence, similar to a D1 licence.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-006",
+   "lesson": "lc-process",
+   "facts": [
+    "theory.min_age"
+   ],
+   "q": "What is the minimum age for sitting the theory exam for a B licence?",
+   "options": [
+    "16.5",
+    "{{fact:theory.min_age}}",
+    "18",
+    "There is no minimum age for the exam"
+   ],
+   "answer": 1,
+   "explain": "You can sit the theory exam from age {{fact:theory.min_age}}, even before starting actual driving lessons.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-007",
+   "lesson": "lc-process",
+   "facts": [
+    "theory.questions",
+    "theory.pass_correct",
+    "theory.max_mistakes"
+   ],
+   "q": "How many correct answers are needed to pass the theory exam, out of {{fact:theory.questions}} questions?",
+   "options": [
+    "{{fact:theory.pass_correct}} correct answers ({{fact:theory.max_mistakes}} mistakes at most)",
+    "Half the questions only",
+    "All the questions must be correct",
+    "There is no set threshold — it is at the examiner's discretion"
+   ],
+   "answer": 0,
+   "explain": "You pass the exam with at least {{fact:theory.pass_correct}} correct answers out of {{fact:theory.questions}}, meaning up to {{fact:theory.max_mistakes}} mistakes allowed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-008",
+   "lesson": "lc-process",
+   "facts": [
+    "theory.validity"
+   ],
+   "q": "What happens if you don't finish all the licensing stages within {{fact:theory.validity}} of the theory exam?",
+   "options": [
+    "You just pay a fine and continue as usual",
+    "There is no consequence at all",
+    "The exam and test results expire, and you must be tested again",
+    "You automatically get a temporary licence"
+   ],
+   "answer": 2,
+   "explain": "Exam and test results are valid for {{fact:theory.validity}} only; anyone who has not finished within this time has to be tested again.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-009",
+   "lesson": "lc-process",
+   "facts": [
+    "licence.b.min_lessons"
+   ],
+   "q": "What is the minimum number of driving lessons required for a B licence?",
+   "options": [
+    "{{fact:licence.b.min_lessons}}",
+    "There is no fixed minimum in law",
+    "10",
+    "50"
+   ],
+   "answer": 0,
+   "explain": "A B licence requires at least {{fact:licence.b.min_lessons}} driving lessons with a qualified instructor.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-010",
+   "lesson": "lc-process",
+   "facts": [
+    "theory.retest_max_wait"
+   ],
+   "q": "You failed the theory exam. Within how long may the licensing authority set a date for a retest?",
+   "options": [
+    "There is no time limit",
+    "Only after a year",
+    "Within a week only",
+    "No later than {{fact:theory.retest_max_wait}}"
+   ],
+   "answer": 3,
+   "explain": "The licensing authority may set a date for a retest no later than {{fact:theory.retest_max_wait}} from the day of the exam you failed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-011",
+   "lesson": "lc-new-driver",
+   "facts": [
+    "newdriver.duration"
+   ],
+   "q": "How long does the \"new driver\" period last?",
+   "options": [
+    "{{fact:newdriver.duration}} from the day the first licence is received",
+    "Until the first accident",
+    "Six months only",
+    "Until age 21 only"
+   ],
+   "answer": 0,
+   "explain": "The new-driver period lasts {{fact:newdriver.duration}} from the day the first licence is received, and is extended by a conviction under the Third Schedule.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-012",
+   "lesson": "lc-new-driver",
+   "facts": [
+    "newdriver.escort.hours_total",
+    "newdriver.escort.hours_urban",
+    "newdriver.escort.hours_nonurban",
+    "newdriver.escort.hours_night"
+   ],
+   "q": "How many escort hours must a young new driver complete, and how are they divided?",
+   "options": [
+    "10 hours only, with no division",
+    "{{fact:newdriver.escort.hours_total}} — {{fact:newdriver.escort.hours_urban}} urban, {{fact:newdriver.escort.hours_nonurban}} non-urban, {{fact:newdriver.escort.hours_night}} night",
+    "One hour on every trip for a year",
+    "There is no escort duty at all, only a recommendation"
+   ],
+   "answer": 1,
+   "explain": "Regulation 175B sets at least {{fact:newdriver.escort.hours_total}} of escort: {{fact:newdriver.escort.hours_urban}} urban, {{fact:newdriver.escort.hours_nonurban}} non-urban and {{fact:newdriver.escort.hours_night}} at night.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-013",
+   "lesson": "lc-new-driver",
+   "facts": [
+    "newdriver.passengers.age",
+    "newdriver.passengers.max"
+   ],
+   "q": "Up to age {{fact:newdriver.passengers.age}}, how many passengers may a new driver carry without an accompanying driver (after the escort period)?",
+   "options": [
+    "Only first-degree family members",
+    "{{fact:newdriver.passengers.max}} only",
+    "No passengers may be carried at all",
+    "No limit"
+   ],
+   "answer": 1,
+   "explain": "Up to age {{fact:newdriver.passengers.age}}, a new driver may carry no more than {{fact:newdriver.passengers.max}} passengers without an accompanying driver.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-014",
+   "lesson": "lc-new-driver",
+   "q": "Who is exempt from the escort programme for a young new driver?",
+   "options": [
+    "Someone with a senior sibling who has a licence",
+    "Someone who completed the IDF's driver mentoring programme and has confirmation of it",
+    "Someone who lives near the school",
+    "No exemption is possible"
+   ],
+   "answer": 1,
+   "explain": "Regulation 175D exempts from the escort programme a young new driver who completed the IDF's driver mentoring programme, subject to presenting confirmation from the unit safety officer.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-015",
+   "lesson": "lc-new-driver",
+   "facts": [
+    "alcohol.strict.breath"
+   ],
+   "q": "Which alcohol threshold applies to a new driver?",
+   "options": [
+    "The stricter threshold — {{fact:alcohol.strict.breath}} in breath",
+    "The stricter threshold only in the first year",
+    "The ordinary threshold, like any experienced driver",
+    "There is no alcohol limit for a new driver"
+   ],
+   "answer": 0,
+   "explain": "The stricter alcohol threshold — {{fact:alcohol.strict.breath}} — applies to a new driver for the whole new-driver period.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-016",
+   "lesson": "lc-documents",
+   "q": "What does the vehicle licence certify?",
+   "options": [
+    "That the vehicle is brand new",
+    "That the driver has passed the theory exam",
+    "That the driver has comprehensive insurance",
+    "That the vehicle is registered, has passed the periodic test when required, and the fee has been paid"
+   ],
+   "answer": 3,
+   "explain": "The vehicle licence certifies the vehicle's registration, that it met the periodic test when required, and that the fee was paid — not the driver's condition.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-017",
+   "lesson": "lc-documents",
+   "facts": [
+    "vehicletest.private.first_test_years",
+    "vehicletest.private.interval_years"
+   ],
+   "q": "When does a new private vehicle (registered from 1 January 2023) undergo its first periodic test, and how often afterwards?",
+   "options": [
+    "After {{fact:vehicletest.private.first_test_years}} from registration, and then every {{fact:vehicletest.private.interval_years}}",
+    "Immediately on registration, and then every year",
+    "There is no periodic test for a new private vehicle",
+    "Only after 10 years"
+   ],
+   "answer": 0,
+   "explain": "The first test is {{fact:vehicletest.private.first_test_years}} from the first registration date, and afterwards once every {{fact:vehicletest.private.interval_years}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-018",
+   "lesson": "lc-documents",
+   "q": "What does compulsory insurance cover?",
+   "options": [
+    "Bodily injury to passengers and pedestrians who are hurt, regardless of fault",
+    "Property damage to the vehicle itself only",
+    "Only damage caused by another driver",
+    "Theft of the vehicle only"
+   ],
+   "answer": 0,
+   "explain": "Compulsory insurance covers bodily injury to those hurt in a road accident — passengers and pedestrians — regardless of who was at fault.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-019",
+   "lesson": "lc-documents",
+   "q": "A driver is driving with a driving licence that expired three months ago. What is correct?",
+   "options": [
+    "It is allowed, because the licence is still physically in their possession",
+    "Only a verbal warning, no fine",
+    "No problem, because it expired not long ago",
+    "It is an offence — a fine and points, and the longer the time that has passed, the harsher the penalty"
+   ],
+   "answer": 3,
+   "explain": "Driving with an expired driving licence is an offence; its severity increases the longer the time since it expired.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-020",
+   "lesson": "lc-documents",
+   "q": "Why is it important to update the licensing authority when you sell a vehicle?",
+   "options": [
+    "Only if the vehicle is sold outside Israel",
+    "Otherwise the previous registered owner may be held responsible for the new owner's offences",
+    "There is no need — it is the buyer's concern only",
+    "To get a refund on the annual fee"
+   ],
+   "answer": 1,
+   "explain": "Until the records are updated, the owner listed on the licence may be held responsible for offences the new owner commits with the vehicle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-021",
+   "lesson": "lc-fitness",
+   "q": "What is the authorised doctor's role in getting a driving licence?",
+   "options": [
+    "To examine the practical driving test",
+    "To issue a medical certificate for driving, and sometimes set conditions such as a requirement to wear glasses",
+    "To train new drivers",
+    "Only to collect fees"
+   ],
+   "answer": 1,
+   "explain": "The authorised doctor examines medical fitness and may issue a medical certificate for driving with conditions and restrictions, such as a requirement for contact lenses or glasses.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-022",
+   "lesson": "lc-fitness",
+   "q": "A driving licence holder discovers a significant change in their vision. What should they do?",
+   "options": [
+    "Wait for the next licence renewal and report it then",
+    "There is no duty to report at all, unless asked",
+    "Report it immediately by registered letter to the licensing authority",
+    "Report it only if the change affects night driving"
+   ],
+   "answer": 2,
+   "explain": "Regulation 13 requires a driving licence holder who discovers changes in vision (or hearing, the nervous system, or the heart) to report it immediately by registered letter to the licensing authority.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-023",
+   "lesson": "lc-fitness",
+   "q": "A driver drives without the glasses their licence requires, even though they can see well at that moment. What is correct?",
+   "options": [
+    "Allowed only by day, forbidden at night",
+    "No offence, because their vision is actually fine",
+    "It is a fine offence, because the condition set on the licence was not met",
+    "Allowed up to age 30"
+   ],
+   "answer": 2,
+   "explain": "Driving without the optical aid the licence requires is a fine offence, even if vision appears fine at that moment.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-024",
+   "lesson": "lc-fitness",
+   "q": "From age 70 and above, how often must a holder of a licence for categories C and above undergo repeat medical checks?",
+   "options": [
+    "No further checks are needed",
+    "Once every 10 years",
+    "Once only, permanently",
+    "Once every two years"
+   ],
+   "answer": 3,
+   "explain": "A holder of a licence for categories C and above undergoes medical checks once every five years from age 60 to 70, and from age 70 — once every two years.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lc-025",
+   "lesson": "lc-fitness",
+   "q": "Someone who feels wronged by the authorised doctor's decision —",
+   "options": [
+    "Can request a repeat check immediately, with no time limit",
+    "Must go to court only",
+    "May appeal to an appeals committee within 30 days of being notified of the decision",
+    "Has no way to appeal at all"
+   ],
+   "answer": 2,
+   "explain": "Regulation 195 allows an appeal to an appeals committee within 30 days of the day the decision was given; the committee can confirm, change, cancel it, or order a repeat examination.",
+   "shuffled": true
+  }
+ ]
+}

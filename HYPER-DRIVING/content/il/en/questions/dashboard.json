@@ -1,0 +1,285 @@
+{
+ "chapter": "dashboard",
+ "questions": [
+  {
+   "id": "q-db-001",
+   "lesson": "db-cluster",
+   "q": "What is the main function of the speedometer?",
+   "options": [
+    "To show the engine temperature",
+    "To show how much fuel is left",
+    "To show the current road speed in km/h",
+    "To show the total distance the car has travelled"
+   ],
+   "answer": 2,
+   "explain": "The speedometer shows the current road speed in km/h, and is deliberately set to show slightly more than the true speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-002",
+   "lesson": "db-cluster",
+   "q": "What does the tachometer (rev counter) measure?",
+   "options": [
+    "How many revolutions per minute (rpm) the engine is turning",
+    "How much fuel is left",
+    "Road speed",
+    "Coolant temperature"
+   ],
+   "answer": 0,
+   "explain": "The tachometer shows rpm — the engine's rotation rate. A red zone at the top marks a range that can damage the engine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-003",
+   "lesson": "db-cluster",
+   "q": "What is the difference between the odometer and the trip computer?",
+   "options": [
+    "The odometer adds up total distance over the car's whole life; the trip computer can be reset for a single journey",
+    "The trip computer only sets service dates",
+    "The odometer shows only the current speed",
+    "There is no difference, they are the same thing"
+   ],
+   "answer": 0,
+   "explain": "The odometer cannot be reset and is used to set service dates; the trip computer shows data only for the current journey.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-004",
+   "lesson": "db-cluster",
+   "q": "What is true about the speedometer in a car?",
+   "options": [
+    "It is deliberately set to show slightly more than the true speed, never less",
+    "It tends to show slightly less than the true speed",
+    "It sometimes stops working at high speed",
+    "It is always perfectly accurate"
+   ],
+   "answer": 0,
+   "explain": "This is a deliberate design by manufacturers, so a driver is not penalised for a slight deviation of the instrument towards too low a speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-005",
+   "lesson": "db-colours",
+   "q": "What does a red light on the instrument cluster mean?",
+   "options": [
+    "A sign that a system is working as normal",
+    "A reminder for a future service",
+    "A condition that needs an immediate response, not \"whenever it's convenient\"",
+    "General information only"
+   ],
+   "answer": 2,
+   "explain": "A red light reports a condition that could cause serious damage to the car or endanger safety — and needs an immediate response.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-006",
+   "lesson": "db-colours",
+   "q": "What does an amber (yellow) light mean?",
+   "options": [
+    "You must stop the car immediately on the spot",
+    "It's always just a battery fault",
+    "The system is working as normal, no attention needed",
+    "A problem that needs attention soon, but usually does not require stopping immediately"
+   ],
+   "answer": 3,
+   "explain": "An amber light marks a problem that needs attention, but you can usually carry on carefully to the nearest garage.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-007",
+   "lesson": "db-colours",
+   "q": "What do green and blue lights on the instrument cluster indicate?",
+   "options": [
+    "An urgent need for a garage visit",
+    "Low fuel level only",
+    "Always a serious fault",
+    "That a system is working as normal, not that there is a problem"
+   ],
+   "answer": 3,
+   "explain": "Green and blue lights report that a system is working as expected — such as an indicator, main beam or cruise control.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-008",
+   "lesson": "db-colours",
+   "q": "Two warning lights come on at the same time — one red, one amber. What is correct?",
+   "options": [
+    "Always deal with the amber one first",
+    "Ignore both until the next service",
+    "Deal with the red one first — it is more urgent",
+    "The colour makes no difference to the order"
+   ],
+   "answer": 2,
+   "explain": "Red is always the most urgent; deal with it first, even when an amber light is on at the same time.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-009",
+   "lesson": "db-red",
+   "q": "The low engine-oil pressure light (red) comes on. What do you do?",
+   "options": [
+    "Stop immediately in a safe place and switch off the engine",
+    "Switch the engine off and on again to reset the light",
+    "Keep driving carefully until you get home",
+    "Change up a gear to reduce load on the engine"
+   ],
+   "answer": 0,
+   "explain": "Low oil pressure can destroy the engine within minutes; stop immediately and switch off, rather than carrying on driving.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-010",
+   "lesson": "db-red",
+   "q": "What must you not do when the high engine temperature light comes on?",
+   "options": [
+    "Switch off the engine",
+    "Open the radiator cap immediately while the engine is hot",
+    "Wait for the engine to cool before checking the coolant",
+    "Stop in a safe place"
+   ],
+   "answer": 1,
+   "explain": "The hot coolant is boiling and under pressure; opening the cap while the engine is hot can cause severe burns.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-011",
+   "lesson": "db-red",
+   "q": "What is the first step when the brake system light comes on?",
+   "options": [
+    "Accelerate to check whether the brakes are working",
+    "Ignore it, since it is almost always a false alarm",
+    "Check and release the handbrake",
+    "Replace the brake pads yourself immediately"
+   ],
+   "answer": 2,
+   "explain": "The simple cause is usually the handbrake being on; if the light stays on after releasing it, the brake system needs checking.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-012",
+   "lesson": "db-red",
+   "q": "What does a lit airbag light (red) mean?",
+   "options": [
+    "The battery is flat",
+    "The airbag has deployed and needs replacing",
+    "A fault in the airbag system or the seatbelt pretensioners, which could stop them working in a crash",
+    "There is no fuel in the tank"
+   ],
+   "answer": 2,
+   "explain": "A lit airbag light marks a fault in the protection system itself — not it deploying. Go to a garage soon.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-013",
+   "lesson": "db-amber",
+   "q": "The \"check engine\" light is flashing (not steady). What does this mean?",
+   "options": [
+    "A serious misfire — slow down, avoid hard acceleration and stop soon",
+    "You should accelerate to \"clean out\" the engine",
+    "It only means you need to refuel",
+    "It's completely fine, you can ignore it"
+   ],
+   "answer": 0,
+   "explain": "A flashing \"check engine\" light marks a serious misfire that could damage the catalytic converter — slow down and stop soon.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-014",
+   "lesson": "db-amber",
+   "q": "What still works when the ABS light is on (amber)?",
+   "options": [
+    "The engine stops working",
+    "The ordinary brakes keep working, but in hard braking the wheels can lock up",
+    "Nothing — the brakes don't work at all",
+    "Only the handbrake works"
+   ],
+   "answer": 1,
+   "explain": "When the ABS is not active, the ordinary brake system keeps working, but without protection against wheel lock-up in hard braking.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-015",
+   "lesson": "db-amber",
+   "q": "What do you do when the tyre pressure (TPMS) light comes on?",
+   "options": [
+    "Accelerate to see if the tyre bursts",
+    "Ignore it, it's not important",
+    "Switch off the car and leave it where it is",
+    "Slow down and check the tyres soon at a filling station"
+   ],
+   "answer": 3,
+   "explain": "Slow down and check the air pressure in all the tyres soon — it could be a puncture or a natural drop in pressure.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-016",
+   "lesson": "db-amber",
+   "q": "What happens in a modern diesel engine if the AdBlue fluid runs out completely?",
+   "options": [
+    "Consumption drops significantly",
+    "The engine automatically switches to petrol",
+    "There is no effect on the engine at all",
+    "In most cars, the engine will not restart until the fluid is topped up"
+   ],
+   "answer": 3,
+   "explain": "In most new cars, a diesel engine with an SCR system will not restart without AdBlue fluid — it's part of the emissions requirements.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-017",
+   "lesson": "db-indicators",
+   "q": "What does the blue main beam (high beam) light indicate?",
+   "options": [
+    "That there is a fault in the lights",
+    "That main beam (high beam) is currently active",
+    "That the washer fluid has run out",
+    "That cruise control is active"
+   ],
+   "answer": 1,
+   "explain": "The blue light comes on while the main beam (high beam) headlights are active.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-018",
+   "lesson": "db-indicators",
+   "q": "When should you switch from main beam to dipped beam?",
+   "options": [
+    "Never — main beam is always allowed",
+    "Only at low speed",
+    "Only during the day",
+    "When a vehicle approaches from the opposite direction, or when driving behind a vehicle, so as not to dazzle them"
+   ],
+   "answer": 3,
+   "explain": "Main beam dazzles other drivers; switch to dipped beam when a vehicle approaches from the opposite direction or you are driving behind a vehicle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-019",
+   "lesson": "db-indicators",
+   "q": "What does a lit cruise control light indicate?",
+   "options": [
+    "That the car is in neutral",
+    "That cruise control is active and holding a constant speed",
+    "That the engine has overheated",
+    "That there is a brake fault"
+   ],
+   "answer": 1,
+   "explain": "The cruise control light shows that the system is active and automatically holding the set constant speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-db-020",
+   "lesson": "db-indicators",
+   "q": "When does the service reminder light come on?",
+   "options": [
+    "Only when there is a serious engine fault",
+    "Based on the distance or time since the last service — a reminder, not a fault",
+    "When the brake fluid level drops",
+    "When the fuel runs out"
+   ],
+   "answer": 1,
+   "explain": "The service light is a reminder based on distance or time elapsed, not a sign of a fault — the garage resets it after the service.",
+   "shuffled": true
+  }
+ ]
+}

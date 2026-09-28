@@ -1,0 +1,140 @@
+{
+ "chapter": "engine",
+ "title": "The engine and its systems",
+ "summary": "How an engine turns fuel into motion, and what each of the systems around it does.",
+ "lessons": [
+  {
+   "id": "eg-how",
+   "title": "How an internal combustion engine works",
+   "summary": "Four strokes, repeating over and over, hundreds of times a second — and that is how motion is made.",
+   "terms": [
+    "internal-combustion-engine",
+    "cylinder",
+    "piston",
+    "connecting-rod",
+    "crankshaft",
+    "camshaft",
+    "intake-valve",
+    "exhaust-valve",
+    "spark-plug",
+    "timing-belt",
+    "rpm"
+   ],
+   "body": "The [[term:internal-combustion-engine|engine]] turns chemical energy stored in fuel into rotating motion, through a series of small, controlled explosions that happen inside the [[term:cylinder|cylinders]] — hundreds of times a minute.\n\n# The four strokes\nIn most vehicle engines, each [[term:piston|piston]] goes through a cycle of four movements (strokes): intake, compression, power and exhaust. You can see the cycle in the demonstration:\n\n[[widget:four-stroke]]\n\n1. **Intake** — the piston moves down, the [[term:intake-valve|intake valve]] is open, and a mixture of air and fuel (or air alone in a diesel) enters the cylinder.\n2. **Compression** — both valves are closed, the piston moves up and compresses the mixture into a much smaller volume.\n3. **Power** — the [[term:spark-plug|spark plug]] creates a spark, the mixture burns rapidly, and the expanding gases push the piston down with force — this is the stroke that produces the power.\n4. **Exhaust** — the [[term:exhaust-valve|exhaust valve]] opens, the piston moves up again and pushes the burnt gases out.\n\n# From piston to wheel\nThe piston is connected through the [[term:connecting-rod|connecting rod]] to the [[term:crankshaft|crankshaft]], which turns the piston’s straight-line motion into rotation. An engine with four cylinders or more is timed so that a different piston is on its power stroke at every moment — that keeps the rotation smooth, not jerky.\n\n# Valve timing\nThe [[term:camshaft|camshaft]] opens and closes the valves at exactly the right moment in every cycle, synchronised to the crankshaft by a [[term:timing-belt|timing belt (or chain)]]. Incorrect timing — for example, a belt that has jumped a tooth — can make a valve and a piston collide.\n\n# The rev gauge\nThe [[term:rpm|RPM]] gauge (revolutions per minute) on the dashboard shows how fast the crankshaft is turning. A red zone at the top of the gauge marks an RPM you must not exceed — above it, engine parts can be damaged.\n\n:::tech Why some engines have several cylinders\nA multi-cylinder engine (3, 4, 6 or even more) produces power more smoothly, because the power strokes alternate between the cylinders in sequence, which also helps reduce vibration.\n:::",
+   "keyPoints": [
+    "The four strokes: intake, compression, power, exhaust — then it repeats.",
+    "The piston drives the crankshaft through the connecting rod; this rotating motion is what drives the vehicle.",
+    "The camshaft opens and closes the valves at the right time, synchronised to the crankshaft by a timing belt or chain.",
+    "The RPM gauge shows how fast the engine is turning; a red zone marks a limit you must not exceed."
+   ]
+  },
+  {
+   "id": "eg-diesel",
+   "title": "Petrol vs diesel: two ways to ignite",
+   "summary": "A petrol engine ignites with a spark; a diesel engine ignites from compression heat alone.",
+   "terms": [
+    "petrol-engine",
+    "diesel-engine",
+    "glow-plug",
+    "turbocharger",
+    "intercooler",
+    "fuel-injector",
+    "compression-ratio"
+   ],
+   "body": "The two most common engine types in private, commercial and heavy vehicles work through the same four strokes, but differ in how they ignite the fuel.\n\n# Petrol engine\nIn a [[term:petrol-engine|petrol engine]], the air-fuel mixture enters together during the intake stroke, and is ignited deliberately — by a spark from the [[term:spark-plug|spark plug]] — at the exact moment the vehicle’s computer decides.\n\n# Diesel engine\nIn a [[term:diesel-engine|diesel engine]], only air enters during the intake stroke. The [[term:compression-ratio|compression ratio]] is much higher than in a petrol engine, so the air heats up a great deal from the compression alone — so much that when the [[term:fuel-injector|injector]] sprays fuel into it at the right moment, it ignites by itself, with no spark plug needed.\n\n[[widget:four-stroke type=diesel]]\n\n:::tech Glow plugs\nOn a cold morning, the air drawn into a diesel engine does not always heat up enough from compression alone to ignite the fuel. The [[term:glow-plug|glow plugs]] pre-heat the combustion chamber, so in a diesel vehicle you wait for the glow plug warning light [[dash:glow-plug]] to go out before starting the engine.\n:::\n\n# Turbo and intercooler\nMost diesel engines, and many modern petrol engines, have a [[term:turbocharger|turbocharger]] fitted — a compressor driven by the exhaust gases themselves, which compresses extra air into the cylinders to boost power. The compressed air heats up, so it often passes first through the [[term:intercooler|intercooler]], which cools it and allows even more air to be compressed into the same volume.\n\n:::remember\nA diesel engine usually has high pulling power (torque) at low engine speed, so it is common in heavy vehicles and towing. A petrol engine tends to reach its maximum power at a higher RPM.\n:::",
+   "keyPoints": [
+    "A petrol engine ignites the air-fuel mixture with a spark from the spark plug; a diesel engine ignites fuel injected into air made hot by compression alone, with no spark plug.",
+    "Glow plugs pre-heat the combustion chamber in a diesel in cold weather, before starting — wait for the warning light to go out.",
+    "A turbocharger compresses extra air into the cylinders to boost power; an intercooler cools the compressed air.",
+    "Diesel tends towards high torque at low RPM; petrol tends towards high power at high RPM."
+   ]
+  },
+  {
+   "id": "eg-lubrication",
+   "title": "Lubrication: the oil that protects the engine",
+   "summary": "Engine oil prevents destructive friction between parts that move hundreds of times a second.",
+   "terms": [
+    "engine-oil",
+    "oil-pump",
+    "oil-filter",
+    "oil-pressure",
+    "oil-dipstick",
+    "oil-viscosity-grade",
+    "oil-change"
+   ],
+   "body": "Inside the engine, metal parts move against each other at high speed — the pistons in the cylinders, the crankshaft in its bearings. Without a layer of lubrication between them, friction would destroy them within minutes.\n\n# What the oil does\n[[term:engine-oil|Engine oil]] forms a thin film that slides between the moving parts, cools them, and collects dirt and metal particles created by wear. The [[term:oil-pump|oil pump]] draws it from the sump at the bottom of the engine and pushes it under pressure to every lubrication point. The [[term:oil-filter|oil filter]] cleans it of dirt on the way.\n\n# Oil pressure\nThe [[term:oil-pressure|oil pressure]] gauge (or the warning light [[dash:oil-pressure]]) tracks the pressure the pump is producing. Oil pressure that drops means the engine’s parts are barely protected — an immediate risk of serious damage within minutes.\n\n# Checking it, and the viscosity grade\nCheck the oil level on the [[term:oil-dipstick|dipstick]] when the engine is cold (see [[lesson:vb-checks|pre-drive checks]]). The oil container and the vehicle’s manual state an [[term:oil-viscosity-grade|oil viscosity grade]] — a number such as 5W-30: the number before the W describes how it flows when cold, and the number after it describes how it flows when hot. Always use the grade the vehicle manufacturer specifies.\n\n:::tip\nThe interval for an [[term:oil-change|oil change]] is usually thousands of kilometres — the exact figure and the type of oil vary between models, and the vehicle’s manual is what decides.\n:::\n\n:::warn\nAn oil pressure warning light that comes on while driving is not something to wait out until the nearest garage — stop immediately in a safe place and switch off the engine.\n:::",
+   "keyPoints": [
+    "Engine oil slides between moving parts, cools them and collects dirt.",
+    "The oil pump pushes it under pressure; the oil filter cleans it.",
+    "The viscosity grade (for example 5W-30) sets how the oil flows when cold and when hot — always follow the vehicle’s manual.",
+    "Oil pressure warning light on = stop immediately and switch off; continuing to drive can destroy the engine within minutes."
+   ]
+  },
+  {
+   "id": "eg-cooling",
+   "title": "Cooling: why the engine does not melt",
+   "summary": "Combustion produces enormous heat; the cooling circuit removes it constantly, at a controlled rate.",
+   "terms": [
+    "radiator",
+    "coolant",
+    "thermostat",
+    "water-pump",
+    "cooling-fan",
+    "radiator-cap",
+    "expansion-tank",
+    "overheating"
+   ],
+   "fig": "cooling-circuit",
+   "body": "Burning fuel produces a huge amount of heat — some of it turns into motion, but a large part must leave the engine, or it will be damaged within minutes.\n\n# The cooling circuit\n[[term:coolant|Coolant]] — a mixture of water and concentrate — flows through channels inside the engine block and absorbs the heat. The [[term:water-pump|water pump]], driven by the engine, pushes it round a closed circuit to the [[term:radiator|radiator]]: a network of thin tubes that air passes through, cooling the fluid, which then returns to the engine to keep absorbing heat.\n\n[[fig:cooling-circuit]]\n\n# The thermostat\nThe [[term:thermostat|thermostat]] is a valve that stays closed while the engine is cold, so it warms up faster, and opens only once the temperature reaches its working value — only then does it let the fluid flow through the radiator. When driving slowly or stopped, when airflow through the radiator is weak, the [[term:cooling-fan|cooling fan]] switches on automatically to keep cooling.\n\n# Pressure in the system\nThe [[term:radiator-cap|radiator cap]] (or the cap of the [[term:expansion-tank|expansion tank]]) seals the system under pressure, which raises the fluid’s boiling point and stops it boiling at the normal working temperature. This is why the fluid inside a hot system actually boils if the pressure is suddenly released.\n\n:::danger Never when hot\nNever open a radiator cap or expansion tank cap while the engine is hot — the fluid is boiling and under pressure, and can erupt and cause severe burns. Wait for the engine to cool down completely.\n:::\n\n# Overheating\n[[term:overheating|Overheating]] — the temperature gauge rises into the red zone, sometimes with steam from under the bonnet — can warp the cylinder head and cause permanent damage. The [[dash:coolant-temp]] warning light warns of this. Common causes: a low fluid level (a leak), a faulty water pump or thermostat, a fan that is not working, or a torn belt.\n\n:::warn\nStop immediately in a safe place, switch off the engine and wait for it to cool down. Do not keep driving “just a bit further” with the temperature warning light on.\n:::",
+   "keyPoints": [
+    "Coolant absorbs heat from the engine; the water pump pushes it to the radiator, where air cools it.",
+    "The thermostat stays shut until the engine warms up, and then opens flow to the radiator.",
+    "The system is sealed and under pressure — so you never open a cap when it is hot.",
+    "Temperature warning light on: stop immediately and switch off; continuing to drive can destroy the engine."
+   ]
+  },
+  {
+   "id": "eg-fuel-air",
+   "title": "Fuel and air: what the engine consumes",
+   "summary": "Without fuel and air in the right amount and quality, the engine will not run — or it will be damaged.",
+   "terms": [
+    "fuel-tank",
+    "fuel-pump",
+    "fuel-filter",
+    "air-filter",
+    "intake-manifold",
+    "octane-rating",
+    "fuel-gauge"
+   ],
+   "body": "Every power stroke needs the engine to have an exact amount of fuel and an exact amount of air, at the right time.\n\n# The fuel’s path\nFuel leaves the [[term:fuel-tank|fuel tank]], passes through the [[term:fuel-filter|fuel filter]], which filters out dirt and rust, and is drawn by the [[term:fuel-pump|fuel pump]] under pressure to the injectors. The [[term:fuel-gauge|fuel gauge]] on the dashboard shows how much is left in the tank, and the [[dash:low-fuel]] warning light comes on as you get close to the reserve.\n\n# The air’s path\nAir enters through the [[term:air-filter|air filter]], which stops dust and insects before they reach the cylinders, and continues through the [[term:intake-manifold|intake manifold]], which distributes it between the cylinders in equal amounts. A clogged air filter restricts airflow and makes the engine use more fuel and produce less power.\n\n# Octane rating\nThe petrol’s [[term:octane-rating|octane rating]] describes how well the fuel resists “knocking” — uncontrolled ignition that happens when the mixture ignites by itself too early, because of heat and pressure, rather than only from the spark plug’s spark. Engines with a high compression ratio or turbocharging usually need a higher octane rating. Always fill up with the type of fuel and octane level the vehicle’s manual specifies.\n\n:::danger The wrong fuel in the tank\nFilling a petrol vehicle with diesel, or the other way round, is a serious fault: **do not start the engine**. Call roadside assistance straight away, so someone who knows how to drain the tank can attend. Running the engine with the wrong fuel can destroy the fuel pump, the injectors and even the engine itself.\n:::",
+   "keyPoints": [
+    "Fuel travels from the fuel tank, through a filter, to the pump and the injectors.",
+    "Air passes through the air filter and the intake manifold before it enters the cylinders.",
+    "The octane rating describes resistance to knocking; always use the fuel specified in the vehicle’s manual.",
+    "Wrong fuel in the tank: do not start the engine — call roadside assistance to drain the tank."
+   ]
+  },
+  {
+   "id": "eg-exhaust",
+   "title": "Exhaust and pollution: after combustion",
+   "summary": "What happens to the gases after the fuel burns, and how the vehicle cleans them before they reach the air.",
+   "terms": [
+    "exhaust-manifold",
+    "exhaust-system",
+    "muffler",
+    "catalytic-converter",
+    "oxygen-sensor",
+    "dpf",
+    "egr",
+    "adblue-scr"
+   ],
+   "body": "The gases left over after the power stroke are still harmful and noisy — the exhaust system deals with both before they reach the air.\n\n# The exhaust’s path\nThe hot gases leave each cylinder into the [[term:exhaust-manifold|exhaust manifold]], which combines them into a single pipe — the [[term:exhaust-system|exhaust system]]. On their way out, they pass through the [[term:catalytic-converter|catalytic converter]], which turns a large part of the harmful gases into less harmful ones, and through the [[term:muffler|silencer]], which reduces the noise.\n\n# The oxygen sensor\nThe [[term:oxygen-sensor|oxygen sensor]] (also known as the “lambda sensor”) measures how much oxygen remains in the exhaust gases, and reports to the vehicle’s computer whether the mixture is too rich or too lean in fuel — this lets the computer adjust the injection in real time.\n\n# Specific to diesel\nModern diesel vehicles have two extra systems to cut pollution: the [[term:dpf|particulate filter]] traps soot particles, and cleans itself out from time to time through “regeneration” — a controlled burn of the particles it has collected, which usually happens during sustained driving at a relatively high RPM (for example, on a non-urban road); short trips in town only can stop it from cleaning itself. The [[term:egr|exhaust gas recirculation]] system returns some of the exhaust gases back into the cylinders to lower the combustion temperature and cut nitrogen oxides, and many diesels also have an [[term:adblue-scr|AdBlue]] system that injects a urea solution into the exhaust to neutralise them — a tank that needs topping up from time to time, separate from the fuel tank.\n\n:::warn The “check engine” light\nA steady [[dash:check-engine]] light marks a fault that should be diagnosed at a garage soon. When it **flashes** — there is a serious misfire that can destroy the catalytic converter: slow down, avoid hard acceleration and stop as soon as you can.\n:::",
+   "keyPoints": [
+    "Exhaust gases pass from the manifold through the catalytic converter (which cleans them) and the silencer (which quietens them) before they leave.",
+    "The oxygen sensor helps the vehicle’s computer adjust the air-fuel mixture in real time.",
+    "In diesels: a particulate filter (cleans itself during sustained driving), exhaust gas recirculation, and sometimes AdBlue — all reduce pollution.",
+    "A steady “check engine” light — get it diagnosed soon; a flashing one — slow down and stop as soon as you can, there is a risk to the catalytic converter."
+   ]
+  }
+ ]
+}

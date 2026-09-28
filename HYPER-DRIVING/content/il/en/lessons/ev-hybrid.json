@@ -1,0 +1,108 @@
+{
+ "chapter": "ev-hybrid",
+ "title": "Electric and hybrid vehicles",
+ "summary": "How an electric vehicle works, how you charge it, and why high-voltage safety comes before everything else.",
+ "lessons": [
+  {
+   "id": "ev-how",
+   "title": "How an electric vehicle works",
+   "summary": "Three components replace the whole familiar drivetrain: a battery, an electric motor and an inverter.",
+   "terms": [
+    "electric-vehicle",
+    "traction-battery",
+    "electric-motor",
+    "inverter"
+   ],
+   "body": "An [[term:electric-vehicle|electric vehicle]] is built completely differently from a vehicle with a combustion engine. It has no multi-cylinder engine, gearbox, clutch or exhaust system — all of these are replaced by three main components.\n\n# Three components instead of a whole drivetrain\n1. **[[term:traction-battery|The traction battery]]** — a large, heavy battery, usually flat and spread across the vehicle's floor, that stores the energy driving the vehicle. It is completely separate from the regular 12V battery that powers the lighting, computers and radio.\n2. **[[term:electric-motor|The electric motor]]** — turns electricity into rotary motion. There may be one motor (front- or rear-wheel drive) or two (all-wheel drive).\n3. **[[term:inverter|The inverter]]** — the current in the battery is direct current (DC), but the electric motor runs on alternating current (AC). The inverter converts between them in both directions: from battery to motor while driving, and from motor to battery during regenerative braking.\n\n[[fig:ev-drivetrain]]\n\n# Why there's no gearbox\nA combustion engine needs several gears because it only develops good power within a certain range of revs. An electric motor delivers almost all of its torque from a standstill and keeps it across a wide range of speeds — so in most electric vehicles a single fixed gear is enough. There's no need for a clutch either: there's nothing to “disconnect” when the vehicle is stationary, because the electric motor doesn't stall at a stop the way a combustion engine does.\n\n:::tech The 12V battery is still there\nEven an electric vehicle has a regular 12V battery, which powers the computers, lighting and auxiliary systems. It's charged from the traction battery through a small converter, and a fault in it can immobilise the vehicle just as in an ordinary car.\n:::\n\n# What stays the same\nThe steering, brakes, suspension, tyres, air conditioning and seatbelts work in a similar way to an ordinary car. The real difference is in the drivetrain and braking — and that's what the next lessons cover.",
+   "keyPoints": [
+    "An electric vehicle is driven by three main components: a [[term:traction-battery|traction battery]], an [[term:electric-motor|electric motor]] and an [[term:inverter|inverter]].",
+    "An electric motor gives maximum torque almost from a standstill — so a single gear is enough and there's no need for a clutch.",
+    "The regular 12V battery still exists in an electric vehicle, separate from the traction battery.",
+    "The steering, brakes, suspension and tyres work just as in an ordinary car."
+   ]
+  },
+  {
+   "id": "ev-hybrids",
+   "title": "Hybrid vehicles: when there's a combustion engine too",
+   "summary": "Mild, full and plug-in hybrids — three degrees of cooperation between a combustion engine and an electric motor.",
+   "terms": [
+    "hybrid-vehicle",
+    "plug-in-hybrid"
+   ],
+   "body": "A [[term:hybrid-vehicle|hybrid vehicle]] combines an internal combustion engine with an electric motor and a relatively small battery, to save fuel and cut pollution — without needing a charging station.\n\n# Three degrees\n| Type | What the electric motor does | Charging from outside |\n|---|---|---|\n| Mild hybrid | Assists the combustion engine when accelerating and starting, doesn't drive alone | None |\n| Full hybrid | Can drive the vehicle alone for short distances at low speed | None |\n| [[term:plug-in-hybrid|Plug-in hybrid]] | Drives the vehicle alone for tens of kilometres | Yes, from an outlet or charging station |\n\nIn a full hybrid and a plug-in hybrid, the vehicle's computer constantly chooses between electric drive, combustion-engine drive, or a combination of the two — depending on speed, load and how much energy is left in the battery. The switch between modes is almost always smooth, sometimes with a slight shudder when the combustion engine starts up.\n\n:::remember\nIn a regular hybrid (not plug-in), you can't charge the battery from a power outlet — it's charged only by the engine and by regenerative braking. Only a [[term:plug-in-hybrid|plug-in hybrid]] can also be connected to a charging station.\n:::\n\n# When the engine starts and stops\nAt low speed and when stopped at a traffic light, many hybrid vehicles drive or sit quietly on electric power alone, and the combustion engine shuts off completely. It starts again when more power is needed (accelerating, climbing) or when the battery runs low. Don't be surprised if the engine “comes to life” on its own at a traffic light — that's normal.\n\n# An advantage in town, less on the expressway\nA hybrid saves the most fuel in slow urban driving with lots of stopping and slowing down, because it recycles braking energy that would be lost as heat in an ordinary car. On a fast, steady non-urban road, the advantage is much smaller.",
+   "keyPoints": [
+    "A [[term:hybrid-vehicle|hybrid vehicle]] combines a combustion engine with an electric motor and a battery, without needing external charging.",
+    "From Mild to Full, the electric motor can either just assist or drive the vehicle alone for short distances.",
+    "Only a [[term:plug-in-hybrid|plug-in hybrid]] connects to a charging station; a regular hybrid charges only from the engine and from braking.",
+    "The biggest saving is in slow urban driving with lots of stops."
+   ]
+  },
+  {
+   "id": "ev-charging",
+   "title": "Charging: AC, DC and connectors",
+   "summary": "How, where and how fast to charge an electric vehicle — and safety and etiquette rules at the charging station.",
+   "terms": [
+    "charging-type-ac-dc",
+    "charging-connector",
+    "charging-station",
+    "onboard-charger",
+    "state-of-charge"
+   ],
+   "fig": "ev-charging-connectors",
+   "body": "Charging an electric vehicle is, in principle, similar to charging a phone — you plug in a cable, and the traction battery fills up. The main differences are the amount of electricity and the [[term:charging-type-ac-dc|charging]] rate.\n\n# Slow AC, fast DC\n- **AC charging** — ordinary electricity, like at home or at a simple public charge point. The vehicle's [[term:onboard-charger|onboard charger]] converts it into direct current suitable for the battery. It's relatively slow — anywhere from a few hours to a whole night, depending on the station's power output and the battery's size.\n- **Fast DC charging** — dedicated stations, mainly along non-urban roads, that feed direct current straight into the battery without going through the onboard charger. It charges a large part of the battery in under half an hour, but slows down gradually as the [[term:state-of-charge|state of charge]] approaches full — so as not to overheat the battery.\n\n[[fig:ev-charging-connectors]]\n\n# The connector\nIn Israel, the common connector for [[term:charging-connector|AC charging]] is Type 2, and for fast DC charging it's CCS, which adds two large pins below the regular Type 2 plug. The vehicle and the station “talk” to each other before the electricity flows, to make sure the connector is locked properly and there's no fault.\n\n:::danger Home charging safety\nConnecting to a home charging point needs a socket and wiring designed for this load. Do not charge from an ordinary extension lead or a regular household socket for long periods without checking with an electrician that the circuit is suitable — a prolonged electrical load can cause overheating and even fire.\n:::\n\n# Public charging station: etiquette\n- Move the vehicle away from the station once charging finishes, to free the spot for the next person.\n- Don't park in a charging bay without charging.\n- Check that the cable isn't left stretched across the pavement, creating an obstacle.\n\n# Range and everyday charging\nMost electric vehicle drivers charge mainly at home, overnight, and only use a public station on long journeys — similar to someone who only fills up with fuel when the tank runs low, except here the “refuelling” happens while the vehicle would be parked anyway.",
+   "keyPoints": [
+    "AC charging is slow and common (home, simple stations); fast DC charging is at dedicated stations.",
+    "In Israel: Type 2 for AC, CCS for fast DC.",
+    "Fast charging slows down as the [[term:state-of-charge|state of charge]] approaches full.",
+    "At a public station — don't block it once charging has finished."
+   ]
+  },
+  {
+   "id": "ev-driving",
+   "title": "How to drive an electric vehicle",
+   "summary": "Instant torque, regenerative braking that slows the vehicle by itself, and a range affected by far more than just speed.",
+   "terms": [
+    "regenerative-braking",
+    "regenerative-braking-level"
+   ],
+   "body": "Driving an electric vehicle feels different from the very first press of the accelerator pedal.\n\n# Instant response\nAn electric motor delivers almost all its torque from the very first moment, without waiting for the engine to “build up revs” the way a combustion engine does. The result is sharp, smooth acceleration even from a standstill — pleasant, but deceptive: it's easy to accelerate far more than you meant to, so you need a light touch on the accelerator, especially in wet or crowded places.\n\n# [[term:regenerative-braking|Regenerative braking]]\nWhen you lift your foot off the accelerator, the electric motor turns into a generator: it slows the vehicle and charges the battery at the same time, instead of simply dissipating the energy as heat in the brakes. In most vehicles you can adjust the [[term:regenerative-braking-level|regen braking level]] — at the highest level, the vehicle slows down so strongly when you release the pedal that you hardly need to touch the brake pedal in ordinary urban driving (“one-pedal driving”). This is still not emergency braking — in a hazard, press the regular brake pedal as in any vehicle.\n\n:::tip\nWhen you switch to an electric vehicle for the first time, practise the regen braking level in a quiet place before driving in traffic — the strong deceleration when you release the pedal surprises many drivers.\n:::\n\n# What shortens the range\nThe actual range depends on far more than the number in the brochure: high speed (air resistance rises sharply), air conditioning and heating, cold weather (the battery itself is less efficient in the cold), load and towing a caravan or roof box, and driving with sharp acceleration and braking. Smooth, gentle driving can add tens of per cent to the range compared with aggressive driving.\n\n# Dangerous quiet at low speed\nAn electric vehicle is almost silent at low speed — pleasant for the driver, but pedestrians and cyclists who are used to hearing a vehicle approach may not notice it. That's why many electric vehicles produce an artificial sound at low speed, and in any case — near pedestrian crossings, in car parks and between parked cars you need double the attention, precisely because of this quiet.\n\n:::remember\nInstant torque, strong regenerative braking and quiet at low speed — the three main differences in driving an electric vehicle, and all of them need a few familiarisation drives before they feel natural.\n:::",
+   "keyPoints": [
+    "An electric motor gives maximum torque almost from a standstill — it's easy to accelerate more than you planned.",
+    "[[term:regenerative-braking|Regenerative braking]] slows the vehicle while charging the battery at the same time; at a high level it lets you drive almost with one pedal.",
+    "Speed, air conditioning, cold and load shorten the actual range.",
+    "An electric vehicle is almost silent at low speed — pay double attention to pedestrians and cyclists."
+   ]
+  },
+  {
+   "id": "ev-safety",
+   "title": "High-voltage safety",
+   "summary": "Before anything else — the orange cables. What you may and may not touch, in a crash, a fire and a flood.",
+   "terms": [
+    "high-voltage-safety"
+   ],
+   "body": "The traction battery in an electric or hybrid vehicle operates at a voltage of several hundred volts — far beyond the 12 volts of the ordinary vehicle battery, and at a level that can be fatal on direct contact. [[term:high-voltage-safety|High-voltage safety]] is the first thing you need to know about an electric vehicle, before anything else.\n\n:::danger The orange cables\nEvery orange-coloured cable and connector on an electric or hybrid vehicle belongs to the high-voltage system. Never touch them, cut them, or try to dismantle any component near them — even when the vehicle is switched off. Only a qualified vehicle electrician who has been trained for electric vehicles may work on this system.\n:::\n\n# A crash involving an electric vehicle\nAfter a crash, the safety systems in most electric vehicles automatically disconnect the high-voltage circuit. Even so:\n- Do not touch the orange cables or the battery.\n- If there's a leaking fluid or smoke from the floor area — move away and call the Fire and Rescue Services {{fact:emergency.fire_and_rescue}}, and state explicitly that it's an electric or hybrid vehicle.\n- You can still remove casualties and give ordinary first aid as usual — the danger is direct contact with the high-voltage system, not being near the vehicle.\n\n# A fire in an electric vehicle\nA fire in a traction battery is different from a fuel fire: it can reignite hours after it appears to have gone out, and needs an especially large quantity of water for prolonged cooling. So:\n- Do not try to put out a burning battery yourself — move away and call the fire service {{fact:emergency.fire_and_rescue}}.\n- An electric vehicle that has been involved in a crash or fire, even if it looks fine, may need a period of observation — as per the manufacturer's instructions.\n\n# Flooding and water\nA traction battery in good condition is sealed against water, and you can drive in rain or through an ordinary puddle without worry. However, an electric vehicle that has been fully flooded (water above floor level) should not be driven, and should not be inspected by anyone who isn't qualified — it must be towed and its high-voltage system checked at an authorised garage before anyone tries to start it again.\n\n# Towing\nMany electric vehicles must not be towed with the driven wheels touching the road, because the wheels turning can activate the motor as a generator and damage the system. Tow only according to the manufacturer's instructions — usually on a flatbed, with all four wheels lifted.",
+   "keyPoints": [
+    "[[term:high-voltage-safety|High-voltage safety]]: never touch the orange cables — only a qualified vehicle electrician.",
+    "In a crash: move away from any leak or smoke, call the Fire and Rescue Services {{fact:emergency.fire_and_rescue}} and state that it's an electric vehicle.",
+    "A battery fire can reignite hours after it appears to have gone out — never try to put it out yourself.",
+    "A battery in good condition is sealed against water; a fully flooded vehicle is towed and checked before anyone tries to start it.",
+    "Tow only according to the manufacturer's instructions — turning driven wheels can damage the motor."
+   ]
+  },
+  {
+   "id": "ev-maintenance",
+   "title": "Maintenance: what's different in an electric vehicle",
+   "summary": "Less brake wear, a 12V battery is still there, and battery health is the most valuable asset in the vehicle.",
+   "terms": [
+    "12v-battery"
+   ],
+   "body": "An electric vehicle needs different care from a vehicle with a combustion engine — some of it less frequent, some of it completely new.\n\n# Brakes: less wear, not less maintenance\nThanks to regenerative braking, the regular brakes (pads and discs) work much less in an electric vehicle — sometimes almost not at all, in urban driving with a high regen braking level. This is an advantage (less wear), but also a risk: a brake that is barely used can rust and stick, especially in the humid, salty Israeli summer in coastal towns. It's still important to bring the vehicle for a periodic brake check, even if the pads are still thick.\n\n# Tyres\nAn electric vehicle is heavier than a similar vehicle with a combustion engine (because of the battery's weight), and the instant torque wears tyres faster under acceleration. That's why electric vehicle tyres are chosen with a suitable load rating, and their tyre pressure matters just as much — low pressure increases rolling resistance and shortens the range, on top of the usual risk.\n\n# The 12V battery — still there\nAlthough the traction battery is large and powerful, the regular [[term:12v-battery|12V battery]] still exists and powers the computers, lighting and central locking — and can still “run flat” just like in an ordinary car, for example after the vehicle has stood for weeks while background systems keep drawing from it. An electric vehicle with a flat 12V battery simply won't wake up, even if the traction battery is full.\n\n# Coolant — for the battery too\nAn electric vehicle usually has more than one cooling circuit: one for the electric motor and inverter, and sometimes also a separate circuit for regulating the temperature of the traction battery itself — cooling it when it heats up during fast charging, and sometimes also heating it in the cold to keep it efficient. These are closed circuits that need periodic checking at a garage, not a self-check by the driver.\n\n:::remember Battery health\nThe traction battery is the most expensive part of an electric vehicle. Two things help keep it healthy for years: charging routinely to around 80–90% and not always to full, and avoiding frequent fast DC charging when it isn't needed — slow, regular charging at home reduces wear.\n:::",
+   "keyPoints": [
+    "Regenerative braking reduces brake wear — but you still need a periodic brake check.",
+    "An electric vehicle is heavier; correct tyre pressure matters for both range and safety.",
+    "The regular [[term:12v-battery|12V battery]] still exists, and can run flat just like in an ordinary car.",
+    "Slow, regular charging, not always to 100%, keeps the traction battery healthy."
+   ]
+  }
+ ]
+}

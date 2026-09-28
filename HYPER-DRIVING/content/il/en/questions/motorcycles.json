@@ -1,0 +1,445 @@
+{
+ "chapter": "motorcycles",
+ "questions": [
+  {
+   "id": "q-mc-001",
+   "lesson": "mc-types",
+   "licence": [
+    "moto"
+   ],
+   "facts": [
+    "licence.a2.max_kw"
+   ],
+   "q": "What is the maximum power allowed for a motorcycle on an A2-grade licence?",
+   "options": [
+    "{{fact:licence.a2.max_kw}}",
+    "No power limit",
+    "{{fact:licence.a1.max_kw}}",
+    "22 kilowatts"
+   ],
+   "answer": 0,
+   "explain": "On an A2 licence, power is limited to {{fact:licence.a2.max_kw}} (and also to a power-to-weight ratio of up to 0.1 kilowatts per kg), under regulation 176.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-002",
+   "lesson": "mc-types",
+   "licence": [
+    "moto"
+   ],
+   "facts": [
+    "licence.a2.max_cc"
+   ],
+   "q": "What is the maximum engine capacity allowed for a motorcycle on an A2 licence?",
+   "options": [
+    "50 cc",
+    "250 cc",
+    "{{fact:licence.a2.max_cc}}",
+    "There's no capacity limit on A2"
+   ],
+   "answer": 2,
+   "explain": "An A2 licence is limited to a motorcycle with an engine capacity of up to {{fact:licence.a2.max_cc}} (regulation 176), in addition to the power limit.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-003",
+   "lesson": "mc-types",
+   "licence": [
+    "moto"
+   ],
+   "facts": [
+    "licence.a.min_age"
+   ],
+   "q": "What is the minimum age for obtaining an A licence (a motorcycle with no power limit)?",
+   "options": [
+    "18",
+    "24",
+    "{{fact:licence.a.min_age}}",
+    "16"
+   ],
+   "answer": 2,
+   "explain": "An A licence, which doesn't limit the motorcycle's power, is granted from at least age {{fact:licence.a.min_age}} (regulation 189(g)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-004",
+   "lesson": "mc-types",
+   "licence": [
+    "moto"
+   ],
+   "facts": [
+    "licence.a.seniority_a1"
+   ],
+   "q": "What does a holder of an A1 licence need in order to get an A licence?",
+   "options": [
+    "No requirement — you can apply immediately",
+    "At least {{fact:licence.a.seniority_a1}} of seniority on the A1 licence",
+    "Five years of seniority on the A1 licence",
+    "Just another theory test, with no seniority requirement"
+   ],
+   "answer": 1,
+   "explain": "To move from A1 to A, you need at least {{fact:licence.a.seniority_a1}} of seniority on the A1 licence (regulation 189(g)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-005",
+   "lesson": "mc-gear",
+   "licence": [
+    "moto"
+   ],
+   "q": "Who must wear a fastened protective helmet on a motorcycle, and when?",
+   "options": [
+    "Only when it's raining",
+    "Only the rider, and only on a non-urban road",
+    "Only the passenger",
+    "Both the rider and the passenger, at all times"
+   ],
+   "answer": 3,
+   "explain": "A fastened protective helmet covering the ear is compulsory for both the rider and the passenger on a motorcycle, at all times and on every road (regulation 119(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-006",
+   "lesson": "mc-gear",
+   "licence": [
+    "moto"
+   ],
+   "q": "What is the main difference between a full-face helmet and an open-face helmet?",
+   "options": [
+    "An open-face helmet is legal only for the passenger",
+    "A full-face helmet is lighter in weight",
+    "There's no difference in protection, only in appearance",
+    "A full-face helmet also covers the chin and gives more protection in a crash"
+   ],
+   "answer": 3,
+   "explain": "A full-face helmet covers the whole head including the chin, which is hit frequently in motorcycle falls, and gives the greatest protection.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-007",
+   "lesson": "mc-gear",
+   "licence": [
+    "moto"
+   ],
+   "q": "What is the fine and points for driving or riding a motorcycle without a helmet?",
+   "options": [
+    "{{fine:motorcycle-no-helmet}} and {{points:motorcycle-no-helmet}} points",
+    "{{fine:phone-handheld}} and {{points:phone-handheld}} points",
+    "No fine, just a warning",
+    "{{fine:bicycle-helmet-cyclist}} and no points"
+   ],
+   "answer": 0,
+   "explain": "Driving or riding a motorcycle without a helmet incurs {{fine:motorcycle-no-helmet}} and {{points:motorcycle-no-helmet}} points.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-008",
+   "lesson": "mc-gear",
+   "licence": [
+    "moto"
+   ],
+   "q": "Beyond the helmet, which protective gear helps most in a slide on the road?",
+   "options": [
+    "A dark-coloured shirt",
+    "A wool cap under the helmet",
+    "Dark sunglasses",
+    "A jacket and gloves padded at the shoulders, elbows and knuckles"
+   ],
+   "answer": 3,
+   "explain": "A slide is far more common than a head-on impact on a motorcycle; a padded jacket and gloves protect the areas hit first in a slide on asphalt.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-009",
+   "lesson": "mc-controls",
+   "licence": [
+    "moto"
+   ],
+   "q": "On the rider's right hand you'll find —",
+   "options": [
+    "The clutch lever and the front brake lever",
+    "The throttle grip and the front brake lever",
+    "The throttle grip and the gear pedal",
+    "Only the throttle grip, with no brake"
+   ],
+   "answer": 1,
+   "explain": "The right hand has the throttle grip and the front brake lever; the clutch lever is on the left hand, and the gear pedal is under the left foot.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-010",
+   "lesson": "mc-controls",
+   "licence": [
+    "moto"
+   ],
+   "q": "How do you operate the throttle grip to accelerate?",
+   "options": [
+    "Pull it backward",
+    "Push it forward",
+    "Twist it toward the rider",
+    "Press it downward"
+   ],
+   "answer": 2,
+   "explain": "Twisting the throttle grip toward the rider accelerates; releasing the twist slows down.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-011",
+   "lesson": "mc-controls",
+   "licence": [
+    "moto"
+   ],
+   "q": "What must you make sure of before setting off on a motorcycle that was standing on a stand?",
+   "options": [
+    "That the gear pedal is locked in a high gear",
+    "That the stand (side or centre) is fully raised",
+    "That the mirrors are aimed only backward",
+    "That the helmet is worn, without fastening it"
+   ],
+   "answer": 1,
+   "explain": "A side or centre stand that isn't fully raised can strike the road in a turn and tip the motorcycle over.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-012",
+   "lesson": "mc-braking",
+   "licence": [
+    "moto"
+   ],
+   "q": "How many mutually independent brake systems must a motorcycle have?",
+   "options": [
+    "Only one, on the rear wheel",
+    "Two: one on the front wheel and one on the rear",
+    "Three, including a separate hand brake",
+    "There's no minimum requirement in law"
+   ],
+   "answer": 1,
+   "explain": "Regulation 328 requires two independent brake systems — one on the front wheel and one on the rear (or the two rear wheels on a tricycle), each able to decelerate the motorcycle by at least 1.5 metres per second squared.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-013",
+   "lesson": "mc-braking",
+   "licence": [
+    "moto"
+   ],
+   "q": "Which brake accounts for most of the braking power on a motorcycle?",
+   "options": [
+    "The front brake",
+    "Both brakes always contribute exactly equally",
+    "The rear brake",
+    "It depends only on the rider's weight"
+   ],
+   "answer": 0,
+   "explain": "Under braking, the weight of the motorcycle and rider shifts forward and increases the front wheel's grip, which is why it accounts for most of the braking power.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-014",
+   "lesson": "mc-braking",
+   "licence": [
+    "moto"
+   ],
+   "q": "What is the risk of squeezing the front brake hard while the motorcycle is leaned over in a turn?",
+   "options": [
+    "It activates ABS even on a motorcycle without the system",
+    "It improves grip in the turn",
+    "The front wheel can slide out and the motorcycle can fall",
+    "The motorcycle will slow down too fast, with no extra risk"
+   ],
+   "answer": 2,
+   "explain": "Hard front braking while leaned over increases the chance of the front wheel sliding out — first straighten up as much as possible, and only then brake hard.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-015",
+   "lesson": "mc-braking",
+   "licence": [
+    "moto"
+   ],
+   "q": "What does ABS do on a motorcycle during emergency braking?",
+   "options": [
+    "Brakes the motorcycle by itself without the rider's involvement",
+    "Prevents the wheels from locking, and reduces the risk of a fall under hard braking",
+    "Operates only the rear brake",
+    "Always halves the stopping distance"
+   ],
+   "answer": 1,
+   "explain": "ABS prevents wheel lock under hard braking; on a motorcycle this is critical, because a locked wheel can bring the motorcycle down, not just extend the stopping distance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-016",
+   "lesson": "mc-cornering",
+   "licence": [
+    "moto"
+   ],
+   "q": "How do you turn right on a motorcycle at normal road speed?",
+   "options": [
+    "Forcefully turn the handlebar left",
+    "Brake gently during the turn",
+    "Push the right handlebar grip lightly forward — counter-steering",
+    "Lean the body left without touching the handlebars"
+   ],
+   "answer": 2,
+   "explain": "Above walking pace, a turn begins with counter-steering: a light push on the handlebar grip in the direction of the turn makes the motorcycle lean the same way.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-017",
+   "lesson": "mc-cornering",
+   "licence": [
+    "moto"
+   ],
+   "q": "What happens to the lean angle as a turn gets sharper or the speed gets higher?",
+   "options": [
+    "It decreases",
+    "It always stays constant",
+    "It becomes negative",
+    "It increases"
+   ],
+   "answer": 3,
+   "explain": "The sharper the turn or the higher the speed, the greater the motorcycle's lean angle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-018",
+   "lesson": "mc-cornering",
+   "licence": [
+    "moto"
+   ],
+   "q": "Where should you look inside a turn on a motorcycle?",
+   "options": [
+    "Far ahead, toward where you want to end up",
+    "Straight at the ground right in front of the front wheel",
+    "Only at the rear mirror",
+    "It doesn't matter — your eyes don't affect the riding line"
+   ],
+   "answer": 0,
+   "explain": "A motorcycle tends to go where the rider is looking; looking far ahead toward where you want to end up improves the line through the turn.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-019",
+   "lesson": "mc-cornering",
+   "licence": [
+    "moto"
+   ],
+   "q": "When should you slow down before a sharp turn?",
+   "options": [
+    "Only if you see a vehicle ahead of you",
+    "Before the turn, before the motorcycle leans over",
+    "There's no need to slow down before a familiar turn",
+    "Within the turn itself, gradually"
+   ],
+   "answer": 1,
+   "explain": "Braking within a turn, when the motorcycle is already leaned over, increases the risk of sliding — slow down before the turn, not inside it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-020",
+   "lesson": "mc-traffic",
+   "licence": [
+    "moto"
+   ],
+   "q": "What does regulation 122 establish about riding alongside another vehicle on a motorcycle?",
+   "options": [
+    "It's forbidden, except to overtake the other vehicle or lawfully pass it",
+    "Allowed only alongside a bicycle, forbidden alongside a motor vehicle",
+    "Always allowed, even as a regular way to move through a jam",
+    "Completely forbidden in every situation, even while overtaking"
+   ],
+   "answer": 0,
+   "explain": "Regulation 122 bans a motorcyclist from riding alongside another vehicle, including a bicycle or another motorcycle, except to overtake it or lawfully pass it — there's no permission for regular lane filtering.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-021",
+   "lesson": "mc-traffic",
+   "licence": [
+    "moto"
+   ],
+   "facts": [
+    "licence.moto.passenger_rule"
+   ],
+   "q": "When is a holder of an A2 licence allowed to carry a passenger on the motorcycle?",
+   "options": [
+    "Only after a full year with the licence, with no age condition",
+    "Carrying a passenger is absolutely forbidden on an A2 licence",
+    "Only from age 18, and after holding the licence for at least two months — whichever is later",
+    "From the very first day with the licence, at any age"
+   ],
+   "answer": 2,
+   "explain": "A holder of an A2 or A1 licence may not carry a passenger unless they have turned 18 or have held the licence for at least two months — whichever is later (regulation 120(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-022",
+   "lesson": "mc-traffic",
+   "licence": [
+    "moto"
+   ],
+   "q": "When must a motorcycle ride with its headlight on?",
+   "options": [
+    "Always — by day and by night alike",
+    "Only on a non-urban road",
+    "Only at night",
+    "Only during “lighting hours”, like other vehicles"
+   ],
+   "answer": 0,
+   "explain": "Unlike other motor vehicles, a motorcycle must ride with its headlight lit at all times — by day and by night alike (regulation 97(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-023",
+   "lesson": "mc-traffic",
+   "licence": [
+    "moto"
+   ],
+   "q": "Where should a motorcyclist position themselves within the lane?",
+   "options": [
+    "Right up against the right dividing line, always",
+    "Right up close to the vehicle ahead, to be seen better",
+    "Always exactly in the centre of the lane, without moving",
+    "Wherever gives the best forward visibility and visibility to other drivers, changing position as needed"
+   ],
+   "answer": 3,
+   "explain": "Oil and grime build up in the centre of the lane; the right position is whichever gives the best visibility and gives the best chance of being seen, and it changes with the situation.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-024",
+   "lesson": "mc-maintenance",
+   "licence": [
+    "moto"
+   ],
+   "q": "What is the risk of a drive chain that's too loose or worn?",
+   "options": [
+    "It has no effect at all on braking or the drivetrain",
+    "It only causes higher fuel consumption",
+    "It can catch in the rear wheel and lock it",
+    "It's only noisy, with no safety risk"
+   ],
+   "answer": 2,
+   "explain": "A chain that's too loose or damaged can catch in the rear sprocket and lock it while riding — an immediate risk, not just a fault to fix later.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mc-025",
+   "lesson": "mc-maintenance",
+   "licence": [
+    "moto"
+   ],
+   "q": "Why is it especially important to keep the correct tyre pressure on a motorcycle?",
+   "options": [
+    "Because the law bans riding with a varying tyre pressure",
+    "It only affects the speedometer",
+    "Because motorcycle tyres can't be replaced",
+    "Because a motorcycle has only two contact points with the road, much smaller than a car's"
+   ],
+   "answer": 3,
+   "explain": "A motorcycle has only two small contact points with the road, so tyre condition and pressure affect stability and braking far more than in a car.",
+   "shuffled": true
+  }
+ ]
+}

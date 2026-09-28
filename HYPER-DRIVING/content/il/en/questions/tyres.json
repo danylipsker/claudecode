@@ -1,0 +1,322 @@
+{
+ "chapter": "tyres",
+ "questions": [
+  {
+   "id": "q-ty-001",
+   "lesson": "ty-structure",
+   "q": "What is the only contact patch between the car and the road?",
+   "options": [
+    "The tyres",
+    "The brakes",
+    "The suspension",
+    "The bumpers"
+   ],
+   "answer": 0,
+   "explain": "All grip, braking and steering pass through the four small contact patches of the tyres — there is no other direct contact between the car and the road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-002",
+   "lesson": "ty-structure",
+   "q": "What is the main advantage of a winter tyre over a summer tyre?",
+   "options": [
+    "It’s cheaper",
+    "Its rubber stays flexible and grips better in cold, snow and ice",
+    "It’s especially suited to driving in intense heat",
+    "It doesn’t need a pressure check"
+   ],
+   "answer": 1,
+   "explain": "A winter tyre is made from a softer rubber compound and a tread pattern that stays effective in cold, snow and ice — far more than a summer tyre.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-003",
+   "lesson": "ty-structure",
+   "q": "What is true about a run-flat tyre after all the air has left it?",
+   "options": [
+    "It re-inflates automatically while driving",
+    "It allows a short, slow continuation to a garage, and afterward it must be replaced — not repaired",
+    "It keeps working indefinitely, forever",
+    "You must not drive on it even one metre"
+   ],
+   "answer": 1,
+   "explain": "The reinforced sidewall of a run-flat tyre carries the car even without air, for a short distance and at limited speed only — and then it must be replaced.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-004",
+   "lesson": "ty-markings",
+   "q": "In the code 205/55R16 on the tyre sidewall, what does the number 205 refer to?",
+   "options": [
+    "The sidewall height-to-width ratio as a percentage",
+    "The wheel rim diameter in inches",
+    "The tyre’s width in millimetres",
+    "The load index"
+   ],
+   "answer": 2,
+   "explain": "205 is the tyre’s width in millimetres; 55 is the sidewall height-to-width ratio; R is radial construction; 16 is the rim diameter in inches.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-005",
+   "lesson": "ty-markings",
+   "q": "What does the speed rating (the letter) that appears after the rim size indicate?",
+   "options": [
+    "The maximum speed the tyre is designed to carry safely",
+    "The year of manufacture",
+    "The minimum tread depth",
+    "The weight of the tyre"
+   ],
+   "answer": 0,
+   "explain": "The speed rating, for example V, indicates the maximum speed the tyre is designed to carry safely at full load.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-006",
+   "lesson": "ty-markings",
+   "q": "The code 2324 inside an oval on the tyre sidewall indicates —",
+   "options": [
+    "Load index and speed rating",
+    "The recommended tyre pressure",
+    "The tyre’s serial number",
+    "Week 23 of 2024 — the manufacturing date"
+   ],
+   "answer": 3,
+   "explain": "The first two digits are the week of manufacture and the last two are the year: 2324 = week 23 of 2024.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-007",
+   "lesson": "ty-markings",
+   "facts": [
+    "tyre.max_age_fit_new"
+   ],
+   "q": "Up to how many years from the manufacturing date may a tyre repair shop fit a new tyre on a car?",
+   "options": [
+    "There is no such limit in law",
+    "10 years",
+    "{{fact:tyre.max_age_fit_new}}",
+    "3 years"
+   ],
+   "answer": 2,
+   "explain": "Regulation 322(b1): a tyre must not be fitted if more than {{fact:tyre.max_age_fit_new}} have passed since its manufacture date, or 24 months if it is used.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-008",
+   "lesson": "ty-pressure",
+   "q": "Where is the correct tyre pressure for the car shown?",
+   "options": [
+    "On the tyre’s own sidewall",
+    "In the insurance booklet",
+    "Every driver decides based on feel",
+    "On the vehicle manufacturer’s sticker, usually in the driver’s door opening"
+   ],
+   "answer": 3,
+   "explain": "The vehicle manufacturer — not the tyre manufacturer — sets the correct tyre pressure, and shows it on a sticker in the door opening or on the fuel cap.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-009",
+   "lesson": "ty-pressure",
+   "q": "When is the right time to check tyre pressure?",
+   "options": [
+    "When the tyres are cold — before driving or after a very short drive",
+    "Only once a year, before the annual inspection",
+    "Right after a long drive, when the tyres are hot",
+    "There’s no difference between a hot and a cold tyre"
+   ],
+   "answer": 0,
+   "explain": "Hot air expands and raises the measured pressure; checking when the tyre is cold gives the true value.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-010",
+   "lesson": "ty-pressure",
+   "q": "What does tyre pressure that’s too low cause?",
+   "options": [
+    "Wear in the centre of the tread only",
+    "Excessive stiffness of the tyre",
+    "Wear at both edges of the tread, overheating and higher fuel consumption",
+    "Improved braking ability"
+   ],
+   "answer": 2,
+   "explain": "At low pressure the tyre bulges inward, wears at the edges, heats up and increases fuel consumption.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-011",
+   "lesson": "ty-pressure",
+   "q": "What is the role of the TPMS system?",
+   "options": [
+    "Warn when the pressure in one of the wheels drops below the required level",
+    "Precisely measure the tread depth",
+    "Completely prevent a tyre blowout in every situation",
+    "Inflate the tyres automatically"
+   ],
+   "answer": 0,
+   "explain": "TPMS monitors pressure in every wheel and lights a warning when it drops — but it doesn’t replace a regular manual check.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-012",
+   "lesson": "ty-tread",
+   "facts": [
+    "tyre.min_tread"
+   ],
+   "q": "What is the minimum tread depth allowed on a pneumatic tyre, including the spare wheel?",
+   "options": [
+    "There is no minimum value in law",
+    "{{fact:tyre.min_tread}}",
+    "1 mm",
+    "5 mm"
+   ],
+   "answer": 1,
+   "explain": "Regulation 322(c): the tread depth must not be less than {{fact:tyre.min_tread}}, including on the spare wheel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-013",
+   "lesson": "ty-tread",
+   "q": "What is the role of the wear indicators inside the tyre’s grooves?",
+   "options": [
+    "Mark the minimum tread depth allowed — when the tread wears level with them, the tyre fails",
+    "Measure tyre pressure",
+    "Reinforce the sidewall",
+    "Decorate the tyre"
+   ],
+   "answer": 0,
+   "explain": "The wear indicators are small raised bars at the bottom of the grooves, at the height of the minimum depth allowed by law.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-014",
+   "lesson": "ty-tread",
+   "q": "A tyre is worn mainly in the centre of the tread, with both edges in relatively good condition. What’s the likely reason?",
+   "options": [
+    "Pressure too high",
+    "Poor wheel balancing",
+    "Poor wheel alignment",
+    "Pressure too low"
+   ],
+   "answer": 0,
+   "explain": "Pressure that’s too high bulges the tyre outward, so most of the contact and wear concentrates in the centre of the tread.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-015",
+   "lesson": "ty-tread",
+   "q": "Especially worn tread mainly increases the risk of —",
+   "options": [
+    "Greater ride comfort",
+    "Aquaplaning in the rain",
+    "Lower fuel consumption",
+    "Less noise while driving"
+   ],
+   "answer": 1,
+   "explain": "Worn tread can’t clear water fast enough, and the tyre loses contact with the wet road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-016",
+   "lesson": "ty-change",
+   "q": "A puncture happens on a non-urban road. What’s the correct first step?",
+   "options": [
+    "Get out immediately and start changing the wheel on the shoulder",
+    "Keep driving to a petrol station, even if it’s far away",
+    "Call the police before doing anything else",
+    "Stop somewhere safe, well clear of the traffic, turn on the hazard lights and put on a hi-vis vest before getting out"
+   ],
+   "answer": 3,
+   "explain": "Safety comes first: a safe spot, hazard lights and a hi-vis vest before you get out of the car and start working.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-017",
+   "lesson": "ty-change",
+   "facts": [
+    "equip.triangle.visibility"
+   ],
+   "q": "From what distance must the warning triangle be visible to a driver approaching from behind, when the car has had to stop on the road?",
+   "options": [
+    "500 metres",
+    "{{fact:equip.triangle.visibility}}",
+    "10 metres",
+    "There is no distance requirement in law"
+   ],
+   "answer": 1,
+   "explain": "Regulation 70(a): the warning triangle must be placed so it can be seen from at least {{fact:equip.triangle.visibility}} away.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-018",
+   "lesson": "ty-change",
+   "q": "Where do you place the jack when changing a wheel?",
+   "options": [
+    "At any flat point under the car",
+    "Only at the lifting point the vehicle manufacturer set on the chassis",
+    "Under the centre of the gearbox",
+    "Under the exhaust pipe"
+   ],
+   "answer": 1,
+   "explain": "Only the lifting points the vehicle manufacturer set are strong enough to carry the car’s weight on the jack; another spot could break or slip.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-019",
+   "lesson": "ty-change",
+   "q": "What is true about a space-saver spare (“skinny spare”)?",
+   "options": [
+    "It must never be used",
+    "It’s meant for permanent use instead of a regular tyre",
+    "You may drive on it without limit, exactly like a regular wheel",
+    "It’s meant only to get you to the nearest garage, at limited speed and distance"
+   ],
+   "answer": 3,
+   "explain": "A space-saver spare is smaller and narrower than the regular tyres, and is meant only to get you to the nearest garage — at limited speed and distance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-020",
+   "lesson": "ty-care",
+   "q": "What is the purpose of tyre rotation?",
+   "options": [
+    "To check the tread depth",
+    "To swap the front tyres with the rear ones so they wear evenly",
+    "To adjust the wheel angles",
+    "To balance weight inside the wheel"
+   ],
+   "answer": 1,
+   "explain": "The front tyres usually carry more steering and braking load and wear faster; rotation balances this out.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-021",
+   "lesson": "ty-care",
+   "q": "Vibration in the steering wheel that’s felt at a certain speed and disappears at another speed usually indicates —",
+   "options": [
+    "Poor wheel alignment alone",
+    "Pressure too high",
+    "An unbalanced wheel",
+    "Low tread depth"
+   ],
+   "answer": 2,
+   "explain": "An unbalanced wheel causes vibration felt mainly in a certain speed range, because of uneven weight distribution in the wheel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ty-022",
+   "lesson": "ty-care",
+   "q": "What does the law state about tyres fitted on the same axle?",
+   "options": [
+    "There is no requirement in law",
+    "You may combine radial and diagonal on the same axle",
+    "They must be identical in size, load capacity and construction (radial or diagonal)",
+    "You may combine different sizes if they look similar"
+   ],
+   "answer": 2,
+   "explain": "Regulation 322(d)(1): tyres that differ in size, load capacity or construction must not be fitted on the same axle.",
+   "shuffled": true
+  }
+ ]
+}

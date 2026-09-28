@@ -1,0 +1,364 @@
+{
+ "chapter": "breakdowns",
+ "questions": [
+  {
+   "id": "q-bd-001",
+   "lesson": "bd-procedure",
+   "q": "You notice a problem with the vehicle while driving. What is the correct order of actions?",
+   "options": [
+    "Turn on the hazard lights, signal and slow down gradually toward the shoulder",
+    "Brake immediately in the driving lane and check what happened",
+    "Switch off the engine while driving to stop faster",
+    "Keep driving at the normal speed until the next stop"
+   ],
+   "answer": 0,
+   "explain": "Turn on the hazard lights, signal and slow down gradually, and only then steer toward the hard shoulder or clear ground — don’t brake suddenly in the driving lane.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-002",
+   "lesson": "bd-procedure",
+   "facts": [
+    "equip.triangle.visibility"
+   ],
+   "q": "A vehicle stops with a fault on the shoulder of a non-urban road. From what minimum distance must the warning triangle be visible to approaching vehicles?",
+   "options": [
+    "500 metres",
+    "There’s no distance set by law",
+    "10 metres",
+    "{{fact:equip.triangle.visibility}}"
+   ],
+   "answer": 3,
+   "explain": "Regulation 70 requires placing the triangle so it is visible from at least {{fact:equip.triangle.visibility}} to approaching vehicles.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-003",
+   "lesson": "bd-procedure",
+   "q": "A vehicle stops with a fault on the shoulder, close to the driving lane. Which door is it correct to get out of and take passengers out through?",
+   "options": [
+    "It doesn’t matter which side, the main thing is to get out fast",
+    "The door nearest the driving lane, because it’s the most convenient",
+    "Only through the boot",
+    "The door furthest from the traffic"
+   ],
+   "answer": 3,
+   "explain": "Always get out through the door furthest from the traffic, and take children and other passengers out through it too — so as not to open a door into an active driving lane.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-004",
+   "lesson": "bd-tyre-blowout",
+   "q": "A tyre blows out while driving and the vehicle suddenly pulls to one side. What do you do in the first moment?",
+   "options": [
+    "Brake as hard as possible, as fast as possible",
+    "Lift your foot off the accelerator all at once and turn the steering wheel hard against the pull",
+    "Grip the steering wheel firmly, ease off the accelerator gradually and don’t brake hard",
+    "Keep going at the same speed to maintain stability"
+   ],
+   "answer": 2,
+   "explain": "In a tyre blowout, any sudden reaction is dangerous. Grip the steering wheel firmly, ease off the accelerator gradually and let the vehicle slow down before you brake.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-005",
+   "lesson": "bd-tyre-blowout",
+   "q": "What is the difference between a puncture and a tyre blowout?",
+   "options": [
+    "A blowout only happens in rear tyres, a puncture only in front ones",
+    "There’s no difference, the two terms describe the same thing",
+    "A puncture is more dangerous than a blowout",
+    "A puncture is a slow leak with time to stop in control; a blowout is a sudden tear with all the air escaping at once"
+   ],
+   "answer": 3,
+   "explain": "A puncture is a small hole that causes a gradual leak, while a blowout is a sudden tear that loses all the air at once and affects the steering far more sharply.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-006",
+   "lesson": "bd-tyre-blowout",
+   "q": "After the vehicle has slowed down significantly following a tyre blowout, what is the next step?",
+   "options": [
+    "Brake gently and steer to the shoulder or clear ground, as far from the traffic as possible",
+    "Stop immediately in the middle of the lane and check the tyre",
+    "Keep driving home, because the tyre has already deflated and there’s nothing more to do",
+    "Accelerate to get to the petrol station faster"
+   ],
+   "answer": 0,
+   "explain": "Only after the speed has dropped significantly do you brake gently and steer to the shoulder or clear ground off the traffic lane.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-007",
+   "lesson": "bd-brake-failure",
+   "q": "The brake pedal sinks and feels soft and doesn’t stop the vehicle as usual. What is the first action?",
+   "options": [
+    "Turn the steering wheel sharply to stop using friction",
+    "Press the pedal several times in quick succession",
+    "Switch off the engine immediately",
+    "Keep driving and wait for the brakes to recover on their own"
+   ],
+   "answer": 1,
+   "explain": "Quick, repeated presses on the pedal may build up enough pressure for partial braking in a partial hydraulic leak.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-008",
+   "lesson": "bd-brake-failure",
+   "q": "After repeated presses on the brake pedal weren’t enough, what helps slow the vehicle without friction brakes?",
+   "options": [
+    "Switching off the engine while driving",
+    "Shifting down gradually, to make use of engine braking",
+    "Shifting to neutral, so the engine doesn’t hold the vehicle back",
+    "Accelerating quickly to get out of danger"
+   ],
+   "answer": 1,
+   "explain": "Shifting down gradually engages engine braking, which slows the vehicle even without the friction brakes. Neutral, on the other hand, disconnects the engine and doesn’t help slow it down.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-009",
+   "lesson": "bd-brake-failure",
+   "q": "In brake failure, how do you apply the parking brake to stop the vehicle?",
+   "options": [
+    "Only after the vehicle has stopped completely",
+    "With one sharp pull or press, as fast as possible",
+    "The parking brake must never be used in any emergency",
+    "Gradually and gently, so as not to lock the rear wheels"
+   ],
+   "answer": 3,
+   "explain": "Applying the parking brake suddenly can lock the rear wheels and cause a skid. Apply it gradually.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-010",
+   "lesson": "bd-brake-failure",
+   "q": "Why must you not switch off the engine to stop a vehicle with failed brakes?",
+   "options": [
+    "Because it can lock the steering and cancels the assistance to the brakes and the steering",
+    "Because the law explicitly forbids it",
+    "Because the engine will be permanently damaged",
+    "There’s no problem with that, it’s the recommended way to stop"
+   ],
+   "answer": 0,
+   "explain": "Switching off the engine while driving can engage the steering lock in many vehicles, and always cancels the brake and steering assistance — exactly when you need them most.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-011",
+   "lesson": "bd-stuck-throttle",
+   "q": "The accelerator pedal sticks down and the engine keeps accelerating. What is the first action?",
+   "options": [
+    "Try to pull the pedal back with your foot",
+    "Switch off the engine immediately",
+    "Shift to neutral, or press the clutch all the way down",
+    "Accelerate harder to understand what happened"
+   ],
+   "answer": 2,
+   "explain": "Shifting to neutral, or pressing the clutch all the way down in a manual vehicle, immediately disconnects the engine from the wheels — even if the engine keeps revving in neutral.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-012",
+   "lesson": "bd-stuck-throttle",
+   "q": "After shifting to neutral while the accelerator pedal is still stuck, will the brakes still stop the vehicle?",
+   "options": [
+    "Only if you brake very hard",
+    "Yes, the brakes work as normal even while the engine is revving in neutral",
+    "Only in an automatic vehicle, not in a manual one",
+    "No, the revving engine cancels the brakes’ operation"
+   ],
+   "answer": 1,
+   "explain": "In neutral there’s no connection between the engine and the wheels, so the brakes stop the vehicle as normal — there’s no need to “fight” the revving engine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-013",
+   "lesson": "bd-stuck-throttle",
+   "q": "Why is it dangerous to switch off the engine while driving to stop a vehicle with a stuck accelerator pedal?",
+   "options": [
+    "The engine simply won’t switch off while driving",
+    "It can engage the steering lock and cancel assistance to the brakes and the steering",
+    "It only causes an accident in very old vehicles",
+    "It’s not dangerous, and it’s the safest way to stop"
+   ],
+   "answer": 1,
+   "explain": "In many vehicles, fully switching off the engine while driving engages the steering lock and cancels power steering and brake assistance, exactly when they’re needed most.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-014",
+   "lesson": "bd-steering-lights",
+   "q": "The vehicle’s power steering stops working while driving. What happens to the steering?",
+   "options": [
+    "The steering becomes lighter than usual",
+    "The vehicle becomes completely impossible to steer",
+    "There’s no noticeable change",
+    "The steering becomes significantly heavier, but you can still steer with more arm strength"
+   ],
+   "answer": 3,
+   "explain": "Power steering failure makes turning the steering wheel much heavier, but doesn’t remove the ability to steer — hold on with both hands and slow down gradually toward the shoulder.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-015",
+   "lesson": "bd-steering-lights",
+   "q": "The headlights suddenly go out while driving at night. What do you do first?",
+   "options": [
+    "Turn on the hazard lights immediately and slow down significantly",
+    "Stop on the spot without signalling, in whatever lane you’re in",
+    "Accelerate to get out of the dark area quickly",
+    "Keep going at the same speed to the next petrol station"
+   ],
+   "answer": 0,
+   "explain": "Turn on the hazard lights immediately, slow down significantly, make use of the parking lights or fog lights if they work, and get off the road as soon as possible with care.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-016",
+   "lesson": "bd-steering-lights",
+   "q": "The bonnet suddenly flies open while driving and blocks the windscreen. What is the right thing to do?",
+   "options": [
+    "Keep going at the same speed until the bonnet closes on its own",
+    "Brake hard immediately, with full force",
+    "Open the window and push the bonnet back down while driving",
+    "Gently lift your foot off the accelerator, look through the bottom gap or the side window, and brake gradually"
+   ],
+   "answer": 3,
+   "explain": "Sudden braking while blind is more dangerous. Lift your foot off the pedal, use the small gap at the bottom of the bonnet or the side window to see, and brake gradually.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-017",
+   "lesson": "bd-skid-aqua",
+   "q": "The back of the vehicle starts to skid sideways. What is the correct response?",
+   "options": [
+    "Brake hard immediately to stop the skid",
+    "Ease off the accelerator, and steer toward where you want the vehicle to go",
+    "Accelerate to stabilise the vehicle",
+    "Turn the steering wheel sharply in the direction opposite to the skid"
+   ],
+   "answer": 1,
+   "explain": "Ease off the accelerator gently, look and steer toward the direction you want — the steering “follows the eyes”. Sharp braking or turning the wheel makes the skid worse.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-018",
+   "lesson": "bd-skid-aqua",
+   "q": "The steering suddenly becomes too light and the vehicle stops responding to turns in heavy rain — a sign of aquaplaning. What do you do?",
+   "options": [
+    "Press the accelerator to “cut through” the layer of water",
+    "Turn the steering wheel sharply until the steering comes back",
+    "Ease off the accelerator gently, hold the steering wheel straight and wait for the tyres to grip again",
+    "Brake immediately to slow the vehicle"
+   ],
+   "answer": 2,
+   "explain": "Braking while the tyres aren’t touching the road increases the risk of a skid when they grip again. Ease off gently, hold straight and wait.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-019",
+   "lesson": "bd-skid-aqua",
+   "q": "What is common to the correct response in both skidding and aquaplaning?",
+   "options": [
+    "Bring the vehicle to a complete stop in the middle of the skid",
+    "Accelerate to get out of the situation faster",
+    "Avoid any sudden movement — don’t brake and don’t turn the steering wheel sharply",
+    "Brake hard in both cases"
+   ],
+   "answer": 2,
+   "explain": "In both situations, sudden movements — braking, a sharp turn of the wheel, abrupt use of the accelerator — make the loss of control worse.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-020",
+   "lesson": "bd-overheating-fire",
+   "q": "The temperature gauge climbs into the red zone in a traffic jam. What helps bring the temperature down until you stop?",
+   "options": [
+    "Accelerate so there’s more air over the radiator",
+    "Open the bonnet while driving",
+    "Turn the air conditioning up high",
+    "Switch off the air conditioning and turn the interior heater on at maximum"
+   ],
+   "answer": 3,
+   "explain": "The interior heater at maximum draws excess heat away from the engine through the small radiator that heats the cabin, and helps until you stop in a safe place.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-021",
+   "lesson": "bd-overheating-fire",
+   "q": "The vehicle has stopped because of overheating. When is it safe to open the coolant expansion tank cap?",
+   "options": [
+    "Only if you’re wearing gloves",
+    "Only after the engine has cooled down completely",
+    "Right after stopping, to check the level",
+    "There’s no need to check the coolant at any stage"
+   ],
+   "answer": 1,
+   "explain": "The hot coolant is under pressure and close to boiling. Opening the cap while the engine is hot can cause serious burns. Wait for the engine to cool down completely.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-022",
+   "lesson": "bd-overheating-fire",
+   "facts": [
+    "emergency.fire_and_rescue"
+   ],
+   "q": "While driving, real smoke rises from under the bonnet. What do you do?",
+   "options": [
+    "Keep driving to the nearest garage",
+    "Open the bonnet while driving to see what’s happening",
+    "Get off the road, everyone gets out and moves away, and call the fire and rescue services {{fact:emergency.fire_and_rescue}}",
+    "Wait in the vehicle until the smoke disappears on its own"
+   ],
+   "answer": 2,
+   "explain": "Real smoke is no longer just overheating. Get off the road, everyone gets out and moves away, and call the fire and rescue services, {{fact:emergency.fire_and_rescue}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-023",
+   "lesson": "bd-towing",
+   "facts": [
+    "tow.broken_down.max_rope_distance_m"
+   ],
+   "q": "You’re towing a broken-down vehicle with a connecting bar. What is the maximum permitted distance between the two vehicles?",
+   "options": [
+    "There’s no distance limit in law",
+    "10 metres",
+    "{{fact:tow.broken_down.max_rope_distance_m}}",
+    "Half a metre only"
+   ],
+   "answer": 2,
+   "explain": "Regulation 90(a) states that the distance between the towing vehicle and the towed vehicle must not exceed {{fact:tow.broken_down.max_rope_distance_m}}, and that the connecting bar must be marked and lit.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-024",
+   "lesson": "bd-towing",
+   "q": "A vehicle is being towed with a connecting bar, and its front axle wheels have not been raised. Who is allowed to sit in it and drive it?",
+   "options": [
+    "Only the vehicle’s owner, even without a suitable driving licence",
+    "A driver holding a driving licence suited to the type of the towed vehicle, with no other passengers",
+    "Any adult, even without a driving licence",
+    "No one, the towed vehicle must be completely empty"
+   ],
+   "answer": 1,
+   "explain": "If the towed vehicle’s wheels have not been raised, a driver holding a licence suited to the type of vehicle must sit in it, and no other passengers are allowed in it (reg. 90(d),(g)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bd-025",
+   "lesson": "bd-towing",
+   "q": "A petrol vehicle runs out of fuel in the middle of the road. After refuelling, what helps it start?",
+   "options": [
+    "Disconnect the battery and reconnect it",
+    "Press the accelerator pedal all the way down before starting",
+    "No special action is needed, the engine will start right away as usual",
+    "Turn the key to the on position for a few seconds before starting, so the fuel pump can fill up"
+   ],
+   "answer": 3,
+   "explain": "After refuelling a petrol vehicle, it’s usually enough to turn the key to the on position for a few seconds before starting so the fuel pump can fill the system.",
+   "shuffled": true
+  }
+ ]
+}

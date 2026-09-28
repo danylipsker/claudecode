@@ -1,0 +1,123 @@
+{
+ "chapter": "visibility-weather",
+ "title": "Lighting, visibility and weather",
+ "summary": "When to switch on lights, when to slow down and when to stop — from an ordinary night to sharav, dust, rain, ice and wind.",
+ "lessons": [
+  {
+   "id": "vw-lights",
+   "title": "Vehicle lights: when and how",
+   "summary": "When lights are compulsory, which light to use when, and which one you must not use — so you can see and be seen.",
+   "terms": [
+    "lighting-time",
+    "headlight",
+    "taillight",
+    "high-beam",
+    "low-beam",
+    "fog-light"
+   ],
+   "signs": [],
+   "body": "Seeing and being seen are two different things, and the law's lighting duties look after both.\n\n# When lights are compulsory\n:::law\nA motor vehicle (other than a light transport vehicle) must be driven with [[term:headlight|headlights]] [[term:taillight|and rear lights]] on during [[term:lighting-time|lighting-up time]] — and lighting-up time is not just night: it is also any other time when visibility is poor because of weather or another cause, such as heavy fog, thick dust or driving rain at midday (reg. 97(a) and reg. 1).\n:::\n\nOn a non-urban road, from 1 November to 31 March each year, the duty to use lights applies to every motor vehicle except a motorcycle — even if the sun is shining and there is no visibility problem at all (reg. 97(c)). A taxi, a bus and a goods vehicle over 14,999 kg must use lights on every road, all year round.\n\n:::remember\nA motorcycle is exempt from that whole period because a stricter rule applies to it: it must be driven with its light on at all times — day and night alike (reg. 97(b)).\n:::\n\n# High beam and low beam\n[[term:high-beam|High beam]] lights up a range of at least {{fact:lights.high_beam.min_range}}, but you must not use it where it could dazzle: dim it when meeting an oncoming vehicle, when driving behind a vehicle it would light up from behind, and when you stop (reg. 99). [[term:urban-road|On an urban road]] you must not use high beam unless the road is not properly lit (reg. 98). [[term:low-beam|Low beam]] lights up a range of at least {{fact:lights.low_beam.min_range}} — less, but without dazzling.\n\n# Fog light\nThe [[term:fog-light|fog light]] is fitted low, at least {{fact:lights.fog_front.min_height}} above the ground, and may only be used in fog, driving rain or snow (reg. 107(d)) — not as extra lighting for ordinary night driving.\n\n:::warn\nA spotlight (a powerful searchlight) may only be used to repair the vehicle or to find a location, while the vehicle is not moving and without pointing it along the road or at another vehicle (reg. 107). It is not a substitute for high beam.\n:::\n\n# A vehicle standing at night\nA vehicle standing during lighting-up time on the part of the road meant for traffic must show lights: on an ordinary vehicle — parking lights and a rear light, visible from at least {{fact:lights.parking.min_visibility}}; on a vehicle {{fact:lights.width_lights.min_vehicle_width}} wide or more — also side marker lights (reg. 100). A vehicle wider than {{fact:lights.width_lights.min_vehicle_width}} must also use side marker lights while driving, in addition to its headlights and rear lights (reg. 97(d)).\n\n:::fine\nDriving without lights as required: {{fine:lights-required}} and {{points:lights-required}} points. Failing to switch beam or dim as required on an urban road: {{fine:lights-urban-dimming}}.\n:::",
+   "keyPoints": [
+    "Lighting-up time is night, and also any other time with poor visibility — including fog, dust and driving rain by day (reg. 97(a), 1).",
+    "On a non-urban road, from 1 November to 31 March, lights are compulsory all day for every motor vehicle except a motorcycle (reg. 97(c)).",
+    "A motorcycle drives with its light on at all times, day and night.",
+    "Dim high beam when facing an oncoming vehicle, behind a vehicle ahead of you, and when stopping.",
+    "Fog light — only in fog, driving rain or snow."
+   ]
+  },
+  {
+   "id": "vw-night",
+   "title": "Driving at night",
+   "summary": "Seeing less, and tiring more — how to adapt your driving to the dark.",
+   "terms": [
+    "night",
+    "glare",
+    "fatigue"
+   ],
+   "signs": [],
+   "body": "[[term:night|At night]] you see less, react more slowly, and your body also tends to tire — three factors that pile up on one another.\n\n# Less seeing, less time to react\nLow beam lights up only about {{fact:lights.low_beam.min_range}} ahead — less than the distance a vehicle travelling at {{fact:speed.nonurban}} covers in under a second and a half. This means that at night, even at the speed limit, you sometimes see an obstacle only when it is already too close to stop comfortably. The solution is not only high beam — it is also matching your speed to your actual sight distance (reg. 51).\n\n# Glare\n:::warn\n[[term:glare|Glare]] from an oncoming vehicle's high beam, or from light reflecting in the rear-view mirror off a vehicle following too closely, causes momentary blindness lasting from a split second to several seconds. If you are dazzled — slow down, look slightly to the right towards the edge line instead of straight at the light, and never close your eyes.\n:::\n\nAn interior mirror set to night mode reduces the glare of lights from behind. Clean the windscreen from inside and outside — a thin layer of dust on the glass scatters incoming light and increases glare.\n\n# Fatigue\n[[term:fatigue|Fatigue]] harms alertness and reaction time, and gets worse at night because of the body clock — the highest risk of a fatigue crash is in the small hours of the night and in the early afternoon. Signs: repeated yawning, heavy eyes, waking with a start to find you do not remember the last stretch you drove.\n\n:::danger\nThe only cure for fatigue is stopping and resting or a short sleep — not loud music, an open window or coffee alone. Feel tired while driving? Stop somewhere safe as soon as possible.\n:::\n\n# Being seen\nMake sure your front and rear lights are on and clean — a dirty or broken light loses much of its strength. Light-coloured clothing and reflective strips help pedestrians and cyclists to be seen; and when you get out of the vehicle on a non-urban road, a high-visibility vest helps you the exact same way.",
+   "keyPoints": [
+    "Low beam lights up only about {{fact:lights.low_beam.min_range}}; match your speed to your actual sight distance, not just the speed limit.",
+    "If dazzled: slow down, look towards the edge line, never close your eyes.",
+    "Fatigue gets worse at night; the only cure is stopping and resting.",
+    "A clean windscreen and working lights reduce glare and improve your vision."
+   ]
+  },
+  {
+   "id": "vw-rain",
+   "title": "Rain, aquaplaning and puddles",
+   "summary": "The first rain, the water that separates the tyre from the road, and floods — how to drive correctly.",
+   "terms": [
+    "first-rain",
+    "aquaplaning",
+    "wiper",
+    "windshield"
+   ],
+   "signs": [
+    "141"
+   ],
+   "body": "Rain changes almost every aspect of driving: grip, visibility, and stopping distance.\n\n# The first rain\n:::warn\nIn [[term:first-rain|the first rain]] of the season the road is more dangerous than in heavy rain in mid-winter: the dry summer months build up oil, dust and rubber on the road, and the first rain turns them into an especially slippery layer — before it is washed away. Sign [[sign:141]] warns of a slippery-road hazard.\n:::\n\n# Aquaplaning\nWhen heavy rain falls and water builds up on the road, the layer of water can completely separate the tyre from the asphalt — the vehicle is carried on the water and loses steering and braking together. This phenomenon — [[term:aquaplaning|aquaplaning]] — is more dangerous at high speed, with worn tyres, and in pools of water that form in dips in the road.\n\n:::danger\nIf you feel the vehicle being carried on the water, or the steering suddenly going light — do not brake hard and do not turn the wheel. Ease off the accelerator gently, hold the steering wheel straight, and wait for the tyres to grip the road again before you continue braking or turning.\n:::\n\n# Wipers and misting\nWorn [[term:wiper|wipers]] leave streaks and blur your view exactly when it matters most — check them before winter. When the [[term:windshield|windscreen]] starts to mist up from inside, turn on the air conditioning and direct the airflow at it — dry air removes moisture far faster than running the wipers on a windscreen that is misted from the inside.\n\n# Puddles and floods\nA deep puddle can hide a pothole, and sometimes even the edge of the pavement. Slow down before entering a puddle, and keep your distance from pedestrians at the roadside — splashing them breaches your duty to drive with reasonable care. High water on the road, especially at interchanges and underpasses, can stall the engine or cause loss of control; for driving through flash floods and streams see [[chapter:special-roads|Special roads and conditions]].\n\n# Margin and speed\nA wet road significantly lengthens the braking distance, as explained in [[lesson:sd-stopping|the lesson on reaction and braking distance]]. Increase your margin from the vehicle ahead and match your speed to what the wet road allows, not just to what the sign permits (reg. 51).",
+   "keyPoints": [
+    "The first rain of the season is especially dangerous: oil and dust built up over summer turn the road slippery.",
+    "In aquaplaning — do not brake hard and do not turn the wheel; ease off the accelerator gently and hold straight.",
+    "Worn wipers and a misted windscreen harm visibility; air conditioning removes mist faster than wipers.",
+    "A wet road lengthens braking distance; increase your margin and match your speed to conditions, not just the limit."
+   ]
+  },
+  {
+   "id": "vw-fog-dust",
+   "title": "Fog, dust, sharav and haze",
+   "summary": "When visibility drops suddenly — from a light shower to a sandstorm — what to change and when to stop.",
+   "terms": [
+    "reasonable-speed",
+    "sharav",
+    "haze",
+    "sandstorm",
+    "hazard-lights"
+   ],
+   "signs": [],
+   "body": "Israel has several different kinds of sudden drop in visibility that have nothing to do with rain or night, and each calls for a different response.\n\n# Fog\nThick fog can cut visibility to just a few metres. The fog light helps, but the real remedy is speed: [[term:reasonable-speed|reasonable speed]] when visibility is limited for any reason is a legal duty, not a recommendation (reg. 52(3)). Overtaking is completely forbidden when visibility is poor or the field of view is blocked or limited (reg. 47(e)(1)).\n\n# Sharav and haze\n[[term:sharav|Sharav]] is a dry, dusty heatwave that arrives on easterly winds, mostly in spring and autumn; besides the extreme heat, it brings dust that cuts visibility and dries out the eyes. [[term:haze|Haze]] is a thinner veil of dust that stays suspended in the air even without a strong wind — visibility drops gradually, sometimes without your noticing exactly when it fell below safe.\n\n:::tip\nCheck visibility against the vehicle ahead of you: if the horizon looks blurred, that is already a reason to slow down and increase your margin — not only once you can see nothing at all.\n:::\n\n# Sandstorm\n:::danger\nA [[term:sandstorm|sandstorm]] can cut visibility to a few metres within minutes. Switch on low beam — not high beam, which reflects off the dust and dazzles you — slow down significantly, and double your usual margin. If visibility drops so far that you cannot see the edge of the road — stop driving: pull as far off the road as possible, switch off your driving lights, switch on your [[term:hazard-lights|hazard lights]], and wait.\n:::\n\n# When to stop completely\nThe simple rule: if you are not sure you can stop within what you can see ahead of you, you are already driving too fast for the conditions, whatever the sign says. In an extreme case it is better to pull off the road safely and wait for visibility to improve than to keep going and risk being hit from behind. For details on stopping safely on the shoulder of a non-urban road see [[chapter:stopping-parking|Stopping, standing and parking]].",
+   "keyPoints": [
+    "Limited visibility for any reason — fog, dust, sharav — requires slowing down (reg. 52(3)) and forbids overtaking (reg. 47(e)(1)).",
+    "Sharav brings heat and dust; haze is a thin veil of dust that reduces visibility gradually.",
+    "In a sandstorm: low beam (not high beam), slow down significantly, double your margin.",
+    "Near-zero visibility: pull off the road safely, hazard lights on, and wait."
+   ]
+  },
+  {
+   "id": "vw-heat-cold",
+   "title": "Heat, cold and ice",
+   "summary": "What extreme heat does to a vehicle and a driver, and how to cope with ice and snow in the north and in Jerusalem.",
+   "terms": [
+    "black-ice"
+   ],
+   "signs": [],
+   "body": "Israel is mostly a hot country, but even a typical summer day and a winter in the hills can produce extreme conditions that call for attention.\n\n# Heat\nExtreme heat raises tyre pressure and heats the tyres — a long summer drive with worn or underinflated tyres increases the risk of a blowout. Strain on the engine — air conditioning at full load, slow driving in a traffic jam — increases the risk of overheating; a red temperature warning light means stop as soon as possible, not carry on a little further.\n\n:::danger\nNever leave a child, an elderly person or an animal in a closed vehicle on a hot day — the temperature inside can rise by tens of degrees within a few minutes, even with the windows slightly open. For the legal duty and what to do if you find a child in a hot vehicle, see [[chapter:passenger-safety|Seatbelts, child seats and passengers]].\n:::\n\n# Cold, snow and ice in the north and Jerusalem\nAt the elevation of the Golan Heights, Mount Hermon, and the hills of Jerusalem and the north, winter sometimes brings sub-zero temperatures, snow and ice on the road. The Israel Police and Netivei Israel sometimes close mountain roads in heavy snow — a closed road stays closed, and you do not try to get around the closure.\n\n:::warn\n[[term:black-ice|Black ice]] is the most elusive hazard: a thin, transparent layer of ice through which you can see the road's ordinary colour, making it almost invisible. It forms mainly in the early morning, on bridges, in tunnels and in the shade of trees — places that cool faster than the rest of the road.\n:::\n\nOn a road you suspect is icy: slow down well before the suspect stretch, avoid braking, accelerating and sharp steering, and drive in a low gear if you have a manual gearbox — all of these reduce the chance of losing grip.\n\n# What to bring with you\nHeading to an area where snow is expected? A warm coat, water and a phone charger are worth having in the vehicle, in case a road closes and you are stuck for a long time. Snow chains are not standard equipment in most vehicles in Israel; if they are required, fit them before the snowy stretch, not partway through it.",
+   "keyPoints": [
+    "Extreme heat increases the risk of a tyre blowout and engine overheating.",
+    "Never leave a child, an elderly person or an animal in a closed vehicle in the heat.",
+    "Black ice is transparent and almost invisible; common in the morning, on bridges and in shade.",
+    "On an icy road: slow down early, no sharp steering, braking or acceleration."
+   ]
+  },
+  {
+   "id": "vw-wind",
+   "title": "Strong wind",
+   "summary": "When wind becomes a real risk factor, and who is most exposed to it.",
+   "terms": [
+    "motorcyclist",
+    "reasonable-speed"
+   ],
+   "signs": [
+    "152"
+   ],
+   "body": "Strong wind changes a vehicle's behaviour with no advance warning — it is not visible, and it strikes suddenly at exactly the exposed crossings.\n\n# Who is most affected\nA tall or long vehicle with a large side area — a coach, a bus, a lorry with a closed box body, a vehicle towing a caravan — is easily pushed off line by a crosswind. A [[term:motorcyclist|motorcyclist]] and a cyclist are even more exposed: their weight is light relative to the area they and their vehicle present to the wind, and a single gust can shift them between lanes.\n\nSign [[sign:152]] warns of a stretch of road with strong crosswinds, usually at open crossings, bridges and high interchanges. Seeing the sign is a chance to hold the wheel more firmly and slow down slightly even before the stretch, not only within it.\n\n:::warn\nComing out of shelter — between hills, after a tunnel, on the sheltered side of an overtaken lorry — the wind can strike suddenly with completely different force from what you felt a moment before. Do not loosen your grip on the wheel, and do not correct a swerve with a sharp steering movement — a gentle correction is enough.\n:::\n\n# Overtaking a tall vehicle in wind\nWhen overtaking a lorry or a bus in a crosswind, your vehicle briefly enters a wind-sheltered zone in the big vehicle's lee, then leaves it suddenly at the end of the overtake — a moment that demands a firm grip on the wheel. Keep a reasonable overtaking speed, not too slow, to shorten the time you are exposed to this sudden change.\n\n# On bridges and interchanges\nHigh bridges and open interchanges are more exposed to wind than a road at ground level. Driving a tall vehicle or towing a trailer, and you have received a strong-wind warning? Consider slowing down significantly below the speed limit — the law requires [[term:reasonable-speed|reasonable speed]] for the conditions, not just for the sign (reg. 51).",
+   "keyPoints": [
+    "A tall vehicle, a coach, a caravan, a motorcycle and a bicycle are especially exposed to crosswind.",
+    "Sign 152 warns of crosswinds; slow down and hold the wheel firmly before the stretch, not only within it.",
+    "When overtaking a tall vehicle — the wind strikes suddenly as you leave its shelter.",
+    "In strong wind on a bridge or interchange — reasonable speed for conditions, even below the speed limit."
+   ]
+  }
+ ]
+}

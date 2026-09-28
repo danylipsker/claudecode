@@ -1,0 +1,115 @@
+{
+ "chapter": "tyres",
+ "title": "Tyres and wheels",
+ "summary": "Everything that touches the road: structure, reading the sidewall, pressure, wear, safe changing and care.",
+ "lessons": [
+  {
+   "id": "ty-structure",
+   "title": "Tyre structure and types",
+   "summary": "What connects the car to the road — and why the type of tyre matters.",
+   "terms": [
+    "tyre",
+    "tread",
+    "summer-tyre",
+    "winter-tyre",
+    "all-season-tyre",
+    "run-flat-tyre"
+   ],
+   "body": "The tyres are the only part of the car that touches the road. All grip, braking and steering pass through four small contact patches, each roughly the size of a hand.\n\n[[fig:tyre-anatomy]]\n\n# Tyre structure\nA [[term:tyre|tyre]] is built from layers: an inner structure of fabric plies and steel cords, a layer of steel belts beneath the [[term:tread|tread]] that stabilises it, and an outer rubber tread with grooves that clear water and provide grip. In most tyres today the construction is radial — the fabric plies run perpendicular to the direction of travel, giving a more flexible sidewall and a steadier tread than the older, diagonal (bias-ply) construction.\n\n# Types of tyre\nNot every tyre suits every season:\n- [[term:summer-tyre|Summer tyre]] — the standard tyre on most cars in Israel. Relatively hard rubber that grips well in heat and on a dry road.\n- [[term:all-season-tyre|All-season tyre]] — a compromise: reasonable in any weather, less good than a dedicated tyre at the extremes.\n- [[term:winter-tyre|Winter tyre]] — soft rubber that stays flexible in the cold, with a tread pattern that grips snow and ice; suited to driving in the northern hills and in Jerusalem in winter.\n\n:::tech The run-flat tyre\nA [[term:run-flat-tyre|run-flat tyre]] is built with a reinforced sidewall that keeps carrying the car’s weight even after all the air has left it, letting you reach a garage at a limited speed — usually up to about 80 km/h, and no more than a few dozen kilometres. It’s not a substitute for checking pressure properly, and after driving “flat” it must always be replaced, not repaired.\n:::\n\nYour choice of tyre also affects fuel consumption, noise and comfort, but always as a trade-off against grip. There’s no tyre that’s “best at everything”.",
+   "keyPoints": [
+    "The tyres are the only contact patch between the car and the road — they determine grip, braking and steering.",
+    "Radial construction is the standard: steel belts stabilise the tread, and the sidewall is flexible.",
+    "A [[term:winter-tyre|winter tyre]] keeps its grip in cold and snow far better than a summer tyre.",
+    "A [[term:run-flat-tyre|run-flat tyre]] lets you continue briefly and slowly after losing air — but it must not be repaired afterwards."
+   ]
+  },
+  {
+   "id": "ty-markings",
+   "title": "Reading the tyre sidewall",
+   "summary": "Every number and letter on the tyre sidewall tells you something — including how old it is.",
+   "terms": [
+    "tyre-markings",
+    "tyre-date-code",
+    "load-index",
+    "speed-rating"
+   ],
+   "body": "Stamped on every tyre’s sidewall is a code that tells you everything about it: dimensions, load capacity, maximum speed — and also its age.\n\n[[widget:tyre-code]]\n\n# Tyre dimensions\nThe main [[term:tyre-markings|code]], for example 205/55R16, is read like this: 205 is the tyre’s width in millimetres, 55 is the sidewall’s height-to-width ratio as a percentage, R marks radial construction, and 16 is the wheel rim diameter in inches.\n\n# Load index and speed rating\nAfter the rim size there’s usually a number and a letter, for example 91V:\n- The [[term:load-index|load index]] (91) states the maximum weight the tyre is allowed to carry when fully inflated.\n- The [[term:speed-rating|speed rating]] (V) states the maximum speed it’s designed to carry safely.\n\n:::law\nYou must not fit the car with a tyre whose speed rating is lower than what the vehicle manufacturer specified (the Traffic Regulations, regulation 322(f)). On a private car or light commercial vehicle made from 2006 onward, a tyre with a speed rating below the S grade is also not allowed.\n:::\n\n# Manufacturing date code\nInside an oval on the sidewall is the [[term:tyre-date-code|tyre date code]] — four digits: the first two are the week of manufacture, the last two are the year. The code 2324 means week 23 of 2024. A tyre “ages” even without being driven — the rubber hardens and cracks over time, even if the tread has barely worn.\n\n:::law The six-year rule\nA worker at a tyre repair shop must not fit the car with a tyre whose manufacture date is more than {{fact:tyre.max_age_fit_new}} in the past, or 24 months if the tyre is used (regulation 322(b1)). A tyre that “looks new” on the tread can still be dangerous if it’s too old.\n:::",
+   "keyPoints": [
+    "The code on the sidewall (for example 205/55R16) sets the width, height-to-width ratio and construction.",
+    "The load index and speed rating after the rim size must at least match what the vehicle manufacturer specified (regulation 322(f)).",
+    "The manufacturing date code inside an oval: week then year, for example 2324 = week 23 of 2024.",
+    "You must not fit a tyre whose manufacture date is more than {{fact:tyre.max_age_fit_new}} in the past (24 months if used) — regulation 322(b1)."
+   ]
+  },
+  {
+   "id": "ty-pressure",
+   "title": "Tyre pressure",
+   "summary": "The most important number in checking tyres — and the easiest one to miss.",
+   "terms": [
+    "tyre-pressure",
+    "tpms",
+    "aquaplaning"
+   ],
+   "body": "The correct [[term:tyre-pressure|tyre pressure]] isn’t “as much as possible”, and it isn’t a feeling — it’s an exact number set by the vehicle manufacturer, usually shown on a sticker in the driver’s door opening or on the fuel filler cap. There are usually two values: for normal driving and for driving at full load.\n\n# How to check\nCheck when the tyres are cold — before driving, or after a very short drive, not after a long one that has warmed them up. Hot air expands, and a “hot” reading gives a high, misleading number. Check every week, and before a long trip — including the spare wheel.\n\n# What happens when the pressure is wrong\n- **Too low** — the tyre bulges inward, wears at both edges, runs hotter and uses more fuel. At very low pressure, the risk of [[term:aquaplaning|aquaplaning]] on a wet road and of a sudden blowout also rises.\n- **Too high** — the tyre wears in the centre and becomes too stiff: less contact area and worse cushioning over bumps and potholes.\n\n:::tech The TPMS system\nThe [[term:tpms|TPMS]] system monitors the pressure in every wheel and warns you when it drops below the required level — the [[dash:tyre-pressure]] light on the dashboard. It warns you of a drop, but it doesn’t measure precisely and doesn’t replace a regular manual check with a gauge.\n:::\n\n:::tip\nAlways inflate slightly above the target and then release air down to the exact number — it’s easier to adjust downward than to add air precisely.\n:::",
+   "keyPoints": [
+    "The correct pressure is shown on the vehicle manufacturer’s sticker — not on the tyre itself.",
+    "Always check when the [[term:tyre-pressure|tyres]] are cold, including the spare.",
+    "Low pressure wears the edges and heats the tyre; high pressure wears the centre and hurts comfort.",
+    "[[term:tpms|TPMS]] warns of a pressure drop but doesn’t replace a manual check."
+   ]
+  },
+  {
+   "id": "ty-tread",
+   "title": "Tread depth, wear indicators and uneven wear",
+   "summary": "How much rubber is left, how to check it without a tool, and what uneven wear tells you.",
+   "terms": [
+    "tread-wear-indicator"
+   ],
+   "body": "The [[term:tread|tread]] is the layer that wears down as you drive. The thinner it gets, the less water the tyre can clear and the less grip it has — especially in the rain.\n\n# Checking without a tool\nSmall raised bars — [[term:tread-wear-indicator|tread wear indicators]] — are moulded into every main groove, at the height of the minimum tread depth allowed by law. When the tread wears level with the bar, the tyre fails. A simple check without a tool: put a 1 ₪ coin into the groove — if its outer ring disappears into the rubber, the depth is still fine; if you can see the whole ring, it’s time to replace it.\n\n:::law\nThe tread depth on a pneumatic tyre — including the spare wheel — must not be less than {{fact:tyre.min_tread}} (the Traffic Regulations, regulation 322(c)). On a non-pneumatic tyre the minimum thickness is {{fact:tyre.nonpneumatic_min}}.\n:::\n\nA tyre with especially worn tread significantly raises the risk of [[term:aquaplaning|aquaplaning]] in the rain — the tyre can’t clear the water fast enough, and the car “floats” instead of touching the road.\n\n# Uneven wear tells a story\n[[fig:tyre-wear-patterns]]\n\nEven wear across the whole width of the tyre is a sign of a tyre in good condition. A different pattern points to a problem:\n- Wear in the centre of the tread — pressure too high.\n- Wear at both edges of the tread, centre fine — pressure too low.\n- Wear on one side only — poor wheel alignment, usually incorrect camber; details in the chapter [[chapter:steering-suspension|Steering and suspension]].\n\n:::tip\nIt’s worth glancing at the tyres sometimes while checking the pressure — a change in the wear pattern shows up earlier than most drivers think.\n:::",
+   "keyPoints": [
+    "Tread wear indicators in the grooves show when the tread has reached the minimum depth allowed.",
+    "Minimum tread depth: {{fact:tyre.min_tread}} — including the spare wheel (regulation 322(c)).",
+    "Worn tread greatly increases the risk of [[term:aquaplaning|aquaplaning]].",
+    "An uneven wear pattern points to incorrect tyre pressure or poor wheel alignment."
+   ]
+  },
+  {
+   "id": "ty-change",
+   "title": "Changing a wheel at the roadside",
+   "summary": "Safety comes first; then the steps, the limits of the replacement wheel, and repair kits.",
+   "terms": [
+    "spare-tyre",
+    "space-saver",
+    "jack",
+    "wheel-wrench",
+    "puncture"
+   ],
+   "body": "A puncture on the road is unpleasant, but usually not dangerous — if you stop correctly and get clear of the traffic before you start working.\n\n:::danger Before you get out of the car\n- Stop somewhere straight and stable, well clear of the lane and of any bend — never on an expressway and never inside a bend.\n- Turn on the hazard lights, and if you stop on a non-urban road, put on a hi-vis vest before you get out and place a warning triangle so it can be seen from at least {{fact:equip.triangle.visibility}} away (the Traffic Ordinance, section 65B; the Traffic Regulations, regulation 367).\n- Get out through the door away from the traffic, and keep children and animals inside the car or well away from the road.\n:::\n\n# The steps for changing a wheel\n1. Turn off the engine, apply the [[term:parking-brake|parking brake]] and put the car in gear (or P in an automatic); place a wheel chock (a stone, a wedge) if you have one.\n2. Loosen the wheel bolts slightly with the [[term:wheel-wrench|wheel wrench]] — while the wheel is still on the ground.\n3. Place the [[term:jack|jack]] only under the lifting point the manufacturer designated on the chassis, close to the wheel you’re changing, and raise it until the wheel is off the ground.\n4. Remove the bolts completely, take off the damaged wheel and fit the [[term:spare-tyre|spare wheel]], tightening the bolts by hand in a criss-cross pattern.\n5. Lower the car until the wheel touches the ground, and only then tighten the bolts firmly, again in a criss-cross pattern.\n\n[[fig:tyre-jack-points]]\n\n:::danger\nNever get underneath a car that’s supported only by a jack — it can slip. If you need to work under the car, call for a tow truck.\n:::\n\n# Limits of the replacement wheel\n- **A full-size spare wheel** — the same size as the other tyres — you may drive on it normally, though it’s best to replace the damaged tyre soon.\n- **A [[term:space-saver|space-saver spare]]** (a “skinny spare”) — small and narrow, meant only to get you to the nearest garage: limited speed (usually up to about 80 km/h) and a short distance only, according to the manufacturer’s instructions printed on it or in the vehicle handbook.\n\n:::law\nWhen a puncture occurs, you may fit one axle with a replacement wheel whose dimensions differ from the other wheels, provided it’s used only for driving to the nearest garage (regulation 322(d)(3)).\n:::\n\n# A car without a spare wheel\nA motor vehicle whose unladen weight exceeds {{fact:equip.spare_wheel}} must carry a working spare wheel, a jack and the tools to change it (regulation 365) — except for vehicles designed with no space for a spare wheel, which instead have run-flat tyres, or an air compressor and a sealant kit for a [[term:puncture|puncture]] (regulation 365A).\n\n:::warn Repair kit\nA sealant and compressor kit only helps with a small puncture in the tread, and only temporarily, at limited speed. A cut in the sidewall, a large tear, or a puncture caused by damage to the rim can’t be sealed — you need a tow truck or a replacement wheel.\n:::",
+   "keyPoints": [
+    "Stop well clear of the traffic, place the triangle and put on a hi-vis vest before getting out of the car.",
+    "Lift only at the lifting points the manufacturer set on the chassis — never get underneath a car on a jack.",
+    "Tighten the bolts in a criss-cross pattern — by hand before lifting, firmly after the car is back on the ground.",
+    "A [[term:space-saver|space-saver spare]] is limited in speed and distance — only as far as the nearest garage.",
+    "A sealant and compressor kit replaces a spare wheel only for a small puncture in the tread."
+   ]
+  },
+  {
+   "id": "ty-care",
+   "title": "Tyre care and buying tyres",
+   "summary": "Rotation, balancing, wheel alignment — and what to check when buying tyres.",
+   "terms": [
+    "tyre-rotation",
+    "wheel-balancing",
+    "wheel-alignment",
+    "tyre-pressure-gauge"
+   ],
+   "body": "Regular care extends tyre life and keeps your driving safe and stable.\n\n# Rotation, balancing and alignment\n- **[[term:tyre-rotation|Tyre rotation]]** — swapping the front tyres with the rear ones (following the pattern recommended in the vehicle handbook) so they wear evenly; the front tyres usually carry more steering and braking load and wear faster.\n- **[[term:wheel-balancing|Wheel balancing]]** — adding small weights to the rim to compensate for uneven weight distribution in the wheel. An unbalanced wheel causes vibration in the steering wheel at certain speeds.\n- **[[term:wheel-alignment|Wheel alignment]]** — adjusting the wheel angles to the values the vehicle manufacturer set. Details on the symptoms and on the adjustment itself are in the chapter [[chapter:steering-suspension|Steering and suspension]].\n\n:::law\nOn any one axle you may only fit tyres identical in size, load capacity and construction — radial or diagonal (regulation 322(d)(1)). A different construction between different axles is allowed on most cars, unless the vehicle manufacturer specified otherwise.\n:::\n\n# Buying tyres\nWhen buying tyres it’s worth checking:\n- That the size, load index and speed rating at least match what the vehicle manufacturer specified.\n- The manufacturing date code — even a new tyre that has sat in storage for a long time has already “started ageing”.\n- That all four tyres are fitted at the same time, or at least both tyres on the same axle — fitting a single new tyre next to three old ones isn’t recommended.\n\n:::tip\nA cheap, personal [[term:tyre-pressure-gauge|tyre pressure gauge]] kept in the car saves a special trip to a petrol station just to check the pressure.\n:::",
+   "keyPoints": [
+    "[[term:tyre-rotation|Tyre rotation]] keeps wear even between the front and rear tyres.",
+    "An unbalanced wheel feels like vibration in the steering wheel at certain speeds.",
+    "On one axle — only tyres identical in size, load and construction (regulation 322(d)(1)).",
+    "When buying tyres, also check the manufacturing date code, not just the price."
+   ]
+  }
+ ]
+}

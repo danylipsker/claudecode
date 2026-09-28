@@ -1,0 +1,102 @@
+{
+ "chapter": "licensing",
+ "title": "Licensing, documents and new drivers",
+ "summary": "What licence categories exist, how you get a licence, what applies to a new driver, which documents are mandatory — and when medical fitness decides.",
+ "lessons": [
+  {
+   "id": "lc-classes",
+   "title": "Licence categories and minimum ages",
+   "summary": "Every licence category is defined by the type of vehicle, its weight and its number of passengers — not by a general name.",
+   "terms": [
+    "license-category",
+    "license-category-a",
+    "license-category-b",
+    "license-category-c",
+    "license-category-d"
+   ],
+   "body": "\"Licence for a private car\" and \"licence for a truck\" are convenient labels, but in law every [[term:license-category|licence category]] is defined precisely: which vehicle, up to what weight, with how many passengers.\n\n# The main categories\n| Category | Allows driving a — |\n|---|---|\n| [[term:license-category-b|B]] | Motor vehicle up to {{fact:licence.b.max_weight}}, up to {{fact:licence.b.max_passengers}} passengers besides the driver (not including a taxi, tour vehicle or public bus) |\n| A2 | Motorcycle up to {{fact:licence.a2.max_cc}} cc and up to {{fact:licence.a2.max_kw}} |\n| A1 | Motorcycle up to {{fact:licence.a1.max_kw}} |\n| [[term:license-category-a|A]] | Motorcycle of any power |\n| 1 | Tractor, mobile machine, forklift up to {{fact:licence.tractor.forklift_max}}, ATV (with a permit), off-road vehicle |\n| C1 | Commercial vehicle and work vehicle {{fact:licence.c1.weight_range}} |\n| [[term:license-category-c|C]] | Commercial vehicle and work vehicle over 12,000 kg |\n| C+E | A vehicle as in C, also with a trailer or supported trailer |\n| D1 | Taxi, tour vehicle, minibus |\n| D2 / D3 | Minibus up to {{fact:licence.d2.max_passengers}} passengers |\n| [[term:license-category-d|D]] | Bus of any size |\n\nEach row is a separate regulation in the Traffic Regulations (176 to 185) — so a B licence, for example, also allows driving an ATV, a mobile machine (except a forklift) and an off-road vehicle, not only a \"private car\" in the everyday sense.\n\n# Minimum age\n| Category | Minimum age |\n|---|---|\n| A2, theory test for all categories | {{fact:theory.min_age}} (for the theory test) |\n| B | {{fact:licence.b.min_age}} (learning from age {{fact:licence.b.learning_age}}) |\n| A1 | {{fact:licence.a1.min_age}} |\n| A2 | {{fact:licence.a2.min_age}} |\n| A | {{fact:licence.a.min_age}}, and with {{fact:licence.a.seniority_a1}} of seniority in A1 |\n| 1 (tractor) | {{fact:licence.tractor.min_age}} |\n| C1 | {{fact:licence.c1.min_age}} |\n| C | {{fact:licence.c.min_age}}, and with {{fact:licence.c.seniority_c1}} of seniority in C1 |\n| C+E | {{fact:licence.ce.min_age}}, and with {{fact:licence.ce.seniority_c}} of seniority in C |\n| D1, D2 | {{fact:licence.d1.min_age}} (D1), {{fact:licence.d2.min_age}} (D2) — both require {{fact:licence.d1.seniority_b}} of seniority in B or C1 |\n| D | {{fact:licence.d.min_age}}, and with {{fact:licence.d1.seniority_b}} of seniority in B or C1 |\n\n:::remember\nMost of the \"higher\" categories — C, C+E, D — require not only age but also **seniority** in the previous category. You cannot jump straight to a heavy truck or bus licence.\n:::\n\n# A B-licence holder is exempt from some things\nSomeone who already holds a [[term:license-category-b|B licence]] is exempt from the theory test when applying for a motorcycle licence, and after {{fact:licence.a.seniority_a1}} years of seniority in B — is also exempt from the road-behaviour test for an A2/A1 licence. A mobility scooter and an ATV with the appropriate permit also do not require a separate licence category in every case — details in the [[chapter:road-basics|The road and its users]] chapter.",
+   "keyPoints": [
+    "Every licence category is defined by the type of vehicle, its weight and its number of passengers — not by a general name.",
+    "A B licence has both a learning age ({{fact:licence.b.learning_age}}) and a licence age ({{fact:licence.b.min_age}}) — different from each other.",
+    "Categories C, C+E, D and D2/D3 require seniority in a lower category, not just age.",
+    "A B-licence holder is exempt from the theory test for a motorcycle, and after the required seniority — also from the road-behaviour test."
+   ]
+  },
+  {
+   "id": "lc-process",
+   "title": "The road to a licence: from theory to the practical test",
+   "summary": "Eye test, theory exam, driving lessons and the practical test — the order it happens in, and the rules of each stage.",
+   "terms": [
+    "theory-test",
+    "practical-test",
+    "driving-instructor",
+    "driving-school",
+    "driving-lesson",
+    "eye-exam",
+    "driving-examiner"
+   ],
+   "body": "For a B licence, for example, there are three separate stages — in a particular order.\n\n# Stage 1: eye test and medical declaration\nBefore anything else, the applicant fills in a digital declaration about their medical condition and undergoes an [[term:eye-exam|eye test]] on a device approved by the Ministry of Health (reg. 192(b)). If the declaration is clear — they are cleared to continue; if a concern arises, they are referred to an authorised doctor (see the [[chapter:licensing|Licensing, documents and new drivers]] chapter, the \"Medical fitness\" lesson later on).\n\n# Stage 2: the theory exam\n:::law\nYou can sit the [[term:theory-test|theory exam]] from age {{fact:theory.min_age}}, even before starting actual driving lessons.\n:::\n\nThe exam has {{fact:theory.questions}} questions on {{fact:theory.topics}} topics: traffic law, signs, correct behaviour on the road, and vehicle knowledge. The exam lasts {{fact:theory.time_limit}}, and you pass it with at least {{fact:theory.pass_correct}} correct answers — meaning up to {{fact:theory.max_mistakes}} mistakes allowed. Failed? The licensing authority may set a date for a retest, no later than {{fact:theory.retest_max_wait}} from the day of the exam you failed.\n\n:::remember\nExam and test results are valid for {{fact:theory.validity}} only. Anyone who has not finished all the stages within this time will have to be tested again.\n:::\n\n# Stage 3: driving lessons and the practical test\nFor a B licence you can start learning to drive in practice from age {{fact:licence.b.learning_age}}, with a qualified [[term:driving-instructor|driving instructor]], usually through a [[term:driving-school|driving school]] — a minimum of {{fact:licence.b.min_lessons}} [[term:driving-lesson|driving lessons]]. At the end of training, you take the [[term:practical-test|practical test]] with a [[term:driving-examiner|driving test examiner]] appointed by the licensing authority — a test of actual driving, on urban and non-urban roads, that checks both technical control and safe decision-making.\n\n# And then — the licence\nAnyone who has passed all the stages and has turned {{fact:licence.b.min_age}} receives the licence. If they are a \"young [[term:new-driver|new driver]]\" (under {{fact:newdriver.young.age}}) — the first licence is a temporary provisional licence, and the escort programme applies to them. Full details in the next lesson.\n\n:::tip\nYou can sit the theory exam early, even before the learning age — so that by the time you reach the learning age, you can already focus on the driving itself.\n:::",
+   "keyPoints": [
+    "Order of stages: medical declaration and eye test ← theory exam (from age {{fact:theory.min_age}}) ← driving lessons (at least {{fact:licence.b.min_lessons}}) ← practical test.",
+    "The theory exam has {{fact:theory.questions}} questions on {{fact:theory.topics}} topics; you pass with {{fact:theory.pass_correct}} correct answers ({{fact:theory.max_mistakes}} mistakes at most).",
+    "Exam results are valid for {{fact:theory.validity}} only.",
+    "A B licence is issued only from age {{fact:licence.b.min_age}}, even if all stages were completed earlier."
+   ]
+  },
+  {
+   "id": "lc-new-driver",
+   "title": "New driver: the escort period and restrictions",
+   "summary": "Two years with special rules, and a 50-hour escort programme for a young new driver — why, and how it works.",
+   "terms": [
+    "new-driver",
+    "new-driver-label",
+    "probation-period",
+    "accompanying-driver",
+    "provisional-license"
+   ],
+   "body": "New drivers are involved in accidents at a higher rate than experienced drivers — not from lack of knowledge, but from lack of experience in judging danger and reacting quickly. That is why the law places temporary restrictions on a [[term:new-driver|new driver]].\n\n# Who is a new driver, and for how long\nThe [[term:probation-period|new-driver period]] lasts {{fact:newdriver.duration}} from the day the first licence is received, and a conviction for an offence under the Third Schedule to the Ordinance extends it by a further {{fact:newdriver.extension}}. A \"young new driver\" is a new driver who has not yet turned {{fact:newdriver.young.age}} — and the strictest restrictions apply to them.\n\n# The escort programme\n:::law\nA young new driver shall drive with an [[term:accompanying-driver|accompanying driver]] for at least {{fact:newdriver.escort.hours_total}}: {{fact:newdriver.escort.hours_urban}} on urban roads, {{fact:newdriver.escort.hours_nonurban}} on non-urban roads, and {{fact:newdriver.escort.hours_night}} at night (reg. 175B).\n:::\n\nThe first licence is a temporary [[term:provisional-license|provisional licence]], valid for {{fact:newdriver.permit_validity}}. Full escort (at any hour of the day) lasts {{fact:newdriver.escort.day_months}} from the day the licence is received, followed by another {{fact:newdriver.escort.night_months}} of escort at night hours only ({{fact:newdriver.escort.night_hours}}).\n\nAn accompanying driver must meet a minimum age and seniority: {{fact:newdriver.escort.companion_age_a}} and {{fact:newdriver.escort.companion_years_a}} of seniority (track A), or {{fact:newdriver.escort.companion_age_b}} and {{fact:newdriver.escort.companion_years_b}} of seniority (track B). Someone eligible for state funding can complete {{fact:newdriver.escort.hours_funded}} of the hours with a qualified driving instructor instead of a private accompanying driver.\n\n:::remember\nSomeone who has completed the IDF's driver mentoring programme is [[term:accompanying-driver|exempt]] from the escort programme (reg. 175D).\n:::\n\n# Further restrictions\n- **Passengers**: up to age {{fact:newdriver.passengers.age}}, a new driver may carry no more than {{fact:newdriver.passengers.max}} passengers without an accompanying driver, even after the escort period.\n- **The \"[[term:new-driver-label|new driver]]\" label**: mandatory on the rear window, on a vehicle whose gross vehicle weight is up to {{fact:newdriver.sign.weight_limit}}.\n- **Alcohol**: a new driver is subject to the stricter alcohol threshold — {{fact:alcohol.strict.breath}} in breath — for the whole new-driver period (see the [[chapter:human-factor|The driver: the human factor]] chapter).\n\n:::fine\nA young new driver driving without an accompanying driver, or with more passengers than allowed without one, is an offence tried in court. Details in the [[chapter:enforcement|Offences, fines and points]] chapter.\n:::",
+   "keyPoints": [
+    "New-driver period: {{fact:newdriver.duration}}; a young new driver is under {{fact:newdriver.young.age}}.",
+    "Escort programme: {{fact:newdriver.escort.hours_total}} — {{fact:newdriver.escort.hours_urban}} urban, {{fact:newdriver.escort.hours_nonurban}} non-urban, {{fact:newdriver.escort.hours_night}} night.",
+    "Up to age {{fact:newdriver.passengers.age}} — no more than {{fact:newdriver.passengers.max}} passengers without an accompanying driver.",
+    "The stricter alcohol threshold applies to a new driver for the whole period."
+   ]
+  },
+  {
+   "id": "lc-documents",
+   "title": "The documents that must be valid",
+   "summary": "Driving licence, vehicle licence, compulsory insurance and the periodic test — what each one is, and what happens when it expires.",
+   "terms": [
+    "driving-license",
+    "vehicle-license",
+    "compulsory-insurance",
+    "vehicle-annual-test",
+    "license-renewal",
+    "license-validity-period"
+   ],
+   "body": "Four documents must be valid on every journey — for the vehicle and the driver alike. If even one of them has expired, even if the vehicle is roadworthy and the driver careful, that is an offence.\n\n# The driving licence\nA [[term:driving-license|driving licence]] for the regular categories (B and above) is usually issued for a period of up to 10 years (reg. 173), but a [[term:new-driver|new driver]] first receives a much shorter permit, and someone aged 60 or over renews it according to the schedule of medical checks (see the \"Medical fitness\" lesson later on). [[term:license-renewal|Renewing the licence]] requires paying a fee, and sometimes also a repeat [[term:eye-exam|eye test]].\n\n:::fine\nDriving with an expired driving licence — a fine and points if it expired recently; the longer the time that has passed, the harsher the penalty, up to an offence tried in court. Details in the [[chapter:enforcement|Offences, fines and points]] chapter.\n:::\n\n# The vehicle licence\nA [[term:vehicle-license|vehicle licence]] shows that the vehicle is registered, that it has passed the [[term:vehicle-annual-test|periodic test]] (\"the test\") when required, and that the fee has been paid. It is valid for {{fact:vehiclelicence.validity}} generally, and for a tractor — {{fact:vehiclelicence.validity_tractor}}.\n\n# The periodic test (\"the test\")\nA new private vehicle (registered from 1 January 2023) undergoes its first periodic test {{fact:vehicletest.private.first_test_years}} from the date of registration, and afterwards once every {{fact:vehicletest.private.interval_years}}. The test examines brakes, steering, lights, emissions, the chassis and the wheels — all dependent on the vehicle being in a condition that does not endanger road users (reg. 27).\n\n# Compulsory insurance\n:::law\nNo person shall drive a motor vehicle without a valid [[term:compulsory-insurance|compulsory insurance policy]] (Motor Vehicle Insurance Ordinance). This is insurance that covers bodily injury to passengers and pedestrians who are hurt — regardless of fault.\n:::\n\n:::fine\nDriving without valid compulsory insurance is an offence tried in court, and can lead to a licence disqualification of at least 12 months.\n:::\n\n# What must be in the vehicle\nBesides the documents — a warning triangle, a reflective vest and a working spare wheel (in a vehicle with a kerb weight over {{fact:equip.spare_wheel}}) are mandatory equipment that must be in a motor vehicle (except a motorcycle), even though you are not always required to show them.\n\n# Transferring ownership\nWhen you sell a vehicle, you must update the licensing authority about the change of ownership — otherwise the registered owner may be held responsible for offences committed by the new owner.",
+   "keyPoints": [
+    "Four documents valid on every journey: driving licence, vehicle licence, compulsory insurance, and a periodic test when required.",
+    "A new private vehicle is first tested after {{fact:vehicletest.private.first_test_years}}, and then every {{fact:vehicletest.private.interval_years}}.",
+    "Driving without valid compulsory insurance can lead to a licence disqualification of at least 12 months.",
+    "Mandatory equipment — triangle, vest and spare wheel — must actually be in the vehicle, not just purchased once."
+   ]
+  },
+  {
+   "id": "lc-fitness",
+   "title": "Medical fitness to drive",
+   "summary": "Vision, hearing and general health — the licence depends on ongoing fitness, not just a one-time test.",
+   "terms": [
+    "medical-certificate",
+    "eye-exam"
+   ],
+   "body": "A driving licence is not a certificate you get once and forget about. Medical fitness is an ongoing condition — and you must also report when it changes.\n\n# When applying for a licence\nEvery licence applicant fills in a digital declaration about their medical condition and undergoes an [[term:eye-exam|eye test]] on a device approved by the Ministry of Health (reg. 192(b)). If a need is found, they are referred for examination by an **authorised doctor**, who may issue a [[term:medical-certificate|medical certificate for driving]] with conditions: for example, a requirement to wear glasses or contact lenses, noted on the driving licence itself (reg. 194).\n\nFor licences D1 through D (taxi, bus) and for special permits, a minimum hearing fitness is also required — at least 40 decibels in one ear (reg. 197).\n\n:::fine\nDriving without the optical aid (glasses or lenses) the licence requires — a fine offence, even if your vision is actually fine at that moment.\n:::\n\n# When your health changes\n:::law\nA licence holder in whom heart disease, or changes in the nervous system, bones, vision or hearing are discovered, shall report this **immediately** by registered letter to the licensing authority (reg. 13).\n:::\n\nThis is not a recommendation — it is a legal duty. If someone submits false or misleading information in the medical declaration, or fails to report a change as required, the licensing authority may refuse to issue them a licence, suspend it, or not renew it.\n\n# Repeat checks with age\nEven someone with no required change must undergo repeat checks from a certain age: a holder of a licence for categories C and above (C1, C, C+E, D1–D) and a qualified instructor — once every five years from age 60 to age 70, and from age 70 — once every two years. A holder of a B licence only — at age 75 and at age 80, and after that once every two years (reg. 196).\n\n:::remember\nAnyone who does not attend the required check, or is examined and found unfit — their licence **will not be renewed**.\n:::\n\n# Disputing the decision\nAnyone who feels wronged by the authorised doctor's decision may appeal to an appeals committee within 30 days of the day the decision was given to them (reg. 195). The appeals committee can confirm, change or cancel the decision, or order a repeat examination.\n\n:::tip\nA new medication that affects alertness, eye surgery, or a new medical diagnosis — all of these may require an update to the licensing authority. When you are not sure, it is best to check with your family doctor.\n:::",
+   "keyPoints": [
+    "An eye test and a medical declaration are conditions for getting a licence; the authorised doctor may set conditions such as a requirement to wear glasses.",
+    "A significant change in health (heart, nerves, vision, hearing) must be reported to the licensing authority immediately (reg. 13).",
+    "Repeat medical checks apply by age and by licence category — usually every two years after age 70/80.",
+    "You can appeal the authorised doctor's decision to an appeals committee within 30 days."
+   ]
+  }
+ ]
+}

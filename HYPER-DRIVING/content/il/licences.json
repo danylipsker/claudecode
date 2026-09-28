@@ -1,0 +1,26 @@
+{
+  "classes": [
+    { "id": "B", "icon": "car", "name": { "he": "B – רכב פרטי", "en": "B – private car" }, "desc": { "he": "רכב שמשקלו הכולל המותר עד {{fact:licence.b.max_weight}} ועד {{fact:licence.b.max_passengers}} נוסעים מלבד הנהג.", "en": "Vehicles up to {{fact:licence.b.max_weight}} gross weight carrying up to {{fact:licence.b.max_passengers}} passengers besides the driver." } },
+    { "id": "A2", "icon": "moto", "name": { "he": "A2 – אופנוע קל", "en": "A2 – light motorcycle" }, "desc": { "he": "אופנוע שנפח מנועו עד {{fact:licence.a2.max_cc}} והספקו עד {{fact:licence.a2.max_kw}}.", "en": "Motorcycles up to {{fact:licence.a2.max_cc}} and {{fact:licence.a2.max_kw}}." } },
+    { "id": "A1", "icon": "moto", "name": { "he": "A1 – אופנוע בינוני", "en": "A1 – medium motorcycle" }, "desc": { "he": "אופנוע שהספקו עד {{fact:licence.a1.max_kw}}.", "en": "Motorcycles up to {{fact:licence.a1.max_kw}}." } },
+    { "id": "A", "icon": "moto", "name": { "he": "A – אופנוע", "en": "A – motorcycle" }, "desc": { "he": "אופנוע בכל הספק.", "en": "Motorcycles of any power." } },
+    { "id": "C1", "icon": "truck", "name": { "he": "C1 – רכב משא עד 12 טון", "en": "C1 – goods vehicle up to 12 t" }, "desc": { "he": "רכב משא שמשקלו הכולל המותר {{fact:licence.c1.weight_range}}.", "en": "Goods vehicles of {{fact:licence.c1.weight_range}} gross weight." } },
+    { "id": "C", "icon": "truck", "name": { "he": "C – רכב משא כבד", "en": "C – heavy goods vehicle" }, "desc": { "he": "רכב משא שמשקלו הכולל המותר מעל 12,000 ק״ג.", "en": "Goods vehicles over 12,000 kg gross weight." } },
+    { "id": "CE", "icon": "truck", "name": { "he": "C+E – רכב משא מחובר", "en": "C+E – articulated goods vehicle" }, "desc": { "he": "רכב משא כבד עם גרור או נתמך.", "en": "A heavy goods vehicle with a trailer or semi-trailer." } },
+    { "id": "D1", "icon": "bus", "name": { "he": "D1 – מונית ואוטובוס זעיר ציבורי", "en": "D1 – taxi and public minibus" }, "desc": { "he": "מונית, רכב סיור ואוטובוס זעיר ציבורי.", "en": "Taxi, tour vehicle and public minibus." } },
+    { "id": "D2", "icon": "bus", "name": { "he": "D2 – אוטובוס זעיר", "en": "D2 – minibus" }, "desc": { "he": "אוטובוס זעיר עד {{fact:licence.d2.max_passengers}} נוסעים.", "en": "Minibus up to {{fact:licence.d2.max_passengers}} passengers." } },
+    { "id": "D3", "icon": "bus", "name": { "he": "D3 – אוטובוס זעיר פרטי", "en": "D3 – private minibus" }, "desc": { "he": "אוטובוס זעיר פרטי עד {{fact:licence.d2.max_passengers}} נוסעים.", "en": "Private minibus up to {{fact:licence.d2.max_passengers}} passengers." } },
+    { "id": "D", "icon": "bus", "name": { "he": "D – אוטובוס", "en": "D – bus" }, "desc": { "he": "אוטובוס בכל גודל.", "en": "Buses of any size." } },
+    { "id": "1", "icon": "tractor", "name": { "he": "1 – טרקטור", "en": "1 – tractor" }, "desc": { "he": "טרקטור, מכונה ניידת ומלגזה.", "en": "Tractors, mobile machines and forklifts." } }
+  ],
+  "groups": {
+    "car": ["B"],
+    "moto": ["A2", "A1", "A"],
+    "heavy": ["C1", "C", "CE"],
+    "bus": ["D1", "D2", "D3", "D"],
+    "tractor": ["1"],
+    "professional": ["C1", "C", "CE", "D1", "D2", "D3", "D"],
+    "motor": ["B", "C1", "C", "CE", "D1", "D2", "D3", "D"],
+    "all": ["B", "A2", "A1", "A", "C1", "C", "CE", "D1", "D2", "D3", "D", "1"]
+  }
+}

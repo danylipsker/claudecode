@@ -1,0 +1,536 @@
+{
+ "chapter": "signs-intro",
+ "questions": [
+  {
+   "id": "q-sg-001",
+   "lesson": "sg-overview",
+   "q": "What is true about the colour and shape of a sign in Israel?",
+   "options": [
+    "The background colour on a guide sign says nothing about the type of destination",
+    "A triangle with a red border is always a warning sign",
+    "All the signs in series 300 share exactly the same shape",
+    "A blue circle is always a prohibition sign"
+   ],
+   "answer": 1,
+   "explain": "A triangle with the point up and a red border always identifies a warning sign (series 100). In series 300 every sign has a deliberately different shape, and a blue circle is a mandatory sign, not a prohibition sign.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-002",
+   "lesson": "sg-overview",
+   "q": "The traffic light shows red, but a police officer is standing at the junction signalling “go” with their hand. What must you do?",
+   "options": [
+    "Choose whichever is more convenient at that moment",
+    "Go, because a police officer's instruction overrides the traffic light",
+    "Stop, because a red light always overrides a person's instruction",
+    "Wait for the green light and ignore the police officer"
+   ],
+   "answer": 1,
+   "explain": "A road user must obey a police officer's instruction even when it contradicts a traffic light or a sign (reg. 23).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-003",
+   "lesson": "sg-overview",
+   "q": "What is the role of a supplementary sign, such as one placed under another sign and carrying a number in metres?",
+   "options": [
+    "To serve only as decoration, with no legal meaning",
+    "To add information to the sign above it, such as a distance or a section of road",
+    "To replace the sign above it completely",
+    "To cancel the validity of the sign above it"
+   ],
+   "answer": 1,
+   "explain": "A supplementary sign is not an independent sign; it adds information to the sign above it - for example a distance, a section of road, a direction or an exception.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-004",
+   "lesson": "sg-overview",
+   "q": "On a section of road a permanent speed sign shows 80, and next to it a temporary orange worksite sign shows 40. Which speed applies?",
+   "options": [
+    "You may choose, because both signs are valid together",
+    "40, because the temporary worksite sign overrides the permanent one",
+    "80, because that is the permanent sign",
+    "60, the average of the two signs"
+   ],
+   "answer": 1,
+   "explain": "A temporary worksite sign overrides the permanent sign at the same place, for as long as the work continues.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-005",
+   "lesson": "sg-warning",
+   "sign": "102",
+   "q": "What does the sign mean?",
+   "options": [
+    "A side road merging from the right",
+    "The road narrows from the right",
+    "Falling rocks from the right",
+    "Sharp bend to the right"
+   ],
+   "answer": 3,
+   "explain": "Sign 102 warns of a sharp bend to the right.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-006",
+   "lesson": "sg-warning",
+   "sign": "108",
+   "q": "According to the sign, when does the turn actually happen?",
+   "options": [
+    "300 metres from the sign",
+    "Only after the sign",
+    "Only if there is a traffic light at the junction",
+    "Before the sign itself"
+   ],
+   "answer": 3,
+   "explain": "In a warning and guidance sign for a sharp bend, like sign 108, the turn happens before the board, not after it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-007",
+   "lesson": "sg-warning",
+   "sign": "125",
+   "q": "The road you are driving on merges into a priority road coming from the right. What must you do?",
+   "options": [
+    "Accelerate and go first",
+    "Make a full stop in every case",
+    "Turn right onto the side road",
+    "Give way to traffic on the road you are merging into"
+   ],
+   "answer": 3,
+   "explain": "Sign 125 warns that your road merges into a priority road from the right - you must give way, and there is no turn onto a side road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-008",
+   "lesson": "sg-warning",
+   "sign": "136",
+   "q": "What does the sign mean?",
+   "options": [
+    "Pedestrians, usually children, nearby",
+    "Cyclists nearby",
+    "Educational-institutions area",
+    "Pedestrian crossing nearby"
+   ],
+   "answer": 0,
+   "explain": "Sign 136 warns of pedestrians, usually children, nearby - for example near a school.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-009",
+   "lesson": "sg-warning",
+   "sign": "131",
+   "q": "What does the sign mean?",
+   "options": [
+    "Railway crossing - a single track only",
+    "Railway crossing about 300 metres ahead",
+    "Railway crossing about 200 metres ahead",
+    "Railway crossing about 100 metres ahead"
+   ],
+   "answer": 2,
+   "explain": "The countdown signs are 130 (about 300 metres), 131 (about 200 metres) and 132 (about 100 metres) before the crossing, unless a different distance is stated.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-010",
+   "lesson": "sg-warning",
+   "sign": "153",
+   "q": "A driver sees a sign warning of deep standing water on the road ahead, after heavy rain. What should they do?",
+   "options": [
+    "Drive in fast, to avoid getting stuck in the water",
+    "Not enter the flooded section, and look for an alternative route",
+    "Enter slowly in a high gear",
+    "Enter only if another vehicle has already gone through"
+   ],
+   "answer": 1,
+   "explain": "Sign 153 warns of deep standing water - don't drive into a flooded area; flowing or deep water can sweep a vehicle away or stall it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-011",
+   "lesson": "sg-mandatory",
+   "sign": "203",
+   "q": "What does the sign require?",
+   "options": [
+    "Turn right or left",
+    "Continue straight ahead only; a U-turn is forbidden",
+    "Turn right only",
+    "Choose between straight ahead and left"
+   ],
+   "answer": 1,
+   "explain": "Sign 203 requires continuing straight ahead only (or in the direction of the diagonal arrow if shown); a U-turn is forbidden.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-012",
+   "lesson": "sg-mandatory",
+   "sign": "218",
+   "q": "What does a minimum speed sign require?",
+   "options": [
+    "Slow down for the next junction",
+    "Not to exceed the speed shown on the sign",
+    "To drive at least at the speed shown on the sign",
+    "To avoid entering the expressway"
+   ],
+   "answer": 2,
+   "explain": "A minimum speed sign (218) is for vehicles that can and are permitted to travel at least at the speed shown on it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-013",
+   "lesson": "sg-mandatory",
+   "sign": "220",
+   "q": "What is true about driving in a shared street?",
+   "options": [
+    "The street is for vehicles only",
+    "Entry by any private vehicle is completely forbidden",
+    "Pedestrians and children share the road with vehicles, and you must drive very slowly and give way to them",
+    "The driving speed there is the same as on an ordinary urban road"
+   ],
+   "answer": 2,
+   "explain": "In a shared street, pedestrians, children playing and vehicles share the same road; you must drive very slowly and give way to pedestrians.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-014",
+   "lesson": "sg-mandatory",
+   "sign": "224",
+   "q": "What does the sign indicate?",
+   "options": [
+    "A one-way lane for cyclists only",
+    "Entry is forbidden for bicycles",
+    "Start of a expressway",
+    "A path shared by pedestrians and cyclists"
+   ],
+   "answer": 0,
+   "explain": "Sign 224 marks a one-way lane for bicycles, including electric bicycles; you ride in it only in the direction shown.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-015",
+   "lesson": "sg-mandatory",
+   "sign": "216",
+   "q": "What applies from the moment you enter a expressway?",
+   "options": [
+    "Special driving rules, and entry is forbidden to pedestrians, cyclists and slow vehicles",
+    "Entry is permitted for every road user, including pedestrians",
+    "The maximum speed drops compared with the road before the sign",
+    "There is no change in the rules compared with an ordinary urban road"
+   ],
+   "answer": 0,
+   "explain": "From the moment you enter a expressway, special rules apply; entry is forbidden to pedestrians, cyclists, animals and any vehicle that cannot or is not permitted to travel at least 60 km/h (sign 216).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-016",
+   "lesson": "sg-priority",
+   "sign": "301",
+   "q": "What does the sign require?",
+   "options": [
+    "Turn right only",
+    "Slowing down and giving way to traffic on the crossing road; stopping only if necessary",
+    "A full stop in every case",
+    "Accelerating to cross the junction before the oncoming traffic"
+   ],
+   "answer": 1,
+   "explain": "Sign 301 (give way) requires you to slow down and give way; a stop is required only if the situation demands it, not in every case.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-017",
+   "lesson": "sg-priority",
+   "sign": "302",
+   "q": "A vehicle reaches a junction with a stop sign. The crossing road looks completely empty. What must the driver do?",
+   "options": [
+    "Sound the horn and continue without stopping",
+    "Stop only if a vehicle is seen approaching",
+    "Make a full stop before the stop line, and only then continue",
+    "Slow down slightly and continue without stopping, because the road is empty"
+   ],
+   "answer": 2,
+   "explain": "Sign 302 requires a full stop, even when the road looks completely clear - the duty doesn't depend on what you can see.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-018",
+   "lesson": "sg-priority",
+   "sign": "303",
+   "q": "How do you enter and drive in a roundabout?",
+   "options": [
+    "You drive in whichever direction you choose",
+    "You go around keeping to the right, anticlockwise, and give way to anyone already in the roundabout",
+    "You go around keeping to the left, clockwise",
+    "You make a full stop at the entrance in every case"
+   ],
+   "answer": 1,
+   "explain": "When entering a roundabout you give way to a vehicle already in it, and go around keeping to the right, anticlockwise.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-019",
+   "lesson": "sg-priority",
+   "sign": "309",
+   "q": "You are driving on a road marked with sign 309. Until when does your priority apply at junctions?",
+   "options": [
+    "Until the next junction or interchange, or until sign 310",
+    "Only at the first junction",
+    "Forever, until the end of the road",
+    "Until the local authority's boundary"
+   ],
+   "answer": 0,
+   "explain": "The priority granted by sign 309 applies until the next junction or interchange, or until sign 310 marks its end.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-020",
+   "lesson": "sg-priority",
+   "sign": "307",
+   "q": "On a narrow section of road, a sign requires you to give way to traffic from the opposite direction. What does it mean?",
+   "options": [
+    "Both directions must stop together",
+    "The vehicle facing you must wait for you",
+    "You must wait and let the oncoming vehicle pass first",
+    "The narrow section is closed to two-way traffic"
+   ],
+   "answer": 2,
+   "explain": "Sign 307 requires you to give way to a vehicle coming from the opposite direction on the narrow section; the matching sign, which sets the opposite, is sign 308.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-021",
+   "lesson": "sg-prohibition",
+   "sign": "420",
+   "q": "What does the sign forbid?",
+   "options": [
+    "Overtaking a motor vehicle with two wheels or more, until the next junction or the end sign",
+    "Any entry by a vehicle to the section of road",
+    "Parking on the side of the road",
+    "Driving with a maximum permitted weight over 4 tonnes"
+   ],
+   "answer": 0,
+   "explain": "Sign 420 forbids overtaking a motor vehicle with two wheels or more, until the next junction or sign 421.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-022",
+   "lesson": "sg-prohibition",
+   "sign": "432",
+   "q": "What is the difference between sign 432 and sign 433?",
+   "options": [
+    "There is no difference between them",
+    "432 also forbids a short stop; 433 permits it",
+    "432 applies only at night; 433 applies only during the day",
+    "432 forbids parking only and permits a short stop; 433 also forbids stopping"
+   ],
+   "answer": 3,
+   "explain": "Sign 432 forbids parking only, and a short stop, loading or unloading, and picking up passengers are still permitted. Sign 433 forbids all stopping and parking.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-023",
+   "lesson": "sg-prohibition",
+   "sign": "428",
+   "q": "What does the sign forbid when it's placed above the traffic light at a junction?",
+   "options": [
+    "Entering the junction in any direction",
+    "Turning right at the next junction only",
+    "Turning left only",
+    "Turning right, including a U-turn to the right"
+   ],
+   "answer": 3,
+   "explain": "Sign 428 forbids a right turn at the next junction; when it's placed above the traffic light, the prohibition also includes a U-turn to the right.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-024",
+   "lesson": "sg-prohibition",
+   "sign": "437",
+   "q": "Who is a parking place marked with this sign reserved for?",
+   "options": [
+    "Only an electric vehicle",
+    "Only a vehicle carrying a valid disabled badge, while it's being used by the disabled person",
+    "Only a vehicle with more than two passengers",
+    "Any vehicle, without restriction"
+   ],
+   "answer": 1,
+   "explain": "Sign 437 reserves a parking place for a vehicle carrying a valid disabled badge, while it's being used by the disabled person to whom the badge was issued.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-025",
+   "lesson": "sg-prohibition",
+   "q": "Until when does a prohibition sign generally apply, if no earlier end sign is shown?",
+   "options": [
+    "Forever, with no distance limit",
+    "Until the next junction",
+    "Until one kilometre from the sign",
+    "Until the end of the day"
+   ],
+   "answer": 1,
+   "explain": "Most prohibition signs are valid until the next junction, unless an end-of-restriction sign, such as 421, 427 or 434, ends them sooner.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-026",
+   "lesson": "sg-prohibition",
+   "sign": "406",
+   "q": "What does the sign forbid?",
+   "options": [
+    "Entry by a goods vehicle whose maximum permitted weight exceeds the number shown on the sign",
+    "Parking by a goods vehicle only",
+    "Entry by any private vehicle",
+    "Overtaking a goods vehicle"
+   ],
+   "answer": 0,
+   "explain": "Sign 406 forbids entry by a goods vehicle whose maximum permitted weight, in tonnes, exceeds the number shown on the sign.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-027",
+   "lesson": "sg-transit",
+   "sign": "501",
+   "q": "What does the sign restrict?",
+   "options": [
+    "The type of fuel permitted for use",
+    "Use of the road, lane or shoulder to only the vehicles stated on the sign, on the days and hours stated",
+    "The permitted direction of travel on the road",
+    "The driving speed on the road"
+   ],
+   "answer": 1,
+   "explain": "Sign 501 permits driving on the road, lane or shoulder only to the vehicles stated on it, on the days and hours set.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-028",
+   "lesson": "sg-transit",
+   "sign": "507",
+   "q": "A private vehicle stops within the area marked by a taxi-stand sign, to drop off a passenger. Is this permitted?",
+   "options": [
+    "Permitted only if there's no taxi at the stand",
+    "Permitted only at night",
+    "Yes, without restriction",
+    "No, any stopping by another vehicle within the area is forbidden, except to drop off passengers"
+   ],
+   "answer": 3,
+   "explain": "Within a taxi stand (507), stopping or parking by any other vehicle is forbidden, except to drop off passengers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-029",
+   "lesson": "sg-transit",
+   "sign": "511",
+   "q": "Next to a kerb painted red-yellow there is a sign showing a bus. Who may stop there?",
+   "options": [
+    "No vehicle, not even a bus",
+    "Only a bus, and only to pick up or drop off passengers",
+    "Any vehicle, for any purpose",
+    "Only a taxi"
+   ],
+   "answer": 1,
+   "explain": "Sign 511 permits stopping along a red-yellow kerb only for the type of vehicle stated on the sign above it, and only to pick up or drop off passengers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-030",
+   "lesson": "sg-guide",
+   "q": "What does a blue background on a guide sign indicate?",
+   "options": [
+    "Expressway",
+    "A destination within the city",
+    "Local road",
+    "Tourist site"
+   ],
+   "answer": 0,
+   "explain": "A blue background on guide signs indicates destinations on a expressway; green - non-urban, brown - tourism, white or black - local urban.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-031",
+   "lesson": "sg-guide",
+   "sign": "623",
+   "q": "What does the sign indicate?",
+   "options": [
+    "One-way road",
+    "Educational-institutions area",
+    "Two close-spaced exits",
+    "Dead-end road"
+   ],
+   "answer": 3,
+   "explain": "Sign 623 indicates that the road ahead is a dead end, with no connection to another road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-032",
+   "lesson": "sg-guide",
+   "sign": "611",
+   "q": "On a road number sign, which colour indicates a expressway?",
+   "options": [
+    "Green",
+    "Brown",
+    "Blue",
+    "Black"
+   ],
+   "answer": 2,
+   "explain": "A expressway number appears in blue; a main road in red, a regional road in green and a local road in black.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-033",
+   "lesson": "sg-guide",
+   "q": "What is the role of the appendix symbols (S1 to S141) that mostly appear on guide signs?",
+   "options": [
+    "To mark a maximum speed",
+    "To indicate a no-overtaking prohibition",
+    "To indicate a specific service or site, such as a petrol station or a hospital",
+    "To replace the guide sign itself"
+   ],
+   "answer": 2,
+   "explain": "The appendix symbols are added to guide signs to indicate a specific facility, service or site, such as a petrol station, a hospital or a tourist site.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-034",
+   "lesson": "sg-roadworks",
+   "sign": "901",
+   "q": "What does this sign mark?",
+   "options": [
+    "The start of a worksite on the road",
+    "An emergency stopping bay",
+    "A barrier that closes the road completely",
+    "End of the worksite"
+   ],
+   "answer": 0,
+   "explain": "Sign 901 marks the start of the worksite on the road, until sign 902.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-035",
+   "lesson": "sg-roadworks",
+   "q": "At a worksite, an orange line is marked on the road where there used to be a permanent white line. Which line do you follow?",
+   "options": [
+    "The temporary orange line",
+    "Whichever line is further from the vehicle",
+    "You may ignore both lines",
+    "The old white line, because it's the permanent one"
+   ],
+   "answer": 0,
+   "explain": "A temporary sign or marking at a worksite, usually in orange, overrides the permanent sign or marking at the same place.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sg-036",
+   "lesson": "sg-roadworks",
+   "q": "A flagger at a worksite signals with their hand to stop, while the nearby traffic light shows green. How should you act?",
+   "options": [
+    "Choose whatever seems safer at that moment",
+    "Sound the horn and wait for a further instruction",
+    "Stop, following the flagger's instruction",
+    "Drive according to the traffic light, because it's the permanent one"
+   ],
+   "answer": 2,
+   "explain": "You must obey an authorised flagger's instruction even when it contradicts a traffic light or a sign (reg. 23).",
+   "shuffled": true
+  }
+ ]
+}

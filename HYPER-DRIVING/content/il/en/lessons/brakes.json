@@ -1,0 +1,114 @@
+{
+ "chapter": "brakes",
+ "title": "The braking system",
+ "summary": "From the pedal to the road: how the car stops, and what to do when something goes wrong.",
+ "lessons": [
+  {
+   "id": "bk-how",
+   "title": "Hydraulic brakes: from the pedal to the wheel",
+   "summary": "The path the force takes from your foot on the pedal until the wheel stops, and why cars have both discs and drums.",
+   "terms": [
+    "hydraulic-brakes",
+    "brake-servo",
+    "master-cylinder",
+    "brake-fluid",
+    "brake-caliper",
+    "brake-disc",
+    "brake-drum"
+   ],
+   "body": "Pressing the brake pedal doesn’t reach the wheels through a cable — it goes through a [[term:hydraulic-brakes|hydraulic system]]: pressure that travels through fluid, not along a metal wire.\n\n# Four stops\n1. Your foot presses the pedal.\n2. The [[term:brake-servo|brake servo]] (vacuum or pressure) boosts the force of your foot, so braking feels light.\n3. The boosted force reaches the [[term:master-cylinder|master cylinder]], which turns it into pressure in the [[term:brake-fluid|brake fluid]].\n4. The pressure travels through pipes to every wheel, where it pushes the [[term:brake-caliper|caliper]] or the drum’s wheel cylinders to create friction.\n\n[[fig:hydraulic-brake-circuit]]\n\nIn most cars the system is split into two separate circuits (often diagonally: front-left with rear-right, and vice versa) — so that even if one circuit leaks, some braking remains in the other circuit.\n\n# Disc versus drum\nThe [[term:brake-disc|brake disc]] spins with the wheel, and the [[term:brake-caliper|caliper]] presses pads against it from both sides — it cools quickly and keeps stopping consistent even with repeated use. The [[term:brake-drum|brake drum]] works differently: shoes press outward against the wall of a closed drum — simple and cheap, but it heats up and stays hot longer, which is why today it’s mainly found on the rear wheels of light vehicles.\n\n[[fig:disc-vs-drum]]\n\n:::tech Why the front wheels work harder\nUnder braking, the car’s weight “shifts” forward. The front wheels carry a larger share of the load and the heat, so they almost always have discs, even on cars with drums at the rear.\n:::",
+   "keyPoints": [
+    "Pedal → servo → master cylinder → brake fluid in the pipes → caliper or drum at each wheel.",
+    "The system is split into two separate circuits, so a leak in one doesn’t cancel all braking.",
+    "A disc cools quickly and stays consistent; a drum is simple and cheap but holds heat — mainly found at the rear."
+   ]
+  },
+  {
+   "id": "bk-wear",
+   "title": "Pads, discs, drums and fluid: when to pay attention",
+   "summary": "The wear signs you don’t ignore, and what each one tells you.",
+   "terms": [
+    "brake-pad",
+    "squealing-brakes",
+    "brake-bleeding",
+    "overheated-brakes"
+   ],
+   "body": "The [[term:brake-pad|brake pads]] wear down a little with every stop, gradually, like the sole of a shoe. Discs and drums also wear slowly, and brake fluid absorbs moisture from the air over time — all of these need periodic checking; the exact interval is only a guideline — your vehicle’s handbook has the real figure.\n\n# What each sign means\n| Sign | What it probably means |\n|---|---|\n| A thin, steady [[term:squealing-brakes|squeal]] when braking | A metal wear tab warning you — the pad is close to its minimum |\n| A deep metal grinding sound | The pad has completely worn out; metal is grinding on metal and damaging the disc itself |\n| Vibration in the pedal or steering wheel when braking | A warped disc (not perfectly round), usually from extreme heat or uneven tightening |\n| A “soft” pedal that sinks deep | Air in the pipes or a fluid leak — you need [[term:brake-bleeding|brake bleeding]] |\n| Pulling to one side when braking | A caliper stuck on one side, or oil/water on one pad |\n| A burning smell after many stops in a row | [[term:overheated-brakes|Overheated brakes]] — stop and let them cool down |\n\n:::danger\nWith metal grinding, don’t wait until the nearest garage — drive straight there, with maximum care, without pressing hard on the brakes.\n:::\n\n:::note\nA pedal that gradually turns soft over weeks, not suddenly, usually points to air or moisture in the brake fluid — not a sharp leak.\n:::",
+   "keyPoints": [
+    "A steady thin squeal = the pad is close to its minimum; metal grinding = it’s already worn out.",
+    "A soft or sinking pedal = air or a leak in the system — don’t wait.",
+    "Vibration when braking usually points to a warped disc; pulling to one side points to a stuck caliper."
+   ]
+  },
+  {
+   "id": "bk-abs",
+   "title": "ABS, electronic brakeforce distribution and brake assist",
+   "summary": "Three systems that help you brake correctly exactly when it’s hardest to do alone.",
+   "terms": [
+    "abs",
+    "ebd",
+    "brake-assist"
+   ],
+   "body": "In an emergency stop, a wheel that locks (stops turning completely) slides on the road instead of gripping it — the car keeps going straight, even if you turn the steering wheel. [[term:abs|ABS]] prevents this: the system releases and reapplies the brake at that wheel dozens of times a second, so it keeps turning slightly and you keep steering control.\n\n[[dash:abs]]\n\n# The right split, and the right push\n[[term:ebd|Electronic brakeforce distribution]] (EBD) adjusts in real time how much braking force reaches the front wheels and how much reaches the rear, according to the car’s load — so the stop stays stable and the rear wheels don’t lock too early.\n\n[[term:brake-assist|Brake assist]] detects a fast, panicked stamp on the pedal — typical of a genuine emergency — and automatically adds maximum braking pressure, even if your foot isn’t pressing hard enough because of the stress.\n\n# How to brake correctly in a car with ABS\nIn an emergency stop, press hard and keep pressing — **don’t ease off and don’t “pump” the pedal**, as old advice for cars without ABS used to say. A light pulsing in the pedal while braking is normal: it means the system is working.\n\n[[widget:stopping-distance speed=100 reaction=1]]\n\n:::remember\nABS preserves your ability to steer while braking, so you can swerve around an obstacle while stopping — it **does not** guarantee a shorter stopping distance in every condition.\n:::",
+   "keyPoints": [
+    "[[term:abs|ABS]] prevents wheel lock in an emergency stop and preserves your ability to steer.",
+    "[[term:ebd|EBD]] adjusts the brake split between front and rear according to load.",
+    "Brake assist adds maximum force when it detects an emergency stamp on the pedal.",
+    "In an emergency stop: press hard and keep pressing — don’t ease off."
+   ]
+  },
+  {
+   "id": "bk-parking",
+   "title": "The parking brake: mechanical and electronic",
+   "summary": "The independent brake that holds the car in place, regardless of the hydraulic system.",
+   "terms": [
+    "parking-brake",
+    "electronic-parking-brake",
+    "hill-hold-assist"
+   ],
+   "body": "The [[term:parking-brake|parking brake]] (the “handbrake”) works entirely separately from the hydraulic brakes: it usually engages only the rear brakes, mechanically, by cable. It’s what holds the car in place when the engine is off — so you must apply it every time you park, even in an automatic car in P.\n\n[[dash:parking-brake]]\n\n# Lever, button and pedal\nIn older cars this is a lever between the seats, or an extra pedal for the left foot. In many cars today it’s an [[term:electronic-parking-brake|electronic parking brake]] — pressing a switch engages a small electric motor that clamps the rear brakes, and it usually releases itself the moment you start driving.\n\n# Hill-hold assist\n[[term:hill-hold-assist|Hill-hold assist]] stops the car rolling backward for a few seconds on a hill, between the moment you lift your foot off the brake and the moment you press the accelerator. It’s very convenient, but it’s temporary only — not a substitute for the parking brake when you actually park.\n\n:::tip On a slope\nWhen parking on a slope, the parking brake works better together with a suitable gear (or P in an automatic) and turning the wheels so the car would move away from the road if it did move.\n:::\n\n:::warn\nDriving with the parking brake partly engaged, even without noticing, heats up the rear brakes and wears them out fast. The warning light on the dashboard is there for exactly this.\n:::",
+   "keyPoints": [
+    "The parking brake works separately from the hydraulic system, and usually engages only the rear brakes.",
+    "Apply it every time you park, even in an automatic car in P.",
+    "An electronic parking brake is applied with a button; hill-hold assist is temporary only and is not a substitute for it."
+   ]
+  },
+  {
+   "id": "bk-fade",
+   "title": "Brake fade on long descents",
+   "summary": "What happens when the brakes overheat, and why it develops without warning.",
+   "terms": [
+    "brake-fade",
+    "brake-failure"
+   ],
+   "body": "Repeated, continuous braking — especially on a long, steep descent — heats up the pads, the discs and the brake fluid. When the heat rises past a certain point, the friction weakens and the feel of braking gradually “disappears”. This is [[term:brake-fade|brake fade]].\n\nIn a more severe case, the brake fluid itself boils and forms air bubbles in the pipes — the pedal sinks deep and feels soft, because you’re pressing on compressible air instead of fluid. This is a form of [[term:brake-failure|brake failure]].\n\n# How to prevent it\nDon’t ride the brakes with a light foot for the whole descent — that’s exactly what heats them up the most. Instead: engine braking using a low gear (chapter [[chapter:drivetrain|Powertrain]], lesson dt-engine-braking) keeps you at a safe speed with almost no need to touch the brake, and only when you must — one firm, decisive stop, then fully release to let the brakes cool down.\n\n:::danger If the brakes “disappear”\nIf the pedal sinks further than usual or braking weakens on a descent: shift down to the lowest gear you can, use short, firm stops instead of continuous pressure, and look for a safe place to stop and let the brakes cool. The full procedure for total brake failure is in the chapter [[chapter:breakdowns|Breakdowns on the road and vehicle emergencies]].\n:::",
+   "keyPoints": [
+    "Continuous braking on a long descent heats the brakes and weakens braking — brake fade.",
+    "In a severe case the brake fluid boils, the pedal sinks deep, and this is brake failure.",
+    "Prevention: engine braking in a low gear, not a constant light foot on the pedal."
+   ]
+  },
+  {
+   "id": "bk-air",
+   "title": "Air brakes on heavy vehicles",
+   "summary": "In a heavy vehicle, the force needed for braking is too great to rely on fluid alone — this is where compressed air comes in.",
+   "licence": [
+    "professional"
+   ],
+   "terms": [
+    "air-brakes",
+    "air-compressor-brakes",
+    "air-tank-brakes",
+    "spring-brake",
+    "retarder"
+   ],
+   "body": "A heavy truck or bus needs far more braking force than a private car. That’s why most heavy vehicles have [[term:air-brakes|air brakes]]: compressed air instead of brake fluid, at a pressure that allows much stronger braking force without a big effort from your foot.\n\n# How the pressure is built and kept\nAn engine-driven [[term:air-compressor-brakes|air compressor]] constantly fills the [[term:air-tank-brakes|air tanks]] with high-pressure air. Pressing the pedal opens a valve that releases some of the air into the brake chambers at each wheel. As long as the engine is running, the pressure keeps rebuilding — but you need enough pressure in the tanks **before** you set off.\n\n:::danger\nIf the pressure gauge hasn’t reached the normal range, or the buzzer and warning light are on — you must not move. Pressure that’s too low harms your braking ability.\n:::\n\n# The spring brake — safety that fails in the safe direction\nThe [[term:spring-brake|spring brake]] is the heavy vehicle’s parking brake: a strong spring pushes it into the “locked” position, and it’s air pressure that releases it for driving. The result: if air pressure suddenly drops for any reason, the spring locks the brakes on its own, without the driver doing anything. This is a “fail-safe” design — the fault stops the vehicle instead of making it lose its brakes.\n\n# Daily maintenance: draining the tanks\nThe air entering the system carries moisture, which collects as water at the bottom of the air tanks. Water that builds up can freeze in winter and rust the tank from the inside. Part of a heavy vehicle’s daily check is draining the water from the air tanks through the drain valve at the bottom of each tank — the full daily check is detailed in the chapter [[chapter:heavy-vehicles|Heavy vehicles]].\n\nAlongside the air brakes, many heavy vehicles also use a [[term:retarder|retarder]] to slow down on long descents without wearing the pads at all — details in the chapter [[chapter:drivetrain|Powertrain]], lesson dt-engine-braking.",
+   "keyPoints": [
+    "Air brakes use compressed air pressure instead of fluid, for greater braking force.",
+    "You must not move when air pressure is below the normal range — the buzzer and warning light alert you to this.",
+    "The spring brake locks the brakes on its own if air pressure drops — a fail-safe design.",
+    "Draining water from the air tanks is part of a heavy vehicle’s daily check."
+   ]
+  }
+ ]
+}

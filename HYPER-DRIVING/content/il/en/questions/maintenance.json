@@ -1,0 +1,319 @@
+{
+ "chapter": "maintenance",
+ "questions": [
+  {
+   "id": "q-mt-001",
+   "lesson": "mt-schedule",
+   "q": "What is the main advantage of preventive servicing according to the owner's handbook?",
+   "options": [
+    "It makes checking the tyres unnecessary",
+    "It catches and treats problems before they become expensive or dangerous",
+    "It removes the need for the periodic vehicle test",
+    "It is always given for free"
+   ],
+   "answer": 3,
+   "explain": "Preventive servicing catches a problem early and cheaply; repairing it after a breakdown is more expensive and sometimes more dangerous.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-002",
+   "lesson": "mt-schedule",
+   "q": "Who decides the exact service intervals (in km and months) for a car?",
+   "options": [
+    "The vehicle manufacturer's handbook",
+    "The Israel Police",
+    "The insurance company",
+    "Each garage decides for itself"
+   ],
+   "answer": 0,
+   "explain": "The vehicle manufacturer sets the exact service intervals in the owner's handbook, based on the components and the engine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-003",
+   "lesson": "mt-schedule",
+   "q": "What causes service intervals to be shortened?",
+   "options": [
+    "Driving in harsh conditions — dust, heat, towing, short trips",
+    "Washing the car often",
+    "Changing the radio",
+    "Driving only on a expressway"
+   ],
+   "answer": 0,
+   "explain": "Harsh driving conditions place more load on the engine and components, and so shorten the recommended service intervals.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-004",
+   "lesson": "mt-diy",
+   "q": "When do you check the engine oil level on the dipstick?",
+   "options": [
+    "Right after driving, while the engine is hot and running",
+    "While driving",
+    "With the engine switched off for a few minutes and the car on level ground",
+    "At any speed, regardless of the car's condition"
+   ],
+   "answer": 2,
+   "explain": "An accurate check needs the engine off for a few minutes (so the oil drains back into the sump) and the car standing on level ground.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-005",
+   "lesson": "mt-diy",
+   "q": "When is it safe to check the coolant in the expansion tank?",
+   "options": [
+    "Only when the engine is cold",
+    "Only right after a long journey",
+    "Only when the engine is hot and running",
+    "In any condition, it makes no difference"
+   ],
+   "answer": 0,
+   "explain": "When the engine is hot the coolant is boiling and under pressure; opening the cap can cause severe burns.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-006",
+   "lesson": "mt-diy",
+   "q": "What does a marked drop in the brake fluid level indicate?",
+   "options": [
+    "Advanced pad wear or a leak — check it soon",
+    "A natural effect you can ignore",
+    "Excess humidity in the air",
+    "A fault in the air conditioning"
+   ],
+   "answer": 0,
+   "explain": "A marked drop in brake fluid is a warning sign of advanced pad wear or a leak, and needs an immediate check.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-007",
+   "lesson": "mt-diy",
+   "q": "What is it recommended to check once a week around the car?",
+   "options": [
+    "Tyres, lights and washer fluid",
+    "The seat height",
+    "The gearbox oil level only",
+    "The air pressure in the air conditioning"
+   ],
+   "answer": 0,
+   "explain": "A short weekly check of the tyres, lights and washer fluid catches common problems before they turn into a breakdown on the road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-008",
+   "lesson": "mt-filters-belts",
+   "q": "What is the role of the engine's air filter?",
+   "options": [
+    "To warm the incoming air",
+    "To clean the air in the passenger cabin",
+    "To stop dust and sand getting into the engine",
+    "To filter fuel before the injectors"
+   ],
+   "answer": 2,
+   "explain": "The air filter stops dust and sand getting into the engine; when it's clogged, it hurts performance and fuel consumption.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-009",
+   "lesson": "mt-filters-belts",
+   "q": "What happens in most engines if the timing belt snaps while driving?",
+   "options": [
+    "Only the air conditioning stops working",
+    "The car keeps driving normally with no problem",
+    "The engine automatically shifts to neutral only",
+    "The valves and pistons can collide, causing serious damage to the engine"
+   ],
+   "answer": 3,
+   "explain": "In most engines, a snapped timing belt causes the valves and pistons to collide — serious damage that costs as much as a new engine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-010",
+   "lesson": "mt-filters-belts",
+   "q": "When is a timing belt replaced?",
+   "options": [
+    "By kilometres or years as set by the vehicle manufacturer, whichever comes first — not when you sense a problem",
+    "Only when the car won't start",
+    "It never needs replacing",
+    "Only when you hear a squealing noise"
+   ],
+   "answer": 0,
+   "explain": "A timing belt usually snaps without any prior warning, so it is replaced on a fixed schedule, not by feel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-011",
+   "lesson": "mt-filters-belts",
+   "q": "What does the cabin filter stop?",
+   "options": [
+    "Dust, soot and pollen before they enter the passenger cabin",
+    "Metal particles from the engine oil",
+    "Water from the fuel filter",
+    "Exhaust pollution only"
+   ],
+   "answer": 0,
+   "explain": "The cabin filter cleans the air entering the air conditioning and blower, of dust, soot and pollen.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-012",
+   "lesson": "mt-battery-care",
+   "q": "What significantly shortens the life of a 12V battery?",
+   "options": [
+    "Regular engine oil changes",
+    "Long, regular trips",
+    "Only short trips and extreme heat",
+    "Moderate temperature all year round"
+   ],
+   "answer": 2,
+   "explain": "Short trips don't fully recharge the battery, and extreme heat dries out the electrolyte inside it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-013",
+   "lesson": "mt-battery-care",
+   "q": "How long does a typical 12V battery usually last in a private car?",
+   "options": [
+    "It has no defined lifespan",
+    "About a month only",
+    "About twenty years",
+    "About three to five years"
+   ],
+   "answer": 3,
+   "explain": "A typical battery in a private car lasts about three to five years, after which it is worth checking at every service.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-014",
+   "lesson": "mt-battery-care",
+   "q": "Why might a car left standing for weeks without driving end up with a flat battery?",
+   "options": [
+    "This never actually happens",
+    "Because the car's computer systems constantly draw a small current, even when the car is off",
+    "Because the battery heats itself up",
+    "Because the law requires disconnecting the battery every week"
+   ],
+   "answer": 1,
+   "explain": "The car's computer systems keep drawing a small current even with the engine off, and over weeks this drains the battery.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-015",
+   "lesson": "mt-battery-care",
+   "q": "What is true about handling a battery?",
+   "options": [
+    "It contains acid and flammable hydrogen gas, and needs care",
+    "It's fine to bring a flame near it",
+    "It's fine to tilt it without limit",
+    "It contains no hazardous substances at all"
+   ],
+   "answer": 0,
+   "explain": "A battery contains acid and flammable hydrogen gas; avoid flames, sparks, and tilting it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-016",
+   "lesson": "mt-test",
+   "facts": [
+    "vehicletest.private.first_test_years"
+   ],
+   "q": "A new private car, first registered from 1 January 2023 — when does it undergo its first periodic vehicle test?",
+   "options": [
+    "After one year",
+    "After only {{fact:vehicletest.private.interval_years}} years",
+    "Immediately upon registration",
+    "After {{fact:vehicletest.private.first_test_years}} from first registration"
+   ],
+   "answer": 3,
+   "explain": "A new private car is exempt from the periodic vehicle test for {{fact:vehicletest.private.first_test_years}} from first registration (reg. 273(b2)(1)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-017",
+   "lesson": "mt-test",
+   "q": "What does a car receive after passing the periodic vehicle test?",
+   "options": [
+    "A new driving licence",
+    "A permanent exemption from future tests",
+    "A roadworthiness stamp on the vehicle licence",
+    "An exemption from compulsory insurance"
+   ],
+   "answer": 2,
+   "explain": "The vehicle test examiner stamps the vehicle licence with a roadworthiness stamp when the car meets all the requirements.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-018",
+   "lesson": "mt-test",
+   "facts": [
+    "vehiclelicence.validity"
+   ],
+   "q": "What is the default validity period of an ordinary vehicle licence?",
+   "options": [
+    "Five years",
+    "Six months",
+    "{{fact:vehiclelicence.validity}}",
+    "For life"
+   ],
+   "answer": 2,
+   "explain": "Regulation 276(a): the validity of a vehicle licence or its renewal is {{fact:vehiclelicence.validity}}, unless set otherwise.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-019",
+   "lesson": "mt-test",
+   "q": "Which of these is included in the periodic vehicle test?",
+   "options": [
+    "Checking average fuel consumption",
+    "Brakes, steering, tyres, lights, emissions and the condition of the bodywork",
+    "Checking the maximum speed on a expressway",
+    "Checking theory-test scores"
+   ],
+   "answer": 1,
+   "explain": "The periodic vehicle test checks the car's main safety and emissions systems — not the driver's knowledge or performance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-020",
+   "lesson": "mt-garage",
+   "q": "What is worth checking before trusting a garage?",
+   "options": [
+    "A business licence, transparent pricing, and showing old parts on request",
+    "Only that the garage is open at weekends",
+    "Only the size of the sign outside",
+    "Only the colour of the walls"
+   ],
+   "answer": 0,
+   "explain": "A valid licence, an up-front quote, and showing replaced parts are all signs of a trustworthy, transparent garage.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-021",
+   "lesson": "mt-garage",
+   "q": "What is the difference between an original part and an aftermarket part?",
+   "options": [
+    "An original part is made or approved by the vehicle manufacturer; an aftermarket part is made by another company",
+    "An aftermarket part is always better",
+    "An original part is always cheaper",
+    "There is no difference at all"
+   ],
+   "answer": 0,
+   "explain": "An aftermarket part is made by a company other than the vehicle manufacturer; its quality ranges from identical to the original to inferior.",
+   "shuffled": true
+  },
+  {
+   "id": "q-mt-022",
+   "lesson": "mt-garage",
+   "q": "What is a safety recall?",
+   "options": [
+    "A promotional campaign by the importer",
+    "A notice from the manufacturer or importer about a safety defect in a particular model, with a free repair",
+    "A requirement to re-insure the car",
+    "A fine for missing a service"
+   ],
+   "answer": 1,
+   "explain": "A safety recall is a notice about a defect found in a particular model, with a free repair at an authorised garage.",
+   "shuffled": true
+  }
+ ]
+}

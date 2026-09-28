@@ -1,0 +1,355 @@
+{
+ "chapter": "vehicle-basics",
+ "questions": [
+  {
+   "id": "q-vb-001",
+   "lesson": "vb-systems",
+   "q": "Which system in the vehicle is responsible for transmitting rotation from the engine to the wheels?",
+   "options": [
+    "Power transmission — clutch, gearbox and differential",
+    "The suspension system",
+    "The steering system",
+    "The brake system"
+   ],
+   "answer": 0,
+   "explain": "Power transmission (the clutch, the gearbox and the differential) transmits rotation from the engine to the wheels at the rate suited to the vehicle’s speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-002",
+   "lesson": "vb-systems",
+   "q": "What is the chassis’s role in the vehicle?",
+   "options": [
+    "To serve as a rigid base for the vehicle and to crumple in a controlled way in a crash",
+    "To supply electricity to the vehicle’s systems",
+    "To absorb bumps in the road",
+    "To cool the engine"
+   ],
+   "answer": 0,
+   "explain": "The chassis carries the body, the engine and every other system, and is designed so that certain areas of it crumple in a crash to absorb energy.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-003",
+   "lesson": "vb-systems",
+   "q": "Which system keeps the tyres in constant contact with the road, even over bumps?",
+   "options": [
+    "The suspension system",
+    "The exhaust system",
+    "The cooling system",
+    "The gearbox"
+   ],
+   "answer": 0,
+   "explain": "The suspension system absorbs bumps and keeps the tyres in contact with the road, which is essential for steering and braking.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-004",
+   "lesson": "vb-systems",
+   "q": "What is the most useful way to start diagnosing a new fault or noise in the vehicle?",
+   "options": [
+    "First identify which system the fault belongs to — engine, brakes, steering and so on",
+    "Turn off all the panel’s warning lights",
+    "Try to ignore it and keep driving as usual",
+    "Replace all the tyres immediately"
+   ],
+   "answer": 0,
+   "explain": "Identifying the system involved is the first step in diagnosing a fault, and it also helps you describe it correctly to the garage.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-005",
+   "lesson": "vb-controls",
+   "q": "How many pedals does an automatic vehicle have, and which foot is used for them?",
+   "options": [
+    "Two pedals — brake and accelerator — both with the right foot only",
+    "Three pedals, right foot for the accelerator and left foot for the brake",
+    "Just one pedal that combines accelerator and brake",
+    "Two pedals, both operated with the left foot"
+   ],
+   "answer": 0,
+   "explain": "An automatic vehicle has no clutch pedal. There is only the brake and the accelerator, and both are operated in turn with the right foot only.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-006",
+   "lesson": "vb-controls",
+   "q": "What is the parking brake’s role?",
+   "options": [
+    "To shorten the braking distance at high speed",
+    "To steer the front wheels",
+    "To change gear without a clutch",
+    "To hold the vehicle in place even when the engine is off"
+   ],
+   "answer": 3,
+   "explain": "The parking brake — a lever, an electric button or a separate pedal — is meant to hold the vehicle in place while stationary, not for an emergency stop while driving.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-007",
+   "lesson": "vb-controls",
+   "q": "In an automatic vehicle, which gear-lever position is for normal forward driving?",
+   "options": [
+    "R",
+    "P",
+    "D",
+    "N"
+   ],
+   "answer": 2,
+   "explain": "D (Drive) is the position for driving forward. P is for parking, N for neutral and R for reverse.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-008",
+   "lesson": "vb-controls",
+   "q": "What is usually on the stalks on either side of the steering wheel?",
+   "options": [
+    "Turn signal and lights on one side, wipers and washer spray on the other",
+    "The parking brake and the clutch",
+    "The fuel gauge and the rev counter",
+    "Just the ignition button"
+   ],
+   "answer": 0,
+   "explain": "Usually one stalk is used for the turn signal and for switching between dipped and main beam, and the other for the wipers and spraying washer fluid.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-009",
+   "lesson": "vb-controls",
+   "q": "Why is it recommended to learn the location of all the controls in an unfamiliar vehicle before your first drive in it, rather than hunting for them while driving?",
+   "options": [
+    "Because the controls differ in every vehicle and can’t be learned in advance",
+    "Because the law forbids touching the controls while driving",
+    "Because hunting for a control distracts you from the road at exactly the moment a fast reaction is needed",
+    "There’s no special reason — it’s purely a matter of comfort"
+   ],
+   "answer": 2,
+   "explain": "Hunting for a control such as the wipers or the turn signal while driving takes your eyes and your attention off the road, at exactly the moment a fast reaction might be needed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-010",
+   "lesson": "vb-position",
+   "q": "What is the correct headrest height?",
+   "options": [
+    "Its top level with the crown of the head",
+    "Level with the shoulders",
+    "The height doesn’t matter, only the angle",
+    "Level with the lower back of the neck"
+   ],
+   "answer": 0,
+   "explain": "A headrest that’s too low doesn’t support the neck in a rear-end collision and can make whiplash injury worse. The correct height: the top level with the crown of the head.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-011",
+   "lesson": "vb-position",
+   "q": "Where should the lap part of the seatbelt run?",
+   "options": [
+    "Low across the pelvis",
+    "Under the arm",
+    "Behind the back",
+    "High across the stomach"
+   ],
+   "answer": 0,
+   "explain": "The lap belt should run low across the pelvis, not the stomach — so it doesn’t cause internal injury under braking or in a crash.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-012",
+   "lesson": "vb-position",
+   "q": "How should the side mirrors be adjusted correctly to shrink the blind spot?",
+   "options": [
+    "So that you mainly see the vehicle’s own rear door",
+    "As close as possible to the centre of the vehicle",
+    "There’s no way to shrink the blind spot using mirrors",
+    "Very wide — until you see only a small edge of the vehicle in the corner of the mirror"
+   ],
+   "answer": 3,
+   "explain": "A wide adjustment, until only a small edge of the vehicle is visible in the corner of the mirror, reduces the overlap with the rearview mirror and shrinks the blind spot.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-013",
+   "lesson": "vb-position",
+   "q": "The mirrors are correctly adjusted. Do you still need to look over your shoulder before changing lanes?",
+   "options": [
+    "Yes — a small blind spot remains that the mirrors don’t cover",
+    "No, the mirrors are always enough",
+    "Only at low speed",
+    "Only in an old vehicle without a rearview mirror"
+   ],
+   "answer": 0,
+   "explain": "Even with the mirrors correctly adjusted, a small blind spot remains. A quick look over your shoulder is an essential part of the safety check before changing lanes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-014",
+   "lesson": "vb-position",
+   "q": "What is the correct seating position behind the steering wheel?",
+   "options": [
+    "A seat reclined all the way back for comfort",
+    "The distance doesn’t matter, only the seat height",
+    "A distance that lets you press the brake all the way down with the knee slightly bent, and hands on the steering wheel with the elbows bent",
+    "A seat as far as possible from the steering wheel, to give the legs room"
+   ],
+   "answer": 2,
+   "explain": "The right distance allows you to press the brake fully with the knee slightly bent, and to hold the steering wheel with the elbows bent — giving full control even in an emergency stop.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-015",
+   "lesson": "vb-checks",
+   "q": "When is the right time to check the engine oil and coolant levels?",
+   "options": [
+    "It makes no difference whether the engine is hot or cold",
+    "Right after driving, while the engine is hot",
+    "Only when a warning light comes on",
+    "When the engine is cold, before you start driving"
+   ],
+   "answer": 3,
+   "explain": "When the engine is hot, the oil hasn’t fully drained back into the sump yet, and the coolant may be boiling and under pressure. The correct check is with the engine cold.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-016",
+   "lesson": "vb-checks",
+   "q": "Where do you check the coolant level?",
+   "options": [
+    "In the clear expansion tank",
+    "Directly under the radiator cap, at any time",
+    "On the oil dipstick",
+    "There’s no way to check it yourself — that’s the garage’s job alone"
+   ],
+   "answer": 0,
+   "explain": "The coolant level is checked in the clear expansion tank, between the marked lines. The radiator cap itself is opened only when the engine is completely cold, and not for a routine check.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-017",
+   "lesson": "vb-checks",
+   "q": "What do you check in a walk-round of the vehicle before driving?",
+   "options": [
+    "Only the seatbelts",
+    "Only the fuel level",
+    "The condition of the tyres by eye, that the lights are intact, leaks under the vehicle, and clean glass",
+    "Only the tyre pressure, with a precise gauge"
+   ],
+   "answer": 2,
+   "explain": "The walk-round is a quick visual check: the condition of the tyres, intact lights, no fresh fluid stain under the vehicle, and clean, undamaged glass.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-018",
+   "lesson": "vb-checks",
+   "q": "Why must you never open the radiator cap or the expansion tank while the engine is hot?",
+   "options": [
+    "The fluid is boiling and under pressure and can cause serious burns",
+    "The cap locks automatically and can’t be opened",
+    "There’s no risk at all, it’s just an unnecessary recommendation",
+    "It will stop the vehicle from starting"
+   ],
+   "answer": 0,
+   "explain": "The coolant in a hot system is boiling and under pressure. Opening the cap releases it all at once and can cause serious burns.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-019",
+   "lesson": "vb-checks",
+   "q": "What’s normal to see on the instrument panel the moment you start the engine?",
+   "options": [
+    "No light should come on at all",
+    "All the warning lights come on briefly and then go out",
+    "Only one light should stay on permanently",
+    "All the lights should stay on for the whole drive"
+   ],
+   "answer": 1,
+   "explain": "On starting, all the warning lights come on briefly as the system’s self-test, and then go out. A light that stays on needs looking into.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-020",
+   "lesson": "vb-start",
+   "q": "What must you make sure of before starting a vehicle with a manual gearbox?",
+   "options": [
+    "That the air conditioning is running at full power",
+    "That the window is open",
+    "That a high gear is engaged",
+    "That the clutch pedal is pressed all the way down"
+   ],
+   "answer": 3,
+   "explain": "In most manual vehicles, the engine can only be started when the clutch pedal is pressed all the way down — this protects against the vehicle lurching forward when it starts.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-021",
+   "lesson": "vb-start",
+   "q": "In an automatic vehicle, what position should the gear lever be in when starting the engine?",
+   "options": [
+    "D only",
+    "The lever position doesn’t matter",
+    "R always",
+    "P or N, with a foot on the brake"
+   ],
+   "answer": 3,
+   "explain": "In an automatic vehicle, you start the engine with the gear lever in P or N and a foot on the brake — that way the vehicle doesn’t move the moment it starts.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-022",
+   "lesson": "vb-start",
+   "q": "Before reversing, what’s the safe way to make sure the way behind is clear?",
+   "options": [
+    "Look directly behind you, not just in the mirrors",
+    "Rely on the side mirrors alone",
+    "No need to check if the engine is already running",
+    "Rely on the rearview mirror alone"
+   ],
+   "answer": 0,
+   "explain": "Before reverse gear, come to a complete stop and look directly behind you — not just in the mirrors — because there could be a low obstacle the mirrors don’t show.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-023",
+   "lesson": "vb-start",
+   "q": "Why is it important to apply the parking brake even when the vehicle is in P (automatic) or in gear (manual) when stopped on a slope?",
+   "options": [
+    "It’s not necessary — the gear alone is always enough",
+    "Because without the parking brake the vehicle could shift slightly or roll on the slope",
+    "Because it saves fuel",
+    "Because the law forbids using the gear alone"
+   ],
+   "answer": 1,
+   "explain": "A gear or position P limits the wheels’ rotation, but is not a full substitute for the parking brake, especially on a slope — so you use both together.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-024",
+   "lesson": "vb-start",
+   "q": "What does central locking let you do in a vehicle?",
+   "options": [
+    "Lock only the driver’s door",
+    "Lock all the doors in a single action, usually by pressing the remote",
+    "Lock only the boot",
+    "Switch off the engine remotely"
+   ],
+   "answer": 1,
+   "explain": "Central locking locks (and usually also unlocks) all the vehicle’s doors together, usually with a single press of the remote or a switch on the door.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vb-025",
+   "lesson": "vb-start",
+   "q": "Before opening the driver’s door and getting out of the vehicle, what should you look at?",
+   "options": [
+    "The side mirror and behind you — a cyclist or motorcyclist could pass right there",
+    "Only ahead",
+    "There’s no need to look anywhere",
+    "Only at the fuel gauge"
+   ],
+   "answer": 0,
+   "explain": "Looking at the side mirror and behind you before opening the door prevents hitting a cyclist or motorcyclist passing by the vehicle.",
+   "shuffled": true
+  }
+ ]
+}

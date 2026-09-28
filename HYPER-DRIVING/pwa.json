@@ -1,0 +1,17 @@
+{
+  "name": "Hyper Driving — תאוריה, תמרורים והכרת הרכב",
+  "short_name": "Hyper Driving",
+  "description": "Driving theory, road signs, good driving and vehicle knowledge, in Hebrew and English.",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c1018",
+  "theme_color": "#0c1018",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

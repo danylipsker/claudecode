@@ -1,0 +1,341 @@
+{
+ "chapter": "engine",
+ "questions": [
+  {
+   "id": "q-eg-001",
+   "lesson": "eg-how",
+   "q": "What is the correct order of the four strokes in an internal combustion engine?",
+   "options": [
+    "Power, intake, compression, exhaust",
+    "Compression, intake, exhaust, power",
+    "Intake, compression, power, exhaust",
+    "Exhaust, power, compression, intake"
+   ],
+   "answer": 2,
+   "explain": "The fixed order is intake (the mixture enters), compression (the piston rises and compresses it), power (ignition pushes the piston down) and exhaust (the gases leave).",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-002",
+   "lesson": "eg-how",
+   "q": "What ignites the air-fuel mixture on the power stroke of a petrol engine?",
+   "options": [
+    "Contact with the crankshaft",
+    "The exhaust valve opening",
+    "A spark from the spark plug",
+    "Compression heat alone"
+   ],
+   "answer": 2,
+   "explain": "In a petrol engine the spark plug creates a spark at the exact moment the vehicle’s computer decides, and that is what ignites the mixture.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-003",
+   "lesson": "eg-how",
+   "q": "What is the camshaft’s job?",
+   "options": [
+    "To cool the engine",
+    "To measure the engine’s rotational speed",
+    "To open and close the valves at the right time in every cycle",
+    "To drive the vehicle’s wheels directly"
+   ],
+   "answer": 2,
+   "explain": "The camshaft, synchronised to the crankshaft by a timing belt or chain, opens and closes the intake and exhaust valves at the precise timing required.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-004",
+   "lesson": "eg-how",
+   "q": "What does the red zone on the RPM gauge mark?",
+   "options": [
+    "A fault in the oxygen sensor",
+    "The recommended speed for urban driving",
+    "The most economical speed to drive at",
+    "An engine speed you must not exceed, to avoid damaging its parts"
+   ],
+   "answer": 3,
+   "explain": "The red zone marks an upper limit on engine revolutions per minute; above it, engine parts can be damaged.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-005",
+   "lesson": "eg-diesel",
+   "q": "What is the main difference between ignition in a petrol engine and ignition in a diesel engine?",
+   "options": [
+    "Petrol ignites with a spark from the spark plug; diesel ignites fuel injected into air made hot by compression, with no spark plug",
+    "There is no difference, both use a spark plug",
+    "Petrol does not need air at all",
+    "Diesel ignites with a spark; petrol ignites from compression heat alone"
+   ],
+   "answer": 0,
+   "explain": "A diesel engine compresses air at a very high compression ratio until it becomes very hot, and then the fuel injected into it ignites by itself — with no spark plug.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-006",
+   "lesson": "eg-diesel",
+   "q": "Why does a diesel engine need glow plugs on a cold morning?",
+   "options": [
+    "To clean the particulate filter",
+    "To pre-heat the combustion chamber, because compression alone is not always enough in the cold",
+    "To ignite the fuel with a spark",
+    "To cool the engine before starting"
+   ],
+   "answer": 1,
+   "explain": "In the cold, the air does not always heat up enough from compression alone. The glow plugs pre-heat the combustion chamber, and you wait for the glow plug light to go out before starting.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-007",
+   "lesson": "eg-diesel",
+   "q": "What does the turbocharger do in an engine?",
+   "options": [
+    "Compresses extra air into the cylinders, driven by the exhaust gases, to boost power",
+    "Only regulates the flow of fuel",
+    "Cools the coolant",
+    "Filters dirt out of the engine oil"
+   ],
+   "answer": 0,
+   "explain": "The turbocharger is driven by the exhaust gases themselves and compresses extra air into the cylinders, which lets the engine burn more fuel and produce more power.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-008",
+   "lesson": "eg-diesel",
+   "q": "What does the intercooler do?",
+   "options": [
+    "Heats the air coming out of the turbocharger",
+    "Switches between a petrol engine and a diesel engine",
+    "Cools the compressed air from the turbocharger, so even more air can be compressed into the same volume",
+    "Filters soot particles out of the exhaust gases"
+   ],
+   "answer": 2,
+   "explain": "Compressed air heats up. The intercooler cools it before it enters the cylinders, allowing denser air to be compressed into the same volume.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-009",
+   "lesson": "eg-lubrication",
+   "q": "What does engine oil do?",
+   "options": [
+    "Replaces the brake fluid",
+    "Only cools the vehicle from the outside",
+    "Slides between moving parts, cools them and collects dirt and metal particles",
+    "Only cleans the windows"
+   ],
+   "answer": 2,
+   "explain": "Engine oil forms a sliding film between moving parts, cools them and collects dirt and metal particles created by wear.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-010",
+   "lesson": "eg-lubrication",
+   "q": "What do you do when the oil pressure warning light comes on while driving?",
+   "options": [
+    "Keep going carefully to the nearest garage",
+    "Accelerate to reach a petrol station faster",
+    "Ignore it, it is usually a minor fault",
+    "Stop immediately in a safe place and switch off the engine"
+   ],
+   "answer": 3,
+   "explain": "Low oil pressure means the engine’s parts are barely protected. Stop immediately and switch off — continuing to drive can destroy the engine within minutes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-011",
+   "lesson": "eg-lubrication",
+   "q": "What does the number in an oil viscosity grade such as 5W-30 describe?",
+   "options": [
+    "The number of kilometres until the next oil change",
+    "How the oil flows when cold (the number before the W) and when hot (the number after)",
+    "The size of oil filter required",
+    "The number of litres the engine needs"
+   ],
+   "answer": 1,
+   "explain": "The number before the W describes how the oil flows when cold, and the number after it describes how it flows when hot. Always use the grade the vehicle manufacturer specifies.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-012",
+   "lesson": "eg-lubrication",
+   "q": "When is it correct to check the engine oil level on the dipstick?",
+   "options": [
+    "Right after a long drive, while the engine is hot",
+    "Only once a year",
+    "Timing does not matter",
+    "When the engine is cold, before driving"
+   ],
+   "answer": 3,
+   "explain": "A correct oil level check is done when the engine is cold and has not been driven recently, so the oil has had time to drain into the sump and give an accurate reading.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-013",
+   "lesson": "eg-cooling",
+   "q": "What is the thermostat’s job in the cooling system?",
+   "options": [
+    "To stay closed until the engine reaches working temperature, and only then open flow to the radiator",
+    "To pump the coolant round the circuit",
+    "To run the cooling fan at full speed at all times",
+    "To lower the pressure in the cooling system"
+   ],
+   "answer": 0,
+   "explain": "The thermostat stays closed while the engine is cold, so it warms up faster, and opens only once it reaches working temperature — only then does it let fluid flow through the radiator.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-014",
+   "lesson": "eg-cooling",
+   "q": "Why must you never open a radiator cap while the engine is hot?",
+   "options": [
+    "It will make the vehicle restart on its own",
+    "There is no real risk in doing so",
+    "The fluid is boiling and under pressure, and can erupt and cause severe burns",
+    "The cap is always locked and cannot be opened"
+   ],
+   "answer": 2,
+   "explain": "The system is sealed and under pressure, which raises the boiling point. Opening the cap releases the pressure at once, and the boiling fluid can erupt.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-015",
+   "lesson": "eg-cooling",
+   "q": "When does the cooling fan switch on?",
+   "options": [
+    "Only at high speed on a expressway",
+    "Only when the engine is switched off",
+    "Never automatically",
+    "When natural airflow through the radiator is not enough, such as driving slowly or stopped"
+   ],
+   "answer": 3,
+   "explain": "When driving slowly or stopped, natural airflow through the radiator is weak, so the fan switches on automatically to keep cooling.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-016",
+   "lesson": "eg-cooling",
+   "q": "Which of the following is not a typical cause of overheating?",
+   "options": [
+    "A faulty thermostat or water pump",
+    "A low coolant level due to a leak",
+    "A clogged air filter",
+    "A torn belt that drives the water pump"
+   ],
+   "answer": 2,
+   "explain": "A clogged air filter hurts power and fuel consumption, but is not a typical cause of overheating. The others — a leak, a faulty thermostat or pump, and a torn belt — are.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-017",
+   "lesson": "eg-fuel-air",
+   "q": "What does the air filter do?",
+   "options": [
+    "Filters the fuel before it enters the tank",
+    "Cools the air entering the radiator",
+    "Stops dust and insects before they reach the cylinders",
+    "Filters dirt out of the brake fluid"
+   ],
+   "answer": 2,
+   "explain": "The air filter stops dust and particles before the air reaches the cylinders. A clogged filter restricts airflow and hurts power and fuel consumption.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-018",
+   "lesson": "eg-fuel-air",
+   "q": "What does the octane rating of petrol describe?",
+   "options": [
+    "The amount of energy in a litre of fuel",
+    "The flow rate through the fuel pump",
+    "The number of litres in the tank",
+    "How well the fuel resists uncontrolled ignition (knocking)"
+   ],
+   "answer": 3,
+   "explain": "The octane rating describes resistance to “knocking” — the mixture igniting by itself too early. Engines with a high compression ratio usually need a higher octane rating.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-019",
+   "lesson": "eg-fuel-air",
+   "q": "You have filled a petrol vehicle with diesel by mistake. What do you do?",
+   "options": [
+    "Also fill up with petrol, to dilute the diesel",
+    "Drive only at low speed until the wrong fuel runs out",
+    "Do not start the engine at all, and call roadside assistance to drain the tank",
+    "Start the engine and drive carefully to the nearest garage"
+   ],
+   "answer": 2,
+   "explain": "The wrong fuel in the tank is a serious fault. Do not start the engine, so as not to circulate the wrong fuel through the system — call roadside assistance to drain the tank.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-020",
+   "lesson": "eg-fuel-air",
+   "q": "What is the correct fuel path from the tank to the injectors?",
+   "options": [
+    "Fuel pump → fuel tank → injectors",
+    "Fuel tank → fuel filter → fuel pump → injectors",
+    "Injectors → fuel filter → fuel tank",
+    "Fuel tank → air filter → injectors"
+   ],
+   "answer": 1,
+   "explain": "Fuel leaves the tank, passes through the fuel filter, which cleans out dirt, and is drawn by the fuel pump under pressure to the injectors.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-021",
+   "lesson": "eg-exhaust",
+   "q": "What does the catalytic converter do?",
+   "options": [
+    "Turns a large part of the harmful exhaust gases into less harmful ones",
+    "Traps soot particles in a diesel",
+    "Supplies electricity to the ignition system",
+    "Reduces exhaust noise"
+   ],
+   "answer": 0,
+   "explain": "The catalytic converter turns a large part of the harmful gases into less harmful ones. Reducing noise is the silencer’s job, not the converter’s.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-022",
+   "lesson": "eg-exhaust",
+   "q": "What is “regeneration” of a diesel particulate filter (DPF), and when does it happen best?",
+   "options": [
+    "A self-burn of the particles it has collected, which usually happens during sustained driving at a relatively high RPM",
+    "A manual clean-out that has to be done at a garage every week",
+    "Cleaning dust out of the radiator",
+    "An engine oil change"
+   ],
+   "answer": 0,
+   "explain": "The particulate filter cleans itself from time to time in a controlled burn of the particles it has collected. Sustained driving, such as on a non-urban road, helps the process; short trips in town only can stop it from cleaning itself.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-023",
+   "lesson": "eg-exhaust",
+   "q": "The “check engine” light starts to **flash** while you are driving. What is right to do?",
+   "options": [
+    "Accelerate to reach your destination faster",
+    "Ignore it — it is just as important as a steady light",
+    "Switch the engine off and on several times to “reset” it",
+    "Slow down, avoid hard acceleration and stop as soon as you can — there is a serious misfire that can destroy the catalytic converter"
+   ],
+   "answer": 3,
+   "explain": "A flashing “check engine” light marks a serious misfire. Keep going carefully, avoid hard acceleration and stop as soon as you can, so as not to destroy the catalytic converter.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eg-024",
+   "lesson": "eg-exhaust",
+   "q": "What does the AdBlue (SCR) system do in modern diesels?",
+   "options": [
+    "Cools the engine",
+    "Cleans the windscreen",
+    "Replaces the need for engine oil",
+    "Injects a urea solution into the exhaust gases to cut nitrogen oxides"
+   ],
+   "answer": 3,
+   "explain": "The AdBlue system injects a urea solution into the exhaust gases to neutralise nitrogen oxides. The AdBlue tank needs topping up from time to time, separate from the fuel tank.",
+   "shuffled": true
+  }
+ ]
+}

@@ -1,0 +1,369 @@
+{
+ "chapter": "road-basics",
+ "questions": [
+  {
+   "id": "q-rb-001",
+   "lesson": "rb-road",
+   "q": "What is a \"road\" under the Traffic Ordinance?",
+   "options": [
+    "Only a paved carriageway allocated for motor vehicle traffic",
+    "Any track, road, street, alley, square, passage or open place the public has a right to pass through",
+    "Any private land whose owner has allowed passage over it",
+    "Only a road that a local authority has declared an \"urban road\""
+   ],
+   "answer": 1,
+   "explain": "The definition in the Traffic Ordinance, section 1, is very broad and covers any place the public has a right to pass through — not just paved carriageways.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-002",
+   "lesson": "rb-road",
+   "q": "What is the difference between a \"carriageway\" and the \"shoulder\"?",
+   "options": [
+    "There is no difference — they are two names for the same part",
+    "The shoulder is only the part of the carriageway painted with a white line",
+    "The carriageway is the part for vehicle traffic; the shoulder is defined separately and is not a carriageway, even when it is paved",
+    "The carriageway exists only on an urban road, and the shoulder only on a non-urban road"
+   ],
+   "answer": 2,
+   "explain": "Regulation 1 defines the carriageway as the part for vehicle traffic, \"excluding the shoulder\" — meaning the shoulder, even when paved, is not part of the carriageway.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-003",
+   "lesson": "rb-road",
+   "q": "On a road with a built divider between the two directions of traffic, how is each carriageway on either side of the divider treated?",
+   "options": [
+    "As two lanes of the same two-way carriageway",
+    "As the shoulder",
+    "As a one-way carriageway in its own right",
+    "As an area that is not part of the road at all"
+   ],
+   "answer": 2,
+   "explain": "Under regulation 34, when there is a divider, each carriageway on either side of it is treated as a separate one-way carriageway — so you must not cross the divider or stop on it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-004",
+   "lesson": "rb-road",
+   "q": "What is an \"interchange\"?",
+   "options": [
+    "A large traffic circle",
+    "A stretch of road with three or more lanes in each direction",
+    "Where roads meet at different levels, including the roads that connect them",
+    "An ordinary junction with a traffic light"
+   ],
+   "answer": 2,
+   "explain": "Regulation 1 defines an interchange as where roads meet at different levels, including the connecting roads between them — unlike an intersection, which is a meeting at the same level.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-005",
+   "lesson": "rb-road",
+   "facts": [
+    "speed.freeway"
+   ],
+   "q": "One of the conditions in the definition of an \"expressway\" is —",
+   "options": [
+    "A permitted maximum speed of {{fact:speed.freeway}} on every stretch of it without exception",
+    "A lane width of at least 4 metres on every lane",
+    "At least two carriageways separated by a divider, with at least two lanes in each direction, no access from adjoining premises, and no intersections",
+    "The road's name begins with an even number"
+   ],
+   "answer": 2,
+   "explain": "The definition in regulation 1 includes physical separation between the carriageways, at least two lanes per direction, no access from adjoining premises, and no intersections or railway crossings — only merges are allowed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-006",
+   "lesson": "rb-users",
+   "q": "What does regulation 25 require of a driver?",
+   "options": [
+    "Only to hold a valid driving licence",
+    "To drive only on urban roads during their first year",
+    "To hold comprehensive insurance",
+    "To be competent in operating and using the vehicle"
+   ],
+   "answer": 3,
+   "explain": "Regulation 25 states that no person shall drive a vehicle unless they are competent in operating and using it — a separate duty from simply holding a licence.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-007",
+   "lesson": "rb-users",
+   "q": "A person is leading a bicycle by hand on the pavement, without disturbing other pedestrians. What is their status?",
+   "options": [
+    "Absolutely forbidden, under any conditions",
+    "A cyclist in every respect, and forbidden to be on the pavement",
+    "They must get onto the carriageway and push the bicycle on the shoulder",
+    "It is allowed — for this purpose they count as a pedestrian"
+   ],
+   "answer": 3,
+   "explain": "Regulation 129 allows a pedestrian to lead a bicycle on the pavement if this does not disturb other pedestrians, even though for most traffic rules they count as a cyclist (reg. 133).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-008",
+   "lesson": "rb-users",
+   "q": "Who must not drive a vehicle under regulation 26?",
+   "options": [
+    "Someone whose vehicle is an unusual colour",
+    "Someone driving on a non-urban road for the first time",
+    "Someone under the influence of intoxicating drugs or intoxicating drinks",
+    "Someone driving in the afternoon hours"
+   ],
+   "answer": 2,
+   "explain": "Regulation 26 forbids driving by someone under the influence of drugs or alcohol, someone whose state endangers road users, and someone whose mental or physical state denies them control of the vehicle or a view of the road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-009",
+   "lesson": "rb-users",
+   "q": "A pedestrian wants to cross a road, and nearby there is both a pedestrian crossing and a junction with no crossing. What should they do?",
+   "options": [
+    "Cross at the pedestrian crossing",
+    "Cross wherever is more convenient",
+    "Cross at the junction instead, because there they have priority",
+    "Wait for a vehicle to stop for them wherever they choose"
+   ],
+   "answer": 0,
+   "explain": "When a pedestrian crossing, underpass or footbridge is nearby, the pedestrian must cross only there — and only in their absence should they cross near a junction.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-010",
+   "lesson": "rb-users",
+   "q": "Who is responsible for making sure a minor passenger in a vehicle is wearing a seatbelt?",
+   "options": [
+    "Only the parent, even if not in the vehicle",
+    "There is no such duty on anyone",
+    "Only the minor themselves",
+    "The driver"
+   ],
+   "answer": 3,
+   "explain": "The driver is responsible for belting in minor passengers; full details are in the Seatbelts, child seats and passengers chapter.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-011",
+   "lesson": "rb-vehicles",
+   "q": "Under the Traffic Ordinance, which of the following count as a \"vehicle\"?",
+   "options": [
+    "Only vehicles that have a registration plate",
+    "Only vehicles registered with the licensing authority",
+    "Only motor vehicles",
+    "Motor vehicles as well as bicycles"
+   ],
+   "answer": 3,
+   "explain": "The definition in section 1 of the Ordinance explicitly includes \"a bicycle and a tricycle,\" not only motor vehicles.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-012",
+   "lesson": "rb-vehicles",
+   "q": "What distinguishes a \"commercial vehicle\" from a \"private vehicle\"?",
+   "options": [
+    "A commercial vehicle is always heavier than 3,500 kg",
+    "A commercial vehicle is used to carry goods for hire or for its owner's business; a private vehicle is neither public nor commercial",
+    "A private vehicle cannot carry any cargo at all",
+    "The colour of the licence plate alone"
+   ],
+   "answer": 1,
+   "explain": "The definitions depend on how the vehicle is used: a commercial vehicle is meant to carry goods for hire or for business purposes, and a private vehicle is any vehicle that is neither public nor commercial.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-013",
+   "lesson": "rb-vehicles",
+   "q": "A person riding a mobility scooter —",
+   "options": [
+    "Must hold a category B driving licence",
+    "Must hold a category 1 driving licence only",
+    "Must hold a temporary driving licence until age 18",
+    "Is exempt from a driving licence and from vehicle registration"
+   ],
+   "answer": 3,
+   "explain": "The owner and the rider of a mobility scooter are exempt from vehicle registration and licensing and from a driving licence, subject to age and fitness conditions.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-014",
+   "lesson": "rb-vehicles",
+   "facts": [
+    "mobility_scooter.min_age",
+    "mobility_scooter.min_age_disabled"
+   ],
+   "q": "What is the minimum age for riding a mobility scooter?",
+   "options": [
+    "There is no age limit for a mobility scooter",
+    "16 only for a disabled person, and 18 for everyone else",
+    "18 for everyone",
+    "{{fact:mobility_scooter.min_age}}, and for a disabled person — {{fact:mobility_scooter.min_age_disabled}}"
+   ],
+   "answer": 3,
+   "explain": "Regulation 39I sets a minimum age of {{fact:mobility_scooter.min_age}}, and for a disabled person — {{fact:mobility_scooter.min_age_disabled}}, provided their physical and mental state allows safe operation.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-015",
+   "lesson": "rb-vehicles",
+   "q": "What defines a \"work vehicle\"?",
+   "options": [
+    "Any vehicle owned by a company",
+    "A vehicle that carries workers to a worksite",
+    "A vehicle with work equipment permanently fitted, or whose structure is designed to perform work, and that is not intended to carry goods or passengers",
+    "A commercial vehicle over 3,500 kg only"
+   ],
+   "answer": 2,
+   "explain": "The definition focuses on purpose: permanent work equipment or a structure designed for work, as distinct from carrying goods or passengers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-016",
+   "lesson": "rb-weights",
+   "q": "What is a vehicle's \"kerb weight\"?",
+   "options": [
+    "The gross vehicle weight under the vehicle licence",
+    "The weight of the completely empty vehicle, without fuel and without oil",
+    "The weight of the vehicle with one driver only",
+    "The weight of the vehicle without cargo and without a driver, including the vehicle's fittings, fuel, water and oil"
+   ],
+   "answer": 3,
+   "explain": "Kerb weight includes all the vehicle's fittings and the fluids in it (fuel, water, oil) — but not cargo and not a driver.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-017",
+   "lesson": "rb-weights",
+   "facts": [
+    "licence.b.max_weight"
+   ],
+   "q": "What is the maximum gross vehicle weight for a vehicle driven on a category B driving licence?",
+   "options": [
+    "12,000 kg",
+    "2,000 kg",
+    "5,000 kg",
+    "{{fact:licence.b.max_weight}}"
+   ],
+   "answer": 3,
+   "explain": "A B licence permits driving a vehicle whose gross vehicle weight is up to {{fact:licence.b.max_weight}}; above that a heavy licence is required.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-018",
+   "lesson": "rb-weights",
+   "facts": [
+    "alcohol.strict.weight_threshold",
+    "alcohol.strict.breath"
+   ],
+   "q": "A driver of a commercial vehicle whose gross vehicle weight is over {{fact:alcohol.strict.weight_threshold}} is subject to —",
+   "options": [
+    "Exemption from a sobriety test",
+    "The stricter alcohol threshold — {{fact:alcohol.strict.breath}} in breath",
+    "The ordinary alcohol threshold only",
+    "An absolute ban on driving after any drinking at all, with no test"
+   ],
+   "answer": 1,
+   "explain": "Driving a commercial vehicle or work vehicle over {{fact:alcohol.strict.weight_threshold}} is subject to the stricter threshold of {{fact:alcohol.strict.breath}}, the same as a new driver.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-019",
+   "lesson": "rb-weights",
+   "q": "What is the risk from an unbalanced axle load, even when the vehicle's gross weight is within limits?",
+   "options": [
+    "No risk at all — only the gross weight matters",
+    "Only higher fuel consumption",
+    "The vehicle will fail the annual test because of its colour",
+    "Impaired braking and steering due to the weight distribution between the axles"
+   ],
+   "answer": 3,
+   "explain": "Even when the gross weight is within the permitted ceiling, an unbalanced load between the axles can impair braking and vehicle control.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-020",
+   "lesson": "rb-weights",
+   "q": "What determines the severity of the penalty for driving overloaded?",
+   "options": [
+    "The type of vehicle alone",
+    "The number of passengers in the vehicle",
+    "The colour of the vehicle",
+    "The percentage by which the gross vehicle weight is exceeded"
+   ],
+   "answer": 3,
+   "explain": "The greater the percentage by which the gross vehicle weight is exceeded, the more severe the penalty — from a fine and points up to immediate disqualification at 25% or more.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-021",
+   "lesson": "rb-law",
+   "q": "What is the difference between the Traffic Ordinance and the Traffic Regulations?",
+   "options": [
+    "The Ordinance applies only to heavy vehicles",
+    "There is no difference — they are two names for the same document",
+    "The Ordinance is the primary law; the Regulations are secondary legislation that spells it out in detail",
+    "The Regulations are the primary law; the Ordinance is the detail"
+   ],
+   "answer": 2,
+   "explain": "The Traffic Ordinance is primary legislation of the Knesset; the Traffic Regulations are secondary legislation that spell out the rules in detail — speeds, right of way, equipment and more.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-022",
+   "lesson": "rb-law",
+   "q": "A uniformed police officer gives an instruction at a junction that conflicts with the sign posted there. What should the driver do?",
+   "options": [
+    "Drive however is convenient for them",
+    "Obey the sign, because it is more permanent",
+    "Stop and wait for the police officer to leave",
+    "Obey the police officer — their instruction prevails even when it conflicts with regulations or signs"
+   ],
+   "answer": 3,
+   "explain": "Under regulation 23, a road user must obey a police officer's instructions even when they conflict with regulations, signs or other general instructions.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-023",
+   "lesson": "rb-law",
+   "q": "What is the correct order of priority at a junction that has both a traffic light and a sign?",
+   "options": [
+    "A sign always overrides a traffic light",
+    "A sign and a traffic light are always equal, and the driver chooses whichever is clearer to them",
+    "There is no order of priority — the driver chooses",
+    "A traffic light overrides a sign, and both are subject to the instructions of a police officer or inspector directing traffic at the spot"
+   ],
+   "answer": 3,
+   "explain": "The practical order of priority is: a police officer or inspector directing traffic ← a traffic light ← a sign ← the regulations' default rules.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-024",
+   "lesson": "rb-law",
+   "q": "Who is authorised to place a portable sign on a road and give it the standing of a lawfully placed sign?",
+   "options": [
+    "A police officer",
+    "Any citizen who wants to warn other drivers",
+    "Any owner of a commercial vehicle",
+    "Only a local authority employee who is not an inspector"
+   ],
+   "answer": 0,
+   "explain": "Regulation 23(c) states that a portable sign placed on a road by a police officer is treated as a lawfully placed sign.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rb-025",
+   "lesson": "rb-law",
+   "q": "Who is responsible for managing the points register and issuing driving and vehicle licences?",
+   "options": [
+    "The local signing authority",
+    "The licensing authority (Ministry of Transport)",
+    "The police",
+    "The traffic court alone"
+   ],
+   "answer": 1,
+   "explain": "The licensing authority is the body that issues driving and vehicle licences and manages the register of offences and violations, including points.",
+   "shuffled": true
+  }
+ ]
+}

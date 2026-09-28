@@ -1,0 +1,375 @@
+{
+ "chapter": "accidents-emergencies",
+ "questions": [
+  {
+   "id": "q-ae-001",
+   "lesson": "ae-duties",
+   "q": "A driver was involved in an accident in which a pedestrian was injured. What is their immediate duty?",
+   "options": [
+    "Stop only if the pedestrian asks them to",
+    "Keep driving and notify the police within 24 hours",
+    "Stop immediately, give help, call the emergency services and notify the police as soon as possible",
+    "Stop only if they think they are at fault for the accident"
+   ],
+   "answer": 2,
+   "explain": "Regulation 144 requires you to stop immediately, help, call the emergency services and notify the police as soon as possible — regardless of who is at fault.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-002",
+   "lesson": "ae-duties",
+   "facts": [
+    "accident.property_damage.report_hours"
+   ],
+   "q": "An accident damaged a parked vehicle whose owner was not present, with no bodily injury. What must the driver do?",
+   "options": [
+    "Notify the police within a week",
+    "There is no duty to report at all, since there are no casualties",
+    "Leave a written note and notify the nearest police station within {{fact:accident.property_damage.report_hours}}",
+    "Leave a note without notifying the police"
+   ],
+   "answer": 2,
+   "explain": "When the owner of the damaged property was not present, you must leave a written note and notify the nearest police station within {{fact:accident.property_damage.report_hours}} (reg. 145).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-003",
+   "lesson": "ae-duties",
+   "facts": [
+    "accident.insurance_certificate.report_hours"
+   ],
+   "q": "A driver involved in an accident with bodily injury did not show their insurance certificate at the scene. By when must they report this to the police and show it?",
+   "options": [
+    "{{fact:accident.insurance_certificate.report_hours}}",
+    "There is no time limit, it can be done at any stage",
+    "Only if the police ask for it",
+    "One week"
+   ],
+   "answer": 0,
+   "explain": "Under the Motor Vehicle Insurance Ordinance, section 40, you must report the accident and show the insurance certificate within {{fact:accident.insurance_certificate.report_hours}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-004",
+   "lesson": "ae-duties",
+   "facts": [
+    "accident.insurance_certificate.late_presentation_days"
+   ],
+   "q": "A driver did not show their insurance certificate within {{fact:accident.insurance_certificate.report_hours}}. How many more days do they still have to show it themselves at the station, to avoid conviction for not showing it?",
+   "options": [
+    "A further {{fact:accident.insurance_certificate.late_presentation_days}} days",
+    "No further option",
+    "A further month",
+    "One further day"
+   ],
+   "answer": 0,
+   "explain": "The Motor Vehicle Insurance Ordinance, section 40, allows a further {{fact:accident.insurance_certificate.late_presentation_days}} days to show it in person at the station where the report was filed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-005",
+   "lesson": "ae-duties",
+   "facts": [
+    "accident.passenger_duty.min_age"
+   ],
+   "q": "A driver is injured in an accident and unable to act. From what age must a passenger in the vehicle call and summon the emergency services themselves?",
+   "options": [
+    "The duty applies to every passenger, at any age",
+    "From age 12",
+    "From age 21",
+    "From age {{fact:accident.passenger_duty.min_age}}"
+   ],
+   "answer": 3,
+   "explain": "Traffic Ordinance, section 64A1, places the duty on a passenger aged {{fact:accident.passenger_duty.min_age}} or older, and only if the driver themselves did not stop and call for help.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-006",
+   "lesson": "ae-duties",
+   "q": "A driver is involved in an accident with a casualty, but is sure the accident is not their fault. What is correct?",
+   "options": [
+    "They must stop and act according to the law in any case — the question of fault is examined later",
+    "It is enough to call the police without stopping",
+    "The duty to stop applies only to the driver at fault",
+    "They may leave the scene, since they are not at fault"
+   ],
+   "answer": 0,
+   "explain": "The duty to stop, help and notify the police (reg. 144) exists regardless of the question of fault. Leaving the scene of an accident with a casualty is a serious offence even for someone who is not at fault.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-007",
+   "lesson": "ae-scene",
+   "facts": [
+    "equip.triangle.visibility"
+   ],
+   "q": "Where should you place a warning triangle beside a vehicle that has stopped after an accident?",
+   "options": [
+    "There is no duty to place a triangle in an accident, only in a mechanical breakdown",
+    "Right next to the vehicle only",
+    "Only if it is raining",
+    "Where it will be seen from at least {{fact:equip.triangle.visibility}} by approaching vehicles"
+   ],
+   "answer": 3,
+   "explain": "Regulation 70 requires the triangle to be placed where it will be seen from at least {{fact:equip.triangle.visibility}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-008",
+   "lesson": "ae-scene",
+   "q": "When must you wear a high-visibility vest after an accident?",
+   "options": [
+    "When getting out of the vehicle on a non-urban road",
+    "Always, even inside the vehicle",
+    "Only at night",
+    "Only if there are casualties"
+   ],
+   "answer": 0,
+   "explain": "Traffic Ordinance, section 65B, requires a high-visibility vest when getting out of the vehicle on a non-urban road — day and night alike.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-009",
+   "lesson": "ae-scene",
+   "q": "Where is it correct to stand after marking the vehicle with hazard lights and a triangle?",
+   "options": [
+    "Between the two vehicles involved",
+    "In the traffic lane, to stop approaching vehicles",
+    "Beside the vehicle, to keep watch over it",
+    "Off the road, behind a safety barrier if there is one"
+   ],
+   "answer": 3,
+   "explain": "Stand off the road, behind a barrier if there is one, and face the oncoming traffic — not in the lane and not between the vehicles.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-010",
+   "lesson": "ae-scene",
+   "facts": [
+    "emergency.police",
+    "emergency.mda",
+    "emergency.fire_and_rescue"
+   ],
+   "q": "A road accident has a casualty and also a strong smell of fuel. Who do you call?",
+   "options": [
+    "The police {{fact:emergency.police}}, Magen David Adom {{fact:emergency.mda}} and Fire and Rescue Services {{fact:emergency.fire_and_rescue}}",
+    "Only the police, {{fact:emergency.police}}",
+    "Only the insurance company",
+    "Only Magen David Adom, {{fact:emergency.mda}}"
+   ],
+   "answer": 0,
+   "explain": "A road accident is always reported to the police; casualties also require Magen David Adom; and a fire hazard or fuel leak also requires Fire and Rescue Services.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-011",
+   "lesson": "ae-scene",
+   "q": "How many people should ideally talk to the emergency dispatcher when several passers-by have stopped to help at an accident?",
+   "options": [
+    "One person, to avoid confusion",
+    "Only the driver involved, even if they are injured",
+    "No one — it is better to wait for someone else to call",
+    "Everyone together, so the dispatcher gets as much information as possible"
+   ],
+   "answer": 0,
+   "explain": "When several people have stopped to help, it is best for one person to pass the information to the dispatcher in an orderly way — this saves time and prevents confusion.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-012",
+   "lesson": "ae-first-aid",
+   "q": "You arrive at the scene of an accident with a casualty. What is the correct first step?",
+   "options": [
+    "Remove their helmet or clothing to check for injuries",
+    "Rush over immediately and move the injured person to somewhere more comfortable",
+    "Check that there is no further hazard (traffic, fire, fuel) before approaching",
+    "Give them water to drink so they feel better"
+   ],
+   "answer": 2,
+   "explain": "Before approaching an injured person, check for further hazards. Approaching carelessly can turn the helper into another casualty.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-013",
+   "lesson": "ae-first-aid",
+   "q": "When is it permitted to move an injured person at the scene of an accident?",
+   "options": [
+    "Only if there is immediate danger, such as fire or a vehicle that might move",
+    "It is never permitted to move an injured person, even if there is fire",
+    "Only if they ask you to",
+    "Always, so they feel more comfortable"
+   ],
+   "answer": 0,
+   "explain": "Do not move an injured person except in immediate danger. Unnecessary movement can make an injury worse, especially to the spine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-014",
+   "lesson": "ae-first-aid",
+   "q": "A motorcyclist is injured and still wearing their helmet. What is correct to do?",
+   "options": [
+    "Remove the helmet immediately to check the head",
+    "Break the helmet to get it off easily",
+    "Leave the helmet in place and do not touch it, unless it is blocking their breathing",
+    "Remove the helmet only if they are conscious"
+   ],
+   "answer": 2,
+   "explain": "Removing a helmet from someone who is injured can make a neck or spinal injury worse. Leave it in place, unless it is blocking their breathing, and wait for a professional crew.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-015",
+   "lesson": "ae-first-aid",
+   "q": "In which of the following vehicles does the law require first aid equipment?",
+   "options": [
+    "Every motor vehicle, with no exceptions",
+    "A private car",
+    "A motorcycle",
+    "A public bus"
+   ],
+   "answer": 3,
+   "explain": "Regulation 369A requires first aid equipment in a taxi, a touring vehicle, a desert vehicle, a tour bus, a security vehicle and a public bus — not in a private car.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-016",
+   "lesson": "ae-fire-water",
+   "q": "You smell smoke and see it coming from under the bonnet while driving. What do you do first?",
+   "options": [
+    "Open the bonnet immediately to check the source",
+    "Keep driving fast to reach the nearest garage",
+    "Get off the road, switch off the engine, and get all the passengers out and away",
+    "Open the windows and air out the vehicle while still driving"
+   ],
+   "answer": 2,
+   "explain": "If you suspect a fire, get off the road, switch off the engine and move away immediately. Do not open a bonnet with smoke coming out of it — this can make the fire flare up.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-017",
+   "lesson": "ae-fire-water",
+   "q": "Is a fire extinguisher compulsory in a private car?",
+   "options": [
+    "Yes, in every private car",
+    "No — a fire extinguisher is compulsory in a taxi, a commercial vehicle and a bus, not in a private car",
+    "Only in a new private car from the last two years",
+    "Only if the car has air conditioning"
+   ],
+   "answer": 1,
+   "explain": "Regulation 370 exempts a private car, a motorcycle and a tractor from the fire-extinguisher requirement, while a taxi, a commercial vehicle and a bus must carry one.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-018",
+   "lesson": "ae-fire-water",
+   "q": "A vehicle drives into a deep pool of water and starts to sink. What is important to do immediately?",
+   "options": [
+    "Force the door open immediately, even with a large pressure difference",
+    "Open or break a window immediately, before the electrics fail and the water rises",
+    "Try to start the engine and drive out of the water",
+    "Wait for the vehicle to sink fully and only then open a door"
+   ],
+   "answer": 1,
+   "explain": "Power windows stop working once water reaches the electrical system, so open or break a window immediately. A door is hard to open while there is still a large pressure difference.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-019",
+   "lesson": "ae-fire-water",
+   "q": "A vehicle sinking in water has a child and an adult inside. Who gets out first?",
+   "options": [
+    "Wait for a rescue crew before anyone gets out",
+    "The adult, so they can help from outside",
+    "It does not matter who goes first, as long as everyone gets out together",
+    "The child, and anyone who finds it hard to move on their own"
+   ],
+   "answer": 3,
+   "explain": "Children and passengers who find it hard to move on their own get out first, because the time before the vehicle fully sinks is limited.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-020",
+   "lesson": "ae-fire-water",
+   "q": "What is most important when you notice a vehicle fire, before trying to put it out?",
+   "options": [
+    "Photograph the fire for the insurance claim",
+    "Open all the windows so the smoke can get out",
+    "Move the vehicle to the verge before getting out of it",
+    "Get all the passengers out and move away to a safe distance"
+   ],
+   "answer": 3,
+   "explain": "Before any attempt to put out a fire, get all the passengers out and move away to a safe distance. Fire can spread within seconds.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-021",
+   "lesson": "ae-insurance",
+   "q": "What is the main difference between compulsory insurance and comprehensive insurance?",
+   "options": [
+    "Comprehensive insurance is compulsory for every vehicle; compulsory insurance is voluntary",
+    "Compulsory insurance covers only damage to property, not to the body",
+    "There is no difference, both names describe the same insurance",
+    "Compulsory insurance covers bodily injury only and is required for every vehicle; comprehensive insurance is voluntary and also covers the vehicle itself"
+   ],
+   "answer": 3,
+   "explain": "Compulsory insurance, required by law, covers bodily injury only. Comprehensive insurance is a voluntary addition that also covers damage to the vehicle itself, and sometimes theft and weather damage.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-022",
+   "lesson": "ae-insurance",
+   "q": "What is correct regarding driving without valid compulsory insurance?",
+   "options": [
+    "It is allowed for a short trip only, such as a trip to the garage",
+    "It is a serious offence, even if no accident happened",
+    "It is allowed if you have comprehensive insurance",
+    "It is allowed, as long as no accident actually happens"
+   ],
+   "answer": 1,
+   "explain": "Driving without valid compulsory insurance is a serious offence in itself, regardless of whether an accident happened.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-023",
+   "lesson": "ae-insurance",
+   "q": "When is it best to photograph the scene of the accident and the damage?",
+   "options": [
+    "Before the vehicles move from their position, if it is possible and safe",
+    "Only after the police arrive",
+    "There is no need to photograph, a verbal description to the insurer is enough",
+    "Only if it is clear who is at fault"
+   ],
+   "answer": 0,
+   "explain": "Documenting early, before the vehicles move, preserves the exact state of the scene and prevents later disputes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-024",
+   "lesson": "ae-insurance",
+   "q": "Why is it worth collecting witnesses' details at an accident, even if there is no camera that recorded it?",
+   "options": [
+    "Because the testimony of an uninvolved person can settle a dispute about fault",
+    "It is only needed if there are casualties",
+    "So they sign to confirm the driver is not at fault",
+    "Witnesses have no value, only the police can determine fault"
+   ],
+   "answer": 0,
+   "explain": "The testimony of someone who was not involved in the accident can be important evidence when there is a dispute between the parties about what happened.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ae-025",
+   "lesson": "ae-insurance",
+   "q": "When is it best to report an accident to the insurance company?",
+   "options": [
+    "Only if the damage is above a certain amount",
+    "There is no need to report if you only have compulsory insurance",
+    "Only after it is finally clear who is at fault",
+    "As soon as possible, even if it is still unclear who is at fault"
+   ],
+   "answer": 3,
+   "explain": "Report to the insurance company as soon as possible — some policies set a maximum time for reporting, and a delay can harm your cover.",
+   "shuffled": true
+  }
+ ]
+}

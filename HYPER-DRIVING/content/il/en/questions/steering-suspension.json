@@ -1,0 +1,313 @@
+{
+ "chapter": "steering-suspension",
+ "questions": [
+  {
+   "id": "q-ss-001",
+   "lesson": "ss-steering",
+   "q": "What does the “rack and pinion” mechanism do in a private car?",
+   "options": [
+    "Filter air for the engine",
+    "Convert the rotation of the steering wheel into movement that turns the wheels",
+    "Split power between the front and rear axle",
+    "Control the movement of the springs"
+   ],
+   "answer": 1,
+   "explain": "A small gear (the pinion) turns a toothed bar (the rack), which moves the wheels on both sides through the tie rods.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-002",
+   "lesson": "ss-steering",
+   "q": "What does power steering do?",
+   "options": [
+    "Make turning the steering wheel easier, using hydraulic pressure or an electric motor",
+    "Prevent wheel lock when braking",
+    "Connect the two sides of the suspension",
+    "Adjust the camber angle"
+   ],
+   "answer": 0,
+   "explain": "Power steering adds assistance to turning the wheel, so even turning on the spot feels light and natural.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-003",
+   "lesson": "ss-steering",
+   "q": "The engine stops while you’re driving. What happens to the steering?",
+   "options": [
+    "The steering locks completely and can’t be turned",
+    "The steering still works, but needs much more force than usual",
+    "There’s no change to the steering at all",
+    "The steering becomes lighter than usual"
+   ],
+   "answer": 1,
+   "explain": "Without power steering (engine off or a faulty pump) the steering can still be turned, but needs much more effort.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-004",
+   "lesson": "ss-alignment",
+   "q": "What is the camber angle?",
+   "options": [
+    "The angle at which the front of the wheels points inward or outward, seen from above",
+    "The angle at which the wheel tilts inward or outward, seen from the front",
+    "The angle of the sway bar",
+    "The angle between the steering wheel and the front wheels"
+   ],
+   "answer": 1,
+   "explain": "Camber is the tilt of the wheel inward or outward seen from the front; toe is the angle seen from above.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-005",
+   "lesson": "ss-alignment",
+   "q": "What can change the wheel alignment, even without visible damage?",
+   "options": [
+    "A hard hit in a pothole or riding up onto a kerb",
+    "Washing the car",
+    "Driving at a reasonable speed on a smooth road",
+    "An engine oil change"
+   ],
+   "answer": 0,
+   "explain": "A pothole hit, riding onto a kerb, or a minor collision can change the alignment angles even without an outward sign.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-006",
+   "lesson": "ss-alignment",
+   "q": "A tyre is more worn on its inner edge than its outer edge. What does this usually indicate?",
+   "options": [
+    "A camber problem",
+    "Pressure too high",
+    "A worn shock absorber",
+    "A slipping clutch"
+   ],
+   "answer": 0,
+   "explain": "Uneven wear between the inner and outer edge of a tyre usually indicates incorrect camber.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-007",
+   "lesson": "ss-alignment",
+   "q": "The steering wheel points straight, but the car drifts slightly to one side even without touching the wheel. What is this?",
+   "options": [
+    "A sign of a torque converter fault",
+    "Pulling to one side — a possible sign of inaccurate wheel alignment",
+    "This is normal behaviour in every car",
+    "A sign of a clutch problem"
+   ],
+   "answer": 1,
+   "explain": "Pulling to one side while driving straight, even without touching the wheel, is a typical sign of incorrect wheel alignment or a suspension fault.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-008",
+   "lesson": "ss-suspension",
+   "q": "What does the spring do in the suspension?",
+   "options": [
+    "Carry the car’s weight and absorb shocks",
+    "Transfer force from the engine to the wheels",
+    "Connect the two sides of the suspension",
+    "Control the movement of the shock absorber"
+   ],
+   "answer": 0,
+   "explain": "The spring carries the car’s weight and absorbs shocks from the road; the shock absorber is what controls its movement.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-009",
+   "lesson": "ss-suspension",
+   "q": "What does the shock absorber do?",
+   "options": [
+    "Connects the steering wheel to the steering mechanism",
+    "Controls the spring’s movement, so the car doesn’t keep bouncing after a bump",
+    "Prevents wheel lock when braking",
+    "Carries the car’s weight on its own"
+   ],
+   "answer": 1,
+   "explain": "The shock absorber controls the springs’ movement and stops the car bouncing repeatedly after a bump.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-010",
+   "lesson": "ss-suspension",
+   "q": "What does the sway bar do?",
+   "options": [
+    "Adjust the toe angle",
+    "Lock the wheels when parked",
+    "Absorb shocks from the road instead of the spring",
+    "Reduce the car’s sideways body roll in a sharp bend"
+   ],
+   "answer": 3,
+   "explain": "The sway bar connects the two sides of the suspension and reduces the car’s sideways roll in sharp bends.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-011",
+   "lesson": "ss-suspension",
+   "q": "How do you perform a “bounce test” to check a suspected shock absorber?",
+   "options": [
+    "Push down hard on that corner of the car and let go, and see how many times it keeps bouncing",
+    "Check the colour of the brake fluid",
+    "Measure the tyre pressure",
+    "Drive at 100 km/h and check for vibration in the steering wheel"
+   ],
+   "answer": 0,
+   "explain": "A good shock absorber stops the motion after one bounce or less; a worn one keeps shuddering and bouncing several times.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-012",
+   "lesson": "ss-suspension",
+   "q": "Why can a worn shock absorber lengthen stopping distance?",
+   "options": [
+    "It increases tyre pressure",
+    "It weighs the car down",
+    "It only interferes with the ABS",
+    "The wheel loses contact with the road for moments, and without contact there’s no friction to help stop the car"
+   ],
+   "answer": 3,
+   "explain": "When a worn shock absorber makes a wheel lose contact with the road for a moment, there’s no friction at that moment to help stop the car — stopping distance lengthens, especially on a rough road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-013",
+   "lesson": "ss-suspension",
+   "q": "What do the control arm, ball joint and bushing do in the suspension?",
+   "options": [
+    "Increase brake pressure",
+    "Transfer force from the engine to the wheel",
+    "Connect the wheel to the chassis and let it move up and down",
+    "Absorb moisture from the air"
+   ],
+   "answer": 2,
+   "explain": "The control arm, ball joint and bushing connect the wheel to the car’s chassis, and let the wheel move up and down while staying attached.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-014",
+   "lesson": "ss-symptoms",
+   "q": "You hear a knock (“clunk”) every time you go over a bump. What does this usually indicate?",
+   "options": [
+    "A worn wheel bearing",
+    "A worn brake pad",
+    "A worn control arm, ball joint or bushing",
+    "Inaccurate wheel alignment"
+   ],
+   "answer": 2,
+   "explain": "A knock that repeats over bumps usually indicates wear in the control arm, the ball joint or the bushing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-015",
+   "lesson": "ss-symptoms",
+   "q": "You hear a hum that gets stronger with speed, and doesn’t change with braking or turning. What does this indicate?",
+   "options": [
+    "A clutch problem",
+    "A worn wheel bearing",
+    "Pressure too high",
+    "A spring brake problem"
+   ],
+   "answer": 1,
+   "explain": "A noise that changes with speed alone, not with braking or turning, almost always points to a worn wheel bearing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-016",
+   "lesson": "ss-symptoms",
+   "q": "What does vibration in the steering wheel at a certain speed usually indicate?",
+   "options": [
+    "Wheel imbalance, an out-of-round tyre, or a warped brake disc",
+    "A slipping clutch",
+    "Low pressure in the brake fluid reservoir",
+    "A stuck parking brake"
+   ],
+   "answer": 0,
+   "explain": "Vibration in the steering wheel at a certain speed usually comes from wheel imbalance, a damaged tyre, or a warped disc.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-017",
+   "lesson": "ss-symptoms",
+   "q": "What is “steering play”?",
+   "options": [
+    "Strong pulling to one side when braking",
+    "Difficulty turning the steering wheel standing still",
+    "Constant vibration in the steering wheel at every speed",
+    "Excessive free movement in the steering wheel before the wheels respond"
+   ],
+   "answer": 3,
+   "explain": "Steering play is excessive free movement of the wheel before the road wheels start to respond, indicating wear in the steering mechanism.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-018",
+   "lesson": "ss-symptoms",
+   "q": "A car “wanders” in its lane and needs constant steering correction. What is unlikely to be the cause?",
+   "options": [
+    "Low tyre pressure",
+    "A worn tie rod",
+    "The daytime running lights indicator being lit",
+    "Inaccurate wheel alignment"
+   ],
+   "answer": 2,
+   "explain": "Lane wandering is related to wheel alignment, tyre pressure or a worn tie rod — not to the daytime running lights indicator, which has nothing to do with steering.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-019",
+   "lesson": "ss-symptoms",
+   "q": "You hear a clicking noise only in a sharp turn, not while driving straight. Which system does this usually relate to?",
+   "options": [
+    "The parking brake",
+    "The suspension system",
+    "The brake servo",
+    "The driveshaft (the CV joint)"
+   ],
+   "answer": 3,
+   "explain": "A click that only appears in a sharp turn usually belongs to the driveshaft — a worn CV joint — not to the suspension system.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-020",
+   "lesson": "ss-steering",
+   "q": "What characterises a steering box, still common in heavy vehicles?",
+   "options": [
+    "It doesn’t need power steering at all",
+    "It’s completely identical to the rack-and-pinion mechanism",
+    "It exists only in electric cars",
+    "It uses a worm gear instead of a straight rack"
+   ],
+   "answer": 3,
+   "explain": "A steering box is an older steering mechanism, especially common in heavy vehicles, that uses a worm gear to convert the rotation of the steering wheel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-021",
+   "lesson": "ss-alignment",
+   "q": "What is the toe angle?",
+   "options": [
+    "The distance between the two axles",
+    "The angle between the spring and the shock absorber",
+    "The direction the front of the two wheels point, inward or outward, seen from above",
+    "The tilt of the wheel inward or outward from the front"
+   ],
+   "answer": 2,
+   "explain": "Toe is the angle at which the front of the two wheels points slightly inward (toe-in) or outward (toe-out), seen from above.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ss-022",
+   "lesson": "ss-suspension",
+   "q": "What is the difference between a coil spring and a leaf spring?",
+   "options": [
+    "There’s no practical difference between the two",
+    "A coil spring is common in private cars; a leaf spring withstands heavy loads and is common in trucks and buses",
+    "A leaf spring is common in private cars, and a coil spring only in trucks",
+    "A leaf spring is used only in a strut"
+   ],
+   "answer": 1,
+   "explain": "The coil spring is the common one in private cars; the leaf spring is more resistant to heavy loads and common on the rear axles of trucks and buses.",
+   "shuffled": true
+  }
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "chapter": "breakdowns",
+ "title": "Roadside breakdowns and vehicle emergencies",
+ "summary": "A puncture, brakes that weaken, an overheating engine — what to do when the vehicle stops cooperating, without losing control.",
+ "lessons": [
+  {
+   "id": "bd-procedure",
+   "title": "What to do when your vehicle breaks down on the road",
+   "summary": "From a warning light to a controlled stop: the safe sequence from driving to a breakdown to calling for help.",
+   "terms": [
+    "hazard-lights",
+    "emergency-shoulder",
+    "high-vis-vest",
+    "warning-triangle"
+   ],
+   "body": "A warning light on the instrument panel, a strange noise, a burning smell — when something isn’t right with the vehicle, how do you move safely from normal driving to a controlled stop.\n\n# Pulling off the road carefully\nThe moment you notice a problem: turn on the [[term:hazard-lights|hazard lights]], signal and slow down gradually — don’t brake suddenly — and steer toward the [[term:emergency-shoulder|hard shoulder]] or clear ground off the lane, as far from the traffic as you can get. On an expressway or a multi-lane road, try to reach an exit or a safe spot, and avoid stopping on a bend, on a bridge, in a tunnel or near the crest of a hill if you can. Which places it’s illegal to stop in by law — in the chapter [[chapter:stopping-parking|Stopping, standing and parking]].\n\n# Getting out of the vehicle carefully\nGet out through the door furthest from the traffic, and take children and other passengers out through it too. On a non-urban road, put on a [[term:high-vis-vest|high-visibility vest]] before you even get out — it’s mandatory even in daylight (the Traffic Ordinance, section 65B).\n\n# Signalling to vehicles behind\nPlace a [[term:warning-triangle|warning triangle]] so it can be seen from at least {{fact:equip.triangle.visibility}} away (reg. 70), and walk to it with your back to the shoulder and your face to the oncoming traffic.\n\n:::note In a heavy vehicle\nIn a commercial or works vehicle whose maximum permitted weight exceeds {{fact:equip.hazard_lights_heavy}}, and in a bus, you must also place a flashing yellow lamp or turn on all the hazard lights while the vehicle is stationary during lighting-up hours outside a town (reg. 70).\n:::\n\n# Moving away and calling for help\nAfter signalling, move away from the vehicle and the road and stand behind a safety barrier if there is one. Call the towing company or a roadside assistance service; if there’s immediate danger — also the police, {{fact:emergency.police}}.\n\n:::tip\nA fault that keeps recurring? It’s worth remembering when it happens — at high speed, on a cold morning, after a long drive — it shortens the diagnosis at the garage a lot. For a starting fault there’s also a full diagnostic tree: [[tree:car-wont-start|The vehicle won’t start]].\n:::",
+   "keyPoints": [
+    "Turn on the [[term:hazard-lights|hazard lights]] immediately, and slow down gradually toward the [[term:emergency-shoulder|hard shoulder]] or clear ground.",
+    "Get out through the door furthest from the traffic; on a non-urban road, put on a [[term:high-vis-vest|high-visibility vest]] before getting out.",
+    "Place a [[term:warning-triangle|warning triangle]] so it can be seen from at least {{fact:equip.triangle.visibility}} away.",
+    "Move away from the vehicle and the road, and only then call for help."
+   ]
+  },
+  {
+   "id": "bd-tyre-blowout",
+   "title": "Tyre blowout",
+   "summary": "A hard jolt and a sudden pull to one side — what to do in the first second, and what not to do.",
+   "terms": [
+    "blowout",
+    "puncture"
+   ],
+   "body": "A [[term:blowout|tyre blowout]] while driving feels like a hard jolt, sometimes a sharp bang, and the vehicle suddenly pulls to one side.\n\n# The moment it happens\n:::danger\nGrip the steering wheel firmly with both hands. Don’t brake hard and don’t lift your foot off the accelerator all at once — any sudden reaction increases the risk of losing control. Ease off the accelerator gradually, let the vehicle slow down on its own, and gently correct direction on the steering wheel against the sideways pull.\n:::\n\n# Only once you’ve slowed down\nOnce your speed has dropped significantly, brake gently and steer toward the shoulder or clear ground, as far from the traffic as you can get.\n\n# Blowout versus puncture\nA [[term:puncture|puncture]] is a slow air leak — steering that gradually becomes heavy, or a noise that gradually gets louder, with time to stop in full control. A [[term:blowout|tyre blowout]] is a sudden tear: all the air escapes at once, and the effect on the steering is far sharper and more obvious.\n\n# After you’ve stopped\nContinue with the general procedure in the lesson [[lesson:bd-procedure|What to do when your vehicle breaks down on the road]] — hazard lights, vest, triangle. For changing the wheel itself, including using the jack and the spare wheel — in the chapter [[chapter:tyres|Tyres and wheels]].\n\n:::remember\nA worn or incorrectly inflated tyre is more prone to blowing out, especially in summer heat and with a heavy load on the vehicle.\n:::",
+   "keyPoints": [
+    "Grip the steering wheel firmly, don’t brake hard and don’t come off the accelerator all at once.",
+    "Let the vehicle slow down gradually, and brake gently only after the speed has dropped.",
+    "A [[term:puncture|puncture]] is a slow leak; a [[term:blowout|tyre blowout]] is a sudden tear with all the air escaping at once.",
+    "After stopping — the general procedure in the lesson [[lesson:bd-procedure|What to do when your vehicle breaks down on the road]]."
+   ]
+  },
+  {
+   "id": "bd-brake-failure",
+   "title": "Brake failure",
+   "summary": "The pedal sinks and doesn’t stop you — a sequence of actions that almost always helps, without switching off the engine.",
+   "terms": [
+    "brake-failure",
+    "engine-brake",
+    "parking-brake",
+    "brake-fade"
+   ],
+   "body": "The feeling that the brake pedal is sinking without the vehicle slowing down is one of the biggest fears in driving. [[term:brake-failure|Brake failure]] is rare, but there’s a sequence of actions that almost always helps.\n\n# Step 1: pump the pedal\nIf the pedal sinks and feels soft: press it several times in quick succession. With a partial leak, this may build up enough pressure for partial braking.\n\n# Step 2: shift down\nShift to a lower gear gradually, not straight to the lowest gear. [[term:engine-brake|Engine braking]] slows the vehicle even with no friction brakes at all.\n\n# Step 3: the parking brake\nApply the [[term:parking-brake|parking brake]] gradually and gently, not in one sharp motion — applying it suddenly can lock the rear wheels and cause a skid. In a vehicle with an electric parking brake, hold the button down.\n\n# Finding a way to stop\nSignal and look for open ground, an uphill road (a climb helps you slow down) or a wide shoulder. On some mountain descents in Israel there’s a side gravel run-off lane meant for the emergency stopping of a vehicle that has lost its brakes — if one exists and you can’t stop any other way, pull into it. As a last resort, controlled contact with a safety barrier is better than a collision with another vehicle, at a bend, or with pedestrians.\n\n:::danger\nDon’t switch off the engine to stop the vehicle. Switching off the engine while driving can lock the steering in many vehicles, and always cancels the power assistance to the brakes and the steering — exactly when you need them most. Details in the lesson [[lesson:bd-stuck-throttle|The accelerator pedal sticks]].\n:::\n\n# Brake fade on long descents\nProlonged use of the brakes on a steep descent heats them up and reduces their effectiveness — [[term:brake-fade|brake fade]]. Prevent this by shifting down to a low gear before the descent, so that most of the braking is done by the engine brake. Full details in the chapter [[chapter:brakes|The brake system]].",
+   "keyPoints": [
+    "Pump the brake pedal repeatedly, and shift down gradually to make use of [[term:engine-brake|engine braking]].",
+    "Apply the [[term:parking-brake|parking brake]] gradually, not in one sharp motion.",
+    "Don’t switch off the engine to stop — this cancels power-assisted steering and braking.",
+    "As a last resort: an emergency-stop gravel lane, or controlled contact with a barrier — better than a collision."
+   ]
+  },
+  {
+   "id": "bd-stuck-throttle",
+   "title": "The accelerator pedal sticks",
+   "summary": "The engine keeps accelerating and won’t respond — disconnect it from the wheels and brake, without switching off while driving.",
+   "terms": [
+    "neutral-gear",
+    "steering-lock"
+   ],
+   "body": "An accelerator pedal that doesn’t spring back — usually because a mat has slipped underneath it — calls for a fast, calm reaction, not panic.\n\n# Disconnect the engine from the wheels at once\nShift to [[term:neutral-gear|neutral]], or press the clutch pedal all the way down in a vehicle with a manual gearbox. This immediately breaks the connection between the engine and the wheels, even if the engine keeps revving loudly in neutral.\n\n# Brake\nPress the brake gently but firmly, with continuous rather than broken braking. The brakes work as normal even while the engine is revving hard in neutral — there’s no need to “fight” it.\n\n# Get out of the traffic\nSignal, move to the shoulder or clear ground, and come to a complete stop.\n\n:::danger\nDon’t switch off the engine while the vehicle is still moving. In many vehicles, fully switching off the engine while driving — turning the key to the lock position, or holding down the start button — engages the [[term:steering-lock|steering lock]] and cancels the power steering and the brake assistance. All of this makes the vehicle far harder to control, exactly when you need it most. Only switch off the engine once the vehicle has come to a complete stop in a safe place.\n:::\n\n# After you’ve stopped\nOnce the vehicle is stationary: switch off the engine, and check whether a mat, an accessory or another object is blocking the pedal. Don’t carry on driving until the fault is clear and has been dealt with.",
+   "keyPoints": [
+    "Shift immediately to [[term:neutral-gear|neutral]] or press the clutch all the way down — this disconnects the engine from the wheels.",
+    "Brake gently and firmly; the brakes work even while the engine is revving in neutral.",
+    "Never switch off the engine while driving — this can lock the steering and cancels power assistance to the steering and the brakes.",
+    "Switch off the engine only after a complete stop, and check what blocked the pedal."
+   ]
+  },
+  {
+   "id": "bd-steering-lights",
+   "title": "Loss of steering, night-time lighting failure and a bonnet flying open",
+   "summary": "Three rare faults, each requiring a different response — and none of them is a reason to slam on the brakes in a panic.",
+   "terms": [
+    "power-steering",
+    "hood"
+   ],
+   "body": "Three rare faults that, if you know them in advance, you’ll know exactly what to do the moment they happen.\n\n# Loss of power steering\nIf [[term:power-steering|power steering]] stops working — for example a fault in its electric motor, or a torn belt in a vehicle with hydraulic power steering — the steering becomes significantly heavier, but you can still steer with more arm strength. Hold on with both hands, slow down gradually without braking hard, and steer toward the shoulder.\n\n:::danger\nA total loss of steering, such as a break in the steering shaft itself, is extremely rare and cannot be fixed while driving. Slow down as much as you can with the brakes and look for any way to stop safely, including controlled contact with a safety barrier.\n:::\n\n# Lighting that goes out at night\nIf the headlights suddenly go out, because of a fuse or an electrical fault: turn on the hazard lights immediately, slow down significantly, and make use of the parking lights or fog lights if they’re still working, as well as other vehicles’ lights and the road markings to stay in your lane. Get off the road as soon as possible and with great care.\n\n:::tip\nA torch kept in the vehicle is also useful so other drivers notice you if you need to get out of the vehicle in the dark.\n:::\n\n# The bonnet flies open while driving\n:::danger\nThe [[term:hood|bonnet]] suddenly flying open and blocking the windscreen is one of the most frightening situations in driving, but it can be handled: don’t slam on the brakes in a panic. Gently lift your foot off the accelerator, and try to look through the small gap at the bottom of the bonnet, near the wipers, or through the side window to see the road. Signal, steer gently toward the shoulder based on what you can see and your memory of the road, and brake gradually.\n:::\n\nAfter stopping, check why the catch didn’t lock properly before your next drive.",
+   "keyPoints": [
+    "Failed power steering makes the steering heavy, not impossible — hold on firmly and slow down gradually.",
+    "Lighting that goes out at night: hazard lights immediately, significant slowing down, getting off the road as soon as possible.",
+    "A bonnet that flies open: don’t slam on the brakes in a panic, look through the bottom gap or the side window, and brake gradually."
+   ]
+  },
+  {
+   "id": "bd-skid-aqua",
+   "title": "Skidding and aquaplaning — what to do",
+   "summary": "When the vehicle stops obeying the steering, the right response is the opposite of instinct: calm, not sharp.",
+   "terms": [
+    "skidding",
+    "aquaplaning"
+   ],
+   "body": "[[term:skidding|Skidding]] and [[term:aquaplaning|aquaplaning]] happen within a split second, and what you do in the first two seconds decides whether the vehicle comes back under control or not.\n\n# The common rule: calm, not sharp\nIn both situations, the right response is to avoid any sudden movement: don’t brake hard, don’t turn the steering wheel sharply, and don’t press or release the accelerator abruptly.\n\n# Skidding\nWhen the vehicle starts to skid — usually the back “breaks away” sideways — ease off the accelerator, keep both hands on the steering wheel, and look and steer exactly toward where you want the vehicle to go. The steering “follows the eyes”: whoever looks at the danger, drives into it. Don’t brake in the middle of the skid itself, unless the vehicle has ABS that’s active — more on what systems like ESC do to prevent a skid in the first place, in the chapter [[chapter:safety-systems|Safety and driver-assistance systems]].\n\n# Aquaplaning\nWhen a layer of water on the road separates the tyre from the surface, the steering suddenly becomes too light and the vehicle stops responding to turns — this is [[term:aquaplaning|aquaplaning]]. Ease off the accelerator gently, not all at once, hold the steering wheel straight, and don’t brake: braking while the tyres aren’t touching the road only increases the risk of a skid the moment they grip again. Wait for the split second when the tyres grip again, and only then, if needed, brake gently.\n\n# Why it happens\nSpeed too high for the road conditions, standing water on the road, and worn [[chapter:tyres|tyres]]. For the full causes and how to prevent it in the rain — in the chapter [[chapter:visibility-weather|Lighting, visibility and weather]].",
+   "keyPoints": [
+    "In skidding and aquaplaning: don’t brake hard, don’t turn the steering wheel sharply, don’t press or release the accelerator abruptly.",
+    "In a skid: ease off the accelerator and steer toward where you want to go.",
+    "In [[term:aquaplaning|aquaplaning]]: ease off gently, hold straight, don’t brake until the tyres grip again."
+   ]
+  },
+  {
+   "id": "bd-overheating-fire",
+   "title": "Overheating while driving and engine fires",
+   "summary": "The temperature gauge climbs into the red — what to do in the first minute, and when it’s already a fire.",
+   "terms": [
+    "overheating"
+   ],
+   "body": "A temperature gauge climbing into the red zone in a traffic jam or on a long climb is engine [[term:overheating|overheating]], and not something to ignore.\n\n# The moment you see the gauge climbing\nSwitch off the air conditioning, turn the interior heater on at maximum and point it at the window — this draws excess heat away from the engine through the small radiator that heats the cabin — and look for a safe place to stop as soon as possible.\n\n# After you’ve stopped\nSwitch off the engine, and if it’s safe to do so, lift the bonnet so the heat can escape. Wait at least a few tens of minutes.\n\n:::danger\nNever open the coolant expansion tank cap while the engine is hot — the fluid inside is under pressure and boiling, and can burst out and cause serious burns. Wait for the engine to cool down completely. How the cooling system works — in the chapter [[chapter:engine|The engine and its systems]].\n:::\n\n# If real smoke or a burning smell appears\nOverheating that’s ignored can end in a fire. If you see real smoke or smell burning — don’t keep trying to fix it: get off the road, switch off the engine, everyone gets out and moves away immediately, and call the fire and rescue services, {{fact:emergency.fire_and_rescue}}. The full procedure for a vehicle fire — in the lesson [[lesson:ae-fire-water|Vehicle fires and vehicles in water]], in the accidents and emergencies chapter.\n\n# After the engine has cooled\nOnce it’s completely cold, check the coolant level, and look for a visible leak under the vehicle. A recurring fault needs checking at the garage — not just topping up the fluid.",
+   "keyPoints": [
+    "Temperature gauge climbing: switch off the air conditioning, turn the heater to maximum, and stop as soon as possible in a safe place.",
+    "Never open the coolant expansion tank cap while the engine is hot.",
+    "Real smoke or a burning smell: get off the road, everyone gets out and moves away, and call the fire and rescue services {{fact:emergency.fire_and_rescue}}.",
+    "After the engine is cold: check the coolant level and for leaks; a recurring fault needs a garage."
+   ]
+  },
+  {
+   "id": "bd-towing",
+   "title": "Towing and running out of fuel on the road",
+   "summary": "The tow bar, who sits in the towed vehicle, and what to do when the tank runs dry.",
+   "terms": [
+    "towing"
+   ],
+   "body": "Sometimes the solution to a fault isn’t to fix it at the roadside but to reach a garage [[term:towing|by tow]] — and there are clear rules for that.\n\n# Towing a broken-down vehicle\nTowing a motor vehicle that has broken down is done with a connecting bar strong enough that the distance between the two vehicles does not exceed {{fact:tow.broken_down.max_rope_distance_m}}. The connecting device is marked with an eye-catching coloured marker, and lit during lighting-up hours (reg. 90(a)). The towing vehicle carries a sign reading “Towing” at the front, and the towed vehicle a sign reading “Towed” at the back, and during lighting-up hours also a red light (reg. 90(b)-(c)).\n\n# Who drives the towed vehicle\n:::remember\nWhen towing with a bar, the towed vehicle’s wheels stay on the road — so someone has to sit in it, steer and brake. By law, the towed vehicle’s front or rear axle wheels must be raised, unless a driver holding a driving licence suited to the towed vehicle’s type is sitting in it (reg. 90(d)). No passengers other than that driver may be in the towed vehicle (reg. 90(g)).\n:::\n\n# Speed while towing\nThe law does not set a special low speed for towing — you drive at the normal maximum speed for the type of road, as covered in the chapter [[chapter:speed-distance|Speed, distance and braking]], unless the vehicle licence or the towing conditions state otherwise. In any case, towing is only permitted if it can be done safely (reg. 90(f)) — at low speed and with extra care, because the braking distance of two connected vehicles is longer than that of a single vehicle.\n\n# Towing a trailer\nEven when towing an ordinary trailer, not a broken-down vehicle, there is a distance limit: between the extreme rear point of the towing vehicle and the extreme front point of the connected trailer, in a straight line — no more than {{fact:tow.trailer.max_connection_gap_cm}} (reg. 374).\n\n# Running out of fuel on the road\nMove onto the shoulder as soon as possible, and turn on the hazard lights. In a petrol vehicle, after refuelling it’s usually enough to turn the key to the on position for a few seconds before starting, so the fuel pump can fill up. In a diesel vehicle that has run out of fuel, air sometimes gets into the system and bleeding is needed according to the owner’s manual, or towing to a garage. For the full diagnostic sequence — [[tree:car-wont-start|The vehicle won’t start]].\n\n:::tip\nThe [[dash:low-fuel]] light comes on well before the tank is completely empty — that’s the time to fill up, not to push your luck.\n:::",
+   "keyPoints": [
+    "The tow bar connects the vehicles at a distance of up to {{fact:tow.broken_down.max_rope_distance_m}}, marked and lit.",
+    "Someone with a suitable licence must sit in the towed vehicle and brake, unless its wheels are raised; no other passengers are allowed in it.",
+    "There’s no separate legal speed for towing, but you only tow if it can be done safely and with extra care.",
+    "Out of fuel: move to the shoulder, hazard lights, and for a starting fault — the diagnostic tree [[tree:car-wont-start|The vehicle won’t start]]."
+   ]
+  }
+ ]
+}

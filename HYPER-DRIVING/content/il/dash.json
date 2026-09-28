@@ -1,0 +1,1240 @@
+{
+ "lights": [
+  {
+   "id": "oil-pressure",
+   "color": "red",
+   "g": "dash2-oil",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "לחץ שמן מנוע נמוך",
+    "en": "Low engine-oil pressure"
+   },
+   "meaning": {
+    "he": "לחץ השמן במנוע ירד מתחת לנדרש. בלי לחץ שמן, חלקי המנוע מתחככים זה בזה ונשחקים בתוך דקות.",
+    "en": "Engine oil pressure has dropped too low. Without oil pressure the engine's parts rub together and wear out within minutes."
+   },
+   "action": {
+    "he": "עוצרים מיד במקום בטוח ומדוממים את המנוע. בודקים את מפלס השמן במדיד אחרי כמה דקות. גם אם יש שמן — לא ממשיכים לנסוע; מזמינים גרירה.",
+    "en": "Stop at once in a safe place and switch the engine off. Check the oil level on the dipstick after a few minutes. Even if there is oil, do not drive on; call for a tow."
+   }
+  },
+  {
+   "id": "battery-charge",
+   "color": "red",
+   "g": "dash-battery",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "טעינת מצבר",
+    "en": "Battery charging"
+   },
+   "meaning": {
+    "he": "מערכת הטעינה אינה טוענת את המצבר — בדרך כלל תקלה באלטרנטור או ברצועה שמניעה אותו. הרכב נוסע עכשיו על החשמל שנשאר במצבר.",
+    "en": "The charging system is not charging the battery — usually a fault in the alternator or its drive belt. The car is now running on what is left in the battery."
+   },
+   "action": {
+    "he": "מכבים צרכני חשמל שאינם הכרחיים ונוסעים ישר למוסך הקרוב. אם גם נורית חום המנוע נדלקת — עוצרים: ייתכן שהרצועה שנקרעה מניעה גם את משאבת המים.",
+    "en": "Switch off non-essential electrics and drive straight to the nearest garage. If the engine-temperature light also comes on, stop: the broken belt may also drive the water pump."
+   }
+  },
+  {
+   "id": "coolant-temp",
+   "color": "red",
+   "g": "dash-coolant",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "חום מנוע גבוה",
+    "en": "High engine temperature"
+   },
+   "meaning": {
+    "he": "המנוע מתחמם יותר מדי. המשך נסיעה עלול לעקם את ראש המנוע ולהרוס אותו.",
+    "en": "The engine is overheating. Driving on can warp the cylinder head and destroy the engine."
+   },
+   "action": {
+    "he": "עוצרים במקום בטוח ומדוממים. **לא פותחים את מכסה הרדיאטור או מיכל ההתפשטות כשהמנוע חם** — הנוזל רותח ובלחץ. ממתינים שהמנוע יתקרר ובודקים את מפלס נוזל הקירור.",
+    "en": "Stop in a safe place and switch off. **Never open the radiator or expansion-tank cap while the engine is hot** — the coolant is boiling and under pressure. Wait for it to cool, then check the coolant level."
+   }
+  },
+  {
+   "id": "brake-system",
+   "color": "red",
+   "g": "dash-brake",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מערכת הבלמים",
+    "en": "Brake system"
+   },
+   "meaning": {
+    "he": "בלם החנייה משוך, או שמפלס נוזל הבלמים נמוך או שיש תקלה במערכת הבלמים.",
+    "en": "The parking brake is on, or the brake fluid is low, or there is a fault in the brake system."
+   },
+   "action": {
+    "he": "משחררים את בלם החנייה. אם הנורית ממשיכה לדלוק — עוצרים בזהירות ובודקים את מפלס נוזל הבלמים. לא נוסעים עם תקלת בלמים.",
+    "en": "Release the parking brake. If the light stays on, stop carefully and check the brake-fluid level. Do not drive with a brake fault."
+   }
+  },
+  {
+   "id": "parking-brake",
+   "color": "red",
+   "g": "dash-parking-brake",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "בלם חנייה משוך",
+    "en": "Parking brake on"
+   },
+   "meaning": {
+    "he": "בלם החנייה (בלם היד או הבלם החשמלי) מופעל.",
+    "en": "The parking brake (hand or electric) is applied."
+   },
+   "action": {
+    "he": "משחררים את בלם החנייה לפני הנסיעה. נסיעה עם בלם משוך מחממת את הבלמים ושוחקת אותם.",
+    "en": "Release it before driving. Driving with it on overheats and wears the brakes."
+   }
+  },
+  {
+   "id": "abs",
+   "color": "amber",
+   "g": "dash-abs",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "תקלה במערכת ABS",
+    "en": "ABS fault"
+   },
+   "meaning": {
+    "he": "מערכת ה-ABS אינה פעילה. הבלמים הרגילים עובדים, אבל בבלימה חזקה הגלגלים עלולים להינעל.",
+    "en": "ABS is not working. The ordinary brakes still work, but the wheels can lock under hard braking."
+   },
+   "action": {
+    "he": "נוסעים בזהירות, שומרים מרווח גדול יותר ופונים למוסך בהקדם.",
+    "en": "Drive carefully, keep a larger gap and have it checked soon."
+   }
+  },
+  {
+   "id": "check-engine",
+   "color": "amber",
+   "g": "dash-check-engine",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "בדוק מנוע",
+    "en": "Check engine"
+   },
+   "meaning": {
+    "he": "מחשב המנוע זיהה תקלה במנוע או במערכת הפליטה. כשהנורית **מהבהבת** — יש תקלת הצתה חמורה שעלולה להרוס את הממיר הקטליטי.",
+    "en": "The engine computer found a fault in the engine or exhaust system. If it **flashes**, there is a serious misfire that can ruin the catalytic converter."
+   },
+   "action": {
+    "he": "נורית קבועה: פונים למוסך בהקדם לאבחון ממוחשב. נורית מהבהבת: מאטים, נמנעים מהאצות ועוצרים בהקדם.",
+    "en": "Steady: have it diagnosed soon. Flashing: slow down, avoid accelerating hard and stop soon."
+   }
+  },
+  {
+   "id": "airbag",
+   "color": "red",
+   "g": "dash2-airbag",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "תקלה בכריות האוויר",
+    "en": "Airbag fault"
+   },
+   "meaning": {
+    "he": "מערכת כריות האוויר או מותחני החגורות אינה תקינה — ייתכן שלא תפעל בתאונה.",
+    "en": "The airbag or seat-belt pretensioner system has a fault and may not work in a crash."
+   },
+   "action": {
+    "he": "פונים למוסך בהקדם. לא מתקנים לבד — הכריות מופעלות במטען נפץ.",
+    "en": "Have it fixed soon. Do not repair it yourself — airbags are fired by an explosive charge."
+   }
+  },
+  {
+   "id": "seatbelt",
+   "color": "red",
+   "g": "dash2-seatbelt",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "חגורת בטיחות לא רכוסה",
+    "en": "Seat belt not fastened"
+   },
+   "meaning": {
+    "he": "הנהג או נוסע לא חגר את חגורת הבטיחות.",
+    "en": "The driver or a passenger has not fastened the seat belt."
+   },
+   "action": {
+    "he": "חוגרים לפני שנוסעים — כל הנוסעים, בכל מושב.",
+    "en": "Buckle up before moving — every passenger, every seat."
+   }
+  },
+  {
+   "id": "low-fuel",
+   "color": "amber",
+   "g": "dash-low-fuel",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "מפלס דלק נמוך",
+    "en": "Low fuel"
+   },
+   "meaning": {
+    "he": "נשארה במכל כמות קטנה של דלק (העתודה).",
+    "en": "Only the reserve is left in the tank."
+   },
+   "action": {
+    "he": "מתדלקים בהקדם. ברכב דיזל חשוב במיוחד לא לגמור את הדלק — אוויר נכנס למערכת.",
+    "en": "Refuel soon. In a diesel it matters even more not to run dry — air gets into the system."
+   }
+  },
+  {
+   "id": "tyre-pressure",
+   "color": "amber",
+   "g": "dash-tpms",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "לחץ אוויר נמוך בצמיג",
+    "en": "Low tyre pressure"
+   },
+   "meaning": {
+    "he": "מערכת ניטור לחץ האוויר זיהתה צמיג שלחצו נמוך מהנדרש — או תקר.",
+    "en": "The tyre-pressure monitor found a tyre below the right pressure — or a puncture."
+   },
+   "action": {
+    "he": "מאטים, בודקים את הצמיגים בהקדם בתחנת דלק ומנפחים ללחץ שיצרן הרכב קבע. צמיג שמתרוקן מהר — מחליפים לגלגל החלופי.",
+    "en": "Slow down, check the tyres at a filling station and inflate to the maker's pressure. A fast-deflating tyre means fitting the spare."
+   }
+  },
+  {
+   "id": "esc",
+   "color": "amber",
+   "g": "dash-esc",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "בקרת יציבות (ESC)",
+    "en": "Stability control (ESC)"
+   },
+   "meaning": {
+    "he": "**מהבהבת** — המערכת פועלת עכשיו כדי לייצב את הרכב: הכביש חלקלק או שהמהירות גבוהה לעיקול. **דולקת קבוע** — המערכת כבויה או תקולה.",
+    "en": "**Flashing** — the system is working right now to keep the car stable: the road is slippery or you are too fast for the bend. **Steady** — the system is off or faulty."
+   },
+   "action": {
+    "he": "כשהיא מהבהבת — מאטים. כשהיא דולקת קבוע — בודקים שלא כובתה בטעות, ואם לא — פונים למוסך.",
+    "en": "Flashing: slow down. Steady: check it was not switched off by mistake; otherwise have it checked."
+   }
+  },
+  {
+   "id": "glow-plug",
+   "color": "amber",
+   "g": "dash-glow-plug",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מצתי להט (דיזל)",
+    "en": "Glow plugs (diesel)"
+   },
+   "meaning": {
+    "he": "במנוע דיזל: מצתי הלהט מחממים את תאי השרפה לפני ההתנעה.",
+    "en": "In a diesel: the glow plugs are heating the combustion chambers before starting."
+   },
+   "action": {
+    "he": "ממתינים שהנורית תכבה ורק אז מתניעים. אם היא מהבהבת בזמן נסיעה — יש תקלה במנוע; פונים למוסך.",
+    "en": "Wait for it to go out, then start. If it flashes while driving, there is an engine fault; see a garage."
+   },
+   "tree": "car-wont-start"
+  },
+  {
+   "id": "high-beam",
+   "color": "blue",
+   "g": "dash-high-beam",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "אורות דרך (אור גבוה)",
+    "en": "Main beam (high beam)"
+   },
+   "meaning": {
+    "he": "אורות הדרך דולקים.",
+    "en": "The main beam is on."
+   },
+   "action": {
+    "he": "מעבירים לאורות מעבר כשמתקרב רכב מולכם או כשנוסעים מאחורי רכב — כדי לא לסנוור.",
+    "en": "Dip to the low beam for oncoming traffic or when following a vehicle, so as not to dazzle."
+   }
+  },
+  {
+   "id": "low-beam",
+   "color": "green",
+   "g": "dash-low-beam",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "אורות מעבר (אור נמוך)",
+    "en": "Dipped beam (low beam)"
+   },
+   "meaning": {
+    "he": "אורות המעבר דולקים.",
+    "en": "The dipped beam is on."
+   },
+   "action": {
+    "he": "אין צורך בפעולה.",
+    "en": "Nothing to do."
+   }
+  },
+  {
+   "id": "dpf",
+   "color": "amber",
+   "g": "dash2-dpf",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מסנן חלקיקים (DPF)",
+    "en": "Diesel particulate filter (DPF)"
+   },
+   "meaning": {
+    "he": "מסנן החלקיקים בפליטת רכב הדיזל התמלא בפיח מעבר לרמה הרגילה.",
+    "en": "The diesel particulate filter has collected more soot than normal."
+   },
+   "action": {
+    "he": "נוסעים כמה דקות בכביש מהיר כדי לאפשר למסנן להתחדש (regeneration) מעצמו. אם הנורה ממשיכה לדלוק או מהבהבת יחד עם נורית בדוק מנוע, פונים למוסך ולא ממשיכים לדחות את הטיפול.",
+    "en": "Drive on a fast road for a few minutes to let the filter regenerate itself. If it stays on, or flashes together with the check-engine light, see a garage — do not keep putting it off."
+   }
+  },
+  {
+   "id": "adblue",
+   "color": "amber",
+   "g": "dash2-adblue",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מפלס AdBlue נמוך",
+    "en": "Low AdBlue"
+   },
+   "meaning": {
+    "he": "ברכבי דיזל עם מערכת SCR, נוזל ה-AdBlue מפחית את זיהום גזי הפליטה; מפלסו במיכל ירד.",
+    "en": "In diesel vehicles with SCR, AdBlue fluid reduces exhaust pollution; its tank level has dropped."
+   },
+   "action": {
+    "he": "ממלאים נוזל AdBlue בהקדם בתחנת דלק או במוסך. אם המיכל מתרוקן לגמרי, המנוע לא יתניע בפעם הבאה.",
+    "en": "Top up AdBlue soon at a filling station or garage. If the tank runs completely dry, the engine will refuse to start next time."
+   }
+  },
+  {
+   "id": "power-steering",
+   "color": "amber",
+   "g": "dash2-power-steering",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "תקלה בהגה הכוח",
+    "en": "Power steering fault"
+   },
+   "meaning": {
+    "he": "מערכת הגה הכוח שמסייעת בסיבוב ההגה תקולה; ההגה נעשה כבד משמעותית, בעיקר בנסיעה איטית ובחנייה.",
+    "en": "The power-steering system that assists turning the wheel has a fault; the steering becomes much heavier, especially at low speed and while parking."
+   },
+   "action": {
+    "he": "אוחזים בהגה בשתי ידיים, נוסעים בזהירות ובאיטיות למוסך הקרוב ונמנעים מתמרונים חדים.",
+    "en": "Hold the wheel with both hands, drive carefully and slowly to the nearest garage, and avoid sharp manoeuvres."
+   }
+  },
+  {
+   "id": "door-open",
+   "color": "red",
+   "g": "dash2-door-open",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "דלת פתוחה",
+    "en": "Door open"
+   },
+   "meaning": {
+    "he": "אחת הדלתות (או דלת הנהג) אינה סגורה כראוי.",
+    "en": "One of the doors (or the driver’s) is not fully closed."
+   },
+   "action": {
+    "he": "עוצרים וסוגרים את כל הדלתות היטב לפני שממשיכים לנסוע.",
+    "en": "Stop and close all the doors properly before driving on."
+   }
+  },
+  {
+   "id": "bonnet-open",
+   "color": "red",
+   "g": "dash2-bonnet-open",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מכסה מנוע פתוח",
+    "en": "Bonnet open"
+   },
+   "meaning": {
+    "he": "מכסה המנוע אינו נעול במקומו.",
+    "en": "The bonnet (hood) is not latched shut."
+   },
+   "action": {
+    "he": "עוצרים, סוגרים ומוודאים שהמכסה ננעל. אסור לנסוע עם מכסה מנוע פתוח — הוא חוסם את הראות ועלול להיפתח לגמרי תוך כדי נסיעה.",
+    "en": "Stop, close it and make sure it latches. Never drive with the bonnet open — it blocks your view and can fly fully open while moving."
+   }
+  },
+  {
+   "id": "boot-open",
+   "color": "red",
+   "g": "dash2-boot-open",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "תא מטען פתוח",
+    "en": "Boot open"
+   },
+   "meaning": {
+    "he": "תא המטען (או דלת החמישית) אינו סגור כראוי.",
+    "en": "The boot (trunk) or tailgate is not properly closed."
+   },
+   "action": {
+    "he": "עוצרים וסוגרים אותו; תא מטען פתוח עלול להסתיר את פנסי האחור ולגרום למטען ליפול לכביש.",
+    "en": "Stop and close it; an open boot can hide the rear lights and let cargo fall onto the road."
+   }
+  },
+  {
+   "id": "washer-fluid",
+   "color": "amber",
+   "g": "dash2-washer-fluid",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מפלס נוזל מגבים נמוך",
+    "en": "Low washer fluid"
+   },
+   "meaning": {
+    "he": "כמעט נגמר נוזל השטיפה למגבים.",
+    "en": "The windscreen washer fluid is almost empty."
+   },
+   "action": {
+    "he": "ממלאים נוזל מגבים בהקדם, בעיקר לפני נסיעה מאובקת או גשומה.",
+    "en": "Top up washer fluid soon, especially before a dusty or rainy drive."
+   }
+  },
+  {
+   "id": "key-battery",
+   "color": "amber",
+   "g": "dash2-key-battery",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "סוללת מפתח חלשה",
+    "en": "Key battery low"
+   },
+   "meaning": {
+    "he": "הסוללה שבמפתח החכם (השלט) נחלשת.",
+    "en": "The battery inside the smart key (remote fob) is running down."
+   },
+   "action": {
+    "he": "מחליפים את סוללת המפתח בהקדם; ברוב הרכבים אפשר עדיין להתניע בקירוב המפתח לכפתור ההתנעה.",
+    "en": "Replace the key battery soon; in most cars you can still start by holding the key against the start button."
+   }
+  },
+  {
+   "id": "immobiliser",
+   "color": "amber",
+   "g": "dash2-immobiliser",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "אימובילייזר",
+    "en": "Immobiliser"
+   },
+   "meaning": {
+    "he": "מערכת האימובילייזר לא זיהתה את המפתח ומונעת התנעה, כדי למנוע גניבת הרכב.",
+    "en": "The immobiliser system did not recognise the key and is blocking the engine from starting, to prevent theft."
+   },
+   "action": {
+    "he": "מוודאים שמשתמשים במפתח המקורי של הרכב ומנסים שוב. אם הנורה נשארת דולקת ולא ניתן להתניע, פונים למוסך או לסוכנות.",
+    "en": "Make sure you are using the vehicle’s own key and try again. If the light stays on and the engine will not start, call a garage or the dealer."
+   },
+   "tree": "car-wont-start"
+  },
+  {
+   "id": "fog-front",
+   "color": "green",
+   "g": "dash2-fog-front",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "פנסי ערפל קדמיים",
+    "en": "Front fog lights"
+   },
+   "meaning": {
+    "he": "פנסי הערפל הקדמיים דולקים — מיועדים לשיפור הראות בערפל, גשם כבד או אבק כבד.",
+    "en": "The front fog lights are on — meant to improve visibility in fog, heavy rain or dust."
+   },
+   "action": {
+    "he": "מכבים כשהראות משתפרת; לא משאירים אותם דולקים ללא צורך.",
+    "en": "Switch them off once visibility improves; do not leave them on without need."
+   }
+  },
+  {
+   "id": "fog-rear",
+   "color": "amber",
+   "g": "dash2-fog-rear",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "פנס ערפל אחורי",
+    "en": "Rear fog light"
+   },
+   "meaning": {
+    "he": "פנס הערפל האחורי דולק — חזק במיוחד, מיועד לראות של פחות מ-50 מטר.",
+    "en": "The rear fog light is on — very bright, meant for visibility below 50 metres."
+   },
+   "action": {
+    "he": "מכבים כשהראות משתפרת; פנס אחורי דולק שלא לצורך מסנוור את הנהגים מאחוריכם.",
+    "en": "Switch it off once visibility improves; left on unnecessarily it dazzles drivers behind you."
+   }
+  },
+  {
+   "id": "turn-signal",
+   "color": "green",
+   "g": "dash2-turn-signal",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "מחוון כיוון (וינקר)",
+    "en": "Turn signal"
+   },
+   "meaning": {
+    "he": "אחד מאיתותי הכיוון מהבהב.",
+    "en": "One of the direction indicators is flashing."
+   },
+   "action": {
+    "he": "מוודאים שהאיתות כבה אחרי הפנייה; הבהוב מהיר במיוחד מעיד בדרך כלל על נורת איתות שרופה.",
+    "en": "Make sure it cancels after the turn; an unusually fast flash usually means a bulb has failed."
+   }
+  },
+  {
+   "id": "hazard",
+   "color": "red",
+   "g": "dash2-hazard",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "אורות חירום",
+    "en": "Hazard lights"
+   },
+   "meaning": {
+    "he": "כל ארבעת האיתותים מהבהבים יחד.",
+    "en": "All four indicators are flashing together."
+   },
+   "action": {
+    "he": "מפעילים בעצירת חירום, תקלה בכביש או נסיעה איטית חריגה; מכבים כשהסכנה חלפה.",
+    "en": "Use them for an emergency stop, a roadside breakdown or unusually slow driving; switch off once the hazard has passed."
+   }
+  },
+  {
+   "id": "cruise",
+   "color": "green",
+   "g": "dash2-cruise",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "בקרת שיוט",
+    "en": "Cruise control"
+   },
+   "meaning": {
+    "he": "בקרת השיוט פעילה ושומרת על מהירות קבועה.",
+    "en": "Cruise control is active and holding a set speed."
+   },
+   "action": {
+    "he": "ממשיכים לעקוב אחרי הדרך ומוכנים לבלום; לחיצה על הבלם מבטלת אותה מיד.",
+    "en": "Keep watching the road and stay ready to brake; pressing the brake cancels it at once."
+   }
+  },
+  {
+   "id": "lane-assist",
+   "color": "green",
+   "g": "dash2-lane-assist",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "שמירת נתיב",
+    "en": "Lane keeping assist"
+   },
+   "meaning": {
+    "he": "המערכת מסייעת לשמור על הרכב בתוך הנתיב, או מתריעה כשחוצים קו נתיב בלי איתות.",
+    "en": "The system helps keep the car within its lane, or warns when you cross a lane line without signalling."
+   },
+   "action": {
+    "he": "מחזיקים בהגה; אם המערכת מתערבת בטעות שוב ושוב, אפשר לכבות אותה זמנית בתפריט הרכב.",
+    "en": "Keep your hands on the wheel; if it keeps intervening by mistake, you can switch it off for now from the car’s menu."
+   }
+  },
+  {
+   "id": "service",
+   "color": "amber",
+   "g": "dash2-service",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "טיפול תקופתי נדרש",
+    "en": "Service due"
+   },
+   "meaning": {
+    "he": "הגיע מועד הטיפול התקופתי, לפי קילומטראז’ או זמן.",
+    "en": "A scheduled maintenance service is due, by mileage or by time."
+   },
+   "action": {
+    "he": "קובעים תור לטיפול במוסך בהקדם.",
+    "en": "Book a service appointment soon."
+   }
+  },
+  {
+   "id": "gearbox-temp",
+   "color": "red",
+   "g": "dash2-gearbox-temp",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "חום תיבת הילוכים גבוה",
+    "en": "High gearbox temperature"
+   },
+   "meaning": {
+    "he": "שמן תיבת ההילוכים האוטומטית מתחמם יותר מדי — בדרך כלל בגרירה כבדה או נסיעה ממושכת בפקקים.",
+    "en": "The automatic-transmission oil is overheating — usually from heavy towing or long spells in traffic."
+   },
+   "action": {
+    "he": "עוצרים במקום בטוח ומניחים לתיבה להתקרר בסרק. נמנעים מגרירה כבדה עד לבדיקה במוסך.",
+    "en": "Stop in a safe place and let the transmission cool at idle. Avoid heavy towing until it has been checked."
+   }
+  },
+  {
+   "id": "ev-ready",
+   "color": "green",
+   "g": "dash2-ev-ready",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "bus"
+   ],
+   "name": {
+    "he": "מוכן לנסיעה (Ready)",
+    "en": "Ready to drive"
+   },
+   "meaning": {
+    "he": "מערכת ההנעה החשמלית פעילה והרכב מוכן לנסוע — גם בלי רעש מנוע.",
+    "en": "The electric drive system is active and the car is ready to move — even though it makes no engine noise."
+   },
+   "action": {
+    "he": "לפני שיוצאים, מוודאים שידית ההילוכים נמצאת במצב הנכון; הרכב יכול לזוז בשקט, בלי אזהרה קולית.",
+    "en": "Before moving off, make sure the gear selector is in the right position; the car can move off silently, with no engine warning sound."
+   }
+  },
+  {
+   "id": "ev-plug",
+   "color": "green",
+   "g": "dash2-ev-plug",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "bus"
+   ],
+   "name": {
+    "he": "מחבר טעינה מחובר",
+    "en": "Charging connector plugged in"
+   },
+   "meaning": {
+    "he": "כבל הטעינה מחובר לרכב; ייתכן שהטעינה בעיצומה.",
+    "en": "The charging cable is connected to the car; charging may be under way."
+   },
+   "action": {
+    "he": "מנתקים את הכבל וסוגרים את פתח הטעינה לפני שיוצאים לנסיעה.",
+    "en": "Unplug the cable and close the charging port cover before you drive off."
+   }
+  },
+  {
+   "id": "ev-turtle",
+   "color": "amber",
+   "g": "dash2-ev-turtle",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "bus"
+   ],
+   "name": {
+    "he": "הספק מופחת (הצב)",
+    "en": "Reduced power (turtle)"
+   },
+   "meaning": {
+    "he": "סמל הצב מציין שההספק של הרכב החשמלי או ההיברידי הוגבל זמנית — בדרך כלל בגלל מצבר חם או קר מדי, או תקלה.",
+    "en": "The turtle symbol means the electric or hybrid car’s power has been temporarily limited — usually because the battery is too hot or too cold, or there is a fault."
+   },
+   "action": {
+    "he": "נוהגים ברכות ונמנעים מהאצות; מגיעים בהקדם לעמדת טעינה או למוסך.",
+    "en": "Drive gently and avoid hard acceleration; head to a charging point or garage soon."
+   }
+  },
+  {
+   "id": "hybrid-system",
+   "color": "red",
+   "g": "dash2-hybrid-system",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "bus"
+   ],
+   "name": {
+    "he": "תקלה במערכת ההיברידית",
+    "en": "Hybrid system fault"
+   },
+   "meaning": {
+    "he": "תקלה בתיאום בין המנוע החשמלי למנוע הבנזין ברכב ההיברידי.",
+    "en": "There is a fault in the coordination between the electric motor and the petrol engine in the hybrid car."
+   },
+   "action": {
+    "he": "פונים למוסך בהקדם; ההספק עלול להיות מוגבל עד אז.",
+    "en": "Have it checked soon; power may be limited until then."
+   }
+  },
+  {
+   "id": "water-in-fuel",
+   "color": "red",
+   "g": "dash2-water-in-fuel",
+   "severity": "stop",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "מים במסנן הדלק",
+    "en": "Water in fuel filter"
+   },
+   "meaning": {
+    "he": "מים הצטברו במפריד המים שבמסנן הדלק של רכב הדיזל; אם ימשיכו למשאבת ההזרקה עלולים להרוס אותה.",
+    "en": "Water has collected in the water separator of the diesel fuel filter; if it reaches the injection pump it can destroy it."
+   },
+   "action": {
+    "he": "עוצרים ומרוקנים את המים מהמסנן, או פונים למוסך; לא ממשיכים לנסוע עם הנורה דולקת.",
+    "en": "Stop and drain the water from the filter, or call a garage; do not keep driving with the light on."
+   }
+  },
+  {
+   "id": "oil-level",
+   "color": "amber",
+   "g": "dash2-oil-level",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "מפלס שמן מנוע נמוך",
+    "en": "Low engine-oil level"
+   },
+   "meaning": {
+    "he": "חיישן המפלס מזהה שכמות השמן במנוע נמוכה מהנדרש — בשונה מנורית לחץ השמן.",
+    "en": "A level sensor has found that the engine has less oil than it should — different from the oil-pressure light."
+   },
+   "action": {
+    "he": "בודקים את מפלס השמן במדיד כשהמנוע קר, ומוסיפים שמן מהסוג המתאים לרכב.",
+    "en": "Check the level on the dipstick with the engine cold, and top up with the oil grade specified for the car."
+   }
+  },
+  {
+   "id": "brake-pads",
+   "color": "amber",
+   "g": "dash2-brake-pads",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "רפידות בלם שחוקות",
+    "en": "Worn brake pads"
+   },
+   "meaning": {
+    "he": "רפידות הבלם התקרבו לסוף דרך השחיקה שלהן.",
+    "en": "The brake pads are close to the end of their wear life."
+   },
+   "action": {
+    "he": "מזמינים בדיקת בלמים והחלפת רפידות בהקדם; המשך נסיעה עם רפידות שחוקות פוגע ביכולת הבלימה.",
+    "en": "Book a brake check and pad replacement soon; driving on worn pads reduces braking performance."
+   }
+  },
+  {
+   "id": "epb-fault",
+   "color": "red",
+   "g": "dash2-epb-fault",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "תקלה בבלם חנייה אלקטרוני",
+    "en": "Electric parking-brake fault"
+   },
+   "meaning": {
+    "he": "בלם החנייה האלקטרוני (EPB) אינו פועל כראוי — ייתכן שלא יחזיק את הרכב במקומו.",
+    "en": "The electric parking brake (EPB) is not working properly — it may not hold the car in place."
+   },
+   "action": {
+    "he": "לא סומכים עליו בעצירה בשיפוע; משתמשים בבלם רגל ובבלוק גלגל אם עוצרים במדרון, ופונים למוסך בהקדם.",
+    "en": "Do not rely on it on a slope; use the footbrake and a wheel chock if you stop on a hill, and have it checked soon."
+   }
+  },
+  {
+   "id": "trailer",
+   "color": "green",
+   "g": "dash2-trailer",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck"
+   ],
+   "name": {
+    "he": "גרור מחובר",
+    "en": "Trailer connected"
+   },
+   "meaning": {
+    "he": "מערכת החשמל של הגרור מחוברת ומזוהה על ידי הרכב.",
+    "en": "The trailer’s electrical system is connected and recognised by the car."
+   },
+   "action": {
+    "he": "בודקים שאיתותים, בלמים ופנסי הגרור פועלים לפני היציאה לדרך.",
+    "en": "Check that the trailer’s indicators, brake lights and lamps all work before setting off."
+   }
+  },
+  {
+   "id": "suspension",
+   "color": "amber",
+   "g": "dash2-suspension",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "תקלה במתלים",
+    "en": "Suspension fault"
+   },
+   "meaning": {
+    "he": "תקלה במערכת המתלים (כולל מתלים אוויריים או מתכווננים, אם קיימים) — עלולה לפגוע ביציבות וברמת הרכב.",
+    "en": "There is a fault in the suspension system (including air or adjustable suspension, where fitted) — it can affect stability and ride height."
+   },
+   "action": {
+    "he": "נוהגים בזהירות, נמנעים ממשאות כבדים ומהמהמורות, ופונים למוסך בהקדם.",
+    "en": "Drive carefully, avoid heavy loads and potholes, and have it checked soon."
+   }
+  },
+  {
+   "id": "hill-descent",
+   "color": "green",
+   "g": "dash2-hill-descent",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "בקרת ירידה בשיפוע",
+    "en": "Hill descent control"
+   },
+   "meaning": {
+    "he": "המערכת שולטת אוטומטית במהירות הרכב בירידה תלולה, ובולמת כל גלגל בנפרד.",
+    "en": "The system automatically controls the car’s speed on a steep descent, braking each wheel individually."
+   },
+   "action": {
+    "he": "משאירים את הרגל הרחק מהדוושות ומכוונים בהגה בלבד; המערכת שומרת על מהירות איטית וקבועה.",
+    "en": "Keep your foot off the pedals and just steer; the system holds a slow, steady speed."
+   }
+  },
+  {
+   "id": "auto-hold",
+   "color": "green",
+   "g": "dash2-auto-hold",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "החזקה אוטומטית",
+    "en": "Auto hold"
+   },
+   "meaning": {
+    "he": "המערכת ממשיכה להחזיק את הבלמים לחוצים כשהרכב עצר, למשל ברמזור, גם בלי ללחוץ על דוושת הבלם.",
+    "en": "The system keeps the brakes applied while the car is stopped, for example at a light, even without your foot on the brake pedal."
+   },
+   "action": {
+    "he": "לנסיעה לוחצים על דוושת ההאצה בלבד; הבלם משתחרר אוטומטית.",
+    "en": "To move off, just press the accelerator; the brake releases on its own."
+   }
+  },
+  {
+   "id": "frost",
+   "color": "amber",
+   "g": "dash2-frost",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "סכנת קרח",
+    "en": "Risk of ice"
+   },
+   "meaning": {
+    "he": "הטמפרטורה בחוץ קרובה לאפס או מתחתיו — יש סיכוי לכביש מוקפא, גם אם הוא נראה יבש.",
+    "en": "The outside temperature is near or below freezing — the road may be icy even though it looks dry."
+   },
+   "action": {
+    "he": "מאטים, מגדילים מרווח ונזהרים במיוחד על גשרים ובצללים, שם הקרח נוצר ראשון.",
+    "en": "Slow down, increase your gap, and take extra care on bridges and in shaded spots, where ice forms first."
+   }
+  },
+  {
+   "id": "headlight-fault",
+   "color": "amber",
+   "g": "dash2-headlight-fault",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "נורת פנס שרופה",
+    "en": "Bulb failure"
+   },
+   "meaning": {
+    "he": "אחת מנורות הרכב — פנס ראשי, בלם או איתות — שרופה.",
+    "en": "One of the car’s bulbs — headlight, brake light or indicator — has failed."
+   },
+   "action": {
+    "he": "בודקים ומחליפים את הנורה בהקדם; נסיעה עם פנס לא תקין מסוכנת ואסורה על פי חוק.",
+    "en": "Check and replace the bulb soon; driving with a faulty light is dangerous and against the law."
+   }
+  },
+  {
+   "id": "battery-ev-low",
+   "color": "amber",
+   "g": "dash2-battery-ev-low",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "bus"
+   ],
+   "name": {
+    "he": "מצבר משיכה חלש",
+    "en": "Low traction-battery charge"
+   },
+   "meaning": {
+    "he": "רמת הטעינה של מצבר המשיכה, בשונה מהמצבר הרגיל של 12 וולט, נמוכה — הטווח הנותר מוגבל.",
+    "en": "The traction battery, unlike the ordinary 12V battery, is low on charge — remaining range is limited."
+   },
+   "action": {
+    "he": "מתכננים עצירה בעמדת טעינה בהקדם; מצמצמים שימוש במיזוג ובחימום כדי לחסוך בטווח.",
+    "en": "Plan a charging stop soon; cut back on air conditioning and heating to save range."
+   }
+  },
+  {
+   "id": "aeb-off",
+   "color": "amber",
+   "g": "dash2-aeb-off",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "בלימת חירום אוטונומית כבויה",
+    "en": "Autonomous emergency braking off"
+   },
+   "meaning": {
+    "he": "מערכת הבלימה האוטונומית (AEB) כבויה או אינה זמינה — היא לא תבלום עבורכם במקרה סכנה.",
+    "en": "The autonomous emergency braking (AEB) system is off or unavailable — it will not brake for you in an emergency."
+   },
+   "action": {
+    "he": "בודקים שלא כבתה בטעות; עד שתופעל מחדש סומכים רק על הבלימה שלכם ושומרים מרחק בטיחות.",
+    "en": "Check it was not switched off by mistake; until it is back on, rely only on your own braking and keep a safe gap."
+   }
+  },
+  {
+   "id": "blind-spot",
+   "color": "amber",
+   "g": "dash2-blind-spot",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "תקלה באיתור שטח מת",
+    "en": "Blind-spot monitor fault"
+   },
+   "meaning": {
+    "he": "מערכת איתור השטח המת אינה פעילה — לא תקבלו ממנה התרעה על רכב באזור זה.",
+    "en": "The blind-spot monitor is not working — it will not warn you about a vehicle in that zone."
+   },
+   "action": {
+    "he": "מסתמכים על הסתכלות פיזית ובדיקת המראות והשטח המת לפני החלפת נתיב.",
+    "en": "Rely on a physical head-check of the mirrors and blind spot before changing lanes."
+   }
+  },
+  {
+   "id": "tpms-fault",
+   "color": "amber",
+   "g": "dash2-tpms-fault",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "name": {
+    "he": "תקלה במערכת ניטור לחץ אוויר",
+    "en": "TPMS fault"
+   },
+   "meaning": {
+    "he": "מערכת ניטור לחץ האוויר עצמה תקולה ואינה מצליחה לקרוא את הלחץ בצמיגים — בשונה מנורית לחץ אוויר נמוך.",
+    "en": "The tyre-pressure monitoring system itself has a fault and cannot read the tyres’ pressure — different from the low-pressure light."
+   },
+   "action": {
+    "he": "בודקים את לחץ הצמיגים ידנית במד לחץ, ופונים למוסך לבדיקת המערכת.",
+    "en": "Check tyre pressures by hand with a gauge, and have the system checked at a garage."
+   }
+  },
+  {
+   "id": "start-stop",
+   "color": "green",
+   "g": "dash2-start-stop",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "עצירה-התנעה אוטומטית",
+    "en": "Automatic start-stop"
+   },
+   "meaning": {
+    "he": "המנוע נכבה אוטומטית בעצירה, למשל ברמזור, כדי לחסוך דלק, ויתנע מחדש עם שחרור הבלם.",
+    "en": "The engine switches off automatically when stopped, for example at a light, to save fuel, and restarts when you release the brake."
+   },
+   "action": {
+    "he": "אין צורך בפעולה; אפשר לכבות את המערכת זמנית בכפתור אם רוצים שהמנוע יישאר פועל.",
+    "en": "No action needed; you can switch the system off for a drive using its button if you want the engine to keep running."
+   }
+  },
+  {
+   "id": "spare-tyre",
+   "color": "amber",
+   "g": "dash2-spare-tyre",
+   "severity": "soon",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "גלגל חירום מותקן",
+    "en": "Space-saver spare fitted"
+   },
+   "meaning": {
+    "he": "מותקן גלגל חירום צר (Space-Saver) המיועד לנסיעה זמנית בלבד.",
+    "en": "A narrow space-saver spare wheel is fitted, meant for temporary use only."
+   },
+   "action": {
+    "he": "נוסעים במהירות מוגבלת, בדרך כלל עד 80 קמ״ש, נמנעים מנסיעה ארוכה, ומחליפים לצמיג רגיל בהקדם.",
+    "en": "Keep to a reduced speed, usually up to 80 km/h, avoid a long trip, and fit a proper tyre again soon."
+   }
+  },
+  {
+   "id": "distance-warning",
+   "color": "amber",
+   "g": "dash2-distance-warning",
+   "severity": "ok",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "name": {
+    "he": "אזהרת מרחק מלפנים",
+    "en": "Forward distance warning"
+   },
+   "meaning": {
+    "he": "המערכת מזהה שאתם מתקרבים מדי לרכב שלפניכם.",
+    "en": "The system has noticed you are following the vehicle ahead too closely."
+   },
+   "action": {
+    "he": "מגדילים את המרווח מהרכב שלפניכם.",
+    "en": "Increase your gap from the vehicle ahead."
+   }
+  }
+ ]
+}

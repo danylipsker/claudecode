@@ -1,0 +1,121 @@
+{
+ "chapter": "markings-signals",
+ "title": "Road markings, traffic lights and signals",
+ "summary": "The lines on the road, the kerb colours, the traffic light sequence, and what to do when a person is directing traffic.",
+ "lessons": [
+  {
+   "id": "ms-lines",
+   "title": "Lengthwise lines: what you may cross",
+   "summary": "A broken line invites you across, a continuous line forbids it, and a double line - the clearest of all, once you know how to read it.",
+   "terms": [
+    "broken-line",
+    "continuous-line",
+    "double-line",
+    "lane"
+   ],
+   "signs": [
+    "801",
+    "803",
+    "807"
+   ],
+   "body": "The lines painted on the road are signs in every sense (series 800) - they're just drawn on the road surface instead of standing beside it.\n\n# Broken line and continuous line\n[[sign:801]] is a [[term:broken-line|broken (dashed) line]] - you may cross it, for example to overtake or change lane, when the road is clear. [[sign:803]] is a [[term:continuous-line|continuous (solid) line]] - you must not cross it or drive on it at all.\n\n[[fig:line-crossing]]\n\n# Double line\nWhen [[term:double-line|two lines]] run side by side, look at the line closer to you: under [[sign:806]], if it's broken - you may cross, provided the road is clear, even if the far line is continuous. If the line closer to you is continuous - you must not cross, even if the far line is broken. [[sign:802]] is a double dashed line marking a lane that opens and closes according to a lane traffic light, covered later in this chapter - don't enter it unless a sign has opened it for you.\n\n:::law\nOn a road divided by a continuous separation line, you drive to the right of the line and don't cross it, unless there's an adjoining dashed line on its right-hand side (reg. 36(c)).\n:::\n\n# Edge of the carriageway\n[[sign:807]] is a continuous yellow line marking the edge of the carriageway, where there's no kerb. You drive to its left and don't cross to its right, except to avoid an accident, for a slow vehicle making way, or to comply with the law.\n\n# Dedicated lanes\n[[sign:808]] is a block line marking a dedicated [[term:lane|lane]] - an exclusive turn, acceleration, deceleration or weaving lane. You drive in it according to the lane's purpose, not the lane you were in before.\n\n:::tip\nAt a worksite, orange lines are painted instead of the white ones (signs 918 to 924). When they appear, they override the old lines beneath them.\n:::",
+   "keyPoints": [
+    "You may cross a broken line when the road is clear; you must never cross a continuous line.",
+    "On a double line, whether you may cross is set by the line closer to you - not the far line.",
+    "You cross a continuous separation line only where there's an adjoining dashed line on its right-hand side (reg. 36(c)).",
+    "An orange line at a worksite overrides an old white line beneath it."
+   ]
+  },
+  {
+   "id": "ms-transverse",
+   "title": "Lines across the road: stopping, crossing and separation",
+   "summary": "A stop line, give-way markings, a pedestrian crossing and arrows on the road - each one tells you something different about what you must do exactly here.",
+   "terms": [
+    "stop-line",
+    "give-way-markings",
+    "lane-arrow-marking",
+    "diagonal-hatching",
+    "bus-lane-marking",
+    "bicycle-lane-marking"
+   ],
+   "signs": [
+    "810",
+    "811",
+    "815"
+   ],
+   "body": "Lines that cross the road widthwise, instead of running along it, usually mark an exact place to stop, to cross, or to avoid entering.\n\n# Stop line\n[[sign:810]] is a [[term:stop-line|stop line]] - here, not a metre before and not a metre after, a vehicle must stop when there's a duty to stop: at a red light, at a stop sign, or before a railway crossing.\n\n# Give-way markings\nBefore the stop line of a give-way sign, [[term:give-way-markings|give-way markings]] are sometimes painted - white triangles that remind you from a distance that you must give way, even before you see the sign itself.\n\n# Pedestrian crossings\n[[sign:811]] is a pedestrian crossing - a wide crossing split into two, and you cross in its right-hand half. [[sign:812]] is a bicycle crossing. The driver's rights and duties at a pedestrian crossing are explained in the chapter [[chapter:right-of-way|Right of way and junctions]].\n\n# Marked separation area\n[[sign:815]] marks traffic islands in white - you must not drive, stop or park on them. Sometimes the separation between lanes is marked with [[term:diagonal-hatching|diagonal hatching]] alone, without a raised island - the prohibition is the same: you don't drive, stop or park on the hatched area.\n\n# Arrows and words on the road\n[[sign:813]] is a white arrow in a lane that sets which direction you may enter the junction from that lane - you must obey it, even if that means giving up your original plan. [[sign:814]] are diagonal chevron arrows instructing you to move to the adjacent lane, because the current lane is ending. Words painted on the road - like the [[term:bus-lane-marking|word \"bus lane\"]] in a public transport lane, or a [[term:bicycle-lane-marking|cycle lane marking]] - repeat what the sign at the side already states, so it can also be seen from above.\n\n:::remember\nAn arrow painted in a lane is a binding instruction, not a suggestion - even if the lane next to it looks empty and more convenient.\n:::",
+   "keyPoints": [
+    "You stop exactly on the stop line, not before it and not after it.",
+    "White give-way markings warn from a distance that you must give way, before you see the sign.",
+    "An arrow painted in a lane is binding - you must enter the junction in the direction it shows.",
+    "Traffic islands and a hatched area are forbidden alike for driving, stopping and parking."
+   ]
+  },
+  {
+   "id": "ms-kerbs",
+   "title": "Kerb colours",
+   "summary": "A painted kerb tells you without words whether you may park there, and under what condition - four colours, and each one says something different.",
+   "terms": [
+    "yellow-curb-marking",
+    "no-stopping-sign"
+   ],
+   "signs": [
+    "816",
+    "817",
+    "818"
+   ],
+   "body": "Alongside a parking sign, the kerb itself is sometimes painted too. The colour alone already states the rule, even without looking for a sign.\n\n[[fig:kerb-colours]]\n\n# Red-white: forbidden completely\nWhen the kerb is painted red-white, all stopping and parking by a vehicle on that side is forbidden, unless it's needed to comply with the law - exactly like [[term:no-stopping-sign|sign 433]].\n\n# Blue-white: paid parking\nA kerb painted alternately blue-white ([[sign:817]]) marks parking permitted for a fee, under sign 439 placed beside it, below sign 626 or 627.\n\n# Red-yellow: stopping for an authorised vehicle only\n[[term:yellow-curb-marking|A red-yellow kerb]] is not an absolute prohibition: stopping is forbidden to every vehicle, except the type of vehicle allowed by the sign above it - usually a bus or a taxi - and only to pick up or drop off passengers (sign 511).\n\n# Black-white: highlighting only\nA black-white kerb ([[sign:816]]) sets no parking prohibition at all - it only highlights and emphasises pavements, dividers and built traffic islands, so they're seen better, especially at night.\n\n:::warn There's no grey kerb\nThere's no grey kerb colour recognised in the regulations in Israel - that's a common misconception. A kerb that hasn't been painted at all says nothing about parking by itself; the rule follows a sign, if there is one, and otherwise the ordinary rules.\n:::\n\n[[sign:818]] is the official version of red-white, and [[sign:819]] marks a place where parking is permitted, in white, on the road itself.",
+   "keyPoints": [
+    "Red-white: all stopping and parking forbidden.",
+    "Blue-white: parking permitted for a fee.",
+    "Red-yellow: stopping permitted only for the type of vehicle stated on the sign, to pick up or drop off passengers only.",
+    "Black-white: highlighting only, doesn't forbid parking.",
+    "There's no grey kerb recognised in the regulations in Israel."
+   ]
+  },
+  {
+   "id": "ms-lights",
+   "title": "The traffic light: the sequence of colours and what they mean",
+   "summary": "Red, red and amber together, green, flashing green, amber - and back to red. Every stage in the Israeli traffic light sequence means something different.",
+   "terms": [
+    "traffic-light",
+    "red-light",
+    "green-light",
+    "yellow-light",
+    "flashing-yellow-light",
+    "pedestrian-signal"
+   ],
+   "signs": [
+    "701",
+    "703",
+    "705"
+   ],
+   "body": "The [[term:traffic-light|traffic light]] is a sign that speaks in light instead of a picture, and at most junctions in Israel it runs through the same fixed sequence.\n\n[[widget:traffic-light]]\n\n# The sequence of lights for vehicles\n[[sign:701]] is a [[term:red-light|red light]] - stop before the stop line. [[sign:702]] is red and amber together - you're still stopped, but getting ready to move off. [[sign:703]] is a [[term:green-light|green light]] - go, and give way to anyone already in the junction. Near the end of the green phase it flashes a few times - that's a warning that amber is coming, not an instruction to speed up. [[sign:705]] is a [[term:yellow-light|amber light]] - stop if you can stop safely; if you've already entered the junction or can't stop safely, complete the crossing at once.\n\n:::warn\nSpeeding up to get through on amber is exactly the opposite of what the light is asking you to do.\n:::\n\n# Green arrow and flashing amber\n[[sign:704]] a green arrow permits movement only in the direction of the arrow. [[sign:706]] is a [[term:flashing-yellow-light|flashing amber light]] - usually during quiet hours - proceed with care under the ordinary rules. Note: this is the only light that a traffic light doesn't override a priority sign with (reg. 22(b)).\n\n# Pedestrians and cyclists\n[[term:pedestrian-signal|Pedestrian signal]]: [[sign:718]] a red figure - don't start crossing; anyone already on the road completes the crossing at once. [[sign:719]] a green figure - you may cross with care. [[signs:720,721]] the same principle, in the shape of a bicycle, for cyclists.\n\n# Signal for public transport and for lanes\nOn public transport and light-rail lanes there's sometimes a signal with rectangular white lights ([[signs:708,710,711]] and others), meant only for the vehicles permitted to drive there. Above lanes on a busy road, lane control signals are placed: [[sign:723]] a red X - lane closed; [[sign:724]] a green arrow - lane open; [[signs:725,726]] move to the adjacent lane, or an exit lane.\n\n# Railway crossing\n[[sign:722]] a double flashing red light - stop before the stop line, and if there isn't one, at least {{fact:rail.stop_distance_min_m}} from the nearest rail. More on railway crossings is in the chapter [[chapter:special-roads|Special roads and situations]].",
+   "keyPoints": [
+    "The traffic light sequence: red, red and amber together, green (with a warning flash near the end), amber, and back to red.",
+    "A flashing amber light is the only one that doesn't override a priority sign.",
+    "A red pedestrian signal forbids starting to cross; anyone already on the road completes the crossing at once.",
+    "Above a railway crossing, a double flashing red light requires stopping at least {{fact:rail.stop_distance_min_m}} from the rail if there's no stop line or barrier."
+   ]
+  },
+  {
+   "id": "ms-police",
+   "title": "When a person is directing traffic",
+   "summary": "A police officer, a warden or a flagger directing traffic override every sign and every traffic light - and you need to recognise their signals as fast as you recognise a red light.",
+   "terms": [
+    "police-hand-signal",
+    "traffic-police-officer",
+    "municipal-inspector",
+    "flagger"
+   ],
+   "signs": [],
+   "body": "Above every sign and every traffic light stands the instruction of a person. A [[term:traffic-police-officer|police officer]] in uniform, a military police officer, an authorised [[term:municipal-inspector|municipal traffic warden]], or a [[term:flagger|flagger]] on behalf of the signage authority at a worksite - all of them may direct traffic, and you must obey them even when the instruction contradicts a sign, a traffic light or another rule (reg. 23).\n\n# The two basic signals\nA [[term:police-hand-signal|police hand signal]] is a fixed language (reg. 24):\n- **Go** - one arm, or both, extended parallel to the direction of traffic, palm open.\n- **Stop** - a raised hand with an open palm facing the direction of traffic; anyone driving from the direction the palm faces, or from the direction the officer's back faces, must stop.\n\n:::remember\nThe signal is binding even if it's given imprecisely - as long as there's no reasonable doubt about its meaning.\n:::\n\n# The order that prevails\nWhen instructions conflict: an authorised person's instruction always prevails - even over a red light, even over a stop sign. A traffic light, except a flashing amber light, overrides a priority sign. A sign overrides the general rule, as long as it was placed lawfully. More on the signs and traffic lights themselves is in this chapter's lessons above; on the order of priority at junctions - in the chapter [[chapter:right-of-way|Right of way and junctions]].\n\n# A hand-held sign held by a traffic controller\n[[sign:304]] (stop) and [[sign:305]] (proceed with care) are boards held by hand by a traffic controller, and they're as valid as a permanent sign placed lawfully.\n\n# Railway crossing\nA driver approaching a crossing must slow down now, so they can stop on the spot if needed (reg. 55). If a barrier, a flashing warning signal, or a stop sign appears, you must stop before the stop line, or if there's none, before the barrier, or if there's no barrier, at least {{fact:rail.stop_distance_min_m}} from the nearest rail, and not continue until the barrier rises fully or the warning signal stops (reg. 56). The full procedure, including what to do if you get stuck on the track, is in the chapter [[chapter:special-roads|Special roads and situations]].",
+   "keyPoints": [
+    "The instruction of a police officer, an authorised warden or a flagger overrides every sign and traffic light, even when it contradicts them.",
+    "Go - an arm extended parallel to the traffic; Stop - a raised hand facing the direction of traffic.",
+    "The signal is binding even if it isn't given precisely, as long as there's no reasonable doubt about its meaning.",
+    "Before a railway crossing you slow down so you can stop on the spot, and you stop at the barrier, at a warning signal, or at a stop line."
+   ]
+  }
+ ]
+}

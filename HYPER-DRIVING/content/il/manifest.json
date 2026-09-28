@@ -1,0 +1,1179 @@
+{
+ "format": 1,
+ "jurisdiction": "il",
+ "name": {
+  "he": "ישראל",
+  "en": "Israel"
+ },
+ "authority": {
+  "he": "משרד התחבורה והבטיחות בדרכים",
+  "en": "Ministry of Transport and Road Safety"
+ },
+ "version": "2026.09.28-1",
+ "published": "2026-09-28",
+ "defaultLanguage": "he",
+ "languages": [
+  "he",
+  "en"
+ ],
+ "files": [
+  {
+   "path": "changelog.json",
+   "role": "changelog",
+   "sha256": "2583022f3b89294a1bacdb9194e8838ea0d3979fce07c7fd56684e99dd2570d2",
+   "bytes": 291
+  },
+  {
+   "path": "course.json",
+   "role": "course",
+   "sha256": "227830f70d39e38253bb09cb44a20bd6ccda405a15b47af8d332c1068ff9a06a",
+   "bytes": 2384
+  },
+  {
+   "path": "dash.json",
+   "role": "dash",
+   "sha256": "66e73c5504359e2c09702826968c933bd65157a396c137acf56694d92d50aecf",
+   "bytes": 36402
+  },
+  {
+   "path": "en/lessons/accidents-emergencies.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "42a777c85c5a57ed2d2cd452408161464a9352f5698ee7e93a6cd5702cc29e66",
+   "bytes": 15202
+  },
+  {
+   "path": "en/lessons/brakes.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "75aebbc14ff92c93def6889a7c7ec020ab1249ef3a15c602d3402e8fd25f381b",
+   "bytes": 13099
+  },
+  {
+   "path": "en/lessons/breakdowns.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "b99ba48b28a1dcb4d33c28fed95e4589f0ebe0d3c93783f07cba2f6d9c8c0cc8",
+   "bytes": 21117
+  },
+  {
+   "path": "en/lessons/buses.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "5b7dd9dd79687da084e81c6e0baea07f18554d0a112805af212e0211112b85aa",
+   "bytes": 15691
+  },
+  {
+   "path": "en/lessons/dashboard.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "2639d57cdd83b800c0063c7e7e5042329e8bcfe67eae435303c58400de4d9ae0",
+   "bytes": 10031
+  },
+  {
+   "path": "en/lessons/defensive-driving.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "d18074067569d8e19b145f5d55abcaf0732c3509514046f8580fcc20b6cec128",
+   "bytes": 16563
+  },
+  {
+   "path": "en/lessons/drivetrain.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "d4bb12a340336a00def0072d899e144a34b367389d413b15e3ecf1ec4bbee04d",
+   "bytes": 13124
+  },
+  {
+   "path": "en/lessons/eco-driving.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "9cf23ebeffed5158dc97749bcd8fa33f24d5dcdaffcc3a072d72f3f6b097bf40",
+   "bytes": 14852
+  },
+  {
+   "path": "en/lessons/electrical.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "2324500165685d273bb945b107160842f61898a217a56f02c81a62dd5c1f042c",
+   "bytes": 14497
+  },
+  {
+   "path": "en/lessons/enforcement.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "e5a8b349fe99beddb6d876ffc32d56c9b95bfdd03a7dc88ce58997da771af8ee",
+   "bytes": 18055
+  },
+  {
+   "path": "en/lessons/engine.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "b322765880ad49ca710f8053bd31b16caeb7d9a04e4424bd8c7b42518b3c04b0",
+   "bytes": 16533
+  },
+  {
+   "path": "en/lessons/ev-hybrid.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "9a5ea4d3615973d8c78ad0e7cf9fbfcfc5aa5bb40c12e6a0cd90084964b60c78",
+   "bytes": 18233
+  },
+  {
+   "path": "en/lessons/heavy-vehicles.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "65cd1b8f798e5877671fc705280f614be4ce949e85d0c8e067db720a5024b5f3",
+   "bytes": 23827
+  },
+  {
+   "path": "en/lessons/human-factor.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "9cb4fa76876c4f6c73a34effecedfeb6c4f9e4dd44916f3913fa6586b562fcad",
+   "bytes": 18754
+  },
+  {
+   "path": "en/lessons/lanes-overtaking.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "7d6c909ec2b919ebb2c2ed1ead161daefe60b9c572554161bef487ee1bfda7f7",
+   "bytes": 20600
+  },
+  {
+   "path": "en/lessons/licensing.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "bdc328d8d999c444154f79d12bfcfef98bf642b99b7a9656017f0ca4fd147880",
+   "bytes": 18569
+  },
+  {
+   "path": "en/lessons/maintenance.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "2ac94334a9b0801be70d407d0d254ec8fb41656947ec5ff00b80bf7b14ae3eee",
+   "bytes": 13655
+  },
+  {
+   "path": "en/lessons/markings-signals.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "f8d9f3fcdf021ed3b3eb495bec1d4281a5be81444c0d260c918e4eb0e7b4628e",
+   "bytes": 14130
+  },
+  {
+   "path": "en/lessons/motorcycles.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "74685fd9f510138389fec7876b1a1f1003772adb4d0e963b8abe2838f9d58e35",
+   "bytes": 19807
+  },
+  {
+   "path": "en/lessons/passenger-safety.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "2257eb9c5684619ce50051a51a88e9ae982b35cb7549cd62d360b40ad983638d",
+   "bytes": 15087
+  },
+  {
+   "path": "en/lessons/right-of-way.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "df0049512707aea68ce399aead3f157f14785231db60290bd494305a62ce61df",
+   "bytes": 23025
+  },
+  {
+   "path": "en/lessons/road-basics.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "4be2bd601cdd9c50c9dca59256c69f4ad5110dded058c9ddd9b7a16c66d8b278",
+   "bytes": 20777
+  },
+  {
+   "path": "en/lessons/safety-systems.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "823de49158a69c9e1c7e77c82ddc737385130b752757a4a670fbdaf3630c1d2c",
+   "bytes": 9591
+  },
+  {
+   "path": "en/lessons/signs-intro.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "e69adf9b94123c53353296c74d9821d0c20623c6250541a0df443efef5bbc492",
+   "bytes": 26093
+  },
+  {
+   "path": "en/lessons/special-roads.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "fa2e10e722cc9afe1705cab0585ce9d12cd7fc6afbc4a268c1a8ba847fccc6f2",
+   "bytes": 24874
+  },
+  {
+   "path": "en/lessons/speed-distance.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "318e9b8915f1177d8bbe2cd634b7d80d509d3405855ec74f1840e8535586e4c7",
+   "bytes": 12862
+  },
+  {
+   "path": "en/lessons/steering-suspension.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "5a68bc57c7ecb061230c720f0caba4e63b9355791a0dd637a063754d070ea053",
+   "bytes": 8099
+  },
+  {
+   "path": "en/lessons/stopping-parking.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "1d8401a7a622b829a155cc1f43ce3881e5599448f72df60329df8da835f0f1d0",
+   "bytes": 21950
+  },
+  {
+   "path": "en/lessons/troubleshooting.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "3d35565cc91a89a088856e85d4a8756eef9e83e9972a7a1d7822f98b5e0bf459",
+   "bytes": 16622
+  },
+  {
+   "path": "en/lessons/tyres.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "59565d5cd9331b42dcab3235db57732df89fffb28770b249d058fd3659b2eba4",
+   "bytes": 15860
+  },
+  {
+   "path": "en/lessons/vehicle-basics.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "2a3ccc73b8dc984aa3a4132b8f0ffe4b0eb7d1c62bf90ef98b3652e3ad7e80d7",
+   "bytes": 14253
+  },
+  {
+   "path": "en/lessons/visibility-weather.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "305c64dd13ca205cc7d806bfc82dda1dcd4dff3cdba750e53dbfccd9465d5099",
+   "bytes": 17603
+  },
+  {
+   "path": "en/lessons/vulnerable-users.json",
+   "role": "lessons",
+   "lang": "en",
+   "sha256": "c94e06e2706d96ea38f55b1827caf85d3dcf49f4f8228d08e04b4420d4fac8fa",
+   "bytes": 19364
+  },
+  {
+   "path": "en/questions/accidents-emergencies.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "409756908f8295060f4e1b2d00103151de989cccfc53116e8e8d931c815b4fdc",
+   "bytes": 14794
+  },
+  {
+   "path": "en/questions/brakes.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "7da1ce7fad91906023c2299c338c26bd23ee0e3781f3a181b1b987872876ae62",
+   "bytes": 11871
+  },
+  {
+   "path": "en/questions/breakdowns.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "e7d45014f7a693977d1c74cfdaddfdbd5811312ead172ab1eabdc2c0cbfcc5cf",
+   "bytes": 15135
+  },
+  {
+   "path": "en/questions/buses.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "5d7284518723176461d6555179feb65f545238c16e55bf43f58a89c9fec22df7",
+   "bytes": 10208
+  },
+  {
+   "path": "en/questions/dashboard.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "f405b7637b1c6572acd57c80533043652c652e8855931dc94c36b17dc5c971dd",
+   "bytes": 9223
+  },
+  {
+   "path": "en/questions/defensive-driving.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "4688db5654eff6c5cd01da0391dde1ad16d7660b86a8d6abc34c3ae7b052f6e5",
+   "bytes": 12481
+  },
+  {
+   "path": "en/questions/drivetrain.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "c4816a1734f9d0b653589536888e83dc42bbfb9020a11e22ddd8d3f9577cc86b",
+   "bytes": 11136
+  },
+  {
+   "path": "en/questions/eco-driving.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "fa46c4bed40ba374e348697eba4cd5993796860789e0fd1dcca7f00ebc3a4146",
+   "bytes": 7466
+  },
+  {
+   "path": "en/questions/electrical.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "ae21ef04f5ec24551bd7f45542991557b020495445cca48aa50794f8ea51a074",
+   "bytes": 12228
+  },
+  {
+   "path": "en/questions/enforcement.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "8ee421862ef072f41621ab0f6acba5612d8ff7a04c6987d858413b15893e172f",
+   "bytes": 14900
+  },
+  {
+   "path": "en/questions/engine.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "b7c18722e3399f61bb3df8e8fad4b4e40b558b9c0658a2f58a82298b8d4f76ad",
+   "bytes": 12369
+  },
+  {
+   "path": "en/questions/ev-hybrid.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "11affc59c243d66c26d788554498634890b67c3399aa4d6735a9ab3a99244745",
+   "bytes": 12160
+  },
+  {
+   "path": "en/questions/heavy-vehicles.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "a7efddde042a33d5ddcf728c17e64ed17911252984d99491586b15931ebe40f0",
+   "bytes": 14542
+  },
+  {
+   "path": "en/questions/human-factor.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "622f1e7ef29eac66e4de2852242e5885d18eafcbbe52d3b5296189ec8020a395",
+   "bytes": 13942
+  },
+  {
+   "path": "en/questions/lanes-overtaking.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "c19b5af594dd6f62236852ac7ad2240aaea90cfb577f758918bd7164bb910cd9",
+   "bytes": 17233
+  },
+  {
+   "path": "en/questions/licensing.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "30d3e710a0f92bf4b1796f21d2251d9950c5dccff3d3387a1e67dd3616760f31",
+   "bytes": 14000
+  },
+  {
+   "path": "en/questions/maintenance.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "cc035b58d929fb274e94f9f0e0f1a44ab20199a6b34d66a905bfab5619fb2ea7",
+   "bytes": 9920
+  },
+  {
+   "path": "en/questions/markings-signals.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "3e755f528139feb5081490df0e9c45edc58bcf180acd358499ceda3319f60816",
+   "bytes": 12410
+  },
+  {
+   "path": "en/questions/motorcycles.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "87c98e11e661213432e75c52b69250c2317da0986f1841e74c33de3e9c8d9494",
+   "bytes": 12953
+  },
+  {
+   "path": "en/questions/passenger-safety.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "ab2e79183eda89a0fed59d32d8111ce23d210fc3eca05b6c4dbd3a7bee838c47",
+   "bytes": 12956
+  },
+  {
+   "path": "en/questions/right-of-way.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "b7432516998da4988937b80734bd3f27706b47957955ea9f32c53441d5fb7b29",
+   "bytes": 17678
+  },
+  {
+   "path": "en/questions/road-basics.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "44f3b496c00ca0d7fceae3cde816d354de9c2deb4c4dce9e3e133e3c26453113",
+   "bytes": 14389
+  },
+  {
+   "path": "en/questions/safety-systems.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "c007d6e8b9dbfdc2a7beb0be62b0d4b663ea08e628ddc4c6a5e9b5baa4b95084",
+   "bytes": 9527
+  },
+  {
+   "path": "en/questions/signs-intro.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "712b198852150ee590f9eebfc853d1bea45f968a7a737374d94a9dcd0733707b",
+   "bytes": 17383
+  },
+  {
+   "path": "en/questions/special-roads.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "1b6b231ffcc19c47cff76d9acc5551b47a84dbb786a32128aa0a275c384b2913",
+   "bytes": 13185
+  },
+  {
+   "path": "en/questions/speed-distance.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "1a8b8e124f79e52558124cd7806ae70c98243a9426c2d8dd617b5d0c5aa83ddf",
+   "bytes": 11149
+  },
+  {
+   "path": "en/questions/steering-suspension.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "698a25687cfe7308a4c96b22143cb87a9947a691a7f43876f236ac4ca81cf6c6",
+   "bytes": 10391
+  },
+  {
+   "path": "en/questions/stopping-parking.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "f439a0eba093d2b691c068c3b5a935d8e5515f1302a908f020155a6088d3b7fd",
+   "bytes": 13131
+  },
+  {
+   "path": "en/questions/troubleshooting.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "eddd33c961a94c54f70a136d38e4c9bfbfa0423199541b36aef3cb6cb034a734",
+   "bytes": 10082
+  },
+  {
+   "path": "en/questions/tyres.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "4d7f051071f18b99fec65a09255b3816c310833af417141d5d292f28697c40e0",
+   "bytes": 10073
+  },
+  {
+   "path": "en/questions/vehicle-basics.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "5e8968d73988e4ca1365898590fc0b67942328d8c8aff7918f6720113facd100",
+   "bytes": 12739
+  },
+  {
+   "path": "en/questions/visibility-weather.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "e62ea8b7c1e41098f2e4b1b578a6c126cdd733322af8d36f9f21dfd628de4566",
+   "bytes": 14474
+  },
+  {
+   "path": "en/questions/vulnerable-users.json",
+   "role": "questions",
+   "lang": "en",
+   "sha256": "ebbf77dee60b5ba35fc1fd19f67565ac94617efdc4b7bad8e6f583e8258c6f4b",
+   "bytes": 14240
+  },
+  {
+   "path": "en/trees/brake-problems.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "38887de80ec6068f55f02ea85720902785dcdbeb017fd6c355c71fc930bcaf81",
+   "bytes": 6987
+  },
+  {
+   "path": "en/trees/car-pulls-to-side.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "84deb462bf68c15e46882faf74b3fca406cc74fd8e0c60cc1a195eb76e05c983",
+   "bytes": 4495
+  },
+  {
+   "path": "en/trees/electrical-fault.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "5f299b673f30f2b00cc5529b7b51428590da3ef31766d17e9e7c4c66ab2083d8",
+   "bytes": 4924
+  },
+  {
+   "path": "en/trees/engine-overheating.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "0e5c966038e4b2e87f539deb820c1d78effe07f39d12bf520ab30becc111ea16",
+   "bytes": 6864
+  },
+  {
+   "path": "en/trees/engine-power-loss.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "198e4c0200c9d763b33b3fa0fe424e9eda93ebb135d3ef1fd4da6ac621fcbdaa",
+   "bytes": 5191
+  },
+  {
+   "path": "en/trees/gear-problems.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "ad19a105dfd561818f9e27074451d5125ce9b6a9dd9dc8510b82cdcc59019b9d",
+   "bytes": 5951
+  },
+  {
+   "path": "en/trees/leak-under-car.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "742350059bc5ce79a866c8d54d60f1425875e6f9e6e875863a2553311ec75d3e",
+   "bytes": 5186
+  },
+  {
+   "path": "en/trees/smoke-from-car.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "b42c366e2a5bb5623f92d3d61cdc3862ed92b9f991f6bcaade4a6706ad1dfe46",
+   "bytes": 5251
+  },
+  {
+   "path": "en/trees/strange-noise.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "f7e3cce576e7aeb442df9b4ae8a5a9849ba472f3ad27436a8aac3f473f609288",
+   "bytes": 6315
+  },
+  {
+   "path": "en/trees/vibration.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "bd184c3c8211230c4d2981631a88dbd524a2ec129c82bac99398650ea89b32fb",
+   "bytes": 4235
+  },
+  {
+   "path": "en/trees/warning-light-on.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "1943218a2025e45c03b8262465a7b54be48d469a347b67e5e5464a970b7eaada",
+   "bytes": 6326
+  },
+  {
+   "path": "en/trees/wont-start.json",
+   "role": "trees",
+   "lang": "en",
+   "sha256": "4ec3e85b4a7801cc5a45775ef1f334c42659ee3605ae9761ae78d0be9f97fc76",
+   "bytes": 6072
+  },
+  {
+   "path": "exam.json",
+   "role": "exam",
+   "sha256": "71a25a567b54b18fc10a898adeb2f41430f7e5eed65e684f5ccf885882c3c27e",
+   "bytes": 348
+  },
+  {
+   "path": "facts.json",
+   "role": "facts",
+   "sha256": "e2ae9979c54ce7ef1cdf00a998194d42dcd96b34b6ec1f6a9f383c8dc59e1558",
+   "bytes": 198924
+  },
+  {
+   "path": "figures.json",
+   "role": "figures",
+   "sha256": "ec515f7fc0a9bd4296a35edbcd8b6d397058df063823405cf1a67b867cbc6ccc",
+   "bytes": 83953
+  },
+  {
+   "path": "glossary.json",
+   "role": "glossary",
+   "sha256": "a48b8059baa3c33e9ccfde6ca59370a1a96ebd82f26bd98a434bf94276ceb0cc",
+   "bytes": 324255
+  },
+  {
+   "path": "he/lessons/accidents-emergencies.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "957e01388384f400dcd3bde86fc8ec49ed0512791df554bfcdd519d82db713b5",
+   "bytes": 17408
+  },
+  {
+   "path": "he/lessons/brakes.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "6c6767eb0c86da1894a44c3902614c118f49962e8fd74b2498947731656d04a0",
+   "bytes": 15861
+  },
+  {
+   "path": "he/lessons/breakdowns.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "d9f87cd76cbc79d9d757a688221415164cbdeed4ed5882b4590ef623848700a6",
+   "bytes": 24736
+  },
+  {
+   "path": "he/lessons/buses.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "28d4e41b3d817456ae46e36108234284f67960d321f76e1e4175d0008f474c7c",
+   "bytes": 18666
+  },
+  {
+   "path": "he/lessons/dashboard.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "d2bfd5026646d565eb638268680919140a2ecc16541e45bd75509b0583488b9f",
+   "bytes": 12402
+  },
+  {
+   "path": "he/lessons/defensive-driving.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "aef82cb3ec567ccfd5609ee8c5a3203483aac1e6bdc3e9b14c37e00cfde40979",
+   "bytes": 20094
+  },
+  {
+   "path": "he/lessons/drivetrain.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "3e494bf57051cf01440031f30c4633e43fceb14838080bc5bc53f16bee51de94",
+   "bytes": 15835
+  },
+  {
+   "path": "he/lessons/eco-driving.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "f85aea2eaea48c707dbb003618ac4f6c84966fa93ddea4961d83ac9d489399c6",
+   "bytes": 18670
+  },
+  {
+   "path": "he/lessons/electrical.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "45426b4d7de119f70e88f4b47ed2782960378bbd41ba4e85f5ba7012e0f07548",
+   "bytes": 17097
+  },
+  {
+   "path": "he/lessons/enforcement.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "0308dd39c9852d9e7c236696b5cfc776de10da2a60e20a963b0a0de58211376e",
+   "bytes": 20059
+  },
+  {
+   "path": "he/lessons/engine.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "d8cb756128fe286c558034f7ded96527418e2ac61b3285e9a06d5cc3d5029b46",
+   "bytes": 19563
+  },
+  {
+   "path": "he/lessons/ev-hybrid.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "158e35f4008f019f5221e608f9a6d3236f4dc7f48d79daa3fc8c16db794b5737",
+   "bytes": 21479
+  },
+  {
+   "path": "he/lessons/heavy-vehicles.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "b121654d4cfddbd8f4adf789a2076ef0b3ee84a9d4b2e511376989fde4d6cef3",
+   "bytes": 27387
+  },
+  {
+   "path": "he/lessons/human-factor.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "533231146dc73a232ed4520b42f90f23eaa6589a99cfb28c98e7b0648a018d20",
+   "bytes": 22682
+  },
+  {
+   "path": "he/lessons/lanes-overtaking.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "0bed48b09c1a974163647583bc955215f1323e680eee355ee161c4ded0867e38",
+   "bytes": 24574
+  },
+  {
+   "path": "he/lessons/licensing.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "322c95c55dc56481f329bbb6984a57755ad559c47eb3de375498dd43d9e28e2a",
+   "bytes": 21007
+  },
+  {
+   "path": "he/lessons/maintenance.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "6c2c4fc154d4b4b04b68e885dc924ff2974d49ccd0c0ada5b7efae872d9a22e9",
+   "bytes": 16535
+  },
+  {
+   "path": "he/lessons/markings-signals.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "36b060fb089cc1c1e8077b59f9790e0c77837ff6f2b47d52142944b57748bd94",
+   "bytes": 16721
+  },
+  {
+   "path": "he/lessons/motorcycles.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "13776b6e68158985d5641267de386c42a1e21e32be23496797ccb1b3aa5f0af7",
+   "bytes": 24068
+  },
+  {
+   "path": "he/lessons/passenger-safety.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "1120c7dbce36c9a8bcf12e46de1aaec68febe3d34e1f64db50101b716e283837",
+   "bytes": 18387
+  },
+  {
+   "path": "he/lessons/right-of-way.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "079632674af3c3210ccdbdb8992f53a0c894ccee8bead212dac827080aaeef65",
+   "bytes": 27129
+  },
+  {
+   "path": "he/lessons/road-basics.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "1dcbfd79e29588377c55921a8d2cbbabf844f04b65b7fc46808553276a610384",
+   "bytes": 23459
+  },
+  {
+   "path": "he/lessons/safety-systems.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "bd4182a005d9437c2d4356674c9ec42d6894e323382dc6acd9fb29337811658b",
+   "bytes": 11648
+  },
+  {
+   "path": "he/lessons/signs-intro.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "daf4294a654a0a9762d6dd23c3cdd1bad25a7652d772e94fd742d06dd1408ffa",
+   "bytes": 31247
+  },
+  {
+   "path": "he/lessons/special-roads.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "1d1cfeb0e01ddf011618d9f4dd354a74c79b1c5e0ceb6ab2f7db2285797ca166",
+   "bytes": 30381
+  },
+  {
+   "path": "he/lessons/speed-distance.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "5081f7e0f0f6aa107df0ca6aea305b72ecf3e02514bb3df5e7d5615d39fd8985",
+   "bytes": 15301
+  },
+  {
+   "path": "he/lessons/steering-suspension.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "8944c0b6cddcdc9b440ef774990ca48829516b5d660c9c6392cf873e72c44029",
+   "bytes": 9867
+  },
+  {
+   "path": "he/lessons/stopping-parking.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "0808edfde165c60be0a6856d94db33cf95a69b807ae58b8a7ae59224d0ffc6f4",
+   "bytes": 25718
+  },
+  {
+   "path": "he/lessons/troubleshooting.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "6514cbbaa05eee72058e3e79582810bc75125a73edfb15d55360317271dc1328",
+   "bytes": 19847
+  },
+  {
+   "path": "he/lessons/tyres.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "85c59c76cd16f3a45c70ee920af2f67df7c54d1ddda029a2f62c26b52bdfa5aa",
+   "bytes": 18793
+  },
+  {
+   "path": "he/lessons/vehicle-basics.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "789d0b8fecc1e821361d3a3c0ea74cf65814caed3117d333c67d6f76483a3ac7",
+   "bytes": 16506
+  },
+  {
+   "path": "he/lessons/visibility-weather.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "924503901aea00d46a1e09cc5fccf372267f504323fa9b668cf3ecdb52cac84f",
+   "bytes": 21655
+  },
+  {
+   "path": "he/lessons/vulnerable-users.json",
+   "role": "lessons",
+   "lang": "he",
+   "sha256": "55f2810c17cee2ffafaa5e9649535417962df4d16218020089eb807a9b140374",
+   "bytes": 23500
+  },
+  {
+   "path": "he/questions/accidents-emergencies.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "3c7e9eeecd2de8f13e2c6b27b96c8415c320756c81289676d798aec5a7a0e2a2",
+   "bytes": 16332
+  },
+  {
+   "path": "he/questions/brakes.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "1909733c789c6f521cf7853885d9b1451568e146fced4286f559f8d183473afa",
+   "bytes": 14421
+  },
+  {
+   "path": "he/questions/breakdowns.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "675c259bdf76ab5c9ed27519c725fc856815dfebfe21a2f565a4f8dbcf036b6c",
+   "bytes": 17548
+  },
+  {
+   "path": "he/questions/buses.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "644232098eecf244002db2667563edce74d5c91983bf66993fc3c84fa7df03cd",
+   "bytes": 11847
+  },
+  {
+   "path": "he/questions/dashboard.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "afb534510ce45d667e11d74df9020c648272e8452d426cf03fc16f9f3b949dec",
+   "bytes": 11201
+  },
+  {
+   "path": "he/questions/defensive-driving.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "452fdf98976fdbfba4439d6f9883a28eb93abc2a3269f61d05036ffcba04738e",
+   "bytes": 14892
+  },
+  {
+   "path": "he/questions/drivetrain.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "6152b30e1b4c1c190a89ec985ee00e07ec405392c68d44146626731d2e39711e",
+   "bytes": 13278
+  },
+  {
+   "path": "he/questions/eco-driving.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "afda41d23811c2265393ee75b06d82aca2e6a58efd36083a572d5d06c0c1ac1c",
+   "bytes": 8929
+  },
+  {
+   "path": "he/questions/electrical.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "9178f1b87e0ba4a78826089f5b3a9561c1a6607012efa18d3ddcc09523c5e658",
+   "bytes": 14384
+  },
+  {
+   "path": "he/questions/enforcement.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "77379d6b69c032a51acf94aac2ffff50ee837983749c69014f9a0657a9f82e64",
+   "bytes": 16241
+  },
+  {
+   "path": "he/questions/engine.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "7ab31c1526ec3c8b4d31a7bbea98b590307ab2dcfd02929ecbafcbb82f06aa71",
+   "bytes": 14966
+  },
+  {
+   "path": "he/questions/ev-hybrid.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "9afaf4bd75c6a3dfe581738794026906cdd94acef073e1f175e97d7140078139",
+   "bytes": 14355
+  },
+  {
+   "path": "he/questions/heavy-vehicles.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "4cafe2a2fa7e19e5897e91a69deecfab988af226065796373f38aeff0109f5a5",
+   "bytes": 16168
+  },
+  {
+   "path": "he/questions/human-factor.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "4a48b43bd61f40d0299fc7c894da5cccfaf06d235199336946eb30d1d11a68bd",
+   "bytes": 16200
+  },
+  {
+   "path": "he/questions/lanes-overtaking.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "137b2efbe31fe2943a84b84cb458bcd9f1b55b0cc281e46508aff02c78d7b29a",
+   "bytes": 20223
+  },
+  {
+   "path": "he/questions/licensing.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "d42840ca72725ea6a04d9dc2632a4b0e7c640a458165eef086f41a004aa2281d",
+   "bytes": 15764
+  },
+  {
+   "path": "he/questions/maintenance.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "6bb0a44a2a26cba67aec473bb727fc379f45d1012aa12d977d08805323e0500c",
+   "bytes": 11575
+  },
+  {
+   "path": "he/questions/markings-signals.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "b94ba7baa156bad3812d220c6605c4e833ca6aa87fd791ad08ba179b8015ac2e",
+   "bytes": 14406
+  },
+  {
+   "path": "he/questions/motorcycles.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "38ac7a46b6de843b95ddd737d068de422ca8b664207582ecd7a5a0f30785c4c6",
+   "bytes": 14999
+  },
+  {
+   "path": "he/questions/passenger-safety.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "b1ea98f519f4554862fe72595f23a9f2bc3aae9f2d17f04c8ea4d8efc4bdcd80",
+   "bytes": 15284
+  },
+  {
+   "path": "he/questions/right-of-way.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "cf655a45abf14c27d732614521348dd6d40f514190da7ac3ac69943ec69ff60e",
+   "bytes": 20823
+  },
+  {
+   "path": "he/questions/road-basics.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "cdffcd0969d074b599cba03c93ef198f3fcf28c0c3cf7355d0fca7691a4ca795",
+   "bytes": 15634
+  },
+  {
+   "path": "he/questions/safety-systems.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "c45a57d6f043ab3739f18e5ab916f7df2c48dedcaee2253aefa013a10356f3d3",
+   "bytes": 11559
+  },
+  {
+   "path": "he/questions/signs-intro.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "a56d602aac045ade38194115a5dcfa79725d946b14e48f1d20bb66dd900b3a68",
+   "bytes": 20559
+  },
+  {
+   "path": "he/questions/special-roads.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "bd85d0402e9b09efdc1342df6ee4503d453a4262d4b770c763eeff3141d14fc6",
+   "bytes": 15447
+  },
+  {
+   "path": "he/questions/speed-distance.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "9905f69bca1a36cd99ca0c0caffc55c439247cd02883c78b8da25113944695e9",
+   "bytes": 12675
+  },
+  {
+   "path": "he/questions/steering-suspension.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "c0c0e9715bb9da32e88c296b4a2385e27aadd1893b14ed1b60086679d84f3812",
+   "bytes": 12192
+  },
+  {
+   "path": "he/questions/stopping-parking.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "97dc64143f780b7c7fe1e0d401276922b6181fcfa031ab1efe7963f22030169f",
+   "bytes": 14946
+  },
+  {
+   "path": "he/questions/troubleshooting.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "87c2038dcb470bbf98c740027648274286cd7bb31ad6de7008a8f81bb6927b67",
+   "bytes": 12166
+  },
+  {
+   "path": "he/questions/tyres.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "828fbf0708c9472ad819f2a14b4c59cd6a7bb497e01f7ed57485a84ac52ec4f8",
+   "bytes": 11929
+  },
+  {
+   "path": "he/questions/vehicle-basics.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "1fa7f02ddfceaaca8ee4c7b1a6fa8cb385e0c931e29645a573c329e10cd0e79d",
+   "bytes": 14730
+  },
+  {
+   "path": "he/questions/visibility-weather.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "a46b083f22a055a1c45edc6228083ba7c850795de36768f6f1d990416f074a54",
+   "bytes": 17056
+  },
+  {
+   "path": "he/questions/vulnerable-users.json",
+   "role": "questions",
+   "lang": "he",
+   "sha256": "e4117b7e68c4c59b391d58cc8da9c86884469a94a40d97b845ea4c8425a9ed52",
+   "bytes": 16534
+  },
+  {
+   "path": "he/trees/brake-problems.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "3c42600b5d97b0a5a2db7b1ed233429d1d62262873ce3a3c1901e80250f220ad",
+   "bytes": 8411
+  },
+  {
+   "path": "he/trees/car-pulls-to-side.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "f294d6c2a476dd8428d9ff4d82665550e91761e5ca622e5ef74eeb7978ebe228",
+   "bytes": 5221
+  },
+  {
+   "path": "he/trees/electrical-fault.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "052ebc05df40af2088f8bb4d92030427d72218f680fd9c3bfeb4b33a58940de3",
+   "bytes": 5679
+  },
+  {
+   "path": "he/trees/engine-overheating.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "08655d52ee15f4e0c6b3bd965adb9bce39b50dc3b4e6dfee312368e0b8f036d0",
+   "bytes": 8117
+  },
+  {
+   "path": "he/trees/engine-power-loss.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "8f3f7d4e40d25e1771ffc1073db3ec4a6933510d50aa133f12462a1dd7135ca0",
+   "bytes": 6220
+  },
+  {
+   "path": "he/trees/gear-problems.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "8a3599f61e14744f28700bc1af96ccf5435c6ed495219a9323ae6463686026ac",
+   "bytes": 6997
+  },
+  {
+   "path": "he/trees/leak-under-car.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "a03762607ff40f7c60ffaef64136cf9d8495f052164031f474207a3c5838c68e",
+   "bytes": 6259
+  },
+  {
+   "path": "he/trees/smoke-from-car.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "22834098dd66e5969a6e767f48ff2937619a4448a75d01bafb59f9b6e3d115df",
+   "bytes": 6068
+  },
+  {
+   "path": "he/trees/strange-noise.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "c6820037b205d33affc9710a15ebe586c36b6f37c7ed5d059ae65170ac6da93c",
+   "bytes": 7449
+  },
+  {
+   "path": "he/trees/vibration.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "0c614fa05c8932496c349c4d5f6931e1d595d357fda44531f2287a853dd0d054",
+   "bytes": 5037
+  },
+  {
+   "path": "he/trees/warning-light-on.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "586fc3b128f40a9507bf8c360225419b7f461e793242f31e45a7bba1c633b49e",
+   "bytes": 7407
+  },
+  {
+   "path": "he/trees/wont-start.json",
+   "role": "trees",
+   "lang": "he",
+   "sha256": "8d0696af0ac88a73227467802ea45231ffa0981e5b73fc044343b555d58a2c4e",
+   "bytes": 7179
+  },
+  {
+   "path": "licences.json",
+   "role": "licences",
+   "sha256": "6ae0c177be5c37b8f0c4391373e8512d2bc1db22906bc6a48b76d34bbc622bd3",
+   "bytes": 3326
+  },
+  {
+   "path": "maintenance.json",
+   "role": "maintenance",
+   "sha256": "f5b5c88475bd75746eacf67fba281889c24820e9736b768e5712eae526a3f078",
+   "bytes": 4145
+  },
+  {
+   "path": "notices.json",
+   "role": "notices",
+   "sha256": "c37e305cf3a6aa24fdf70dc463daee14b8e3aa1b12148ae81abd96b447f605ec",
+   "bytes": 1035
+  },
+  {
+   "path": "signs.json",
+   "role": "signs",
+   "sha256": "d67226014028661fbc0f42cf0b2943304f8b8eab5dd8b6ea2cae5dcdbc3ce84c",
+   "bytes": 378127
+  }
+ ]
+}

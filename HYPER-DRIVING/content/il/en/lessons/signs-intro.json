@@ -1,0 +1,222 @@
+{
+ "chapter": "signs-intro",
+ "title": "Signs: the language of the road",
+ "summary": "How the sign chart is built, and what the key signs in each of its nine series say.",
+ "lessons": [
+  {
+   "id": "sg-overview",
+   "title": "How the sign system is built",
+   "summary": "Every sign belongs to one of nine families, and each family has a fixed shape and colour - so you can recognise a sign without reading a single word.",
+   "terms": [
+    "traffic-sign",
+    "warning-sign",
+    "mandatory-sign",
+    "prohibition-sign",
+    "priority-sign",
+    "guide-sign",
+    "supplementary-sign",
+    "roadworks-sign"
+   ],
+   "signs": [
+    "301",
+    "302",
+    "611"
+   ],
+   "body": "Traffic signs speak one language across the whole country: anyone who knows the rules of shape and colour recognises a [[term:traffic-sign|sign]] they have never seen before, even before reading what is written on it.\n\n:::law\nA road user must obey the instructions given by a sign; the accused has a good defence only if they prove the sign was placed, marked or fixed unlawfully (reg. 22(a)).\n:::\n\n# Nine families and one appendix\nThe Israeli sign chart is divided into nine series by hundreds, plus a small appendix of symbols:\n\n| Series | Type | Typical shape and colour |\n|---|---|---|\n| 100 | [[term:warning-sign|Warning]] | Triangle, point up, red border |\n| 200 | [[term:mandatory-sign|Mandatory]] | Blue circle, white symbol |\n| 300 | [[term:priority-sign|Priority]] | Every sign has its own unique shape - like [[sign:301]] and [[sign:302]] |\n| 400 | [[term:prohibition-sign|Prohibition]] | Circle with a red border |\n| 500 | Public transport arrangements | Blue circle or rectangle |\n| 600 | [[term:guide-sign|Guidance and information]] | Rectangle: blue, green, brown or white |\n| 700 | Traffic lights | Coloured light - in the chapter [[chapter:markings-signals|Road markings, traffic lights and signals]] |\n| 800 | Road markings | Painted on the road surface itself - also in the markings-signals chapter |\n| 900 | [[term:roadworks-sign|Roadworks]] | Like 100 to 800, but in orange |\n| S | Symbol appendix | A small symbol added to a guide sign |\n\nSeries 300 is the exception: every sign in it has a deliberately different shape, so it can be recognised even covered, dirty, or seen from the side.\n\n# Supplementary plates\nA small [[term:supplementary-sign|supplementary sign]] is sometimes placed under a main sign, adding a distance, a section of road, a direction or an exception - without being an independent sign in its own right. For example, sign 630 adds a distance in metres to the sign above it, and sign 439 carries a message that has no matching sign of its own on the chart.\n\n# When more than one instruction applies at the same place\nSometimes several instructions apply at once, and then a fixed order of priority applies: the instruction of an authorised person - a police officer, an authorised warden or a flagger - overrides everything; a traffic light, except a flashing yellow light, overrides a priority sign (reg. 22(b)); and a temporary sign [[term:roadworks-sign|at a worksite]] overrides the permanent sign at the same place, for as long as the work continues. The full order, including police and warden signals, is in the chapter [[chapter:markings-signals|Road markings, traffic lights and signals]], and in the lesson [[lesson:sg-roadworks|Signs at a worksite]] later in this chapter.\n\n:::tip\nOn a road you don't know, look first at the shape and colour of the sign - they already tell you which family it belongs to - and only then at the picture inside it.\n:::",
+   "keyPoints": [
+    "Every sign belongs to one of nine series (100 to 900) or the symbol appendix - and each series has a fixed shape and colour.",
+    "Red triangle = warning, blue circle = mandatory, circle with a red border = prohibition, rectangle = guidance and information.",
+    "A small [[term:supplementary-sign|supplementary sign]] placed under a main sign adds a distance, a section or an exception.",
+    "An authorised person's instruction overrides a traffic light, a traffic light overrides a priority sign (except flashing yellow), and a sign [[term:roadworks-sign|at a worksite]] overrides the permanent sign at the same place.",
+    "You must obey a sign, unless it is proven that it was placed unlawfully (reg. 22(a))."
+   ]
+  },
+  {
+   "id": "sg-warning",
+   "title": "Warning signs: what's ahead",
+   "summary": "A red triangle always means the same thing: something unusual is waiting further along the road - and the picture inside it already tells you what.",
+   "terms": [
+    "warning-sign",
+    "sharp-curve-sign",
+    "road-narrows-sign",
+    "steep-descent-sign",
+    "slippery-road-sign",
+    "speed-bump-sign",
+    "roundabout-ahead-sign",
+    "traffic-light-ahead-sign",
+    "pedestrian-crossing-sign",
+    "children-crossing-sign",
+    "railway-crossing-sign",
+    "tunnel-sign"
+   ],
+   "signs": [
+    "102",
+    "136",
+    "153"
+   ],
+   "body": "[[term:warning-sign|A warning sign]] is always a triangle with the point up, a red border and a white field (series 100). It doesn't prohibit or require anything - it only tells you that a danger or an unusual road condition is waiting ahead.\n\n# Bends and changes of direction\n[[sign:102]] and [[sign:103]] warn of a [[term:sharp-curve-sign|sharp bend]] to the right or left. [[signs:104,105,106]] warn of a series of bends. [[signs:107,108]] add chevron arrows that point the direction - note that the bend itself happens before the board, not after it. [[signs:109,110,111]] warn that [[term:road-narrows-sign|the road narrows]], from both sides or from one side. [[sign:152]] warns of a strong crosswind.\n\n# Junctions and merges\n[[signs:114,115,116,117]] show different junction shapes in advance. [[sign:121]] warns of a [[term:roundabout-ahead-sign|roundabout]] ahead, and [[sign:122]] of [[term:traffic-light-ahead-sign|traffic lights]]. The merge signs [[signs:123,124,125,126]] already show, before the junction itself, who must give way to whom.\n\n# Road surface and descent\n[[sign:101]] warns of an uneven road. [[sign:140]] warns of a [[term:steep-descent-sign|steep descent]] - shift into a low gear in good time. [[sign:141]] warns of a [[term:slippery-road-sign|slippery road]]. [[sign:144]] warns of [[term:speed-bump-sign|speed bumps]].\n\n# People and animals\n[[sign:135]] warns of a [[term:pedestrian-crossing-sign|pedestrian crossing]] nearby. [[sign:136]] warns of [[term:children-crossing-sign|pedestrians, usually children]], nearby - for example near a school. [[signs:137,146,147]] warn of cyclists, animals and work vehicles that may cross the road.\n\n# Railway, tunnel and other warnings\n[[signs:128,129]] warn of a [[term:railway-crossing-sign|railway crossing]]. [[signs:130,131,132]] count down before the crossing: about 300, about 200 and about 100 metres. [[sign:138]] warns of a [[term:tunnel-sign|tunnel]]. [[sign:150]] is a general warning sign, for a dangerous spot that has no dedicated sign of its own. [[sign:153]] warns of deep standing water - don't drive into it.\n\n:::remember\nOn signs 107, 108 and 204 to 207 in the next chapter, the turn itself happens before the sign, not at it - a common mistake is to think it happens level with the sign.\n:::\n\nThe duty to slow down in the situations these signs warn about - before a bend, near children, approaching a pedestrian crossing and more - is set out in the chapter [[chapter:speed-distance|Speed, distance and braking]].",
+   "keyPoints": [
+    "A warning sign is always a triangle with the point up and a red border (series 100).",
+    "On signs 107 and 108 the turn happens before the sign itself, not level with it.",
+    "Merge signs 123 to 126 show who must give way to whom at the merge.",
+    "Railway crossing signs 130 to 132 count down: about 300, about 200 and about 100 metres before the crossing.",
+    "The duty to slow down in the situations these signs warn about is set out in the chapter [[chapter:speed-distance|Speed, distance and braking]]."
+   ]
+  },
+  {
+   "id": "sg-mandatory",
+   "title": "Mandatory signs: what you must do",
+   "summary": "A blue circle doesn't suggest - it requires: a direction of travel, a minimum speed, or a path reserved for one type of road user.",
+   "terms": [
+    "mandatory-sign",
+    "expressway-begin-sign",
+    "minimum-speed-sign",
+    "mixed-street",
+    "traffic-calming-area",
+    "cycle-lane-sign",
+    "pedestrian-path-sign"
+   ],
+   "signs": [
+    "216",
+    "218",
+    "220"
+   ],
+   "body": "[[term:mandatory-sign|A mandatory sign]] is a blue circle with a white symbol or arrow (series 200). Unlike a prohibition sign, it doesn't say what's forbidden - it sets out what you must do.\n\n# Direction of travel at a junction\n[[signs:201,202,203]] require going straight ahead only, or straight ahead with the option of turning right or left. [[signs:204,205,206,207]] require a turn, and here too - some apply before the sign and some after it, exactly as with warning signs. [[signs:208,209,210]] set a combination of straight ahead and a U-turn. [[signs:211,212]] require a U-turn. [[signs:213,214,215]] set which side to pass an obstacle in the road.\n\n# Start of a expressway and minimum speed\n[[sign:216]] marks the start of a [[term:expressway-begin-sign|expressway]] - from this point special rules apply, and entry is forbidden to pedestrians, cyclists and any vehicle that cannot or is not permitted to travel at the required minimum speed. [[sign:217]] marks its end. [[sign:218]] is a [[term:minimum-speed-sign|minimum speed sign]] - for vehicles that can and are permitted to travel at least at the speed shown on it. [[sign:219]] marks a road for motor vehicles only.\n\n# Shared street and traffic-calming zone\n[[signs:220,221]] mark a [[term:mixed-street|shared street]] - pedestrians, children playing and vehicles share the same road, and you drive very slowly and give way to pedestrians. [[signs:222,223]] mark a [[term:traffic-calming-area|traffic-calming zone]], where the maximum speed throughout the area is {{fact:speed.traffic_calming}}.\n\n# Dedicated lanes and paths\n[[signs:224,225]] mark a one-way lane for [[term:cycle-lane-sign|cyclists]] only, including electric bicycles. [[signs:226,227,228,229]] distinguish between a [[term:pedestrian-path-sign|path for pedestrians]] only, a path for cyclists only, a path shared by both, and a path split into two separate halves.\n\n# Toll road or lane\n[[signs:230,231]] mark a road or lane where driving is permitted for a fee, usually with an exemption for buses or for vehicles carrying a minimum number of passengers, if stated on the sign.\n\n:::tip\nDirection signs (201 to 212) are a requirement, not a suggestion: even if the free lane looks more convenient, you must drive in the direction the sign sets.\n:::",
+   "keyPoints": [
+    "A mandatory sign is a blue circle with a white symbol or arrow (series 200), and sets out what you must do.",
+    "Signs 204 to 207 also determine whether the turn happens before or after the sign.",
+    "[[sign:216]] marks the start of a [[term:expressway-begin-sign|expressway]], and [[sign:218]] sets a minimum speed.",
+    "In a [[term:mixed-street|shared street]] and a [[term:traffic-calming-area|traffic-calming zone]] the maximum speed is {{fact:speed.traffic_calming}}.",
+    "Signs 226 to 229 distinguish between a path for pedestrians, a path for cyclists, and a shared or split path."
+   ]
+  },
+  {
+   "id": "sg-priority",
+   "title": "Priority signs: stop, give way and more",
+   "summary": "Ten signs set out who must give way to whom - some require a full stop, some only slowing down, and each has a shape you can't mistake.",
+   "terms": [
+    "priority-sign",
+    "give-way-sign",
+    "stop-sign",
+    "traffic-circle",
+    "priority-road-sign",
+    "give-way-to-oncoming-sign"
+   ],
+   "signs": [
+    "301",
+    "302",
+    "303",
+    "309"
+   ],
+   "body": "[[term:priority-sign|A priority sign]] (series 300) is the only family where every sign has its own different shape on purpose - so you recognise it even covered in leaves, dirty, or seen from the side.\n\n# Give way and stop\n[[sign:301]] is an [[term:give-way-sign|inverted triangle]]: slow down, stop if necessary, and give way to traffic on the crossing road. [[sign:302]] is a [[term:stop-sign|red hexagon]]: a full stop is required, before the stop line if there is one, even if the road looks completely clear - and only then do you give way.\n\n:::warn\nA full stop means the vehicle stands without moving, even for a moment. Slowing right down to a crawl is not a stop, and this is a common offence.\n:::\n\nWhen sign 302 is placed on the left, it applies to a left turn or a U-turn from the same direction; when it's placed above the carriageway, it applies only to the lane beneath it.\n\n# Roundabout\n[[sign:303]] - give way to anyone already in the [[term:traffic-circle|roundabout]], and go around it keeping to the right, anticlockwise. The full procedure for driving in a roundabout - lanes, signalling on exit - is in the chapter [[chapter:right-of-way|Right of way and junctions]].\n\n# Priority road\n[[sign:309]] is a [[term:priority-road-sign|yellow diamond]] marking that you are driving on a road that has priority over every road joining it, until the next junction or interchange, or until sign 310 marks its end. Note: the sign doesn't excuse you from caution if a vehicle does pull out from a side road.\n\n# On a narrow section of road\n[[sign:307]] sets that you must [[term:give-way-to-oncoming-sign|give way]] to traffic coming towards you; sign 308 sets the opposite - you have priority, and the oncoming vehicle waits.\n\n# Pedestrian crossing and a hand-held sign\n[[sign:306]] marks a pedestrian crossing here, and you give way to pedestrians crossing. [[signs:304,305]] are a hand-held sign held by a traffic controller - stop, or proceed with care.",
+   "keyPoints": [
+    "Series 300 is the only one where every sign has a different shape - so it can be recognised even covered or from the side.",
+    "Sign 302 requires a full stop with no movement at all, even when the road looks clear.",
+    "Sign 301 requires slowing down and giving way, not necessarily a full stop.",
+    "In a roundabout (303) you go around keeping to the right, anticlockwise, and give way to anyone already in it.",
+    "Sign 309 marks a priority road until the next junction or until sign 310."
+   ]
+  },
+  {
+   "id": "sg-prohibition",
+   "title": "Prohibition signs: what's forbidden, and where it applies",
+   "summary": "Most prohibition signs are a circle with a red border, and each one forbids something different - and it matters to know how far the prohibition reaches too.",
+   "terms": [
+    "prohibition-sign",
+    "closed-road-sign",
+    "no-entry-sign",
+    "weight-limit-sign",
+    "no-overtaking-sign",
+    "no-turn-sign",
+    "no-u-turn-sign",
+    "speed-limit-sign",
+    "no-parking-sign",
+    "no-stopping-sign",
+    "disabled-parking-sign",
+    "customs-stop-sign",
+    "end-of-restriction-sign"
+   ],
+   "signs": [
+    "420",
+    "426",
+    "432",
+    "433"
+   ],
+   "body": "[[term:prohibition-sign|A prohibition sign]] (series 400) is almost always a circle with a red border. A rule that repeats across the whole series: a prohibition applies from the sign to the next junction, unless an [[term:end-of-restriction-sign|end-of-restriction sign]] appears first.\n\n# Entry forbidden\n[[sign:401]] marks a [[term:closed-road-sign|closed road]] in both directions. [[sign:402]] is [[term:no-entry-sign|no entry for any vehicle]] - for example at the wrong end of a one-way road. [[signs:405,408,409,410,411,412,413]] forbid specific entry: motor vehicles, everything except two-wheelers, motorcycles, work vehicles and tractors, animals, bicycles, pedestrians. [[signs:406,415,416,417]] are [[term:weight-limit-sign|weight limit sign]]s, height and width - more on what the maximum permitted weight means is in the chapter [[chapter:road-basics|The road and its users]].\n\n# Overtaking and turning\n[[sign:420]] is a [[term:no-overtaking-sign|no overtaking]] sign for vehicles with more than two wheels, until the next junction or sign 421. [[sign:422]] is the same prohibition, but only for vehicles over 4 tonnes. [[signs:428,429]] forbid a [[term:no-turn-sign|turn]] right or left at the next junction. [[signs:430,431]] forbid a [[term:no-u-turn-sign|U-turn]] right or left.\n\n# Speed\n[[sign:426]] is a [[term:speed-limit-sign|special speed limit sign]] - you must not exceed the number shown on it, until sign 427 or a junction. The exact values, the sign's ceiling and the vehicle types with tighter limits are set out in the chapter [[chapter:speed-distance|Speed, distance and braking]] - here what matters most is recognising the sign and knowing how far it applies.\n\n# Stopping and parking\n[[sign:432]] forbids [[term:no-parking-sign|parking]] only - a short stop is still allowed. [[sign:433]] forbids [[term:no-stopping-sign|stopping too]]. [[sign:437]] reserves a place for [[term:disabled-parking-sign|disabled parking]] only. The exact difference between stopping, standing and parking is in the chapter [[chapter:stopping-parking|Stopping, standing and parking]].\n\n# Special areas\n[[signs:418,419]] mark an area where driving lessons are forbidden. [[signs:424,425]] mark the start and end of an urban roads regime. [[sign:438]] is [[term:customs-stop-sign|stop for customs inspection]]. [[signs:440,441]] mark an area forbidden to polluting vehicles.\n\n:::tip\nA supplementary sign like 439 can narrow, widen or add an exception to a prohibition - always read it too.\n:::",
+   "keyPoints": [
+    "Most prohibition signs are a circle with a red border (series 400).",
+    "A prohibition applies until the next junction, unless sign 421, 427 or 434 ends it sooner.",
+    "Sign 420 forbids overtaking vehicles with more than two wheels; sign 422 is the same prohibition for vehicles over 4 tonnes.",
+    "Sign 432 forbids parking only; sign 433 also forbids stopping.",
+    "A supplementary sign like 439 can widen, narrow or add an exception to the sign above it."
+   ]
+  },
+  {
+   "id": "sg-transit",
+   "title": "Public transport signs: lanes and stops",
+   "summary": "Series 500 sets who may drive in a public transport lane, where buses and taxis stop, and where everyone else is forbidden.",
+   "terms": [
+    "public-transport-lane",
+    "bus-stop-sign",
+    "taxi-stand-sign"
+   ],
+   "signs": [
+    "501",
+    "507",
+    "511"
+   ],
+   "body": "Almost every sign in series 500 sets who may use the road, lane or shoulder - and who may not.\n\n# Public transport lane\n[[sign:501]] restricts a [[term:public-transport-lane|public transport lane]] to the vehicles stated on it - bus, taxi, and sometimes a vehicle with a minimum number of passengers - on the days and hours set. [[sign:502]] marks the end. Crossing the boundary line of the lane: under [[sign:504]] it's permitted only for an authorised vehicle or one turning at the next junction; under [[sign:515]] it's forbidden entirely; under [[sign:516]] it's permitted only if you first cross the line of dashes at the side.\n\n:::remember\nMost private-car drivers are not permitted to enter a public transport lane, even if it's completely empty - that's an offence in itself.\n:::\n\n# Stops and stopping to pick up and set down\n[[sign:505]] marks a [[term:bus-stop-sign|bus stop]]. [[sign:506]] marks a light-rail stop. [[signs:507,508]] mark a [[term:taxi-stand-sign|taxi stand]] - stopping or parking by any other vehicle within it is forbidden, except to set down passengers. [[sign:509]] marks a stopping point for a taxi only, five metres before and after it. [[sign:510]] marks a pick-up point for hitchhiking soldiers.\n\n# Red-yellow kerb\n[[sign:511]] permits stopping along a kerb painted red-yellow only for the type of vehicle allowed by the sign above it, and only to pick up or set down passengers. The other kerb colours are explained in the chapter [[chapter:markings-signals|Road markings, traffic lights and signals]].\n\n# Bays\n[[signs:512,513]] permit stopping in a dedicated bay, or at a place without a marked bay - there too, only for the authorised vehicle, and only to pick up or set down passengers.",
+   "keyPoints": [
+    "Sign 501 restricts a lane, road or shoulder to specific vehicles only, on the days and hours stated.",
+    "A private vehicle that enters a public transport lane without permission commits an offence, even if the lane is empty.",
+    "Signs 507 to 510 forbid stopping by any other vehicle, except the authorised vehicle and only to pick up or set down passengers.",
+    "A red-yellow kerb (sign 511) permits stopping only for the vehicle allowed by the sign above it."
+   ]
+  },
+  {
+   "id": "sg-guide",
+   "title": "Guide and information signs: reading the road signs",
+   "summary": "The background colour already tells you where the sign is pointing - and learning to read an interchange sign at a glance saves a dangerous last-moment lane change.",
+   "terms": [
+    "guide-sign",
+    "distance-marker",
+    "route-number-sign",
+    "one-way-sign",
+    "dead-end-sign",
+    "supplementary-sign"
+   ],
+   "signs": [
+    "611",
+    "618",
+    "623"
+   ],
+   "body": "[[term:guide-sign|Guide and information signs]] (series 600) are always rectangular, and don't forbid or require anything - they only help you find your way. The background colour sets the type of destination:\n\n| Background | Destination |\n|---|---|\n| Blue | Expressway |\n| Green | Non-urban road or a destination outside town |\n| White or black | Local urban road |\n| Brown | Tourist site |\n\n# Before an interchange and a junction\n[[signs:601,602,603,604]] mark the name of the interchange and point to destinations over the lanes, as early as possible. [[sign:605]] marks two close-spaced exits. [[signs:606,607,608]] point to the exit and mark its actual location. [[sign:613]] sets which destination each lane leads to; a yellow arrow on it marks a lane for public transport.\n\n:::tip\nRead a guide sign as early as possible and choose your lane then - a sharp lane change right by the interchange itself is dangerous.\n:::\n\n# Road numbers and distance markers\n[[sign:611]] is a [[term:route-number-sign|road number sign]] - the colour of the number itself states the road type: blue for a expressway, red for a main road, green for a regional road, black for a local road. [[sign:612]] marks the kilometre point along the road. [[sign:610]] is a [[term:distance-marker|distance and direction sign]] to destinations, in kilometres.\n\n# One-way road and lane changes\n[[sign:618]] is a [[term:one-way-sign|one-way road sign]]. [[signs:619,620,621,622]] mark a change in the number of lanes - increasing or decreasing, from the right or from the left.\n\n# Dead end, tunnel and other markings\n[[signs:623,624,625]] mark a [[term:dead-end-sign|dead-end road]]. [[signs:633,634]] mark the start and end of a tunnel. [[sign:635]] warns of fire risk. [[sign:638]] marks a place to pick up and set down passengers from a private vehicle. [[signs:639,640]] mark an educational-institutions area, which calls for special care - more in the chapter [[chapter:vulnerable-users|Vulnerable road users]].\n\n# Permitted parking and supplementary plates\n[[signs:626,627,628]] permit parking on the road or on the pavement, until the end sign - the full rules are in the chapter [[chapter:stopping-parking|Stopping, standing and parking]]. [[signs:629,630,631,632]] are examples of [[term:supplementary-sign|supplementary sign]]s that add a distance, a section of road or a direction to the sign above them. The appendix symbols, S1 to S141, are mostly added to guide signs and mark a specific service - a petrol station, a hospital, a tourist site.",
+   "keyPoints": [
+    "The background colour on guide signs marks the type of destination: blue for a expressway, green for non-urban, brown for tourism.",
+    "You choose your lane at the early guide sign, not right by the interchange itself.",
+    "A supplementary sign (629 to 632) adds a distance, a section or a direction to the sign above it.",
+    "The appendix symbols, S1 to S141, are mostly added to guide signs and mark a specific service."
+   ]
+  },
+  {
+   "id": "sg-roadworks",
+   "title": "Signs at a worksite",
+   "summary": "Orange and temporary, but as valid as if it had replaced the permanent one: a worksite sign overrides the permanent sign at the same place, and you must also obey a flagger directing traffic there.",
+   "terms": [
+    "roadworks-sign",
+    "flagger"
+   ],
+   "signs": [
+    "901",
+    "933"
+   ],
+   "body": "Every warning, mandatory or marking sign has a temporary version - a [[term:roadworks-sign|worksite sign]] (series 900), almost always in orange. When it's placed, it overrides the permanent sign at the same place until it's removed.\n\n# Start and end\n[[sign:901]] marks the start of the worksite, until [[sign:902]]. If a line is marked on the road, you drive by it, not by the old line beneath it.\n\n# Warning and guidance, like series 100, in orange\n[[signs:903,904,905,906,907,908,909]] warn of the same situations as ordinary warning signs - a bend, a junction, a narrowing road, an obstacle, two-way traffic - just specific to the worksite. [[signs:910,911,912,913]] mark a temporary change in the number of lanes. [[sign:914]] marks a temporary diversion of the traffic route.\n\n# Temporary road markings\n[[signs:918,919,920,921,922,923,924,925,926,927,928]] are the same markings explained in the chapter [[chapter:markings-signals|Road markings, traffic lights and signals]], just in orange instead of white.\n\n# Barriers, cones and flashing lights\n[[sign:929]] marks a barrier. [[signs:930,931]] are guide posts and cones - you must not drive over an obstacle marked with a cone. [[sign:932]] is a flashing orange beacon. [[signs:933,934]] are a mobile flashing board for signalling and to announce that the road is closed. [[sign:935]] marks a bay for emergency stopping only.\n\n# The flagger\nA [[term:flagger|flagger]] sometimes stands at the worksite, directing traffic by hand or with a flag. You must obey their instructions just as you would a police officer's, even if they contradict a sign or a traffic light (regs. 23(a)(1a) and (b)). The signals themselves, and how you give way to a person's instruction, are explained in the chapter [[chapter:markings-signals|Road markings, traffic lights and signals]].\n\n:::warn\nA worksite changes the road you know suddenly. Slow down at the first orange sign, not when you see the workers.\n:::",
+   "keyPoints": [
+    "A worksite sign is usually orange, and overrides the permanent sign at the same place until it's removed.",
+    "An orange marking on the road overrides an old white marking beneath it.",
+    "You must not drive over an obstacle marked with a cone (931).",
+    "You must obey a [[term:flagger|flagger]]'s instructions just like a police officer's, even if they contradict a sign."
+   ]
+  }
+ ]
+}

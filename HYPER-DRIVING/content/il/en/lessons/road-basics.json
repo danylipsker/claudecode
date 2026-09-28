@@ -1,0 +1,132 @@
+{
+ "chapter": "road-basics",
+ "title": "The road and its users",
+ "summary": "What the law calls a road, a carriageway and a lane, who counts as a driver or a pedestrian, what vehicles there are — and the hierarchy of rules that governs it all.",
+ "lessons": [
+  {
+   "id": "rb-road",
+   "title": "The road and its parts",
+   "summary": "Road, carriageway, lane, shoulder and pavement are not synonyms — each has a precise legal definition.",
+   "terms": [
+    "road",
+    "carriageway",
+    "lane",
+    "shoulder",
+    "sidewalk",
+    "traffic-island",
+    "separation-area",
+    "intersection",
+    "interchange",
+    "traffic-circle",
+    "pedestrian-crossing",
+    "urban-road",
+    "non-urban-road",
+    "expressway"
+   ],
+   "body": "In everyday language, \"road\" and \"carriageway\" are almost synonyms. In law they are not. The difference decides what is allowed and where: can a vehicle do a U-turn on the pavement? Can it stop on the shoulder? The law answers precisely, because it defines every part separately.\n\n# What is a road\n:::law\n\"[[term:road|Road]]\" — includes any track, road, street, alley, square, passage, bridge or open place that the public has a right to pass through (Traffic Ordinance, section 1).\n:::\n\nThe definition is deliberately broad: it covers both the Ayalon Highway and a dirt path between two houses, as long as the public has a right of way over it. Within this broad \"road,\" the law distinguishes between several parts:\n\n[[fig:rb-road-cross-section]]\n\n- **[[term:carriageway|Carriageway]]** — the part intended for vehicle traffic, that was paved or improved for that purpose, or that vehicles normally use — **excluding the shoulder** (reg. 1). The shoulder, even if paved with asphalt, is not a carriageway.\n- **[[term:lane|Lane]]** — a strip of the carriageway wide enough for one line of vehicle travel.\n- **[[term:shoulder|Shoulder]]** — the area with no pavement beside it, adjacent to the edge of the carriageway, up to a width of 4 metres (or to a nearer drainage channel) (reg. 1).\n- **[[term:sidewalk|Pavement]]** — the part of the road's width that is not a carriageway, at the side of the carriageway, intended for pedestrians (reg. 1).\n- **[[term:traffic-island|Traffic island]]** and **[[term:separation-area|separation area]]** — any structure, traffic island, marking, garden or unpaved area that divides the road along its length. When it is built — a barrier, a raised kerb or planting — it is a \"built divider.\"\n\n:::remember\nWhen a road has a divider, each of the carriageways on either side of it is treated as a one-way carriageway in its own right (reg. 34). So you must not cross the divider or stop on it, unless a sign expressly permits it.\n:::\n\n# Where roads meet\n- **[[term:intersection|Intersection]]** — where two or more roads meet, at the same level.\n- **[[term:interchange|Interchange]]** — where roads meet **at different levels**, including the connecting roads between the levels (reg. 1).\n- **[[term:traffic-circle|Traffic circle]]** — a circular junction where traffic moves around a central island.\n- **[[term:pedestrian-crossing|Pedestrian crossing]]** — the part of the carriageway marked as intended for pedestrians to cross (reg. 1).\n\n# Three types of road\nThe law precisely defines three types, and the definition decides which rules — including the maximum speed — apply (see the [[chapter:speed-distance|Speed, distance and braking]] chapter):\n\n| Type | Definition |\n|---|---|\n| [[term:urban-road|Urban road]] | A road within a local authority's area, from the \"entering urban road area\" sign to the \"end of urban road area\" sign |\n| [[term:non-urban-road|Non-urban road]] | Any road that is not urban |\n| [[term:expressway|Expressway]] | A non-urban road, with at least two carriageways separated by a divider, at least two lanes in each direction, no access from adjoining premises, and no intersections or railway crossings — only merges. An \"expressway\" sign is posted at the entrance |\n\nThese boundaries are not a matter of semantics: a driver who crosses a divider, stops on the shoulder, or enters an expressway on foot is breaking the law precisely because of the exact definition of the place they are in.",
+   "keyPoints": [
+    "\"[[term:road|Road]]\" is any place the public has a right to pass through — far broader than \"carriageway.\"",
+    "The [[term:carriageway|carriageway]] is the part for vehicle traffic **only**; the [[term:shoulder|shoulder]] is not a carriageway.",
+    "A built divider turns the road into two separate one-way carriageways.",
+    "An [[term:interchange|interchange]] is where roads meet at different levels; an [[term:intersection|intersection]] is where they meet at the same level.",
+    "Three types of road in law: urban, non-urban, and expressway — each with its own precise definition."
+   ]
+  },
+  {
+   "id": "rb-users",
+   "title": "Who is who on the road",
+   "summary": "Driver, pedestrian, passenger and rider — each has a legal definition, and each definition carries its own duties.",
+   "terms": [
+    "driver",
+    "road-user",
+    "pedestrian",
+    "passenger",
+    "cyclist",
+    "motorcyclist",
+    "disabled-person"
+   ],
+   "body": "Everyone on the road — in a vehicle, on a bicycle or on foot — is a [[term:road-user|road user]]. But every type of road user has its own legal definition, and different duties follow from it.\n\n# The driver\nA [[term:driver|driver]] is someone who is actually driving a vehicle. The law requires:\n\n:::law\nNo person shall drive a vehicle unless they are **competent in operating and using it** (reg. 25). Likewise, no one may drive who is under the influence of drugs or alcohol, whose physical or mental state does not allow safe driving, or whose state denies them control of the vehicle or a view of the road (reg. 26).\n:::\n\n# The pedestrian\nA [[term:pedestrian|pedestrian]] is someone walking on foot on the road. But what about someone leading a bicycle by hand, or pushing a shopping cart? The law treats this according to context:\n\n- Someone leading a bicycle by hand — for most traffic rules, counts **as a cyclist** (reg. 133), but they may lead it on the pavement as a pedestrian, if this does not disturb other pedestrians (reg. 129).\n- A pedestrian must cross by the shortest straight line, at a reasonable speed, and should prefer a pedestrian crossing, underpass or footbridge if one is nearby.\n- They must not step off the pavement suddenly when a vehicle is approaching and its driver has no time to stop.\n\n# The passenger\nA [[term:passenger|passenger]] is someone in a vehicle without driving it. Passengers have duties too — for example, the seatbelt (see the [[chapter:passenger-safety|Seatbelts, child seats and passengers]] chapter) — and the driver is responsible for making sure minor passengers are belted in.\n\n# Riders\nA [[term:cyclist|cyclist]] and a [[term:motorcyclist|motorcyclist]] are road users who travel on a two-wheeled vehicle. A cyclist has a driver's duties (for example, obeying traffic lights and signs) as well as the protections of a vulnerable road user — a subject covered in the [[chapter:vulnerable-users|Vulnerable road users]] chapter.\n\n# The disabled person\nThe law explicitly recognises a [[term:disabled-person|disabled person]] and grants them rights and concessions — a parking permit, exemption from certain duties on a mobility scooter and a bicycle (for example, a lower minimum age for riding a mobility scooter if disabled), and stricter punishment for anyone who violates their rights — such as blocking a disabled parking space.\n\n:::tip\nWhen you are not sure which rule applies to someone on the road — first ask \"what is their legal definition here?\" The same person can be a pedestrian one moment and a cyclist the next, depending on what they are doing.\n:::",
+   "keyPoints": [
+    "Everyone on the road is a [[term:road-user|road user]]; every sub-type (driver, pedestrian, passenger, rider) has its own definition and duties.",
+    "A driver must be competent with the vehicle and drive only when their physical state, mental state and control are sound (regs. 25–26).",
+    "Someone leading a bicycle by hand counts as a cyclist, but may walk it on the pavement as a pedestrian.",
+    "Passengers have their own duties — first among them the seatbelt."
+   ]
+  },
+  {
+   "id": "rb-vehicles",
+   "title": "Vehicle types in law",
+   "summary": "From a private car to a mobility scooter and an electric scooter — every vehicle type has a definition, and the law derives from it which rules apply.",
+   "terms": [
+    "vehicle",
+    "motor-vehicle",
+    "private-vehicle",
+    "commercial-vehicle",
+    "public-vehicle",
+    "taxi",
+    "bus",
+    "minibus",
+    "tour-bus",
+    "tractor",
+    "atv",
+    "motorcycle",
+    "e-bike",
+    "electric-scooter",
+    "mobility-scooter",
+    "work-vehicle",
+    "mobile-machine",
+    "trailer",
+    "semi-trailer",
+    "supported-trailer",
+    "security-vehicle"
+   ],
+   "body": "Every traffic rule — maximum speed, the licence required, mandatory equipment — depends first on one question: what type of vehicle is this in the eyes of the law? Here is a map of the main types.\n\n# The broadest definition\n:::law\n\"[[term:vehicle|Vehicle]]\" — a vehicle propelled by mechanical power, or towed by it or by an animal, and also a machine or installation propelled or towed as described, **including a bicycle and a tricycle** (Traffic Ordinance, section 1).\n:::\n\nIn other words, even a bicycle is a \"vehicle\" in the eyes of the law. A \"[[term:motor-vehicle|motor vehicle]]\" is a subset: a vehicle propelled by mechanical power of any kind — including a motor tricycle, and a motorcycle with a sidecar or a trailer.\n\n# Private, commercial and public vehicles\n| Type | Definition |\n|---|---|\n| [[term:private-vehicle|Private vehicle]] | A vehicle that is neither a public vehicle nor a commercial vehicle |\n| [[term:commercial-vehicle|Commercial vehicle]] | A vehicle used to carry goods, for hire or for its owner's business |\n| [[term:public-vehicle|Public vehicle]] | A vehicle used or intended to carry passengers for hire — for example a [[term:taxi|taxi]] (up to 10 passengers besides the driver) and a [[term:bus|bus]] (8 or more passengers besides the driver) |\n\nUnder \"bus\" there are further sub-types: [[term:minibus|minibus]], [[term:tour-bus|tour coach]], private and public bus — each with its own driving licence (see the [[chapter:licensing|Licensing, documents and new drivers]] chapter).\n\n# Dedicated and slow vehicles\n- **[[term:tractor|Tractor]]**, **[[term:mobile-machine|mobile machine]]** and **[[term:work-vehicle|work vehicle]]** — a vehicle with work equipment permanently fitted, or whose structure is designed to perform work, and not to carry goods or passengers.\n- **[[term:atv|All-terrain vehicle (ATV)]]** — no person may ride with an additional passenger except under an explicit permit from the licensing authority.\n- **A slow vehicle** — a vehicle whose maximum speed is set at up to 40 km/h in the vehicle licence or in the regulations.\n\n# Light electric vehicles\n- **[[term:e-bike|Electric-assist bicycle]]**\n- **[[term:electric-scooter|Electric (kick) scooter]]** — riding is allowed only on a marked bicycle path, and where there is none — on the carriageway.\n- **[[term:mobility-scooter|Mobility scooter]]** — a vehicle for the mobility of people with disabilities. The person riding it is **exempt** from a driving licence and from vehicle registration. Minimum age {{fact:mobility_scooter.min_age}}, and for a disabled person — {{fact:mobility_scooter.min_age_disabled}}, provided their physical and mental state allows safe, competent operation (reg. 39J). A mobility scooter travels on the carriageway **only to cross it**.\n\n# Trailers and emergency vehicles\n- **[[term:trailer|Trailer]]** — a vehicle towed by another vehicle.\n- **[[term:semi-trailer|Semi-trailer]]** and **[[term:supported-trailer|supported trailer]]** — types of trailer with a different connection structure to the towing vehicle (see the [[chapter:heavy-vehicles|Heavy vehicles]] chapter).\n- **[[term:security-vehicle|Security vehicle]]** — a vehicle the licensing authority has approved as such; emergency vehicles (security, rescue) have special traffic rights detailed in the [[chapter:right-of-way|Right of way and junctions]] chapter.\n\n:::tip\nWhen a rule depends on the type of vehicle (speed, licence, equipment) — first identify the exact definition. A \"minibus\" and a \"bus\" are not always subject to the same rule.\n:::",
+   "keyPoints": [
+    "\"[[term:vehicle|Vehicle]]\" includes a bicycle too; a \"[[term:motor-vehicle|motor vehicle]]\" is only a vehicle propelled by mechanical power.",
+    "A vehicle is private, commercial or public — based on what it is used for, not on who owns it.",
+    "A mobility scooter and an electric scooter have their own dedicated rules; riding a mobility scooter is exempt from a driving licence and from registration.",
+    "A tractor, a mobile machine and a work vehicle are defined by their purpose — work, not transport."
+   ]
+  },
+  {
+   "id": "rb-weights",
+   "title": "Weight, dimensions, and why 3,500 kg changes everything",
+   "summary": "Kerb weight, gross vehicle weight, and the weight threshold that decides which licence you need, how much you may drink, and the maximum speed.",
+   "terms": [
+    "curb-weight",
+    "gross-vehicle-weight",
+    "axle-load",
+    "total-length",
+    "total-width",
+    "total-height",
+    "overload-fault"
+   ],
+   "body": "One number — 3,500 kg — comes up again and again in Israeli traffic law. It is the boundary between a \"private vehicle\" and one that requires a heavy licence, between the ordinary alcohol limit and the stricter one, and sometimes between one maximum speed and another. To understand why, you need to know two weight definitions.\n\n# Two kinds of weight\n- **[[term:curb-weight|Kerb weight]]** — the vehicle's weight **without** a load and without a driver, including all the vehicle's fittings, and the fuel, water and oil in it.\n- **[[term:gross-vehicle-weight|Gross vehicle weight]]** — the kerb weight plus the weight of people and cargo the licensing authority has permitted this vehicle to carry. This is the number that appears on the vehicle licence, and it is the number that decides which category the vehicle belongs to.\n\n:::remember\nGross vehicle weight is **not** how much the vehicle actually weighs right now — it is the ceiling the licensing authority has approved for it.\n:::\n\n# Why 3,500 kg\nA gross vehicle weight of {{fact:licence.b.max_weight}} is the ceiling for a B licence — an ordinary private vehicle. Above it, a heavy licence is required (see the [[chapter:licensing|Licensing, documents and new drivers]] chapter). The same threshold comes up elsewhere too:\n\n- **Alcohol**: driving a commercial vehicle or a work vehicle whose gross vehicle weight is over {{fact:alcohol.strict.weight_threshold}} is subject to the stricter alcohol threshold — {{fact:alcohol.strict.breath}} in breath, instead of {{fact:alcohol.general.breath}} (see the [[chapter:human-factor|The driver: the human factor]] chapter).\n- **The \"new driver\" label**: mandatory up to a gross vehicle weight of {{fact:newdriver.sign.weight_limit}}.\n- **Mandatory equipment**: a commercial vehicle or work vehicle over {{fact:equip.hazard_lights_heavy}} standing on a non-urban road during lit hours must show a flashing yellow light or have all its turn indicators on.\n\n# Axle load and overloading\nIt is not enough for the gross weight to be within the ceiling — the **distribution** between the axles must also match what the vehicle was designed to carry. An [[term:axle-load|axle load]] that is too high on one axle (for example, cargo loaded too far forward) can impair braking and steering even when the gross weight is fine.\n\n:::fine\nDriving with [[term:overload-fault|overloading]] above the gross vehicle weight is an offence whose severity rises with the percentage of the excess — from a fine and points up to immediate disqualification at a police officer's discretion for an excess of 25% or more. Details in the [[chapter:enforcement|Offences, fines and points]] chapter.\n:::\n\n# Dimensions\nOverall length, width and height also have legal ceilings — [[term:total-length|overall length]], [[term:total-width|overall width]] and [[term:total-height|overall height]]. For a goods vehicle the maximum width is {{fact:vehicle.width.max_m}}, and the maximum length {{fact:vehicle.length.max_truck_m}}. Cargo that exceeds these dimensions is subject to the rules for oversized loads (see the [[chapter:heavy-vehicles|Heavy vehicles]] chapter).",
+   "keyPoints": [
+    "[[term:curb-weight|Kerb weight]] excludes cargo and driver; [[term:gross-vehicle-weight|gross vehicle weight]] is the ceiling the licensing authority approved.",
+    "A gross vehicle weight of {{fact:licence.b.max_weight}} is the boundary for a B licence, and for the ordinary alcohol threshold.",
+    "The same 3,500 kg threshold also sets the \"new driver\" label duty and the warning-equipment requirement.",
+    "Overloading is dangerous even when only the axle load is unbalanced, even if the gross weight is fine."
+   ]
+  },
+  {
+   "id": "rb-law",
+   "title": "Where the rules come from",
+   "summary": "The Traffic Ordinance, the Traffic Regulations and the signs — and who decides when they conflict.",
+   "terms": [
+    "traffic-signage-authority",
+    "traffic-superintendent",
+    "traffic-police-officer",
+    "licensing-authority",
+    "police-officer-rank"
+   ],
+   "body": "A good driver doesn't just know the rules — they also know where they come from, because that decides what prevails when there's a conflict.\n\n# Three layers of law\n1. **The Traffic Ordinance** — the primary law (primary legislation of the Knesset). It sets out the foundations: who needs a licence, what a \"new driver\" is, and what enforcement powers exist.\n2. **The Traffic Regulations** — secondary legislation that spells out the Ordinance in detail: speeds, right of way, mandatory equipment, and more. Most of the rules you learn in this course come from here.\n3. **The signs** — the combined signs chart, and specific orders (such as the Traffic Order on fine offences) that go into even more detail: which fine for which offence, which signs exist and what they mean.\n\n# Who enforces, and who signs\n- **[[term:traffic-police-officer|Police officer]]** — enforces all traffic laws, and may give instructions that override even regulations and signs (see below).\n- **A municipal inspector** — a local authority employee authorised by the Israel Police, authorised to give defined traffic instructions, mainly during roadworks.\n- **[[term:traffic-superintendent|The traffic superintendent]]** and the **[[term:traffic-signage-authority|signing authority]]** — decide where signs are placed and what traffic arrangements apply on a given road.\n- **[[term:licensing-authority|The licensing authority]]** — the Ministry of Transport: issues driving and vehicle licences, manages the points register, and decides on corrective measures and disqualifications (see the [[chapter:enforcement|Offences, fines and points]] chapter).\n\n# Who overrides whom\n:::law\nA road user must obey the instructions given by a police officer in uniform (or an identified police officer, a military police officer, or an authorised municipal inspector), **even if the instruction conflicts with regulations, signs or other general instructions** on traffic matters (reg. 23).\n:::\n\nFrom this comes the practical order of priority at a junction: **a police officer or inspector directing traffic** overrides a **traffic light**, which overrides a **sign**, which overrides the **default rules** (such as priority to the right at an unmarked junction). A portable sign placed on the road by a police officer is treated as a lawfully placed sign (reg. 23(c)).\n\n:::tip\nYou see a police officer signalling \"stop\" while the light is green? Obey the police officer. A full explanation of police and inspector signals is in the [[chapter:markings-signals|Road markings, traffic lights and signals]] chapter.\n:::\n\n# And what if there is nothing at all\nWhen there is no police officer, traffic light or sign — the regulations' default rules apply: whoever comes from the right has priority at a junction, the maximum speed with no sign follows the road type, and you must keep a reasonable distance. These are the \"silent\" rules that always apply, even when the road has no signage at all.",
+   "keyPoints": [
+    "Three layers: the Traffic Ordinance (the law), the Traffic Regulations (the detail), and the signs/orders (the specifics).",
+    "Instructions from a police officer or an authorised inspector override regulations, signs and even a traffic light (reg. 23).",
+    "Order of priority at a junction: police officer/inspector ← traffic light ← sign ← default rules.",
+    "The licensing authority manages licences, vehicle registration and the points register; the signing authority decides on signs."
+   ]
+  }
+ ]
+}

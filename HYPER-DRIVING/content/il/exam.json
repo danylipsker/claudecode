@@ -1,0 +1,9 @@
+{
+  "note": "The mock exam takes its size, time and pass rule from the facts theory.questions, theory.time_limit and theory.max_mistakes. perLicence may override them for a class; weights (chapter id → multiplier, default 1) tilt how questions spread over chapters.",
+  "weights": {
+    "signs-intro": 1.3,
+    "right-of-way": 1.3,
+    "eco-driving": 0.5
+  },
+  "perLicence": {}
+}

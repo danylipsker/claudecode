@@ -1,0 +1,380 @@
+{
+ "chapter": "vulnerable-users",
+ "questions": [
+  {
+   "id": "q-vu-001",
+   "lesson": "vu-pedestrians",
+   "sign": "135",
+   "q": "What does sign 135 warn of?",
+   "options": [
+    "A total ban on pedestrians in this stretch of road",
+    "A place where no vehicle may stop",
+    "A pedestrian crossing nearby; be ready to stop",
+    "A pedestrian traffic light ahead"
+   ],
+   "answer": 2,
+   "explain": "Sign 135 is a warning sign: a pedestrian crossing is nearby, and you must slow down and be ready to stop.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-002",
+   "lesson": "vu-pedestrians",
+   "q": "You are approaching a pedestrian crossing, and a vehicle in the next lane has stopped right before the crossing. What should you do?",
+   "options": [
+    "Hoot so the vehicle that stopped moves on",
+    "Overtake the stopped vehicle on its left",
+    "Continue driving normally because your lane is clear",
+    "Slow down and, if necessary, stop too, because a pedestrian may be crossing and hidden from you"
+   ],
+   "answer": 3,
+   "explain": "If a vehicle in the next lane has stopped before a pedestrian crossing, you must slow down and, if necessary, stop too — it may be hiding a crossing pedestrian from you (reg. 67(a2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-003",
+   "lesson": "vu-pedestrians",
+   "q": "Which of the following counts as a pedestrian, under the law's definition?",
+   "options": [
+    "Also someone pushing a pram or wheelchair, or wheeling a bicycle by hand",
+    "Only someone inside a marked pedestrian crossing",
+    "Only a child under 12",
+    "Only someone walking on foot with nothing else"
+   ],
+   "answer": 0,
+   "explain": "The definition of a pedestrian (reg. 1) also includes someone pushing a pram, an invalid carriage or a wheelchair, and also someone wheeling a bicycle along the road (reg. 133).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-004",
+   "lesson": "vu-pedestrians",
+   "q": "A driver did not let a pedestrian complete a crossing safely at a pedestrian crossing. What is the penalty?",
+   "options": [
+    "{{fine:pedestrian-crossing-entry}} only, with no points",
+    "Immediate licence disqualification",
+    "{{fine:pedestrian-crossing}} and {{points:pedestrian-crossing}} points",
+    "A verbal warning only, with no fine"
+   ],
+   "answer": 2,
+   "explain": "Not letting a pedestrian complete a crossing safely at a pedestrian crossing: {{fine:pedestrian-crossing}} and {{points:pedestrian-crossing}} points (reg. 67(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-005",
+   "lesson": "vu-pedestrians",
+   "q": "There is no pedestrian crossing, subway or footbridge nearby, but there is a junction close by. Where must a pedestrian cross the carriageway?",
+   "options": [
+    "They must wait for a vehicle to stop for them voluntarily",
+    "Only where there is street lighting",
+    "Anywhere convenient, as long as they look before crossing",
+    "Near the junction"
+   ],
+   "answer": 3,
+   "explain": "When there is no pedestrian crossing, subway or footbridge nearby, but there is a junction close by — the pedestrian crosses near the junction (reg. 110(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-006",
+   "lesson": "vu-children-elderly",
+   "q": "You are approaching a group of children playing at the roadside. What is the legal duty?",
+   "options": [
+    "Hoot continuously so they move away",
+    "Speed up to pass them as fast as possible",
+    "Slow down",
+    "There is no special duty beyond ordinary driving"
+   ],
+   "answer": 2,
+   "explain": "Near a group of children you must slow down, and stop if necessary (reg. 52(5)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-007",
+   "lesson": "vu-children-elderly",
+   "q": "A bus carrying children, marked as such, has stopped at the roadside to pick up children. What should you do as you pass it?",
+   "options": [
+    "Continue at your usual speed, because the bus stopped, not you",
+    "Slow down significantly and be ready to stop",
+    "Hoot to warn the children",
+    "Overtake it quickly on its right"
+   ],
+   "answer": 1,
+   "explain": "When approaching a vehicle carrying children, marked as such, that has stopped to pick up or drop off children, and as you pass it — you must slow down (reg. 52(13)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-008",
+   "lesson": "vu-children-elderly",
+   "q": "An elderly person is crossing a pedestrian crossing more slowly than usual, and a few seconds have already passed. What should you do?",
+   "options": [
+    "Wait for them to complete the crossing — the duty to allow a safe crossing is not limited in time",
+    "Creep forward slowly behind them to save time",
+    "Hoot to hurry them along",
+    "Overtake them within the crossing"
+   ],
+   "answer": 0,
+   "explain": "The duty to let a pedestrian complete a crossing safely (reg. 67(a)) is not limited in time; if the crossing takes longer, you wait.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-009",
+   "lesson": "vu-children-elderly",
+   "q": "Who is a “disabled person” for the purposes of the law, in relation to using the road?",
+   "options": [
+    "Anyone over the age of 60",
+    "Only someone with a disabled badge on the windscreen",
+    "Someone a doctor has recognised as needing a vehicle for mobility because of a physical disability",
+    "Only someone riding a mobility scooter"
+   ],
+   "answer": 2,
+   "explain": "A disabled person, for the purposes of the law, is someone a doctor has recognised as needing a vehicle for mobility because of a physical disability, and who is granted accommodations because of this.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-010",
+   "lesson": "vu-cyclists",
+   "q": "There is a marked cycle path beside the carriageway. Where must the cyclist ride?",
+   "options": [
+    "Wherever they choose, as long as they do not obstruct traffic",
+    "On the carriageway, because it is faster",
+    "On the pavement",
+    "On the marked cycle path"
+   ],
+   "answer": 3,
+   "explain": "Where a marked cycle path has been provided, the cyclist must ride on it and not on any other part of the road (reg. 129(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-011",
+   "lesson": "vu-cyclists",
+   "facts": [
+    "bike.nonurban_min_age"
+   ],
+   "q": "What is the minimum age for riding a bicycle on a non-urban road?",
+   "options": [
+    "16",
+    "There is no age limit",
+    "{{fact:bike.nonurban_min_age}}",
+    "6"
+   ],
+   "answer": 2,
+   "explain": "The law forbids anyone under {{fact:bike.nonurban_min_age}} from riding a bicycle on a non-urban road (reg. 129(f)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-012",
+   "lesson": "vu-cyclists",
+   "q": "Who must wear a protective helmet when riding an e-bike?",
+   "options": [
+    "Only someone riding on a non-urban road",
+    "Only minors",
+    "Every rider, at all times and on every road",
+    "Only someone riding above 20 km/h"
+   ],
+   "answer": 2,
+   "explain": "When riding an e-bike, a protective helmet is compulsory for every rider, at all times (reg. 39P(a)(4)) — unlike an ordinary bicycle, where the duty depends on age and road type.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-013",
+   "lesson": "vu-cyclists",
+   "q": "You are getting out of your vehicle parked at the roadside in the city, beside a cycle lane. What should you do before opening the door?",
+   "options": [
+    "There is no special duty; cyclists are responsible for being careful",
+    "Look behind you and make sure no cyclist is approaching",
+    "Only open the rear door",
+    "Open it quickly so as not to hold up traffic"
+   ],
+   "answer": 1,
+   "explain": "You must not open a vehicle door until every precaution needed for the safety of road users has been taken (reg. 80(a)); suddenly opening a door in front of an approaching cyclist is a common and preventable injury.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-014",
+   "lesson": "vu-cyclists",
+   "q": "When is it allowed to overtake a cyclist even near a junction, where overtaking an ordinary vehicle is forbidden?",
+   "options": [
+    "When the overtaking meets all the other overtaking rules — a clear road and no risk",
+    "Never — the ban applies to overtaking a bicycle too",
+    "Only if the cyclist signals that they agree",
+    "Only during daylight hours"
+   ],
+   "answer": 0,
+   "explain": "The law exempts overtaking animals, bicycles and an animal-drawn vehicle from the ban on overtaking near a junction, provided the overtaking meets the other overtaking rules — a clear road at a sufficient distance and without risk (reg. 47(f)(2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-015",
+   "lesson": "vu-scooters",
+   "facts": [
+    "escooter.min_age"
+   ],
+   "q": "What is the minimum age for riding an electric (kick) scooter?",
+   "options": [
+    "14",
+    "18",
+    "There is no minimum age, only a height limit",
+    "{{fact:escooter.min_age}}"
+   ],
+   "answer": 3,
+   "explain": "Minimum age for riding an electric scooter: {{fact:escooter.min_age}} (reg. 122A(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-016",
+   "lesson": "vu-scooters",
+   "q": "There is no marked cycle path on this stretch of road. Where may you ride an electric scooter?",
+   "options": [
+    "On the carriageway",
+    "Only on the shoulder",
+    "On the pavement, carefully",
+    "You may not ride an electric scooter at all without a cycle path"
+   ],
+   "answer": 0,
+   "explain": "You may ride an electric scooter on a marked cycle path, or, where there is none, on the carriageway; riding on the pavement is forbidden (reg. 122A(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-017",
+   "lesson": "vu-scooters",
+   "q": "An electric scooter rider carried an extra passenger behind them. What is correct?",
+   "options": [
+    "Allowed, as long as the passenger wears a helmet",
+    "Forbidden, and this offence carries {{fine:ebike-passenger}}",
+    "Up to two extra passengers are allowed",
+    "Allowed only for children"
+   ],
+   "answer": 1,
+   "explain": "Carrying an extra passenger on an electric scooter is forbidden (reg. 122B(c)); the offence carries a fine of {{fine:ebike-passenger}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-018",
+   "lesson": "vu-scooters",
+   "facts": [
+    "speed.mobility_scooter"
+   ],
+   "q": "What is a “mobility scooter”, and how should a vehicle driver expect it to behave?",
+   "options": [
+    "A small motorcycle that drives on the carriageway like an ordinary vehicle",
+    "A type of e-bike",
+    "A vehicle for people with limited mobility, that travels mainly on the pavement and enters the carriageway only to cross it",
+    "A small utility vehicle for cleaning streets"
+   ],
+   "answer": 2,
+   "explain": "A mobility scooter is an electric vehicle for people with limited mobility, its speed limited to {{fact:speed.mobility_scooter}}, and it enters the carriageway only to cross it (reg. 39K).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-019",
+   "lesson": "vu-motorcyclists",
+   "q": "Why is it easy to miss an approaching motorcycle in the mirror?",
+   "options": [
+    "Because motorcycles always travel too fast to be seen",
+    "Because motorcycles have no duty to use lights by day",
+    "Because the law exempts motorcyclists from using turn signals",
+    "Because its narrow width makes it easy to disappear into the blind spot, and its speed is hard to judge"
+   ],
+   "answer": 3,
+   "explain": "A narrow motorcycle easily disappears into the blind spot and barely fills the mirror; its speed is also hard to judge with a quick glance — so before changing lane you must turn your head and check directly.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-020",
+   "lesson": "vu-motorcyclists",
+   "q": "Before turning left at a junction against oncoming traffic, what is the safe rule of thumb regarding motorcycles?",
+   "options": [
+    "Look once and decide quickly",
+    "Turn only if there is a green light, with no need for another look",
+    "Turn immediately if you do not see anything big approaching",
+    "Look twice — the second glance sometimes reveals a motorcycle missed by the first"
+   ],
+   "answer": 3,
+   "explain": "A quick glance checks whether there is anything big; a second glance sometimes reveals a small motorcycle that was missed by the first. You must not turn based on a guess about the distance of an approaching motorcycle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-021",
+   "lesson": "vu-motorcyclists",
+   "q": "You are driving behind a motorcycle. Why should you keep a bigger margin than behind a car?",
+   "options": [
+    "Because a motorcycle has no brake lights",
+    "Because a motorcycle can stop in a very short distance, and is more sensitive to potholes and oil on the road",
+    "Because motorcycles always travel too slowly",
+    "There is no special reason; the margin is the same for every vehicle"
+   ],
+   "answer": 1,
+   "explain": "A motorcycle can stop in a very short distance, and is more sensitive than a car to potholes, loose gravel, oil and a side wind — so it requires a bigger margin.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-022",
+   "lesson": "vu-motorcyclists",
+   "q": "You are in a stationary traffic jam and want to shift lane slightly. What is especially important to check?",
+   "options": [
+    "The blind spot — a motorcycle may be moving between the lanes where a moment ago there was nothing",
+    "Only the lane you came from",
+    "Only the rear-view mirror",
+    "There is no need to check anything, because the traffic is stationary"
+   ],
+   "answer": 0,
+   "explain": "In traffic jams a motorcycle may filter between lanes or ride alongside a line of stationary cars; you must check the mirror and the blind spot before any movement, even a small one.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-023",
+   "lesson": "vu-animals",
+   "q": "An animal is crossing the road ahead of you. What is the legal duty?",
+   "options": [
+    "Hoot continuously until it moves",
+    "Speed up to get past it",
+    "There is no special duty beyond ordinary driving",
+    "Slow down, and stop if necessary"
+   ],
+   "answer": 3,
+   "explain": "A driver must slow down, and stop if necessary, when meeting or overtaking animals on the road (reg. 52(11)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-024",
+   "lesson": "vu-animals",
+   "sign": "146",
+   "q": "What does sign 146 warn of?",
+   "options": [
+    "Animals may cross or be present on the road",
+    "A pedestrian crossing for cyclists",
+    "A traffic-calming area",
+    "No entry for a works vehicle"
+   ],
+   "answer": 0,
+   "explain": "Sign 146 is a warning sign: animals may cross or be present on the road ahead of you.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-025",
+   "lesson": "vu-animals",
+   "q": "A large animal, such as a horse or a cow, is standing on the road ahead of you. What is the safe action?",
+   "options": [
+    "Swerve sharply to avoid hitting it, even if that means crossing into the oncoming lane",
+    "Hoot continuously until it leaves the road",
+    "Brake in a straight line without swerving sharply",
+    "Speed up to get past before it moves"
+   ],
+   "answer": 2,
+   "explain": "Facing a large animal, you brake in a straight line; a sharp swerve to avoid hitting it can cause loss of control or a head-on collision — more dangerous than the impact itself.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vu-026",
+   "lesson": "vu-animals",
+   "q": "When is it allowed to lead a camel train on the road?",
+   "options": [
+    "Only at night, so as not to disrupt traffic",
+    "Only when they are tied to one another in a single line, in groups of up to five",
+    "Leading camels on the road is forbidden under any circumstances",
+    "Without restriction, as long as there is one handler"
+   ],
+   "answer": 1,
+   "explain": "A camel train is allowed only when the camels are tied to one another in a single line, in groups of up to five (reg. 139).",
+   "shuffled": true
+  }
+ ]
+}

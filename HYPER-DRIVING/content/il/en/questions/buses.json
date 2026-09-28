@@ -1,0 +1,355 @@
+{
+ "chapter": "buses",
+ "questions": [
+  {
+   "id": "q-bs-001",
+   "lesson": "bs-passengers",
+   "licence": [
+    "bus"
+   ],
+   "q": "When may a bus driver open the doors?",
+   "options": [
+    "When the bus has stopped at a stop, after making sure this will not harm passengers or after warning of it",
+    "Only when the bus is moving slowly",
+    "At any time, purely at their own discretion",
+    "Only if all the passengers are seated"
+   ],
+   "answer": 0,
+   "explain": "Doors are not opened while the bus is moving. At a stop they are opened only after making sure it is safe for passengers, or after a warning (reg. 439).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-002",
+   "lesson": "bs-passengers",
+   "licence": [
+    "bus"
+   ],
+   "q": "Who determines how many standing passengers a particular bus may carry?",
+   "options": [
+    "That bus's route service licence",
+    "The driver, by personal judgement on each trip",
+    "A fixed number identical for every bus in Israel",
+    "There is no limit at all"
+   ],
+   "answer": 0,
+   "explain": "The permitted number of standing passengers is set in the route licence of each bus separately (reg. 395).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-003",
+   "lesson": "bs-passengers",
+   "licence": [
+    "bus"
+   ],
+   "q": "A disabled person has boarded the bus and asked for a seat. What is the driver's duty?",
+   "options": [
+    "To explain that they have no authority to ask for such a thing",
+    "To ask that one of the two priority seats near the entrance be vacated for them",
+    "To wait for another passenger to offer voluntarily",
+    "To suggest they get off at the next stop"
+   ],
+   "answer": 1,
+   "explain": "A disabled person who boards a bus and asks for this is entitled to have the driver ask for one of the priority seats near the entrance to be vacated (reg. 432).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-004",
+   "lesson": "bs-stops",
+   "licence": [
+    "bus"
+   ],
+   "sign": "505",
+   "q": "What does this sign indicate?",
+   "options": [
+    "A bus stop",
+    "Parking allowed for private cars",
+    "No entry for buses",
+    "A lane for public transport only"
+   ],
+   "answer": 0,
+   "explain": "Sign 505 marks a public bus stop — a place where buses on service routes stop.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-005",
+   "lesson": "bs-stops",
+   "licence": [
+    "bus"
+   ],
+   "q": "When must a bus driver stop at an ordinary stop, even if it is not a special stop?",
+   "options": [
+    "Only during daytime hours",
+    "Never, unless it is explicitly written in the route licence",
+    "If someone is waiting at the stop and there is room on the bus",
+    "Only if the stop is empty of people"
+   ],
+   "answer": 2,
+   "explain": "At stops not designated as special, the bus driver will stop if a person is waiting at the stop, unless there is no room (reg. 428).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-006",
+   "lesson": "bs-stops",
+   "licence": [
+    "bus"
+   ],
+   "q": "When does the bus driver switch on the left-turn indicator around a stop?",
+   "options": [
+    "Only when about to leave the stop and rejoin the traffic",
+    "Never, because a bus is exempt from signalling",
+    "Only when entering the stop, not when leaving it",
+    "Throughout the whole time it is stopped"
+   ],
+   "answer": 0,
+   "explain": "The indicator is switched on before leaving the stop and switched off the moment the bus stops — it does not stay on throughout the stop (reg. 429).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-007",
+   "lesson": "bs-stops",
+   "licence": [
+    "bus"
+   ],
+   "q": "Where is a bus's largest blind spot?",
+   "options": [
+    "Only on the roof of the vehicle",
+    "Only on the left side",
+    "A bus has no blind spots",
+    "Ahead of the front, to the right of the doors, and above all behind"
+   ],
+   "answer": 3,
+   "explain": "A bus has a large blind spot ahead of the front, to the right of the doors, and above all behind — pedestrians who get off and cross in front of it may not be seen.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-008",
+   "lesson": "bs-rules",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "speed.bus.freeway"
+   ],
+   "q": "What is the maximum speed for a bus (that is not a minibus) on a freeway, even if a sign allows more?",
+   "options": [
+    "{{fact:speed.nonurban}}",
+    "{{fact:speed.freeway}}",
+    "{{fact:speed.urban}}",
+    "{{fact:speed.bus.freeway}}"
+   ],
+   "answer": 3,
+   "explain": "A bus on a freeway is limited to {{fact:speed.bus.freeway}}, always — even when a sign allows a higher speed (reg. 54).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-009",
+   "lesson": "bs-rules",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "speed.limiter.bus"
+   ],
+   "q": "To what speed is a heavy bus capped by its speed limiter?",
+   "options": [
+    "{{fact:speed.limiter.truck}}",
+    "There is no speed limiter on buses",
+    "{{fact:speed.limiter.bus}}",
+    "{{fact:speed.freeway}}"
+   ],
+   "answer": 2,
+   "explain": "A bus whose gross vehicle weight exceeds 10,000 kg has a speed limiter fitted that does not let the engine accelerate past {{fact:speed.limiter.bus}} (reg. 364E).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-010",
+   "lesson": "bs-rules",
+   "licence": [
+    "bus"
+   ],
+   "q": "What limits is a bus driver subject to on driving hours and the tachograph, compared with a heavy-truck driver?",
+   "options": [
+    "They are fully exempt, because it involves passengers, not cargo",
+    "Limits far stricter than any other vehicle",
+    "Significantly lighter limits, because a bus is slower",
+    "The same driving-hours, rest and tachograph-duty limits"
+   ],
+   "answer": 3,
+   "explain": "A bus driver is subject to the same driving-hours and rest limits, and the same tachograph duty, as a heavy goods vehicle driver (regs. 168, 364D).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-011",
+   "lesson": "bs-school",
+   "licence": [
+    "bus"
+   ],
+   "q": "Who may carry students to school?",
+   "options": [
+    "Any public bus, with no further conditions",
+    "Only a vehicle owned by the Ministry of Education",
+    "Only a marked student-transport vehicle, or a taxi with a special-hire licence",
+    "Any private car whose owner is willing to help"
+   ],
+   "answer": 2,
+   "explain": "Student transport is permitted only in a student-transport vehicle whose licence states that it is authorised for this, or in a taxi with a special-hire licence (reg. 83).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-012",
+   "lesson": "bs-school",
+   "licence": [
+    "bus"
+   ],
+   "q": "What is expressly forbidden in a student-transport vehicle?",
+   "options": [
+    "Lighting the vehicle when lights are required",
+    "Carrying children standing",
+    "Letting children off at the front right-hand door",
+    "Checking the vehicle before the trip"
+   ],
+   "answer": 1,
+   "explain": "The law expressly forbids carrying children standing in a student-transport vehicle (reg. 83).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-013",
+   "lesson": "bs-school",
+   "licence": [
+    "bus"
+   ],
+   "q": "When may a student-transport driver continue driving after setting children down?",
+   "options": [
+    "Exactly 5 seconds later, under the regulations",
+    "Immediately after the door has closed, with no further check",
+    "Only after making sure every child has finished getting off and has moved away from the vehicle's path",
+    "Immediately, because the children are responsible for themselves"
+   ],
+   "answer": 2,
+   "explain": "You must not start driving before making sure every child has finished getting off the vehicle and has moved away from its path (reg. 83).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-014",
+   "lesson": "bs-school",
+   "licence": [
+    "bus"
+   ],
+   "q": "What does the driver check at the end of student transport, before leaving the vehicle?",
+   "options": [
+    "Only the fuel level",
+    "Only how clean the floor is",
+    "Checks the vehicle to make sure no child has been left behind",
+    "Nothing — that is the teacher's job alone"
+   ],
+   "answer": 2,
+   "explain": "Whoever is driving the vehicle must check it at the end of the trip to make sure no child has been left behind (reg. 83).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-015",
+   "lesson": "bs-emergency",
+   "licence": [
+    "bus"
+   ],
+   "q": "What is used to evacuate passengers from a bus in an emergency, when the doors are not available?",
+   "options": [
+    "The fire extinguisher alone",
+    "A hammer for breaking a window",
+    "The horn",
+    "The air-pressure gauge"
+   ],
+   "answer": 1,
+   "explain": "In an emergency, the hammer meant for breaking a window is used to evacuate passengers when the doors are not accessible or safe.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-016",
+   "lesson": "bs-emergency",
+   "licence": [
+    "bus"
+   ],
+   "q": "What must be found on a bus, unlike a private car?",
+   "options": [
+    "A built-in radio only",
+    "There is no extra equipment beyond a private car",
+    "A digital distance meter only",
+    "A fire extinguisher and a first-aid kit"
+   ],
+   "answer": 3,
+   "explain": "A fire extinguisher and a first-aid kit are not required in a private car, but they are required on a bus (regs. 370, 369A, 408).",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-017",
+   "lesson": "bs-emergency",
+   "licence": [
+    "bus"
+   ],
+   "q": "What is the correct order during a fire on a bus?",
+   "options": [
+    "Waiting for MDA without moving from the vehicle",
+    "Evacuating the driver only, passengers are responsible for themselves",
+    "Personal safety first, fast evacuation, and firefighting only if it is safe and does not delay evacuation",
+    "Extinguish the fire first, then see to the passengers' safety"
+   ],
+   "answer": 2,
+   "explain": "Personal safety comes before everything: stop, evacuate passengers quickly and in order, and use the extinguisher only if it is safe and does not delay the evacuation.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-018",
+   "lesson": "bs-taxis",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "licence.d1.min_age"
+   ],
+   "q": "From what age is a D1 licence, which covers a taxi and a tour vehicle, given?",
+   "options": [
+    "18",
+    "24",
+    "16",
+    "{{fact:licence.d1.min_age}}"
+   ],
+   "answer": 3,
+   "explain": "A D1 licence is given from age {{fact:licence.d1.min_age}}, subject to at least two years' seniority in a B or C1 licence.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-019",
+   "lesson": "bs-taxis",
+   "licence": [
+    "bus"
+   ],
+   "q": "What is the difference between a “special hire” and a “service ride” in a taxi?",
+   "options": [
+    "A service ride is forbidden by law",
+    "There is no difference, they are two terms for the same thing",
+    "A special hire is only done at night",
+    "On a special hire the taxi is entirely at the disposal of whoever ordered it; on a service ride each passenger pays separately on a fixed route"
+   ],
+   "answer": 3,
+   "explain": "A special hire is entirely at the disposal of whoever ordered it; a service ride travels a fixed route and every passenger pays separately.",
+   "shuffled": true
+  },
+  {
+   "id": "q-bs-020",
+   "lesson": "bs-taxis",
+   "licence": [
+    "bus"
+   ],
+   "q": "When may a taxi driver refuse to carry a passenger?",
+   "options": [
+    "In any situation, purely at their personal wish",
+    "Only for a reasonable cause, including a concern for their safety",
+    "Only if the passenger pays in cash",
+    "Never, with no exception whatsoever"
+   ],
+   "answer": 1,
+   "explain": "A taxi driver must not refuse, without reasonable cause — including a concern for their safety — to carry a passenger and their luggage (reg. 501).",
+   "shuffled": true
+  }
+ ]
+}

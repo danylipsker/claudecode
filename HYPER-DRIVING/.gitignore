@@ -1,0 +1,9 @@
+# private signing keys never leave the authority's machine
+keys/
+# signed releases are built for a server, not versioned
+dist/
+_sheets/
+# drafts already merged into the pack (kept locally for reference)
+content/il/_merged/
+# reference sign poster (third-party, used only for visual comparison)
+86913_ykq6.png

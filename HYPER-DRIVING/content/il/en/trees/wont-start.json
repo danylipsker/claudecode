@@ -1,0 +1,192 @@
+{
+ "trees": [
+  {
+   "id": "car-wont-start",
+   "group": "Engine and starting",
+   "title": "The car won't start",
+   "summary": "You turn the key or press the start button — and nothing good happens.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "safety": "Before any check: apply the parking brake, put the gear lever in park (P) or neutral, and never touch moving parts or the ignition system while the engine is running.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "What happens when you try to start the car?",
+     "options": [
+      {
+       "label": "Nothing — no sound, and the dashboard lights are weak or off",
+       "next": "n2"
+      },
+      {
+       "label": "You hear rapid clicking (“tick-tick-tick”)",
+       "next": "r-battery"
+      },
+      {
+       "label": "The engine turns over (a “grr-grr” sound) but doesn't start",
+       "next": "n3"
+      },
+      {
+       "label": "The engine starts for a moment and immediately stalls",
+       "next": "n5"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Do the headlights and dashboard lights come on when you switch to the on position?",
+     "options": [
+      {
+       "label": "No, or very weak",
+       "next": "r-battery"
+      },
+      {
+       "label": "Yes, at normal brightness — only the starter doesn't work",
+       "next": "n4"
+      }
+     ]
+    },
+    "n4": {
+     "q": "Is the car automatic? Is the gear lever in P or N? (Manual: is the clutch pedal pressed all the way down?)",
+     "options": [
+      {
+       "label": "No — it was in gear / the clutch wasn't pressed",
+       "next": "r-gear"
+      },
+      {
+       "label": "Yes, everything is in the right position",
+       "next": "r-starter"
+      }
+     ]
+    },
+    "n3": {
+     "q": "Is there fuel in the tank, and the fuel gauge isn't on empty?",
+     "options": [
+      {
+       "label": "The tank is nearly empty or empty",
+       "next": "r-fuel"
+      },
+      {
+       "label": "There's fuel",
+       "next": "n6"
+      }
+     ]
+    },
+    "n6": {
+     "q": "Is the key/immobiliser warning light flashing on the dashboard?",
+     "options": [
+      {
+       "label": "Yes",
+       "next": "r-immobiliser"
+      },
+      {
+       "label": "No, or I don't know",
+       "next": "r-ignition-fuel"
+      }
+     ]
+    },
+    "n5": {
+     "q": "What type of engine is it?",
+     "options": [
+      {
+       "label": "Petrol",
+       "next": "r-idle"
+      },
+      {
+       "label": "Diesel, and a cold morning",
+       "next": "r-glow"
+      },
+      {
+       "label": "Diesel, after the fuel ran out and was refilled",
+       "next": "r-diesel-air"
+      }
+     ]
+    },
+    "r-battery": {
+     "result": "The battery is weak or flat, or its connections are loose or corroded",
+     "severity": "soon",
+     "text": "The starter needs a very strong current. A weak battery has enough for the lights but not for the starter — hence the clicking. Common causes: lights left on, an old battery (usually after 3–5 years), only short trips, and cold weather.",
+     "actions": [
+      "Check that the battery terminals are tight and free of white-green corrosion.",
+      "Jump-start it with cables from another car in the correct order, or with a portable jump starter.",
+      "After starting, drive for at least half an hour so the battery charges, and have the battery and charging system checked at a garage.",
+      "If the battery warning light comes on while driving, the problem is probably the charging system (the alternator), not the battery."
+     ]
+    },
+    "r-gear": {
+     "result": "The safety switch is preventing starting in gear",
+     "severity": "ok",
+     "text": "In an automatic car you can only start in P or N; in most manual cars, only when the clutch pedal is pressed all the way down. This protects against the car lurching forward when it starts.",
+     "actions": [
+      "Move to P (or N) / press the clutch all the way down and try again.",
+      "In an automatic car: also press the brake pedal while starting."
+     ]
+    },
+    "r-starter": {
+     "result": "A fault in the starter motor, its relay, or the wiring",
+     "severity": "soon",
+     "text": "When the electrics are fine but the starter doesn't turn, the problem is usually the starter motor itself, the starter relay, a fuse, or a loose contact.",
+     "actions": [
+      "Check the starter fuse in the owner's manual.",
+      "Call for a tow or roadside assistance; this isn't a fault you can fix at the roadside."
+     ]
+    },
+    "r-fuel": {
+     "result": "The car has run out of fuel",
+     "severity": "ok",
+     "text": "After refuelling, in a petrol car it's usually enough to turn the key to the on position for a few seconds before starting, so the fuel pump can fill the system.",
+     "actions": [
+      "Fill up with the correct type of fuel.",
+      "In a diesel car you may need to bleed air from the fuel system — follow the owner's manual."
+     ]
+    },
+    "r-immobiliser": {
+     "result": "The immobiliser isn't recognising the key",
+     "severity": "ok",
+     "text": "The immobiliser stops the car starting when it doesn't recognise the chip in the key. A weak key fob battery or a damaged key can cause this.",
+     "actions": [
+      "Try the spare key.",
+      "With a start button: hold the fob near the spot the owner's manual specifies (sometimes by the steering column)."
+     ]
+    },
+    "r-ignition-fuel": {
+     "result": "A fault in the fuel supply or ignition",
+     "severity": "soon",
+     "text": "The engine needs fuel, air and a spark (in petrol engines) at the right moment. When it turns over but doesn't start, one of these is missing: the fuel pump, a clogged filter, a sensor, the spark plugs, or the ignition coil.",
+     "actions": [
+      "Don't keep trying to start it again and again — this drains the battery and overheats the starter. Try for a few seconds at most, and wait between attempts.",
+      "Call roadside assistance or a tow to a garage."
+     ]
+    },
+    "r-idle": {
+     "result": "A fault in idle control or the air/fuel supply",
+     "severity": "soon",
+     "text": "An engine that starts and immediately stalls may be suffering from a clogged air filter, a faulty sensor, or a throttle problem.",
+     "actions": [
+      "Check whether the “check engine” light is on.",
+      "Go to a garage for a computerised diagnosis."
+     ]
+    },
+    "r-glow": {
+     "result": "Weak glow plugs — a cold diesel engine",
+     "severity": "ok",
+     "text": "A diesel engine ignites from compression heat. In cold weather, the glow plugs warm the combustion chamber before starting.",
+     "actions": [
+      "Switch to the on position and wait for the glow plug light (a yellow coil) to go out — only then start the engine.",
+      "If the problem happens every cold morning, have the glow plugs checked at a garage."
+     ]
+    },
+    "r-diesel-air": {
+     "result": "Air has entered the diesel fuel system",
+     "severity": "ok",
+     "text": "When the diesel fuel runs out, air is drawn into the lines and the pump can't build up pressure.",
+     "actions": [
+      "Many cars have a hand pump or an air-bleeding procedure — follow the owner's manual.",
+      "If not, call roadside assistance. For next time: don't drive a diesel car until the tank is empty."
+     ]
+    }
+   }
+  }
+ ]
+}

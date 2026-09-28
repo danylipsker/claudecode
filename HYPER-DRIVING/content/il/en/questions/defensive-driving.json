@@ -1,0 +1,355 @@
+{
+ "chapter": "defensive-driving",
+ "questions": [
+  {
+   "id": "q-dd-001",
+   "lesson": "dd-principles",
+   "q": "What does “defensive driving” mean?",
+   "options": [
+    "Driving as slowly as possible in every situation",
+    "Driving on the assumption that someone else might make a mistake, and being ready for it in advance",
+    "Driving suited only to very experienced drivers",
+    "Focusing only on your own rights on the road"
+   ],
+   "answer": 1,
+   "explain": "Defensive driving is an approach of anticipating other people’s mistakes in advance, not a slow or fearful driving style.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-002",
+   "lesson": "dd-principles",
+   "q": "Why isn’t right of way at a junction a real “protection” against a crash?",
+   "options": [
+    "Because right of way only applies to heavy vehicles",
+    "Because another vehicle might still not stop, regardless of the legal right",
+    "Because right of way changes every day",
+    "Because right of way doesn’t exist in Israeli law"
+   ],
+   "answer": 1,
+   "explain": "Even when the law is on your side, another vehicle might not respect the right of way - so you drive so that you’ll have time to react.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-003",
+   "lesson": "dd-principles",
+   "q": "What is a space cushion?",
+   "options": [
+    "A distance you’re allowed to exceed the speed limit by",
+    "Open space around the car on every side, giving you time and options if something goes wrong",
+    "An extra airbag in the car",
+    "Another name for a seatbelt"
+   ],
+   "answer": 1,
+   "explain": "A space cushion is the space kept ahead, behind and to the sides - the bigger it is, the more time you have to react.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-004",
+   "lesson": "dd-principles",
+   "q": "A driver is driving at the speed limit, in their own lane, with a green light in their favour. What does the defensive driving approach suggest?",
+   "options": [
+    "Stop at every junction even with a green light",
+    "Stop scanning, because their right is clear",
+    "Speed up to cross faster, since the light is in their favour",
+    "Enter the junction at a pace that allows a reaction, and scan to the sides despite the green light"
+   ],
+   "answer": 3,
+   "explain": "Even with a green light, you scan to the sides, because another vehicle might not stop at their red light.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-005",
+   "lesson": "dd-scanning",
+   "q": "Why is it important to look far beyond the vehicle right in front of you?",
+   "options": [
+    "Only to choose a faster lane",
+    "To read advertising signs in time",
+    "To spot braking, an obstacle or a change in traffic early",
+    "Because it’s forbidden to look at the vehicle right in front"
+   ],
+   "answer": 2,
+   "explain": "Looking far ahead, beyond the vehicle right in front, spots changes in traffic long before they reach you.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-006",
+   "lesson": "dd-scanning",
+   "q": "About how often should you check the mirrors and dashboard while driving normally?",
+   "options": [
+    "Once a minute only",
+    "Every few seconds, in a quick glance that returns to the road at once",
+    "Only at the start of the drive",
+    "Only when planning to turn"
+   ],
+   "answer": 1,
+   "explain": "Frequent, brief checks keep an up-to-date picture of your surroundings, without taking your eyes off the road for long.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-007",
+   "lesson": "dd-scanning",
+   "q": "What is the blind spot in a car?",
+   "options": [
+    "Only the area behind the car, visible in the rear-view mirror",
+    "An area you can see well only in the side mirror",
+    "An area around the car that isn’t visible in the mirrors or in direct sight, mainly to the rear-side",
+    "Any area outside the car"
+   ],
+   "answer": 2,
+   "explain": "The blind spot is exactly the area the mirrors don’t cover - another vehicle can travel there without you knowing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-008",
+   "lesson": "dd-scanning",
+   "q": "Before changing lanes, what must you do beyond checking the mirror?",
+   "options": [
+    "Turn on the hazard lights",
+    "Speed up to get past quickly",
+    "Turn your head and check the blind spot directly",
+    "Honk to warn other vehicles"
+   ],
+   "answer": 2,
+   "explain": "The mirror alone doesn’t cover the blind spot - you must turn your head and check directly before changing lanes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-009",
+   "lesson": "dd-scanning",
+   "q": "Why does the scanning pattern matter even on the most familiar road?",
+   "options": [
+    "Because it’s exactly on a familiar road that it’s easy to “switch off” and stop really scanning",
+    "Because a familiar road has more hazards than a new one",
+    "Because the mirrors don’t work normally on a familiar road",
+    "It doesn’t matter - you can skip scanning on a familiar road"
+   ],
+   "answer": 0,
+   "explain": "Routine dulls alertness; a consistent scanning pattern keeps the same level of attention even on the most familiar road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-010",
+   "lesson": "dd-hazards",
+   "q": "You see a ball rolling into the road from a playground. What is the right thing to do?",
+   "options": [
+    "Speed up to get past before anyone runs out",
+    "Honk continuously until you pass the spot",
+    "Ignore it, because the ball itself isn’t dangerous",
+    "Slow down and prepare for the chance that a child will run after the ball"
+   ],
+   "answer": 3,
+   "explain": "A rolling ball is a classic sign warning that a child may run after it into the road.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-011",
+   "lesson": "dd-hazards",
+   "q": "Why should you be especially careful near a bus stopped at a stop?",
+   "options": [
+    "Because buses always drive too fast",
+    "It may hide a pedestrian crossing in front of or behind it",
+    "Because a bus always turns left near a stop",
+    "Because you can never overtake a bus"
+   ],
+   "answer": 1,
+   "explain": "A stopped bus can hide a pedestrian crossing near it - slow down and stay alert.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-012",
+   "lesson": "dd-hazards",
+   "q": "The brake lights of a vehicle far ahead of you are flashing, even though the vehicle right in front of you hasn’t slowed yet. What is correct?",
+   "options": [
+    "Treat it as a sign that traffic may be about to slow down, and prepare",
+    "Ignore it, because it doesn’t concern the vehicle right in front of you",
+    "Speed up so you can overtake before traffic slows down",
+    "It’s always a technical fault in the distant vehicle"
+   ],
+   "answer": 0,
+   "explain": "Distant brake lights are an early clue that all the traffic ahead may be about to slow down - it’s better to prepare in advance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-013",
+   "lesson": "dd-hazards",
+   "q": "Why is it wrong to assume that a pedestrian looking at their phone at the roadside notices your car?",
+   "options": [
+    "Because they’re busy with their phone and might cross without paying attention to traffic",
+    "Because this is only true at night",
+    "Because pedestrians always see well, regardless of a phone",
+    "Because the law forbids pedestrians from using a phone"
+   ],
+   "answer": 0,
+   "explain": "A pedestrian absorbed in their phone might not notice the traffic - a careful driver doesn’t assume they see them.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-014",
+   "lesson": "dd-collisions",
+   "q": "What is the most common cause of a rear-end collision?",
+   "options": [
+    "Too short a gap from the vehicle in front, or too late a reaction",
+    "Driving with the lights on during the day",
+    "An airbag fault",
+    "Driving too slowly for the traffic"
+   ],
+   "answer": 0,
+   "explain": "A rear-end collision happens almost always because of too short a gap or too late a reaction - a space cushion ahead prevents it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-015",
+   "lesson": "dd-collisions",
+   "q": "What is the main prevention principle against a head-on collision?",
+   "options": [
+    "Always drive with high beams on",
+    "When in doubt whether the oncoming lane is clear enough for overtaking - don’t overtake",
+    "Always overtake at the highest possible speed",
+    "Always drive on the left side of the road"
+   ],
+   "answer": 1,
+   "explain": "A head-on collision usually happens from a dangerous overtake - when in doubt about the oncoming lane, simply don’t overtake.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-016",
+   "lesson": "dd-collisions",
+   "q": "Why isn’t right of way at a junction enough to avoid a crash?",
+   "options": [
+    "Because right of way changes at every junction",
+    "Because it’s forbidden to enter a junction on a green light",
+    "Because right of way only applies during the day",
+    "Because a vehicle entering from the other direction might not stop, even without right of way"
+   ],
+   "answer": 3,
+   "explain": "Right of way is a legal rule, not a guarantee the other side will actually stop - enter the junction carefully.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-017",
+   "lesson": "dd-collisions",
+   "q": "The wheels of the car have drifted slightly onto the shoulder. What is the correct action?",
+   "options": [
+    "Yank the wheel sharply back onto the road",
+    "Brake hard immediately",
+    "Ease off the accelerator slightly, hold the wheel steady and return to the lane gently",
+    "Speed up to get back into the lane faster"
+   ],
+   "answer": 2,
+   "explain": "A sharp correction can send the car across the whole road to the other side - bring it back gently and gradually.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-018",
+   "lesson": "dd-collisions",
+   "q": "What do the common crashes - rear-end, head-on, running off the road - have in common?",
+   "options": [
+    "They’re only linked to vehicle faults",
+    "All of them are far easier to prevent before they start, with a suitable distance and speed",
+    "They only happen at night",
+    "They are completely unavoidable"
+   ],
+   "answer": 1,
+   "explain": "In all of these patterns, early prevention - distance, speed and scanning - works far better than a last-moment fix.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-019",
+   "lesson": "dd-skids",
+   "q": "What is the most common root cause of a skid?",
+   "options": [
+    "Newly fitted brakes",
+    "Tyres that are too new",
+    "Hot weather at too high a temperature",
+    "A speed unsuited to the bend or the road conditions"
+   ],
+   "answer": 3,
+   "explain": "Most skids are a direct result of a speed unsuited to the bend or the road conditions.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-020",
+   "lesson": "dd-skids",
+   "q": "In a car that turns less than expected in a bend, with the front wheels sliding wide, what is the correct fix?",
+   "options": [
+    "Turn the wheel even harder",
+    "Brake hard in the middle of the turn",
+    "Ease off the accelerator and look where you want to go",
+    "Speed up to “push” the car into the turn"
+   ],
+   "answer": 2,
+   "explain": "This is understeer; easing off the accelerator and looking in the desired direction helps the front wheels regain grip.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-021",
+   "lesson": "dd-skids",
+   "q": "What does electronic stability control (ESC) do in a skid?",
+   "options": [
+    "Replaces the need for careful driving",
+    "Increases the car’s speed to get out of the skid",
+    "Automatically brakes individual wheels to help the car return to the intended direction",
+    "Disconnects the engine completely"
+   ],
+   "answer": 2,
+   "explain": "ESC brakes individual wheels to reduce sideways skidding and help maintain direction.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-022",
+   "lesson": "dd-skids",
+   "q": "Why is it wrong to rely on ESC instead of a suitable speed?",
+   "options": [
+    "Because ESC doesn’t exist in private cars",
+    "Because ESC only works on a dry road",
+    "Because ESC only works below 30 km/h",
+    "Because ESC doesn’t create grip that isn’t there - it doesn’t cancel the laws of physics"
+   ],
+   "answer": 3,
+   "explain": "ESC helps maintain direction, but it can’t create grip that doesn’t exist - a suitable speed for the conditions remains the basis.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-023",
+   "lesson": "dd-courtesy",
+   "q": "When should you turn on the indicator before a turn or a lane change?",
+   "options": [
+    "Exactly the moment you start turning",
+    "No need if the lane is completely clear",
+    "Only if there’s another vehicle in the blind spot",
+    "Early, before starting the manoeuvre - not in the middle of it"
+   ],
+   "answer": 3,
+   "explain": "An early signal gives other drivers time to react calmly, instead of having to correct at the last moment.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-024",
+   "lesson": "dd-courtesy",
+   "q": "A vehicle is trying to merge from a lane that’s ending. What is the correct behaviour?",
+   "options": [
+    "Leave it space and allow the merge",
+    "Stick close to the vehicle ahead so as not to give it room",
+    "Honk until it gives way",
+    "Speed up to block it"
+   ],
+   "answer": 0,
+   "explain": "Giving space for a merge costs a few seconds and prevents the pressured situations that cause mistakes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dd-025",
+   "lesson": "dd-courtesy",
+   "q": "Another driver lets you into a lane. What is correct?",
+   "options": [
+    "You must stop and thank them in person",
+    "You must wait at least a minute before continuing",
+    "It’s forbidden to thank them in any way",
+    "You can thank them with a brief flash of the hazard lights when it’s safe, without stopping in traffic"
+   ],
+   "answer": 3,
+   "explain": "A brief, safe thank-you is accepted, but it’s a nice extra - not a reason to stop in the middle of traffic.",
+   "shuffled": true
+  }
+ ]
+}

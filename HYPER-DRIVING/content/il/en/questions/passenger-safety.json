@@ -1,0 +1,364 @@
+{
+ "chapter": "passenger-safety",
+ "questions": [
+  {
+   "id": "q-ps-001",
+   "lesson": "ps-belts",
+   "q": "Where should the diagonal strap of a seatbelt pass?",
+   "options": [
+    "Under the arm",
+    "Across the neck only",
+    "Over the collarbone, across the middle of the shoulder",
+    "Behind the back"
+   ],
+   "answer": 2,
+   "explain": "A strap that passes under the arm or behind the back won’t stop the body correctly in a crash, and may cause injury itself.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-002",
+   "lesson": "ps-belts",
+   "q": "Who must wear a seatbelt in the car?",
+   "options": [
+    "Only in the front seats",
+    "Only the driver and the passenger beside them",
+    "Only passengers over 18",
+    "The driver and every passenger, in the front seats and rear seats alike"
+   ],
+   "answer": 3,
+   "explain": "Regulation 83B requires the driver and all passengers, in every seat in the car, to wear a belt or be secured in a suitable seat.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-003",
+   "lesson": "ps-belts",
+   "q": "Why must a pregnant passenger not remove her seatbelt “to protect the baby”?",
+   "options": [
+    "Because there’s no risk to the baby in a crash at all",
+    "Because the best way to protect the baby is to keep the mother correctly belted",
+    "Because it’s always forbidden without exception, even in a stationary car",
+    "Because the belt replaces a doctor’s check-up"
+   ],
+   "answer": 1,
+   "explain": "The lap strap passes under the bump, across the hips; if the mother isn’t belted, both she and the baby are injured far more in a sudden stop or crash.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-004",
+   "lesson": "ps-belts",
+   "q": "A driver is reversing in a car park. Is he exempt from wearing a seatbelt at that moment?",
+   "options": [
+    "No, a seatbelt is compulsory in every situation, without exception",
+    "Only if the car park is private",
+    "Yes, reversing is one of the exceptions the law recognises",
+    "Only in an automatic car"
+   ],
+   "answer": 2,
+   "explain": "Regulation 83C exempts from wearing a belt while reversing - this is a specific exception, not a general exemption.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-005",
+   "lesson": "ps-belts",
+   "q": "What does the seatbelt pretensioner do?",
+   "options": [
+    "Tightens the strap instantly at the moment of impact, before the body has time to move",
+    "Applies the brakes automatically",
+    "Inflates the airbag",
+    "Loosens the strap to make it more comfortable"
+   ],
+   "answer": 0,
+   "explain": "The seatbelt pretensioner shortens the distance the body travels forward, improving the protection the belt gives.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-006",
+   "lesson": "ps-children",
+   "facts": [
+    "child.rear_facing_age"
+   ],
+   "q": "Up to what age must a child travel in a child safety seat with its back facing the front of the car?",
+   "options": [
+    "{{fact:child.safety_seat_age}}",
+    "{{fact:child.booster_age_max}}",
+    "{{fact:child.rear_facing_age}}",
+    "14 years"
+   ],
+   "answer": 2,
+   "explain": "Up to age {{fact:child.rear_facing_age}}, a rear-facing seat is required, to spread the force of impact across the child’s whole back (reg. 83A(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-007",
+   "lesson": "ps-children",
+   "facts": [
+    "child.booster_age_max"
+   ],
+   "q": "From age 3 up to what age is it permitted to carry a child in a booster seat instead of a full child safety seat?",
+   "options": [
+    "12 years",
+    "5 years",
+    "{{fact:child.rear_facing_age}}",
+    "{{fact:child.booster_age_max}}"
+   ],
+   "answer": 3,
+   "explain": "From age {{fact:child.safety_seat_age}} up to age {{fact:child.booster_age_max}}, a suitable child safety seat or booster seat is permitted (reg. 83A(b)(2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-008",
+   "lesson": "ps-children",
+   "q": "Why must a child not be seated in a rear-facing child safety seat, facing an active airbag?",
+   "options": [
+    "Because an airbag that deploys forcefully can badly injure the child instead of protecting them",
+    "Because the airbag simply won’t deploy at all if there’s a child seat",
+    "Because it only causes a warning light",
+    "Because it only breaches the manufacturer’s terms, with no real danger"
+   ],
+   "answer": 0,
+   "explain": "Regulation 83A(d) requires disconnecting an active airbag facing a child safety seat or booster seat, for exactly this reason.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-009",
+   "lesson": "ps-children",
+   "q": "What is the advantage of ISOFIX anchoring over installing a child safety seat with a belt?",
+   "options": [
+    "It removes the need for harness straps",
+    "It reduces the price of the seat",
+    "Installation is more stable and easier, without depending on tensioning the car’s belt",
+    "It’s only meant for children over 8"
+   ],
+   "answer": 2,
+   "explain": "ISOFIX anchors the seat directly to metal anchor points in the car, so installation is more stable and less dependent on human error.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-010",
+   "lesson": "ps-children",
+   "q": "What is the simple test that a child safety seat’s harness straps are correctly tightened?",
+   "options": [
+    "There’s no way to check this at home",
+    "A whole hand fits comfortably under the strap",
+    "One finger barely fits under the strap",
+    "The strap comes loose easily when pulled"
+   ],
+   "answer": 2,
+   "explain": "A correctly tightened strap leaves room for only one finger - no more.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-011",
+   "lesson": "ps-children",
+   "q": "Parents are carrying a 5-year-old in the car. What does the law require?",
+   "options": [
+    "A regular seatbelt only, with no extra seat",
+    "A rear-facing seat only",
+    "No special requirement beyond age 3",
+    "A suitable child safety seat or booster seat matched to their height and weight"
+   ],
+   "answer": 3,
+   "explain": "A 5-year-old is in the range between {{fact:child.safety_seat_age}} and {{fact:child.booster_age_max}}, so a suitable child safety seat or booster seat is required.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-012",
+   "lesson": "ps-forgotten",
+   "q": "Why is a child in greater danger than an adult when left alone in a closed, hot car?",
+   "options": [
+    "This is only true on especially hot summer days",
+    "There’s no real extra danger, it’s just a misconception",
+    "The child will always be asleep and won’t feel anything",
+    "Their body heats up faster and they find it harder to regulate the heat"
+   ],
+   "answer": 3,
+   "explain": "A small child’s body heats up faster than an adult’s and struggles more to regulate heat, so the danger is high even on a relatively mild day.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-013",
+   "lesson": "ps-forgotten",
+   "q": "What is the most effective protection against forgetting a child in the car?",
+   "options": [
+    "A fixed habit - leaving something essential in the back seat so you have to look back every time you get out",
+    "Relying on memory each time",
+    "Leaving a window cracked open",
+    "Listening to the radio to stay alert"
+   ],
+   "answer": 0,
+   "explain": "Most cases aren’t deliberate neglect but a disrupted routine - a fixed habit protects better than relying on memory.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-014",
+   "lesson": "ps-forgotten",
+   "facts": [
+    "child.alone_max_age"
+   ],
+   "q": "What is the legal severity of leaving a child up to age {{fact:child.alone_max_age}} without proper supervision, in a way that endangers their life?",
+   "options": [
+    "An administrative offence carrying only a licence suspension",
+    "Not an offence at all if the time is short",
+    "A serious criminal offence carrying imprisonment (Penal Law, section 361)",
+    "Only a fine, with no points"
+   ],
+   "answer": 2,
+   "explain": "Section 361 of the Penal Law sets imprisonment of up to three years, and an additional year if it was done negligently.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-015",
+   "lesson": "ps-forgotten",
+   "q": "You see a child alone in a car parked in the sun, visibly distressed, doors locked. What do you do?",
+   "options": [
+    "Look for the parent nearby for half an hour before calling for help",
+    "Photograph the car and leave",
+    "Call the police or Magen David Adom immediately and act to get the child out without waiting, even if you need to break a window",
+    "Wait by the car for the parent to return, in case they’re nearby"
+   ],
+   "answer": 2,
+   "explain": "In a situation of distress, every minute counts - call {{fact:emergency.police}} or {{fact:emergency.mda}} immediately and act, don’t wait or search alone.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-016",
+   "lesson": "ps-forgotten",
+   "q": "Why isn’t a window cracked open enough to protect a child left in the car?",
+   "options": [
+    "It’s enough for a short time of up to 10 minutes",
+    "A window cracked open is actually more dangerous than a closed one",
+    "The temperature in the cabin still rises very quickly, even with the crack open",
+    "It’s enough if the car is parked in the shade"
+   ],
+   "answer": 2,
+   "explain": "Even with a window cracked open and even in the shade, the temperature in the cabin rises too fast for it to be safe to leave a child alone.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-017",
+   "lesson": "ps-airbags-restraints",
+   "q": "Why must an airbag work together with a seatbelt, and not instead of it?",
+   "options": [
+    "Without a belt, the body reaches the airbag at the wrong angle and speed, and may be injured by it",
+    "Because the belt inflates the airbag faster",
+    "There’s no connection between the two - each works separately",
+    "Because the airbag isn’t meant to protect the head at all"
+   ],
+   "answer": 0,
+   "explain": "The airbag is designed to complete the action of the belt, not replace it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-018",
+   "lesson": "ps-airbags-restraints",
+   "q": "What does an airbag warning light that stays on, and doesn’t go off after starting the engine, signal?",
+   "options": [
+    "The airbag is in an even better ready state than usual",
+    "It signals that the tyres need air",
+    "A fault in the airbag system - get to a garage",
+    "It’s normal and can be ignored"
+   ],
+   "answer": 2,
+   "explain": "An airbag light that stays on permanently signals a fault - the airbag may not deploy in a crash, or may deploy when it shouldn’t.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-019",
+   "lesson": "ps-airbags-restraints",
+   "q": "What is the correct height for a headrest?",
+   "options": [
+    "As low as possible, so it doesn’t block the view backward",
+    "Significantly higher than the head, with no limit",
+    "Any height, it’s only for comfort",
+    "Its top level with the crown of the head at least, as close to the head as possible"
+   ],
+   "answer": 3,
+   "explain": "A headrest that’s too low doesn’t support the head in a rear-end collision and can increase whiplash.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-020",
+   "lesson": "ps-airbags-restraints",
+   "q": "Why is a correctly adjusted headrest important in a rear-end collision?",
+   "options": [
+    "It supports the head early and reduces sharp whiplash of the neck",
+    "It only affects seating comfort",
+    "It replaces the need for a seatbelt",
+    "It completely prevents any injury in a crash"
+   ],
+   "answer": 0,
+   "explain": "In a rear-end collision the body is pushed forward while the head lags behind for a moment; a headrest that is close and high enough supports the head sooner.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-021",
+   "lesson": "ps-airbags-restraints",
+   "q": "When must an active airbag in the front passenger seat be disconnected?",
+   "options": [
+    "When a child is seated there in a child safety seat or booster seat",
+    "On every drive, even with an adult passenger",
+    "Only on trips longer than an hour",
+    "Never - it’s forbidden by law"
+   ],
+   "answer": 0,
+   "explain": "Regulation 83A(d) requires disconnecting an active airbag facing a child’s safety seat or booster seat.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-022",
+   "lesson": "ps-loads-inside",
+   "q": "Why is an unsecured heavy object on the back seat dangerous in a crash?",
+   "options": [
+    "It keeps moving forward at the speed of travel and can injure the passengers in front of it",
+    "It can only scratch the upholstery",
+    "It slows the car down and helps braking",
+    "There’s no risk if the object is relatively light"
+   ],
+   "answer": 0,
+   "explain": "An unsecured object keeps moving at the speed of the car, like any free body in a crash - so even a relatively light object can cause harm.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-023",
+   "lesson": "ps-loads-inside",
+   "q": "What is the correct way to carry a dog in the car?",
+   "options": [
+    "On the driver’s lap while driving",
+    "Loose in the cabin, so it feels comfortable",
+    "Tied with a regular adult seatbelt only",
+    "In a suitable safety harness, a secured carrier, or the boot behind a separating net"
+   ],
+   "answer": 3,
+   "explain": "A dog loose in the car is a danger to itself and the passengers, and a serious distraction to the driver; it must be carried secured.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-024",
+   "lesson": "ps-loads-inside",
+   "q": "From which side do you let a child out of and into the car on the street?",
+   "options": [
+    "From the road side, to save time",
+    "From any side, as long as you hurry",
+    "From the side nearest the pavement, once the car has come to a complete stop",
+    "While driving very slowly"
+   ],
+   "answer": 2,
+   "explain": "Getting in or out from the road side exposes the child to traffic; wait until the car stops completely and let them out from the pavement side.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ps-025",
+   "lesson": "ps-loads-inside",
+   "q": "Heavy cargo in a private car - where does it correctly belong?",
+   "options": [
+    "On the back seat, unsecured",
+    "In the boot, tied down or in a cargo net",
+    "Between the driver’s feet, for easy access",
+    "On the parcel shelf, under the rear windscreen"
+   ],
+   "answer": 1,
+   "explain": "Cargo on the parcel shelf both blocks the view through the rear-view mirror and becomes a projectile in a sudden stop.",
+   "shuffled": true
+  }
+ ]
+}

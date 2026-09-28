@@ -1,0 +1,109 @@
+{
+ "chapter": "electrical",
+ "title": "The electrical and lighting system",
+ "summary": "Battery, alternator, starter motor, fuses and lighting — how the vehicle makes and distributes electricity, and what to do when something in it fails.",
+ "lessons": [
+  {
+   "id": "el-battery",
+   "title": "The battery: the vehicle’s store of energy",
+   "summary": "The source of the powerful current that drives the starter motor, and the electrical safety net when the engine is off.",
+   "terms": [
+    "battery",
+    "12v-battery",
+    "flat-battery"
+   ],
+   "body": "The [[term:battery|battery]] is a store of chemical energy that converts into electricity. Its main job: to supply, for a brief moment, the very strong current that drives the starter motor when starting the engine. Once the engine is running, the [[term:alternator|alternator]] is what feeds all the vehicle’s systems and recharges the battery — more in the lesson [[lesson:el-charging|Alternator and charging]].\n\n# 12-volt battery\nAlmost every vehicle has a lead-acid [[term:12v-battery|12-volt battery]] fitted. Even an electric or hybrid vehicle has a separate, small 12V battery that feeds the ordinary systems — completely distinct from the large [[term:traction-battery|traction battery]] that drives the vehicle.\n\n# Lifespan and care\nA battery’s typical lifespan is a few years — it varies with quality, climate and driving habits; the vehicle’s manual and the battery’s own label are what decide. Short trips only, with no chance to charge fully, and lights left on, shorten its life. Signs of an ageing battery: slower starting on a cold morning, dim lights when the engine is off, dashboard lights that flicker.\n\n# A [[term:flat-battery|flat]] battery\nA battery that has drained completely — because of a light left on, too short a trip, or simply age — will not supply the current needed to start the engine. The immediate fix is in [[lesson:el-jumpstart|Jump-starting]].\n\n:::danger Acid and hydrogen\nThe battery contains corrosive sulphuric acid, and while charging — and especially while jump-starting — it gives off flammable hydrogen gas. So: do not bring a flame, a spark or a lit cigarette near it, and it is a good idea to protect your eyes while working around it. A battery that is swollen, cracked or has a sharp smell — do not touch it, take it to a garage.\n:::",
+   "keyPoints": [
+    "The battery supplies the strong current that drives the starter motor when starting; the alternator recharges it while driving.",
+    "Short trips and lights left on shorten the battery’s life.",
+    "A battery contains corrosive acid and gives off flammable hydrogen — no flame, sparks or smoking near it."
+   ]
+  },
+  {
+   "id": "el-charging",
+   "title": "Alternator and charging",
+   "summary": "While the engine runs, a small generator supplies electricity to the whole vehicle — and to the battery.",
+   "terms": [
+    "alternator",
+    "drive-belt"
+   ],
+   "fig": "charging-circuit",
+   "body": "A battery alone cannot feed a whole vehicle for long — something has to charge it back up while you drive.\n\n# How the battery gets charged\nThe [[term:alternator|alternator]] is a generator driven by the engine — through the [[term:drive-belt|drive belt]] connected to a pulley on the crankshaft — and it produces electricity for as long as the engine runs. This electricity feeds all the vehicle’s consumers in real time (lighting, computers, air conditioning) and, at the same time, recharges the battery.\n\n[[fig:charging-circuit]]\n\n# The charge warning light\nThe [[dash:battery-charge]] light comes on when the charging system stops feeding the vehicle — usually because of a fault in the alternator itself or in the drive belt that turns it. From that moment the vehicle runs only on what is left in the battery, and that is a matter of minutes to hours.\n\n:::warn Charge warning light while driving\nSwitch off any electrical consumers that are not essential and drive straight to the nearest garage. If the engine temperature warning light also comes on — stop: the same torn belt may also drive the water pump, in which case the engine will overheat too.\n:::\n\n:::tip\nA worn or loose drive belt sometimes “squeals” when you start the engine or turn the steering wheel hard. It is worth checking it at your regular service, before it tears on the road.\n:::",
+   "keyPoints": [
+    "The alternator, driven by the drive belt, produces electricity while the engine runs — for the vehicle’s systems and to charge the battery.",
+    "Charge warning light on = the vehicle is running on the battery alone. Switch off non-essential consumers and drive straight to a garage.",
+    "A charge warning light together with a temperature warning light may point to the same torn belt — in that case, stop."
+   ]
+  },
+  {
+   "id": "el-starting",
+   "title": "Starter motor and ignition",
+   "summary": "What actually happens when you turn a key or press the start button.",
+   "terms": [
+    "ignition-switch",
+    "starter-motor",
+    "alarm-immobilizer"
+   ],
+   "body": "A few fractions of a second, from the key to the engine “catching”, involve several stages.\n\n# The ignition switch\nWhen you turn the [[term:ignition-switch|ignition switch]] (or press the start button), all the vehicle’s systems connect first — the dashboard, the pumps, the computers. In many vehicles, at this stage the [[term:alarm-immobilizer|immobiliser]] checks that the chip in the key (or the fob) is the right one for this vehicle; without correct recognition, the engine will not start at all, even if the rest of the electrics are fine.\n\n# The starter motor\nOnly after recognition does the [[term:starter-motor|starter motor]] engage — a small, powerful electric motor that turns the crankshaft (through the flywheel) fast enough for the combustion cycle to take over on its own. The moment the engine “catches” and starts running under its own power, the starter motor disengages automatically.\n\n:::tech A safety switch\nMost vehicles will not start with a gear engaged: an automatic needs to be in P or N, and a manual needs the clutch pedal pressed all the way down. This guards against an unexpected lurch of the vehicle the moment it starts (see [[chapter:vehicle-basics|Vehicle structure and pre-drive checks]]).\n:::\n\n:::warn Do not keep trying\nIf the engine does not start after a few short attempts, do not keep turning the key over and over. This can drain the battery and overheat the starter motor. Stop, and either wait or get help.\n:::",
+   "keyPoints": [
+    "The ignition switch first powers up the vehicle’s systems; the immobiliser confirms the key belongs to the vehicle before allowing it to start.",
+    "The starter motor turns the crankshaft until the engine catches on its own, then disengages.",
+    "Most vehicles will not start in the wrong gear state — a safeguard against a lurch the moment they start.",
+    "Do not keep trying to start the engine over and over — it drains the battery and overheats the starter motor."
+   ]
+  },
+  {
+   "id": "el-fuses",
+   "title": "Fuses and relays",
+   "summary": "The weak link that is designed to break, so that the wiring or the component behind it does not burn.",
+   "terms": [
+    "fuse",
+    "relay",
+    "fuse-box",
+    "wiring-harness"
+   ],
+   "body": "A modern vehicle’s electrical system includes thousands of metres of wiring. So that a fault in one place does not set the whole system alight, every circuit is protected separately.\n\n# Fuse\nA [[term:fuse|fuse]] is a cheap component designed to fail first: when too much current tries to flow through a circuit — because of a short, a faulty component or an unprofessional addition — the fuse “blows” and breaks the circuit, before the wire itself heats up and burns.\n\n# Where to find them\nMost vehicles have at least two [[term:fuse-box|fuse boxes]]: one in the passenger compartment (usually near or below the steering wheel) and one in the engine bay. The cover, or the vehicle’s manual, has a diagram showing which consumer each fuse belongs to, and what current (in amps) it is rated for — also marked by the fuse’s own colour.\n\n:::tip Spotting a blown fuse\nPull it out with the small tweezers usually found in the box, and look through it: in a blown fuse, the thin strip of metal inside is broken.\n:::\n\n:::warn Only the same rating\nReplace a blown fuse only with one of the same rating (the same colour and number). A fuse with a higher rating will not protect the circuit in time, and can cause a fire. If a new fuse blows again straight away — there is a real fault in the circuit, and you should take it to a garage instead of continuing to replace fuses.\n:::\n\n# Relay\nA [[term:relay|relay]] is an electrically operated switch: a weak current from the computer or a switch activates it, and it then closes a separate circuit carrying a much stronger current — for consumers such as the starter motor, the fans or the fog lights. All of this connects through the [[term:wiring-harness|wiring harness]] — the organised bundle of wires that links all the vehicle’s electrical components.",
+   "keyPoints": [
+    "A fuse is designed to blow and break a circuit when the current is too high, before the wiring itself is damaged or burns.",
+    "Replace a fuse only with one of the same rating; a fuse that blows again straight away marks a real fault that needs a garage.",
+    "A relay uses a weak current to activate a circuit carrying a much stronger current, such as the starter motor or the fans."
+   ]
+  },
+  {
+   "id": "el-lights",
+   "title": "The lighting system",
+   "summary": "All the lights fitted to the vehicle, and what each one is for.",
+   "terms": [
+    "headlight",
+    "taillight",
+    "brake-light",
+    "fog-light",
+    "reverse-light",
+    "drl"
+   ],
+   "body": "Vehicle lighting does not just light up the road — it is also what makes you visible to every other road user.\n\n# At the front\nThe [[term:headlight|headlights]] light the road ahead of the vehicle, switching between dipped and main beam. Many new vehicles are also fitted with [[term:drl|daytime running lights]] (DRL) — fixed lights that come on automatically during the day, so the vehicle is visible from a distance even in strong sunlight.\n\n# At the rear\nThe [[term:taillight|rear lights]] mark the vehicle’s position and outline in the dark. The [[term:brake-light|brake lights]] come on brightly when you press the brake, warning traffic behind you. The [[term:reverse-light|reverse light]] (white) comes on only when reverse gear is engaged, and warns those around you.\n\n# Difficult visibility conditions\nUse the [[term:fog-light|fog lights]] only when visibility is genuinely poor — fog, heavy rain, dust — never as decorative lighting: their strong, low beam can dazzle other drivers in normal visibility.\n\n# Bulb types and maintenance\nHeadlights use several bulb technologies — halogen, xenon (HID) and LED — each with a different brightness, power draw and lifespan. Spot a burnt-out or dim bulb as part of your walk-round check (see [[lesson:vb-checks|pre-drive checks]]). In many vehicles, replacing a bulb is a simple job; in many LED and HID units it needs special tools or knowledge, and sometimes the headlight also needs re-aiming at a garage — incorrect aim dazzles oncoming drivers or does not light the road ahead of you enough.\n\n:::tip\nWhen you replace a front bulb, it is common practice to replace the bulb on the other side too, even if it still works — both wear out at roughly the same rate, so this avoids another trip to the garage soon after.\n:::",
+   "keyPoints": [
+    "Headlights light the road; daytime running lights (DRL) make the vehicle visible during the day.",
+    "Brake lights come on when you press the brake; the reverse light comes on only in reverse gear.",
+    "Fog lights — only when visibility is genuinely poor, never as decorative lighting.",
+    "LED and HID bulbs usually need garage attention, and sometimes the headlight needs re-aiming."
+   ]
+  },
+  {
+   "id": "el-jumpstart",
+   "title": "Jump-starting",
+   "summary": "When a battery goes flat, jump leads in the right order start the vehicle safely — the wrong order is dangerous.",
+   "terms": [
+    "jump-leads"
+   ],
+   "fig": "jump-start-clamps",
+   "body": "A flat battery is one of the most common breakdowns on the road, and it can usually be fixed within minutes with [[term:jump-leads|jump leads]] and another working vehicle, or with a portable jump starter (a battery pack) — the same procedure, without needing a second vehicle.\n\n:::danger Before you start\nDo not bring a flame, a spark or a lit cigarette near the battery — it gives off flammable hydrogen gas, especially during the start itself. If the battery is swollen, cracked, frozen or leaking — do not try to jump-start it yourself, get professional help. Both vehicles switched off, in park or neutral, with the handbrake applied.\n:::\n\n# Connection order — critical for safety\nThe order below is designed to prevent a spark near the flat battery itself, the place where hydrogen gas collects:\n\n[[fig:jump-start-clamps]]\n\n1. **Red** clamp to the **positive (+)** terminal of the flat battery.\n2. **Red** clamp to the **positive (+)** terminal of the donor battery (the second vehicle, or the jump starter).\n3. **Black** clamp to the **negative (−)** terminal of the donor battery.\n4. **Black** clamp to a bare, unpainted metal point on the engine block or chassis of the vehicle with the flat battery — **not** to the negative terminal of the flat battery itself.\n\n# Starting\nStart the donor vehicle and wait a minute or two for it to charge the flat battery a little, then try to start the vehicle with the flat battery. If it does not catch after a few short attempts — do not keep trying repeatedly (see [[lesson:el-starting|Starter motor and ignition]]). The moment the engine catches, disconnect the leads in exactly the **reverse** order: first both black clamps, then the two red ones.\n\n:::remember\nAfter a jump start, drive for at least half an hour so the battery recharges, and it is a good idea to have the battery and the charging system checked at a garage — a battery that has gone flat once can do so again.\n:::",
+   "keyPoints": [
+    "Before anything: no flame or spark near the battery; a damaged or frozen battery — do not deal with it yourself.",
+    "Connection order: red to the flat battery’s positive, red to the donor’s positive, black to the donor’s negative, black to bare metal on the flat-battery vehicle — not to its negative terminal.",
+    "Disconnect in reverse order: black, black, red, red.",
+    "After starting, drive for at least half an hour so the battery charges, and it is recommended to have the charging system checked at a garage."
+   ]
+  }
+ ]
+}

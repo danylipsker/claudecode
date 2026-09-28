@@ -1,0 +1,140 @@
+{
+ "trees": [
+  {
+   "id": "vibration",
+   "group": "Brakes and steering",
+   "title": "Vibration in the car",
+   "summary": "You feel vibration in the steering wheel, in the brake pedal, or through the whole car.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "A bulge in the tyre sidewall, or strong vibration that worsens with speed, are a reason not to drive fast until you've checked — a tyre with a bulge can burst without warning.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "When do you feel the vibration?",
+     "options": [
+      {
+       "label": "In the steering wheel, at a certain speed, on a straight road",
+       "next": "n2"
+      },
+      {
+       "label": "In the brake pedal, when braking",
+       "next": "r-warped-disc2"
+      },
+      {
+       "label": "Through the whole car, when stationary with the engine running",
+       "next": "r-engine-mount"
+      },
+      {
+       "label": "Only in a sharp turn",
+       "next": "r-cv-joint-vibration"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Does the vibration appear at roughly a fixed speed, and disappear when you speed up or slow down from it?",
+     "options": [
+      {
+       "label": "Yes, tied to a certain speed",
+       "next": "r-wheel-balance"
+      },
+      {
+       "label": "No, it gradually worsens with speed, without a particular range",
+       "next": "n3"
+      }
+     ]
+    },
+    "n3": {
+     "q": "Check the tyres — is there uneven wear or a bulge in the sidewall?",
+     "options": [
+      {
+       "label": "Yes, you see uneven wear or a bulge",
+       "next": "r-tyre-damage"
+      },
+      {
+       "label": "No, the tyres look fine",
+       "next": "n4"
+      }
+     ]
+    },
+    "n4": {
+     "q": "Is the vibration also accompanied by a knocking noise when you turn sharply?",
+     "options": [
+      {
+       "label": "Yes",
+       "next": "r-cv-joint-vibration"
+      },
+      {
+       "label": "No, just smooth vibration that worsens with speed",
+       "next": "r-bent-rim"
+      }
+     ]
+    },
+    "r-warped-disc2": {
+     "result": "Suspected uneven brake disc",
+     "severity": "soon",
+     "text": "Vibration or pulsing felt in the brake pedal, mainly when braking from high speed, points to a brake disc that has warped or worn unevenly.",
+     "actions": [
+      "Go to a garage for a check, and to have the disc skimmed or replaced.",
+      "Until it's repaired, leave a bigger braking gap."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-engine-mount": {
+     "result": "Suspected worn engine mount",
+     "severity": "soon",
+     "text": "Vibration felt through the whole car when stationary with the engine running, which disappears once you drive, hints at a worn engine mount — the support that holds the engine and absorbs its vibrations.",
+     "actions": [
+      "Go to a garage for a check and replacement.",
+      "A completely broken mount can let the engine move and damage the hoses and cables around it."
+     ],
+     "lesson": "ts-vibration"
+    },
+    "r-cv-joint-vibration": {
+     "result": "Suspected worn CV joint",
+     "severity": "soon",
+     "text": "Vibration or a knock felt only in a sharp turn, mainly pulling into a parking space, points to a worn CV joint — mainly in front-wheel-drive cars.",
+     "actions": [
+      "Go to a garage soon; a joint that fails completely can leave the car unable to drive.",
+      "Avoid sharp, fast turns until it's checked."
+     ],
+     "lesson": "dt-driveline"
+    },
+    "r-wheel-balance": {
+     "result": "Suspected unbalanced wheel",
+     "severity": "ok",
+     "text": "Vibration that appears at roughly a fixed speed, and disappears when you speed up or slow down from it, is almost always an unbalanced wheel — balance weights that have fallen off, or a tyre fitted without balancing.",
+     "actions": [
+      "Go to a tyre garage for wheel balancing — a quick and relatively cheap fix.",
+      "If the vibration continues even after balancing, check the rim and tyre for damage."
+     ],
+     "lesson": "ty-care"
+    },
+    "r-tyre-damage": {
+     "result": "Suspected tyre damage — uneven wear or a bulge",
+     "severity": "stop",
+     "text": "Uneven wear or a bulge (bubble) in the tyre sidewall is a sign of structural damage in the tyre itself — a bulge in the sidewall can burst without warning.",
+     "actions": [
+      "If you see a bulge in the tyre sidewall, don't drive on it, and change to the spare wheel.",
+      "Uneven wear alone, without a bulge — go to a garage to check the tyre and also the wheel alignment, since it's usually a result of that."
+     ],
+     "lesson": "ty-tread"
+    },
+    "r-bent-rim": {
+     "result": "Suspected bent rim",
+     "severity": "soon",
+     "text": "Vibration that gradually worsens with speed, without a particular range, and without a noise when turning, can indicate a wheel rim that has bent — for example after a hard hit in a pothole.",
+     "actions": [
+      "Go to a tyre garage to check the rim's roundness.",
+      "Don't keep driving at high speed until it's checked."
+     ],
+     "lesson": "ty-care"
+    }
+   }
+  }
+ ]
+}

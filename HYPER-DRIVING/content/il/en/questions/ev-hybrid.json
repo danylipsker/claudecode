@@ -1,0 +1,288 @@
+{
+ "chapter": "ev-hybrid",
+ "questions": [
+  {
+   "id": "q-ev-001",
+   "lesson": "ev-how",
+   "q": "Which three components replace the combustion engine, gearbox and clutch in an electric vehicle?",
+   "options": [
+    "A traction battery, an electric motor and an inverter",
+    "A small battery, a generator and an electric clutch",
+    "An electric motor, a gearbox and an electric clutch",
+    "A 12V battery, a starter motor and a catalytic converter"
+   ],
+   "answer": 0,
+   "explain": "An electric vehicle is driven by a traction battery, an electric motor and an inverter that converts between direct and alternating current.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-002",
+   "lesson": "ev-how",
+   "q": "Why is a single fixed gear enough in most electric vehicles, without a multi-speed gearbox?",
+   "options": [
+    "Because the electric motor gives almost all of its torque from a standstill, across a wide range of speeds",
+    "Because an electric motor can't spin fast enough to need an extra gear",
+    "Because their maximum speed is limited by law",
+    "Because the law bans gearboxes in electric vehicles"
+   ],
+   "answer": 0,
+   "explain": "Unlike a combustion engine, an electric motor gives high torque almost from the first moment and keeps it across a wide range — so a single gear is enough for most vehicles.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-003",
+   "lesson": "ev-how",
+   "q": "What is the role of the inverter in an electric vehicle?",
+   "options": [
+    "To convert between the battery's direct current and the motor's alternating current, and back again",
+    "To raise the voltage of the 12V battery",
+    "To filter air pollution from the vehicle's exhaust",
+    "To slow the motor's revolutions before they reach the wheels"
+   ],
+   "answer": 0,
+   "explain": "The battery works in direct current (DC) and the electric motor in alternating current (AC); the inverter converts between them in both directions.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-004",
+   "lesson": "ev-hybrids",
+   "q": "What is the main difference between a full hybrid and a mild hybrid?",
+   "options": [
+    "A mild hybrid is faster on the expressway",
+    "Only the mild hybrid can be charged from a power outlet",
+    "There's no practical difference between the two",
+    "A full hybrid can drive the vehicle on electric power alone for short distances; a mild hybrid only assists the combustion engine"
+   ],
+   "answer": 3,
+   "explain": "In a mild hybrid, the electric motor only assists and doesn't drive the vehicle alone; in a full hybrid it can drive the vehicle by itself for short distances at low speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-005",
+   "lesson": "ev-hybrids",
+   "q": "How is the battery charged in a regular hybrid that isn't a plug-in hybrid?",
+   "options": [
+    "Only from a fast public charging station",
+    "It has no chargeable battery",
+    "Only from a home power outlet",
+    "Only from the engine and regenerative braking — it can't be plugged into electricity"
+   ],
+   "answer": 3,
+   "explain": "A hybrid that isn't a plug-in generates its own electricity from the engine and from regenerative braking; only a plug-in hybrid also connects to a charging station.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-006",
+   "lesson": "ev-hybrids",
+   "q": "In which type of driving does a hybrid save the most fuel compared with an ordinary vehicle?",
+   "options": [
+    "Towing a caravan up a long climb",
+    "There's no difference between types of driving",
+    "Slow urban driving with lots of stopping and slowing down",
+    "Fast, steady driving on the expressway"
+   ],
+   "answer": 2,
+   "explain": "In urban driving with lots of stops, the hybrid recycles braking energy that would be lost in an ordinary vehicle; on a fast, steady expressway the advantage is much smaller.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-007",
+   "lesson": "ev-charging",
+   "q": "What is the main difference between AC charging and fast DC charging?",
+   "options": [
+    "There's no difference in speed, only in price",
+    "AC is only for trucks, DC for private cars",
+    "Fast DC charging feeds direct current straight into the battery and is much faster than AC",
+    "DC is only available at home, AC only on non-urban roads"
+   ],
+   "answer": 2,
+   "explain": "AC charging passes through the vehicle's onboard charger and is relatively slow; fast DC charging feeds direct current straight into the battery and charges a large part of it in under half an hour.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-008",
+   "lesson": "ev-charging",
+   "q": "Which charging connectors are common in Israel?",
+   "options": [
+    "Type 2 for AC charging, CCS for fast DC charging",
+    "USB-C only, for all types of charging",
+    "Type 1 for fast charging, CCS for regular charging",
+    "Only a regular household plug, with no dedicated connector"
+   ],
+   "answer": 0,
+   "explain": "In Israel the common connector for AC charging is Type 2, and for fast DC charging it's CCS, which adds two large pins to the connector.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-009",
+   "lesson": "ev-charging",
+   "q": "Why does the rate of fast DC charging drop gradually as the battery approaches a full charge?",
+   "options": [
+    "So as not to overheat the battery",
+    "To save the company money on electricity",
+    "The law requires slowing down above 50% charge",
+    "It's a common fault at charging stations"
+   ],
+   "answer": 0,
+   "explain": "Fast charging generates heat; as the battery approaches full, the station slows the charging rate to protect it from overheating.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-010",
+   "lesson": "ev-charging",
+   "q": "What is correct behaviour at a public charging station?",
+   "options": [
+    "To park in a charging bay without charging, if there's space",
+    "To leave the cable stretched across the pavement until you return",
+    "To leave the vehicle parked at the station even after charging has finished, as a reserve",
+    "To free up the station once charging has finished, so the next vehicle can charge"
+   ],
+   "answer": 3,
+   "explain": "Public charging stations are a shared resource — you should move the vehicle as soon as charging finishes and not block it unnecessarily.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-011",
+   "lesson": "ev-driving",
+   "q": "Why does a driver new to an electric vehicle need an especially light touch on the accelerator?",
+   "options": [
+    "Because the electric motor gives maximum torque almost from the first moment, and it's easy to accelerate more than planned",
+    "Because the law requires gentle acceleration in an electric vehicle",
+    "Because the accelerator pedal in an electric vehicle is slower to respond",
+    "Because the pedal is more prone to faults"
+   ],
+   "answer": 0,
+   "explain": "The instant response of the electric motor can surprise drivers used to a combustion engine, causing sharper acceleration than planned.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-012",
+   "lesson": "ev-driving",
+   "q": "What does regenerative braking do in an electric vehicle?",
+   "options": [
+    "Slows the vehicle using the motor as a generator, while charging the battery at the same time",
+    "Disconnects the regular brakes completely",
+    "Only works at high speed above 100 km/h",
+    "Completely replaces the need for emergency braking"
+   ],
+   "answer": 0,
+   "explain": "When you lift your foot off the accelerator, the electric motor turns into a generator, slowing the vehicle and charging the battery. It doesn't replace emergency braking with the brake pedal.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-013",
+   "lesson": "ev-driving",
+   "q": "Which of the following factors shortens an electric vehicle's actual range the most?",
+   "options": [
+    "Fast driving with sharp acceleration and braking, and cold weather",
+    "The size of the boot",
+    "The colour of the vehicle",
+    "An engine oil change"
+   ],
+   "answer": 0,
+   "explain": "High speed, cold (which reduces battery efficiency), load and aggressive driving significantly shorten the actual range compared with the figure in the brochure.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-014",
+   "lesson": "ev-driving",
+   "q": "Why do you need special attention to pedestrians when driving an electric vehicle at low speed?",
+   "options": [
+    "Because the vehicle is too brightly lit",
+    "Because the Traffic Ordinance bans electric vehicles from driving near pedestrians",
+    "Because the vehicle is almost silent at low speed, and it's hard to hear it approaching",
+    "Because an electric vehicle always drives faster near pedestrian crossings"
+   ],
+   "answer": 2,
+   "explain": "Without the noise of a combustion engine, an electric vehicle at low speed is hard to hear — so you need double the attention near pedestrian crossings and car parks.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-015",
+   "lesson": "ev-safety",
+   "q": "What is the first and most important rule about orange cables on an electric or hybrid vehicle?",
+   "options": [
+    "Never touch or cut them — they may only be handled by a qualified vehicle electrician",
+    "You may touch them only with household rubber gloves",
+    "You may touch them when the vehicle is switched off",
+    "They are only for decoration and carry no voltage"
+   ],
+   "answer": 0,
+   "explain": "Orange cables belong to the high-voltage system, which can be fatal on direct contact. They may only be handled by a vehicle electrician who has had dedicated training.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-016",
+   "lesson": "ev-safety",
+   "facts": [
+    "emergency.fire_and_rescue"
+   ],
+   "q": "What do you do if you see smoke or a leaking fluid from the floor of an electric vehicle that has been in a crash?",
+   "options": [
+    "Keep driving to get away from the dangerous area",
+    "Pour water on the area immediately",
+    "Move away and call the Fire and Rescue Services, stating that it's an electric vehicle",
+    "Open the bonnet to check the source of the problem"
+   ],
+   "answer": 2,
+   "explain": "A traction battery fire is different from a fuel fire and needs professional firefighting. Move away, call the Fire and Rescue Services {{fact:emergency.fire_and_rescue}} and state that it's an electric or hybrid vehicle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-017",
+   "lesson": "ev-safety",
+   "q": "An electric vehicle has been fully flooded, with water above floor level. What is the correct thing to do?",
+   "options": [
+    "Wait for the water to recede and drive as usual",
+    "Try to start the vehicle immediately to get it out of the water",
+    "Disconnect the 12V battery — that's enough to drive safely",
+    "Tow the vehicle and have the high-voltage system checked at an authorised garage before trying to start it"
+   ],
+   "answer": 3,
+   "explain": "Full flooding can damage the high-voltage system. The vehicle is towed and checked at an authorised garage before anyone tries to start it again.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-018",
+   "lesson": "ev-safety",
+   "q": "Why must many electric vehicles not be towed with the driven wheels touching the road, without checking the manufacturer's instructions?",
+   "options": [
+    "Because it only reduces driving range, with no damage",
+    "Because the law bans towing any electric vehicle in any situation",
+    "Because it's only banned for new private vehicles",
+    "Because the driven wheels turning can activate the electric motor as a generator and damage the system"
+   ],
+   "answer": 3,
+   "explain": "When towed with driven wheels on the road, the wheels turning can activate the motor as a generator and cause damage — so tow according to the manufacturer's instructions, usually with all four wheels lifted.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-019",
+   "lesson": "ev-maintenance",
+   "q": "Why is it important to bring an electric vehicle for a periodic brake check, even if the pads are still thick?",
+   "options": [
+    "Because regenerative braking damages the brake pads",
+    "Because a brake that is barely used (thanks to regenerative braking) can rust and stick",
+    "Because the brakes in an electric vehicle wear out faster than in an ordinary vehicle",
+    "Because the law requires a monthly brake check only for electric vehicles"
+   ],
+   "answer": 1,
+   "explain": "Regenerative braking greatly reduces the use of the regular brakes, so they can rust and stick without regular use — which is why a periodic check is still needed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ev-020",
+   "lesson": "ev-maintenance",
+   "q": "Why won't an electric vehicle with a flat 12V battery “wake up”, even if its traction battery is full?",
+   "options": [
+    "Because an electric vehicle has no electrical operating system",
+    "Because an electric vehicle has no 12V battery at all",
+    "Because the traction battery depends entirely on the 12V battery in order to charge",
+    "Because the 12V battery powers the computers and systems that operate the vehicle, separately from the traction battery"
+   ],
+   "answer": 3,
+   "explain": "The regular 12V battery still exists in an electric vehicle and powers the operating systems, lighting and computers — without it the vehicle won't wake up even if the traction battery is full.",
+   "shuffled": true
+  }
+ ]
+}

@@ -1,0 +1,299 @@
+{
+ "chapter": "troubleshooting",
+ "questions": [
+  {
+   "id": "q-ts-001",
+   "lesson": "ts-method",
+   "q": "What is the first question worth asking when you notice a fault in the car?",
+   "options": [
+    "How long the repair will take at the garage",
+    "What exactly is happening, when it happens, and which system is involved",
+    "Who manufactured the car",
+    "What colour the car is"
+   ],
+   "answer": 1,
+   "explain": "The method starts with three questions in order: what exactly is happening, when it happens, and which system in the car is involved. They narrow down the suspects before you turn to the matching diagnosis tree.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-002",
+   "lesson": "ts-method",
+   "q": "What does the “stop now” severity level mean in this chapter's diagnosis trees?",
+   "options": [
+    "The car will fail its annual roadworthiness test",
+    "There is immediate danger — stop in a safe place and do not keep driving",
+    "You can keep driving carefully to the garage",
+    "You need to reach a garage within a week"
+   ],
+   "answer": 1,
+   "explain": "“Stop now” marks immediate danger — for example extreme engine heat, smoke or brake failure — where you do not keep going, and stop in a safe place instead.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-003",
+   "lesson": "ts-method",
+   "q": "Which of the following is safe and normal for a driver to check themselves, without special tools?",
+   "options": [
+    "Taking the gearbox apart",
+    "Replacing brake pads",
+    "Connecting a scan tool to the car",
+    "Fluid levels when the engine is cold, and tyre air pressure"
+   ],
+   "answer": 3,
+   "explain": "Checking fluid levels, air pressure, warning lights and stains is safe and simple to do yourself. Taking parts apart, replacing pads, and computerised diagnosis belong to the garage.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-004",
+   "lesson": "ts-noises",
+   "q": "A thin, steady squeal heard on every braking usually points to what?",
+   "options": [
+    "A worn wheel bearing",
+    "A vacuum leak",
+    "A loose drive belt",
+    "A brake pad wear reminder"
+   ],
+   "answer": 3,
+   "explain": "A small metal strip in the pad produces a deliberate squeal once the pad nears its minimum thickness — a reminder to replace it soon.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-005",
+   "lesson": "ts-noises",
+   "q": "A rhythmic metallic knock whose speed rises with engine RPM points mainly to what?",
+   "options": [
+    "A suspected internal engine problem, needing an immediate check",
+    "A worn engine mount",
+    "An unbalanced wheel",
+    "Low tyre pressure"
+   ],
+   "answer": 0,
+   "explain": "A knock whose speed is tied to engine RPM hints at an internal mechanical engine fault — a serious condition that needs stopping and an immediate check, not continuing to drive.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-006",
+   "lesson": "ts-noises",
+   "q": "A hum that changes with road speed (not with engine RPM), and gets stronger when turning in one direction, usually points to what?",
+   "options": [
+    "A stuck thermostat",
+    "A blown fuse",
+    "A worn wheel bearing",
+    "A worn brake pad"
+   ],
+   "answer": 2,
+   "explain": "A hum linked to road speed, that gets stronger when turning in one direction, is a classic sign of a worn wheel bearing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-007",
+   "lesson": "ts-noises",
+   "q": "A knock heard only when turning sharply, such as pulling into a parking space, usually points to what?",
+   "options": [
+    "A warped brake disc",
+    "A worn CV joint",
+    "A worn shock absorber",
+    "A clogged air filter"
+   ],
+   "answer": 1,
+   "explain": "A rhythmic knock only in a sharp turn usually points to a worn CV joint, mainly in front-wheel-drive cars.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-008",
+   "lesson": "ts-smoke-smells",
+   "q": "Thin white vapour from the exhaust on a cold morning, which disappears after a minute's driving, is usually —",
+   "options": [
+    "A sign of burning oil",
+    "Ordinary condensation, not smoke",
+    "A sign of unburnt fuel",
+    "A sign of a damaged head gasket"
+   ],
+   "answer": 1,
+   "explain": "Thin vapour that disappears quickly on a cold morning is water condensed in the exhaust pipe — a normal occurrence in any car, not real smoke.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-009",
+   "lesson": "ts-smoke-smells",
+   "q": "Thick white exhaust smoke that continues and sweetens the air usually points to what?",
+   "options": [
+    "A slipping clutch",
+    "A blown fuse",
+    "Coolant burning in the combustion chambers",
+    "A clogged air filter"
+   ],
+   "answer": 2,
+   "explain": "Thick white smoke that continues, and doesn't disappear after a minute, points to coolant getting into the combustion chambers — usually a damaged cylinder head gasket.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-010",
+   "lesson": "ts-smoke-smells",
+   "q": "Bluish exhaust smoke, mainly noticeable on acceleration, usually points to what?",
+   "options": [
+    "Leaking coolant",
+    "Unburnt excess fuel",
+    "A seized brake",
+    "Engine oil burning"
+   ],
+   "answer": 3,
+   "explain": "Bluish smoke, mainly on acceleration, points to engine oil burning in the combustion chambers — usually worn piston rings or valve seals.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-011",
+   "lesson": "ts-smoke-smells",
+   "q": "You smell a strong fuel smell inside the car. What is the right thing to do?",
+   "options": [
+    "Don't start the engine, move away from the car, and don't light a flame near it",
+    "Turn on the air conditioning to clear the smell",
+    "Open a window and carry on as normal",
+    "Keep driving slowly until you get home"
+   ],
+   "answer": 0,
+   "explain": "A strong fuel smell is a sign of a leak and a real fire risk. Don't start the engine, move away from the car, and don't light a flame or a cigarette near it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-012",
+   "lesson": "ts-leaks",
+   "q": "You find a clear fluid stain under the middle of the car, on a hot day, after driving with the air conditioning on. What is it likely to be?",
+   "options": [
+    "Water from AC condensation — a normal occurrence",
+    "A brake fluid leak",
+    "A coolant leak",
+    "A fuel leak"
+   ],
+   "answer": 0,
+   "explain": "Clear fluid collecting under the middle of the car on a hot day, after driving with the air conditioning on, is ordinary water from AC condensation — no action is needed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-013",
+   "lesson": "ts-leaks",
+   "q": "A green, watery fluid stain under the front of the car, near the radiator — what is this likely to be?",
+   "options": [
+    "Gearbox fluid",
+    "Coolant",
+    "Engine oil",
+    "Power steering fluid"
+   ],
+   "answer": 1,
+   "explain": "A green, orange or pink, watery stain near the radiator is leaking coolant — from a pipe, the radiator, or the water pump.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-014",
+   "lesson": "ts-leaks",
+   "q": "You see a clear-to-yellowish, oily fluid stain near one of the wheels. What is the right thing to do?",
+   "options": [
+    "Add engine oil and carry on",
+    "Keep driving and check it at the next service",
+    "Don't drive the car, as this is likely leaking brake fluid",
+    "Inflate the tyre on that wheel"
+   ],
+   "answer": 2,
+   "explain": "A clear-to-yellowish, oily stain near a wheel is usually brake fluid. The brake system is hydraulic and sealed, so you don't drive with a leak like this.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-015",
+   "lesson": "ts-vibration",
+   "q": "Vibration in the steering wheel that appears only at a certain speed, and disappears when you speed up or slow down from it, usually points to what?",
+   "options": [
+    "A warped brake disc",
+    "A worn engine mount",
+    "Incorrect wheel alignment",
+    "An unbalanced wheel"
+   ],
+   "answer": 3,
+   "explain": "Vibration tied to a certain speed, which disappears outside that range, is almost always a sign of an unbalanced wheel, needing rebalancing at a tyre garage.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-016",
+   "lesson": "ts-vibration",
+   "q": "You feel vibration or pulsing in the brake pedal, mainly when braking from high speed. What does this usually point to?",
+   "options": [
+    "A blown fuse",
+    "A brake disc that isn't an even thickness",
+    "A worn wheel bearing",
+    "An unbalanced wheel"
+   ],
+   "answer": 1,
+   "explain": "Pulsing in the brake pedal when braking from high speed almost always points to a brake disc that has warped or worn unevenly.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-017",
+   "lesson": "ts-vibration",
+   "q": "The car consistently pulls to one side, even without braking, on a straight, level road. What do you check first?",
+   "options": [
+    "Tyre air pressure",
+    "The engine oil level",
+    "Wheel alignment at a garage",
+    "A blown fuse"
+   ],
+   "answer": 0,
+   "explain": "A difference in tyre air pressure is the most common cause of pulling to one side, and also the cheapest to fix — always check it first.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-018",
+   "lesson": "ts-electrical",
+   "q": "Both the headlights are weak and the dashboard lights don't come on. The main suspect is —",
+   "options": [
+    "An overworked alternator",
+    "A gearbox fault",
+    "A blown fuse in one circuit",
+    "A flat battery or loose terminals"
+   ],
+   "answer": 3,
+   "explain": "When everything is weak or off, including the dashboard lights, the main suspect is a flat battery, or corroded or loose terminals.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-019",
+   "lesson": "ts-electrical",
+   "q": "Only one electric window has stopped working, while everything else is fine. What do you check first?",
+   "options": [
+    "The brake fluid",
+    "The fuse box",
+    "The tyre air pressure",
+    "The car battery"
+   ],
+   "answer": 1,
+   "explain": "When a single device stops working and everything else is fine, the first suspect is a blown fuse in that circuit — check it before anything else.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-020",
+   "lesson": "ts-electrical",
+   "q": "The headlights dim when you switch on the air conditioning, and a battery warning light comes on while driving. What is the main suspect?",
+   "options": [
+    "A blown fuse",
+    "A fault in the charging system (alternator)",
+    "Worn brake pads",
+    "A coolant leak"
+   ],
+   "answer": 1,
+   "explain": "Headlights that dim under load, and a battery warning light that comes on while driving, point to a weak alternator or its drive belt — the car is running on what's left in the battery.",
+   "shuffled": true
+  },
+  {
+   "id": "q-ts-021",
+   "lesson": "ts-electrical",
+   "q": "You smell a burning plastic smell, and see a little smoke from the dashboard. What is the right thing to do?",
+   "options": [
+    "Carry on to the nearest garage",
+    "Turn on the air conditioning to clear the smoke",
+    "Stop immediately, switch off the engine and the electrics, and get out of the car",
+    "Keep driving with the windows open"
+   ],
+   "answer": 2,
+   "explain": "Smoke and a burning smell from the dashboard are a sign of a dangerous electrical fault. Stop immediately, switch off the engine and the electrics, and get out of the car with all the passengers.",
+   "shuffled": true
+  }
+ ]
+}

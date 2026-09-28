@@ -1,0 +1,205 @@
+{
+ "trees": [
+  {
+   "id": "brake-problems",
+   "group": "Brakes and steering",
+   "title": "A brake problem",
+   "summary": "The pedal feels different, you hear a noise when braking, or a brake warning light comes on.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "Brakes are the car's primary safety system. Whenever you suspect a brake fluid leak, pads worn down to the metal, or a strong pull to one side when braking — don't keep driving.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "What do you feel or hear in the brakes?",
+     "options": [
+      {
+       "label": "The pedal feels soft, or sinks almost to the floor",
+       "next": "n2"
+      },
+      {
+       "label": "The pedal is harder than usual, you need to press much harder",
+       "next": "r-servo"
+      },
+      {
+       "label": "You hear a noise when braking — squealing or grinding",
+       "next": "n6"
+      },
+      {
+       "label": "A brake warning light comes on, the car shakes or pulls to one side when braking",
+       "next": "n7"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Check the brake fluid level in the reservoir (engine off) — what's the state?",
+     "options": [
+      {
+       "label": "Below the minimum mark",
+       "next": "n3"
+      },
+      {
+       "label": "Within the normal range, but the pedal is still soft",
+       "next": "r-air-brakes"
+      }
+     ]
+    },
+    "n3": {
+     "q": "Do you see an oily, clear-to-yellowish fluid stain near one of the wheels, or under the car?",
+     "options": [
+      {
+       "label": "Yes",
+       "next": "r-fluid-leak"
+      },
+      {
+       "label": "No, there's no visible leak",
+       "next": "r-pads-worn-fluid"
+      }
+     ]
+    },
+    "n6": {
+     "q": "What kind of noise, and when?",
+     "options": [
+      {
+       "label": "A thin, steady squeal, on every braking",
+       "next": "r-wear-indicator"
+      },
+      {
+       "label": "Squealing only after rain or after the car has stood for a few hours, which disappears after a brake application or two",
+       "next": "r-rust-glaze"
+      },
+      {
+       "label": "Heavy metallic grinding, like metal on metal",
+       "next": "r-pads-metal"
+      }
+     ]
+    },
+    "n7": {
+     "q": "What exactly is happening?",
+     "options": [
+      {
+       "label": "I forgot to release the parking brake",
+       "next": "r-parking-brake-on"
+      },
+      {
+       "label": "The parking brake is released, and the car shakes or pulses through the pedal when braking",
+       "next": "r-warped-disc"
+      },
+      {
+       "label": "The parking brake is released, and the car pulls to one side when braking",
+       "next": "r-pull-braking"
+      },
+      {
+       "label": "Only the warning light is on, with no unusual feeling in the pedal",
+       "next": "n2"
+      }
+     ]
+    },
+    "r-servo": {
+     "result": "Suspected fault in the brake booster (servo) or its vacuum hose",
+     "severity": "soon",
+     "text": "The pedal is meant to be relatively light to press, thanks to the brake booster. A pedal that's especially hard while the engine is running hints at a fault in the booster itself or the hose feeding it. Important: right after the engine is switched off, there's no vacuum in the booster, so the first few presses are deliberately harder — that's normal.",
+     "actions": [
+      "Make sure the engine is running while you check how hard the pedal is.",
+      "If the pedal is hard even with the engine running, don't keep driving; go to a garage or call for a tow."
+     ],
+     "lesson": "bk-how"
+    },
+    "r-air-brakes": {
+     "result": "Probably air in the hydraulic brake system",
+     "severity": "soon",
+     "text": "The fluid level is normal, but the pedal is soft or “spongy” — a sign that air has got into the lines, usually after work on the brakes.",
+     "actions": [
+      "Don't keep driving like this — braking may be only partial.",
+      "Go to a garage to bleed the air from the brake system."
+     ],
+     "lesson": "bk-how"
+    },
+    "r-fluid-leak": {
+     "result": "A brake fluid leak",
+     "severity": "stop",
+     "text": "An oily, clear-to-yellowish stain near a wheel, together with a drop in the brake fluid level, is a leak from a sealed hydraulic system. A leak can progress to partial or complete loss of braking.",
+     "actions": [
+      "Don't drive the car in this state.",
+      "If the fault is discovered while driving, stop at the first safe place and call for a tow."
+     ],
+     "lesson": "ts-leaks"
+    },
+    "r-pads-worn-fluid": {
+     "result": "Low fluid level, probably from worn brake pads",
+     "severity": "soon",
+     "text": "As the pads wear, the caliper pistons extend further, and the fluid level in the reservoir gradually drops even without a leak — a normal part of brake wear, needing a top-up and a check of the pad thickness.",
+     "actions": [
+      "Top up brake fluid of the correct type to the mark, and go to a garage soon to have the pad thickness checked.",
+      "If the fluid level keeps dropping after topping up, this is probably a leak after all; don't drive."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-wear-indicator": {
+     "result": "A wear reminder — the pads are nearing the end of their life",
+     "severity": "soon",
+     "text": "Most cars have a small metal strip fitted in the pad, which produces a deliberate squeal once the pad reaches a minimum thickness — to warn before you reach the bare metal.",
+     "actions": [
+      "Go to a garage to replace the pads soon.",
+      "Don't wait until the squeal turns into metallic grinding."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-rust-glaze": {
+     "result": "Light rust on the disc — a temporary occurrence",
+     "severity": "ok",
+     "text": "After rain, a wash, or when the car has stood for a few hours, a thin layer of rust forms on the disc's surface. The first few brake applications “clean” it off, which is why you hear a squeal that disappears quickly.",
+     "actions": [
+      "No action is needed if the squeal disappears after a brake application or two.",
+      "If the squeal continues beyond that, go and check the pad thickness."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-pads-metal": {
+     "result": "Brake pads worn down to the metal",
+     "severity": "stop",
+     "text": "Metallic grinding when braking, like metal rubbing on metal, means the pad has worn completely away and its metal backing is hitting the disc directly — this harms braking effectiveness and also damages the disc.",
+     "actions": [
+      "Drive with maximum care and go straight to a garage, without delay.",
+      "If this is happening on both axles, consider a tow instead of continuing to drive."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-parking-brake-on": {
+     "result": "The parking brake wasn't fully released",
+     "severity": "ok",
+     "text": "Driving with the parking brake applied, even partially, heats up the brakes and wears them quickly, and also lights the warning light on the dashboard.",
+     "actions": [
+      "Release the parking brake fully before driving.",
+      "If the light stays on after releasing it, go and check the brake fluid level."
+     ],
+     "lesson": "bk-parking"
+    },
+    "r-warped-disc": {
+     "result": "Suspected brake disc that isn't an even thickness",
+     "severity": "soon",
+     "text": "Shaking or pulsing in the pedal when braking, mainly from high speed, points to a disc that has warped or worn unevenly.",
+     "actions": [
+      "Go to a garage for a check, and to have the disc skimmed or replaced.",
+      "Until it's repaired, leave a bigger braking gap."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-pull-braking": {
+     "result": "The car pulls to one side when braking — suspected partial failure in one brake",
+     "severity": "stop",
+     "text": "Pulling to one side only when braking, and not during normal driving, hints at a stuck caliper, a blocked brake hose, or a brake that has seized on one side — braking isn't split evenly between the sides.",
+     "actions": [
+      "Drive with maximum care to the nearest garage, and avoid sharp braking if possible.",
+      "For more detail: [[tree:car-pulls-to-side|the car pulls to one side]]."
+     ],
+     "lesson": "bk-wear"
+    }
+   }
+  }
+ ]
+}

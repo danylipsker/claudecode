@@ -1,0 +1,340 @@
+{
+ "chapter": "speed-distance",
+ "questions": [
+  {
+   "id": "q-sd-001",
+   "lesson": "sd-limits",
+   "facts": [
+    "speed.urban"
+   ],
+   "q": "What is the maximum permitted speed for a private vehicle on an urban road when no sign sets a different limit?",
+   "options": [
+    "{{fact:speed.nonurban}}",
+    "{{fact:speed.urban}}",
+    "{{fact:speed.traffic_calming}}",
+    "{{fact:speed.nonurban_divided}}"
+   ],
+   "answer": 1,
+   "explain": "On an urban road, with no sign, the maximum speed is {{fact:speed.urban}} (reg. 54).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-002",
+   "lesson": "sd-limits",
+   "facts": [
+    "speed.nonurban"
+   ],
+   "q": "What is the maximum permitted speed for a private vehicle on a non-urban road with no built divider, when there is no sign?",
+   "options": [
+    "{{fact:speed.urban}}",
+    "{{fact:speed.nonurban_divided}}",
+    "{{fact:speed.nonurban}}",
+    "{{fact:speed.freeway}}"
+   ],
+   "answer": 2,
+   "explain": "On a non-urban road with no built divider — {{fact:speed.nonurban}}. With a built divider — {{fact:speed.nonurban_divided}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-003",
+   "lesson": "sd-limits",
+   "facts": [
+    "speed.freeway"
+   ],
+   "q": "What is the maximum permitted speed for a private vehicle on an expressway when no sign sets a different limit?",
+   "options": [
+    "{{fact:speed.nonurban_divided}}",
+    "{{fact:speed.sign_cap.freeway}}",
+    "{{fact:speed.bus.freeway}}",
+    "{{fact:speed.freeway}}"
+   ],
+   "answer": 3,
+   "explain": "On an expressway, with no sign, the maximum speed is {{fact:speed.freeway}}. A sign can set up to {{fact:speed.sign_cap.freeway}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-004",
+   "lesson": "sd-limits",
+   "q": "What counts as a \"built divider\" for the maximum speed on a non-urban road?",
+   "options": [
+    "A double continuous line painted on the road",
+    "A barrier, fence or raised traffic island that physically separates the directions of travel",
+    "An extra lane for a slow vehicle on an uphill stretch",
+    "Wide shoulders on both sides of the road"
+   ],
+   "answer": 1,
+   "explain": "A built divider is a physical separation — a barrier, fence or raised island. Painted lines are not a built divider.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-005",
+   "lesson": "sd-limits",
+   "facts": [
+    "speed.traffic_calming"
+   ],
+   "q": "What is the maximum speed in a traffic-calmed zone?",
+   "options": [
+    "{{fact:speed.urban}}",
+    "{{fact:speed.traffic_calming}}",
+    "At the driver's discretion, with no numeric limit",
+    "{{fact:speed.slow_vehicle}}"
+   ],
+   "answer": 1,
+   "explain": "On a shared street and in a traffic-calmed zone, the maximum speed is {{fact:speed.traffic_calming}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-006",
+   "lesson": "sd-limits",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "speed.heavy.nonurban"
+   ],
+   "q": "What is the maximum speed of a commercial vehicle whose gross vehicle weight is over {{fact:speed.heavy_threshold}} on an expressway?",
+   "options": [
+    "{{fact:speed.freeway}}",
+    "{{fact:speed.bus.freeway}}",
+    "{{fact:speed.heavy.nonurban}}",
+    "{{fact:speed.urban}}"
+   ],
+   "answer": 2,
+   "explain": "A heavy commercial vehicle (over {{fact:speed.heavy_threshold}}) is restricted outside the city — even on an expressway — to {{fact:speed.heavy.nonurban}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-007",
+   "lesson": "sd-limits",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "speed.bus.freeway"
+   ],
+   "q": "What is the maximum speed of a bus (not a minibus) on an expressway with no sign?",
+   "options": [
+    "{{fact:speed.bus.freeway}}",
+    "{{fact:speed.freeway}}",
+    "{{fact:speed.heavy.nonurban}}",
+    "{{fact:speed.nonurban}}"
+   ],
+   "answer": 0,
+   "explain": "A bus is restricted on an expressway to {{fact:speed.bus.freeway}}, and its speed limiter is also set to {{fact:speed.limiter.bus}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-008",
+   "lesson": "sd-safe-speed",
+   "q": "The permitted speed on a stretch of road is {{fact:speed.urban}}. Heavy rain is falling and visibility is poor. What is correct?",
+   "options": [
+    "You must drive at a reasonable speed that suits the conditions — lower than {{fact:speed.urban}} if circumstances require it",
+    "You may drive at {{fact:speed.urban}}, because that is the permitted speed",
+    "You must stop on the shoulder until the rain stops",
+    "You may drive a little above {{fact:speed.urban}} to get out of the rain area quickly"
+   ],
+   "answer": 0,
+   "explain": "The permitted speed is only an upper limit. The law requires driving at a reasonable speed for all the circumstances and keeping full control of the vehicle (reg. 51).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-009",
+   "lesson": "sd-safe-speed",
+   "q": "In which of the following situations must a driver slow down?",
+   "options": [
+    "When the road is straight and clear and visibility is good",
+    "When approaching the crest of a hill that hides the road ahead",
+    "When a vehicle behind wants to overtake",
+    "When entering an expressway from an acceleration lane"
+   ],
+   "answer": 1,
+   "explain": "Before the crest of a hill your field of view is limited, so you must slow down (reg. 52). On an acceleration lane, you instead match your speed to the flow of traffic.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-010",
+   "lesson": "sd-safe-speed",
+   "q": "When is sudden emergency braking allowed?",
+   "options": [
+    "Any time the driver wants to test the brakes, anywhere",
+    "Sudden emergency braking is never allowed",
+    "To warn a vehicle that is tailgating",
+    "Only to avoid an accident that cannot be avoided any other way, or for safety reasons"
+   ],
+   "answer": 3,
+   "explain": "Emergency braking is allowed only to avoid an accident or for traffic safety reasons (reg. 53). \"Teaching a lesson\" to a tailgating driver by braking hard is dangerous and forbidden.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-011",
+   "lesson": "sd-stopping",
+   "q": "What is a vehicle's stopping distance made up of?",
+   "options": [
+    "Braking distance minus reaction distance",
+    "Reaction distance plus braking distance",
+    "Braking distance only",
+    "Reaction distance only"
+   ],
+   "answer": 1,
+   "explain": "Stopping distance = reaction distance (until the foot is on the brake) + braking distance (until the vehicle stops).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-012",
+   "lesson": "sd-stopping",
+   "q": "What is \"reaction distance\"?",
+   "options": [
+    "The distance the vehicle travels from the moment the driver notices the danger until braking begins",
+    "The distance at which the driver can see the road ahead",
+    "The distance between the vehicle and the vehicle ahead of it",
+    "The distance the vehicle travels from the start of braking until it stops"
+   ],
+   "answer": 0,
+   "explain": "During the reaction time the vehicle keeps travelling at full speed. The distance it covers in that time is the reaction distance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-013",
+   "lesson": "sd-stopping",
+   "q": "A driver doubled their speed from 50 to 100 km/h. By roughly how much does the braking distance grow?",
+   "options": [
+    "By 4 times",
+    "By 2 times",
+    "By 3 times",
+    "It does not change"
+   ],
+   "answer": 0,
+   "explain": "Braking distance grows with the square of the speed: double the speed — quadruple the braking distance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-014",
+   "lesson": "sd-stopping",
+   "q": "Which of the following lengthens a driver's reaction time?",
+   "options": [
+    "Worn tyres",
+    "Fatigue and talking on the phone",
+    "A wet road",
+    "A loaded vehicle"
+   ],
+   "answer": 1,
+   "explain": "Fatigue, distraction, alcohol and medication lengthen reaction time. Tyres, the road surface and weight affect braking distance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-015",
+   "lesson": "sd-stopping",
+   "q": "What does the ABS system do under hard braking?",
+   "options": [
+    "It brakes the vehicle on its own when approaching an obstacle",
+    "It always shortens the braking distance by half",
+    "It sends braking only to the rear wheels",
+    "It stops the wheels from locking, so the driver can keep steering while braking"
+   ],
+   "answer": 3,
+   "explain": "ABS prevents the wheels from locking and preserves steering ability. It does not necessarily shorten the braking distance. In an emergency stop, press hard and do not ease off.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-016",
+   "lesson": "sd-following",
+   "facts": [
+    "following.min_time_gap"
+   ],
+   "q": "What is the minimum time gap the law requires you to keep behind a vehicle driving ahead of you in the same lane?",
+   "options": [
+    "5 seconds",
+    "{{fact:following.min_time_gap}}",
+    "The law sets no minimum time gap",
+    "Half a second"
+   ],
+   "answer": 1,
+   "explain": "Regulation 49 sets a gap of at least {{fact:following.min_time_gap}} — the legal minimum. The recommendation is to keep at least {{fact:following.recommended_gap}}, and more in difficult conditions.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-017",
+   "lesson": "sd-following",
+   "q": "Why is it recommended to measure the gap from the vehicle ahead in seconds rather than metres?",
+   "options": [
+    "Because a gap in seconds grows by itself as speed rises, matching reaction time",
+    "Because the speedometer shows seconds",
+    "Because it is easier to remember a number of seconds",
+    "Because the law forbids measuring distance in metres"
+   ],
+   "answer": 0,
+   "explain": "At higher speed you cover more metres every second. A gap in seconds guarantees a constant reaction time at any speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-018",
+   "lesson": "sd-following",
+   "q": "In which situation should you increase the gap from the vehicle ahead?",
+   "options": [
+    "When the road is empty of traffic",
+    "When the vehicle ahead is large and lets you see well",
+    "When driving on a dry road in bright daylight",
+    "In the season's first rain"
+   ],
+   "answer": 3,
+   "explain": "In the first rain, water mixes with oil and dust that have built up on the road, making it especially slippery. Braking distance lengthens, so you should increase the gap.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-019",
+   "lesson": "sd-following",
+   "q": "A vehicle is tailgating you while you drive. What is the safe response?",
+   "options": [
+    "Brake hard so it backs off",
+    "Slightly increase the gap from the vehicle ahead of you, so you can brake gradually",
+    "Drive on the lane divider line so it cannot overtake",
+    "Speed up to get away from it"
+   ],
+   "answer": 1,
+   "explain": "A large gap ahead lets you brake gently, so the driver behind also has time to react. \"Punishing\" a tailgater with sudden braking is dangerous and forbidden.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-020",
+   "lesson": "sd-energy",
+   "q": "Hitting a fixed obstacle at 50 km/h is roughly equivalent to falling from a height of —",
+   "options": [
+    "The tenth floor (about 30 metres)",
+    "One floor up (about 3 metres)",
+    "The third floor (about 10 metres)",
+    "Half a metre"
+   ],
+   "answer": 2,
+   "explain": "At 50 km/h (about 14 metres per second), the kinetic energy equals that of a fall from about 10 metres. At 100 km/h — about 40 metres.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-021",
+   "lesson": "sd-energy",
+   "q": "By roughly how much does a vehicle's kinetic energy grow when its speed rises from 40 to 80 km/h?",
+   "options": [
+    "By 8 times",
+    "By 2 times",
+    "By 4 times",
+    "It does not change"
+   ],
+   "answer": 2,
+   "explain": "Kinetic energy grows with the square of the speed: double the speed — quadruple the energy.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sd-022",
+   "lesson": "sd-safe-speed",
+   "q": "A heavy goods vehicle is climbing slowly up a steep hill, and a line of vehicles is building up behind it. The shoulder is paved and clear. What should it do?",
+   "options": [
+    "Accelerate beyond its ability so as not to hold anyone up",
+    "Signal left to show that overtaking is forbidden",
+    "Keep to the right and drive on the shoulder to let the vehicles behind overtake it",
+    "Stay in its lane — it is driving at the permitted speed"
+   ],
+   "answer": 2,
+   "explain": "A vehicle forced to drive slowly because of a load or a gradient must keep to the right, and where the shoulder is paved and clear — drive on it and allow overtaking (reg. 48).",
+   "shuffled": true
+  }
+ ]
+}

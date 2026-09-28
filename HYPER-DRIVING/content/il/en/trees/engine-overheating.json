@@ -1,0 +1,202 @@
+{
+ "trees": [
+  {
+   "id": "engine-overheating",
+   "group": "Engine and cooling",
+   "title": "The engine is overheating",
+   "summary": "The temperature gauge rises into the red zone, or a red engine-temperature warning light comes on.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "When [[dash:coolant-temp]] comes on, or you see vapour from under the bonnet: stop in a safe place and switch off the engine. **Never open the radiator cap or the expansion tank cap while the engine is hot** — the fluid is boiling and under pressure, and can cause severe burns.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "What's happening with the engine temperature?",
+     "options": [
+      {
+       "label": "The gauge rose gradually during normal driving, or a red engine-temperature light came on",
+       "next": "n2"
+      },
+      {
+       "label": "You see white vapour (not smoke) rising from under the bonnet",
+       "next": "r-steam"
+      },
+      {
+       "label": "The temperature rose only while stuck in traffic or during prolonged slow driving",
+       "next": "n3"
+      },
+      {
+       "label": "The temperature rose for the first time right after topping up coolant or a garage service",
+       "next": "n6"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Is this the first time this has happened, or does it keep happening?",
+     "options": [
+      {
+       "label": "First time",
+       "next": "n4"
+      },
+      {
+       "label": "It keeps happening, even during normal driving",
+       "next": "n5"
+      }
+     ]
+    },
+    "n3": {
+     "q": "Does the cooling fan run when you're stationary with the air conditioning on and it's hot outside?",
+     "text": "Listen or look under the bonnet — a working fan can be heard and seen running when the car is stationary with the engine hot.",
+     "options": [
+      {
+       "label": "You can't hear or see the fan running",
+       "next": "r-fan"
+      },
+      {
+       "label": "The fan is running, and it's still overheating",
+       "next": "n4"
+      }
+     ]
+    },
+    "n4": {
+     "q": "What's the coolant level in the expansion tank, when the engine is completely cold?",
+     "options": [
+      {
+       "label": "Below the minimum mark, or empty",
+       "next": "n7"
+      },
+      {
+       "label": "Within the normal range",
+       "next": "r-thermostat"
+      }
+     ]
+    },
+    "n7": {
+     "q": "Do you see a coloured fluid stain (green, orange or pink) under the car or near the radiator?",
+     "options": [
+      {
+       "label": "Yes",
+       "next": "r-leak-visible"
+      },
+      {
+       "label": "No, there's no sign of a visible leak",
+       "next": "r-leak-hidden"
+      }
+     ]
+    },
+    "n5": {
+     "q": "Along with the repeated overheating, is thick white smoke coming from the exhaust pipe?",
+     "options": [
+      {
+       "label": "Yes, thick white smoke that sweetens the air",
+       "next": "r-head-gasket"
+      },
+      {
+       "label": "No, no unusual smoke",
+       "next": "r-recurring-cooling"
+      }
+     ]
+    },
+    "n6": {
+     "q": "After topping up, did the temperature drop within a few minutes of driving, or stay high?",
+     "options": [
+      {
+       "label": "The temperature dropped and looks normal",
+       "next": "r-air-bleed"
+      },
+      {
+       "label": "The temperature stayed high",
+       "next": "r-leak-hidden"
+      }
+     ]
+    },
+    "r-steam": {
+     "result": "Vapour or boiling — stop immediately, without opening any caps",
+     "severity": "stop",
+     "text": "White vapour under the bonnet is usually boiling coolant releasing under pressure, or a serious leak. Opening a cap while the engine is hot can cause severe burns from scalding steam.",
+     "actions": [
+      "Stop in a safe place as soon as possible and switch off the engine.",
+      "Don't open any cap — not the radiator's and not the expansion tank's — until the engine has cooled completely, at least 30 minutes.",
+      "Once it has cooled: check visually for a leak, and call for a tow or roadside assistance."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-fan": {
+     "result": "The cooling fan isn't working",
+     "severity": "soon",
+     "text": "The electric fan is meant to run when the car is stationary or moving slowly, to draw air through the radiator. If it's not running, the temperature rises in exactly these situations — stationary, traffic, prolonged idling.",
+     "actions": [
+      "Don't leave the car idling for a long time in traffic if the temperature keeps rising — better to stop and switch off.",
+      "Drive carefully to the nearest garage, where airflow from driving itself helps cool the engine.",
+      "Have the garage check the fan fuse, the relay and the sensor."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-thermostat": {
+     "result": "Suspected thermostat stuck closed",
+     "severity": "soon",
+     "text": "When the fluid level is normal but the engine gradually overheats even during normal driving, with no visible leak, a thermostat stuck closed is a common suspect — it isn't opening to let coolant flow through the radiator.",
+     "actions": [
+      "Don't continue on a long drive; go to a garage soon.",
+      "Don't take the thermostat apart yourself at the roadside."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-leak-visible": {
+     "result": "A visible coolant leak",
+     "severity": "soon",
+     "text": "A green, orange or pink stain under the car or near the radiator is leaking coolant — from a hose, the radiator, the water pump, or a damaged cap.",
+     "actions": [
+      "Don't just top up and drive on as if the problem is solved — that's only a temporary fix.",
+      "Check the fluid level before every drive until it's repaired, and go to a garage soon."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-leak-hidden": {
+     "result": "There may be an internal leak or a damaged radiator cap",
+     "severity": "soon",
+     "text": "When there's no visible stain but the fluid level keeps dropping, or the temperature stays high after topping up, the leak may be internal (getting into the engine or the heating system), or the radiator cap isn't holding the required pressure.",
+     "actions": [
+      "Go to a garage for a pressure test on the cooling system — a test that finds leaks you can't see.",
+      "Don't continue driving long distances before it's checked."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-head-gasket": {
+     "result": "Suspected damaged cylinder head gasket",
+     "severity": "stop",
+     "text": "Thick white exhaust smoke together with repeated overheating is a sign of coolant getting into the combustion chambers — usually a damaged cylinder head gasket. Continuing to drive can destroy the engine completely.",
+     "actions": [
+      "Stop and switch off the engine as soon as it's safe to do so.",
+      "Don't restart the engine to go “just a bit further” — call for a tow to a garage."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-recurring-cooling": {
+     "result": "A recurring cooling-system fault, not yet identified",
+     "severity": "soon",
+     "text": "Overheating that keeps recurring, without unusual smoke and without a visible fluid stain, needs a professional check — it could be a weak water pump, a radiator clogged internally, or a temperature sensor giving a wrong reading.",
+     "actions": [
+      "Go to a garage for a full check of the cooling system before any further long drives.",
+      "Watch the temperature gauge on every drive until it's checked."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-air-bleed": {
+     "result": "Probably an air pocket in the system after topping up",
+     "severity": "ok",
+     "text": "After topping up coolant, air left in the system can cause a temporary rise in temperature, which drops after a few minutes of driving as the air clears.",
+     "actions": [
+      "Watch the temperature gauge over the next few drives.",
+      "If the overheating recurs, go to a garage; there may be a small leak that caused the need for topping up in the first place."
+     ],
+     "lesson": "eg-cooling"
+    }
+   }
+  }
+ ]
+}

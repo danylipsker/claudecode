@@ -1,0 +1,510 @@
+{
+ "chapter": "heavy-vehicles",
+ "questions": [
+  {
+   "id": "q-hv-001",
+   "lesson": "hv-dimensions",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "licence.c1.weight_range"
+   ],
+   "q": "A goods vehicle has a gross vehicle weight of 8,000 kg. Which licence is needed to drive it?",
+   "options": [
+    "C",
+    "C+E",
+    "B",
+    "C1"
+   ],
+   "answer": 3,
+   "explain": "A C1 licence is for a goods vehicle whose gross vehicle weight is {{fact:licence.c1.weight_range}} (reg. 181).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-002",
+   "lesson": "hv-dimensions",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "speed.heavy.nonurban",
+    "speed.heavy_threshold"
+   ],
+   "q": "What is the maximum speed for a commercial vehicle whose gross vehicle weight exceeds {{fact:speed.heavy_threshold}}, on a non-urban road — including a freeway?",
+   "options": [
+    "{{fact:speed.urban}}",
+    "{{fact:speed.heavy.nonurban}}",
+    "{{fact:speed.freeway}}",
+    "{{fact:speed.nonurban}}"
+   ],
+   "answer": 1,
+   "explain": "A commercial vehicle over {{fact:speed.heavy_threshold}} is limited to {{fact:speed.heavy.nonurban}} on any non-urban road, even on a freeway and even if a sign allows more (reg. 54).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-003",
+   "lesson": "hv-dimensions",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "speed.heavy_threshold"
+   ],
+   "q": "What determines which licence class is required for a goods vehicle?",
+   "options": [
+    "The vehicle's gross vehicle weight",
+    "The number of doors in the cab",
+    "The colour of the number plate alone",
+    "The colour of the vehicle and the type of load it carries"
+   ],
+   "answer": 0,
+   "explain": "The licence class (C1/C/C+E) is derived from the vehicle's gross vehicle weight, not from its outward size or colour.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-004",
+   "lesson": "hv-dimensions",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "vehicle.width.max_m"
+   ],
+   "q": "What is the maximum overall width permitted for a vehicle, including its load?",
+   "options": [
+    "2.80 m",
+    "3.00 m",
+    "2.20 m",
+    "{{fact:vehicle.width.max_m}}"
+   ],
+   "answer": 3,
+   "explain": "The overall width of a vehicle, including its load, must not exceed {{fact:vehicle.width.max_m}} (reg. 313).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-005",
+   "lesson": "hv-brakes",
+   "licence": [
+    "heavy"
+   ],
+   "q": "What happens to the spring brake in a heavy vehicle when the air pressure drops?",
+   "options": [
+    "It disconnects completely from the system",
+    "It closes on its own and stops the vehicle",
+    "It stays open and the vehicle keeps driving as normal",
+    "It has no connection to air pressure"
+   ],
+   "answer": 1,
+   "explain": "The spring brake is held open by air pressure; when the pressure drops, the spring closes it on its own — a fail-safe, not a fault.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-006",
+   "lesson": "hv-brakes",
+   "licence": [
+    "heavy"
+   ],
+   "q": "Why does a heavy-vehicle driver use a retarder or an engine brake on a long descent?",
+   "options": [
+    "To accelerate faster on the descent",
+    "Because using the foot brake on a descent is forbidden altogether",
+    "To slow down without heating and wearing the friction brakes",
+    "Only to save fuel"
+   ],
+   "answer": 2,
+   "explain": "Repeated use of the friction brakes on a long descent heats them up to brake fade. A retarder and an engine brake slow the vehicle without wearing them.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-007",
+   "lesson": "hv-brakes",
+   "licence": [
+    "heavy"
+   ],
+   "q": "What must you make sure of before setting off in a vehicle with air brakes?",
+   "options": [
+    "That there is a continuous air-leak sound from the tanks",
+    "That the throttle is stuck open",
+    "That the air pressure has risen to normal and the pressure warning has gone off",
+    "That the parking brake is fully released without checking the pressure"
+   ],
+   "answer": 2,
+   "explain": "Driving with the air-pressure warning lit is dangerous and forbidden; you must make sure the pressure rises normally and there are no audible leaks.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-008",
+   "lesson": "hv-brakes",
+   "licence": [
+    "heavy"
+   ],
+   "q": "What braking system is common in trucks and buses, instead of hydraulic pressure?",
+   "options": [
+    "Compressed-air brakes",
+    "Vacuum brakes only",
+    "Mechanical hand brake only",
+    "Magnetic brakes"
+   ],
+   "answer": 0,
+   "explain": "A heavy vehicle commonly has an air brake system: a compressor compresses air into tanks, and pressing the pedal releases it into the brake chambers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-009",
+   "lesson": "hv-visibility",
+   "licence": [
+    "heavy"
+   ],
+   "q": "Why is it especially dangerous to stand on the right side of a truck at a junction?",
+   "options": [
+    "Because standing there is forbidden under the parking law",
+    "Because it is an area the driver cannot see, especially when the truck may turn right",
+    "Because that is where the truck is hottest, from the engine",
+    "Because that is where the vehicle is loudest"
+   ],
+   "answer": 1,
+   "explain": "Even with all the mirrors, an area next to the front and the right side remains that the driver cannot see — especially dangerous when the truck is about to turn right.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-010",
+   "lesson": "hv-visibility",
+   "licence": [
+    "heavy"
+   ],
+   "fig": "hv-off-tracking",
+   "q": "What is the phenomenon in which the rear wheels of a long vehicle pass closer to the corner than the front wheels in a turn?",
+   "options": [
+    "Jackknifing",
+    "Off-tracking",
+    "Emergency braking",
+    "Brake fade"
+   ],
+   "answer": 1,
+   "explain": "Off-tracking is the more inward path that the rear wheels take in a turn, which grows with the length of the vehicle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-011",
+   "lesson": "hv-visibility",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "speed.heavy_threshold"
+   ],
+   "q": "On which vehicles is an extra convex mirror fitted on the right side, in addition to the two ordinary rear-view mirrors?",
+   "options": [
+    "A goods vehicle and a work vehicle with a gross vehicle weight of {{fact:speed.heavy_threshold}} or more",
+    "Only in a private car",
+    "In every vehicle without exception",
+    "Only on motorcycles"
+   ],
+   "answer": 0,
+   "explain": "A heavy goods vehicle and work vehicle have an extra convex mirror fitted on the right side, showing the area next to the front and side of the vehicle (reg. 361).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-012",
+   "lesson": "hv-visibility",
+   "licence": [
+    "heavy"
+   ],
+   "q": "A truck is about to turn left at a junction and looks as if it is edging slightly into the opposite lane before the turn. What is the right thing to do?",
+   "options": [
+    "Hoot the horn so it hurries up",
+    "Rush to fill the gap it is leaving in the opposite lane",
+    "Overtake it on the left at that moment",
+    "Stay back and give it room — the gap is reserved for its tail"
+   ],
+   "answer": 3,
+   "explain": "A long vehicle sometimes swings out towards the opposite side before a turn to leave room for the off-tracking of its rear wheels — the gap is not really free.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-013",
+   "lesson": "hv-loads",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "load.overhang.front_rear_max_m"
+   ],
+   "q": "How far may a load overhang beyond the vehicle's extreme front or rear point, with no special requirements?",
+   "options": [
+    "{{fact:load.overhang.front_rear_max_m}}",
+    "No limit at all",
+    "50 cm",
+    "2 m"
+   ],
+   "answer": 0,
+   "explain": "An overhang of up to {{fact:load.overhang.front_rear_max_m}} beyond the vehicle's extreme point is permitted (reg. 85(a)(1)(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-014",
+   "lesson": "hv-loads",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "load.wide.sign_required_over_m"
+   ],
+   "q": "Above what load width is a “Caution – wide load” sign and perimeter lighting required?",
+   "options": [
+    "{{fact:load.wide.sign_required_over_m}}",
+    "1.80 m",
+    "{{fact:vehicle.width.max_m}}",
+    "4.00 m"
+   ],
+   "answer": 0,
+   "explain": "On a heavy commercial vehicle, above a load width of {{fact:load.wide.sign_required_over_m}} a sign and perimeter lighting are required (reg. 85(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-015",
+   "lesson": "hv-loads",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "load.wide.escort_and_permit_over_m"
+   ],
+   "q": "Above what load width are both an escort vehicle and a police-officer permit required?",
+   "options": [
+    "5.00 m",
+    "3.00 m",
+    "{{fact:load.wide.escort_and_permit_over_m}}",
+    "{{fact:load.wide.sign_required_over_m}}"
+   ],
+   "answer": 2,
+   "explain": "Above a load width of {{fact:load.wide.escort_and_permit_over_m}}, both an escort vehicle and a permit from a police officer are required (reg. 85(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-016",
+   "lesson": "hv-loads",
+   "licence": [
+    "heavy"
+   ],
+   "q": "What is the legal consequence of carrying a load that is not secured as required by the load-securing standard?",
+   "options": [
+    "A court-summons offence with {{points:cargo-unsecured}} points",
+    "A fixed fine only, with no points",
+    "No consequence as long as the load has not actually fallen",
+    "An automatic permanent licence disqualification"
+   ],
+   "answer": 0,
+   "explain": "Carrying a load that is not secured as required is a court-summons offence carrying {{points:cargo-unsecured}} points (reg. 85(a)(4)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-017",
+   "lesson": "hv-trailers",
+   "licence": [
+    "heavy"
+   ],
+   "q": "What is the difference between a “vehicle with a trailer attached” and a “combination vehicle”?",
+   "options": [
+    "There is no difference, they are two names for the same thing",
+    "A vehicle with a trailer attached is always heavier than a combination vehicle",
+    "In a vehicle with a trailer attached, the trailer rests on its own wheels; in a combination vehicle, the semi-trailer rests on the towing unit",
+    "A combination vehicle is only a bus"
+   ],
+   "answer": 2,
+   "explain": "A vehicle with a trailer attached = a motor vehicle with a trailer on its own wheels. A combination vehicle = a towing unit that a semi-trailer rests on at its front, with no front wheels of its own (reg. 1).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-018",
+   "lesson": "hv-trailers",
+   "licence": [
+    "heavy"
+   ],
+   "q": "What are the two parts that connect the tractor unit to the semi-trailer?",
+   "options": [
+    "A warning triangle and a reflector",
+    "A speed limiter and a tachograph",
+    "A fifth wheel (coupling plate) and a kingpin",
+    "A convex mirror and a rear light"
+   ],
+   "answer": 2,
+   "explain": "The fifth wheel on the tractor unit and a kingpin projecting from the bottom of the semi-trailer lock into each other and let the combination vehicle turn.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-019",
+   "lesson": "hv-trailers",
+   "licence": [
+    "heavy"
+   ],
+   "q": "The semi-trailer starts to slide sideways and fold relative to the tractor unit. What is the correct response?",
+   "options": [
+    "Accelerate hard to “straighten” the vehicle",
+    "Brake harder immediately",
+    "Ease off the brake slightly and correct the steering gently",
+    "Open the cab door and jump out"
+   ],
+   "answer": 2,
+   "explain": "Braking harder worsens jackknifing. The correct response is to ease off the brake slightly and correct the steering gently.",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-020",
+   "lesson": "hv-trailers",
+   "licence": [
+    "heavy"
+   ],
+   "facts": [
+    "licence.ce.min_age",
+    "licence.ce.seniority_c"
+   ],
+   "q": "What are the conditions for obtaining a C+E licence?",
+   "options": [
+    "Age 17 only, with no prior seniority",
+    "10 years' seniority in any vehicle licence",
+    "Age {{fact:licence.ce.min_age}} and at least {{fact:licence.ce.seniority_c}} year's seniority in a C licence",
+    "Any holder of a B licence can get it immediately"
+   ],
+   "answer": 2,
+   "explain": "A C+E licence requires age {{fact:licence.ce.min_age}} and at least {{fact:licence.ce.seniority_c}} year's seniority in a C licence (reg. 189).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-021",
+   "lesson": "hv-hours",
+   "licence": [
+    "professional"
+   ],
+   "facts": [
+    "hours.continuous-cap"
+   ],
+   "q": "How long may a public-vehicle or heavy-goods-vehicle driver drive continuously without a break of at least an hour?",
+   "options": [
+    "Up to {{fact:hours.continuous-cap}}",
+    "Only up to 4 hours",
+    "No limit as long as there is fuel",
+    "Up to 14 hours"
+   ],
+   "answer": 0,
+   "explain": "You must not drive more than {{fact:hours.continuous-cap}} continuously without a break of at least an hour (reg. 168).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-022",
+   "lesson": "hv-hours",
+   "licence": [
+    "professional"
+   ],
+   "facts": [
+    "hours.daily.max",
+    "hours.weekly.max"
+   ],
+   "q": "What is the maximum driving permitted for a public-vehicle or heavy-goods-vehicle driver in any 24-hour period, and how much in a week?",
+   "options": [
+    "No daily limit, only a weekly one",
+    "{{fact:hours.daily.max}} in 24 hours, {{fact:hours.weekly.max}} in a week",
+    "8 hours in 24 hours, 40 hours in a week",
+    "{{fact:hours.daily.max}} in a week, {{fact:hours.weekly.max}} in 24 hours"
+   ],
+   "answer": 1,
+   "explain": "The limit is up to {{fact:hours.daily.max}} in 24 hours and up to {{fact:hours.weekly.max}} in any 7-day period (reg. 168).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-023",
+   "lesson": "hv-hours",
+   "licence": [
+    "professional"
+   ],
+   "q": "What does the tachograph record in a vehicle subject to the driving-hours regulation?",
+   "options": [
+    "Only the amount of fuel consumed",
+    "The weather during the trip",
+    "Only the number of passengers in the vehicle",
+    "Driving speed, distance, and the driver's driving and rest times"
+   ],
+   "answer": 3,
+   "explain": "The tachograph continuously records speed, distance, and driving and rest times, for monitoring fatigue and working hours (reg. 364D).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-024",
+   "lesson": "hv-hours",
+   "licence": [
+    "professional"
+   ],
+   "q": "What is the legal position on driving a heavy commercial vehicle without a working tachograph?",
+   "options": [
+    "It is permitted only on a short urban trip",
+    "A verbal warning only, with no fine",
+    "A fixed-fine offence: {{fine:tachograph-faulty}} and {{points:tachograph-faulty}} points",
+    "It is permitted, as long as the driver knows how many hours they have driven"
+   ],
+   "answer": 2,
+   "explain": "Driving without a working tachograph is a fixed-fine offence of {{fine:tachograph-faulty}} and {{points:tachograph-faulty}} points (reg. 364D).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-025",
+   "lesson": "hv-tractors",
+   "licence": [
+    "tractor"
+   ],
+   "facts": [
+    "speed.slow_vehicle"
+   ],
+   "q": "What is the maximum speed of a tractor and a mobile machine, and what is their status on a freeway?",
+   "options": [
+    "{{fact:speed.freeway}}, like any other vehicle",
+    "{{fact:speed.urban}}, allowed on a freeway with care",
+    "{{fact:speed.slow_vehicle}}, and a freeway is completely closed to them",
+    "There is no speed limit for a tractor"
+   ],
+   "answer": 2,
+   "explain": "A tractor and a mobile machine are limited to {{fact:speed.slow_vehicle}} on any road, and a freeway is closed to them (reg. 54).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-026",
+   "lesson": "hv-tractors",
+   "licence": [
+    "tractor"
+   ],
+   "facts": [
+    "licence.tractor.min_age"
+   ],
+   "q": "What is the minimum age for a class 1 (tractor) licence?",
+   "options": [
+    "{{fact:licence.tractor.min_age}}",
+    "21",
+    "14",
+    "18"
+   ],
+   "answer": 0,
+   "explain": "A class 1 licence is given from age {{fact:licence.tractor.min_age}} (reg. 188).",
+   "shuffled": true
+  },
+  {
+   "id": "q-hv-027",
+   "lesson": "hv-tractors",
+   "licence": [
+    "tractor"
+   ],
+   "facts": [
+    "licence.tractor.trailer_max"
+   ],
+   "q": "What is the maximum gross vehicle weight of a trailer that a tractor on a class 1 licence may tow?",
+   "options": [
+    "{{fact:licence.tractor.trailer_max}}",
+    "20,000 kg",
+    "No limit",
+    "3,500 kg"
+   ],
+   "answer": 0,
+   "explain": "A tractor on a class 1 licence may tow a trailer with a gross vehicle weight of up to {{fact:licence.tractor.trailer_max}} (reg. 179).",
+   "shuffled": true
+  }
+ ]
+}

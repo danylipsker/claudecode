@@ -1,0 +1,373 @@
+{
+ "chapter": "visibility-weather",
+ "questions": [
+  {
+   "id": "q-vw-001",
+   "lesson": "vw-lights",
+   "q": "What is “lighting-up time” under the law, and when does the duty to use lights apply?",
+   "options": [
+    "Only on a non-urban road",
+    "Not only night — also any other time when visibility is poor, such as heavy fog or thick dust, even at midday",
+    "Only when it is raining",
+    "Only between sunset and sunrise"
+   ],
+   "answer": 1,
+   "explain": "Lighting-up time is defined as night-time, and also any other time when visibility is poor due to weather conditions or another cause (reg. 1); the duty to use lights also applies by day, in fog or heavy dust (reg. 97(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-002",
+   "lesson": "vw-lights",
+   "facts": [
+    "lights.dipped.nonurban_period"
+   ],
+   "q": "On a non-urban road, during which period of the year must you use headlights or daytime running lights even on a clear day?",
+   "options": [
+    "From 1 November to 31 March",
+    "There is no such duty on a non-urban road",
+    "Only during the summer months",
+    "All year round, with no exception"
+   ],
+   "answer": 0,
+   "explain": "On a non-urban road, from 1 November to 31 March each year, every motor vehicle except a motorcycle must use lights — even with no visibility problem (reg. 97(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-003",
+   "lesson": "vw-lights",
+   "q": "When must a motorcycle be driven with its light on?",
+   "options": [
+    "Only on a non-urban road",
+    "Only during the winter period (1 November to 31 March)",
+    "Always — day and night alike",
+    "Only at night"
+   ],
+   "answer": 2,
+   "explain": "A motorcycle must be driven with its headlight (or daytime running light) on, day and night alike — a stricter duty than for other vehicles (reg. 97(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-004",
+   "lesson": "vw-lights",
+   "q": "In which of the following situations must you dim high beam to low beam?",
+   "options": [
+    "When the road is empty in both directions",
+    "When driving on a non-urban road at night with no oncoming traffic",
+    "Only on an expressway",
+    "When driving behind another vehicle and the high beam lights up its rear"
+   ],
+   "answer": 3,
+   "explain": "You must dim high beam when meeting an oncoming vehicle, when stopping, and when driving behind a vehicle whose rear is lit up by the high beam (reg. 99).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-005",
+   "lesson": "vw-lights",
+   "q": "When may you use a fog light?",
+   "options": [
+    "On every night drive, as extra lighting",
+    "Only in fog, driving rain or snow",
+    "Only by day, to identify the vehicle",
+    "Whenever the driver chooses"
+   ],
+   "answer": 1,
+   "explain": "A fog light may only be used in fog, driving rain or snow (reg. 107(d)) — not as ordinary night lighting.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-006",
+   "lesson": "vw-night",
+   "q": "You are dazzled by an oncoming vehicle's high beam. What do you do?",
+   "options": [
+    "Flash your high beam back",
+    "Slow down, look towards the edge line, and do not close your eyes",
+    "Close your eyes for a moment until it passes",
+    "Brake hard on the spot"
+   ],
+   "answer": 1,
+   "explain": "When dazzled, you slow down, look slightly towards the edge line rather than straight at the light, and you must never close your eyes while driving.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-007",
+   "lesson": "vw-night",
+   "q": "What is the only “cure” for fatigue while driving?",
+   "options": [
+    "Stopping and resting, or a short sleep",
+    "Opening the window and coffee",
+    "Loud music",
+    "Carrying on to the next petrol station"
+   ],
+   "answer": 0,
+   "explain": "Fatigue harms alertness and reaction time; the only way to deal with it is stopping and resting or a short sleep, not temporary tricks.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-008",
+   "lesson": "vw-night",
+   "q": "Low beam lights up a relatively short range. What is the correct implication for night driving?",
+   "options": [
+    "There is no connection between the light's range and a safe speed",
+    "You may always drive at the maximum permitted speed, because high beam makes up the difference",
+    "You must match your speed to your actual sight distance, not only to the speed limit on the sign",
+    "You may drive faster at night because the road is emptier"
+   ],
+   "answer": 2,
+   "explain": "When your sight distance at night is shorter than the distance needed to stop at the permitted speed, you must match your speed to the conditions and not only to the sign (reg. 51).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-009",
+   "lesson": "vw-night",
+   "q": "What helps a driver be seen better by others at night?",
+   "options": [
+    "Driving with high beam on permanently",
+    "Clean, working lights, and light-coloured, reflective clothing when getting out of the vehicle",
+    "Driving closer to the vehicle ahead to be seen together with it",
+    "Especially dark windows"
+   ],
+   "answer": 1,
+   "explain": "A dirty or broken light loses strength; light-coloured, reflective clothing, and a high-visibility vest when getting out of the vehicle on a non-urban road, improve visibility.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-010",
+   "lesson": "vw-rain",
+   "q": "Why is the first rain of the season especially dangerous?",
+   "options": [
+    "It carries no special danger beyond ordinary rain",
+    "Because it arrives with no weather warning",
+    "Because it mixes with the oil and dust that built up on the road in summer and creates an especially slippery layer",
+    "Because it is always heavier than winter rain"
+   ],
+   "answer": 2,
+   "explain": "The dry summer months build up oil, dust and rubber on the road; the first rain turns them into an especially slippery layer, before it is washed away.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-011",
+   "lesson": "vw-rain",
+   "q": "What is aquaplaning?",
+   "options": [
+    "A condition where a layer of water separates the tyre from the road, and the vehicle loses steering and braking",
+    "Misting of the windscreen from moisture",
+    "The brakes seizing up because water got into them",
+    "Tyre damage from driving on a wet road over time"
+   ],
+   "answer": 0,
+   "explain": "In aquaplaning, a layer of water on the road separates the tyre from the road surface, and the vehicle loses steering and braking together.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-012",
+   "lesson": "vw-rain",
+   "q": "You feel the vehicle being carried on the water and the steering going light. What do you do?",
+   "options": [
+    "Ease off the accelerator gently, hold the steering wheel straight, and wait for the tyres to grip the road again",
+    "Accelerate to get out of the pool of water faster",
+    "Turn the steering wheel in the direction the vehicle is drifting",
+    "Brake hard immediately"
+   ],
+   "answer": 0,
+   "explain": "In aquaplaning you must not brake hard or turn the wheel; ease off the accelerator gently, hold straight, and wait for the tyres to touch the road again.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-013",
+   "lesson": "vw-rain",
+   "q": "The windscreen starts to mist up from inside while driving in the rain. What is the most effective action?",
+   "options": [
+    "Open all the windows fully",
+    "Turn on the air conditioning and direct a dry airflow at the windscreen",
+    "Only increase the wiper speed",
+    "Turn off the air conditioning so as not to dry out the air"
+   ],
+   "answer": 1,
+   "explain": "Dry air from the air conditioning directed at the windscreen removes moisture far faster than running the wipers on a windscreen misted from the inside.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-014",
+   "lesson": "vw-rain",
+   "q": "On a wet road, what is correct about braking distance and the margin from the vehicle ahead?",
+   "options": [
+    "There is no significant change if the tyres are new",
+    "It is enough to drive at the speed shown on the sign, unchanged",
+    "The braking distance lengthens; you should increase your margin and match your speed to the conditions",
+    "The braking distance shortens because the road is softer"
+   ],
+   "answer": 2,
+   "explain": "A wet road significantly lengthens the braking distance; you must increase your margin and match your speed to what the road allows, not only to what the sign permits (reg. 51).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-015",
+   "lesson": "vw-fog-dust",
+   "q": "Visibility has dropped because of heavy fog. What does the law require?",
+   "options": [
+    "You may continue at the speed shown on the sign, because it has not changed",
+    "You must drive at a reasonable speed for the conditions, and slow down as much as needed",
+    "You must stop immediately in every case",
+    "There is no special rule for fog"
+   ],
+   "answer": 1,
+   "explain": "When visibility is poor for any reason you must slow down, and stop if necessary (reg. 52(3)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-016",
+   "lesson": "vw-fog-dust",
+   "q": "Visibility is poor because of heavy dust. What is correct about overtaking?",
+   "options": [
+    "Overtaking is allowed if you signal earlier than usual",
+    "Overtaking is allowed only on an expressway",
+    "Overtaking is allowed if you use high beam",
+    "Overtaking is forbidden as long as visibility is poor or the field of view is limited"
+   ],
+   "answer": 3,
+   "explain": "Overtaking is completely forbidden when visibility is poor or the field of view is blocked or limited (reg. 47(e)(1)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-017",
+   "lesson": "vw-fog-dust",
+   "q": "You are driving in a sandstorm that is reducing visibility. Which light is correct to switch on?",
+   "options": [
+    "Parking lights only",
+    "No lights at all, so as not to be dazzled by your own dust",
+    "High beam, to cut through the dust",
+    "Low beam, not high beam"
+   ],
+   "answer": 3,
+   "explain": "In a sandstorm you switch on low beam; high beam reflects off the dust particles and causes self-dazzle, without improving visibility.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-018",
+   "lesson": "vw-fog-dust",
+   "q": "In an extreme sandstorm you cannot see the edge of the road at all. What do you do?",
+   "options": [
+    "Speed up to get out of the area faster",
+    "Stop in the lane of travel with hazard lights on",
+    "Keep going very slowly while hooting continuously",
+    "Pull off the road as safely as possible, switch off the driving lights, switch on hazard lights, and wait"
+   ],
+   "answer": 3,
+   "explain": "In near-zero visibility you pull off the road as safely as possible, so as not to stay in the lane of travel, switch on hazard lights, and wait for visibility to improve.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-019",
+   "lesson": "vw-heat-cold",
+   "q": "What is correct about leaving a child in a closed vehicle on a hot day?",
+   "options": [
+    "Absolutely forbidden — the temperature inside rises by tens of degrees within a few minutes",
+    "Allowed if the child is over 8",
+    "Allowed if the vehicle is parked in the shade",
+    "Allowed for a short time of a few minutes, if the window is slightly open"
+   ],
+   "answer": 0,
+   "explain": "Under no circumstances do you leave a child, an elderly person or an animal in a closed vehicle in the heat; the temperature inside can rise by tens of degrees within a few minutes, even with a window slightly open.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-020",
+   "lesson": "vw-heat-cold",
+   "q": "What is “black ice”, and why is it especially dangerous?",
+   "options": [
+    "A thick layer of ice that forms only in heavy snow",
+    "A name for ice that builds up on the tyres themselves",
+    "A thin, transparent layer of ice through which you can see the road, making it hard to notice",
+    "Ice mixed with road dust, making it dark in colour"
+   ],
+   "answer": 2,
+   "explain": "Black ice is a thin, transparent layer of ice through which you can see the road's ordinary colour, making it almost invisible — common in the morning, on bridges and in shade.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-021",
+   "lesson": "vw-heat-cold",
+   "q": "You suspect a stretch of road is icy. What is the correct way to drive?",
+   "options": [
+    "Speed up to get through the stretch faster",
+    "Brake hard immediately to lose speed within the stretch itself",
+    "Turn the wheel in small movements constantly to test grip",
+    "Slow down well before the stretch, and avoid sharp braking, acceleration or steering"
+   ],
+   "answer": 3,
+   "explain": "On an icy road you slow down well before the suspect stretch, and avoid sharp braking, acceleration and steering — all of these reduce the chance of losing grip.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-022",
+   "lesson": "vw-heat-cold",
+   "q": "The engine temperature warning light (red) comes on while driving on a hot summer day. What do you do?",
+   "options": [
+    "Stop as soon as possible, and do not carry on a little further",
+    "Turn up the air conditioning to cool the engine",
+    "Stop only if smoke is visible",
+    "Keep driving to your destination, because it is only the outside heat"
+   ],
+   "answer": 0,
+   "explain": "Strain on the engine in the heat increases the risk of overheating; a red temperature warning light means you must stop as soon as possible.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-023",
+   "lesson": "vw-wind",
+   "q": "Who is most exposed to being affected by a strong crosswind?",
+   "options": [
+    "Only a vehicle standing still",
+    "A tall or long vehicle such as a coach or a lorry, and also a motorcycle and a bicycle",
+    "No one — a crosswind does not affect a motor vehicle",
+    "Only a small, low private car"
+   ],
+   "answer": 1,
+   "explain": "A tall or long vehicle with a large side area is easily pushed off line by a crosswind; a motorcycle and a bicycle are even more exposed, because their weight is light relative to the area they expose to the wind.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-024",
+   "lesson": "vw-wind",
+   "sign": "152",
+   "q": "What does sign 152 warn of?",
+   "options": [
+    "A pedestrian crossing for cyclists",
+    "A steep descent",
+    "A slippery road",
+    "A stretch of road with strong crosswinds"
+   ],
+   "answer": 3,
+   "explain": "Sign 152 warns of a stretch of road with strong crosswinds, usually at open crossings, bridges and high interchanges.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-025",
+   "lesson": "vw-wind",
+   "q": "You are overtaking a tall lorry in a strong crosswind. What might happen at the end of the overtake?",
+   "options": [
+    "No change, because the wind is constant along the whole road",
+    "The wind weakens as you get closer to the side of the lorry",
+    "The vehicle leaves the lorry's wind-sheltered lee, and the wind strikes it suddenly",
+    "The lorry blocks the wind completely even after the overtake"
+   ],
+   "answer": 2,
+   "explain": "When overtaking a tall vehicle in a crosswind, your vehicle briefly enters a wind-sheltered zone in the big vehicle's lee, and leaves it suddenly at the end of the overtake — a moment that demands a firm grip on the wheel.",
+   "shuffled": true
+  },
+  {
+   "id": "q-vw-026",
+   "lesson": "vw-wind",
+   "q": "A strong-wind warning is active, and you are driving a tall vehicle on an open bridge. What is correct?",
+   "options": [
+    "Consider slowing down significantly below the speed limit, because the law requires a reasonable speed for the conditions",
+    "No need to change anything, because the bridge was designed for wind",
+    "Speed up to cross the bridge faster",
+    "Stick to the maximum permitted speed on the sign in any case"
+   ],
+   "answer": 0,
+   "explain": "Bridges and interchanges are more exposed to wind than an ordinary road; the law requires a reasonable speed for the conditions, not only for the sign, so in strong wind you consider slowing below the limit (reg. 51).",
+   "shuffled": true
+  }
+ ]
+}

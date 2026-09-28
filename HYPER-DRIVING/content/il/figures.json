@@ -1,0 +1,953 @@
+{
+ "figures": {
+  "stopping-distance": {
+   "kind": "widget",
+   "widget": "stopping-distance",
+   "params": {
+    "speed": 90,
+    "reaction": 1
+   },
+   "caption": {
+    "he": "מרחק העצירה: מרחק התגובה (כתום) ועוד מרחק הבלימה (אדום).",
+    "en": "Stopping distance: reaction distance (orange) plus braking distance (red)."
+   }
+  },
+  "four-stroke": {
+   "kind": "widget",
+   "widget": "four-stroke",
+   "params": {},
+   "caption": {
+    "he": "ארבע הפעימות של מנוע בנזין: יניקה, דחיסה, עבודה ופליטה.",
+    "en": "The four strokes of a petrol engine: intake, compression, power, exhaust."
+   }
+  },
+  "stopping-sight": {
+   "kind": "svg",
+   "caption": {
+    "he": "נוסעים כך שאפשר לעצור בתוך הקטע שנראה פנוי.",
+    "en": "Drive so that you can stop within the stretch you can see is clear."
+   },
+   "labels": {
+    "seen": {
+     "he": "הקטע שנראה פנוי",
+     "en": "clear road you can see"
+    },
+    "stop": {
+     "he": "מרחק העצירה שלכם",
+     "en": "your stopping distance"
+    },
+    "crest": {
+     "he": "פסגת עלייה",
+     "en": "crest"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 180\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 150 Q320 60 640 150 L640 180 L0 180 Z\" fill=\"#474C55\"/><path d=\"M20 146 Q320 58 620 146\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"14 10\" fill=\"none\"/><rect x=\"60\" y=\"120\" width=\"44\" height=\"18\" rx=\"5\" fill=\"#4d8dff\" transform=\"rotate(-12 82 129)\"/><line x1=\"104\" y1=\"118\" x2=\"320\" y2=\"86\" stroke=\"#1fae6f\" stroke-width=\"4\"/><text x=\"200\" y=\"78\" fill=\"#1fae6f\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:seen}}</text><line x1=\"104\" y1=\"150\" x2=\"290\" y2=\"128\" stroke=\"#e5484d\" stroke-width=\"4\"/><text x=\"196\" y=\"160\" fill=\"#e5484d\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:stop}}</text><text x=\"330\" y=\"70\" fill=\"#9aa\" font-size=\"13\" text-anchor=\"middle\">{{label:crest}}</text></svg>"
+  },
+  "hydraulic-brake-circuit": {
+   "kind": "svg",
+   "caption": {
+    "he": "מסלול הכוח ההידראולי: מהדוושה, דרך המגבר והגליל הראשי, לכל ארבעת הגלגלים.",
+    "en": "The hydraulic power path: from the pedal, through the servo and master cylinder, to all four wheels."
+   },
+   "labels": {
+    "pedal": {
+     "he": "דוושת בלם",
+     "en": "brake pedal"
+    },
+    "servo": {
+     "he": "מגבר בלם",
+     "en": "brake servo"
+    },
+    "masterCylinder": {
+     "he": "גליל ראשי",
+     "en": "master cylinder"
+    },
+    "wheel": {
+     "he": "לכל גלגל",
+     "en": "to each wheel"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 320\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"90\" y=\"20\" width=\"300\" height=\"280\" rx=\"40\" fill=\"none\" stroke=\"#474C55\" stroke-width=\"3\"/><rect x=\"58\" y=\"40\" width=\"32\" height=\"60\" rx=\"8\" fill=\"#6b7280\"/><rect x=\"390\" y=\"40\" width=\"32\" height=\"60\" rx=\"8\" fill=\"#6b7280\"/><rect x=\"58\" y=\"220\" width=\"32\" height=\"60\" rx=\"8\" fill=\"#6b7280\"/><rect x=\"390\" y=\"220\" width=\"32\" height=\"60\" rx=\"8\" fill=\"#6b7280\"/><rect x=\"205\" y=\"100\" width=\"70\" height=\"26\" rx=\"6\" fill=\"#4d8dff\"/><text x=\"240\" y=\"118\" fill=\"#fff\" font-size=\"12\" text-anchor=\"middle\">{{label:servo}}</text><rect x=\"213\" y=\"64\" width=\"54\" height=\"30\" rx=\"6\" fill=\"#f0b429\"/><text x=\"240\" y=\"84\" fill=\"#141a28\" font-size=\"11\" text-anchor=\"middle\">{{label:masterCylinder}}</text><rect x=\"224\" y=\"248\" width=\"32\" height=\"16\" rx=\"4\" fill=\"#d9534f\"/><text x=\"240\" y=\"282\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:pedal}}</text><line x1=\"240\" y1=\"126\" x2=\"240\" y2=\"248\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><path d=\"M213 75 L90 68\" stroke=\"#d9534f\" stroke-width=\"3\" fill=\"none\"/><path d=\"M267 75 L390 68\" stroke=\"#d9534f\" stroke-width=\"3\" fill=\"none\"/><path d=\"M213 85 L90 245\" stroke=\"#d9534f\" stroke-width=\"3\" fill=\"none\"/><path d=\"M267 85 L390 245\" stroke=\"#d9534f\" stroke-width=\"3\" fill=\"none\"/><text x=\"240\" y=\"305\" fill=\"#9aa4b8\" font-size=\"12\" text-anchor=\"middle\">{{label:wheel}}</text></svg>"
+  },
+  "disc-vs-drum": {
+   "kind": "svg",
+   "caption": {
+    "he": "בלם דיסק מול בלם תוף: אותו עיקרון — חיכוך עוצר את הגלגל.",
+    "en": "Disc brake vs drum brake: same principle — friction stops the wheel."
+   },
+   "labels": {
+    "disc": {
+     "he": "דיסקת בלם",
+     "en": "brake disc"
+    },
+    "pad": {
+     "he": "רפידה",
+     "en": "pad"
+    },
+    "caliper": {
+     "he": "קליפר",
+     "en": "caliper"
+    },
+    "drum": {
+     "he": "תוף בלם",
+     "en": "brake drum"
+    },
+    "shoe": {
+     "he": "נעל בלם",
+     "en": "brake shoe"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 520 260\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"130\" cy=\"120\" r=\"85\" fill=\"none\" stroke=\"#9aa4b8\" stroke-width=\"10\"/><circle cx=\"130\" cy=\"120\" r=\"14\" fill=\"#6b7280\"/><text x=\"130\" y=\"225\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:disc}}</text><path d=\"M60 90 A85 85 0 0 1 60 150 L40 150 A105 105 0 0 0 40 90 Z\" fill=\"#f0b429\"/><text x=\"20\" y=\"124\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:caliper}}</text><rect x=\"58\" y=\"92\" width=\"14\" height=\"56\" fill=\"#d9534f\"/><text x=\"90\" y=\"248\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:pad}}</text><circle cx=\"390\" cy=\"120\" r=\"85\" fill=\"none\" stroke=\"#6b7280\" stroke-width=\"14\"/><text x=\"390\" y=\"225\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:drum}}</text><path d=\"M340 80 A65 65 0 0 1 340 160\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"14\" stroke-linecap=\"round\"/><path d=\"M440 80 A65 65 0 0 0 440 160\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"14\" stroke-linecap=\"round\"/><text x=\"390\" y=\"248\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:shoe}}</text></svg>"
+  },
+  "dashboard-cluster-layout": {
+   "kind": "svg",
+   "caption": {
+    "he": "פריסה טיפוסית של לוח המחוונים.",
+    "en": "A typical instrument-cluster layout."
+   },
+   "labels": {
+    "tach": {
+     "he": "מד סיבובים (טכומטר)",
+     "en": "tachometer (rev counter)"
+    },
+    "speedo": {
+     "he": "מד מהירות",
+     "en": "speedometer"
+    },
+    "fuel-temp": {
+     "he": "מד דלק וחום מנוע",
+     "en": "fuel and temperature gauges"
+    },
+    "trip": {
+     "he": "מד מרחק / מחשב טיול",
+     "en": "odometer / trip computer"
+    },
+    "warnrow": {
+     "he": "אזור נוריות האזהרה",
+     "en": "warning-light area"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 620 300\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"580\" height=\"200\" rx=\"24\" fill=\"#1c1e22\"/><circle cx=\"150\" cy=\"130\" r=\"80\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"3\"/><line x1=\"150\" y1=\"130\" x2=\"185\" y2=\"95\" stroke=\"#fff\" stroke-width=\"3\"/><circle cx=\"150\" cy=\"130\" r=\"5\" fill=\"#fff\"/><circle cx=\"320\" cy=\"115\" r=\"85\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"3\"/><line x1=\"320\" y1=\"115\" x2=\"365\" y2=\"70\" stroke=\"#fff\" stroke-width=\"3\"/><circle cx=\"320\" cy=\"115\" r=\"6\" fill=\"#fff\"/><rect x=\"290\" y=\"165\" width=\"60\" height=\"24\" rx=\"4\" fill=\"#0d0e10\" stroke=\"#474C55\"/><text x=\"320\" y=\"181\" text-anchor=\"middle\" fill=\"#4d8dff\" font-size=\"11\" font-family=\"monospace\">128480</text><circle cx=\"490\" cy=\"140\" r=\"65\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"3\"/><line x1=\"425\" y1=\"140\" x2=\"555\" y2=\"140\" stroke=\"#474C55\" stroke-width=\"1.5\"/><line x1=\"490\" y1=\"140\" x2=\"490\" y2=\"110\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"490\" y1=\"140\" x2=\"490\" y2=\"170\" stroke=\"#fff\" stroke-width=\"2\"/><rect x=\"260\" y=\"205\" width=\"18\" height=\"16\" rx=\"3\" fill=\"#d9534f\"/><rect x=\"285\" y=\"205\" width=\"18\" height=\"16\" rx=\"3\" fill=\"#f0b429\"/><rect x=\"310\" y=\"205\" width=\"18\" height=\"16\" rx=\"3\" fill=\"#f0b429\"/><rect x=\"335\" y=\"205\" width=\"18\" height=\"16\" rx=\"3\" fill=\"#4d8dff\"/><rect x=\"360\" y=\"205\" width=\"18\" height=\"16\" rx=\"3\" fill=\"#3f7d4e\"/><text x=\"386\" y=\"217\" text-anchor=\"start\" fill=\"#9aa4b8\" font-size=\"11\">{{label:warnrow}}</text><text x=\"356\" y=\"180\" text-anchor=\"start\" fill=\"#9aa4b8\" font-size=\"11\">{{label:trip}}</text><line x1=\"150\" y1=\"210\" x2=\"150\" y2=\"245\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"150\" y=\"262\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"14\" font-weight=\"700\">{{label:tach}}</text><line x1=\"320\" y1=\"200\" x2=\"320\" y2=\"245\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"320\" y=\"262\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"14\" font-weight=\"700\">{{label:speedo}}</text><line x1=\"490\" y1=\"205\" x2=\"490\" y2=\"245\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"490\" y=\"262\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"14\" font-weight=\"700\">{{label:fuel-temp}}</text></svg>"
+  },
+  "clutch-diagram": {
+   "kind": "svg",
+   "caption": {
+    "he": "המצמד מחבר ומנתק את המנוע מתיבת ההילוכים.",
+    "en": "The clutch connects and disconnects the engine from the gearbox."
+   },
+   "labels": {
+    "engine": {
+     "he": "מנוע",
+     "en": "engine"
+    },
+    "flywheel": {
+     "he": "גלגל תנופה",
+     "en": "flywheel"
+    },
+    "disc": {
+     "he": "דיסקת מצמד",
+     "en": "clutch disc"
+    },
+    "pressurePlate": {
+     "he": "לוחית לחיצה",
+     "en": "pressure plate"
+    },
+    "gearbox": {
+     "he": "תיבת הילוכים",
+     "en": "gearbox"
+    },
+    "pedal": {
+     "he": "דוושת מצמד",
+     "en": "clutch pedal"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"70\" width=\"120\" height=\"110\" rx=\"10\" fill=\"#6b7280\"/><text x=\"80\" y=\"205\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:engine}}</text><circle cx=\"192\" cy=\"125\" r=\"48\" fill=\"#4d8dff\"/><text x=\"192\" y=\"225\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:flywheel}}</text><rect x=\"236\" y=\"88\" width=\"10\" height=\"74\" fill=\"#141a28\" stroke=\"#e9edf6\" stroke-width=\"1.5\"/><text x=\"241\" y=\"225\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:disc}}</text><circle cx=\"292\" cy=\"125\" r=\"40\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"9\"/><text x=\"292\" y=\"225\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:pressurePlate}}</text><line x1=\"332\" y1=\"125\" x2=\"420\" y2=\"125\" stroke=\"#9aa4b8\" stroke-width=\"6\"/><rect x=\"420\" y=\"70\" width=\"150\" height=\"110\" rx=\"10\" fill=\"#6b7280\"/><text x=\"495\" y=\"205\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:gearbox}}</text><rect x=\"20\" y=\"222\" width=\"34\" height=\"16\" rx=\"4\" fill=\"#d9534f\"/><path d=\"M54 228 Q150 232 292 168\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"3\" stroke-dasharray=\"6 5\"/><text x=\"37\" y=\"255\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:pedal}}</text></svg>"
+  },
+  "gear-lever-h-pattern": {
+   "kind": "svg",
+   "caption": {
+    "he": "תבנית ה-H של ידית הילוכים ידנית בת חמישה הילוכים.",
+    "en": "The H-pattern of a 5-speed manual gear lever."
+   },
+   "labels": {
+    "reverseNote": {
+     "he": "לרוורס: לוחצים כלפי מטה לפני ההזזה",
+     "en": "for reverse: push down before moving across"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 220\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"110\" y1=\"50\" x2=\"110\" y2=\"150\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><line x1=\"240\" y1=\"50\" x2=\"240\" y2=\"150\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><line x1=\"370\" y1=\"50\" x2=\"370\" y2=\"150\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><line x1=\"110\" y1=\"100\" x2=\"370\" y2=\"100\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><circle cx=\"110\" cy=\"50\" r=\"20\" fill=\"#4d8dff\"/><text x=\"110\" y=\"57\" fill=\"#fff\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">1</text><circle cx=\"110\" cy=\"150\" r=\"20\" fill=\"#4d8dff\"/><text x=\"110\" y=\"157\" fill=\"#fff\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">2</text><circle cx=\"240\" cy=\"50\" r=\"20\" fill=\"#4d8dff\"/><text x=\"240\" y=\"57\" fill=\"#fff\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">3</text><circle cx=\"240\" cy=\"150\" r=\"20\" fill=\"#4d8dff\"/><text x=\"240\" y=\"157\" fill=\"#fff\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">4</text><circle cx=\"370\" cy=\"50\" r=\"20\" fill=\"#4d8dff\"/><text x=\"370\" y=\"57\" fill=\"#fff\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">5</text><circle cx=\"370\" cy=\"150\" r=\"20\" fill=\"#f0b429\"/><text x=\"370\" y=\"157\" fill=\"#141a28\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">R</text><circle cx=\"240\" cy=\"100\" r=\"6\" fill=\"#9aa4b8\"/><text x=\"240\" y=\"190\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:reverseNote}}</text></svg>"
+  },
+  "charging-circuit": {
+   "kind": "svg",
+   "caption": {
+    "he": "מעגל הטעינה: האלטרנטור, מונע על ידי רצועת ההנעה, מזין את צרכני הרכב וטוען את המצבר.",
+    "en": "The charging circuit: the alternator, driven by the drive belt, powers the vehicle's loads and charges the battery."
+   },
+   "labels": {
+    "engine": {
+     "he": "גלגלת גל הארכובה",
+     "en": "crankshaft pulley"
+    },
+    "belt": {
+     "he": "רצועת הנעה",
+     "en": "drive belt"
+    },
+    "alternator": {
+     "he": "אלטרנטור",
+     "en": "alternator"
+    },
+    "battery": {
+     "he": "מצבר",
+     "en": "battery"
+    },
+    "loads": {
+     "he": "צרכני חשמל",
+     "en": "electrical loads"
+    },
+    "current": {
+     "he": "טעינה",
+     "en": "charging"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 280\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"470\" height=\"270\" rx=\"14\" fill=\"#2b2e35\" stroke=\"#6b717d\" stroke-width=\"2\"/><circle cx=\"70\" cy=\"140\" r=\"32\" fill=\"#4a4e57\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><circle cx=\"70\" cy=\"140\" r=\"8\" fill=\"#2b2e35\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><text x=\"70\" y=\"188\" text-anchor=\"middle\" font-size=\"10\" fill=\"#9aa4b8\">{{label:engine}}</text><line x1=\"102\" y1=\"128\" x2=\"150\" y2=\"128\" stroke=\"#9aa4b8\" stroke-width=\"5\" stroke-linecap=\"round\"/><line x1=\"102\" y1=\"152\" x2=\"150\" y2=\"152\" stroke=\"#9aa4b8\" stroke-width=\"5\" stroke-linecap=\"round\"/><text x=\"126\" y=\"114\" text-anchor=\"middle\" font-size=\"9\" fill=\"#9aa4b8\">{{label:belt}}</text><circle cx=\"190\" cy=\"140\" r=\"40\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"190\" y=\"144\" text-anchor=\"middle\" font-size=\"12\" fill=\"#e6e9ef\">{{label:alternator}}</text><rect x=\"360\" y=\"30\" width=\"100\" height=\"80\" rx=\"8\" fill=\"#4d8dff\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"410\" y=\"75\" text-anchor=\"middle\" font-size=\"13\" fill=\"#fff\">{{label:battery}}</text><rect x=\"360\" y=\"168\" width=\"100\" height=\"80\" rx=\"8\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"410\" y=\"213\" text-anchor=\"middle\" font-size=\"12\" fill=\"#e6e9ef\">{{label:loads}}</text><line x1=\"228\" y1=\"118\" x2=\"350\" y2=\"66\" stroke=\"#f0b429\" stroke-width=\"4\"/><polygon points=\"350,66 337,63 342,76\" fill=\"#f0b429\"/><line x1=\"228\" y1=\"162\" x2=\"350\" y2=\"210\" stroke=\"#f0b429\" stroke-width=\"4\"/><polygon points=\"350,210 337,205 340,218\" fill=\"#f0b429\"/><text x=\"300\" y=\"88\" text-anchor=\"middle\" font-size=\"10\" fill=\"#f0b429\">{{label:current}}</text></svg>"
+  },
+  "jump-start-clamps": {
+   "kind": "svg",
+   "caption": {
+    "he": "סדר החיבור: 1 ו-2 — הכבל החיובי (אדום); 3 ו-4 — כבל ההארקה, בסדר הזה בדיוק. מנתקים בסדר הפוך.",
+    "en": "Connection order: 1 and 2 — the positive (red) cable; 3 and 4 — the ground cable, in exactly this order. Disconnect in reverse."
+   },
+   "labels": {
+    "dead": {
+     "he": "מצבר ריק",
+     "en": "flat battery"
+    },
+    "donor": {
+     "he": "מצבר תורם",
+     "en": "donor battery"
+    },
+    "ground": {
+     "he": "מתכת חשופה בגוש המנוע / בשלדה",
+     "en": "bare metal on the engine block / chassis"
+    },
+    "notHere": {
+     "he": "לא כאן",
+     "en": "not here"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 280\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"470\" height=\"270\" rx=\"14\" fill=\"#2b2e35\" stroke=\"#6b717d\" stroke-width=\"2\"/><rect x=\"40\" y=\"90\" width=\"110\" height=\"60\" rx=\"8\" fill=\"#4a4e57\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"95\" y=\"170\" text-anchor=\"middle\" font-size=\"12\" fill=\"#e6e9ef\">{{label:dead}}</text><rect x=\"330\" y=\"90\" width=\"110\" height=\"60\" rx=\"8\" fill=\"#4a4e57\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"385\" y=\"170\" text-anchor=\"middle\" font-size=\"12\" fill=\"#e6e9ef\">{{label:donor}}</text><rect x=\"40\" y=\"210\" width=\"110\" height=\"42\" rx=\"6\" fill=\"#33363d\" stroke=\"#6b717d\" stroke-width=\"2\"/><text x=\"95\" y=\"228\" text-anchor=\"middle\" font-size=\"9\" fill=\"#c9ced8\">{{label:ground}}</text><line x1=\"95\" y1=\"150\" x2=\"95\" y2=\"210\" stroke=\"#6b717d\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/><circle cx=\"58\" cy=\"90\" r=\"7\" fill=\"#33363d\" stroke=\"#d9534f\" stroke-width=\"2\"/><text x=\"58\" y=\"94\" text-anchor=\"middle\" font-size=\"10\" fill=\"#d9534f\">+</text><circle cx=\"132\" cy=\"90\" r=\"7\" fill=\"#33363d\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"132\" y=\"94\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8891a0\">-</text><line x1=\"126\" y1=\"84\" x2=\"138\" y2=\"96\" stroke=\"#d9534f\" stroke-width=\"2.5\"/><line x1=\"138\" y1=\"84\" x2=\"126\" y2=\"96\" stroke=\"#d9534f\" stroke-width=\"2.5\"/><text x=\"132\" y=\"76\" text-anchor=\"middle\" font-size=\"8\" fill=\"#d9534f\">{{label:notHere}}</text><circle cx=\"348\" cy=\"90\" r=\"7\" fill=\"#33363d\" stroke=\"#d9534f\" stroke-width=\"2\"/><text x=\"348\" y=\"94\" text-anchor=\"middle\" font-size=\"10\" fill=\"#d9534f\">+</text><circle cx=\"422\" cy=\"90\" r=\"7\" fill=\"#33363d\" stroke=\"#9fb4c7\" stroke-width=\"2\"/><text x=\"422\" y=\"94\" text-anchor=\"middle\" font-size=\"10\" fill=\"#9fb4c7\">-</text><line x1=\"58\" y1=\"90\" x2=\"348\" y2=\"90\" stroke=\"#d9534f\" stroke-width=\"5\"/><circle cx=\"58\" cy=\"68\" r=\"11\" fill=\"#d9534f\" stroke=\"#fff\" stroke-width=\"1.5\"/><text x=\"58\" y=\"72\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"#fff\">1</text><circle cx=\"348\" cy=\"68\" r=\"11\" fill=\"#d9534f\" stroke=\"#fff\" stroke-width=\"1.5\"/><text x=\"348\" y=\"72\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"#fff\">2</text><polyline points=\"422,90 422,48 95,48 95,210\" fill=\"none\" stroke=\"#9fb4c7\" stroke-width=\"5\"/><circle cx=\"422\" cy=\"68\" r=\"11\" fill=\"#3a3f47\" stroke=\"#c9ced8\" stroke-width=\"1.5\"/><text x=\"422\" y=\"72\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"#c9ced8\">3</text><circle cx=\"95\" cy=\"192\" r=\"11\" fill=\"#3a3f47\" stroke=\"#c9ced8\" stroke-width=\"1.5\"/><text x=\"95\" y=\"196\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"#c9ced8\">4</text></svg>"
+  },
+  "cooling-circuit": {
+   "kind": "svg",
+   "caption": {
+    "he": "מעגל הקירור: נוזל חם יוצא מהמנוע אל הרדיאטור, וחוזר קר דרך משאבת המים.",
+    "en": "The cooling circuit: hot coolant leaves the engine for the radiator, and returns cool through the water pump."
+   },
+   "labels": {
+    "engine": {
+     "he": "מנוע",
+     "en": "engine"
+    },
+    "radiator": {
+     "he": "רדיאטור",
+     "en": "radiator"
+    },
+    "hot": {
+     "he": "נוזל חם",
+     "en": "hot coolant"
+    },
+    "cool": {
+     "he": "נוזל קר",
+     "en": "cool coolant"
+    },
+    "thermostat": {
+     "he": "תרמוסטט",
+     "en": "thermostat"
+    },
+    "pump": {
+     "he": "משאבת מים",
+     "en": "water pump"
+    },
+    "fan": {
+     "he": "מאוורר",
+     "en": "fan"
+    },
+    "tank": {
+     "he": "מיכל התפשטות",
+     "en": "expansion tank"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 300\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"470\" height=\"290\" rx=\"14\" fill=\"#2b2e35\" stroke=\"#6b717d\" stroke-width=\"2\"/><rect x=\"225\" y=\"15\" width=\"70\" height=\"32\" rx=\"6\" fill=\"#7ec8ff\" stroke=\"#3a7fc4\" stroke-width=\"2\"/><text x=\"260\" y=\"36\" text-anchor=\"middle\" font-size=\"10\" fill=\"#0b2e4d\">{{label:tank}}</text><line x1=\"260\" y1=\"47\" x2=\"260\" y2=\"120\" stroke=\"#3a7fc4\" stroke-width=\"3\" stroke-dasharray=\"4 4\"/><rect x=\"40\" y=\"100\" width=\"150\" height=\"100\" rx=\"10\" fill=\"#4a4e57\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"115\" y=\"155\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#e6e9ef\">{{label:engine}}</text><rect x=\"310\" y=\"70\" width=\"110\" height=\"160\" rx=\"8\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><line x1=\"326\" y1=\"85\" x2=\"326\" y2=\"215\" stroke=\"#2b2e35\" stroke-width=\"3\"/><line x1=\"344\" y1=\"85\" x2=\"344\" y2=\"215\" stroke=\"#2b2e35\" stroke-width=\"3\"/><line x1=\"362\" y1=\"85\" x2=\"362\" y2=\"215\" stroke=\"#2b2e35\" stroke-width=\"3\"/><line x1=\"380\" y1=\"85\" x2=\"380\" y2=\"215\" stroke=\"#2b2e35\" stroke-width=\"3\"/><line x1=\"398\" y1=\"85\" x2=\"398\" y2=\"215\" stroke=\"#2b2e35\" stroke-width=\"3\"/><text x=\"365\" y=\"222\" text-anchor=\"middle\" font-size=\"13\" fill=\"#e6e9ef\">{{label:radiator}}</text><line x1=\"190\" y1=\"120\" x2=\"300\" y2=\"120\" stroke=\"#d9534f\" stroke-width=\"6\"/><polygon points=\"300,120 289,114 289,126\" fill=\"#d9534f\"/><text x=\"245\" y=\"106\" text-anchor=\"middle\" font-size=\"12\" fill=\"#d9534f\">{{label:hot}}</text><polygon points=\"215,107 228,120 215,133 202,120\" fill=\"#2fae74\" stroke=\"#175c3c\" stroke-width=\"2\"/><text x=\"215\" y=\"94\" text-anchor=\"middle\" font-size=\"11\" fill=\"#2fae74\">{{label:thermostat}}</text><line x1=\"300\" y1=\"190\" x2=\"214\" y2=\"190\" stroke=\"#4d8dff\" stroke-width=\"6\"/><polygon points=\"200,190 211,184 211,196\" fill=\"#4d8dff\"/><text x=\"250\" y=\"206\" text-anchor=\"middle\" font-size=\"12\" fill=\"#4d8dff\">{{label:cool}}</text><line x1=\"205\" y1=\"190\" x2=\"205\" y2=\"202\" stroke=\"#f0b429\" stroke-width=\"3\"/><circle cx=\"205\" cy=\"215\" r=\"13\" fill=\"#f0b429\" stroke=\"#33363d\" stroke-width=\"2\"/><text x=\"205\" y=\"236\" text-anchor=\"middle\" font-size=\"11\" fill=\"#f0b429\">{{label:pump}}</text><circle cx=\"365\" cy=\"255\" r=\"18\" fill=\"#33363d\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><line x1=\"365\" y1=\"241\" x2=\"365\" y2=\"269\" stroke=\"#9aa4b8\" stroke-width=\"3\" stroke-linecap=\"round\"/><line x1=\"351\" y1=\"255\" x2=\"379\" y2=\"255\" stroke=\"#9aa4b8\" stroke-width=\"3\" stroke-linecap=\"round\"/><text x=\"365\" y=\"283\" text-anchor=\"middle\" font-size=\"11\" fill=\"#9aa4b8\">{{label:fan}}</text></svg>"
+  },
+  "ev-drivetrain": {
+   "kind": "svg",
+   "caption": {
+    "he": "שלושת הרכיבים העיקריים בהינע של רכב חשמלי: מצבר, מנוע וממיר.",
+    "en": "The three main components of an electric vehicle's drivetrain: battery, motor and inverter."
+   },
+   "labels": {
+    "battery": {
+     "he": "מצבר משיכה",
+     "en": "traction battery"
+    },
+    "motor": {
+     "he": "מנוע חשמלי",
+     "en": "electric motor"
+    },
+    "inverter": {
+     "he": "ממיר",
+     "en": "inverter"
+    },
+    "port": {
+     "he": "שקע טעינה",
+     "en": "charging port"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 260\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"222\" x2=\"620\" y2=\"222\" stroke=\"#474C55\" stroke-width=\"4\"/><path d=\"M70 195 L70 145 Q70 115 108 108 L185 92 Q225 82 262 82 L455 82 Q505 82 535 112 L555 145 L575 195 Z\" fill=\"none\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><circle cx=\"165\" cy=\"200\" r=\"28\" fill=\"#2b2f38\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><circle cx=\"475\" cy=\"200\" r=\"28\" fill=\"#2b2f38\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><rect x=\"95\" y=\"186\" width=\"410\" height=\"22\" rx=\"6\" fill=\"#3f7d4e\"/><text x=\"300\" y=\"202\" fill=\"#fff\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:battery}}</text><circle cx=\"475\" cy=\"165\" r=\"20\" fill=\"#4d8dff\"/><text x=\"475\" y=\"140\" fill=\"#4d8dff\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">{{label:motor}}</text><rect x=\"430\" y=\"150\" width=\"34\" height=\"22\" rx=\"4\" fill=\"#f0b429\"/><text x=\"447\" y=\"130\" fill=\"#f0b429\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">{{label:inverter}}</text><circle cx=\"95\" cy=\"122\" r=\"10\" fill=\"#d9534f\"/><text x=\"95\" y=\"102\" fill=\"#d9534f\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">{{label:port}}</text></svg>"
+  },
+  "ev-charging-connectors": {
+   "kind": "svg",
+   "caption": {
+    "he": "מחבר Type 2 לטעינת AC רגילה, ומחבר CCS לטעינת DC מהירה.",
+    "en": "A Type 2 connector for regular AC charging, and a CCS connector for fast DC charging."
+   },
+   "labels": {
+    "ac": {
+     "he": "AC — טעינה רגילה",
+     "en": "AC — regular charging"
+    },
+    "type2": {
+     "he": "מחבר Type 2",
+     "en": "Type 2 connector"
+    },
+    "dc": {
+     "he": "DC — טעינה מהירה",
+     "en": "DC — fast charging"
+    },
+    "ccs": {
+     "he": "מחבר CCS",
+     "en": "CCS connector"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 260\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M120 40 L220 40 Q236 40 236 56 L236 140 Q236 160 210 170 L130 170 Q104 160 104 140 L104 56 Q104 40 120 40 Z\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"3\"/><circle cx=\"140\" cy=\"70\" r=\"6\" fill=\"#4d8dff\"/><circle cx=\"170\" cy=\"64\" r=\"6\" fill=\"#4d8dff\"/><circle cx=\"200\" cy=\"70\" r=\"6\" fill=\"#4d8dff\"/><circle cx=\"133\" cy=\"110\" r=\"6\" fill=\"#4d8dff\"/><circle cx=\"170\" cy=\"116\" r=\"6\" fill=\"#4d8dff\"/><circle cx=\"207\" cy=\"110\" r=\"6\" fill=\"#4d8dff\"/><circle cx=\"170\" cy=\"146\" r=\"7\" fill=\"#4d8dff\"/><text x=\"170\" y=\"200\" fill=\"#4d8dff\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">{{label:ac}}</text><text x=\"170\" y=\"222\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:type2}}</text><path d=\"M420 40 L520 40 Q536 40 536 56 L536 110 Q536 130 510 140 L430 140 Q404 130 404 110 L404 56 Q404 40 420 40 Z\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"3\"/><circle cx=\"440\" cy=\"64\" r=\"5\" fill=\"#d9534f\"/><circle cx=\"465\" cy=\"58\" r=\"5\" fill=\"#d9534f\"/><circle cx=\"495\" cy=\"58\" r=\"5\" fill=\"#d9534f\"/><circle cx=\"500\" cy=\"64\" r=\"5\" fill=\"#d9534f\"/><circle cx=\"435\" cy=\"98\" r=\"5\" fill=\"#d9534f\"/><circle cx=\"470\" cy=\"103\" r=\"5\" fill=\"#d9534f\"/><circle cx=\"505\" cy=\"98\" r=\"5\" fill=\"#d9534f\"/><rect x=\"415\" y=\"150\" width=\"38\" height=\"52\" rx=\"17\" fill=\"#d9534f\"/><rect x=\"468\" y=\"150\" width=\"38\" height=\"52\" rx=\"17\" fill=\"#d9534f\"/><text x=\"470\" y=\"228\" fill=\"#d9534f\" font-size=\"16\" font-weight=\"700\" text-anchor=\"middle\">{{label:dc}}</text><text x=\"470\" y=\"248\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:ccs}}</text></svg>"
+  },
+  "hv-off-tracking": {
+   "kind": "svg",
+   "caption": {
+    "he": "ברכב ארוך הגלגלים האחוריים חותכים את הפנייה וקרובים לפינה יותר מהגלגלים הקדמיים — לכן אסור לעמוד קרוב לפינה כשמשאית פונה.",
+    "en": "In a long vehicle the rear wheels cut the turn and pass closer to the corner than the front wheels — never wait close to the corner when a truck is turning."
+   },
+   "labels": {
+    "front": {
+     "he": "מסלול הגלגלים הקדמיים",
+     "en": "front wheels' path"
+    },
+    "rear": {
+     "he": "מסלול הגלגלים האחוריים — חותך את הפינה",
+     "en": "rear wheels' path — cuts the corner"
+    },
+    "cyclist": {
+     "he": "רוכב אופניים בסכנה",
+     "en": "cyclist at risk"
+    },
+    "corner": {
+     "he": "פינת המדרכה",
+     "en": "kerb corner"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 420 420\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"420\" height=\"420\" fill=\"#3f7d4e\"/><rect x=\"0\" y=\"130\" width=\"420\" height=\"130\" fill=\"#474C55\"/><rect x=\"260\" y=\"130\" width=\"160\" height=\"290\" fill=\"#474C55\"/><line x1=\"0\" y1=\"195\" x2=\"255\" y2=\"195\" stroke=\"#fff\" stroke-width=\"3\" stroke-dasharray=\"14 10\"/><line x1=\"340\" y1=\"270\" x2=\"340\" y2=\"420\" stroke=\"#fff\" stroke-width=\"3\" stroke-dasharray=\"14 10\"/><path d=\"M150,195 Q340,180 380,380\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"4\" stroke-dasharray=\"10 8\"/><path d=\"M150,215 Q255,255 330,380\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"4\" stroke-dasharray=\"10 8\"/><rect x=\"30\" y=\"172\" width=\"95\" height=\"46\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"18\" y=\"180\" width=\"26\" height=\"30\" rx=\"4\" fill=\"#4d8dff\"/><circle cx=\"260\" cy=\"260\" r=\"5\" fill=\"#fff\"/><circle cx=\"236\" cy=\"296\" r=\"9\" fill=\"none\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><circle cx=\"266\" cy=\"296\" r=\"9\" fill=\"none\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><line x1=\"245\" y1=\"296\" x2=\"257\" y2=\"296\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><line x1=\"251\" y1=\"296\" x2=\"251\" y2=\"280\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><text x=\"385\" y=\"165\" fill=\"#4d8dff\" font-size=\"15\" font-weight=\"700\" text-anchor=\"end\">{{label:front}}</text><text x=\"40\" y=\"245\" fill=\"#d9534f\" font-size=\"15\" font-weight=\"700\" text-anchor=\"start\">{{label:rear}}</text><text x=\"251\" y=\"325\" fill=\"#eef1f5\" font-size=\"13\" text-anchor=\"middle\">{{label:cyclist}}</text><text x=\"270\" y=\"252\" fill=\"#fff\" font-size=\"12\" text-anchor=\"start\">{{label:corner}}</text></svg>"
+  },
+  "hv-fifth-wheel": {
+   "kind": "svg",
+   "caption": {
+    "he": "הנתמך נשען על אוכף הגרירה שבראש המשא, והפין המלכותי שבתחתיתו נועל בתוכו — כך נוצר רכב מורכב אחד שיכול לפנות.",
+    "en": "The supported trailer rests on the tractor unit's fifth wheel, and the kingpin under it locks in — together they form one combination vehicle that can still turn."
+   },
+   "labels": {
+    "tractor": {
+     "he": "ראש משא (תומך)",
+     "en": "tractor unit"
+    },
+    "trailer": {
+     "he": "נתמך",
+     "en": "supported trailer"
+    },
+    "plate": {
+     "he": "אוכף גרירה",
+     "en": "fifth wheel"
+    },
+    "pin": {
+     "he": "פין מלכותי",
+     "en": "kingpin"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"185\" width=\"480\" height=\"18\" fill=\"#474C55\"/><rect x=\"20\" y=\"90\" width=\"60\" height=\"55\" rx=\"8\" fill=\"#4d8dff\"/><rect x=\"20\" y=\"140\" width=\"150\" height=\"45\" rx=\"8\" fill=\"#4d8dff\"/><ellipse cx=\"168\" cy=\"140\" rx=\"24\" ry=\"7\" fill=\"#f0b429\"/><rect x=\"161\" y=\"122\" width=\"10\" height=\"20\" rx=\"3\" fill=\"#d9534f\"/><rect x=\"168\" y=\"95\" width=\"282\" height=\"45\" rx=\"6\" fill=\"#d9534f\"/><line x1=\"168\" y1=\"85\" x2=\"168\" y2=\"120\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"66\" y=\"75\" fill=\"#4d8dff\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:tractor}}</text><text x=\"330\" y=\"80\" fill=\"#d9534f\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:trailer}}</text><text x=\"168\" y=\"168\" fill=\"#f0b429\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">{{label:plate}}</text><text x=\"168\" y=\"78\" fill=\"#9aa4b8\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">{{label:pin}}</text></svg>"
+  },
+  "hv-load-overhang": {
+   "kind": "svg",
+   "caption": {
+    "he": "מטען שחורג עד מטר אחד מעבר לרכב מסומן בשלט ובמחזיר אור בקצהו, כדי שנהגים מאחור יבחינו בו בזמן.",
+    "en": "A load overhanging up to one metre beyond the vehicle is marked with a sign and a reflector at its tip, so drivers behind notice it in time."
+   },
+   "labels": {
+    "load": {
+     "he": "מטען חורג",
+     "en": "overhanging load"
+    },
+    "sign": {
+     "he": "שלט „זהירות מטען חורג”",
+     "en": "\"caution – overhanging load\" sign"
+    },
+    "reflector": {
+     "he": "מחזיר אור",
+     "en": "reflector"
+    },
+    "overhang": {
+     "he": "עד 1 מ׳ מעבר לרכב",
+     "en": "up to 1 m beyond the vehicle"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"185\" width=\"480\" height=\"18\" fill=\"#474C55\"/><rect x=\"20\" y=\"90\" width=\"50\" height=\"95\" rx=\"8\" fill=\"#4d8dff\"/><rect x=\"70\" y=\"130\" width=\"210\" height=\"55\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"100\" y=\"98\" width=\"230\" height=\"40\" rx=\"4\" fill=\"#f0b429\"/><rect x=\"322\" y=\"88\" width=\"34\" height=\"22\" fill=\"#fff\" stroke=\"#d9534f\" stroke-width=\"2\"/><circle cx=\"326\" cy=\"160\" r=\"6\" fill=\"#d9534f\"/><line x1=\"280\" y1=\"165\" x2=\"330\" y2=\"165\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><line x1=\"280\" y1=\"158\" x2=\"280\" y2=\"172\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><line x1=\"330\" y1=\"158\" x2=\"330\" y2=\"172\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"215\" y=\"90\" fill=\"#f0b429\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">{{label:load}}</text><text x=\"339\" y=\"82\" fill=\"#d9534f\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:sign}}</text><text x=\"345\" y=\"163\" fill=\"#d9534f\" font-size=\"12\" font-weight=\"700\" text-anchor=\"start\">{{label:reflector}}</text><text x=\"305\" y=\"180\" fill=\"#9aa4b8\" font-size=\"12\" text-anchor=\"middle\">{{label:overhang}}</text></svg>"
+  },
+  "lo-lane-positions": {
+   "kind": "svg",
+   "caption": {
+    "he": "בכביש עם שלושה נתיבים: ימני לנסיעה רגילה, אמצעי רק לעקיפה או לפנייה שמאלה.",
+    "en": "On a three-lane road: right lane for normal driving, middle lane only to overtake or turn left."
+   },
+   "labels": {
+    "right": {
+     "he": "נסיעה רגילה",
+     "en": "normal driving"
+    },
+    "middle": {
+     "he": "רק לעקיפה או פנייה שמאלה",
+     "en": "only to overtake or turn left"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 440 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"440\" height=\"240\" fill=\"#3f7d4e\"/><rect x=\"0\" y=\"40\" width=\"440\" height=\"160\" fill=\"#474C55\"/><rect x=\"0\" y=\"94\" width=\"440\" height=\"52\" fill=\"#f0b429\" opacity=\".16\"/><line x1=\"0\" y1=\"94\" x2=\"440\" y2=\"94\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><line x1=\"0\" y1=\"146\" x2=\"440\" y2=\"146\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><g transform=\"translate(330 67) rotate(180)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#d9534f\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M296 67 L302.9 63 L302.9 71 Z\" fill=\"#d9534f\"/><g transform=\"translate(80 173) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M114 173 L107.1 177 L107.1 169 Z\" fill=\"#4d8dff\"/><g transform=\"translate(250 120) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#f0b429\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M284 120 L277.1 124 L277.1 116 Z\" fill=\"#f0b429\"/><path d=\"M150 173 Q190 173 215 132\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"2.5\" stroke-dasharray=\"6 5\"/><text x=\"210\" y=\"222\" fill=\"#c2c9d6\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:right}}</text><text x=\"130\" y=\"125\" fill=\"#c2c9d6\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"600\">{{label:middle}}</text></svg>"
+  },
+  "lo-overtaking-phases": {
+   "kind": "svg",
+   "caption": {
+    "he": "עקיפה בטוחה: בדיקה ואיתות, מעבר בנתיב הנגדי, חזרה ימינה כשהרכב הנעקף נראה במראה.",
+    "en": "A safe overtake: check and signal, pass in the opposite lane, return right once the passed vehicle is visible in the mirror."
+   },
+   "labels": {
+    "check": {
+     "he": "בדקו מראה ושטח מת, אותתו",
+     "en": "check mirror and blind spot, signal"
+    },
+    "pass": {
+     "he": "עברו במרחק ובמהירות בטוחים",
+     "en": "pass at a safe distance and speed"
+    },
+    "return": {
+     "he": "חזרו ימינה כשרואים את הנעקף במראה",
+     "en": "return right once you see it in the mirror"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 440 210\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"440\" height=\"210\" fill=\"#3f7d4e\"/><rect x=\"0\" y=\"52\" width=\"440\" height=\"100\" fill=\"#474C55\"/><line x1=\"0\" y1=\"102\" x2=\"440\" y2=\"102\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><path d=\"M72 127 C120 127 130 77 175 77 L255 77 C300 77 305 127 350 127\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"2.5\" stroke-dasharray=\"7 6\"/><g transform=\"translate(200 127) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#f0b429\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M234 127 L227.1 131 L227.1 123 Z\" fill=\"#f0b429\"/><g transform=\"translate(50 127) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><g transform=\"translate(215 77) rotate(0)\" opacity=\"0.55\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><g transform=\"translate(372 127) rotate(0)\" opacity=\"0.55\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M356 127 L349.1 131 L349.1 123 Z\" fill=\"#4d8dff\"/><circle cx=\"50\" cy=\"127\" r=\"17\" fill=\"none\" stroke=\"#c2c9d6\" stroke-width=\"1.5\"/><text x=\"50\" y=\"131\" font-size=\"11\" fill=\"#fff\" text-anchor=\"middle\" font-weight=\"700\">1</text><text x=\"215\" y=\"81\" font-size=\"11\" fill=\"#fff\" text-anchor=\"middle\" font-weight=\"700\">2</text><text x=\"372\" y=\"131\" font-size=\"11\" fill=\"#fff\" text-anchor=\"middle\" font-weight=\"700\">3</text><text x=\"95\" y=\"180\" fill=\"#c2c9d6\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"600\">{{label:check}}</text><text x=\"215\" y=\"38\" fill=\"#c2c9d6\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"600\">{{label:pass}}</text><text x=\"325\" y=\"180\" fill=\"#c2c9d6\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"600\">{{label:return}}</text></svg>"
+  },
+  "lo-overtaking-forbidden": {
+   "kind": "svg",
+   "caption": {
+    "he": "אסור לעקוף לפני פסגה או עקומה שמסתירים את הדרך, ובקו הפרדה רצוף.",
+    "en": "Overtaking is forbidden before a crest or bend that hides the road ahead, and across a continuous line."
+   },
+   "labels": {
+    "crest": {
+     "he": "הראות חסומה — אסור לעקוף",
+     "en": "sightline blocked — no overtaking"
+    },
+    "line": {
+     "he": "קו רצוף — אסור לחצות",
+     "en": "continuous line — must not cross"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 440 280\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"440\" height=\"280\" fill=\"#2b3a4a\"/><path d=\"M0 150 Q200 30 400 150 L440 150 L440 170 L0 170 Z\" fill=\"#3f7d4e\"/><path d=\"M0 150 Q200 30 400 150 L440 150\" fill=\"none\" stroke=\"#474C55\" stroke-width=\"8\"/><g transform=\"translate(68 116.1) rotate(-21.6)\"><rect x=\"-19\" y=\"-17\" width=\"38\" height=\"12\" rx=\"3\" fill=\"#4d8dff\" stroke=\"#4d8dff\" stroke-width=\"0\"/><rect x=\"-11\" y=\"-25\" width=\"20\" height=\"9\" rx=\"3\" fill=\"#4d8dff\" stroke=\"#4d8dff\" stroke-width=\"0\"/><circle cx=\"-11\" cy=\"-4\" r=\"4\" fill=\"#222\"/><circle cx=\"11\" cy=\"-4\" r=\"4\" fill=\"#222\"/></g><g transform=\"translate(296 103.8) rotate(16.1)\"><rect x=\"-19\" y=\"-17\" width=\"38\" height=\"12\" rx=\"3\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><rect x=\"-11\" y=\"-25\" width=\"20\" height=\"9\" rx=\"3\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><circle cx=\"-11\" cy=\"-4\" r=\"4\" fill=\"#222\"/><circle cx=\"11\" cy=\"-4\" r=\"4\" fill=\"#222\"/></g><line x1=\"74\" y1=\"94.1\" x2=\"440\" y2=\"-19.5\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-dasharray=\"6 5\"/><text x=\"220\" y=\"24\" fill=\"#fff\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:crest}}</text><rect x=\"0\" y=\"185\" width=\"440\" height=\"70\" fill=\"#474C55\"/><line x1=\"0\" y1=\"220\" x2=\"90\" y2=\"220\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><line x1=\"90\" y1=\"220\" x2=\"380\" y2=\"220\" stroke=\"#fff\" stroke-width=\"3\"/><line x1=\"380\" y1=\"220\" x2=\"440\" y2=\"220\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><g transform=\"translate(60 238) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M84 238 Q120 238 140 205\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"2.5\" stroke-dasharray=\"6 5\"/><path d=\"M128 212 l16 16 M144 212 l-16 16\" stroke=\"#d9534f\" stroke-width=\"4\" stroke-linecap=\"round\"/><g transform=\"translate(220 238) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#f0b429\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M254 238 L247.1 242 L247.1 234 Z\" fill=\"#f0b429\"/><g transform=\"translate(330 202) rotate(180)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#d9534f\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><text x=\"220\" y=\"272\" fill=\"#fff\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:line}}</text></svg>"
+  },
+  "lo-freeway-acceleration": {
+   "kind": "svg",
+   "caption": {
+    "he": "השתלבות מנתיב ההאצה: התאימו מהירות וניתן קדימה לכלי הרכב שבנתיב הראשי.",
+    "en": "Merging from the acceleration lane: match speed and give way to vehicles already in the through lane."
+   },
+   "labels": {
+    "you": {
+     "he": "התאימו מהירות והשתלבו",
+     "en": "match speed and merge"
+    },
+    "priority": {
+     "he": "לו הקדימה",
+     "en": "has priority"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 440 230\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"440\" height=\"230\" fill=\"#3f7d4e\"/><rect x=\"0\" y=\"40\" width=\"440\" height=\"100\" fill=\"#474C55\"/><path d=\"M0 140 H290 L380 140 L290 186 H0 Z\" fill=\"#474C55\"/><line x1=\"0\" y1=\"90\" x2=\"440\" y2=\"90\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><line x1=\"0\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"6 6\"/><g transform=\"translate(120 115) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#d9534f\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M154 115 L147.1 119 L147.1 111 Z\" fill=\"#d9534f\"/><g transform=\"translate(215 163) rotate(-8)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M238 158 Q290 150 320 118\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"2.5\" stroke-dasharray=\"6 5\"/><path d=\"M324 114 L322.6 121.9 L316.5 116.7 Z\" fill=\"#4d8dff\"/><text x=\"120\" y=\"72\" fill=\"#c2c9d6\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:priority}}</text><text x=\"180\" y=\"210\" fill=\"#c2c9d6\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:you}}</text></svg>"
+  },
+  "lo-lane-drop-merge": {
+   "kind": "svg",
+   "caption": {
+    "he": "נתיב מסתיים: מיזוג לסירוגין, נתיב אחר נתיב, בלי לדחוק פנימה.",
+    "en": "A lane ending: merge in turn, one lane after the other, without forcing your way in."
+   },
+   "labels": {
+    "end": {
+     "he": "הנתיב מסתיים",
+     "en": "lane ends"
+    },
+    "zip": {
+     "he": "לסירוגין, אחד-אחד",
+     "en": "alternating, one at a time"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 440 210\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"440\" height=\"210\" fill=\"#3f7d4e\"/><path d=\"M0 50 H250 L350 100 H440 V150 H0 Z\" fill=\"#474C55\"/><line x1=\"0\" y1=\"100\" x2=\"250\" y2=\"100\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"14 10\"/><line x1=\"250\" y1=\"50\" x2=\"350\" y2=\"100\" stroke=\"#fff\" stroke-width=\"2.5\"/><g transform=\"translate(290 125) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#d9534f\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M324 125 L317.1 129 L317.1 121 Z\" fill=\"#d9534f\"/><g transform=\"translate(215 75) rotate(8)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#4d8dff\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><path d=\"M238 78 Q262 84 262 110 Q262 124 250 125\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"2.5\" stroke-dasharray=\"6 5\" opacity=\"0\"/><path d=\"M238 79 Q258 90 262 118\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"2.5\" stroke-dasharray=\"6 5\"/><path d=\"M262 122 L258 115.1 L266 115.1 Z\" fill=\"#4d8dff\"/><g transform=\"translate(150 125) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#8a93a6\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><g transform=\"translate(120 75) rotate(0)\"><rect x=\"-21\" y=\"-11\" width=\"42\" height=\"22\" rx=\"6\" fill=\"#8a93a6\"/><rect x=\"5\" y=\"-8\" width=\"8\" height=\"16\" rx=\"2\" fill=\"#dfe8ff\" opacity=\".75\"/></g><text x=\"360\" y=\"40\" fill=\"#c2c9d6\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:end}}</text><text x=\"200\" y=\"180\" fill=\"#c2c9d6\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">{{label:zip}}</text></svg>"
+  },
+  "line-crossing": {
+   "kind": "svg",
+   "caption": {
+    "he": "אילו קווי נתיב מותר לחצות",
+    "en": "Which lane lines you may cross"
+   },
+   "labels": {
+    "broken": {
+     "he": "מקווקו - מותר לחצות כשהדרך פנויה",
+     "en": "broken - may cross when clear"
+    },
+    "continuous": {
+     "he": "רצוף - אסור לחצות",
+     "en": "continuous - may not cross"
+    },
+    "combo_ok": {
+     "he": "הקו הקרוב מקווקו - מותר לחצות",
+     "en": "near line broken - may cross"
+    },
+    "combo_no": {
+     "he": "הקו הקרוב רצוף - אסור לחצות",
+     "en": "near line continuous - may not"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"440\" height=\"300\" fill=\"#474C55\"/><line x1=\"20\" y1=\"55\" x2=\"420\" y2=\"55\" stroke=\"#fff\" stroke-width=\"3\" stroke-dasharray=\"16 12\"/><rect x=\"40\" y=\"30\" width=\"36\" height=\"16\" rx=\"3\" fill=\"#4d8dff\"/><path d=\"M76 38 C110 38 110 70 150 70\" stroke=\"#1fae6f\" stroke-width=\"4\" fill=\"none\"/><circle cx=\"150\" cy=\"70\" r=\"5\" fill=\"#1fae6f\"/><text x=\"260\" y=\"45\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:broken}}</text><line x1=\"20\" y1=\"150\" x2=\"420\" y2=\"150\" stroke=\"#fff\" stroke-width=\"3\"/><rect x=\"40\" y=\"125\" width=\"36\" height=\"16\" rx=\"3\" fill=\"#4d8dff\"/><path d=\"M76 133 C110 133 110 150 140 150\" stroke=\"#e5484d\" stroke-width=\"4\" fill=\"none\"/><line x1=\"132\" y1=\"142\" x2=\"148\" y2=\"158\" stroke=\"#e5484d\" stroke-width=\"4\"/><line x1=\"148\" y1=\"142\" x2=\"132\" y2=\"158\" stroke=\"#e5484d\" stroke-width=\"4\"/><text x=\"270\" y=\"140\" fill=\"#9aa4b8\" font-size=\"14\" text-anchor=\"middle\">{{label:continuous}}</text><line x1=\"20\" y1=\"238\" x2=\"420\" y2=\"238\" stroke=\"#fff\" stroke-width=\"2.5\"/><line x1=\"20\" y1=\"248\" x2=\"420\" y2=\"248\" stroke=\"#fff\" stroke-width=\"2.5\" stroke-dasharray=\"16 12\"/><rect x=\"40\" y=\"255\" width=\"36\" height=\"16\" rx=\"3\" fill=\"#4d8dff\"/><path d=\"M76 263 C110 263 110 230 150 230\" stroke=\"#1fae6f\" stroke-width=\"4\" fill=\"none\"/><circle cx=\"150\" cy=\"230\" r=\"5\" fill=\"#1fae6f\"/><text x=\"150\" y=\"285\" fill=\"#1fae6f\" font-size=\"13\" text-anchor=\"middle\">{{label:combo_ok}}</text><rect x=\"360\" y=\"205\" width=\"36\" height=\"16\" rx=\"3\" fill=\"#d9534f\"/><line x1=\"368\" y1=\"228\" x2=\"352\" y2=\"244\" stroke=\"#e5484d\" stroke-width=\"4\"/><line x1=\"352\" y1=\"228\" x2=\"368\" y2=\"244\" stroke=\"#e5484d\" stroke-width=\"4\"/><text x=\"320\" y=\"198\" fill=\"#e5484d\" font-size=\"13\" text-anchor=\"middle\">{{label:combo_no}}</text></svg>"
+  },
+  "kerb-colours": {
+   "kind": "svg",
+   "caption": {
+    "he": "צבעי אבן שפה ומשמעותם",
+    "en": "Kerb paint colours and what they mean"
+   },
+   "labels": {
+    "red_white": {
+     "he": "אדום-לבן: איסור עצירה וחנייה מוחלט",
+     "en": "red-white: all stopping and parking banned"
+    },
+    "blue": {
+     "he": "כחול-לבן: חנייה מותרת בתשלום",
+     "en": "blue-white: paid parking permitted"
+    },
+    "red_yellow": {
+     "he": "אדום-צהוב: עצירה לרכב מורשה בלבד",
+     "en": "red-yellow: authorised vehicles only"
+    },
+    "black_white": {
+     "he": "שחור-לבן: הבלטה בלבד, אינה איסור",
+     "en": "black-white: emphasis only, no restriction"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 460 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"460\" height=\"260\" fill=\"#474C55\"/><g><rect x=\"20\" y=\"20\" width=\"160\" height=\"22\" fill=\"#e5484d\"/><rect x=\"20\" y=\"20\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"60\" y=\"20\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"100\" y=\"20\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"140\" y=\"20\" width=\"20\" height=\"22\" fill=\"#fff\"/><text x=\"200\" y=\"36\" fill=\"#9aa4b8\" font-size=\"13\">{{label:red_white}}</text></g><g><rect x=\"20\" y=\"80\" width=\"160\" height=\"22\" fill=\"#4d8dff\"/><rect x=\"20\" y=\"80\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"60\" y=\"80\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"100\" y=\"80\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"140\" y=\"80\" width=\"20\" height=\"22\" fill=\"#fff\"/><text x=\"200\" y=\"96\" fill=\"#9aa4b8\" font-size=\"13\">{{label:blue}}</text></g><g><rect x=\"20\" y=\"140\" width=\"160\" height=\"22\" fill=\"#e5484d\"/><rect x=\"20\" y=\"140\" width=\"20\" height=\"22\" fill=\"#f0b429\"/><rect x=\"60\" y=\"140\" width=\"20\" height=\"22\" fill=\"#f0b429\"/><rect x=\"100\" y=\"140\" width=\"20\" height=\"22\" fill=\"#f0b429\"/><rect x=\"140\" y=\"140\" width=\"20\" height=\"22\" fill=\"#f0b429\"/><text x=\"200\" y=\"156\" fill=\"#9aa4b8\" font-size=\"13\">{{label:red_yellow}}</text></g><g><rect x=\"20\" y=\"200\" width=\"160\" height=\"22\" fill=\"#20242b\"/><rect x=\"20\" y=\"200\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"60\" y=\"200\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"100\" y=\"200\" width=\"20\" height=\"22\" fill=\"#fff\"/><rect x=\"140\" y=\"200\" width=\"20\" height=\"22\" fill=\"#fff\"/><text x=\"200\" y=\"216\" fill=\"#9aa4b8\" font-size=\"13\">{{label:black_white}}</text></g></svg>"
+  },
+  "mc-controls": {
+   "kind": "svg",
+   "caption": {
+    "he": "פקדי האופנוע: ידיות ביד ימין ושמאל, פדל בלם ופדל הילוכים בכל רגל.",
+    "en": "Motorcycle controls: hand levers on the right and left, a brake pedal and a gear pedal at each foot."
+   },
+   "labels": {
+    "throttle": {
+     "he": "ידית הגז",
+     "en": "throttle grip"
+    },
+    "frontbrake": {
+     "he": "בלם קדמי",
+     "en": "front brake"
+    },
+    "clutch": {
+     "he": "מצמד",
+     "en": "clutch"
+    },
+    "gearlever": {
+     "he": "פדל הילוכים",
+     "en": "gear pedal"
+    },
+    "rearbrake": {
+     "he": "בלם אחורי",
+     "en": "rear brake"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 300\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"90\" y1=\"80\" x2=\"550\" y2=\"80\" stroke=\"#9aa4b8\" stroke-width=\"10\" stroke-linecap=\"round\"/><rect x=\"490\" y=\"68\" width=\"60\" height=\"24\" rx=\"12\" fill=\"#4d8dff\"/><text x=\"520\" y=\"50\" fill=\"#4d8dff\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:throttle}}</text><path d=\"M492 68 Q466 40 440 55\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"6\" stroke-linecap=\"round\"/><text x=\"420\" y=\"45\" fill=\"#d9534f\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:frontbrake}}</text><rect x=\"90\" y=\"68\" width=\"60\" height=\"24\" rx=\"12\" fill=\"#9aa4b8\"/><path d=\"M148 68 Q174 40 200 55\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"6\" stroke-linecap=\"round\"/><text x=\"220\" y=\"45\" fill=\"#f0b429\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:clutch}}</text><path d=\"M230 95 Q320 78 410 95 L410 145 Q320 162 230 145 Z\" fill=\"none\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><circle cx=\"235\" cy=\"230\" r=\"8\" fill=\"#9aa4b8\"/><circle cx=\"405\" cy=\"230\" r=\"8\" fill=\"#9aa4b8\"/><rect x=\"205\" y=\"250\" width=\"50\" height=\"14\" rx=\"6\" fill=\"#f0b429\"/><text x=\"230\" y=\"288\" fill=\"#f0b429\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:gearlever}}</text><rect x=\"385\" y=\"250\" width=\"50\" height=\"14\" rx=\"6\" fill=\"#d9534f\"/><text x=\"410\" y=\"288\" fill=\"#d9534f\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:rearbrake}}</text></svg>"
+  },
+  "mc-countersteer": {
+   "kind": "svg",
+   "caption": {
+    "he": "כדי לפנות ימינה, דוחפים קלות את ידית ההגה הימנית קדימה — האופנוע נוטה ופונה לאותו כיוון.",
+    "en": "To turn right, push the right handlebar grip slightly forward — the bike leans and turns that way."
+   },
+   "labels": {
+    "push": {
+     "he": "דוחפים קלות קדימה",
+     "en": "push slightly forward"
+    },
+    "lean": {
+     "he": "האופנוע נוטה",
+     "en": "bike leans"
+    },
+    "turn": {
+     "he": "ופונה לאותו כיוון",
+     "en": "and turns that way"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 280\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"mcArrow1\" markerWidth=\"10\" markerHeight=\"10\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"#f0b429\"/></marker><marker id=\"mcArrow2\" markerWidth=\"10\" markerHeight=\"10\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"#d9534f\"/></marker></defs><line x1=\"320\" y1=\"60\" x2=\"320\" y2=\"220\" stroke=\"#9aa4b8\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"300\" y1=\"55\" x2=\"330\" y2=\"80\" stroke=\"#4d8dff\" stroke-width=\"10\" stroke-linecap=\"round\"/><line x1=\"300\" y1=\"220\" x2=\"340\" y2=\"220\" stroke=\"#4d8dff\" stroke-width=\"10\" stroke-linecap=\"round\"/><line x1=\"260\" y1=\"70\" x2=\"380\" y2=\"70\" stroke=\"#9aa4b8\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M380 70 L408 42\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#mcArrow1)\"/><text x=\"440\" y=\"35\" fill=\"#f0b429\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:push}}</text><text x=\"220\" y=\"125\" fill=\"#9aa4b8\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">{{label:lean}}</text><path d=\"M320 60 C420 90 420 200 340 228\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"3\" stroke-dasharray=\"8 6\" marker-end=\"url(#mcArrow2)\"/><text x=\"470\" y=\"150\" fill=\"#d9534f\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:turn}}</text></svg>"
+  },
+  "rb-road-cross-section": {
+   "kind": "svg",
+   "caption": {
+    "he": "חתך רוחב של דרך: מדרכה, שול, כביש עם נתיביו, ושטח הפרדה בנוי בין שני הכבישים.",
+    "en": "A road cross-section: sidewalk, shoulder, carriageway with its lanes, and a built divider between the two carriageways."
+   },
+   "labels": {
+    "road": {
+     "he": "דרך",
+     "en": "road"
+    },
+    "sidewalk": {
+     "he": "מדרכה",
+     "en": "sidewalk"
+    },
+    "shoulder": {
+     "he": "שול",
+     "en": "shoulder"
+    },
+    "lane": {
+     "he": "נתיב",
+     "en": "lane"
+    },
+    "median1": {
+     "he": "שטח הפרדה",
+     "en": "separation"
+    },
+    "median2": {
+     "he": "בנוי",
+     "en": "(built)"
+    },
+    "carriageway": {
+     "he": "כביש",
+     "en": "carriageway"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 280\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"14\" x2=\"480\" y2=\"14\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><line x1=\"20\" y1=\"9\" x2=\"20\" y2=\"19\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><line x1=\"480\" y1=\"9\" x2=\"480\" y2=\"19\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><text x=\"250\" y=\"14\" fill=\"#9aa4b8\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">{{label:road}}</text><rect x=\"20\" y=\"60\" width=\"50\" height=\"170\" fill=\"#6b7280\"/><rect x=\"70\" y=\"60\" width=\"35\" height=\"170\" fill=\"#565c66\"/><rect x=\"105\" y=\"60\" width=\"65\" height=\"170\" fill=\"#474C55\"/><rect x=\"170\" y=\"60\" width=\"65\" height=\"170\" fill=\"#474C55\"/><rect x=\"235\" y=\"60\" width=\"30\" height=\"170\" fill=\"#3f7d4e\"/><rect x=\"265\" y=\"60\" width=\"65\" height=\"170\" fill=\"#474C55\"/><rect x=\"330\" y=\"60\" width=\"65\" height=\"170\" fill=\"#474C55\"/><rect x=\"395\" y=\"60\" width=\"35\" height=\"170\" fill=\"#565c66\"/><rect x=\"430\" y=\"60\" width=\"50\" height=\"170\" fill=\"#6b7280\"/><line x1=\"70\" y1=\"60\" x2=\"70\" y2=\"230\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"430\" y1=\"60\" x2=\"430\" y2=\"230\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"105\" y1=\"60\" x2=\"105\" y2=\"230\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"395\" y1=\"60\" x2=\"395\" y2=\"230\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"170\" y1=\"60\" x2=\"170\" y2=\"230\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"10 8\"/><line x1=\"330\" y1=\"60\" x2=\"330\" y2=\"230\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"10 8\"/><text x=\"137\" y=\"150\" fill=\"#fff\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:lane}}</text><text x=\"202\" y=\"150\" fill=\"#fff\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:lane}}</text><text x=\"297\" y=\"150\" fill=\"#fff\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:lane}}</text><text x=\"362\" y=\"150\" fill=\"#fff\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:lane}}</text><line x1=\"45\" y1=\"34\" x2=\"45\" y2=\"60\" stroke=\"#9aa4b8\" stroke-width=\"1\"/><text x=\"45\" y=\"30\" fill=\"#9aa4b8\" font-size=\"11\" text-anchor=\"middle\">{{label:sidewalk}}</text><line x1=\"87\" y1=\"34\" x2=\"87\" y2=\"60\" stroke=\"#9aa4b8\" stroke-width=\"1\"/><text x=\"87\" y=\"30\" fill=\"#9aa4b8\" font-size=\"11\" text-anchor=\"middle\">{{label:shoulder}}</text><line x1=\"250\" y1=\"34\" x2=\"250\" y2=\"60\" stroke=\"#9aa4b8\" stroke-width=\"1\"/><text x=\"250\" y=\"24\" fill=\"#9aa4b8\" font-size=\"11\" text-anchor=\"middle\">{{label:median1}}</text><text x=\"250\" y=\"36\" fill=\"#9aa4b8\" font-size=\"11\" text-anchor=\"middle\">{{label:median2}}</text><line x1=\"412\" y1=\"34\" x2=\"412\" y2=\"60\" stroke=\"#9aa4b8\" stroke-width=\"1\"/><text x=\"412\" y=\"30\" fill=\"#9aa4b8\" font-size=\"11\" text-anchor=\"middle\">{{label:shoulder}}</text><line x1=\"455\" y1=\"34\" x2=\"455\" y2=\"60\" stroke=\"#9aa4b8\" stroke-width=\"1\"/><text x=\"455\" y=\"30\" fill=\"#9aa4b8\" font-size=\"11\" text-anchor=\"middle\">{{label:sidewalk}}</text><line x1=\"105\" y1=\"245\" x2=\"235\" y2=\"245\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><line x1=\"105\" y1=\"240\" x2=\"105\" y2=\"250\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><line x1=\"235\" y1=\"240\" x2=\"235\" y2=\"250\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><text x=\"170\" y=\"262\" fill=\"#9aa4b8\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:carriageway}}</text><line x1=\"265\" y1=\"245\" x2=\"395\" y2=\"245\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><line x1=\"265\" y1=\"240\" x2=\"265\" y2=\"250\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><line x1=\"395\" y1=\"240\" x2=\"395\" y2=\"250\" stroke=\"#9aa4b8\" stroke-width=\"1.5\"/><text x=\"330\" y=\"262\" fill=\"#9aa4b8\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\">{{label:carriageway}}</text></svg>"
+  },
+  "rw-unsigned-crossroad": {
+   "kind": "svg",
+   "caption": {
+    "he": "צומת בלי תמרור ובלי רמזור: זכות קדימה לבא מימין.",
+    "en": "A junction with no sign and no light: priority goes to the vehicle on the right."
+   },
+   "labels": {
+    "you": {
+     "he": "אתם — תנו קדימה",
+     "en": "you — give way"
+    },
+    "priority": {
+     "he": "בא מימין — לו הקדימה",
+     "en": "from the right — priority"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 400 300\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"400\" height=\"300\" fill=\"#3f7d4e\"/><rect x=\"150\" y=\"0\" width=\"100\" height=\"300\" fill=\"#474C55\"/><rect x=\"0\" y=\"100\" width=\"400\" height=\"100\" fill=\"#474C55\"/><line x1=\"200\" y1=\"0\" x2=\"200\" y2=\"88\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><line x1=\"200\" y1=\"212\" x2=\"200\" y2=\"300\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><line x1=\"0\" y1=\"150\" x2=\"138\" y2=\"150\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><line x1=\"262\" y1=\"150\" x2=\"400\" y2=\"150\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><rect x=\"203\" y=\"238\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#4d8dff\" transform=\"rotate(-90 224 250)\"/><path d=\"M224 222 L228.5 229.8 L219.5 229.8 Z\" fill=\"#4d8dff\"/><rect x=\"297\" y=\"112\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#d9534f\" transform=\"rotate(0 318 124)\"/><path d=\"M290 124 L297.8 119.5 L297.8 128.5 Z\" fill=\"#d9534f\"/><text x=\"224\" y=\"292\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:you}}</text><text x=\"312\" y=\"92\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:priority}}</text></svg>"
+  },
+  "rw-left-turn-oncoming": {
+   "kind": "svg",
+   "caption": {
+    "he": "פנייה שמאלה בצומת: זכות קדימה לרכב שבא ממול בנסיעה ישר.",
+    "en": "Turning left at a junction: the oncoming vehicle going straight has priority."
+   },
+   "labels": {
+    "you": {
+     "he": "אתם פונים שמאלה — תנו קדימה",
+     "en": "you, turning left — give way"
+    },
+    "oncoming": {
+     "he": "ממול, ישר — לו הקדימה",
+     "en": "oncoming — has priority"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 400 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"400\" height=\"260\" fill=\"#3f7d4e\"/><rect x=\"0\" y=\"90\" width=\"400\" height=\"90\" fill=\"#474C55\"/><rect x=\"150\" y=\"135\" width=\"100\" height=\"125\" fill=\"#474C55\"/><line x1=\"0\" y1=\"135\" x2=\"140\" y2=\"135\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><line x1=\"260\" y1=\"135\" x2=\"400\" y2=\"135\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><line x1=\"200\" y1=\"190\" x2=\"200\" y2=\"260\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><rect x=\"305\" y=\"100\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#4d8dff\" transform=\"rotate(0 326 112)\"/><path d=\"M298 112 L305.8 107.5 L305.8 116.5 Z\" fill=\"#4d8dff\"/><path d=\"M300 112 Q182 112 176 168\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"3\" stroke-dasharray=\"6 6\"/><path d=\"M176 176 L171.5 168.2 L180.5 168.2 Z\" fill=\"#4d8dff\"/><rect x=\"41\" y=\"146\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#d9534f\" transform=\"rotate(0 62 158)\"/><path d=\"M90 158 L82.2 162.5 L82.2 153.5 Z\" fill=\"#d9534f\"/><path d=\"M96 158 H250\" fill=\"none\" stroke=\"#d9534f\" stroke-width=\"3\" stroke-dasharray=\"6 6\" opacity=\".8\"/><path d=\"M258 158 L250.2 162.5 L250.2 153.5 Z\" fill=\"#d9534f\"/><text x=\"300\" y=\"82\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:you}}</text><text x=\"80\" y=\"205\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:oncoming}}</text></svg>"
+  },
+  "rw-roundabout": {
+   "kind": "svg",
+   "caption": {
+    "he": "כניסה לכיכר: זכות קדימה לרכב שכבר נמצא בתוכה.",
+    "en": "Entering a roundabout: the vehicle already inside has priority."
+   },
+   "labels": {
+    "you": {
+     "he": "אתם נכנסים — תנו קדימה",
+     "en": "you, entering — give way"
+    },
+    "inside": {
+     "he": "כבר בכיכר — לו הקדימה",
+     "en": "already inside — has priority"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 400 300\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"400\" height=\"300\" fill=\"#3f7d4e\"/><rect x=\"150\" y=\"0\" width=\"100\" height=\"300\" fill=\"#474C55\"/><rect x=\"0\" y=\"100\" width=\"400\" height=\"100\" fill=\"#474C55\"/><circle cx=\"200\" cy=\"150\" r=\"100\" fill=\"#474C55\"/><circle cx=\"200\" cy=\"150\" r=\"30\" fill=\"#3f7d4e\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"150\" r=\"78\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.5\" stroke-dasharray=\"8 8\" opacity=\".6\"/><path d=\"M203 254 h44\" stroke=\"#fff\" stroke-width=\"3\" stroke-dasharray=\"6 5\"/><path d=\"M156.4 214.7 A78 78 0 0 0 181.1 225.7\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"3\"/><path d=\"M181.1 225.7 L172.5 228.2 L174.7 219.4 Z\" fill=\"#f0b429\"/><path d=\"M243.6 85.3 A78 78 0 0 0 218.9 74.3\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"3\" opacity=\".7\"/><path d=\"M218.9 74.3 L227.5 71.8 L225.3 80.6 Z\" fill=\"#f0b429\"/><rect x=\"113.9\" y=\"180.3\" width=\"40\" height=\"22\" rx=\"6\" fill=\"#d9534f\" transform=\"rotate(58 133.9 191.3)\"/><path d=\"M147.6 213.4 L139.7 209.2 L147.3 204.4 Z\" fill=\"#d9534f\"/><rect x=\"203\" y=\"244\" width=\"42\" height=\"24\" rx=\"6\" fill=\"#4d8dff\" transform=\"rotate(-90 224 256)\"/><path d=\"M224 228 L228.5 235.8 L219.5 235.8 Z\" fill=\"#4d8dff\"/><text x=\"224\" y=\"294\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:you}}</text><text x=\"86\" y=\"250\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:inside}}</text></svg>"
+  },
+  "rw-pedestrian-crossing-multilane": {
+   "kind": "svg",
+   "caption": {
+    "he": "מעבר חצייה רב-נתיבי: רכב עצר בנתיב האחר — האטו ועצרו גם אתם.",
+    "en": "A multi-lane crosswalk: a vehicle stopped in the other lane — slow and stop too."
+   },
+   "labels": {
+    "stopped": {
+     "he": "עצר — יש הולך רגל שאינו נראה לכם",
+     "en": "stopped — a hidden pedestrian"
+    },
+    "you": {
+     "he": "אתם — האטו ועצרו גם",
+     "en": "you — slow and stop too"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 400 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"400\" height=\"260\" fill=\"#3f7d4e\"/><rect x=\"40\" y=\"0\" width=\"320\" height=\"260\" fill=\"#474C55\"/><line x1=\"200\" y1=\"0\" x2=\"200\" y2=\"260\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><g fill=\"#fff\"><rect x=\"60\" y=\"150\" width=\"280\" height=\"10\"/><rect x=\"60\" y=\"170\" width=\"280\" height=\"10\"/><rect x=\"60\" y=\"190\" width=\"280\" height=\"10\"/></g><rect x=\"90\" y=\"96\" width=\"24\" height=\"42\" rx=\"6\" fill=\"#e5b93a\"/><circle cx=\"102\" cy=\"170\" r=\"8\" fill=\"#f0b429\"/><rect x=\"96\" y=\"178\" width=\"12\" height=\"22\" fill=\"#f0b429\"/><text x=\"106\" y=\"90\" fill=\"#9aa4b8\" font-size=\"12\" text-anchor=\"middle\">{{label:stopped}}</text><rect x=\"238\" y=\"40\" width=\"24\" height=\"42\" rx=\"6\" fill=\"#4d8dff\"/><text x=\"250\" y=\"32\" fill=\"#9aa4b8\" font-size=\"12\" text-anchor=\"middle\">{{label:you}}</text></svg>"
+  },
+  "rw-narrow-slope": {
+   "kind": "svg",
+   "caption": {
+    "he": "פגישה בדרך צרה ותלולה: הרכב היורד עוצר ומפנה מקום לעולה.",
+    "en": "Meeting on a narrow, steep road: the descending vehicle stops and makes room for the one climbing."
+   },
+   "labels": {
+    "down": {
+     "he": "יורד — עוצר",
+     "en": "descending — stops"
+    },
+    "up": {
+     "he": "עולה — ממשיך",
+     "en": "climbing — continues"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 400 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"400\" height=\"240\" fill=\"#3f7d4e\"/><path d=\"M0 220 L400 40 L400 100 L0 280 Z\" fill=\"#474C55\"/><line x1=\"10\" y1=\"200\" x2=\"390\" y2=\"60\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><rect x=\"70\" y=\"150\" width=\"40\" height=\"24\" rx=\"6\" fill=\"#4d8dff\" transform=\"rotate(-25 90 162)\"/><text x=\"90\" y=\"190\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:up}}</text><rect x=\"290\" y=\"70\" width=\"40\" height=\"24\" rx=\"6\" fill=\"#d9534f\" transform=\"rotate(-25 310 82)\"/><text x=\"310\" y=\"58\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:down}}</text></svg>"
+  },
+  "suspension-corner": {
+   "kind": "svg",
+   "caption": {
+    "he": "פינת מתלה טיפוסית: הקפיץ נושא את המשקל, הבולם מרסן את התנועה.",
+    "en": "A typical suspension corner: the spring carries the weight, the damper controls the movement."
+   },
+   "labels": {
+    "chassis": {
+     "he": "שלדת הרכב",
+     "en": "chassis"
+    },
+    "spring": {
+     "he": "קפיץ",
+     "en": "spring"
+    },
+    "shockAbsorber": {
+     "he": "בולם זעזועים",
+     "en": "shock absorber"
+    },
+    "controlArm": {
+     "he": "זרוע מתלה",
+     "en": "control arm"
+    },
+    "wheel": {
+     "he": "גלגל",
+     "en": "wheel"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 320 300\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"60\" y=\"20\" width=\"200\" height=\"26\" rx=\"6\" fill=\"#6b7280\"/><text x=\"160\" y=\"38\" fill=\"#fff\" font-size=\"13\" text-anchor=\"middle\">{{label:chassis}}</text><path d=\"M120 46 L120 60 L138 68 L102 78 L138 88 L102 98 L138 108 L102 118 L138 128 L120 136 L120 150\" fill=\"none\" stroke=\"#4d8dff\" stroke-width=\"5\"/><text x=\"120\" y=\"168\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:spring}}</text><rect x=\"185\" y=\"46\" width=\"14\" height=\"104\" rx=\"5\" fill=\"#f0b429\"/><text x=\"192\" y=\"168\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:shockAbsorber}}</text><path d=\"M70 210 L250 210\" stroke=\"#9aa4b8\" stroke-width=\"10\" stroke-linecap=\"round\"/><text x=\"160\" y=\"236\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:controlArm}}</text><circle cx=\"160\" cy=\"255\" r=\"38\" fill=\"#141a28\" stroke=\"#e9edf6\" stroke-width=\"3\"/><circle cx=\"160\" cy=\"255\" r=\"14\" fill=\"#6b7280\"/><text x=\"160\" y=\"296\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:wheel}}</text><line x1=\"120\" y1=\"150\" x2=\"160\" y2=\"217\" stroke=\"#4d8dff\" stroke-width=\"4\"/><line x1=\"192\" y1=\"150\" x2=\"160\" y2=\"217\" stroke=\"#f0b429\" stroke-width=\"4\"/></svg>"
+  },
+  "tyre-anatomy": {
+   "kind": "svg",
+   "caption": {
+    "he": "חתך של צמיג על החישוק: מדרך, דופן, חישוק ווסת האוויר.",
+    "en": "A tyre on its rim: tread, sidewall, rim and valve stem."
+   },
+   "labels": {
+    "tread": {
+     "he": "מדרך (פרוטקטור)",
+     "en": "tread"
+    },
+    "sidewall": {
+     "he": "דופן",
+     "en": "sidewall"
+    },
+    "rim": {
+     "he": "חישוק",
+     "en": "rim"
+    },
+    "valve": {
+     "he": "וסת אוויר",
+     "en": "valve stem"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 480 360\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"240\" cy=\"180\" r=\"140\" fill=\"#2b2e35\"/><circle cx=\"240\" cy=\"180\" r=\"112\" fill=\"#1c1e22\"/><circle cx=\"240\" cy=\"180\" r=\"80\" fill=\"#8a90a0\"/><circle cx=\"240\" cy=\"180\" r=\"20\" fill=\"#5b606c\"/><circle cx=\"296\" cy=\"236\" r=\"6\" fill=\"#f0b429\"/><line x1=\"240\" y1=\"40\" x2=\"240\" y2=\"15\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"240\" y=\"16\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:tread}}</text><line x1=\"128\" y1=\"180\" x2=\"60\" y2=\"180\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"56\" y=\"184\" text-anchor=\"end\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:sidewall}}</text><line x1=\"320\" y1=\"180\" x2=\"400\" y2=\"180\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"404\" y=\"184\" text-anchor=\"start\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:rim}}</text><line x1=\"296\" y1=\"236\" x2=\"350\" y2=\"300\" stroke=\"#f0b429\" stroke-width=\"2\"/><text x=\"354\" y=\"304\" text-anchor=\"start\" fill=\"#f0b429\" font-size=\"15\" font-weight=\"700\">{{label:valve}}</text></svg>"
+  },
+  "tyre-wear-patterns": {
+   "kind": "svg",
+   "caption": {
+    "he": "דפוסי שחיקה בצמיג — ומה כל אחד מהם מלמד.",
+    "en": "Tyre wear patterns — and what each one tells you."
+   },
+   "labels": {
+    "even-title": {
+     "he": "בלאי אחיד",
+     "en": "even wear"
+    },
+    "even-cause": {
+     "he": "הצמיג במצב תקין",
+     "en": "the tyre is in good condition"
+    },
+    "center-title": {
+     "he": "שחיקה במרכז",
+     "en": "centre wear"
+    },
+    "center-cause": {
+     "he": "לחץ אוויר גבוה מדי",
+     "en": "pressure too high"
+    },
+    "edge-title": {
+     "he": "שחיקה בשני הקצוות",
+     "en": "wear on both edges"
+    },
+    "edge-cause": {
+     "he": "לחץ אוויר נמוך מדי",
+     "en": "pressure too low"
+    },
+    "side-title": {
+     "he": "שחיקה בצד אחד",
+     "en": "one-sided wear"
+    },
+    "side-cause": {
+     "he": "כיוון גלגלים לקוי",
+     "en": "wheel alignment fault"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 680 280\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"140\" height=\"120\" rx=\"8\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"1.5\"/><rect x=\"180\" y=\"30\" width=\"140\" height=\"120\" rx=\"8\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"1.5\"/><rect x=\"230\" y=\"30\" width=\"40\" height=\"120\" fill=\"#f0b429\" opacity=\"0.55\"/><rect x=\"340\" y=\"30\" width=\"140\" height=\"120\" rx=\"8\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"1.5\"/><rect x=\"340\" y=\"30\" width=\"30\" height=\"120\" fill=\"#f0b429\" opacity=\"0.55\"/><rect x=\"450\" y=\"30\" width=\"30\" height=\"120\" fill=\"#f0b429\" opacity=\"0.55\"/><rect x=\"500\" y=\"30\" width=\"140\" height=\"120\" rx=\"8\" fill=\"#26282d\" stroke=\"#474C55\" stroke-width=\"1.5\"/><rect x=\"500\" y=\"30\" width=\"35\" height=\"120\" fill=\"#d9534f\" opacity=\"0.55\"/><text x=\"90\" y=\"172\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:even-title}}</text><text x=\"90\" y=\"192\" text-anchor=\"middle\" fill=\"#6b717d\" font-size=\"12\">{{label:even-cause}}</text><text x=\"250\" y=\"172\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:center-title}}</text><text x=\"250\" y=\"192\" text-anchor=\"middle\" fill=\"#6b717d\" font-size=\"12\">{{label:center-cause}}</text><text x=\"410\" y=\"172\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:edge-title}}</text><text x=\"410\" y=\"192\" text-anchor=\"middle\" fill=\"#6b717d\" font-size=\"12\">{{label:edge-cause}}</text><text x=\"570\" y=\"172\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\">{{label:side-title}}</text><text x=\"570\" y=\"192\" text-anchor=\"middle\" fill=\"#6b717d\" font-size=\"12\">{{label:side-cause}}</text></svg>"
+  },
+  "tyre-jack-points": {
+   "kind": "svg",
+   "caption": {
+    "he": "נקודות ההרמה המאושרות בשלדת הרכב — לעולם לא מרימים באמצע הרצפה.",
+    "en": "The vehicle's approved jack points — never lift under the middle of the floor."
+   },
+   "labels": {
+    "front-point": {
+     "he": "נקודת הרמה קדמית",
+     "en": "front jack point"
+    },
+    "rear-point": {
+     "he": "נקודת הרמה אחורית",
+     "en": "rear jack point"
+    },
+    "warning": {
+     "he": "אסור להרים כאן",
+     "en": "never lift here"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 520 270\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"210\" x2=\"500\" y2=\"210\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"10 8\" opacity=\"0.5\"/><path d=\"M170,140 L200,95 Q210,85 225,85 L320,85 Q335,85 345,95 L370,140 Z\" fill=\"#3f74d6\"/><rect x=\"70\" y=\"140\" width=\"380\" height=\"55\" rx=\"14\" fill=\"#4d8dff\"/><circle cx=\"140\" cy=\"180\" r=\"30\" fill=\"#1c1e22\"/><circle cx=\"140\" cy=\"180\" r=\"13\" fill=\"#8a90a0\"/><circle cx=\"380\" cy=\"180\" r=\"30\" fill=\"#1c1e22\"/><circle cx=\"380\" cy=\"180\" r=\"13\" fill=\"#8a90a0\"/><circle cx=\"185\" cy=\"192\" r=\"8\" fill=\"#ffb347\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"345\" cy=\"192\" r=\"8\" fill=\"#ffb347\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"254\" y1=\"186\" x2=\"266\" y2=\"198\" stroke=\"#d9534f\" stroke-width=\"3\"/><line x1=\"266\" y1=\"186\" x2=\"254\" y2=\"198\" stroke=\"#d9534f\" stroke-width=\"3\"/><line x1=\"185\" y1=\"200\" x2=\"185\" y2=\"225\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><line x1=\"345\" y1=\"200\" x2=\"345\" y2=\"225\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><line x1=\"260\" y1=\"200\" x2=\"260\" y2=\"225\" stroke=\"#d9534f\" stroke-width=\"2\"/><text x=\"185\" y=\"240\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"13\" font-weight=\"700\">{{label:front-point}}</text><text x=\"345\" y=\"240\" text-anchor=\"middle\" fill=\"#9aa4b8\" font-size=\"13\" font-weight=\"700\">{{label:rear-point}}</text><text x=\"260\" y=\"255\" text-anchor=\"middle\" fill=\"#d9534f\" font-size=\"13\" font-weight=\"700\">{{label:warning}}</text></svg>"
+  },
+  "engine-bay-layout": {
+   "kind": "svg",
+   "caption": {
+    "he": "מפה כללית של תא המנוע — הסידור המדויק משתנה בין דגמים.",
+    "en": "A general map of the engine bay — the exact layout varies between models."
+   },
+   "labels": {
+    "front": {
+     "he": "קדמת הרכב",
+     "en": "front of car"
+    },
+    "washer": {
+     "he": "נוזל מגבים",
+     "en": "washer fluid"
+    },
+    "coolant": {
+     "he": "נוזל קירור",
+     "en": "coolant"
+    },
+    "battery": {
+     "he": "מצבר",
+     "en": "battery"
+    },
+    "engine": {
+     "he": "מנוע",
+     "en": "engine"
+    },
+    "dipstick": {
+     "he": "מוט מדידת שמן",
+     "en": "oil dipstick"
+    },
+    "airfilter": {
+     "he": "מסנן אוויר",
+     "en": "air filter"
+    },
+    "brakefluid": {
+     "he": "נוזל בלמים",
+     "en": "brake fluid"
+    },
+    "firewall": {
+     "he": "לעבר תא הנוסעים",
+     "en": "toward the cabin"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 460 330\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"230,4 218,24 242,24\" fill=\"#9aa4b8\"/><text x=\"250\" y=\"20\" font-size=\"13\" fill=\"#9aa4b8\">{{label:front}}</text><rect x=\"15\" y=\"42\" width=\"430\" height=\"272\" rx=\"16\" fill=\"#33363d\" stroke=\"#6b717d\" stroke-width=\"2\"/><rect x=\"34\" y=\"62\" width=\"118\" height=\"54\" rx=\"8\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"93\" y=\"94\" text-anchor=\"middle\" font-size=\"13\" fill=\"#e6e9ef\">{{label:washer}}</text><rect x=\"171\" y=\"62\" width=\"118\" height=\"54\" rx=\"8\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"230\" y=\"94\" text-anchor=\"middle\" font-size=\"13\" fill=\"#e6e9ef\">{{label:coolant}}</text><rect x=\"308\" y=\"62\" width=\"118\" height=\"54\" rx=\"8\" fill=\"#4d8dff\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"367\" y=\"94\" text-anchor=\"middle\" font-size=\"13\" fill=\"#fff\">{{label:battery}}</text><rect x=\"100\" y=\"130\" width=\"260\" height=\"120\" rx=\"10\" fill=\"#4a4e57\" stroke=\"#9aa4b8\" stroke-width=\"2\"/><text x=\"230\" y=\"196\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#e6e9ef\">{{label:engine}}</text><circle cx=\"330\" cy=\"146\" r=\"7\" fill=\"#f0b429\" stroke=\"#33363d\" stroke-width=\"2\"/><line x1=\"327\" y1=\"152\" x2=\"312\" y2=\"172\" stroke=\"#f0b429\" stroke-width=\"3\"/><text x=\"340\" y=\"150\" font-size=\"11\" fill=\"#f0b429\">{{label:dipstick}}</text><rect x=\"34\" y=\"262\" width=\"180\" height=\"48\" rx=\"8\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"124\" y=\"291\" text-anchor=\"middle\" font-size=\"13\" fill=\"#e6e9ef\">{{label:airfilter}}</text><rect x=\"246\" y=\"262\" width=\"180\" height=\"48\" rx=\"8\" fill=\"#3d4552\" stroke=\"#8891a0\" stroke-width=\"2\"/><text x=\"336\" y=\"291\" text-anchor=\"middle\" font-size=\"13\" fill=\"#e6e9ef\">{{label:brakefluid}}</text><line x1=\"15\" y1=\"314\" x2=\"445\" y2=\"314\" stroke=\"#6b717d\" stroke-width=\"2\" stroke-dasharray=\"6 6\"/><text x=\"230\" y=\"328\" text-anchor=\"middle\" font-size=\"11\" fill=\"#6b717d\">{{label:firewall}}</text></svg>"
+  },
+  "sp-parallel-parking": {
+   "kind": "svg",
+   "caption": {
+    "he": "חנייה מקבילה: הגלגלים הקרובים לאבן השפה — עד {{fact:park.curb_distance_max}} ממנה.",
+    "en": "Parallel parking: the wheels nearest the kerb within {{fact:park.curb_distance_max}} of it."
+   },
+   "labels": {
+    "you": {
+     "he": "הרכב שלכם",
+     "en": "your car"
+    },
+    "gap": {
+     "he": "עד {{fact:park.curb_distance_max}}",
+     "en": "up to {{fact:park.curb_distance_max}}"
+    },
+    "curb": {
+     "he": "אבן השפה",
+     "en": "kerb"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 640 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"640\" height=\"220\" fill=\"#474C55\"/><rect x=\"0\" y=\"172\" width=\"640\" height=\"48\" fill=\"#3f7d4e\"/><line x1=\"0\" y1=\"172\" x2=\"640\" y2=\"172\" stroke=\"#fff\" stroke-width=\"3\"/><rect x=\"30\" y=\"110\" width=\"140\" height=\"48\" rx=\"10\" fill=\"#f0b429\"/><rect x=\"250\" y=\"116\" width=\"140\" height=\"48\" rx=\"10\" fill=\"#4d8dff\"/><rect x=\"470\" y=\"110\" width=\"140\" height=\"48\" rx=\"10\" fill=\"#d9534f\"/><line x1=\"320\" y1=\"164\" x2=\"320\" y2=\"172\" stroke=\"#fff\" stroke-width=\"3\"/><line x1=\"330\" y1=\"164\" x2=\"330\" y2=\"172\" stroke=\"#fff\" stroke-width=\"3\"/><text x=\"320\" y=\"200\" fill=\"#fff\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:gap}}</text><text x=\"320\" y=\"100\" fill=\"#9aa4b8\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">{{label:you}}</text><text x=\"70\" y=\"68\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:curb}}</text><line x1=\"70\" y1=\"75\" x2=\"70\" y2=\"172\" stroke=\"#9aa4b8\" stroke-width=\"1\" stroke-dasharray=\"4 4\"/></svg>"
+  },
+  "sr-railway-crossing": {
+   "kind": "svg",
+   "caption": {
+    "he": "עוצרים לפני קו העצירה או המחסום, ובאין אחד מהם — לפחות {{fact:rail.stop_distance_min_m}} לפני הפס הקרוב.",
+    "en": "Stop before the stop line or the barrier; with neither, at least {{fact:rail.stop_distance_min_m}} before the nearest rail."
+   },
+   "labels": {
+    "you": {
+     "he": "הרכב שלכם",
+     "en": "your car"
+    },
+    "min4": {
+     "he": "לפחות {{fact:rail.stop_distance_min_m}}",
+     "en": "at least {{fact:rail.stop_distance_min_m}}"
+    },
+    "barrier": {
+     "he": "מחסום",
+     "en": "barrier"
+    },
+    "tracks": {
+     "he": "המסילה",
+     "en": "the tracks"
+    }
+   },
+   "svg": "<svg viewBox=\"0 0 360 320\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"360\" height=\"320\" fill=\"#3f7d4e\"/><rect x=\"110\" y=\"0\" width=\"140\" height=\"320\" fill=\"#474C55\"/><line x1=\"110\" y1=\"0\" x2=\"110\" y2=\"320\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"250\" y1=\"0\" x2=\"250\" y2=\"320\" stroke=\"#fff\" stroke-width=\"2\"/><line x1=\"180\" y1=\"0\" x2=\"180\" y2=\"320\" stroke=\"#fff\" stroke-width=\"2\" stroke-dasharray=\"14 10\"/><line x1=\"0\" y1=\"140\" x2=\"360\" y2=\"140\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><line x1=\"0\" y1=\"154\" x2=\"360\" y2=\"154\" stroke=\"#9aa4b8\" stroke-width=\"4\"/><line x1=\"20\" y1=\"132\" x2=\"20\" y2=\"162\" stroke=\"#6b7280\" stroke-width=\"6\"/><line x1=\"70\" y1=\"132\" x2=\"70\" y2=\"162\" stroke=\"#6b7280\" stroke-width=\"6\"/><line x1=\"140\" y1=\"132\" x2=\"140\" y2=\"162\" stroke=\"#6b7280\" stroke-width=\"6\"/><line x1=\"220\" y1=\"132\" x2=\"220\" y2=\"162\" stroke=\"#6b7280\" stroke-width=\"6\"/><line x1=\"290\" y1=\"132\" x2=\"290\" y2=\"162\" stroke=\"#6b7280\" stroke-width=\"6\"/><line x1=\"340\" y1=\"132\" x2=\"340\" y2=\"162\" stroke=\"#6b7280\" stroke-width=\"6\"/><rect x=\"106\" y=\"118\" width=\"148\" height=\"9\" fill=\"#e5484d\"/><rect x=\"106\" y=\"118\" width=\"20\" height=\"9\" fill=\"#fff\"/><rect x=\"146\" y=\"118\" width=\"20\" height=\"9\" fill=\"#fff\"/><rect x=\"186\" y=\"118\" width=\"20\" height=\"9\" fill=\"#fff\"/><rect x=\"226\" y=\"118\" width=\"20\" height=\"9\" fill=\"#fff\"/><circle cx=\"100\" cy=\"118\" r=\"7\" fill=\"#e5484d\"/><line x1=\"100\" y1=\"96\" x2=\"100\" y2=\"170\" stroke=\"#9aa4b8\" stroke-width=\"3\"/><rect x=\"185\" y=\"230\" width=\"42\" height=\"72\" rx=\"9\" fill=\"#4d8dff\"/><line x1=\"110\" y1=\"212\" x2=\"250\" y2=\"212\" stroke=\"#fff\" stroke-width=\"4\"/><line x1=\"295\" y1=\"154\" x2=\"295\" y2=\"230\" stroke=\"#fff\" stroke-width=\"1\" stroke-dasharray=\"5 5\"/><text x=\"310\" y=\"195\" fill=\"#fff\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">{{label:min4}}</text><text x=\"206\" y=\"106\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:barrier}}</text><text x=\"330\" y=\"175\" fill=\"#9aa4b8\" font-size=\"13\" text-anchor=\"middle\">{{label:tracks}}</text><text x=\"206\" y=\"270\" fill=\"#fff\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">{{label:you}}</text></svg>"
+  }
+ }
+}

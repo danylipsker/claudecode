@@ -1,0 +1,87 @@
+{
+ "chapter": "dashboard",
+ "title": "The instrument cluster and warning lights",
+ "summary": "What each gauge and light tells you — and what to do when one comes on.",
+ "lessons": [
+  {
+   "id": "db-cluster",
+   "title": "The instrument cluster: what's in it and why",
+   "summary": "Speedometer, tachometer, fuel, temperature, odometer and trip computer — at a glance.",
+   "terms": [
+    "instrument-cluster",
+    "speedometer",
+    "tachometer",
+    "rpm",
+    "fuel-gauge",
+    "odometer",
+    "trip-computer"
+   ],
+   "body": "The [[term:instrument-cluster|instrument cluster]] is the driver's main source of information about the car's condition, without taking your eyes off the road for long.\n\n[[fig:dashboard-cluster-layout]]\n\n# The main gauges\n- **[[term:speedometer|The speedometer]]** — shows the current road speed in km/h. It is deliberately set to show slightly more than the true speed, never less.\n- **[[term:tachometer|The tachometer]]** (rev counter) — shows how many [[term:rpm|rpm]] (revolutions per minute) the engine is turning. A red zone at the top marks a range that can damage the engine.\n- **[[term:fuel-gauge|The fuel gauge]]** — shows how much fuel is left in the tank, usually between E (empty) and F (full).\n- **Engine temperature gauge** — shows the coolant temperature; the middle of the green zone is normal.\n\n# The odometer and trip computer\nThe [[term:odometer|odometer]] adds up the total distance the car has ever travelled, and is used to set service dates. The [[term:trip-computer|trip computer]] is separate and can be reset — it shows data only for the current journey: distance, average fuel consumption, average speed and the estimated range until the fuel runs out.\n\n:::tip\nReset the trip computer at the start of every long journey — this makes it easy to track consumption and know when it's worth refuelling.\n:::\n\n# The warning light area\nAt the bottom of the cluster, or around it, sits the warning light area — all the lights that report faults and conditions, in different colours according to urgency. The next two lessons are devoted to them.",
+   "keyPoints": [
+    "The speedometer is set to show slightly more than the true speed, never less.",
+    "The tachometer shows rpm; the red zone marks a risk to the engine.",
+    "The odometer adds up total distance; the trip computer can be reset for a single journey.",
+    "All the warning lights are grouped in one area of the instrument cluster, coloured by urgency."
+   ]
+  },
+  {
+   "id": "db-colours",
+   "title": "Warning light colours and how urgent they are",
+   "summary": "Red, amber, green and blue — each colour tells you how fast to act.",
+   "terms": [],
+   "body": "Before learning what each light means, it is worth knowing the colour language — it is almost the same in every car.\n\n# Red — stop now\nA red light reports a condition that can cause serious damage to the car, endanger safety, or both — **immediately**, not \"whenever it's convenient\". The next lesson details the most important red lights.\n\n# Amber (or yellow) — deal with it soon\nAn amber light reports a problem that needs attention, but usually does not require stopping on the spot. You can carry on carefully to the nearest garage or arrange a visit soon.\n\n# Green and blue — information, not a warning\nGreen and blue lights report that a system is **working as normal** — indicators, main beam, active cruise control. They do not mean there is a problem.\n\n:::remember\nThe colour sets the priority: red before amber, and amber before \"just so you know\". Two lights on together — deal with the red one first.\n:::\n\n# A light you don't recognise\nWhen an unfamiliar light comes on, do not guess. Check the owner's handbook (it has a full table of lights) or this app, in the chapter [[chapter:troubleshooting|Troubleshooting]].",
+   "keyPoints": [
+    "Red = stop now; amber = deal with it soon; green and blue = information only.",
+    "Two lights on together — deal with the red one first.",
+    "Check an unfamiliar light in the owner's handbook — do not guess."
+   ]
+  },
+  {
+   "id": "db-red",
+   "title": "Red lights: what to do right now",
+   "summary": "Oil, charging, temperature, brakes, airbag and seatbelt — six lights that need an immediate response.",
+   "terms": [],
+   "body": "Red lights need an immediate response. Here are the six most important.\n\n# Oil, charging and temperature\n- [[dash:oil-pressure]] — engine oil pressure is too low. Stop immediately and switch off the engine; carrying on driving destroys it within minutes.\n- [[dash:battery-charge]] — the charging system is not charging the battery. Turn off any electrical loads that are not essential and drive straight to a garage.\n- [[dash:coolant-temp]] — the engine is overheating. Stop and switch off; **never** open the radiator cap or expansion tank cap while the engine is hot.\n\n# Brakes, airbag and seatbelt\n- [[dash:brake-system]] — the handbrake is on, or the brake fluid level is low, or there is a fault in the brake system. Release the handbrake; if the light stays on, do not drive with a brake fault.\n- [[dash:airbag]] — a fault in the airbag system or the seatbelt pretensioners; they may not work in a crash. Go to a garage soon.\n- [[dash:seatbelt]] — the driver or a passenger has not fastened their seatbelt. Fasten it before driving.\n\n:::danger\nThe first three lights — oil, temperature and charging — are the most common reason engines are destroyed because a driver \"just carried on home\". Stopping immediately costs far less than an engine repair.\n:::",
+   "keyPoints": [
+    "[[dash:oil-pressure]] and [[dash:coolant-temp]] require stopping and switching off the engine immediately — not \"just a bit further\".",
+    "When [[dash:brake-system]] lights up, check the handbrake first, and if it stays on — do not drive.",
+    "[[dash:airbag]] and [[dash:seatbelt]] relate to protection in a crash, not to running the car itself."
+   ]
+  },
+  {
+   "id": "db-amber",
+   "title": "Amber lights: what needs attention soon",
+   "summary": "Check engine, ABS, ESC, TPMS, glow plugs, DPF, AdBlue and low fuel.",
+   "terms": [
+    "check-engine-light",
+    "abs-warning-light",
+    "dpf-warning-light",
+    "adblue-scr"
+   ],
+   "body": "Amber lights need attention — usually not that instant, but not \"forget about it\" either.\n\n# Engine and braking\n- [[dash:check-engine]] — the engine computer has detected a fault. Steady light: go to a garage soon. **Flashing** light: there is a serious misfire — slow down, avoid hard acceleration, and stop soon.\n- [[dash:abs]] — the [[term:abs-warning-light|ABS]] is not working; the ordinary brakes still work, but in hard braking the wheels can lock up. Drive carefully and keep a bigger gap.\n- [[dash:esc]] — flashes when the system is acting to stabilise the car; stays lit when it is switched off or faulty.\n- [[dash:tyre-pressure]] — low pressure in one of the tyres, or a puncture. Slow down and check at a filling station soon.\n\n# Diesel and fuel\n- [[dash:glow-plug]] — in a diesel engine: wait for the light to go out before starting. Flashing while driving — there is an engine fault.\n- [[dash:dpf]] — the [[term:dpf-warning-light|particulate filter]] is full of soot and needs \"regeneration\" — a few minutes of continuous driving at non-urban speed, following the manufacturer's instructions. If the light stays on after a few attempts, go to a garage.\n- [[dash:adblue]] — the [[term:adblue-scr|AdBlue]] level is low in a modern diesel engine; top it up soon. In most cars, if the fluid runs out completely, the engine will not restart until it is topped up.\n- [[dash:low-fuel]] — only the reserve is left in the tank. In a diesel car it is especially important not to run out of fuel — air gets into the fuel system.\n\n:::tip\nMost amber lights give you time to plan a garage visit — but \"soon\" means days, not months.\n:::",
+   "keyPoints": [
+    "[[dash:check-engine]] steady — go to a garage soon; flashing — slow down and stop soon.",
+    "[[dash:abs]] lit: the ordinary brakes work, but without protection against wheel lock-up in hard braking.",
+    "[[dash:dpf]] and [[dash:adblue]] relate to a modern diesel engine and should not be ignored.",
+    "[[dash:low-fuel]] in a diesel car calls for prompt refuelling — not just convenience."
+   ]
+  },
+  {
+   "id": "db-indicators",
+   "title": "Green and blue lights, and service reminders",
+   "summary": "What lights up because everything is fine — not because something is broken.",
+   "terms": [
+    "drl",
+    "cruise-control",
+    "turn-signal"
+   ],
+   "body": "Not everything that lights up on the instrument cluster is a problem. Green and blue lights usually report that something is **working**, not that something is broken.\n\n# Lights and indicators\nThe blue [[dash:high-beam]] light comes on when main beam (high beam) is active — switch to dipped beam when a vehicle is approaching towards you. The green [[dash:low-beam]] light shows that dipped beam is on. The flashing green [[term:turn-signal|indicator]] lights show which direction the indicator is signalling — and if they flash faster than normal, there is usually a blown indicator bulb.\n\n# Cruise control and driving modes\nThe [[dash:cruise]] light shows that [[term:cruise-control|cruise control]] is active and holding a constant speed. Economy (Eco) or sport driving modes are usually shown by a separate light or marker on the information display.\n\n:::note\nSome cars also show [[term:drl|daytime running lights]] (DRL) — low-power front lights that come on automatically in daylight, to improve visibility. They do not replace the ordinary lights at night.\n:::\n\n# Service reminder\nThe [[dash:service]] light comes on based on the distance or time since the last service — not because of a fault, but as a reminder to book a service. After the service, the garage resets it.",
+   "keyPoints": [
+    "Green and blue lights report an active system, not a fault.",
+    "[[dash:high-beam]] blue = main (high) beam; [[dash:low-beam]] green = dipped (low) beam.",
+    "The [[dash:cruise]] light shows that cruise control is active and holding a constant speed.",
+    "The [[dash:service]] light is a service reminder based on time or distance, not a fault."
+   ]
+  }
+ ]
+}

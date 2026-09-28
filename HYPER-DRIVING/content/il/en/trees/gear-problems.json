@@ -1,0 +1,176 @@
+{
+ "trees": [
+  {
+   "id": "gear-problems",
+   "group": "Transmission",
+   "title": "A gear problem",
+   "summary": "It's hard to change gear, the clutch is slipping, or the automatic gearbox is behaving oddly.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "safety": "If the car doesn't move at all when you shift to D or R, or the gearbox responds with sharp, unusual jolts — drive with maximum care straight to a garage, and don't keep trying again and again.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "What type of gearbox does the car have?",
+     "options": [
+      {
+       "label": "Manual",
+       "next": "n2"
+      },
+      {
+       "label": "Automatic or CVT",
+       "next": "n5"
+      }
+     ]
+    },
+    "n2": {
+     "q": "What's happening with the manual gearbox?",
+     "options": [
+      {
+       "label": "It's hard to get into gear, or you hear a clunk when shifting",
+       "next": "n3"
+      },
+      {
+       "label": "Engine RPM rises under acceleration, but road speed doesn't rise at the same rate",
+       "next": "r-clutch-slip"
+      },
+      {
+       "label": "The gear “pops” out by itself while driving",
+       "next": "r-gear-pops-out"
+      },
+      {
+       "label": "A hum that changes with the gear selected",
+       "next": "r-gearbox-bearing"
+      }
+     ]
+    },
+    "n3": {
+     "q": "Does the difficulty getting into gear happen even when the clutch pedal is pressed all the way down?",
+     "options": [
+      {
+       "label": "Yes, even when the clutch is pressed all the way down",
+       "next": "r-clutch-not-disengaging"
+      },
+      {
+       "label": "Only when the clutch isn't pressed all the way down",
+       "next": "r-clutch-adjustment-ok"
+      }
+     ]
+    },
+    "n5": {
+     "q": "What's happening with the automatic gearbox?",
+     "options": [
+      {
+       "label": "Gear changes feel like a kick or a sharp jolt",
+       "next": "r-auto-harsh-shift"
+      },
+      {
+       "label": "The car doesn't move at all when you shift to D or R, but the engine responds fine at idle",
+       "next": "r-auto-no-drive"
+      },
+      {
+       "label": "A “limited limp mode” warning light (a wrench or turtle symbol) comes on the dashboard",
+       "next": "r-limp-mode"
+      },
+      {
+       "label": "The gear lever is stuck and won't move out of P",
+       "next": "r-shifter-lock"
+      }
+     ]
+    },
+    "r-clutch-slip": {
+     "result": "Suspected slipping clutch",
+     "severity": "soon",
+     "text": "When engine RPM rises but road speed doesn't rise at the same rate, mainly on a hill or under strong acceleration, the clutch isn't transferring all the power — probably because the clutch disc is worn.",
+     "actions": [
+      "Go to a garage; a slipping clutch will only get worse.",
+      "Avoid towing or heavy loads until it's checked."
+     ],
+     "lesson": "dt-clutch"
+    },
+    "r-gear-pops-out": {
+     "result": "Suspected worn gear lock in the manual gearbox",
+     "severity": "soon",
+     "text": "A gear that pops out by itself while driving, mainly under acceleration or going downhill, points to wear in the gear-locking mechanism inside the gearbox.",
+     "actions": [
+      "Hold the gear lever lightly when this happens, to identify which gear it recurs in.",
+      "Go to a garage; this isn't a fault that goes away on its own."
+     ],
+     "lesson": "dt-manual"
+    },
+    "r-gearbox-bearing": {
+     "result": "Suspected worn bearing inside the gearbox",
+     "severity": "soon",
+     "text": "A hum that changes with the gear selected, and not just with road speed, points to an internal bearing in the gearbox starting to wear.",
+     "actions": [
+      "Go to a garage for a check; the longer you wait, the more the repair may grow.",
+      "Avoid long drives until it's checked."
+     ],
+     "lesson": "dt-manual"
+    },
+    "r-clutch-not-disengaging": {
+     "result": "Suspected clutch not disengaging fully",
+     "severity": "soon",
+     "text": "Difficulty getting into gear even when the clutch is pressed all the way down means the clutch isn't disconnecting the engine from the gearbox properly — a problem with the cable, the hydraulic clutch cylinder, or the disc itself.",
+     "actions": [
+      "Go to a garage; continuing to drive like this wears the gearbox's synchros.",
+      "Don't force a gear in."
+     ],
+     "lesson": "dt-clutch"
+    },
+    "r-clutch-adjustment-ok": {
+     "result": "A foot habit with the clutch pedal — not a fault",
+     "severity": "ok",
+     "text": "Difficulty getting into gear only when the clutch isn't pressed fully down is expected — the gearbox needs full disengagement to shift smoothly.",
+     "actions": [
+      "Get into the habit of pressing the clutch pedal all the way down on every gear change."
+     ],
+     "lesson": "dt-clutch"
+    },
+    "r-auto-harsh-shift": {
+     "result": "Suspected problem in the automatic gearbox or its fluid",
+     "severity": "soon",
+     "text": "Sharp shifts or kicks between gears in an automatic gearbox, that weren't there before, point to dirty transmission fluid, an incorrect fluid level, or the start of a problem in the shifting mechanism.",
+     "actions": [
+      "Check the level and condition of the transmission fluid according to the owner's manual, if there's a dipstick.",
+      "Go to a garage; waiting can turn a simple repair into an expensive one."
+     ],
+     "lesson": "dt-automatic"
+    },
+    "r-auto-no-drive": {
+     "result": "The car doesn't move — suspected failure in the automatic gearbox",
+     "severity": "stop",
+     "text": "When the engine responds normally at idle but the car doesn't move at all when you shift to D or R, there's a suspected serious problem in the gearbox or its link to the engine.",
+     "actions": [
+      "Don't keep trying again and again — this can make the damage worse.",
+      "Call for a tow to a garage; there's no roadside fix for this."
+     ],
+     "lesson": "dt-automatic"
+    },
+    "r-limp-mode": {
+     "result": "The car has switched to limp mode",
+     "severity": "soon",
+     "text": "When the car's computer detects a serious fault in the gearbox or the engine, it limits acceleration and the number of available gears to prevent further damage — this is deliberate, not an additional fault in itself.",
+     "actions": [
+      "Drive carefully, at low speed, straight to the nearest garage.",
+      "Don't keep switching the car off and on again to “try to reset it” without knowing what caused it."
+     ],
+     "lesson": "dt-automatic"
+    },
+    "r-shifter-lock": {
+     "result": "A safety lock on the gear lever",
+     "severity": "ok",
+     "text": "In most automatic cars the gear lever is locked in P until the brake pedal is pressed — a protection against moving it by mistake.",
+     "actions": [
+      "Press the brake pedal all the way down while you move the lever.",
+      "If it's still stuck even with the brake pressed, there's usually a hidden key-release lock near the lever; follow the owner's manual."
+     ],
+     "lesson": "dt-automatic"
+    }
+   }
+  }
+ ]
+}

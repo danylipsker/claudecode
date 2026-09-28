@@ -1,0 +1,100 @@
+{
+ "chapter": "drivetrain",
+ "title": "Power transmission",
+ "summary": "How power gets from the engine to the wheels — from the clutch to the differential.",
+ "lessons": [
+  {
+   "id": "dt-clutch",
+   "title": "The clutch: how it works, and why it wears",
+   "summary": "The component that connects and disconnects the engine from the gearbox, and how to use it without shortening its life.",
+   "terms": [
+    "clutch",
+    "clutch-pedal",
+    "flywheel",
+    "clutch-slipping"
+   ],
+   "body": "The engine keeps turning all the time, but to change gear or stop without switching it off, you need to disconnect it from the wheels for a moment. That is the job of the [[term:clutch|clutch]] (Hebrew: מצמד; in the workshop “קלאץ׳”).\n\n# How the clutch works\nThe [[term:flywheel|flywheel]] turns with the engine all the time. The clutch disc is pressed against it, and a pressure plate presses on the disc, pushed by a strong spring — so all three parts turn together, and the power carries on to the gearbox.\n\n[[fig:clutch-diagram]]\n\nPressing the [[term:clutch-pedal|clutch pedal]] moves the pressure plate away from the disc: the link between the engine and the gearbox is broken, you can change gear without grinding, and you can stop without the engine stalling.\n\n# Using it correctly\n- Press it all the way down before changing gear or coming to a full stop.\n- When pulling away or setting off on a hill, release it gradually until the “bite point” — the moment the vehicle starts to move — and only then keep releasing while gently adding gas.\n- When you are not changing gear, take your foot **fully off** the pedal. A foot resting on it, even without pressing it down, already makes the pressure plate slip slightly on the disc.\n\n:::tip\nAt a short traffic light, leave the gear engaged and hold the clutch down; at a long one, shift to neutral and take your foot off completely.\n:::\n\n# Wear and slipping\nThe clutch disc is made of a friction material that wears with use, just like a brake pad. [[term:clutch-slipping|Clutch slipping]] happens when the disc is too worn to transmit all the engine’s power: the engine’s revs rise without the vehicle accelerating to match — most noticeable on a hill or under hard acceleration — and it is sometimes accompanied by a slight burning smell.\n\n:::warn Driving with a foot on the pedal\nA foot resting on the clutch pedal is the most common cause of early wear. A clutch that has slipped for a long time can burn out completely and leave the vehicle stranded, unable to transmit any power at all.\n:::",
+   "keyPoints": [
+    "The [[term:clutch|clutch]] connects and temporarily disconnects the engine from the gearbox.",
+    "Press it all the way down to change gear and to stop; pull away with a gradual release to the bite point.",
+    "When you are not changing gear — take your foot fully off the pedal, do not rest it there.",
+    "[[term:clutch-slipping|Clutch slipping]]: the revs rise without the vehicle accelerating to match — a sign of wear."
+   ]
+  },
+  {
+   "id": "dt-manual",
+   "title": "Manual gearbox: gears and gear ratios",
+   "summary": "Why there are several gears, how to choose the right one for the speed and the gradient, and what happens when you get it wrong.",
+   "terms": [
+    "manual-transmission",
+    "gearbox",
+    "gear-shift-lever",
+    "gear-ratio",
+    "reverse-gear",
+    "neutral-gear",
+    "overdrive"
+   ],
+   "body": "An engine works well over a certain range of revs. The [[term:gearbox|gearbox]] matches that range to the vehicle’s speed, so that at every speed the engine works in the right zone.\n\n# The gear ratio\nEach gear is a different [[term:gear-ratio|gear ratio]] between the engine’s revs and the wheels’ revs. A low gear (1, 2) gives **a lot of power and little speed** — good for pulling away and for a steep climb. A high gear gives **less power and high speed** at low engine revs — economical and quiet on a expressway; in some gearboxes the highest gear is called [[term:overdrive|overdrive]].\n\n# The H pattern\nIn a [[term:manual-transmission|manual gearbox]], you choose a gear with the [[term:gear-shift-lever|gear lever]], which moves in a fixed H pattern. [[term:reverse-gear|Reverse gear]] sits in a corner and sometimes needs you to lift a collar or push down before moving the lever — so it cannot be engaged by mistake while driving. [[term:neutral-gear|Neutral]] is the shared middle position for all the gears, in which there is no link between the engine and the wheels.\n\n[[fig:gear-lever-h-pattern]]\n\n# Changing gear correctly\n1. Press the clutch all the way down and ease off the accelerator slightly.\n2. Move the lever with a smooth motion — not by force.\n3. Release the clutch gradually while adding gas.\n\nMatching the gear to the speed and the gradient: on a steep climb, change down before the engine labours and struggles — not only once it is already losing revs. On a descent, change to a low gear **before** the descent begins, so you can make use of engine resistance instead of relying only on the brakes — more detail in the chapter [[chapter:drivetrain|Power transmission]] (engine braking, dt-engine-braking).\n\n:::warn\nChanging gear without pressing the clutch all the way down, or trying to “force” the lever into place, causes grinding and wears the gear teeth.\n:::",
+   "keyPoints": [
+    "Low gear = high power and low speed; high gear = high speed at low engine revs.",
+    "On a climb, change down early, before the engine struggles.",
+    "Change gear with the clutch fully pressed and a smooth lever movement, not by force."
+   ]
+  },
+  {
+   "id": "dt-automatic",
+   "title": "Automatic gearboxes: torque converter, CVT and dual-clutch transmission",
+   "summary": "How an automatic gearbox changes gear by itself, what P R N D mean, and why you must not shift to neutral on a descent.",
+   "terms": [
+    "automatic-transmission",
+    "torque-converter",
+    "cvt",
+    "dual-clutch-transmission",
+    "paddle-shifters",
+    "creeping"
+   ],
+   "body": "An [[term:automatic-transmission|automatic gearbox]] has no clutch pedal: the gearbox itself decides when to change gear, based on the vehicle’s speed and the engine’s load.\n\n# Three technologies\n- **[[term:torque-converter|Torque converter]]** — the most common: a hydraulic component that transmits power from the engine to the gearbox through fluid, with no direct mechanical link. This is what allows [[term:creeping|creep]] (see below).\n- **[[term:cvt|Continuously variable transmission (CVT)]]** — no fixed gears at all; the drive ratio changes smoothly, using a pulley and belt.\n- **[[term:dual-clutch-transmission|Dual-clutch transmission]]** — two internal clutches that prepare the next gear in advance, so the change between them happens with almost no interruption in power.\n\n# P R N D and helper modes\n| Letter | Meaning |\n|---|---|\n| P | Park — mechanically locks the drive shaft. Always use the handbrake too. |\n| R | [[term:reverse-gear|Reverse]] |\n| N | [[term:neutral-gear|Neutral]] — no link between the engine and the wheels |\n| D | Drive — the gearbox changes gear by itself |\n\nMany gearboxes also have an L or S mode for a fixed low gear (for a climb, a descent or towing), and sometimes [[term:paddle-shifters|paddle shifters]] behind the steering wheel for a temporary manual choice without leaving D.\n\n:::danger Never N on a descent\nShifting to neutral on a descent, even “to save fuel”, disconnects the engine brake and leaves the vehicle relying entirely on the friction brakes — exactly when they need the most help. Shift down before the descent, not partway through it.\n:::\n\n# Creep\nIn D or R, the vehicle [[term:creeping|creeps]] slowly forwards or backwards even without touching the accelerator, the moment you lift your foot off the brake. This is convenient in a queue or when parking, but needs attention: the vehicle does not stay put on its own. On a prolonged stop, it is better to keep your foot on the brake.\n\n:::tip\nWhen manoeuvring into a tight parking space, creep lets you move by millimetres without touching the accelerator at all — you control the speed with the brake alone.\n:::",
+   "keyPoints": [
+    "Torque converter, CVT and dual-clutch transmission are three different ways to change gear automatically.",
+    "P locks mechanically; N disconnects completely — use it only when stopped, not on a descent.",
+    "[[term:creeping|Creep]]: the vehicle moves on its own in D or R when you lift your foot off the brake — it does not stay in place."
+   ]
+  },
+  {
+   "id": "dt-engine-braking",
+   "title": "Engine braking and long descents",
+   "summary": "Using the engine’s resistance to slow down, and letting the brakes rest on a steep descent.",
+   "terms": [
+    "engine-brake",
+    "retarder"
+   ],
+   "body": "On a long descent, continuous braking with your foot on the brake heats up the pads and the brake fluid and can cause brake fade (see [[chapter:brakes|The braking system]]). The solution: [[term:engine-brake|engine braking]] — using the engine’s own internal resistance to slow down, with the help of a low gear.\n\n# How to do it correctly\n**In a manual gearbox**: change down to a low gear *before* the descent begins, according to the steepness and the speed you want — not partway down, when you are already going too fast to change down safely.\n\n**In an automatic gearbox**: shift to L, S, or manual mode with the paddle shifters, and choose a gear low enough that the engine itself “holds back” the vehicle, with the brakes only topping up when needed.\n\n:::tip Rule of thumb\nThe right gear for a descent is the one in which the vehicle holds a steady speed without touching the brake at all, or almost at all.\n:::\n\n# In a heavy vehicle\nTrucks and buses sometimes also have a [[term:retarder|retarder]] — an extra braking system that slows the vehicle without using the pads and discs at all, usually through hydraulic or electric resistance in the gearbox. Combining a low gear with a retarder is the safe way to descend a long hill without putting the brakes at risk. More in the lesson [[lesson:bk-air|air brakes in heavy vehicles]].\n\n:::danger\nA long, steep descent in a high gear, relying on the brakes alone, can use up your braking ability partway down, with no warning beforehand. What to do if this has already happened — see the chapter [[chapter:breakdowns|Breakdowns and roadside emergencies]]. More on driving on mountain roads — see the chapter [[chapter:special-roads|Special roads and situations]].\n:::",
+   "keyPoints": [
+    "On a long descent, change down before it begins, not partway through.",
+    "The right gear: the vehicle holds a steady speed with almost no need to touch the brake.",
+    "In a heavy vehicle, a [[term:retarder|retarder]] and engine braking prevent brake fade on long descents.",
+    "Engine braking lets the brakes “rest” and cool down."
+   ]
+  },
+  {
+   "id": "dt-driveline",
+   "title": "Differential, front-wheel, rear-wheel and 4x4 drive",
+   "summary": "How power gets from the gearbox to the wheels, and which noises point to a problem on the way.",
+   "terms": [
+    "differential",
+    "drive-shaft",
+    "cv-joint",
+    "front-wheel-drive",
+    "rear-wheel-drive",
+    "4x4",
+    "transfer-case"
+   ],
+   "body": "On a turn, the outer wheel travels a longer distance than the inner one — so it must turn faster. The [[term:differential|differential]] is the mechanism that lets the two wheels on the driven axle turn at different speeds at the same time, without fighting each other.\n\n# Three drive layouts\n- **[[term:front-wheel-drive|Front-wheel drive]]** — the engine, gearbox and differential are grouped together at the front and drive only the front wheels. The most common layout in private vehicles.\n- **[[term:rear-wheel-drive|Rear-wheel drive]]** — power travels from the gearbox through the [[term:drive-shaft|drive shaft]] to the rear differential, which drives the rear wheels.\n- **[[term:4x4|4x4]]** — a [[term:transfer-case|transfer case]] splits power between the front and rear axles, for better grip off-road or in difficult road conditions.\n\nOn the driven front wheels (including in a vehicle with front-wheel drive or 4x4), the [[term:cv-joint|CV joint]] transmits power both while the wheel turns and while it is steered to the side, without changing its rotational speed.\n\n# Noises and faults\n- **A clicking sound on a sharp turn** (mainly with front-wheel drive, on full lock) — usually a worn CV joint, and sometimes its dust boot has torn too.\n- **A hum or whine that changes with speed**, and not with braking — usually points to a worn differential or wheel bearing.\n- **A vibration or noise that changes between lifting off the accelerator and pressing it** — a typical sign of a worn drive shaft or joint.\n\n:::warn\nA new noise that changes with speed or with turning is worth having checked at a garage soon — a drive shaft fault that is ignored can end in a sudden loss of drive while you are driving.\n:::",
+   "keyPoints": [
+    "The [[term:differential|differential]] lets the two wheels on the driven axle turn at different speeds on a turn.",
+    "Front-wheel, rear-wheel and 4x4 drive differ in which wheels receive power from the engine.",
+    "A click on a sharp turn usually points to a worn CV joint; a hum that changes with speed usually points to a differential or bearing."
+   ]
+  }
+ ]
+}

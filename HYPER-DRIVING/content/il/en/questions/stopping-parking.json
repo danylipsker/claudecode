@@ -1,0 +1,381 @@
+{
+ "chapter": "stopping-parking",
+ "questions": [
+  {
+   "id": "q-sp-001",
+   "lesson": "sp-definitions",
+   "q": "A driver stopped his vehicle in a permitted place, opened the rear door, unloaded a crate and closed the door immediately, without turning off the engine and without a break. What is this action?",
+   "options": [
+    "Parking",
+    "A parking offence",
+    "Stopping",
+    "Standing"
+   ],
+   "answer": 3,
+   "explain": "Immediate, continuous unloading of goods, without a break, is standing — not parking (reg. 1).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-002",
+   "lesson": "sp-definitions",
+   "q": "What is the difference between standing and parking under the law?",
+   "options": [
+    "Standing is allowed only by day, parking only at night",
+    "Standing is allowed only for a private car",
+    "Standing is a continuous, immediate stop to pick up or set down passengers, or to load or unload goods; parking is any other way of leaving the vehicle standing",
+    "There is no legal difference between the two"
+   ],
+   "answer": 2,
+   "explain": "Parking is defined as leaving the vehicle standing for any length of time, other than for the immediate, continuous pick-up/set-down of passengers or loading/unloading of goods — which is exactly standing (reg. 1).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-003",
+   "lesson": "sp-definitions",
+   "q": "What distinguishes stopping from standing and from parking?",
+   "options": [
+    "Stopping is a temporary break in the journey where the driver waits to move on immediately, and does not really leave the vehicle",
+    "Stopping exists only at a traffic light",
+    "Stopping is forbidden in every case and every place",
+    "There is no difference between stopping and parking"
+   ],
+   "answer": 0,
+   "explain": "A short stop — such as at a red light, at a Stop sign, or to give way — is not parking, because the driver remains ready to move on immediately.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-004",
+   "lesson": "sp-definitions",
+   "sign": "432",
+   "q": "What is the difference between sign 432 and sign 433?",
+   "options": [
+    "There is no difference, the two signs are identical",
+    "Sign 432 also forbids a short stop to set down passengers; sign 433 allows it",
+    "Sign 432 prohibits parking only and permits a short stop, loading/unloading and picking up/setting down passengers; sign 433 prohibits all three actions",
+    "Sign 433 applies only to buses"
+   ],
+   "answer": 2,
+   "explain": "Sign 432 prohibits parking only. Sign 433 is stricter — it prohibits stopping and standing as well.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-005",
+   "lesson": "sp-definitions",
+   "q": "On a stretch of road that looks forbidden under the general rules, a sign is placed that permits parking. What decides?",
+   "options": [
+    "The general rules apply only at night",
+    "This is a mistake — a sign can never permit something in a forbidden place",
+    "A sign that permits stopping, standing or parking overrides the general prohibition in the regulations",
+    "Local signs are not binding"
+   ],
+   "answer": 2,
+   "explain": "Regulation 76(a): you may stop, stand or park anywhere a sign permits it, even if the general rule forbids it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-006",
+   "lesson": "sp-forbidden",
+   "facts": [
+    "park.no_stop.pedestrian_crossing_m"
+   ],
+   "q": "At what distance before a pedestrian crossing is it forbidden to stop, stand or park a vehicle?",
+   "options": [
+    "{{fact:park.no_stop.bus_stop_m}}",
+    "{{fact:park.no_stop.railway_crossing_m}}",
+    "{{fact:park.no_stop.bridge_tunnel_m}}",
+    "{{fact:park.no_stop.pedestrian_crossing_m}}"
+   ],
+   "answer": 3,
+   "explain": "You may not stop, stand or park a vehicle within {{fact:park.no_stop.pedestrian_crossing_m}} before a pedestrian crossing (regulation 72(a)(6)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-007",
+   "lesson": "sp-forbidden",
+   "facts": [
+    "park.no_stop.railway_crossing_m"
+   ],
+   "q": "What is the forbidden distance for stopping, standing and parking before and after a railway level crossing?",
+   "options": [
+    "{{fact:park.no_stop.bridge_tunnel_m}}",
+    "{{fact:park.no_stop.railway_crossing_m}}",
+    "{{fact:park.no_stop.train_station_platform_m}}",
+    "{{fact:park.no_stop.junction_m}}"
+   ],
+   "answer": 1,
+   "explain": "The prohibition applies within {{fact:park.no_stop.railway_crossing_m}} before the nearest rail and after it (regulation 72(a)(8)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-008",
+   "lesson": "sp-forbidden",
+   "facts": [
+    "park.no_stop.bridge_tunnel_m"
+   ],
+   "q": "Up to how many metres before a bridge or a tunnel, and within them, is stopping, standing and parking forbidden?",
+   "options": [
+    "{{fact:park.no_stop.railway_crossing_m}}",
+    "{{fact:park.no_stop.bridge_tunnel_m}}",
+    "{{fact:park.no_stop.train_station_platform_m}}",
+    "{{fact:park.no_stop.bus_stop_m}}"
+   ],
+   "answer": 1,
+   "explain": "The prohibition applies on the bridge or in the tunnel itself, and also {{fact:park.no_stop.bridge_tunnel_m}} before and after them (regulation 72(a)(11)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-009",
+   "lesson": "sp-forbidden",
+   "q": "What does a kerb painted black-and-white mean?",
+   "options": [
+    "An absolute parking ban",
+    "Paid parking is allowed",
+    "Just a highly visible marking for kerbs and traffic islands — it is not a parking ban",
+    "Parking reserved for disabled drivers"
+   ],
+   "answer": 2,
+   "explain": "Black-and-white is purely a visual marking. Thinking it is a parking ban is a common misconception.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-010",
+   "lesson": "sp-forbidden",
+   "q": "In which of the following cases is parking forbidden, regardless of any specific numeric distance?",
+   "options": [
+    "25 metres from a bus stop",
+    "15 metres from a pedestrian crossing",
+    "30 metres from a junction",
+    "Right next to another vehicle that is already standing or parked at the side of the road"
+   ],
+   "answer": 3,
+   "explain": "You may not stop, stand or park a vehicle beside another vehicle that is already standing or parked at the side of the road (regulation 72(a)(10)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-011",
+   "lesson": "sp-forbidden",
+   "facts": [
+    "park.no_stop.bus_stop_m"
+   ],
+   "q": "When may you stop or park on the side of the road opposite a bus stop?",
+   "options": [
+    "Only for a private car",
+    "If the road there is at least 12 metres wide",
+    "Never",
+    "Only at night"
+   ],
+   "answer": 1,
+   "explain": "When the road is 12 metres wide or more, you may stop or park on the side opposite the bus stop (regulation 72(a)(12)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-012",
+   "lesson": "sp-how",
+   "facts": [
+    "park.curb_distance_max"
+   ],
+   "q": "In parallel parking, what is the maximum permitted distance between the wheels nearest the kerb and the kerb itself?",
+   "options": [
+    "100 cm",
+    "{{fact:park.curb_distance_max}}",
+    "10 cm",
+    "There is no legal limit"
+   ],
+   "answer": 1,
+   "explain": "Regulation 75 sets a maximum distance of {{fact:park.curb_distance_max}} between the wheels nearest the kerb and the kerb.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-013",
+   "lesson": "sp-how",
+   "q": "A vehicle is parked on a steep downhill slope. How should the front wheels be turned, and what gear should be engaged?",
+   "options": [
+    "There is no difference between uphill and downhill",
+    "Wheels toward the kerb, reverse gear",
+    "Wheels toward the road, forward gear",
+    "Wheels straight, neutral gear"
+   ],
+   "answer": 1,
+   "explain": "Going downhill, turn the front wheels toward the kerb or the edge of the road, and engage reverse gear — so that if the vehicle moves, it will be stopped by the kerb (regulation 74(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-014",
+   "lesson": "sp-how",
+   "q": "Before opening the door of a parked vehicle, what must you do?",
+   "options": [
+    "Look back and take every precaution needed to keep road users safe",
+    "There is no special duty",
+    "Sound the horn twice",
+    "Turn on the hazard lights"
+   ],
+   "answer": 0,
+   "explain": "Regulation 80: you must not open a vehicle door without first taking every precaution needed — especially because of cyclists and motorcyclists passing the vehicle.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-015",
+   "lesson": "sp-how",
+   "q": "Before leaving a vehicle unattended, what must you do?",
+   "options": [
+    "Leave the engine running to keep it cool",
+    "Turn off the engine, remove the ignition key, and apply the parking brake",
+    "Locking the doors is enough",
+    "Just leave a window open"
+   ],
+   "answer": 1,
+   "explain": "Regulation 74: an unattended vehicle must have the engine off, the ignition key removed, and the standing brakes (parking brake) applied.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-016",
+   "lesson": "sp-how",
+   "q": "When is angled or perpendicular parking allowed, instead of parallel to the road?",
+   "options": [
+    "Only where the local signage authority has permitted it and marked it for angled parking",
+    "Only for a goods vehicle",
+    "Never",
+    "Always, at the driver's choice"
+   ],
+   "answer": 0,
+   "explain": "The default is parallel parking along the edge of the road (regulation 75). Angled parking is allowed only where it has been permitted and marked.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-017",
+   "lesson": "sp-special",
+   "sign": "437",
+   "q": "What is special about sign 437?",
+   "options": [
+    "It forbids parking for all vehicles",
+    "It marks a taxi stand",
+    "It permits paid parking",
+    "It reserves a parking spot for a vehicle carrying a valid disabled badge, while it is serving the badge holder"
+   ],
+   "answer": 3,
+   "explain": "Sign 437 reserves the parking spot for a vehicle with a valid disabled badge, while the vehicle is actually serving the person the badge was issued to.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-018",
+   "lesson": "sp-special",
+   "q": "What is the fine for blocking a vehicle carrying a disabled badge that is lawfully parked in a disabled parking spot?",
+   "options": [
+    "{{fine:parking-disabled-space-obstruct}}",
+    "{{fine:parking-sidewalk}}",
+    "{{fine:parking-disabled-blocking}}",
+    "{{fine:parking-general-prohibited-sign}}"
+   ],
+   "answer": 2,
+   "explain": "Blocking a vehicle with a disabled badge in its reserved spot brings a fine of {{fine:parking-disabled-blocking}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-019",
+   "lesson": "sp-special",
+   "q": "What does a kerb painted with alternating blue mean?",
+   "options": [
+    "Paid parking is allowed, under sign 439 alongside sign 626 or 627",
+    "Loading and unloading spot only",
+    "Parking reserved for disabled drivers only",
+    "An absolute parking ban"
+   ],
+   "answer": 0,
+   "explain": "An alternating blue kerb marks paid parking, at the tariff and hours given on the nearby signs.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-020",
+   "lesson": "sp-special",
+   "q": "What does a kerb painted red-and-yellow permit?",
+   "options": [
+    "Parking for any vehicle for an unlimited time",
+    "An absolute stopping ban for all vehicles",
+    "Stopping only, for the type of vehicle stated on the sign above it, to pick up/set down passengers or to load/unload",
+    "Paid parking for any vehicle"
+   ],
+   "answer": 2,
+   "explain": "Red-and-yellow permits stopping only for the type of vehicle allowed by the sign, and only to pick up and set down passengers — not for parking.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-021",
+   "lesson": "sp-special",
+   "q": "When may a vehicle stand or park on the carriageway or the shoulder of a non-urban road marked as a main or regional road?",
+   "options": [
+    "At any time, without restriction",
+    "Only for a private car",
+    "Only in cases defined by law — such as picking up passengers on the shoulder, rescue, public works, or an unavoidable breakdown",
+    "Only at night"
+   ],
+   "answer": 2,
+   "explain": "Regulation 69(a)-(e) forbids this almost entirely on such roads, apart from the specific cases the law lists.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-022",
+   "lesson": "sp-roadside",
+   "facts": [
+    "equip.triangle.visibility"
+   ],
+   "q": "From what minimum distance must the warning triangle be visible to a vehicle approaching from behind?",
+   "options": [
+    "50 metres",
+    "20 metres",
+    "{{fact:equip.triangle.visibility}}",
+    "{{fact:equip.warning_lamp.visibility}}"
+   ],
+   "answer": 2,
+   "explain": "Regulation 70(a): the warning triangle must be placed so it can be seen by a vehicle approaching from behind from at least {{fact:equip.triangle.visibility}} away.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-023",
+   "lesson": "sp-roadside",
+   "licence": [
+    "professional"
+   ],
+   "facts": [
+    "equip.hazard_lights_heavy"
+   ],
+   "q": "A works vehicle, bus or goods vehicle whose permitted gross weight exceeds what figure must show a flashing amber lamp or hazard lights when standing outside town during lighting-up time?",
+   "options": [
+    "{{fact:equip.hazard_lights_heavy}}",
+    "1,500 kg",
+    "10,000 kg",
+    "5,000 kg"
+   ],
+   "answer": 0,
+   "explain": "Regulation 70(b): above {{fact:equip.hazard_lights_heavy}}, a flashing amber lamp or all the direction indicators together are required.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-024",
+   "lesson": "sp-roadside",
+   "q": "When must you wear a high-visibility vest when getting out of the vehicle because of a breakdown?",
+   "options": [
+    "When getting out of the vehicle on a non-urban road — by day and by night alike",
+    "Only if the police asked for it",
+    "Only on an urban road",
+    "Only at night"
+   ],
+   "answer": 0,
+   "explain": "Traffic Ordinance, section 65B(c): the duty to wear a vest when getting out of the vehicle on a non-urban road applies always, not only in darkness.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sp-025",
+   "lesson": "sp-roadside",
+   "q": "Your vehicle has broken down outside town. What is the safest practice while waiting for help?",
+   "options": [
+    "Stand well away from the road and the flow of traffic, beyond the safety barrier if there is one",
+    "Stand beside the vehicle on the traffic side to be seen clearly",
+    "Stay seated in the vehicle with the seatbelt on, without getting out at all",
+    "Stand behind the vehicle on the carriageway to stop approaching vehicles"
+   ],
+   "answer": 0,
+   "explain": "Vehicles that hit the stranded vehicle could also hit anyone standing next to it. The safe place to wait is well away from the road and the traffic.",
+   "shuffled": true
+  }
+ ]
+}

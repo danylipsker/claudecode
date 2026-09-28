@@ -1,0 +1,119 @@
+{
+ "chapter": "troubleshooting",
+ "title": "Troubleshooting",
+ "summary": "When something about the car behaves differently from usual, learn to identify what's happening, when it happens, and when you must stop.",
+ "lessons": [
+  {
+   "id": "ts-method",
+   "title": "Troubleshooting method: when to check and when to stop",
+   "summary": "Before you identify what's broken, settle one question: is it safe to keep driving?",
+   "terms": [
+    "scan-tool"
+   ],
+   "body": "# Not guesswork — a process\n\nA car that behaves differently from usual — a new sound, a smell, a warning light, a vibration — doesn't just stay that way for no reason. Something has changed. The safe way to find the cause isn't to guess, but to ask three questions in order: **what exactly is happening, when it happens, and which system in the car is involved**.\n\n## What exactly is happening\nImagine describing the fault to a mechanic on the phone: what kind of sound (a squeal? a knock? a hum?), what colour (smoke, fluid, a warning light), and where on your body you feel it (in the steering wheel, in the pedal, through the whole car).\n\n## When it happens\nUnder acceleration or braking? In a turn or driving straight? Only when the engine is cold, or also once it has warmed up? At a certain speed, or at every speed? The answer almost always narrows the possibilities down to just a few.\n\n## Which system\nMost car faults belong to one of the familiar systems: engine and cooling, brakes and steering, electrical, transmission (gearbox and clutch), tyres and suspension. Once you identify the system, you can go to the matching diagnosis tree in this chapter — for example [[tree:engine-overheating|the engine is overheating]] or [[tree:electrical-fault|an electrical fault]] — and work through it question by question to a diagnosis.\n\n# What you may check yourself, and what belongs to the garage\nSome things are safe and simple to check yourself: fluid levels when the engine is cold, tyre air pressure, warning lights that come on at start-up, smells and stains under the car. Other things need tools, lifting the car on a jack, or a [[term:scan-tool|scan tool]] connected to the car — these belong to the garage. Never take apart parts you don't know, and never touch the ignition system, the airbags, or the high-voltage components of an electric vehicle yourself.\n\n# Three severity levels\nIn every diagnosis tree in this chapter, each diagnosis carries a severity level:\n\n| Level | Meaning |\n|---|---|\n| Stop now | Immediate danger — stop in a safe place and do not keep driving |\n| Soon | You can reach a garage, but don't put it off for too long |\n| OK | You can carry on carefully, following the guidance |\n\n:::danger\nExtreme engine heat, smoke, a burning smell, brake failure or loss of steering are always “stop now” — even mid-journey and against your plans. Better to miss an appointment than risk a life.\n:::\n\n:::tip Rule of thumb\nIf you're not sure whether it's safe to keep driving — it isn't. Stop in a safe place and call for help.\n:::",
+   "keyPoints": [
+    "Three questions in order: what exactly is happening, when it happens, which system is involved.",
+    "You can check fluids, air pressure, warning lights and stains yourself; taking parts apart and computerised diagnosis belong to the garage.",
+    "Every diagnosis in the trees carries a severity level: stop now, soon, or OK.",
+    "When in doubt, stop in a safe place. Better late than at risk."
+   ]
+  },
+  {
+   "id": "ts-noises",
+   "title": "Identifying noises: squeals, knocks, hums and more",
+   "summary": "Each type of noise points to a different system — learn to listen correctly.",
+   "terms": [
+    "squealing-brakes",
+    "drive-belt",
+    "shock-absorber",
+    "wheel-bearing",
+    "cv-joint",
+    "exhaust-system"
+   ],
+   "body": "# The car is talking to you\n\nA new noise is almost always the earliest sign of a fault — before it becomes expensive or dangerous. The first step is identifying the **type** of sound, because each type has different suspects.\n\n# Squealing (a thin, sharp sound)\nA steady, harsh squeal when braking is usually [[term:squealing-brakes|squealing brakes]] — a deliberate reminder: the brake pad is almost worn out, and needs replacing soon. A squeal that comes from the front of the car while the engine is running, and changes with engine speed, sometimes points to a [[term:drive-belt|drive belt]] slipping — for example when it's loose or worn.\n\n# Knocking (a short, repeating sound)\nA rhythmic metallic knock whose speed rises with engine speed can indicate an internal engine problem — a serious condition that needs an immediate check. A knock from underneath, heard only when you go over a pothole or a speed bump, is closer to the suspension — a worn [[term:shock-absorber|shock absorber]] or a loose part.\n\n# Humming (a low, continuous sound)\nA hum that changes with road speed (not with engine speed), and gets stronger when turning in one direction, is a classic sign of a worn [[term:wheel-bearing|wheel bearing]]. A hum that changes with the gear selected is usually linked to the gearbox.\n\n# Knocking in a turn\nA rhythmic knock heard only when turning sharply — for example pulling into a parking space — usually points to a worn [[term:cv-joint|CV joint]], especially in front-wheel-drive cars.\n\n# Hissing and whistling\nA thin whistle that changes when you press the accelerator pedal, while the car is stationary, may indicate a vacuum leak. A rhythmic blowing or popping noise under the car, even at idle, hints at a leak in the [[term:exhaust-system|exhaust system]] — for example a loosened gasket or pipe.\n\n:::warn\nA new noise that doesn't go away within a day or two won't “go away on its own.” In most cases it will only get worse, and more expensive.\n:::\n\nThe [[tree:strange-noise|new noise]] tree walks you through it question by question, by type of noise, to a diagnosis.",
+   "keyPoints": [
+    "Squealing when braking — usually worn brake pads.",
+    "A knock that changes with engine RPM — check the engine immediately.",
+    "A hum that changes with road speed and gets stronger in a turn — usually a wheel bearing.",
+    "A knock only in a sharp turn — usually a CV joint.",
+    "A new noise that doesn't pass within a day or two needs checking, not ignoring."
+   ]
+  },
+  {
+   "id": "ts-smoke-smells",
+   "title": "Smoke and smells: what the colour and the smell tell you",
+   "summary": "The colour of the smoke and the source of the smell almost always point to the affected system.",
+   "terms": [
+    "coolant",
+    "head-gasket",
+    "engine-oil",
+    "air-filter",
+    "catalytic-converter"
+   ],
+   "body": "# Smoke is always a reason to check\n\nA little thin white vapour from the exhaust on a cold morning, which disappears after a minute, is ordinary condensation — not smoke. Any smoke that continues, has a clear colour, or comes from under the bonnet, needs you to stop and check.\n\n# Exhaust smoke by colour\n\n| Colour | Likely source |\n|---|---|\n| Thick white, sweetens the air | [[term:coolant|coolant]] burning in the combustion chambers — usually a damaged [[term:head-gasket|cylinder head gasket]] |\n| Bluish, noticeable on acceleration | [[term:engine-oil|engine oil]] burning — worn piston rings or valve seals |\n| Thick black | unburnt excess fuel — usually a clogged [[term:air-filter|air filter]] or an injection fault |\n\n:::danger\nThick white smoke that continues along with rising engine heat is a sign of a damaged head gasket. Continuing to drive can destroy the engine completely. Stop in a safe place and switch off the engine.\n:::\n\n# Smoke from other places\nSmoke from around a wheel, unrelated to the exhaust pipe, hints at a brake that has seized and overheated (the pad stays pressed against the disc). Smoke from inside the cabin — from the dashboard, from under the seats, or from anywhere that isn't the engine — is **always** urgent: stop, get out of the car, and move away from it.\n\n# Smells\n- **A sweet, burnt smell** — coolant leaking onto a hot engine part.\n- **A burning smell, like rubber** — a slipping clutch, an overheating brake, or an electrical fault.\n- **A strong fuel smell** — a fuel leak. A real fire risk: don't restart the engine, don't light a flame, move away.\n- **A rotten-egg smell** — usually a [[term:catalytic-converter|catalytic converter]] working too hard, sometimes because of another engine fault making it overwork.\n\n:::tip\nA strong fuel smell inside the cabin, even without smoke, is already a reason to stop and check — don't wait for smoke.\n:::\n\nThe [[tree:smoke-from-car|smoke from the car]] tree helps you find the source from what you see and smell.",
+   "keyPoints": [
+    "Thin white vapour on a cold morning is ordinary condensation; smoke that continues always needs checking.",
+    "Thick white = coolant burning; blue = oil burning; black = excess fuel.",
+    "A fuel smell inside the car is a fire risk — stop immediately, don't restart the engine.",
+    "Smoke from inside the cabin, not from the engine, is always an emergency."
+   ]
+  },
+  {
+   "id": "ts-leaks",
+   "title": "A fluid stain under the car: what it tells you",
+   "summary": "The colour and location of a stain under the car almost always identify the system.",
+   "terms": [
+    "radiator",
+    "coolant",
+    "brake-fluid",
+    "power-steering",
+    "engine-oil"
+   ],
+   "body": "# Before you panic\nA clear stain that collects under the middle of the car on a hot day, after driving with the air conditioning on, is ordinary water from AC condensation. A completely normal occurrence, needing no action.\n\nAny fluid that has colour, feels oily, or has a smell does need attention.\n\n# Location hints at the system\n\n| Location | Main suspect |\n|---|---|\n| Front, near the [[term:radiator|radiator]] | [[term:coolant|coolant]] |\n| Middle of the car, near the gearbox | gearbox oil |\n| Near one of the wheels | [[term:brake-fluid|brake fluid]] |\n| Near the front of the steering column | [[term:power-steering|power steering]] fluid |\n| Anywhere under the engine | [[term:engine-oil|engine oil]] |\n| Rear, near the fuel tank | fuel |\n\n# Identifying by colour\n- **Green, orange or pink, watery** — coolant.\n- **Dark brown to black, oily** — old engine oil or gearbox oil.\n- **Red or pinkish, oily** — automatic transmission fluid or power steering fluid.\n- **Clear to yellowish, oily, near a wheel** — brake fluid.\n- **A sharp fuel smell** — fuel. Do not drive with a fuel leak.\n\n:::danger\nA brake fluid stain near a wheel is always “stop now.” The brake system is hydraulic and sealed — a leak means you could lose partial or full braking.\n:::\n\n:::tip\nPlace a sheet of cardboard or white paper under the car overnight and check it in the morning — the stain and its colour show up more clearly than an old mark on asphalt.\n:::\n\nFor a detailed diagnosis by location and colour — [[tree:leak-under-car|a fluid stain under the car]].",
+   "keyPoints": [
+    "Clear fluid from AC condensation on a hot day is completely normal.",
+    "The stain's location (front, middle, near a wheel, rear) points to the suspected system.",
+    "Green/orange/pink = cooling; red/pinkish = gearbox or power steering; clear-yellowish near a wheel = brakes.",
+    "A brake fluid or fuel leak — don't drive, check immediately."
+   ]
+  },
+  {
+   "id": "ts-vibration",
+   "title": "Vibration and pulling to one side: in the wheel, when braking, or through the whole car",
+   "summary": "Where you feel the vibration and when it happens narrows it down to just a few suspects.",
+   "terms": [
+    "wheel-balancing",
+    "wheel-alignment",
+    "engine-mount",
+    "shock-absorber",
+    "cv-joint"
+   ],
+   "body": "# Where you feel it matters a lot\n\nVibration in the steering wheel, vibration in the brake pedal, and vibration through the whole driver's seat — three different symptoms, usually with three different causes.\n\n# Vibration in the steering wheel at a certain speed\nVibration that appears at roughly a fixed speed and disappears when you speed up or slow down from it is almost always an unbalanced wheel — it needs [[term:wheel-balancing|wheel balancing]] at a tyre garage. Vibration that gradually worsens with speed, without a particular range, points more to a problem in the drive joints or the wheel itself (a bent rim).\n\n# Vibration in the brake pedal\nVibration or pulsing felt through the brake pedal, mainly when braking from high speed, almost always points to a brake disc that isn't an even thickness — a “warped disc.” It's not immediately dangerous, but it lengthens braking distance and needs attention soon.\n\n# Pulling to one side\nA car that consistently pulls to one side, even without braking, on a straight, level road, usually points to incorrect [[term:wheel-alignment|wheel alignment]] — for example after hitting a deep pothole. A difference in tyre air pressure can cause exactly the same feeling, so you always check air pressure first.\n\n# Vibration through the whole car at idle\nVibration felt through the whole car when stationary with the engine running, which disappears once you drive, usually hints at a worn [[term:engine-mount|engine mount]] — a completely different part from the [[term:shock-absorber|shock absorber]], even though the everyday names sound similar.\n\n# Vibration in a turn\nVibration or a knock felt only in a sharp turn, mainly pulling into a parking space, points to a worn [[term:cv-joint|CV joint]].\n\n:::remember\nUnequal tyre air pressure is the most common cause of pulling to one side — and also the cheapest to fix. Always check it first.\n:::\n\nFor a full diagnosis: [[tree:vibration|vibration in the car]] and [[tree:car-pulls-to-side|the car pulls to one side]].",
+   "keyPoints": [
+    "Steering-wheel vibration tied to a certain speed — usually an unbalanced wheel.",
+    "Vibration in the brake pedal — usually an uneven brake disc.",
+    "Constant pulling to one side — check air pressure first, then wheel alignment.",
+    "Vibration through the whole car only at idle — usually a worn engine mount."
+   ]
+  },
+  {
+   "id": "ts-electrical",
+   "title": "Electrical faults: everything, one thing, or flickering",
+   "summary": "The scope of the fault — everything, one device, or flickering — points straight to the suspect.",
+   "terms": [
+    "flat-battery",
+    "fuse",
+    "relay",
+    "alternator",
+    "wiring-harness"
+   ],
+   "body": "# The scope of the fault is the first clue\n\nWhen something electrical stops working, the first question is: is it **everything**, or **one thing**?\n\n# Nothing works\nWhen the headlights are weak, the dashboard lights don't come on, and the radio doesn't respond either — the main suspect is a [[term:flat-battery|flat battery]] or corroded or loose terminals. If the dashboard lights do come on but the starter itself doesn't work, the problem is different (see [[tree:car-wont-start|the car won't start]]).\n\n# Only one device\nWhen only an electric window, the radio, or an interior light stops working, while everything else is fine, the first suspect is a blown [[term:fuse|fuse]] in that circuit. Check the fuse box against the owner's manual: a good fuse looks like an intact metal wire; a blown fuse has a torn or blackened wire. If the fuse is fine but the device still doesn't work, suspicion shifts to a [[term:relay|relay]] or to the switch itself.\n\n# Flickering or dimming\nHeadlights that dim when you switch on another electrical load (air conditioning, both headlights together), or a battery warning light that comes on while driving, point to the charging system — usually a weak [[term:alternator|alternator]] or a loose drive belt for it. The car is currently “living” off what's left in the battery.\n\n# An intermittent fault\nElectrics that cut out for a moment and come back, again and again, usually point to a loose contact in the [[term:wiring-harness|wiring harness]] — for example after water has got in, or a cable has been chafed. This is a stubborn fault to trace, and needs a garage.\n\n:::danger\nA burning smell of plastic or rubber, and especially smoke from the dashboard, are a sign of a dangerous electrical fault. Stop, switch off the engine and the electrics, and get out of the car.\n:::\n\n:::warn Electric and hybrid vehicles\nNever touch the orange cables or the high-voltage components. That's a job for a qualified garage only — even when the car is switched off.\n:::\n\nFor a step-by-step diagnosis: [[tree:electrical-fault|an electrical fault]] and [[tree:warning-light-on|a warning light has come on]].",
+   "keyPoints": [
+    "Nothing works — usually a flat battery or loose terminals.",
+    "Only one device — check the fuse before anything else.",
+    "Headlights that dim, or a battery light while driving — the charging system (alternator).",
+    "Smoke or a burning smell from the dashboard — stop and get out of the car immediately."
+   ]
+  }
+ ]
+}

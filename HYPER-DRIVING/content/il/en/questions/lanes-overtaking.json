@@ -1,0 +1,438 @@
+{
+ "chapter": "lanes-overtaking",
+ "questions": [
+  {
+   "id": "q-lo-001",
+   "lesson": "lo-lanes",
+   "q": "The left-hand lane on a one-way road is completely clear, and the right-hand one is busier. May you drive in the left-hand lane as a rule?",
+   "options": [
+    "Only a sports car may do this",
+    "No — you must drive as far right as possible, even on a one-way road, unless there is a reason to move out of it",
+    "Yes, if you drive at the speed limit",
+    "Yes — you may choose any clear lane"
+   ],
+   "answer": 1,
+   "explain": "A driver must use, as far as possible, the far right-hand side of the road, even on a one-way road (reg. 35).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-002",
+   "lesson": "lo-lanes",
+   "fig": "lo-lane-positions",
+   "q": "On a two-way road with five lanes, when may you drive in the middle lane?",
+   "options": [
+    "At any time, like any other lane",
+    "Only when overtaking, preparing to turn left, or when a sign assigns it to your direction",
+    "Only for a heavy vehicle",
+    "Only on an expressway"
+   ],
+   "answer": 1,
+   "explain": "On a two-way road with three or five lanes, the middle lane is only for overtaking, preparing to turn left, or when a sign has assigned it to your direction of travel (reg. 40(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-003",
+   "lesson": "lo-lanes",
+   "q": "What is the correct order before changing lanes?",
+   "options": [
+    "Signal alone — that is enough",
+    "A look over the shoulder alone, without mirrors",
+    "Speed up and then check the mirrors",
+    "Interior mirror, side mirror, signal, and then a direct look at the blind spot"
+   ],
+   "answer": 3,
+   "explain": "Before deviating, check the interior mirror and the side mirror, signal with enough time (reg. 58), and only a direct look over your shoulder reveals the blind spot that mirrors do not cover.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-004",
+   "lesson": "lo-lanes",
+   "q": "On a road with painted lane arrows approaching a junction, your lane is marked with a right-turn arrow only. What is allowed?",
+   "options": [
+    "Continue straight on, because it is faster",
+    "Turn left if there is no traffic",
+    "Turn right only, following the direction of the arrow in the lane",
+    "Choose any direction — the arrow is only a recommendation"
+   ],
+   "answer": 2,
+   "explain": "On a road with arrows marked leading to a junction, you must enter, cross and leave the junction only in the direction of the arrow in the lane you entered from (reg. 36(d)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-005",
+   "lesson": "lo-lanes",
+   "licence": [
+    "heavy"
+   ],
+   "q": "A commercial vehicle with a permitted total weight of 14,000 kg is driving on an urban road with three lanes in its direction. Which lane must it use at a junction?",
+   "options": [
+    "The leftmost lane, like a private car turning left",
+    "Any lane of its choice",
+    "The rightmost lane, unless sign 613 allows otherwise",
+    "The middle lane only"
+   ],
+   "answer": 2,
+   "explain": "A commercial vehicle or a works vehicle with a permitted total weight over 10,000 kg, on a road with two or more lanes in its direction, must stay in the rightmost lane at a junction — unless sign 613 allows otherwise (reg. 36(e)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-006",
+   "lesson": "lo-turning",
+   "q": "Where do you start a right turn at a junction?",
+   "options": [
+    "From the left-hand lane, to cut the corner less",
+    "From anywhere, as long as you signal",
+    "From the middle of the road",
+    "From a point as close as possible to the right-hand edge of the road, when there is no vehicle on the right"
+   ],
+   "answer": 3,
+   "explain": "Turning right is done as close as possible to the right-hand edge, and only when there is no other vehicle moving on the right, in a sharp turn (reg. 42).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-007",
+   "lesson": "lo-turning",
+   "q": "You are driving on a two-way road with two lanes each direction, and intend to turn left at a junction. Which lane do you start the turn from?",
+   "options": [
+    "From the leftmost lane in your direction of travel",
+    "From the right-hand lane",
+    "From any lane, at the driver's choice",
+    "From the middle of the road, as on a road with one lane"
+   ],
+   "answer": 0,
+   "explain": "On a two-way road with two or more lanes each direction, a left turn starts from the leftmost lane in your direction of travel (reg. 43(a)(3)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-008",
+   "lesson": "lo-turning",
+   "q": "How long before a turn does the law say you must signal?",
+   "options": [
+    "At least 30 metres",
+    "In enough time and distance to warn those around you — with no fixed figure",
+    "Exactly 3 seconds",
+    "Half a second"
+   ],
+   "answer": 1,
+   "explain": "The law does not set a number of metres or seconds; the requirement is to signal in enough time and distance to warn other road users (reg. 58).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-009",
+   "lesson": "lo-turning",
+   "q": "When is a U-turn forbidden, even without a sign explicitly forbidding it?",
+   "options": [
+    "Only on an urban road",
+    "Only when there is an explicit sign forbidding it",
+    "Only at night",
+    "When approaching a bend or a steep crest, or at a place where the vehicle is not visible to another approaching vehicle"
+   ],
+   "answer": 3,
+   "explain": "A U-turn is forbidden anywhere it might hold up traffic or endanger anyone, as well as near a bend or a steep crest, or where the vehicle is not visible to a driver approaching (reg. 44(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-010",
+   "lesson": "lo-turning",
+   "q": "When may you reverse?",
+   "options": [
+    "Only when necessary, and after taking measures to prevent risk, injury or obstruction",
+    "Only when someone is guiding you from outside, in every case",
+    "At any time, as long as you look in the rear-view mirror",
+    "Only in a car park"
+   ],
+   "answer": 0,
+   "explain": "Reversing is allowed only when necessary and to the extent required, after taking the measures needed to prevent risk, injury, nuisance or obstruction (reg. 45).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-011",
+   "lesson": "lo-overtaking",
+   "q": "What is the basic side from which you may overtake another vehicle?",
+   "options": [
+    "Always on the right",
+    "On the left, unless one of the special cases that allow overtaking on the right applies",
+    "Whichever side is more convenient for the driver",
+    "From either side, as long as you signal"
+   ],
+   "answer": 1,
+   "explain": "You must not overtake another vehicle except on its left-hand side, except in the special cases the law lists (reg. 47(a)-(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-012",
+   "lesson": "lo-overtaking",
+   "q": "In which of the following situations is overtaking on the right allowed?",
+   "options": [
+    "When the vehicle ahead of you is in a left-turn-only lane, or signals a left turn",
+    "On any road with more than one lane",
+    "When the vehicle ahead of you is driving too slowly",
+    "When there is no oncoming traffic"
+   ],
+   "answer": 0,
+   "explain": "Overtaking on the right is allowed only in four defined situations, including when the vehicle ahead of you is in a left-turn-only lane or is signalling one (reg. 47(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-013",
+   "lesson": "lo-overtaking",
+   "fig": "lo-overtaking-forbidden",
+   "q": "You are approaching a marked pedestrian crossing, and the road is completely clear on both sides. May you overtake?",
+   "options": [
+    "No — overtaking is forbidden when approaching a marked crossing and until you have passed it",
+    "Only if there is a broken line",
+    "Yes, if the road is clear",
+    "Yes, if there are no pedestrians around"
+   ],
+   "answer": 0,
+   "explain": "Overtaking is forbidden when approaching a marked pedestrian crossing, and until you have passed it — even if the road looks clear (reg. 47(e)(3)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-014",
+   "lesson": "lo-overtaking",
+   "q": "When may you cross a continuous dividing line to overtake?",
+   "options": [
+    "When there is a broken line on your right-hand side of the continuous line",
+    "When there is no oncoming traffic on the horizon",
+    "Only in a private car, not a heavy vehicle",
+    "Never"
+   ],
+   "answer": 0,
+   "explain": "You must not overtake while crossing a continuous dividing line, unless there is a broken line on your right (reg. 47(e)(5)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-015",
+   "lesson": "lo-overtaking",
+   "q": "The vehicle ahead of you is in the middle of overtaking another vehicle. May you overtake it?",
+   "options": [
+    "Yes, always, as long as there is room",
+    "Only on a one-way road, or a road with more than two lanes in your direction where overtaking is allowed",
+    "Only if the vehicle ahead of you is slowing down",
+    "Yes, if you are riding a motorcycle"
+   ],
+   "answer": 1,
+   "explain": "You must not overtake an overtaking vehicle, except on a one-way road or a road with more than two lanes in your direction where overtaking is allowed (reg. 47(h)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-016",
+   "lesson": "lo-overtaking",
+   "licence": [
+    "heavy"
+   ],
+   "q": "You are driving a commercial vehicle with a permitted total weight of 6 tonnes. May you overtake an overtaking vehicle?",
+   "options": [
+    "No — a commercial vehicle weighing more than 3,500 kg must not overtake an overtaking vehicle, on any road and under any conditions",
+    "Yes, if there are two lanes in your direction",
+    "Yes, on a one-way road only",
+    "Yes, on any road"
+   ],
+   "answer": 0,
+   "explain": "A bus (other than a minibus), a commercial vehicle, or a works vehicle weighing more than 3,500 kg must not overtake an overtaking vehicle, on any road and under any conditions (reg. 47(h)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-017",
+   "lesson": "lo-overtaken",
+   "q": "A vehicle starts to overtake you. What is your duty?",
+   "options": [
+    "Brake to make room for it",
+    "Speed up slightly to shorten the overtaking time",
+    "Move your vehicle as far as possible towards the edge of the road, and not speed up until it has passed you",
+    "Stay exactly in place and not move"
+   ],
+   "answer": 2,
+   "explain": "A driver who is overtaken moves their vehicle as far as possible towards the edge of the road, and does not increase speed until the overtaking vehicle has passed them (reg. 48(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-018",
+   "lesson": "lo-overtaken",
+   "q": "A driver with an oversized load that is hard to overtake because of the road conditions. What must they do?",
+   "options": [
+    "Nothing — the responsibility lies only with the overtaking driver",
+    "Speed up to get through the narrow stretch faster",
+    "Slow down, and if necessary move beyond the edge of the road or even stop, to allow a safe overtake",
+    "Stay exactly in the middle of the lane"
+   ],
+   "answer": 2,
+   "explain": "A driver with an oversized load that is hard to overtake because of road and traffic conditions must slow down, and where possible and necessary move beyond the edge of the road or even stop, to allow a safe overtake (reg. 48(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-019",
+   "lesson": "lo-overtaken",
+   "sign": "501",
+   "q": "A vehicle is forced to drive slowly because of a heavy load and is forming a long queue behind it. The shoulder is paved and clear, and there is no sign 501 there. What must it do?",
+   "options": [
+    "Stop completely at the side and not move",
+    "Stay in the lane, because it is driving lawfully",
+    "Move right and drive on the shoulder, to let the vehicles behind it overtake",
+    "Speed up above the limit so as not to hold anyone up"
+   ],
+   "answer": 2,
+   "explain": "A vehicle forced to drive slowly because of a load or a slope must move right and drive on the shoulder when it is paved and clear, to let the vehicles behind it overtake — unless sign 501 is in place there (reg. 48(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-020",
+   "lesson": "lo-overtaken",
+   "q": "Why is it forbidden to speed up when someone is overtaking you?",
+   "options": [
+    "Because it wastes fuel",
+    "Because it wears out the engine",
+    "It is not forbidden, just not recommended",
+    "Because it lengthens the overtaking time and increases the risk of a crash in the oncoming lane"
+   ],
+   "answer": 3,
+   "explain": "The law explicitly forbids increasing speed while a vehicle is overtaking you — it forces the vehicle to stay longer in the oncoming lane (reg. 48(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-021",
+   "lesson": "lo-freeways",
+   "sign": "216",
+   "q": "What does this sign forbid at the entrance to an expressway?",
+   "options": [
+    "Driving above 100 km/h",
+    "Entry for private cars only",
+    "Entry to pedestrians, cyclists, animals, and vehicles not able to drive at the minimum speed",
+    "Stopping on the shoulder only"
+   ],
+   "answer": 2,
+   "explain": "Sign 216 forbids entry to pedestrians, cyclists, handcarts, animals, and any vehicle not able or permitted to drive at least at the speed the sign sets.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-022",
+   "lesson": "lo-freeways",
+   "q": "Can a slow vehicle, a tractor, or a mobile machine enter an expressway if there is a sign allowing a lower speed?",
+   "options": [
+    "Yes, if they drive on the shoulder",
+    "Yes, if there is a special sign",
+    "No — the expressway is always closed to them",
+    "Yes, only during the day"
+   ],
+   "answer": 2,
+   "explain": "A slow vehicle, a tractor and a mobile machine: the expressway is always closed to them, in every case (reg. 54, table of paragraph 5).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-023",
+   "lesson": "lo-freeways",
+   "fig": "lo-freeway-acceleration",
+   "q": "You entered an expressway through the acceleration lane. Who has priority when merging into the main lane?",
+   "options": [
+    "You do, because the acceleration lane counts as a junction with priority to the right",
+    "It depends which of you is faster",
+    "You do, if you matched your speed",
+    "The vehicles already driving in the lane you are merging into"
+   ],
+   "answer": 3,
+   "explain": "A driver whose lane ends — including an acceleration lane merging into the main road — gives way to the vehicles already driving in the lane they are moving into (reg. 64(f)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-024",
+   "lesson": "lo-freeways",
+   "q": "You plan to leave the expressway at the next exit. When is it right to slow down?",
+   "options": [
+    "Only after you have passed the exit sign",
+    "Only after you have moved into the deceleration lane — not within the main lane",
+    "As early as possible, still in the main lane, so as not to hold up the vehicle behind you",
+    "In the middle of the ordinary travel lane, before leaving it"
+   ],
+   "answer": 1,
+   "explain": "The deceleration lane exists to reduce speed after leaving the main lane, not within it. Braking inside the ordinary travel lane to reach an exit endangers whoever is behind you.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-025",
+   "lesson": "lo-freeways",
+   "q": "May you stop on the shoulder of an expressway to answer the phone?",
+   "options": [
+    "Yes, for a short time only",
+    "Yes, if there is no traffic at that hour",
+    "No — stopping anywhere within the expressway's road strip is forbidden unless marked otherwise, and the shoulder is reserved for emergencies",
+    "Yes, if you turn on the hazard lights"
+   ],
+   "answer": 2,
+   "explain": "On an expressway, stopping, standing or parking a vehicle anywhere within the road strip is forbidden, unless marked otherwise (reg. 69(c)). The shoulder is reserved for emergencies only.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-026",
+   "lesson": "lo-merging",
+   "q": "The lane you are driving in ends, and you must move into the next lane. Who has priority?",
+   "options": [
+    "Whoever is driving faster",
+    "You do, because your lane was the right-hand one",
+    "The vehicles already driving in the lane you are moving into",
+    "There is no special rule — you enter as usual"
+   ],
+   "answer": 2,
+   "explain": "A driver whose lane ends and who must move into a neighbouring lane gives way to the vehicles driving in the lane they are moving into (reg. 64(f)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-027",
+   "lesson": "lo-merging",
+   "fig": "lo-lane-drop-merge",
+   "q": "Heavy traffic is approaching a lane that ends, and all the vehicles are already stationary. What is the recommended technique?",
+   "options": [
+    "Move forward to the merge point and merge alternately, one from each side",
+    "Stay in the ending lane and wait for someone to let you through",
+    "Drive on the shoulder to bypass the queue",
+    "Everyone merges as early as possible, the moment they see the sign"
+   ],
+   "answer": 0,
+   "explain": "In heavy traffic, a zip merge — moving forward to the actual merge point and merging alternately — makes full use of both lanes and shortens the overall jam.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-028",
+   "lesson": "lo-merging",
+   "q": "A congested junction is ahead of you, and the light is still green, but it is clear you will not make it across before it changes. What is correct?",
+   "options": [
+    "Do not enter the junction — only when you can cross it and keep moving without being held up",
+    "Speed up to make it",
+    "Enter and stop inside the junction until it clears",
+    "Enter anyway, because the light is green"
+   ],
+   "answer": 0,
+   "explain": "You must not enter a junction unless you can cross it and keep moving without being held up, even on a green light (reg. 65). A blocked junction stops traffic even in directions where the light is green.",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-029",
+   "lesson": "lo-merging",
+   "q": "There is a long jam in your lane, and the shoulder is completely clear. May you drive on the shoulder to bypass the jam?",
+   "options": [
+    "Yes, if you turn on the hazard lights",
+    "Yes, on a non-urban road only",
+    "Yes, if you drive slowly",
+    "No — the shoulder is not a driving lane, and driving on it to bypass a queue is forbidden"
+   ],
+   "answer": 3,
+   "explain": "The duty to keep right applies to the lane meant for traffic, not to the shoulder beside it. Driving on the shoulder to skip a queue is forbidden (regs. 34-35).",
+   "shuffled": true
+  },
+  {
+   "id": "q-lo-030",
+   "lesson": "lo-merging",
+   "sign": "621",
+   "q": "What does this sign indicate?",
+   "options": [
+    "The expressway ends",
+    "You must stop",
+    "A new lane opens on the left",
+    "The number of lanes decreases from the right — a lane is ending"
+   ],
+   "answer": 3,
+   "explain": "Sign 621 marks a reduction in the number of lanes from the right — a sign that a lane is ending and you should merge early.",
+   "shuffled": true
+  }
+ ]
+}

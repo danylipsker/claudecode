@@ -1,0 +1,96 @@
+{
+ "chapter": "speed-distance",
+ "title": "Speed, distance and braking",
+ "summary": "How fast the law allows, how fast is right — and how much distance you need to stop.",
+ "lessons": [
+  {
+   "id": "sd-safe-speed",
+   "title": "Reasonable speed: the duty above every number",
+   "summary": "The speed on the sign is an upper limit. The law requires you to drive at a speed that suits the conditions.",
+   "terms": [
+    "reasonable-speed",
+    "speed-limit-sign",
+    "traffic-calming-area"
+   ],
+   "body": "The number on the sign is not an invitation to drive at it. Above every number, the law sets a general duty: to drive at a [[term:reasonable-speed|reasonable speed]].\n\n:::law\nYou must not drive except at a **reasonable speed** — a speed that takes into account all the circumstances, the road conditions and the traffic on it, and leaves the driver in **full control of the vehicle** (Traffic Regulations, reg. 51).\n:::\n\nSo you can commit an offence without exceeding the speed limit at all: someone driving at {{fact:speed.urban}} in pouring rain, near a school when it lets out, is driving too fast — even though the sign allows it.\n\n# When you must slow down\nThe law lists situations where danger is likely, where you must slow down — and stop if needed (reg. 52):\n- In a built-up, populated area, and on a stretch of road with houses and pedestrians alongside it\n- When the road is not clear\n- When visibility is limited, for any reason — fog, rain, glare, darkness\n- Before and inside a sharp bend\n- Near a group of children or a crowd\n- When approaching a [[term:pedestrian-crossing|pedestrian crossing]]\n- When approaching the crest of a hill and anywhere your field of view is limited\n- On a steep or long downhill stretch\n- Before a narrow bridge and while crossing it\n- When you meet or overtake a group of people walking on the road, or animals\n- Near a bus standing at a stop, and especially near a bus or vehicle carrying children that stops to pick them up or drop them off\n- On a [[term:mixed-street|shared street]], in a [[term:traffic-calming-area|traffic-calmed zone]] and in a tunnel\n\n:::tip Rule of thumb\nIf you are not sure you could stop within the clear stretch of road you can see ahead — you are driving too fast.\n:::\n\n# Too slow can be dangerous too\nDriving much slower than the flow of traffic creates speed differences, draws overtaking, and surprises drivers behind you. A vehicle forced to drive slowly because of a heavy load or a steep climb must keep to the right, and where the shoulder is paved and clear — drive on the shoulder and let traffic overtake (reg. 48).\n\n:::warn Emergency braking\nYou must not brake suddenly, except to avoid an accident that cannot be avoided any other way, or for safety reasons (reg. 53). A driver who drives at a reasonable speed and keeps a safe distance almost never needs to brake like that.\n:::",
+   "keyPoints": [
+    "The speed limit is an **upper limit**; the duty is to drive at a [[term:reasonable-speed|reasonable speed]] for the conditions.",
+    "In rain, in the dark, near children, before a bend, and when approaching a pedestrian crossing — you must slow down.",
+    "A slow vehicle keeps to the right and lets traffic overtake it.",
+    "Emergency braking is allowed only to avoid an accident or for safety reasons."
+   ]
+  },
+  {
+   "id": "sd-limits",
+   "title": "The maximum permitted speed",
+   "summary": "How fast is allowed on each type of road when there is no sign, and who is more restricted.",
+   "terms": [
+    "urban-road",
+    "non-urban-road",
+    "expressway",
+    "speed-limit-sign",
+    "speed-limiter"
+   ],
+   "signs": [
+    "426"
+   ],
+   "body": "When no sign says otherwise, the maximum speed is set by the **type of road** and the **type of vehicle** (reg. 54). This is a table every driver should know by heart:\n\n| Road type | Maximum speed with no sign |\n|---|---|\n| [[term:urban-road|Urban road]] | {{fact:speed.urban}} |\n| [[term:non-urban-road|Non-urban road]] with no built divider | {{fact:speed.nonurban}} |\n| Non-urban road with a built divider | {{fact:speed.nonurban_divided}} |\n| [[term:expressway|Expressway]] | {{fact:speed.freeway}} |\n| [[term:mixed-street|Shared street]] [[term:traffic-calming-area|and traffic-calmed zone]] | {{fact:speed.traffic_calming}} |\n\n:::remember What counts as a built divider\nA barrier, fence or raised traffic island that physically separates the two directions of travel. A painted line on the road **is not** a built divider.\n:::\n\n# When there is a sign\n[[sign:426]] sets a different maximum speed for a stretch of road — lower or higher than the table. Even a sign has a ceiling: on an urban road it cannot set more than {{fact:speed.sign_cap.urban}}, on a non-urban road with no divider — more than {{fact:speed.sign_cap.nonurban}}, and on an expressway — more than {{fact:speed.sign_cap.freeway}}.\n\n# Vehicles that are more restricted\n- **A bus** (not a minibus): up to {{fact:speed.bus.freeway}} on an expressway.\n- **A commercial vehicle whose gross vehicle weight is over {{fact:speed.heavy_threshold}}**, a work vehicle and a tour coach: outside the city — even on an expressway — up to {{fact:speed.heavy.nonurban}}.\n- **A slow vehicle, a tractor and a mobile machine**: up to {{fact:speed.slow_vehicle}}, and the expressway is closed to them.\n\n:::tech Speed limiter\nA bus and a heavy goods vehicle carry a [[term:speed-limiter|speed limiter]] — a device that stops the engine from accelerating past a set speed: {{fact:speed.limiter.bus}} on a bus, {{fact:speed.limiter.truck}} on a heavy goods vehicle.\n:::\n\n:::fine\nDriving at excessive speed carries a fine and points, scaled to how much you exceeded the limit. Details in the [[chapter:enforcement|Offences, fines and points]] chapter.\n:::",
+   "keyPoints": [
+    "With no sign: urban {{fact:speed.urban}}, non-urban {{fact:speed.nonurban}}, with a built divider {{fact:speed.nonurban_divided}}, expressway {{fact:speed.freeway}}.",
+    "Shared street and traffic-calmed zone — {{fact:speed.traffic_calming}}.",
+    "Sign [[sign:426|icon]] overrides the table, within the ceiling the law allows.",
+    "A commercial vehicle over {{fact:speed.heavy_threshold}} — up to {{fact:speed.heavy.nonurban}} outside the city."
+   ]
+  },
+  {
+   "id": "sd-stopping",
+   "title": "Reaction distance, braking distance and stopping distance",
+   "summary": "From the moment you see danger until the vehicle stops — two stages, and both get longer with speed.",
+   "terms": [
+    "reaction-time",
+    "reaction-distance",
+    "braking-distance",
+    "stopping-distance",
+    "abs"
+   ],
+   "body": "When danger appears, the vehicle does not stop on the spot. The distance it travels until it stops — the [[term:stopping-distance|stopping distance]] — has two parts:\n\n1. **[[term:reaction-distance|Reaction distance]]** — the distance the vehicle travels from the moment the danger appears until the foot presses the brake pedal. During this time the vehicle keeps travelling at full speed.\n2. **[[term:braking-distance|Braking distance]]** — the distance the vehicle travels from the start of braking until it stops.\n\n**Stopping distance = reaction distance + braking distance**\n\n[[widget:stopping-distance speed=90 reaction=1]]\n\n# Reaction distance\nAn alert driver's [[term:reaction-time|reaction time]] is about one second: to notice, understand, decide and move the foot. Reaction distance = speed × reaction time, so it **grows in direct proportion to speed**: at 90 km/h the vehicle travels 25 metres every second.\n\nReaction time gets longer — sometimes double or more — when the driver is tired, distracted (a phone!), has drunk alcohol, or has taken medication that affects alertness.\n\n# Braking distance\nBraking distance **grows with the square of the speed**: double the speed — quadruple the braking distance. It also depends on:\n- **The road surface** — braking distance on a wet road is far longer than on a dry one, and on gravel, mud, oil or ice it is longer still.\n- **Tyre condition** — a worn tyre struggles to clear water and grip the road.\n- **Brake condition** and vehicle weight — a heavy, loaded vehicle needs more distance.\n- **Gradient** — going downhill, the vehicle stops over a longer distance.\n\n:::tech What ABS does\nThe [[term:abs|ABS]] system stops the wheels from locking under hard braking, so the driver can keep steering and go around an obstacle while braking. It does **not** necessarily shorten the braking distance. In an emergency stop in a vehicle with ABS, press hard and do not ease off — you will feel the pedal pulse; that is normal.\n:::\n\n:::remember\nSomeone who doubles their speed from 50 to 100 km/h doubles their reaction distance — and their braking distance grows fourfold.\n:::",
+   "keyPoints": [
+    "Stopping distance = reaction distance + braking distance.",
+    "Reaction distance grows in direct proportion to speed; braking distance grows with the square of the speed.",
+    "Fatigue, distraction and alcohol lengthen reaction time.",
+    "A wet road, worn tyres and heavy weight lengthen braking distance.",
+    "ABS keeps your ability to steer while braking; in an emergency stop, press hard and do not ease off."
+   ]
+  },
+  {
+   "id": "sd-following",
+   "title": "Keeping distance from the vehicle ahead",
+   "summary": "The gap is measured in seconds, not metres — that way it adjusts itself to your speed.",
+   "terms": [
+    "following-distance",
+    "reaction-time"
+   ],
+   "body": "Most rear-end accidents happen because the driver did not have enough time to react. That is why the gap from the vehicle ahead is measured in **time**: how many seconds will pass until you reach the point where the vehicle ahead of you is now.\n\n:::law\nYou must keep a gap that lets you stop at any time and avoid an accident, taking into account speed, road conditions, visibility and traffic. In any case, behind a vehicle in the same lane the gap must not be smaller than **{{fact:following.min_time_gap}}** (reg. 49).\n:::\n\nOne second is the **minimum the law allows**, not a safe gap. The recommendation is to keep at least **{{fact:following.recommended_gap}}**, and more in difficult conditions.\n\n[[widget:following-distance speed=90]]\n\n# How to measure it\n1. Pick a fixed landmark at the side of the road: a pole, a sign, a bridge's shadow.\n2. When the back of the vehicle ahead passes it, count: \"one thousand and one, one thousand and two.\"\n3. If you reach the point before you finish counting — you are too close. Slow down a little and check again.\n\n# When to increase the gap\n- In rain, and especially in the season's **first rain**, when the road is especially slippery\n- In fog, in the dark and in glare\n- Behind a motorcycle — it can stop in a very short distance\n- Behind a heavy vehicle that blocks your view of the road ahead\n- When driving a loaded vehicle or towing\n- When someone is tailgating you: a large gap ahead lets you brake gently, so they also have time to react\n\n:::tip\nWhen a vehicle merges into the gap you left — do not get angry and do not close up. Just slow down a little until the gap returns.\n:::",
+   "keyPoints": [
+    "The gap is measured in seconds; the legal minimum is {{fact:following.min_time_gap}}.",
+    "It's recommended to keep at least {{fact:following.recommended_gap}}, and more in rain, in the dark, and behind a motorcycle or a heavy vehicle.",
+    "Measure it using a fixed landmark and counting: \"one thousand and one, one thousand and two.\""
+   ]
+  },
+  {
+   "id": "sd-energy",
+   "title": "Speed and impact force",
+   "summary": "Why every extra km/h changes so much in a crash.",
+   "terms": [
+    "kinetic-energy",
+    "vulnerable-road-user"
+   ],
+   "body": "A moving vehicle carries [[term:kinetic-energy|kinetic energy]]. In a crash, all that energy is released at once — crushing metal, breaking bones. And the energy grows with the **square of the speed**: double the speed — four times the energy.\n\n[[widget:speed-energy speed=50]]\n\nA way to feel this: hitting a fixed obstacle at 50 km/h is equivalent to falling from a height of about 10 metres — roughly the third floor. At 100 km/h — a fall from about 40 metres.\n\n# Pedestrians and riders\n[[term:vulnerable-road-user|Vulnerable road users]] — pedestrians, cyclists and motorcyclists — have no frame, seatbelt or airbag. A pedestrian's chance of surviving being hit by a vehicle drops sharply as the impact speed rises: at 30 km/h most of those hit survive, and at higher speeds the risk of death rises several times over. This is why the maximum speed in traffic-calmed zones and shared streets is {{fact:speed.traffic_calming}}.\n\n:::remember\nA difference of 10 km/h before a pedestrian crossing can be the difference between a vehicle that stops before the child and one that hits them — because while the slower vehicle has already stopped, the faster one is still moving.\n:::",
+   "keyPoints": [
+    "Kinetic energy grows with the square of the speed.",
+    "A crash at 50 km/h is equivalent to a fall from the third floor.",
+    "In areas with pedestrians, low speed saves lives."
+   ]
+  }
+ ]
+}

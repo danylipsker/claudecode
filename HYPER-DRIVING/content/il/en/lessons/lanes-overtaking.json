@@ -1,0 +1,125 @@
+{
+ "chapter": "lanes-overtaking",
+ "title": "Lanes, turning and overtaking",
+ "summary": "Where to drive, how to turn safely, and when overtaking is allowed — and when it is a gamble with your life.",
+ "lessons": [
+  {
+   "id": "lo-lanes",
+   "title": "Lanes: keeping right and changing lanes",
+   "summary": "When you may drive in the middle lane, and how to change lanes without surprising anyone.",
+   "terms": [
+    "lane-discipline",
+    "lane-change",
+    "blind-spot"
+   ],
+   "fig": "lo-lane-positions",
+   "body": "Most of the time on the road, the most important decision is the simplest one: which lane to drive in.\n\n# Keeping right\n\n:::law\nA driver must use, as far as possible, the far right-hand side of the road — even on a one-way road — or the far right-hand side of the lane intended for their vehicle (reg. 35).\n:::\n\nThis is true even when the left-hand lane is completely clear: [[term:lane-discipline|lane discipline]] means right as a rule, and left only when there is a reason — overtaking, turning left, or a lane a sign has assigned to your direction.\n\n# The middle lane\nOn a two-way road with three or five lanes, the middle lane is not an ordinary driving lane:\n\n:::law\nOn a two-way road divided into three or five lanes, you must not drive in the middle lane except when overtaking another vehicle, when preparing to turn left, or when a sign has assigned the lane to your direction of travel (reg. 40(b)). You also must not move from it into the lane to its left (reg. 40(c)).\n:::\n\n[[fig:lo-lane-positions]]\n\n# Changing lanes\nA [[term:lane-change|lane change]] is allowed only when it can be done safely, without holding up traffic and without endangering anyone (reg. 41). Before any deviation: check the interior mirror, the side mirror, and signal with enough time to warn whoever is behind you (reg. 58). But no mirror shows everything — there is an area around the vehicle that mirrors simply do not cover, the [[term:blind-spot|blind spot]], and only a direct look over your shoulder reveals it.\n\n[[widget:blind-spots vehicle=car]]\n\n:::tip\nMirror, mirror, signal, look over your shoulder — and only then move. This order does not change, even on a completely routine drive.\n:::\n\n# Lanes approaching a junction\nWhen the road is divided into lanes with arrows painted leading to a junction, you must enter, cross and leave the junction only in the direction of the arrow in the lane you entered from (reg. 36(d)). A commercial vehicle or a works vehicle with a permitted total weight over 10,000 kg, on a road with two or more lanes in its direction, must stay in the rightmost lane at the junction — unless sign [[sign:613]] allows otherwise (reg. 36(e)).",
+   "keyPoints": [
+    "Always keep right, even on a one-way road and an empty road (reg. 35).",
+    "On a road with three or five lanes, the middle lane is only for overtaking, turning left, or when a sign allows it (reg. 40(b)).",
+    "Before changing lanes: mirrors, signal, and a direct look at the blind spot.",
+    "At a junction with painted lane arrows — enter, cross and leave only according to the direction of the arrow (reg. 36(d))."
+   ]
+  },
+  {
+   "id": "lo-turning",
+   "title": "Turning, signalling and reversing",
+   "summary": "Where to start a left turn from, how far in advance to signal, and when a U-turn and reversing are allowed.",
+   "terms": [
+    "u-turn",
+    "reversing",
+    "signaling"
+   ],
+   "signs": [
+    "211",
+    "430"
+   ],
+   "body": "# Before you turn\nEvery turn begins long before the steering wheel itself: mirror, signal, and the right position in the lane. You must not turn or deviate from your line of travel except at a reasonable speed and to the extent that you can do so safely, without holding up traffic and without endangering a person or property (reg. 41).\n\n# Turning right\n\n:::law\nA driver intending to turn right must not turn except when as close as possible to the right-hand edge of the road, with no other vehicle moving on their right, and must make a sharp right turn — unless the road is marked otherwise (reg. 42).\n:::\n\n# Turning left\nWhere you start from depends on the type of road:\n\n| Type of road | Where you start the turn |\n|---|---|\n| One-way | From the left-hand side of the road |\n| Two-way, one lane each direction | As close as possible to the middle of the road, without holding up oncoming traffic |\n| Two-way, two or more lanes each direction | From the leftmost lane in your direction of travel |\n\nEntering the new road follows the same logic: on a one-way road — into the leftmost lane; on a two-way road with one lane — in a wide arc to the right-hand side; on a two-way road with several lanes — into the leftmost lane (reg. 43). All of this applies when road markings do not state otherwise.\n\n# When to signal\nThe duty to [[term:signaling|signal]] is set out in law, even if not the exact timing:\n\n:::law\nA driver preparing to move off, turn, change lanes, or stop must give a signal in enough time and at enough distance to warn other road users, in a way that ensures the signal is visible to them (reg. 58). The signal stops the moment the manoeuvre is complete.\n:::\n\nThe law does not set an exact number of metres or seconds — it sets an outcome: enough time to let whoever is behind you react. Signalling at the last moment is almost the same as not signalling at all.\n\n# U-turns — when they are allowed\nA [[term:u-turn|U-turn]] has its own rules, different from an ordinary turn:\n\n:::law\nYou must not make a U-turn except in circumstances that do not hold up traffic or endanger road users, and must not make one when approaching a bend or a steep crest, or at a place where the vehicle is not visible to a driver approaching from any direction (reg. 44(a)). You may make a left U-turn from a left-turn lane, and from any other lane that has no sign or marking forbidding it (reg. 44(b)).\n:::\n\nSigns [[sign:211]] and [[sign:212]] explicitly allow a U-turn; signs [[sign:430]] and [[sign:431]] forbid it. Who you give way to when making a U-turn at a junction — see the chapter [[lesson:rw-turning|Turning right, turning left, and U-turns at a junction]].\n\nMaking a U-turn in a forbidden place is an offence: {{fine:u-turn-forbidden}}.\n\n# Reversing\n[[term:reversing|Reversing]] has a clear threshold condition:\n\n:::law\nYou must not reverse except when necessary, and only after taking the measures needed to prevent risk, injury, nuisance or obstruction (reg. 45).\n:::\n\nBefore reversing — take a full look around, not just in the rear-view mirror, and if possible ask someone to guide you from outside.",
+   "keyPoints": [
+    "Turning is allowed only when you can do it safely and without holding up traffic (reg. 41).",
+    "Turning right: from the right-hand edge, and only when there is no vehicle on the right (reg. 42). Turning left: the position depends on the number of lanes (reg. 43).",
+    "Signal in enough time and at enough distance to warn whoever is behind you, and stop signalling once the manoeuvre is complete (reg. 58).",
+    "A U-turn is forbidden before a bend or a crest, and where you are not visible to an approaching vehicle (reg. 44).",
+    "Reverse only when necessary, after a full check (reg. 45)."
+   ]
+  },
+  {
+   "id": "lo-overtaking",
+   "title": "Overtaking: when, how, and where it is forbidden",
+   "summary": "Overtake only on the left, only when the road is clear, and not wherever you feel like — the list of forbidden places is the most important part of this lesson.",
+   "terms": [
+    "overtaking",
+    "overtaking-on-right",
+    "no-overtaking-sign"
+   ],
+   "signs": [
+    "420"
+   ],
+   "fig": "lo-overtaking-phases",
+   "body": "Overtaking is the manoeuvre where you leave your lane and enter a lane that someone else may be driving in from the opposite direction. There is not much room for error.\n\n# How to overtake\n\n:::law\nYou must not overtake another vehicle on the road, whether it is in the same lane or not, except on its left-hand side (reg. 47(a)). You must not overtake unless the road is clear for a distance sufficient to complete the overtake and continue driving safely, without holding up or endangering anyone (reg. 47(d)).\n:::\n\n[[fig:lo-overtaking-phases]]\n\nA safe [[term:overtaking|overtake]] has three stages: checking mirrors, the blind spot and signalling; passing at a speed that finishes the overtake quickly; and returning to the right-hand lane only once the overtaken vehicle is fully visible in the interior mirror.\n\n# When overtaking on the right is allowed\n[[term:overtaking-on-right|Overtaking on the right]] is allowed only in four situations (reg. 47(b)):\n\n- The vehicle ahead of you is in a left-turn-only lane, or is signalling that it is turning left\n- You are turning left into a one-way road, or into a road with two or more lanes each direction, and the vehicle ahead of you has not yet completed its turn into the left lane\n- You are driving in a lane designated for public transport\n- You are driving in a right-turn-only lane\n\nOn a congested one-way road with several lanes in the same direction, when vehicles are moving in queues and one lane simply moves faster than another — this does not count as overtaking at all, as long as it does not obstruct or endanger anyone (reg. 47(c)).\n\n# No-overtaking sign\nBeyond the general rules, the [[term:no-overtaking-sign|no-overtaking sign]] [[sign:420]] forbids overtaking any motor vehicle with two or more wheels for an entire stretch of road — until the next junction or until sign [[sign:421]]. Sign [[sign:422]] imposes a similar ban on a vehicle weighing more than 4 tonnes, until sign [[sign:423]].\n\n# Where overtaking is forbidden in every case\n[[fig:lo-overtaking-forbidden]]\n\n:::law\nYou must not overtake, attempt to overtake, or deviate in order to overtake a vehicle or an animal (reg. 47(e)):\n\n- when visibility is poor or the field of view is blocked or limited\n- after sign A-30 and until after a level crossing\n- when approaching a marked pedestrian crossing, and until you have passed it\n- inside a junction, or without completing the overtake before reaching it\n- while crossing a continuous dividing line — unless a broken line is on your right\n:::\n\nThe ban on overtaking at a junction does not apply on a road with two or more lanes in your direction, nor to overtaking an animal, a bicycle, or a vehicle drawn by an animal — provided the overtake itself meets all the other rules (reg. 47(f)).\n\n:::warn\nNever overtake a vehicle that has stopped before a junction, a pedestrian crossing, or a level crossing to fulfil its own duties — it stopped because someone else needs to pass (reg. 47(g)).\n:::\n\n# Overtaking an overtaker\n\n:::danger\nYou must not overtake a vehicle that is itself in the middle of overtaking, except on a one-way road or a road with more than two lanes in your direction where overtaking is allowed (reg. 47(h)). A bus, a commercial vehicle, or a works vehicle weighing more than 3,500 kg must never overtake an overtaking vehicle, on any road and under any conditions.\n:::\n\nOvertaking an overtaker means two vehicles in the oncoming lane at once — double the risk, with no room to manoeuvre.\n\nOvertaking at a junction: {{fine:overtaking-junction}} and {{points:overtaking-junction}}. Crossing a continuous line: {{fine:continuous-line}} and {{points:continuous-line}}. Dangerous overtaking: {{points:overtaking-dangerous}} points, and a police officer may suspend the licence on the spot.\n\n# Overtaking a cyclist or an animal\nA cyclist can wobble or swerve without warning, and an animal is completely unpredictable. Give as much space as possible — this kind of overtake is still subject to all the ordinary overtaking rules, even when it is exempt from part of the junction ban. More on riding safely is in the chapter [[chapter:vulnerable-users|Vulnerable road users]].",
+   "keyPoints": [
+    "Overtake only on the left, and only when the road is clear for a distance that lets you finish the overtake safely (reg. 47(a), (d)).",
+    "Overtaking on the right is allowed only in four defined situations — for example when the vehicle ahead of you signals a left turn.",
+    "Overtaking is forbidden: in poor visibility, near a level crossing or a pedestrian crossing, inside a junction, and while crossing a continuous line.",
+    "You must not overtake a vehicle that is itself overtaking, except on a one-way road or one with more than two lanes; a bus and a heavy vehicle must never do so, on any road."
+   ]
+  },
+  {
+   "id": "lo-overtaken",
+   "title": "When you are overtaken",
+   "summary": "What you must do when someone overtakes you, and the duties of a slow vehicle or one with an oversized load that is holding up traffic.",
+   "signs": [
+    "501"
+   ],
+   "body": "# When you are overtaken\n\n:::law\nA driver who is being overtaken must move their vehicle as far as possible towards the edge of the road to let the overtaking vehicle pass safely, and must not increase speed until the overtaking vehicle has passed them (reg. 48(a)).\n:::\n\n:::warn\nSpeeding up when someone is overtaking you is not just dangerous — it is an offence. It makes the overtake take longer, exactly in the oncoming lane.\n:::\n\n# An oversized load that is hard to overtake\nA driver carrying an oversized load, which is hard to overtake because of the road and traffic conditions, must slow down, and where possible and necessary move beyond the edge of the road or even stop, to let the vehicles behind them overtake safely (reg. 48(b)).\n\n# A slow vehicle holding up traffic\n\n:::law\nA driver of a motor vehicle who, because of its load or the slope of the road, is forced to drive at a low speed that holds up whoever is behind them, must move right and drive on the shoulder when it is paved with asphalt and clear — to let the vehicles behind overtake. This duty does not apply where sign [[sign:501]] is in place (reg. 48(c)).\n:::\n\nThis is exactly the rule we already saw in the chapter [[lesson:sd-safe-speed|Safe speed]]: a vehicle moving much slower than the flow of traffic — because of a load, towing, or a steep climb — needs to move right and make room, not insist on staying in the lane.\n\n:::tip\nIf you are the slow vehicle: a glance in the mirror every few seconds is enough to know a queue has formed behind you — so move right before someone makes a dangerous overtake out of impatience.\n:::",
+   "keyPoints": [
+    "A vehicle being overtaken moves right and does not speed up until the overtaking vehicle has fully passed it (reg. 48(a)).",
+    "A vehicle with an oversized load that is hard to overtake must slow down and even move onto the shoulder or stop (reg. 48(b)).",
+    "A vehicle moving too slowly because of a load or a slope must move right and drive on the shoulder, if it is clear and paved (reg. 48(c)).",
+    "Speeding up when someone is overtaking you is forbidden and dangerous."
+   ]
+  },
+  {
+   "id": "lo-freeways",
+   "title": "Driving on an expressway",
+   "summary": "Who may not enter an expressway, how to enter and leave it safely, and why the shoulder there is not a place to stop.",
+   "terms": [
+    "acceleration-lane",
+    "deceleration-lane",
+    "merging"
+   ],
+   "signs": [
+    "216"
+   ],
+   "fig": "lo-freeway-acceleration",
+   "body": "# Who may not enter\nOnly those able and permitted to keep up with its pace may enter an [[term:expressway|expressway]].\n\nSign [[sign:216]] marks its start, and states: entry is forbidden to pedestrians, cyclists, handcarts, animals, and any vehicle that is not able or permitted to drive at least at the speed the sign sets. A slow vehicle, a tractor, and a mobile machine — the expressway is always closed to them, in every case (reg. 54, table of paragraph 5). Sign [[sign:217]] marks its end, and from there on the ordinary road rules apply.\n\n# Entering: the acceleration lane\n[[fig:lo-freeway-acceleration]]\n\nThe [[term:acceleration-lane|acceleration lane]] exists for one thing: to reach the speed of the main traffic before merging into it, not to enter slowly and force someone to brake for you. The [[term:merging|merge]] itself is subject to the same rule that applies to any lane that ends — the driver whose lane ends gives way to the vehicles already driving in the lane they are moving into (reg. 64(f)). The point where such an acceleration lane meets the main road is not defined in law as a \"junction\" at all — there is no stop or give-way sign here, only one simple rule: whoever is entering fits in with whoever is already there.\n\n# Leaving: the deceleration lane\nBy exactly the same logic, but in reverse: the [[term:deceleration-lane|deceleration lane]] exists to reduce speed after you have already left the main lane — not within it. Anyone who brakes inside the ordinary travel lane to reach an exit endangers everyone behind them. Plan your exit early: change lanes to the right gradually, well before the exit sign, not at the last moment.\n\n# The shoulder on an expressway\n\n:::danger\nOn an expressway, picking up or setting down passengers, and stopping, standing or parking a vehicle anywhere within the road strip are forbidden — unless marked otherwise (reg. 69(c)). The shoulder here is not a convenient place to stop; it is reserved for emergencies only.\n:::\n\nIf you break down, the full procedure — hazard lights, the vest, the warning triangle, and how to get out of the vehicle safely — is in the chapter [[chapter:breakdowns|Roadside faults and vehicle emergencies]]. The first rule is always the same: move away from the vehicle and from the line of traffic, to the side farthest from the traffic.",
+   "keyPoints": [
+    "Sign 216 closes the expressway to pedestrians, cyclists, animals and vehicles that cannot drive at the minimum speed; a slow vehicle, a tractor and a mobile machine are always closed out of it (reg. 54).",
+    "The acceleration lane exists to reach the speed of the main road before merging; whoever is entering gives way to whoever is already in the lane (reg. 64(f)).",
+    "The deceleration lane exists to reduce speed after leaving the main lane, not within it.",
+    "The shoulder on an expressway is reserved for emergencies only — stopping on it is forbidden almost always (reg. 69(c))."
+   ]
+  },
+  {
+   "id": "lo-merging",
+   "title": "Lane mergers and traffic congestion",
+   "summary": "How a lane that ends should merge, what a zip merge is, and why you must not use the shoulder to bypass a traffic jam.",
+   "terms": [
+    "zip-merge",
+    "lane-ending"
+   ],
+   "signs": [
+    "621",
+    "622"
+   ],
+   "fig": "lo-lane-drop-merge",
+   "body": "# A lane that ends\n\n:::law\nA driver whose lane ends and who must move into a neighbouring lane gives way to the vehicles driving in the lane they are moving into (reg. 64(f)).\n:::\n\n[[fig:lo-lane-drop-merge]]\n\nA [[term:lane-ending|lane ending]] is marked in advance with warning signs — for example [[sign:621]] or [[sign:622]] — and with diagonal arrows on the road. This is the time to merge early and calmly, not at the last moment.\n\n# Zip merging in heavy traffic\nWhen traffic is already at a standstill and no one can \"get ahead\", the safe and efficient technique is a [[term:zip-merge|zip merge]]: vehicles from both lanes move forward to the actual merge point, and then merge alternately — one from each side. This shortens the overall jam rather than lengthening it: every lane is used to the very end, and no one has to brake suddenly to make room for a long queue merging all at once.\n\n:::tip\nSomeone who lets one vehicle merge in behind them does not need to \"punish\" the next one in line. Give everyone their turn.\n:::\n\n# Do not block junctions\nIn heavy traffic it is easy to enter a junction because there is a gap right now, and then get stuck in it when the light changes. The [[term:no-blocking-junction|ban on blocking a junction]] always applies: you must not enter a junction unless you can cross it and keep moving without being held up (reg. 65), as we saw in the chapter [[lesson:rw-junctions|Junctions without a sign]]. A blocked junction stops traffic even in directions where the light is actually green.\n\n# Do not use the shoulder to bypass a jam\nThe shoulder is not a driving lane. The duty to keep right applies to the lane assigned to you, not to the shoulder beside it — driving on the shoulder to skip past a clear queue endangers everyone who is waiting properly, and is forbidden (regs. 34-35).",
+   "keyPoints": [
+    "A lane that ends: the driver moving out of it gives way to those driving in the lane they are moving into (reg. 64(f)).",
+    "In heavy traffic, a zip merge — alternating, one from each side, at the merge point itself — is more efficient than everyone merging early.",
+    "You must not enter a junction if you cannot get out of it, even on a green light (reg. 65).",
+    "The shoulder is not a driving lane — driving on it to bypass a jam is forbidden."
+   ]
+  }
+ ]
+}

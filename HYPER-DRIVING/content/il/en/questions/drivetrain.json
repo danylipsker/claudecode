@@ -1,0 +1,316 @@
+{
+ "chapter": "drivetrain",
+ "questions": [
+  {
+   "id": "q-dt-001",
+   "lesson": "dt-clutch",
+   "q": "What is the clutch’s job in a vehicle with a manual gearbox?",
+   "options": [
+    "To connect and temporarily disconnect the engine from the gearbox",
+    "To accelerate the vehicle",
+    "To stop the vehicle instead of the brakes",
+    "To maintain air pressure in the tyres"
+   ],
+   "answer": 0,
+   "explain": "The clutch lets you disconnect the engine from the gearbox in order to change gear or stop without switching the engine off.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-002",
+   "lesson": "dt-clutch",
+   "q": "What is the clutch’s “bite point”?",
+   "options": [
+    "The maximum pressure allowed on the clutch pedal",
+    "The moment the clutch pedal reaches the floor",
+    "The point where the gear lever engages first gear",
+    "The moment the vehicle starts to move as you gradually release the pedal"
+   ],
+   "answer": 3,
+   "explain": "The bite point is the moment the vehicle starts to move as you gradually release the clutch — from there you carry on releasing while gently adding gas.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-003",
+   "lesson": "dt-clutch",
+   "q": "What usually causes early wear and clutch slipping?",
+   "options": [
+    "Keeping a foot on the clutch pedal even when not changing gear",
+    "Using neutral at a traffic light",
+    "Pressing the clutch fully on every gear change",
+    "Driving in too high a gear on a expressway"
+   ],
+   "answer": 0,
+   "explain": "A foot resting on the pedal, even without pressing it fully, makes the pressure plate slip on the disc and wears it quickly.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-004",
+   "lesson": "dt-clutch",
+   "q": "Which of the following is a typical sign of clutch slipping?",
+   "options": [
+    "The brake warning light comes on",
+    "The vehicle only shakes when you stop",
+    "Engine revs rise without the vehicle accelerating to match, especially on a hill",
+    "The steering becomes very heavy"
+   ],
+   "answer": 2,
+   "explain": "When the clutch is worn and slipping, the engine revs up without the power reaching the wheels properly — most noticeable on a hill or under hard acceleration.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-005",
+   "lesson": "dt-manual",
+   "q": "What is the difference between a low gear and a high gear in terms of gear ratio?",
+   "options": [
+    "There is no difference except the number on the lever",
+    "A high gear always saves more fuel on a climb",
+    "A low gear gives high power and low speed; a high gear gives high speed at low engine revs",
+    "A low gear gives high speed and little power; a high gear is the opposite"
+   ],
+   "answer": 2,
+   "explain": "A low gear multiplies the engine’s power at the cost of speed; a high gear allows high speed at low, economical engine revs.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-006",
+   "lesson": "dt-manual",
+   "q": "When is it correct to change down to a low gear on a steep climb in a manual gearbox?",
+   "options": [
+    "Only after the engine has already lost revs and is struggling",
+    "There is no need to change gear on a climb",
+    "Early, before the engine struggles to cope with the gradient",
+    "Only if there is another vehicle behind you"
+   ],
+   "answer": 2,
+   "explain": "Change down early, before the engine labours and struggles — not only once it is already starting to lose revs.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-007",
+   "lesson": "dt-manual",
+   "q": "What can happen if you change gear without pressing the clutch all the way down?",
+   "options": [
+    "Grinding and wear on the gear teeth",
+    "The gearbox will heat up faster",
+    "The brake warning light will come on",
+    "The vehicle will accelerate faster"
+   ],
+   "answer": 0,
+   "explain": "Changing gear without fully disconnecting the clutch causes grinding and wears the gear teeth.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-008",
+   "lesson": "dt-manual",
+   "q": "What is the job of neutral (N) in a manual gearbox?",
+   "options": [
+    "To give the highest possible speed",
+    "To allow reverse travel",
+    "To fully disconnect the link between the engine and the wheels",
+    "To slow the vehicle quickly on a descent"
+   ],
+   "answer": 2,
+   "explain": "In neutral there is no link between the engine and the wheels; the vehicle can roll freely with no power from the engine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-009",
+   "lesson": "dt-automatic",
+   "q": "What is the torque converter’s job in an automatic gearbox?",
+   "options": [
+    "To transmit power from the engine to the gearbox through fluid, with no direct mechanical link",
+    "To split power between the front and rear axles",
+    "To let you choose a gear manually with paddle shifters",
+    "To mechanically lock the drive shaft in Park"
+   ],
+   "answer": 0,
+   "explain": "The torque converter is a hydraulic component that transmits power through fluid instead of a mechanical clutch, and it is also what allows creep.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-010",
+   "lesson": "dt-automatic",
+   "q": "Why must you not shift to neutral (N) on a steep descent, even “to save fuel”?",
+   "options": [
+    "Because it wears out the tyres",
+    "Because it disconnects the engine brake and leaves all the braking to the brakes alone",
+    "Because it turns on the ABS warning light",
+    "Because changing gear on a descent is against the law"
+   ],
+   "answer": 1,
+   "explain": "In neutral there is no engine braking at all, and the vehicle relies entirely on the friction brakes — exactly when they need the most help.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-011",
+   "lesson": "dt-automatic",
+   "q": "What is “creep” in an automatic vehicle?",
+   "options": [
+    "A phenomenon where the vehicle vibrates when stopped",
+    "Engine revs dropping below idle",
+    "Slow forward or backward movement in D or R when you lift your foot off the brake, without touching the accelerator",
+    "An automatic gear change on a climb"
+   ],
+   "answer": 2,
+   "explain": "Creep comes from the partial connection inside the torque converter: the vehicle moves on its own the moment you lift your foot off the brake, even without touching the accelerator.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-012",
+   "lesson": "dt-automatic",
+   "q": "What is true about Park (P) mode in an automatic gearbox?",
+   "options": [
+    "It is a full substitute for the handbrake, so there is no need to apply it",
+    "It mechanically locks the drive shaft, but you should also apply the handbrake",
+    "It is identical to neutral (N)",
+    "It is meant only for driving downhill"
+   ],
+   "answer": 1,
+   "explain": "Park mechanically locks the drive shaft, but you should always apply the handbrake too — especially on a gradient.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-013",
+   "lesson": "dt-engine-braking",
+   "q": "What is engine braking?",
+   "options": [
+    "Switching off the engine to save fuel on a descent",
+    "Using the engine’s resistance, with the help of a low gear, to slow the vehicle",
+    "Pressing the brake pedal especially hard",
+    "Shifting to neutral on a descent"
+   ],
+   "answer": 1,
+   "explain": "Engine braking uses the engine’s own internal resistance, with the help of a low gear, to slow down without relying only on the brakes.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-014",
+   "lesson": "dt-engine-braking",
+   "q": "When is it correct to change down to a low gear ahead of a long descent?",
+   "options": [
+    "It makes no difference when you change down",
+    "Only partway down, once the speed builds up too much",
+    "Before the descent begins, according to the steepness and the speed you want",
+    "Only once the brakes already start to smell of burning"
+   ],
+   "answer": 2,
+   "explain": "Change down before the descent begins — not partway through, when it is already hard to change down safely at high speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-015",
+   "lesson": "dt-engine-braking",
+   "licence": [
+    "professional"
+   ],
+   "q": "What is the retarder’s job in trucks and buses?",
+   "options": [
+    "To split power between the front and rear axles",
+    "To lock the drive shaft when parked",
+    "To slow the vehicle without using the ordinary pads and discs",
+    "To change gear by itself with no driver input"
+   ],
+   "answer": 2,
+   "explain": "The retarder is an extra braking system, usually hydraulic or electric, that slows the vehicle without wearing the friction brakes — important mainly on long descents.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-016",
+   "lesson": "dt-driveline",
+   "q": "What is the differential’s job?",
+   "options": [
+    "To lock the drive shaft when parked",
+    "To connect and disconnect the engine from the gearbox",
+    "To slow the vehicle on a descent",
+    "To let the two wheels on the same axle turn at different speeds on a turn"
+   ],
+   "answer": 3,
+   "explain": "On a turn, the outer wheel travels a longer distance than the inner one; the differential lets them turn at different speeds at the same time.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-017",
+   "lesson": "dt-driveline",
+   "q": "What is the difference between front-wheel drive and rear-wheel drive?",
+   "options": [
+    "Front-wheel drive has no differential at all",
+    "There is no practical difference between the two",
+    "Rear-wheel drive exists only in trucks",
+    "In front-wheel drive the engine drives only the front wheels; in rear-wheel drive it drives only the rear wheels, through a drive shaft"
+   ],
+   "answer": 3,
+   "explain": "In front-wheel drive the engine and gearbox drive the front wheels directly; in rear-wheel drive power travels through a drive shaft to the rear differential.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-018",
+   "lesson": "dt-driveline",
+   "q": "What is the transfer case’s job in a 4x4 vehicle?",
+   "options": [
+    "To cool the brake fluid",
+    "To increase the top speed",
+    "To split drive power between the front and rear axles",
+    "To change gear by itself"
+   ],
+   "answer": 2,
+   "explain": "The transfer case in 4x4 vehicles splits power between the two axles, and sometimes also includes a low-range gear for off-road use.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-019",
+   "lesson": "dt-driveline",
+   "q": "A front-wheel-drive vehicle makes a clicking sound on a sharp turn at full steering lock. What does this usually point to?",
+   "options": [
+    "Low tyre pressure",
+    "A worn CV joint on the driven front wheel",
+    "A worn rear differential",
+    "A stuck handbrake"
+   ],
+   "answer": 1,
+   "explain": "A click on a sharp turn, mainly on the driven front wheel, is a typical sign of a worn CV joint or its torn dust boot.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-020",
+   "lesson": "dt-driveline",
+   "q": "Which sign usually points to a worn differential or wheel bearing, rather than a brake fault?",
+   "options": [
+    "The ABS warning light is on",
+    "A noise only when opening a door",
+    "A hum or whine that changes with the vehicle’s speed, and not with braking",
+    "A vibration only when pressing the brake pedal"
+   ],
+   "answer": 2,
+   "explain": "A noise that changes with speed and not with braking usually points to a worn differential or wheel bearing, rather than the braking system.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-021",
+   "lesson": "dt-manual",
+   "q": "What is true about overdrive?",
+   "options": [
+    "It is used only for reverse travel",
+    "It is a high gear that allows economical, smooth driving at expressway speed",
+    "It is the lowest gear in the gearbox",
+    "It exists only in an automatic gearbox"
+   ],
+   "answer": 1,
+   "explain": "Overdrive is a high gear in which the wheels turn faster than the engine, for economical, smooth driving at high speed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-dt-022",
+   "lesson": "dt-automatic",
+   "q": "What do paddle shifters help you do?",
+   "options": [
+    "Choose a gear manually and temporarily in an automatic gearbox, without leaving D",
+    "Release the handbrake",
+    "Drain water from the air brake system",
+    "Switch between front-wheel and rear-wheel drive"
+   ],
+   "answer": 0,
+   "explain": "Paddle shifters are levers behind the steering wheel that let you choose a gear manually and temporarily, for example for engine braking on a descent, without leaving D.",
+   "shuffled": true
+  }
+ ]
+}

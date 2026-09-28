@@ -1,0 +1,378 @@
+{
+ "chapter": "special-roads",
+ "questions": [
+  {
+   "id": "q-sr-001",
+   "lesson": "sr-rail",
+   "q": "When must you slow down before a railway level crossing?",
+   "options": [
+    "Only if you hear a train horn",
+    "Always when approaching a crossing, enough to be able to stop — even if there is no active warning signal at that moment",
+    "Only at night",
+    "Only once the barrier is already closed"
+   ],
+   "answer": 1,
+   "explain": "Regulation 55: you must slow down before every crossing enough to be able to stop, and take every step to cross safely — even if there is no active warning signal at that moment.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-002",
+   "lesson": "sr-rail",
+   "facts": [
+    "rail.stop_distance_min_m"
+   ],
+   "q": "There is no stop line and no barrier before a railway level crossing. What is the minimum distance at which you must stop before the nearest rail?",
+   "options": [
+    "2 metres",
+    "10 metres",
+    "{{fact:rail.stop_distance_min_m}}",
+    "20 metres"
+   ],
+   "answer": 2,
+   "explain": "Regulation 56(a): with no stop line and no barrier, you stop at least {{fact:rail.stop_distance_min_m}} before the nearest rail.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-003",
+   "lesson": "sr-rail",
+   "q": "A driver stops before a level crossing because a stop sign is placed there. What must they do before continuing?",
+   "options": [
+    "Wait exactly 10 seconds and continue",
+    "Accelerate at once so as not to hold up traffic",
+    "Sound the horn twice and continue",
+    "Turn off the radio, open the nearest window, and listen and look both ways along the tracks"
+   ],
+   "answer": 3,
+   "explain": "Regulation 56(b): at a stop sign there is a special procedure — turning off audio equipment, opening a window, listening and looking both ways before continuing.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-004",
+   "lesson": "sr-rail",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "rail.bus_paved_approach_m"
+   ],
+   "q": "A bus wanting to cross a railway level crossing needs a paved approach (asphalt or concrete) of at least how much?",
+   "options": [
+    "30 metres",
+    "{{fact:rail.bus_paved_approach_m}}",
+    "15 metres",
+    "10 metres"
+   ],
+   "answer": 1,
+   "explain": "Regulation 57: a bus or a vehicle carrying 11 passengers or more may not cross a level crossing unless the approach to it is paved for at least {{fact:rail.bus_paved_approach_m}} from the nearest rail.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-005",
+   "lesson": "sr-rail",
+   "q": "Your vehicle has stalled on the tracks by mistake, and no train is in sight yet. What do you do first?",
+   "options": [
+    "Stay in the vehicle and keep trying to restart it",
+    "Push the vehicle from the side facing the tracks",
+    "Get out of the vehicle immediately and move away diagonally, clear of the tracks",
+    "Wait for the train to see which direction it comes from"
+   ],
+   "answer": 2,
+   "explain": "With the vehicle on the tracks, there is no time to try to fix it on the spot. Get out and move away at once, and only then call for help.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-006",
+   "lesson": "sr-tunnels",
+   "q": "In what condition must you drive through a tunnel with your front and rear lights on, even in the middle of the day?",
+   "options": [
+    "Only if it is raining outside",
+    "Only at night",
+    "Never — the fixed lighting in the tunnel is enough",
+    "When a sign at the tunnel entrance reads \"Tunnel, switch on lights\""
+   ],
+   "answer": 3,
+   "explain": "Regulation 97(e): when such a sign is placed at the tunnel entrance, you must drive with your front and rear lights on.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-007",
+   "lesson": "sr-tunnels",
+   "q": "What is true about overtaking inside a tunnel?",
+   "options": [
+    "Allowed only for a faster vehicle",
+    "Always forbidden",
+    "Allowed only by day",
+    "Allowed if the oncoming lane is clear"
+   ],
+   "answer": 1,
+   "explain": "A tunnel is one of the standard places where overtaking is always forbidden, because of limited visibility and no room to manoeuvre.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-008",
+   "lesson": "sr-tunnels",
+   "facts": [
+    "park.no_stop.bridge_tunnel_m"
+   ],
+   "q": "Up to how many metres before a bridge or a tunnel, and within them, is stopping, standing and parking forbidden?",
+   "options": [
+    "{{fact:park.no_stop.bridge_tunnel_m}}",
+    "30 metres",
+    "20 metres",
+    "12 metres"
+   ],
+   "answer": 0,
+   "explain": "Regulation 72(a)(11): the prohibition applies on the bridge or in the tunnel itself, and also {{fact:park.no_stop.bridge_tunnel_m}} before and after them.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-009",
+   "lesson": "sr-tunnels",
+   "q": "There is a minor fault in the vehicle inside a tunnel, and it is safe to continue. What is best to do?",
+   "options": [
+    "Continue to the exit of the tunnel or to a marked emergency bay, and stop there",
+    "Reverse back to the entrance",
+    "Stop at once in the middle of the lane",
+    "Stop and open the bonnet immediately"
+   ],
+   "answer": 0,
+   "explain": "Stopping in the middle of a tunnel is especially dangerous because of limited visibility. If you can safely continue, it is better to reach the exit or an emergency bay.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-010",
+   "lesson": "sr-transit",
+   "q": "A driver drives in a public-transport lane without authorisation. What can they expect?",
+   "options": [
+    "{{fine:bus-lane-designated-lane}}",
+    "No penalty for this",
+    "Immediate licence disqualification",
+    "Always just a warning"
+   ],
+   "answer": 0,
+   "explain": "Driving in a lane not designated for your type of vehicle, such as a public-transport lane, brings a fine of {{fine:bus-lane-designated-lane}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-011",
+   "lesson": "sr-transit",
+   "sign": "507",
+   "q": "What does the \"taxi stand\" sign (507) mark?",
+   "options": [
+    "A public-transport lane marking",
+    "A loading and unloading spot only",
+    "Stopping or parking by any other vehicle is forbidden there, except to set down passengers",
+    "Parking is allowed there for any vehicle"
+   ],
+   "answer": 2,
+   "explain": "The taxi stand area is reserved for picking up taxi passengers; another vehicle may only stop there to set down a passenger.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-012",
+   "lesson": "sr-transit",
+   "facts": [
+    "park.no_stop.bus_stop_m"
+   ],
+   "q": "When there is no other marking on the road, what is the forbidden distance for stopping, standing and parking before and after a bus stop sign?",
+   "options": [
+    "5 metres",
+    "{{fact:park.no_stop.bus_stop_m}}",
+    "10 metres",
+    "12 metres"
+   ],
+   "answer": 1,
+   "explain": "Regulation 72(a)(12): when there is no other marking, the prohibition applies within {{fact:park.no_stop.bus_stop_m}} before and after the sign.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-013",
+   "lesson": "sr-transit",
+   "q": "What does a kerb painted red-and-yellow permit near a stop?",
+   "options": [
+    "Paid parking",
+    "A short stop only, for the type of vehicle permitted by the sign above it, to pick up or set down",
+    "An absolute stopping ban for all vehicles",
+    "Free parking for any vehicle"
+   ],
+   "answer": 1,
+   "explain": "A red-and-yellow kerb permits only a short stop, for the permitted type of vehicle, and only to pick up or set down passengers.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-014",
+   "lesson": "sr-roadworks",
+   "q": "On a stretch of road with a work site, there is a conflict between a temporary orange marking and a permanent white line. Which do you follow?",
+   "options": [
+    "Always the white line",
+    "Stop and wait for the police",
+    "The temporary orange marking",
+    "Whichever is easier to follow"
+   ],
+   "answer": 2,
+   "explain": "Inside a work site, the temporary orange marking overrides the permanent one for the duration of the works.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-015",
+   "lesson": "sr-roadworks",
+   "sign": "929",
+   "q": "What does sign 929 indicate at a work site?",
+   "options": [
+    "A flashing board for signalling only",
+    "\"Road narrows\"",
+    "A dedicated turning lane",
+    "The road is completely blocked; continue only if a direction sign has been placed"
+   ],
+   "answer": 3,
+   "explain": "The barrier sign (929) shows that the road is blocked at that point; you can only proceed in the direction a direction sign indicates, if one has been placed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-016",
+   "lesson": "sr-roadworks",
+   "q": "Why can you sometimes see workers or vehicles standing exactly where stopping is normally forbidden, inside a work site?",
+   "options": [
+    "Because the police are always present there",
+    "Because it is only allowed at night",
+    "Because they have no duty to obey the law at all",
+    "Because people actually working on repairing the road, within the work area and taking the required care, are exempt from some of the normal stopping rules"
+   ],
+   "answer": 3,
+   "explain": "Regulation 167 exempts people and vehicles actually working on repairing the road, within the work site only and while taking precautions, from some of the regulations — including the rules on stopping, standing and parking.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-017",
+   "lesson": "sr-roadworks",
+   "q": "There is a flagger at a work site directing traffic against what a sign says. Whom do you obey?",
+   "options": [
+    "The flagger — their instruction overrides the sign",
+    "The sign — it always overrides a person's instruction",
+    "Stop and do not move until they finish",
+    "Whoever arrived at the site first"
+   ],
+   "answer": 0,
+   "explain": "A person's instruction directing traffic at a work site overrides the sign, exactly like a police officer's instruction at an ordinary junction.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-018",
+   "lesson": "sr-residential",
+   "sign": "220",
+   "q": "What is special about a shared street?",
+   "options": [
+    "Parking is always forbidden there",
+    "Pedestrians, children playing and vehicles share the same road with no separation, at a very low speed",
+    "It is meant for vehicles only",
+    "It is an expressway for public transport"
+   ],
+   "answer": 1,
+   "explain": "On a shared street there is no separation between pavement and carriageway. Pedestrians and children playing share the road with vehicles, so you drive very slowly and give them absolute priority.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-019",
+   "lesson": "sr-residential",
+   "facts": [
+    "speed.traffic_calming"
+   ],
+   "q": "What is the maximum speed in a traffic-calmed zone?",
+   "options": [
+    "There is no fixed maximum speed — it is up to the driver's judgement",
+    "{{fact:speed.urban}}",
+    "{{fact:speed.slow_vehicle}}",
+    "{{fact:speed.traffic_calming}}"
+   ],
+   "answer": 3,
+   "explain": "In a traffic-calmed zone, as on a shared street, the maximum speed is {{fact:speed.traffic_calming}} throughout the zone.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-020",
+   "lesson": "sr-residential",
+   "sign": "227",
+   "q": "What is forbidden on a marked cycle path?",
+   "options": [
+    "Riding a skateboard on it",
+    "Giving priority to riders moving along it",
+    "Driving a motor vehicle on it, or stopping and parking on it when this obstructs cycle traffic",
+    "Riding an electric bicycle on it"
+   ],
+   "answer": 2,
+   "explain": "A cycle path is meant for riding — not for a motor vehicle to drive or park on it in a way that obstructs cycle traffic.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-021",
+   "lesson": "sr-residential",
+   "q": "What is the safest assumption when driving near a school, on a shared street or in a traffic-calmed zone?",
+   "options": [
+    "A child may suddenly step out from any direction, even away from a marked crossing",
+    "You can drive at normal speed if the road looks clear",
+    "Children always cross only at a marked crossing",
+    "Responsibility lies only with the parents, not the driver"
+   ],
+   "answer": 0,
+   "explain": "Unpredictable behaviour by children is the main reason for the low speed required in areas like these.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-022",
+   "lesson": "sr-terrain",
+   "sign": "140",
+   "q": "Before a long, steep descent, what is correct to do?",
+   "options": [
+    "Shift down to a low gear and use the engine brake",
+    "Turn off the engine to slow down",
+    "Shift to neutral to save fuel",
+    "Accelerate to finish the descent faster"
+   ],
+   "answer": 0,
+   "explain": "A low gear and the engine brake reduce the load on the brakes during a long descent. Neutral or the engine off cancels the engine brake and is dangerous.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-023",
+   "lesson": "sr-terrain",
+   "q": "The brakes \"go soft\" after prolonged braking on a long descent. What happened, and what do you do?",
+   "options": [
+    "You need to add water to the brakes immediately",
+    "The brakes have failed permanently; continue carefully to a garage",
+    "This is completely normal and there is nothing to do",
+    "This is brake fade from overheating; shift down another gear and stop in a safe place to let the brakes cool"
+   ],
+   "answer": 3,
+   "explain": "Prolonged braking on a descent heats up the brakes and causes temporary brake fade. The fix is to reduce the load on them and stop to let them cool.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-024",
+   "lesson": "sr-terrain",
+   "q": "A driver is on a desert dirt track. What is correct?",
+   "options": [
+    "It is best to slow down, increase the gap, and watch for dust, rolling stones and animals",
+    "You can drive at the same speed as on a paved road",
+    "No larger gap from the vehicle in front is needed",
+    "Dust and rolling stones are not relevant on a dirt track"
+   ],
+   "answer": 0,
+   "explain": "Lower grip, reduced visibility from dust, and the danger of stones and animals all call for a lower speed and a larger gap.",
+   "shuffled": true
+  },
+  {
+   "id": "q-sr-025",
+   "lesson": "sr-terrain",
+   "q": "The road crosses a wadi, and there is flowing water in it after rain fell higher up the catchment. What do you do?",
+   "options": [
+    "Get out of the vehicle and wade across on foot to check the depth",
+    "Do not drive the vehicle into the water, even if it looks shallow — look for an alternative route and wait",
+    "Drive in slowly, in first gear",
+    "Drive in quickly to cross before the current gets stronger"
+   ],
+   "answer": 1,
+   "explain": "A current that is not especially strong is enough to sweep a vehicle away. The only safe course is not to enter flowing water at all.",
+   "shuffled": true
+  }
+ ]
+}

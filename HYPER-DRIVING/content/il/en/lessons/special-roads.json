@@ -1,0 +1,139 @@
+{
+ "chapter": "special-roads",
+ "title": "Special roads and situations",
+ "summary": "Railway crossings, tunnels, public-transport lanes, work sites, shared streets, and mountain and desert roads.",
+ "lessons": [
+  {
+   "id": "sr-rail",
+   "title": "Railway level crossings",
+   "summary": "Before you cross a railway: slow down well in advance, know when you must stop, and never stay on the tracks.",
+   "terms": [
+    "railway-crossing"
+   ],
+   "signs": [
+    "129",
+    "133",
+    "134",
+    "404",
+    "722"
+   ],
+   "body": "A train cannot swerve and cannot stop quickly — even a light rail train moving relatively slowly will not stop in time for you. The entire responsibility for a safe crossing at a [[term:railway-crossing|railway level crossing]] rests on the driver approaching it.\n\n# Slow down well in advance\nThe law requires you to slow down even before you can see the crossing itself: every driver approaching a crossing must slow down enough to be able to stop before the tracks, and must take every step to cross it without delay and without incident — even if at that moment the barrier is open and no warning signal is active (regulation 55).\n\n# When you must stop\nYou must stop before the stop line, and if there is no stop line — before the nearest barrier, and if there is no barrier — at least {{fact:rail.stop_distance_min_m}} before the nearest rail, in any of the following situations (regulation 56(a)):\n- an approaching train can be seen, heard, or is sounding a warning signal\n- a sign requiring you to stop is placed before the crossing\n- a warning signal that a train is approaching is given — by flag, by a flashing red light, or in any other way\n- the barrier is blocking the road, or has started moving to close or open\n\nYou may continue driving only after the barrier has opened or the warning signal has stopped, and if there is no barrier or signal — only after the train has passed.\n\n:::warn More than one track\nSign [[sign:133]] marks a crossing with a single track only; sign [[sign:134]] marks a crossing with two or more tracks. At a crossing with several tracks, after one train has passed another train may be arriving from a different direction, on the second track — do not continue until you have made sure that all the tracks are clear.\n:::\n\n[[fig:sr-railway-crossing]]\n\n# At a stop sign\nWhen you stop because of a sign requiring you to stop (and not because of a visible train or a barrier), there is an extra procedure: turn off the radio or any audio system, open the nearest window (and on a bus — also the front door), and listen and look both ways along the tracks before continuing (regulation 56(b)).\n\n# Buses and large passenger vehicles\nA bus or a vehicle carrying 11 passengers or more may not cross a level crossing unless the road leading to it is paved with asphalt or concrete for at least {{fact:rail.bus_paved_approach_m}} from the nearest rail (regulation 57) — so the vehicle does not get stuck on the tracks because of mud or gravel.\n\n# Stuck on the tracks\nIf the vehicle stalls or gets stuck on the tracks, there is no time to try to fix the fault on the spot.\n\n:::danger\nGet out of the vehicle immediately, moving away from the tracks, and move away diagonally — not just to the side. If there is an emergency phone near the crossing, use it to call for help. Contact the police or the rail company, and only then try to move the vehicle, if there is time and it is safe to do so.\n:::\n\n# Stopping and parking near the crossing\nYou may not stop, stand or park a vehicle within {{fact:park.no_stop.railway_crossing_m}} before the nearest rail and after it (regulation 72(a)(8)) — even when no train is in sight.",
+   "keyPoints": [
+    "Slow down before a crossing enough to be able to stop, even without an active warning signal (reg. 55).",
+    "You must stop before a stop line/barrier, and if there is none — at least {{fact:rail.stop_distance_min_m}} before the rail — when a train can be seen/heard, there is a stop sign, a warning signal is given, or the barrier is moving.",
+    "At a crossing with more than one track (sign 134), after one train passes, a second may be arriving on another track.",
+    "At a stop sign: turn off the radio, open a window, listen and look both ways (reg. 56(b)).",
+    "A bus or a vehicle with 11 passengers or more needs a paved approach of at least {{fact:rail.bus_paved_approach_m}} (reg. 57).",
+    "Stuck on the tracks: get out immediately, move away diagonally clear of the tracks, and call for help."
+   ]
+  },
+  {
+   "id": "sr-tunnels",
+   "title": "Tunnels and bridges",
+   "summary": "In a tunnel you turn on your lights, you do not overtake and you do not stop — and if a breakdown happens, you get out and walk to safety.",
+   "terms": [
+    "tunnel"
+   ],
+   "signs": [
+    "138"
+   ],
+   "body": "A [[term:tunnel|tunnel]] or a bridge changes the normal driving rules: visibility is different, there is no wide shoulder to stop on, and sometimes there is no mobile-phone signal.\n\n# Limited height\nSign [[sign:113|Height obstacle]] warns of a passage lower than 4.80 metres. The driver of a tall vehicle — a truck carrying a container, a double-decker bus, or a vehicle carrying equipment on the roof — must check in advance that the vehicle's height with its load fits the passage, before reaching it, not at the last moment. A vehicle that gets stuck under a bridge that is too low can cause serious damage to the vehicle and the structure, and block the road for many hours.\n\n# Mandatory lights\nIn a tunnel with a sign at the entrance reading \"Tunnel, switch on lights\", you must drive with your front and rear lights on — even by day and in the middle of summer (regulation 97(e)). This is true even if it is bright sunshine outside: inside it is significantly darker for an eye that has just come in from the light, and other vehicles also need to notice you, especially near the exit, where the outside light \"swallows\" your lights.\n\n# No stopping or parking\nYou may not stop, stand or park a vehicle inside a tunnel or on a bridge, or within {{fact:park.no_stop.bridge_tunnel_m}} before and after them (regulation 72(a)(11)) — even with a minor fault, it is better to continue to the exit or to a marked emergency bay, if it is safe to do so.\n\n# Overtaking, lane and gap\nOvertaking in a tunnel is forbidden — this is one of the standard places on the list of no-overtaking locations, covered in full in the [[chapter:lanes-overtaking|lanes, turns and overtaking]] chapter. The reason is simple: there is no shoulder to manoeuvre on if something goes wrong, and the oncoming lane is especially close. Stay in your lane, do not change lanes without a real need, and it is worth slightly increasing your gap from the vehicle in front: visibility is more limited, and leaving the tunnel into strong light causes a moment of glare until your eyes adjust. For more on a safe following gap, see [[lesson:sd-following|Keeping a safe distance from the vehicle in front]].\n\n:::note\nIn long tunnels, signs sometimes display a recommended radio frequency for traffic updates. If something happens further along the tunnel, it helps to be tuned in to it.\n:::\n\nBefore entering a tunnel, check in advance that the lane you are in is the lane you want to be in — sometimes the number of lanes narrows right before the entrance, and it is better to merge early and calmly than at the last moment at the entrance itself.\n\n# Breakdown or fire in a tunnel\n:::danger\nIf it is safe to do so, continue to the exit or to a marked emergency bay before stopping. If you must stop inside the tunnel — turn on the hazard lights, get out on the side away from the traffic if you can, and move to the area marked for pedestrians or to an emergency exit; many tunnels are equipped with emergency niches and emergency phones along their length. In a fire — never go back to the vehicle. Full detail on breakdowns and fires on the road and in vehicles is in the [[chapter:breakdowns|Breakdowns and vehicle emergencies]] and [[chapter:accidents-emergencies|Accidents and emergencies]] chapters.\n:::",
+   "keyPoints": [
+    "The \"Height obstacle\" sign (113) warns of a passage lower than 4.80 metres — a tall vehicle must check in advance that it fits.",
+    "A tunnel with a \"switch on lights\" sign — front and rear lights must be on, even in daylight (reg. 97(e)).",
+    "You may not stop, stand or park in a tunnel or on a bridge, or within {{fact:park.no_stop.bridge_tunnel_m}} before and after them.",
+    "Overtaking in a tunnel is always forbidden; keep your lane and a larger gap because of limited visibility and glare at the exit.",
+    "Breakdown in a tunnel: continue to the exit or an emergency bay if it is safe, use the emergency niches and phones, and never go back to the vehicle in a fire."
+   ]
+  },
+  {
+   "id": "sr-transit",
+   "title": "Public-transport lanes, stops and taxis",
+   "summary": "Who may drive in a public-transport lane, when, and what is allowed near a bus stop or a taxi stand.",
+   "terms": [
+    "bus-lane-marking"
+   ],
+   "signs": [
+    "501",
+    "503",
+    "505",
+    "507",
+    "509"
+   ],
+   "body": "Public-transport lanes exist to give buses an advantage over congestion — so the law protects them strictly.\n\n# Who may drive in a public-transport lane\nSign [[sign:501]] sets out which vehicles are allowed on the marked road, lane or shoulder — for example a bus, a taxi, or a vehicle with a minimum number of occupants, such as a carpool of two or three — and on which days and hours; usually this means peak hours only, and at other times the lane is open to everyone. A [[term:bus-lane-marking|public-transport lane marking]] on the road (sign 503, and the combined double line with diamonds — 504) marks that in this section the lane is for public transport only. Driving in a lane not designated for your type of vehicle is an offence: {{fine:bus-lane-designated-lane}} — for a rider of a non-motorised vehicle or a pedestrian who enters by mistake, the fine is reduced, and the same applies to a cyclist or an electric scooter rider.\n\n:::remember\nCrossing a double public-transport-lane line is allowed only for an authorised vehicle, or when turning at the nearest junction following the yellow arrows on the road (sign 514).\n:::\n\nIn most large cities, public-transport lanes are also monitored by enforcement cameras, not just by police on the ground — entering the lane \"for a moment\" to get around a jam is recorded exactly like driving in it for a long stretch.\n\n# Bus stop\nBeside a [[sign:505|Bus stop]] sign, stopping, standing and parking are forbidden within {{fact:park.no_stop.bus_stop_m}} before it and after it, when there is no other marking on the road (regulation 72(a)(12)) — except for a bus at the stop itself.\n\n# Taxi stands and stopping points\nSign [[sign:507]] marks a taxi stand: stopping or parking by any other vehicle is forbidden there, except to set down passengers. Sign [[sign:509]] marks a stopping point for a single taxi, for pick-up or set-down only, and stopping by another vehicle is forbidden within {{fact:park.no_stop.taxi_stand_single_m}} before and after it. An additional sign (439) can restrict the spot to specific licence-plate numbers.\n\n# Soldier-transport stop\nBeside a \"soldier-transport stop\" sign, stopping is forbidden, except to pick up or set down soldiers, within {{fact:park.no_stop.soldier_transport_m}} before it and after it.\n\n# Stopping bays marked by the kerb\nWhen the kerb is painted red-and-yellow, stopping is allowed only for the type of vehicle permitted by the sign above it — to pick up and set down passengers only, not to park.\n\n# Light rail and local trains\nSign [[sign:506|Local train stop]] marks a stopping point for a local train along the marked platform, and stopping or parking is forbidden within {{fact:park.no_stop.train_station_platform_m}} before it and after it, when there is no other marking. Light-rail tracks sometimes run within the road itself, alongside ordinary traffic or in a lane separated by traffic islands, with their own dedicated traffic lights; detail on the light system and priorities at a junction with such tracks is in the [[chapter:markings-signals|Road markings, traffic lights and signals]] chapter. Crossing or driving on a light-rail track outside the crossing designated for it is forbidden, exactly like driving in a public-transport lane without authorisation.",
+   "keyPoints": [
+    "Sign 501 sets out who may use the public-transport lane and when, usually peak hours only; driving in it without authorisation: {{fine:bus-lane-designated-lane}}.",
+    "You may not stop, stand or park within {{fact:park.no_stop.bus_stop_m}} before and after a bus stop sign, when there is no other marking.",
+    "A taxi stand (507) is forbidden to every vehicle except to set down passengers; a single stopping point (509) is forbidden within {{fact:park.no_stop.taxi_stand_single_m}} before and after it.",
+    "A red-and-yellow kerb permits only a short stop, for the permitted type of vehicle.",
+    "Stopping and parking are forbidden within {{fact:park.no_stop.train_station_platform_m}} before and after a local train stop."
+   ]
+  },
+  {
+   "id": "sr-roadworks",
+   "title": "Road work sites",
+   "summary": "At a work site, the temporary orange marking overrides the permanent one — how to read it and how to drive past it.",
+   "signs": [
+    "901",
+    "902",
+    "929",
+    "933",
+    "934"
+   ],
+   "body": "A road work site changes the rules of the game for a limited time: temporary orange signs and markings override the permanent white ones.\n\n# Start and end\nSign [[sign:901]] opens the site; its instructions apply until sign [[sign:902]]. If there is an orange marking on the road, follow it, not the white lines underneath it.\n\n# Orange warning and guidance signs\nInside the site, dedicated signs may appear: a sharp bend or a tight junction at a work site, \"road narrows\", \"two-way traffic\", a change in the number of lanes, or a temporary traffic diversion. Small plates under another sign add a distance within the work site or the length of the section the sign applies to. The speed limit within the site is usually set by a separate temporary sign, lower than the normal speed on that stretch — that sign is what applies, not the road's \"normal\" speed.\n\n# Orange road markings\nAn orange dashed line marks a driving lane; a double solid orange line forbids crossing; an orange line of rectangles marks a dedicated lane for turning, accelerating or merging. Orange arrows on the road show which direction to enter the junction. When there is a conflict between an orange marking and a permanent one, the orange one wins, because it is temporary and relevant right now.\n\n# Barriers, cones and guide posts\nThe [[sign:929|Barrier]] sign shows that the road is completely blocked — continue only if a direction sign shows where to go. A mobile flashing board ([[sign:933]]) is used for signalling and warning; a \"road closed\" board ([[sign:934]]) announces a full closure. Cones and guide posts mark the boundaries of the site — you must not drive over an obstacle marked with a cone.\n\n# Workers on the road\nAnyone actually working on repairing or improving the road, within the work area only and taking every precaution, is exempt from some of the normal rules — including the rules on stopping, standing and parking (regulation 167). This is why a works vehicle or a worker may be found at points where an ordinary vehicle would not be allowed. Even so, the person in charge of the repair must fence and mark the work site as the signage authority has instructed (regulation 152(d)).\n\n:::tip\nWhen there is a flagger or a police officer at the work site, their instructions override every sign and marking — exactly as at an ordinary junction.\n:::\n\n# How to drive past it\nSlow down in advance, leave a larger gap, do not overtake inside the site unless it is marked as allowed, and watch for workers close to the lane. Road markings can change from day to day as the work progresses — it is worth treating every work site as an unfamiliar stretch, even if you drove through it yesterday.\n\nAt night, a work site is marked with flashing lamps and sometimes extra temporary lighting, so that it can be seen from far away. Workers at the site wear high-visibility gear, just like the safety vest a driver must wear when stopping outside town — detailed in the [[chapter:stopping-parking|Stopping, standing and parking]] chapter. Even when the site is empty of workers at a particular hour, the temporary markings still fully apply.",
+   "keyPoints": [
+    "A work site begins at sign 901 and ends at sign 902; orange marking always overrides the permanent one.",
+    "A double solid orange line forbids crossing; an orange dashed line marks a driving lane; orange arrows guide you into the junction.",
+    "Barrier (929) = the road is completely blocked; flashing board (933) for signalling; \"road closed\" (934) for a full closure.",
+    "Workers in the work area itself, taking the required care, are exempt from some of the normal stopping/standing/parking rules (reg. 167) — but a flagger or a police officer always overrides the signs.",
+    "The marking at a work site can change from day to day — do not rely on what you remember from a previous drive."
+   ]
+  },
+  {
+   "id": "sr-residential",
+   "title": "Shared streets, traffic-calmed zones and cycle paths",
+   "summary": "Shared streets, traffic-calmed zones and cycle paths — how to recognise them and how to drive in them.",
+   "terms": [
+    "mixed-street",
+    "traffic-calming-area"
+   ],
+   "signs": [
+    "220",
+    "222",
+    "227"
+   ],
+   "body": "In residential neighbourhoods and town centres, the road is shared by far more than vehicles — so it has its own rules.\n\n# Shared street\nSign [[sign:220]] marks a [[term:mixed-street|shared street]]: pedestrians, children playing and vehicles share the same road, with no separation between pavement and carriageway. Usually there is no distinct kerb between the areas, and sometimes there is a different paving design or planters and chicanes that force slow driving. Drive very slowly and give pedestrians absolute priority — the maximum speed is {{fact:speed.traffic_calming}}. Sign [[sign:221]] marks the end of the shared street.\n\n# Traffic-calmed zone\nSign [[sign:222]] marks the entrance to a [[term:traffic-calming-area|traffic-calmed zone]], where the maximum speed is {{fact:speed.traffic_calming}} throughout the zone — not just on one street, for as long as you have not left through sign 223. A zone like this also usually has [[term:speed-bump|speed bumps]], raised junctions, artificial narrowings in the road and gentle chicanes — all designed to force slow driving without needing constant monitoring. Sign [[sign:223]] marks the exit from the zone.\n\n# Cycle paths\nSign [[sign:227]] marks a [[term:path|path]] meant for cycle traffic — including electric bicycles and skateboards. You must not drive a motor vehicle on a marked cycle path, and you must also not stop, stand or park a vehicle on it, unless doing so does not obstruct cycle traffic. Some paths are two-way, so a rider may come from a direction you did not expect, and sometimes the path crosses an ordinary road with no traffic light — attention is needed both ways before any such crossing. Full detail on the rights and duties of cyclists and scooter riders is in the [[chapter:vulnerable-users|Vulnerable road users]] chapter.\n\n# School zones\nNear schools, shared-street or traffic-calming signs are sometimes combined with unpredictable behaviour by children, mainly at arrival and dismissal times. Temporary signs, active only during those hours, are also sometimes placed there, adding restrictions beyond what is normally set for that road. The special rules on children, pedestrian crossings near schools and school transport are detailed in the [[chapter:vulnerable-users|Vulnerable road users]] chapter.\n\n:::tip\nOn a shared street and in a traffic-calmed zone, the safe assumption is that a child can step out from any direction at any moment — not only from a marked crossing, and not only from the direction they came from before.\n:::\n\nThe low speed set for these areas is not arbitrary: a pedestrian's chance of surviving being hit by a vehicle drops sharply as the impact speed rises, as covered in the speed chapter — see [[lesson:sd-energy|Speed and impact severity]]. In an area where pedestrians and children playing share the road with vehicles, the difference between a low speed and a high one is the difference between a minor accident and a tragedy.",
+   "keyPoints": [
+    "Shared street (220): pedestrians and vehicles share one road, with no separate pavement; maximum speed {{fact:speed.traffic_calming}}.",
+    "Traffic-calmed zone (222): maximum speed {{fact:speed.traffic_calming}} throughout the zone, with speed bumps, raised junctions and chicanes.",
+    "Cycle path (227): a motor vehicle must not drive or park on it, unless doing so does not obstruct cyclists; some paths are two-way.",
+    "Near schools, watch for unpredictable children, even away from a marked crossing."
+   ]
+  },
+  {
+   "id": "sr-terrain",
+   "title": "Mountain roads, dirt tracks and desert",
+   "summary": "Long descents, winding roads and desert dirt tracks — and why you must never drive into flowing water in a wadi.",
+   "terms": [
+    "engine-brake",
+    "brake-fade",
+    "flash-flood"
+   ],
+   "signs": [
+    "106",
+    "140",
+    "142",
+    "146",
+    "152"
+   ],
+   "body": "Mountain roads and desert tracks do not behave like a flat urban road — they require planning ahead, not just reacting.\n\n# Winding roads\nSign [[sign:106]] warns of a winding road with a series of bends. The basic rule on speed before and within a bend was already covered in the speed chapter: [[lesson:sd-safe-speed|Reasonable speed: the duty above every number]]. On a mountain road, add to that attention to a vehicle coming the other way on the bend — sometimes it is in your lane without you seeing it until the last moment. On a particularly narrow mountain road with a blind bend, a short horn signal before entering it can warn a vehicle approaching from the opposite direction.\n\n# Long, steep descents\nSign [[sign:140]] warns of a steep descent. Before entering a long descent, shift down to a low gear and use [[term:engine-brake|the engine brake]] — the engine's natural resistance — so that the ordinary brakes do not have to brake continuously.\n\n:::danger\nNever continue down a descent in neutral, and never turn off the engine — this cancels out the engine brake, and sometimes the brake booster and power steering as well. If the engine is off or in neutral, all the braking falls on the brakes alone.\n:::\n\nProlonged braking on a descent heats up the brakes and can cause [[term:brake-fade|brake fade]] — a temporary drop in their effectiveness. If the brakes start to feel \"soft\" or less effective, shift down another gear and stop in a safe place as soon as you can, to let them cool. More technical detail on brakes and on the engine brake is in the [[chapter:brakes|Braking system]] and [[chapter:drivetrain|Powertrain]] chapters.\n\n# Dirt tracks and desert\nOn a dirt track, grip is lower, dust reduces visibility for anyone driving behind you, and stones can roll onto the road — sign [[sign:142]] warns of this. Drive more slowly, keep a larger gap, and watch for stray animals (sign [[sign:146]]) — detail on how to behave around them is in the [[chapter:vulnerable-users|Vulnerable road users]] chapter. In a strong crosswind, marked by sign [[sign:152]], hold the wheel firmly — the danger is greater for a tall vehicle and for a motorcycle. On a remote route, it is also worth checking the weather and the route in advance, and making sure someone knows where you are going — some of these roads have no mobile-phone signal.\n\n:::note\nDust and haze that harm visibility are covered in detail in the [[chapter:visibility-weather|Lighting, visibility and weather]] chapter; here the focus is the road and the surface itself, not the weather above it.\n:::\n\n# Flash floods in a wadi\nA [[term:flash-flood|flash flood]] can come down a stream bed or a wadi even when the sky above the road is completely clear — the rain fell far away, higher up the catchment.\n\n:::danger\nNever drive the vehicle into flowing water on the road, even if it looks shallow. A current that is not especially strong is enough to sweep a vehicle off the road. If the road is flooded, or there is signage or a closure barrier because of a flash flood, take an alternative route and wait.\n:::",
+   "keyPoints": [
+    "On mountain bends, keep a reasonable speed and expect a vehicle to cross into your lane.",
+    "On a long descent: low gear and the engine brake, never neutral or the engine off.",
+    "Brakes that lose effectiveness on a descent = brake fade — shift down and stop to let them cool.",
+    "On dirt tracks and in the desert: lower speed, a larger gap, care around dust, rolling stones and animals.",
+    "Never drive the vehicle into flowing water in a wadi — even water that looks shallow can sweep a vehicle away."
+   ]
+  }
+ ]
+}

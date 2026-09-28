@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hyper Driving</title>
+<meta name="description" content="לימוד התאוריה לנהיגה: חוקי התנועה, תמרורים, נהיגה נכונה והכרת הרכב — לרכב פרטי, אופנוע, רכב כבד ואוטובוס. Driving theory, road signs and vehicle knowledge, in Hebrew and English.">
+<meta name="theme-color" content="#0c1018">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="pwa.json">
+<link rel="stylesheet" href="css/drive.css">
+<script>
+  // language, direction and theme before the first paint (no flash of the wrong layout)
+  try {
+    var s = JSON.parse(localStorage.getItem('drive:settings') || '{}');
+    var t = s.theme || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+    if (s.lang === 'en') { document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'; }
+    if (s.fontScale) document.documentElement.style.setProperty('--fs', s.fontScale);
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<div id="app"><p style="padding:2em;text-align:center;color:#888">טוען… · Loading…</p></div>
+<noscript><p style="padding:2em">האפליקציה צריכה JavaScript · This app needs JavaScript.</p></noscript>
+
+<script src="js/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/content.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/glyphs.js"></script>
+<script src="js/signs.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/markup.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/update.js"></script>
+<script src="js/check.js"></script>
+<script src="js/views.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/app.js"></script>
+<script>Drive.app.start();</script>
+</body>
+</html>

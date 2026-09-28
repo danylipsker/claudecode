@@ -1,0 +1,102 @@
+{
+ "chapter": "human-factor",
+ "title": "The driver: the human factor",
+ "summary": "The car doesn’t make mistakes - the driver does. How fatigue, distraction, alcohol, drugs and emotions harm your ability to drive safely.",
+ "lessons": [
+  {
+   "id": "hf-perception",
+   "title": "Seeing and noticing: how a driver perceives danger",
+   "summary": "Having your eyes open doesn’t always mean you’re seeing. What field of view is, and why you can look straight at a hazard and still miss it.",
+   "terms": [
+    "field-of-view",
+    "hazard-perception",
+    "inattentional-blindness"
+   ],
+   "body": "Driving is mostly a visual task: almost all the information a driver needs comes through the eyes. But the eyes alone are not enough - you also need to know **where to look** and **what to notice**.\n\n# Field of view\nYour [[term:field-of-view|field of view]] has two parts: a narrow, sharp central zone where you see detail clearly, and a much wider but blurred peripheral zone that mainly picks up movement. At high speed the central field of view **narrows** - the driver tends to focus far ahead and loses sensitivity to what is happening at the sides. This is one reason it is easy, on a fast road, to miss a vehicle approaching from the side or a pedestrian crossing at the edge of the road.\n\n# Hazard perception\n[[term:hazard-perception|Hazard perception]] is the skill of spotting early not only what is already dangerous, but what **might** become dangerous: a ball rolling into the road warns of a child who may run after it; a parked car’s door with a driver inside might open; a bus stopping at a stop might hide a pedestrian crossing in front of it. An experienced driver scans the road all the time and keeps asking themselves “what if” - not only “what is happening now”. The practical technique for scanning and keeping a reaction gap is taught in the chapter [[chapter:defensive-driving|Proper driving and defensive driving]].\n\n# Why you can look and still not see\n:::warn Inattentional blindness\n[[term:inattentional-blindness|Inattentional blindness]] is a phenomenon in which the brain, absorbed in a thought, a conversation or a screen, completely misses something obvious right in front of the eyes - even while the gaze is physically pointed at it. This is why you cannot “make up” for distraction just by keeping your eyes on the road: it is the brain, not the eyes, that has to process what is seen, and a busy brain misses things.\n:::\n\nFactors that reduce hazard perception in practice: driving too fast for the conditions (less time to process information), fatigue, distraction, little driving experience, and also routine - an experienced driver on a familiar trip “sees” less, because they rely on memory instead of on the road in front of them right now.\n\n:::tip Rule of thumb\nBefore continuing through a junction, a crossing or any uncertain situation, ask yourself: “What is the most dangerous thing that could happen here right now, and from where?”\n:::",
+   "keyPoints": [
+    "Field of view has a sharp central zone and a wide but blurred peripheral zone; at high speed it narrows.",
+    "Hazard perception means seeing not just the hazard itself, but the signs that warn of it.",
+    "Inattentional blindness makes you miss things even when your eyes are pointed at them - because it’s the brain, not the eye, that has to process what you see.",
+    "High speed, fatigue, distraction and lack of experience all reduce your ability to spot a hazard in time."
+   ]
+  },
+  {
+   "id": "hf-fatigue",
+   "title": "Fatigue and microsleep",
+   "summary": "Fatigue impairs driving just like alcohol does - and only one thing fixes it: sleep.",
+   "terms": [
+    "fatigue",
+    "micro-sleep"
+   ],
+   "body": "[[term:fatigue|Fatigue]] is not something “you’ll feel when it arrives”. It narrows your field of view, lengthens your reaction time, impairs judgement and patience - and all of this happens gradually, so a tired driver is usually the last one to notice how far their condition has slipped.\n\n# The signs\nHeavy eyes or repeated yawning, trouble focusing your gaze, “waking up” and suddenly not remembering the last kilometre, a slight drift within the lane, unintentional slowing down or speeding up, and missing familiar signs or exits - all of these are warning signs that mean you must stop driving, not “try to hold on a bit longer”.\n\n:::danger Microsleep\n[[term:micro-sleep|Microsleep]] is falling asleep for just a few seconds, without the driver noticing - sometimes even with the eyes open. On an intercity road, a few seconds of microsleep are enough to cover tens of metres with no control at all. Most drivers who fell asleep at the wheel don’t remember falling asleep at all.\n:::\n\n# When the risk is highest\nDuring the body’s natural low points - the small hours of the morning and the early afternoon - and also after accumulated lack of sleep (for example after a night shift, a long weekend drive, or a late night out). A young driver driving after a long day of school or work, or after a Friday night out, is in exactly that combination.\n\n# What works and what doesn’t\n:::tip What actually helps\n- **Stop and sleep** - even a short 15–20 minute stop helps temporarily.\n- Plan long trips with regular breaks, and don’t drive alone at night after a full day.\n- Share the driving with someone else when you can.\n:::\n\n:::warn What doesn’t help in the long run\nLoud music, an open window, caffeine - all of these can push off the critical moment by a few minutes, but they don’t get rid of real fatigue. A driver who relies on them to “hold on” until the destination, instead of stopping, is gambling with their own life and other people’s.\n:::",
+   "keyPoints": [
+    "Fatigue narrows your field of view, lengthens your reaction time and impairs judgement - gradually, without the driver always noticing.",
+    "Microsleep is falling asleep for a few seconds, sometimes with eyes open, and most drivers don’t remember it.",
+    "The highest risk: the body’s natural low points (early morning, early afternoon) and after accumulated lack of sleep.",
+    "The only real solution is to stop and sleep; music, an open window and caffeine only delay the problem, they don’t solve it."
+   ]
+  },
+  {
+   "id": "hf-distraction",
+   "title": "Distraction: when your eyes are on the road but your mind isn’t",
+   "summary": "Phone, screen, food, passengers - anything that steals attention from the road. And why even hands-free doesn’t make it completely safe.",
+   "terms": [
+    "distraction",
+    "hands-free"
+   ],
+   "body": "[[term:distraction|Distraction]] is anything that pulls your attention away from the road - visual (looking somewhere else), manual (hands off the wheel) or cognitive (your mind busy with something else, even with your eyes forward). A combination of all three at once, like reading a text message, is the most dangerous.\n\n# The phone\n:::law\nWhile the vehicle is moving, you must not hold a mobile or fixed phone, and must not use one except through a [[term:hands-free|hands-free device]]; you must not send or read a text message (Traffic Regulations, reg. 28(b)). You may only take one hand off the wheel to perform an action needed for the vehicle’s operation or to signal (reg. 28(a)).\n:::\n\n:::fine\nDriving while holding or using a phone without a hands-free device: {{fine:phone-handheld}} and {{points:phone-handheld}} points.\n:::\n\n:::tech Why even hands-free doesn’t “solve” the problem\nA hands-free device removes the manual distraction, but not the cognitive one: a conversation that requires thinking - arguing, planning, remembering - takes up part of the brain’s attention capacity, exactly as explained in the previous chapter about [[lesson:hf-perception|inattentional blindness]]. So a long, complex hands-free conversation still increases risk, even though it is legal.\n:::\n\n# Screens and displays\nYou must not operate, while driving, a display visible from the driver’s seat, except a control or navigation display (reg. 28A). Even a legal navigation display is worth checking before setting off, not while driving - entering a new address can cost a few precious seconds.\n\n:::remember\nSomeone who glances sideways for about 2 seconds, driving at {{fact:speed.urban}} in the city, covers about 28 metres - almost the length of a whole basketball court - without seeing anything happening ahead at all.\n:::\n\n# Headphones and other sources of distraction\nYou must not drive with headphones connected to a playback device, except a medical hearing aid (reg. 169) - they also block warning sounds like a horn or an emergency siren. Eating, applying makeup, searching in a bag, and dealing with children or pets in the car are “classic” distractions - anything you can do before setting off or after stopping, do then, not while driving.",
+   "keyPoints": [
+    "Distraction can be visual, manual or cognitive - and the most dangerous is a combination of all three, like writing a text message.",
+    "You must not hold a phone while driving; only a hands-free device is allowed, and you must not send or read a text message (reg. 28(b)) - {{fine:phone-handheld}} and {{points:phone-handheld}} points.",
+    "Even a hands-free device doesn’t remove the cognitive distraction of a complex conversation.",
+    "A 2-second glance sideways at {{fact:speed.urban}} equals about 28 metres of driving in total blindness."
+   ]
+  },
+  {
+   "id": "hf-alcohol",
+   "title": "Alcohol: there’s no safe amount",
+   "summary": "Any amount of alcohol impairs your driving ability - the legal limit is an enforcement threshold, not a recommendation.",
+   "terms": [
+    "drunk-driving",
+    "breath-test"
+   ],
+   "body": "Alcohol impairs exactly what safe driving requires: reaction time, judging distances and speeds, concentration, coordination - and, especially dangerously, your sense of self-confidence. A drunk driver rates themselves as more capable exactly when they are less capable.\n\n:::danger No safe amount\nImpairment to driving ability begins from the first sip, long before you reach the legal threshold. The legal threshold is the limit from which the law enforces and punishes - it is **not** an assurance that everything below it is safe. The only way to be safe: don’t drink at all if you’re driving afterwards.\n:::\n\n# The legal limits\n[[term:drunk-driving|Drunk driving]] is defined by the alcohol concentration in the body: for a regular driver - {{fact:alcohol.general.breath}} in exhaled breath or {{fact:alcohol.general.blood}} in blood. A much stricter threshold applies to **a new driver, a driver under {{fact:alcohol.strict.age}}, a driver of a commercial or work vehicle over {{fact:alcohol.strict.weight_threshold}}, and a driver of a public vehicle**: only {{fact:alcohol.strict.breath}} in exhaled breath or {{fact:alcohol.strict.blood}} in blood (Traffic Ordinance, section 64B). In practice this is close to zero - almost any drinking crosses the strict threshold.\n\n:::law\nDrinking an intoxicating beverage **while actually driving**, or while someone is acting as “person in charge of the vehicle” (a new driver’s accompanying driver, or a driving instructor during a lesson) - is forbidden in any amount, and counts as “drunk” from the drinking itself (section 64B(a)).\n:::\n\n# How it’s checked\nA police officer may require a [[term:breath-test|breath test]] even without suspecting an offence. If the result exceeds the threshold, there is a **presumption** that this concentration was in the driver’s body also during the {{fact:alcohol.presumption_hours}} hours before the test, unless proven otherwise. An officer may detain a person who is not a suspect for a sobriety test for up to {{fact:alcohol.detention_non_suspect}}.\n\n:::fine\nDrunk driving (alcohol or drugs): a summons offence, {{points:dui-alcohol-drugs}} points and a court-ordered licence disqualification. **Refusing** to be tested - a separate offence, just as serious, {{points:refuse-sobriety-test}} points; there’s no point “saving yourself” by refusing.\n:::\n\n# How long it takes to leave the body\nThe liver breaks down alcohol at a relatively slow, steady rate that cannot be sped up - not with black coffee, not with a cold shower and not with an hour of sleep. As a rough average, breaking down the amount in one standard drink takes about an hour, but this varies from person to person. The practical meaning: someone who drank a lot in the evening may still be above the legal threshold - and even legally drunk - **the next morning**.",
+   "keyPoints": [
+    "Impairment to driving ability begins from the first sip - there’s no safe amount, and the only safe way is not to drink if you’re driving.",
+    "Regular threshold: {{fact:alcohol.general.breath}} breath / {{fact:alcohol.general.blood}} blood. Strict threshold, close to zero, for a new driver, under {{fact:alcohol.strict.age}}, a heavy-vehicle or public-vehicle driver over {{fact:alcohol.strict.weight_threshold}}: {{fact:alcohol.strict.breath}} breath / {{fact:alcohol.strict.blood}} blood.",
+    "Drinking while actually driving, or as an accompanying driver/driving instructor, is forbidden in any amount.",
+    "Presumption: a measured concentration is also attributed to the {{fact:alcohol.presumption_hours}} hours before. Refusing a test is as serious as drunkenness itself.",
+    "The liver breaks down alcohol slowly and steadily - nothing “sobers you up” fast, and last night’s concentration can still be there in the morning."
+   ]
+  },
+  {
+   "id": "hf-drugs",
+   "title": "Drugs and medicines that affect driving",
+   "summary": "Not only illegal drugs: completely legal medicines can also make driving dangerous.",
+   "terms": [],
+   "body": "The law does not distinguish “illegal drug” by good or bad intent: anyone with a dangerous drug or its breakdown products in their body, or anyone under the influence of such a drug, is considered “drunk” for all purposes - exactly like someone who crossed the alcohol threshold (Traffic Ordinance, section 64B(a)). This includes cannabis (even for medical use), and also a wide range of prescription and over-the-counter medicines that affect alertness.\n\n# Medicines worth being wary of\n- **Sleeping pills and sedatives** - leave a feeling of “fog” even the next morning.\n- **Antihistamines** for allergies and colds (mainly the older generation) - cause drowsiness.\n- Certain **strong painkillers** and medicines for anxiety or depression - may slow reaction time or impair concentration.\n- Combining several medicines together, or a medicine with alcohol - the effect can be significantly stronger than each one alone.\n\n:::warn Read the leaflet\nEvery prescription and over-the-counter medicine has a patient information leaflet. If it contains a warning about driving, operating machinery, or “may cause drowsiness” - that is not a general comment, it was written specifically for you. If you’re not sure - ask the pharmacist or doctor **before** you drive, don’t guess.\n:::\n\n# What to do\n:::tip\nWhen starting a new medicine, or after a dose change, it’s best not to drive until you know how your body responds to it. If you feel “foggy”, “drowsy” or “not quite here” - don’t drive, even if the medicine is completely legal and taken as directed.\n:::\n\nAs with alcohol, there’s no simple rule of thumb here like “an hour after, it’s fine” - the effect depends on the medicine, the dose and each person’s body. The only safe rule: check in advance, and when in doubt, don’t drive.",
+   "keyPoints": [
+    "Anyone with a dangerous drug in their body, or under the influence of a medicine that impairs alertness, is considered “drunk” by law, exactly like exceeding the alcohol threshold.",
+    "Sleeping pills, sedatives, older antihistamines and strong painkillers can impair alertness and reflexes.",
+    "A patient leaflet that warns against driving was written specifically for this situation - read it, and when in doubt, ask a pharmacist or doctor.",
+    "When starting a new medicine, it’s best to avoid driving until you know how your body responds."
+   ]
+  },
+  {
+   "id": "hf-emotions",
+   "title": "Emotions, stress and road rage",
+   "summary": "Anger and stress narrow your judgement just like fatigue does - and a young driver is sometimes more confident in their ability than they should be.",
+   "terms": [
+    "road-rage"
+   ],
+   "body": "Driving is not only a technical skill - it’s also emotional management. Anger, time pressure, frustration or excitement affect decision-making exactly like fatigue does: they narrow your span of attention, increase the tendency to take risks, and weaken patience toward other drivers’ mistakes.\n\n# What it looks like on the road\nA stressed driver tends to speed up unnecessarily, tailgate the vehicle ahead, overtake in a dangerous spot “to save a minute”, or ignore road signs. These are all forms of reckless or negligent driving that endanger the public - an offence in itself, even without speeding (Traffic Ordinance, section 62(2)).\n\n:::danger Road rage\n[[term:road-rage|Road rage]] is an aggressive reaction toward another driver - prolonged honking, aggressive light-flashing, blocking a lane, “teaching a lesson” by braking, chasing, or a verbal or physical confrontation. This is not just an offence - it turns a vehicle into a dangerous weapon and increases the risk to everyone nearby, including the aggressive driver themselves.\n:::\n\n:::tip How not to get drawn in\n- Don’t “answer back” to a driver who behaves rudely - they don’t know who you are, and you don’t know who they are either.\n- Increase your distance and let them overtake or pull away.\n- Avoid eye contact and confrontation; if you feel threatened - drive to a public, lit place and call the police.\n- Remember: arriving a few seconds later is not worth any risk.\n:::\n\n# Overconfidence\nYoung and new drivers are at higher risk - not only because of inexperience, but also because their confidence in their own driving ability is usually higher than their actual ability. A combination of excitement, peer pressure from passengers the same age, and a wish to “prove” ability is a dangerous recipe. Details of the new-driver period and its restrictions are in the chapter [[chapter:licensing|Licensing, documents and new drivers]].",
+   "keyPoints": [
+    "Anger and stress impair judgement and patience exactly like fatigue, and increase the tendency to take risks.",
+    "Reckless or negligent driving that endangers the public is an offence - even without speeding (Ordinance, section 62(2)).",
+    "Road rage - honking, blocking, chasing, confrontation - is dangerous to everyone nearby, including the aggressive driver.",
+    "The safe way: don’t “answer back”, increase your distance, and avoid eye contact and confrontation.",
+    "Young drivers are at higher risk also because of confidence that exceeds their actual ability."
+   ]
+  }
+ ]
+}

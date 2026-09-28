@@ -1,0 +1,159 @@
+{
+ "trees": [
+  {
+   "id": "smoke-from-car",
+   "group": "General",
+   "title": "Smoke from the car",
+   "summary": "You see smoke from the exhaust, from under the bonnet, from a wheel, or from inside the cabin.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "Smoke from inside the cabin, a strong fuel smell, or smoke together with a burning smell of rubber or plastic — stop immediately, switch off the engine, and get out of the car with all the passengers.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "Where is the smoke coming from?",
+     "options": [
+      {
+       "label": "From the exhaust (tailpipe)",
+       "next": "n2"
+      },
+      {
+       "label": "From under the bonnet",
+       "next": "n5"
+      },
+      {
+       "label": "From around one of the wheels",
+       "next": "r-brake-smoke"
+      },
+      {
+       "label": "From inside the cabin — the dashboard or under the seats",
+       "next": "r-electrical-smoke"
+      }
+     ]
+    },
+    "n2": {
+     "q": "What colour is the exhaust smoke?",
+     "options": [
+      {
+       "label": "White and thin, on a cold morning, disappearing after a minute or two",
+       "next": "r-condensation-normal"
+      },
+      {
+       "label": "Thick white, continuing and sweetening the air",
+       "next": "r-white-coolant-smoke"
+      },
+      {
+       "label": "Bluish, mainly noticeable on acceleration",
+       "next": "r-blue-oil-smoke"
+      },
+      {
+       "label": "Black and thick",
+       "next": "r-black-fuel-smoke"
+      }
+     ]
+    },
+    "n5": {
+     "q": "What exactly do you see under the bonnet?",
+     "options": [
+      {
+       "label": "White vapour, not real smoke, together with rising engine temperature",
+       "next": "r-steam-redirect"
+      },
+      {
+       "label": "Smoke with a burning smell of rubber or electrics",
+       "next": "r-electrical-smoke"
+      },
+      {
+       "label": "Smoke with a strong fuel smell",
+       "next": "r-fuel-smoke-danger"
+      }
+     ]
+    },
+    "r-condensation-normal": {
+     "result": "Ordinary condensation — not smoke",
+     "severity": "ok",
+     "text": "Thin white vapour from the exhaust on a cold morning, which disappears after a minute or two of driving, is water condensed in the exhaust pipe — a completely ordinary occurrence in any car.",
+     "actions": [
+      "No action is needed."
+     ]
+    },
+    "r-white-coolant-smoke": {
+     "result": "Suspected coolant burning in the combustion chambers",
+     "severity": "stop",
+     "text": "Thick white smoke that continues even after the engine has warmed up, and sweetens the air, points to coolant getting into the combustion chambers — usually a damaged cylinder head gasket.",
+     "actions": [
+      "Stop in a safe place and switch off the engine.",
+      "Call for a tow; continuing to drive can destroy the engine.",
+      "For a further check: [[tree:engine-overheating|the engine is overheating]]."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-blue-oil-smoke": {
+     "result": "Suspected engine oil burning",
+     "severity": "soon",
+     "text": "Bluish smoke, mainly noticeable on acceleration or after the engine has been standing for a while, points to oil getting into the combustion chambers — usually worn piston rings or valve seals.",
+     "actions": [
+      "Check the oil level and top up if needed.",
+      "Go to a garage; the problem will only get worse over time, and will also increase oil consumption."
+     ],
+     "lesson": "eg-lubrication"
+    },
+    "r-black-fuel-smoke": {
+     "result": "Unburnt excess fuel",
+     "severity": "soon",
+     "text": "Thick black smoke points to a mixture that's too rich in fuel, usually because of a clogged air filter, a dirty fuel filter, or a sensor or injection fault.",
+     "actions": [
+      "Go to a garage — this also hurts fuel economy and can damage the catalytic converter.",
+      "Don't ignore it even if the car still drives normally."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-brake-smoke": {
+     "result": "A brake that has seized and overheated",
+     "severity": "stop",
+     "text": "Smoke from around a particular wheel, unrelated to the exhaust pipe, points to a brake pad that has stayed pressed against the disc and is rubbing continuously — generating extreme heat that could ignite.",
+     "actions": [
+      "Stop immediately in a safe place, without touching the hot wheel or disc.",
+      "Don't keep driving; call for a tow or roadside assistance."
+     ],
+     "lesson": "bk-wear"
+    },
+    "r-electrical-smoke": {
+     "result": "A dangerous electrical fault — a fire risk",
+     "severity": "stop",
+     "text": "Smoke from inside the cabin, from the dashboard or from under the seats, with a burning smell of rubber or plastic, is always an emergency — a wire or electrical component overheating.",
+     "actions": [
+      "Stop immediately, switch off the engine and the electrics, and get out of the car with all the passengers.",
+      "Move away from the car, and call Magen David Adom {{fact:emergency.mda}}, the police {{fact:emergency.police}} or the fire service {{fact:emergency.fire_and_rescue}} as needed."
+     ],
+     "lesson": "ts-electrical"
+    },
+    "r-fuel-smoke-danger": {
+     "result": "Suspected fuel leaking near hot parts — a fire risk",
+     "severity": "stop",
+     "text": "Smoke under the bonnet together with a strong fuel smell points to fuel leaking and coming into contact with a hot part — a real and immediate fire risk.",
+     "actions": [
+      "Stop immediately, switch off the engine, and get out of the car with all the passengers.",
+      "Don't open the bonnet yourself.",
+      "Move away and call the fire service: {{fact:emergency.fire_and_rescue}}."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-steam-redirect": {
+     "result": "Probably vapour, not smoke — suspected overheating",
+     "severity": "stop",
+     "text": "White vapour under the bonnet, together with rising temperature, is usually boiling coolant, not real smoke.",
+     "actions": [
+      "Go to the dedicated tree: [[tree:engine-overheating|the engine is overheating]].",
+      "Don't open any caps while the engine is hot."
+     ],
+     "lesson": "eg-cooling"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,215 @@
+{
+ "trees": [
+  {
+   "id": "warning-light-on",
+   "group": "Electrical",
+   "title": "A warning light has come on",
+   "summary": "A light has come on the dashboard and it's not clear what it means.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "safety": "A red light is always an urgent message; an amber light can usually wait for the garage soon. When in doubt, stop in a safe place and check the owner's manual.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "What colour is the light that has come on?",
+     "options": [
+      {
+       "label": "Red",
+       "next": "n2"
+      },
+      {
+       "label": "Amber or yellow",
+       "next": "n5"
+      },
+      {
+       "label": "Green or blue",
+       "next": "r-info-light"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Which symbol does the red light look most like?",
+     "options": [
+      {
+       "label": "An oil drop",
+       "next": "r-oil"
+      },
+      {
+       "label": "A rectangle with + and −, like a battery",
+       "next": "r-battery-dash"
+      },
+      {
+       "label": "A thermometer, or a wave inside fluid",
+       "next": "r-coolant-dash"
+      },
+      {
+       "label": "Round brackets with (!), or the letters BRAKE",
+       "next": "n3"
+      },
+      {
+       "label": "A person figure wearing a seatbelt",
+       "next": "r-seatbelt-dash"
+      }
+     ]
+    },
+    "n3": {
+     "q": "Is the parking brake fully released?",
+     "options": [
+      {
+       "label": "No, it was applied",
+       "next": "r-parking-brake-dash"
+      },
+      {
+       "label": "Yes, released, and the light is still on",
+       "next": "r-brake-system-dash"
+      }
+     ]
+    },
+    "n5": {
+     "q": "Which symbol does the amber light look most like?",
+     "options": [
+      {
+       "label": "An engine outline (check engine)",
+       "next": "r-check-engine-dash"
+      },
+      {
+       "label": "The letters ABS, or an exclamation mark (!) inside a round tyre",
+       "next": "n6"
+      },
+      {
+       "label": "Another symbol, not identified for sure",
+       "next": "r-unknown-amber"
+      }
+     ]
+    },
+    "n6": {
+     "q": "Is it exactly the letters ABS, or an exclamation mark (!) inside a round tyre?",
+     "options": [
+      {
+       "label": "The letters ABS",
+       "next": "r-abs-dash"
+      },
+      {
+       "label": "An exclamation mark inside a tyre",
+       "next": "r-tpms-dash"
+      }
+     ]
+    },
+    "r-info-light": {
+     "result": "An ordinary information light — not a fault",
+     "severity": "ok",
+     "text": "Green and blue lights indicate a system that's active, like [[dash:high-beam]] or [[dash:low-beam]] — not a fault.",
+     "actions": [
+      "No action is needed.",
+      "For an exact identification, check the owner's manual for which system each symbol marks."
+     ]
+    },
+    "r-oil": {
+     "result": "Low engine oil pressure",
+     "severity": "stop",
+     "text": "[[dash:oil-pressure]] comes on when the pressure in the lubrication system drops below what's required. Without oil pressure, engine parts rub against each other and wear out within minutes.",
+     "actions": [
+      "Stop immediately in a safe place and switch off the engine.",
+      "Don't keep driving even if there's oil on the dipstick — call for a tow."
+     ],
+     "lesson": "eg-lubrication"
+    },
+    "r-battery-dash": {
+     "result": "The charging system isn't charging the battery",
+     "severity": "soon",
+     "text": "[[dash:battery-charge]] comes on when the alternator isn't charging, usually because of a fault in it or in the belt that drives it. The car is now running on what's left in the battery.",
+     "actions": [
+      "Switch off any electrical loads that aren't essential and drive straight to the nearest garage.",
+      "If the engine-temperature light also comes on, stop: the belt that snapped may also drive the water pump."
+     ],
+     "lesson": "el-charging"
+    },
+    "r-coolant-dash": {
+     "result": "High engine temperature",
+     "severity": "stop",
+     "text": "[[dash:coolant-temp]] comes on when the engine is overheating. Continuing to drive can warp the cylinder head and destroy it.",
+     "actions": [
+      "Stop in a safe place and switch off the engine.",
+      "Don't open the radiator cap while the engine is hot.",
+      "For more detail: [[tree:engine-overheating|the engine is overheating]]."
+     ],
+     "lesson": "eg-cooling"
+    },
+    "r-parking-brake-dash": {
+     "result": "The parking brake is applied",
+     "severity": "ok",
+     "text": "[[dash:parking-brake]] comes on when the parking brake (a hand brake or an electric one) is applied.",
+     "actions": [
+      "Release the parking brake before driving.",
+      "Driving with the brake applied heats up the brakes and wears them."
+     ],
+     "lesson": "bk-parking"
+    },
+    "r-brake-system-dash": {
+     "result": "A fault in the brake system",
+     "severity": "stop",
+     "text": "[[dash:brake-system]] comes on when the parking brake is applied, when the brake fluid level is low, or when there's a fault in the system. If the parking brake is already released, this is a genuine fault.",
+     "actions": [
+      "Stop carefully and check the brake fluid level.",
+      "Don't drive with a brake fault.",
+      "For more detail: [[tree:brake-problems|a brake problem]]."
+     ],
+     "lesson": "bk-how"
+    },
+    "r-seatbelt-dash": {
+     "result": "A seatbelt isn't fastened",
+     "severity": "stop",
+     "text": "[[dash:seatbelt]] comes on when the driver or a passenger hasn't fastened a seatbelt.",
+     "actions": [
+      "Fasten your seatbelt before driving — every passenger, in every seat."
+     ],
+     "lesson": "ps-belts"
+    },
+    "r-check-engine-dash": {
+     "result": "Check engine",
+     "severity": "soon",
+     "text": "[[dash:check-engine]] comes on when the engine computer detects a fault in the engine or the exhaust system. With a **steady** light you can carry on carefully to the garage. A **flashing** light means a severe ignition fault that can destroy the catalytic converter.",
+     "actions": [
+      "Steady light: go to a garage soon for a computerised diagnosis.",
+      "Flashing light: slow down, avoid sharp acceleration, and stop as soon as possible."
+     ],
+     "lesson": "eg-exhaust"
+    },
+    "r-unknown-amber": {
+     "result": "An unidentified amber light",
+     "severity": "soon",
+     "text": "An unfamiliar amber light usually doesn't need an immediate stop, but it's worth identifying it as quickly as possible — it's listed in the owner's manual, or you can photograph it to show a garage.",
+     "actions": [
+      "Check the owner's manual for the symbol's meaning.",
+      "If the light is flashing, or another light joins it, stop and check immediately.",
+      "If it stays on steadily with no change in how the car behaves, go to a garage soon."
+     ]
+    },
+    "r-abs-dash": {
+     "result": "A fault in the ABS system",
+     "severity": "soon",
+     "text": "[[dash:abs]] comes on when ABS isn't active. The ordinary brakes keep working, but under heavy braking the wheels may lock.",
+     "actions": [
+      "Drive carefully and keep a bigger gap.",
+      "Go to a garage soon."
+     ],
+     "lesson": "bk-abs"
+    },
+    "r-tpms-dash": {
+     "result": "Low tyre air pressure",
+     "severity": "soon",
+     "text": "[[dash:tyre-pressure]] comes on when the tyre-pressure monitoring system detects a tyre with pressure lower than required — or a puncture.",
+     "actions": [
+      "Slow down and check the tyres soon at a petrol station.",
+      "Inflate to the pressure set by the car's manufacturer.",
+      "If a tyre is deflating quickly, change to the spare wheel."
+     ],
+     "lesson": "ty-pressure"
+    }
+   }
+  }
+ ]
+}

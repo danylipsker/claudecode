@@ -1,0 +1,341 @@
+{
+ "chapter": "electrical",
+ "questions": [
+  {
+   "id": "q-el-001",
+   "lesson": "el-battery",
+   "q": "What is the battery’s main job in a vehicle?",
+   "options": [
+    "To supply the strong current that drives the starter motor when starting, and back up the systems when the engine is off",
+    "To cool the engine",
+    "To extend the life of the tyres",
+    "To regulate oil pressure"
+   ],
+   "answer": 0,
+   "explain": "The battery supplies the strong current needed to run the starter motor when starting, and feeds the vehicle’s systems when the engine is off. While driving, it is the alternator that feeds and recharges it.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-002",
+   "lesson": "el-battery",
+   "q": "What can shorten a battery’s life?",
+   "options": [
+    "Long, regular drives",
+    "Short trips only, and lights left on",
+    "Driving on a expressway",
+    "A regular oil change"
+   ],
+   "answer": 1,
+   "explain": "Short trips do not let the battery charge fully, and a light left on drains it — two habits that significantly shorten its life.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-003",
+   "lesson": "el-battery",
+   "q": "Why must you never bring an open flame or a lit cigarette near a battery?",
+   "options": [
+    "There is no real risk, it is just excessive caution",
+    "Because the battery gives off flammable hydrogen gas, especially while charging or jump-starting",
+    "It is only forbidden by the vehicle’s registration document, with no safety reason",
+    "It only causes cosmetic damage"
+   ],
+   "answer": 1,
+   "explain": "A battery gives off flammable hydrogen gas, especially while charging. A flame, a spark or a cigarette near it can cause an explosion.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-004",
+   "lesson": "el-charging",
+   "q": "What drives the alternator?",
+   "options": [
+    "The ignition switch alone",
+    "A drive belt connected to a pulley on the crankshaft",
+    "The battery itself",
+    "The engine’s oil pressure"
+   ],
+   "answer": 1,
+   "explain": "The alternator is driven by the drive belt, connected to a pulley on the crankshaft, and so produces electricity for as long as the engine runs.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-005",
+   "lesson": "el-charging",
+   "q": "What does it mean when the charge (battery) warning light comes on while driving?",
+   "options": [
+    "Oil pressure has dropped",
+    "The engine is overheating",
+    "The battery is fully charged",
+    "The charging system has stopped feeding the vehicle, and it now runs on the battery alone"
+   ],
+   "answer": 3,
+   "explain": "The charge warning light warns that the alternator is not charging, usually because of a fault in it or in the drive belt. From this moment the vehicle runs only on what is left in the battery.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-006",
+   "lesson": "el-charging",
+   "q": "The charge warning light and the engine temperature warning light come on together. What could explain both?",
+   "options": [
+    "A low fuel level",
+    "The same torn drive belt, which drives both the alternator and the water pump",
+    "There is no connection between the two lights",
+    "A fault in the dashboard light itself only"
+   ],
+   "answer": 1,
+   "explain": "In many vehicles the same belt drives both the alternator and the water pump. A torn belt can cause both a loss of charging and overheating.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-007",
+   "lesson": "el-starting",
+   "q": "What does the immobiliser do?",
+   "options": [
+    "Stops the engine from starting when it does not recognise the correct chip in the key",
+    "Cools the starter motor",
+    "Adjusts the valves",
+    "Only supplies electricity to the lights"
+   ],
+   "answer": 0,
+   "explain": "The immobiliser stops the engine from starting when it does not recognise the matching chip in the key or the fob, even if the rest of the electrics are fine — a protection against theft.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-008",
+   "lesson": "el-starting",
+   "q": "What is the starter motor’s job?",
+   "options": [
+    "To regulate the engine’s temperature",
+    "To turn the crankshaft fast enough for the combustion cycle to begin",
+    "To clean the fuel before it enters the engine",
+    "To supply the vehicle with constant electricity while driving"
+   ],
+   "answer": 1,
+   "explain": "The starter motor is a powerful electric motor that turns the crankshaft, through the flywheel, until the engine catches and starts running under its own power.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-009",
+   "lesson": "el-starting",
+   "q": "Why must you not keep trying to start a vehicle over and over when it does not catch?",
+   "options": [
+    "Because the law forbids it",
+    "Because it can drain the battery and overheat the starter motor",
+    "Because it automatically cleans the injectors",
+    "There is no problem trying as many times as you like in a row"
+   ],
+   "answer": 1,
+   "explain": "Repeated starting attempts in a row drain the battery and can overheat the starter motor. Pause between attempts.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-010",
+   "lesson": "el-starting",
+   "q": "Why will most manual vehicles not start unless the clutch pedal is pressed all the way down?",
+   "options": [
+    "To save fuel",
+    "There is no reason — it is arbitrary",
+    "To prevent an unexpected lurch of the vehicle the moment it starts",
+    "To pre-heat the clutch"
+   ],
+   "answer": 2,
+   "explain": "A safety switch prevents starting with a gear engaged, so the vehicle does not lurch forward or backward the moment the starter motor turns the engine.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-011",
+   "lesson": "el-fuses",
+   "q": "What is a fuse’s job?",
+   "options": [
+    "To blow and break a circuit when too much current flows through it, before the wiring is damaged",
+    "To increase the current in a circuit",
+    "To adjust the angle of the headlights",
+    "To charge the battery"
+   ],
+   "answer": 0,
+   "explain": "A fuse is a deliberately weak link: it blows and breaks the circuit when the current is too high, so the wire itself does not heat up and burn.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-012",
+   "lesson": "el-fuses",
+   "q": "Which fuse may you use to replace a blown one?",
+   "options": [
+    "Any fuse that is close at hand",
+    "Always one with a higher rating, to be safe",
+    "Only one with the same rating (the same colour and number)",
+    "It does not matter — any fuse will work"
+   ],
+   "answer": 2,
+   "explain": "Replace a blown fuse only with one of the same rating. A fuse with a higher rating will not protect the circuit in time and can cause a fire.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-013",
+   "lesson": "el-fuses",
+   "q": "You have fitted a new fuse and it blows again straight away. What is right to do?",
+   "options": [
+    "Connect a piece of metal wire instead of the fuse",
+    "Fit a fuse with a higher rating until it holds",
+    "Take it to a garage to diagnose the real fault in the circuit, instead of continuing to replace fuses",
+    "Ignore it — it happens at random"
+   ],
+   "answer": 2,
+   "explain": "A fuse that blows again straight away marks a real fault in the circuit (such as a short). Continuing to replace fuses without fixing the cause can cause a fire.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-014",
+   "lesson": "el-fuses",
+   "q": "What does a relay do?",
+   "options": [
+    "Measures the fuel level",
+    "Charges the battery directly",
+    "Uses a weak current to activate a separate circuit carrying a much stronger current",
+    "Breaks a circuit when the current is too high, like a fuse"
+   ],
+   "answer": 2,
+   "explain": "A relay is an electrically operated switch: a weak current activates it, and it closes a separate circuit carrying a strong current, for consumers such as the starter motor or the fans.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-015",
+   "lesson": "el-lights",
+   "q": "When is it correct and appropriate to use fog lights?",
+   "options": [
+    "To signal a turn",
+    "Only when visibility is genuinely poor — fog, heavy rain or dust",
+    "Only on ordinary urban driving",
+    "On every night drive, as extra lighting"
+   ],
+   "answer": 1,
+   "explain": "Fog lights are strong and low, and can dazzle other drivers in normal visibility. Use them only when visibility is genuinely poor.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-016",
+   "lesson": "el-lights",
+   "q": "When does the reverse light come on?",
+   "options": [
+    "Every time you press the brake",
+    "When you switch on the hazard lights",
+    "Permanently during night driving",
+    "Only when reverse gear is engaged"
+   ],
+   "answer": 3,
+   "explain": "The reverse light (white) comes on only when reverse gear is engaged, warning those around that the vehicle is about to move backwards.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-017",
+   "lesson": "el-lights",
+   "q": "What is the benefit of daytime running lights (DRL)?",
+   "options": [
+    "To act as fog lights",
+    "To save fuel",
+    "To replace the brake lights",
+    "To make the vehicle visible from a distance even in strong daylight"
+   ],
+   "answer": 3,
+   "explain": "Daytime running lights come on automatically during the day so the vehicle is visible from a distance even in strong natural light, not as a substitute for other lights.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-018",
+   "lesson": "el-lights",
+   "q": "Why is it recommended to replace both headlight bulbs on one side at the same time, even if only one has failed?",
+   "options": [
+    "Both bulbs wear out at roughly the same rate, avoiding another garage visit soon",
+    "To change the colour of the light",
+    "It is required by law in every case",
+    "A new bulb on its own will not work at all"
+   ],
+   "answer": 0,
+   "explain": "Both bulbs wear out at roughly the same rate, so replacing them together saves another trip to the garage in the near future.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-019",
+   "lesson": "el-jumpstart",
+   "q": "What is the first connection in the correct order for jump-starting?",
+   "options": [
+    "Red clamp to the negative terminal of the donor battery",
+    "Black clamp to the negative terminal of the flat battery",
+    "Red clamp to the positive terminal of the flat battery",
+    "Black clamp to bare metal on the flat-battery vehicle"
+   ],
+   "answer": 2,
+   "explain": "You start with the red clamp to the positive (+) terminal of the flat battery, and only afterwards to the donor battery.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-020",
+   "lesson": "el-jumpstart",
+   "q": "Where do you connect the last black clamp, on the vehicle with the flat battery?",
+   "options": [
+    "To a bare metal point on the engine block or chassis, not to the battery’s negative terminal",
+    "To the positive terminal of the flat battery",
+    "There is no need for a fourth connection at all",
+    "To the negative terminal of the flat battery itself"
+   ],
+   "answer": 0,
+   "explain": "The last black clamp connects to bare metal on the engine block or chassis — not directly to the flat battery’s negative terminal — to prevent a spark near the hydrogen gas it gives off.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-021",
+   "lesson": "el-jumpstart",
+   "q": "In what order do you disconnect the jump leads when you are finished?",
+   "options": [
+    "The same order you connected them in",
+    "Disconnect all of them at once",
+    "In reverse order: first both black clamps, then the two red ones",
+    "The order of disconnecting does not matter"
+   ],
+   "answer": 2,
+   "explain": "Disconnect in exactly the reverse order from connecting: first both black clamps, and only then both red clamps.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-022",
+   "lesson": "el-jumpstart",
+   "q": "What do you do after the vehicle with the flat battery has caught and started running?",
+   "options": [
+    "Disconnect both vehicles immediately and drive off as normal with no further check",
+    "Switch it off immediately to save fuel",
+    "Drive for at least half an hour so the battery recharges, and it is a good idea to check the charging system at a garage",
+    "No further action is needed"
+   ],
+   "answer": 2,
+   "explain": "Driving for at least half an hour lets the battery recharge. It is also worth having the battery and the charging system checked at a garage, to prevent it happening again.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-023",
+   "lesson": "el-jumpstart",
+   "q": "You find that the flat battery is swollen and cracked. What is right to do?",
+   "options": [
+    "Do not try to jump-start it yourself — get professional help",
+    "Connect the leads in reverse to compensate for the damage",
+    "Jump-start it as normal, with extra care",
+    "Wipe the crack with a cloth and carry on"
+   ],
+   "answer": 0,
+   "explain": "A battery that is swollen, cracked, frozen or leaking is a real hazard (acid, explosion). Do not deal with it yourself — get professional help.",
+   "shuffled": true
+  },
+  {
+   "id": "q-el-024",
+   "lesson": "el-jumpstart",
+   "q": "What is an alternative to jump leads from a second vehicle, for starting a vehicle with a flat battery?",
+   "options": [
+    "A portable jump starter — a battery pack with its own leads",
+    "Connecting directly to a household electrical socket",
+    "Replacing the tyres",
+    "Adding more fuel"
+   ],
+   "answer": 0,
+   "explain": "A portable jump starter is a battery pack with its own leads, which lets you start a vehicle with a flat battery without needing a second vehicle as a donor.",
+   "shuffled": true
+  }
+ ]
+}

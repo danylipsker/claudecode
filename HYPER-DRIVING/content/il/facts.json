@@ -1,0 +1,5799 @@
+{
+ "compiled": "2026-09-28",
+ "note": "Every legal number in the course. Change a value here (or schedule it with \"changes\": [{\"from\": \"YYYY-MM-DD\", \"value\": …}]) and every lesson and question that shows it follows.",
+ "facts": [
+  {
+   "id": "speed.urban",
+   "value": 50,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת בדרך עירונית (ללא תמרור)",
+    "en": "Maximum speed on an urban road (no sign)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (1)"
+   },
+   "confidence": "high",
+   "notes": "Applies to every motor vehicle, including buses and heavy trucks; slow vehicles/tractors 40."
+  },
+  {
+   "id": "speed.nonurban",
+   "value": 80,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת בדרך שאינה עירונית (ללא שטח הפרדה בנוי, ללא תמרור)",
+    "en": "Maximum speed on a non-urban road without a built divider (no sign)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.nonurban_divided",
+   "value": 90,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת בדרך שאינה עירונית עם שטח הפרדה בנוי (ללא תמרור)",
+    "en": "Maximum speed on a non-urban road with a built divider (no sign)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (1)"
+   },
+   "confidence": "high",
+   "notes": "\"שטח הפרדה בנוי\" = raised divider (raised kerb, safety barrier or vegetation), תקנה 1. A painted divider does not qualify."
+  },
+  {
+   "id": "speed.freeway",
+   "value": 110,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת בדרך מהירה (ללא תמרור)",
+    "en": "Maximum speed on a freeway (no sign)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.bus.freeway",
+   "value": 100,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת לאוטובוס (שאינו אוטובוס זעיר) בדרך מהירה",
+    "en": "Maximum speed for a bus (not a minibus) on a freeway"
+   },
+   "applies": [
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (2)"
+   },
+   "confidence": "high",
+   "notes": "Buses: urban 50, non-urban 80, non-urban with divider 90, freeway 100 (and never above 100 even where a sign allows more)."
+  },
+  {
+   "id": "speed.heavy.urban",
+   "value": 50,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת לרכב מסחרי שמשקלו הכולל המותר עולה על 12,000 ק״ג, לרכב עבודה ולטיולית – בדרך עירונית",
+    "en": "Maximum speed for a commercial vehicle over 12,000 kg GVW, work vehicle or road train (tiyulit) on an urban road"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (3)"
+   },
+   "confidence": "high",
+   "notes": "Even where a sign shows more, these vehicles may not exceed 50 in an urban area."
+  },
+  {
+   "id": "speed.heavy.nonurban",
+   "value": 80,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת לרכב מסחרי שמשקלו הכולל המותר עולה על 12,000 ק״ג – בדרך שאינה עירונית, גם עם שטח הפרדה בנוי ובדרך מהירה",
+    "en": "Maximum speed for a commercial vehicle over 12,000 kg GVW on any non-urban road, divided road or freeway"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (3)"
+   },
+   "confidence": "high",
+   "notes": "80 on non-urban, divided non-urban and freeway, and never above 80 even where a sign allows more. Commercial vehicles up to 12,000 kg follow the general row (50/80/90/110)."
+  },
+  {
+   "id": "speed.slow_vehicle",
+   "value": 40,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית מותרת לרכב איטי, לטרקטור ולמכונה ניידת (בכל דרך שאינה דרך מהירה)",
+    "en": "Maximum speed for a slow vehicle, tractor or mobile machine (any road except a freeway)"
+   },
+   "applies": [
+    "1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (5)"
+   },
+   "confidence": "high",
+   "notes": "These vehicles are barred from freeways (\"סגורה בפניו\"). \"רכב איטי\" = a vehicle whose licensed maximum speed is 40 km/h or less (תקנה 1)."
+  },
+  {
+   "id": "speed.slow_vehicle.freeway_closed",
+   "value": "closed",
+   "unit": "text",
+   "label": {
+    "he": "דרך מהירה סגורה בפני רכב איטי, טרקטור ומכונה ניידת",
+    "en": "Freeways are closed to slow vehicles, tractors and mobile machines"
+   },
+   "applies": [
+    "1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (5)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.traffic_calming",
+   "value": 30,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית ברחוב משולב ובאזור מיתון תנועה",
+    "en": "Maximum speed in a shared street (woonerf) or traffic-calming zone"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(ב)"
+   },
+   "confidence": "high",
+   "notes": "Traffic-calming zone is marked with sign 222 at the entry and 223 at the exit (תקנה 1, \"אזור מיתון תנועה\")."
+  },
+  {
+   "id": "speed.atv",
+   "value": 40,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית לטרקטורון",
+    "en": "Maximum speed for an all-terrain vehicle (ATV)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 39ג",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "39ג(ב); 54(ג)"
+   },
+   "confidence": "high",
+   "notes": "An ATV may use a roadway only to cross it or inside a moshav/kibbutz; helmet required for rider and passenger."
+  },
+  {
+   "id": "speed.sign_cap.urban",
+   "value": 80,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות המרבית שרשות התימרור המרכזית רשאית לקבוע בתמרור בדרך עירונית",
+    "en": "Highest limit the central signing authority may post on an urban road"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(ה1)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.sign_cap.nonurban",
+   "value": 100,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות המרבית שמותר לקבוע בתמרור בדרך שאינה עירונית ושאינה דרך מהירה",
+    "en": "Highest limit that may be posted on a non-urban road that is not a freeway"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(ה1)(2)"
+   },
+   "confidence": "high",
+   "notes": "110 if the road has two lanes in each direction with a built divider."
+  },
+  {
+   "id": "speed.sign_cap.nonurban_divided",
+   "value": 110,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות המרבית שמותר לקבוע בתמרור בדרך שאינה עירונית בת שני נתיבים לכל כיוון עם שטח הפרדה בנוי",
+    "en": "Highest limit that may be posted on a non-urban dual carriageway (two lanes each way, built divider)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(ה1)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.sign_cap.freeway",
+   "value": 120,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות המרבית שמותר לקבוע בתמרור בדרך מהירה",
+    "en": "Highest limit that may be posted on a freeway"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(ה1)(3)"
+   },
+   "confidence": "high",
+   "notes": "Set only after consulting the head of the Israel Police traffic division (54(ה2))."
+  },
+  {
+   "id": "speed.limiter.bus",
+   "value": 100,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות שמגביל המהירות באוטובוס ובטיולית מוגבל אליה",
+    "en": "Speed at which the mandatory speed limiter caps buses and road trains"
+   },
+   "applies": [
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 364ה",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "364ה(ב)"
+   },
+   "confidence": "high",
+   "notes": "Limiter compulsory in buses over 10,000 kg (over 7,500 kg if first on the road from 1.1.2016)."
+  },
+  {
+   "id": "speed.limiter.truck",
+   "value": 85,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות שמגביל המהירות ברכב מסחרי כבד וברכב מורכב מוגבל אליה",
+    "en": "Speed at which the mandatory speed limiter caps heavy commercial vehicles and articulated vehicles"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 364ה",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "364ה(ב)"
+   },
+   "confidence": "high",
+   "notes": "Limiter compulsory in commercial vehicles over 12,000 kg, tractor units and work vehicles (over 7,500 kg if first on the road from 1.1.2016)."
+  },
+  {
+   "id": "speed.mobility_scooter",
+   "value": 12,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית בנהיגה בקלנועית",
+    "en": "Maximum speed of a mobility scooter (klanoit)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 39יא",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "39יא(ג)"
+   },
+   "confidence": "high",
+   "notes": "Minimum age 16 (14 for a disabled person), תקנה 39י(א). On the roadway only to cross it, except in a moshav/kibbutz/village or where no usable pavement exists."
+  },
+  {
+   "id": "speed.remote_parking",
+   "value": 12,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית בעת הפעלת מערכת חניה ייעודית (חניה מרחוק)",
+    "en": "Maximum speed while a factory remote/automatic parking system operates the car"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 28",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "28(ג)(2)"
+   },
+   "confidence": "high",
+   "notes": "If the driver is outside the car he must be within 6 m and there must be no passengers (28(ג)(1))."
+  },
+  {
+   "id": "speed.remote_parking.max_distance",
+   "value": 6,
+   "unit": "m",
+   "label": {
+    "he": "המרחק המרבי בין הנהג לרכב בתמרון חניה כשהנהג מחוץ לרכב",
+    "en": "Maximum distance between the driver and the car during a remote parking manoeuvre"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 28",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "28(ג)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.heavy_threshold",
+   "value": 12000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו רכב מסחרי מוגבל ל־80 קמ״ש מחוץ לעיר",
+    "en": "Gross vehicle weight above which a commercial vehicle is limited to 80 km/h outside towns"
+   },
+   "applies": [
+    "C"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 54",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "54(א) טבלה, פסקה (3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "alcohol.general.breath",
+   "value": 240,
+   "unit": "ug_per_l_breath",
+   "label": {
+    "he": "ריכוז אלכוהול מרבי מותר באוויר נשוף – נהג רגיל",
+    "en": "Maximum permitted breath alcohol – regular driver"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 169א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "169א, הגדרת \"ריכוז אלכוהול בגוף\" (1)"
+   },
+   "confidence": "high",
+   "notes": "A driver is \"שיכור\" above this value. Presumption: the concentration was in the body during the 3 hours before the sample (פקודה 64ב(א)(3))."
+  },
+  {
+   "id": "alcohol.general.blood",
+   "value": 50,
+   "unit": "mg_per_100ml_blood",
+   "label": {
+    "he": "ריכוז אלכוהול מרבי מותר בדם – נהג רגיל",
+    "en": "Maximum permitted blood alcohol – regular driver"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 169א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "169א, הגדרת \"ריכוז אלכוהול בגוף\" (2)"
+   },
+   "confidence": "high",
+   "notes": "50 mg per 100 ml = 0.05%."
+  },
+  {
+   "id": "alcohol.strict.breath",
+   "value": 50,
+   "unit": "ug_per_l_breath",
+   "label": {
+    "he": "ריכוז אלכוהול מרבי מותר באוויר נשוף – נהג חדש, נהג שטרם מלאו לו 24, נהג רכב מסחרי או רכב עבודה מעל 3,500 ק״ג ונהג רכב ציבורי",
+    "en": "Maximum breath alcohol – new driver, driver under 24, driver of a commercial/work vehicle over 3,500 kg, public-vehicle driver"
+   },
+   "applies": [
+    "new_driver",
+    "under_24",
+    "C1",
+    "C",
+    "CE",
+    "D",
+    "D1",
+    "D2",
+    "D3"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א), הגדרת \"שיכור\" (3א)"
+   },
+   "confidence": "high",
+   "notes": "For commercial/work/public vehicles the strict limit applies only while driving that vehicle."
+  },
+  {
+   "id": "alcohol.strict.blood",
+   "value": 10,
+   "unit": "mg_per_100ml_blood",
+   "label": {
+    "he": "ריכוז אלכוהול מרבי מותר בדם – נהג חדש, נהג שטרם מלאו לו 24, נהג רכב כבד (מעל 3,500 ק״ג) ונהג רכב ציבורי",
+    "en": "Maximum blood alcohol – new driver, driver under 24, heavy (over 3,500 kg) or public vehicle driver"
+   },
+   "applies": [
+    "new_driver",
+    "under_24",
+    "C1",
+    "C",
+    "CE",
+    "D",
+    "D1",
+    "D2",
+    "D3"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א), הגדרת \"שיכור\" (3א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "alcohol.strict.age",
+   "value": 24,
+   "unit": "years",
+   "label": {
+    "he": "גיל שעד אליו חל על נהג סף האלכוהול המחמיר",
+    "en": "Age below which the stricter alcohol limit applies to every driver"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א), (3א)(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "alcohol.strict.weight_threshold",
+   "value": 3500,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר של רכב מסחרי או רכב עבודה שמעליו חל על הנוהג בו סף האלכוהול המחמיר",
+    "en": "GVW of a commercial/work vehicle above which its driver is held to the strict alcohol limit"
+   },
+   "applies": [
+    "C1",
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א), (3א)(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "alcohol.presumption_hours",
+   "value": 3,
+   "unit": "h",
+   "label": {
+    "he": "חזקה: ריכוז האלכוהול שנמדד היה בגוף הנהג בשעות שקדמו לבדיקה",
+    "en": "Presumption that the measured alcohol level was already present during the hours before sampling"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א), הגדרת \"שיכור\" (3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "alcohol.drinking_while_driving",
+   "value": "forbidden",
+   "unit": "text",
+   "label": {
+    "he": "שתיית משקה משכר בעת נהיגה או בעת ליווי – אסורה בכל כמות (נחשב \"שיכור\")",
+    "en": "Drinking an alcoholic drink while driving or while acting as supervisor makes one \"drunk\" regardless of level"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א), הגדרת \"שיכור\" (1)"
+   },
+   "confidence": "high",
+   "notes": "The same limits apply to a \"ממונה על הרכב\": a driving instructor during a lesson and the accompanying driver (מלווה) of a new driver. Drugs: any dangerous drug or its metabolites in the body = \"שיכור\" (2)."
+  },
+  {
+   "id": "alcohol.detention_non_suspect",
+   "value": 30,
+   "unit": "min",
+   "label": {
+    "he": "משך עיכוב מרבי לצורך בדיקת שכרות של מי שאינו חשוד",
+    "en": "Maximum detention for an alcohol test of a person who is not a suspect"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(ב5)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "phone.handheld",
+   "value": "forbidden",
+   "unit": "text",
+   "label": {
+    "he": "בעת שהרכב בתנועה אסור לאחוז בטלפון; מותר להשתמש בו רק באמצעות דיבורית; אסור לשלוח או לקרוא מסרון",
+    "en": "While the vehicle moves the driver may not hold a phone; use only via hands-free; no sending or reading text messages"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 28",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "28(ב)(1)"
+   },
+   "confidence": "high",
+   "notes": "\"דיבורית\" = device allowing use without holding the phone; if the device is in the phone itself, the phone must be placed stably so it cannot fall (28(ב)(2)). Hands on wheel: may remove one hand only to operate the vehicle or give signals (28(א))."
+  },
+  {
+   "id": "phone.screen",
+   "value": "forbidden",
+   "unit": "text",
+   "label": {
+    "he": "אסור להפעיל תצוגה הנראית ממושב הנהג בזמן נסיעה, למעט תצוגה לבקרה או לניווט",
+    "en": "No display visible from the driver seat may operate while driving, except control/navigation displays"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 28א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "28א(א)-(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "phone.headphones",
+   "value": "forbidden",
+   "unit": "text",
+   "label": {
+    "he": "אסור לנהוג (וגם ללכת בכביש) כשלאוזניים צמודות אוזניות המחוברות למכשיר השמעה, למעט מכשיר שמיעה רפואי",
+    "en": "Driving (or walking on the roadway) with earphones connected to a sound device is forbidden, except medical hearing aids"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 169",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "169"
+   },
+   "confidence": "high",
+   "notes": "Applies to all drivers including cyclists and e-scooter riders."
+  },
+  {
+   "id": "newdriver.duration",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "תקופת \"נהג חדש\" (התקופה הבסיסית) מיום קבלת רישיון הנהיגה הראשון",
+    "en": "Length of the \"new driver\" period from the first licence"
+   },
+   "applies": [
+    "B",
+    "C1",
+    "D1"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א(א)"
+   },
+   "confidence": "high",
+   "notes": "A first licence for a motorcycle, tractor or mobile machine does not make one a new driver; the period starts with the first other licence. The licence of a new driver is valid for 2 years."
+  },
+  {
+   "id": "newdriver.extension",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "הארכת תקופת נהג חדש לאחר הרשעה בעבירה מהתוספת השלישית",
+    "en": "Extension of the new-driver period after conviction for an offence listed in the Third Schedule"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א(ד)"
+   },
+   "confidence": "high",
+   "notes": "Counted from the end of the basic period, the conviction, or the end of a disqualification – whichever is later; renewal requires passing tests (תקנה 207ב: theory test; if disqualified over 3 months also a practical test)."
+  },
+  {
+   "id": "newdriver.young.age",
+   "value": 24,
+   "unit": "years",
+   "label": {
+    "he": "\"נהג חדש צעיר\" – נהג חדש שטרם מלאו לו",
+    "en": "\"Young new driver\" – a new driver under this age"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "1, הגדרת \"נהג חדש צעיר\""
+   },
+   "confidence": "high",
+   "notes": "Only young new drivers must drive with an accompanying driver."
+  },
+  {
+   "id": "newdriver.escort.day_months",
+   "value": 3,
+   "unit": "months",
+   "label": {
+    "he": "תקופת ליווי מלאה (בכל שעות היממה) מיום קבלת היתר הנהיגה – נהג חדש צעיר",
+    "en": "Full-time accompaniment period (day and night) from receiving the driving permit – young new driver"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ד)(1)"
+   },
+   "confidence": "high",
+   "notes": "The accompanying driver (מלווה) must sit in the seat next to the driver. Does not apply on a motorcycle, mobile machine or tractor."
+  },
+  {
+   "id": "newdriver.escort.night_months",
+   "value": 3,
+   "unit": "months",
+   "label": {
+    "he": "תקופת ליווי בשעות הלילה בלבד, שלאחר שלושת חודשי הליווי המלא",
+    "en": "Night-only accompaniment period that follows the first three months"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ד)(2)"
+   },
+   "confidence": "high",
+   "notes": "So 6 months in total: 3 months full-time + 3 months at night. If the permit is extended (accompaniment programme not proven), night accompaniment continues while the extra permit is valid."
+  },
+  {
+   "id": "newdriver.escort.night_hours",
+   "value": [
+    "21:00",
+    "06:00"
+   ],
+   "unit": "range",
+   "label": {
+    "he": "\"שעות הלילה\" לעניין ליווי נהג חדש צעיר",
+    "en": "\"Night hours\" for accompaniment of a young new driver"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ד)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.permit_validity",
+   "value": 6,
+   "unit": "months",
+   "label": {
+    "he": "תוקף היתר הנהיגה הראשון של נהג חדש צעיר",
+    "en": "Validity of the first driving permit of a young new driver"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ב)"
+   },
+   "confidence": "high",
+   "notes": "Or until age 24, whichever is earlier. After proving the accompaniment programme he receives a licence valid to the end of the 2-year basic period."
+  },
+  {
+   "id": "newdriver.escort.hours_total",
+   "value": 50,
+   "unit": "h",
+   "label": {
+    "he": "מספר שעות הליווי המזערי בתכנית הליווי",
+    "en": "Minimum accompanied driving hours in the accompaniment programme"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 175ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "175ב(א)"
+   },
+   "confidence": "high",
+   "notes": "20 h urban, 15 h non-urban, 15 h at night (21:00–06:00). Completion is declared to the licensing authority (online/e-mail/in writing)."
+  },
+  {
+   "id": "newdriver.escort.hours_urban",
+   "value": 20,
+   "unit": "h",
+   "label": {
+    "he": "שעות ליווי בדרך עירונית בתכנית הליווי",
+    "en": "Accompanied hours on urban roads"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 175ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "175ב(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.escort.hours_nonurban",
+   "value": 15,
+   "unit": "h",
+   "label": {
+    "he": "שעות ליווי בדרך שאינה עירונית בתכנית הליווי",
+    "en": "Accompanied hours on non-urban roads"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 175ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "175ב(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.escort.hours_night",
+   "value": 15,
+   "unit": "h",
+   "label": {
+    "he": "שעות ליווי בשעות הלילה בתכנית הליווי",
+    "en": "Accompanied hours at night"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 175ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "175ב(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.escort.hours_funded",
+   "value": 12,
+   "unit": "h",
+   "label": {
+    "he": "שעות ליווי במימון המדינה עם מורה נהיגה (למי שזכאי)",
+    "en": "State-funded accompaniment hours with a driving instructor (eligible drivers)"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 175ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "175ב(ב)"
+   },
+   "confidence": "high",
+   "notes": "4 h urban, 4 h non-urban, 4 h night. Eligibility (תקנה 175ה): income-support or alimony-guarantee recipients, lone soldiers."
+  },
+  {
+   "id": "newdriver.escort.companion_age_a",
+   "value": 24,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי של מלווה (מסלול א׳), בנוסף לוותק של 5 שנים ברישיון",
+    "en": "Minimum age of an accompanying driver (route A), together with 5 years of licence"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ז)(1)"
+   },
+   "confidence": "high",
+   "notes": "The licence must be valid and for the same vehicle type. A licensed driving instructor may accompany even under 24. A person who is \"שיכור\" is not a valid companion."
+  },
+  {
+   "id": "newdriver.escort.companion_years_a",
+   "value": 5,
+   "unit": "years",
+   "label": {
+    "he": "ותק מזערי ברישיון נהיגה לאותו סוג רכב של מלווה בן 24 ומעלה",
+    "en": "Minimum licence seniority of an accompanying driver aged 24+"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ז)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.escort.companion_age_b",
+   "value": 30,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי של מלווה (מסלול ב׳), בנוסף לוותק של 3 שנים ברישיון",
+    "en": "Minimum age of an accompanying driver (route B), together with 3 years of licence"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ז)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.escort.companion_years_b",
+   "value": 3,
+   "unit": "years",
+   "label": {
+    "he": "ותק מזערי ברישיון נהיגה לאותו סוג רכב של מלווה בן 30 ומעלה",
+    "en": "Minimum licence seniority of an accompanying driver aged 30+"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א1(ז)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.passengers.max",
+   "value": 2,
+   "unit": "count",
+   "label": {
+    "he": "מספר הנוסעים המרבי שנהג חדש שטרם מלאו לו 21 רשאי להסיע (לאחר תקופת הליווי) בלי מלווה לצדו",
+    "en": "Maximum passengers a new driver under 21 may carry (after the accompaniment period) without a companion beside him"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א2",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א2"
+   },
+   "confidence": "high",
+   "notes": "Applies until age 21 (and only while a new driver). With a qualified companion in the front seat the limit does not apply."
+  },
+  {
+   "id": "newdriver.passengers.age",
+   "value": 21,
+   "unit": "years",
+   "label": {
+    "he": "גיל שעד אליו חלה על נהג חדש הגבלת מספר הנוסעים",
+    "en": "Age until which the passenger limit applies to a new driver"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12א2",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12א2"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.sign",
+   "value": "נהג חדש",
+   "unit": "text",
+   "label": {
+    "he": "תווית \"נהג חדש\" – חובה בחלון האחורי, בשוליו התחתונים, ברכב נוסעים פרטי וברכב מסחרי אחוד עד 3,500 ק״ג",
+    "en": "\"New driver\" label – mandatory at the bottom of the rear window of a private car or van up to 3,500 kg"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 9א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "9א(א)"
+   },
+   "confidence": "high",
+   "notes": "A driver who is not a new driver may not drive with the label displayed (9א(ב)). Label design: התוספת השנייה."
+  },
+  {
+   "id": "newdriver.sign.weight_limit",
+   "value": 3500,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שעד אליו חלה חובת תווית \"נהג חדש\"",
+    "en": "GVW up to which the \"new driver\" label is required"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 9א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "9א(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.alcohol",
+   "value": "strict",
+   "unit": "text",
+   "label": {
+    "he": "על נהג חדש חל סף האלכוהול המחמיר (50 מק״ג לליטר אוויר נשוף / 10 מ״ג ל־100 מ״ל דם)",
+    "en": "A new driver is held to the strict alcohol limit (50 µg/l breath / 10 mg/100 ml blood)"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64ב(א) (3א)(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "newdriver.military_exemption",
+   "value": "IDF",
+   "unit": "text",
+   "label": {
+    "he": "פטור מתכנית הליווי למי שעבר תכנית חונכות לנהגים בצה״ל",
+    "en": "Exemption from the accompaniment programme for those who completed the IDF driver mentoring programme"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 175ד",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "175ד"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.a2.max_cc",
+   "value": 125,
+   "unit": "cc",
+   "label": {
+    "he": "נפח מנוע מרבי של אופנוע ברישיון דרגה A2",
+    "en": "Maximum engine displacement of a motorcycle on an A2 licence"
+   },
+   "applies": [
+    "A2"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 176",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "176"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.a2.max_kw",
+   "value": 11,
+   "unit": "kw",
+   "label": {
+    "he": "הספק מנוע מרבי של אופנוע ברישיון דרגה A2 (14.916 כ״ס)",
+    "en": "Maximum engine power of a motorcycle on an A2 licence (14.916 hp)"
+   },
+   "applies": [
+    "A2"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 176",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "176"
+   },
+   "confidence": "high",
+   "notes": "Also power-to-weight ratio not above 0.1 kW/kg."
+  },
+  {
+   "id": "licence.a2.kw_per_kg",
+   "value": 0.1,
+   "unit": "text",
+   "label": {
+    "he": "יחס הספק למשקל עצמי מרבי באופנוע ברישיון A2 (קילוואט לק״ג)",
+    "en": "Maximum power-to-weight ratio on A2 (kW/kg)"
+   },
+   "applies": [
+    "A2"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 176",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "176"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.a2.min_age",
+   "value": 16,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה A2",
+    "en": "Minimum age for an A2 licence"
+   },
+   "applies": [
+    "A2"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 188",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "188(א)"
+   },
+   "confidence": "high",
+   "notes": "Under 17 requires written consent of a parent/guardian. Learning also from 16 (תקנה 221(א)(1)(א))."
+  },
+  {
+   "id": "licence.a1.max_kw",
+   "value": 35,
+   "unit": "kw",
+   "label": {
+    "he": "הספק מנוע מרבי של אופנוע ברישיון דרגה A1 (47.46 כ״ס)",
+    "en": "Maximum engine power of a motorcycle on an A1 licence (47.46 hp)"
+   },
+   "applies": [
+    "A1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 177",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "177"
+   },
+   "confidence": "high",
+   "notes": "Also power-to-weight ratio not above 0.2 kW/kg."
+  },
+  {
+   "id": "licence.a1.kw_per_kg",
+   "value": 0.2,
+   "unit": "text",
+   "label": {
+    "he": "יחס הספק למשקל עצמי מרבי באופנוע ברישיון A1 (קילוואט לק״ג)",
+    "en": "Maximum power-to-weight ratio on A1 (kW/kg)"
+   },
+   "applies": [
+    "A1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 177",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "177"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.a1.min_age",
+   "value": 18,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה A1",
+    "en": "Minimum age for an A1 licence"
+   },
+   "applies": [
+    "A1"
+   ],
+   "source": {
+    "title": "משרד התחבורה – \"דרגות רישיון הנהיגה בישראל\" (טבלה)",
+    "url": "https://www.gov.il/BlobFolder/guide/driving_licence_categories/he/rank_license.pdf",
+    "clause": ""
+   },
+   "confidence": "medium",
+   "notes": "No specific regulation lowers it, so the default of 18 in פקודת התעבורה, סעיף 12 applies. Minimum lessons 15 (8 for an A2 holder) per the Ministry table."
+  },
+  {
+   "id": "licence.a.min_age",
+   "value": 21,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה A (אופנוע מעל 35 קילוואט)",
+    "en": "Minimum age for an A licence (motorcycle over 35 kW)"
+   },
+   "applies": [
+    "A"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ז)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.a.seniority_a1",
+   "value": 1,
+   "unit": "years",
+   "label": {
+    "he": "ותק נדרש ברישיון A1 לפני קבלת רישיון A",
+    "en": "Required A1 seniority before an A licence"
+   },
+   "applies": [
+    "A"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ז)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.moto.passenger_rule",
+   "value": [
+    18,
+    2
+   ],
+   "unit": "text",
+   "label": {
+    "he": "בעל רישיון A2/A1 לא ירכיב נוסע אלא אם מלאו לו 18 שנים או שהוא בעל הרישיון חודשיים לפחות – לפי המאוחר",
+    "en": "An A2/A1 holder may carry a passenger only once 18 years old and after 2 months with the licence, whichever is later"
+   },
+   "applies": [
+    "A2",
+    "A1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 120",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "120(ג)"
+   },
+   "confidence": "high",
+   "notes": "value = [minimum age in years, minimum months holding the licence]."
+  },
+  {
+   "id": "licence.moto.theory_exempt_with_b",
+   "value": "B",
+   "unit": "text",
+   "label": {
+    "he": "בעל רישיון B פטור מבחינה עיונית לרישיון אופנוע; אחרי 3 שנים ב־B פטור גם ממבחן ההתנהגות בדרך ל־A2",
+    "en": "A B-licence holder is exempt from the theory test for a motorcycle licence; after 3 years on B also from the road-behaviour part of the A2 practical test"
+   },
+   "applies": [
+    "A2",
+    "A1",
+    "A"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 203",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "203(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.b.max_weight",
+   "value": 3500,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר מרבי של רכב ברישיון דרגה B",
+    "en": "Maximum gross vehicle weight on a B licence"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 180",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "180(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.b.max_passengers",
+   "value": 8,
+   "unit": "count",
+   "label": {
+    "he": "מספר נוסעים מרבי (מלבד הנהג) ברכב ברישיון B",
+    "en": "Maximum passengers (besides the driver) on a B licence"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 180",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "180(א)(1)"
+   },
+   "confidence": "high",
+   "notes": "Excludes taxi, tour vehicle and public bus. B also covers mobile machines (except forklifts), ATV, off-road vehicle, micro-car and cargo tractor."
+  },
+  {
+   "id": "licence.b.combination_max_weight",
+   "value": 5000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר מרבי של הרכב הגורר והגרור יחד ברישיון B",
+    "en": "Maximum combined GVW of towing car plus trailer on a B licence"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 180",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "180(ב)"
+   },
+   "confidence": "high",
+   "notes": "Changed in 2023 (תשפ״ד) from a 1,500 kg trailer limit to a 5,000 kg combined limit (e.g. a 3,000 kg car may pull a 2,000 kg trailer). The trailer may never exceed the towing capacity written in the car licence (תקנה 91(ב)). Ministry tables still show the old 1,500 kg."
+  },
+  {
+   "id": "licence.b.min_age",
+   "value": [
+    16,
+    9
+   ],
+   "unit": "ym",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון נהיגה לרכב פרטי (B): 16 שנים ו־9 חודשים",
+    "en": "Minimum age for a B (private car) licence: 16 years 9 months"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12"
+   },
+   "confidence": "high",
+   "notes": "value = [years, months]. Same minimum for the practical test (תקנה 221(ג)(1))."
+  },
+  {
+   "id": "licence.b.learning_age",
+   "value": [
+    16,
+    6
+   ],
+   "unit": "ym",
+   "label": {
+    "he": "גיל מזערי ללימוד נהיגה ברכב B: 16 שנים ו־6 חודשים",
+    "en": "Minimum age to start driving lessons for B: 16 years 6 months"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 221",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "221(ב)(1)"
+   },
+   "confidence": "high",
+   "notes": "value = [years, months]."
+  },
+  {
+   "id": "licence.b.min_lessons",
+   "value": 28,
+   "unit": "count",
+   "label": {
+    "he": "מספר שיעורי נהיגה מזערי לרישיון B",
+    "en": "Minimum number of driving lessons for a B licence"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "משרד התחבורה – \"דרגות רישיון הנהיגה בישראל\" (טבלה)",
+    "url": "https://www.gov.il/BlobFolder/guide/driving_licence_categories/he/rank_license.pdf",
+    "clause": ""
+   },
+   "confidence": "medium",
+   "notes": "Set in the Ministry curriculum (תכנית לימודים, תקנה 235), not in the regulations text."
+  },
+  {
+   "id": "licence.c1.weight_range",
+   "value": [
+    3500,
+    12000
+   ],
+   "unit": "kg",
+   "label": {
+    "he": "טווח המשקל הכולל המותר ברישיון דרגה C1 (מעל 3,500 ועד 12,000 ק״ג)",
+    "en": "GVW range on a C1 licence (over 3,500 up to 12,000 kg)"
+   },
+   "applies": [
+    "C1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 181",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "181(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.c1.trailer_max",
+   "value": 3500,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר מרבי של גרור ברישיון C1",
+    "en": "Maximum trailer GVW on a C1 licence"
+   },
+   "applies": [
+    "C1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 181",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "181(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.c1.min_age",
+   "value": 18,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה C1",
+    "en": "Minimum age for a C1 licence"
+   },
+   "applies": [
+    "C1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 221",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "221(ב)(2)"
+   },
+   "confidence": "high",
+   "notes": "Learning from 17; practical test from 17.5 (221(ג)(1))."
+  },
+  {
+   "id": "licence.c.min_age",
+   "value": 19,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה C (מעל 12,000 ק״ג)",
+    "en": "Minimum age for a C licence (over 12,000 kg)"
+   },
+   "applies": [
+    "C"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ב)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.c.seniority_c1",
+   "value": 1,
+   "unit": "years",
+   "label": {
+    "he": "ותק נדרש ברישיון C1 לפני רישיון C",
+    "en": "Required C1 seniority before a C licence"
+   },
+   "applies": [
+    "C"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ב)(2)"
+   },
+   "confidence": "high",
+   "notes": "Plus a heavy-vehicle drivers course and medical approval."
+  },
+  {
+   "id": "licence.ce.min_age",
+   "value": 20,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה C+E (רכב מחובר/מורכב)",
+    "en": "Minimum age for a C+E licence (truck with trailer/semi-trailer)"
+   },
+   "applies": [
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ג)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.ce.seniority_c",
+   "value": 1,
+   "unit": "years",
+   "label": {
+    "he": "ותק נדרש ברישיון C לפני רישיון C+E",
+    "en": "Required C seniority before a C+E licence"
+   },
+   "applies": [
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ג)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.d1.min_age",
+   "value": 21,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה D1 (מונית, רכב סיור, אוטובוס זעיר)",
+    "en": "Minimum age for a D1 licence (taxi, tour vehicle, minibus)"
+   },
+   "applies": [
+    "D1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ד)(1)"
+   },
+   "confidence": "high",
+   "notes": "Also: 2 years with B or C1, Hebrew literacy, public-driver courses (incl. first aid, fire fighting), medical approval."
+  },
+  {
+   "id": "licence.d1.seniority_b",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "ותק נדרש ברישיון B או C1 לפני רישיון D1 או D",
+    "en": "Required B or C1 seniority before a D1 or D licence"
+   },
+   "applies": [
+    "D1",
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ד)(7), 189(ה)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.d.min_age",
+   "value": 21,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה D (אוטובוס)",
+    "en": "Minimum age for a D (bus) licence"
+   },
+   "applies": [
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ה)"
+   },
+   "confidence": "high",
+   "notes": "189(ה) applies the D1 conditions (age 21) with changes; the Ministry table also gives 21."
+  },
+  {
+   "id": "licence.d2.max_passengers",
+   "value": 16,
+   "unit": "count",
+   "label": {
+    "he": "מספר נוסעים מרבי (מלבד הנהג) באוטובוס זעיר ברישיון D2 או D3",
+    "en": "Maximum passengers (besides the driver) in a minibus on a D2 or D3 licence"
+   },
+   "applies": [
+    "D2",
+    "D3"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 183א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "183א; 183ב"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.d2.min_age",
+   "value": 18,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה D2",
+    "en": "Minimum age for a D2 licence"
+   },
+   "applies": [
+    "D2"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ט)(1)"
+   },
+   "confidence": "high",
+   "notes": "Plus 2 years with B, minibus drivers course, medical approval."
+  },
+  {
+   "id": "licence.d2.seniority_b",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "ותק נדרש ברישיון B לפני רישיון D2 או D3",
+    "en": "Required B seniority before a D2 or D3 licence"
+   },
+   "applies": [
+    "D2",
+    "D3"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 189",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "189(ט)(2); 189(י)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.tractor.min_age",
+   "value": 16,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לקבלת רישיון דרגה 1 (טרקטור)",
+    "en": "Minimum age for a class 1 (tractor) licence"
+   },
+   "applies": [
+    "1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 188",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "188(א)"
+   },
+   "confidence": "high",
+   "notes": "Learning from 15 (221(ד)); tractor course required (189(א)). Under 17 needs parental consent."
+  },
+  {
+   "id": "licence.tractor.trailer_max",
+   "value": 10000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר מרבי של גרור הצמוד לטרקטור ברישיון דרגה 1",
+    "en": "Maximum trailer GVW behind a tractor on a class 1 licence"
+   },
+   "applies": [
+    "1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 179",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "179(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.tractor.forklift_max",
+   "value": 20000,
+   "unit": "kg",
+   "label": {
+    "he": "כושר נשיאה מרבי של מלגזה ברישיון דרגה 1",
+    "en": "Maximum forklift carrying capacity on a class 1 licence"
+   },
+   "applies": [
+    "1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 179",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "179(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.general.min_age_default",
+   "value": 18,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי כללי לקבלת רישיון נהיגה (אלא אם נקבע אחרת בתקנות)",
+    "en": "General minimum age for a driving licence (unless the regulations allow younger)"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 12",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "12"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "theory.min_age",
+   "value": 15.5,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי להיבחן בבחינה העיונית (תאוריה) לדרגות A2, A1, A, 1 ו־B",
+    "en": "Minimum age to sit the theory test for A2, A1, A, 1 and B"
+   },
+   "applies": [
+    "A2",
+    "A1",
+    "A",
+    "1",
+    "B"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 221",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "221(ג1)"
+   },
+   "confidence": "high",
+   "notes": "The Ministry table gives 17.5 for A1, 17.5 for C1, 19 for C, 20 for C+E/D1/D."
+  },
+  {
+   "id": "theory.questions",
+   "value": 30,
+   "unit": "count",
+   "label": {
+    "he": "מספר השאלות בבחינה העיונית",
+    "en": "Number of questions in the theory test"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "כל־זכות / אתרי הכנה למבחן: מבחן נהיגה עיוני (תאוריה)",
+    "url": "https://www.kolzchut.org.il/he/מבחן_נהיגה_עיוני_(תיאוריה)",
+    "clause": ""
+   },
+   "confidence": "high",
+   "notes": "Multiple choice, drawn from the official question bank; computerised test at licensing-authority test centres. אומת מול מספר מקורות עצמאיים (בתי ספר לנהיגה) בספטמבר 2026, בנוסף לכל-זכות."
+  },
+  {
+   "id": "theory.pass_correct",
+   "value": 26,
+   "unit": "count",
+   "label": {
+    "he": "מספר התשובות הנכונות הנדרש למעבר הבחינה העיונית",
+    "en": "Correct answers needed to pass the theory test"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "כל־זכות / אתרי הכנה למבחן: מבחן נהיגה עיוני (תאוריה)",
+    "url": "https://www.kolzchut.org.il/he/מבחן_נהיגה_עיוני_(תיאוריה)",
+    "clause": ""
+   },
+   "confidence": "high",
+   "notes": "אומת מול מספר מקורות עצמאיים (בתי ספר לנהיגה) בספטמבר 2026, בנוסף לכל-זכות."
+  },
+  {
+   "id": "theory.max_mistakes",
+   "value": 4,
+   "unit": "count",
+   "label": {
+    "he": "מספר הטעויות המרבי המותר בבחינה העיונית",
+    "en": "Maximum mistakes allowed in the theory test"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "כל־זכות / אתרי הכנה למבחן: מבחן נהיגה עיוני (תאוריה)",
+    "url": "https://www.kolzchut.org.il/he/מבחן_נהיגה_עיוני_(תיאוריה)",
+    "clause": ""
+   },
+   "confidence": "high",
+   "notes": "אומת מול מספר מקורות עצמאיים (בתי ספר לנהיגה) בספטמבר 2026, בנוסף לכל-זכות."
+  },
+  {
+   "id": "theory.time_limit",
+   "value": 40,
+   "unit": "min",
+   "label": {
+    "he": "משך הבחינה העיונית",
+    "en": "Time limit of the theory test"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "כל־זכות / אתרי הכנה למבחן: מבחן נהיגה עיוני (תאוריה)",
+    "url": "https://www.kolzchut.org.il/he/מבחן_נהיגה_עיוני_(תיאוריה)",
+    "clause": ""
+   },
+   "confidence": "high",
+   "notes": "אומת מול מספר מקורות עצמאיים (בתי ספר לנהיגה) בספטמבר 2026, בנוסף לכל-זכות."
+  },
+  {
+   "id": "theory.validity",
+   "value": 5,
+   "unit": "years",
+   "label": {
+    "he": "תקופת תוקף של תוצאות בחינות ובדיקות שעבר מבקש רישיון (לרבות הבחינה העיונית)",
+    "en": "Validity of passed tests and checks of a licence applicant (including the theory test)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 202",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "202(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "theory.retest_max_wait",
+   "value": 6,
+   "unit": "months",
+   "label": {
+    "he": "פרק הזמן המרבי שרשות הרישוי רשאית לקבוע עד בחינה חוזרת לאחר כישלון",
+    "en": "Maximum waiting period the licensing authority may set before a retest after failing"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 209",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "209"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "theory.topics",
+   "value": 4,
+   "unit": "count",
+   "label": {
+    "he": "מספר נושאי הבחינה העיונית: דיני תעבורה, תמרורים, התנהגות בדרך, הכרת הרכב",
+    "en": "Theory test subject areas: traffic law, signs, road behaviour, vehicle mechanics"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 205",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "205"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child.safety_seat_age",
+   "value": 3,
+   "unit": "years",
+   "label": {
+    "he": "ילד שטרם מלאו לו 3 שנים יוסע רק כשהוא רתום במושב בטיחות המתאים לגובהו ולמשקלו",
+    "en": "A child under 3 must travel strapped in a child safety seat suited to height and weight"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83א(ב)(1)"
+   },
+   "confidence": "high",
+   "notes": "Applies in front and rear seats of every motor vehicle made 1983 or later, except buses (other than private minibuses), taxis and motorcycles."
+  },
+  {
+   "id": "child.booster_age_max",
+   "value": 8,
+   "unit": "years",
+   "label": {
+    "he": "ילד שמלאו לו 3 וטרם מלאו לו 8 שנים יוסע רתום במושב בטיחות או במושב מגביה",
+    "en": "A child aged 3 to under 8 must travel in a safety seat or a booster seat"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83א(ב)(2)"
+   },
+   "confidence": "high",
+   "notes": "Booster (\"מושב מגביה\") = seat on which the child is restrained by the car seat belt. No height threshold is set in the regulation."
+  },
+  {
+   "id": "child.rear_facing_age",
+   "value": 1,
+   "unit": "years",
+   "label": {
+    "he": "ילד שטרם מלאו לו שנה יוסע במושב בטיחות שגבו מופנה לחזית הרכב (פני הילד לאחור)",
+    "en": "A child under 1 must travel in a rear-facing safety seat (seat back toward the front)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83א(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child.airbag",
+   "value": "disable",
+   "unit": "text",
+   "label": {
+    "he": "אסור להסיע ילד במושב בטיחות או במושב מגביה מול כרית אוויר פעילה – יש לנתק את כרית האוויר",
+    "en": "A child in a safety or booster seat may not sit facing an active airbag; the airbag must be deactivated"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83א(ד)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child.front_seat_passengers",
+   "value": 1,
+   "unit": "count",
+   "label": {
+    "he": "מספר האנשים המרבי שמותר להסיע לצד הנהג (במושב הקדמי)",
+    "en": "Maximum persons carried beside the driver"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 82",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "82(א)"
+   },
+   "confidence": "high",
+   "notes": "The passenger sits to the right of a left-hand-drive vehicle. The current regulation has no separate minimum age for the front seat; a child under 8 there must be in a suitable seat with the airbag disabled."
+  },
+  {
+   "id": "seatbelt.all",
+   "value": "mandatory",
+   "unit": "text",
+   "label": {
+    "he": "חובת חגירת חגורת בטיחות לנהג ולכל הנוסעים, במושבים הקדמיים והאחוריים",
+    "en": "Seat belt obligation for the driver and all passengers, front and rear"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83ב(א)"
+   },
+   "confidence": "high",
+   "notes": "Exemptions (83ג) include: reversing, a taxi driver in town with passengers (and rear passengers of a taxi in town), medical exemption, instructor/examiner in a bus or truck over 3,500 kg."
+  },
+  {
+   "id": "seatbelt.exempt_small_body",
+   "value": [
+    14,
+    35,
+    150
+   ],
+   "unit": "text",
+   "label": {
+    "he": "פטור מחגורת בטיחות (באישור רשות הרישוי) למי שמלאו לו 14 שנה, משקלו עד 35 ק״ג וגובהו עד 150 ס״מ",
+    "en": "Seat belt exemption (by licensing authority) for a person aged 14+ weighing up to 35 kg and up to 150 cm tall"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83ג",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83ג(3)(ג)"
+   },
+   "confidence": "high",
+   "notes": "value = [age years, max kg, max cm]."
+  },
+  {
+   "id": "child.bike_seat_age",
+   "value": 8,
+   "unit": "years",
+   "label": {
+    "he": "גיל שעד אליו מותר להרכיב ילד על אופניים במושב נפרד המיועד לו",
+    "en": "Age under which a child may be carried on a bicycle in a separate child seat"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 124",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "124(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child.bike_carrier_min_age",
+   "value": 14,
+   "unit": "years",
+   "label": {
+    "he": "מי שטרם מלאו לו 14 שנים לא ירכיב אדם אחר על אופניים",
+    "en": "A rider under 14 may not carry another person on a bicycle"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 124",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "124(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child.alarm.age",
+   "value": 4,
+   "unit": "years",
+   "label": {
+    "he": "חובת מערכת התרעה על השארת ילדים ברכב פרטי – ילדים עד גיל 4 (הוראת שעה שפקעה)",
+    "en": "Forgotten-child alarm in private cars – children up to age 4 (temporary rule, now lapsed)"
+   },
+   "applies": [
+    "B"
+   ],
+   "source": {
+    "title": "ynet: \"האם תהיה חובת התקנה של מערכת התרעה על השארת ילדים ברכב?\" (2024); תקנות התעבורה, תקנה 83ד",
+    "url": "https://www.ynet.co.il/news/article/r1g2evce0",
+    "clause": "83ד"
+   },
+   "confidence": "medium",
+   "notes": "תקנה 83ד (vehicle types M1, M2, N1) was a temporary order from 2021, extended to 29.2.2024 and then lapsed; the current text of 83ד is empty. So in 2026 there is no obligation for private cars. For school-transport vehicles an alarm system (ת״י 6400) is mandatory since 1.4.2017 (תקנה 364ז)."
+  },
+  {
+   "id": "child.alarm.school_transport_since",
+   "value": "2017-04-01",
+   "unit": "text",
+   "label": {
+    "he": "מערכת התרעה על השארת ילדים חובה ברכב להסעת תלמידים (ת״י 6400) – מועד תחילה",
+    "en": "Forgotten-child alarm (SI 6400) mandatory in school-transport vehicles – start date"
+   },
+   "applies": [
+    "D",
+    "D1",
+    "D2",
+    "D3"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 364ז",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "364ז(א)"
+   },
+   "confidence": "high",
+   "notes": "Annual check certificate must be in the vehicle (84(א1))."
+  },
+  {
+   "id": "tyre.min_tread",
+   "value": 2,
+   "unit": "mm",
+   "label": {
+    "he": "עומק חריצים (עובי פרופיל) מזערי בצמיג פנאומטי, לרבות גלגל חילוף",
+    "en": "Minimum tread depth of a pneumatic tyre, including the spare"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 322",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "322(ג)"
+   },
+   "confidence": "high",
+   "notes": "The regulation sets one value for every vehicle type (cars, motorcycles, trucks, buses, trailers). Non-pneumatic tyre: at least 4 cm thick."
+  },
+  {
+   "id": "tyre.nonpneumatic_min",
+   "value": 4,
+   "unit": "cm",
+   "label": {
+    "he": "עובי מזערי של צמיג שאינו פנאומטי",
+    "en": "Minimum thickness of a non-pneumatic tyre"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 322",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "322(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "tyre.max_age_fit_new",
+   "value": 6,
+   "unit": "years",
+   "label": {
+    "he": "לא יותקן בגלגלי רכב צמיג שחלפו 6 שנים ממועד ייצורו (24 חודשים לצמיג משומש)",
+    "en": "A tyre more than 6 years from its manufacture date (24 months if used) may not be fitted by a tyre shop"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 322",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "322(ב1)"
+   },
+   "confidence": "high",
+   "notes": "Manufacture date = the date stamped on the tyre (DOT code)."
+  },
+  {
+   "id": "tyre.same_axle",
+   "value": "same",
+   "unit": "text",
+   "label": {
+    "he": "על סרן אחד יורכבו צמיגים זהים במידה, בכושר העמסה ובמבנה (רדיאלי/דיאגונלי)",
+    "en": "Tyres on the same axle must match in size, load rating and construction"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 322",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "322(ד)(1)"
+   },
+   "confidence": "high",
+   "notes": "Exception: a different-size spare after a puncture, only to drive to the nearest garage (322(ד)(3))."
+  },
+  {
+   "id": "equip.vest",
+   "value": "mandatory",
+   "unit": "text",
+   "label": {
+    "he": "אפוד זוהר – חובה להחזיקו בתא הנהג בכל רכב מנועי (למעט אופנוע)",
+    "en": "Reflective vest – must be kept in the driver compartment of every motor vehicle (motorcycle: in the vehicle)"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 65ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "65ב(א)-(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "equip.vest.wear_rule",
+   "value": "nonurban",
+   "unit": "text",
+   "label": {
+    "he": "חובת לבישת אפוד זוהר: נוהג היוצא מהרכב בדרך שאינה עירונית (למעט על מדרכה)",
+    "en": "Vest must be worn when the driver gets out of the vehicle on a non-urban road (except on a pavement)"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 65ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "65ב(ג)"
+   },
+   "confidence": "high",
+   "notes": "The driver is exempt if a passenger got out first wearing a vest. Applies day and night."
+  },
+  {
+   "id": "equip.triangle",
+   "value": "mandatory",
+   "unit": "text",
+   "label": {
+    "he": "משולש אזהרה – חובה בכל רכב מנועי (למעט אופנוע), בגרור ובנתמך",
+    "en": "Warning triangle – mandatory in every motor vehicle (except motorcycles), trailer and semi-trailer"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 367",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "367(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "equip.triangle.visibility",
+   "value": 100,
+   "unit": "m",
+   "label": {
+    "he": "המרחק שממנו משולש האזהרה צריך להיראות לנוהג הבא מאחור כשהרכב נאלץ לעמוד על פני הדרך",
+    "en": "Distance from which the warning triangle must be visible to drivers coming from behind when a vehicle is stuck on the road"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 70",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "70(א)"
+   },
+   "confidence": "high",
+   "notes": "The driver places the triangle so it is seen from at least 100 m."
+  },
+  {
+   "id": "equip.hazard_lights_heavy",
+   "value": 3500,
+   "unit": "kg",
+   "label": {
+    "he": "ברכב מסחרי או רכב עבודה מעל 3,500 ק״ג ובאוטובוס, העומד בזמן תאורה בדרך שאינה עירונית – חובה להציב פנס מהבהב צהוב או להפעיל את כל מחווני הכיוון",
+    "en": "A commercial/work vehicle over 3,500 kg or a bus stopped at night outside towns must also show a flashing amber lamp or all indicators (hazard lights)"
+   },
+   "applies": [
+    "C1",
+    "C",
+    "CE",
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 70",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "70(ב)"
+   },
+   "confidence": "high",
+   "notes": "For other vehicles hazard lights are optional in addition to the triangle."
+  },
+  {
+   "id": "equip.warning_lamp.visibility",
+   "value": 150,
+   "unit": "m",
+   "label": {
+    "he": "מרחק הראות של פנס אזהרה מהבהב צהוב ברכב שמשקלו הכולל המותר עולה על 3,500 ק״ג",
+    "en": "Visibility distance of the portable flashing amber warning lamp (vehicles over 3,500 kg)"
+   },
+   "applies": [
+    "C1",
+    "C",
+    "CE",
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 366",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "366"
+   },
+   "confidence": "high",
+   "notes": "Must work independently of the vehicle battery for 12 hours."
+  },
+  {
+   "id": "equip.warning_lamp.hours",
+   "value": 12,
+   "unit": "h",
+   "label": {
+    "he": "משך ההארה הרציף הנדרש מפנס אזהרה מיטלטל",
+    "en": "Continuous burn time required of the portable warning lamp"
+   },
+   "applies": [
+    "C1",
+    "C",
+    "CE",
+    "D"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 366",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "366"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "equip.spare_wheel",
+   "value": 400,
+   "unit": "kg",
+   "label": {
+    "he": "ברכב מנועי שמשקלו העצמי עולה על 400 ק״ג יימצאו גלגל חילוף תקין, מגבה וכלים להחלפת גלגל",
+    "en": "A motor vehicle whose kerb weight exceeds 400 kg must carry a serviceable spare wheel, jack and tools"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 365",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "365"
+   },
+   "confidence": "high",
+   "notes": "Not tractors, tractor units or mobile machines. Vehicles designed without a spare: תקנה 365א."
+  },
+  {
+   "id": "equip.extinguisher.private_car",
+   "value": "not_required",
+   "unit": "text",
+   "label": {
+    "he": "מטף כיבוי אינו חובה ברכב פרטי (M1), באופנוע ובטרקטור; חובה במונית, ברכב מסחרי, באוטובוס ובשאר כלי הרכב",
+    "en": "A fire extinguisher is not required in a private car (M1), motorcycle or tractor; it is required in taxis, commercial vehicles, buses and others"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 370",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "370(א); תוספת שנייה חלק ג׳ פרט 26"
+   },
+   "confidence": "high",
+   "notes": "Taxi / commercial up to 3,500 kg: at least one 55B extinguisher (1993+). Commercial over 3,500 kg: 2 x 55B or 1 x 89B. Bus over 15 passengers: 2 x 55B or 1 x 89B; articulated or double-decker bus: 3."
+  },
+  {
+   "id": "equip.first_aid",
+   "value": "taxi_bus",
+   "unit": "text",
+   "label": {
+    "he": "ציוד עזרה ראשונה חובה במונית, ברכב סיור, ברכב מדברי, בטיולית, ברכב ביטחון ובאוטובוס ציבורי – לא ברכב פרטי",
+    "en": "First-aid kit mandatory in taxis, tour vehicles, desert vehicles, road trains, security vehicles and public buses – not in private cars"
+   },
+   "applies": [
+    "D",
+    "D1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 369א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "369א(ב); 408"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "equip.helmet.cyclist",
+   "value": "minor_or_nonurban",
+   "unit": "text",
+   "label": {
+    "he": "חובת קסדה לרוכב אופניים: לכל קטין בכל דרך, ולבגיר – בדרך שאינה עירונית, באופניים עם מנוע ובפעילות ספורטיבית",
+    "en": "Bicycle helmet: compulsory for every minor everywhere, and for adults outside urban roads, on motor-assisted bikes and in sport riding"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 65ג",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "65ג(א)"
+   },
+   "confidence": "high",
+   "notes": "\"Bicycle\" here includes skateboards, roller skates, rollerblades and electric scooters (65ג(ד))."
+  },
+  {
+   "id": "following.min_time_gap",
+   "value": 1,
+   "unit": "s",
+   "label": {
+    "he": "מרווח הזמן המזערי הנדרש בנהיגה בעקבות רכב אחר הנוסע לפניו באותו נתיב",
+    "en": "Minimum time gap required when driving behind another vehicle traveling ahead in the same lane"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 49",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "49(ב)"
+   },
+   "confidence": "high",
+   "notes": "בנוסף (49(א)): חובה כללית לשמור ריווח המאפשר לעצור בכל עת ולמנוע תאונה, בלי מספר קבוע."
+  },
+  {
+   "id": "following.security_vehicle_gap",
+   "value": 100,
+   "unit": "m",
+   "label": {
+    "he": "מרווח מזערי בנהיגה בעקבות רכב ביטחון",
+    "en": "Minimum gap required when driving behind a security vehicle"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 93",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "93(ב)"
+   },
+   "confidence": "high",
+   "notes": "אינו חל על נוהג רכב ביטחון אחר או רכב הקשור באותה שעה בתפקידי רכב הביטחון."
+  },
+  {
+   "id": "lights.dipped.nonurban_period",
+   "value": "1.11–31.3",
+   "unit": "text",
+   "label": {
+    "he": "התקופה השנתית שבה חובה על רכב מנועי (פרט לאופנוע) להאיר פנסי חזית או אור יום, ופנסים אחוריים, גם בדרך שאינה עירונית",
+    "en": "Annual period requiring headlights (or daytime lights) and rear lights even on non-urban roads, for motor vehicles other than motorcycles"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 97",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "97(ג)"
+   },
+   "confidence": "high",
+   "notes": "מונית, אוטובוס ורכב מסחרי שמשקלו הכולל המותר עולה על 14,999 ק״ג – חובה בכל דרך, כל השנה. אופנוע פטור מסעיף זה כיוון שחלה עליו חובת אורות תמיד (97(ב))."
+  },
+  {
+   "id": "lights.width_lights.min_vehicle_width",
+   "value": 210,
+   "unit": "cm",
+   "label": {
+    "he": "רוחב כולל של רכב שמעליו חובה להתקין ולהאיר גם פנסי רוחב, נוסף על פנסי החזית והפנסים האחוריים",
+    "en": "Overall vehicle width above which width (marker) lights are required in addition to headlights and rear lights"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 97",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "97(ד)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lights.high_beam.min_range",
+   "value": 100,
+   "unit": "m",
+   "label": {
+    "he": "טווח ההארה המזערי הנדרש מהאור הגבוה (אור גדול) בלילה ובמזג אוויר נאה",
+    "en": "Minimum illumination range required of the high beam at night in fair weather"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 334",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "334(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lights.low_beam.min_range",
+   "value": 30,
+   "unit": "m",
+   "label": {
+    "he": "טווח ההארה המזערי הנדרש מהאור הנמוך (אור קטן) בלילה ובמזג אוויר נאה",
+    "en": "Minimum illumination range required of the low beam at night in fair weather"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 334",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "334(ג)"
+   },
+   "confidence": "high",
+   "notes": "עצמת האור הנמוך לא תעלה על לוקס אחד, נמדד על משטח במרחק 25 מ׳ מהפנס."
+  },
+  {
+   "id": "lights.fog_front.min_height",
+   "value": 25,
+   "unit": "cm",
+   "label": {
+    "he": "גובה ההתקנה המזערי מפני הקרקע של פנס ערפל קדמי",
+    "en": "Minimum mounting height above ground for a front fog light"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 347",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "347(ב)"
+   },
+   "confidence": "high",
+   "notes": "עד שני פנסי ערפל קדמיים מותרים; הפעלתם מותרת רק בערפל, בגשם שוטף או בשלג (תקנה 107(ד))."
+  },
+  {
+   "id": "lights.parking.min_visibility",
+   "value": 150,
+   "unit": "m",
+   "label": {
+    "he": "מרחק הראייה המזערי הנדרש מפנסי חניית לילה (פנסי חניה) בזמן תאורה ובמזג אוויר נאה",
+    "en": "Minimum visibility distance required of night-parking lights in fair weather"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 339",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "339(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lights.oversize_vehicle.length_threshold",
+   "value": 20,
+   "unit": "m",
+   "label": {
+    "he": "אורך רכב (עם מטען או בלעדיו) שמעליו חובה פנס אזהרה צהוב מהבהב על גג תא הנהג",
+    "en": "Vehicle length (with or without load) above which a flashing yellow warning lamp is required on the cab roof"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 101",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "101"
+   },
+   "confidence": "high",
+   "notes": "אותה חובה חלה גם ברכב שרוחבו עולה על 3 מ׳ וברכב ליווי למטען חורג."
+  },
+  {
+   "id": "lights.oversize_vehicle.width_threshold",
+   "value": 3,
+   "unit": "m",
+   "label": {
+    "he": "רוחב רכב שמעליו חובה פנס אזהרה צהוב מהבהב על גג תא הנהג",
+    "en": "Vehicle width above which a flashing yellow warning lamp is required on the cab roof"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 101",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "101"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lights.moto.low_engine_cc_single_beam",
+   "value": 50,
+   "unit": "cc",
+   "label": {
+    "he": "נפח מנוע אופנוע שמתחתיו מותר שפנס החזית יהיה בעל אור נמוך בלבד",
+    "en": "Motorcycle engine displacement below which the headlight may have low beam only"
+   },
+   "applies": [
+    "A1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 336",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "336(א)(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lights.moto.always_on",
+   "value": "always",
+   "unit": "text",
+   "label": {
+    "he": "אופנוע חייב לנוע כשפנס החזית שלו (או פנס המיועד בלבדית לנסיעה ביום) מאיר – ביום ובלילה כאחד",
+    "en": "A motorcycle must be ridden with its headlight (or a light dedicated to daytime riding) lit, day and night alike"
+   },
+   "applies": [
+    "A1",
+    "A2",
+    "A"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 97",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "97(ב)"
+   },
+   "confidence": "high",
+   "notes": "בשונה מרכב מנועי אחר, חובה זו אינה מוגבלת ל״זמן תאורה״."
+  },
+  {
+   "id": "vehicletest.private.first_test_years",
+   "value": 3,
+   "unit": "years",
+   "label": {
+    "he": "מספר השנים ממועד הרישום הראשון שבתומן רכב פרטי חדש (שנרשם מ-1.1.2023) עובר את מבחן הרישוי התקופתי (”טסט“) הראשון שלו",
+    "en": "Years from first registration before a new private car (registered from 1 Jan 2023) takes its first periodic test"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 273",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "273(ב2)(1)"
+   },
+   "confidence": "high",
+   "notes": "עד 1.1.2023: מבחן ראשון כעבור שנתיים. לא אותרה תקנה ראשית זמינה מקומית; מבוסס על הודעת דוברות הכנסת ודיווחי תקשורת (כלכליסט, גלובס, ynet, ספטמבר 2026). ר׳ open_questions. Confirmed 2026-09-28 in the current text: a private car is exempt from the periodic test until three years from its first vehicle licence (273(ב2)(1))."
+  },
+  {
+   "id": "vehicletest.private.interval_years",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "תדירות מבחן הרישוי התקופתי לרכב פרטי (שנרשם מ-1.1.2023), החל מהמבחן הראשון ועד גיל 9 שנים לרכב",
+    "en": "Interval between periodic tests for a private car (registered from 1 Jan 2023), from the first test until the vehicle turns 9"
+   },
+   "source": {
+    "title": "משרד התחבורה והבטיחות בדרכים / דיווחי תקשורת על רפורמת מבחן הרישוי",
+    "url": "https://main.knesset.gov.il/News/PressReleases/pages/press04112025n.aspx",
+    "clause": ""
+   },
+   "confidence": "low",
+   "notes": "לא אומת אם התדירות חוזרת לשנתית מגיל 9 ומעלה, ומה הדין לאוטובוס/משאית/מונית/אופנוע ולרכב שנרשם לפני 1.1.2023 (ברוב המקורות: מבחן שנתי). ר׳ open_questions."
+  },
+  {
+   "id": "vehiclelicence.validity",
+   "value": 1,
+   "unit": "years",
+   "label": {
+    "he": "תוקף רישיון רכב או חידושו (ברירת מחדל)",
+    "en": "Validity period of a vehicle licence or its renewal (default)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 276",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "276(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehiclelicence.validity_tractor",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "תוקף רישיון רכב או חידושו לטרקטור",
+    "en": "Validity period of a vehicle licence for a tractor"
+   },
+   "applies": [
+    "1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 276",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "276(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "emergency.police",
+   "value": "100",
+   "unit": "text",
+   "label": {
+    "he": "מספר הטלפון הארצי של משטרת ישראל למקרי חירום",
+    "en": "Israel Police national emergency phone number"
+   },
+   "source": {
+    "title": "מוקדי חירום ארציים בישראל",
+    "url": "https://www.gov.il/he/departments/general/police_national_emergency_lines",
+    "clause": ""
+   },
+   "confidence": "medium",
+   "notes": "אינו קבוע בתקנות התעבורה עצמן; ידע כללי נדרש לנהג לצורך הזעקת עזרה לאחר תאונה."
+  },
+  {
+   "id": "emergency.mda",
+   "value": "101",
+   "unit": "text",
+   "label": {
+    "he": "מספר הטלפון הארצי של מגן דוד אדום (אמבולנס/עזרה ראשונה) למקרי חירום",
+    "en": "Magen David Adom (ambulance) national emergency phone number"
+   },
+   "source": {
+    "title": "מוקדי חירום ארציים בישראל",
+    "url": "https://www.mda.org.il",
+    "clause": ""
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "emergency.fire_and_rescue",
+   "value": "102",
+   "unit": "text",
+   "label": {
+    "he": "מספר הטלפון הארצי של כבאות והצלה למקרי חירום",
+    "en": "Fire and Rescue Services national emergency phone number"
+   },
+   "source": {
+    "title": "מוקדי חירום ארציים בישראל",
+    "url": "https://www.gov.il/he/departments/israel_fire_and_rescue_services",
+    "clause": ""
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "emergency.homefront_command",
+   "value": "104",
+   "unit": "text",
+   "label": {
+    "he": "מספר הטלפון של מוקד פיקוד העורף",
+    "en": "Home Front Command hotline number"
+   },
+   "source": {
+    "title": "מוקדי חירום ארציים בישראל",
+    "url": "https://www.oref.org.il",
+    "clause": ""
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "emergency.municipal_hotline",
+   "value": "106",
+   "unit": "text",
+   "label": {
+    "he": "מספר המוקד העירוני לדיווח על מפגעים ותקלות (עשוי להשתנות ברשויות מסוימות ל-107/108/109)",
+    "en": "Municipal hotline number for reporting hazards and faults (some municipalities use 107/108/109 instead)"
+   },
+   "source": {
+    "title": "מוקדי חירום ארציים בישראל",
+    "url": "https://www.gov.il",
+    "clause": ""
+   },
+   "confidence": "low"
+  },
+  {
+   "id": "accident.injury.duty_to_stop_and_report",
+   "value": "immediate",
+   "unit": "text",
+   "label": {
+    "he": "נוהג המעורב בתאונה שגרמה הריגה או פגיעת גוף חייב לעצור מיד במקום, להגיש עזרה, להזעיק שירותי הצלה ולהודיע למשטרה בהקדם האפשרי ובאמצעי הקשר המהיר ביותר",
+    "en": "A driver involved in an accident causing death or bodily injury must stop immediately, render aid, summon rescue services and notify police as soon as possible by the fastest means available"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 144",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "144"
+   },
+   "confidence": "high",
+   "notes": "בניגוד לתאונת רכוש (145) ולהצגת תעודת ביטוח (פקודת ביטוח רכב מנועי, ס׳ 40), כאן החוק אינו קובע מספר שעות קבוע – הדיווח נדרש ”בהקדם האפשרי“."
+  },
+  {
+   "id": "accident.property_damage.report_hours",
+   "value": 24,
+   "unit": "h",
+   "label": {
+    "he": "פרק הזמן המרבי להודעה לתחנת המשטרה הקרובה על תאונה שגרמה נזק לרכב או לרכוש אחר שעמד ללא השגחה במקום",
+    "en": "Maximum time to notify the nearest police station of an accident causing damage to another, unattended, vehicle or property"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 145",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "145(ג)(2)"
+   },
+   "confidence": "high",
+   "notes": "חלה רק כשבעל הרכב/הרכוש הניזוק לא נכח במקום; במקרה כזה יש להשאיר גם הודעה בכתב על הרכב הניזוק."
+  },
+  {
+   "id": "accident.insurance_certificate.report_hours",
+   "value": 24,
+   "unit": "h",
+   "label": {
+    "he": "פרק הזמן שבו חייב נוהג המעורב בתאונה שגרמה פגיעת גוף למסור על התאונה לתחנת משטרה ולהציג את תעודת הביטוח, אם לא הציגה במקום",
+    "en": "Time within which a driver involved in a bodily-injury accident must report it to a police station and present the insurance certificate, if not shown at the scene"
+   },
+   "source": {
+    "title": "פקודת ביטוח רכב מנועי [נוסח חדש], סעיף 40",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "40"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "accident.insurance_certificate.late_presentation_days",
+   "value": 5,
+   "unit": "days",
+   "label": {
+    "he": "פרק הזמן הנוסף להצגה עצמית של תעודת הביטוח בתחנת המשטרה שבה נמסרה ההודעה, כדי להימנע מהרשעה על אי-הצגתה",
+    "en": "Additional days allowed to personally present the insurance certificate at the police station where the accident was reported, to avoid conviction for failing to present it"
+   },
+   "source": {
+    "title": "פקודת ביטוח רכב מנועי [נוסח חדש], סעיף 40",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "40"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "accident.passenger_duty.min_age",
+   "value": 16,
+   "unit": "years",
+   "label": {
+    "he": "גיל שמתחתיו קטין פטור מחובת נוסע ברכב המעורב בתאונה עם נפגע להתקשר ולהזעיק גופי הצלה",
+    "en": "Age below which a minor passenger is exempt from the duty to call and summon rescue services in a vehicle involved in an accident with a casualty"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש], סעיף 64א1",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "64א1"
+   },
+   "confidence": "high",
+   "notes": "החובה חלה רק אם נוהג הרכב לא עצר והזעיק עזרה בעצמו."
+  },
+  {
+   "id": "park.no_stop.junction_m",
+   "value": 12,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסור לעצור, להעמיד או לחנות בו רכב מצומת (בתוך הצומת ובתחום 12 מ׳ ממנו)",
+    "en": "Distance within which stopping, standing or parking is banned from a junction"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(3)"
+   },
+   "confidence": "high",
+   "notes": "אין האיסור חל בקטע שסימנה רשות תמרור בתמרור או בסימון על אבני השפה כמותר לחניה."
+  },
+  {
+   "id": "park.no_stop.pedestrian_crossing_m",
+   "value": 12,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסור לעצור, להעמיד או לחנות בו רכב לפני מעבר חציה",
+    "en": "Distance before a pedestrian crossing within which stopping, standing or parking is banned"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(6)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.no_stop.stop_line_m",
+   "value": 12,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסור לעצור, להעמיד או לחנות בו רכב לפני קו עצירה",
+    "en": "Distance before a stop line within which stopping, standing or parking is banned"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(7)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.no_stop.railway_crossing_m",
+   "value": 20,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסור לעצור, להעמיד או לחנות בו רכב לפני מפגש מסילת ברזל ואחריו",
+    "en": "Distance before and after a railway level crossing within which stopping, standing or parking is banned"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(8)"
+   },
+   "confidence": "high",
+   "notes": "20 מ׳ מהפס הקרוב ביותר לפני המפגש ו-20 מ׳ אחריו."
+  },
+  {
+   "id": "park.no_stop.bridge_tunnel_m",
+   "value": 50,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסור לעצור, להעמיד או לחנות בו רכב על גשר, בתוך מנהרה, ולפניהם או אחריהם",
+    "en": "Distance before and after a bridge or tunnel (and on it) within which stopping, standing or parking is banned"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(11)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.no_stop.bus_stop_m",
+   "value": 20,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסור לעצור, להעמיד או לחנות בו רכב לפני תמרור ”תחנת אוטובוסים“ ואחריו, כשאין סימון על פני הכביש",
+    "en": "Distance before and after a bus-stop sign within which stopping, standing or parking is banned, when there is no road marking"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(12)"
+   },
+   "confidence": "high",
+   "notes": "אם רוחב הכביש 12 מ׳ ומעלה, מותרת עצירה/חניה בצד הנגדי לתחנה."
+  },
+  {
+   "id": "park.curb_distance_max",
+   "value": 40,
+   "unit": "cm",
+   "label": {
+    "he": "המרחק המרבי המותר בין הגלגלים הקרובים לשפת הכביש/אבן השפה לבין השפה, בעת חניה מקבילה",
+    "en": "Maximum allowed distance between the wheels nearest the kerb and the kerb, when parking parallel to it"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 75",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "75"
+   },
+   "confidence": "high",
+   "notes": "אלא אם רשות תמרור מקומית התירה וסימנה חניה זוויתית."
+  },
+  {
+   "id": "park.no_stop.taxi_stand_single_m",
+   "value": 5,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסורה בו עצירת רכב אחר (למעט מונית שצוינה) לפני תמרור עצירת מונית יחיד ואחריו",
+    "en": "Distance before and after a single-taxi-stop sign within which stopping by another vehicle is banned"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים), תמרור 509",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "509"
+   },
+   "confidence": "medium",
+   "notes": "מבוסס על טבלת לוח התמרורים (לות״ם); ייתכנו הבדלי מספור/OCR."
+  },
+  {
+   "id": "park.no_stop.soldier_transport_m",
+   "value": 5,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסורה בו עצירה, פרט להעלאת חיילים והורדתם, לפני תמרור תחנת הסעה לחיילים ואחריו",
+    "en": "Distance before and after a soldier-transport-stop sign within which stopping is banned, except to pick up or drop off soldiers"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים), תמרור 510",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "510"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "park.no_stop.train_station_platform_m",
+   "value": 40,
+   "unit": "m",
+   "label": {
+    "he": "מרחק שאסורה בו עצירה או חניה לפני תמרור תחנת רכבת מקומית ואחריו, כשאין סימון אחר על פני הכביש",
+    "en": "Distance before and after a local train-station sign within which stopping or parking is banned, absent other road markings"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים), תמרור 506",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "506"
+   },
+   "confidence": "medium",
+   "notes": "לחלופין – לכל אורך הרציף, או לפי סימון 511/513."
+  },
+  {
+   "id": "park.kerb.red_white",
+   "value": "no_stopping_or_parking",
+   "unit": "text",
+   "label": {
+    "he": "אבן שפה צבועה אדום-לבן: אסורה כל עצירה או חניה של רכב בכביש שלידה, אלא אם הדבר דרוש למילוי הוראות כל דין",
+    "en": "Red-white painted kerb: all stopping and parking banned alongside it, unless required to comply with the law"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים)",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": ""
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.kerb.blue",
+   "value": "paid_or_limited_parking",
+   "unit": "text",
+   "label": {
+    "he": "אבן שפה צבועה לסירוגין בכחול: חניה מותרת בתשלום, לפי תמרור 439 בצמוד לתמרור 626 או 627",
+    "en": "Blue-striped kerb: paid parking permitted, per sign 439 alongside sign 626 or 627"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים), תמרור 819",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "819"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.kerb.red_yellow",
+   "value": "stop_for_permitted_vehicles_only",
+   "unit": "text",
+   "label": {
+    "he": "אבן שפה צבועה אדום-צהוב: אסורה עצירה, למעט לסוג הרכב שהותר בתמרור לצורך העלאה והורדת נוסעים",
+    "en": "Red-yellow painted kerb: stopping banned except for the vehicle type permitted by the sign, to pick up or drop off passengers"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים), תמרור 511",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "511"
+   },
+   "confidence": "high",
+   "notes": "משמש בדרך כלל לתחנות תחבורה ציבורית/מוניות."
+  },
+  {
+   "id": "park.kerb.black_white",
+   "value": "visual_marking_only_no_restriction",
+   "unit": "text",
+   "label": {
+    "he": "אבן שפה צבועה שחור-לבן: להבלטה והדגשה בלבד של מדרכות, מפרדות ואיי תנועה בנויים – אינה מהווה איסור חניה",
+    "en": "Black-white painted kerb: visual emphasis only, for sidewalks, dividers and built traffic islands – not a parking restriction"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תוספת שנייה (לוח תמרורים), תמרור 816-818",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "816-818"
+   },
+   "confidence": "medium",
+   "notes": "אין בישראל צבע אבן שפה אפור מוכר בתקנות; זו תפיסה שגויה נפוצה."
+  },
+  {
+   "id": "rail.stop_distance_min_m",
+   "value": 4,
+   "unit": "m",
+   "label": {
+    "he": "המרחק המזערי שבו חייב נוהג רכב לעצור לפני הפס הקרוב במפגש מסילת ברזל, כשאין קו עצירה ואין מחסום",
+    "en": "Minimum distance before the nearest rail at which a driver must stop at a level crossing, when there is no stop line or barrier"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 56",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "56(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "rail.bus_paved_approach_m",
+   "value": 20,
+   "unit": "m",
+   "label": {
+    "he": "האורך המזערי הנדרש של כביש סלול (אספלט/בטון) בגישה למפגש מסילת ברזל, כדי שאוטובוס או רכב המסיע 11 נוסעים ומעלה יחצה אותו",
+    "en": "Minimum length of paved (asphalt/concrete) approach road to a level crossing required for a bus or vehicle carrying 11+ passengers to cross it"
+   },
+   "applies": [
+    "D",
+    "D1"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 57",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "57"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "tow.broken_down.max_rope_distance_m",
+   "value": 2.5,
+   "unit": "m",
+   "label": {
+    "he": "המרחק המרבי בין רכב גורר לרכב נגרר (שיצא מכלל פעולה) כשהם מחוברים במוט חיבור",
+    "en": "Maximum distance between a towing vehicle and a broken-down towed vehicle when connected by a tow bar"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 90",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "90(א)"
+   },
+   "confidence": "high",
+   "notes": "אמצעי החיבור יסומנו בסימן צבעוני בולט לעין ויוארו בזמן תאורה."
+  },
+  {
+   "id": "tow.trailer.max_connection_gap_cm",
+   "value": 150,
+   "unit": "cm",
+   "label": {
+    "he": "המרחק המרבי בין חלקו האחורי הקיצוני של רכב גורר לחלקו הקדמי הקיצוני של גרור מחובר, כשהם בקו ישר",
+    "en": "Maximum gap between the extreme rear of a towing vehicle and the extreme front of a connected trailer, in a straight line"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 374",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "374"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.overhang.front_rear_max_m",
+   "value": 1,
+   "unit": "m",
+   "label": {
+    "he": "החריגה המרבית המותרת של מטען מחוץ לנקודה הקיצונית הקדמית או האחורית של הרכב, כפי שנקבעה בידי היצרן",
+    "en": "Maximum permitted load overhang beyond the vehicle's extreme front or rear point, as set by the manufacturer"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(א)(1)(ב)"
+   },
+   "confidence": "high",
+   "notes": "מעבר לכך – ראה חריגת אורך (load.long.sign_max_total_length_m) והיתר קצין משטרה."
+  },
+  {
+   "id": "load.overhang.two_units_min_length_m",
+   "value": 6,
+   "unit": "m",
+   "label": {
+    "he": "האורך המזערי הנדרש לכל יחידת מטען, כשהחריגה עד 1 מ׳ מהרכב מורכבת משתי יחידות אורך",
+    "en": "Minimum length required for each load unit, when the up-to-1m overhang consists of two length units"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(א)(1)(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.wide.sign_required_over_m",
+   "value": 2.5,
+   "unit": "m",
+   "label": {
+    "he": "רוחב מטען שמעליו חובה שלט ”זהירות – מטען רחב“ ותאורה היקפית (ברכב מסחרי שמשקלו הכולל המותר 15,000 ק״ג ומעלה)",
+    "en": "Load width above which a \"caution – wide load\" sign and perimeter lighting are required (on a commercial vehicle with GVW 15,000 kg or more)"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(ג)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.wide.side_overhang_max_cm",
+   "value": 45,
+   "unit": "cm",
+   "label": {
+    "he": "החריגה הצדדית המרבית המותרת של מטען רחב מעבר לדופן הרכב מכל צד (ברוחב מטען 2.50–3.40 מ׳)",
+    "en": "Maximum side overhang permitted for a wide load beyond the vehicle's side wall on each side (for load width 2.50–3.40 m)"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(ג)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.wide.escort_and_permit_over_m",
+   "value": 3.4,
+   "unit": "m",
+   "label": {
+    "he": "רוחב מטען שמעליו חובה גם רכב ליווי צמוד וגם היתר מקצין משטרה",
+    "en": "Load width above which both a dedicated escort vehicle and a police-officer permit are required"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(ג)(2)-(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.long.sign_max_total_length_m",
+   "value": 20,
+   "unit": "m",
+   "label": {
+    "he": "האורך הכולל המרבי של רכב מסחרי עם מטען חורג באורך, המותר עם שילוט (”זהירות מטען ארוך“) ומחזירורים בלבד, בלי היתר קצין משטרה",
+    "en": "Maximum total length of a commercial vehicle with a length-overhanging load allowed with signage (\"caution long load\") and reflectors alone, without a police-officer permit"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(ה)(2)-(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.height.max_gvw1500",
+   "value": 2.5,
+   "unit": "m",
+   "label": {
+    "he": "גובה המטען המרבי המותר (מפני הדרך) ברכב שמשקלו הכולל המותר עד 1,500 ק״ג",
+    "en": "Maximum permitted load height (from road level) on a vehicle with GVW up to 1,500 kg"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(א)(2)(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.height.max_gvw3500",
+   "value": 3,
+   "unit": "m",
+   "label": {
+    "he": "גובה המטען המרבי המותר ברכב שמשקלו הכולל המותר מ-1,501 עד 3,500 ק״ג",
+    "en": "Maximum permitted load height on a vehicle with GVW from 1,501 to 3,500 kg"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(א)(2)(א)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.height.max_gvw8000",
+   "value": 3.5,
+   "unit": "m",
+   "label": {
+    "he": "גובה המטען המרבי המותר ברכב שמשקלו הכולל המותר מ-3,501 עד 8,000 ק״ג",
+    "en": "Maximum permitted load height on a vehicle with GVW from 3,501 to 8,000 kg"
+   },
+   "applies": [
+    "C"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(א)(2)(א)(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.height.max_gvw_above8000",
+   "value": 4,
+   "unit": "m",
+   "label": {
+    "he": "גובה המטען המרבי המותר ברכב שמשקלו הכולל המותר עולה על 8,000 ק״ג",
+    "en": "Maximum permitted load height on a vehicle with GVW above 8,000 kg"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(א)(2)(א)(4)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehicle.width.max_m",
+   "value": 2.55,
+   "unit": "m",
+   "label": {
+    "he": "רוחבו הכולל המרבי המותר של רכב (למעט קרוואן/גרור להובלת סוסים ורכב קירור מבוקר מיוחד, שמותרים ב-2.60 מ׳)",
+    "en": "Maximum permitted overall vehicle width (except a caravan/horse trailer or a special refrigerated vehicle, permitted 2.60 m)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 313",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "313(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehicle.length.max_truck_m",
+   "value": 12,
+   "unit": "m",
+   "label": {
+    "he": "אורכו הכולל המרבי המותר של רכב מסחרי (שאינו רכב מורכב/מחובר)",
+    "en": "Maximum permitted overall length of a commercial vehicle (not an articulated/composite vehicle)"
+   },
+   "applies": [
+    "C",
+    "CE"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 313",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "313(א)(3)(א)"
+   },
+   "confidence": "high",
+   "notes": "אוטובוס דו-סרני: 13.50 מ׳; אוטובוס מעל שני סרנים: 15.00 מ׳; אוטובוס מפרקי: 18.75 מ׳."
+  },
+  {
+   "id": "ebike.min_age",
+   "value": 16,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לנהיגה או להחזקה בבעלות של אופניים עם מנוע עזר (אופניים חשמליים)",
+    "en": "Minimum age to ride or own an electrically-assisted bicycle (e-bike)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 39טז",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "39טז(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike.motor.max_power_kw",
+   "value": 0.25,
+   "unit": "kw",
+   "label": {
+    "he": "הספק המנוע החשמלי המרבי המותר באופניים עם מנוע עזר",
+    "en": "Maximum electric motor power permitted on an e-bike"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”אופניים עם מנוע עזר“"
+   },
+   "confidence": "high",
+   "notes": "שווה ל-250 וואט."
+  },
+  {
+   "id": "ebike.motor.cutoff_speed_kmh",
+   "value": 25,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות שמעליה חייב כוח המנוע החשמלי באופניים עם מנוע עזר לרדת ולהפסיק את פעולתו (סיוע דיווש בלבד)",
+    "en": "Speed above which an e-bike's electric motor power must decrease and cut off (pedal-assist only)"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”אופניים עם מנוע עזר“"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike.throttle.max_continuous_speed_kmh",
+   "value": 6,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות המרבית שבה עדיין מותר למצערת יד באופניים עם מנוע עזר (שנרכשו מ-1.7.2014) לאפשר שליטה רציפה בהספק המנוע",
+    "en": "Maximum speed at which a hand throttle on an e-bike (purchased from 1 July 2014) may still allow continuous motor-power control"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”אופניים עם מנוע עזר“(6)(ב)"
+   },
+   "confidence": "high",
+   "notes": "באופניים שנרכשו לפני המועד הקובע (1.7.2014) מצערת רציפה ביד אסורה כליל."
+  },
+  {
+   "id": "ebike.old_bikes.max_weight_kg",
+   "value": 30,
+   "unit": "kg",
+   "label": {
+    "he": "המשקל הכולל המרבי המותר לאופניים עם מנוע עזר שנרכשו לפני 1.7.2014 (העומדים בתקן האירופי EN 15194)",
+    "en": "Maximum total weight permitted for an e-bike purchased before 1 July 2014 (meeting European standard EN 15194)"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”אופניים עם מנוע עזר“(5)(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike.helmet_required",
+   "value": "always",
+   "unit": "text",
+   "label": {
+    "he": "רוכב אופניים עם מנוע עזר חייב לחבוש קסדת מגן עם מחזיר אור מוצמד, בכל עת",
+    "en": "An e-bike rider must always wear a protective helmet with an attached reflector"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 39טז",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "39טז(א)(4)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "escooter.min_age",
+   "value": 16,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לנהיגה בגלגינוע (קורקינט חשמלי)",
+    "en": "Minimum age to ride an electric scooter"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 122א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "122א(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "escooter.motor.max_power_kw",
+   "value": 0.25,
+   "unit": "kw",
+   "label": {
+    "he": "הספק המנוע החשמלי המרבי המותר בגלגינוע",
+    "en": "Maximum electric motor power permitted on an electric scooter"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”גלגינוע”(1)"
+   },
+   "confidence": "high",
+   "notes": "שווה ל-250 וואט."
+  },
+  {
+   "id": "escooter.max_speed_kmh",
+   "value": 25,
+   "unit": "kmh",
+   "label": {
+    "he": "המהירות המרבית המותרת לגלגינוע (קורקינט חשמלי)",
+    "en": "Maximum speed permitted for an electric scooter"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”גלגינוע”(4)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "escooter.max_self_weight_kg",
+   "value": 30,
+   "unit": "kg",
+   "label": {
+    "he": "המשקל העצמי המרבי המותר להתקן גלגינוע",
+    "en": "Maximum self-weight permitted for an electric scooter"
+   },
+   "source": {
+    "title": "תקנות התעבורה – הגדרות, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת ”גלגינוע”(5)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "escooter.helmet_required",
+   "value": "always",
+   "unit": "text",
+   "label": {
+    "he": "רוכב גלגינוע חייב לחבוש קסדת מגן קשורה, עם מחזיר אור מוצמד, בכל עת",
+    "en": "An electric-scooter rider must always wear a fastened protective helmet with an attached reflector"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 122ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "122ב(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "escooter.passenger_ban",
+   "value": 0,
+   "unit": "count",
+   "label": {
+    "he": "מספר הנוסעים המרבי המותר על גלגינוע, נוסף על הנוהג בו",
+    "en": "Maximum number of passengers permitted on an electric scooter, in addition to the rider"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 122ב",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "122ב(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "escooter.sidewalk_ban",
+   "value": "banned_pedestrian_may_lead",
+   "unit": "text",
+   "label": {
+    "he": "רכיבה על גלגינוע אסורה על מדרכה; מותר להולך רגל להוביל גלגינוע על מדרכה אם אין בכך הפרעה",
+    "en": "Riding an electric scooter on a sidewalk is banned; a pedestrian may walk one along a sidewalk if it does not obstruct others"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 122א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "122א(ב)"
+   },
+   "confidence": "high",
+   "notes": "רכיבה חייבת להיות בשביל/נתיב אופניים מסומן, ובאין כזה – בכביש."
+  },
+  {
+   "id": "lighttransport.registration_required",
+   "value": "required_since_2023",
+   "unit": "text",
+   "label": {
+    "he": "אופניים עם מנוע עזר וגלגינוע חייבים ברישום מקוון על שם בעליהם ובנשיאת לוחית זיהוי אחת מאחור",
+    "en": "E-bikes and electric scooters must be registered online in the owner's name and carry a single ID plate at the rear"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 299א ואילך",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "299א–299ה"
+   },
+   "confidence": "medium",
+   "notes": "מערכת רישום ממוחשבת של רשות הרישוי (סימן ג׳1 בפרק ד׳); לא אותר אם נדרש גם ביטוח חובה נפרד."
+  },
+  {
+   "id": "bike.nonurban_min_age",
+   "value": 12,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לרכיבה על אופניים בדרך שאינה עירונית",
+    "en": "Minimum age to ride a bicycle on a non-urban road"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 129",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "129(ו)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "bike.lights.front_visibility_m",
+   "value": 150,
+   "unit": "m",
+   "label": {
+    "he": "מרחק הראייה המזערי הנדרש מפנס החזית של אופניים בזמן תאורה ובמזג אוויר נאה",
+    "en": "Minimum visibility distance required of a bicycle's front light in fair weather during lighting hours"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 132",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "132(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "bike.sidewalk_ban",
+   "value": "banned_pedestrian_may_lead",
+   "unit": "text",
+   "label": {
+    "he": "רכיבה על אופניים אסורה על מדרכה או בחלק דרך המיועד להולכי רגל בלבד; מותר להולך רגל להוביל אופניים על מדרכה אם אין בכך הפרעה",
+    "en": "Riding a bicycle on a sidewalk or pedestrian-only path is banned; a pedestrian may walk a bicycle along a sidewalk if it does not obstruct others"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 129",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "129(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "moto.helmet.required",
+   "value": "always_driver_and_passenger",
+   "unit": "text",
+   "label": {
+    "he": "חובת קסדת מגן קשורה, המכסה את אפרכסת האוזן, לנוהג אופנוע/תלת-אופנוע ולנוסע בו, בכל עת",
+    "en": "A fastened protective helmet covering the ears is always required for a motorcycle/tricycle rider and passenger"
+   },
+   "applies": [
+    "A1",
+    "A2",
+    "A"
+   ],
+   "source": {
+    "title": "תקנות התעבורה, תקנה 119",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "119(ג)"
+   },
+   "confidence": "high",
+   "notes": "רשות הרישוי רשאית לפטור מטעמי בטיחות סוג רכב מסוים (119(ד))."
+  },
+  {
+   "id": "points.basic-course",
+   "value": 12,
+   "unit": "points",
+   "label": {
+    "he": "סף לחובת קורס בסיסי „נהיגה נכונה‟",
+    "en": "Threshold for mandatory basic \"correct driving\" course"
+   },
+   "window": "12 עד 22 נקודות תקפות רשומות לחובת הנהג",
+   "consequence": {
+    "he": "חובה לעבור הדרכה בנהיגה נכונה בקורס בסיסי מטעם רשות הרישוי ולעמוד בהצלחה במבחן בסופו",
+    "en": "Driver must complete a basic correct-driving course run by the Licensing Authority and pass the closing test"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 549(א)"
+   },
+   "confidence": "high",
+   "notes": "תקנה 551(א1): היעדרות מעל 20% משעות הלימוד או כישלון 3 פעמים במבחן = כמי שלא ביצע את אמצעי התיקון."
+  },
+  {
+   "id": "points.advanced-course",
+   "value": 24,
+   "unit": "points",
+   "label": {
+    "he": "סף לחובת קורס מתקדם „נהיגה נכונה‟",
+    "en": "Threshold for mandatory advanced \"correct driving\" course"
+   },
+   "window": "24 עד 34 נקודות תקפות רשומות לחובת הנהג",
+   "consequence": {
+    "he": "חובה לעבור הדרכה בנהיגה נכונה בקורס מתקדם מטעם רשות הרישוי ולעמוד בהצלחה במבחן; לא יועבר קורס זה לפני שהושלם בהצלחה הקורס הבסיסי שבו חויב הנהג",
+    "en": "Driver must complete an advanced correct-driving course and pass its test; cannot be taken before completing the basic course if one was also required"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 549(ב) ו-(ב1)"
+   },
+   "confidence": "high",
+   "notes": "נהג לא יחויב בהדרכה נוספת בטרם חלפה שנה לפחות מיום שחויב בהדרכה קודמת בשל נקודות שנרשמו לחובתו לפני כן (549(ב1))."
+  },
+  {
+   "id": "points.disqualification-3m",
+   "value": 36,
+   "unit": "points",
+   "label": {
+    "he": "סף לפסילת רישיון ל-3 חודשים",
+    "en": "Threshold for a 3-month licence disqualification"
+   },
+   "window": "36 נקודות תקפות או יותר רשומות לחובת הנהג",
+   "consequence": {
+    "he": "פסילה מהחזיק ברישיון נהיגה למשך 3 חודשים; הרישיון יחודש בתום התקופה",
+    "en": "Disqualification from holding a driving licence for 3 months; licence renewed automatically when the period ends"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 549(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.disqualification-9m",
+   "value": 72,
+   "unit": "points",
+   "label": {
+    "he": "סף לפסילת רישיון ל-9 חודשים (או פסילה חוזרת תוך 6 שנים)",
+    "en": "Threshold for a 9-month disqualification (or repeat 36-point disqualification within 6 years)"
+   },
+   "window": "72 נקודות תקפות או יותר; או 36 נקודות תקפות נוספות תוך פחות מ-6 שנים ממועד העבירה האחרונה שגררה פסילה קודמת לפי 549(ג)",
+   "consequence": {
+    "he": "פסילה מהחזיק ברישיון נהיגה ל-9 חודשים; חידוש הרישיון בתום התקופה מותנה בעמידה בבדיקות רפואיות אצל רופא מוסמך ובבחינות (תקנות 202 עד 210)",
+    "en": "9-month disqualification; renewal afterwards requires passing medical checks with an authorised physician and driving/theory tests"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 549(ד)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.validity.until-2027-05-21",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "תוקף נקודות (עד 20.5.2027)",
+    "en": "Points validity period (until 20.5.2027)"
+   },
+   "window": "מיום ביצוע העבירה או ההפרה",
+   "consequence": {
+    "he": "נקודה נחשבת „תקפה‟ (ונספרת לצבירה) במשך שנתיים מיום ביצוע העבירה, ללא הבחנה בין חומרת העבירות, אלא אם כן הצטברו 22 נקודות או יותר תוך פחות משנתיים – ואז תוקפן מוארך ל-4 שנים",
+    "en": "Points remain valid (and count toward the totals) for two years from the offence date regardless of severity, unless 22+ points accumulate within under two years, extending validity to 4 years"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 547(ב) ו-(ג), נוסח עד 20.5.2027"
+   },
+   "confidence": "high",
+   "notes": "תקנה זו תוחלף החל מיום 21.5.2027 (ראו points.validity.from-2027-05-21)."
+  },
+  {
+   "id": "points.validity.from-2027-05-21",
+   "value": 1,
+   "unit": "years",
+   "label": {
+    "he": "תוקף נקודות (החל מ-21.5.2027, לפי חומרת העבירה)",
+    "en": "Points validity period (from 21.5.2027, graded by offence severity)"
+   },
+   "window": "מיום ביצוע העבירה או ההפרה",
+   "consequence": {
+    "he": "עבירה/הפרה שחויבה עד 6 נקודות – הנקודות תקפות שנה אחת; עבירה/הפרה שחויבה ב-8 נקודות או יותר – הנקודות תקפות שנתיים; אם הצטברו 22 נקודות או יותר תוך פחות משנתיים – 4 שנים",
+    "en": "Offences carrying up to 6 points stay valid for 1 year; offences carrying 8+ points stay valid for 2 years; if 22+ points accumulate within under two years, validity extends to 4 years"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 547(ב)(1)-(2) ו-(ג), נוסח החל מ-21.5.2027"
+   },
+   "confidence": "high",
+   "notes": "תיקון תשפ„ו-14 מקצר את תוקף הנקודות הקלות (עד 6) לשנה אחת בלבד; טרם נכנס לתוקף במועד האיסוף (28.9.2026)."
+  },
+  {
+   "id": "points.accident-appeal-freeze",
+   "value": 0,
+   "unit": "text",
+   "label": {
+    "he": "הקפאת רישום נקודות בעת ערר",
+    "en": "Points freeze during an appeal"
+   },
+   "window": "עד מתן פסק דין סופי",
+   "consequence": {
+    "he": "הודיעה המשטרה לרשות הרישוי כי נהג הגיש ערר על הרשעתו או על החלטה סופית של בית דין לתעבורה, לא תביא רשות הרישוי בחשבון את הנקודות בשל אותה עבירה או הפרה עד למתן פסק דין סופי",
+    "en": "If the driver appeals a conviction or final traffic-court decision, the Licensing Authority disregards those points until a final judgment"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 545(ג1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.remedy-methods",
+   "value": 0,
+   "unit": "text",
+   "label": {
+    "he": "אמצעי תיקון אפשריים",
+    "en": "Available remedial measures"
+   },
+   "window": "n/a",
+   "consequence": {
+    "he": "קורסים בנהיגה נכונה ומבחן בסופם; מבחן עיוני בנהיגה; מבחן מעשי בנהיגה; פסילה מהחזיק רישיון לתקופה או עד מילוי תנאים; בדיקות רפואיות – כולם או מקצתם, במצטבר",
+    "en": "Correct-driving courses with a closing test; theory test; practical driving test; time-limited or conditional disqualification; medical examinations – cumulative, all or some"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 548"
+   },
+   "confidence": "high",
+   "notes": "נקודות שבשלהן הוטל אמצעי תיקון מסוים לא יגררו אותו אמצעי תיקון פעם נוספת, למעט מבחן עיוני בנהיגה (תקנה 549(ו))."
+  },
+  {
+   "id": "points.registry-lag",
+   "value": 12,
+   "unit": "months",
+   "label": {
+    "he": "אי-רישום נקודות על מידע ישן",
+    "en": "No points registered on stale information"
+   },
+   "window": "n/a",
+   "consequence": {
+    "he": "רשות הרישוי לא תרשום נקודות בשל הרשעה או החלטה סופית שהמידע לגביה התקבל 12 חודשים או יותר ממועד ההרשעה/ההחלטה",
+    "en": "The Licensing Authority will not register points for a conviction or final decision if the information reached it 12+ months after that conviction/decision"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 545(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.new-driver-period",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "תקופת „נהג חדש‟",
+    "en": "\"New driver\" period"
+   },
+   "window": "מיום קבלת רישיון הנהיגה הראשון (שאינו לאופנוע, טרקטור או מכונה ניידת)",
+   "consequence": {
+    "he": "כל עוד הוא נהג חדש, מוגבלת תוקף רישיונו לשנתיים; הגשת כתב אישום או הודעת קנס בשל עבירה מהתוספת השלישית מאריכה את התקופה עד תום ההליכים/תשלום הקנס; הרשעה כאמור מאריכה את תקופת „נהג חדש‟ בשנתיים נוספות",
+    "en": "Licence validity is limited to two years while classified a new driver; an indictment or fine notice for a Third-Schedule offence extends the period until proceedings end/the fine is paid; a conviction extends the new-driver period by another two years"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיף 12א"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.young-new-driver-escort",
+   "value": 50,
+   "unit": "h",
+   "label": {
+    "he": "שעות ליווי חובה לנהג חדש צעיר",
+    "en": "Mandatory escorted-driving hours for a young new driver"
+   },
+   "window": "עד גיל 24, בתקופת היתר הנהיגה (6 חודשים ראשונים או עד גיל 24, המוקדם מביניהם)",
+   "consequence": {
+    "he": "50 שעות ליווי לפחות (20 בדרך עירונית, 15 בדרך שאינה עירונית, 15 בשעות הלילה) עם מלווה כשיר; מלווה שהוא מורה נהיגה מוסמך – 12 שעות לפחות (4+4+4). בשלושת החודשים הראשונים חובה מלווה בכל נסיעה; בשלושת החודשים שלאחר מכן חובה מלווה בשעות הלילה (21:00–06:00) בלבד. מגיל 21 (לאחר תום הליווי) עד גיל זה מוגבל להסעת 2 נוסעים לכל היותר בלא מלווה",
+    "en": "At least 50 escorted hours (20 urban, 15 non-urban, 15 night); only 12 hours if the escort is a licensed driving instructor. Escort required on every drive for the first 3 months, then only at night (21:00-06:00) for the next 3 months. Until age 21, an unescorted young new driver may carry at most 2 passengers"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיפים 12א1 ו-12א2; תקנה 176ה לתקנות התעבורה"
+   },
+   "confidence": "high",
+   "notes": "אי-קיום חובת הליווי (12א1(ב)) וחריגה ממכסת הנוסעים ללא מלווה (12א2) מזכות ב-8 נקודות כל אחת (תוספת שישית) והן עבירות הזמנה לדין (אינן בצו עבירות הקנס)."
+  },
+  {
+   "id": "hours.daily.max",
+   "value": 12,
+   "unit": "h",
+   "label": {
+    "he": "נהיגה מרבית ביממה (רכב ציבורי/משא כבד)",
+    "en": "Maximum daily driving (public/heavy goods vehicle)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168(א)(2)"
+   },
+   "confidence": "high",
+   "notes": "חל על נוהג רכב ציבורי, אוטובוס פרטי, רכב מסחרי שמשקלו הכולל המותר עולה על 6,000 ק„ג, וכל רכב מנועי אחר המסיע 11 נוסעים ומעלה נוסף על הנהג."
+  },
+  {
+   "id": "hours.weekly.max",
+   "value": 68,
+   "unit": "h",
+   "label": {
+    "he": "נהיגה מרבית בכל תקופה של 7 ימים",
+    "en": "Maximum driving within any 7-day period"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168(א)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "hours.pre-shift-rest",
+   "value": 7,
+   "unit": "h",
+   "label": {
+    "he": "מנוחה רצופה מחוץ לעבודה לפני תחילת יום עבודה",
+    "en": "Continuous off-duty rest required before starting a work day"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168(א)(1)"
+   },
+   "confidence": "high",
+   "notes": "לא יתחיל את יום עבודתו בנהיגה אלא אחרי מנוחה שמחוץ לעבודה של 7 שעות רצופות לפחות."
+  },
+  {
+   "id": "hours.break-per-4h",
+   "value": 0.5,
+   "unit": "h",
+   "label": {
+    "he": "הפסקה חובה על כל 4 שעות נהיגה רצופות",
+    "en": "Mandatory break for every 4 continuous hours of driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168(א)(3)"
+   },
+   "confidence": "high",
+   "notes": "הפסקה של חצי שעה לפחות."
+  },
+  {
+   "id": "hours.continuous-cap",
+   "value": 9,
+   "unit": "h",
+   "label": {
+    "he": "נהיגה רצופה (ללא הפסקה של שעה)",
+    "en": "Continuous driving cap without a 1-hour break"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168(א)(4)"
+   },
+   "confidence": "high",
+   "notes": "לא ינהג יותר מ-9 שעות אלא אם הפסיק לשעה לפחות לאחר 6 עד 8 שעות ו-30 דקות נהיגה רצופה."
+  },
+  {
+   "id": "hours.weekly-rest-day",
+   "value": 25,
+   "unit": "h",
+   "label": {
+    "he": "יום מנוחה – מנוחה רצופה מחוץ לעבודה בכל 8 ימים",
+    "en": "Rest day - continuous off-duty rest within every 8 days"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168(א)(5)"
+   },
+   "confidence": "high",
+   "notes": "25 שעות רצופות לפחות בכל תקופה של 8 ימים; מספר ימי המנוחה בשנה לא יפחת מ-52. לא חל על נהג רכב מנועי שאינו רכב ציבורי/אוטובוס פרטי/רכב מסחרי מעל 6,000 ק„ג המסיע 8 נוסעים ומעלה שלא בדרך עיסוקו הרגיל."
+  },
+  {
+   "id": "hours.intl.daily-driving",
+   "value": 9,
+   "unit": "h",
+   "label": {
+    "he": "זמן נהיגה יומי – נהיגה בין-לאומית",
+    "en": "Daily driving time - international driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168א(ב)(1)"
+   },
+   "confidence": "high",
+   "notes": "ניתן להאריך ל-10 שעות לכל היותר, לא יותר מפעמיים בשבוע עבודה. חל על נהיגה בין-לאומית לפי האמנה AETR, ולא על כלי הרכב הפטורים בתקנת משנה (יא)."
+  },
+  {
+   "id": "hours.intl.weekly-driving",
+   "value": 56,
+   "unit": "h",
+   "label": {
+    "he": "זמן נהיגה מרבי בשבוע – נהיגה בין-לאומית",
+    "en": "Maximum weekly driving time - international driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168א(ב)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "hours.intl.biweekly-driving",
+   "value": 90,
+   "unit": "h",
+   "label": {
+    "he": "זמן נהיגה מרבי בכל 14 ימים – נהיגה בין-לאומית",
+    "en": "Maximum driving time within any 14 days - international driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168א(ב)(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "hours.intl.break-after-4.5h",
+   "value": 45,
+   "unit": "min",
+   "label": {
+    "he": "הפסקה אחרי 4.5 שעות נהיגה – נהיגה בין-לאומית",
+    "en": "Break after 4.5 hours of driving - international driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168א(ח)"
+   },
+   "confidence": "high",
+   "notes": "לחלופין: הפסקה של 15 דקות ולאחריה הפסקה נוספת של 30 דקות רצופות."
+  },
+  {
+   "id": "hours.intl.daily-rest-full",
+   "value": 11,
+   "unit": "h",
+   "label": {
+    "he": "מנוחה יומית מלאה – נהיגה בין-לאומית",
+    "en": "Full daily rest - international driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168א(א), הגדרת „מנוחה יומית מלאה‟"
+   },
+   "confidence": "high",
+   "notes": "לחלופין מנוחה בשתי פעימות: 3 שעות רצופות ואחריה 9 שעות רצופות, בתוך 24 שעות. מנוחה יומית מופחתת: 9 עד 11 שעות."
+  },
+  {
+   "id": "hours.intl.weekly-rest-full",
+   "value": 45,
+   "unit": "h",
+   "label": {
+    "he": "מנוחה שבועית מלאה – נהיגה בין-לאומית",
+    "en": "Full weekly rest - international driving"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 168א(א) ו-(ה), הגדרת „מנוחה שבועית מלאה‟"
+   },
+   "confidence": "high",
+   "notes": "מנוחה שבועית מופחתת: 24 עד 45 שעות, לא יותר מ-3 פעמים בכל 7 ימים, ומחייבת השלמה ל-45 שעות בתוך 14 יום."
+  },
+  {
+   "id": "hours.tachograph-required",
+   "value": 0,
+   "unit": "text",
+   "label": {
+    "he": "חובת טכוגרף תקין ברכב הכפוף לתקנה 168/168א",
+    "en": "Requirement for a functioning tachograph"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "תקנה 364ד"
+   },
+   "confidence": "high",
+   "notes": "נהיגה בלא טכוגרף תקין – עבירת קנס נפרדת, ראו offences.tachograph-faulty."
+  },
+  {
+   "id": "following.recommended_gap",
+   "value": 2,
+   "unit": "s",
+   "label": {
+    "he": "מרווח הזמן המומלץ מהרכב שלפנים (בתנאים טובים)",
+    "en": "Recommended time gap to the vehicle ahead (good conditions)"
+   },
+   "source": {
+    "title": "הרשות הלאומית לבטיחות בדרכים — המלצה",
+    "url": "https://www.gov.il/he/departments/national_road_safety_authority"
+   },
+   "confidence": "medium",
+   "notes": "A recommendation, not law. The legal minimum is following.min_time_gap (1 s, reg. 49(ב))."
+  },
+  {
+   "id": "points.remedy_deadline_months",
+   "value": 6,
+   "unit": "months",
+   "label": {
+    "he": "מועד לביצוע אמצעי תיקון (קורס נהיגה נכונה) מיום שנמסרה ההודעה עליו",
+    "en": "Deadline to complete a required remedial measure (correct-driving course) from notice"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 551",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "551(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "enforcement.violation.payment_days",
+   "value": 90,
+   "unit": "days",
+   "label": {
+    "he": "מועד לתשלום קנס לאחר המצאת הודעה על החלטה להטיל קנס",
+    "en": "Deadline to pay a fine after a decision-to-fine notice is delivered"
+   },
+   "source": {
+    "title": "חוק הפרות תעבורה מינהליות, התשפ״ד–2024",
+    "url": "https://he.wikisource.org/wiki/חוק_הפרות_תעבורה_מינהליות",
+    "clause": "145(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "enforcement.violation.objection_days",
+   "value": 30,
+   "unit": "days",
+   "label": {
+    "he": "מועד להגשת השגה על החלטה להטיל קנס",
+    "en": "Deadline to file an objection to a decision to fine"
+   },
+   "source": {
+    "title": "חוק הפרות תעבורה מינהליות, התשפ״ד–2024",
+    "url": "https://he.wikisource.org/wiki/חוק_הפרות_תעבורה_מינהליות",
+    "clause": "137(א)"
+   },
+   "confidence": "high",
+   "notes": "90 ימים אם ההשגה היא מהטעם שהעבירה לא בוצעה בידי המפר."
+  },
+  {
+   "id": "enforcement.violation.objection_decision_days",
+   "value": 45,
+   "unit": "days",
+   "label": {
+    "he": "מועד למתן החלטה בהשגה",
+    "en": "Deadline for a decision on an objection"
+   },
+   "source": {
+    "title": "חוק הפרות תעבורה מינהליות, התשפ״ד–2024",
+    "url": "https://he.wikisource.org/wiki/חוק_הפרות_תעבורה_מינהליות",
+    "clause": "139(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "enforcement.violation.appeal_days",
+   "value": 90,
+   "unit": "days",
+   "label": {
+    "he": "מועד להגשת ערר לבית דין לתעבורה",
+    "en": "Deadline to appeal to the traffic court"
+   },
+   "source": {
+    "title": "חוק הפרות תעבורה מינהליות, התשפ״ד–2024",
+    "url": "https://he.wikisource.org/wiki/חוק_הפרות_תעבורה_מינהליות",
+    "clause": "208(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "police.suspension.fatal_accident_days",
+   "value": 90,
+   "unit": "days",
+   "label": {
+    "he": "פסילה בידי קצין משטרה בעבירה שגרמה לתאונת דרכים שבה נהרג אדם",
+    "en": "Police-officer suspension for an offence that caused a fatal crash"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "47(ה)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "police.suspension.injury_accident_days",
+   "value": 60,
+   "unit": "days",
+   "label": {
+    "he": "פסילה בידי קצין משטרה בעבירה שגרמה לתאונת דרכים שבה נחבל אדם או ניזוק רכוש (עד)",
+    "en": "Police-officer suspension (up to) for an offence that caused an injury or property-damage crash"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "47(ה)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "police.suspension.offence_days",
+   "value": 30,
+   "unit": "days",
+   "label": {
+    "he": "פסילה בידי קצין משטרה על עבירה מהתוספת הרביעית לפקודה (עד)",
+    "en": "Police-officer suspension (up to) for an offence listed in the Ordinance's fourth schedule"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "47(ה)(3)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "police.suspension.appear_days",
+   "value": 3,
+   "unit": "days",
+   "label": {
+    "he": "זימון להופיע בפני קצין משטרה אחרי נטילת רישיון נהיגה בידי שוטר",
+    "en": "Summons to appear before a police officer after a constable takes the driving licence"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "47(ג)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "police.suspension.void_no_indictment_months",
+   "value": 3,
+   "unit": "months",
+   "label": {
+    "he": "פרק הזמן שאחריו פסילת קצין משטרה מתבטלת מאליה אם לא הוגש כתב אישום",
+    "en": "Period after which a police-officer suspension is void by itself if no indictment was filed"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "50(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child.alone_max_age",
+   "value": 6,
+   "unit": "years",
+   "label": {
+    "he": "גיל שמתחתיו אסור להשאיר ילד ברכב בלא השגחה ראויה",
+    "en": "Age below which a child may not be left in a vehicle without proper supervision"
+   },
+   "source": {
+    "title": "חוק העונשין, התשל״ז-1977",
+    "url": "https://he.wikisource.org/wiki/חוק_העונשין",
+    "clause": "סעיף 361, ”השארת ילד בלא השגחה או במטרה לנטשו“"
+   },
+   "confidence": "high",
+   "notes": "לא עבירת תעבורה (אין בה קנס או ניקוד): עבירה פלילית שדינה מאסר - עד 3 שנים אם הדבר מסכן את חיי הילד או פוגע בשלומו, שנה אם נעשה ברשלנות, וחמש שנים אם נעשה במטרה לנטוש. חלה על השארת ילד ללא השגחה בכל מקום, לרבות רכב. שימו לב: facts.json מכיל כבר רשומת offence בשם child-alone-in-vehicle עם confidence נמוך שמציינת שלא אותר סעיף - הסעיף אותר במקור זה (חוק העונשין, לא בתקנות/בפקודת התעבורה) וכדאי לעדכן את רמת הביטחון שם."
+  },
+  {
+   "id": "mobility_scooter.min_age",
+   "value": 16,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לנהיגה בקלנועית",
+    "en": "Minimum age to drive a mobility scooter"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 39י",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "39י(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "mobility_scooter.min_age_disabled",
+   "value": 14,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי לנהיגה בקלנועית לנכה",
+    "en": "Minimum age to drive a mobility scooter for a disabled person"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 39י",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "39י(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "eco.bus_idle_before_boarding_max_min",
+   "value": 10,
+   "unit": "min",
+   "label": {
+    "he": "משך הזמן המרבי שמותר להפעיל מנוע אוטובוס חונה לפני העלאת נוסעים, שלא לצורך מילוי אוויר במערכת הפניאומטית",
+    "en": "Maximum time an idling bus engine may run before boarding, when not needed to fill the pneumatic system"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72א",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72א(ב)"
+   },
+   "confidence": "high",
+   "notes": "הכלל: אסור להפעיל מנוע אוטובוס חונה עד להעלאת הנוסעים, אלא למילוי אוויר במערכת הפניאומטית. החריג מתיר הפעלה של עד 10 דקות לפני ההעלאה, או במקומות שאינם בתוך שטח בנוי ומאוכלס."
+  }
+ ],
+ "offences": [
+  {
+   "id": "phone-handheld",
+   "title": {
+    "he": "נהיגה תוך אחיזה או שימוש בטלפון נייד/קבוע בלא דיבורית (לרבות שליחת/קריאת מסרון)",
+    "en": "Driving while holding or using a handheld/fixed phone without a hands-free device (incl. texting)"
+   },
+   "fine": 1000,
+   "points": 10,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 28 לתוספת חלק 2 (תקנה 28(ב))"
+   },
+   "confidence": "high",
+   "notes": "תקנה 28(ב) לתקנות התעבורה; דיבורית מוגדרת כהתקן המאפשר שימוש בלא אחיזה."
+  },
+  {
+   "id": "wheel-two-hands",
+   "title": {
+    "he": "אי-החזקת ההגה או הכידון בשתי הידיים בעת שהרכב בתנועה",
+    "en": "Not keeping both hands on the wheel/handlebar while the vehicle is moving"
+   },
+   "fine": 100,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 27 לתוספת חלק 2 (תקנה 28(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "red-light-main",
+   "title": {
+    "he": "אי-ציות לרמזור – נסיעה באור אדום (רמזור ראשי, ה-1)",
+    "en": "Running a red light (primary signal)"
+   },
+   "fine": 1500,
+   "points": 10,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "applies": [
+    "aggravated-circumstances"
+   ],
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 16 לתוספת חלק 2 (תקנה 22(א))"
+   },
+   "confidence": "high",
+   "notes": "בנסיבות מחמירות (צילום אלקטרוני 5 שניות ומעלה אחרי האדום, או עדות שוטר + הרשעה קודמת/סיכון/רכב אחר בצומת) עשויה העבירה להיחשב חמורה יותר; ראו הוראות בדבר נסיבות מחמירות של עבירות קנס."
+  },
+  {
+   "id": "red-yellow-start",
+   "title": {
+    "he": "התחלת נסיעה באור צהוב יחד עם אדום / אי-ציות לכיוון הנסיעה ברמזור",
+    "en": "Starting to drive on yellow-with-red, or disobeying a directional signal"
+   },
+   "fine": 500,
+   "points": 8,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 17 לתוספת חלק 2 (תקנה 22(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "stop-sign",
+   "title": {
+    "he": "אי-עצירה בתמרור „עצור‟ (תמרור 302/402, ב-37)",
+    "en": "Failing to stop at a stop sign"
+   },
+   "fine": 250,
+   "points": 4,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 22 לתוספת חלק 2 (תקנה 22(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "signs-general",
+   "title": {
+    "he": "אי-ציות לתמרורים (כללי, לא מהתמרורים המפורטים בנפרד)",
+    "en": "General failure to obey a traffic sign"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 13 לתוספת חלק 2 (תקנה 22(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "priority-junction-general",
+   "title": {
+    "he": "אי-מתן זכות קדימה בצומת (לרכב מימין / לרכב ממול בפנייה שמאלה / להולך רגל / לרכב הנע בכביש)",
+    "en": "Failing to yield right-of-way at a junction (to a vehicle on the right, an oncoming vehicle turning left, a pedestrian, etc.)"
+   },
+   "fine": null,
+   "points": 6,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "6 נקודות, פריט 15 (תקנות 64(א)(1)-(3), 64(ב)(1)-(2), 66)"
+   },
+   "confidence": "medium",
+   "notes": "לא נמצא סכום קנס קבוע בצו העבירות עבור אי-מתן זכות קדימה כללית (להבדיל מהפרת תמרור ספציפי) – מטופלת כברירת מחדל בהזמנה לדין."
+  },
+  {
+   "id": "give-way-priority-sign",
+   "title": {
+    "he": "אי-מתן זכות קדימה בתמרור „תן זכות קדימה‟ (ב-36)",
+    "en": "Failing to yield at a give-way sign"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "10 נקודות, פריט 6 (תקנות 64(ג), 22(א))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "pedestrian-crossing",
+   "title": {
+    "he": "אי-מתן אפשרות להולך רגל להשלים חצייה בבטחה במעבר חצייה",
+    "en": "Not allowing a pedestrian to safely complete crossing at a crosswalk"
+   },
+   "fine": 500,
+   "points": 10,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 93 לתוספת חלק 2 (תקנה 67(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "pedestrian-crossing-entry",
+   "title": {
+    "he": "אי-מתן אפשרות להולך רגל להתחיל לחצות מעבר חצייה בבטחה",
+    "en": "Not allowing a pedestrian to safely begin crossing at a crosswalk"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 93א לתוספת חלק 2 (תקנה 67(א1))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "crosswalk-vehicle-stopped",
+   "title": {
+    "he": "אי-עצירה לפני מעבר חצייה כשעומד לפניו רכב עוצר או עומד",
+    "en": "Failing to stop before a crosswalk when a vehicle ahead has stopped or is standing there"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 93ב לתוספת חלק 2 (תקנה 67(א2))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "speed-urban-20",
+   "title": {
+    "he": "מהירות עודפת עד 20 קמ„ש מעל המותר בדרך עירונית",
+    "en": "Speeding up to 20 km/h over the limit on an urban road"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 75 לתוספת חלק 2 (תקנה 54(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed-urban-21-30",
+   "title": {
+    "he": "מהירות עודפת של 21 עד 30 קמ„ש מעל המותר בדרך עירונית",
+    "en": "Speeding 21-30 km/h over the limit on an urban road"
+   },
+   "fine": 750,
+   "points": 8,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 76 לתוספת חלק 2 (תקנה 54(א)); תוספת שישית, 8 נקודות פריט 7"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed-urban-31-40",
+   "title": {
+    "he": "מהירות עודפת של 31 עד 40 קמ„ש מעל המותר בדרך עירונית",
+    "en": "Speeding 31-40 km/h over the limit on an urban road"
+   },
+   "fine": 1500,
+   "points": 10,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "פסילה מיידית עד 30 יום באפשרות שוטר, לפי שיקול דעתו",
+    "en": "Police officer may impose an immediate suspension of up to 30 days"
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 76א לתוספת חלק 2 (תקנה 54(א)); תוספת שישית, 10 נקודות פריט 3"
+   },
+   "confidence": "high",
+   "notes": "מעל 30 קמ„ש מעל המותר בדרך עירונית מקנה לשוטר סמכות פסילה מיידית של 30 יום (פקודת התעבורה, סעיפים 27 ו-47, תוספת רביעית פרט 6)."
+  },
+  {
+   "id": "speed-nonurban-25",
+   "title": {
+    "he": "מהירות עודפת עד 25 קמ„ש מעל המותר בדרך שאינה עירונית",
+    "en": "Speeding up to 25 km/h over the limit on a non-urban road"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 77 לתוספת חלק 2 (תקנה 54(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed-nonurban-26-40",
+   "title": {
+    "he": "מהירות עודפת של 26 עד 40 קמ„ש מעל המותר בדרך שאינה עירונית",
+    "en": "Speeding 26-40 km/h over the limit on a non-urban road"
+   },
+   "fine": 750,
+   "points": 8,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 78 לתוספת חלק 2 (תקנה 54(א)); תוספת שישית, 8 נקודות פריט 8"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed-nonurban-41-50",
+   "title": {
+    "he": "מהירות עודפת של 41 עד 50 קמ„ש מעל המותר בדרך שאינה עירונית",
+    "en": "Speeding 41-50 km/h over the limit on a non-urban road"
+   },
+   "fine": 1500,
+   "points": 10,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "פסילה מיידית עד 30 יום באפשרות שוטר, לפי שיקול דעתו",
+    "en": "Police officer may impose an immediate suspension of up to 30 days"
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 78א לתוספת חלק 2 (תקנה 54(א)); תוספת שישית, 10 נקודות פריט 4"
+   },
+   "confidence": "high",
+   "notes": "מעל 40 קמ„ש מעל המותר בדרך שאינה עירונית/דרך מהירה מקנה לשוטר סמכות פסילה מיידית עד 30 יום (תוספת רביעית פרט 6)."
+  },
+  {
+   "id": "seatbelt-driver",
+   "title": {
+    "he": "נהיגה או נסיעה בלא חגורת בטיחות חגורה (נוהג)",
+    "en": "Driving without wearing a seatbelt"
+   },
+   "fine": 250,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 123 לתוספת חלק 2 (תקנה 84 מפנה ל-83ב); תוספת שישית, 6 נקודות פריט 17"
+   },
+   "confidence": "medium",
+   "notes": "הקנס וניקוד לפי אי-חגירת נוסע/נהג נגזרים מתקנה 83ב; ראו גם פריטים 34/121/121א להסעת ילדים בפרט."
+  },
+  {
+   "id": "seatbelt-passenger",
+   "title": {
+    "he": "הסעת נוסע שאינו חגור בחגורת בטיחות",
+    "en": "Carrying a passenger who is not wearing a seatbelt"
+   },
+   "fine": 250,
+   "points": 2,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 121 לתוספת חלק 2 (תקנה 83ב); תוספת שישית, 2 נקודות פריט 2"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child-under-3-no-seat",
+   "title": {
+    "he": "הסעת ילד שטרם מלאו לו שלוש שנים בלא מושב בטיחות מתאים",
+    "en": "Carrying a child under 3 without an appropriate child safety seat"
+   },
+   "fine": 1000,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 120 לתוספת חלק 2 (תקנה 83א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child-3-8-no-seat",
+   "title": {
+    "he": "הסעת ילד בגיל 3 עד 8 בלא מושב בטיחות או מושב מגביה מתאים",
+    "en": "Carrying a child aged 3-8 without an appropriate safety/booster seat"
+   },
+   "fine": 750,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 120א לתוספת חלק 2 (תקנה 83א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "child-8-14-no-belt",
+   "title": {
+    "he": "הסעת ילד בגיל 8 עד 14 בלא חגורת בטיחות/מושב מגביה",
+    "en": "Carrying a child aged 8-14 without a seatbelt/booster"
+   },
+   "fine": 500,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 121א לתוספת חלק 2 (תקנה 83ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "continuous-line",
+   "title": {
+    "he": "נהיגה תוך חציית קו הפרדה רצוף",
+    "en": "Crossing a continuous (solid) divider line"
+   },
+   "fine": 500,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 38 לתוספת חלק 2 (תקנה 36(ג)); תוספת שישית, 6 נקודות פריט 10"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "overtaking-junction",
+   "title": {
+    "he": "עקיפה בצומת או אי-השלמת עקיפה לפני צומת",
+    "en": "Overtaking at a junction, or not completing an overtake before a junction"
+   },
+   "fine": 500,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריטים 64-65 לתוספת חלק 2 (תקנה 47(ה)(3)-(4)); תוספת שישית, 6 נקודות פריט 14"
+   },
+   "confidence": "high",
+   "notes": "עקיפה בצומת = 500 ש„ח; אי-השלמת עקיפה לפני צומת = 250 ש„ח; שתיהן 6 נקודות."
+  },
+  {
+   "id": "overtaking-dangerous",
+   "title": {
+    "he": "עקיפה מסוכנת – כשהדרך אינה פנויה או תוך חציית קו הפרדה רצוף",
+    "en": "Dangerous overtaking - when the road ahead is not clear, or across a continuous line"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "פסילה מיידית עד 30 יום באפשרות שוטר",
+    "en": "Police officer may impose an immediate suspension of up to 30 days"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "10 נקודות, פריט 5 (תקנה 47(ד) ו-(ה)(5))"
+   },
+   "confidence": "medium",
+   "notes": "מנויה בתוספת הרביעית לפקודת התעבורה (סעיפים 27, 47) – מקנה לשוטר סמכות פסילה מיידית של 30 יום; אינה מופיעה בצו עבירות הקנס ולכן נדונה בבית משפט."
+  },
+  {
+   "id": "following-distance",
+   "title": {
+    "he": "אי-שמירת ריווח מספיק בין רכב לרכב",
+    "en": "Not keeping a safe following distance"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 71 לתוספת חלק 2 (תקנה 49)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "wrong-way",
+   "title": {
+    "he": "נהיגה בכיוון ההפוך בכביש חד-סטרי",
+    "en": "Driving the wrong way on a one-way street"
+   },
+   "fine": 500,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 41 לתוספת חלק 2 (תקנה 37); תוספת שישית, 6 נקודות פריט 12"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "u-turn-forbidden",
+   "title": {
+    "he": "פניית פרסה במקום אסור / בניגוד לכללים",
+    "en": "Making a forbidden U-turn"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 58 לתוספת חלק 2 (תקנה 44)"
+   },
+   "confidence": "medium",
+   "notes": "אם בוצעה תוך סיכון עוברי דרך בנסיבות מחמירות – 8 נקודות (תוספת שישית, פריט 5)."
+  },
+  {
+   "id": "bus-lane-designated-lane",
+   "title": {
+    "he": "נהיגה בכביש, שביל או נתיב שלא יועד לסוג הרכב (למשל נתיב תחבורה ציבורית)",
+    "en": "Driving in a lane not designated for the vehicle type (e.g. a public-transport lane)"
+   },
+   "fine": 500,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 34 לתוספת חלק 2 (תקנה 34(א))"
+   },
+   "confidence": "medium",
+   "notes": "קנס מופחת לרוכב על רכב לא-ממונע/הולך רגל (100 ש„ח) ולרוכב אופניים/קורקינט ממונע (250 ש„ח)."
+  },
+  {
+   "id": "dui-alcohol-drugs",
+   "title": {
+    "he": "נהיגה תחת השפעת אלכוהול או סמים („שיכור‟ כמשמעותו בסעיף 64ב לפקודה)",
+    "en": "Driving under the influence of alcohol or drugs"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "פסילת רישיון (על פי הרשעה בבית משפט; לרוב פסילה ל-24 חודשים לפחות בעבירה ראשונה, בהתאם לנסיבות ולפסיקה הנוהגת)",
+    "en": "Court-imposed disqualification, typically at least 24 months for a first offence, per prevailing case law"
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיפים 62(3) ו-64ב"
+   },
+   "confidence": "high",
+   "notes": "עבירת הזמנה לדין; דינה מאסר שנתיים או קנס (סעיף 62 רישה), ופסילת רישיון בהתאם לחומרה ולפסיקה. סף שכרות מיוחד ומחמיר (50 מק„ג/ליטר נשיפה) לנהג חדש, נהג עד גיל 24, נהג רכב מסחרי/עבודה מעל 3,500 ק„ג ונהג רכב ציבורי."
+  },
+  {
+   "id": "refuse-sobriety-test",
+   "title": {
+    "he": "סירוב לבדיקת שכרות (נשיפה, שתן או דם) לפי דרישת שוטר",
+    "en": "Refusing a sobriety test (breath, urine or blood) when required by police"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיף 64ד(א)"
+   },
+   "confidence": "high",
+   "notes": "סירוב דינו כדין עבירת שכרות עצמה (סעיף 62(3))."
+  },
+  {
+   "id": "hit-and-run-injury",
+   "title": {
+    "he": "הפקרה אחרי פגיעה – אי-עצירה והושטת עזרה בתאונה שבה נפגע אדם",
+    "en": "Fleeing the scene of an accident that injured a person, without stopping to help"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיף 64א"
+   },
+   "confidence": "high",
+   "notes": "מאסר 3 עד 14 שנים בהתאם לחומרת הפגיעה ולנסיבות (עצירה בלא הזעקת עזרה / אי-עצירה כלל / חבלה חמורה או מוות)."
+  },
+  {
+   "id": "causing-death-negligent-driving",
+   "title": {
+    "he": "גרימת מוות ברשלנות תוך כדי שימוש ברכב",
+    "en": "Causing death by negligent driving"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיף 64 (מפנה לסעיף 304 לחוק העונשין)"
+   },
+   "confidence": "high",
+   "notes": "מאסר 3 שנים ולא פחות מ-6 חודשים, אלא אם בית המשפט מצא נסיבות מיוחדות שלא להטיל מאסר מינימום."
+  },
+  {
+   "id": "driving-while-disqualified",
+   "title": {
+    "he": "נהיגה בזמן פסילת רישיון או בניגוד לתנאים שהוטלו בו",
+    "en": "Driving while disqualified, or in breach of licence conditions"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "פקודת התעבורה [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיף 67"
+   },
+   "confidence": "high",
+   "notes": "מאסר 3 שנים או קנס, או שניהם."
+  },
+  {
+   "id": "no-driving-licence-ever",
+   "title": {
+    "he": "נהיגה בידי מי שלא ניתן לו כלל רישיון נהיגה לאותו סוג רכב",
+    "en": "Driving without ever having been issued a licence for that vehicle class"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "10 נקודות, פריט 1א (תקנה 10(א))"
+   },
+   "confidence": "medium",
+   "notes": "שונה מרישיון שפקע (ראו licence-vehicle-expired ו-licence-driving-expired להלן, שהן עבירות קנס)."
+  },
+  {
+   "id": "vehicle-licence-expired-short",
+   "title": {
+    "he": "נהיגה כשרישיון הרכב פקע – עד 4 חודשים מיום הפקיעה",
+    "en": "Driving with a vehicle licence expired for up to 4 months"
+   },
+   "fine": 250,
+   "points": 4,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 1 לתוספת חלק 1 (תקנה 2); תוספת שישית, 4 נקודות פריט 16"
+   },
+   "confidence": "high",
+   "notes": "הניקוד (4) חל לאחר שחלפו מעל 4 חודשים מפקיעת הרישיון, לפי לשון פריט 16 בתוספת השישית."
+  },
+  {
+   "id": "vehicle-licence-expired-long",
+   "title": {
+    "he": "נהיגה כשרישיון הרכב פקע – יותר מ-4 חודשים ועד שנה",
+    "en": "Driving with a vehicle licence expired for 4 months to a year"
+   },
+   "fine": 1000,
+   "points": 4,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 1א לתוספת חלק 1 (תקנה 2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "driving-licence-expired-short",
+   "title": {
+    "he": "נהיגה כשרישיון הנהיגה פקע – עד 6 חודשים מיום הפקיעה",
+    "en": "Driving with a driving licence expired for up to 6 months"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 2 לתוספת חלק 1 (תקנה 10(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "driving-licence-expired-long",
+   "title": {
+    "he": "נהיגה כשרישיון הנהיגה פקע – מעל 6 חודשים ועד שנתיים",
+    "en": "Driving with a driving licence expired 6 months to 2 years"
+   },
+   "fine": 750,
+   "points": 4,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 2א לתוספת חלק 1 (תקנה 10(א)); תוספת שישית, 4 נקודות פריט 18"
+   },
+   "confidence": "high",
+   "notes": "מותנה בזכאות הנהג לפי תקנה 173 לקבל רישיון לתקופה שמעל 4 שנים."
+  },
+  {
+   "id": "driving-licence-expired-over2y",
+   "title": {
+    "he": "נהיגה כשרישיון הנהיגה פקע – מעל שנתיים",
+    "en": "Driving with a driving licence expired for over 2 years"
+   },
+   "fine": null,
+   "points": 6,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "6 נקודות, פריט 1א (תקנה 10(א))"
+   },
+   "confidence": "medium",
+   "notes": "לא נמצא פריט קנס קבוע; מטופלת כברירת מחדל בהזמנה לדין."
+  },
+  {
+   "id": "no-insurance",
+   "title": {
+    "he": "שימוש ברכב מנועי בלא פוליסת ביטוח חובה בתוקף",
+    "en": "Using a motor vehicle without a valid compulsory third-party insurance policy"
+   },
+   "fine": null,
+   "points": null,
+   "kind": "court",
+   "disqualification": {
+    "he": "פסילת רישיון של 12 חודשים לפחות (שיקול דעת בית המשפט לקצר מנסיבות מיוחדות)",
+    "en": "Minimum 12-month disqualification at the court's discretion, unless special circumstances justify a shorter period"
+   },
+   "source": {
+    "title": "פקודת ביטוח רכב מנועי [נוסח חדש]",
+    "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%91%D7%99%D7%98%D7%95%D7%97_%D7%A8%D7%9B%D7%91_%D7%9E%D7%A0%D7%95%D7%A2%D7%99",
+    "clause": "סעיף 2"
+   },
+   "confidence": "high",
+   "notes": "מאסר 3 חודשים או קנס (סעיף 2(ב) לפקודה, סכום היסטורי הצמוד/מתעדכן); בית המשפט רשאי לפסול את הנהג לתקופה שלא תפחת מ-12 חודשים, אלא אם קבע תקופה קצרה יותר מנסיבות מיוחדות."
+  },
+  {
+   "id": "vehicle-unroadworthy-minor",
+   "title": {
+    "he": "נהיגה ברכב שמצבו עלול לסכן עוברי דרך – ליקוי לא חמור",
+    "en": "Driving a vehicle in a condition that could endanger road users - minor defect"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 25 לתוספת חלק 2 (תקנה 27(א) או (ד))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehicle-unroadworthy-severe",
+   "title": {
+    "he": "נהיגה ברכב שמצבו עלול לסכן עוברי דרך – ליקוי חמור",
+    "en": "Driving a vehicle in a condition that could endanger road users - severe defect"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "פסילה מיידית עד 30 יום באפשרות שוטר",
+    "en": "Police officer may impose an immediate suspension of up to 30 days"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 4 (תקנה 27(א))"
+   },
+   "confidence": "medium",
+   "notes": "מנויה בתוספת הרביעית לפקודה (סעיפים 27, 47) – מקנה לשוטר סמכות פסילה מיידית של 30 יום."
+  },
+  {
+   "id": "horn-misuse",
+   "title": {
+    "he": "שימוש בצופר שלא כדין",
+    "en": "Improper use of the horn"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 88 לתוספת חלק 2 (תקנה 63)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "careless-driving",
+   "title": {
+    "he": "נהיגה בקלות ראש או ברשלנות",
+    "en": "Careless or negligent driving"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 2א (סעיף 62(2) לפקודה)"
+   },
+   "confidence": "high",
+   "notes": "עבירת הזמנה לדין לפי הפקודה."
+  },
+  {
+   "id": "no-care-general",
+   "title": {
+    "he": "נהיגה בלא זהירות / ללא תשומת לב מספקת",
+    "en": "Driving without due care and attention"
+   },
+   "fine": 500,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 12 לתוספת חלק 2 (תקנה 21(ג)); תוספת שישית, 6 נקודות פריט 3"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "railway-no-slowdown",
+   "title": {
+    "he": "אי-האטה בהתקרב למפגש מסילת ברזל",
+    "en": "Not slowing down when approaching a railway crossing"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 80 לתוספת חלק 2 (תקנה 55)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "railway-no-stop-signal",
+   "title": {
+    "he": "אי-עצירה לפני מפגש מסילת ברזל בהינתן אות אזהרה, מחסום נע או רכבת מתקרבת",
+    "en": "Failing to stop before a railway crossing when warned, the barrier is moving, or a train approaches"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 9 (סעיף 65(א)(1)/(3) לפקודה, תקנה 56(א)(1)-(3))"
+   },
+   "confidence": "medium",
+   "notes": "עבירה לפי סעיף 65 לפקודת התעבורה – מאסר עד 3 שנים ולא פחות מחודש, ולכן אינה בצו עבירות הקנס."
+  },
+  {
+   "id": "railway-barrier-moving",
+   "title": {
+    "he": "כניסה למפגש מסילת ברזל כשהמחסום נע (חוסם או בדרך לחסימה)",
+    "en": "Entering a railway crossing while the barrier is moving"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "10 נקודות, פריט 2ב (סעיף 65(א)(2) לפקודה, תקנה 56(א)(4))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "bus-crossing-unpaved-track",
+   "title": {
+    "he": "חציית אוטובוס במפגש מסילת ברזל בדרך לא סלולה אספלט או בטון בלא נקיטת זהירות מיוחדת",
+    "en": "A bus crossing a railway track on an unpaved road without special caution"
+   },
+   "fine": 750,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 83 לתוספת חלק 2 (תקנה 57); תוספת שישית, 6 נקודות פריט 14ב"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "overload-up-to-10",
+   "title": {
+    "he": "משקל כולל של הרכב עד 10% מעל המותר",
+    "en": "Total vehicle weight up to 10% over the permitted limit"
+   },
+   "fine": 500,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 129 לתוספת חלק 2 (תקנה 85(א)(5)); תוספת שישית, 6 נקודות פריט 17א"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "overload-10-15",
+   "title": {
+    "he": "משקל כולל של הרכב מעל 10% ועד 14.99% מעל המותר",
+    "en": "Total vehicle weight 10-14.99% over the permitted limit"
+   },
+   "fine": 1000,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 130 לתוספת חלק 2 (תקנה 85(א)(5)); תוספת שישית, 6 נקודות פריט 17א"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "overload-15-25",
+   "title": {
+    "he": "משקל כולל של הרכב מ-15% ועד 24.99% מעל המותר",
+    "en": "Total vehicle weight 15-24.99% over the permitted limit"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 12א (תקנה 85(א)(5))"
+   },
+   "confidence": "medium",
+   "notes": "לא נמצא פריט קנס קבוע לטווח זה; ככל הנראה הזמנה לדין."
+  },
+  {
+   "id": "overload-over-25",
+   "title": {
+    "he": "משקל כולל של הרכב ב-25% או יותר מעל המותר",
+    "en": "Total vehicle weight 25% or more over the permitted limit"
+   },
+   "fine": null,
+   "points": 10,
+   "kind": "court",
+   "disqualification": {
+    "he": "פסילה מיידית עד 30 יום באפשרות שוטר",
+    "en": "Police officer may impose an immediate suspension of up to 30 days"
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "10 נקודות, פריט 10 (תקנה 85(א)(5))"
+   },
+   "confidence": "medium",
+   "notes": "מנויה בתוספת הרביעית לפקודה (פרט 8ב) – מקנה לשוטר סמכות פסילה מיידית של 30 יום."
+  },
+  {
+   "id": "cargo-unsecured",
+   "title": {
+    "he": "הובלת מטען שלא באופן בטיחותי או שאינו מאובטח כנדרש בתקן אבטחת מטענים",
+    "en": "Carrying cargo that is not safely loaded or secured to the cargo-restraint standard"
+   },
+   "fine": null,
+   "points": 6,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "6 נקודות, פריט 17ב (תקנה 85(א)(4), 85(א1))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "tachograph-faulty",
+   "title": {
+    "he": "נהיגה ברכב מסחרי/ציבורי בלא טכוגרף תקין",
+    "en": "Driving a goods/public vehicle without a functioning tachograph"
+   },
+   "fine": 750,
+   "points": 8,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 255 לתוספת חלק 2 (תקנה 364ד(ב)); תוספת שישית, 8 נקודות פריט 17"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed-limiter-faulty",
+   "title": {
+    "he": "נהיגה ברכב בלא מגביל מהירות תקין",
+    "en": "Driving a vehicle without a functioning speed limiter"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 18 (תקנה 364ה(ג))"
+   },
+   "confidence": "medium",
+   "notes": "לא נמצא פריט קנס קבוע; ככל הנראה הזמנה לדין."
+  },
+  {
+   "id": "speed-limiter-tamper",
+   "title": {
+    "he": "שיבוש פעולתו התקינה של מיתקן מגביל מהירות",
+    "en": "Tampering with a speed limiter's proper functioning"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 2ב (סעיף 62(11) לפקודה)"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "driving-hours-exceeded",
+   "title": {
+    "he": "חריגה משעות הנהיגה המותרות (תקנה 168)",
+    "en": "Exceeding the permitted professional driving hours"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 15 (תקנה 168)"
+   },
+   "confidence": "medium",
+   "notes": "ראו גם רשימת „drivingHours‟ להלן."
+  },
+  {
+   "id": "motorcycle-no-helmet",
+   "title": {
+    "he": "נהיגה או רכיבה על אופנוע בלי לחבוש קסדת מגן",
+    "en": "Riding a motorcycle without wearing a safety helmet"
+   },
+   "fine": 1000,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 176 לתוספת חלק 2 (תקנה 119(ג)); תוספת שישית, 6 נקודות פריט 18ב"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "motorcycle-passenger-illegal",
+   "title": {
+    "he": "הרכבת אדם על אופנוע שלא כדין",
+    "en": "Illegally carrying a passenger on a motorcycle"
+   },
+   "fine": 500,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 175 לתוספת חלק 2 (תקנה 119(ב))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "bicycle-helmet-cyclist",
+   "title": {
+    "he": "רכיבה על אופניים או הרכבת רוכב בלא קסדת מגן חבושה (חובה לקטין; לבגיר – באופניים עם מנוע עזר או בפעילות ספורטיבית)",
+    "en": "Cycling, or carrying a rider, without wearing a helmet (mandatory for minors; for adults, when the bicycle has an auxiliary motor or during sport riding)"
+   },
+   "fine": 100,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "מקביל לפריט הדן ברכב עצמאי/אופניים לפי תקנה 65ג(א)-(ב) לפקודה, פריט 6 לתוספת חלק 1"
+   },
+   "confidence": "medium",
+   "notes": "פקודת התעבורה סעיף 65ג; פריט 6 לתוספת חלק 1 (תקנה 65ג(א) או (ב)) קובע קנס 1,000 ש„ח, גבוה מהמצופה – סומן ברמת ודאות בינונית."
+  },
+  {
+   "id": "ebike-riding-location",
+   "title": {
+    "he": "רכיבה על גלגינוע/קורקינט חשמלי שלא בשביל אופניים או בכביש כנדרש",
+    "en": "Riding an e-scooter outside a bike path/roadway as required"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 179ב לתוספת חלק 2 (תקנה 122א(ב))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike-min-age",
+   "title": {
+    "he": "נהיגה בגלגינוע/קורקינט חשמלי לפני גיל 16",
+    "en": "Riding an e-scooter under the minimum age of 16"
+   },
+   "fine": 1000,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 179א לתוספת חלק 2 (תקנה 122א(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike-standard-noncompliant",
+   "title": {
+    "he": "נהיגה בגלגינוע שאינו עומד בתקן הבטיחות הנדרש",
+    "en": "Riding an e-scooter that does not meet the required safety standard"
+   },
+   "fine": 750,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 179ב1 לתוספת חלק 2 (תקנה 122א(ג))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike-no-helmet",
+   "title": {
+    "he": "נהיגה בגלגינוע בלא קסדת מגן חבושה עם מחזיר אור",
+    "en": "Riding an e-scooter without a helmet fitted with a reflector"
+   },
+   "fine": 1000,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 179ד לתוספת חלק 2 (תקנה 122ב(ב))"
+   },
+   "confidence": "high",
+   "notes": "קנס מופחת אם ההפרה היא רק אי-הצמדת מחזיר אור לקסדה (לא צוין סכום נפרד בטבלה)."
+  },
+  {
+   "id": "ebike-passenger",
+   "title": {
+    "he": "הרכבת נוסע נוסף על גלגינוע",
+    "en": "Carrying an extra passenger on an e-scooter"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 179ה לתוספת חלק 2 (תקנה 122ב(ג))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "ebike-structure-modified",
+   "title": {
+    "he": "נהיגה בגלגינוע ששונה מבנהו בניגוד לדרישות התו התקני",
+    "en": "Riding a structurally-modified e-scooter that no longer meets its certification label"
+   },
+   "fine": 1000,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 179ו לתוספת חלק 2 (תקנה 122ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "young-new-driver-no-escort",
+   "title": {
+    "he": "נהיגת נהג חדש צעיר בלא מלווה",
+    "en": "A young new driver driving without a required escort"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 1א (תקנה 12א1(ב))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "young-new-driver-passenger-limit",
+   "title": {
+    "he": "נהיגת נהג חדש צעיר עם נוסעים מעל המותר בלא מלווה",
+    "en": "A young new driver carrying more passengers than permitted without an escort"
+   },
+   "fine": null,
+   "points": 8,
+   "kind": "court",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961 – התוספת השישית (תקנה 544)",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "8 נקודות, פריט 1ב (תקנה 12א2)"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "lights-required",
+   "title": {
+    "he": "נסיעה בלא הפעלת אורות כנדרש (אורות חובה)",
+    "en": "Driving without using required lights"
+   },
+   "fine": 100,
+   "points": 2,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 151 לתוספת חלק 2 (תקנה 97(א)); תוספת שישית, 2 נקודות פריט 9"
+   },
+   "confidence": "medium",
+   "notes": "תקנה 97 קובעת מתי חובה להאיר את הרכב (חשכה/ראות לקויה/תנאי מזג אוויר); לעיתים מכונה בציבור „עונת החורף‟ אף שהחובה תלוית-תאורה ולא תאריך קבוע בלוח."
+  },
+  {
+   "id": "lights-urban-dimming",
+   "title": {
+    "he": "אי-קיום חובת הארה בדרך עירונית (עמעום/החלפת אלומה כנדרש)",
+    "en": "Not complying with the urban-road lighting/dimming duty"
+   },
+   "fine": 100,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 153 לתוספת חלק 2 (תקנה 98)"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "child-alone-in-vehicle",
+   "title": {
+    "he": "השארת ילד שטרם מלאו לו 6 שנים בלא השגחה ראויה (גם ברכב)",
+    "en": "Leaving a child under 6 without proper supervision (including in a vehicle)"
+   },
+   "fine": null,
+   "points": null,
+   "kind": "criminal",
+   "disqualification": {
+    "he": "עבירה פלילית לפי חוק העונשין — דינה מאסר, לא קנס תעבורה",
+    "en": "A criminal offence under the Penal Law — punishable by imprisonment, not a traffic fine"
+   },
+   "source": {
+    "title": "חוק העונשין, התשל״ז-1977",
+    "url": "https://he.wikisource.org/wiki/חוק_העונשין",
+    "clause": "סעיף 361"
+   },
+   "confidence": "medium",
+   "notes": "Not a traffic offence: Penal Law §361 (leaving a child under 6 without proper supervision), found by the passenger-safety writer. The age is fact child.alone_max_age. Confirm the penalty wording with the Ministry before release."
+  },
+  {
+   "id": "school-transport-parking",
+   "title": {
+    "he": "חניה או העמדת רכב במקום המיועד להעלאה/הורדה של תלמידים בניגוד לתמרור",
+    "en": "Parking in a spot designated for school pick-up/drop-off in violation of signage"
+   },
+   "fine": null,
+   "points": null,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "תקנות התעבורה, התשכ„א–1961",
+    "url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94",
+    "clause": "סעיף 70ג לפקודת התעבורה (הסדר חניה לרכב להסעת תלמידים)"
+   },
+   "confidence": "low",
+   "notes": "מוסדר כהפרת חניה כללית לפי תמרור; הקנס הרלוונטי הוא קנס החניה הרגיל לפי תמרור אוסר (ראו parking-* להלן)."
+  },
+  {
+   "id": "emergency-vehicle-priority",
+   "title": {
+    "he": "אי-מתן זכות קדימה לרכב ביטחון/הצלה",
+    "en": "Failing to yield right-of-way to an emergency/security vehicle"
+   },
+   "fine": 250,
+   "points": 6,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 146 לתוספת חלק 2 (תקנה 93(א)(1)); תוספת שישית, 6 נקודות פריט 13"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "parking-sidewalk",
+   "title": {
+    "he": "חניה על המדרכה בניגוד לתקנה 72",
+    "en": "Parking on the pavement/sidewalk in breach of regulation 72"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 103-104 לתוספת חלק 2 (תקנה 72(א)(2א))"
+   },
+   "confidence": "high",
+   "notes": "250 ש„ח בדרך כלל; קנס מוגדל 500 ש„ח בנסיבות מסוימות (פריט 103) אלא אם מתקיימים תנאי הפטור החלקי (פריט 104)."
+  },
+  {
+   "id": "parking-disabled-blocking",
+   "title": {
+    "he": "חסימת רכב הנושא תג נכה החונה במקום חניה לנכים",
+    "en": "Blocking a vehicle bearing a disabled parking permit at a disabled parking space"
+   },
+   "fine": 750,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 3ב לתוספת חלק 1 (סעיף 62(12) לפקודה)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "parking-disabled-space-obstruct",
+   "title": {
+    "he": "חניה בשטח האסור לצד מקום חניה לנכים באופן המונע כניסה/יציאה של נכה",
+    "en": "Parking in a no-parking area beside a disabled space in a way that blocks a disabled person entering/exiting their vehicle"
+   },
+   "fine": 1000,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 3ג לתוספת חלק 1 (סעיף 62(12) לפקודה)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "parking-general-prohibited-sign",
+   "title": {
+    "he": "עצירה או חניה במקום האסור לפי תמרור",
+    "en": "Stopping or parking where prohibited by signage"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 101 לתוספת חלק 2 (תקנה 72(א), כללי)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "parking-fire-hydrant-etc",
+   "title": {
+    "he": "חניה במקום אסור לפי תקנה 72(א) בנסיבות שאינן כלולות בסייגים (כגון ליד ברז כיבוי, מעבר חצייה, תחנת אוטובוס)",
+    "en": "Parking in specific prohibited spots under regulation 72(a) (e.g. near a hydrant, crosswalk, bus stop)"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 104א לתוספת חלק 2 (תקנה 72(א)(2),(3),(4),(6),(10))"
+   },
+   "confidence": "medium"
+  },
+  {
+   "id": "no-reflective-vest",
+   "title": {
+    "he": "אי-לבישת אפוד זוהר ביציאה/ירידה מהרכב בדרך שאינה עירונית",
+    "en": "Not wearing a reflective vest when exiting/alighting on a non-urban road"
+   },
+   "fine": 250,
+   "points": 2,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 5 לתוספת חלק 1 (סעיף 65ב(ג) לפקודה); תוספת שישית, 2 נקודות פריט 10"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "no-vest-in-vehicle",
+   "title": {
+    "he": "רכב מנועי הנוסע בלא אפוד זוהר מצוי בו כלל",
+    "en": "A motor vehicle travelling without a reflective vest present at all"
+   },
+   "fine": 100,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 4 לתוספת חלק 1 (סעיף 65ב(א)-(ב) לפקודה)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "new-driver-no-plate",
+   "title": {
+    "he": "נהיגת נהג חדש בלא תווית „נהג חדש‟",
+    "en": "A new driver driving without displaying the \"new driver\" sticker"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 5 לתוספת חלק 2 (תקנה 9א(א))"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "optical-aid-missing",
+   "title": {
+    "he": "אי-הרכבת מכשיר אופטי (משקפיים/עדשות) הנדרש ברישיון הנהיגה",
+    "en": "Not wearing the optical aid (glasses/lenses) required by the driving licence"
+   },
+   "fine": 250,
+   "points": 0,
+   "kind": "fixed",
+   "disqualification": {
+    "he": "",
+    "en": ""
+   },
+   "source": {
+    "title": "צו התעבורה (עבירות קנס), התשס„ב–2001 – התוספת",
+    "url": "https://he.wikisource.org/wiki/%D7%A6%D7%95_%D7%94%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94_(%D7%A2%D7%91%D7%99%D7%A8%D7%95%D7%AA_%D7%A7%D7%A0%D7%A1)",
+    "clause": "פריט 30 לתוספת חלק 2 (תקנה 30)"
+   },
+   "confidence": "high"
+  }
+ ],
+ "openQuestions": [
+  "Towing speed: row (4) of the table in תקנה 54(א) (formerly a separate row for a vehicle towing a trailer) is now empty in the current text, confirmed again while researching topic 6 — a car towing a trailer follows the general limits (50/80/90/110) unless the vehicle licence or towing conditions set a lower speed (54(ד)). Older theory books quote lower towing speeds; confirm the current question bank.",
+  "No general minimum speed on freeways was found in the regulations; slow vehicles are simply barred (54(א) row 5). Check whether the theory bank uses a minimum-speed sign value (e.g. תמרור מהירות מזערית).",
+  "Periodic vehicle test (טסט) schedule beyond what's in vehicletest.private.first_test_years / interval_years: not confirmed whether the biennial interval reverts to annual after the car turns 9, what the schedule is for cars registered before 1.1.2023, and what it is for taxis, buses, trucks and motorcycles (commonly said to remain annual from year 1, but not verified against primary legislation — only local Wikisource takanot.txt snapshots and secondary news coverage were available).",
+  "No legislated passing distance for a car overtaking a cyclist was found in תקנות התעבורה (unlike some other countries' fixed 1–1.5 m rule) — the only relevant clause (תקנה 127) requires cyclists to keep a 'sufficient gap' from the vehicle ahead of THEM, not the other way around. Confirm whether the theory question bank nonetheless expects a specific number.",
+  "No numeric minimum age for a motorcycle passenger (as opposed to the licence-holder rules already in newdriver.escort.* / licence.moto.passenger_rule) was found; only a functional footrest requirement (תקנה 120(ב1)). Confirm against the theory question bank.",
+  "Compulsory insurance (ביטוח חובה): no additional purely numeric facts (e.g. minimum coverage sums, grace periods) were found in the locally cached ביטוח רכב מנועי ordinance text beyond the 24-hour/5-day accident-reporting duties already recorded under accident.*; a deeper pass through src/bitouach.txt (compensation law) could surface more if needed.",
+  "child-alone-in-vehicle: לא אותר סעיף ספציפי בתקנות/בפקודת התעבורה (Wikisource, עד תשפ„ו) בדבר איסור השארת ילד לבדו ברכב; דורש בדיקה מול מקור עדכני נוסף (למשל אתר משרד התחבורה, חוק העונשין, או חקיקה עירונית) לפני שילוב באפליקציית הלימוד.",
+  "bicycle-helmet-cyclist: מיפוי הקנס (1,000 ש„ח, פריט 6 לתוספת חלק 1) מתייחס לתקנה 65ג לפקודה באופן עקיף; כדאי לאמת מול מקור נוסף שהסכום הנכון לרכיבת אופניים רגילה (לא ממונעת) של קטין הוא אכן זה ולא סכום נמוך יותר.",
+  "no-insurance: הקנס הפלילי (750 לירות, מאסר 3 חודשים) בפקודת ביטוח רכב מנועי הוא נוסח היסטורי; כדאי לבדוק אם קיים צו קנס עדכני/מתוקנן (לפי חוק העונשין סעיף 61) הקובע סכום שקלי נוכחי לעבירה זו.",
+  "overload-15-25 / overload-over-25 / speed-limiter-faulty / driving-hours-exceeded / vehicle-unroadworthy-severe / overtaking-dangerous / driving-licence-expired-over2y: לא אותר פריט קנס קבוע („ברירת קנס‟) בצו התעבורה עבור עבירות אלה; סווגו כ„הזמנה לדין‟ על בסיס העדרן מרשימת פריטי הצו, אך כדאי לאמת שאין צו קנס עדכני יותר או תוספת מנהלית (חוק הפרות תעבורה מינהליות) שמכסה אותן.",
+  "מהירות עודפת מעל 40 קמ„ש (עירוני) / מעל 50 קמ„ש (בין-עירוני): לא אותר פריט קנס נפרד לטווח הגבוה ביותר; ניתן להניח שמדובר בעבירת הזמנה לדין (מהירות מסוכנת, סעיף 62(2) לפקודה) בנוסף לפסילה המיידית, אך לא אומת במפורש."
+ ]
+}

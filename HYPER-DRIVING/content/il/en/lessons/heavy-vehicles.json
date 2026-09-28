@@ -1,0 +1,167 @@
+{
+ "chapter": "heavy-vehicles",
+ "title": "Heavy vehicles",
+ "summary": "Weight, dimensions, air brakes, trailers and driving hours — what a truck driver must know beyond a private car.",
+ "lessons": [
+  {
+   "id": "hv-dimensions",
+   "title": "Weight, axles and dimensions",
+   "summary": "A goods vehicle's licence, speed limit and permitted load all come from one number: the gross vehicle weight.",
+   "licence": [
+    "heavy"
+   ],
+   "terms": [
+    "gross-vehicle-weight",
+    "curb-weight",
+    "axle-load"
+   ],
+   "signs": [
+    "406",
+    "415"
+   ],
+   "body": "A goods vehicle's driving licence is set by weight, not by outward size. The [[term:curb-weight|kerb weight]] is the weight of the empty vehicle; the [[term:gross-vehicle-weight|gross vehicle weight]] is the kerb weight plus the passengers and load that the Licensing Authority has permitted the vehicle to carry (reg. 1). Everything that sets heavy-vehicle driving apart lies between these two numbers.\n\n# Which licence class for which weight\n| Class | Gross vehicle weight | Minimum age |\n|---|---|---|\n| C1 | {{fact:licence.c1.weight_range}} | {{fact:licence.c1.min_age}} |\n| C | above {{fact:speed.heavy_threshold}} | {{fact:licence.c.min_age}}, with at least {{fact:licence.c.seniority_c1}} year in C1 |\n| C+E | a class C vehicle with a trailer or semi-trailer | {{fact:licence.ce.min_age}}, with at least {{fact:licence.ce.seniority_c}} year in C |\n\nThe gross vehicle weight also sets the speed limit: a commercial vehicle whose gross vehicle weight exceeds {{fact:speed.heavy_threshold}} is limited to {{fact:speed.heavy.nonurban}} outside town — even on a freeway, and even if a sign allows more (reg. 54).\n\n# Dimensions\nThe vehicle's overall width, including the load, must not exceed {{fact:vehicle.width.max_m}}, and the overall length of a commercial vehicle that is not a combination or attached vehicle must not exceed {{fact:vehicle.length.max_truck_m}} (reg. 313). Sign [[sign:406|icon]] bans entry to a commercial vehicle over a stated weight, and sign [[sign:415|icon]] bans entry to any vehicle over a stated weight — note the difference: 406 shows a truck symbol, 415 applies to every vehicle.\n\n:::law Overloading\nThe total weight of the vehicle with its load must not exceed the gross vehicle weight on the vehicle's licence, and the [[term:axle-load|load]] on each axle must not exceed the maximum set for the vehicle or by the manufacturer, whichever is lower (reg. 85(a)(5)).\n:::\n\n# What overloading costs\nOverloading harms braking, stability and tyre and suspension wear — and in law it is an offence whose severity grows with the percentage of excess:\n\n| Excess over permitted weight | Fine | Points |\n|---|---|---|\n| Up to 10% | {{fine:overload-up-to-10}} | {{points:overload-up-to-10}} |\n| 10% to about 15% | {{fine:overload-10-15}} | {{points:overload-10-15}} |\n| 15% to about 25% | Court summons | {{points:overload-15-25}} |\n| 25% or more | Court summons | {{points:overload-over-25}} |\n\n:::warn\nAbove a 25% excess, a police officer may take the vehicle off the road on the spot, for up to 30 days.\n:::\n\nThe real load is checked by weighing — not by guesswork. A driver who is not sure how much their load weighs must weigh the vehicle, not guess.",
+   "keyPoints": [
+    "The licence class (C1/C/C+E) is set by the vehicle's [[term:gross-vehicle-weight|gross vehicle weight]], not by its size.",
+    "Above {{fact:speed.heavy_threshold}} — speed is limited to {{fact:speed.heavy.nonurban}} outside town, always.",
+    "Overall width up to {{fact:vehicle.width.max_m}}, an ordinary goods vehicle's length up to {{fact:vehicle.length.max_truck_m}}.",
+    "Overloading is an offence whose severity rises with the percentage of excess, up to an immediate ban above 25%.",
+    "Load is measured by weighing, not by guesswork."
+   ]
+  },
+  {
+   "id": "hv-brakes",
+   "title": "Air brakes in a heavy vehicle",
+   "summary": "How a truck's or bus's braking system works, and what you check on it every day.",
+   "licence": [
+    "heavy"
+   ],
+   "terms": [
+    "air-brakes",
+    "spring-brake",
+    "retarder",
+    "engine-brake"
+   ],
+   "body": "In a private car, the brakes work on hydraulic (fluid) pressure. In a heavy vehicle — trucks and buses — an [[term:air-brakes|air brake]] system is common: a compressor driven by the engine compresses air into tanks, and pressing the brake pedal releases the compressed air into the brake chambers at every wheel. This force is far greater than the force of a foot alone, so it suits stopping a heavy vehicle.\n\n# The parking brake: spring, not air\nUnlike a private car, the parking brake in a heavy vehicle is a [[term:spring-brake|spring brake]]: a strong spring pushes the brake pads into the closed position, and it is air pressure that holds it open while driving. The safety idea: if air pressure drops — from a fault, a leak or an empty tank — the brake closes on its own instead of releasing. This is why a vehicle with too little air pressure simply cannot move.\n\n:::tech Air pressure warning\nBefore setting off, make sure the air pressure has risen to the normal range and that the warning light or buzzer has gone off. Driving with the air pressure warning on is dangerous and forbidden.\n:::\n\n# Slowing down without burning out the brakes\nOn a long descent, repeated use of the friction brakes heats them until they lose their grip (“brake fade”). That is why a heavy vehicle uses a [[term:retarder|retarder]] or an [[term:engine-brake|engine brake]] — systems that slow the vehicle through resistance in the gearbox or the engine itself, without wearing down the brake pads. The rule: go downhill in a low gear and use continuous engine braking the whole way down, keeping the friction brakes for short slow-downs and the final stop.\n\n# Daily check\nBefore every shift, check: the air pressure rises to normal within a reasonable time, the pressure warning goes off, the steering is sound, and there is no audible air leak (a continuous hiss) from the hoses or the tanks. An untreated leak leads to exactly the situation where the brakes close by themselves — in the middle of a journey.\n\n:::remember\nA spring brake that closes without air is a safety feature, not a fault — the vehicle “fails safe” instead of being left with no brakes.\n:::",
+   "keyPoints": [
+    "In a heavy vehicle, a compressor compresses air into tanks, and pressing the pedal releases it into the brake chambers.",
+    "The parking brake is a [[term:spring-brake|spring brake]]: air pressure holds it open, and losing pressure closes it on its own.",
+    "A [[term:retarder|retarder]] and an [[term:engine-brake|engine brake]] slow the vehicle on long descents without wearing down the friction brakes.",
+    "Before driving, check the air pressure rise, the warning going off, and audible air leaks."
+   ]
+  },
+  {
+   "id": "hv-visibility",
+   "title": "Blind spots, mirrors and off-tracking",
+   "summary": "Why a truck or bus cannot see what a private car sees, and why they need more room in a turn.",
+   "licence": [
+    "heavy"
+   ],
+   "terms": [
+    "blind-spot-mirror-heavy",
+    "blind-spot-mirror-convex",
+    "off-tracking"
+   ],
+   "fig": "hv-off-tracking",
+   "body": "[[widget:blind-spots vehicle=truck]]\n\nA truck or bus is several times the size of a private car, but the driver's field of view does not grow in the same ratio — and sometimes it is even smaller. That is why the cab is fitted with extra mirrors that a private car does not have.\n\n# Mirrors a private car does not need\nA goods vehicle or work vehicle with a cab has at least two external rear-view mirrors fitted, one on each side. A goods or work vehicle with a gross vehicle weight of {{fact:speed.heavy_threshold}} or more also has an extra [[term:blind-spot-mirror-heavy|blind spot mirror]] fitted on the right — a specially [[term:blind-spot-mirror-convex|convex mirror]] that shows the full length of the vehicle on its right side, including the area next to the front where a pedestrian could stand without the driver noticing them (reg. 361). A bus also has a mirror through which the driver sees the passengers inside it.\n\n:::warn The most dangerous area\nNever stand or ride on the right side of a truck or bus at a junction when it may turn right. Even with all its mirrors, there is an area next to the front and the right side that the driver simply cannot see.\n:::\n\n# Off-tracking\nIn a long vehicle, the rear wheels do not follow the same path as the front wheels — they “cut in” on the turn and pass closer to the inside corner. This is called [[term:off-tracking|off-tracking]], and it grows the longer the vehicle is (especially in a combination vehicle, where the trailer cuts in even more than the tractor unit). That is why a truck or bus turning at a narrow junction sometimes looks as if it is “swinging out” into the opposite lane before the turn — it is simply leaving room for its rear wheels.\n\n[[fig:hv-off-tracking]]\n\n:::tip For the heavy-vehicle driver\nBefore a sharp turn, check in your mirrors that the rear wheels are not about to mount a kerb, brush against a parked vehicle or — most dangerous of all — hit a pedestrian or a cyclist waiting close to the corner.\n:::\n\n:::tip For other drivers\nDo not fill the gap a truck leaves on the opposite side before a left turn — it is not free, it is reserved for the tail of the vehicle.\n:::",
+   "keyPoints": [
+    "A truck and bus are fitted with extra mirrors, including a convex [[term:blind-spot-mirror-heavy|blind spot mirror]] on the right side of a heavy vehicle.",
+    "The area next to the front and the right side stays blind even with all the mirrors — never stand there at a junction.",
+    "In [[term:off-tracking|off-tracking]], the rear wheels pass closer to the inside corner than the front wheels, and it grows with the length of the vehicle.",
+    "A heavy vehicle that is turning may look as if it is “swinging out” to the other side before the turn — it is leaving room for its tail."
+   ]
+  },
+  {
+   "id": "hv-loads",
+   "title": "Loading, load securing and overhanging loads",
+   "summary": "How to load safely, when a load may overhang the vehicle, and how to mark an overhang.",
+   "licence": [
+    "heavy"
+   ],
+   "terms": [
+    "load-securing",
+    "load-overhang"
+   ],
+   "signs": [
+    "416",
+    "417"
+   ],
+   "fig": "hv-load-overhang",
+   "body": "A load that is not properly secured is not only an offence — it is a load that can shift, fall, or make the vehicle unstable while it is moving. Regulation 85 sets three basic requirements for every load: it is arranged so that it does not restrict the driver's field of view and does not cover lights or the number plate, its weight distribution allows stable carriage, and it is well fastened so that it cannot slip or work loose from driving or from the wind. On a heavy goods vehicle, the load must also be secured under the official Israeli [[term:load-securing|load securing]] standard.\n\n# How far a load may overhang the vehicle\nA load may overhang up to {{fact:load.overhang.front_rear_max_m}} beyond the vehicle's extreme front or rear point. If the load overhangs that metre as two separate units, each unit must be at least {{fact:load.overhang.two_units_min_length_m}} long — so that it is not a small, dangerous item sticking out at the back.\n\n# A wide load\nA commercial vehicle with a gross vehicle weight of 15,000 kg or more may carry a load wider than the vehicle itself, under increasingly strict conditions:\n\n| Load width | What is required |\n|---|---|\n| Up to {{fact:load.wide.sign_required_over_m}} | No special requirement |\n| {{fact:load.wide.sign_required_over_m}} to {{fact:load.wide.escort_and_permit_over_m}} | A “Caution – wide load” sign, perimeter lighting, overhang up to {{fact:load.wide.side_overhang_max_cm}} on each side |\n| Above {{fact:load.wide.escort_and_permit_over_m}} | Also an escort vehicle, also a police-officer permit |\n\nA load whose length overhangs beyond the permitted metre — up to a total vehicle-plus-load length of {{fact:load.long.sign_max_total_length_m}} — needs a “Caution long load” sign and reflectors at the end of the overhang; beyond that, a police-officer permit is required.\n\n[[fig:hv-load-overhang]]\n\n:::remember\nSign [[sign:416|icon]] bans entry to a vehicle whose height with its load exceeds a stated figure; sign [[sign:417|icon]] bans entry to a vehicle whose width with its load exceeds a stated figure. They apply to the actual height and width — including the load.\n:::\n\n# Load height\nLoad height from road level is limited by the vehicle's weight: up to {{fact:load.height.max_gvw1500}} for a vehicle up to 1,500 kg, up to {{fact:load.height.max_gvw3500}} up to 3,500 kg, up to {{fact:load.height.max_gvw8000}} up to 8,000 kg, and up to {{fact:load.height.max_gvw_above8000}} above that (reg. 85).\n\n:::fine\nCarrying a load that is not secured as required is a court-summons offence carrying {{points:cargo-unsecured}} points.\n:::",
+   "keyPoints": [
+    "A load must not block the driver's view or cover the lights, must be distributed stably, and must be well fastened.",
+    "Overhang is permitted up to {{fact:load.overhang.front_rear_max_m}} with no special requirements; beyond that — signage, lighting, and sometimes an escort and a permit.",
+    "Load height is limited by the vehicle's weight, from {{fact:load.height.max_gvw1500}} up to {{fact:load.height.max_gvw_above8000}}.",
+    "Signs [[sign:416|icon]] and [[sign:417|icon]] are measured including the load, not just the vehicle."
+   ]
+  },
+  {
+   "id": "hv-trailers",
+   "title": "Trailers, semi-trailers and couplings",
+   "summary": "The difference between a trailer and a semi-trailer, how the fifth wheel works, and why a combination vehicle jackknifes.",
+   "licence": [
+    "heavy"
+   ],
+   "terms": [
+    "attached-vehicle",
+    "combined-vehicle",
+    "towing-support-unit",
+    "supported-trailer",
+    "fifth-wheel",
+    "kingpin",
+    "trailer-brakes",
+    "jackknife"
+   ],
+   "fig": "hv-fifth-wheel",
+   "body": "The law distinguishes between two ways of attaching another vehicle behind a truck, and the difference determines how the vehicle behaves on the road.\n\n# An attached vehicle: a trailer on its own wheels\nWhen you tow an ordinary [[term:trailer|trailer]] — a carriage with its own front and rear wheels — the vehicle is called a [[term:attached-vehicle|vehicle with a trailer attached]]. The trailer rests on its own wheels alone and is attached to the towing vehicle by a tow hook, with a maximum gap of {{fact:tow.trailer.max_connection_gap_cm}} between the rear of the towing vehicle and the front of the trailer when they are in a straight line (reg. 374).\n\n# A combination vehicle: towing unit and supported trailer\nWhen a [[term:towing-support-unit|towing support unit]] — a tractor unit — carries a [[term:supported-trailer|supported semi-trailer]] whose front rests on it instead of on wheels of its own, the whole combination is called a [[term:combined-vehicle|combination vehicle]] (reg. 1). The coupling is made with a [[term:fifth-wheel|fifth wheel]]: a round plate on the tractor unit, onto which the [[term:kingpin|kingpin]] projecting from the bottom of the semi-trailer locks. This coupling lets the semi-trailer turn relative to the tractor unit — without it, the vehicle could not make a turn at all.\n\n[[fig:hv-fifth-wheel]]\n\nThe supported semi-trailer has its own independent [[term:trailer-brakes|brake]] system, which works in coordination with the tractor unit's brakes. An air and electrical connection between the two carries the driver's brake-pedal command to every wheel of the combination vehicle together.\n\n:::danger Jackknifing\nWhen [[term:jackknife|the vehicle jackknifes]], the semi-trailer starts to slide and swing sideways relative to the tractor unit — until they fold against each other at a sharp angle, and sometimes overturn. This happens mainly under hard braking on a slippery road, on a steep descent, or when the semi-trailer is empty and too light to keep its grip. The correct response: ease off the brake slightly and correct the steering gently — not brake harder.\n:::\n\n# Building seniority before C+E\nCoupling a supported trailer that can bring the gross weight to dozens of tonnes requires experience: a C+E licence is given only to someone who has already built up at least {{fact:licence.ce.seniority_c}} year in a C licence, from age {{fact:licence.ce.min_age}}. Driving a combination vehicle differs from driving a single vehicle in every respect — turning radius, braking distance, and behaviour in a crosswind.",
+   "keyPoints": [
+    "[[term:attached-vehicle|A vehicle with a trailer attached]] = a motor vehicle with a [[term:trailer|trailer]] on its own wheels; a [[term:combined-vehicle|combination vehicle]] = a [[term:towing-support-unit|towing support unit]] with a [[term:supported-trailer|supported semi-trailer]] resting on it.",
+    "The coupling in a combination vehicle is a [[term:fifth-wheel|fifth wheel]] and a [[term:kingpin|kingpin]], which let the parts turn relative to each other.",
+    "The [[term:supported-trailer|supported semi-trailer]] has independent [[term:trailer-brakes|brakes]] that work in coordination with the tractor unit.",
+    "[[term:jackknife|Jackknifing]] happens under hard braking, on a slippery road, or with a light semi-trailer — ease off the brake slightly and correct the steering gently.",
+    "A C+E licence requires {{fact:licence.ce.seniority_c}} year of seniority in C, from age {{fact:licence.ce.min_age}}."
+   ]
+  },
+  {
+   "id": "hv-hours",
+   "title": "Driving hours, rest, tachograph and speed limiter",
+   "summary": "A tired driver is as dangerous as a drunk one. The law sets how many hours you may drive in a row, and how this is enforced.",
+   "licence": [
+    "professional"
+   ],
+   "terms": [
+    "tachograph",
+    "speed-limiter"
+   ],
+   "body": "A driver of a public vehicle, or of a commercial vehicle whose gross vehicle weight exceeds 6,000 kg, is subject to a special regulation that limits how many hours they may drive — because fatigue harms reaction time exactly like alcohol does, and it is far easier to ignore.\n\n# Hour limits\n| Limit | Value |\n|---|---|\n| Continuous rest before starting a work day | At least {{fact:hours.pre-shift-rest}} |\n| Maximum driving in 24 hours | {{fact:hours.daily.max}} |\n| Maximum driving in any 7 days | {{fact:hours.weekly.max}} |\n| Break for every 4 continuous hours of driving | At least {{fact:hours.break-per-4h}} |\n| Continuous driving without a 1-hour break | Up to {{fact:hours.continuous-cap}} |\n| Continuous rest day in every 8 days | At least {{fact:hours.weekly-rest-day}} |\n\n(reg. 168). Driving here also includes handling the load and the passengers, not just sitting behind the wheel — and whoever is in control of the vehicle must not let the driver exceed these limits.\n\n:::fine\nExceeding the permitted driving hours is a court-summons offence carrying {{points:driving-hours-exceeded}} points.\n:::\n\n# The tachograph tracks everything\nA vehicle subject to this regulation has a [[term:tachograph|tachograph]] fitted — a device that continuously records driving speed, distance, and driving and rest times, to allow monitoring of fatigue and working hours (reg. 364D). A driver must enter their personal details at the start of driving and keep the records; a faulty tachograph is an offence in itself.\n\n:::fine\nDriving a commercial or public vehicle without a working tachograph: a fine of {{fine:tachograph-faulty}}, {{points:tachograph-faulty}} points.\n:::\n\n# The speed limiter\nA goods vehicle with a gross vehicle weight over 12,000 kg, and a tourist coach or bus with a weight over 10,000 kg, has a [[term:speed-limiter|speed limiter]] fitted — a device that does not let the engine accelerate past a fixed ceiling: {{fact:speed.limiter.truck}} for a goods vehicle, {{fact:speed.limiter.bus}} for a bus (reg. 364E). Driving without a working limiter, or tampering with it, are both court-summons offences.\n\n:::fine\nDriving without a working speed limiter, or tampering with it: {{points:speed-limiter-faulty}} points for each of these offences.\n:::\n\n:::tip\nInternational driving is subject to additional, stricter limits (reg. 168A), because the driver is far from home and the temptation to “push on a little more” is greater.\n:::",
+   "keyPoints": [
+    "Before a work day — {{fact:hours.pre-shift-rest}} continuous rest; in 24 hours — up to {{fact:hours.daily.max}} of driving; in a week — up to {{fact:hours.weekly.max}}.",
+    "A break of at least {{fact:hours.break-per-4h}} for every 4 continuous hours; no more than {{fact:hours.continuous-cap}} continuous without a 1-hour break.",
+    "The [[term:tachograph|tachograph]] records speed, distance and driving and rest hours — for monitoring.",
+    "The [[term:speed-limiter|speed limiter]] caps a goods vehicle at {{fact:speed.limiter.truck}} and a bus at {{fact:speed.limiter.bus}}."
+   ]
+  },
+  {
+   "id": "hv-tractors",
+   "title": "Tractors and work machines",
+   "summary": "A tractor, a mobile machine and a forklift — slow vehicles, utterly different from an ordinary goods vehicle.",
+   "licence": [
+    "tractor"
+   ],
+   "terms": [
+    "tractor",
+    "cargo-tractor",
+    "mobile-machine",
+    "forklift",
+    "work-vehicle",
+    "slow-vehicle"
+   ],
+   "body": "A class 1 licence is for a family of vehicles that were not built to carry a load over distances, but to work: a [[term:tractor|tractor]] — a vehicle built for towing and for carrying out work; a [[term:cargo-tractor|cargo tractor]] — a small tractor with an ordinary steering wheel and a loading platform; a [[term:mobile-machine|mobile machine]] — a vehicle built to carry out work and not to tow, such as a backhoe loader or a mobile crane; and a [[term:forklift|forklift]] — a mobile machine with an arm and forks for lifting loads (reg. 1). A class 1 licence is given from age {{fact:licence.tractor.min_age}}.\n\n# What it may tow and carry\nA tractor on a class 1 licence may tow a trailer with a gross vehicle weight of up to {{fact:licence.tractor.trailer_max}}, and a forklift on a class 1 licence is limited to a carrying capacity of up to {{fact:licence.tractor.forklift_max}} (reg. 179).\n\n# A work vehicle: not for carrying people or goods\nA [[term:work-vehicle|work vehicle]] is a vehicle that has work equipment permanently mounted on it, or that is built to carry out work — and is not meant to carry passengers or a load as its normal business. A crane, a concrete mixer or a road roller are examples.\n\n:::law A slow vehicle\nA vehicle whose maximum speed under its licence does not exceed 40 km/h is a [[term:slow-vehicle|slow vehicle]] (reg. 1). A tractor, a mobile machine and a slow vehicle are limited to {{fact:speed.slow_vehicle}} on any road — and a freeway is closed to them completely, not just limited (reg. 54).\n:::\n\n# Why the low speed itself is dangerous\nA slow vehicle travelling at {{fact:speed.slow_vehicle}} on a road that has no such limit creates a large speed gap against the rest of the traffic — exactly the situation that leads to dangerous overtaking. That is why it must keep to the right and use every paved, clear shoulder so that vehicles behind can overtake safely, and move off only when the road is genuinely clear in both directions.\n\n:::tip\nMany tractors and mobile machines are not built for long road journeys — before you go out on a public road, check that the vehicle is lit, that the brakes work, and that the trailer, if there is one, is properly attached and secured.\n:::",
+   "keyPoints": [
+    "A [[term:tractor|tractor]] is built for towing and work, a [[term:mobile-machine|mobile machine]] for work only; a [[term:forklift|forklift]] is a mobile machine with an arm and forks.",
+    "A class 1 licence — from age {{fact:licence.tractor.min_age}}, a trailer of up to {{fact:licence.tractor.trailer_max}}, a forklift of up to {{fact:licence.tractor.forklift_max}}.",
+    "A [[term:slow-vehicle|slow vehicle]], a tractor and a mobile machine are limited to {{fact:speed.slow_vehicle}} and are completely banned from a freeway.",
+    "The speed gap against the rest of the traffic requires keeping right and allowing overtaking on every paved, clear shoulder."
+   ]
+  }
+ ]
+}

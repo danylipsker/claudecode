@@ -1,0 +1,42 @@
+{
+  "sections": [
+    { "id": "theory", "title": { "he": "חוקי התנועה והנהיגה", "en": "Traffic law and driving" } },
+    { "id": "vehicle", "title": { "he": "הכרת הרכב", "en": "Know your vehicle" } }
+  ],
+  "chapters": [
+    { "id": "road-basics", "section": "theory", "icon": "road", "hue": 205 },
+    { "id": "licensing", "section": "theory", "icon": "law", "hue": 262 },
+    { "id": "signs-intro", "section": "theory", "icon": "sign", "hue": 0 },
+    { "id": "markings-signals", "section": "theory", "icon": "light", "hue": 45 },
+    { "id": "right-of-way", "section": "theory", "icon": "junction", "hue": 28 },
+    { "id": "speed-distance", "section": "theory", "icon": "speed", "hue": 12 },
+    { "id": "lanes-overtaking", "section": "theory", "icon": "road", "hue": 190 },
+    { "id": "stopping-parking", "section": "theory", "icon": "flag", "hue": 228 },
+    { "id": "special-roads", "section": "theory", "icon": "tree", "hue": 170 },
+    { "id": "vulnerable-users", "section": "theory", "icon": "person", "hue": 330 },
+    { "id": "visibility-weather", "section": "theory", "icon": "moon", "hue": 248 },
+    { "id": "human-factor", "section": "theory", "icon": "eye", "hue": 290 },
+    { "id": "passenger-safety", "section": "theory", "icon": "shield", "hue": 140 },
+    { "id": "defensive-driving", "section": "theory", "icon": "star", "hue": 100 },
+    { "id": "accidents-emergencies", "section": "theory", "icon": "siren", "hue": 355 },
+    { "id": "enforcement", "section": "theory", "icon": "coin", "hue": 18 },
+    { "id": "eco-driving", "section": "theory", "icon": "leaf", "hue": 120 },
+
+    { "id": "vehicle-basics", "section": "vehicle", "icon": "car", "hue": 208 },
+    { "id": "engine", "section": "vehicle", "icon": "engine", "hue": 25 },
+    { "id": "electrical", "section": "vehicle", "icon": "battery", "hue": 52 },
+    { "id": "drivetrain", "section": "vehicle", "icon": "gear", "hue": 280 },
+    { "id": "brakes", "section": "vehicle", "icon": "brake", "hue": 2 },
+    { "id": "steering-suspension", "section": "vehicle", "icon": "steer", "hue": 182 },
+    { "id": "tyres", "section": "vehicle", "icon": "tyre", "hue": 222 },
+    { "id": "safety-systems", "section": "vehicle", "icon": "shield", "hue": 160 },
+    { "id": "dashboard", "section": "vehicle", "icon": "gauge", "hue": 40 },
+    { "id": "maintenance", "section": "vehicle", "icon": "wrench", "hue": 92 },
+    { "id": "troubleshooting", "section": "vehicle", "icon": "tree", "hue": 300 },
+    { "id": "breakdowns", "section": "vehicle", "icon": "warn", "hue": 10 },
+    { "id": "ev-hybrid", "section": "vehicle", "icon": "plug", "hue": 150 },
+    { "id": "motorcycles", "section": "vehicle", "icon": "moto", "hue": 318 },
+    { "id": "heavy-vehicles", "section": "vehicle", "icon": "truck", "hue": 35 },
+    { "id": "buses", "section": "vehicle", "icon": "bus", "hue": 265 }
+  ]
+}

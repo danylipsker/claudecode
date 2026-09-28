@@ -1,0 +1,221 @@
+{
+ "chapter": "eco-driving",
+ "questions": [
+  {
+   "id": "q-eco-001",
+   "lesson": "eco-smooth",
+   "q": "What lets a driver slow down gradually, instead of braking hard at the last moment?",
+   "options": [
+    "Looking far ahead and keeping a large gap from the vehicle in front",
+    "Listening to loud music",
+    "Always driving at the maximum permitted speed",
+    "Driving close behind the vehicle in front"
+   ],
+   "answer": 0,
+   "explain": "A driver who looks far ahead and keeps a gap spots the need to slow down early, and can ease off the accelerator gradually instead of braking hard.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-002",
+   "lesson": "eco-smooth",
+   "q": "What is \"coasting correctly\" when approaching a red light?",
+   "options": [
+    "Braking hard the moment you see the red light",
+    "Shifting to neutral well before the light",
+    "Accelerating up to the light and then braking hard",
+    "Easing off the accelerator early, in gear, without braking too early and without accelerating until the last moment"
+   ],
+   "answer": 3,
+   "explain": "Correct coasting is done in gear, not in neutral — this keeps you in control of the vehicle throughout the slowdown.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-003",
+   "lesson": "eco-smooth",
+   "q": "When is cruise control best suited for use?",
+   "options": [
+    "On a long drive on an open, non-urban road, at a steady speed",
+    "On a mountain road with frequent climbs and descents",
+    "In heavy rain and on a slippery road",
+    "In dense urban traffic"
+   ],
+   "answer": 0,
+   "explain": "Cruise control saves fuel when driving at a steady speed on the open road; it is less suited to changing conditions.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-004",
+   "lesson": "eco-smooth",
+   "q": "Why does driving faster on a non-urban road generally use more fuel per kilometre?",
+   "options": [
+    "Because air resistance grows roughly with the square of the speed",
+    "Because the engine gets hotter",
+    "Because cruise control does not work at high speed",
+    "Because the tyres get hot"
+   ],
+   "answer": 0,
+   "explain": "Aerodynamic drag grows sharply with speed, so fuel consumption per kilometre rises significantly at higher speeds.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-005",
+   "lesson": "eco-car",
+   "q": "What happens when tyre pressure is lower than recommended?",
+   "options": [
+    "The tyre cools down and performs better",
+    "Fuel consumption rises and the tyre's life is shortened",
+    "Fuel consumption falls",
+    "It has no effect at all"
+   ],
+   "answer": 1,
+   "explain": "A tyre with low pressure increases rolling resistance, which increases fuel consumption — and wears out faster.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-006",
+   "lesson": "eco-car",
+   "q": "How does a roof box affect fuel consumption, especially at high speed?",
+   "options": [
+    "It has no effect at all",
+    "It only affects oil consumption",
+    "It increases air resistance and therefore fuel consumption",
+    "It reduces fuel consumption"
+   ],
+   "answer": 2,
+   "explain": "A roof box increases air resistance, so it especially affects fuel consumption when driving fast.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-007",
+   "lesson": "eco-car",
+   "licence": [
+    "bus"
+   ],
+   "facts": [
+    "eco.bus_idle_before_boarding_max_min"
+   ],
+   "q": "Under regulation 72A, what is allowed regarding running the engine of a parked bus before passengers board?",
+   "options": [
+    "The engine may be run at all times, without restriction",
+    "The engine may never be run under any circumstances",
+    "It may not be run, except to build up air in the pneumatic system, or for up to {{fact:eco.bus_idle_before_boarding_max_min}} before boarding",
+    "It may only be run at night"
+   ],
+   "answer": 2,
+   "explain": "Regulation 72A forbids starting the engine of a parked bus until passengers board, except to build up air in the pneumatic system, or for up to {{fact:eco.bus_idle_before_boarding_max_min}} in advance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-008",
+   "lesson": "eco-car",
+   "q": "Which of the following increases fuel consumption?",
+   "options": [
+    "Engine oil that was recently changed",
+    "Working spark plugs",
+    "A clean air filter",
+    "A clogged air filter or worn spark plugs"
+   ],
+   "answer": 3,
+   "explain": "Neglected maintenance — a clogged filter or worn spark plugs — makes it harder for the engine to work efficiently and increases fuel consumption.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-009",
+   "lesson": "eco-planning",
+   "q": "Why is it better to combine several errands into one trip, instead of several separate short trips?",
+   "options": [
+    "Because short trips damage the engine",
+    "Because it lowers the price of insurance",
+    "There is no difference in fuel consumption",
+    "Because a cold engine uses more fuel per kilometre in the first minutes of every trip"
+   ],
+   "answer": 3,
+   "explain": "A cold engine uses more fuel, so several short cold trips cost more fuel than one combined trip.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-010",
+   "lesson": "eco-planning",
+   "q": "Why does driving in a jam generally use more fuel per kilometre than flowing driving?",
+   "options": [
+    "Because the tyres get hotter in a jam",
+    "Because every stop and restart requires acceleration that burns fuel",
+    "Because the air conditioner works harder in a jam",
+    "There is no difference in fuel consumption between a jam and flowing driving"
+   ],
+   "answer": 1,
+   "explain": "Repeated stop-and-start burns more fuel than driving at a steady speed, even over the same distance.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-011",
+   "lesson": "eco-planning",
+   "q": "What is special about regenerative braking in an electric vehicle?",
+   "options": [
+    "It deliberately heats up the battery",
+    "It is only available at very high speed",
+    "It returns some of the vehicle's kinetic energy to the battery, instead of wasting it as heat in the brakes",
+    "It switches the vehicle off completely"
+   ],
+   "answer": 2,
+   "explain": "Regenerative braking converts some of the kinetic energy back into electricity, charging the battery in the process.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-012",
+   "lesson": "eco-environment",
+   "q": "What does regulation 155 forbid?",
+   "options": [
+    "Fast driving on an urban road",
+    "Parking in a forbidden place",
+    "Driving without a seatbelt",
+    "Driving a vehicle that emits gases, smoke, oil or fuel beyond what is normal, in a way that bothers road users or endangers safety"
+   ],
+   "answer": 3,
+   "explain": "Regulation 155 forbids driving or leaving standing a vehicle that emits substances beyond what is normal for its kind.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-013",
+   "lesson": "eco-environment",
+   "q": "What is the fine for misusing the horn?",
+   "options": [
+    "{{fine:horn-misuse}}",
+    "{{fine:parking-general-prohibited-sign}}",
+    "{{fine:continuous-line}}",
+    "There is no fine for this"
+   ],
+   "answer": 0,
+   "explain": "Misusing the horn is a separate fixed-fine offence (regulation 63), with a fine of {{fine:horn-misuse}}.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-014",
+   "lesson": "eco-environment",
+   "q": "What does regulation 157 say about noise?",
+   "options": [
+    "Vehicle noise is always allowed, at any level",
+    "You must not drive a vehicle that makes excessive noise from a fault, neglected maintenance or a badly arranged load; on an urban road only the noise needed for it to run properly is allowed",
+    "Noise is only allowed for an electric vehicle",
+    "Vehicle noise is forbidden only at night"
+   ],
+   "answer": 1,
+   "explain": "Regulation 157 forbids excessive noise caused by a fault, neglect or a load, and limits urban noise to what is needed.",
+   "shuffled": true
+  },
+  {
+   "id": "q-eco-015",
+   "lesson": "eco-environment",
+   "q": "Why is thick smoke coming from a vehicle also a safety risk, not just harm to the environment?",
+   "options": [
+    "It lowers the price of fuel",
+    "It cools the engine too much",
+    "It improves tyre grip",
+    "It blocks the view of drivers behind the vehicle"
+   ],
+   "answer": 3,
+   "explain": "Thick smoke harms the visibility of anyone driving behind the vehicle, not only pollutes the air.",
+   "shuffled": true
+  }
+ ]
+}

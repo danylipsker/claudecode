@@ -1,0 +1,129 @@
+{
+ "chapter": "vulnerable-users",
+ "title": "Vulnerable road users",
+ "summary": "Who is hurt most in crashes, and what the law and common care expect of you towards them — pedestrians, children, cyclists and animals.",
+ "lessons": [
+  {
+   "id": "vu-pedestrians",
+   "title": "Pedestrians: right of way and care",
+   "summary": "Pedestrians are the most vulnerable road users; what the law requires of a driver approaching them, and what pedestrians themselves may and may not do.",
+   "terms": [
+    "pedestrian",
+    "vulnerable-road-user",
+    "pedestrian-crossing"
+   ],
+   "signs": [
+    "135",
+    "136"
+   ],
+   "body": "Pedestrians are the [[term:vulnerable-road-user|most vulnerable road users]]: they have no frame, seatbelt or airbag, and a crash a driver would barely feel can be fatal for them. The law places clear duties on the driver towards them — and on [[term:pedestrian|the pedestrian]] too.\n\n# Who counts as a pedestrian\nA [[term:pedestrian|pedestrian]] is not just someone walking on two feet: the law's definition also includes anyone pushing a pram, a wheelchair, or a bicycle by hand (reg. 1). Someone wheeling a bicycle along the road is treated as a pedestrian, not as a rider (reg. 133).\n\n# The duty at a pedestrian crossing\n:::law\nA driver approaching a [[term:pedestrian-crossing|pedestrian crossing]] where pedestrians are crossing must let them complete the crossing safely, and stop for this if necessary (reg. 67(a)). If a pedestrian is standing on the pavement by the crossing and clearly means to cross, you must give them right of way even before they step onto the carriageway (reg. 67(a1)).\n:::\n\nAnother rule prevents a dangerous trap: if you approach a pedestrian crossing and a vehicle in the next lane slows down ahead of it, slow down too — and if the other vehicle stops, stop as well (reg. 67(a2)). This prevents the classic accident where one vehicle stops for a pedestrian, and a vehicle in the next lane, unable to see them, carries on and hits them.\n\n:::fine\nNot letting a pedestrian complete a crossing safely: {{fine:pedestrian-crossing}} and {{points:pedestrian-crossing}} points. Not letting a pedestrian start crossing ({{fine:pedestrian-crossing-entry}}) and not stopping when the vehicle ahead has already stopped for a pedestrian ({{fine:crosswalk-vehicle-stopped}}) are offences in their own right. Details in the chapter [[chapter:enforcement|Offences, fines and points]].\n:::\n\n# A pedestrian's own duties\nPedestrians have duties too. Where there is a pedestrian crossing, subway or footbridge nearby, they must cross there and nowhere else (reg. 110(b)). If there is no crossing nearby but there is a junction, they cross near the junction. In every case they cross at a reasonable speed, in a straight, short line, and without lingering on the carriageway unnecessarily (reg. 110(d)). A pedestrian must also not step off the pavement suddenly and without enough care when a vehicle is approaching at a distance too short for it to stop (reg. 111).\n\n# Approaching a pedestrian crossing with no working traffic light\n[[signs:135,136]]\n\nSign [[sign:135]] warns of a pedestrian crossing nearby, and sign [[sign:136]] warns of pedestrians nearby, for example near a school. Both signs call for preparation: slow down and be ready to stop (reg. 52(1) and (6)).\n\n# At night\n:::warn\nPedestrians are especially hard to spot at night, particularly in dark clothing. Slow down especially in areas with pedestrian traffic after dark, and do not rely only on seeing them in time.\n:::",
+   "keyPoints": [
+    "A pedestrian also includes someone pushing a pram, a wheelchair, or wheeling a bicycle by hand.",
+    "You must let a pedestrian complete a crossing at a pedestrian crossing, and even stop for this (reg. 67).",
+    "If a vehicle in the next lane stopped before a pedestrian crossing, stop too.",
+    "A pedestrian crosses at the nearest crossing if there is one, at a reasonable speed and in a straight line.",
+    "Pedestrians are hard to see at night; slow down and stay especially alert."
+   ]
+  },
+  {
+   "id": "vu-children-elderly",
+   "title": "Children, elderly people and people with disabilities",
+   "summary": "People who need more time, more attention, or are simply harder to see — and what that means for how you drive near them.",
+   "terms": [
+    "disabled-person"
+   ],
+   "signs": [
+    "136"
+   ],
+   "body": "Children, elderly people and people with disabilities are pedestrians like any other — but they need more time, more attention and a bigger safety margin from the driver.\n\n# Children\nA small child is too short to be easily seen over a high bonnet or in a mirror, and is unpredictable: they may run after a ball or cross without looking. The law imposes a special duty to slow down near a group of children (reg. 52(5)), and also when approaching a bus, coach or goods vehicle carrying children and marked as such, that has stopped to pick up or drop off children (reg. 52(13)). Near a school and sign [[sign:136]] — slow down as much as possible.\n\n:::danger\nA child getting off a school vehicle may cross the road in front of it or behind it without looking. Pass a vehicle carrying children with extreme care and at a very low speed, even where there is no legal duty to stop completely.\n:::\n\n# Elderly people\nElderly people cross the road more slowly, sometimes hear or see an approaching vehicle late, and sometimes pause partway across. The duty to let a pedestrian complete a crossing safely (reg. 67(a)) is not limited in time — even if the crossing takes longer, you wait.\n\n# People with disabilities\nA [[term:disabled-person|disabled person]], for the purposes of the law, is someone a doctor has recognised as needing a vehicle for mobility because of a physical disability. On the road you also meet wheelchair users, mobility scooter users or people using a walking frame, and sometimes a guide dog. All of them count as pedestrians and have the same right of way at a pedestrian crossing — and sometimes need more time to complete the crossing.\n\n:::tip\nWhen someone seems to be struggling to cross, it is better to slow down and wait patiently than to hoot or move closer. Pressure from outside only increases the risk of a fall or a mistake.\n:::",
+   "keyPoints": [
+    "Children are unpredictable and too short to be seen easily; you must slow down near them (reg. 52(5)).",
+    "Near a vehicle carrying children that has stopped to pick up or drop off — slow down and be ready for a sudden crossing (reg. 52(13)).",
+    "Elderly people and people with disabilities may need more time to cross; the duty to wait is not limited in time.",
+    "Wheelchair users, mobility scooter users and guide dog users count as pedestrians."
+   ]
+  },
+  {
+   "id": "vu-cyclists",
+   "title": "Bicycles and electric-assist bicycles",
+   "summary": "What a cyclist may do, why keeping a safe gap when overtaking matters, and how to avoid dooring.",
+   "terms": [
+    "cyclist",
+    "e-bike",
+    "shoulder",
+    "dooring",
+    "bicycle"
+   ],
+   "signs": [
+    "137",
+    "224",
+    "227"
+   ],
+   "body": "A [[term:cyclist|cyclist]] is a road user who must obey most traffic rules like a vehicle driver, but with no physical protection at all. [[term:e-bike|Electric-assist bicycles]] (e-bikes) are limited by law too, and call for similar care.\n\n# Where riding is allowed\n[[signs:224,227]]\n\nA cyclist rides as close as possible to the right-hand edge of the carriageway (reg. 128). Where a road has a marked [[sign:227|cycle path]], the cyclist must use it and not the carriageway (reg. 129(b)). On a non-urban road with a paved, clear [[term:shoulder|shoulder]], the cyclist moves onto it (reg. 129(e)). Riding on the pavement is forbidden (reg. 129(a)), and so is riding through a tunnel (reg. 129(c)). Minimum age for riding on a non-urban road: {{fact:bike.nonurban_min_age}}.\n\n# Equipment and helmets\nRiding a [[term:bicycle|bicycle]] requires fixed equipment: a bell, working brakes and a rear reflector, at all times (reg. 130). During lighting-up time a white front lamp visible from at least {{fact:bike.lights.front_visibility_m}} is also required, along with a red rear lamp and yellow reflectors on the pedals (reg. 132). A helmet is compulsory for every minor on every road, and for an adult on a non-urban road, on an e-bike, or during a sporting activity (Traffic Ordinance, section 65C).\n\n:::remember\n[[term:e-bike|Electric-assist bicycles]] have their own stricter rule: a helmet is compulsory at all times, for every rider, on every road (reg. 39P(a)(4)). Minimum age: {{fact:ebike.min_age}}. The motor is limited to {{fact:ebike.motor.max_power_kw}} (250 W), and stops assisting the pedalling above {{fact:ebike.motor.cutoff_speed_kmh}}.\n:::\n\n# Overtaking a cyclist\nThe law allows overtaking a bicycle even in places where overtaking is otherwise forbidden, such as near a junction — provided the overtaking meets the other overtaking rules: a clear road at a sufficient distance, and without endangering or obstructing anyone (reg. 47(d) and (f)(2)). Give the cyclist a real side margin — the draught from a passing vehicle changing lane can unbalance them.\n\n# Opening a door\n:::danger\n[[term:dooring|Suddenly opening a door]] in front of an approaching cyclist is one of the most common injuries to cyclists in the city. You must not open a door until you have taken every precaution needed for the safety of road users (reg. 80(a)) — look behind you, and in a city with a cycle lane beside the pavement, check it especially carefully before you get out of the vehicle.\n:::\n\n[[widget:blind-spots vehicle=car]]",
+   "keyPoints": [
+    "A cyclist rides close to the right edge; must use a marked cycle path if there is one (regs. 128–129).",
+    "Minimum age for riding a bicycle on a non-urban road: {{fact:bike.nonurban_min_age}}.",
+    "Helmet: compulsory for a minor on every road; for an adult — on a non-urban road, on an e-bike, or in sport.",
+    "E-bikes: helmet always compulsory for every rider; minimum age {{fact:ebike.min_age}}.",
+    "Before opening a door — look behind you and check for approaching cyclists (reg. 80)."
+   ]
+  },
+  {
+   "id": "vu-scooters",
+   "title": "Electric scooters and other light transport",
+   "summary": "The rules for riding an electric scooter, and why drivers need to expect one even in unexpected places.",
+   "terms": [
+    "electric-scooter",
+    "mobility-scooter",
+    "hoverboard"
+   ],
+   "signs": [
+    "224"
+   ],
+   "body": "The electric scooter is the newest vehicle in the traffic law, so the rules for it are especially detailed and strict.\n\n# Who may ride, and where\nMinimum age for riding an electric scooter: {{fact:escooter.min_age}} (reg. 122A(a)). Riding is only allowed on a marked cycle path, or, where there is none, on the carriageway; riding on the pavement is forbidden, but you may walk an electric scooter by hand on the pavement without obstructing pedestrians (reg. 122A(b)). Where sign [[sign:224|cycle path]] is marked — that is where you ride, not on the carriageway and not on the pavement.\n\n:::law\nThe electric motor is limited to {{fact:escooter.motor.max_power_kw}} (250 W), and the maximum permitted speed is {{fact:escooter.max_speed_kmh}}. The maximum unladen weight of the scooter: {{fact:escooter.max_self_weight_kg}}.\n:::\n\n# Helmet, passengers and registration\nA protective helmet fastened with a reflector is compulsory for every scooter rider, at all times (reg. 122B(b)). Carrying an extra passenger is forbidden (reg. 122B(c)). Since 2023, electric scooters and e-bikes must also be registered online in the owner's name, and carry one identification plate at the rear.\n\n:::fine\nCommon electric scooter offences carry no points, but significant fines: riding under the minimum age of {{fact:escooter.min_age}} — {{fine:ebike-min-age}}; riding somewhere other than the required cycle path or carriageway — {{fine:ebike-riding-location}}; without a fastened helmet with a reflector — {{fine:ebike-no-helmet}}; carrying an extra passenger — {{fine:ebike-passenger}}.\n:::\n\n# Other light vehicles\nAlongside the electric scooter, the roads also carry the [[term:mobility-scooter|mobility scooter]] — a vehicle for people with limited mobility that travels mainly on the pavement like a pedestrian, and enters the carriageway only to cross it, at a speed not exceeding {{fact:speed.mobility_scooter}} (reg. 39K). Another similar device is the [[term:hoverboard|self-balancing scooter]], balanced and steered by leaning the body. A good driver expects to meet both mainly at pedestrian crossings and where the pavement dips down, not in the lane of travel.\n\n# How a driver should expect an electric scooter\nAn electric scooter is small, quiet and reaches a speed that can surprise you — up to {{fact:escooter.max_speed_kmh}}, far faster than walking but far slower than a car. It may come off a cycle path onto the carriageway suddenly, and many of its riders are inexperienced. Keep the same overtaking margin as with a bicycle (reg. 47), and look twice before turning or entering a junction near a cycle path.",
+   "keyPoints": [
+    "Minimum age for an electric scooter: {{fact:escooter.min_age}}; maximum speed: {{fact:escooter.max_speed_kmh}}.",
+    "You must ride on a cycle path if there is one; if not, on the carriageway; never on the pavement.",
+    "Helmet always compulsory; carrying an extra passenger is forbidden.",
+    "The mobility scooter and the self-balancing scooter (hoverboard) are other light vehicles; the mobility scooter travels mainly on the pavement.",
+    "Quiet and relatively fast — expect an electric scooter even in unexpected places."
+   ]
+  },
+  {
+   "id": "vu-motorcyclists",
+   "title": "Motorcyclists: see them and take care",
+   "summary": "A motorcycle is small, fast and sometimes hard to notice; how a driver protects it and themselves.",
+   "terms": [
+    "motorcyclist",
+    "blind-spot"
+   ],
+   "signs": [],
+   "body": "A motorcycle takes up far less space than a car, so it is easy to miss with a quick glance in the mirror or to misjudge its distance and speed. Most crashes involving a [[term:motorcyclist|motorcyclist]] happen because another driver “did not see them” — not because the motorcycle was travelling too fast.\n\n# Why a motorcycle is hard to see\nA narrow motorcycle easily disappears into the vehicle's [[term:blind-spot|blind spot]], and is barely visible in the mirror too because it is so narrow. Its speed is also hard to judge: a small object in motion looks further away and slower than it really is. So before changing lane or turning, a glance in the mirror is not enough — you must turn your head and check the blind spot directly.\n\n[[widget:blind-spots vehicle=car]]\n\n# Look twice\nA good rule of thumb: before you cut across a lane, turn left against oncoming traffic, or pull out of a parking space — look twice. The first glance picks up whether there is anything big there; the second glance reveals the motorcycle you missed the first time.\n\n:::warn\nWhen turning left at a junction, many drivers judge an approaching motorcycle to be further away than it really is, because of its small size. Do not turn based on a guess — wait for it to pass.\n:::\n\n# Margin and conditions\nA motorcyclist can stop in a very short distance, but is also far more sensitive than a car to a pothole, loose gravel, oil on the road or a side wind. Keep a large margin behind a motorcycle and when overtaking it, as explained in [[lesson:sd-following|the lesson on keeping a distance from the vehicle ahead]]. Do not tailgate a motorcycle that is stopping, and do not overtake it right before a junction or a turn.\n\n# In traffic jams and slow traffic\nA motorcycle sometimes filters between lanes or rides alongside a line of stationary cars. Even if you do not plan to move — check the mirror and the blind spot before opening a door, changing lane, or moving the vehicle even a little, because a motorcycle may appear where a moment ago there was nothing.",
+   "keyPoints": [
+    "A motorcycle is small, easily hidden in the blind spot, and its speed and closeness are hard to judge.",
+    "Before changing lane or turning — look twice, not just in the mirror.",
+    "Keep a large margin from a motorcycle, especially when stopping and overtaking.",
+    "In traffic jams and slow traffic a motorcycle may appear suddenly between vehicles; check before any movement."
+   ]
+  },
+  {
+   "id": "vu-animals",
+   "title": "Animals on the road",
+   "summary": "Herds, camels, gazelles and dogs on the carriageway — why this is especially dangerous and what to do when you meet them.",
+   "terms": [
+    "animals"
+   ],
+   "signs": [
+    "146",
+    "411"
+   ],
+   "body": "[[term:animals|Animals]] on the road — livestock and domestic animals, except dogs, cats and domestic fowl (reg. 1) — are an unpredictable hazard: they cannot read signs and do not look before they cross.\n\n# Slowing down is compulsory\n:::law\nA driver must slow down, and stop if necessary, when meeting or overtaking animals on the road (reg. 52(11)).\n:::\n\n[[signs:146,411]]\n\nSign [[sign:146]] warns of animals that may cross or be present on the road — common on non-urban roads, near grazing land, in the Negev and the Arava. Sign [[sign:411]] forbids animals from entering a stretch of road, usually an expressway.\n\n# Herds and camels\nDriving a herd along a road is allowed only when there is no other option, and while taking every measure to reduce the disruption to traffic (reg. 138(a)). Someone leading or riding a single animal keeps to the right-hand shoulder or the far right side of the carriageway (reg. 138(b)). A camel train is allowed only when the camels are tied to one another in a single line, in groups of up to five (reg. 139).\n\n:::remember\nWhen a motor vehicle approaches an animal, the person leading or riding it must do everything possible to clear the road (reg. 141) — but that is no reason not to slow down. A frightened animal may move in exactly the wrong direction.\n:::\n\nDuring lighting-up time, someone leading a single animal must carry a white or yellow lamp on the left side, visible from both directions; someone leading a herd must carry a similar lamp at its head, and a red lamp at its rear (reg. 142). Even so, tall, dark-coloured camels remain especially hard to spot at night on the roads of the Negev and the Arava — their bodies rise above the beam of the vehicle's lights.\n\n# Meeting a large animal\n:::danger\nHitting a large animal — a camel, a horse, a cow — can be fatal to the vehicle's occupants, not only to the animal, because the heavy body can come through the windscreen. If you see a large animal on the road, brake in a straight line without swerving sharply: a sudden swerve to avoid it can cause a loss of control or a head-on collision.\n:::\n\n# Gazelles and small animals\nGazelles and jackals sometimes cross in a group and suddenly, mostly between sunset and sunrise. If you see one animal cross, expect more to follow, and extend your slowdown for a few more seconds.\n\n:::tip\nFacing a small animal — a dog, a cat — it is often better to brake in a straight line than to swerve sharply and endanger yourself or another vehicle. The decision depends on the circumstances, but keeping control of the vehicle always comes first.\n:::",
+   "keyPoints": [
+    "You must slow down, and stop if necessary, when meeting or overtaking animals (reg. 52(11)).",
+    "Sign 146 warns of animals on the road; common on non-urban roads, in the Negev and the Arava.",
+    "Facing a large animal — brake in a straight line; a sharp swerve is more dangerous than the impact itself.",
+    "Gazelles and jackals tend to cross in groups; if you see one, expect more."
+   ]
+  }
+ ]
+}

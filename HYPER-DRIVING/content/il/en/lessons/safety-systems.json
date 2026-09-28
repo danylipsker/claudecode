@@ -1,0 +1,77 @@
+{
+ "chapter": "safety-systems",
+ "title": "Safety systems and driver aids",
+ "summary": "What protects you in a crash, and what tries to stop it happening in the first place — and also what they cannot do.",
+ "lessons": [
+  {
+   "id": "sy-passive",
+   "title": "Passive safety: the car that protects you in a crash",
+   "summary": "Crumple zones, belts, airbags and head restraints — the safety features that work even if you do nothing.",
+   "terms": [
+    "crumple-zone",
+    "seatbelt-pretensioner",
+    "headrest",
+    "airbag"
+   ],
+   "body": "Active safety — systems that help prevent a crash — is different from [[term:crumple-zone|passive safety]]: everything that protects the occupants once a crash is already happening.\n\n# Crumple zones\nThe front and rear of the car are designed to fold and deform in a crash — [[term:crumple-zone|crumple zones]]. That sounds backwards, but it is exactly the point: the \"soft\" bodywork absorbs a large share of the impact energy before it reaches the passenger cell, which stays rigid and protects the people inside.\n\n# Belts and pretensioners\nThe seatbelt is the first line of defence: it slows the body down gradually and transfers the braking force to the strongest parts of the body — the pelvis and shoulders — rather than the neck or abdomen. The [[term:seatbelt-pretensioner|seatbelt pretensioner]] has a mechanism that tightens the belt instantly at the moment of impact, to shorten how far the body moves forward before it stops.\n\n# Airbags\nThe [[term:airbag|airbags]] inflate within a fraction of a second in a strong enough impact, adding padding between the body and the hard parts of the car — the steering wheel, the dashboard, the door. They are designed to work **together** with the seatbelt, not instead of it: someone who is not belted can be injured by the airbag itself, because they reach it at the wrong speed and the wrong angle.\n\n:::danger\nNever fit a rear-facing child seat in a front seat with an active airbag — the airbag inflating can badly injure the baby. See the chapter [[chapter:passenger-safety|Seatbelts, child seats and passengers]] for details.\n:::\n\n# Head restraints\nThe [[term:headrest|head restraint]] is not just for comfort: it stops the head from snapping backwards in a rear-end collision and causing a neck injury (\"whiplash\"). A head restraint that is too low, or too far from the head, gives almost no protection.\n\n:::tip Correct adjustment\nThe top of the head restraint should reach the height of the top of the head, not the neck, and the gap from the head should be as small as possible.\n:::",
+   "keyPoints": [
+    "Crumple zones at the front and rear of the car absorb impact energy to protect the passenger cell.",
+    "The seatbelt pretensioner tightens the belt instantly in a crash and shortens how far the body moves forward.",
+    "Airbags work together with the seatbelt, not instead of it.",
+    "A correctly adjusted head restraint prevents neck injury in a rear-end collision."
+   ]
+  },
+  {
+   "id": "sy-esc",
+   "title": "Stability control and traction control",
+   "summary": "What ESC and TCS actually do, and why they are not magic.",
+   "terms": [
+    "esc",
+    "tcs"
+   ],
+   "body": "[[term:esc|Electronic stability control]] (ESC) and [[term:tcs|traction control]] (TCS) are the two systems that have done more than any others to cut skidding accidents in recent decades.\n\n# How ESC works\nSensors in the system constantly track the steering angle, the car's rotation about its vertical axis, and its acceleration. When they detect that the car is not going in the direction the steering wheel is asking for — for example sliding wide through a bend on a wet road — the system brakes a single wheel, and sometimes also cuts engine power, to turn the car back towards the intended direction. The [[dash:esc]] light flashes at exactly the moment the system is acting.\n\n:::tech What ESC cannot do\nESC does not increase the grip between the tyre and the road. At too high a speed for a bend, or on a genuinely slippery surface, the system has nothing to work with — it can help you regain control, but it cannot create grip that is not there.\n:::\n\n# Traction control\n[[term:tcs|Traction control]] deals with the opposite situation: a driven wheel spinning during acceleration — for example, pulling away from traffic lights on a wet road, or climbing on loose ground. The system cuts engine power or brakes the spinning wheel, to transfer the drive to a wheel that does have grip.\n\n:::law\nIn most new cars in Israel, stability control is mandatory equipment fitted by the manufacturer. Switching the system off with its dedicated switch is meant only for special situations — deep sand, mud — and not for ordinary road driving.\n:::",
+   "keyPoints": [
+    "ESC brakes a single wheel to bring the car back towards the direction the steering wheel is asking for when it slides.",
+    "The [[dash:esc]] light flashes when the system is actually acting, and stays lit when it is switched off or faulty.",
+    "ESC does not create grip that is not there — it just makes better use of what is available.",
+    "TCS prevents a driven wheel spinning during acceleration, by cutting power or braking the wheel."
+   ]
+  },
+  {
+   "id": "sy-adas",
+   "title": "Driver-assistance systems (ADAS)",
+   "summary": "What each abbreviation actually does — AEB, ACC, lane keeping, blind spot monitoring and more.",
+   "terms": [
+    "adas",
+    "aeb",
+    "acc",
+    "lka",
+    "ldw",
+    "bsm",
+    "parking-sensors",
+    "reversing-camera",
+    "traffic-sign-recognition"
+   ],
+   "body": "[[term:adas|Driver-assistance systems]] (ADAS) are a family of electronic systems that help detect hazards, keep the car in its lane and brake — each one handling one defined task.\n\n# Braking and hazard detection\n[[term:aeb|Autonomous emergency braking]] (AEB) brakes the car automatically if it has detected a hazard ahead and the driver has not reacted in time. [[term:acc|Adaptive cruise control]] (ACC) holds a constant speed like ordinary cruise control, but also slows down automatically to keep a gap from the vehicle ahead, and speeds back up when it pulls away.\n\n# Lane\n- [[term:ldw|Lane departure warning]] (LDW) warns with a sound or a vibration when the car drifts out of its lane without signalling — without correcting it itself.\n- [[term:lka|Lane keeping assist]] (LKA) goes a step further, and gently corrects the steering to bring the car back into its lane.\n\n# All-round vision\n[[term:bsm|Blind spot monitoring]] (BSM) warns of a vehicle in an area you cannot see in the mirrors, usually with a small light in the mirror. [[term:parking-sensors|Parking sensors]] and a [[term:reversing-camera|reversing camera]] help when parking and reversing.\n\n# Reading signs\n[[term:traffic-sign-recognition|Traffic sign recognition]] reads speed signs with a front-facing camera and shows the speed limit on the instrument cluster. A dirty, hidden or old sign can make it miss a sign or misread it.\n\n:::remember\nAll of these systems are **assistance**, not autonomous driving. They complement each other, but none of them replaces checking the mirrors, signalling in time and paying attention to the road.\n:::",
+   "keyPoints": [
+    "AEB brakes automatically to prevent a crash; ACC keeps both a gap and a speed together.",
+    "LDW warns of lane drift; LKA also gently corrects the steering.",
+    "BSM warns of a vehicle in the blind spot; parking sensors and a reversing camera help with manoeuvres.",
+    "Traffic sign recognition can miss a dirty or hidden sign — it is not a substitute for paying attention."
+   ]
+  },
+  {
+   "id": "sy-limits",
+   "title": "The limits of assistance systems — and the responsibility that stays with the driver",
+   "summary": "When sensors do not see well, and why over-reliance is dangerous.",
+   "terms": [],
+   "body": "All the assistance systems covered in the previous lesson rely on sensors — cameras, radar, sonar. Sensors, like eyes, do not see everything.\n\n# When the sensors are \"blind\"\n- **Rain, fog and glare** — cameras and radar lose accuracy, exactly like the driver.\n- **Dirt, ice or snow** on the camera or sensor — can knock it out almost completely.\n- **Faded, unclear or missing lane markings** — lane keeping does not work without a line to follow.\n- **Unusual obstacles** — a pedestrian who suddenly steps out from between two parked cars, an animal, an object that has fallen onto the road — are not always detected in time.\n\n# Over-reliance\nThe biggest danger in assistance systems is not their failing — it is the driver who stops paying attention because they are sure the system will \"catch\" every mistake. That is exactly the opposite of the point: the systems are meant to add a layer of safety, not replace alertness.\n\n:::law\nIn every situation, legal responsibility for safe driving belongs to the driver — even if the car has advanced assistance systems fitted, and even if the system did not warn in time. Israeli law does not recognise \"autonomous\" driving that releases the driver from responsibility.\n:::\n\n# What to remember\n- Keep the same alertness and attention as in a car with no assistance systems at all.\n- A system light staying lit (for example [[dash:esc]]) is a sign the system is not active; that is not the time to rely on it more than usual.\n- Before driving in rain or heavy fog, remember that the systems are less reliable too — not only the driver.",
+   "keyPoints": [
+    "Cameras, radar and sonar are affected by rain, fog, dirt and ice — exactly like the driver's eyes.",
+    "Lane keeping does not work without clear lane markings on the road.",
+    "Over-reliance on assistance systems is their greatest risk.",
+    "Legal responsibility for safe driving always stays with the driver."
+   ]
+  }
+ ]
+}

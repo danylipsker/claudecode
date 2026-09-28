@@ -1,0 +1,440 @@
+{
+ "chapter": "right-of-way",
+ "questions": [
+  {
+   "id": "q-rw-001",
+   "lesson": "rw-principles",
+   "q": "What is the main difference between a \"give way\" sign and a \"stop\" sign?",
+   "options": [
+    "Stop always requires a full stop; give way requires slowing down and stopping only if necessary",
+    "The only difference is the colour of the sign",
+    "There is no difference — both require giving way",
+    "Give way requires a full stop; stop requires only slowing down"
+   ],
+   "answer": 0,
+   "explain": "The stop sign (302) always requires a full stop, even when the junction is empty; the give-way sign (301) requires slowing down and stopping only if necessary (regs. 64(c)-(d)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-002",
+   "lesson": "rw-principles",
+   "q": "What does \"giving right of way\" mean under the law?",
+   "options": [
+    "To stop and wait for them to wave",
+    "To let the other road user keep moving without stopping, waiting, changing speed or deviating",
+    "To signal to the other road user that they may go",
+    "To drive ahead of them as long as you have not collided"
+   ],
+   "answer": 1,
+   "explain": "Giving right of way means allowing another road user to keep moving without stopping, waiting, changing speed, or deviating from their line of travel (reg. 1).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-003",
+   "lesson": "rw-principles",
+   "q": "You are at a junction with legal right of way, but another driver is not letting you pass and is approaching. What should you do?",
+   "options": [
+    "Sound the horn and continue, to teach them a lesson",
+    "Keep driving as usual — it is your right",
+    "Speed up to get past before them",
+    "Slow down or stop to prevent a crash, even if you are in the right"
+   ],
+   "answer": 3,
+   "explain": "Right of way does not cancel the duty to prevent a crash. Even when the law is on your side, the responsibility to avoid a collision stays with you (reg. 51).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-004",
+   "lesson": "rw-principles",
+   "q": "A police officer is standing at a junction directing traffic by hand, while the traffic light at that junction shows red in your direction. Who do you obey?",
+   "options": [
+    "The traffic light — it is fixed and more reliable",
+    "Whoever reached the junction first",
+    "Neither — you stop and wait for the officer to leave",
+    "The police officer — their instruction overrides the traffic light and the signs"
+   ],
+   "answer": 3,
+   "explain": "Instructions from a police officer directing traffic override both the traffic light and the signs.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-005",
+   "lesson": "rw-junctions",
+   "fig": "rw-unsigned-crossroad",
+   "q": "You are approaching a junction with no sign and no traffic light. Another vehicle is approaching from your right at the same moment. Who gives way to whom?",
+   "options": [
+    "Whoever is driving faster goes first",
+    "You give way to them — they are coming from your right",
+    "They give way to you — you arrived first",
+    "There is no priority when there is no sign — drive carefully and cross together"
+   ],
+   "answer": 1,
+   "explain": "At a junction with no sign and no traffic light, right of way goes to the vehicle coming from the right (reg. 64(a)(1)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-006",
+   "lesson": "rw-junctions",
+   "q": "You reach a T-junction with no sign at all: your road ends at a wide road that continues straight in both directions. A vehicle is approaching from your right. Which rule applies?",
+   "options": [
+    "There is no priority rule at all at a T-junction",
+    "You go first, because the wide road counts as less important",
+    "Priority to the right applies as usual — priority to the vehicle coming from your right",
+    "The vehicle on the wide road always has priority, because it is the main road"
+   ],
+   "answer": 2,
+   "explain": "Priority to the right (reg. 64(a)(1)) applies at a T-junction too — based on the direction of arrival, not on which road looks like the main one. Because this causes confusion, there is almost always a sign there.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-007",
+   "lesson": "rw-junctions",
+   "q": "You are driving out of a petrol station onto the road. What is the correct order of actions?",
+   "options": [
+    "Sound the horn and pull out — a vehicle on the road has no priority over one leaving a petrol station",
+    "Slow down and make sure there are no pedestrians, and only then give way to the vehicle on the road",
+    "Priority to the right decides, exactly as at an ordinary junction",
+    "Give way to the vehicle on the road, and only then check for pedestrians"
+   ],
+   "answer": 1,
+   "explain": "Leaving a petrol station does not count as a junction. First slow down and even stop to let pedestrians cross safely, and only then give way to any vehicle on the road (reg. 64(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-008",
+   "lesson": "rw-junctions",
+   "q": "A driver leaving a dirt road onto a paved road — what must they do?",
+   "options": [
+    "Sound the horn twice before entering",
+    "Give way to a vehicle approaching on the paved road",
+    "Continue as normal, because a dirt road is not an official road",
+    "Give way only to a vehicle coming from their right"
+   ],
+   "answer": 1,
+   "explain": "A driver leaving a dirt road onto a paved road, or crossing one, gives way to a vehicle approaching on the paved road (reg. 64(a)(3)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-009",
+   "lesson": "rw-junctions",
+   "q": "The traffic light is green, but the junction ahead of you is congested and you might get stuck in it before it turns red. What must you do?",
+   "options": [
+    "Enter — the light is green, you are allowed to",
+    "Enter and stop inside the junction if necessary",
+    "Not enter the junction unless you can cross it and keep moving without being held up",
+    "Speed up to get through before it changes"
+   ],
+   "answer": 2,
+   "explain": "You must not enter a junction unless you can cross it and keep moving without being held up — even on a green light (reg. 65).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-010",
+   "lesson": "rw-turning",
+   "fig": "rw-left-turn-oncoming",
+   "q": "You are at a junction and intend to turn left. An oncoming vehicle is going straight on. Who has priority?",
+   "options": [
+    "Neither — you both go through at the same time, carefully",
+    "You do — you are already at the junction",
+    "It depends who signalled first",
+    "The oncoming vehicle — it is going straight on"
+   ],
+   "answer": 3,
+   "explain": "A driver intending to turn left or make a left U-turn gives way to the oncoming vehicle that is at the junction or close to it (reg. 64(a)(2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-011",
+   "lesson": "rw-turning",
+   "q": "Before turning right at a junction, what must you check in addition to the mirror?",
+   "options": [
+    "That there is no vehicle behind you",
+    "Only the traffic light",
+    "That the oncoming vehicle has signalled",
+    "A direct look to the right — a cyclist or moped rider could be in your blind spot"
+   ],
+   "answer": 3,
+   "explain": "Turning right is done from the right-hand edge and only when there is no vehicle moving on your right (reg. 42) — the mirror alone is not always enough to see a rider beside you.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-012",
+   "lesson": "rw-turning",
+   "q": "You gave way to the oncoming vehicle and you are turning left. At the last moment you notice a pedestrian crossing the road you are turning into. What must you do?",
+   "options": [
+    "Continue — you already gave way to the oncoming vehicle",
+    "Sound the horn and continue slowly",
+    "Stop and give way to the pedestrian too",
+    "It is not relevant — only a vehicle can have right of way when turning"
+   ],
+   "answer": 2,
+   "explain": "Giving way to the oncoming vehicle does not cancel the duty to give way to a pedestrian crossing the road you are turning into (reg. 67, and reg. 41, which allows turning only when it is safe).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-013",
+   "lesson": "rw-turning",
+   "q": "You are making a left U-turn at a junction where it is allowed. An oncoming vehicle is going straight on. Who gives way to whom?",
+   "options": [
+    "You give way to the oncoming vehicle",
+    "The oncoming vehicle gives way to you",
+    "There is no special rule for a U-turn",
+    "It depends which of you is bigger"
+   ],
+   "answer": 0,
+   "explain": "A left U-turn at a junction is subject to the same duty as an ordinary left turn: give way to the oncoming vehicle (reg. 64(a)(2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-014",
+   "lesson": "rw-turning",
+   "q": "At a junction with no sign, you want to turn left. There is both a vehicle coming from your right and an oncoming vehicle going straight on. Who do you give way to?",
+   "options": [
+    "Both — priority to the right and giving way to the oncoming vehicle apply together",
+    "Only the vehicle on your right",
+    "Only the oncoming vehicle",
+    "Neither — you turn first because you have been waiting the longest"
+   ],
+   "answer": 0,
+   "explain": "The duty to give way to the oncoming vehicle when turning left adds to priority to the right, and does not cancel it (reg. 64(a)(2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-015",
+   "lesson": "rw-roundabouts",
+   "fig": "rw-roundabout",
+   "q": "You are approaching a roundabout with sign 303, and another vehicle is already inside the roundabout. Who enters first?",
+   "options": [
+    "Whoever signals first",
+    "It depends who comes from the right",
+    "The vehicle already in the roundabout — it has priority",
+    "You — if you arrived before it finished going round"
+   ],
+   "answer": 2,
+   "explain": "When entering a roundabout with sign 303, right of way belongs to the vehicle already inside the roundabout (reg. 64(g)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-016",
+   "lesson": "rw-roundabouts",
+   "q": "Which way does traffic go round a roundabout in Israel?",
+   "options": [
+    "It varies from roundabout to roundabout",
+    "Anti-clockwise",
+    "It depends on the size of the roundabout",
+    "Clockwise"
+   ],
+   "answer": 1,
+   "explain": "In Israel you drive on the right, so traffic at a roundabout goes anti-clockwise.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-017",
+   "lesson": "rw-roundabouts",
+   "q": "When is the right time to signal right when leaving a roundabout?",
+   "options": [
+    "Only if there is a vehicle behind you",
+    "Just before your exit, so as not to confuse a vehicle waiting to enter",
+    "As soon as you enter the roundabout",
+    "There is no need to signal in a roundabout at all"
+   ],
+   "answer": 1,
+   "explain": "Leaving a roundabout is a deviation from your line of travel that requires signalling with enough time in advance (reg. 58). Signalling too early can confuse a driver waiting to enter.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-018",
+   "lesson": "rw-roundabouts",
+   "licence": [
+    "heavy"
+   ],
+   "q": "A long lorry is beside you in a roundabout and drifts slightly into your lane partway through the turn. What should you do?",
+   "options": [
+    "Sound the horn and stay in your lane",
+    "Speed up to get past it",
+    "Give it room — a long vehicle has a wider turning radius",
+    "Overtake it quickly before it blocks you"
+   ],
+   "answer": 2,
+   "explain": "A long vehicle has a wider turning radius, and sometimes needs to use part of the next lane to complete the turn safely. Give it room.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-019",
+   "lesson": "rw-pedestrians",
+   "q": "A pedestrian is crossing at a marked crossing ahead of you. What is your duty?",
+   "options": [
+    "Slow down but keep driving carefully past them",
+    "Stop only if there is a traffic light there",
+    "Let them complete the crossing safely, and stop if necessary",
+    "Sound the horn so they hurry up"
+   ],
+   "answer": 2,
+   "explain": "A driver approaching a crossing where pedestrians are crossing must let them complete the crossing safely, and if necessary must stop (reg. 67(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-020",
+   "lesson": "rw-pedestrians",
+   "q": "A pedestrian is standing on the pavement near a crossing, and clearly about to cross. They have not stepped onto the road yet. What is correct?",
+   "options": [
+    "You may continue — they are still on the pavement",
+    "Only at night, when visibility is poor",
+    "Only if they raise a hand",
+    "You must slow down and give them right of way already now"
+   ],
+   "answer": 3,
+   "explain": "Even a pedestrian still standing on the pavement near a crossing, clearly intending to cross, already has right of way (reg. 67(a1)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-021",
+   "lesson": "rw-pedestrians",
+   "fig": "rw-pedestrian-crossing-multilane",
+   "q": "You are driving on a two-lane road in one direction, approaching a crossing, and the vehicle in the other lane has stopped ahead of you. You cannot see why. What should you do?",
+   "options": [
+    "Sound the horn for it to move",
+    "Continue in your lane — it is not in your lane",
+    "Slow down and stop too — there may be a pedestrian you cannot see",
+    "Overtake it from the side and continue"
+   ],
+   "answer": 2,
+   "explain": "When a vehicle in another lane has slowed or stopped before a crossing, you must slow down and stop too — there may be a pedestrian hidden from your view (reg. 67(a2)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-022",
+   "lesson": "rw-pedestrians",
+   "facts": [
+    "speed.urban"
+   ],
+   "q": "You are driving near a school at dismissal time, and the speed limit on this stretch is {{fact:speed.urban}}. What is correct?",
+   "options": [
+    "Drive at {{fact:speed.urban}} — that is the speed limit",
+    "Drive at {{fact:speed.urban}} only if you actually see children",
+    "Slow down well below the speed limit, because a child might run onto the road",
+    "Speed up to get through the area quickly"
+   ],
+   "answer": 2,
+   "explain": "Near children you must slow down significantly, regardless of the speed limit on the sign — it is only an upper limit (regs. 51-52).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-023",
+   "lesson": "rw-emergency",
+   "q": "You hear a siren and see a flashing light approaching from behind. What must you do?",
+   "options": [
+    "Continue at your normal speed until it overtakes",
+    "Speed up to clear the way for it faster",
+    "Stop where you are, even inside a junction",
+    "Steer right as close as possible to the edge of the road, away from a junction, and stop until it has passed"
+   ],
+   "answer": 3,
+   "explain": "When an emergency vehicle approaches, drivers steer right as close as possible to the edge of the road, away from a junction, and stop there until it has passed (reg. 93(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-024",
+   "lesson": "rw-emergency",
+   "facts": [
+    "following.security_vehicle_gap"
+   ],
+   "q": "What is the minimum gap you must keep when driving behind an emergency vehicle?",
+   "options": [
+    "{{fact:following.security_vehicle_gap}}",
+    "20 metres",
+    "Like any other vehicle — one second",
+    "There is no special minimum gap"
+   ],
+   "answer": 0,
+   "explain": "You must not follow an emergency vehicle at a gap smaller than {{fact:following.security_vehicle_gap}} (reg. 93(b)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-025",
+   "lesson": "rw-emergency",
+   "q": "A bus signals and prepares to leave a stop ahead of you. Who is legally required to make sure the departure is safe?",
+   "options": [
+    "The bus driver themselves, before entering the flow of traffic",
+    "Only the vehicle behind the bus",
+    "The police, if present",
+    "No one — the bus has automatic priority"
+   ],
+   "answer": 0,
+   "explain": "A driver moving a vehicle that was standing at the side of the road must first make sure they can enter the flow of traffic without risk or obstruction — this duty applies to a bus leaving a stop too (reg. 66).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-026",
+   "lesson": "rw-emergency",
+   "q": "A lawful funeral procession moves as a continuous block on the road, with no gaps between vehicles. Is this an offence?",
+   "options": [
+    "No — a funeral procession and a parade are exempt from the duty to leave gaps",
+    "Yes, unless it has a police escort",
+    "Yes — every convoy must leave gaps for a faster vehicle",
+    "Only if it is travelling on an urban road"
+   ],
+   "answer": 0,
+   "explain": "An ordinary convoy on a non-urban road must leave gaps for a faster vehicle (reg. 50(a)), but a lawful funeral procession or parade is exempt from this duty (reg. 50(c)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-027",
+   "lesson": "rw-narrow",
+   "q": "Two vehicles meet from opposite directions on a road too narrow for both, with no sign at all. What must they do?",
+   "options": [
+    "Whoever arrived first continues, the other stops",
+    "Both slow down and move right as far as possible, even beyond the edge of the carriageway if necessary",
+    "Whoever is in the bigger vehicle continues",
+    "Priority to the right decides"
+   ],
+   "answer": 1,
+   "explain": "On a road too narrow for two directions, both drivers reduce speed and move right as far as possible until they are safe from collision (reg. 46(a)).",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-028",
+   "lesson": "rw-narrow",
+   "fig": "rw-narrow-slope",
+   "q": "Two vehicles meet on a steep, narrow road, and one of them must stop to allow passage. Which one stops?",
+   "options": [
+    "The vehicle going downhill",
+    "Whoever reached the point first",
+    "Whoever is in the heavier vehicle",
+    "The vehicle going uphill"
+   ],
+   "answer": 0,
+   "explain": "On a steep road, when circumstances require one vehicle to stop — the vehicle going downhill is the one that stops (reg. 46(b)). It is easier for the downhill vehicle to brake and wait.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-029",
+   "lesson": "rw-narrow",
+   "sign": "307",
+   "q": "On a narrow stretch of road, a \"give way to oncoming traffic\" sign is placed. What does it mean?",
+   "options": [
+    "The sign only applies to heavy vehicles",
+    "You go first, because you are going uphill",
+    "Both directions slow down and move right equally, as usual",
+    "You must give way to a vehicle coming from the opposite direction, regardless of the slope"
+   ],
+   "answer": 3,
+   "explain": "Sign 307 explicitly states that traffic in your direction gives way to a vehicle coming from the opposite direction — regardless of the road's slope.",
+   "shuffled": true
+  },
+  {
+   "id": "q-rw-030",
+   "lesson": "rw-narrow",
+   "q": "A single-lane road is partly blocked by roadworks, leaving room to pass in only one direction. There is no police officer, flagger or sign present. Who gives way to whom?",
+   "options": [
+    "Priority to the right decides",
+    "Whoever's lane is blocked gives way to the vehicle coming from the opposite direction",
+    "The bigger vehicle continues",
+    "Whoever reached the blockage first continues"
+   ],
+   "answer": 1,
+   "explain": "A blocked road with room to pass in only one direction: whoever's lane is blocked gives way to the vehicle coming from the opposite direction, when there is no police officer, flagger, or sign directing otherwise (reg. 68).",
+   "shuffled": true
+  }
+ ]
+}

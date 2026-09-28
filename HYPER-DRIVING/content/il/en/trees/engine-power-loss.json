@@ -1,0 +1,162 @@
+{
+ "trees": [
+  {
+   "id": "engine-power-loss",
+   "group": "Engine and cooling",
+   "title": "The engine is losing power",
+   "summary": "The car doesn't respond normally to the accelerator — weak, sluggish, or “stuttering”.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus",
+    "motorcycle"
+   ],
+   "safety": "Sudden power loss right after driving through a deep puddle, or a flashing “check engine” light, are reasons to stop immediately and not keep driving.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "When do you feel the power loss?",
+     "options": [
+      {
+       "label": "Gradually, over days or weeks",
+       "next": "n2"
+      },
+      {
+       "label": "Suddenly, while driving",
+       "next": "n5"
+      },
+      {
+       "label": "Only on hills or under quick acceleration, and it's fine during normal driving",
+       "next": "r-boost-loss"
+      },
+      {
+       "label": "The engine “stutters,” cuts out for a moment and responds again",
+       "next": "r-misfire"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Has a “check engine” light come on?",
+     "options": [
+      {
+       "label": "Yes, on steadily",
+       "next": "r-check-engine-power"
+      },
+      {
+       "label": "Yes, flashing",
+       "next": "r-misfire-severe"
+      },
+      {
+       "label": "No light has come on",
+       "next": "n3"
+      }
+     ]
+    },
+    "n3": {
+     "q": "When did you last service the air filter or the fuel filter?",
+     "options": [
+      {
+       "label": "A long time ago, not sure exactly when",
+       "next": "r-clogged-filter"
+      },
+      {
+       "label": "Serviced recently",
+       "next": "r-turbo-or-sensor"
+      }
+     ]
+    },
+    "n5": {
+     "q": "Did this happen right after driving through a deep puddle or a flooded area?",
+     "options": [
+      {
+       "label": "Yes",
+       "next": "r-hydrolock-water"
+      },
+      {
+       "label": "No",
+       "next": "r-sudden-check"
+      }
+     ]
+    },
+    "r-boost-loss": {
+     "result": "Suspected drop in turbo boost pressure",
+     "severity": "soon",
+     "text": "Power loss only on hills or under quick acceleration, when the engine feels fine during normal driving, points to a drop in turbo boost pressure — for example a disconnected or leaking air hose, or a faulty bypass valve.",
+     "actions": [
+      "Go to a garage for a check; a drop in turbo pressure isn't immediately dangerous, but it hurts power and fuel economy.",
+      "Avoid overtaking that needs strong acceleration until it's checked."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-misfire": {
+     "result": "Suspected misfire",
+     "severity": "soon",
+     "text": "The engine “stuttering,” cutting out for a moment and responding again, mainly under acceleration, points to a cylinder not firing properly — a weak spark plug, an ignition coil, or a clogged fuel injector.",
+     "actions": [
+      "Go to a garage for a computerised diagnosis.",
+      "Driving for long with a misfire can damage the catalytic converter."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-check-engine-power": {
+     "result": "Check engine light on together with power loss",
+     "severity": "soon",
+     "text": "A steady check engine light, together with a noticeable drop in power, points to a fault the car's computer has detected, deliberately limiting engine performance in response, to prevent damage.",
+     "actions": [
+      "Go to a garage soon for a computerised diagnosis.",
+      "Drive carefully and avoid sharp acceleration until it's checked."
+     ],
+     "lesson": "eg-exhaust"
+    },
+    "r-misfire-severe": {
+     "result": "Flashing “check engine” light — a severe misfire",
+     "severity": "stop",
+     "text": "A flashing light, unlike a steady one, indicates a severe misfire that can send unburnt fuel into the catalytic converter and destroy it within minutes.",
+     "actions": [
+      "Slow down immediately, avoid accelerating, and stop as soon as possible in a safe place.",
+      "Don't keep driving with heavy acceleration until it's checked."
+     ],
+     "lesson": "eg-exhaust"
+    },
+    "r-clogged-filter": {
+     "result": "Suspected clogged air filter or fuel filter",
+     "severity": "ok",
+     "text": "Gradual power loss, without a warning light and without engine stuttering, developing over time, is often linked to a dirty air filter restricting airflow, or a clogged fuel filter.",
+     "actions": [
+      "Check and replace the air filter according to the schedule in the owner's manual.",
+      "If replacing it doesn't solve it, go to a garage for a further check."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-turbo-or-sensor": {
+     "result": "Suspected sensor or turbo, not the filters",
+     "severity": "soon",
+     "text": "Gradual power loss, when the filters have been serviced recently, points more to a sensor giving the engine computer a wrong reading (like a mass airflow sensor), or a turbo starting to wear.",
+     "actions": [
+      "Go to a garage for a computerised diagnosis — reading the fault codes will narrow down the suspects quickly."
+     ],
+     "lesson": "eg-fuel-air"
+    },
+    "r-hydrolock-water": {
+     "result": "Suspected water ingestion into the engine",
+     "severity": "stop",
+     "text": "Sudden power loss right after driving through a deep puddle or a flood is a serious suspicion of water getting into the engine — water doesn't compress like air, and can break internal parts if the engine keeps running.",
+     "actions": [
+      "Switch off the engine immediately and don't try to restart it.",
+      "Call for a tow to a garage; there's no roadside fix for this."
+     ],
+     "lesson": "eg-how"
+    },
+    "r-sudden-check": {
+     "result": "Sudden power loss — needs an immediate check",
+     "severity": "soon",
+     "text": "Sharp, sudden power loss, unrelated to flooding, can stem from a range of causes — from a failed sensor to a fuel problem — and is hard to narrow down without a diagnostic computer.",
+     "actions": [
+      "Drive carefully to the nearest garage, or call for a tow if the problem is severe.",
+      "Don't continue on a long drive or at high speed until it's checked."
+     ]
+    }
+   }
+  }
+ ]
+}

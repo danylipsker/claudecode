@@ -1,0 +1,14 @@
+{
+  "notices": [
+    {
+      "id": "n-welcome",
+      "date": "2026-09-28",
+      "severity": "info",
+      "title": { "he": "ברוכים הבאים — כך מתעדכן החומר", "en": "Welcome — how the material stays up to date" },
+      "body": {
+        "he": "כל המספרים שבחוק — מהירויות, מגבלות אלכוהול, קנסות ונקודות — שמורים באפליקציה במקום אחד. כשמשרד התחבורה מעדכן חוק, מגיע עדכון תוכן, וכל השיעורים והשאלות מתעדכנים יחד. שינוי שכבר נקבע לתאריך עתידי מסומן בקו מקווקו כתום — הקישו עליו כדי לראות מתי ולמה הוא משתנה.",
+        "en": "Every number in the law — speeds, alcohol limits, fines and points — is kept in one place in the app. When the Ministry of Transport changes a law, a content update arrives and every lesson and question changes with it. A change already set for a future date is underlined in dotted orange — tap it to see when and to what it changes."
+      }
+    }
+  ]
+}

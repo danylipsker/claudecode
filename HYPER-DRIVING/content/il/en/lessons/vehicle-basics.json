@@ -1,0 +1,114 @@
+{
+ "chapter": "vehicle-basics",
+ "title": "Vehicle structure and pre-drive checks",
+ "summary": "What systems make up the vehicle, what surrounds the driver, and how to set off safely.",
+ "lessons": [
+  {
+   "id": "vb-systems",
+   "title": "The vehicle: a system of systems",
+   "summary": "A bird’s-eye view of the systems that power the vehicle and work together.",
+   "terms": [
+    "chassis",
+    "internal-combustion-engine",
+    "clutch",
+    "gearbox",
+    "differential",
+    "hydraulic-brakes",
+    "steering-wheel",
+    "suspension-system",
+    "battery",
+    "alternator"
+   ],
+   "body": "Under the bonnet, under the floor and behind the panel in front of the driver, several separate systems are working at every moment, each with its own job. A driver who knows them in broad strokes understands better what is happening in the vehicle, notices a fault earlier, and knows how to describe it to the garage in the right words — instead of “there’s a strange noise”.\n\n# Chassis and body\nThe [[term:chassis|chassis]] is the frame the vehicle is built on, and the body, engine and every other system are mounted on it. It is rigid enough to carry the vehicle, but designed to crumple in certain areas in a crash — to absorb energy instead of passing it on to the passengers.\n\n# Engine\nThe [[term:internal-combustion-engine|engine]] turns energy — from fuel, or from electricity in electric cars — into rotary motion. The chapter [[chapter:engine|The engine and its systems]] is devoted to it.\n\n# Power transmission\nThe rotation the engine produces has to reach the wheels at the right rate: through the [[term:clutch|clutch]] (“קלאץ׳”), the [[term:gearbox|gearbox]] (“גיר”) and the [[term:differential|differential]]. Full details in the chapter [[chapter:drivetrain|Power transmission]].\n\n# Brakes\nThe [[term:hydraulic-brakes|hydraulic brake]] system turns a light press on the pedal into a large braking force at all four wheels. Full details in the chapter [[chapter:brakes|The brake system]].\n\n# Steering and suspension\nThe [[term:steering-wheel|steering wheel]] turns the front wheels, and the [[term:suspension-system|suspension]] system absorbs bumps and keeps the tyres in constant contact with the road. Full details in the chapter [[chapter:steering-suspension|Steering and suspension]].\n\n# Electrics\nThe [[term:battery|battery]] and the [[term:alternator|alternator]] supply electricity to the starter motor, the lights, the vehicle’s computers and every other electrical load. More on this later in this chapter.\n\n# Tyres\nThe only point of contact between the vehicle and the road, and steering, braking and grip all depend on it. Full details in the chapter [[chapter:tyres|Tyres and wheels]].\n\n:::tip\nWhen something isn’t right in the vehicle, the first question worth asking is “which system is this?” — engine, power transmission, brakes, steering, electrics or tyres. That’s already half the diagnosis, and the chapter [[chapter:troubleshooting|Troubleshooting]] builds on this division.\n:::",
+   "keyPoints": [
+    "The vehicle is built from separate systems that work together: chassis and body, engine, power transmission, brakes, steering and suspension, electrics and tyres.",
+    "Each system has its own chapter in the course — this is the map of the chapters.",
+    "Identifying which system a fault is in is the first step to describing it correctly."
+   ]
+  },
+  {
+   "id": "vb-controls",
+   "title": "Controls and the dashboard",
+   "summary": "What’s around the driver — pedals, stalks, switches — and what each one is for.",
+   "terms": [
+    "clutch-pedal",
+    "brake-pedal",
+    "accelerator-pedal",
+    "gear-shift-lever",
+    "parking-brake",
+    "turn-signal",
+    "wiper",
+    "hazard-lights",
+    "instrument-cluster"
+   ],
+   "body": "Before setting off, it’s worth knowing — without looking — where every control is and what it’s for.\n\n# Pedals\nA vehicle with [[term:manual-transmission|manual transmission]] has three pedals: the [[term:clutch-pedal|clutch pedal]] on the left, the [[term:brake-pedal|brake pedal]] in the middle and the [[term:accelerator-pedal|accelerator pedal]] on the right. An [[term:automatic-transmission|automatic]] vehicle has no clutch pedal — just the brake and the accelerator, and both are operated with the right foot only.\n\n:::warn One foot, one pedal\nThe brake and the accelerator are always pressed one at a time, with the right foot only — never both feet together, and never the left foot on the brake.\n:::\n\n# The gear lever and the parking brake\nThe [[term:gear-shift-lever|gear lever]] sets the gear: in a manual vehicle — neutral and gears 1 to 5 or 6, plus reverse; in an automatic vehicle — usually P (park), R (reverse), N (neutral) and D (drive), and sometimes further modes too. The [[term:parking-brake|parking brake]] — a lever, an electric button or a separate pedal — holds the vehicle in place even when the engine is off.\n\n# Stalks and switches\nTwo stalks usually come out from either side of the steering wheel: one for the [[term:turn-signal|turn signal]] and for switching between dipped and main beam, and the other for the [[term:wiper|wipers]] and for spraying washer fluid. The light switches, and the [[term:hazard-lights|hazard lights]] button (the flashing red triangle), are on the panel or around the steering wheel — usually in the centre of the panel.\n\n# The instrument panel\nThe [[term:instrument-cluster|instrument cluster]] in front of the driver brings together the essential information: speedometer, rev counter, fuel gauge, temperature gauge and warning lights. A whole chapter, [[chapter:dashboard|The dashboard and warning lights]], is devoted to reading it.\n\n:::tip\nIn an unfamiliar vehicle — before your first drive, while it’s still stationary, find the indicator, the wipers, the lights and the air conditioning controls by sight and by feel. Hunting for them while driving is a distraction at exactly the wrong moment.\n:::",
+   "keyPoints": [
+    "A manual vehicle has three pedals: clutch, brake and accelerator; an automatic has only the brake and accelerator, both with the right foot.",
+    "The gear lever sets the gear; the parking brake holds the vehicle in place even when the engine is off.",
+    "The stalks on either side of the steering wheel are used for signalling, lights and wipers.",
+    "The instrument panel brings together all the essential information — and it has its own dedicated chapter."
+   ]
+  },
+  {
+   "id": "vb-position",
+   "title": "Correct seating position and mirrors",
+   "summary": "How to sit and adjust the mirrors so you see the most and react the fastest.",
+   "terms": [
+    "steering-wheel",
+    "headrest",
+    "seatbelt",
+    "rearview-mirror",
+    "side-mirror",
+    "blind-spot"
+   ],
+   "body": "Correct seating and well-adjusted mirrors aren’t just about comfort — they determine how fast you can react and how much of the road around you you can see at all.\n\n# The seat and the [[term:steering-wheel|steering wheel]]\nMove the seat until your foot reaches the brake pedal all the way down easily, with the knee staying slightly bent. The back rests against the seat back, and the hands hold the [[term:steering-wheel|steering wheel]] with the elbows slightly bent — this gives full control in both a sharp turn and an emergency stop.\n\n# The [[term:headrest|headrest]]\nThe headrest is at the right height when its top is level with the crown of the head, not the back of the neck. A headrest that’s too low doesn’t support the neck in a rear-end collision, and can make whiplash injury worse.\n\n# The [[term:seatbelt|seatbelt]]\nThe lap belt runs low across the pelvis (not the stomach), and the diagonal belt across the chest, between the breasts, not under the arm and not behind the back. The chapter [[chapter:passenger-safety|Seatbelts, child seats and passengers]] sets out the legal requirement and the correct way to wear it for every passenger.\n\n# Adjusting the mirrors\nAdjust the [[term:rearview-mirror|rearview mirror]] so it fills the whole frame of the rear windscreen. Adjust both [[term:side-mirror|side mirrors]] wider than people tend to think: angle them outward until you see only a small edge of the vehicle itself in the corner — this leaves only a slight overlap between what you see in the rearview mirror and what you see in the side mirrors, and shrinks the [[term:blind-spot|blind spot]].\n\n[[widget:blind-spots vehicle=car]]\n\n:::remember\nEven with the mirrors correctly adjusted, a small blind spot remains. Before changing lanes: rearview mirror, side mirror — and a quick look over your shoulder.\n:::",
+   "keyPoints": [
+    "Seat at a distance that lets you press the brake all the way down with the knee slightly bent; hands holding the steering wheel with the elbows bent.",
+    "Headrest level with the crown of the head, not the back of the neck.",
+    "The belt sits low on the pelvis and across the chest — not on the stomach, the arm or the neck.",
+    "Wide mirrors shrink the blind spot, but don’t eliminate it — always look over your shoulder too."
+   ]
+  },
+  {
+   "id": "vb-checks",
+   "title": "Checks before driving",
+   "summary": "Three short rounds — around the vehicle, under the bonnet and inside — that prevent surprises on the road.",
+   "terms": [
+    "tyre",
+    "headlight",
+    "taillight",
+    "windshield",
+    "engine-oil",
+    "coolant",
+    "brake-fluid",
+    "washer-fluid",
+    "fluid-check"
+   ],
+   "body": "A few minutes of checking before you drive often saves a breakdown on the road. Three short steps are enough.\n\n# Walking round the vehicle\nWalk around the vehicle and check by eye: the condition of the [[term:tyre|tyres]] (cuts, bulges, air that looks low), that all the [[term:headlight|headlights]] and [[term:taillight|taillights]] are intact, that there’s no fresh fluid stain under the vehicle, and that the [[term:windshield|windscreen]] and all the glass are clean and undamaged — including sun reflections that could dazzle you.\n\n# Under the bonnet\n[[fig:engine-bay-layout]]\n\nCheck (a short [[term:fluid-check|fluid check]], with the engine cold):\n- The [[term:engine-oil|engine oil]] level — on the dipstick, between the MIN and MAX marks.\n- The [[term:coolant|coolant]] level — in the clear expansion tank, not in the radiator itself.\n- The [[term:brake-fluid|brake fluid]] level — in the clear reservoir near the steering wheel.\n- The [[term:washer-fluid|washer fluid]] level.\n\n:::danger Never while the engine is hot\nDon’t open the radiator cap or the expansion tank cap while the engine is hot — the fluid is boiling and under pressure, and can cause serious burns. Don’t touch the fan, the belts or any part that moves while the engine is running. Full details in the chapter [[chapter:engine|The engine and its systems]].\n:::\n\n# Inside\nAdjust the seat, steering wheel and mirrors (see the lesson [[lesson:vb-position|Correct seating position and mirrors]]), put on your [[term:seatbelt|seatbelt]], and make sure there are no loose objects that could fly around under braking. On starting the engine, quickly scan the instrument panel: usually all the warning lights come on briefly and then go out — this is the system’s self-test. A light that stays on needs looking into (chapter [[chapter:dashboard|The dashboard and warning lights]]).\n\n:::tip\nThe habit of a short walk-round before every drive pays off more the older the vehicle is, and it’s especially essential before a long trip.\n:::",
+   "keyPoints": [
+    "Walk-round: tyres, lights, leaks under the vehicle, clean glass.",
+    "Under the bonnet with the engine cold: engine oil, coolant, brake fluid, washer fluid.",
+    "Never open the radiator or the expansion tank while the engine is hot.",
+    "Inside: seat, steering wheel and mirrors, seatbelt, and scanning the instrument panel on starting the engine."
+   ]
+  },
+  {
+   "id": "vb-start",
+   "title": "Starting the engine, setting off and stopping",
+   "summary": "The correct sequence — from getting into the vehicle to parking and switching off at the end of the drive.",
+   "terms": [
+    "ignition-switch",
+    "reverse-gear",
+    "neutral-gear",
+    "central-locking"
+   ],
+   "body": "A fixed sequence, done without having to think about it, is part of safe driving.\n\n# Before starting the engine\nSit down, adjust the seat, steering wheel and mirrors (if needed), and put on the belt. In a manual vehicle — press the clutch pedal all the way down; in an automatic — the gear lever in P or N, and a foot on the brake. Only then operate the [[term:ignition-switch|ignition switch]] — a key you turn or a button you press.\n\n# Setting off\nRelease the [[term:parking-brake|parking brake]], check the mirrors and over your shoulder that the road is clear, signal if needed, and only then move off gently: in a manual vehicle, release the clutch slowly to the “biting point” while gently adding gas; in an automatic, it’s enough to release the brake. The chapter [[chapter:drivetrain|Power transmission]] explains the mechanism.\n\n# Reverse gear\nBefore engaging [[term:reverse-gear|reverse gear]], come to a complete stop, make sure the way behind is clear — look directly behind you, not just in the mirrors — and only then move off slowly.\n\n# Stopping and parking\nSlow down gradually, and shift to [[term:neutral-gear|neutral]] or press the clutch only at the last moment before coming to a complete stop. Once the vehicle is stationary: shift to P (automatic) or to first or reverse gear (manual, depending on the slope), and apply the parking brake — especially on a slope, so the vehicle can’t roll off on its own.\n\n# Switching off and securing the vehicle\nSwitch off the engine, make sure the parking brake is on, take any valuables, and lock the vehicle — in most vehicles, a press of the remote is enough, thanks to the [[term:central-locking|central locking]] that locks all the doors together.\n\n:::warn Before getting out of the vehicle\nBefore opening the door, glance at the side mirror and behind you — a cyclist or a motorcyclist could pass right there.\n:::",
+   "keyPoints": [
+    "Before starting the engine: seat and mirrors, seatbelt, the gear in the right position (P/N in an automatic, clutch pressed in a manual).",
+    "Only set off after checking the mirrors and looking over your shoulder.",
+    "Before reverse gear, come to a complete stop and look directly behind you, not just in the mirrors.",
+    "When stopping for good: the appropriate gear or P, and the parking brake — especially on a slope."
+   ]
+  }
+ ]
+}

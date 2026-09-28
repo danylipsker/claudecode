@@ -1,0 +1,82 @@
+{
+ "chapter": "steering-suspension",
+ "title": "Steering and suspension",
+ "summary": "How the steering wheel moves the wheels, and what absorbs the shocks from the road.",
+ "lessons": [
+  {
+   "id": "ss-steering",
+   "title": "Steering systems: from the wheel to the road wheels",
+   "summary": "How turning the steering wheel becomes a turn of the road wheels, and why the steering can suddenly feel very heavy.",
+   "terms": [
+    "steering-wheel",
+    "steering-column",
+    "rack-and-pinion",
+    "tie-rod",
+    "power-steering",
+    "steering-box"
+   ],
+   "body": "Turning the [[term:steering-wheel|steering wheel]] passes through the [[term:steering-column|steering column]] to the steering mechanism, which converts the rotation into movement that turns the wheels.\n\n# Two mechanisms\nIn most private cars the mechanism is [[term:rack-and-pinion|rack and pinion]]: a small toothed gear turns a straight toothed bar, and from it the [[term:tie-rod|tie rods]] run out to the two wheels. In heavy vehicles an older mechanism, the [[term:steering-box|steering box]], is still common — it uses a worm gear instead of a straight rack.\n\n# Power steering\nTurning heavy wheels on the spot (parking, low speed) takes a lot of force. [[term:power-steering|Power steering]] adds assistance — through hydraulic pressure from a belt-driven pump, or from an electric motor (EPS) — so turning the steering wheel feels light and natural even standing still.\n\n:::warn When the steering suddenly feels heavy\nIf the engine stops while you’re driving, or the power steering pump stops working, the steering **still works** — you can keep turning it — but it takes much more force than usual. Don’t panic; hold the wheel firmly with both hands, especially while being towed or with the engine off.\n:::\n\n:::tech\nA little play in the steering before the wheels start to respond can point to wear in the steering mechanism or the tie rods — details in lesson ss-symptoms.\n:::",
+   "keyPoints": [
+    "In a private car the common mechanism is rack and pinion; in a heavy vehicle a steering box is also common.",
+    "Power steering makes turning much easier, using a hydraulic pump or an electric motor.",
+    "Even without power steering (engine off) — the steering still works, just much heavier."
+   ]
+  },
+  {
+   "id": "ss-alignment",
+   "title": "Wheel alignment: camber and toe",
+   "summary": "Two small angles that affect how stable the car feels and how long the tyres last.",
+   "terms": [
+    "wheel-alignment",
+    "camber",
+    "toe",
+    "pulling-to-one-side"
+   ],
+   "body": "[[term:wheel-alignment|Wheel alignment]] is adjusting the angles of the wheels so they’re parallel and straight as required. The two main angles are:\n\n- **[[term:camber|Camber]]** — the tilt of the wheel inward or outward, seen from the front.\n- **[[term:toe|Toe]]** — the direction the front of the two wheels point, inward (toe-in) or outward (toe-out), seen from above.\n\n# When the alignment goes wrong\nA hard hit in a pothole, riding up onto a kerb, or a minor collision can change these angles, even without visible damage. Worn suspension (a control arm, ball joint or bushing — details in lesson ss-suspension) can also shift the alignment gradually.\n\n# How to spot it\n- [[term:pulling-to-one-side|Pulling to one side]] when driving straight, even without touching the steering wheel.\n- The steering wheel sits “crooked” — not straight — when the wheels are actually straight.\n- Uneven tyre wear: more worn on the inner or outer edge (camber), or rough, diagonal wear (toe).\n\n:::remember\nIncorrect wheel alignment doesn’t just feel wrong — it wears out new tyres within just a few thousand kilometres.\n:::",
+   "keyPoints": [
+    "Wheel alignment covers two main angles: camber (tilt from the front) and toe (direction from above).",
+    "A pothole hit, riding onto a kerb, or worn suspension can change the angles.",
+    "Signs: pulling to one side, a crooked steering wheel while driving straight, uneven tyre wear."
+   ]
+  },
+  {
+   "id": "ss-suspension",
+   "title": "Springs, shock absorbers and the sway bar",
+   "summary": "What absorbs the bumps, what keeps the car stable in a bend, and why worn suspension also lengthens stopping distance.",
+   "terms": [
+    "suspension-system",
+    "coil-spring",
+    "leaf-spring",
+    "shock-absorber",
+    "strut",
+    "sway-bar",
+    "control-arm",
+    "ball-joint",
+    "bushing"
+   ],
+   "body": "The [[term:suspension-system|suspension]] connects the wheels to the car’s chassis, absorbs shocks from the road, and keeps the tyre in contact with the road as much as possible.\n\n[[fig:suspension-corner]]\n\n# The main parts\n- **[[term:coil-spring|Coil spring]]** — carries the car’s weight and absorbs shocks; the most common type in private cars. Trucks and buses still commonly use a [[term:leaf-spring|leaf spring]] too, which withstands heavy loads.\n- **[[term:shock-absorber|Shock absorber]]** — controls the spring’s movement, so the car doesn’t keep bouncing after a bump. In a private car it’s usually part of a [[term:strut|strut]] assembly, which also supports the car structurally.\n- **[[term:sway-bar|Sway bar]]** — connects the two sides of the suspension and reduces the car’s body roll in a sharp bend.\n- **[[term:control-arm|Control arm]]**, **[[term:ball-joint|ball joint]]** and [[term:bushing|bushing]] — connect the wheel to the chassis and let it move up and down while staying attached.\n\n:::tip The bounce test\nA simple way to check a suspected shock absorber: push down hard on that corner of the car and let go. A good shock absorber stops the motion after one bounce or less. A worn one keeps “shuddering” and bouncing several times.\n:::\n\n# Worn shock absorbers and stopping distance\nA worn shock absorber doesn’t just feel bad on the road — it also hurts braking itself: when a wheel loses contact with the road for a moment, even a brief one, there’s no friction there to help stop the car. On a rough road, worn suspension can significantly lengthen stopping distance.\n\n[[widget:stopping-distance speed=90 reaction=1]]",
+   "keyPoints": [
+    "The spring carries the weight; the shock absorber controls its movement.",
+    "The sway bar reduces sideways body roll in a sharp bend.",
+    "The bounce test: a good shock absorber stops the motion after one bounce or less.",
+    "Worn shock absorbers lengthen stopping distance, especially on a rough road."
+   ]
+  },
+  {
+   "id": "ss-symptoms",
+   "title": "Noises, vibration and drift: what they point to",
+   "summary": "A short translation table between what you hear and feel in the steering and what’s probably worn.",
+   "terms": [
+    "steering-play",
+    "wheel-bearing"
+   ],
+   "body": "Steering and suspension systems tend to give warning before they fail completely — with noise, vibration or drift. Knowing how to read the signs saves time at the garage and avoids misdiagnosis.\n\n| What you feel or hear | What it usually means |\n|---|---|\n| A knock (“clunk”) over every bump | A worn control arm, ball joint or bushing |\n| A hum or whine that changes with speed, not with turning | A worn [[term:wheel-bearing|wheel bearing]] |\n| Vibration in the steering wheel at a certain speed | Wheel imbalance, an out-of-round tyre, or a warped brake disc |\n| The car “wanders” and needs constant steering correction | Inaccurate wheel alignment, low tyre pressure, or a worn tie rod |\n| [[term:steering-play|Steering play]] before the wheels respond | Wear in the steering mechanism or the tie rods |\n\n:::note\nA noise that changes with speed but not with braking or turning almost always points to a wheel bearing. A noise that appears only in a sharp turn usually belongs to the driveshaft (chapter [[chapter:drivetrain|Powertrain]], lesson dt-driveline), not to the suspension.\n:::\n\n:::warn\nA knock that repeats on every bump is worth checking soon: a ball joint that breaks completely while driving can cause you to lose control of the wheel.\n:::",
+   "keyPoints": [
+    "A knock over a bump = usually a worn control arm, ball joint or bushing.",
+    "A hum that changes with speed and not with braking or turning = usually a wheel bearing.",
+    "Constant wandering = wheel alignment, tyre pressure, or a tie rod.",
+    "Steering play before the wheels respond = wear in the steering mechanism."
+   ]
+  }
+ ]
+}

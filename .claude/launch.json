@@ -8,6 +8,12 @@
       "port": 8172
     },
     {
+      "name": "driving",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve.js", "HYPER-DRIVING", "8173"],
+      "port": 8173
+    },
+    {
       "name": "galaxies",
       "runtimeExecutable": "node",
       "runtimeArgs": ["GALAXIES/tools/serve.js", "8171"],

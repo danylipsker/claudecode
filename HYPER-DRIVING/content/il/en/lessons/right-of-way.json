@@ -1,0 +1,138 @@
+{
+ "chapter": "right-of-way",
+ "title": "Right of way and junctions",
+ "summary": "Who goes first, who waits — and why it is never about who arrived first.",
+ "lessons": [
+  {
+   "id": "rw-principles",
+   "title": "What right of way means",
+   "summary": "Right of way is a precise rule that is given, not taken. How to recognise it, and why you must never insist on it.",
+   "terms": [
+    "right-of-way",
+    "give-way-sign",
+    "stop-sign"
+   ],
+   "signs": [
+    "301",
+    "302"
+   ],
+   "body": "At a junction, a roundabout or near a pedestrian crossing, several road users want to continue at the same moment. Someone must go first, and someone must wait — and this is never a matter of who arrived first or who drives more assertively. It is a precise legal rule: [[term:right-of-way|right of way]].\n\n:::law\n\"Giving right of way\" means allowing another road user who has been given right of way to keep moving without stopping, waiting, changing speed, or deviating from their line of travel (reg. 1).\n:::\n\nIn other words: whoever has right of way may assume that everyone around them will let them pass exactly as they are driving — without braking, without slowing down, and without moving aside. Everyone else must adjust to them, not the other way round.\n\n# Give way versus stop\nThe two most common right-of-way signs look similar in meaning but set completely different duties.\n\n| Sign | What it requires |\n|---|---|\n| [[sign:301]] | Slow down, and stop only if you really need to |\n| [[sign:302]] | Come to a full stop — always, even if the junction looks empty |\n\nA driver approaching a [[sign:301|give way]] sign slows down and gives way to traffic on the crossing road; if the road is clear, they may continue without stopping. A driver approaching a [[sign:302|stop]] sign must stop before the stop line — always, even if no vehicle is around — and only then give way and continue (regs. 64(c)-(d)).\n\n:::tip\nCount to two before moving off from a stop sign. A stop of less than a second counts as a \"rolling stop\", not a stop.\n:::\n\n# Never insist on your right of way\nEven when the law is on your side, right of way is not armour against a crash. If another driver does not let you pass — whether by mistake or deliberately — the responsibility to prevent a collision still rests on you too: you are allowed, and sometimes required, to slow down, stop or brake to prevent a crash, even when you were in the right (reg. 51, and reg. 53, which permits emergency braking to prevent a crash).\n\n:::remember\n\"I had the right of way\" is a poor explanation for a crash. Right of way is a rule that organises traffic — not a weapon.\n:::\n\n# Who overrides whom\nWhen a police officer is directing traffic, their instruction overrides everything. Next comes the traffic light. Next, the sign. And when none of these are present, the general rule we learn in this chapter applies. The full order is set out in the chapter [[chapter:road-basics|The road and its users]].\n\nIn the lessons that follow you will see how this rule works in practice: at an ordinary junction, when turning, at a roundabout, at a pedestrian crossing, and with an emergency vehicle rushing to a call.",
+   "keyPoints": [
+    "Right of way is given, not taken: whoever has it may continue without changing speed or direction.",
+    "[[sign:301]] requires slowing down and giving way; [[sign:302]] requires a full stop always, even when the junction is empty.",
+    "Even when you have right of way, the responsibility to prevent a crash stays with you.",
+    "The order: a police officer directing traffic, then the traffic light, then the sign, then the general rule."
+   ]
+  },
+  {
+   "id": "rw-junctions",
+   "title": "Junctions without a sign: priority to the right",
+   "summary": "When there is no sign and no traffic light, whoever comes from your right goes first. How this works at an ordinary junction, at a T-junction, and when leaving a driveway.",
+   "terms": [
+    "priority-to-the-right",
+    "no-blocking-junction"
+   ],
+   "fig": "rw-unsigned-crossroad",
+   "body": "At a junction with no sign and no traffic light, the law leaves no room for interpretation: whoever comes from your right goes before you.\n\n:::law\nIf several vehicles approach a junction from different directions, and no sign requiring right of way or a stop has been placed there — the driver gives way to the vehicle coming from their right (reg. 64(a)(1)).\n:::\n\n[[fig:rw-unsigned-crossroad]]\n\nThis is [[term:priority-to-the-right|priority to the right]]: it does not matter who reached the junction first, who is driving on the road that looks like the \"main\" one, or who is faster. The only thing that matters is the direction you arrive from.\n\n# T-junctions — where people get it wrong\nAt a T-junction, one road simply ends at another. Priority to the right still applies here exactly as it is — based only on the direction you arrive from, not on which road \"continues\". A vehicle leaving the road that ends gives way only to a vehicle coming from its right; a vehicle coming from its left does not automatically have priority from this rule alone. It is exactly because of this confusion that almost every real T-junction on the ground is signed — with a [[sign:301|give way]], a [[sign:302|stop]], or sign [[sign:309]]. In the rare place where there is no sign at all — drive especially slowly, and do not assume anything.\n\n# Turning left at the same junction\nA driver approaching a junction and intending to turn left, or to make a left U-turn, also gives way to a vehicle coming from the opposite direction that is at the junction or close to it — in addition to priority to the right, not instead of it (reg. 64(a)(2)). Full details are in the chapter [[lesson:rw-turning|Turning right, turning left, and U-turns at a junction]].\n\n# Leaving a driveway, a car park or a dirt road\nLeaving a private yard, a house access road, a petrol station, a car park, or anywhere that is not a road — does not count as a junction at all (reg. 1, definition of \"junction\"). So priority to the right does not apply here; instead, an even clearer duty applies: first slow down and even stop to let pedestrians cross safely, and only then slow down and give way to any vehicle approaching on the road (reg. 64(b)). In the same way, a driver leaving a dirt road onto a paved road, or crossing one, gives way to the vehicle on the paved road (reg. 64(a)(3)).\n\n:::remember\nLeaving a car park, a petrol station or a private yard is not a \"junction\" — you owe priority to everyone: pedestrians first, then every vehicle on the road.\n:::\n\n# Do not enter a junction you cannot get out of\nThe [[term:no-blocking-junction|ban on blocking a junction]] always applies, even on a green light: you must not enter a junction unless you can cross it and keep moving without being held up (reg. 65). At an especially busy junction — for example near the Ayalon Highway at rush hour — entering because \"I made it before the light changed\" can block an entire junction in every direction.",
+   "keyPoints": [
+    "At a junction with no sign and no traffic light: right of way goes to the vehicle coming from your right (reg. 64(a)(1)).",
+    "At a T-junction the rule is the same — which is why there is almost always a sign there to remove any doubt.",
+    "Turning left or making a left U-turn: give way to the oncoming vehicle too, in addition to priority to the right.",
+    "Leaving a yard, a car park or a dirt road is not a junction — priority always goes to pedestrians first, then to every vehicle on the road.",
+    "You must not enter a junction if you cannot get out of it — even on a green light (reg. 65)."
+   ]
+  },
+  {
+   "id": "rw-turning",
+   "title": "Turning right, turning left, and U-turns at a junction",
+   "summary": "Who gives way to whom when turning at a junction — and why a pedestrian can still surprise you even after you have given way to the oncoming vehicle.",
+   "terms": [
+    "u-turn"
+   ],
+   "fig": "rw-left-turn-oncoming",
+   "body": "Turning is the moment when the most road users cross your line of travel at once: an oncoming vehicle, a pedestrian crossing exactly the road you are turning into, and sometimes also a cyclist going straight on. In this lesson — who gives way to whom.\n\n# Turning left — give way to the oncoming vehicle\n\n:::law\nA driver approaching or already at a junction, about to turn left or make a left U-turn, gives way to a vehicle coming from the opposite direction that is at the junction or close to it (reg. 64(a)(2)).\n:::\n\n[[fig:rw-left-turn-oncoming]]\n\nThis duty adds to priority to the right, it does not replace it: if there is also a vehicle coming from your right, you give way to it too. The driver turning left is almost always the one who waits longest at the junction — and that is exactly the reason: they are the one crossing everyone else's line of travel.\n\n# Turning right — the danger is beside you, not ahead\nWhen turning right there is no oncoming vehicle in your way, but there is another danger: a cyclist or moped rider going straight on your right, exactly where you are turning into. Turn right from a point as close as possible to the right-hand edge of the road, and only when there is no vehicle moving on your right (reg. 42). Take an extra look to the right, not just in the mirror — a rider could be exactly in your blind spot.\n\n# U-turns at a junction\nA left [[term:u-turn|U-turn]] at a junction is subject to exactly the same duty: give way to the oncoming vehicle (reg. 64(a)(2)). Where a U-turn is allowed at all, and when it is completely forbidden — see the chapter [[lesson:lo-turning|Turning, signalling and reversing]].\n\n# A pedestrian crossing the road you are turning into\nYou gave way to the oncoming vehicle, the junction has cleared — and you still must not move if a pedestrian is crossing exactly the road you are turning into. If there is a marked crossing there, the full duty to give way that we cover in the chapter [[lesson:rw-pedestrians|Pedestrian crossings, children and crossing guards]] applies (reg. 67); even without a marked crossing, you may only turn when you can do so safely and without endangering anyone (reg. 41).\n\n:::danger\nThe classic left-turn crash: the driver focuses on the oncoming vehicle, gives way to it, and starts to move — and hits a pedestrian who started crossing from the side. Always take one last look for pedestrians before you move.\n:::",
+   "keyPoints": [
+    "Turning left or making a left U-turn at a junction: always give way to the oncoming vehicle (reg. 64(a)(2)), in addition to priority to the right.",
+    "Turning right: from the right-hand edge, and only when there is no rider or vehicle on your right (reg. 42).",
+    "Giving way to the oncoming vehicle does not cancel the priority of a pedestrian crossing the road you are turning into.",
+    "Where a U-turn is allowed and forbidden — in the chapter Turning, signalling and reversing."
+   ]
+  },
+  {
+   "id": "rw-roundabouts",
+   "title": "Roundabouts",
+   "summary": "Who has priority at a roundabout, where to signal, and why a lorry needs more space.",
+   "terms": [
+    "entering-roundabout",
+    "traffic-circle"
+   ],
+   "signs": [
+    "303"
+   ],
+   "fig": "rw-roundabout",
+   "body": "At a roundabout you are surrounded by traffic from three or four directions at once. The rule that sorts all of this out is very simple — the trick is remembering it under pressure.\n\n:::law\nA driver approaching a roundabout with sign [[sign:303]] placed before it gives way to a vehicle already inside the roundabout (reg. 64(g)).\n:::\n\n[[fig:rw-roundabout]]\n\nIn Israel you drive on the right, so the [[term:traffic-circle|roundabout]] goes anti-clockwise: whoever is already in the roundabout always comes from your left as [[term:entering-roundabout|you enter]]. Let them go — do not enter just because a small gap has opened up.\n\n# Lanes on entry and exit\nAt a roundabout with more than one lane, the lane arrows painted at the entrance show where each lane leads — the [[term:lane-arrow-marking|lane arrow]] decides, not habit. Usually the right-hand lane suits the nearest exit or continuing right around the roundabout, and the left-hand lane suits farther exits or turning left or making a U-turn. Stay in the lane you chose until you actually exit (reg. 40(a)).\n\n# Signalling on exit\nEvery deviation from your line of travel, including leaving a roundabout, requires signalling in enough time to warn whoever is behind you (reg. 58). Signal right just before your exit — not much earlier, so you do not confuse a driver waiting to enter who might think you are leaving at an earlier exit.\n\n:::tip Rule of thumb\nSignal right at every exit, even the \"straight ahead\" one. It helps a driver waiting to enter know that space has opened up for them.\n:::\n\n# Large vehicles at a roundabout\nA lorry or a bus has a much wider turning radius than a private car, and sometimes needs part of the next lane to complete the turn without mounting the central island. If you are beside one — give it room, and do not rush to fill the gap that opens up.\n\n:::remember\nAt a roundabout, whoever is already inside always goes first. The rule does not change because of the roundabout's size or the number of lanes.\n:::",
+   "keyPoints": [
+    "Entering a roundabout with sign 303: priority always goes to a vehicle already inside the roundabout (reg. 64(g)).",
+    "The roundabout goes anti-clockwise; whoever is inside comes from your left.",
+    "Follow the painted lane arrows, and signal right just before your exit.",
+    "Lorries and buses need a wider turning radius — give them room."
+   ]
+  },
+  {
+   "id": "rw-pedestrians",
+   "title": "Pedestrian crossings, children and crossing guards",
+   "summary": "When you must stop for a pedestrian, why a vehicle stopping in the next lane concerns you too, and what to do about children near a school.",
+   "terms": [
+    "pedestrian-crossing"
+   ],
+   "signs": [
+    "306"
+   ],
+   "fig": "rw-pedestrian-crossing-multilane",
+   "body": "A [[term:pedestrian-crossing|pedestrian crossing]] is the one kind of crossing point where the other side is not driving a vehicle at all — and that is exactly what makes a mistake there more dangerous.\n\n:::law\nA driver approaching a pedestrian crossing where pedestrians are crossing must allow them to complete the crossing safely, and if necessary must stop the vehicle to do so (reg. 67(a)).\n:::\n\n# Even before they step onto the crossing\nThe duty does not begin only once a pedestrian is already on the road. If a pedestrian is standing on the pavement near a pedestrian crossing and clearly intends to cross, you must slow down and give them right of way (reg. 67(a1)). Many people think it is fine to \"get past before them\" as long as they are still on the pavement; the law says otherwise.\n\n# The vehicle that stopped in the other lane\n[[fig:rw-pedestrian-crossing-multilane]]\n\nThe most dangerous situation at a multi-lane pedestrian crossing: a driver in the next lane has stopped or slowed before the crossing, and you cannot see why. You must slow down and stop too before the crossing, and if a pedestrian is crossing, give them right of way (reg. 67(a2)).\n\n:::danger\nA pedestrian — especially a short child — can be hidden behind a vehicle that has stopped. This is one of the most common causes of pedestrians being hit at a marked crossing. If a vehicle beside you has stopped — stop too. Do not overtake it just to \"keep going\".\n:::\n\n# Children near pedestrian crossings\nA child can run onto the road without warning and without checking, and can be too short for you to see in time behind a parked vehicle. Near a school, a kindergarten or anywhere children are present, slowing down starts well before the crossing itself, as we saw in the chapter [[lesson:sd-safe-speed|Safe speed]]. More on children's behaviour on the road is in the chapter [[chapter:vulnerable-users|Vulnerable road users]].\n\n# Crossing guards near schools\nDuring arrival and dismissal times, an adult or a crossing guard sometimes stands at a pedestrian crossing to help pupils cross. This does not release you from your legal duty towards pedestrians at the crossing — it adds to it: stop when they signal you to stop, and drive with maximum care even when no one is there.",
+   "keyPoints": [
+    "A pedestrian crossing at a crossing: you must let them complete the crossing safely, and stop if necessary (reg. 67(a)).",
+    "A pedestrian standing on the pavement and intending to cross already has right of way (reg. 67(a1)).",
+    "A vehicle that has stopped in the next lane before a pedestrian crossing: slow down and stop too — there may be a pedestrian you cannot see (reg. 67(a2)).",
+    "Near schools and places with children, slowing down starts early, and applies even when a crossing guard is present."
+   ]
+  },
+  {
+   "id": "rw-emergency",
+   "title": "Emergency vehicles, and special priority on the road",
+   "summary": "What to do when a siren approaches, who must make room for a bus leaving a stop, and how to treat a convoy or a funeral procession.",
+   "terms": [
+    "security-vehicle",
+    "convoy"
+   ],
+   "body": "A siren behind you changes the order of priority on the road immediately.\n\n:::law\nWhen an emergency vehicle approaches — all drivers and people leading animals must give it right of way, must immediately steer their vehicles as close as possible to the right-hand edge of the road, away from a junction, and stop there until it has passed. Pedestrians on the road must clear it immediately (reg. 93(a)).\n:::\n\nAn [[term:security-vehicle|emergency vehicle]] is an ambulance, a fire engine, a police vehicle, or another vehicle approved as such — while it is showing a flashing light and sounding a siren. Do not tailgate it: the minimum gap behind an emergency vehicle is {{fact:following.security_vehicle_gap}} (reg. 93(b)).\n\n:::tip\nThe duty is \"steer right and stop\" — not \"speed up to clear the way faster\". Pull over and stop, and do not try to squeeze into the gap others are clearing.\n:::\n\nAn emergency vehicle in actual use is permitted, when necessary to carry out its role, to exceed the speed limit, to go through a red light or a stop sign after slowing down, and to use a public-transport lane (reg. 94) — in other words, it will not always drive \"normally\", and you should expect that.\n\nFailing to give way to an emergency vehicle is an offence: a fine of {{fine:emergency-vehicle-priority}} and {{points:emergency-vehicle-priority}} points.\n\n# A bus leaving a stop\nWhen a bus signals and prepares to leave a stop, the legal duty is actually on the bus: any driver moving a vehicle that was standing at the side of the road must first make sure they can enter the flow of traffic without risk or obstruction (reg. 66). In practice, a considerate driver makes it easier for the bus — easing off a little, rather than speeding up to \"close the gap\" on it. And remember what you already learned: near a bus stopped at a stop you must slow down anyway (reg. 52(12)).\n\n# Convoys, funeral processions and parades\nA [[term:convoy|convoy]] travelling on a non-urban road must leave gaps within it that let a faster vehicle behind merge in safely, so that it does not block the road (reg. 50(a)). A funeral procession or a parade held lawfully is exempt from this duty: it may move as a single continuous block, and its participants on foot may also be on the road without breaching the ordinary rules for pedestrians (reg. 115(a)). This does not give it formal right of way at a junction — the rules of regulation 64 still apply — but it is a good reason to be patient, and not to try to force your way into a convoy or a procession.",
+   "keyPoints": [
+    "An emergency vehicle approaches: steer right, away from a junction, and stop until it has passed (reg. 93(a)).",
+    "Minimum gap behind an emergency vehicle: {{fact:following.security_vehicle_gap}} (reg. 93(b)).",
+    "A bus leaving a stop must itself make sure the road is clear — but a considerate driver makes it easier.",
+    "A convoy leaves gaps for faster vehicles; a lawful funeral procession or parade is exempt from this and may move as a single block."
+   ]
+  },
+  {
+   "id": "rw-narrow",
+   "title": "Narrow roads, an obstacle in your lane, and slopes",
+   "summary": "On a road too narrow for two directions, who slows down and moves right, and who stops on an uphill or a downhill — and also what to do when the carriageway is blocked.",
+   "terms": [
+    "narrow-road-passing",
+    "road-obstruction"
+   ],
+   "signs": [
+    "307",
+    "308"
+   ],
+   "fig": "rw-narrow-slope",
+   "body": "When [[term:narrow-road-passing|meeting on a narrow]] or steep road there is no right of way fixed in advance — there is a duty of mutual care, and one clear rule about who stops.\n\n:::law\nTwo vehicles coming from opposite directions on a road that is not wide enough for both to pass freely must reduce speed and move right as far as possible — if necessary even beyond the edge of the carriageway — until they are safe from collision (reg. 46(a)).\n:::\n\nSometimes there is still not enough space for both, and someone has to stop completely. On an uphill and a downhill, the law states who:\n\n:::law\nIf vehicles meet on a steep road and the circumstances require one of them to stop — the vehicle going downhill is the one that stops (reg. 46(b)).\n:::\n\n[[fig:rw-narrow-slope]]\n\nThe logic is simple: a vehicle braking on a downhill has full control over stopping, and it is easy for it to wait; a vehicle stopped partway up a hill can roll back or struggle to move off again. If [[sign:307]] or [[sign:308]] is in place — it explicitly states which side gives way, regardless of the direction of the slope.\n\n:::remember\nWhoever is going downhill stops. Whoever is going uphill continues.\n:::\n\n# An obstacle in your lane and a blocked carriageway\nSometimes it is not a road that is narrow by nature, but a carriageway that is partly blocked — roadworks, a broken-down vehicle, a fallen branch — leaving room to pass in only one direction. If a police officer, a flagger, or a sign is directing the passage — follow them. If not — [[term:road-obstruction|whoever's lane is the blocked one]] gives way to the vehicle coming from the opposite direction (reg. 68). In other words: not whoever arrived first, but whoever's side is clear.\n\n# A narrow bridge\nOn an especially narrow bridge, exactly the same logic as on a narrow road applies: slow down, take mutual care, and sometimes wait for the other side before entering. As we already learned in the speed chapter, you must slow down both before a narrow bridge and while crossing it — and on an especially narrow bridge it is sometimes simply right to wait at the side until the vehicle already on it finishes crossing, instead of meeting in the middle.",
+   "keyPoints": [
+    "On a road too narrow for two directions: both vehicles slow down and move right, even beyond the edge of the carriageway if necessary (reg. 46(a)).",
+    "On a steep road, if someone has to stop — it is the vehicle going downhill (reg. 46(b)).",
+    "Sign 307 or 308 in place explicitly states who gives way, regardless of the slope.",
+    "A carriageway where your lane is blocked: you give way to the vehicle coming from the opposite direction (reg. 68)."
+   ]
+  }
+ ]
+}

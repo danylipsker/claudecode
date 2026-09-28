@@ -1,0 +1,148 @@
+{
+ "trees": [
+  {
+   "id": "car-pulls-to-side",
+   "group": "Brakes and steering",
+   "title": "The car pulls to one side",
+   "summary": "While driving straight, without touching the wheel, the car drifts right or left.",
+   "vehicles": [
+    "car",
+    "truck",
+    "bus"
+   ],
+   "safety": "A strong pull that appears only when braking, or a pull that keeps getting worse, needs careful driving to the garage — not driving as normal.",
+   "start": "n1",
+   "nodes": {
+    "n1": {
+     "q": "When does the car pull to one side?",
+     "options": [
+      {
+       "label": "Always when driving straight, even without braking",
+       "next": "n2"
+      },
+      {
+       "label": "Only when braking",
+       "next": "n5"
+      },
+      {
+       "label": "Only on a wet road or in rain",
+       "next": "r-tyre-tread-pull"
+      }
+     ]
+    },
+    "n2": {
+     "q": "Have you checked the tyre air pressure — is there a difference between the sides?",
+     "options": [
+      {
+       "label": "Yes, there's a noticeable difference",
+       "next": "r-tyre-pressure-pull"
+      },
+      {
+       "label": "The pressure is about equal on both sides",
+       "next": "n3"
+      }
+     ]
+    },
+    "n3": {
+     "q": "When did the pulling start?",
+     "options": [
+      {
+       "label": "After hitting a deep pothole or a kerb",
+       "next": "r-alignment-pull"
+      },
+      {
+       "label": "Gradually, without a specific event",
+       "next": "n4"
+      }
+     ]
+    },
+    "n4": {
+     "q": "Are the tyres on both sides of the car the same model and roughly the same wear?",
+     "options": [
+      {
+       "label": "No — only one tyre was replaced, or there's a noticeable wear difference",
+       "next": "r-mismatched-tyres"
+      },
+      {
+       "label": "Yes, the same type and roughly the same wear",
+       "next": "r-alignment-pull"
+      }
+     ]
+    },
+    "n5": {
+     "q": "Is the pulling also accompanied by vibration in the steering wheel when braking?",
+     "options": [
+      {
+       "label": "No, just pulling, sometimes also a noise",
+       "next": "r-caliper-stuck"
+      },
+      {
+       "label": "Yes, there's also vibration in the wheel",
+       "next": "r-warped-disc-pull"
+      }
+     ]
+    },
+    "r-tyre-tread-pull": {
+     "result": "Pulling only on a wet road — suspected worn or mismatched tyre",
+     "severity": "soon",
+     "text": "Pulling that appears only in rain or on a wet road, and disappears when dry, points to a difference between the tyres in their ability to clear water — one tyre more worn than the other side, or tyres of different models.",
+     "actions": [
+      "Check the tread depth on all the tyres and compare between the sides.",
+      "Go to a tyre garage to replace or rotate the tyres as needed."
+     ],
+     "lesson": "ty-tread"
+    },
+    "r-tyre-pressure-pull": {
+     "result": "A difference in tyre air pressure",
+     "severity": "ok",
+     "text": "Lower air pressure on one side creates higher rolling resistance on that side, and the car pulls towards it.",
+     "actions": [
+      "Inflate all the tyres to the pressure set by the car's manufacturer (on the driver's door or in the owner's manual).",
+      "If the pulling continues even after fixing it, go and check the wheel alignment."
+     ],
+     "lesson": "ty-pressure"
+    },
+    "r-alignment-pull": {
+     "result": "Suspected incorrect wheel alignment",
+     "severity": "soon",
+     "text": "Constant pulling to one side, when the air pressure is normal and equal, points to wheel angles that have gone out of alignment — usually after hitting a deep pothole, a kerb, or from natural wear over time.",
+     "actions": [
+      "Go to a garage for a check and wheel alignment.",
+      "Incorrect wheel alignment also wears tyres faster than normal."
+     ],
+     "lesson": "ss-alignment"
+    },
+    "r-mismatched-tyres": {
+     "result": "Suspected difference between the tyres on the two sides",
+     "severity": "soon",
+     "text": "Tyres of different models, or with very different wear, between the two sides of the same axle, can cause pulling even without a real mechanical problem.",
+     "actions": [
+      "Match the tyres on the same axle, and prefer an identical pair.",
+      "If the pulling continues after matching them, also check the wheel alignment."
+     ],
+     "lesson": "ty-care"
+    },
+    "r-caliper-stuck": {
+     "result": "Suspected stuck caliper — a brake that isn't releasing on one side",
+     "severity": "stop",
+     "text": "Pulling only when braking, sometimes with a noise, points to a caliper that isn't releasing properly on one side — the brake on that side keeps pressing slightly even without pressing the pedal, which also generates heat and wears the tyre.",
+     "actions": [
+      "Drive with maximum care to the nearest garage.",
+      "If you smell burning from the wheel, stop and check before continuing."
+     ],
+     "lesson": "bk-how"
+    },
+    "r-warped-disc-pull": {
+     "result": "Pulling and vibration together — suspected uneven brake disc",
+     "severity": "soon",
+     "text": "Pulling accompanied by vibration in the steering wheel when braking points to a brake disc that has warped or worn unevenly — usually on just one side.",
+     "actions": [
+      "Go to a garage for a check, and to have the disc skimmed or replaced.",
+      "For more detail: [[tree:vibration|vibration in the car]]."
+     ],
+     "lesson": "bk-wear"
+    }
+   }
+  }
+ ]
+}
