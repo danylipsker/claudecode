@@ -53,9 +53,23 @@ field colour. Base glyphs are in `js/glyphs.js` (see them with
 with a **prefix for your batch** (`w-`, `p-`, …) so parallel batches do not
 collide; reuse base glyphs freely.
 
-Style: flat pictograms like the real Israeli signs (the European/Vienna-convention
-look) — bold, simple silhouettes, generous margins, recognisable at 28 px.
-Side views face the way the real sign shows them. Arrows are thick (shaft ≈ 12).
+Style: the official Israeli sign chart (לוח התמרורים). The renderer already
+gives every sign the chart's colours (pure red, pure blue, green #007C00,
+yellow, orange) and frames: a triangle border ≈ 11.5 % of the height, a
+prohibition ring a quarter of the radius, a mandatory disc that is blue to the
+edge with a thin white ring just inside, a blue panel with a thin white frame
+set in from the edge, the stop octagon red–white–red. You draw the **symbol**:
+match the official picture's shape, weight and size — official pictograms are
+bold black silhouettes that fill the symbol area (a warning symbol spans most
+of the white field; an arrow on a mandatory disc spans ≈ 80 % of the disc,
+shaft ≈ 14 wide). Side views face the way the chart shows them.
+
+Traffic lights (`light`) are drawn as the chart draws them: a white box with a
+black outline, lamps outlined in black, a lit lamp filled with its colour, an
+unlit one white. A white-light (tram/bus) signal and a lamp with a figure
+(pedestrian, cyclist) are black discs with the shape in the light's colour;
+`"face": "black" | "white" | "color"` on a lamp overrides that. Heads have the
+lamp count the chart shows (usually three, with the unlit ones listed).
 
 ## See what you drew
 

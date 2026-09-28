@@ -200,14 +200,14 @@
    "path": "en/lessons/signs-intro.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "e69adf9b94123c53353296c74d9821d0c20623c6250541a0df443efef5bbc492",
+   "sha256": "187694edb9e14c58042308d4fd83a18802d9c42a67cea2539572c56e9013e403",
    "bytes": 26093
   },
   {
    "path": "en/lessons/special-roads.json",
    "role": "lessons",
    "lang": "en",
-   "sha256": "3ab57c8887ebac4849c64cbed807145fe22cec754e494ed5ce7f847dfaf4137d",
+   "sha256": "24755d599203aa20b182b5c3ebfd973df103ea05fe4fb69f2fc0b433bb53367a",
    "bytes": 24970
   },
   {
@@ -770,15 +770,15 @@
    "path": "he/lessons/signs-intro.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "daf4294a654a0a9762d6dd23c3cdd1bad25a7652d772e94fd742d06dd1408ffa",
+   "sha256": "7c279961861d9528339f22ee5b2960816e4b65eb2e3516c80c3ad98529fce755",
    "bytes": 31247
   },
   {
    "path": "he/lessons/special-roads.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "84c2c3da5895b78a69b2b3f727eba8110fa3d605ee9018e977a9bc8ae2ec4378",
-   "bytes": 30467
+   "sha256": "b7159c50a62c619fe078a157b6765bd885100168613504afa1f82057cd93001a",
+   "bytes": 30484
   },
   {
    "path": "he/lessons/speed-distance.json",
@@ -1172,8 +1172,8 @@
   {
    "path": "signs.json",
    "role": "signs",
-   "sha256": "d67226014028661fbc0f42cf0b2943304f8b8eab5dd8b6ea2cae5dcdbc3ce84c",
-   "bytes": 378127
+   "sha256": "566680d2ac34a65a7c503f12c11dcdc9653333b495957791b0d836e8d71bfce8",
+   "bytes": 401314
   }
  ]
 }

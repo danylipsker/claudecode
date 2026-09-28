@@ -26,9 +26,10 @@
   const { esc } = D.util;
   const SG = D.signs = {};
 
+  // the colours of the official sign chart (measured on the Ministry's pictures)
   const PALETTE = {
-    red: '#CC1F2F', blue: '#0B5CAD', green: '#00804A', yellow: '#FFC80A', orange: '#F28C00',
-    brown: '#6E3B1F', black: '#161616', white: '#FFFFFF', grey: '#8A8F98', asphalt: '#474C55',
+    red: '#FF0000', blue: '#0000FF', green: '#007C00', yellow: '#FFFF00', orange: '#FF7300',
+    brown: '#A4740F', black: '#000000', white: '#FFFFFF', grey: '#8A8F98', asphalt: '#6A6A6A',
     darkgrey: '#2A2D33', lamp_off: '#3A3D44', lampred: '#FF3B30', lampyellow: '#FFC400', lampgreen: '#1FD37A'
   };
   SG.PALETTE = PALETTE;
@@ -75,26 +76,30 @@
     const f = roles.field, b = roles.border;
     switch (shape) {
       case 'triangle': {
-        const inner = inset(TRI_UP, 0.70);
+        const inner = inset(TRI_UP, 0.66);   // border ≈ 11.5 % of the height, as on the official chart
         return `<path d="${poly(TRI_UP)}" fill="${b}" stroke="${b}" stroke-width="6" stroke-linejoin="round"/>` +
           `<path d="${poly(inner)}" fill="${f}" stroke="${f}" stroke-width="2" stroke-linejoin="round"/>`;
       }
       case 'triangle-down': {
-        const inner = inset(TRI_DOWN, 0.70);
+        const inner = inset(TRI_DOWN, 0.66);
         return `<path d="${poly(TRI_DOWN)}" fill="${b}" stroke="${b}" stroke-width="6" stroke-linejoin="round"/>` +
           `<path d="${poly(inner)}" fill="${f}" stroke="${f}" stroke-width="2" stroke-linejoin="round"/>`;
       }
       case 'circle':
-        if (roles._thinBorder) return `<circle cx="50" cy="50" r="48" fill="${b}"/><circle cx="50" cy="50" r="45" fill="${f}"/>`;
-        return `<circle cx="50" cy="50" r="48" fill="${b}"/><circle cx="50" cy="50" r="37.5" fill="${f}"/>`;
+        // mandatory: the field colour to the edge, with a thin ring of the border colour just inside it
+        if (roles._thinBorder) return `<circle cx="50" cy="50" r="48" fill="${f}"/><circle cx="50" cy="50" r="46" fill="none" stroke="${b}" stroke-width="1.8"/>`;
+        // prohibition: the ring is about a quarter of the radius
+        return `<circle cx="50" cy="50" r="48" fill="${b}"/><circle cx="50" cy="50" r="36.5" fill="${f}"/>`;
       case 'octagon':
-        return `<path d="${poly(octagon(49, 50, 50))}" fill="${b}"/><path d="${poly(octagon(45.5, 50, 50))}" fill="${f}"/>`;
+        // stop: red rim, white ring, red field
+        return `<path d="${poly(octagon(49, 50, 50))}" fill="${f}"/><path d="${poly(octagon(45.5, 50, 50))}" fill="${b}"/><path d="${poly(octagon(39.5, 50, 50))}" fill="${f}"/>`;
       case 'diamond':
         return `<path d="M50 2 L98 50 L50 98 L2 50 Z" fill="${b}" stroke="${b}" stroke-width="2" stroke-linejoin="round"/><path d="M50 9 L91 50 L50 91 L9 50 Z" fill="${f}"/>`;
       case 'square':
-        return `<rect x="2" y="2" width="96" height="96" rx="9" fill="${b}"/><rect x="5.5" y="5.5" width="89" height="89" rx="6.5" fill="${f}"/>`;
+        // a panel: the field colour to the edge, a thin frame of the border colour set in from it
+        return `<rect x="1.5" y="1.5" width="97" height="97" rx="8" fill="${f}"/><rect x="5" y="5" width="90" height="90" rx="5" fill="none" stroke="${b}" stroke-width="2.4"/>`;
       case 'rect':
-        return `<rect x="1.5" y="1.5" width="${W - 3}" height="97" rx="8" fill="${b}"/><rect x="5" y="5" width="${W - 10}" height="90" rx="5.5" fill="${f}"/>`;
+        return `<rect x="1.5" y="1.5" width="${W - 3}" height="97" rx="7" fill="${f}"/><rect x="4.5" y="4.5" width="${W - 9}" height="91" rx="5" fill="none" stroke="${b}" stroke-width="1.4"/>`;
       case 'plate':
         return `<rect x="1.5" y="1.5" width="${W - 3}" height="97" rx="6" fill="${b}"/><rect x="5" y="5" width="${W - 10}" height="90" rx="3.5" fill="${f}"/>`;
       case 'marking':
@@ -102,7 +107,7 @@
       case 'none':
         return '';
       default:
-        return `<rect x="2" y="2" width="96" height="96" rx="9" fill="${b}"/><rect x="5.5" y="5.5" width="89" height="89" rx="6.5" fill="${f}"/>`;
+        return `<rect x="1.5" y="1.5" width="97" height="97" rx="8" fill="${f}"/><rect x="5" y="5" width="90" height="90" rx="5" fill="none" stroke="${b}" stroke-width="2.4"/>`;
     }
   }
 
@@ -143,31 +148,38 @@
     return '';
   }
 
+  // Traffic lights are drawn the way the official sign chart draws them: a white
+  // box with a black outline, lamps outlined in black, a lit lamp filled with its
+  // colour and an unlit one white. A white-light (tram/bus) signal, and a lamp
+  // that shows a figure (pedestrian, cyclist), is a black disc with the shape in
+  // the light's colour. A lamp may set "face": "black" | "white" | "color" itself.
   function lightSVG(s, roles) {
     const lamps = s.lamps || [];
     const n = Math.max(1, lamps.length);
     const W = s.w ? s.w * 100 : 100;
     const horiz = !!s.horizontal;
-    let r = horiz ? Math.min(16, (W - 20) / (2 * n) - 2) : Math.min(15, 90 / (2 * n) - 2.5);
-    let out = '';
-    let hw = horiz ? W - 8 : 2 * r + 18;
-    let hh = horiz ? 2 * r + 18 : 96;
-    // a single-lamp head (pedestrian, cyclist, tram, beacon) is a square box
-    // with a large lamp, so the figure inside it reads at small sizes
-    if (n === 1) { hw = hh = Math.min(W, 100) - 10; r = hw * 0.38; }
+    let r = horiz ? Math.min(30, (W - 8) / (2 * n) - 2) : Math.min(14, 96 / (2 * n) - 2);
+    let hw = horiz ? W - 6 : 2 * r + 8;
+    let hh = horiz ? 2 * r + 8 : n * (2 * r + 4) + 4;
+    // a single-lamp head (beacon, cyclist light) is a square box with a large lamp
+    if (n === 1) { hw = hh = Math.min(W, 100) - 6; r = hw * 0.38; }
     const hx = (W - hw) / 2, hy = (100 - hh) / 2;
-    out += `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="${Math.min(14, hw / 3)}" fill="${PALETTE.darkgrey}" stroke="${PALETTE.black}" stroke-width="2"/>`;
+    let out = `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="2.5" fill="${PALETTE.white}" stroke="${PALETTE.black}" stroke-width="1.6"/>`;
+    const LAMP = { red: '#FF0000', yellow: '#FFFF00', green: '#007C00', white: '#FFFFFF' };
     lamps.forEach((l, i) => {
       const cx = horiz ? hx + (hw / n) * (i + 0.5) : W / 2;
       const cy = horiz ? 50 : hy + (hh / n) * (i + 0.5);
-      const lampCol = { red: PALETTE.lampred, yellow: PALETTE.lampyellow, green: PALETTE.lampgreen, white: '#F4F4F4' }[l.c] || col(l.c, roles);
+      const lampCol = LAMP[l.c] || col(l.c, roles);
       const on = !!l.on;
       const flash = (s.flash || []).includes(i);
-      out += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${on && !l.g ? lampCol : PALETTE.lamp_off}"${flash ? ' class="lamp-flash"' : ''}/>`;
-      if (on && !l.g) out += `<circle cx="${cx - r * 0.3}" cy="${cy - r * 0.3}" r="${r * 0.28}" fill="#fff" opacity=".35"/>`;
+      const figure = !!l.g && /pedestrian|walk|bicycle|bike|cycl/.test(l.g);
+      const dark = l.face === 'black' || (l.face == null && (l.c === 'white' || figure));
+      const face = l.face === 'color' ? lampCol : dark ? PALETTE.black : (on && !l.g ? lampCol : PALETTE.white);
+      out += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${face}" stroke="${PALETTE.black}" stroke-width="1.4"${flash && !l.g ? ' class="lamp-flash"' : ''}/>`;
       if (l.g) {
         const sc = (r * 1.7) / 100;
-        out += `<g transform="translate(${cx} ${cy})${l.rot ? ` rotate(${l.rot})` : ''} scale(${l.flip ? -sc : sc} ${sc}) translate(-50 -50)"${flash ? ' class="lamp-flash"' : ''}>${D.glyphs.markup(l.g, () => (on ? lampCol : '#55585f'))}</g>`;
+        const gcol = on ? lampCol : (dark ? '#8a8a8a' : '#bdbdbd');
+        out += `<g transform="translate(${cx} ${cy})${l.rot ? ` rotate(${l.rot})` : ''} scale(${l.flip ? -sc : sc} ${sc}) translate(-50 -50)"${flash ? ' class="lamp-flash"' : ''}>${D.glyphs.markup(l.g, () => gcol)}</g>`;
       }
     });
     return out;
