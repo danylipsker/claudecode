@@ -1,9 +1,18 @@
 # Drawing signs and warning lights
 
-Signs and dashboard lights are not pictures: each is a shape, colours and a
-list of drawing items (`js/signs.js` header documents it all), so a transport
-authority can change or add one through a content update. The drawings are
-made here, one work file per batch, and merged into `signs.json` / `dash.json`.
+What the app shows for a sign is its **official picture** from the Ministry's
+sign chart, in `signs-art.json` (`python3 tools/chart-art.py <the chart PDF>`
+rebuilds that file; the booklet itself is not versioned). The **drawing**
+described here is the fallback: it is shown for a sign that has no picture
+yet (a sign added by a content update, a variant the chart does not show) and
+is what the in-app editor edits. `node tools/sheet.js signs --drawn` renders
+the drawings on their own.
+
+Signs and dashboard lights are otherwise not pictures: each is a shape,
+colours and a list of drawing items (`js/signs.js` header documents it all),
+so a transport authority can change or add one through a content update. The
+drawings are made here, one work file per batch, and merged into
+`signs.json` / `dash.json`.
 
 ## Work files
 

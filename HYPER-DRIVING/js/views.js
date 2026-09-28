@@ -254,8 +254,11 @@
     const lessons = [...new Set(used.map((w) => w.id))].map((id) => C.lesson(id)).filter(Boolean);
     const related = (s.related || []).map(String).map((n) => D.data.signByNum.get(n)).filter(Boolean);
     const qs = C.questions().filter((q) => String(q.sign) === String(num) || (q.q && q.q.includes('[[sign:' + num)));
+    const forms = D.signs.forms(s);
     const el = html(`<article class="sign-page" style="${hueStyle(ser && ser.hue)}">
-      <div class="sign-hero">${D.signs.svg(s, { size: 220 })}</div>
+      <div class="sign-hero-col"><div class="sign-hero">${D.signs.svg(s, { size: 200 })}</div>
+        ${forms.length > 1 ? `<div class="sign-forms"><div class="sign-forms-k">${esc(T('signs.forms'))}</div><div class="sign-forms-row">${forms.slice(1).map((a) => `<span class="sign-form">${D.signs.imageSVG(a, 64, esc(D.tr(s.name) || num))}</span>`).join('')}</div></div>` : ''}
+        ${forms.length ? `<p class="sign-source">${esc(T('signs.artSource'))}</p>` : ''}</div>
       <div class="sign-info">
         <div class="crumbs">${ser ? `<a href="#/signs/${esc(ser.id)}">${esc(D.tr(ser.title))}</a>` : ''}</div>
         <h1><span class="num-badge">${esc(num)}</span> ${esc(D.tr(s.name))}</h1>

@@ -35,14 +35,15 @@ js/core.js          helpers, storage (localStorage / IndexedDB), events, router,
 js/i18n.js          interface strings (he, en); a pack may override any
 js/content.js       loads a pack (bundled / downloaded / editor draft), indexes it, facts with dated changes, search
 js/markup.js        the lesson text language (AUTHORING.md §3)
-js/glyphs.js, signs.js, dash.js    pictograms, the sign renderer, the warning-light renderer
+js/glyphs.js, signs.js, dash.js    pictograms, the sign renderer (official picture, else drawing), the warning-light renderer
 js/widgets.js       interactive diagrams
 js/quiz.js          question pools, exams, drills, Leitner progress
 js/update.js        signed content updates
 js/check.js         content rules shared by the editor and tools/validate.js
 js/views.js, editor.js, app.js     screens, the authority's content editor, start-up
 content/il/         the Israeli content pack (see below)
-tools/              publish (manifest, signing), keygen, validate, sheet (render signs to PNG), merge-drafts
+tools/              publish (manifest, signing), keygen, validate, sheet (render signs to PNG), merge-drafts,
+                    chart-art.py (the signs' official pictures out of the Ministry's sign chart)
 ```
 
 ### The content pack — everything that can change is data
@@ -54,6 +55,7 @@ tools/              publish (manifest, signing), keygen, validate, sheet (render
 |---|---|
 | `facts.json` | every legal number — speeds, ages, alcohol limits, distances, exam rules — and every offence's fine and points, each with its source (regulation, URL), confidence and optional dated changes `"changes": [{"from": "2027-01-01", "value": 40}]` |
 | `signs.json` | the sign table: number, series, names, meanings, and the **drawing** (shape, colours, pictogram items, glyphs) |
+| `signs-art.json` | the **official picture** of each sign, taken from the Ministry's sign chart (a small PNG as a data URL, with the chart's other forms of the sign); shown wherever the sign appears, the drawing being the fallback for a sign that has none |
 | `dash.json` | dashboard lights: colour, glyph, severity, names, meaning, action |
 | `glossary.json` | bilingual terms |
 | `course.json`, `licences.json`, `exam.json` | chapter order and sections; licence classes and groups; exam weights |
@@ -97,7 +99,9 @@ Another country = another folder `content/<code>/` and an entry in
 node tools/validate.js              errors + warning summary (includes writers' draft files)
 node tools/validate.js --release    exactly what ships; the manifest must match the disk
 node tools/publish.js               rebuild content/il/manifest.json after editing files
-node tools/sheet.js signs --series 100 --out _sheets/s100.png     look at signs
+node tools/sheet.js signs --series 100 --out _sheets/s100.png     look at signs (--drawn: the drawings, not the pictures)
+python3 tools/chart-art.py luach-tamrurim-2021.pdf --sheets _sheets/art
+                                    rebuild signs-art.json from the Ministry's sign-chart booklet
 node tools/merge-drafts.js --apply  fold writers' drafts into the shared files
 ```
 

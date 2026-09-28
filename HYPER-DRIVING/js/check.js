@@ -262,6 +262,12 @@
       (s.related || []).forEach((r) => { if (!d.signByNum.has(String(r))) warn(w, 'related sign "' + r + '" missing'); });
       if (!(d.series || []).some((x) => x.id === String(s.series))) warn(w, 'series "' + s.series + '" not described');
       Object.values(s.meaning || {}).forEach((x) => refs(x, w)); Object.values(s.notes || {}).forEach((x) => refs(x, w));
+      if (!(d.signArt || {})[String(s.num)]) warn(w, 'no official picture (shown from its drawing)');
+    });
+    Object.entries(d.signArt || {}).forEach(([n, a]) => {
+      const w = 'sign-art ' + n;
+      if (!d.signByNum.has(n)) warn(w, 'picture for a sign that is not in signs.json');
+      [a].concat(a.alt || []).forEach((f) => { if (!f || !(f.w > 0) || !(f.h > 0) || !/^data:image\/(png|webp|jpeg|svg\+xml);base64,/.test(f.src || '')) err(w, 'a form needs w, h and a data-URL src'); });
     });
 
     // dashboard lights

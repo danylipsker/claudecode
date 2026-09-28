@@ -343,7 +343,12 @@
         <div class="actions"><button class="btn primary" data-save>${esc(D.t('common.save'))}</button></div></section></div>`;
     const prev = m.querySelector('.ed-sign-prev'), ta = m.querySelector('[data-draw]');
     const draw = () => {
-      try { const d = JSON.parse(ta.value); prev.innerHTML = D.signs.svg(Object.assign({}, d, { name: s.name }), { size: 200 }); ta.classList.remove('bad'); }
+      try {
+        const d = JSON.parse(ta.value);
+        prev.innerHTML = D.signs.svg(Object.assign({}, d, { name: s.name }), { size: 200, drawn: true }) +
+          (D.signs.art(s) ? `<p class="muted small">${esc(L('באפליקציה מוצגת התמונה הרשמית מלוח התמרורים (signs-art.json); הציור שכאן הוא הגיבוי.', 'The app shows the official picture from the sign chart (signs-art.json); this drawing is the fallback.'))}</p>${D.signs.svg(s, { size: 72 })}` : '');
+        ta.classList.remove('bad');
+      }
       catch (e) { ta.classList.add('bad'); }
     };
     ta.addEventListener('input', draw);

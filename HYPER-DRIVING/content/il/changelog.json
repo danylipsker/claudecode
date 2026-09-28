@@ -1,6 +1,14 @@
 {
   "versions": [
     {
+      "version": "2026.09.28-2",
+      "date": "2026-09-28",
+      "notes": {
+        "he": "התמרורים מוצגים עכשיו בתמונתם הרשמית מלוח התמרורים (ספטמבר 2020), כולל הצורות הנוספות שהלוח מראה לכל תמרור.",
+        "en": "Signs are now shown with their official picture from the sign chart (September 2020), including the other forms the chart shows for a sign."
+      }
+    },
+    {
       "version": "2026.09.28-1",
       "date": "2026-09-28",
       "notes": {

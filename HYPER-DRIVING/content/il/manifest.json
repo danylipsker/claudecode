@@ -9,7 +9,7 @@
   "he": "משרד התחבורה והבטיחות בדרכים",
   "en": "Ministry of Transport and Road Safety"
  },
- "version": "2026.09.28-1",
+ "version": "2026.09.28-2",
  "published": "2026-09-28",
  "defaultLanguage": "he",
  "languages": [
@@ -20,8 +20,8 @@
   {
    "path": "changelog.json",
    "role": "changelog",
-   "sha256": "2583022f3b89294a1bacdb9194e8838ea0d3979fce07c7fd56684e99dd2570d2",
-   "bytes": 291
+   "sha256": "d85563aa4b0596e51d521e4c3b852de3c99e97b21721989684af2636e75e37cc",
+   "bytes": 694
   },
   {
    "path": "course.json",
@@ -1168,6 +1168,12 @@
    "role": "notices",
    "sha256": "c37e305cf3a6aa24fdf70dc463daee14b8e3aa1b12148ae81abd96b447f605ec",
    "bytes": 1035
+  },
+  {
+   "path": "signs-art.json",
+   "role": "signs-art",
+   "sha256": "a598dd90cfa702d4ff264b0c9c9bd63b638a639e4cc5a6a1409f7504da13e12d",
+   "bytes": 1954811
   },
   {
    "path": "signs.json",

@@ -66,6 +66,8 @@
       'signs.drill': 'לתרגל זיהוי',
       'signs.none': 'לא נמצאו תמרורים',
       'signs.count': '{n} תמרורים',
+      'signs.forms': 'צורות נוספות בלוח התמרורים',
+      'signs.artSource': 'התמונה מתוך לוח התמרורים הרשמי של משרד התחבורה',
 
       'vehicle.title': 'הכרת הרכב',
       'vehicle.intro': 'איך הרכב בנוי ועובד, תחזוקה שוטפת, איתור תקלות וטיפול בתקלות בדרך — לרכב פרטי, אופנוע, רכב כבד ואוטובוס.',
@@ -286,6 +288,8 @@
       'signs.drill': 'Practise recognition',
       'signs.none': 'No signs found',
       'signs.count': '{n} signs',
+      'signs.forms': 'Other forms in the sign chart',
+      'signs.artSource': 'Picture from the Ministry of Transport’s official sign chart',
 
       'vehicle.title': 'Know your vehicle',
       'vehicle.intro': 'How a vehicle is built and works, routine maintenance, troubleshooting and handling faults on the road — for cars, motorcycles, heavy vehicles and buses.',

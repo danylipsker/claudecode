@@ -8,10 +8,11 @@
  *   node tools/sheet.js dash --out _sheets/dash.png
  *   node tools/sheet.js glyphs --out _sheets/glyphs.png
  *   node tools/sheet.js signs --file work/s100.json --out …   (draw signs from a work file instead of the pack)
+ *   node tools/sheet.js signs --drawn --out …                  (the drawings, ignoring the official pictures)
  *
  * Options: --cols N (default 8), --size px (default 120), --lang he|en (default he),
  * --html only writes the HTML.
- * Uses Chrome or Edge in headless mode (paths below).
+ * Uses Chrome or Edge in headless mode (paths below, or the CHROME environment variable).
  */
 'use strict';
 const fs = require('fs');
@@ -29,6 +30,9 @@ fs.mkdirSync(path.dirname(out), { recursive: true });
 const pack = path.join(ROOT, 'content', 'il');
 const signsFile = JSON.parse(fs.readFileSync(path.join(pack, 'signs.json'), 'utf8'));
 let signs = signsFile.signs;
+// the official pictures (content/il/signs-art.json) are what the app shows; --drawn looks at the drawings
+const artFile = path.join(pack, 'signs-art.json');
+const ART = kind === 'signs' && !opt('drawn') && fs.existsSync(artFile) ? (JSON.parse(fs.readFileSync(artFile, 'utf8')).art || {}) : {};
 if (opt('file') && kind === 'signs') {
   const w = JSON.parse(fs.readFileSync(path.resolve(opt('file')), 'utf8'));
   const list = w.signs || w;
@@ -77,6 +81,7 @@ const html = `<!DOCTYPE html><html lang="${LANG}" dir="${LANG === 'he' ? 'rtl' :
  var FIGS = ${JSON.stringify(typeof FIGS !== 'undefined' ? FIGS : {})};
  var DASH = ${JSON.stringify(kind === 'dash' ? dashList : [])};
  var PACKGLYPHS = ${JSON.stringify(signsFile.glyphs || {})};
+ D.data = { signArt: ${JSON.stringify(ART)} };
  Object.keys(PACKGLYPHS).forEach(function (k) { D.glyphs.add(k, PACKGLYPHS[k]); });
  var g = document.getElementById('g'), html = '';
  if ('${kind}' === 'signs') SIGNS.forEach(function (s) {
@@ -107,14 +112,16 @@ const rows = Math.ceil(n / cols);
 let W = Math.round(cols * (size * 1.25 + 46) + 30), H = Math.min(16000, Math.ceil(rows * 1.35) * (size + 80) + 60);
 if (kind === 'figures') { const nf = Object.keys(FIGS).length; W = cols * (size * 4 + 40) + 40; H = Math.min(16000, Math.ceil(nf / cols) * (size * 3.4 + 90) + 60); }
 const browsers = [
+  process.env.CHROME || '',
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
   'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
   '/usr/bin/google-chrome', '/usr/bin/chromium'
 ];
-const exe = browsers.find((b) => fs.existsSync(b));
+const exe = browsers.find((b) => b && fs.existsSync(b));
 if (!exe) { console.error('no Chrome/Edge found; open ' + htmlFile); process.exit(1); }
 const profile = path.join(path.dirname(out), '.chrome-profile');
-execFileSync(exe, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', '--user-data-dir=' + profile,
-  '--screenshot=' + out, '--window-size=' + W + ',' + H, '--virtual-time-budget=2000', 'file:///' + htmlFile.replace(/\\/g, '/')], { stdio: 'ignore', timeout: 60000 });
+const asRoot = process.platform !== 'win32' && typeof process.getuid === 'function' && process.getuid() === 0;
+execFileSync(exe, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', '--user-data-dir=' + profile].concat(asRoot ? ['--no-sandbox'] : []).concat([
+  '--screenshot=' + out, '--window-size=' + W + ',' + H, '--virtual-time-budget=2000', 'file:///' + htmlFile.replace(/\\/g, '/')]), { stdio: 'ignore', timeout: 60000 });
 console.log(out + '  (' + n + ' items, ' + W + '×' + H + ')');

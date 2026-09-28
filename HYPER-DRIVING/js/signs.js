@@ -1,7 +1,13 @@
-/* Hyper Driving · signs.js — draws a traffic sign, road marking or traffic
- * light from its description in signs.json. Nothing is a picture file: a sign
- * is a shape, colours and a list of drawing items, so an authority can change
- * or add signs through a content update.
+/* Hyper Driving · signs.js — shows a traffic sign, road marking or traffic
+ * light. A sign has two sources, and the first that exists wins:
+ *
+ *   1. its official picture, taken from the Ministry's sign chart
+ *      (signs-art.json: { "art": { "302": { w, h, src: "data:image/png;…",
+ *      alt: [{ w, h, src }] } } } — "alt" holds the other forms the chart
+ *      shows under the same number, e.g. the sign with and without its plate);
+ *   2. its drawing in signs.json — a shape, colours and a list of drawing
+ *      items, so an authority can add a sign through a content update before
+ *      it has a picture, and so nothing here needs a picture file.
  *
  * A sign:
  *   { "num": "302", "series": "300", "cat": "priority", "shape": "octagon",
@@ -185,12 +191,29 @@
     return out;
   }
 
-  // the sign as an SVG string
+  // the official picture of a sign, if the pack has one: { w, h, src, alt? }
+  SG.art = (s) => (s && D.data && D.data.signArt && D.data.signArt[String(s.num)]) || null;
+  // every form the chart shows for a sign — its picture first, then the others
+  SG.forms = (s) => { const a = SG.art(s); return a ? [a].concat(a.alt || []) : []; };
+
+  // a picture as an <svg>: height = size, the width from the picture's own
+  // proportions (a very wide one — a road marking — shrinks to fit 2.4 × size)
+  SG.imageSVG = (a, size, label) => {
+    let h = size, w = size * a.w / a.h;
+    if (w > size * 2.4) { w = size * 2.4; h = w * a.h / a.w; }
+    const src = esc(a.src);
+    return `<svg class="sign-svg sign-art" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${a.w} ${a.h}" width="${Math.round(w)}" height="${Math.round(h)}" role="img" aria-label="${label}"><image href="${src}" xlink:href="${src}" width="${a.w}" height="${a.h}"/></svg>`;
+  };
+
+  // the sign as an SVG string: its official picture, else its drawing
+  // (opts.drawn = true asks for the drawing even when there is a picture)
   SG.svg = (s, opts) => {
     opts = opts || {};
     if (!s) return '';
     const size = opts.size || 96;
     const label = esc(D.tr(s.name) || s.num);
+    const art = opts.drawn ? null : SG.art(s);
+    if (art) return SG.imageSVG(art, size, label);
     if (s.svg) {
       return String(s.svg).replace(/<svg\b/, `<svg width="${size}" height="${size}" role="img" aria-label="${label}"`);
     }
