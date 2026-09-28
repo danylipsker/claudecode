@@ -62,6 +62,8 @@
     mg_per_100ml_blood: { he: 'מ״ג ל-100 מ״ל דם', en: 'mg per 100 ml of blood' },
     seats: { he: ['מושב', 'מושבים'], en: ['seat', 'seats'] },
     passengers: { he: ['נוסע', 'נוסעים'], en: ['passenger', 'passengers'] },
+    db: { he: ['דציבל', 'דציבלים'], en: 'dB' },
+    mps2: { he: 'מטר לשנייה בריבוע', en: 'm/s²' },
     lessons: { he: ['שיעור', 'שיעורים'], en: ['lesson', 'lessons'] },
     questions: { he: ['שאלה', 'שאלות'], en: ['question', 'questions'] },
     ym: { he: '', en: '' },

@@ -7,6 +7,8 @@
   const C = D.content, Q = D.quiz, M = D.markup;
   const V = D.views = {};
   const T = (k, v) => D.t(k, v);
+  // titles and summaries may carry {{fact:…}}: printed as plain text with the value filled in
+  const plain = (s) => esc(M.valuesText(s == null ? '' : s));
 
   // ---------- helpers ----------
   const html = (s) => { const t = document.createElement('template'); t.innerHTML = s.trim(); return t.content; };
@@ -94,7 +96,7 @@
       <section class="grid2">
         ${nextLesson ? `<a class="card go" href="#/lesson/${esc(nextLesson.id)}" style="${hueStyle((C.chapterMeta(nextLesson._chapter) || {}).hue)}">
           <div class="card-k">${esc(last ? T('home.continue') : T('home.start'))}</div>
-          <div class="card-t">${esc(nextLesson.title)}</div>
+          <div class="card-t">${plain(nextLesson.title)}</div>
           <div class="card-s">${esc((C.chapter(nextLesson._chapter) || {}).title || '')}</div></a>` : ''}
         ${sod ? `<a class="card sod" href="#/sign/${esc(sod.num)}"><div class="sod-art">${D.signs.svg(sod, { size: 84 })}</div>
           <div><div class="card-k">${esc(T('home.signOfDay'))}</div><div class="card-t">${esc(D.tr(sod.name))}</div><div class="card-s">${esc(T('signs.number'))} ${esc(sod.num)}</div></div></a>` : ''}
@@ -126,7 +128,7 @@
       const s = chapterStats(cm.id);
       return `<a class="chap" href="#/chapter/${esc(cm.id)}" style="${hueStyle(cm.hue)}">
         <div class="chap-ico">${V.chapIcon(cm.icon)}</div>
-        <div class="chap-body"><div class="chap-t">${esc(ch.title)}</div><div class="chap-s">${esc(ch.summary || '')}</div>
+        <div class="chap-body"><div class="chap-t">${plain(ch.title)}</div><div class="chap-s">${plain(ch.summary)}</div>
         <div class="chap-meta">${s.lessons} ${esc(T('learn.lessons'))} · ${s.questions} ${esc(T('learn.questions'))}</div>${progressBar(s.lessons ? s.read / s.lessons : 0)}</div></a>`;
     }).join('');
   }
@@ -151,11 +153,11 @@
     const lessons = ch.lessons || [];
     const el = html(`<header class="page-head chap-head" style="${hueStyle(cm.hue)}">
         <div class="chap-ico big">${V.chapIcon(cm.icon, 48)}</div>
-        <div><h1>${esc(ch.title)}</h1><p class="lead">${esc(ch.summary || '')}</p>
+        <div><h1>${plain(ch.title)}</h1><p class="lead">${plain(ch.summary)}</p>
         <div class="chap-meta">${s.lessons} ${esc(T('learn.lessons'))} · ${s.questions} ${esc(T('learn.questions'))}</div></div>
       </header>
       ${lessons.length ? `<ol class="lesson-list">${lessons.map((ls, i) => `<li><a href="#/lesson/${esc(ls.id)}" class="${Q.lessonRead(ls.id) ? 'read' : ''}${C.forLicence(ls) ? '' : ' other-lic'}">
-        <span class="ln">${i + 1}</span><span class="lt"><b>${esc(ls.title)}</b><small>${esc(ls.summary || '')}</small></span>${licencePills(ls)}
+        <span class="ln">${i + 1}</span><span class="lt"><b>${plain(ls.title)}</b><small>${plain(ls.summary)}</small></span>${licencePills(ls)}
         <span class="lr">${Q.lessonRead(ls.id) ? D.icon('check', 18) : D.icon('next', 18)}</span></a></li>`).join('')}</ol>` : `<p class="empty">${esc(T('learn.empty'))}</p>`}
       ${s.questions ? `<div class="actions"><button class="btn primary" data-practice="${esc(id)}">${D.icon('quiz', 18)} ${esc(T('learn.practiceChapter'))}</button></div>` : ''}`);
     main().replaceChildren(el);
@@ -180,9 +182,9 @@
     const qn = Q.pool({ lesson: id }).length;
     const el = html(`<article class="lesson" style="${hueStyle(cm.hue)}">
       <header class="lesson-head">
-        <div class="crumbs"><a href="#/chapter/${esc(ls._chapter)}">${esc(ch.title || '')}</a> · ${esc(T('learn.lesson'))} ${ls._index + 1}/${list.length}</div>
-        <h1>${esc(ls.title)}</h1>
-        ${ls.summary ? `<p class="lead">${esc(ls.summary)}</p>` : ''}
+        <div class="crumbs"><a href="#/chapter/${esc(ls._chapter)}">${plain(ch.title)}</a> · ${esc(T('learn.lesson'))} ${ls._index + 1}/${list.length}</div>
+        <h1>${plain(ls.title)}</h1>
+        ${ls.summary ? `<p class="lead">${plain(ls.summary)}</p>` : ''}
         ${!C.forLicence(ls) ? `<p class="note">${esc(T('learn.notForYou'))} ${licencePills(ls)}</p>` : ''}
         ${ls._lang !== D.lang() ? `<p class="note">${esc(T('learn.fallback'))}</p>` : ''}
       </header>
@@ -194,8 +196,8 @@
         ${qn ? `<button class="btn primary" data-practice>${D.icon('quiz', 18)} ${esc(T('learn.practiceLesson'))} <small>(${qn})</small></button>` : ''}
       </div>
       <nav class="pager">
-        ${prev ? `<a class="pg prev" href="#/lesson/${esc(prev.id)}">${D.icon('back', 18)}<span><small>${esc(T('learn.prev'))}</small>${esc(prev.title)}</span></a>` : '<span></span>'}
-        ${next ? `<a class="pg next" href="#/lesson/${esc(next.id)}"><span><small>${esc(T('learn.next'))}</small>${esc(next.title)}</span>${D.icon('next', 18)}</a>` : '<span></span>'}
+        ${prev ? `<a class="pg prev" href="#/lesson/${esc(prev.id)}">${D.icon('back', 18)}<span><small>${esc(T('learn.prev'))}</small>${plain(prev.title)}</span></a>` : '<span></span>'}
+        ${next ? `<a class="pg next" href="#/lesson/${esc(next.id)}"><span><small>${esc(T('learn.next'))}</small>${plain(next.title)}</span>${D.icon('next', 18)}</a>` : '<span></span>'}
       </nav>
     </article>`);
     const m = main(); m.replaceChildren(el);
@@ -262,7 +264,7 @@
         <div class="prose">${M.render(D.tr(s.meaning))}</div>
         ${s.notes && D.tr(s.notes) ? `<aside class="callout callout-remember"><div class="callout-head"><span class="callout-icon">★</span>${esc(T('signs.notes'))}</div><div class="callout-body">${M.render(D.tr(s.notes))}</div></aside>` : ''}
         ${related.length ? `<h3>${esc(T('signs.related'))}</h3><div class="sign-row">${related.map((r) => `<a class="sign-card mini" href="#/sign/${esc(r.num)}">${D.signs.svg(r, { size: 60 })}<span class="sign-num">${esc(r.num)}</span><span class="sign-name">${esc(D.tr(r.name))}</span></a>`).join('')}</div>` : ''}
-        ${lessons.length ? `<h3>${esc(T('signs.inLessons'))}</h3><ul class="link-list">${lessons.map((l) => `<li><a href="#/lesson/${esc(l.id)}">${esc(l.title)}</a></li>`).join('')}</ul>` : ''}
+        ${lessons.length ? `<h3>${esc(T('signs.inLessons'))}</h3><ul class="link-list">${lessons.map((l) => `<li><a href="#/lesson/${esc(l.id)}">${plain(l.title)}</a></li>`).join('')}</ul>` : ''}
         <div class="actions">
           <button class="btn primary" data-drill>${D.icon('quiz', 18)} ${esc(T('signs.drill'))}</button>
           ${qs.length ? `<button class="btn" data-qs>${D.icon('check', 18)} ${qs.length} ${esc(T('learn.questions'))}</button>` : ''}
@@ -349,7 +351,7 @@
     const trees = C.trees();
     const cats = [...new Set(trees.map((t) => t.group || ''))];
     const el = html(`<header class="page-head"><h1>${esc(T('vehicle.trouble'))}</h1><p class="lead">${esc(T('vehicle.troubleIntro'))}</p></header>
-      ${cats.map((c) => `${c ? `<h2 class="sec">${esc(c)}</h2>` : ''}<section class="grid2">${trees.filter((t) => (t.group || '') === c).map((t) => `<a class="card go" href="#/trouble/${esc(t.id)}"><div class="card-t">${esc(t.title)}</div><div class="card-s">${esc(t.summary || '')}</div>${t.vehicles ? `<div class="veh-pills">${t.vehicles.map((v) => D.icon({ car: 'car', motorcycle: 'moto', truck: 'truck', bus: 'bus' }[v] || 'car', 16)).join('')}</div>` : ''}</a>`).join('')}</section>`).join('')}`);
+      ${cats.map((c) => `${c ? `<h2 class="sec">${esc(c)}</h2>` : ''}<section class="grid2">${trees.filter((t) => (t.group || '') === c).map((t) => `<a class="card go" href="#/trouble/${esc(t.id)}"><div class="card-t">${plain(t.title)}</div><div class="card-s">${plain(t.summary)}</div>${t.vehicles ? `<div class="veh-pills">${t.vehicles.map((v) => D.icon({ car: 'car', motorcycle: 'moto', truck: 'truck', bus: 'bus' }[v] || 'car', 16)).join('')}</div>` : ''}</a>`).join('')}</section>`).join('')}`);
     main().replaceChildren(el);
   };
 
@@ -372,7 +374,7 @@
             ${n.text ? `<div class="prose">${M.render(n.text)}</div>` : ''}
             ${n.actions && n.actions.length ? `<h3>${esc(T('tree.do'))}</h3><ol class="steps">${n.actions.map((a) => `<li>${M.inline(a)}</li>`).join('')}</ol>` : ''}
             ${n.lesson ? `<p><a class="xref" href="#/lesson/${esc(n.lesson)}">${esc(T('quiz.toLesson'))}</a></p>` : ''}</div>`;
-      m.innerHTML = `<article class="tree"><header class="page-head"><h1>${esc(tr.title)}</h1>${tr.summary ? `<p class="lead">${esc(tr.summary)}</p>` : ''}</header>
+      m.innerHTML = `<article class="tree"><header class="page-head"><h1>${plain(tr.title)}</h1>${tr.summary ? `<p class="lead">${plain(tr.summary)}</p>` : ''}</header>
         ${tr.safety ? `<aside class="callout callout-danger"><div class="callout-head"><span class="callout-icon">⚠</span>${esc(D.tr(M.CALLOUT.danger))}</div><div class="callout-body">${M.render(tr.safety)}</div></aside>` : ''}
         ${trail ? `<ol class="trail">${trail}</ol>` : ''}${body}
         <div class="actions">${path.length ? `<button class="btn small" data-back>${D.icon('back', 16)} ${esc(T('tree.back'))}</button><button class="btn small" data-restart>${esc(T('tree.restart'))}</button>` : ''}</div></article>`;
@@ -506,7 +508,7 @@
           }).join('')}</div>
           ${show ? `<div class="feedback ${it.ok ? 'ok' : 'bad'}"><b>${esc(T(it.ok ? 'quiz.correct' : 'quiz.wrong'))}</b>
              ${q.explain ? `<div class="prose">${M.render(q.explain)}</div>` : ''}
-             ${q.lesson && C.lesson(q.lesson) ? `<a class="xref" href="#/lesson/${esc(q.lesson)}">${D.icon('book', 16)} ${esc(T('quiz.toLesson'))}: ${esc(C.lesson(q.lesson).title)}</a>` : ''}
+             ${q.lesson && C.lesson(q.lesson) ? `<a class="xref" href="#/lesson/${esc(q.lesson)}">${D.icon('book', 16)} ${esc(T('quiz.toLesson'))}: ${plain(C.lesson(q.lesson).title)}</a>` : ''}
              ${q._link ? `<a class="xref" href="${esc(q._link)}">${D.icon('next', 16)}</a>` : ''}</div>` : ''}
         </div>
         <div class="quiz-actions">
@@ -672,7 +674,7 @@
       ${t.note && D.tr(t.note) ? `<aside class="callout callout-note"><div class="callout-head"><span class="callout-icon">i</span>${esc(D.tr(M.CALLOUT.note))}</div><div class="callout-body">${M.render(D.tr(t.note))}</div></aside>` : ''}
       ${t.law ? `<p><span class="muted">${esc(T('gloss.law'))}:</span> ${esc(D.tr(t.law))}</p>` : ''}
       ${(t.see || []).filter((s) => D.data.termById.has(s)).length ? `<h3>${esc(T('gloss.see'))}</h3><div class="term-cloud">${t.see.filter((s) => D.data.termById.has(s)).map((s) => `<a class="term-link" href="#/term/${esc(s)}">${esc(C.termName(D.data.termById.get(s)))}</a>`).join('')}</div>` : ''}
-      ${lessons.length ? `<h3>${esc(T('gloss.lessons'))}</h3><ul class="link-list">${lessons.map((l) => `<li><a href="#/lesson/${esc(l.id)}">${esc(l.title)}</a></li>`).join('')}</ul>` : ''}
+      ${lessons.length ? `<h3>${esc(T('gloss.lessons'))}</h3><ul class="link-list">${lessons.map((l) => `<li><a href="#/lesson/${esc(l.id)}">${plain(l.title)}</a></li>`).join('')}</ul>` : ''}
     </article>`);
     main().replaceChildren(el);
   };
@@ -693,7 +695,7 @@
       if (!inp.value.trim()) { res.innerHTML = ''; return; }
       if (!r.length) { res.innerHTML = `<p class="empty">${esc(T('search.none'))}</p>`; return; }
       const groups = ['lesson', 'sign', 'term', 'tree', 'dash'];
-      res.innerHTML = groups.map((g) => { const xs = r.filter((x) => x.kind === g); return xs.length ? `<h3>${esc(T('search.' + g + 's'))}</h3><ul class="res-list">${xs.map((x) => `<li><a href="${link[g](x.id)}"><span class="ri">${ico(x)}</span><span><b>${esc(x.title)}</b>${x.sub ? `<small>${esc(x.sub)}</small>` : ''}</span></a></li>`).join('')}</ul>` : ''; }).join('');
+      res.innerHTML = groups.map((g) => { const xs = r.filter((x) => x.kind === g); return xs.length ? `<h3>${esc(T('search.' + g + 's'))}</h3><ul class="res-list">${xs.map((x) => `<li><a href="${link[g](x.id)}"><span class="ri">${ico(x)}</span><span><b>${plain(x.title)}</b>${x.sub ? `<small>${plain(x.sub)}</small>` : ''}</span></a></li>`).join('')}</ul>` : ''; }).join('');
     };
     inp.addEventListener('input', draw);
     draw();

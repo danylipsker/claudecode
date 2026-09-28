@@ -1871,26 +1871,6 @@
    "notes": "Exemptions (83ג) include: reversing, a taxi driver in town with passengers (and rear passengers of a taxi in town), medical exemption, instructor/examiner in a bus or truck over 3,500 kg."
   },
   {
-   "id": "seatbelt.exempt_small_body",
-   "value": [
-    14,
-    35,
-    150
-   ],
-   "unit": "text",
-   "label": {
-    "he": "פטור מחגורת בטיחות (באישור רשות הרישוי) למי שמלאו לו 14 שנה, משקלו עד 35 ק״ג וגובהו עד 150 ס״מ",
-    "en": "Seat belt exemption (by licensing authority) for a person aged 14+ weighing up to 35 kg and up to 150 cm tall"
-   },
-   "source": {
-    "title": "תקנות התעבורה, תקנה 83ג",
-    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
-    "clause": "83ג(3)(ג)"
-   },
-   "confidence": "high",
-   "notes": "value = [age years, max kg, max cm]."
-  },
-  {
    "id": "child.bike_seat_age",
    "value": 8,
    "unit": "years",
@@ -1997,8 +1977,8 @@
    "value": 6,
    "unit": "years",
    "label": {
-    "he": "לא יותקן בגלגלי רכב צמיג שחלפו 6 שנים ממועד ייצורו (24 חודשים לצמיג משומש)",
-    "en": "A tyre more than 6 years from its manufacture date (24 months if used) may not be fitted by a tyre shop"
+    "he": "גיל מרבי (ממועד הייצור) של צמיג חדש שמותר להתקין",
+    "en": "Maximum age (from manufacture) of a new tyre that may be fitted"
    },
    "source": {
     "title": "תקנות התעבורה, תקנה 322",
@@ -2252,7 +2232,10 @@
   },
   {
    "id": "lights.dipped.nonurban_period",
-   "value": "1.11–31.3",
+   "value": {
+    "he": "1 בנובמבר עד 31 במרץ",
+    "en": "1 November to 31 March"
+   },
    "unit": "text",
    "label": {
     "he": "התקופה השנתית שבה חובה על רכב מנועי (פרט לאופנוע) להאיר פנסי חזית או אור יום, ופנסים אחוריים, גם בדרך שאינה עירונית",
@@ -4063,6 +4046,713 @@
    },
    "confidence": "high",
    "notes": "הכלל: אסור להפעיל מנוע אוטובוס חונה עד להעלאת הנוסעים, אלא למילוי אוויר במערכת הפניאומטית. החריג מתיר הפעלה של עד 10 דקות לפני ההעלאה, או במקומות שאינם בתוך שטח בנוי ומאוכלס."
+  },
+  {
+   "id": "bus.standing_clearance_cm",
+   "value": 10,
+   "unit": "cm",
+   "label": {
+    "he": "מרחק מזערי של נוסעים עומדים ממושב נהג האוטובוס",
+    "en": "Minimum distance of standing passengers from the bus driver's seat"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 477",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "477"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.limiter.bus_min_gvw",
+   "value": 10000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו אוטובוס או טיולית חייבים במגביל מהירות",
+    "en": "Gross vehicle weight above which a bus or tourist coach must have a speed limiter"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 364ה",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "364ה(א)(1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.limiter.truck_min_gvw",
+   "value": 12000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו רכב מסחרי חייב במגביל מהירות",
+    "en": "Gross vehicle weight above which a commercial vehicle must have a speed limiter"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 364ה",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "364ה(א)(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "speed.limiter.from_2016_min_gvw",
+   "value": 7500,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו אוטובוס, טיולית או רכב מסחרי שעלו לכביש מ-1.1.2016 חייבים במגביל מהירות",
+    "en": "Gross vehicle weight above which a bus, tourist coach or commercial vehicle first on the road from 1 January 2016 must have a speed limiter"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 364ה",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "364ה(א)(5)–(6)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "school_transport.child_age",
+   "value": 18,
+   "unit": "years",
+   "label": {
+    "he": "גיל שעד אליו (טרם מלאו) נוסע נחשב „ילד” לעניין הסעת תלמידים",
+    "en": "Age below which a passenger counts as a child for student transport"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת „הסעת תלמידים”"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "police.vehicle_ban.overload_pct",
+   "value": 25,
+   "unit": "percent",
+   "label": {
+    "he": "חריגה מהמשקל הכולל המותר שממנה שוטר רשאי לאסור שימוש ברכב",
+    "en": "Excess over the gross vehicle weight from which a police officer may ban use of the vehicle"
+   },
+   "source": {
+    "title": "פקודת התעבורה, תוספת רביעית, פרט 8ב",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "תוספת רביעית, פרט 8ב"
+   },
+   "confidence": "high",
+   "notes": "Fourth Schedule item 8ב (overload of 25% or more, reg. 85(א)(5)); the ban itself is under section 57א."
+  },
+  {
+   "id": "police.vehicle_ban.days",
+   "value": 30,
+   "unit": "days",
+   "label": {
+    "he": "תקופת הודעת איסור שימוש ברכב (60 יום אם ניתנה הודעה כזו לאותו רכב ב-3 השנים האחרונות)",
+    "en": "Period of a vehicle-use ban notice (60 days if one was issued for the same vehicle in the last 3 years)"
+   },
+   "source": {
+    "title": "פקודת התעבורה, סעיף 57א(א)",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "סעיף 57א(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "load.wide.min_gvw",
+   "value": 15000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר מזערי של רכב מסחרי המוביל מטען רחב חורג",
+    "en": "Minimum gross vehicle weight of a commercial vehicle carrying an over-wide load"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 85",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "85(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "hours.applies_over_gvw",
+   "value": 6000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו חלות מגבלות שעות הנהיגה על רכב מסחרי",
+    "en": "Gross vehicle weight above which the driving-hours limits apply to a commercial vehicle"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 168",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "168(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehicle.slow.max_speed",
+   "value": 40,
+   "unit": "kmh",
+   "label": {
+    "he": "מהירות מרבית (לפי רישיון הרכב או התקנות) שעד אליה רכב נחשב „רכב איטי”",
+    "en": "Maximum speed (set in the vehicle licence or the regulations) up to which a vehicle counts as a \"slow vehicle\""
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת „רכב איטי”"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lanes.heavy_right_lane_gvw",
+   "value": 10000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו רכב מסחרי או רכב עבודה חייב בנתיב הימני בצומת (שני נתיבים או יותר לכיוונו)",
+    "en": "Gross vehicle weight above which a commercial or works vehicle must use the rightmost lane at a junction (two or more lanes in its direction)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 36",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "36(ה)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "overtake.heavy_gvw",
+   "value": 3500,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל שמעליו רכב מסחרי או רכב עבודה לא יעקוף רכב עוקף בשום דרך (וכך גם אוטובוס שאינו זעיר)",
+    "en": "Total weight above which a commercial or works vehicle may never overtake an overtaking vehicle (as may no bus other than a minibus)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 47",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "47(ח)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.c.min_weight",
+   "value": 12000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו נדרש רישיון C (רכב מסחרי ורכב עבודה)",
+    "en": "Gross vehicle weight above which a C licence is required (commercial and works vehicles)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 182",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "182(2)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.validity_years",
+   "value": 10,
+   "unit": "years",
+   "label": {
+    "he": "תקופת תוקף מרבית של רישיון נהיגה בדרגות הרגילות",
+    "en": "Maximum validity of a driving licence in the regular categories"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 173",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "173(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "insurance.no_insurance.min_disqualification",
+   "value": 12,
+   "unit": "months",
+   "label": {
+    "he": "פסילה מזערית בנהיגה ללא ביטוח חובה",
+    "en": "Minimum disqualification for driving without compulsory insurance"
+   },
+   "source": {
+    "title": "פקודת ביטוח רכב מנועי [נוסח חדש]",
+    "url": "https://www.nevo.co.il/law_html/law00/74891.htm",
+    "clause": "2"
+   },
+   "confidence": "low",
+   "notes": "Not in the saved Traffic Ordinance/Regulations texts; confirm against the Motor Vehicle Insurance Ordinance."
+  },
+  {
+   "id": "licence.medical.hearing_db",
+   "value": 40,
+   "unit": "db",
+   "label": {
+    "he": "כושר שמיעה מזערי באוזן אחת לפחות (רישיונות D1–D והיתרים)",
+    "en": "Minimum hearing in at least one ear (D1–D licences and permits)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 197",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "197(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.pro_from_age",
+   "value": 60,
+   "unit": "years",
+   "label": {
+    "he": "גיל תחילת בדיקות רפואיות חוזרות לבעלי רישיון C ומעלה ולמורי נהיגה",
+    "en": "Age at which repeat medical checks begin for C-and-above licences and instructors"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 196",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "196(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.pro_every_years",
+   "value": 5,
+   "unit": "years",
+   "label": {
+    "he": "מרווח בין בדיקות רפואיות חוזרות עד גיל 70 (C ומעלה, מורי נהיגה)",
+    "en": "Interval between repeat medical checks until age 70 (C and above, instructors)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 196",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "196(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.pro_frequent_from_age",
+   "value": 70,
+   "unit": "years",
+   "label": {
+    "he": "גיל שממנו הבדיקות הרפואיות החוזרות (C ומעלה) תכופות יותר",
+    "en": "Age from which repeat medical checks (C and above) become more frequent"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 196",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "196(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.frequent_every_years",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "מרווח בין בדיקות רפואיות חוזרות בגיל מבוגר",
+    "en": "Interval between repeat medical checks in later age"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 196",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "196(א)–(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.b_first_age",
+   "value": 75,
+   "unit": "years",
+   "label": {
+    "he": "גיל הבדיקה הרפואית החוזרת הראשונה לשאר הרישיונות (כמו B)",
+    "en": "Age of the first repeat medical check for other licences (such as B)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 196",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "196(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.b_second_age",
+   "value": 80,
+   "unit": "years",
+   "label": {
+    "he": "גיל הבדיקה הרפואית החוזרת השנייה לשאר הרישיונות (כמו B)",
+    "en": "Age of the second repeat medical check for other licences (such as B)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 196",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "196(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "licence.medical.appeal_days",
+   "value": 30,
+   "unit": "days",
+   "label": {
+    "he": "מועד לערר על החלטת הרופא המוסמך",
+    "en": "Deadline to appeal the authorised doctor's decision"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 195",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "195(א)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "moto.brake.min_decel",
+   "value": 1.5,
+   "unit": "mps2",
+   "label": {
+    "he": "האטה מזערית שכל אחת משתי מערכות הבלמים באופנוע חייבת לאפשר",
+    "en": "Minimum deceleration each of a motorcycle's two brake systems must achieve"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 328",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "328"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "moto.passenger.min_age",
+   "value": 18,
+   "unit": "years",
+   "label": {
+    "he": "גיל מזערי של בעל רישיון A2/A1 להרכבת נוסע (או לפי ותק, המאוחר)",
+    "en": "Minimum age for an A2/A1 holder to carry a passenger (or seniority, whichever is later)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 120",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "120(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "moto.passenger.min_licence_months",
+   "value": 2,
+   "unit": "months",
+   "label": {
+    "he": "ותק מזערי ברישיון A2/A1 להרכבת נוסע (או לפי גיל, המאוחר)",
+    "en": "Minimum A2/A1 licence seniority to carry a passenger (or age, whichever is later)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 120",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "120(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "seatbelt.exempt_small_body.min_age",
+   "value": 14,
+   "unit": "years",
+   "label": {
+    "he": "פטור מחגורה בשל מבנה גוף — גיל מזערי",
+    "en": "Seat-belt exemption for small build — minimum age"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83ג",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83ג(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "seatbelt.exempt_small_body.max_weight",
+   "value": 35,
+   "unit": "kg",
+   "label": {
+    "he": "פטור מחגורה בשל מבנה גוף — משקל גוף מרבי",
+    "en": "Seat-belt exemption for small build — maximum body weight"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83ג",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83ג(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "seatbelt.exempt_small_body.max_height",
+   "value": 150,
+   "unit": "cm",
+   "label": {
+    "he": "פטור מחגורה בשל מבנה גוף — גובה מרבי",
+    "en": "Seat-belt exemption for small build — maximum height"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 83ג",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "83ג(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "road.shoulder_max_width",
+   "value": 4,
+   "unit": "m",
+   "label": {
+    "he": "רוחב מרבי של שול הדרך (או עד תעלת ניקוז קרובה יותר)",
+    "en": "Maximum width of the road shoulder (or up to a nearer drainage channel)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 1",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "1, הגדרת „שול הדרך”"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehicle.taxi.max_passengers",
+   "value": 10,
+   "unit": "passengers",
+   "label": {
+    "he": "מספר נוסעים מרבי (מלבד הנהג) של מונית",
+    "en": "Maximum passengers (besides the driver) of a taxi"
+   },
+   "source": {
+    "title": "פקודת התעבורה, סעיף 1, הגדרת „מונית”",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "סעיף 1, הגדרת „מונית”"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "vehicle.bus.min_passengers",
+   "value": 8,
+   "unit": "passengers",
+   "label": {
+    "he": "מספר נוסעים (מלבד הנהג) שממנו רכב הוא אוטובוס",
+    "en": "Number of passengers (besides the driver) from which a vehicle is a bus"
+   },
+   "source": {
+    "title": "פקודת התעבורה, סעיף 1, הגדרת „אוטובוס”",
+    "url": "https://he.wikisource.org/wiki/פקודת_התעבורה",
+    "clause": "סעיף 1, הגדרת „אוטובוס”"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.bus_stop.opposite_min_width",
+   "value": 12,
+   "unit": "m",
+   "label": {
+    "he": "רוחב כביש מזערי שבו מותר לעצור או לחנות בצד שממול לתחנת אוטובוס",
+    "en": "Minimum road width at which you may stop or park on the side opposite a bus stop"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(א)(12)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.large_bus.min_passengers",
+   "value": 20,
+   "unit": "passengers",
+   "label": {
+    "he": "אוטובוס המיועד למספר נוסעים זה או יותר לא יעמוד ולא יחנה בדרך אלא לפי תמרור",
+    "en": "A bus intended for this many passengers or more may not stand or park on the road unless a sign allows it"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "repair.roadside_max_hours",
+   "value": 24,
+   "unit": "h",
+   "label": {
+    "he": "זמן מרבי שרכב מקולקל נשאר במקום התקלה לצורך תיקון קל",
+    "en": "Maximum time a broken-down vehicle may stay where it failed for a minor repair"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 154",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "154(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "rail.large_vehicle_min_people",
+   "value": 11,
+   "unit": "passengers",
+   "label": {
+    "he": "רכב המסיע מספר זה של נוסעים או יותר (כולל הנהג) צריך גישה סלולה למפגש מסילה",
+    "en": "A vehicle carrying this many passengers or more (including the driver) needs a paved approach to a level crossing"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 57",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "57"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "tyre.max_age_fit_used",
+   "value": 24,
+   "unit": "months",
+   "label": {
+    "he": "גיל מרבי (ממועד הייצור) של צמיג משומש שמותר להתקין",
+    "en": "Maximum age (from manufacture) of a used tyre that may be fitted"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 322",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "322(ב1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "lights.always_on.heavy_min_gvw",
+   "value": 14999,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו רכב מסחרי חייב בהארה בכל דרך כל השנה (כמו מונית ואוטובוס)",
+    "en": "Gross vehicle weight above which a commercial vehicle must use lights on every road all year (like a taxi or bus)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 97",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "97(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.long_validity.threshold",
+   "value": 22,
+   "unit": "points",
+   "label": {
+    "he": "צבירת נקודות בתוך פחות משנתיים שמאריכה את תוקפן",
+    "en": "Points accumulated within less than two years that extend their validity"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 547",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "547(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.long_validity.window",
+   "value": 2,
+   "unit": "years",
+   "label": {
+    "he": "פרק הזמן שבו צבירת הנקודות מאריכה את תוקפן",
+    "en": "Period within which accumulating the points extends their validity"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 547",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "547(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.long_validity.years",
+   "value": 4,
+   "unit": "years",
+   "label": {
+    "he": "תוקף הנקודות למי שצבר את הסף בתוך פרק הזמן",
+    "en": "Points validity for a driver who reached the threshold within the period"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 547",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "547(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.repeat_disqualification_window",
+   "value": 6,
+   "unit": "years",
+   "label": {
+    "he": "פרק זמן שבו פסילה חוזרת (36 נקודות) מביאה לפסילה ל-9 חודשים",
+    "en": "Period within which a repeat 36-point disqualification brings a 9-month disqualification"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 549",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "549(ד)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.course.max_absence",
+   "value": 20,
+   "unit": "percent",
+   "label": {
+    "he": "היעדרות מעל שיעור זה משעות הקורס נחשבת אי-ביצוע של אמצעי התיקון",
+    "en": "Absence above this share of course hours counts as not completing the corrective measure"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 551",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "551(א1)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.hearing_request_days",
+   "value": 30,
+   "unit": "days",
+   "label": {
+    "he": "מועד לפנייה בכתב לרשות הרישוי כדי להשמיע טענות נגד אמצעי תיקון",
+    "en": "Deadline to apply in writing to the Licensing Authority to argue against a corrective measure"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 551",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "551(ב)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.disqualification-3m.period",
+   "value": 3,
+   "unit": "months",
+   "label": {
+    "he": "תקופת הפסילה בהגעה לסף הפסילה הראשון",
+    "en": "Disqualification period on reaching the first disqualification threshold"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 549",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "549(ג)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "points.disqualification-9m.period",
+   "value": 9,
+   "unit": "months",
+   "label": {
+    "he": "תקופת הפסילה בהגעה לסף הפסילה השני (או בפסילה חוזרת)",
+    "en": "Disqualification period on reaching the second threshold (or a repeat disqualification)"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 549",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "549(ד)"
+   },
+   "confidence": "high"
+  },
+  {
+   "id": "park.heavy_zone_ban_gvw",
+   "value": 10000,
+   "unit": "kg",
+   "label": {
+    "he": "משקל כולל מותר שמעליו רכב מסחרי לא יעמוד בלילה ולא יחנה באזור שרשות תמרור מקומית אסרה בו",
+    "en": "Gross vehicle weight above which a commercial vehicle may not stand at night or park in an area banned by the local traffic authority"
+   },
+   "source": {
+    "title": "תקנות התעבורה, תקנה 72",
+    "url": "https://he.wikisource.org/wiki/תקנות_התעבורה",
+    "clause": "72(ג)"
+   },
+   "confidence": "high"
   }
  ],
  "offences": [

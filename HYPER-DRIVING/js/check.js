@@ -79,6 +79,7 @@
           const key = l + ':' + ls.id;
           if (allLessons.has(key)) err(w, 'duplicate lesson id'); allLessons.set(key, ls);
           refs(ls.body, w); (ls.keyPoints || []).forEach((k) => refs(k, w + ' keyPoint'));
+          refs(ls.title, w + ' title'); refs(ls.summary, w + ' summary');
           (ls.terms || []).forEach((x) => { if (!d.termById.has(x)) err(w, 'terms: missing term "' + x + '"'); });
           (ls.signs || []).forEach((x) => { if (!d.signByNum.has(String(x))) err(w, 'signs: missing sign "' + x + '"'); });
           if (ls.licence) ls.licence.forEach((x) => { if (!knownLic(x)) err(w, 'unknown licence "' + x + '"'); });

@@ -132,10 +132,21 @@ effect on a future date. A typed "50 קמ״ש" would silently become wrong.
   `_new-facts-<chapter>.json` in the same shape as facts.json:
   `{ "id", "value", "unit", "label": {"he","en"}, "source": {"title","url","clause"}, "confidence", "notes" }`.
   Units: kmh, m, km, cm, mm, s, min, h, days, months, years, kg, t, kw, hp, cc,
-  bar, points, ils, count, percent, ym ([years, months]), range, text.
+  bar, points, ils, passengers, db, mps2 (m/s²), count, percent,
+  ym ([years, months]), range, text. A value may be `{"he": …, "en": …}` when
+  it is words ("1 בנובמבר עד 31 במרץ").
+- The same goes for numbers written as words: "אחת לשנתיים", "חודשיים" become
+  "אחת ל-{{fact:…}}", "{{fact:…}}" when the number is a legal value.
+- Facts work in lesson **titles and summaries** too; there they are shown as
+  plain text with the value filled in.
 - Physics and engineering numbers that are not law (μ of a wet road, typical
   oil-change interval, 25 m per second at 90 km/h) are written normally.
 - Offence questions: fine and points always via `{{fine:id}}` / `{{points:id}}`.
+- What stays typed, on purpose: the bands that define an offence (a speed
+  excess of 21–30 km/h, an overload of 10–15%, a child aged 3–8 — they are
+  part of the offence's own id and title); sign numbers and the values a sign
+  itself shows or defines; dates of history ("from 1 January 2016"); worked
+  examples; and technical codes (12 V, 5W-30, 205/55R16).
 
 ## 5. Hebrew: register, terms, spelling
 
