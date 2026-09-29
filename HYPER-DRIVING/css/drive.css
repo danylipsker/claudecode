@@ -361,6 +361,9 @@ th { color: var(--muted); font-weight: 600; font-size: .85rem; }
 .sign-page { display: grid; gap: 22px; }
 @media (min-width: 760px) { .sign-page { grid-template-columns: 260px 1fr; align-items: start; } }
 .sign-hero { display: grid; place-items: center; padding: 24px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); }
+.sign-hero svg, .sign-card svg, .q-sign svg, .opt-sign svg { height: auto; }
+.sign-pics { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; }
+.sign-src { margin: 14px 0 0; font-size: .74rem; line-height: 1.35; color: var(--muted); text-align: center; }
 .num-badge { font-family: var(--font-mono); font-size: .8em; padding: 2px 8px; border-radius: 8px; background: var(--surface3); color: var(--muted); vertical-align: middle; }
 .other-lang { color: var(--muted); font-size: 1.05rem; margin-block-start: -6px; }
 .lamp-flash { animation: flash 1s steps(1) infinite; }
@@ -531,6 +534,9 @@ th { color: var(--muted); font-weight: 600; font-size: .85rem; }
 .ed-opt input:not([type]) { flex: 1; min-height: 36px; }
 .ed-q { margin-block: 10px; }
 .ed-sign-prev { display: grid; place-items: center; padding: 16px; border-radius: 14px; background: var(--surface2); }
+.ed-pics { display: flex; flex-wrap: wrap; gap: 10px; }
+.ed-pic { margin: 0; display: grid; justify-items: center; gap: 8px; padding: 12px; border-radius: 14px; background: var(--surface2); }
+.ed-pic svg { height: auto; }
 .check-list { font-family: var(--font-mono); font-size: .82rem; }
 .check-list.bad { color: var(--bad); }
 .ed-help { margin-block-start: 18px; }

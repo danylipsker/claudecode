@@ -332,8 +332,18 @@
     if (!s) return V.notFound();
     const m = main();
     const shape = Object.assign({}, s); ['name', 'meaning', 'notes'].forEach((k) => delete shape[k]);
+    const pics = D.signs.art(num) || [];
     m.innerHTML = `${nav('signs')}<div class="ed-cols">
-      <section class="ed-col"><div class="ed-sign-prev"></div>
+      <section class="ed-col">
+        <h3>${esc(L('תמונה', 'Picture'))}</h3>
+        <p class="muted small">${esc(L('התמונה (sign-art.json) היא מה שהאפליקציה מציגה. קובץ SVG של צורות מלאות (path) בלבד, כמו הקבצים ב-DRIVING-SIGNS.', 'The picture (sign-art.json) is what the app shows. An SVG file of filled shapes (paths) only, like the files in DRIVING-SIGNS.'))}</p>
+        <div class="ed-pics">${pics.map((p, i) => `<figure class="ed-pic">${D.signs.pictureSVG(p, { size: 120, maxW: 2 })}
+          <figcaption><button class="btn small" data-pic-set="${i}">${esc(L('החלפה', 'Replace'))}</button> <button class="btn small" data-pic-del="${i}">${esc(L('מחיקה', 'Remove'))}</button></figcaption></figure>`).join('')}</div>
+        <div class="actions"><button class="btn" data-pic-set="${pics.length}">+ ${esc(L('הוספת תמונה (SVG)', 'Add a picture (SVG)'))}</button></div>
+        <input type="file" accept=".svg,image/svg+xml" hidden data-pic-file>
+        <h3>${esc(L('ציור', 'Drawing'))}</h3>
+        <p class="muted small">${esc(pics.length ? L('משמש רק כשאין לתמרור תמונה.', 'Used only when the sign has no picture.') : L('לתמרור אין תמונה, ולכן מוצג הציור.', 'The sign has no picture, so the drawing is shown.'))}</p>
+        <div class="ed-sign-prev"></div>
         <label class="ed-field"><span>${esc(L('ציור (JSON)', 'Drawing (JSON)'))}</span><textarea rows="16" class="mono" dir="ltr" data-draw>${esc(JSON.stringify(shape, null, 1))}</textarea></label>
         <p class="muted small">${esc(L('צורות: triangle, triangle-down, circle, octagon, square, rect, diamond, plate, marking, light. סמלים:', 'Shapes: triangle, triangle-down, circle, octagon, square, rect, diamond, plate, marking, light. Glyphs:'))} ${Object.keys(D.glyphs.lib).filter((g) => !g.startsWith('dash-')).map(esc).join(', ')}</p></section>
       <section class="ed-col">${langs().map((l) => `<h3>${esc(D.config.languages[l].name)}</h3>
@@ -343,11 +353,36 @@
         <div class="actions"><button class="btn primary" data-save>${esc(D.t('common.save'))}</button></div></section></div>`;
     const prev = m.querySelector('.ed-sign-prev'), ta = m.querySelector('[data-draw]');
     const draw = () => {
-      try { const d = JSON.parse(ta.value); prev.innerHTML = D.signs.svg(Object.assign({}, d, { name: s.name }), { size: 200 }); ta.classList.remove('bad'); }
+      try { const d = JSON.parse(ta.value); prev.innerHTML = D.signs.svg(Object.assign({}, d, { name: s.name }), { size: 200, drawn: true }); ta.classList.remove('bad'); }
       catch (e) { ta.classList.add('bad'); }
     };
     ta.addEventListener('input', draw);
     draw();
+    // pictures: replace, add or remove one; each change is saved to the draft at once
+    const savePics = async (change) => {
+      const A = (await E.file('sign-art.json')) || { format: 1, art: {} };
+      A.art = A.art || {};
+      const list = (A.art[String(num)] || []).slice();
+      change(list);
+      if (list.length) A.art[String(num)] = list; else delete A.art[String(num)];
+      await E.saveFile('sign-art.json', A);
+      E.sign({ num });
+    };
+    const fileIn = m.querySelector('[data-pic-file]');
+    let slot = 0;
+    m.querySelectorAll('[data-pic-set]').forEach((b) => b.addEventListener('click', () => { slot = +b.getAttribute('data-pic-set'); fileIn.value = ''; fileIn.click(); }));
+    fileIn.addEventListener('change', async () => {
+      const f = fileIn.files[0]; if (!f) return;
+      let pic;
+      try { pic = D.signs.pictureFromSVG(await f.text()); }
+      catch (e) { return V.toast(D.t('common.error') + ': ' + e.message); }
+      // a new picture has no chart page: it is not the chart's
+      await savePics((list) => { list[Math.min(slot, list.length)] = pic; });
+    });
+    m.querySelectorAll('[data-pic-del]').forEach((b) => b.addEventListener('click', async () => {
+      if (!confirm(L('למחוק את התמונה?', 'Remove this picture?'))) return;
+      await savePics((list) => list.splice(+b.getAttribute('data-pic-del'), 1));
+    }));
     m.querySelector('[data-save]').addEventListener('click', async () => {
       let d; try { d = JSON.parse(ta.value); } catch (e) { return V.toast(D.t('common.error') + ': JSON'); }
       Object.keys(s).forEach((k) => { if (!['name', 'meaning', 'notes'].includes(k)) delete s[k]; });

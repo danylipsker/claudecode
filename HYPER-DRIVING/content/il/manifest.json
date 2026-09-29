@@ -9,8 +9,8 @@
   "he": "משרד התחבורה והבטיחות בדרכים",
   "en": "Ministry of Transport and Road Safety"
  },
- "version": "2026.09.28-1",
- "published": "2026-09-28",
+ "version": "2026.09.29-1",
+ "published": "2026-09-29",
  "defaultLanguage": "he",
  "languages": [
   "he",
@@ -20,8 +20,8 @@
   {
    "path": "changelog.json",
    "role": "changelog",
-   "sha256": "2583022f3b89294a1bacdb9194e8838ea0d3979fce07c7fd56684e99dd2570d2",
-   "bytes": 291
+   "sha256": "d594bd92233b89f3a0f5554c1d1b22b18480c1df815a581479065ff24afc611d",
+   "bytes": 1897
   },
   {
    "path": "course.json",
@@ -431,8 +431,8 @@
    "path": "en/questions/signs-intro.json",
    "role": "questions",
    "lang": "en",
-   "sha256": "712b198852150ee590f9eebfc853d1bea45f968a7a737374d94a9dcd0733707b",
-   "bytes": 17383
+   "sha256": "973c0865007220c910a1783c8f6292b056961d0e164e085d74efbaa48b3f9425",
+   "bytes": 17465
   },
   {
    "path": "en/questions/special-roads.json",
@@ -770,8 +770,8 @@
    "path": "he/lessons/signs-intro.json",
    "role": "lessons",
    "lang": "he",
-   "sha256": "7c279961861d9528339f22ee5b2960816e4b65eb2e3516c80c3ad98529fce755",
-   "bytes": 31247
+   "sha256": "4e1330940807342696010a45867da920de0555f635f631c4b635a5efa2ed3a4b",
+   "bytes": 31290
   },
   {
    "path": "he/lessons/special-roads.json",
@@ -1001,8 +1001,8 @@
    "path": "he/questions/signs-intro.json",
    "role": "questions",
    "lang": "he",
-   "sha256": "a56d602aac045ade38194115a5dcfa79725d946b14e48f1d20bb66dd900b3a68",
-   "bytes": 20559
+   "sha256": "a12962843cabb38dd65953018a0c25927d7fb75f22674235530c64d0f4199c51",
+   "bytes": 20703
   },
   {
    "path": "he/questions/special-roads.json",
@@ -1170,10 +1170,16 @@
    "bytes": 1035
   },
   {
+   "path": "sign-art.json",
+   "role": "sign-art",
+   "sha256": "d2e03d2dc7243130db15708115115e7b63f7f0614bb750eb0e8c0e8b99352394",
+   "bytes": 2987085
+  },
+  {
    "path": "signs.json",
    "role": "signs",
-   "sha256": "566680d2ac34a65a7c503f12c11dcdc9653333b495957791b0d836e8d71bfce8",
-   "bytes": 401314
+   "sha256": "dc594e0ea59a9cd167e14067638fb5dd6442d7fc35d00032fed1b5e342de17b8",
+   "bytes": 405567
   }
  ]
 }

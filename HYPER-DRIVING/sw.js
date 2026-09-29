@@ -7,7 +7,7 @@
  * only caches with this app's prefix are ever cleared here.
  */
 const PREFIX = 'hyper-driving-';
-const CACHE = PREFIX + 'v1';
+const CACHE = PREFIX + 'v2';
 const SHELL = [
   './', 'index.html', 'pwa.json', 'icon.svg', 'css/drive.css',
   'js/config.js', 'js/core.js', 'js/i18n.js', 'js/content.js', 'js/icons.js', 'js/glyphs.js', 'js/signs.js',

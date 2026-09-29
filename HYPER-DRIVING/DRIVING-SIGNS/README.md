@@ -71,7 +71,20 @@ Needs Python 3 with `pymupdf`, `numpy`, `scipy`, `pillow` and `potracer`.
 - `_tools/build_signs.py` reads the table rows of the chart, names the pictures, writes the files.
 - `_tools/signtrace.py` colour separation, background, layers.
 - `_tools/smoothtrace.py` outline of a mask as smooth curves.
+- `_tools/sync_names.py` after a sign is renamed in `content/il/signs.json`: rewrites the
+  titles, `index.csv` and `index.html` without tracing again (`--check` lists the changes).
 
 Three short lists at the top of `build_signs.py` hold the per-sign exceptions: `KEEP_WHITE`
 (boards whose white reaches the edge of the picture), `HOLLOW` (open shapes whose inner
 white is background) and `DOTTED` (dotted lines).
+
+## In the app
+
+Hyper Driving shows these pictures: `node tools/import-sign-art.js` (from the
+HYPER-DRIVING folder) reads every file here into `content/il/sign-art.json`, keyed by
+the app's sign number (`ס-20.svg` → `ס20`, `128_1.svg`/`128_2.svg` → two pictures of
+128), rewrites the paths on a grid of 8 units per source pixel (about 3 MB instead of
+7.3 MB; outlines move by 1/16 pixel at most) and refuses a file whose title does not
+carry the sign's current Hebrew name. Then `node tools/publish.js` lists it in the
+manifest. Signs without a file here keep their drawing from `signs.json`.
+

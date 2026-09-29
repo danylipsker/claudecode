@@ -69,7 +69,7 @@ const count = (m) => { let n = 0; m.forEach(() => n++); return n; };
 const langs = Object.keys(D.data.text);
 console.log(`pack ${manifest.jurisdiction} ${manifest.version}: ${D.data.course.chapters.length} chapters, ` +
   langs.map((l) => `${l}: ${count(D.data.text[l].lessonById)} lessons / ${D.data.text[l].questions.length} questions / ${D.data.text[l].trees.length} trees`).join('; ') +
-  `, ${D.data.signs.length} signs, ${D.data.glossary.length} terms, ${D.data.dash.length} lights, ${D.data.facts.size} facts, ${D.data.offences.size} offences`);
+  `, ${D.data.signs.length} signs (${Object.keys(D.data.signArt || {}).length} with the chart picture), ${D.data.glossary.length} terms, ${D.data.dash.length} lights, ${D.data.facts.size} facts, ${D.data.offences.size} offences`);
 if (E.length) { console.log(`\n✗ ${E.length} errors`); E.slice(0, opt('all') ? 1e9 : 200).forEach((e) => console.log('  ' + e)); }
 if (W.length) {
   if (opt('warnings')) { console.log(`\n! ${W.length} warnings`); W.forEach((w) => console.log('  ' + w)); }

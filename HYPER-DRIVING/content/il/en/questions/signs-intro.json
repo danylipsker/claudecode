@@ -219,7 +219,7 @@
     "There is no change in the rules compared with an ordinary urban road"
    ],
    "answer": 0,
-   "explain": "From the moment you enter a expressway, special rules apply; entry is forbidden to pedestrians, cyclists, animals and any vehicle that cannot or is not permitted to travel at least 60 km/h (sign 216).",
+   "explain": "From the moment you enter a expressway, special rules apply; entry is forbidden to pedestrians, cyclists, animals and any vehicle that cannot or is not permitted to travel at the speed shown on sign 218 before the entrance (sign 216).",
    "shuffled": true
   },
   {
@@ -303,13 +303,13 @@
    "sign": "420",
    "q": "What does the sign forbid?",
    "options": [
-    "Overtaking a motor vehicle with two wheels or more, until the next junction or the end sign",
+    "Overtaking a motor vehicle with more than two wheels, until the next junction or the end sign",
     "Any entry by a vehicle to the section of road",
     "Parking on the side of the road",
     "Driving with a maximum permitted weight over 4 tonnes"
    ],
    "answer": 0,
-   "explain": "Sign 420 forbids overtaking a motor vehicle with two wheels or more, until the next junction or sign 421.",
+   "explain": "Sign 420 forbids overtaking a motor vehicle with more than two wheels, until the next junction or sign 421; it does not forbid overtaking a motorcycle.",
    "shuffled": true
   },
   {

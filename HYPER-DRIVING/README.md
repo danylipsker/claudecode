@@ -15,7 +15,7 @@ from this folder, then http://localhost:8173). Plain HTML/CSS/JS, no build step.
 | Screen | |
 |---|---|
 | Learn | 17 theory chapters (road, licensing, signs, markings and lights, right of way, speed, lanes and overtaking, parking, special roads, vulnerable users, weather, the driver, passengers, defensive driving, accidents, enforcement, eco-driving) |
-| Signs | the whole official sign table (series 100–900 and the symbol appendix), drawn from data; search, sign pages, recognition drill |
+| Signs | the whole official sign table (series 100–900 and the symbol appendix) with the pictures of the Ministry's sign chart, traced to vectors; search, sign pages, recognition drill |
 | Vehicle | 16 technical chapters, dashboard warning lights, troubleshooting decision trees, a maintenance schedule, interactive tools (4-stroke and diesel engine, stopping distance, speed and energy, blind spots, tyre code, traffic-light cycle, following distance) |
 | Practice | mock exam (size, time and pass mark come from the law's facts), practice by topic, spaced repetition (Leitner), mistakes, sign and warning-light drills, Hebrew↔English term flashcards |
 | Glossary | ~600 terms: the official Hebrew term, the English term, the jargon of instructors and mechanics, definitions in both languages; terms that have no Hebrew word yet are flagged |
@@ -53,7 +53,8 @@ tools/              publish (manifest, signing), keygen, validate, sheet (render
 | File | Holds |
 |---|---|
 | `facts.json` | every legal number — speeds, ages, alcohol limits, distances, exam rules — and every offence's fine and points, each with its source (regulation, URL), confidence and optional dated changes `"changes": [{"from": "2027-01-01", "value": 40}]` |
-| `signs.json` | the sign table: number, series, names, meanings, and the **drawing** (shape, colours, pictogram items, glyphs) |
+| `signs.json` | the sign table: number, series, names, meanings, and a **drawing** (shape, colours, pictogram items, glyphs) for a sign without a picture |
+| `sign-art.json` | the signs' **pictures**, by sign number: the Ministry's sign chart (2021) traced to vector outlines (`DRIVING-SIGNS/`, imported by `tools/import-sign-art.js`); 391 of the 401 signs have one |
 | `dash.json` | dashboard lights: colour, glyph, severity, names, meaning, action |
 | `glossary.json` | bilingual terms |
 | `course.json`, `licences.json`, `exam.json` | chapter order and sections; licence classes and groups; exam weights |
@@ -73,7 +74,7 @@ the app switches on that date and marks the value as "about to change".
    editor**: legal values, fines and points (with scheduled changes and a
    list of every lesson/question that uses each value), notices, lessons and
    questions side by side in each language with a live preview, signs with
-   their drawing. Edits are a local draft shown in the app at once.
+   their pictures (replace one from an SVG file) and drawing. Edits are a local draft shown in the app at once.
 2. **Check** (every reference, question, tree and translation) → **Export
    update file**.
 3. Test: Updates → "Load an update file" (editor mode accepts unsigned files).
@@ -97,7 +98,8 @@ Another country = another folder `content/<code>/` and an entry in
 node tools/validate.js              errors + warning summary (includes writers' draft files)
 node tools/validate.js --release    exactly what ships; the manifest must match the disk
 node tools/publish.js               rebuild content/il/manifest.json after editing files
-node tools/sheet.js signs --series 100 --out _sheets/s100.png     look at signs
+node tools/sheet.js signs --series 100 --out _sheets/s100.png     look at signs (--drawn: their drawings)
+node tools/import-sign-art.js       DRIVING-SIGNS/*.svg → content/il/sign-art.json (then publish.js)
 node tools/merge-drafts.js --apply  fold writers' drafts into the shared files
 ```
 

@@ -10,6 +10,7 @@
  *   exam        the mock-exam blueprint
  *   course      chapter order, sections, icons
  *   signs       sign table: series + every sign's drawing and texts
+ *   sign-art    the signs' pictures (the official sign chart, traced), by sign number
  *   glossary    bilingual terms
  *   dash        dashboard warning lights
  *   figures     diagrams (raw SVG or built-in widgets) with labels
@@ -221,7 +222,7 @@
       facts: new Map(), offences: new Map(), pointsSystem: [],
       licences: { classes: [], groups: {} },
       exam: {}, course: { sections: [], chapters: [] },
-      series: [], signs: [], signByNum: new Map(),
+      series: [], signs: [], signByNum: new Map(), signArt: {},
       glossary: [], termById: new Map(),
       dash: [], dashById: new Map(),
       figures: {}, maintenance: { items: [] }, notices: [], changelog: [],
@@ -239,6 +240,7 @@
     data.series = S.series || [];
     data.signs = S.signs || [];
     data.signs.forEach((s) => data.signByNum.set(String(s.num), s));
+    data.signArt = (one('sign-art', {}).art) || {};
     data.glossary = (one('glossary', {}).terms) || [];
     data.glossaryCats = (one('glossary', {}).cats) || {};
     data.glossary.forEach((t) => data.termById.set(t.id, t));

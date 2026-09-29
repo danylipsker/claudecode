@@ -264,6 +264,22 @@
       Object.values(s.meaning || {}).forEach((x) => refs(x, w)); Object.values(s.notes || {}).forEach((x) => refs(x, w));
     });
 
+    // sign pictures: each belongs to a sign, and is well formed
+    Object.keys(d.signArt || {}).forEach((num) => {
+      const w = 'sign picture ' + num, list = d.signArt[num];
+      if (!d.signByNum.has(num)) err(w, 'no sign with this number');
+      if (!Array.isArray(list) || !list.length) return err(w, 'not a list of pictures');
+      list.forEach((p, i) => {
+        const wi = list.length > 1 ? w + ' (' + (i + 1) + ')' : w;
+        if (!p || !(p.w > 0 && p.h > 0)) return err(wi, 'no size');
+        if (!Array.isArray(p.layers) || !p.layers.length) return err(wi, 'no layers');
+        p.layers.forEach((l, j) => {
+          if (!/^(#[0-9a-f]{3,8}|[a-z]+)$/i.test(l[0])) err(wi, 'layer ' + (j + 1) + ': bad colour "' + l[0] + '"');
+          if (typeof l[1] !== 'string' || !/^M[MmLlCcQqZz0-9\s,.-]*$/.test(l[1])) err(wi, 'layer ' + (j + 1) + ': bad path');
+        });
+      });
+    });
+
     // dashboard lights
     d.dash.forEach((x) => {
       const w = 'dash ' + x.id;

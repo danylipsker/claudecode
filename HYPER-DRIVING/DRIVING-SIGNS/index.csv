@@ -102,7 +102,7 @@
 309.svg,309,,26,דרך בעלת זכות קדימה,Priority road,72.75,72.75,92x92,#ff0 #fff #000,transparent,1x
 310.svg,310,,26,קצה הדרך בעלת זכות קדימה,End of priority road,75.0,75.0,92x92,#ff0 #000 #fff,transparent,1x
 401.svg,401,,28,כביש סגור - בשני הכוונים,Road closed (both directions),70.5,63.75,215x195,#fff #f00,transparent,3x
-401פ.svg,401פ,,28,כביש סגור - מוצב מעל הרמזור,Straight ahead closed (mounted above a signal),68.25,68.25,209x209,#000 #f00,transparent,3x
+401פ.svg,401פ,,28,כביש סגור - בשני הכוונים (תמרור פולט אור),Road closed in both directions (light-emitting),68.25,68.25,209x209,#000 #f00,transparent,3x
 402.svg,402,,28,אסורה הכניסה לכל רכב,No entry for any vehicle,70.5,65.25,215x199,#f00 #fff,transparent,3x
 403.svg,403,,28,מחסום: הדרך חסומה,Barrier: road blocked,93.0,12.0,284x37,#f00 #fff,transparent,1x
 404.svg,404,,28,מחסום לפני מפגש מסילת ברזל,Barrier before a railway level crossing,93.0,12.75,284x39,#f00 #fff #1d1d1d,transparent,1x
@@ -122,14 +122,14 @@
 417.svg,417,,30,אסורה הכניסה לרכב מעל רוחב נקוב,No entry for vehicles over the stated width,73.5,75.0,225x229,#fff #f00 #1a1a1a #000 #b82c2d,transparent,3x
 418.svg,418,,31,אזור אסור ללימוד נהיגה,Driving-lessons prohibited zone begins,69.75,67.5,214x206,#f00 #fff #00f,transparent,3x
 419.svg,419,,31,קצה האזור האסור ללימוד נהיגה,End of driving-lessons prohibited zone,69.75,66.0,214x201,#fff #78797b #1e1e1e,transparent,3x
-420.svg,420,,31,אסור לעקוף רכב מנועי דו-גלגלי ומעלה,No overtaking of vehicles with more than two wheels,69.75,64.5,213x197,#fff #f00 #000 #b42323,transparent,3x
+420.svg,420,,31,אסור לעקוף רכב מנועי הנע על יותר משני גלגלים,No overtaking of vehicles with more than two wheels,69.75,64.5,213x197,#fff #f00 #000 #b42323,transparent,3x
 421.svg,421,,31,קצה קטע איסור העקיפה,End of no-overtaking section,69.75,64.5,213x197,#fff #000,transparent,3x
 422.svg,422,,31,אסור לרכב מעל 4 טון לעקוף,No overtaking by vehicles over 4 tonnes,69.9,67.72,220x213,#f00 #fff #000,transparent,1x
 423.svg,423,,31,קצה קטע איסור העקיפה לרכב מעל 4 טון,End of no-overtaking section for vehicles over 4 tonnes,69.75,66.75,213x204,#fff #000,transparent,3x
 424.svg,424,,32,אזור דרכים עירוניות,Urban roads area begins,69.75,66.75,213x204,#f00 #fff #000,transparent,3x
 425.svg,425,,32,קצה אזור דרכים עירוניות,End of urban roads area,69.75,64.5,213x197,#fff #000 #78797b,transparent,3x
 426.svg,426,,32,מהירות מיוחדת,Special (posted) speed limit,69.75,64.5,213x197,#fff #f00 #000,transparent,3x
-426פ.svg,426פ,,32,מהירות מיוחדת - הודעה על אכיפה,Special speed limit (enforced section variant),69.75,66.0,213x202,#000 #f00 #fff,transparent,3x
+426פ.svg,426פ,,32,מהירות מיוחדת (תמרור פולט אור),Special speed limit (light-emitting),69.75,66.0,213x202,#000 #f00 #fff,transparent,3x
 427.svg,427,,32,קצה קטע המהירות המיוחדת,End of special speed limit section,74.7,67.47,213x192,#fff #000,transparent,3x
 428.svg,428,,33,אסורה הפניה ימינה,No right turn,69.75,65.25,213x199,#f00 #fff #000,transparent,3x
 429.svg,429,,33,אסורה הפניה שמאלה,No left turn,69.75,66.0,213x202,#f00 #fff #000 #bb2225,transparent,3x
@@ -211,7 +211,7 @@
 629_1.svg,629,1,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח,Supplementary warning/notice plate (message not otherwise listed),94.5,48.0,289x146,#fff #000,transparent,3x
 629_2.svg,629,2,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח,Supplementary warning/notice plate (message not otherwise listed),51.0,29.25,156x89,#fff #222,transparent,1x
 629_3.svg,629,3,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח,Supplementary warning/notice plate (message not otherwise listed),36.0,30.0,110x92,#f0f0f0 #00001e #1e1e1e,white,1x
-629פ.svg,629פ,,52,תמרור להודעה בלבד - מסר שאין לו תמרור בלוח,Supplementary notice-only plate,86.45,48.48,245x137,#000 #fff,transparent,3x
+629פ.svg,629פ,,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח (תמרור פולט אור),Supplementary warning/notice plate (light-emitting),86.45,48.48,245x137,#000 #fff,transparent,3x
 630.svg,630,,53,מרחק במטרים לתמרור שמעליו,Distance plate (metres to the sign above),99.0,33.75,302x103,#fff #1e1e1e #000,transparent,3x
 631.svg,631,,53,לאורך קטע במטרים,Length plate (metres along the section),99.0,36.75,302x112,#fff #000,white,1x
 632.svg,632,,53,מסר מיועד לפונה בכוון החץ,Applies-to-turning-traffic plate,72.75,48.75,222x149,#fff #000,transparent,3x
@@ -246,17 +246,17 @@
 722_1.svg,722,1,62,אור אדום מהבהב כפול - מפגש מסילת ברזל,Double flashing red light (railway crossing),94.5,52.5,289x160,#fff #000 #f00,transparent,3x
 722_2.svg,722,2,62,אור אדום מהבהב כפול - מפגש מסילת ברזל,Double flashing red light (railway crossing),94.5,52.5,289x160,#fff #000 #f00,white,3x
 723.svg,723,,62,נתיב סגור,Lane closed (overhead lane control),57.75,58.5,176x179,#fff #f00 #1d1d1d #b8272a,transparent,3x
-723פ.svg,723פ,,62,נתיב סגור - גרסה,Lane closed (variant display),58.5,57.75,179x176,#00001e #f00,transparent,3x
+723פ.svg,723פ,,62,נתיב סגור (תמרור פולט אור),"Lane closed (overhead lane control, light-emitting)",58.5,57.75,179x176,#00001e #f00,transparent,3x
 724.svg,724,,62,נתיב פתוח,Lane open (overhead lane control),59.25,58.5,164x162,#fff #070 #000,transparent,3x
-724פ.svg,724פ,,62,נתיב פתוח - גרסה,Lane open (variant display),60.0,60.75,183x186,#00001e #007600,transparent,3x
+724פ.svg,724פ,,62,נתיב פתוח (תמרור פולט אור),"Lane open (overhead lane control, light-emitting)",60.0,60.75,183x186,#00001e #007600,transparent,3x
 725_1.svg,725,1,63,מעבר לנתיב סמוך,Merge into adjacent lane (overhead lane control),48.0,48.75,146x149,#fff #00001d,transparent,3x
 725_2.svg,725,2,63,מעבר לנתיב סמוך,Merge into adjacent lane (overhead lane control),47.25,47.25,144x144,#fff #00001c,transparent,1x
-725פ_1.svg,725פ,1,63,מעבר לנתיב סמוך - גרסה,Merge into adjacent lane (variant display),44.25,45.0,135x137,#1e1e1e #fff,transparent,1x
-725פ_2.svg,725פ,2,63,מעבר לנתיב סמוך - גרסה,Merge into adjacent lane (variant display),45.0,45.0,137x137,#1e1e1e #fff,white,3x
+725פ_1.svg,725פ,1,63,מעבר לנתיב סמוך (תמרור פולט אור),"Merge into adjacent lane (overhead lane control, light-emitting)",44.25,45.0,135x137,#1e1e1e #fff,transparent,1x
+725פ_2.svg,725פ,2,63,מעבר לנתיב סמוך (תמרור פולט אור),"Merge into adjacent lane (overhead lane control, light-emitting)",45.0,45.0,137x137,#1e1e1e #fff,white,3x
 726_1.svg,726,1,63,נתיב יציאה,Exit lane (overhead lane control),45.0,44.25,137x135,#fff #00001c,transparent,3x
 726_2.svg,726,2,63,נתיב יציאה,Exit lane (overhead lane control),45.75,44.25,140x135,#fff #00001c,transparent,1x
-726פ_1.svg,726פ,1,63,נתיב יציאה - גרסה,Exit lane (variant display),45.0,44.25,137x135,#1e1e1e #fff #000,transparent,1x
-726פ_2.svg,726פ,2,63,נתיב יציאה - גרסה,Exit lane (variant display),45.75,45.0,140x137,#1e1e1e #fff,transparent,3x
+726פ_1.svg,726פ,1,63,נתיב יציאה (תמרור פולט אור),"Exit lane (overhead lane control, light-emitting)",45.0,44.25,137x135,#1e1e1e #fff #000,transparent,1x
+726פ_2.svg,726פ,2,63,נתיב יציאה (תמרור פולט אור),"Exit lane (overhead lane control, light-emitting)",45.75,45.0,140x137,#1e1e1e #fff,transparent,3x
 727.svg,727,,63,אור אדום (לרוכבי אופניים),Red light (for cyclists),45.15,115.38,141x363,#fff #000 #f00,transparent,3x
 728.svg,728,,64,אור ירוק (לרוכבי אופניים),Green light (for cyclists),36.85,109.83,121x363,#fff #000 #0f0,transparent,3x
 729.svg,729,,64,אור צהוב (לרוכבי אופניים),Amber (yellow) light (for cyclists),42.99,105.0,141x343,#fff #000 #ff0,transparent,3x
@@ -287,7 +287,7 @@
 820.svg,820,,68,מקום אסור לחניה מסומן בצבע לבן,No-parking area marked in white,99.0,39.0,303x119,#696969 #fff,transparent,3x
 821.svg,821,,68,מקום פס האטה,Speed-bump location marking,94.5,57.0,289x174,#696969 #f0f0f0,transparent,3x
 901.svg,901,,70,אתר עבודה בדרך,Road work site ahead,69.75,60.75,213x186,#f00 #fff #000,transparent,3x
-901פ.svg,901פ,,70,אתר עבודה בדרך - סע לפי הסימון הכתום,Road work site ahead (follow orange marking),69.75,68.25,213x209,#000 #f00 #fff,transparent,3x
+901פ.svg,901פ,,70,אתר עבודה בדרך (תמרור פולט אור),Road work site ahead (light-emitting),69.75,68.25,213x209,#000 #f00 #fff,transparent,3x
 902.svg,902,,70,קצה אתר עבודה,End of road work site,72.0,71.25,220x218,#ff7300 #1d1918 #cdccca #fff,transparent,3x
 903.svg,903,,70,אזהרה והדרכה בעקומה חדה - אתר עבודה,Warning and guidance at a sharp bend (worksite),93.0,38.25,284x117,#ff7300 #000,transparent,1x
 904.svg,904,,70,אזהרה והדרכה בצומת קמץ - אתר עבודה,Warning and guidance at a staggered junction (worksite),92.25,29.25,282x89,#ff7300 #000,transparent,1x

@@ -242,6 +242,16 @@ C:\Users\Dany\AppData\Local\Temp\claude\C--Users-Dany-source-claudecode\ed771638
 Grep for the rule (`grep -n "עקיפה" takanot.txt`), read the regulation, then
 write. Regulation numbers: `{{ח:סעיף|51|…}}` in the file = תקנה 51.
 
+Signs: the Ministry's sign chart `luach-tamrurim-2021.pdf` (beside this file)
+is the authority for a sign's picture, name and meaning. The app shows its
+pictures (`sign-art.json`, traced in `DRIVING-SIGNS/`); a sign's name and
+meaning in `signs.json` must say what the chart's row for that number says —
+wheel counts, sign ranges and "right or left, respectively" pairs included.
+The letter פ after a number marks a light-emitting sign (chart, page 2): same
+meaning as the base number, name "… (תמרור פולט אור)". After renaming a sign,
+run `python DRIVING-SIGNS/_tools/sync_names.py`, then
+`node tools/import-sign-art.js` and `node tools/publish.js`.
+
 The official theory question bank is at `…\research\theory.json`
 (data.gov.il). Use it **only** to see which topics the real test covers and
 how deep — never copy or paraphrase its questions; write your own.

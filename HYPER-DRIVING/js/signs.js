@@ -1,7 +1,17 @@
 /* Hyper Driving · signs.js — draws a traffic sign, road marking or traffic
- * light from its description in signs.json. Nothing is a picture file: a sign
- * is a shape, colours and a list of drawing items, so an authority can change
- * or add signs through a content update.
+ * light. Everything comes from the content pack, so an authority can change or
+ * add signs through a content update:
+ *
+ *   sign-art.json  the sign's picture(s): the Ministry's sign chart, traced to
+ *                  vector outlines (HYPER-DRIVING/DRIVING-SIGNS, imported by
+ *                  tools/import-sign-art.js). Used whenever a sign has one.
+ *   signs.json     a drawing described as a shape, colours and drawing items:
+ *                  used for a sign the chart has no picture of (and in the editor).
+ *
+ * A picture (sign-art.json → art[num] = [picture, …], in the chart's order):
+ *   { "w": 1488, "h": 1248, "pt": [60.75, 51], "page": 7, "layers": [["#f00", "M…"], …] }
+ *   layers are filled even-odd, bottom first, in a w × h box; paths use relative
+ *   commands on an integer grid (SG.pictureFromSVG writes them).
  *
  * A sign:
  *   { "num": "302", "series": "300", "cat": "priority", "shape": "octagon",
@@ -185,7 +195,133 @@
     return out;
   }
 
-  // the sign as an SVG string
+  // ---------- pictures (sign-art.json) ----------
+  // the pictures of a sign number, or null
+  SG.art = (num) => {
+    const a = D.data && D.data.signArt && D.data.signArt[String(num)];
+    return Array.isArray(a) && a.length ? a : null;
+  };
+
+  const COLOR_RE = /^(#[0-9a-f]{3,8}|[a-z]+)$/i;
+  const PATH_RE = /^[MmLlCcQqZz0-9\s,.-]*$/;
+
+  // one picture as an SVG string. It is as tall as `size`, or narrower than
+  // size × maxW when it is wider than that (a long direction sign).
+  SG.pictureSVG = (pic, opts) => {
+    opts = opts || {};
+    if (!pic || !(pic.w > 0 && pic.h > 0)) return '';
+    const size = opts.size || 96, maxW = opts.maxW || 1.6;
+    const a = pic.w / pic.h;
+    let h = size, w = size * a;
+    if (w > size * maxW) { w = size * maxW; h = w / a; }
+    const body = (pic.layers || []).filter((l) => COLOR_RE.test(l[0]) && PATH_RE.test(l[1]))
+      .map((l) => `<path fill="${l[0]}"${l[2] === 'nonzero' ? '' : ' fill-rule="evenodd"'} d="${l[1]}"/>`).join('');
+    return `<svg class="sign-svg sign-pic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${pic.w} ${pic.h}" width="${Math.round(w)}" height="${Math.round(h)}" role="img"${opts.label ? ` aria-label="${opts.label}"` : ''}>${body}</svg>`;
+  };
+
+  // An SVG file → a picture. Takes <path> elements with a fill (the traced files
+  // of DRIVING-SIGNS, or any drawing made of filled paths without transforms),
+  // and rewrites them in `units` per unit of the file (or so that the longer side
+  // is 3000 units): relative commands, whole numbers.
+  SG.pictureFromSVG = (text, opts) => {
+    opts = opts || {};
+    text = String(text || '');
+    const root = (text.match(/<svg\b[^>]*>/i) || [])[0];
+    if (!root) throw new Error('not an SVG file');
+    const attr = (tag, k) => { const m = tag.match(new RegExp('\\s' + k + '\\s*=\\s*("([^"]*)"|\'([^\']*)\')')); return m ? (m[2] != null ? m[2] : m[3]) : null; };
+    const body = text.replace(/<(title|desc|metadata)\b[\s\S]*?<\/\1>/gi, '');
+    const other = body.match(/<(rect|circle|ellipse|line|polyline|polygon|text|image|use|g)\b/i);
+    if (other) throw new Error('only <path> elements can be read, not <' + other[1] + '>');
+    if (/\stransform\s*=/.test(body)) throw new Error('paths with a transform cannot be read');
+    let vb = (attr(root, 'viewBox') || '').trim().split(/[\s,]+/).map(Number);
+    if (vb.length !== 4 || vb.some(isNaN)) vb = [0, 0, parseFloat(attr(root, 'width')), parseFloat(attr(root, 'height'))];
+    const [x0, y0, vw, vh] = vb;
+    if (!(vw > 0 && vh > 0)) throw new Error('the SVG has no size');
+    const k = opts.units || 3000 / Math.max(vw, vh);
+    const layers = [];
+    (body.match(/<path\b[^>]*>/gi) || []).forEach((tag) => {
+      const d = attr(tag, 'd'); if (!d) return;
+      const style = attr(tag, 'style') || '';
+      const sf = style.match(/fill\s*:\s*([^;]+)/), sr = style.match(/fill-rule\s*:\s*([^;]+)/);
+      const fill = ((sf && sf[1]) || attr(tag, 'fill') || '#000').trim().toLowerCase();
+      if (fill === 'none') throw new Error('a path without a fill (an outline) cannot be read');
+      if (!COLOR_RE.test(fill)) throw new Error('unknown colour "' + fill + '"');
+      const rule = ((sr && sr[1]) || attr(tag, 'fill-rule') || 'nonzero').trim();
+      const enc = encodePath(d, k, x0, y0);
+      if (enc) layers.push(rule === 'evenodd' ? [fill, enc] : [fill, enc, 'nonzero']);
+    });
+    if (!layers.length) throw new Error('no filled paths');
+    return { w: Math.round(vw * k), h: Math.round(vh * k), layers };
+  };
+
+  // a path → relative commands on the integer grid: each point is rounded where
+  // it lies, and a step is the difference of two rounded points, so rounding
+  // never adds up along the path. Arcs are not supported.
+  function encodePath(d, k, x0, y0) {
+    const tok = String(d).match(/[a-df-z]|[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/gi) || [];
+    let i = 0, cmd = '', out = '', last = '';
+    let cx = 0, cy = 0, sx = 0, sy = 0;        // current and subpath start, in file units
+    let rx = 0, ry = 0, rsx = 0, rsy = 0;      // the same, rounded
+    let pcx = null, pcy = null, pq = null;     // last control points (for S and T)
+    const n = () => { const v = +tok[i++]; if (isNaN(v)) throw new Error('bad path data'); return v; };
+    const R = (v, o) => Math.round((v - o) * k);
+    const emit = (c, nums) => {
+      let s = '';
+      nums.forEach((v, j) => { const t = String(v); s += (j === 0 ? '' : (t[0] === '-' ? '' : ' ')) + t; });
+      if (c === last && c !== 'M') out += (s[0] === '-' ? '' : ' ') + s;
+      else out += c + s;
+      last = c;
+    };
+    const line = (x, y) => {
+      const X = R(x, x0), Y = R(y, y0);
+      if (X !== rx || Y !== ry) emit('l', [X - rx, Y - ry]);
+      cx = x; cy = y; rx = X; ry = Y;
+    };
+    const cubic = (x1, y1, x2, y2, x, y) => {
+      const p = [R(x1, x0), R(y1, y0), R(x2, x0), R(y2, y0), R(x, x0), R(y, y0)];
+      const rel = [p[0] - rx, p[1] - ry, p[2] - rx, p[3] - ry, p[4] - rx, p[5] - ry];
+      if (rel.some((v) => v !== 0)) emit('c', rel);
+      pcx = x2; pcy = y2; cx = x; cy = y; rx = p[4]; ry = p[5];
+    };
+    const quad = (x1, y1, x, y) => {
+      const p = [R(x1, x0), R(y1, y0), R(x, x0), R(y, y0)];
+      const rel = [p[0] - rx, p[1] - ry, p[2] - rx, p[3] - ry];
+      if (rel.some((v) => v !== 0)) emit('q', rel);
+      pq = [x1, y1]; cx = x; cy = y; rx = p[2]; ry = p[3];
+    };
+    while (i < tok.length) {
+      if (/[a-z]/i.test(tok[i])) cmd = tok[i++];
+      else if (!cmd) throw new Error('bad path data');
+      const rel = cmd === cmd.toLowerCase(), C = cmd.toUpperCase();
+      const ox = rel ? cx : 0, oy = rel ? cy : 0;
+      const keepC = C === 'C' || C === 'S', keepQ = C === 'Q' || C === 'T';
+      if (C === 'Z') {
+        emit('z', []); cx = sx; cy = sy; rx = rsx; ry = rsy;
+      } else if (C === 'M') {
+        cx = n() + ox; cy = n() + oy; sx = cx; sy = cy;
+        rx = rsx = R(cx, x0); ry = rsy = R(cy, y0);
+        emit('M', [rx, ry]);
+        cmd = rel ? 'l' : 'L';   // further pairs are lines
+      } else if (C === 'L') line(n() + ox, n() + oy);
+      else if (C === 'H') line(n() + ox, cy);
+      else if (C === 'V') line(cx, n() + (rel ? cy : 0));
+      else if (C === 'C') { const a = [n() + ox, n() + oy, n() + ox, n() + oy, n() + ox, n() + oy]; cubic(...a); }
+      else if (C === 'S') {
+        const x1 = pcx != null ? 2 * cx - pcx : cx, y1 = pcy != null ? 2 * cy - pcy : cy;
+        const a = [n() + ox, n() + oy, n() + ox, n() + oy]; cubic(x1, y1, ...a);
+      } else if (C === 'Q') { const a = [n() + ox, n() + oy, n() + ox, n() + oy]; quad(...a); }
+      else if (C === 'T') {
+        const q1 = pq ? [2 * cx - pq[0], 2 * cy - pq[1]] : [cx, cy];
+        quad(q1[0], q1[1], n() + ox, n() + oy);
+      } else throw new Error('path command "' + cmd + '" is not supported');
+      if (!keepC) { pcx = pcy = null; }
+      if (!keepQ) pq = null;
+    }
+    return out;
+  }
+
+  // the sign as an SVG string: its picture when it has one (opts.pic picks one
+  // of several), else its drawing (opts.drawn: always the drawing)
   SG.svg = (s, opts) => {
     opts = opts || {};
     if (!s) return '';
@@ -194,6 +330,8 @@
     if (s.svg) {
       return String(s.svg).replace(/<svg\b/, `<svg width="${size}" height="${size}" role="img" aria-label="${label}"`);
     }
+    const pics = !opts.drawn && SG.art(s.num);
+    if (pics) return SG.pictureSVG(pics[Math.min(opts.pic || 0, pics.length - 1)], { size, label, maxW: opts.maxW });
     const d = DEFAULTS[s.cat] || DEFAULTS.other;
     const shape = s.shape || d.shape;
     const cols = Object.assign({}, { field: d.field, border: d.border, symbol: d.symbol }, s.colors || {});

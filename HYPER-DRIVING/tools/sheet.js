@@ -10,6 +10,7 @@
  *   node tools/sheet.js signs --file work/s100.json --out …   (draw signs from a work file instead of the pack)
  *
  * Options: --cols N (default 8), --size px (default 120), --lang he|en (default he),
+ * --drawn shows the signs' drawings instead of their pictures (sign-art.json),
  * --html only writes the HTML.
  * Uses Chrome or Edge in headless mode (paths below).
  */
@@ -40,6 +41,11 @@ if (opt('file') && kind === 'signs') {
 }
 if (opt('series')) signs = signs.filter((s) => String(s.series) === String(opt('series')));
 if (opt('nums')) { const want = String(opt('nums')).split(','); signs = want.map((n) => signs.find((s) => String(s.num) === n)).filter(Boolean); }
+// the pictures of the listed signs (sign-art.json), unless --drawn
+const artFile = path.join(pack, 'sign-art.json');
+const allArt = !opt('drawn') && kind === 'signs' && fs.existsSync(artFile) ? JSON.parse(fs.readFileSync(artFile, 'utf8')).art || {} : {};
+const ART = {};
+signs.forEach((s) => { if (allArt[String(s.num)]) ART[String(s.num)] = allArt[String(s.num)]; });
 const dash = JSON.parse(fs.readFileSync(path.join(pack, 'dash.json'), 'utf8')).lights;
 let dashList = dash;
 if (kind === 'dash' && opt('file')) {
@@ -72,6 +78,7 @@ const html = `<!DOCTYPE html><html lang="${LANG}" dir="${LANG === 'he' ? 'rtl' :
 <script>
  var D = Drive;
  D.settings.lang = '${LANG}';
+ D.data = { signArt: ${JSON.stringify(ART)} };
  ${extraGlyphFiles}
  var SIGNS = ${JSON.stringify(kind === 'signs' ? signs : [])};
  var FIGS = ${JSON.stringify(typeof FIGS !== 'undefined' ? FIGS : {})};
@@ -80,9 +87,11 @@ const html = `<!DOCTYPE html><html lang="${LANG}" dir="${LANG === 'he' ? 'rtl' :
  Object.keys(PACKGLYPHS).forEach(function (k) { D.glyphs.add(k, PACKGLYPHS[k]); });
  var g = document.getElementById('g'), html = '';
  if ('${kind}' === 'signs') SIGNS.forEach(function (s) {
-   var bad = !(s.draw && s.draw.length) && !s.svg && !s.lamps;
-   var miss = (s.draw || []).filter(function (it) { return it.g && !D.glyphs.has(it.g); }).map(function (it) { return it.g; });
-   html += '<div class="c' + (bad || miss.length ? ' bad' : '') + '">' + D.signs.svg(s, { size: ${size} }) + '<div class="n">' + s.num + '</div><div>' + ((s.name && s.name['${LANG}']) || '') + (miss.length ? '<br><b style="color:#e5484d">? ' + miss.join(',') + '</b>' : '') + '</div></div>';
+   var pics = D.signs.art(s.num);
+   var bad = !pics && !(s.draw && s.draw.length) && !s.svg && !s.lamps;
+   var miss = pics ? [] : (s.draw || []).filter(function (it) { return it.g && !D.glyphs.has(it.g); }).map(function (it) { return it.g; });
+   var art = pics ? pics.map(function (p, i) { return D.signs.svg(s, { size: ${size}, pic: i }); }).join(' ') : D.signs.svg(s, { size: ${size} });
+   html += '<div class="c' + (bad || miss.length ? ' bad' : '') + '">' + art + '<div class="n">' + s.num + '</div><div>' + ((s.name && s.name['${LANG}']) || '') + (miss.length ? '<br><b style="color:#e5484d">? ' + miss.join(',') + '</b>' : '') + '</div></div>';
  });
  if ('${kind}' === 'dash') DASH.forEach(function (d) {
    html += '<div class="c dk">' + D.dash.svg(d, { size: ${size} }) + '<div class="n">' + d.id + '</div><div>' + ((d.name && d.name['${LANG}']) || '') + '</div></div>';

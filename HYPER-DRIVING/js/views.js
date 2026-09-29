@@ -254,8 +254,14 @@
     const lessons = [...new Set(used.map((w) => w.id))].map((id) => C.lesson(id)).filter(Boolean);
     const related = (s.related || []).map(String).map((n) => D.data.signByNum.get(n)).filter(Boolean);
     const qs = C.questions().filter((q) => String(q.sign) === String(num) || (q.q && q.q.includes('[[sign:' + num)));
+    // every picture the chart shows for this number, and the chart page(s) they come from
+    const pics = D.signs.art(num) || [];
+    const pages = [...new Set(pics.map((p) => p.page).filter(Boolean))];
+    const hero = pics.length > 1
+      ? `<div class="sign-pics">${pics.map((p, i) => D.signs.svg(s, { size: pics.length > 2 ? 100 : 140, pic: i, maxW: 2 })).join('')}</div>`
+      : D.signs.svg(s, { size: 220, maxW: 1 });
     const el = html(`<article class="sign-page" style="${hueStyle(ser && ser.hue)}">
-      <div class="sign-hero">${D.signs.svg(s, { size: 220 })}</div>
+      <div class="sign-hero">${hero}${pages.length ? `<p class="sign-src">${esc(T('signs.fromChart', { p: pages.join(', ') }))}</p>` : ''}</div>
       <div class="sign-info">
         <div class="crumbs">${ser ? `<a href="#/signs/${esc(ser.id)}">${esc(D.tr(ser.title))}</a>` : ''}</div>
         <h1><span class="num-badge">${esc(num)}</span> ${esc(D.tr(s.name))}</h1>

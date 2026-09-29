@@ -1,6 +1,14 @@
 {
   "versions": [
     {
+      "version": "2026.09.29-1",
+      "date": "2026-09-29",
+      "notes": {
+        "he": "תמונות התמרורים: כל תמרור מוצג כפי שהוא מופיע בלוח התמרורים של משרד התחבורה (מהדורת 2021), משורטט מחדש כקווים וקטוריים. תמרורים שאין להם תמונה בלוח (153, 607פ, 638–640, 933פ, 934פ, ס121, ס140, ס141) נשארים מצוירים. שמות ומשמעויות נבדקו מול הלוח: תמרורים 420 ו-422 אוסרים לעקוף רכב הנע על יותר משני גלגלים (לא \"דו-גלגלי ומעלה\"), והאות פ מסמנת תמרור פולט אור. תוקנו גם משמעויות שלא תאמו את הלוח: 802 ו-919 (תמרורים 201 עד 203 ו-206 עד 212), 515 ו-516 (תמרור 501), 216 (המהירות שבתמרור 218), 302, 630 ו-916, 629 ו-915, 632, 613, 501, 503, 505, 506, 437, 301 ו-127.",
+        "en": "Sign pictures: every sign is shown as it appears in the Ministry of Transport sign chart (2021 edition), traced to vector outlines. Signs the chart has no picture of (153, 607פ, 638–640, 933פ, 934פ, ס121, ס140, ס141) stay drawn. Names and meanings checked against the chart: signs 420 and 422 forbid overtaking vehicles with more than two wheels (not \"two wheels or more\"), and the letter פ marks a light-emitting sign. Meanings that did not match the chart were corrected too: 802 and 919 (signs 201 to 203 and 206 to 212), 515 and 516 (sign 501), 216 (the speed on sign 218), 302, 630 and 916, 629 and 915, 632, 613, 501, 503, 505, 506, 437, 301 and 127."
+      }
+    },
+    {
       "version": "2026.09.28-1",
       "date": "2026-09-28",
       "notes": {

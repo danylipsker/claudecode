@@ -998,8 +998,8 @@
     "en": "Traffic congestion ahead"
    },
    "meaning": {
-    "he": "לפניך תנועה צפופה או פקק; היערך לעצירה.",
-    "en": "There is heavy traffic or a queue ahead. Be ready to stop."
+    "he": "לפניך תנועה צפופה או פקק; היערך לעצירה. הוצב התמרור מעל הכביש – הוא חל רק על הנתיב שמתחתיו.",
+    "en": "There is heavy traffic or a queue ahead. Be ready to stop. Mounted above the carriageway, it applies only to the lane below it."
    },
    "pictogram": "Three black cars seen from the front, in a diagonal queue: the largest at lower left, two smaller ones behind it toward the upper right.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -2659,8 +2659,8 @@
     "en": "Expressway begins"
    },
    "meaning": {
-    "he": "תחילת דרך מהירה. אסור להיכנס להולכי רגל, אופניים, עגלות יד, בעלי חיים ורכב שאינו מסוגל או מורשה לנסוע לפחות 60 קמ״ש (או המהירות בתמרור 218).",
-    "en": "This is the start of an expressway. Pedestrians, cyclists, hand carts, animals and any vehicle not capable of, or licensed for, at least 60 km/h (or the speed shown on sign 218) may not enter."
+    "he": "תחילת דרך מהירה, עד תמרור 217 או 424. אסורה הכניסה להולכי רגל, לאופניים, לרכב איטי, לעגלות יד, לבעלי חיים ולכל רכב שאינו מסוגל או מורשה לנסוע במהירות שצוינה בתמרור 218 המוצב לפני הכניסה.",
+    "en": "This is the start of an expressway, until sign 217 or 424. Pedestrians, cyclists, slow vehicles, hand carts, animals and any vehicle not capable of, or licensed for, the speed shown on sign 218 before the entrance may not enter."
    },
    "pictogram": "Tall blue rectangle (about 2:3) with white inner border. White motorway symbol: two carriageways drawn in perspective (two white strips widening toward the bottom, separated by a narrow blue median) passing under a white horizontal overpass/bridge bar in the upper third.",
    "status": "changed",
@@ -3422,8 +3422,8 @@
     "en": "Give way (yield)"
    },
    "meaning": {
-    "he": "האט ותן זכות קדימה לכלי הרכב בדרך החוצה ולרכבת; עצור רק אם צריך.",
-    "en": "Slow down and give way to vehicles on the crossing road and to trains; stop only if you need to."
+    "he": "האט ותן זכות קדימה לתנועה בדרך החוצה ולרכבת, במקום שלפניו הוצב התמרור ולכל הנתיבים בכביש, למעט נתיבים שבהם חל תמרור 302; עצור רק אם צריך.",
+    "en": "Slow down and give way to traffic on the crossing road and to trains, at the place where the sign stands and in every lane of the road, except lanes where sign 302 applies; stop only if you need to."
    },
    "pictogram": "Inverted equilateral triangle (point down) with a wide red border and plain white centre; no symbol or text.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -3452,8 +3452,8 @@
     "en": "Stop"
    },
    "meaning": {
-    "he": "עצירה מלאה חובה (לפני קו העצירה אם יש), ואז תן זכות קדימה לתנועה בדרך החוצה ולרכבת. בצד שמאל – חל על פנייה שמאלה/פרסה; מעל הכביש – על הנתיב שמתחתיו.",
-    "en": "You must come to a full stop (before the stop line, if there is one), then give way to traffic on the crossing road and to trains. On the left side of the road it applies to a left turn or U-turn; mounted above the carriageway, it applies to the lane below it."
+    "he": "עצירה מלאה חובה (לפני קו העצירה אם יש), ואז תן זכות קדימה לתנועה בדרך החוצה ולרכבת. חל במקום שלפניו הוצב ולכל הנתיבים בכביש; הוצב בצד שמאל של הכביש – חל רק על פנייה שמאלה ועל פניית פרסה לשמאל.",
+    "en": "You must come to a full stop (before the stop line, if there is one), then give way to traffic on the crossing road and to trains. It applies where it stands and to every lane of the road; placed on the left side of the road, it applies only to a left turn and a U-turn to the left."
    },
    "pictogram": "Red regular octagon with a thin white octagonal line inset from the edge; in the centre a white raised open right hand (palm facing the viewer, fingers up and together, thumb to the right). No text.",
    "status": "changed",
@@ -3817,8 +3817,8 @@
     "en": "Road closed (both directions)"
    },
    "meaning": {
-    "he": "הכניסה אסורה לכל כלי רכב, בשני הכוונים, בכביש שבו הוצב התמרור.",
-    "en": "No vehicle may enter, in either direction, on the road where this sign is placed."
+    "he": "הכניסה אסורה לכל כלי רכב, בשני הכוונים, בכביש שבו הוצב התמרור. הוצב התמרור מעל הרמזור – הנסיעה ישר אסורה.",
+    "en": "No vehicle may enter, in either direction, on the road where this sign is placed. Mounted above a traffic light, it means driving straight on is not allowed."
    },
    "pictogram": "Plain white disc inside a thick red circular border; no symbol, arrow or text inside.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -3851,12 +3851,12 @@
     }
    ],
    "name": {
-    "he": "כביש סגור - מוצב מעל הרמזור",
-    "en": "Straight ahead closed (mounted above a signal)"
+    "he": "כביש סגור - בשני הכוונים (תמרור פולט אור)",
+    "en": "Road closed in both directions (light-emitting)"
    },
    "meaning": {
-    "he": "כאשר תמרור 401 מוצב מעל הרמזור, הנסיעה ישר דרך הצומת אסורה.",
-    "en": "When sign 401 is mounted above a traffic light, driving straight through the junction is not allowed."
+    "he": "כמו 401, בגרסה אלקטרונית מוארת: הכניסה אסורה לכל כלי רכב בכביש שבו הוצב. הוצב מעל הרמזור – הנסיעה ישר אסורה.",
+    "en": "The same as sign 401, shown as an illuminated electronic sign: no vehicle may enter the road where it is placed. Mounted above a traffic light, it means driving straight on is not allowed."
    },
    "pictogram": "Same plain red-ring / white-disc circle as 401, mounted on a small overhead gantry above a traffic-light head to close the lane below it to through traffic.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -4673,7 +4673,7 @@
     }
    ],
    "name": {
-    "he": "אסור לעקוף רכב מנועי דו-גלגלי ומעלה",
+    "he": "אסור לעקוף רכב מנועי הנע על יותר משני גלגלים",
     "en": "No overtaking of vehicles with more than two wheels"
    },
    "meaning": {
@@ -4782,8 +4782,8 @@
     "en": "No overtaking by vehicles over 4 tonnes"
    },
    "meaning": {
-    "he": "אסור לרכב שמשקלו הכולל המותר עולה על 4 טון לעקוף או לעבור על פניו של רכב מנועי דו-גלגלי ומעלה, עד לצומת הקרוב או עד תמרור 423.",
-    "en": "A vehicle whose permitted total weight exceeds 4 tonnes may not overtake or pass another motor vehicle with two or more wheels, until the next junction or sign 423."
+    "he": "אסור לרכב שמשקלו הכולל המותר עולה על 4 טון לעקוף או לעבור על פניו של רכב מנועי הנע על יותר משני גלגלים באותו כוון נסיעה, עד לצומת הקרוב או עד תמרור 423.",
+    "en": "A vehicle whose permitted total weight exceeds 4 tonnes may not overtake or pass a motor vehicle with more than two wheels travelling in the same direction, until the next junction or sign 423."
    },
    "pictogram": "Red circle, white field; the same two-car overtaking symbol as sign 420, with a small black truck silhouette added above it to show the restriction applies to heavy vehicles.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -4992,12 +4992,12 @@
     }
    ],
    "name": {
-    "he": "מהירות מיוחדת - הודעה על אכיפה",
-    "en": "Special speed limit (enforced section variant)"
+    "he": "מהירות מיוחדת (תמרור פולט אור)",
+    "en": "Special speed limit (light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 426; ההצבה ואופן הצגתו מפורטים בתקנות (עדכון 6, 2011).",
-    "en": "Same as sign 426; where and how it is displayed is set out in the regulations (Amendment 6, 2011)."
+    "he": "כמו 426, בגרסה אלקטרונית מוארת: אסורה הנסיעה במהירות העולה על מספר הקמ״ש המוצג בו.",
+    "en": "The same as sign 426, shown as an illuminated electronic sign: you may not drive faster than the speed (km/h) it shows."
    },
    "pictogram": "Same number-in-red-circle pictogram as sign 426.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -5484,8 +5484,8 @@
     "en": "Reserved disabled parking"
    },
    "meaning": {
-    "he": "חנייה במקום הצבת התמרור שמורה לרכב הנושא תג נכה תקף, בעת שהרכב משמש את הנכה שהתג ניתן לו.",
-    "en": "Parking here is reserved for a vehicle displaying a valid disabled badge, while it is being used by the person the badge was issued to."
+    "he": "חנייה במקום הצבת התמרור שמורה לרכב של נכה הנושא תג נכה מקורי ותקף, בעת שהרכב משמש את הנכה שהתג ניתן לו.",
+    "en": "Parking here is reserved for the vehicle of a disabled person displaying an original, valid disabled badge, while it is being used by the person the badge was issued to."
    },
    "pictogram": "Blue square (or short rectangle) with a white border; the white International Symbol of Access (simplified wheelchair-user pictogram) centred on the blue field.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -5728,8 +5728,8 @@
     "en": "Public-transport road/lane/shoulder"
    },
    "meaning": {
-    "he": "הנסיעה בכביש, בנתיב או בשול מותרת רק לכלי הרכב המצוינים בתמרור (למשל אוטובוס, מונית, רכב עם מספר נוסעים מזערי), בימים ובשעות המצוינים.",
-    "en": "This road, lane or shoulder may be used only by the vehicles named on the sign (for example buses, taxis, or vehicles with a minimum number of occupants), on the days and at the times shown."
+    "he": "הנסיעה בכביש, בנתיב או בשול מותרת רק לכלי הרכב המצוינים בתמרור (למשל אוטובוס, מונית, רכב עם מספר נוסעים מזערי), בכל הימים והשעות, אלא אם צוין אחרת בתמרור 439 שמתחתיו. עצירה או חנייה בנתיב אסורות, אלא אם צוין אחרת.",
+    "en": "This road, lane or shoulder may be used only by the vehicles named on the sign (for example buses, taxis, or vehicles with a minimum number of occupants), on all days and at all hours unless a sign 439 below it says otherwise. Stopping or parking in the lane is not allowed unless stated otherwise."
    },
    "pictogram": "Blue rectangle, white border; white pictograms of the permitted vehicles chosen from the symbol appendix (e.g. bus symbol ס44, taxi symbol ס45, local-train symbol ס43, motorcycle symbol ס48) and/or a white number with a '+' (minimum occupants including the driver); applicable days/hours may be printed on the sign.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -5906,8 +5906,8 @@
     "en": "Public-transport lane (road marking)"
    },
    "meaning": {
-    "he": "בקטע המסומן, הנתיב מיועד לתחבורה ציבורית בלבד.",
-    "en": "In the marked section, this lane is for public transport only."
+    "he": "בקטע המסומן, הנתיב מיועד לתחבורה ציבורית: הנסיעה בו מותרת לרכב על פי המצוין בתמרור 501, או לרכב הפונה בצומת הקרוב על פי סימון 514. לא הוצב תמרור 501 – מותרת רק לרכב ציבורי בקווי שירות. עצירה או חנייה בנתיב אסורות, אלא אם צוין אחרת.",
+    "en": "In the marked section this is a public-transport lane: it may be used by vehicles permitted by sign 501, or by a vehicle turning at the next junction under marking 514. Where there is no sign 501, only public-service vehicles on their routes may use it. Stopping or parking in the lane is not allowed unless stated otherwise."
    },
    "pictogram": "A yellow diamond shape painted at intervals along the lane, marking it as a dedicated public-transport lane.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -5975,8 +5975,8 @@
     "en": "Public bus stop"
    },
    "meaning": {
-    "he": "מקום עצירת אוטובוסים בקווי שירות; העצירה בהתאם למפורט בתמרור. סמלים נוספים עשויים לציין נגישות לנכים, קרבה לתחנת רכבת, או קווי לילה.",
-    "en": "This is where service buses stop; they stop according to the details shown on the sign. Extra symbols may show disabled access, a nearby railway station, or night services."
+    "he": "מקום עצירת אוטובוסים בקווי שירות; העצירה בהתאם לסימון 511, 512 או 513. על גב התמרור אותם פרטים בשפה אחרת. סמל נכה – האוטובוסים בקו מותאמים לאנשים עם מוגבלות; סמל רכבת – הקו מוביל אל תחנת רכבת; סמל קווי לילה – האוטובוסים בקו פועלים בשעות הלילה.",
+    "en": "This is where service buses stop, as set by marking 511, 512 or 513; the back of the sign gives the same details in another language. A disabled symbol means the buses on the route are accessible; a train symbol means the route goes to a railway station; a night-service symbol means the route runs at night."
    },
    "pictogram": "Blue rectangular pole sign, white border; white bus pictogram (symbol ס44); may include an added wheelchair-accessibility symbol (ס12), a train-connection symbol (ס42/ס43), or a night-service crescent/moon symbol (ס64); route/line details are printed on the reverse in another language.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -6005,8 +6005,8 @@
     "en": "Local train (light rail) stop"
    },
    "meaning": {
-    "he": "מקום עצירת רכבת מקומית לאורך הרציף המסומן; פרטים נוספים באותה מתכונת בשפה אחרת מוצגים על גב התמרור.",
-    "en": "This is where the local train (light rail) stops, along the marked platform; the same details in another language are shown on the back of the sign."
+    "he": "מקום עצירת רכבת מקומית: לכל אורך הרציף, או לפי סימון 511 או 513, או ארבעים מטרים לפני התמרור וארבעים מטרים אחריו. על גב התמרור אותם פרטים בשפה אחרת.",
+    "en": "This is where the local train (light rail) stops: along the whole platform, or as set by marking 511 or 513, or forty metres before and forty metres after the sign. The back of the sign gives the same details in another language."
    },
    "pictogram": "Blue rectangular pole sign, white border; white local-train pictogram (symbol ס43).",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -6389,8 +6389,8 @@
     "en": "Public-transport lane - solid double line with diamonds"
    },
    "meaning": {
-    "he": "חציית הקווים אסורה; הנסיעה בנתיב מותרת לפי תמרור 230 או 501, או לרכב הפונה בצומת הקרוב לפי סימון 514.",
-    "en": "Crossing these lines is not allowed. Only vehicles permitted under sign 230 or 501 may use the lane, or a vehicle turning at the next junction under marking 514."
+    "he": "חציית הקווים אסורה. הנסיעה בנתיב מותרת לרכב על פי המצוין בתמרור 501, או לרכב הפונה בצומת הקרוב על פי סימון 514; לא הוצב תמרור 501 – מותרת רק לרכב ציבורי בקווי שירות. עצירה או חנייה בנתיב אסורות, אלא אם צוין אחרת.",
+    "en": "Crossing these lines is not allowed. The lane may be used by vehicles permitted by sign 501, or by a vehicle turning at the next junction under marking 514; where there is no sign 501, only public-service vehicles on their routes may use it. Stopping or parking in the lane is not allowed unless stated otherwise."
    },
    "pictogram": "A solid double yellow line combined with a row of yellow diamonds, marking a public-transport lane boundary that may not be crossed.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -6449,8 +6449,8 @@
     "en": "Public-transport lane - permitted crossing point"
    },
    "meaning": {
-    "he": "חציית הקווים מותרת רק אם חציית קו הקטעים קודמת לחציית הקו הרציף; הנסיעה בנתיב עצמו לפי תמרור 230 או 501.",
-    "en": "You may cross the lines only if you cross the dashed line before the solid line. Use of the lane itself follows sign 230 or 501."
+    "he": "חציית הקווים מותרת רק אם חציית קו הקטעים קודמת לחציית הקו הרציף. הנסיעה בנתיב מותרת לרכב על פי המצוין בתמרור 501, או לרכב הפונה בצומת הקרוב על פי סימון 514; לא הוצב תמרור 501 – מותרת רק לרכב ציבורי בקווי שירות. עצירה או חנייה בנתיב אסורות, אלא אם צוין אחרת.",
+    "en": "You may cross the lines only if you cross the dashed line before the solid line. The lane may be used by vehicles permitted by sign 501, or by a vehicle turning at the next junction under marking 514; where there is no sign 501, only public-service vehicles on their routes may use it. Stopping or parking in the lane is not allowed unless stated otherwise."
    },
    "pictogram": "A dashed yellow line positioned next to a solid double yellow line combined with diamonds, marking the one permitted crossing sequence into/out of the public-transport lane.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -6886,12 +6886,12 @@
     }
    ],
    "name": {
-    "he": "הכוונה ליציאה בלבד - גרסה",
-    "en": "Exit-only lane guidance (design variant)"
+    "he": "הכוונה ליציאה בלבד מעל הנתיב (תמרור פולט אור)",
+    "en": "Exit-only lane guidance (overhead, light-emitting)"
    },
    "meaning": {
-    "he": "גרסה של תמרור 607 שעודכנה בטור 'צורת התמרור וצבעו' (עדכון 6, 2011).",
-    "en": "A variant of sign 607, updated in the 'sign shape and colour' column (Amendment 6, 2011)."
+    "he": "כמו 607, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 607, shown as an illuminated electronic sign."
    },
    "pictogram": "Same overhead exit-only arrow layout as sign 607, with a revised graphic per the 2011 amendment.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -7228,8 +7228,8 @@
     "en": "Lane-movement designation (overhead)"
    },
    "meaning": {
-    "he": "בדרך מהירה בחצים לבנים על רקע כחול, בדרכים אחרות בחצים לבנים על רקע ירוק; חץ צהוב מציין נתיב לתחבורה ציבורית (תמרור 501). סומן סמל ס47- בנתיב, רכב מסחרי/עבודה מעל 10,000 ק״ג רשאי לחצות מאותו נתיב.",
-    "en": "On an expressway, white arrows on a blue background; on other roads, white arrows on a green background. A yellow arrow marks a public-transport lane (sign 501). Where symbol S47 is marked in the lane, goods or work vehicles over 10,000 kg may cross from that lane."
+    "he": "מגדיר את התנועות בכל נתיב: בדרך מהירה בחצים לבנים על רקע כחול, בדרכים אחרות בחצים לבנים על רקע ירוק; חץ בצבע צהוב מציין נתיב לתחבורה ציבורית כמפורט בתמרור 501.",
+    "en": "Shows the movements allowed from each lane: on an expressway, white arrows on a blue background; on other roads, white arrows on a green background. A yellow arrow marks a public-transport lane, as set out in sign 501."
    },
    "pictogram": "Overhead rectangle with one white arrow per lane showing the movement(s) allowed from that lane (straight, left, right, or combinations); a yellow arrow marks a public-transport-only lane, and a small truck symbol (ס47) may appear in a lane also open to heavy vehicles crossing the junction.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -7870,8 +7870,8 @@
     "en": "Supplementary warning/notice plate (message not otherwise listed)"
    },
    "meaning": {
-    "he": "נושא מסר מחייב לאזהרה או להודעה שאין לו תמרור מתאים בלוח; מוצב מתחת לתמרור אחר ומוסיף על האמור בו.",
-    "en": "Carries a binding warning or notice that has no matching sign of its own; it is fixed below another sign and adds to what that sign says."
+    "he": "תמרור לאזהרה או להודעה, רק למסר שאין לו תמרור בלוח התמרורים; פעל על פי האמור בו. הוצב מתחת לתמרור אחר וצמוד אליו – האמור בו חל בנוסף לתמרור שמעליו.",
+    "en": "A warning or notice, only for a message that has no sign of its own in the chart; act on what it says. Fixed directly below another sign, what it says applies in addition to that sign."
    },
    "pictogram": "Small white rectangular plate, black border, black Hebrew text stating the specific warning or notice; mounted directly beneath, and touching, the sign it supplements.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -7896,12 +7896,12 @@
     }
    ],
    "name": {
-    "he": "תמרור להודעה בלבד - מסר שאין לו תמרור בלוח",
-    "en": "Supplementary notice-only plate"
+    "he": "תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח (תמרור פולט אור)",
+    "en": "Supplementary warning/notice plate (light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 629, אך למסרים של הודעה בלבד (לא אזהרה).",
-    "en": "The same as sign 629, but only for notices (not warnings)."
+    "he": "כמו 629, בגרסה אלקטרונית מוארת: מסר מחייב לאזהרה או להודעה שאין לו תמרור מתאים בלוח.",
+    "en": "The same as sign 629, shown as an illuminated electronic sign: a binding warning or notice that has no matching sign of its own."
    },
    "pictogram": "Same plain white plate with black border and black text as sign 629, used specifically for informational notices rather than warnings.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -7931,8 +7931,8 @@
     "en": "Distance plate (metres to the sign above)"
    },
    "meaning": {
-    "he": "הוצב מתחת לתמרור אחר: אם צוין מרחק במטרים, האמור בתמרור שמעליו יחול במרחק הנקוב; אם צוין מיקום, יחול בתוכו או במקום שהוצב.",
-    "en": "Fixed below another sign: if a distance in metres is shown, what the sign above says applies at that distance; if a place is named, it applies there or where the sign is fixed."
+    "he": "הוצב מתחת לתמרור אחר או בתוכו: האמור באותו תמרור יחול במרחק הנקוב במטרים.",
+    "en": "Fixed below another sign, or inside it: what that sign says applies at the distance in metres shown."
    },
    "pictogram": "Small white rectangular plate, black border, with a black number and 'מ׳' (metres) indicating the distance from the plate to the point where the sign above it takes effect.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -8006,8 +8006,8 @@
     "en": "Applies-to-turning-traffic plate"
    },
    "meaning": {
-    "he": "הוצב מתחת לתמרור אחר: המסר בתמרור שמעליו מיועד רק לרכב הפונה אחרי הצומת בכוון החץ המסומן בתוספת.",
-    "en": "Fixed below another sign: the message on the sign above applies only to vehicles turning after the junction in the direction of the arrow shown on this plate."
+    "he": "הוצב מתחת לתמרור אחר: המסר בתמרור שמעליו מיועד לפונה בכוון החץ, והוא חל אחרי הפנייה.",
+    "en": "Fixed below another sign: the message on the sign above is for traffic turning in the direction of the arrow, and it applies after the turn."
    },
    "pictogram": "Small white rectangular plate, black border, with a black arrow bent in the turning direction the sign above applies to, used after a junction.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -9180,12 +9180,12 @@
     }
    ],
    "name": {
-    "he": "נתיב סגור - גרסה",
-    "en": "Lane closed (variant display)"
+    "he": "נתיב סגור (תמרור פולט אור)",
+    "en": "Lane closed (overhead lane control, light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 723.",
-    "en": "The same as sign 723."
+    "he": "כמו 723, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 723, shown as an illuminated electronic sign."
    },
    "pictogram": "Same red-X overhead lane-closed signal as sign 723, in an alternative housing/display form.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -9244,12 +9244,12 @@
     }
    ],
    "name": {
-    "he": "נתיב פתוח - גרסה",
-    "en": "Lane open (variant display)"
+    "he": "נתיב פתוח (תמרור פולט אור)",
+    "en": "Lane open (overhead lane control, light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 724.",
-    "en": "The same as sign 724."
+    "he": "כמו 724, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 724, shown as an illuminated electronic sign."
    },
    "pictogram": "Same green-arrow overhead lane-open signal as sign 724, in an alternative housing/display form.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -9310,12 +9310,12 @@
     }
    ],
    "name": {
-    "he": "מעבר לנתיב סמוך - גרסה",
-    "en": "Merge into adjacent lane (variant display)"
+    "he": "מעבר לנתיב סמוך (תמרור פולט אור)",
+    "en": "Merge into adjacent lane (overhead lane control, light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 725.",
-    "en": "The same as sign 725."
+    "he": "כמו 725, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 725, shown as an illuminated electronic sign."
    },
    "pictogram": "Same diagonal merge-arrow overhead signal as sign 725, in an alternative housing/display form.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -9376,12 +9376,12 @@
     }
    ],
    "name": {
-    "he": "נתיב יציאה - גרסה",
-    "en": "Exit lane (variant display)"
+    "he": "נתיב יציאה (תמרור פולט אור)",
+    "en": "Exit lane (overhead lane control, light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 726.",
-    "en": "The same as sign 726."
+    "he": "כמו 726, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 726, shown as an illuminated electronic sign."
    },
    "pictogram": "Same exit-arrow overhead signal as sign 726, in an alternative housing/display form.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -9582,8 +9582,8 @@
     "en": "Reversible lane (double white dashed line)"
    },
    "meaning": {
-    "he": "אל תיסע בנתיב זה אלא אם הוצב מעליו תמרור 201 עד 206, 203 עד 212, או 724 עד 724פ (המורה כי הנתיב פתוח בכיוון הנוכחי).",
-    "en": "Do not drive in this lane unless a sign from 201-206, 203-212, or 724-724פ is displayed above it, showing that the lane is open in this direction."
+    "he": "אל תיסע בנתיב זה, אלא אם הוצב מעליו תמרור 201 עד 203, 206 עד 212 או 724 עד 724פ (המורה כי הנתיב פתוח בכיוון שלך).",
+    "en": "Do not drive in this lane unless one of signs 201 to 203, 206 to 212 or 724 to 724פ is displayed above it, showing that the lane is open in your direction."
    },
    "pictogram": "Two parallel dashed white lines marking a reversible lane whose direction of use is set by an overhead signal.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -11021,12 +11021,12 @@
     }
    ],
    "name": {
-    "he": "אתר עבודה בדרך - סע לפי הסימון הכתום",
-    "en": "Road work site ahead (follow orange marking)"
+    "he": "אתר עבודה בדרך (תמרור פולט אור)",
+    "en": "Road work site ahead (light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 901; אם סומן, סע על פי הסימון בצבע כתום.",
-    "en": "The same as sign 901; where marked, follow the orange road markings."
+    "he": "כמו 901, בגרסה אלקטרונית מוארת; אם סומן, סע על פי הסימון בצבע כתום.",
+    "en": "The same as sign 901, shown as an illuminated electronic sign; where marked, follow the orange road markings."
    },
    "pictogram": "Same digging-figure triangle as sign 901.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -11600,8 +11600,8 @@
     "en": "Supplementary warning/instruction/prohibition/notice plate (worksite)"
    },
    "meaning": {
-    "he": "נושא מסר מחייב שאין לו תמרור מתאים בלוח, באתר עבודה בדרך; מוצב מתחת לתמרור אחר, ומוסיף על האמור בו.",
-    "en": "Carries a binding message that has no matching sign of its own, at a road-work site; it is fixed below another sign and adds to what that sign says."
+    "he": "תמרור לאזהרה, להוריה, לאיסור או להודעה, רק למסר שאין לו תמרור בלוח התמרורים, באתר עבודה בדרך; פעל על פי האמור בו. הוצב מתחת לתמרור אחר וצמוד אליו – האמור בו חל בנוסף לתמרור שמעליו.",
+    "en": "A warning, instruction, prohibition or notice at a road-work site, only for a message that has no sign of its own in the chart; act on what it says. Fixed directly below another sign, what it says applies in addition to that sign."
    },
    "pictogram": "Small white rectangular plate, black border, black Hebrew text stating the specific instruction; mounted directly beneath, and touching, the worksite sign it supplements.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -11639,8 +11639,8 @@
     "en": "Distance plate, metres to the sign above (worksite)"
    },
    "meaning": {
-    "he": "הוצב מתחת לתמרור אחר באתר עבודה: האמור בתמרור שמעליו יחול במרחק הנקוב או במקום שהוצב.",
-    "en": "Fixed below another sign at a road-work site: what the sign above says applies at the distance shown, or at the place named."
+    "he": "הוצב מתחת לתמרור אחר או בתוכו, באתר עבודה בדרך: האמור באותו תמרור יחול במרחק הנקוב במטרים.",
+    "en": "Fixed below another sign, or inside it, at a road-work site: what that sign says applies at the distance in metres shown."
    },
    "pictogram": "Small white rectangular plate, black border, with a black number and 'מ׳' (metres) giving the distance to where the sign above it takes effect.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf"
@@ -11793,8 +11793,8 @@
     "en": "Reversible lane, double orange dashed line (worksite)"
    },
    "meaning": {
-    "he": "אל תיסע בנתיב זה אלא אם הוצב מעליו תמרור 201 עד 206, 203 עד 212, או 724 עד 724פ, באתר עבודה בדרך.",
-    "en": "Do not drive in this lane unless a sign from 201-206, 203-212, or 724-724פ is displayed above it, at a road-work site."
+    "he": "אל תיסע בנתיב זה, אלא אם הוצב מעליו תמרור 201 עד 203, 206 עד 212 או 724 עד 724פ, באתר עבודה בדרך.",
+    "en": "Do not drive in this lane unless one of signs 201 to 203, 206 to 212 or 724 to 724פ is displayed above it, at a road-work site."
    },
    "pictogram": "Two parallel dashed orange lines marking a reversible lane through the worksite.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -12580,12 +12580,12 @@
     }
    ],
    "name": {
-    "he": "לוח נייד מהבהב - איתות אזהרה והכוונה (גרסה)",
-    "en": "Mobile flashing board - signal, warning and guidance (variant)"
+    "he": "לוח נייד מהבהב - איתות אזהרה והכוונה (תמרור פולט אור)",
+    "en": "Mobile flashing board - signal, warning and guidance (light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 933.",
-    "en": "The same as sign 933."
+    "he": "כמו 933, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 933, shown as an illuminated electronic sign."
    },
    "pictogram": "Same flashing arrow-board as sign 933, in an alternative display configuration.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
@@ -12810,12 +12810,12 @@
     }
    ],
    "name": {
-    "he": "לוח נייד מהבהב - הכביש סגור (גרסה)",
-    "en": "Mobile flashing board - road closed (variant)"
+    "he": "לוח נייד מהבהב - הכביש סגור (תמרור פולט אור)",
+    "en": "Mobile flashing board - road closed (light-emitting)"
    },
    "meaning": {
-    "he": "כמו תמרור 934.",
-    "en": "The same as sign 934."
+    "he": "כמו 934, בגרסה אלקטרונית מוארת.",
+    "en": "The same as sign 934, shown as an illuminated electronic sign."
    },
    "pictogram": "Same 'road closed' flashing board as sign 934, in an alternative display configuration.",
    "source": "https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf",
