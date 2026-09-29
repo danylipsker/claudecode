@@ -1,0 +1,437 @@
+﻿file,number,variant,page,name_he,name_en,width_pt,height_pt,source_px,colours,background,traced_at
+101.svg,101,,7,כביש משובש,Uneven road,60.75,51.0,186x156,#f00 #fff #000,transparent,3x
+102.svg,102,,7,עקומה חדה ימינה,Sharp curve to the right,61.5,54.0,188x165,#f00 #fff #000,transparent,3x
+103.svg,103,,7,עקומה חדה שמאלה,Sharp curve to the left,60.75,54.0,186x165,#f00 #fff #000,transparent,3x
+104.svg,104,,7,עקומה ימינה ואחר כך שמאלה,"Double bend, first to the right",60.75,52.5,186x160,#f00 #fff #000,transparent,3x
+105.svg,105,,7,עקומה שמאלה ואחר כך ימינה,"Double bend, first to the left",60.75,53.25,186x163,#f00 #fff #000,transparent,3x
+106.svg,106,,7,דרך מפותלת,Winding road,61.5,53.25,188x163,#f00 #fff #000,transparent,3x
+107.svg,107,,7,אזהרה והדרכה בעקומה חדה – שמאלה,"Chevron board, sharp curve to the left",99.75,45.75,133x61,#fff #000,transparent,3x
+108.svg,108,,7,אזהרה והדרכה בעקומה חדה – ימינה,"Chevron board, sharp curve to the right",98.25,45.0,276x126,#fff #000,transparent,1x
+109.svg,109,,8,הכביש הולך וצר,Road narrows on both sides,60.0,53.25,183x163,#f00 #fff #000,transparent,3x
+110.svg,110,,8,הכביש הולך וצר מימין,Road narrows on the right,60.75,51.75,186x158,#f00 #fff #000,transparent,3x
+111.svg,111,,8,הכביש הולך וצר משמאל,Road narrows on the left,60.0,52.5,183x160,#f00 #fff #000,transparent,3x
+112.svg,112,,8,מעבר צר או מכשול,Narrow passage or obstacle marker,93.0,54.0,284x165,#fff #000,white,1x
+113.svg,113,,8,מכשול גובה,Height obstacle (low clearance),76.5,15.75,234x48,#fff #000,white,1x
+114.svg,114,,8,צומת הצטלבות,Crossroads,60.75,53.25,186x163,#f00 #fff #000,transparent,3x
+115.svg,115,,8,צומת קמץ – דרך צדדית מימין,Side road joining from the right,60.75,52.5,186x160,#f00 #fff #000,transparent,3x
+116.svg,116,,8,צומת קמץ – דרך צדדית משמאל,Side road joining from the left,60.75,51.75,186x158,#f90000 #fff #000,transparent,3x
+117.svg,117,,9,צומת קמץ (צומת T),T-junction,60.75,52.5,186x160,#f00 #fff #000,transparent,3x
+118.svg,118,,9,אזהרה והדרכה בצומת T,Chevron board at T-junction (turn left or right),102.75,45.75,314x140,#fff #000,transparent,1x
+119.svg,119,,9,צמתי קמץ – ימינה ואחר כך שמאלה,"Staggered junctions, first right then left",60.75,52.5,186x160,#f00 #fff #000,transparent,3x
+120.svg,120,,9,צמתי קמץ – שמאלה ואחר כך ימינה,"Staggered junctions, first left then right",61.5,51.75,188x158,#f90000 #fff #000,transparent,3x
+121.svg,121,,9,מעגל תנועה,Roundabout ahead,60.75,53.25,186x163,#f00 #fff #000,transparent,3x
+122.svg,122,,9,רמזור,Traffic signals ahead,60.75,52.5,186x160,#f00 #fff #00d000 #f1f008 #131300,transparent,3x
+123.svg,123,,9,התמזגות – דרך צדדית מימין,Side road merging from the right (you have priority),60.75,53.25,186x163,#f00 #fff #000,transparent,3x
+124.svg,124,,9,התמזגות – דרך צדדית משמאל,Side road merging from the left (you have priority),60.75,52.5,186x160,#f90000 #fff #000,transparent,3x
+125.svg,125,,10,התמזגות לכביש בעל זכות קדימה מימין,Merge into a priority road coming from the right,60.75,51.75,186x158,#f00 #fff #000,transparent,3x
+126.svg,126,,10,התמזגות לכביש בעל זכות קדימה משמאל,Merge into a priority road coming from the left,60.75,51.75,186x158,#f90000 #fff #000,transparent,3x
+127.svg,127,,10,גודש בתנועה,Traffic congestion ahead,56.4,48.74,172x149,#f80000 #fff #000 #b82827,transparent,3x
+127פ.svg,127פ,,10,גודש בתנועה (תמרור פולט אור),Traffic congestion ahead (light-emitting),56.1,54.71,172x167,#000 #f00 #fff,transparent,3x
+128_1.svg,128,1,10,רכבת מקומית (קלה) חוצה,Light rail / tram crossing,54.4,70.9,167x218,#fff #f00 #1a1a1a #000,transparent,1x
+128_2.svg,128,2,10,רכבת מקומית (קלה) חוצה,Light rail / tram crossing,53.2,43.37,147x120,#f00 #fff #000,transparent,3x
+129_1.svg,129,1,10,מפגש מסילת ברזל,Railway level crossing ahead,59.21,69.4,182x213,#fff #f00 #1a1a1a,transparent,1x
+129_2.svg,129,2,10,מפגש מסילת ברזל,Railway level crossing ahead,54.69,47.15,169x146,#f80000 #fff #000,transparent,3x
+130.svg,130,,11,מפגש מסילת ברזל במרחק כ-300 מ׳,"Level crossing countdown marker, ~300 m",61.5,59.25,188x181,#fff #f70000 #1c1c1c #b32726,transparent,3x
+131.svg,131,,11,מפגש מסילת ברזל במרחק כ-200 מ׳,"Level crossing countdown marker, ~200 m",62.25,60.75,190x186,#fff #f60000 #1c1c1c #b42426,transparent,3x
+132.svg,132,,11,מפגש מסילת ברזל במרחק כ-100 מ׳,"Level crossing countdown marker, ~100 m",60.75,60.75,186x186,#fff #f60000 #1d1d1d #b52525,transparent,3x
+133.svg,133,,11,מפגש מסילת ברזל – מסילה אחת,"Level crossing, single track (St Andrew's cross)",61.5,41.25,188x126,#fff #d91016,transparent,3x
+134.svg,134,,11,מפגש מסילת ברזל – יותר ממסילה אחת,"Level crossing, more than one track (double cross)",61.5,54.0,188x165,#fff #d21319 #b10c13,transparent,3x
+135.svg,135,,11,מעבר חצייה להולכי רגל בקרבת מקום,Pedestrian crossing ahead,69.75,60.0,213x183,#f00 #fff #000,transparent,3x
+136.svg,136,,11,הולכי רגל בקרבת מקום,Pedestrians (children) nearby,69.75,60.0,213x183,#f00 #fff #000,transparent,3x
+137.svg,137,,12,תנועת אופניים בקרבת מקום,Cyclists nearby,69.75,60.75,213x186,#f00 #fff #000,transparent,3x
+138.svg,138,,12,מנהרה,Tunnel ahead,69.75,59.25,213x181,#f00 #fff #000,transparent,3x
+139.svg,139,,12,תמרור 'עצור' בהמשך הדרך,Stop sign ahead,69.75,60.75,213x186,#f00 #000 #fff,transparent,3x
+140.svg,140,,12,ירידה תלולה,Steep descent,69.75,59.25,213x181,#f00 #000 #fff #ba2123,transparent,3x
+141.svg,141,,12,סכנת החלקה,Slippery road,69.75,59.25,213x181,#f00 #fff #000,transparent,3x
+142.svg,142,,12,אבנים מידרדרות מימין,Falling rocks from the right,69.75,60.0,213x183,#f00 #000 #fff,transparent,3x
+143.svg,143,,12,אבנים מידרדרות משמאל,Falling rocks from the left,69.75,60.75,213x186,#f00 #1d1d1d #fff,transparent,3x
+144.svg,144,,13,פסי האטה,Speed bumps,69.75,60.0,213x183,#f00 #fff #000,transparent,3x
+145.svg,145,,13,תנועה דו-סטרית,Two-way traffic,69.75,60.75,213x186,#f00 #fff #000,transparent,3x
+146_1.svg,146,1,13,בעלי חיים,Animals,69.75,61.5,213x188,#f00 #fff #000,transparent,3x
+146_2.svg,146,2,13,בעלי חיים,Animals,69.75,59.25,213x181,#f00 #fff #000,transparent,3x
+147.svg,147,,13,רכב עבודה או טרקטור חוצה,Farm/work vehicles or tractors crossing,69.75,61.5,213x188,#f00 #fff #000,transparent,3x
+148.svg,148,,13,עמודי הכוונה ואזהרה בצד הכביש,Delineator posts at the road edge,42.75,75.0,130x229,#fff #000,white,1x
+149.svg,149,,13,עמודון להכוונה או להפרדה,Guide / separation bollard,21.65,62.4,67x192,#151515 #aeaeae #292929 #c3c3c3 #969696,transparent,1x
+150.svg,150,,14,מקום מסוכן,Other danger,69.75,60.75,213x186,#f00 #fff #000,transparent,3x
+150פ.svg,150פ,,14,מקום מסוכן (תמרור פולט אור),Other danger (light-emitting),65.25,57.0,181x158,#000 #f00 #fff,white,3x
+151.svg,151,,14,תאונה,Accident ahead,63.0,54.75,192x167,#f00 #fff #000,transparent,3x
+151פ.svg,151פ,,14,תאונה (תמרור פולט אור),Accident ahead (light-emitting),63.0,56.25,192x172,#000 #f00 #fff,white,3x
+152_1.svg,152,1,14,רוח צד,Crosswind,66.0,57.0,190x164,#f00000 #fff #000,transparent,3x
+152_2.svg,152,2,14,רוח צד,Crosswind,65.25,56.25,189x164,#f00000 #fff #000,transparent,3x
+201.svg,201,,16,סע ישר או ימינה,Go straight or turn right,69.75,68.25,213x208,#00f #fff #130c80,transparent,1x
+202.svg,202,,16,סע ישר או שמאלה,Go straight or turn left,69.75,68.25,213x208,#00f #fff #110d80,transparent,1x
+203.svg,203,,16,סע ישר,Go straight only,69.0,70.5,211x215,#00f #fff #161077,transparent,1x
+204.svg,204,,17,סע ימינה – פנה לפני התמרור,Turn right (before the sign),69.75,68.25,213x208,#00f #fff #150f7b,transparent,1x
+205.svg,205,,17,סע שמאלה – פנה לפני התמרור,Turn left (before the sign),69.75,68.25,213x208,#00f #fff #150f7d,transparent,1x
+206.svg,206,,18,סע ימינה – פנה אחרי התמרור,Turn right ahead (after the sign),69.75,69.0,213x211,#00f #fff #140e6e,transparent,1x
+207.svg,207,,18,סע שמאלה – פנה אחרי התמרור,Turn left ahead (after the sign),69.75,69.0,213x211,#00f #fff #150f71,transparent,1x
+208.svg,208,,18,סע ימינה או שמאלה,Turn right or left,69.75,69.0,213x211,#00f #fff #150e70,transparent,1x
+209.svg,209,,19,סע ישר או בפניית פרסה ימינה,Go straight or U-turn to the right,69.75,69.0,213x211,#00f #fff #150f76,transparent,1x
+210.svg,210,,19,סע ישר או בפניית פרסה שמאלה,Go straight or U-turn to the left,69.75,69.0,213x211,#00f #fff #130e72,transparent,1x
+211.svg,211,,19,פניית פרסה ימינה,U-turn to the right only,69.75,69.0,213x211,#00f #fff #130e83,transparent,1x
+212.svg,212,,19,פניית פרסה שמאלה,U-turn to the left only,69.75,69.0,213x211,#00f #fff #120d82,transparent,1x
+213.svg,213,,19,עבור מימין או משמאל,Pass either side,69.75,68.25,213x208,#00f #fff #171063,transparent,1x
+214.svg,214,,20,עבור מימין,Keep right (pass on the right),64.49,63.1,197x193,#00f #fff #161161,transparent,1x
+215.svg,215,,20,עבור משמאל,Keep left (pass on the left),65.2,63.8,200x195,#00f #fff #15106c,transparent,1x
+216.svg,216,,20,כניסה לדרך מהירה,Expressway begins,56.0,84.0,173x259,#0000f5 #fff,transparent,3x
+217.svg,217,,20,קצה הדרך המהירה,End of expressway,56.15,83.92,176x263,#0000f3 #fff #000 #2a28ba,transparent,3x
+218.svg,218,,20,מהירות מזערית,Minimum speed,62.24,60.9,191x187,#00f #fff #16106c,transparent,1x
+219.svg,219,,20,דרך לרכב מנועי בלבד,Motor vehicles only,62.0,60.0,190x184,#00f #fff #140f6d,transparent,1x
+220.svg,220,,21,רחוב משולב,Shared (living) street begins,63.0,52.5,192x160,#00f #fff #100f86,transparent,3x
+221.svg,221,,21,קצה רחוב משולב,End of shared (living) street,63.0,52.5,192x160,#00f #fff #000 #1f1ca9,transparent,3x
+222.svg,222,,21,אזור מיתון תנועה,Traffic-calming zone begins (30 km/h zone),61.95,52.48,195x165,#00f #fff #f00 #1a1a1a,transparent,1x
+223.svg,223,,21,קצה אזור מיתון תנועה,End of traffic-calming zone,60.96,52.25,193x165,#00f #fff #000 #f00,transparent,1x
+224.svg,224,,21,נתיב לאופניים,One-way cycle lane,68.75,43.49,210x133,#00f #fff #120d93,transparent,3x
+225.svg,225,,21,קצה הנתיב לאופניים,End of cycle lane,67.43,43.35,207x133,#00f #fff #0b0b9f #000023,transparent,1x
+226.svg,226,,21,שביל להולכי רגל בלבד,Pedestrian path,64.6,60.24,198x184,#00f #fff #1f1b68,transparent,3x
+227.svg,227,,21,שביל אופניים,Cycle path,64.76,66.25,198x203,#00f #fff #211c5f,transparent,3x
+228.svg,228,,22,שביל משותף להולכי רגל ולאופניים,Shared pedestrian and cycle path,66.0,63.75,202x195,#00f #fff #140f85,transparent,3x
+229.svg,229,,22,שביל נפרד להולכי רגל ולאופניים,Segregated pedestrian and cycle path,66.75,63.75,204x195,#00f #fff #130d79,transparent,3x
+230_1.svg,230,1,22,כביש או נתיב אגרה,Toll road / toll lane,60.0,59.25,219x217,#00f #fff,transparent,1x
+230_2.svg,230,2,22,כביש או נתיב אגרה,Toll road / toll lane,60.0,84.0,218x306,#00f #fff,white,3x
+231_1.svg,231,1,23,קצה כביש או נתיב אגרה,End of toll road / toll lane,60.0,61.5,183x188,#00f #fff #000,white,1x
+231_2.svg,231,2,23,קצה כביש או נתיב אגרה,End of toll road / toll lane,58.5,83.25,179x254,#00f #fff #000,white,3x
+301.svg,301,,25,תן זכות קדימה,Give way (yield),69.75,60.0,213x183,#f00 #fff,transparent,3x
+302.svg,302,,25,עצור,Stop,69.75,65.25,213x199,#f00 #fff,transparent,3x
+303.svg,303,,25,מעגל תנועה,Roundabout (give way inside),69.75,68.25,213x208,#00f #fff #140f6e,transparent,1x
+304.svg,304,,25,עצור (תמרור נייד),Stop (hand-held sign),69.75,66.0,213x202,#fff #f00 #9d2831,transparent,3x
+305.svg,305,,25,התקדם בזהירות (תמרור נייד),Go / proceed with care (hand-held sign),69.75,66.0,213x202,#fff #007000 #164a19,transparent,3x
+306.svg,306,,25,מעבר חצייה – תן זכות קדימה להולכי רגל,Pedestrian crossing (give way to pedestrians),69.75,68.25,213x208,#00f #fff #1d1d1d,transparent,1x
+307.svg,307,,26,תן זכות קדימה לתנועה מהכיוון הנגדי,Give way to oncoming traffic (narrow section),69.75,66.75,213x204,#f00 #fff #000,transparent,3x
+308.svg,308,,26,לך זכות קדימה לגבי התנועה מהכיוון הנגדי,Priority over oncoming traffic (narrow section),69.75,69.75,213x213,#00f #fff #f00 #100d92,transparent,1x
+309.svg,309,,26,דרך בעלת זכות קדימה,Priority road,72.75,72.75,92x92,#ff0 #fff #000,transparent,1x
+310.svg,310,,26,קצה הדרך בעלת זכות קדימה,End of priority road,75.0,75.0,92x92,#ff0 #000 #fff,transparent,1x
+401.svg,401,,28,כביש סגור - בשני הכוונים,Road closed (both directions),70.5,63.75,215x195,#fff #f00,transparent,3x
+401פ.svg,401פ,,28,כביש סגור - מוצב מעל הרמזור,Straight ahead closed (mounted above a signal),68.25,68.25,209x209,#000 #f00,transparent,3x
+402.svg,402,,28,אסורה הכניסה לכל רכב,No entry for any vehicle,70.5,65.25,215x199,#f00 #fff,transparent,3x
+403.svg,403,,28,מחסום: הדרך חסומה,Barrier: road blocked,93.0,12.0,284x37,#f00 #fff,transparent,1x
+404.svg,404,,28,מחסום לפני מפגש מסילת ברזל,Barrier before a railway level crossing,93.0,12.75,284x39,#f00 #fff #1d1d1d,transparent,1x
+405.svg,405,,28,אסורה הכניסה לכל רכב מנועי,No entry for any motor vehicle,69.75,66.0,213x202,#f00 #fff #000,transparent,3x
+406.svg,406,,29,אסורה הכניסה לרכב מסחרי מעל משקל נקוב,No entry for goods vehicles over the stated weight,67.46,65.35,207x200,#f00 #fff #000,transparent,3x
+407.svg,407,,29,אסורה הכניסה לרכב הנושא חומר מסוכן,No entry for vehicles carrying hazardous materials,66.99,64.85,205x198,#f00 #fff #000,transparent,3x
+408.svg,408,,29,"אסורה הכניסה לרכב מנועי, למעט דו-גלגלי",No entry for motor vehicles except two-wheelers,68.4,65.49,209x200,#fff #f80000 #000,transparent,3x
+409.svg,409,,29,אסורה הכניסה לאופנוע,No entry for motorcycles,67.1,64.21,205x196,#f00 #fff #000 #c23232,transparent,3x
+410.svg,410,,29,אסורה הכניסה לרכב עבודה ולטרקטור,No entry for work vehicles and tractors,67.99,63.65,207x195,#f00 #fff #000,transparent,3x
+411.svg,411,,29,אסורה הכניסה לבעלי חיים,No entry for animals,66.49,62.2,204x190,#fff #f00 #000,transparent,3x
+412.svg,412,,29,אסורה הכניסה לאופניים,No entry for bicycles,66.49,64.35,203x197,#fff #f00 #000,transparent,3x
+413.svg,413,,30,אסורה הכניסה להולכי רגל,No entry for pedestrians,69.75,66.75,213x204,#f00 #fff #000,transparent,3x
+414_1.svg,414,1,30,אסורה הכניסה למספר סוגי משתמשים משולב,Combined entry ban (pedestrians/bicycles/work vehicles/animals),70.25,71.73,215x219,#fff #f00 #1d1d1d #b92526,transparent,3x
+414_2.svg,414,2,30,אסורה הכניסה למספר סוגי משתמשים משולב,Combined entry ban (pedestrians/bicycles/work vehicles/animals),68.98,68.25,211x208,#fff #f00 #000 #1a1a1a,transparent,3x
+415.svg,415,,30,אסורה הכניסה לרכב מעל משקל נקוב,No entry for vehicles over the stated total weight,69.75,66.75,213x204,#fff #f00 #000,transparent,3x
+416.svg,416,,30,אסורה הכניסה לרכב מעל גובה נקוב,No entry for vehicles over the stated height,68.25,67.5,208x206,#fff #f00 #1e1e1e,transparent,1x
+417.svg,417,,30,אסורה הכניסה לרכב מעל רוחב נקוב,No entry for vehicles over the stated width,73.5,75.0,225x229,#fff #f00 #1a1a1a #000 #b82c2d,transparent,3x
+418.svg,418,,31,אזור אסור ללימוד נהיגה,Driving-lessons prohibited zone begins,69.75,67.5,214x206,#f00 #fff #00f,transparent,3x
+419.svg,419,,31,קצה האזור האסור ללימוד נהיגה,End of driving-lessons prohibited zone,69.75,66.0,214x201,#fff #78797b #1e1e1e,transparent,3x
+420.svg,420,,31,אסור לעקוף רכב מנועי דו-גלגלי ומעלה,No overtaking of vehicles with more than two wheels,69.75,64.5,213x197,#fff #f00 #000 #b42323,transparent,3x
+421.svg,421,,31,קצה קטע איסור העקיפה,End of no-overtaking section,69.75,64.5,213x197,#fff #000,transparent,3x
+422.svg,422,,31,אסור לרכב מעל 4 טון לעקוף,No overtaking by vehicles over 4 tonnes,69.9,67.72,220x213,#f00 #fff #000,transparent,1x
+423.svg,423,,31,קצה קטע איסור העקיפה לרכב מעל 4 טון,End of no-overtaking section for vehicles over 4 tonnes,69.75,66.75,213x204,#fff #000,transparent,3x
+424.svg,424,,32,אזור דרכים עירוניות,Urban roads area begins,69.75,66.75,213x204,#f00 #fff #000,transparent,3x
+425.svg,425,,32,קצה אזור דרכים עירוניות,End of urban roads area,69.75,64.5,213x197,#fff #000 #78797b,transparent,3x
+426.svg,426,,32,מהירות מיוחדת,Special (posted) speed limit,69.75,64.5,213x197,#fff #f00 #000,transparent,3x
+426פ.svg,426פ,,32,מהירות מיוחדת - הודעה על אכיפה,Special speed limit (enforced section variant),69.75,66.0,213x202,#000 #f00 #fff,transparent,3x
+427.svg,427,,32,קצה קטע המהירות המיוחדת,End of special speed limit section,74.7,67.47,213x192,#fff #000,transparent,3x
+428.svg,428,,33,אסורה הפניה ימינה,No right turn,69.75,65.25,213x199,#f00 #fff #000,transparent,3x
+429.svg,429,,33,אסורה הפניה שמאלה,No left turn,69.75,66.0,213x202,#f00 #fff #000 #bb2225,transparent,3x
+430.svg,430,,33,אסורה פניית פרסה ימינה,No U-turn to the right,72.0,70.45,225x220,#f00 #fff #000 #ba2627,transparent,3x
+431.svg,431,,33,אסורה פניית פרסה שמאלה,No U-turn to the left,71.94,68.85,225x215,#f00 #fff #000,transparent,3x
+432.svg,432,,33,אסורה חניית רכב,No parking,71.71,67.85,221x209,#f00 #00f #fff #bb2e34 #0c079a,transparent,3x
+433.svg,433,,33,אסורה כל עצירה וחניה,No stopping or parking,70.5,66.71,216x204,#f00 #00f #fff #bd2b2e,transparent,3x
+434.svg,434,,34,"קצה קטע הוראות התמרורים 432, 433",End of the no-parking/no-stopping section,72.0,70.45,221x216,#f00 #00f #000 #fff #ba2a2c,transparent,3x
+435.svg,435,,34,אזור אסור לחניית רכב מסחרי כבד,No-parking zone for heavy goods vehicles begins,69.75,66.75,213x204,#f00 #00f #fff #565074,transparent,3x
+436.svg,436,,34,קצה האזור האסור לחניית רכב מסחרי כבד,End of no-parking zone for heavy goods vehicles,69.75,68.25,213x209,#f00 #00f #000 #fff #bb3c43,transparent,3x
+437.svg,437,,34,חנייה בלעדית לנכה,Reserved disabled parking,66.5,66.5,193x193,#00f #fff,transparent,1x
+438.svg,438,,34,עצור! ביקורת מכס,Stop! Customs inspection,71.5,71.5,218x218,#fff #f00 #000,transparent,3x
+439.svg,439,,34,תמרור למסר שאין לו תמרור בלוח,Supplementary text plate (message not otherwise listed),89.25,81.0,273x247,#ff0 #000 #e4e46a #fff,transparent,1x
+440.svg,440,,35,אזור אסור לרכב מזהם,Low-emission zone begins,70.35,69.47,195x192,#fff #f00 #241f21,transparent,3x
+441.svg,441,,35,קצה האזור האסור לרכב מזהם,End of low-emission zone,67.84,67.1,208x206,#fff #000 #918b8b,transparent,3x
+501.svg,501,,37,כביש/נתיב/שול לתחבורה ציבורית,Public-transport road/lane/shoulder,76.33,158.5,131x271,#00f #fff #fff500 #000,transparent,3x
+502.svg,502,,38,קצה הכביש/הנתיב/השול לתחבורה ציבורית,End of public-transport road/lane/shoulder,64.07,137.01,138x294,#00f #fff #000 #ff0 #4040ff #a9a713,transparent,3x
+503_1.svg,503,1,38,נתיב לתחבורה ציבורית (סימון),Public-transport lane (road marking),85.5,34.5,261x105,#686869 #ff0,transparent,1x
+503_2.svg,503,2,38,נתיב לתחבורה ציבורית (סימון),Public-transport lane (road marking),84.96,35.43,196x82,#676767 #efea2a,transparent,3x
+504.svg,504,,38,נתיב תחבורה ציבורית בכיוון הנגדי,Contraflow public-transport lane,69.75,70.5,213x215,#00f #fff #ffff06 #171546,transparent,3x
+505.svg,505,,39,תחנת אוטובוסים ציבוריים,Public bus stop,68.49,79.3,210x242,#ff0 #fff #000 #001eff,transparent,3x
+506.svg,506,,39,תחנת רכבת מקומית,Local train (light rail) stop,70.85,74.98,209x221,#ff0 #fff #333500 #001df8,transparent,3x
+507.svg,507,,39,תחנת מוניות,Taxi stand begins,57.7,68.94,176x211,#0000f6 #fff #f60000 #ff1 #3c3800 #b32e4b #282506,transparent,3x
+508.svg,508,,39,קצה תחום תחנת מוניות,End of taxi stand,53.7,69.04,165x212,#0000f2 #fff #000 #f30009 #f9ff14 #b83360,transparent,3x
+509.svg,509,,40,מקום עצירה למונית להעלאה/הורדה בלבד,Taxi stopping point (pick-up/drop-off only),55.5,70.44,170x216,#ffff0b #222100 #f60000 #0000f9 #ffffdc #c53a5b,none,3x
+510.svg,510,,40,תחנת הסעה לחיילים,Soldier hitchhiking pick-up point,54.0,54.0,165x165,#ff0 #f00 #fff5f0,transparent,3x
+511.svg,511,,40,מקום עצירה לסוג רכב - אבן שפה אדום-צהוב,Reserved stopping point (red-yellow curb),99.0,41.25,303x126,#696969 #ffff0e #db1719 #fff,transparent,3x
+512.svg,512,,40,מקום עצירה במפרץ - אבן שפה,Reserved stopping point in a bay,99.0,39.0,303x119,#686868 #eeee74 #932b24,transparent,3x
+513.svg,513,,41,מקום עצירה ללא מפרץ ואבן שפה מסומנת,Reserved stopping point (no bay / unmarked curb),95.95,51.97,275x149,#696969 #f2f83e,transparent,3x
+514.svg,514,,41,חצים צהובים לנתיב תח״צ בצומת,Yellow directional arrows for a public-transport lane at a junction,101.55,81.0,169x135,#666 #ede93c #5c5636 #fff #de782d,transparent,3x
+515.svg,515,,42,נתיב לתחבורה ציבורית - קו רציף כפול משולב עם מעוינים,Public-transport lane - solid double line with diamonds,93.43,78.65,178x150,#686868 #dfe454,transparent,3x
+516.svg,516,,42,נתיב לתחבורה ציבורית - חציה אל ומהנתיב,Public-transport lane - permitted crossing point,92.46,94.56,179x183,#686866 #e8e84c,transparent,3x
+601_1.svg,601,1,44,שם המחלף או הצומת,Interchange or junction name plate,48.75,84.75,149x259,#00c #fff #333,white,3x
+601_2.svg,601,2,44,שם המחלף או הצומת,Interchange or junction name plate,49.5,82.5,151x252,#007e00 #fff #333,transparent,3x
+602_1.svg,602,1,44,הכוונה ליעדים מעל הנתיבים - דרך לא עירונית,Overhead lane destination guidance (non-urban road),96.0,26.25,293x80,#3831f3 #fff,white,1x
+602_2.svg,602,2,44,הכוונה ליעדים מעל הנתיבים - דרך לא עירונית,Overhead lane destination guidance (non-urban road),99.75,37.5,305x114,#007d00 #fff #d11315,transparent,3x
+603.svg,603,,44,הכוונה ליעדים מעל הנתיבים לפני צומת,Overhead lane destination guidance before a junction,99.0,24.75,303x76,#0f740e #d6ffca #997618 #061000,none,3x
+604_1.svg,604,1,45,הכוונה מוקדמת לקראת הצומת,Advance destination guidance before a junction,79.5,80.25,243x245,#388541 #692b00 #efffe7 #000 #c91619,none,1x
+604_2.svg,604,2,45,הכוונה מוקדמת לקראת הצומת,Advance destination guidance before a junction,72.75,102.0,222x311,#007d00 #e6ffe6,none,3x
+605_1.svg,605,1,45,שתי יציאות עוקבות וסמוכות,Two consecutive close-spaced exits,72.35,62.3,158x136,#00f #fff,transparent,3x
+605_2.svg,605,2,45,שתי יציאות עוקבות וסמוכות,Two consecutive close-spaced exits,69.75,75.0,213x229,#007000 #e6ffe4 #074e06 #d31213,none,1x
+606_1.svg,606,1,45,הכוונה ליציאה מהדרך במחלף,Guidance to the interchange exit,79.5,48.75,243x149,#00f #fff #e50b0d #0f0b9e #474599,transparent,3x
+606_2.svg,606,2,45,הכוונה ליציאה מהדרך במחלף,Guidance to the interchange exit,81.97,58.0,250x177,#007c00 #fff #c51917 #002900,transparent,3x
+607_1.svg,607,1,46,הכוונה ליציאה בלבד מעל הנתיב,Exit-only lane guidance (overhead),63.75,75.75,195x231,#00f #ff0 #fff #100800,white,1x
+607_2.svg,607,2,46,הכוונה ליציאה בלבד מעל הנתיב,Exit-only lane guidance (overhead),61.5,75.0,188x229,#007e00 #ff0 #e2ffe2 #000 #e20d0c,none,1x
+608.svg,608,,46,מקום היציאה מהדרך,Exit point marker,49.5,72.0,151x220,#ff0 #000 #f0f55d,none,1x
+609_1.svg,609,1,46,היציאות הבאות,Upcoming exits list,75.05,96.7,229x296,#3832f4 #fff #2a23be,white,1x
+609_2.svg,609,2,46,היציאות הבאות,Upcoming exits list,57.0,99.0,174x302,#388541 #ecfff0 #316b39,none,1x
+610_1.svg,610,1,47,יעדים או יעדי ביניים - דרך לא עירונית,Destinations / intermediate destinations (non-urban),72.0,63.75,220x195,#00c #eff3ff #0b0a6a,white,3x
+610_2.svg,610,2,47,יעדים או יעדי ביניים - דרך לא עירונית,Destinations / intermediate destinations (non-urban),72.75,105.75,222x323,#007e00 #e6ffe4 #0f3411,none,3x
+611_1.svg,611,1,47,מספרה של דרך,Road number shield,54.0,36.75,165x112,#00f #fff,transparent,1x
+611_2.svg,611,2,47,מספרה של דרך,Road number shield,54.75,37.5,167x114,#f00 #fff,transparent,3x
+611_3.svg,611,3,47,מספרה של דרך,Road number shield,54.0,36.75,165x112,#007e00 #fff,transparent,1x
+611_4.svg,611,4,47,מספרה של דרך,Road number shield,54.0,36.75,165x112,#111 #fff,transparent,1x
+612_1.svg,612,1,48,מספר הקילומטר בדרך,Kilometre-post marker,42.75,56.25,130x172,#00f #fff,transparent,3x
+612_2.svg,612,2,48,מספר הקילומטר בדרך,Kilometre-post marker,42.0,54.0,128x165,#f00 #fff,transparent,3x
+612_3.svg,612,3,48,מספר הקילומטר בדרך,Kilometre-post marker,41.25,54.0,126x165,#007e00 #fff,transparent,1x
+612_4.svg,612,4,48,מספר הקילומטר בדרך,Kilometre-post marker,41.25,54.0,126x165,#000 #fff,transparent,1x
+613.svg,613,,48,הגדרת תנועות בנתיבים,Lane-movement designation (overhead),71.75,113.92,222x353,#00f #007c00 #fff #f3ff21 #ca1511 #1a1919 #b5308d,transparent,3x
+614.svg,614,,48,הכוונה ליעדים - דרכים עירוניות,Destination guidance (urban roads),99.0,69.75,303x213,#007e00 #00f #fff #a87300 #000,transparent,1x
+615_1.svg,615,1,49,הכוונה מעל הנתיבים לפני מחלף - דרך עירונית,Overhead lane guidance before an urban interchange,90.0,77.25,275x236,#00f #fff #000047,transparent,1x
+615_2.svg,615,2,49,הכוונה מעל הנתיבים לפני מחלף - דרך עירונית,Overhead lane guidance before an urban interchange,90.75,50.25,278x153,#007e00 #ebffeb #2f5130,none,3x
+616_1.svg,616,1,49,הכוונה מעל הנתיבים לפני צומת - דרך עירונית,Overhead lane guidance before an urban junction,90.0,59.25,275x181,#007e00 #eaffea,none,3x
+616_2.svg,616,2,49,הכוונה מעל הנתיבים לפני צומת - דרך עירונית,Overhead lane guidance before an urban junction,90.75,50.25,246x135,#007e00 #fff #000,transparent,3x
+617_1.svg,617,1,49,מורה דרך בצומת או במחלף,Direction fingerpost at a junction/interchange,90.0,43.5,275x133,#0000f9 #fff #1a1998 #000,transparent,1x
+617_2.svg,617,2,49,מורה דרך בצומת או במחלף,Direction fingerpost at a junction/interchange,93.75,53.25,265x152,#fff #000 #191919,transparent,1x
+617_3.svg,617,3,49,מורה דרך בצומת או במחלף,Direction fingerpost at a junction/interchange,99.75,60.75,305x186,#a67300 #fff #000,transparent,3x
+618.svg,618,,50,כביש חד-סטרי - כניסה,One-way road entrance,60.0,60.0,183x183,#00f #fff #0d0b9c,transparent,1x
+619.svg,619,,50,שינוי במספר הנתיבים - גדל מימין,Number of lanes increases (from the right),62.25,61.5,190x188,#00f #fff #0d0ca5,transparent,1x
+620.svg,620,,50,שינוי במספר הנתיבים - גדל משמאל,Number of lanes increases (from the left),60.75,61.5,186x188,#00f #fff,transparent,1x
+621.svg,621,,50,שינוי במספר הנתיבים - קטן מימין,Number of lanes decreases (on the right),62.25,61.5,190x188,#00f #fff,transparent,1x
+622.svg,622,,50,שינוי במספר הנתיבים - קטן משמאל,Number of lanes decreases (on the left),62.25,61.5,190x188,#00f #fff #0e0e90,transparent,1x
+623.svg,623,,50,כביש ללא מוצא,Dead-end road ahead,63.75,63.0,195x192,#00f #fff #f00 #130f87,transparent,3x
+624.svg,624,,51,כביש ללא מוצא מימין,Dead-end side road on the right,54.0,54.0,165x165,#00f #fff #0e1089 #f00 #4144b5,transparent,3x
+625.svg,625,,51,כביש ללא מוצא משמאל,Dead-end side road on the left,54.0,54.0,165x165,#00f #fff #0c0c92 #f00 #a63052,transparent,1x
+626.svg,626,,51,חניה לכלי רכב מותרת (כביש),Parking permitted (on the roadway),53.25,53.25,163x163,#00f #fff #0f0e8d,transparent,1x
+627.svg,627,,52,חניה מותרת על המדרכה,Parking permitted on the pavement,55.5,78.75,169x241,#00f #fff #0e0f85,transparent,3x
+628.svg,628,,52,קצה מקום החניה המותר,End of the permitted parking area,54.0,54.0,165x165,#0000f8 #fff #1e1e1e,transparent,3x
+629_1.svg,629,1,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח,Supplementary warning/notice plate (message not otherwise listed),94.5,48.0,289x146,#fff #000,transparent,3x
+629_2.svg,629,2,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח,Supplementary warning/notice plate (message not otherwise listed),51.0,29.25,156x89,#fff #222,transparent,1x
+629_3.svg,629,3,52,תמרור לאזהרה או להודעה - מסר שאין לו תמרור בלוח,Supplementary warning/notice plate (message not otherwise listed),36.0,30.0,110x92,#f0f0f0 #00001e #1e1e1e,white,1x
+629פ.svg,629פ,,52,תמרור להודעה בלבד - מסר שאין לו תמרור בלוח,Supplementary notice-only plate,86.45,48.48,245x137,#000 #fff,transparent,3x
+630.svg,630,,53,מרחק במטרים לתמרור שמעליו,Distance plate (metres to the sign above),99.0,33.75,302x103,#fff #1e1e1e #000,transparent,3x
+631.svg,631,,53,לאורך קטע במטרים,Length plate (metres along the section),99.0,36.75,302x112,#fff #000,white,1x
+632.svg,632,,53,מסר מיועד לפונה בכוון החץ,Applies-to-turning-traffic plate,72.75,48.75,222x149,#fff #000,transparent,3x
+633.svg,633,,53,מנהרה,Tunnel ahead,60.75,60.0,81x80,#00f #fff #000,white,3x
+634.svg,634,,53,קצה המנהרה,End of tunnel,60.75,59.35,87x85,#00f #000 #fff,transparent,3x
+635.svg,635,,53,סכנת שריפות,Fire-risk warning,60.75,84.0,186x257,#fff #007000 #f9ff20 #e88e11 #393100 #efaf11 #ed1506 #edd31c,transparent,3x
+636.svg,636,,54,כביש חד-סטרי לרכב מנועי - אופניים בשני הכוונים,"One-way for motor vehicles, two-way for cyclists",63.0,63.0,62x64,#0000ed #fff #323264,white,3x
+637.svg,637,,54,מפרץ לעצירה במצב חירום,Emergency stopping bay,62.25,62.25,172x172,#0000f0 #fff,white,3x
+701.svg,701,,56,אור אדום,Red light,55.5,127.5,169x390,#fff #f00 #252525,transparent,3x
+702.svg,702,,56,אור אדום ואור צהוב יחד,Red and amber together,52.5,126.75,160x387,#fff #ff0 #f00 #1e1e1e,transparent,3x
+703.svg,703,,57,אור ירוק,Green light,40.15,95.43,124x293,#fff #00a500 #212121,transparent,3x
+704.svg,704,,57,חץ ירוק,Green arrow,94.5,93.0,289x284,#fff #1e1e1e #00a500,transparent,1x
+705.svg,705,,57,אור צהוב,Amber (yellow) light,42.25,93.8,130x287,#fff #ff0 #373737,transparent,3x
+706_1.svg,706,1,58,אור צהוב מהבהב,Flashing amber (yellow) light,44.25,97.5,135x298,#fff #ff0 #1d1d1d,transparent,3x
+706_2.svg,706,2,58,אור צהוב מהבהב,Flashing amber (yellow) light,43.5,102.0,133x312,#fff #000,transparent,1x
+707.svg,707,,58,אור צהוב מהבהב - הוצב ליד מעבר חציה,Flashing amber at a pedestrian/cyclist crossing,98.25,53.25,300x163,#fff #ff0 #000 #dfe056,transparent,3x
+708.svg,708,,58,אור לבן מלבני אופקי,Horizontal white bar light,42.75,111.0,130x339,#fff #000,transparent,3x
+709.svg,709,,59,אור לבן מלבני אופקי ואור לבן עגול יחד,Horizontal white bar and round white light together,43.5,111.0,133x338,#fff #000,transparent,3x
+710.svg,710,,59,אור לבן מלבני אנכי,Vertical white bar light,36.75,98.25,112x300,#fff #000,transparent,3x
+711.svg,711,,59,אור לבן מלבני מוטה - כיוון אחד,Tilted white bar light (one direction),39.35,94.44,122x294,#fff #000,transparent,3x
+712.svg,712,,59,אור לבן מלבני מוטה - כיוון נגדי,Tilted white bar light (mirrored direction),37.35,95.14,114x291,#fff #000,transparent,3x
+713.svg,713,,60,אור לבן מלבני אנכי ומוטה יחד - כיוון אחד,Vertical and tilted white bar lights together (one direction),61.5,99.0,188x302,#fff #000,white,1x
+714.svg,714,,60,אור לבן מלבני אנכי ומוטה יחד - כיוון נגדי,Vertical and tilted white bar lights together (mirrored direction),62.25,99.0,190x302,#fff #000,white,1x
+715.svg,715,,60,אור לבן מלבני אנכי ואורות מוטים יחד,Vertical white bar with tilted bars both sides,94.5,100.5,289x307,#fff #000,white,1x
+716.svg,716,,61,אור לבן עגול,Round white light,36.0,93.75,110x287,#fff #000,transparent,3x
+717_1.svg,717,1,61,אור לבן מהבהב,Flashing white light,33.75,90.75,103x278,#fff #000,transparent,3x
+717_2.svg,717,2,61,אור לבן מהבהב,Flashing white light,34.5,90.75,106x278,#fff #000,transparent,3x
+718.svg,718,,61,דמות הולך רגל בצבע אדום,Red pedestrian figure,36.75,59.25,112x181,#fff #1d1d1d #ee0707,transparent,1x
+719.svg,719,,61,דמות הולך רגל בצבע ירוק,Green pedestrian figure,35.72,57.95,103x167,#fff #1d1d1d #129911,transparent,3x
+720.svg,720,,61,צורת אופניים בצבע אדום,Red bicycle symbol,33.0,61.5,101x188,#fff #000 #c01a1c,white,3x
+721.svg,721,,61,צורת אופניים בצבע ירוק,Green bicycle symbol,32.25,56.25,99x172,#fff #000 #385737,white,3x
+722_1.svg,722,1,62,אור אדום מהבהב כפול - מפגש מסילת ברזל,Double flashing red light (railway crossing),94.5,52.5,289x160,#fff #000 #f00,transparent,3x
+722_2.svg,722,2,62,אור אדום מהבהב כפול - מפגש מסילת ברזל,Double flashing red light (railway crossing),94.5,52.5,289x160,#fff #000 #f00,white,3x
+723.svg,723,,62,נתיב סגור,Lane closed (overhead lane control),57.75,58.5,176x179,#fff #f00 #1d1d1d #b8272a,transparent,3x
+723פ.svg,723פ,,62,נתיב סגור - גרסה,Lane closed (variant display),58.5,57.75,179x176,#00001e #f00,transparent,3x
+724.svg,724,,62,נתיב פתוח,Lane open (overhead lane control),59.25,58.5,164x162,#fff #070 #000,transparent,3x
+724פ.svg,724פ,,62,נתיב פתוח - גרסה,Lane open (variant display),60.0,60.75,183x186,#00001e #007600,transparent,3x
+725_1.svg,725,1,63,מעבר לנתיב סמוך,Merge into adjacent lane (overhead lane control),48.0,48.75,146x149,#fff #00001d,transparent,3x
+725_2.svg,725,2,63,מעבר לנתיב סמוך,Merge into adjacent lane (overhead lane control),47.25,47.25,144x144,#fff #00001c,transparent,1x
+725פ_1.svg,725פ,1,63,מעבר לנתיב סמוך - גרסה,Merge into adjacent lane (variant display),44.25,45.0,135x137,#1e1e1e #fff,transparent,1x
+725פ_2.svg,725פ,2,63,מעבר לנתיב סמוך - גרסה,Merge into adjacent lane (variant display),45.0,45.0,137x137,#1e1e1e #fff,white,3x
+726_1.svg,726,1,63,נתיב יציאה,Exit lane (overhead lane control),45.0,44.25,137x135,#fff #00001c,transparent,3x
+726_2.svg,726,2,63,נתיב יציאה,Exit lane (overhead lane control),45.75,44.25,140x135,#fff #00001c,transparent,1x
+726פ_1.svg,726פ,1,63,נתיב יציאה - גרסה,Exit lane (variant display),45.0,44.25,137x135,#1e1e1e #fff #000,transparent,1x
+726פ_2.svg,726פ,2,63,נתיב יציאה - גרסה,Exit lane (variant display),45.75,45.0,140x137,#1e1e1e #fff,transparent,3x
+727.svg,727,,63,אור אדום (לרוכבי אופניים),Red light (for cyclists),45.15,115.38,141x363,#fff #000 #f00,transparent,3x
+728.svg,728,,64,אור ירוק (לרוכבי אופניים),Green light (for cyclists),36.85,109.83,121x363,#fff #000 #0f0,transparent,3x
+729.svg,729,,64,אור צהוב (לרוכבי אופניים),Amber (yellow) light (for cyclists),42.99,105.0,141x343,#fff #000 #ff0,transparent,3x
+801.svg,801,,66,קו נתיב או קו ציר הכביש - קו קטעים לבן,Lane line / road-axis line (white dashed),99.75,38.25,305x117,#696969 #fff,transparent,3x
+802.svg,802,,66,כביש או נתיב מתחלף - קו קטעים כפול לבן,Reversible lane (double white dashed line),99.0,39.0,303x119,#696969 #fff,transparent,3x
+803.svg,803,,66,קו הפרדה רצוף כפול לבן,Double solid white separation line,99.0,39.75,303x121,#696969 #fff,white,3x
+804.svg,804,,66,שביל או נתיב לאופניים - חץ כוון,Cycle path/lane direction arrow,96.3,49.48,250x128,#666 #fff #525252,white,1x
+805.svg,805,,66,קו קטעים צפוף לבן - אזהרה לפני קו הפרדה כפול,Dense dashed line warning before a double solid line,99.0,39.75,303x121,#666 #fff,transparent,1x
+806.svg,806,,66,קו קטעים ליד קו רצוף לבן,Dashed line beside a solid line (passing zone),99.0,39.75,303x121,#696969 #fff,transparent,1x
+807.svg,807,,66,קו רצוף צהוב - קו שפת הכביש,Continuous yellow edge line,99.0,39.75,302x121,#696969 #d5db40,transparent,3x
+808.svg,808,,66,קו מלבנים לבן,White block/chevron line (dedicated lane),102.6,41.15,187x75,#666 #fff,transparent,3x
+809.svg,809,,67,קו קטעים לבן - פנייה בצומת,White dashed guide line through a junction turn,94.5,83.25,289x254,#696969 #565656 #fff,transparent,1x
+810.svg,810,,67,קו עצירה - קו לבן לרוחב הנתיב,"Stop line (white, across the lane)",95.25,53.25,291x163,#676767 #efefef,transparent,1x
+811.svg,811,,67,מעבר חציה להולכי רגל,Pedestrian crossing (zebra),99.0,48.75,303x149,#696969 #fff,transparent,3x
+812_1.svg,812,1,67,מעבר חציה לאופניים,Bicycle crossing,47.05,60.99,146x190,#848484 #fff,white,3x
+812_2.svg,812,2,67,מעבר חציה לאופניים,Bicycle crossing,48.2,61.72,148x190,#848484 #fff,white,3x
+813_1.svg,813,1,67,כווני הנסיעה המותרים בנתיב - חצים לבנים,Permitted lane-direction arrows (white),46.92,39.1,137x114,#696969 #fff,transparent,3x
+813_2.svg,813,2,67,כווני הנסיעה המותרים בנתיב - חצים לבנים,Permitted lane-direction arrows (white),47.49,39.01,98x80,#666 #fff,transparent,3x
+813_3.svg,813,3,67,כווני הנסיעה המותרים בנתיב - חצים לבנים,Permitted lane-direction arrows (white),47.24,36.4,140x108,#696969 #fff,transparent,1x
+813_4.svg,813,4,67,כווני הנסיעה המותרים בנתיב - חצים לבנים,Permitted lane-direction arrows (white),46.55,34.48,124x92,#696969 #fff,transparent,1x
+814.svg,814,,67,נתיב נסיעה העומד להסתיים - חצים אלכסוניים לבנים,Lane ending - diagonal chevron arrows,99.0,30.0,302x92,#696969 #fff,transparent,1x
+815.svg,815,,67,איי תנועה מסומנים בצבע לבן,Painted traffic islands (white),99.75,39.75,305x121,#666 #fff,transparent,1x
+816.svg,816,,68,אבני שפה צבועות שחור-לבן,Black-and-white painted kerb,99.08,38.28,275x106,#696969 #000 #fff,transparent,3x
+817.svg,817,,68,אבני שפה צבועות כחול-לבן לסירוגין,Blue-and-white alternating painted kerb (paid parking),99.0,39.0,302x119,#696969 #0a24eb #aca6a7 #232d8e,transparent,3x
+818.svg,818,,68,אבני שפה צבועות אדום-לבן,Red-and-white painted kerb (no stopping),99.0,39.0,302x119,#696969 #d9181b #fff,transparent,3x
+819_1.svg,819,1,68,מקומות חניה מסומנים בצבע לבן,Parking bays marked in white,99.75,38.25,305x117,#6a6a6a,transparent,3x
+819_2.svg,819,2,68,מקומות חניה מסומנים בצבע לבן,Parking bays marked in white,99.75,39.0,305x119,#6a6a6a #fff,transparent,1x
+820.svg,820,,68,מקום אסור לחניה מסומן בצבע לבן,No-parking area marked in white,99.0,39.0,303x119,#696969 #fff,transparent,3x
+821.svg,821,,68,מקום פס האטה,Speed-bump location marking,94.5,57.0,289x174,#696969 #f0f0f0,transparent,3x
+901.svg,901,,70,אתר עבודה בדרך,Road work site ahead,69.75,60.75,213x186,#f00 #fff #000,transparent,3x
+901פ.svg,901פ,,70,אתר עבודה בדרך - סע לפי הסימון הכתום,Road work site ahead (follow orange marking),69.75,68.25,213x209,#000 #f00 #fff,transparent,3x
+902.svg,902,,70,קצה אתר עבודה,End of road work site,72.0,71.25,220x218,#ff7300 #1d1918 #cdccca #fff,transparent,3x
+903.svg,903,,70,אזהרה והדרכה בעקומה חדה - אתר עבודה,Warning and guidance at a sharp bend (worksite),93.0,38.25,284x117,#ff7300 #000,transparent,1x
+904.svg,904,,70,אזהרה והדרכה בצומת קמץ - אתר עבודה,Warning and guidance at a staggered junction (worksite),92.25,29.25,282x89,#ff7300 #000,transparent,1x
+905.svg,905,,70,הכביש הולך וצר - אתר עבודה,Road narrows (worksite),56.25,56.25,172x172,#ff7f00 #261c12 #ffffe3,none,3x
+906.svg,906,,71,הכביש הולך וצר מימין - אתר עבודה,Road narrows from the right (worksite),57.0,57.0,174x174,#ff7f00 #291b12 #ffffe7,none,3x
+907.svg,907,,71,הכביש הולך וצר משמאל - אתר עבודה,Road narrows from the left (worksite),57.75,57.0,176x174,#ff7f00 #1e1e1e,transparent,3x
+908.svg,908,,71,מעבר צר או מכשול - אתר עבודה,Narrow passage or obstacle (worksite),99.75,53.25,305x163,#ff7300 #000,transparent,3x
+909.svg,909,,71,תנועה דו-סטרית - אתר עבודה,Two-way traffic (worksite),54.0,54.0,165x165,#ff7300 #1a1a1a #000,transparent,1x
+910.svg,910,,71,שינוי במספר הנתיבים - גדל מימין - אתר עבודה,Number of lanes increases from the right (worksite),54.75,52.5,167x160,#ff7100 #000,transparent,1x
+911.svg,911,,71,שינוי במספר הנתיבים - גדל משמאל - אתר עבודה,Number of lanes increases from the left (worksite),54.75,53.25,167x163,#ff7100 #000,transparent,1x
+912.svg,912,,72,שינוי במספר הנתיבים - קטן מימין - אתר עבודה,Number of lanes decreases on the right (worksite),54.75,52.5,167x160,#ff7200 #000,transparent,1x
+913.svg,913,,72,שינוי במספר הנתיבים - קטן משמאל - אתר עבודה,Number of lanes decreases on the left (worksite),54.75,51.75,167x158,#ff7100 #000,transparent,1x
+914.svg,914,,72,הסטת תנועה - אתר עבודה,Traffic diversion (worksite),99.75,45.0,305x137,#ff7300 #000 #321200 #fff,transparent,3x
+915.svg,915,,72,תמרור לאזהרה/הוריה/איסור/הודעה - אתר עבודה,Supplementary warning/instruction/prohibition/notice plate (worksite),62.25,117.75,172x327,#f07a00 #2f0000 #fff,transparent,3x
+916.svg,916,,72,מרחק במטרים לתמרור שמעליו - אתר עבודה,"Distance plate, metres to the sign above (worksite)",93.75,32.25,287x99,#ff7100 #3f1300 #210000,transparent,3x
+917.svg,917,,72,לאורך קטע במטרים - אתר עבודה,"Length plate, metres along the section (worksite)",92.25,34.5,282x105,#ff7300 #000 #d6794d #fff,white,1x
+918.svg,918,,73,קו נתיב או קו ציר הכביש - קו קטעים כתום,"Lane line / road-axis line, orange dashed (worksite)",96.0,37.5,293x115,#696969 #df7a28,transparent,3x
+919.svg,919,,73,כביש או נתיב מתחלף - קו קטעים כפול כתום,"Reversible lane, double orange dashed line (worksite)",96.75,36.75,296x112,#696969 #cf7e3c,transparent,3x
+920.svg,920,,73,קו הפרדה רצוף כפול כתום,Double solid orange separation line (worksite),96.75,37.5,296x114,#696969 #ce7d3e,transparent,3x
+921.svg,921,,73,קו קטעים צפוף כתום - אזהרה לפני קו הפרדה כפול,Dense dashed orange line warning before a double solid line (worksite),97.5,37.5,298x115,#696969 #e37828,transparent,3x
+922.svg,922,,73,קו קטעים ליד קו רצוף כתום,Dashed orange line beside a solid line (worksite passing zone),97.5,37.5,298x114,#696969 #dc7926,transparent,3x
+923.svg,923,,74,קו מלבנים כתום - נתיב ייעודי,Orange block/chevron line - dedicated lane (worksite),93.75,37.5,286x114,#666 #e5781e #000,transparent,3x
+924.svg,924,,74,קו קטעים כתום - פנייה בצומת,Orange dashed guide line through a junction turn (worksite),96.0,84.0,293x256,#696969 #c18d5d,transparent,3x
+925.svg,925,,74,קו עצירה - קו כתום לרוחב הנתיב,"Stop line, orange (worksite)",90.0,49.5,275x151,#696969 #f2830c,none,3x
+926_1.svg,926,1,74,כווני הנסיעה המותרים בנתיב - חצים כתומים,"Permitted lane-direction arrows, orange (worksite)",45.75,35.25,140x108,#696969 #e37925,transparent,3x
+926_2.svg,926,2,74,כווני הנסיעה המותרים בנתיב - חצים כתומים,"Permitted lane-direction arrows, orange (worksite)",45.75,36.0,140x110,#696969 #ff7100 #fff,white,1x
+926_3.svg,926,3,74,כווני הנסיעה המותרים בנתיב - חצים כתומים,"Permitted lane-direction arrows, orange (worksite)",43.5,33.75,133x103,#696969 #f6730c,transparent,3x
+926_4.svg,926,4,74,כווני הנסיעה המותרים בנתיב - חצים כתומים,"Permitted lane-direction arrows, orange (worksite)",46.5,35.25,142x108,#696969 #e67821,transparent,3x
+927.svg,927,,74,נתיב נסיעה העומד להסתיים - חצים אלכסוניים כתומים,Lane ending - diagonal orange chevron arrows (worksite),93.75,36.75,286x112,#696969 #eb761a,transparent,3x
+928.svg,928,,75,איי תנועה מסומנים בצבע כתום - אתר עבודה,"Painted traffic islands, orange (worksite)",90.75,50.25,277x153,#666 #ff7300 #fff,white,1x
+929.svg,929,,75,מחסום: הדרך חסומה - אתר עבודה,Barrier: road blocked (worksite),93.75,13.5,286x41,#ff7300 #000,transparent,1x
+930.svg,930,,75,עמודי הכוונה בצד הכביש - אתר עבודה,Roadside guide/delineator posts (worksite),34.5,64.5,105x197,#211c18 #f7800a,transparent,3x
+931.svg,931,,75,חרוט להכוונה או לסימון מכשול - אתר עבודה,Traffic cone for guidance or marking an obstacle (worksite),59.25,56.25,181x172,#ff7300 #000,transparent,3x
+932.svg,932,,75,פנס מהבהב כתום - אתר עבודה,Flashing orange beacon lamp (worksite),50.25,50.25,91x91,#f60,transparent,1x
+933_1.svg,933,1,75,לוח נייד מהבהב - איתות אזהרה והכוונה,"Mobile flashing board - signal, warning and guidance",48.0,78.0,146x238,#f5800c #fff #221c19 #0000f7,transparent,3x
+933_2.svg,933,2,75,לוח נייד מהבהב - איתות אזהרה והכוונה,"Mobile flashing board - signal, warning and guidance",51.75,49.5,71x68,#e7781c #0e0000 #fff9f2 #d1ccc9 #e0b088,transparent,3x
+934_1.svg,934,1,76,לוח נייד מהבהב - הכביש סגור,Mobile flashing board - road closed,50.25,78.0,153x238,#fff #ff7300 #1a1a1a,transparent,1x
+934_2.svg,934,2,76,לוח נייד מהבהב - הכביש סגור,Mobile flashing board - road closed,50.25,49.5,69x68,#e6781e #0e0000 #fff9f0 #d1c9c4,transparent,3x
+935.svg,935,,76,מפרץ לעצירה במצב חירום - אתר עבודה,Emergency stopping bay (worksite),51.45,51.5,72x72,#ff7e06 #000 #ffc387,none,3x
+ס-4.svg,ס-4,,78,"מרכז האזור, העיר, המקום",Centre of the area/city/place,44.25,45.0,135x137,#fff #000,transparent,3x
+ס-5.svg,ס-5,,78,כביש או נתיב אגרה,Toll road or lane,43.5,43.5,133x133,#fff #1d1d1d,transparent,1x
+ס-6.svg,ס-6,,78,מעבר עילי להולכי רגל (עם מדרגות),Pedestrian overpass (with stairs),44.25,43.5,135x133,#fff #1d1d1d,transparent,1x
+ס-7.svg,ס-7,,78,מעבר עילי להולכי רגל (עם כבש),Pedestrian overpass (with ramp),43.5,43.5,133x133,#fff #1d1d1d,transparent,1x
+ס-8.svg,ס-8,,78,מעבר תחתי להולכי רגל (עם מדרגות),Pedestrian underpass (with stairs),44.25,43.5,135x133,#fff #1d1d1d,transparent,1x
+ס-9.svg,ס-9,,78,מעבר תחתי להולכי רגל (עם כבש),Pedestrian underpass (with ramp),45.0,45.75,137x140,#fff #1d1d1d,transparent,1x
+ס-10.svg,ס-10,,79,הולכי רגל,Pedestrians,44.25,44.25,135x135,#fff #000,transparent,1x
+ס-11.svg,ס-11,,79,לחצן הולכי רגל לצורך חציה,Pedestrian push-button for crossing,45.0,45.0,138x137,#fff #000,white,1x
+ס-12.svg,ס-12,,79,נגישות לנכים,Accessibility for people with disabilities,45.75,45.0,140x138,#fff #000,transparent,1x
+ס-13.svg,ס-13,,79,מצלמה למטרות אכיפה,Enforcement camera,48.0,48.0,146x146,#fff #000,transparent,3x
+ס-14.svg,ס-14,,79,גרירת רכב,Vehicle towing,48.0,51.0,146x156,#fff #000,transparent,3x
+ס-15.svg,ס-15,,79,יחידת משטרה,Police unit,48.75,48.0,149x146,#fff #000,transparent,3x
+ס-16.svg,ס-16,,79,מנהרה,Tunnel,52.5,52.5,58x58,#fff #000,transparent,3x
+ס-17.svg,ס-17,,79,מעבר גבול,Border crossing,48.5,48.5,144x144,#fff #000,transparent,1x
+ס-20.svg,ס-20,,80,מחלף,Interchange,47.25,45.75,144x140,#fff #000,transparent,1x
+ס-21.svg,ס-21,,80,צומת הצטלבות,Crossroads (X) junction,47.25,46.5,144x142,#fff #000,transparent,1x
+ס-22.svg,ס-22,,80,צומת קמץ ימינה,"Staggered junction, offset to the right",45.75,45.0,140x137,#fff #000,transparent,1x
+ס-23.svg,ס-23,,80,צומת קמץ שמאלה,"Staggered junction, offset to the left",45.75,44.25,140x135,#fff #000,transparent,1x
+ס-24.svg,ס-24,,80,צומת קמץ,Staggered junction (general),45.75,45.0,140x137,#fff #000,transparent,1x
+ס-25.svg,ס-25,,80,צומת קמץ ימינה ואחר כך שמאלה,"Staggered junction, right then left",45.75,45.0,140x137,#fff #000,transparent,1x
+ס-26.svg,ס-26,,80,צומת קמץ שמאלה ואחר כך ימינה,"Staggered junction, left then right",45.75,45.0,140x137,#fff #000,transparent,1x
+ס-27.svg,ס-27,,80,צומת קמץ לפנים ואחר כך משמאל,"Staggered junction, ahead then from the left",45.75,45.75,140x140,#fff #000,transparent,1x
+ס-28.svg,ס-28,,80,צומת קמץ לפנים ואחר כך מימין,"Staggered junction, ahead then from the right",45.75,45.75,140x140,#fff #000,transparent,1x
+ס-29.svg,ס-29,,80,מעגל תנועה,Roundabout,45.0,44.25,138x135,#fff #000,transparent,1x
+ס-30.svg,ס-30,,81,תחנת תדלוק,Fuel/petrol station,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-31.svg,ס-31,,81,פתוח 24 שעות,Open 24 hours,43.5,42.75,133x130,#000 #fff,transparent,3x
+ס-32.svg,ס-32,,81,"דלק, שרות עצמי","Fuel, self-service",43.5,44.25,133x135,#fff #000,transparent,1x
+ס-33.svg,ס-33,,81,תיקון תקרים,Tyre repair,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-34.svg,ס-34,,81,"מוסך, תיקוני דרך, סיכה","Garage, roadside repairs, lubrication",43.5,43.5,133x133,#fff #000,transparent,1x
+ס-35.svg,ס-35,,81,רחיצת רכב,Car wash,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-36.svg,ס-36,,81,דלקן – דלק,Fuel brand: Delek,45.0,45.0,137x137,#fff #000,transparent,1x
+ס-37.svg,ס-37,,81,פזומט,Pazomat (Paz self-service fuel kiosk),43.5,44.25,133x135,#fff #000,transparent,1x
+ס-38.svg,ס-38,,81,ספידומט,Speedomat (fuel kiosk brand),44.25,44.25,135x135,#fff #000,transparent,3x
+ס-39.svg,ס-39,,81,דלקן – סונול,Fuel brand: Sonol,45.75,45.75,140x140,#fff #000,transparent,1x
+ס-40.svg,ס-40,,82,שדה תעופה,Airport,43.2,42.47,132x130,#fff #000,transparent,3x
+ס-41.svg,ס-41,,82,נמל,Port/harbour,42.75,45.0,131x137,#000 #fff,transparent,1x
+ס-42.svg,ס-42,,82,רכבת,Train (railway),43.5,43.5,133x133,#fff #000,transparent,1x
+ס-43.svg,ס-43,,82,רכבת מקומית,Local train (light rail),43.5,43.5,133x133,#fff #000,transparent,1x
+ס-44.svg,ס-44,,82,אוטובוס,Bus,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-45.svg,ס-45,,82,מונית,Taxi,44.25,44.25,135x135,#fff #000,transparent,1x
+ס-46.svg,ס-46,,82,רכב פרטי,Private car,45.0,45.0,137x137,#fff #000,transparent,1x
+ס-47.svg,ס-47,,82,משאית,Truck,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-48.svg,ס-48,,82,אופנוע,Motorcycle,44.25,43.5,135x133,#fff #000,transparent,1x
+ס-49.svg,ס-49,,82,אופניים,Bicycle,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-50.svg,ס-50,,83,רכבל,Cable car,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-51.svg,ס-51,,83,חניה,Parking,43.5,43.5,133x133,#000 #fff,transparent,1x
+ס-52.svg,ס-52,,83,חניה מקורה,Covered (indoor) parking,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-53.svg,ס-53,,83,חנה וסע,Park and ride,45.75,45.0,140x137,#fff #000,transparent,3x
+ס-54.svg,ס-54,,83,מסוף מטענים,Cargo terminal,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-55.svg,ס-55,,83,אזור תעשיה,Industrial zone,45.0,45.75,137x140,#fff #000,transparent,1x
+ס-56.svg,ס-56,,83,מסוף לטיסות נוחתות,Terminal for arriving flights,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-57.svg,ס-57,,83,מסוף לטיסות ממריאות,Terminal for departing flights,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-58.svg,ס-58,,83,בית חולים ללא חדר מיון,Hospital without an emergency room,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-59.svg,ס-59,,83,בית חולים עם חדר מיון כללי,Hospital with a general emergency room,45.0,44.25,137x135,#fff #c61116 #000,transparent,3x
+ס-60.svg,ס-60,,84,עזרה ראשונה,First aid,44.75,44.75,70x70,#fff #000 #c00000,transparent,3x
+ס-61.svg,ס-61,,84,טלפון,Telephone,43.5,43.5,133x133,#fff #000,transparent,3x
+ס-62.svg,ס-62,,84,מסעדה,Restaurant,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-63.svg,ס-63,,84,בית קפה/מזנון,Café / snack bar,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-64.svg,ס-64,,84,קווי תחבורה ציבורית בשעות הלילה,Night-hours public-transport lines,45.75,45.0,140x137,#000 #fff,transparent,1x
+ס-65.svg,ס-65,,84,השכרת רכב,Car rental,46.5,46.5,60x60,#fff #000,transparent,3x
+ס-66.svg,ס-66,,84,אזור מנוחה,Rest area,48.0,48.0,69x69,#fff #000,transparent,3x
+ס-67.svg,ס-67,,84,מקום להעלאה ולהורדת נוסעים,Passenger pick-up/drop-off point,45.45,45.45,64x64,#fff #000,white,3x
+ס-68.svg,ס-68,,84,עמדת תשלום,Payment/toll booth,47.05,38.5,68x66,#fff #000,transparent,3x
+ס-69.svg,ס-69,,84,מוסד אקדמי,Academic institution,45.47,45.0,152x152,#fff #000,white,3x
+ס-70.svg,ס-70,,85,עמדת מודיעין או תחנת מידע למטייל,Information post / hiker information station,44.25,43.5,135x133,#fff #000,transparent,1x
+ס-71.svg,ס-71,,85,מלון או בית הארחה או כפר נופש,"Hotel, guesthouse or resort village",43.5,43.5,133x133,#fff #000,transparent,1x
+ס-72.svg,ס-72,,85,אכסניה או אכסניית נוער,Hostel / youth hostel,44.25,43.5,135x133,#fff #000,transparent,1x
+ס-73.svg,ס-73,,85,אתר מחנאות (קמפינג) או חניון לילה,Campsite or overnight caravan park,45.75,45.0,140x137,#fff #000,transparent,3x
+ס-74.svg,ס-74,,85,חקלאות תיירותית,Agro-tourism,45.0,45.0,137x138,#fff #000,transparent,1x
+ס-75.svg,ס-75,,85,לינה כפרית,Rural lodging (zimmer),44.25,44.25,135x135,#fff #000,white,1x
+ס-80.svg,ס-80,,86,אתר תיירות,Tourist site,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-81.svg,ס-81,,86,אתר ארכיאולוגי או עתיקות,Archaeological site / antiquities,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-82.svg,ס-82,,86,אתר קדוש ליהודים,Jewish holy site,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-83.svg,ס-83,,86,אתר קדוש למוסלמים,Muslim holy site,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-84.svg,ס-84,,86,אתר קדוש לדרוזים,Druze holy site,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-85.svg,ס-85,,86,אתר קדוש לנוצרים,Christian holy site,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-86.svg,ס-86,,86,מבנה או אזור בעל עניין היסטורי או אדריכלי,Building or area of historic/architectural interest,43.5,43.5,133x133,#000 #fff,transparent,1x
+ס-87.svg,ס-87,,86,אתר הנצחה,Memorial site,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-88.svg,ס-88,,86,מוזיאון,Museum,43.5,42.75,133x131,#fff #000,transparent,1x
+ס-89.svg,ס-89,,86,גלריה או סדנא לדברי אמנות יד,Gallery or handicraft workshop,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-90.svg,ס-90,,87,גן לאומי או שמורת טבע,National park or nature reserve,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-91.svg,ס-91,,87,שביל תנ״ך,Bible Trail (Shvil Tanakh),43.5,43.5,133x133,#000 #fff,transparent,3x
+ס-92.svg,ס-92,,87,אתר מורשת עולמית,World Heritage site,44.25,43.5,135x133,#fff #000,transparent,1x
+ס-93.svg,ס-93,,87,יקב,Winery,43.55,43.6,68x66,#fff #000,transparent,3x
+ס-100.svg,ס-100,,88,דרך מסומנת לטיול המיועדת לרכב 4X4 בלבד,"Marked touring route, 4x4 vehicles only",43.5,43.5,133x133,#fff #000,transparent,1x
+ס-101.svg,ס-101,,88,"יער, חורש או פארק שהוכשר לביקורי מטיילים","Forest, woodland or park prepared for visitors",43.5,43.5,133x133,#000 #fff,transparent,1x
+ס-102.svg,ס-102,,88,מרינה או מעגן מוסדר,Marina or organised mooring,43.5,43.5,133x133,#fff #000,transparent,3x
+ס-103.svg,ס-103,,88,אתר מרחצאות מוסדר,Organised bathing/spa site,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-104.svg,ס-104,,88,מצפה או נקודת תצפית נוף,Lookout / scenic viewpoint,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-105.svg,ס-105,,88,אתר בילוי ואכילה בשטח פתוח,Open-air recreation and dining site,43.5,44.25,133x135,#fff #000,transparent,1x
+ס-106.svg,ס-106,,88,טיולי ג׳יפים,Jeep touring,45.0,46.5,137x142,#fff #000,transparent,1x
+ס-107.svg,ס-107,,88,מסלול הליכה מוסדר,Organised hiking trail,43.5,43.5,133x133,#fff #000,transparent,3x
+ס-108.svg,ס-108,,88,מקום מוסדר לטיפוס הרים או גלישת חבל,Organised site for mountain climbing or rappelling,43.5,43.5,133x133,#000 #fff,transparent,1x
+ס-109.svg,ס-109,,88,חוות סוסים או שירותי רכיבה,Horse farm or riding services,42.75,46.5,130x142,#fff #000,transparent,3x
+ס-110.svg,ס-110,,89,אתר מוסדר לדאייה בגלשן או מצנחי רחיפה,Organised site for hang-gliding or paragliding,43.5,44.25,133x135,#fff #000,transparent,1x
+ס-111.svg,ס-111,,89,נחל,Stream / wadi (nahal),44.25,44.25,135x135,#fff #000,transparent,1x
+ס-112.svg,ס-112,,89,מקום מוסדר לדייג,Organised fishing spot,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-113.svg,ס-113,,89,אתר צפרות,Bird-watching site,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-114.svg,ס-114,,89,גן חיות,Zoo,42.0,42.0,128x128,#fff #000,white,1x
+ס-115.svg,ס-115,,89,חוף רחצה מוסדר,Organised bathing beach,42.75,45.0,130x137,#fff #000,transparent,3x
+ס-116.svg,ס-116,,89,בריכת שחייה לרשות הציבור,Public swimming pool,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-117.svg,ס-117,,89,אתר ספורט ימי,Water-sports site,43.5,42.75,133x130,#fff #000,transparent,3x
+ס-118.svg,ס-118,,89,מסלול לרכיבה על אופני הרים,Mountain-biking trail,43.5,43.5,133x133,#fff #000,transparent,1x
+ס-119.svg,ס-119,,89,מרכז ספורט,Sports centre,45.0,46.5,137x142,#fff #000,transparent,1x
+ס-120.svg,ס-120,,90,אתר גלישה,Ski site,42.75,42.75,131x131,#fff #000,transparent,1x
+ס-130.svg,ס-130,,91,עמדת טעינה לרכב חשמלי,Electric-vehicle charging station,46.5,46.5,142x142,#fff #000,transparent,1x
+ס-131.svg,ס-131,,91,תחנת החלפת מצבר לרכב חשמלי,EV battery-swap station,45.0,45.0,137x137,#fff #000,transparent,3x
+ס-132.svg,ס-132,,91,תחנת טעינה והחלפת מצבר לרכב חשמלי,EV charging and battery-swap station,45.0,45.75,138x140,#fff #000,transparent,1x
