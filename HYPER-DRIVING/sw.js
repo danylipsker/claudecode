@@ -2,8 +2,12 @@
  * Network first (so a new build or pack is seen at once when online), the
  * cache when offline. Content updates do not depend on this: they are stored
  * in IndexedDB by js/update.js.
+ *
+ * The cache store belongs to the whole site (every app on it shares one), so
+ * only caches with this app's prefix are ever cleared here.
  */
-const CACHE = 'hyper-driving-v1';
+const PREFIX = 'hyper-driving-';
+const CACHE = PREFIX + 'v1';
 const SHELL = [
   './', 'index.html', 'pwa.json', 'icon.svg', 'css/drive.css',
   'js/config.js', 'js/core.js', 'js/i18n.js', 'js/content.js', 'js/icons.js', 'js/glyphs.js', 'js/signs.js',
@@ -24,7 +28,7 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k.startsWith(PREFIX) && k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
 });
 
 self.addEventListener('fetch', (e) => {
