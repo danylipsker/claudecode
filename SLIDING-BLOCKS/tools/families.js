@@ -343,7 +343,7 @@ function sampleRelease(r, board) {
   // Where can the key piece go? Try a few of its places as the target and
   // keep the one whose farthest position is farthest.
   const heroSlot = model0.order.indexOf(puz.pieces.indexOf(hero));
-  const anchors = [...new Set(comp.map((k) => k.charCodeAt(heroSlot)))];
+  const anchors = [...new Set(comp.map((k) => model0.unkey(k)[heroSlot]))];
   if (anchors.length < 2) return null;
   const trials = anchors.sort(() => r() - 0.5).slice(0, 6);
   let best = null;
@@ -661,178 +661,199 @@ function evolveGridlock(r, board, steps, emit) {
   }
 }
 
-// Towers: bars of widths 1, 2, 3 ... stacked in stepped wells, where a bar
-// can go only as deep as it is narrow, so the widest always sits on top.
-// Move the tower from the left well to the right one.
-function towerBoard(bars, wells) {
-  const ww = bars;                 // a well is as wide as the widest bar
-  const W = wells * ww + (wells - 1);
+/* ---------- Towers: the Towers of Hanoi kind ---------- *
+ * Two sorts of tower, both built so that small pieces can only ever sit
+ * above large ones:
+ *   wells    bars of widths 1, 2, 3 ... in stepped wells, where a bar can go
+ *            only as deep as it is narrow;
+ *   columns  one-cell disks in walled columns under a channel, where disk k
+ *            may go only k levels deep (the rule of Panex).
+ * Each board gives its classic start (the towers standing whole) and, for
+ * variety, starts scrambled across the columns at a spread of distances up
+ * to the farthest there is. Scrambled starts keep every disk in a column,
+ * never in the channel, when they can, so they still look like towers.
+ */
+
+// The positions at distance d, tidy ones first (no piece in the top row,
+// the channel); those in `used` are skipped.
+function startsAt(model, byD, d, used) {
+  const W = model.W;
+  const keys = (byD[d] || []).filter((k) => !used.has(k));
+  const tidy = keys.filter((k) => model.unkey(k).every((a, s) =>
+    model.slots[s].offs.every((o) => a + o >= W)));
+  return tidy.length ? tidy : keys;
+}
+
+// The classic start, plus `spread` more from 40% of the farthest distance up.
+function towerSet(r, fam, kind, rows, goal, opts, spread, limit) {
+  const model = SB.Model(SB.parse(line(fam, '', rows, goal, 0, opts)));
+  const start = startOf(model);
+  const comp = SB.component(model, start, limit || 400000);
+  if (!comp) return [];
+  const dist = SB.distances(model, comp);
+  const classic = dist.get(model.key(start));
+  if (classic == null) return [];
+  const out = [{ fam, kind, par: classic, size: comp.length, line: line(fam, '', rows, goal, classic, opts) }];
+  const byD = [];
+  for (const [k, d] of dist) (byD[d] = byD[d] || []).push(k);
+  const maxD = byD.length - 1, lo = Math.max(3, Math.ceil(maxD * 0.4));
+  const used = new Set([model.key(start)]);
+  for (let tries = 0; out.length <= spread && tries < spread * 20 + 1; tries++) {
+    // Lean on the far end: those are the puzzles a tidy start cannot give.
+    const d = Math.min(maxD, tries === 0 ? maxD : lo + Math.floor(Math.pow(r(), 0.7) * (maxD - lo + 1)));
+    const keys = startsAt(model, byD, d, used);
+    if (!keys.length) continue;
+    const k = pick(r, keys);
+    used.add(k);
+    out.push({ fam, kind: kind + 'f', par: d, size: comp.length, line: line(fam, '', stateRows(model, model.unkey(k)), goal, d, opts) });
+  }
+  return out;
+}
+
+// Stepped wells: row d of a well is open for widths up to bars - d + 1.
+function wellBoard(bars, wells) {
+  const W = wells * bars + (wells - 1);
   const H = 1 + bars;
   const g = new Array(W * H).fill('.');
   for (let wi = 0; wi < wells; wi++) {
-    const x0 = wi * (ww + 1);
+    const x0 = wi * (bars + 1);
     for (let d = 1; d <= bars; d++) {
-      // Row d of a well is open for widths up to bars - d + 1.
-      const open = bars - d + 1;
-      for (let x = x0 + open; x < x0 + ww; x++) g[d * W + x] = '#';
+      for (let x = x0 + bars - d + 1; x < x0 + bars; x++) g[d * W + x] = '#';
     }
-    if (wi < wells - 1) for (let d = 1; d <= bars; d++) g[d * W + x0 + ww] = '#';
+    if (wi < wells - 1) for (let d = 1; d <= bars; d++) g[d * W + x0 + bars] = '#';
   }
   return { W, H, g };
 }
 
-// Move one tower to the last well, or (swap) trade two towers end for end.
-function towerPuzzles() {
-  const out = [];
-  for (const bars of [2, 3, 4, 5]) {
-    for (const wells of [2, 3, 4]) {
-      for (const swap of [false, true]) {
-        const { W, H, g } = towerBoard(bars, wells);
-        if (W > 16) continue;
-        const start = g.slice(), goal = g.map((c) => (c === '#' ? '#' : '?'));
-        const lastX = (wells - 1) * (bars + 1);
-        const RED = '123456789', BLUE = 'abcdefghi';
-        for (let d = 1; d <= bars; d++) {
-          const width = bars - d + 1;
-          for (let x = 0; x < width; x++) {
-            start[d * W + x] = RED[width - 1];
-            goal[d * W + lastX + x] = swap ? 'r' : RED[width - 1];
-            if (swap) {
-              start[d * W + lastX + x] = BLUE[width - 1];
-              goal[d * W + x] = 'b';
-            }
-          }
-        }
-        const rows = rowsOf({ w: W, h: H, g: start });
-        const goalRows = rowsOf({ w: W, h: H, g: goal });
-        const opts = swap ? 'c:' + RED.slice(0, bars) + '=r;' + BLUE.slice(0, bars) + '=b' : 'n';
-        const text = line('O', '', rows, goalRows.join('/'), 0, opts);
-        const model = SB.Model(SB.parse(text));
-        const sol = SB.solve(model, startOf(model), 1500000);
-        if (!sol) continue;
-        out.push({ fam: 'O', kind: 't' + bars + wells + (swap ? 's' : ''), par: sol.dist, size: sol.explored, line: line('O', '', rows, goalRows.join('/'), sol.dist, opts) });
-      }
-    }
-  }
-  return out;
-}
-
-// More towers: for each board, every position the bars can reach, and
-// starts at a spread of distances from the goal (the tower, or the two
-// towers traded, in the far wells), up to the farthest of all.
-function towerSpread(r) {
+function wellPuzzles(r) {
   const out = [];
   const RED = '123456789', BLUE = 'abcdefghi';
   const configs = [
-    { bars: 3, wells: 3, swap: false, n: 7 }, { bars: 3, wells: 4, swap: false, n: 7 },
-    { bars: 4, wells: 3, swap: false, n: 9 }, { bars: 2, wells: 3, swap: true, n: 7 },
-    { bars: 2, wells: 4, swap: true, n: 7 }, { bars: 2, wells: 2, swap: true, n: 4 },
-    { bars: 3, wells: 2, swap: false, n: 4 }
+    { bars: 2, wells: 3, swap: false, spread: 1 }, { bars: 3, wells: 2, swap: false, spread: 2 },
+    { bars: 3, wells: 3, swap: false, spread: 3 }, { bars: 3, wells: 4, swap: false, spread: 2 },
+    { bars: 4, wells: 3, swap: false, spread: 5 }, { bars: 2, wells: 3, swap: true, spread: 4 },
+    { bars: 2, wells: 4, swap: true, spread: 3 }
   ];
-  for (const cfg of configs) {
-    const { bars, wells, swap } = cfg;
-    const { W, H, g } = towerBoard(bars, wells);
-    const board = g.slice(), goal = g.map((c) => (c === '#' ? '#' : '?'));
+  for (const { bars, wells, swap, spread } of configs) {
+    const { W, H, g } = wellBoard(bars, wells);
+    const start = g.slice(), goal = g.map((c) => (c === '#' ? '#' : '?'));
     const lastX = (wells - 1) * (bars + 1);
     for (let d = 1; d <= bars; d++) {
       const width = bars - d + 1;
       for (let x = 0; x < width; x++) {
-        board[d * W + lastX + x] = RED[width - 1];
+        start[d * W + x] = RED[width - 1];
         goal[d * W + lastX + x] = swap ? 'r' : RED[width - 1];
         if (swap) {
-          board[d * W + x] = BLUE[width - 1];
+          start[d * W + lastX + x] = BLUE[width - 1];
           goal[d * W + x] = 'b';
         }
       }
     }
-    const goalRows = rowsOf({ w: W, h: H, g: goal }).join('/');
     const opts = swap ? 'c:' + RED.slice(0, bars) + '=r;' + BLUE.slice(0, bars) + '=b' : 'n';
-    const model = SB.Model(SB.parse(line('O', '', rowsOf({ w: W, h: H, g: board }), goalRows, 0, opts)));
-    const comp = SB.component(model, startOf(model), 250000);
-    if (!comp) continue;
-    const dist = SB.distances(model, comp);
-    const byD = [];
-    for (const [k, d] of dist) (byD[d] = byD[d] || []).push(k);
-    const maxD = byD.length - 1;
-    const wanted = new Set([maxD]);
-    for (let i = 1; wanted.size < cfg.n && i < 40; i++) wanted.add(Math.max(3, Math.round(maxD * (0.35 + 0.65 * r()))));
-    for (const d of wanted) {
-      if (!byD[d]) continue;
-      const rows = stateRows(model, model.unkey(pick(r, byD[d])));
-      out.push({ fam: 'O', kind: 't' + bars + wells + (swap ? 's' : '') + 'f', par: d, size: comp.length, line: line('O', '', rows, goalRows, d, opts) });
-    }
+    out.push(...towerSet(r, 'T', 'w' + bars + wells + (swap ? 's' : ''),
+      rowsOf({ w: W, h: H, g: start }), rowsOf({ w: W, h: H, g: goal }).join('/'), opts, spread, 250000));
   }
   return out;
 }
 
-// Towers after Panex and the Towers of Hanoi: one-cell disks in walled
-// columns under a channel, where disk k may go only k levels deep, so the
-// small disks always stand above the large. Move the tower to the right-hand
-// column, or trade two towers. Each board gives its classic start (the whole
-// tower on the left) and starts at a spread of distances up to the farthest.
-function panexBoard(n, cols, swap) {
-  const W = 2 * cols - 1, H = n + 1;
-  const g = [], goal = [], zone = [];
+// Panex columns. `depths` gives each column's depth (a shallow column holds
+// fewer disks, which leaves less room to park and makes the tower harder).
+// Pieces are [column, character, level], for the start and for the goal.
+function columnPuzzle(n, depths, start, goal, classes) {
+  const cols = depths.length, W = 2 * cols - 1, H = n + 1;
+  const g = [], zone = [];
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
-      const wall = y > 0 && x % 2 === 1;
+      const wall = y > 0 && (x % 2 === 1 || y > depths[x / 2]);
       g.push(wall ? '#' : '.');
-      goal.push(wall ? '#' : '?');
       zone.push(y === 0 || wall ? 0 : y);
     }
   }
-  const RED = '123456789', BLUE = 'abcdefghi';
-  for (let k = 1; k <= n; k++) {
-    g[k * W] = RED[k - 1];
-    goal[k * W + W - 1] = swap ? 'r' : RED[k - 1];
-    if (swap) {
-      g[k * W + W - 1] = BLUE[k - 1];
-      goal[k * W] = 'b';
-    }
-  }
-  const opts = (swap ? 'c:' + RED.slice(0, n) + '=r;' + BLUE.slice(0, n) + '=b' : 'n') +
-    ' z:' + rowsOf({ w: W, h: H, g: zone }).join('/');
-  return { W, H, rows: rowsOf({ w: W, h: H, g }), goal: rowsOf({ w: W, h: H, g: goal }).join('/'), opts };
+  const s = g.slice(), gl = g.map((c) => (c === '#' ? '#' : '?'));
+  for (const [col, ch, lvl] of start) s[lvl * W + 2 * col] = ch;
+  for (const [col, ch, lvl] of goal) gl[lvl * W + 2 * col] = ch;
+  const rows = (a) => rowsOf({ w: W, h: H, g: a });
+  return { rows: rows(s), goal: rows(gl).join('/'), opts: (classes || 'n') + ' z:' + rows(zone).join('/') };
 }
 
-function panexPuzzles(r) {
-  const out = [];
-  const configs = [
-    { n: 2, cols: 3, swap: false, spread: 0 }, { n: 3, cols: 3, swap: false, spread: 5 },
-    { n: 4, cols: 3, swap: false, spread: 7 }, { n: 5, cols: 3, swap: false, spread: 7 },
-    { n: 2, cols: 3, swap: true, spread: 4 }, { n: 3, cols: 3, swap: true, spread: 8 },
-    { n: 3, cols: 4, swap: false, spread: 4 }, { n: 2, cols: 4, swap: true, spread: 4 }
-  ];
-  for (const cfg of configs) {
-    const b = panexBoard(cfg.n, cfg.cols, cfg.swap);
-    const kind = 'p' + cfg.n + cfg.cols + (cfg.swap ? 's' : '');
-    const text = line('O', '', b.rows, b.goal, 0, b.opts);
-    const model = SB.Model(SB.parse(text));
-    const start = startOf(model);
-    const comp = SB.component(model, start, 250000);
-    if (!comp) continue;
-    const dist = SB.distances(model, comp);
-    const classic = dist.get(model.key(start));
-    out.push({ fam: 'O', kind, par: classic, size: comp.length, line: line('O', '', b.rows, b.goal, classic, b.opts) });
-    if (!cfg.spread) continue;
-    const byD = [];
-    for (const [k, d] of dist) (byD[d] = byD[d] || []).push(k);
-    const maxD = byD.length - 1;
-    const wanted = new Set([maxD]);
-    for (let i = 0; wanted.size < cfg.spread && i < 60; i++) wanted.add(Math.max(3, Math.round(maxD * (0.4 + 0.6 * r()))));
-    wanted.delete(classic);
-    for (const d of wanted) {
-      if (!byD[d]) continue;
-      const rows = stateRows(model, model.unkey(pick(r, byD[d])));
-      out.push({ fam: 'O', kind: kind + 'f', par: d, size: comp.length, line: line('O', '', rows, b.goal, d, b.opts) });
+// A tower of the disks `chars` in a column, its top disk at level `from`.
+const stack = (col, chars, from) => [...chars].map((c, i) => [col, c, (from || 1) + i]);
+const DISKS = '123456789';
+
+const COLUMN_CONFIGS = (() => {
+  const list = [];
+  const single = (n, depths, from, to, spread) => {
+    const d = DISKS.slice(0, n);
+    list.push({ kind: `c${n}.${depths.join('')}.${from}${to}`, n, depths, start: stack(from, d), goal: stack(to, d), spread });
+  };
+  // One tower on three full columns: the classic, and to or from the middle.
+  single(2, [2, 2, 2], 0, 2, 1);
+  single(3, [3, 3, 3], 0, 2, 3);
+  single(3, [3, 3, 3], 0, 1, 2);
+  single(4, [4, 4, 4], 0, 2, 5);
+  single(4, [4, 4, 4], 1, 2, 5);
+  single(5, [5, 5, 5], 0, 2, 6);
+  single(5, [5, 5, 5], 0, 1, 4);
+  // A shallow column: less room to park.
+  single(3, [3, 1, 3], 0, 2, 2);
+  single(3, [3, 2, 3], 0, 2, 2);
+  single(4, [4, 1, 4], 0, 2, 5);
+  single(4, [4, 2, 4], 0, 2, 4);
+  single(5, [5, 1, 5], 0, 2, 7);
+  single(5, [5, 2, 5], 0, 2, 6);
+  single(5, [5, 3, 5], 0, 2, 4);
+  single(4, [4, 4, 2], 0, 1, 3);
+  single(5, [5, 5, 2], 0, 1, 4);
+  // More columns: more room, gentler towers.
+  single(3, [3, 3, 3, 3], 0, 3, 2);
+  single(4, [4, 4, 4, 4], 0, 3, 3);
+  single(4, [4, 1, 1, 4], 0, 3, 2);
+  single(5, [5, 1, 1, 5], 0, 3, 3);
+  single(3, [3, 3, 3, 3, 3], 0, 4, 1);
+  single(4, [4, 4, 4, 4, 4], 0, 4, 2);
+  // Two towers trade ends.
+  const swap = (n, depths, spread) => {
+    const last = depths.length - 1, R = DISKS.slice(0, n), B = 'abcdefghi'.slice(0, n);
+    list.push({ kind: `s${n}.${depths.join('')}`, n, depths, spread, classes: `c:${R}=r;${B}=b`,
+      start: stack(0, R).concat(stack(last, B)), goal: stack(last, 'r'.repeat(n)).concat(stack(0, 'b'.repeat(n))) });
+  };
+  swap(2, [2, 2, 2], 4);
+  swap(2, [2, 1, 2], 3);
+  swap(3, [3, 3, 3], 6);
+  swap(3, [3, 2, 3], 6);
+  swap(2, [2, 2, 2, 2], 3);
+  swap(2, [2, 2, 2, 2, 2], 2);
+  // Three towers each move one column to the right, the last round to the first.
+  list.push({ kind: 'r2.222', n: 2, depths: [2, 2, 2], spread: 8, classes: 'c:12=r;ab=b;AB=g',
+    start: stack(0, '12').concat(stack(1, 'ab'), stack(2, 'AB')),
+    goal: stack(1, 'rr').concat(stack(2, 'bb'), stack(0, 'gg')) });
+  // The odd disks in one column and the even in another, merged into one
+  // tower in the middle; and the other way, one tower split in two.
+  for (const n of [4, 5]) {
+    const apart = [], together = [];
+    for (let k = 1; k <= n; k++) {
+      apart.push([k % 2 ? 0 : 2, DISKS[k - 1], k]);
+      together.push([1, DISKS[k - 1], k]);
     }
+    list.push({ kind: `m${n}`, n, depths: [n, n, n], start: apart, goal: together, spread: n - 1 });
+    list.push({ kind: `p${n}`, n, depths: [n, n, n], start: together, goal: apart, spread: n - 1 });
+  }
+  return list;
+})();
+
+function columnPuzzles(r) {
+  const out = [];
+  for (const c of COLUMN_CONFIGS) {
+    const b = columnPuzzle(c.n, c.depths, c.start, c.goal, c.classes);
+    out.push(...towerSet(r, 'T', c.kind, b.rows, b.goal, b.opts, c.spread, 400000));
   }
   return out;
 }
 
+const towerPuzzles = (r) => wellPuzzles(r).concat(columnPuzzles(r));
+
 module.exports = {
-  towerSpread, panexPuzzles,
   rng, SB, stateRows, reletter, line, startOf, POLY,
-  sampleGridlock, sampleKlotski, sampleRelease, sampleNumbers, sampleSwap, sampleSort, towerPuzzles, evolveGridlock,
+  sampleGridlock, sampleKlotski, sampleRelease, sampleNumbers, sampleSwap, sampleSort, evolveGridlock, towerPuzzles,
   GRIDLOCK_BOARDS, KLOTSKI_BOARDS, RELEASE_BOARDS, NUMBER_BOARDS, SWAP_BOARDS, SORT_BOARDS
 };

@@ -3,6 +3,10 @@
  *    node tools/generate.js           sample for 12 minutes on every core, then build
  *    node tools/generate.js 30        sample for 30 minutes, then build
  *    node tools/generate.js build     build from the samples kept before
+ *    node tools/generate.js build --fresh   pick every family anew
+ *
+ *  A build keeps every puzzle puzzles.js already has (players' stars are
+ *  kept under them) and only adds, unless --fresh.
  *
  *  Sampling draws random boards of every family and keeps what the solver
  *  says about them (tools/families.js). The candidates pile up in
@@ -11,7 +15,8 @@
  *  Building picks, for each family, puzzles along a rising ramp of par (the
  *  fewest moves), from a single move up to the hardest found, then deals the
  *  families together by their place on their ramps: puzzle 1 is the easiest
- *  of all, the last the hardest, and every stretch has all four kinds.
+ *  of all, the last the hardest, and every stretch has all five kinds.
+ *  Towers are not sampled: every tower board is explored whole here.
  */
 const fs = require('fs');
 const path = require('path');
@@ -26,6 +31,10 @@ const OUT = path.join(__dirname, '..', 'puzzles.js');
 // have: the page searches them all for a hint, so they must stay small.
 const QUOTA = { G: 340, K: 330, R: 300, O: 280 };
 const MAX_SIZE = 250000;
+// Towers are made whole, not sampled: every one the tower boards give is
+// taken. Their largest boards run to 363,000 positions, about a second and a
+// half for a hint in the page, which a tower's hardest puzzles are worth.
+const MAX_TOWER_SIZE = 400000;
 
 /* ---------- workers ---------- */
 
@@ -185,13 +194,12 @@ function orderPool(pool, n, r) {
   const kinds = {
     numbers: pool.filter((c) => c.kind[0] === 'n'),
     sort: pool.filter((c) => c.kind[0] === 'c'),
-    swap: pool.filter((c) => c.kind[0] === 's'),
-    // stepped wells and Panex columns: the Towers of Hanoi kind
-    towers: pool.filter((c) => c.kind[0] === 't' || c.kind[0] === 'p')
+    swap: pool.filter((c) => c.kind[0] === 's')
   };
-  const want = { towers: Math.min(kinds.towers.length, 40), swap: Math.min(kinds.swap.length, 45) };
-  want.numbers = Math.round((n - want.towers - want.swap) * 0.5);
-  want.sort = n - want.towers - want.swap - want.numbers;
+  // Swaps are the rarest: about a sixth of the quota, as far as they go.
+  const want = { swap: Math.min(kinds.swap.length, Math.round(n * 0.16)) };
+  want.numbers = Math.round((n - want.swap) * 0.5);
+  want.sort = n - want.swap - want.numbers;
   let out = [];
   for (const k of Object.keys(kinds)) out = out.concat(ramp(kinds[k], want[k], r, 'O'));
   return out.sort((a, b) => a.par - b.par || a.size - b.size);
@@ -216,43 +224,70 @@ function verifyClassics() {
   }
 }
 
+// The library as it stands. Players' stars are kept under each puzzle's
+// board, so a rebuild keeps every puzzle already out and only adds: a
+// family's puzzles are picked afresh only when it has none yet, or with
+// `build --fresh`. Towers used to be part of Order; those move to Towers.
+function previous() {
+  const out = { G: [], K: [], R: [], O: [], T: [] };
+  if (process.argv.includes('--fresh') || !fs.existsSync(OUT)) return out;
+  for (const ln of fs.readFileSync(OUT, 'utf8').split(/\r?\n/)) {
+    if (!ln.startsWith('"')) continue;
+    let line = JSON.parse(ln.replace(/,\s*$/, ''));
+    const [fam, , board, , par, opts = ''] = line.split('|');
+    const tower = fam === 'O' && (/z:/.test(opts) || (/#/.test(board) && (opts === 'n' || /c:\d/.test(opts))));
+    if (tower) line = 'T' + line.slice(1);
+    out[line[0]].push({ fam: line[0], kind: 'kept', par: +par, size: 0, line, kept: true });
+  }
+  return out;
+}
+
 function build() {
   verifyClassics();
   const r = F.rng(20260929);
-  const all = [...loadCache().values()];
-  for (const t of F.towerPuzzles()) all.push(t);
-  for (const t of F.towerSpread(r)) all.push(t);
-  for (const t of F.panexPuzzles(r)) all.push(t);
+  const kept = previous();
+  // Samples from before Towers were a kind of their own hold no towers:
+  // the tower boards are all made here.
+  const all = [...loadCache().values()].filter((c) => c.fam !== 'T');
+  const towerLines = new Set(kept.T.map((c) => c.line));
+  for (const t of F.towerPuzzles(r)) if (!towerLines.has(t.line)) { towerLines.add(t.line); all.push(t); }
   // Two draws that reach the same set of positions give the same puzzle
   // (or its mirror image): alike size and par give that away. Numbered trays
-  // are exempt, since all their puzzles share one set of positions.
+  // and towers are exempt, since many of their puzzles share one set.
   const seen = new Set();
   const usable = all.filter((c) => {
-    if (c.size > MAX_SIZE || c.par < 1) return false;
-    if (c.kind[0] === 'n' || c.kind[0] === 't') return true;
+    if (c.size > (c.fam === 'T' ? MAX_TOWER_SIZE : MAX_SIZE) || c.par < 1) return false;
+    if (c.kind[0] === 'n' || c.fam === 'T') return true;
     const sig = c.fam + c.kind + ':' + c.size + ':' + c.par;
     if (seen.has(sig)) return false;
     seen.add(sig);
     return true;
   });
-  const byFam = { G: [], K: [], R: [], O: [] };
+  const byFam = { G: [], K: [], R: [], O: [], T: [] };
   for (const c of usable) byFam[c.fam].push(c);
 
   const lists = {};
+  const boardOf = (c) => c.line.split('|')[2];
   for (const fam of Object.keys(byFam)) {
-    let pool = byFam[fam];
-    const classics = CLASSICS.filter((c) => c.fam === fam);
-    pool = pool.filter((c) => !classics.some((k) => k.line.split('|')[2] === c.line.split('|')[2]));
-    let picked = fam === 'O' ? orderPool(pool, QUOTA[fam] - classics.length, r) : ramp(pool, QUOTA[fam] - classics.length, r, fam);
-    picked = picked.concat(classics).sort((a, b) => a.par - b.par || a.size - b.size);
+    const have = kept[fam];
+    const taken = new Set(have.map(boardOf));
+    const classics = CLASSICS.filter((c) => c.fam === fam && !taken.has(boardOf(c)));
+    let pool = byFam[fam].filter((c) => !taken.has(boardOf(c)) && !classics.some((k) => boardOf(k) === boardOf(c)));
+    // Keep what is out; top a family up to its quota (towers: take them all).
+    const room = Math.max(0, (QUOTA[fam] || 0) - have.length - classics.length);
+    let picked = fam === 'T' ? pool.slice()
+      : !room ? []
+      : fam === 'O' ? orderPool(pool, room, r)
+      : ramp(pool, room, r, fam);
+    picked = have.concat(picked, classics).sort((a, b) => a.par - b.par || a.size - b.size);
     lists[fam] = picked;
     const pars = picked.map((c) => c.par);
-    console.log(`${fam}: ${picked.length} of ${pool.length}, par ${pars[0]}..${pars[pars.length - 1]}, median ${pars[pars.length >> 1]}`);
+    console.log(`${fam}: ${picked.length} (${have.length} kept, ${picked.length - have.length} new), par ${pars[0]}..${pars[pars.length - 1]}, median ${pars[pars.length >> 1]}`);
   }
 
   // Deal the families together by their place on their own ramps.
   const dealt = [];
-  const famOrder = ['G', 'K', 'R', 'O'];
+  const famOrder = ['G', 'K', 'R', 'O', 'T'];
   for (const fam of famOrder) {
     lists[fam].forEach((c, i) => dealt.push({ c, at: (i + 0.5) / lists[fam].length + famOrder.indexOf(fam) * 1e-6 }));
   }

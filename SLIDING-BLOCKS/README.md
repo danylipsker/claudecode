@@ -1,22 +1,23 @@
 # Sliding Blocks
 
-Slide the blocks until the way is clear. 1,250 puzzles in ten stages, from Novice to Legend,
+Slide the blocks until the way is clear. 1,460 puzzles in ten stages, from Novice to Legend,
 easiest first. It is drawn in the colours and shapes of the [Sokoban](../sokoban/sokoban.html) page:
 the same navy tray and wall tiles, wooden blocks, gold goals and the teal hero with eyes.
 
 Open [index.html](index.html): from disk, from the repository's apps page, or from GitHub Pages.
 There is no build step.
 
-## The four kinds
+## The five kinds
 
 | Kind | Puzzles | The goal |
 |---|---:|---|
 | **Gridlock** | 340 | Cars and trucks slide only along their length. Clear a lane for the teal car to drive out through the gate, as in Rush Hour. |
 | **Klotski** | 330 | Rectangles in a tray; the big teal block leaves by the gate. L'Âne Rouge (1932, 81 moves) is among them. |
 | **Release** | 300 | Odd shapes (L, T, S, P pieces) on boards with walls, as in the old mechanical puzzles on Nick Baxter's pages: bring the teal piece to its outline, and out through the gate when there is one. |
-| **Order** | 280 | Put the pieces in order: numbered tiles (some of them dominoes), colours that sort into bands or trade sides (like IPP19), and towers after Panex and the Towers of Hanoi: disks in walled columns under a channel, where disk *k* may go only *k* levels deep (the small figures on the floor), so the small disks always stay above the large. Move the tower across, or trade two towers. |
+| **Order** | 280 | Put the pieces in order: numbered tiles (some of them dominoes), and colours that sort into bands or trade sides (like IPP19). |
+| **Towers** | 210 | After the Towers of Hanoi and Panex: disks in walled columns under a channel, where disk *k* may go only *k* levels deep (the small figures on the floor), so the small disks always stay above the large; and bars in stepped wells, where a bar goes only as deep as it is narrow. Move a tower (to the end or the middle), trade two towers, rotate three, merge odd and even disks into one tower or split it; columns of different depths leave less room to park. |
 
-The library deals the four kinds together by difficulty, so every stage has all of them; the chips
+The library deals the five kinds together by difficulty, so every stage has all of them; the chips
 in the library show one kind alone.
 
 ## Playing
@@ -62,7 +63,11 @@ sb-core.js. For example L'Âne Rouge is `K|L'Âne Rouge|BAAC/BAAC/DEEF/DGHF/I..J
   its par. Hard Gridlock boards are rare at random, so most of them are grown by small changes that
   keep a board only when it gets no easier. The candidates collect in `tools/cache/` (not in git);
   building then picks each kind's puzzles along a rising ramp of par and deals the kinds together.
-  `node tools/generate.js build` rebuilds from the cache alone.
+  Towers are not sampled: every tower board is explored whole at build time, and each gives its
+  classic start plus scrambled starts (disks kept in the columns) up to its farthest position.
+  `node tools/generate.js build` rebuilds from the cache alone. A build keeps every puzzle
+  puzzles.js already has, since players' stars are kept under them, and only adds;
+  `build --fresh` picks everything anew.
 - `node tools/check.js` solves every puzzle again from its start and confirms its par is the true
   fewest moves; it also reports the largest search a hint can need.
 - `node tools/make-icons.js` draws icon.svg and the PNG icons from one list of shapes.

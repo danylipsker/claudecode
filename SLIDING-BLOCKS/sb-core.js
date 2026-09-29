@@ -3,7 +3,7 @@
  *
  * A puzzle is one line of text:   family|name|board|goal|par|options
  *
- *   family   G Gridlock, K Klotski, R Release, O Order
+ *   family   G Gridlock, K Klotski, R Release, O Order, T Towers
  *   board    rows split by "/": "." floor, "#" wall, any other character is
  *            a piece (every cell holding that character is one piece)
  *   goal     "A@x,y"  piece A with its top-left corner at column x, row y;
@@ -20,7 +20,7 @@
  *                          split by "/"); a piece may stand on a cell only if
  *                          its level is at least that digit. A piece's level
  *                          is its digit (1-9) or its letter's place in the
- *                          alphabet (a = 1)
+ *                          alphabet (a = A = 1)
  *
  * In Gridlock a piece only slides along its length. Everywhere else a piece
  * slides in any direction. A move is one piece moved any distance, around
@@ -34,7 +34,8 @@
     G: { key: "G", id: "gridlock", name: "Gridlock", hero: true },
     K: { key: "K", id: "klotski", name: "Klotski", hero: true },
     R: { key: "R", id: "release", name: "Release", hero: true },
-    O: { key: "O", id: "order", name: "Order", hero: false }
+    O: { key: "O", id: "order", name: "Order", hero: false },
+    T: { key: "T", id: "towers", name: "Towers", hero: false }
   };
 
   const DX = [0, 1, 0, -1];
@@ -137,7 +138,7 @@
   function levelOf(ch) {
     const d = "123456789".indexOf(ch);
     if (d >= 0) return d + 1;
-    const l = "abcdefghi".indexOf(ch);
+    const l = "abcdefghi".indexOf(ch.toLowerCase());
     return l >= 0 ? l + 1 : 99;
   }
 
@@ -275,21 +276,33 @@
       return st;
     }
 
-    const key = st => String.fromCharCode.apply(null, st);
-    const unkey = k => { const st = new Array(k.length); for (let i = 0; i < k.length; i++) st[i] = k.charCodeAt(i); return st; };
+    // A state's key: a number when every anchor fits one (W*H)-ary digit of
+    // a double, which makes the searches' maps about twice as fast; else a
+    // string of one character per anchor. Keys are only ever compared.
+    const base = W * H;
+    const numeric = Math.pow(base, n) < 9007199254740992;
+    const key = numeric
+      ? st => { let k = 0; for (let s = n - 1; s >= 0; s--) k = k * base + st[s]; return k; }
+      : st => String.fromCharCode.apply(null, st);
+    const unkey = numeric
+      ? k => { const st = new Array(n); for (let s = 0; s < n; s++) { st[s] = k % base; k = (k - st[s]) / base; } return st; }
+      : k => { const st = new Array(k.length); for (let i = 0; i < k.length; i++) st[i] = k.charCodeAt(i); return st; };
 
     // Calls visit(slot, from, to, nextState) for every move from `st`.
+    // nextState is one scratch array, overwritten for the next move: a
+    // caller that keeps it takes a copy (most only want its key).
+    const scratch = new Array(n);
+    const out = [];
     function moves(st, visit) {
       fill(st);
-      const out = [];
       for (let s = 0; s < n; s++) {
         out.length = 0;
         reach(st, s, out);
         for (const b of out) {
-          const nx = st.slice();
-          nx[s] = b;
-          settle(nx, s);
-          visit(s, st[s], b, nx);
+          for (let t = 0; t < n; t++) scratch[t] = st[t];
+          scratch[s] = b;
+          settle(scratch, s);
+          visit(s, st[s], b, scratch);
         }
       }
     }
@@ -320,7 +333,7 @@
           if (parent.has(k)) return;
           parent.set(k, [pk, a, b]);
           if (model.goalTest(nx)) found = k;
-          else next.push(nx);
+          else next.push(nx.slice());
         });
         if (found) {
           const path = [];
@@ -382,16 +395,16 @@
    * names the group of alike pieces, from picks the one of them to move. */
   function Search(model, start, limit) {
     limit = limit || 4e6;
-    const parent = new Map([[model.key(start), null]]);
-    let frontier = [start], next = [], i = 0, depth = 0, result = null;
+    // Every state seen, by number: its key, where it came from, and the move
+    // (slot, from, to) that led to it. Flat arrays keep the search light.
+    const index = new Map([[model.key(start), 0]]);
+    const keys = [model.key(start)], from = [-1], mS = [0], mA = [0], mB = [0];
+    let frontier = [0], next = [], i = 0, result = null;
     if (model.goalTest(start)) result = { dist: 0, path: [] };
 
-    function finish(k) {
+    function finish(j) {
       const path = [];
-      for (; parent.get(k); k = parent.get(k)[0]) {
-        const [, s, a, b] = parent.get(k);
-        path.push([s, a, b, k]);
-      }
+      for (; from[j] >= 0; j = from[j]) path.push([mS[j], mA[j], mB[j], keys[j]]);
       result = { dist: path.length, path: path.reverse() };
     }
 
@@ -400,26 +413,27 @@
       const until = Date.now() + (ms || 12);
       while (!result) {
         if (i >= frontier.length) {
-          if (!next.length || parent.size > limit) { result = { dist: -1 }; break; }
-          frontier = next; next = []; i = 0; depth++;
+          if (!next.length || keys.length > limit) { result = { dist: -1 }; break; }
+          frontier = next; next = []; i = 0;
         }
-        const st = frontier[i++];
-        const pk = model.key(st);
-        let found = null;
-        model.moves(st, (s, a, b, nx) => {
-          if (found) return;
+        const here = frontier[i++];
+        let found = -1;
+        model.moves(model.unkey(keys[here]), (s, a, b, nx) => {
+          if (found >= 0) return;
           const k = model.key(nx);
-          if (parent.has(k)) return;
-          parent.set(k, [pk, s, a, b]);
-          if (model.goalTest(nx)) found = k;
-          else next.push(nx);
+          if (index.has(k)) return;
+          const j = keys.length;
+          index.set(k, j);
+          keys.push(k); from.push(here); mS.push(s); mA.push(a); mB.push(b);
+          if (model.goalTest(nx)) found = j;
+          else next.push(j);
         });
-        if (found) { finish(found); break; }
+        if (found >= 0) { finish(found); break; }
         if ((i & 63) === 0 && Date.now() > until) break;
       }
       return result;
     }
-    return { step, get explored() { return parent.size; } };
+    return { step, get explored() { return keys.length; } };
   }
 
   /* ---------- shapes for drawing ---------- */

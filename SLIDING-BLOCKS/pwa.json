@@ -1,7 +1,7 @@
 {
   "name": "Sliding Blocks",
   "short_name": "Sliding Blocks",
-  "description": "Over a thousand sliding block puzzles, easiest first: Gridlock, Klotski, Release and Order, every one with its fewest moves worked out.",
+  "description": "Over fourteen hundred sliding block puzzles, easiest first: Gridlock, Klotski, Release, Order and Towers, every one with its fewest moves worked out.",
   "lang": "en",
   "start_url": "./index.html",
   "scope": "./",

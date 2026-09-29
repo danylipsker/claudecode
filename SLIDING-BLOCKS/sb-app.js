@@ -10,17 +10,18 @@
   const U = 100;                                   // SVG units to a cell
   const STAGES = ["Novice", "Beginner", "Apprentice", "Intermediate", "Skilled",
     "Advanced", "Expert", "Master", "Grandmaster", "Legend"];
-  const FAM_ORDER = ["G", "K", "R", "O"];
-  const FAM_COLOR = { G: "#ffd166", K: "#38d9d3", R: "#ffb057", O: "#6c7bff" };
+  const FAM_ORDER = ["G", "K", "R", "O", "T"];
+  const FAM_COLOR = { G: "#ffd166", K: "#38d9d3", R: "#ffb057", O: "#6c7bff", T: "#4ecb8d" };
   const CLASS_COLOR = { r: "#ff8a8a", b: "#9aa6ff", g: "#7be3a9", y: "#ffe29a" };
   const STORE_KEY = "sliding-blocks.progress.v1";
 
   const ABOUT = {
-    all: "Every puzzle, easiest first, the four kinds dealt together. Ten stages from Novice to Legend.",
+    all: "Every puzzle, easiest first, the five kinds dealt together. Ten stages from Novice to Legend.",
     G: "Gridlock: cars and trucks run only along their length. Clear a lane for the teal car to drive out through the gate, in the manner of Rush Hour.",
     K: "Klotski: rectangles in a tray, the big teal block to leave by the gate. The classic L'Âne Rouge is among them.",
     R: "Release: odd shapes on odd boards, in the manner of the old mechanical puzzles. Bring the teal piece to its outline.",
-    O: "Order: put the pieces in order. Numbered tiles, colours that trade sides or sort into bands, and stepped towers."
+    O: "Order: put the pieces in order. Numbered tiles, and colours that trade sides or sort into bands.",
+    T: "Towers, after the Towers of Hanoi and Panex: a disk goes only as deep as its number, so the small stay above the large. Move towers, trade them, rotate three, merge and split them."
   };
 
   const fmt = n => n.toLocaleString("en-US");
@@ -37,12 +38,13 @@
 
   /* ---------- the catalogue ---------- */
 
-  const famCount = { G: 0, K: 0, R: 0, O: 0 };
+  const famCount = { G: 0, K: 0, R: 0, O: 0, T: 0 };
   const PUZZLES = LINES.map((line, i) => {
     const p = line.split("|");
     return {
       i, line, fam: p[0], name: p[1], par: +p[4],
-      pid: hashOf(p[0] + "|" + p[2] + "|" + p[3]),
+      // Towers were once part of Order: they keep the names they had then.
+      pid: hashOf((p[0] === "T" ? "O" : p[0]) + "|" + p[2] + "|" + p[3]),
       stage: Math.min(9, Math.floor(i * 10 / LINES.length)),
       famNo: ++famCount[p[0]]
     };
@@ -62,7 +64,7 @@
     }
   }
   const progress = loadProgress();
-  for (const k of ["solved", "at", "seen"]) if (!progress[k] || typeof progress[k] !== "object") progress[k] = {};
+  for (const k of ["solved", "at", "atPid", "seen"]) if (!progress[k] || typeof progress[k] !== "object") progress[k] = {};
   if (!LISTS[progress.list]) progress.list = "all";
   let soundOn = progress.sound !== false;
 
@@ -468,13 +470,15 @@
     Rgate: "Bring the teal piece to its outline and out through the gate",
     On: "Put every numbered piece on its number",
     Oc: "Move every coloured piece onto a pad of its colour",
-    Tower: "Move the tower to the right-hand column",
-    Towers: "Trade the two towers"
+    Tower: "Rebuild the tower on its numbered outlines",
+    Towers: "Move every piece onto a pad of its colour",
+    Wells: "Rebuild the tower on its numbered outlines"
   };
 
   function goalText() {
     const puz = state.puz;
     if (puz.zone) return (puz.pieces.some(p => p.label) ? GOALS.Tower : GOALS.Towers) + " · a disk goes only as deep as its number";
+    if (puz.fam === "T") return (puz.pieces.some(p => p.label) ? GOALS.Wells : GOALS.Towers) + " · a bar goes only as deep as it is narrow";
     if (puz.fam === "O") return puz.pieces.some(p => p.label) ? GOALS.On : GOALS.Oc;
     if (puz.fam === "R" && puz.gate) return GOALS.Rgate;
     return GOALS[puz.fam];
@@ -755,12 +759,22 @@
 
     const mine = ++searchToken;
     const search = SB.Search(model, st, 3e6);
+    const began = Date.now();
     const slow = setTimeout(() => say("Thinking…"), 180);
+    let told = 0;
     return new Promise(resolve => {
       const run = () => {
         if (mine !== searchToken) { clearTimeout(slow); resolve(false); return; }
-        const res = search.step(14);
-        if (!res) { setTimeout(run, 0); return; }
+        const res = search.step(24);
+        if (!res) {
+          // A long think says how far it has got.
+          if (Date.now() - began > 600 && Date.now() - told > 250) {
+            told = Date.now();
+            say(`Thinking… ${fmt(search.explored)} positions looked at`);
+          }
+          setTimeout(run, 0);
+          return;
+        }
         clearTimeout(slow);
         // The player moved while this was thinking: that answer is stale.
         if (state.won || model.key(model.fromPieces(anchorsNow())) !== key) { notice = null; updateHud(); resolve(false); return; }
@@ -924,6 +938,8 @@
     fitBoard();
 
     progress.at[state.list] = index;
+    // The puzzle itself too: a rebuilt library may put it at another number.
+    progress.atPid[state.list] = pz.pid;
     progress.list = state.list;
     saveProgress();
     try {
@@ -971,7 +987,8 @@
     G: ["Gridlock", "<p>Cars and trucks slide only <b>forward and back</b>, along their length.</p><p>Clear a lane so the <b>teal car</b> can drive out through the <b>gold gate</b>.</p>"],
     K: ["Klotski", "<p>Every block slides any way there is room, even round a corner in one move.</p><p>Get the big <b>teal block</b> out through the <b>gold gate</b>.</p>"],
     R: ["Release", "<p>Odd shapes on odd boards. Every piece slides any way there is room.</p><p>Bring the <b>teal piece</b> onto its <b>glowing outline</b>.</p>"],
-    O: ["Order", "<p>Put the pieces in order: every numbered piece on its number, every coloured piece on a pad of its colour.</p><p>In the <b>towers</b> a disk may go only as deep as its number (the small figures on the floor), so the small disks always stay above the large, as in the Towers of Hanoi.</p><p>A piece in its place turns <b>green</b> or glows.</p>"]
+    O: ["Order", "<p>Put the pieces in order: every numbered piece on its number, every coloured piece on a pad of its colour.</p><p>A piece in its place turns <b>green</b> or glows.</p>"],
+    T: ["Towers", "<p>As in the Towers of Hanoi, small disks always stay above large ones: a disk may go only <b>as deep as its number</b> (the small figures on the floor show how large a disk a cell needs). In the stepped wells a bar goes only as deep as it is narrow.</p><p>Rebuild the tower on the outlines, or bring every disk to a pad of its colour. The channel on top is where disks pass, and park.</p>"]
   };
   const HELP_TAIL = "<p>Drag a piece with the mouse or a finger. A move is one piece moved, however far. <b>Par</b> is the fewest moves it can be done in.</p>";
 
@@ -1142,6 +1159,7 @@
       ctx.stroke(new Path2D(SB.roundedPath(hero.shape, s, 1.5, 2)));
       ctx.restore();
     }
+    const top = Math.max(...puz.pieces.map(p => p.level));
     puz.pieces.forEach((p, i) => {
       let fill = THUMB_FILL.wood;
       if (p.hero) fill = THUMB_FILL.hero;
@@ -1150,7 +1168,13 @@
       ctx.save();
       ctx.translate(s + p.x * s, s + p.y * s);
       ctx.fillStyle = fill;
-      ctx.fill(new Path2D(SB.roundedPath(p.shape, s, 0.8, 2.5)));
+      if (puz.zone) {
+        // a disk, as wide as its level is large
+        const w = s * (0.34 + 0.62 * p.level / top);
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect((s - w) / 2, s * 0.2, w, s * 0.6, 3) : ctx.rect((s - w) / 2, s * 0.2, w, s * 0.6);
+        ctx.fill();
+      } else ctx.fill(new Path2D(SB.roundedPath(p.shape, s, 0.8, 2.5)));
       ctx.restore();
     });
   }
@@ -1351,7 +1375,8 @@
       return start(i);
     }
     // Left on a puzzle already solved: on to the next one that is not.
-    const at = progress.at[state.list];
+    const byPid = PUZZLES.findIndex(p => p.pid === progress.atPid[state.list]);
+    const at = byPid >= 0 ? byPid : progress.at[state.list];
     if (at != null && PUZZLES[at] && listOf().includes(at)) {
       const next = solvedOf(at) ? nextUnsolved(at) : at;
       return start(next === null ? at : next);

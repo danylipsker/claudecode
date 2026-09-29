@@ -19,7 +19,7 @@ function check(line) {
   if (!SB.FAMILIES[puz.fam]) problems.push('unknown family ' + puz.fam);
   if (!puz.pieces.length) problems.push('no pieces');
   if (puz.goal.type === 'at' && puz.goal.hero < 0) problems.push('goal names no piece');
-  if (puz.fam !== 'O' && puz.goal.type !== 'at') problems.push('a ' + puz.fam + ' puzzle needs a goal piece');
+  if (SB.FAMILIES[puz.fam] && SB.FAMILIES[puz.fam].hero && puz.goal.type !== 'at') problems.push('a ' + puz.fam + ' puzzle needs a goal piece');
   const model = SB.Model(puz);
   const start = model.fromPieces(puz.pieces.map((p) => p.y * puz.w + p.x));
   if (model.goalTest(start)) problems.push('solved at the start');
