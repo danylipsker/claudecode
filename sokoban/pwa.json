@@ -1,0 +1,18 @@
+{
+  "name": "Sokoban",
+  "short_name": "Sokoban",
+  "description": "Push every crate onto a glowing pad. A library of one and a half million levels, thousands of them built in for playing with no connection.",
+  "lang": "en",
+  "start_url": "./sokoban.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f1220",
+  "theme_color": "#0f1220",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
