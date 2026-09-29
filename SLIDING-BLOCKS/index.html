@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="pwa.json">
+<title>Sliding Blocks</title>
+<style>
+  /* The colours and shapes of the Sokoban page, so the two games match. */
+  :root {
+    --bg: #0f1220;
+    --panel: #191d33;
+    --panel-2: #222741;
+    --line: #2e3455;
+    --text: #e8eaf6;
+    --muted: #969db8;
+    --accent: #6c7bff;
+    --gold: #ffd166;
+    --teal: #38d9d3;
+    --green: #4ecb8d;
+    --warn: #ffb057;
+
+    --floor-a: #1e2342;
+    --floor-b: #1a1f3b;
+    --wall-top: #4b5288;
+    --wall-bot: #2c3160;
+
+    --cell: 52px;
+    --speed: 110ms;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  input { -webkit-user-select: text; user-select: text; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 14px;
+    background: radial-gradient(1200px 700px at 50% -10%, #1d2340 0%, var(--bg) 60%);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+  }
+
+  .app { width: 100%; max-width: 660px; }
+
+  header { text-align: center; margin-bottom: 12px; }
+  h1 {
+    margin: 0 0 2px;
+    font-size: 1.9rem;
+    letter-spacing: .5px;
+  }
+  .subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: .88rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .subtitle b { color: var(--text); font-weight: 600; }
+
+  /* ---------- status bar ---------- */
+
+  #hud {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .stat {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    padding: 7px 4px;
+    text-align: center;
+    min-width: 0;
+  }
+  .stat .label {
+    font-size: .62rem;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stat .value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stat.level .value { color: var(--accent); }
+  .stat.par .value { color: var(--gold); }
+  .stat.best .value { color: var(--teal); font-size: .95rem; }
+  .stat.stg .value { font-size: .95rem; }
+  .stat .value.over { color: var(--warn); }
+
+  /* ---------- goal line ---------- */
+
+  #goal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 1.5em;
+    margin-bottom: 10px;
+    font-size: .86rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  #goal .fam {
+    flex: 0 0 auto;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--bg);
+  }
+  .fam-G { background: var(--gold); }
+  .fam-K { background: var(--teal); }
+  .fam-R { background: var(--warn); }
+  .fam-O { background: var(--accent); }
+  #goal .fam.fam-O { color: #fff; }
+  #goal .text { min-width: 0; }
+
+  /* ---------- board ---------- */
+
+  .stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  #board {
+    position: relative;
+    border-radius: 16px;
+    padding: 10px;
+    background: linear-gradient(180deg, #171b30, #12162a);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .04);
+    touch-action: none;
+  }
+
+  #grid {
+    position: relative;
+    display: grid;
+    grid-auto-rows: var(--cell);
+  }
+
+  .tile { width: var(--cell); height: var(--cell); position: relative; }
+
+  .tile.floor {
+    background: var(--floor-a);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .022);
+  }
+  .tile.floor.alt { background: var(--floor-b); }
+
+  .tile.wall {
+    background: linear-gradient(180deg, var(--wall-top), var(--wall-bot));
+    border-radius: 5px;
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, .13),
+      inset 0 -2px 0 rgba(0, 0, 0, .3),
+      0 1px 2px rgba(0, 0, 0, .35);
+  }
+  .tile.wall::after {
+    content: "";
+    position: absolute;
+    inset: 22% 16%;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, .045);
+  }
+
+  /* An opening in the rim: the way out, glowing gold like a Sokoban pad,
+     with arrows running outward. */
+  .tile.gate {
+    background: linear-gradient(var(--gate-dir, 90deg), var(--floor-a), rgba(255, 209, 102, .18));
+    overflow: hidden;
+  }
+  .tile.gate svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(var(--gate-rot, 0deg));
+  }
+  .tile.gate path {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 4px rgba(255, 209, 102, .7));
+    animation: chevron 1.4s ease-in-out infinite;
+  }
+  .tile.gate path + path { animation-delay: .25s; }
+  @keyframes chevron {
+    0%, 100% { opacity: .18; }
+    40%      { opacity: .95; }
+  }
+
+  /* The play area: marks and pieces sit over the tiles inside the rim. */
+  #play {
+    position: absolute;
+    left: calc(10px + var(--cell));
+    top: calc(10px + var(--cell));
+  }
+  #marks, #pieces, #zone { position: absolute; left: 0; top: 0; }
+  #zone { pointer-events: none; z-index: 4; }
+  #zone .zone { fill: none; stroke-width: 3; opacity: .55; filter: none; }
+
+  .mark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(calc(var(--x) * var(--cell)), calc(var(--y) * var(--cell)));
+  }
+  .mark svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .mark .zone {
+    fill: rgba(255, 209, 102, .09);
+    stroke: var(--gold);
+    stroke-width: 4;
+    stroke-dasharray: 14 10;
+    filter: drop-shadow(0 0 6px rgba(255, 209, 102, .5));
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .mark .pad {
+    stroke-width: 3.5;
+    stroke-dasharray: 10 8;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .mark .pad-label {
+    font: 800 46px "Segoe UI", system-ui, sans-serif;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: rgba(255, 209, 102, .28);
+  }
+  .mark .depth {
+    font: 700 22px "Segoe UI", system-ui, sans-serif;
+    text-anchor: end;
+    fill: rgba(255, 209, 102, .42);
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: .7; }
+    50%      { opacity: 1; }
+  }
+
+  /* ---------- pieces ---------- */
+
+  .piece {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--w) * var(--cell));
+    height: calc(var(--h) * var(--cell));
+    transform: translate3d(calc(var(--x) * var(--cell)), calc(var(--y) * var(--cell)), 0);
+    transition: transform var(--speed) ease-out, opacity .3s;
+    will-change: transform;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .42));
+  }
+  .piece svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .piece .hit { pointer-events: visiblePainted; cursor: grab; }
+  .piece.fixed .hit { cursor: default; }
+  .piece.drag { transition: none; z-index: 5; filter: drop-shadow(0 9px 9px rgba(0, 0, 0, .5)); }
+  .piece.drag .hit { cursor: grabbing; }
+  .piece.slow { transition: transform .5s ease-in, opacity .5s ease-in; }
+
+  .body { stroke-width: 5; stroke-linejoin: round; transition: fill .2s, stroke .2s; }
+  .shine { fill: url(#gShine); pointer-events: none; }
+  .bevel { fill: none; stroke-width: 3; opacity: .35; pointer-events: none; }
+
+  .wood .body { fill: url(#gWood); stroke: #7a4519; }
+  .wood .bevel { stroke: #7a4519; }
+  .hero .body { fill: url(#gHero); stroke: #178f8a; }
+  .hero .bevel { stroke: #0f6f6b; opacity: .3; }
+  .done .body { fill: url(#gDone); stroke: #1e7a4f; }
+  .done .bevel { stroke: #1e7a4f; }
+  .c-r .body { fill: url(#gRed); stroke: #9c2c40; }
+  .c-b .body { fill: url(#gBlue); stroke: #3a45b0; }
+  .c-g .body { fill: url(#gGreen); stroke: #1e7a4f; }
+  .c-y .body { fill: url(#gGold); stroke: #a07410; }
+  .c-r .bevel { stroke: #9c2c40; }
+  .c-b .bevel { stroke: #3a45b0; }
+  .c-g .bevel { stroke: #1e7a4f; }
+  .c-y .bevel { stroke: #a07410; }
+  .piece.inplace { filter: drop-shadow(0 0 7px rgba(78, 203, 141, .75)) drop-shadow(0 3px 3px rgba(0, 0, 0, .42)); }
+
+  /* Gridlock vehicles */
+  .car .body { stroke: rgba(0, 0, 0, .35); }
+  .car.k0 .body { fill: url(#gBlue); }
+  .car.k1 .body { fill: url(#gGold); }
+  .car.k2 .body { fill: url(#gGreen); }
+  .car.k3 .body { fill: url(#gOrange); }
+  .car.k4 .body { fill: url(#gPink); }
+  .car.k5 .body { fill: url(#gPurple); }
+  .car.k6 .body { fill: url(#gRed); }
+  .car.k7 .body { fill: url(#gWood); }
+  .car.hero .body { fill: url(#gHero); stroke: #178f8a; }
+  .car .roof { fill: rgba(255, 255, 255, .16); }
+  .car .glass { fill: rgba(16, 20, 42, .62); }
+  .car .wheel { fill: #151a30; }
+  .car .rib { stroke: rgba(0, 0, 0, .22); stroke-width: 4; }
+
+  .label {
+    font: 800 50px "Segoe UI", system-ui, sans-serif;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: #4a2a0e;
+    paint-order: stroke;
+    stroke: rgba(255, 255, 255, .22);
+    stroke-width: 3;
+    pointer-events: none;
+  }
+  .done .label { fill: #0d3b26; }
+  .c-r .label, .c-b .label { fill: rgba(255, 255, 255, .92); stroke: rgba(0, 0, 0, .2); }
+
+  /* the eyes of the teal hero, as on the Sokoban player */
+  .eye { fill: #f4f7ff; }
+  .pupil { fill: #1b2140; transition: transform .12s ease-out; }
+  .look-u .pupil { transform: translate(0, -5px); }
+  .look-d .pupil { transform: translate(0, 5px); }
+  .look-l .pupil { transform: translate(-5px, 0); }
+  .look-r .pupil { transform: translate(5px, 0); }
+  .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5.5s infinite; }
+  @keyframes blink {
+    0%, 95%, 100% { transform: scaleY(1); }
+    97%           { transform: scaleY(.1); }
+  }
+  .piece.cheer svg { animation: cheer .5s ease-in-out 2; transform-origin: 50% 100%; }
+  @keyframes cheer {
+    0%, 100% { transform: translateY(0) scale(1, 1); }
+    35%      { transform: translateY(-10%) scale(.95, 1.05); }
+    70%      { transform: translateY(0) scale(1.05, .95); }
+  }
+
+  .piece.sel {
+    filter: drop-shadow(0 0 6px rgba(108, 123, 255, .95)) drop-shadow(0 3px 3px rgba(0, 0, 0, .42));
+  }
+  .piece.sel .body { stroke: #dfe3ff; stroke-width: 7; }
+  .piece.hinted {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 10px rgba(255, 209, 102, .95));
+  }
+  .nudge svg { animation: nudge .18s ease-out; }
+  @keyframes nudge {
+    50% { filter: brightness(1.35); }
+  }
+
+  /* ---------- overlays on the board ---------- */
+
+  .cover {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 16px;
+    background: rgba(12, 15, 28, .84);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+    text-align: center;
+    padding: 16px;
+    z-index: 8;
+  }
+  .cover.show { opacity: 1; pointer-events: auto; }
+  .cover h2 { margin: 0; font-size: 1.5rem; color: var(--green); }
+  .cover .detail { color: var(--muted); font-size: .9rem; }
+  .cover .medal { color: var(--gold); font-weight: 700; font-size: .92rem; min-height: 1.2em; }
+  .cover .btn { margin-top: 8px; min-width: 128px; flex: 0 0 auto; }
+  .cover .row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
+  .stars { display: flex; gap: 6px; font-size: 2rem; line-height: 1; }
+  .stars span { color: #343a5e; transform: scale(.4); opacity: 0; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), opacity .2s; }
+  .stars span.on { color: var(--gold); text-shadow: 0 0 12px rgba(255, 209, 102, .6); }
+  .cover.show .stars span { transform: scale(1); opacity: 1; }
+  .cover.show .stars span:nth-child(2) { transition-delay: .12s; }
+  .cover.show .stars span:nth-child(3) { transition-delay: .24s; }
+
+  /* How to play: a card over everything, first shown for each new kind. */
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(8, 10, 20, .66);
+    backdrop-filter: blur(4px);
+    z-index: 12;
+  }
+  .modal.show { display: flex; }
+  .card {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 22px 22px 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+    text-align: center;
+    animation: rise .22s ease-out;
+  }
+  @keyframes rise {
+    from { transform: translateY(12px) scale(.98); opacity: 0; }
+  }
+  .card h2 { margin: 0; color: var(--text); font-size: 1.35rem; }
+  .card .fam { padding: 3px 11px; border-radius: 999px; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--bg); }
+  .card .fam.fam-O { color: #fff; }
+  .card p { margin: 3px 0; color: var(--muted); font-size: .92rem; line-height: 1.5; }
+  .card p b { color: var(--text); }
+  .card .keys { font-size: .8rem; }
+  .card .btn { margin-top: 8px; min-width: 170px; flex: 0 0 auto; }
+
+  /* ---------- controls ---------- */
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1 1 0;
+    min-width: 76px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, opacity .15s;
+    white-space: nowrap;
+  }
+  .btn:hover:not(:disabled) { border-color: var(--accent); background: #2a3050; }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover:not(:disabled) { background: #5a6aff; }
+  .btn.gold { background: rgba(255, 209, 102, .12); border-color: rgba(255, 209, 102, .45); color: var(--gold); }
+  .btn.gold:hover:not(:disabled) { background: rgba(255, 209, 102, .2); border-color: var(--gold); }
+  .btn .key {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: .7rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .btn.primary .key { color: rgba(255, 255, 255, .7); }
+  .btn.icon { flex: 0 0 46px; min-width: 46px; font-size: 1rem; }
+
+  #hint {
+    text-align: center;
+    font-size: .8rem;
+    color: var(--muted);
+    min-height: 1.4em;
+  }
+  #hint.warn { color: var(--warn); font-weight: 600; }
+  #hint.good { color: var(--gold); font-weight: 600; }
+
+  @media (hover: none) and (pointer: coarse) {
+    #hint .keys { display: none; }
+  }
+
+  /* ---------- puzzle library ---------- */
+
+  #browser {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(8, 10, 20, .72);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+  }
+  #browser.show { display: flex; }
+  .sheet {
+    width: 100%;
+    max-width: 760px;
+    height: min(90vh, 820px);
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .sheet > * { flex: 0 0 auto; }
+  .sheet h3 {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .sheet h3 span + span { font-size: .78rem; color: var(--muted); font-weight: 500; }
+  .sheet .actions { margin-bottom: 0; }
+
+  .meter {
+    height: 6px;
+    border-radius: 99px;
+    background: var(--panel-2);
+    overflow: hidden;
+    margin: -4px 0 12px;
+  }
+  .meter i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--green), var(--teal));
+    border-radius: 99px;
+    transition: width .3s;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .chip:hover { border-color: var(--accent); }
+  .chip small { font-size: .7rem; font-weight: 500; color: var(--muted); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip.active small { color: rgba(255, 255, 255, .75); }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .stagebtn {
+    position: relative;
+    padding: 6px 2px 8px;
+    border-radius: 9px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--muted);
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color .15s, background .15s, color .15s;
+  }
+  .stagebtn:hover { border-color: var(--accent); color: var(--text); }
+  .stagebtn.active { border-color: var(--accent); background: #2a3050; color: var(--text); }
+  .stagebtn i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: var(--p, 0%);
+    background: var(--green);
+  }
+  .stagebtn.full { color: var(--green); }
+
+  .about {
+    margin: 0 0 10px;
+    font-size: .78rem;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .tools .btn { flex: 0 0 auto; min-width: 0; padding: 8px 14px; }
+  .tools .where { flex: 1 1 170px; font-size: .8rem; color: var(--muted); }
+  .tools input {
+    width: 110px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #12162a;
+    color: var(--text);
+    font: inherit;
+    font-size: .9rem;
+  }
+  .tools input:focus { outline: none; border-color: var(--accent); }
+
+  .sheet .scroll {
+    flex: 1 1 auto;
+    min-height: 130px;
+    overflow-y: auto;
+    margin: 0 -6px 12px;
+    padding: 3px 6px;
+  }
+  .thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 8px;
+  }
+  .thumb {
+    position: relative;
+    padding: 5px 5px 3px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--muted);
+    font: inherit;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .thumb:hover { border-color: var(--accent); }
+  .thumb .pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    background: #141830;
+  }
+  .thumb canvas { display: block; max-width: 100%; max-height: 100%; }
+  .thumb small { display: flex; justify-content: space-between; font-size: .64rem; font-weight: 600; margin-top: 3px; }
+  .thumb small em { font-style: normal; letter-spacing: -1px; }
+  .on { color: var(--gold); }
+  .off { color: #3a4066; }
+  .thumb .tag { position: absolute; top: 8px; left: 8px; width: 7px; height: 7px; border-radius: 50%; }
+  .thumb.done { border-color: rgba(78, 203, 141, .55); background: rgba(78, 203, 141, .1); }
+  .thumb.done small { color: var(--green); }
+  .thumb.current { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  .keysheet { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: .85rem; color: var(--muted); text-align: left; }
+  .keysheet kbd { font: 600 .78rem "Segoe UI", system-ui, sans-serif; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .piece { transition: none; }
+    .mark .zone, .mark .pad, .tile.gate path, .eyes, .piece.cheer svg { animation: none; }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 12px 8px; }
+    #browser { padding: 8px; }
+    .sheet { height: 95vh; padding: 12px; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { flex: 0 0 auto; }
+    .stages { gap: 3px; }
+    .stagebtn { font-size: .7rem; padding: 5px 0 7px; }
+    .tools .where { flex-basis: 100%; }
+    .tools input { flex: 1 1 0; width: auto; min-width: 0; }
+    .sheet .actions .btn { min-width: 0; padding: 10px 4px; font-size: .82rem; }
+    .thumbs { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); }
+    h1 { font-size: 1.5rem; }
+    #hud { gap: 5px; }
+    .stat .value { font-size: .95rem; }
+    .stat.best .value, .stat.stg .value { font-size: .8rem; }
+    .actions { gap: 6px; }
+    .actions .btn { min-width: 0; flex-basis: calc(25% - 6px); padding: 10px 2px; font-size: .84rem; }
+    .actions .btn .key { display: none; }
+    .actions .btn.icon { flex: 1 1 0; }
+    #goal { font-size: .8rem; }
+  }
+</style>
+</head>
+<body>
+<!-- Shared paints for the pieces. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gWood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2a562"/><stop offset="1" stop-color="#a2612b"/></linearGradient>
+    <linearGradient id="gHero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ff3ef"/><stop offset=".5" stop-color="#38d9d3"/><stop offset="1" stop-color="#21a8a3"/></linearGradient>
+    <linearGradient id="gDone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fe0a4"/><stop offset="1" stop-color="#2f9e69"/></linearGradient>
+    <linearGradient id="gRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a8a"/><stop offset="1" stop-color="#d9485f"/></linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9aa6ff"/><stop offset="1" stop-color="#5563f0"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7be3a9"/><stop offset="1" stop-color="#34a36d"/></linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe29a"/><stop offset="1" stop-color="#e3a93a"/></linearGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc178"/><stop offset="1" stop-color="#e98a2e"/></linearGradient>
+    <linearGradient id="gPink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9fcb"/><stop offset="1" stop-color="#d9559a"/></linearGradient>
+    <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c7a4ff"/><stop offset="1" stop-color="#8559e0"/></linearGradient>
+    <linearGradient id="gShine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".45" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+</svg>
+
+<div class="app">
+  <header>
+    <h1>Sliding Blocks</h1>
+    <p class="subtitle" id="subtitle">Slide the blocks until the way is clear</p>
+  </header>
+
+  <div id="hud">
+    <div class="stat level"><div class="label">Puzzle</div><div class="value" id="statLevel">1</div></div>
+    <div class="stat"><div class="label">Moves</div><div class="value" id="statMoves">0</div></div>
+    <div class="stat par"><div class="label">Par</div><div class="value" id="statPar">—</div></div>
+    <div class="stat best"><div class="label">Best</div><div class="value" id="statBest">—</div></div>
+    <div class="stat stg"><div class="label">Stage</div><div class="value" id="statStage">1</div></div>
+  </div>
+
+  <div id="goal"><span class="fam" id="goalFam"></span><span class="text" id="goalText"></span></div>
+
+  <div class="stage">
+    <div id="board">
+      <div id="grid"></div>
+      <div id="play"><div id="marks"></div><div id="pieces"></div><div id="zone"></div></div>
+      <div class="cover" id="overlay">
+        <h2 id="winTitle">Solved!</h2>
+        <div class="stars" id="winStars"><span>★</span><span>★</span><span>★</span></div>
+        <div class="detail" id="winDetail"></div>
+        <div class="medal" id="winMedal"></div>
+        <div class="row">
+          <button class="btn" id="replay">Play Again</button>
+          <button class="btn primary" id="nextUnsolved">Next Puzzle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" id="undo">Undo<span class="key">U</span></button>
+    <button class="btn" id="restart">Restart<span class="key">R</span></button>
+    <button class="btn gold" id="hintBtn" title="Make the next move of a shortest solution">Hint<span class="key">H</span></button>
+    <button class="btn" id="prev" title="Previous puzzle">Prev<span class="key">P</span></button>
+    <button class="btn" id="next" title="Next puzzle">Next<span class="key">N</span></button>
+    <button class="btn" id="levels" title="Browse every puzzle">Puzzles<span class="key">L</span></button>
+    <button class="btn icon" id="helpBtn" title="How to play (?)">?</button>
+    <button class="btn icon" id="sound" title="Toggle sound">🔊</button>
+  </div>
+
+  <div id="hint"></div>
+</div>
+
+<div id="help" class="modal">
+  <div class="card" role="dialog" aria-labelledby="helpTitle">
+    <span class="fam" id="helpFam"></span>
+    <h2 id="helpTitle"></h2>
+    <div id="helpBody"></div>
+    <button class="btn primary" id="helpOk">Let's Play</button>
+  </div>
+</div>
+
+<div id="browser">
+  <div class="sheet" role="dialog" aria-label="Puzzle library">
+    <h3><span>Puzzle library</span> <span id="packInfo"></span></h3>
+    <div class="meter"><i id="meter"></i></div>
+    <div class="chips" id="chips"></div>
+    <div class="stages" id="stages"></div>
+    <p class="about" id="about"></p>
+    <div class="tools">
+      <span class="where" id="where"></span>
+      <input type="number" id="jumpTo" min="1" step="1" inputmode="numeric" aria-label="Puzzle number">
+      <button class="btn" id="jumpGo">Go</button>
+      <button class="btn" id="random" title="A puzzle of this stage you have not solved yet">Random</button>
+      <button class="btn primary" id="firstUnsolved" title="The first puzzle you have not solved in this list">Next Unsolved</button>
+    </div>
+    <div class="scroll" id="scroll">
+      <div class="thumbs" id="thumbGrid"></div>
+      <div class="about" id="empty" hidden></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="wipe">Reset Progress</button>
+      <button class="btn primary" id="closeBrowser">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="sb-core.js"></script>
+<script src="puzzles.js"></script>
+<script src="sb-app.js"></script>
+</body>
+</html>
