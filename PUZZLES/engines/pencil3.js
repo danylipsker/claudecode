@@ -1725,6 +1725,7 @@
     verify,
     generate,
     generates: ['number-path', 'norinori', 'lits', 'heyawake', 'yajilin'],
+    endlessMs: 12000, // each attempt searches up to ~1 s; hard LITS and Norinori need several
     mount(ctx, p) {
       const k = p.data.kind;
       if (k === 'numpath') return mountPath(ctx, p);

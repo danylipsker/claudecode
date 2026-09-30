@@ -37,8 +37,9 @@
   C.endlessHref = (fid, level, seed) => '#/x/' + fid + '/' + level + (seed != null ? '/' + seed : '');
   C.newSeed = () => Math.floor(Math.random() * 1e9);
 
-  // make the puzzle for (family, level, seed); a seed that yields nothing checkable moves on to the next one
-  C.makeEndless = function (fid, level, seed) {
+  // make the puzzle for (family, level, seed); a seed that yields nothing checkable moves on to the next one.
+  // Async: the page breathes between attempts (the spinner turns, onTry(k) can report progress)
+  C.makeEndless = async function (fid, level, seed, onTry) {
     const fam = C.families[fid];
     const eng = fam && C.engines[fam.meta.engine];
     if (!eng || !eng.generate) throw new Error('This drawer cannot make new puzzles.');
@@ -46,6 +47,7 @@
     let lastErr = null;
     const budget = eng.endlessMs || 6000; // a heavy maker may ask for more time
     for (let k = 0; k < 25 && Date.now() - t0 < budget; k++) {
+      if (k) { if (onTry) onTry(k); await new Promise((r) => setTimeout(r, 0)); }
       const s = seed + k;
       let gen = null;
       try { gen = eng.generate(C.rng('x:' + fid + ':' + level + ':' + s), level, fam.meta); } catch (e) { lastErr = e; }
@@ -68,17 +70,22 @@
     if (!info || !info.endless) { host.innerHTML = ''; host.appendChild(C.notFound('This drawer has no endless mode.')); return; }
     level = Math.max(1, Math.min(5, parseInt(level, 10) || 2));
     if (seed == null || seed === '' || isNaN(+seed)) { root.location.replace(C.endlessHref(fid, level, C.newSeed())); return; }
-    host.innerHTML = '<div class="loading"><div class="spinner"></div>Making a new puzzle and checking it…</div>';
+    host.innerHTML = '<div class="loading"><div class="spinner"></div><span>Making a new puzzle and checking it…</span></div>';
+    const msg = host.querySelector('.loading span');
+    const route = root.location.hash;
     let p;
     try {
       await C.loadFamily(fid);
       await new Promise((r) => setTimeout(r, 20));
-      p = C.makeEndless(fid, level, +seed);
+      p = await C.makeEndless(fid, level, +seed, (k) => { msg.textContent = 'Still looking for a good one — try ' + (k + 1) + '…'; });
     } catch (e) {
+      if (root.location.hash !== route) return; // the player left while it was being made
       host.innerHTML = '';
       host.appendChild(C.notFound(e.message));
       return;
     }
+    if (root.location.hash !== route) return;
+    if (current) { current.destroy(); current = null; }
     current = new Player(host, p, C.engines[p.engine]);
   };
 
