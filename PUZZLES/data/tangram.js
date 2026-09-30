@@ -1,0 +1,33 @@
+/* The Puzzle Cabinet · data/tangram.js — made by tools/gen/tangram.js */
+Cabinet.family({
+  id: 'tangram', engine: 'tangram', cat: 'shapes', name: 'Tangram', order: 1,
+  blurb: 'Seven pieces cut from a square — two large triangles, a medium one, two small, a square and a parallelogram — make every one of these figures.',
+  origin: { year: 1800, who: 'China, Song dynasty furniture to Qing puzzle books', note: 'The tangram (七巧板, "seven boards of skill") appears in Chinese books around 1800 and swept Europe and America in a craze from 1817. Lewis Carroll, Napoleon (so the story goes) and Edgar Allan Poe all owned sets.' },
+  concepts: ['dissection']
+}, [
+  { id: "tangram-square", title: "The Square", diff: 3,
+    text: "Put the seven pieces back in their box: a plain square. It is how the set is sold, and it is surprisingly hard to get back once the pieces are out.",
+    goal: 'Cover the silhouette with all seven pieces.',
+    hints: ['The two large triangles together make half the square.', 'The medium triangle and the two small ones sit along one side; the square and the parallelogram fill the rest.'],
+    data: { pieces: [["PA",0,0,0,0],["MT",4,0,90,0],["ST",1,1,0,0],["ST",4,2,90,0],["SQ",2,1,0,0],["LT",0,4,270,0],["LT",4,4,180,0]] } },
+  { id: "tangram-triangle", title: "The Great Triangle", diff: 2,
+    text: "One big right-angled triangle, as wide as two boxes.",
+    goal: 'Cover the silhouette with all seven pieces.',
+    data: { pieces: [["ST",2,4,180,0],["SQ",1,2,0,0],["MT",4,4,180,0],["ST",3,1,90,0],["PA",4,0,90,0],["LT",4,4,270,0],["LT",8,4,180,0]] } },
+  { id: "tangram-rectangle", title: "The Long Rectangle", diff: 3,
+    text: "A rectangle twice as long as it is wide, lying on the slant.",
+    goal: 'Cover the silhouette with all seven pieces.',
+    data: { pieces: [["ST",1,1,90,0],["SQ",1,0,0,0],["PA",2,4,90,1],["ST",4,2,180,0],["MT",2,2,0,0],["LT",4,2,90,0],["LT",4,6,270,0]] } },
+  { id: "tangram-parallelogram", title: "The Parallelogram", diff: 2,
+    text: "A big parallelogram leaning to the right.",
+    goal: 'Cover the silhouette with all seven pieces.',
+    data: { pieces: [["LT",0,0,0,0],["ST",8,4,180,0],["SQ",5,2,0,0],["MT",4,4,270,0],["ST",5,3,270,0],["LT",4,0,90,0],["PA",5,3,90,1]] } },
+  { id: "tangram-trapezoid", title: "The Right Trapezoid", diff: 2,
+    text: "A trapezoid with one upright side and one slanting at 45°.",
+    goal: 'Cover the silhouette with all seven pieces.',
+    data: { pieces: [["ST",0,0,0,0],["LT",0,4,270,0],["SQ",1,0,0,0],["MT",2,4,180,0],["LT",6,4,180,0],["PA",3,1,90,0],["ST",3,3,270,0]] } },
+  { id: "tangram-hexagon", title: "The Hexagon", diff: 3,
+    text: "A six-sided figure, pointed at both ends.",
+    goal: 'Cover the silhouette with all seven pieces.',
+    data: { pieces: [["ST",2,0,0,0],["PA",1,3,0,0],["ST",1,1,90,0],["SQ",1,0,0,0],["MT",1,3,270,0],["LT",4,0,90,0],["LT",4,4,270,0]] } },
+]);
