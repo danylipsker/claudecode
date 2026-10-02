@@ -40,7 +40,7 @@ Serve the folder with `node scripts/serve.js 8172` and open http://localhost:817
 | [Sokoban](sokoban/sokoban.html) | Push every crate onto a glowing pad: level picker, move and push counters, saved progress. |
 | [Tic Tac Toe](tic-tac-toe/tic-tac-toe.html) | Play a friend or the computer, at three levels, as either side. |
 | [VectorLab](VECTOR-EDITOR/vector-editor.html) | A vector graphics editor: shape tools, corner rounding, transforms and boolean corners. |
-| [CURVES](CURVES/CURVES.html) | A parametric curve lab: drive a curve from its parameters and domain, then trace and fit the result. |
+| [CURVES](CURVES/CURVES.html) | A parametric curve lab: famous and math curves, Fourier series, periodic motion, wave forms and space curves; drive a curve from its parameters and domain, then trace and fit the result. |
 | [Affine Transformations](afine%20transformations/afine-transformations.html) | Stack matrices, multiply them into a composite, and watch what each step does to the figure. |
 | [Linear Half Toner](Linear%20Half%20Tone/LinearHalfToner.html) | Turns a picture into a line halftone where line width carries the tone, then into V-bit cut depths for a CNC router. |
 | [Unique Gears](UNIQUE-GEARS-GENERATOR/index.html) | Pick a shape - a square, an ellipse, a star, your own formula or a freehand sketch - and it works out the gear that meshes with it: the centre distance that makes the pair close, the pitch curves that roll on each other, and the conjugate outline itself as an envelope. Ten illustrated chapters, three labs (the envelope condition, rack generation and undercut, inverse ratio design) and SVG / DXF / JSON export. |

@@ -126,7 +126,7 @@
   <!-- ============ LIBRARY ============ -->
   <div id="lib">
     <header>
-      <h1>CURVES<small>parametric curve lab — famous curves, space curves &amp; your own</small></h1>
+      <h1>CURVES<small>parametric curve lab — famous &amp; math curves, Fourier series, periodic motion, wave forms, space curves &amp; your own</small></h1>
       <input id="search" type="text" placeholder="filter curves…" spellcheck="false">
     </header>
     <div id="list"></div>
@@ -224,8 +224,11 @@
       <div id="ePRows"></div>
       <div class="row" style="margin-top:4px"><button class="mini" id="ePAdd">＋ parameter</button></div>
       <div class="note" style="margin-top:8px">
-        Functions: <code>sin cos tan sec csc cot asin acos atan atan2 sinh cosh tanh exp log ln sqrt cbrt nroot(x,n) abs sign pow mod floor round min max</code>,
+        Functions: <code>sin cos tan sec csc cot asin acos atan atan2 sinh cosh tanh exp log ln sqrt cbrt nroot(x,n) abs sign pow mod floor round min max frac clamp(x,a,b) step sinc</code>,
         constants <code>pi e tau</code>. Powers: <code>^</code> or <code>**</code>. Return <code>NaN</code> to cut a gap.
+        Series and integrals: <code>fsum(1,N, k=&gt; sin(k*t)/k)</code> sums the expression for k = 1…N,
+        <code>fint(0,t, u=&gt; cos(u^2), 160)</code> integrates it numerically; <code>kepler(M,e)</code> solves Kepler's equation.
+        Conditions work too: <code>(t&lt;pi ? 1 : -1)</code>.
         The preview updates live as you type.
       </div>
       <div id="eErr" style="color:var(--err);font-size:12px;margin-top:6px;white-space:pre-wrap;font-family:Consolas,monospace"></div>
@@ -252,8 +255,10 @@
    Library seeded from “List of Famous Curves” (matematica.pt copy in
    C:\books\MATH-FORMULAES). Each curve is a parametric triple
    x(t), y(t), z(t) with optional helper assignments (aux), free
-   parameters, and a t-domain. 2D and 3D software renderers, live
-   editing, and user-defined experimental curves persisted locally.
+   parameters, and a t-domain. Further families: Fourier partial sums
+   (fsum), periodic motion, math curves and wave forms as time plots.
+   2D and 3D software renderers, live editing, and user-defined
+   experimental curves persisted locally.
    ================================================================= */
 
 /* ---------------- expression compiler ---------------- */
@@ -263,6 +268,14 @@ const EXTRAS = [
   ['pi','Math.PI'], ['e','Math.E'], ['tau','(2*Math.PI)'], ['ln','Math.log'],
   ['sec','(x=>1/Math.cos(x))'], ['csc','(x=>1/Math.sin(x))'], ['cot','(x=>Math.cos(x)/Math.sin(x))'],
   ['mod','((x,y)=>((x%y)+y)%y)'], ['nroot','((x,n)=>Math.sign(x)*Math.pow(Math.abs(x),1/n))'],
+  ['frac','(x=>x-Math.floor(x))'], ['clamp','((x,a,b)=>Math.min(b,Math.max(a,x)))'],
+  ['step','(x=>x<0?0:1)'], ['sinc','(x=>x===0?1:Math.sin(Math.PI*x)/(Math.PI*x))'],
+  // fsum(a,b,k=>expr): sum of expr for integer k from a to b (partial Fourier sums)
+  ['fsum','((a,b,f)=>{let s=0;for(let k=Math.ceil(a);k<=b;k++)s+=f(k);return s;})'],
+  // fint(a,b,u=>expr,n): Simpson integral of expr over [a,b] with n subintervals
+  ['fint','((a,b,f,n)=>{n=Math.max(2,2*Math.round((n||64)/2));const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3;})'],
+  // kepler(M,e): eccentric anomaly E from mean anomaly M, Newton on M = E - e sin E
+  ['kepler','((M,e)=>{let E=e<0.8?M:Math.PI;for(let i=0;i<20;i++){const d=(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));E-=d;if(Math.abs(d)<1e-13)break;}return E;})'],
 ];
 const BAD_NAMES = new Set(['t','P']);
 // Prelude with names excluded when a curve's params/helpers shadow them.
@@ -328,7 +341,12 @@ function evalConst(src){
 }
 
 /* ---------------- curve library ---------------- */
-/* g: '2d' famous plane curves · '3d' space curves · 'custom' user curves */
+/* g: '2d' famous plane curves · '3d' space curves · 'fourier' Fourier series ·
+   'motion' periodic motion · 'math' math curves · 'wave' wave forms · 'custom' user curves */
+const GROUPS = [
+  ['2d','Famous curves — 2D'], ['3d','Space curves — 3D'], ['fourier','Fourier series'],
+  ['motion','Periodic motion'], ['math','Math curves'], ['wave','Wave forms'],
+];
 const P = (k,v,min,max,step)=>({k,v,min,max,step});
 const BUILTINS = [
 // ------- famous plane curves (roster from the source list) -------
@@ -503,6 +521,231 @@ const BUILTINS = [
 {id:'twisted-cubic',name:'Twisted Cubic',g:'3d',notes:'The moment curve (t, t², t³) — the standard example of a genuinely twisted space curve.',
  classic:'x = at, y = bt², z = ct³', x:'a*t', y:'b*t^2', z:'c*t^3', tMin:'-1.5', tMax:'1.5', n:500,
  params:[P('a',1,0.1,2,0.01),P('b',1,0.1,2,0.01),P('c',1,0.1,2,0.01)]},
+// ------- Fourier series (partial sums; N = number of harmonics) -------
+{id:'fs-square',name:'Square Wave (Fourier)',g:'fourier',notes:'Partial sum of the square wave\'s Fourier series — odd harmonics only, amplitudes 1/k. Raise N: the Gibbs overshoot (≈9 %) at each jump narrows but never shrinks.',
+ classic:'f(t) = (4/π) Σ sin((2k−1)t)/(2k−1)', x:'t', y:'A*4/pi*fsum(1,N, k=> sin((2*k-1)*t)/(2*k-1))', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',5,1,60,1),P('A',1,0.1,2,0.01)]},
+{id:'fs-square-fejer',name:'Square Wave, Fejér Mean',g:'fourier',notes:'The same square wave summed with Fejér (Cesàro) weights 1 − k/(N+1). The overshoot disappears — the price is a softer edge. Compare with the plain partial sum at equal N.',
+ classic:'σ_N(t) = (4/π) Σ (1 − k/(N+1)) sin(kt)/k,  k odd', x:'t', y:'A*4/pi*fsum(1,N, k=> mod(k,2)*(1-k/(N+1))*sin(k*t)/k)', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',9,1,80,1),P('A',1,0.1,2,0.01)]},
+{id:'fs-sawtooth',name:'Sawtooth Wave (Fourier)',g:'fourier',notes:'Every harmonic, amplitudes 1/k with alternating sign — the slowest-converging of the classic waves. The sum is t/π on (−π, π), repeated.',
+ classic:'f(t) = (2/π) Σ (−1)^(k+1) sin(kt)/k', x:'t', y:'A*2/pi*fsum(1,N, k=> (-1)^(k+1)*sin(k*t)/k)', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',8,1,80,1),P('A',1,0.1,2,0.01)]},
+{id:'fs-triangle',name:'Triangle Wave (Fourier)',g:'fourier',notes:'Odd harmonics with amplitudes 1/k² — a continuous target, so the series converges fast: three terms already look like a triangle.',
+ classic:'f(t) = (8/π²) Σ (−1)^k sin((2k+1)t)/(2k+1)²', x:'t', y:'A*8/pi^2*fsum(0,N-1, k=> (-1)^k*sin((2*k+1)*t)/(2*k+1)^2)', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',3,1,40,1),P('A',1,0.1,2,0.01)]},
+{id:'fs-pulse',name:'Pulse Train (Fourier)',g:'fourier',notes:'A rectangular pulse of width 2πd centred at t = 0, repeated with period 2π. The harmonic amplitudes follow sin(kπd)/k — the sinc envelope of the spectrum.',
+ classic:'f(t) = A[d + (2/π) Σ sin(kπd) cos(kt)/k]', x:'t', y:'A*(d + 2/pi*fsum(1,N, k=> sin(k*pi*d)/k*cos(k*t)))', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',12,1,80,1),P('d',0.25,0.02,0.98,0.01),P('A',1,0.1,2,0.01)]},
+{id:'fs-fullwave',name:'Full-wave Rectified Sine',g:'fourier',notes:'|sin t| as a cosine series: a DC term 2/π plus even harmonics with amplitudes 1/(4k²−1). What a bridge rectifier delivers before the smoothing capacitor.',
+ classic:'|sin t| = 2/π − (4/π) Σ cos(2kt)/(4k²−1)', x:'t', y:'A*(2/pi - 4/pi*fsum(1,N, k=> cos(2*k*t)/(4*k^2-1)))', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',4,1,40,1),P('A',1,0.1,2,0.01)]},
+{id:'fs-halfwave',name:'Half-wave Rectified Sine',g:'fourier',notes:'max(0, sin t): a DC term 1/π, half the fundamental, and even cosine harmonics. One diode in series with the load.',
+ classic:'f(t) = 1/π + sin t/2 − (2/π) Σ cos(2kt)/(4k²−1)', x:'t', y:'A*(1/pi + sin(t)/2 - 2/pi*fsum(1,N, k=> cos(2*k*t)/(4*k^2-1)))', z:'', tMin:'-pi', tMax:'pi', n:2000,
+ params:[P('N',4,1,40,1),P('A',1,0.1,2,0.01)]},
+{id:'fs-parabola',name:'Parabolic Wave (Fourier)',g:'fourier',notes:'t² on [−π, π] repeated — a scalloped wave. Cosine terms with amplitudes 1/k²; at t = π the series gives Euler\'s π²/6 = Σ 1/k².',
+ classic:'t² = π²/3 + 4 Σ (−1)^k cos(kt)/k²', x:'t', y:'A*(pi^2/3 + 4*fsum(1,N, k=> (-1)^k*cos(k*t)/k^2))', z:'', tMin:'-2*pi', tMax:'2*pi', n:2400,
+ params:[P('N',3,1,40,1),P('A',0.5,0.05,1,0.01)]},
+{id:'fs-exp',name:'Exponential Wave (Fourier)',g:'fourier',notes:'eᵗ on (−π, π) repeated. Neither even nor odd, so both cosine and sine terms appear, mixed by the factor 1/(1+k²). The jump at ±π shows Gibbs ringing again.',
+ classic:'eᵗ = (sinh π/π)[1 + 2 Σ (−1)^k (cos kt − k sin kt)/(1+k²)]', x:'t', y:'A*sinh(pi)/pi*(1 + 2*fsum(1,N, k=> (-1)^k*(cos(k*t) - k*sin(k*t))/(1+k^2)))', z:'', tMin:'-pi', tMax:'pi', n:2400,
+ params:[P('N',10,1,80,1),P('A',0.25,0.02,1,0.01)]},
+{id:'fs-dirichlet',name:'Dirichlet Kernel',g:'fourier',notes:'D_N(t) = 1 + 2 Σ cos(kt), the kernel whose convolution produces the N-th partial sum. Shown normalised by its peak 2N+1. The side lobes are the source of the Gibbs ripples.',
+ classic:'D_N(t) = sin((N+½)t)/sin(t/2)', x:'t', y:'(1 + 2*fsum(1,N, k=> cos(k*t)))/(2*N+1)', z:'', tMin:'-pi', tMax:'pi', n:2400,
+ params:[P('N',10,1,60,1)]},
+{id:'fs-synth',name:'Harmonic Synthesis',g:'fourier',notes:'Build your own wave from the first five sine harmonics — an additive synthesiser. Try 1, 0, ⅓, 0, ⅕ (square) or 1, −½, ⅓, −¼, ⅕ (sawtooth).',
+ classic:'f(t) = Σ aₖ sin(kt)', x:'t', y:'a1*sin(t) + a2*sin(2*t) + a3*sin(3*t) + a4*sin(4*t) + a5*sin(5*t)', z:'', tMin:'-pi', tMax:'pi', n:1200,
+ params:[P('a1',1,-1,1,0.01),P('a2',0,-1,1,0.01),P('a3',0.333,-1,1,0.01),P('a4',0,-1,1,0.01),P('a5',0.2,-1,1,0.01)]},
+{id:'fs-polygon',name:'Fourier Polygon (Epicycles)',g:'fourier',notes:'A regular m-gon drawn by rotating circles: the complex series has non-zero terms only for k ≡ q (mod m), all with amplitude 1/k². N = 0 is one circle; each extra N adds a pair of epicycles. q > 1 with gcd(m, q) = 1 gives a star — try m = 5, q = 2.',
+ classic:'z(t) = Σⱼ e^(i(q+jm)t)/(q+jm)²', x:'fsum(-N,N, j=> (q+j*m==0 ? 0 : cos((q+j*m)*t)/(q+j*m)^2))', y:'fsum(-N,N, j=> (q+j*m==0 ? 0 : sin((q+j*m)*t)/(q+j*m)^2))', z:'', tMin:'0', tMax:'2*pi', n:1600,
+ params:[P('m',4,3,12,1),P('q',1,1,5,1),P('N',6,0,40,1)]},
+// ------- periodic motion -------
+{id:'pm-shm',name:'Simple Harmonic Motion',g:'motion',notes:'Displacement of a mass on a spring: x = A cos(ωt + φ). Period T = 2π/ω; velocity leads by a quarter period, acceleration is −ω²x.',
+ classic:'x(t) = A·cos(ωt + φ)', x:'t', y:'A*cos(w*t + phi)', z:'', tMin:'0', tMax:'8', n:1200,
+ params:[P('A',1,0.1,2,0.01),P('w',2,0.2,8,0.01),P('phi',0,-3.1416,3.1416,0.01)]},
+{id:'pm-damped',name:'Damped Oscillation',g:'motion',notes:'Released from rest with damping γ. Under-damped (γ < ω₀) it rings at ω_d = √(ω₀² − γ²) inside the envelope e^(−γt); set γ = ω₀ for critical damping, larger for the over-damped creep.',
+ classic:'x = A·e^(−γt)[cos ω_d t + (γ/ω_d) sin ω_d t]', aux:'wd = max(sqrt(abs(w0^2 - gam^2)), 1e-9)',
+ x:'t', y:'A*exp(-gam*t)*(gam<w0 ? cos(wd*t) + gam/wd*sin(wd*t) : cosh(wd*t) + gam/wd*sinh(wd*t))', z:'', tMin:'0', tMax:'12', n:1600,
+ params:[P('A',1,0.1,2,0.01),P('w0',2,0.2,6,0.01),P('gam',0.3,0,4,0.01)]},
+{id:'pm-driven',name:'Driven Oscillator',g:'motion',notes:'A damped oscillator pushed at frequency ω: the free vibration at ω_d dies away and the steady state at ω remains, lagging the drive by δ. Sweep ω through ω₀ to see resonance.',
+ classic:'x = A·e^(−γt) cos ω_d t + F·cos(ωt − δ)/√((ω₀²−ω²)² + (2γω)²)',
+ aux:'wd = max(sqrt(abs(w0^2 - gam^2)), 1e-9); R = F/sqrt((w0^2 - w^2)^2 + (2*gam*w)^2); dl = atan2(2*gam*w, w0^2 - w^2)',
+ x:'t', y:'A*exp(-gam*t)*cos(wd*t) + R*cos(w*t - dl)', z:'', tMin:'0', tMax:'12', n:2400,
+ params:[P('A',1,0,2,0.01),P('F',5,0,10,0.1),P('w0',4,0.5,8,0.01),P('w',3,0.1,8,0.01),P('gam',0.4,0.02,3,0.01)]},
+{id:'pm-resonance',name:'Resonance Curve',g:'motion',notes:'Steady-state amplitude of the driven oscillator against drive frequency (t plays ω). The peak sits just below ω₀, its width is about 2γ, and Q = ω₀/2γ.',
+ classic:'A(ω) = F/√((ω₀²−ω²)² + (2γω)²)', x:'t', y:'F/sqrt((w0^2 - t^2)^2 + (2*gam*t)^2)', z:'', tMin:'0', tMax:'6', n:1200,
+ params:[P('F',2,0.2,5,0.01),P('w0',2,0.5,5,0.01),P('gam',0.25,0.02,2,0.01)]},
+{id:'pm-beats',name:'Beats',g:'motion',notes:'Two oscillations of nearly equal frequency add to a carrier at the mean frequency inside a slow envelope at half the difference — what you hear when tuning two strings.',
+ classic:'x = A[cos ω₁t + cos ω₂t] = 2A·cos((ω₁−ω₂)t/2)·cos((ω₁+ω₂)t/2)', x:'t', y:'A*(cos(w1*t) + cos(w2*t))', z:'', tMin:'0', tMax:'4*pi', n:3000,
+ params:[P('A',1,0.1,2,0.01),P('w1',10,1,30,0.1),P('w2',9,1,30,0.1)]},
+{id:'pm-harmonograph',name:'Harmonograph',g:'motion',notes:'The Victorian drawing machine: two damped pendulums move the pen (frequencies f₁, f₂, phases p₁, p₂) while a third rotary pendulum moves the paper. Near-rational ratios give the classic braided figures.',
+ classic:'x = e^(−dt)[A sin(f₁t + p₁) + B cos(f₃t)],  y = e^(−dt)[A sin(f₂t + p₂) + B sin(f₃t)]', aux:'env = exp(-d*t)',
+ x:'env*(A*sin(f1*t + p1) + B*cos(f3*t))', y:'env*(A*sin(f2*t + p2) + B*sin(f3*t))', z:'', tMin:'0', tMax:'120', n:6000,
+ params:[P('A',1,0.1,2,0.01),P('B',0.3,0,1.5,0.01),P('f1',2,0.5,6,0.001),P('f2',3,0.5,6,0.001),P('f3',1,0.1,6,0.001),P('p1',1.5708,0,6.2832,0.01),P('p2',0,0,6.2832,0.01),P('d',0.02,0,0.1,0.001)]},
+{id:'pm-phase-damped',name:'Damped Oscillator — Phase Portrait',g:'motion',notes:'Position against velocity for the damped oscillator: a spiral sinking into the rest state. With γ = 0 it closes into the ellipse of simple harmonic motion.',
+ classic:'(x, ẋ) with x = A·e^(−γt) cos ω_d t', aux:'wd = max(sqrt(abs(w0^2 - gam^2)), 1e-9); env = A*exp(-gam*t)',
+ x:'env*cos(wd*t)', y:'-env*(gam*cos(wd*t) + wd*sin(wd*t))', z:'', tMin:'0', tMax:'20', n:3000,
+ params:[P('A',1,0.1,2,0.01),P('w0',2,0.2,6,0.01),P('gam',0.15,0,2,0.01)]},
+{id:'pm-pendulum-phase',name:'Pendulum — Phase Curve',g:'motion',notes:'Energy contour of the simple pendulum in the (θ, θ̇) plane. Below E = 2ω₀² the pendulum swings (closed loops); above it, it goes over the top (open waves). E = 2ω₀² is the separatrix.',
+ classic:'½θ̇² + ω₀²(1 − cos θ) = E', aux:'s = (t<2*pi ? 1 : -1); th = (t<2*pi ? t : 4*pi - t); v2 = 2*(E - w0^2*(1 - cos(th))); v = (v2>=0 ? s*sqrt(v2) : NaN)',
+ x:'th', y:'v', z:'', tMin:'-2*pi', tMax:'6*pi', n:3200,
+ params:[P('E',1.5,0.05,6,0.01),P('w0',1,0.3,2,0.01)]},
+{id:'pm-kepler',name:'Kepler Orbit',g:'motion',notes:'A planet on an ellipse of semi-axis a and eccentricity e with the Sun at the origin, parametrised by time: Kepler\'s equation M = E − e·sin E is solved for the eccentric anomaly. Trace it — fast at perihelion, slow at aphelion.',
+ classic:'x = a(cos E − e),  y = a√(1−e²) sin E,  M = E − e·sin E', aux:'Ea = kepler(t, ecc)',
+ x:'a*(cos(Ea) - ecc)', y:'a*sqrt(1 - ecc^2)*sin(Ea)', z:'', tMin:'0', tMax:'2*pi', n:720,
+ params:[P('a',1.5,0.2,3,0.01),P('ecc',0.6,0,0.95,0.01)]},
+{id:'pm-precess',name:'Precessing Orbit',g:'motion',notes:'A Kepler ellipse whose perihelion advances each revolution — the rosette of Mercury\'s orbit, exaggerated. k < 1 advances, k > 1 regresses; k = 1 is the closed ellipse.',
+ classic:'r = p/(1 + e·cos kθ)', aux:'r = p/(1 + ecc*cos(k*t))', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'20*pi', n:6000,
+ params:[P('p',1,0.2,2,0.01),P('ecc',0.5,0,0.9,0.01),P('k',0.9,0.5,1.5,0.01)]},
+{id:'pm-foucault',name:'Foucault Pendulum',g:'motion',notes:'A pendulum swinging at ω while its plane turns slowly at Ω — the rosette traced by Foucault\'s bob as the Earth rotates beneath it (precession hugely exaggerated).',
+ classic:'x = A cos ωt · cos Ωt,  y = A cos ωt · sin Ωt', x:'A*cos(w*t)*cos(Om*t)', y:'A*cos(w*t)*sin(Om*t)', z:'', tMin:'0', tMax:'2*pi', n:4000,
+ params:[P('A',1,0.2,2,0.01),P('w',20,2,60,1),P('Om',1,0.1,3,0.01)]},
+{id:'pm-bounce',name:'Bouncing Ball',g:'motion',notes:'Height against time of a ball dropped from H with coefficient of restitution r. Each flight is a parabola; heights fall as r², durations as r, and the infinite sequence of bounces ends at the finite time T/(1−r).',
+ classic:'flight k:  h = H·r^(2k)·[1 − (2τ/T_k − 1)²],  T_k = T·r^k',
+ aux:'k = floor(log(max(1e-12, 1 - t*(1-r)/T))/log(r)); Tk = T*r^k; tau = t - T*(1-r^k)/(1-r); yk = H*r^(2*k)*(1 - (2*tau/Tk - 1)^2)',
+ x:'t', y:'(t*(1-r)/T>=1 ? 0 : yk)', z:'', tMin:'0', tMax:'10', n:3000,
+ params:[P('H',2,0.2,4,0.01),P('T',2,0.5,4,0.01),P('r',0.8,0.5,0.95,0.01)]},
+// ------- math curves -------
+{id:'m-poly',name:'Cubic Polynomial',g:'math',notes:'y = at³ + bt² + ct + d. Move the coefficients to see the inflection point travel and the two turning points appear or merge.',
+ classic:'y = ax³ + bx² + cx + d', x:'t', y:'a*t^3 + b*t^2 + c*t + d', z:'', tMin:'-2.5', tMax:'2.5', n:600,
+ params:[P('a',0.5,-3,3,0.01),P('b',-1,-3,3,0.01),P('c',-1,-3,3,0.01),P('d',0.5,-3,3,0.01)]},
+{id:'m-power',name:'Power Function',g:'math',notes:'y = a·xᵖ. Integer p covers the parabola, cubic, quartic…; fractional p is only defined for x ≥ 0 (the left half drops out), p < 0 gives hyperbolas.',
+ classic:'y = a·xᵖ', x:'t', y:'a*t^p', z:'', tMin:'-3', tMax:'3', n:900,
+ params:[P('a',1,-2,2,0.01),P('p',2.5,-2,6,0.1)]},
+{id:'m-exp',name:'Exponential',g:'math',notes:'Growth (k > 0) or decay (k < 0) at a rate proportional to the value — the curve whose slope is itself. Doubling time ln 2/k.',
+ classic:'y = a·e^(kx)', x:'t', y:'a*exp(k*t)', z:'', tMin:'-3', tMax:'3', n:600,
+ params:[P('a',1,0.1,3,0.01),P('k',0.6,-2,2,0.01)]},
+{id:'m-log',name:'Logarithm',g:'math',notes:'y = a·log_b x — the inverse of the exponential. b = e is the natural logarithm, b = 10 the common one, b = 2 the bit count.',
+ classic:'y = a·log_b(x)', x:'t', y:'a*log(t)/log(b)', z:'', tMin:'0.05', tMax:'8', n:900,
+ params:[P('a',1,0.1,3,0.01),P('b',2,1.1,10,0.01)]},
+{id:'m-tan',name:'Tangent',g:'math',notes:'y = a·tan(ωx): period π/ω, vertical asymptotes at the odd multiples of π/2ω. Branches are cut where |y| exceeds 8.',
+ classic:'y = a·tan(ωx)', aux:'v = a*tan(w*t)', x:'t', y:'(abs(v)>8 ? NaN : v)', z:'', tMin:'-2*pi', tMax:'2*pi', n:2400,
+ params:[P('a',1,0.1,3,0.01),P('w',1,0.25,4,0.01)]},
+{id:'m-logistic',name:'Logistic (Sigmoid)',g:'math',notes:'Verhulst, 1838: growth that saturates at the carrying capacity L. Steepness k, midpoint m. Also the activation function of neural networks.',
+ classic:'y = L/(1 + e^(−k(x−m)))', x:'t', y:'L/(1 + exp(-k*(t - m)))', z:'', tMin:'-4', tMax:'4', n:600,
+ params:[P('L',2,0.2,4,0.01),P('k',2,0.1,10,0.01),P('m',0,-3,3,0.01)]},
+{id:'m-tanh',name:'Hyperbolic Tangent',g:'math',notes:'y = a·tanh(kx) — the odd sigmoid, asymptotic to ±a. The velocity of a falling body with quadratic drag follows it.',
+ classic:'y = a·tanh(kx)', x:'t', y:'a*tanh(k*t)', z:'', tMin:'-4', tMax:'4', n:600,
+ params:[P('a',1,0.1,3,0.01),P('k',1,0.1,6,0.01)]},
+{id:'m-sinc',name:'Sinc Function',g:'math',notes:'sinc(x) = sin(πx)/(πx), the Fourier transform of a rectangular pulse and the kernel of ideal band-limited interpolation (Shannon). Zeros at every non-zero integer of f·x.',
+ classic:'y = a·sin(πfx)/(πfx)', x:'t', y:'a*sinc(f*t)', z:'', tMin:'-6', tMax:'6', n:1800,
+ params:[P('a',3,0.2,4,0.01),P('f',1,0.2,4,0.01)]},
+{id:'m-reciprocal',name:'Reciprocal',g:'math',notes:'y = a/(x − b) + c — the rectangular hyperbola with its asymptotes moved to x = b and y = c. Cut where |y| exceeds 10.',
+ classic:'y = a/(x − b) + c', aux:'v = a/(t - b) + c', x:'t', y:'(abs(v)>10 ? NaN : v)', z:'', tMin:'-4', tMax:'4', n:1600,
+ params:[P('a',1,-3,3,0.01),P('b',0,-2,2,0.01),P('c',0,-2,2,0.01)]},
+{id:'m-gerono',name:'Lemniscate of Gerono',g:'math',notes:'Camille-Christophe Gerono, 19th c. The figure-eight that is a Lissajous curve with frequency ratio 1:2 — not to be confused with Bernoulli\'s lemniscate.',
+ classic:'x⁴ = a²(x² − y²)', x:'a*cos(t)', y:'a*sin(t)*cos(t)', z:'', tMin:'0', tMax:'2*pi', n:600,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'m-rose',name:'Rose (Rhodonea)',g:'math',notes:'Guido Grandi, 1728. r = a·cos(kθ): k odd gives k petals, k even 2k petals. Rational k = p/q needs t up to 2πq to close — the domain already covers q = 2.',
+ classic:'r = a·cos(kθ)', aux:'r = a*cos(k*t)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'4*pi', n:2400,
+ params:[P('a',1,0.1,3,0.01),P('k',4,0.5,12,0.5)]},
+{id:'m-superformula',name:'Superformula (Gielis)',g:'math',notes:'Johan Gielis, 2003 — one polar formula for starfish, leaves, shells and polygons. m sets the symmetry, n₁ the roundness, n₂ and n₃ the pinch of each lobe.',
+ classic:'r = (|cos(mθ/4)/a|^n₂ + |sin(mθ/4)/b|^n₃)^(−1/n₁)', aux:'r = (abs(cos(m*t/4)/a)^n2 + abs(sin(m*t/4)/b)^n3)^(-1/n1)',
+ x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'2*pi', n:1600,
+ params:[P('m',5,1,20,1),P('n1',2,0.1,20,0.1),P('n2',7,0.1,20,0.1),P('n3',7,0.1,20,0.1),P('a',1,0.2,3,0.01),P('b',1,0.2,3,0.01)]},
+{id:'m-butterfly',name:'Butterfly Curve',g:'math',notes:'Temple H. Fay, 1989. A transcendental polar curve whose period is 24π; the sin⁵ term gives the wings their fine scalloped edge.',
+ classic:'r = e^(sin θ) − 2cos 4θ + sin⁵((2θ−π)/24)', aux:'r = a*(exp(sin(t)) - 2*cos(4*t) + sin((2*t - pi)/24)^5)',
+ x:'r*sin(t)', y:'r*cos(t)', z:'', tMin:'0', tMax:'12*pi', n:5000,
+ params:[P('a',1,0.1,2,0.01)]},
+{id:'m-heart',name:'Heart Curve',g:'math',notes:'The best-known of the many heart curves — a Fourier-style sum of four cosines against a cubed sine.',
+ classic:'x = 16sin³t,  y = 13cos t − 5cos 2t − 2cos 3t − cos 4t', x:'a*16*sin(t)^3', y:'a*(13*cos(t) - 5*cos(2*t) - 2*cos(3*t) - cos(4*t))', z:'', tMin:'0', tMax:'2*pi', n:720,
+ params:[P('a',0.1,0.01,0.3,0.001)]},
+{id:'m-nephroid',name:'Nephroid',g:'math',notes:'Huygens, 1678 — the kidney-shaped caustic of parallel rays reflected in a circular mirror (the bright curve in a coffee cup). The epicycloid with two cusps.',
+ classic:'(x² + y² − 4a²)³ = 108a⁴y²', x:'a*(3*cos(t) - cos(3*t))', y:'a*(3*sin(t) - sin(3*t))', z:'', tMin:'0', tMax:'2*pi', n:720,
+ params:[P('a',0.5,0.05,2,0.01)]},
+{id:'m-cochleoid',name:'Cochleoid',g:'math',notes:'The “snail curve” of Bernoulli and Peck (1700). r = a·sin θ/θ winds inward through ever smaller loops, all tangent at the origin.',
+ classic:'r = a·sin θ/θ', aux:'r = a*sin(t)/t', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'-8*pi', tMax:'8*pi', n:4000,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'m-sinusoidal',name:'Sinusoidal Spiral',g:'math',notes:'Maclaurin, 1718 — one family holding many famous curves: n = −1 line, −½ parabola, ½ cardioid, 1 circle, 2 lemniscate, −2 rectangular hyperbola, 3 Kiepert\'s curve.',
+ classic:'rⁿ = aⁿ·cos(nθ)', aux:'c = cos(n*t); r = (c>0 ? a*c^(1/n) : NaN)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'0', tMax:'4*pi', n:2400,
+ params:[P('a',1,0.1,3,0.01),P('n',2,-3,3,0.5)]},
+{id:'m-euler',name:'Euler Spiral (Clothoid)',g:'math',notes:'Euler 1744, Cornu 1874. Curvature grows linearly with arc length — the transition curve of railways and roads, and the Fresnel diffraction integral. Both ends coil into (±√(π/8), ±√(π/8)).',
+ classic:'x = ∫₀ᵗ cos(u²) du,  y = ∫₀ᵗ sin(u²) du', aux:'X = fint(0,t, u=> cos(u^2), 160); Y = fint(0,t, u=> sin(u^2), 160)',
+ x:'a*X', y:'a*Y', z:'', tMin:'-3.5', tMax:'3.5', n:1400,
+ params:[P('a',1,0.1,3,0.01)]},
+{id:'m-weierstrass',name:'Weierstrass Function',g:'math',notes:'Weierstrass, 1872: continuous everywhere, differentiable nowhere (for 0 < a < 1, b odd, ab > 1 + 3π/2). Each term adds finer wiggles — zoom in and the roughness never smooths out.',
+ classic:'f(x) = Σ aᵏ cos(bᵏπx)', x:'t', y:'fsum(0,N, k=> a^k*cos(b^k*pi*t))', z:'', tMin:'-2', tMax:'2', n:6000,
+ params:[P('a',0.5,0.1,0.9,0.01),P('b',3,3,13,2),P('N',6,0,30,1)]},
+{id:'m-maurer',name:'Maurer Rose',g:'math',notes:'Peter Maurer, 1987. Walk around the rose r = sin(nθ) in steps of d degrees and join the 361 points by straight lines. Keep samples at 360 — the polygon is the figure. n = 6, d = 71 is the classic.',
+ classic:'P_i = (r cos θᵢ, r sin θᵢ),  θᵢ = i·d°,  r = sin(nθᵢ)', aux:'th = t*d*pi/180; r = a*sin(n*th)',
+ x:'r*cos(th)', y:'r*sin(th)', z:'', tMin:'0', tMax:'360', n:360,
+ params:[P('n',6,1,12,1),P('d',71,1,179,1),P('a',1,0.1,3,0.01)]},
+{id:'m-theodorus',name:'Spiral of Theodorus',g:'math',notes:'Theodorus of Cyrene, 5th c. BC: right triangles with unit legs stacked on each other, hypotenuses √2, √3, √4… Keep samples equal to the upper t limit — the polyline joins the vertices.',
+ classic:'v_k = √(k+1)·e^(iφ_k),  φ_k = Σ atan(1/√j)', aux:'k = round(t); ph = fsum(1,k, j=> atan(1/sqrt(j)))',
+ x:'a*sqrt(k+1)*cos(ph)', y:'a*sqrt(k+1)*sin(ph)', z:'', tMin:'0', tMax:'40', n:40,
+ params:[P('a',0.3,0.05,1,0.01)]},
+{id:'m-golden',name:'Golden Spiral',g:'math',notes:'The logarithmic spiral that grows by the golden ratio φ every quarter turn — the one approximated by quarter circles in nested golden rectangles.',
+ classic:'r = a·φ^(2θ/π)', aux:'phi = (1 + sqrt(5))/2; r = a*phi^(2*t/pi)', x:'r*cos(t)', y:'r*sin(t)', z:'', tMin:'-2*pi', tMax:'1.5*pi', n:1600,
+ params:[P('a',0.3,0.05,1,0.01)]},
+{id:'m-bezier',name:'Cubic Bézier',g:'math',notes:'Pierre Bézier (Renault) and Paul de Casteljau (Citroën), 1960s. Four control points: the curve starts at P₀ tangent to P₀P₁ and ends at P₃ tangent to P₂P₃ — the segment of every vector editor.',
+ classic:'B(t) = (1−t)³P₀ + 3(1−t)²t·P₁ + 3(1−t)t²·P₂ + t³P₃', aux:'u = 1 - t; b0 = u^3; b1 = 3*u^2*t; b2 = 3*u*t^2; b3 = t^3',
+ x:'b0*x0 + b1*x1 + b2*x2 + b3*x3', y:'b0*y0 + b1*y1 + b2*y2 + b3*y3', z:'', tMin:'0', tMax:'1', n:300,
+ params:[P('x0',-2,-3,3,0.01),P('y0',-1,-3,3,0.01),P('x1',-1,-3,3,0.01),P('y1',2,-3,3,0.01),P('x2',1,-3,3,0.01),P('y2',-2,-3,3,0.01),P('x3',2,-3,3,0.01),P('y3',1,-3,3,0.01)]},
+// ------- wave forms (time plots; f in Hz, t in seconds) -------
+{id:'w-sine',name:'Sine Wave',g:'wave',notes:'The pure tone: amplitude A, frequency f, phase φ and a DC offset. Every other periodic wave here is a sum of these.',
+ classic:'y = A·sin(2πft + φ) + offset', x:'t', y:'A*sin(2*pi*f*t + phi) + off', z:'', tMin:'0', tMax:'4', n:1600,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('phi',0,-3.1416,3.1416,0.01),P('off',0,-1,1,0.01)]},
+{id:'w-square',name:'Square Wave',g:'wave',notes:'The 50 % duty-cycle switch between +A and −A — the clock signal of digital circuits. Its spectrum holds the odd harmonics only.',
+ classic:'y = A·sgn(sin 2πft)', x:'t', y:'A*sign(sin(2*pi*f*t))', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01)]},
+{id:'w-triangle',name:'Triangle Wave',g:'wave',notes:'Linear ramps up and down with equal slopes. Odd harmonics falling as 1/k² — hence the mellow tone compared with the square wave.',
+ classic:'y = (2A/π)·asin(sin 2πft)', x:'t', y:'A*2/pi*asin(sin(2*pi*f*t))', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01)]},
+{id:'w-sawtooth',name:'Sawtooth Wave',g:'wave',notes:'A linear ramp that resets every period — the oscilloscope time base and the raw voice of analogue synthesisers. All harmonics, falling as 1/k. Negate A for the reverse saw.',
+ classic:'y = A·(2·frac(ft) − 1)', x:'t', y:'A*(2*frac(f*t) - 1)', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,-2,2,0.01),P('f',1,0.1,5,0.01)]},
+{id:'w-pulse',name:'Pulse Train (PWM)',g:'wave',notes:'A rectangular pulse of duty cycle d each period. Vary d to see pulse-width modulation — the way motor drives and switching supplies set an average level.',
+ classic:'y = A if frac(ft) < d, else 0', x:'t', y:'(frac(f*t) < d ? A : 0)', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('d',0.25,0.01,0.99,0.01)]},
+{id:'w-skewed',name:'Asymmetric Triangle',g:'wave',notes:'A triangle whose rise takes the fraction r of the period: r = ½ is the symmetric triangle, r → 0 the reverse sawtooth, r → 1 the sawtooth.',
+ classic:'y = A(2v − 1),  v = u/r (u<r),  (1−u)/(1−r) (u≥r),  u = frac(ft)', aux:'u = frac(f*t); v = (u<r ? u/r : (1-u)/(1-r))',
+ x:'t', y:'A*(2*v - 1)', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('r',0.2,0.01,0.99,0.01)]},
+{id:'w-trapezoid',name:'Trapezoid Wave',g:'wave',notes:'A triangle wave amplified by g and clipped at ±A — flat tops with finite-slope edges, the realistic shape of a square wave with limited slew rate.',
+ classic:'y = A·clamp(g·(2/π)asin(sin 2πft), −1, 1)', x:'t', y:'A*clamp(g*2/pi*asin(sin(2*pi*f*t)), -1, 1)', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('g',2,1,10,0.1)]},
+{id:'w-stepped',name:'Stepped Sine (Quantised)',g:'wave',notes:'A sine rounded to L levels per unit amplitude — the staircase a coarse digital-to-analogue converter produces. The error is the quantisation noise.',
+ classic:'y = A·round(L·sin 2πft)/L', x:'t', y:'A*round(L*sin(2*pi*f*t))/L', z:'', tMin:'0', tMax:'4', n:3000,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('L',4,1,16,1)]},
+{id:'w-sampled',name:'Sampled & Held Sine',g:'wave',notes:'A sine sampled at fs and held between samples — zero-order hold. Lower fs towards 2f to watch the Nyquist limit approach.',
+ classic:'y = A·sin(2πf·⌊fs·t⌋/fs)', x:'t', y:'A*sin(2*pi*f*floor(fs*t)/fs)', z:'', tMin:'0', tMax:'4', n:3000,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('fs',12,2,64,1)]},
+{id:'w-halfwave',name:'Half-wave Rectified Sine',g:'wave',notes:'Only the positive half-cycles pass — a single diode. Mean value A/π.',
+ classic:'y = A·max(0, sin 2πft)', x:'t', y:'A*max(0, sin(2*pi*f*t))', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01)]},
+{id:'w-fullwave',name:'Full-wave Rectified Sine',g:'wave',notes:'Both half-cycles folded upward — a bridge rectifier. Mean value 2A/π, fundamental ripple at 2f.',
+ classic:'y = A·|sin 2πft|', x:'t', y:'A*abs(sin(2*pi*f*t))', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01)]},
+{id:'w-clipped',name:'Clipped Sine',g:'wave',notes:'A sine amplified by g and hard-clipped at ±A — the overdriven amplifier. As g grows the wave tends to a square and odd harmonics appear.',
+ classic:'y = A·clamp(g·sin 2πft, −1, 1)', x:'t', y:'A*clamp(g*sin(2*pi*f*t), -1, 1)', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('g',3,1,10,0.1)]},
+{id:'w-rc',name:'RC Charge–Discharge',g:'wave',notes:'A capacitor charged through a resistor for half a period and discharged for the other half — the exponential shark-fin of a relaxation oscillator. τ in periods.',
+ classic:'y = A(1 − e^(−u/τ)) rising,  A(1 − e^(−½/τ))·e^(−(u−½)/τ) falling', aux:'u = frac(f*t); v = (u<0.5 ? 1 - exp(-u/tau) : (1 - exp(-0.5/tau))*exp(-(u - 0.5)/tau))',
+ x:'t', y:'A*v', z:'', tMin:'0', tMax:'4', n:2400,
+ params:[P('A',1,0.1,2,0.01),P('f',1,0.1,5,0.01),P('tau',0.12,0.01,0.5,0.005)]},
+{id:'w-ringing',name:'Ringing (Damped Sine)',g:'wave',notes:'A sine decaying with time constant τ — what a struck bell, a plucked string or an LC tank produces after an impulse.',
+ classic:'y = A·e^(−t/τ)·sin 2πft', x:'t', y:'A*exp(-t/tau)*sin(2*pi*f*t)', z:'', tMin:'0', tMax:'4', n:3000,
+ params:[P('A',1,0.1,2,0.01),P('f',3,0.5,10,0.01),P('tau',1,0.1,4,0.01)]},
+{id:'w-am',name:'Amplitude Modulation',g:'wave',notes:'A carrier at f_c whose amplitude follows a message tone at f_m with modulation index m. m > 1 over-modulates and the envelope folds.',
+ classic:'y = A(1 + m·cos 2πf_m t)·cos 2πf_c t', x:'t', y:'A*(1 + m*cos(2*pi*fm*t))*cos(2*pi*fc*t)', z:'', tMin:'0', tMax:'3', n:4000,
+ params:[P('A',1,0.1,2,0.01),P('fc',12,2,40,0.1),P('fm',1,0.1,5,0.01),P('m',0.6,0,1.5,0.01)]},
+{id:'w-fm',name:'Frequency Modulation',g:'wave',notes:'A carrier whose instantaneous frequency swings with the message: deviation β·f_m. Large β spreads the spectrum (Carson\'s rule) — and makes the bells of FM synthesis.',
+ classic:'y = A·cos(2πf_c t + β·sin 2πf_m t)', x:'t', y:'A*cos(2*pi*fc*t + beta*sin(2*pi*fm*t))', z:'', tMin:'0', tMax:'3', n:4000,
+ params:[P('A',1,0.1,2,0.01),P('fc',8,2,40,0.1),P('fm',1,0.1,5,0.01),P('beta',4,0,12,0.1)]},
+{id:'w-chirp',name:'Chirp (Linear Sweep)',g:'wave',notes:'A sine whose frequency rises linearly from f₀ at k Hz per second — the radar and sonar pulse, and the test signal of frequency sweeps.',
+ classic:'y = A·sin(2π(f₀t + kt²/2))', x:'t', y:'A*sin(2*pi*(f0*t + k*t^2/2))', z:'', tMin:'0', tMax:'5', n:5000,
+ params:[P('A',1,0.1,2,0.01),P('f0',0.5,0,5,0.01),P('k',2,0,8,0.01)]},
+{id:'w-gabor',name:'Gaussian Pulse (Gabor)',g:'wave',notes:'A sine inside a Gaussian envelope of width σ at t₀ — the Gabor wavelet, the shape that fills the time-frequency plane most tightly (Heisenberg\'s limit).',
+ classic:'y = A·e^(−(t−t₀)²/2σ²)·cos 2πf(t−t₀)', x:'t', y:'A*exp(-((t - t0)^2)/(2*sig^2))*cos(2*pi*f*(t - t0))', z:'', tMin:'0', tMax:'4', n:3000,
+ params:[P('A',1,0.1,2,0.01),P('f',4,0.5,12,0.01),P('t0',2,0,4,0.01),P('sig',0.4,0.05,1.5,0.01)]},
+{id:'w-sincpulse',name:'Sinc Pulse',g:'wave',notes:'The band-limited pulse: its spectrum is flat up to B/2 and zero beyond. Zero crossings every 1/B — the Nyquist pulse that lets symbols be sent without interference.',
+ classic:'y = A·sinc(B(t − t₀))', x:'t', y:'A*sinc(B*(t - t0))', z:'', tMin:'-4', tMax:'4', n:3000,
+ params:[P('A',2,0.1,3,0.01),P('B',2,0.2,8,0.01),P('t0',0,-2,2,0.01)]},
+{id:'w-hann',name:'Raised-Cosine (Hann) Pulse',g:'wave',notes:'Half a cosine period lifted to start and end at zero: the Hann window of spectral analysis and the smooth single pulse of gentle switching.',
+ classic:'y = A·½(1 − cos 2πt/T) on [0, T], else 0', aux:'v = (t>=0 && t<=T ? 0.5*(1 - cos(2*pi*t/T)) : 0)', x:'t', y:'A*v', z:'', tMin:'-1', tMax:'3', n:1600,
+ params:[P('A',1,0.1,2,0.01),P('T',2,0.2,3,0.01)]},
+{id:'w-step',name:'RC Step Response',g:'wave',notes:'A step applied at t = 0 to a first-order lag: the output climbs to 63 % at τ, 95 % at 3τ, 99 % at 5τ.',
+ classic:'y = A(1 − e^(−t/τ)),  t ≥ 0', x:'t', y:'A*(t<0 ? 0 : 1 - exp(-t/tau))', z:'', tMin:'-1', tMax:'5', n:1200,
+ params:[P('A',1,0.1,2,0.01),P('tau',1,0.1,3,0.01)]},
 ];
 
 /* ---------------- state ---------------- */
@@ -542,6 +785,7 @@ function loadLS(){
 /* ---------------- curve resolution ---------------- */
 function findCurve(id){ return BUILTINS.find(c=>c.id===id) || customs.find(c=>c.id===id); }
 function isCustom(c){ return c.g==='custom'; }
+function hasZ(c){ return c.g==='3d' || !!(c.z && c.z.trim() && c.z.trim()!=='0'); }
 
 // Effective definition = builtin + user overrides (customs are stored directly)
 function effectiveDef(c){
@@ -909,20 +1153,17 @@ const esc = s => String(s).replace(/[&<>"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&
 /* ---------------- library UI ---------------- */
 function renderList(){
   const q = $('search').value.trim().toLowerCase();
-  const groups = [
-    ['Famous curves — 2D', BUILTINS.filter(c=>c.g==='2d')],
-    ['Space curves — 3D', BUILTINS.filter(c=>c.g==='3d')],
-    ['My curves', customs],
-  ];
+  const groups = GROUPS.map(([g,title]) => [title, BUILTINS.filter(c=>c.g===g)]);
+  groups.push(['My curves', customs]);
   let html = '';
   for (const [title, arr] of groups){
-    const vis = arr.filter(c => !q || c.name.toLowerCase().includes(q));
+    const vis = arr.filter(c => !q || c.name.toLowerCase().includes(q) || title.toLowerCase().includes(q));
     if (!vis.length && !(title==='My curves' && !q)) { if(!vis.length) continue; }
     html += `<div class="ghead">${title}</div>`;
     if (!vis.length) html += `<div class="note" style="padding:2px 8px">none yet — press “＋ New” below or clone a famous curve</div>`;
     for (const c of vis){
       const sel = c.id===selId ? ' sel':'';
-      const tag = (c.g==='3d'||(c.g==='custom'&&c.z&&c.z.trim()&&c.z.trim()!=='0')) ? '<span class="d3tag">3D</span>' : '';
+      const tag = hasZ(c) ? '<span class="d3tag">3D</span>' : '';
       const btns = c.g==='custom'
         ? `<button title="edit" data-act="edit" data-id="${c.id}">✎</button><button class="del" title="delete" data-act="del" data-id="${c.id}">✕</button>` : '';
       html += `<div class="citem${sel}" data-id="${c.id}"><span class="nm">${esc(c.name)}</span>${tag}${btns}</div>`;
@@ -956,8 +1197,7 @@ function selectCurve(id, autoMode){
   selId = id; saveLS();
   const c = findCurve(id);
   if (autoMode){
-    const has3 = c.g==='3d' || (c.z && c.z.trim() && c.z.trim()!=='0');
-    setMode(has3 ? '3d' : '2d', false);
+    setMode(hasZ(c) ? '3d' : '2d', false);
   }
   renderList(); renderPanel(); rebuild();
   fitAfterBuild();
