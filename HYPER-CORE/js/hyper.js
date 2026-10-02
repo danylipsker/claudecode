@@ -38,7 +38,8 @@
     biology:     { id: 'biology',     title: 'Hyper Biology',     short: 'Biology',     folder: 'HYPER-BIOLOGY',     hue: 114, ready: true },
     feynman:     { id: 'feynman',     title: 'Hyper Feynman',     short: 'Feynman',     folder: 'HYPER-FEYNMAN',     hue: 22,  ready: true, sourcesTitle: 'Where Feynman tells it' },
     motors:      { id: 'motors',      title: 'Hyper Motors',      short: 'Motors',      folder: 'HYPER-MOTORS',      hue: 248, ready: true, sourcesTitle: 'Standards and further reading' },
-    ergonomics:  { id: 'ergonomics',  title: 'Hyper Ergonomics',  short: 'Ergonomics',  folder: 'HYPER-ERGONOMICS',  hue: 62,  ready: true, sourcesTitle: 'Standards and data sources' }
+    ergonomics:  { id: 'ergonomics',  title: 'Hyper Ergonomics',  short: 'Ergonomics',  folder: 'HYPER-ERGONOMICS',  hue: 62,  ready: true, sourcesTitle: 'Standards and data sources' },
+    projections: { id: 'projections', title: 'Hyper Projections', short: 'Projections', folder: 'HYPER-PROJECTIONS', hue: 205, ready: true, sourcesTitle: 'Sources and further reading' }
   };
 
   H.use = function (id) {
@@ -65,6 +66,8 @@
       n.kind = n.kind || 'concept';
       for (const k of ARRAYS) if (n[k] == null) n[k] = []; else if (!Array.isArray(n[k])) n[k] = [n[k]];
       n.sims = normSims(n.sim);
+      // hand constructions (Hyper Projections): construction: 'id' or ['a', 'b'] or { id, title }, from construct.js
+      n.constructions = normSims(n.construction);
       // choosing for an application (Hyper Motors): { good: [...], avoid: [...], check: [...] }
       if (n.choose) for (const k of ['good', 'avoid', 'check']) n.choose[k] = n.choose[k] == null ? [] : Array.isArray(n.choose[k]) ? n.choose[k] : [n.choose[k]];
       n.level = n.level || 1;

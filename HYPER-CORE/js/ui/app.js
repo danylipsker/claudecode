@@ -158,6 +158,12 @@
     upload: '<path d="M12 16V5M7 9.5l5-5 5 5M4.5 20h15"/>',
     trash: '<path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13"/>',
     eye: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+    cube: '<path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/>',
+    drafting: '<path d="M12 3v3M8.5 21 12 9l3.5 12"/><circle cx="12" cy="7.5" r="1.5"/><path d="M6.5 15.5a7 7 0 0 0 11 0"/>',
+    vanish: '<path d="M3 20h18M3 20 12 7l9 13M7 20l5-13M17 20 12 7M5 14h14"/>',
+    telescope: '<path d="M4 13l12-7 2 4-12 7z"/><path d="M16 6l3-2 2 4-3 2M9 17l-2 5M10 16l3 6"/>',
+    horizon: '<path d="M3 15h18M7 15a5 5 0 0 1 10 0M12 4v3M5.5 8l2 2M18.5 8l-2 2"/>',
+    views: '<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><path d="M15 17h4M17 15v4"/>',
     keyboard: '<rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M9.5 10h.01M13 10h.01M16.5 10h.01M7.5 14h9"/>',
     grid: '<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>'
   };
@@ -578,9 +584,11 @@
     const [path, qs] = hash.split('?');
     const params = new URLSearchParams(qs || '');
     const parts = path.split('/').filter(Boolean).map(decodeURIComponent);
-    for (const f of ui.leave.splice(0)) { try { f(); } catch (e) { console.error(e); } }
-    const view = ui.$('#view');
     const samePage = path === lastPath;
+    // the same concept page with only the query changed (?s=sim) is kept, with its simulations and observers alive
+    const kept = samePage && parts[0] === 'c' && parts[1] && ui.$('#view .page[data-id="' + CSS.escape(parts[1]) + '"]');
+    if (!kept) for (const f of ui.leave.splice(0)) { try { f(); } catch (e) { console.error(e); } }
+    const view = ui.$('#view');
     lastPath = path;
     const name = parts[0] || 'home';
     ui.$$('#top .views a, .mobnav a').forEach(a => a.classList.toggle('on', a.dataset.v === name || (name === 'home' && a.dataset.v === 'home')));
@@ -647,6 +655,7 @@
           '<div class="stat"><b>' + concepts.length + '</b><span>concepts</span></div>' +
           '<div class="stat"><b>' + nForm + '</b><span>live formulas</span></div>' +
           '<div class="stat"><b>' + nSims + '</b><span>simulations</span></div>' +
+          (H.constructions && H.constructions.size ? '<div class="stat"><b>' + H.constructions.size + '</b><span>hand constructions</span></div>' : '') +
           '<div class="stat"><b>' + (pr.total ? Math.round(100 * pr.visited / pr.total) : 0) + '%</b><span>explored · ' + pr.mastered + ' mastered</span></div>' +
         '</div></div>' +
         '<div class="hero-art">' + heroArt() + '</div></section>' +

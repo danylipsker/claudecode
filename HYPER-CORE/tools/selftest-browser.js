@@ -31,6 +31,17 @@ window.HyperSelfTest = async function (opts) {
       const w = c.querySelector('.warnmsg');
       if (w) report.failingFormulas.push(id + ' / ' + c.querySelector('h3').textContent + ': ' + w.textContent);
     });
+    // hand constructions (Hyper Projections): every card must hold a drawn SVG with its steps
+    if (n.constructions && n.constructions.length) {
+      report.constructions = report.constructions || { pages: 0, failures: [] };
+      report.constructions.pages++;
+      view.querySelectorAll('.cxcard').forEach(card => {
+        const bad = card.querySelector('.empty');
+        if (bad) report.constructions.failures.push(id + ': ' + bad.textContent.slice(0, 160));
+        else if (!card.querySelector('.cxstage svg g.step')) report.constructions.failures.push(id + ': ' + (card.querySelector('h3') || {}).textContent + ' drew no steps');
+      });
+      if (view.querySelectorAll('.cxcard').length < n.constructions.length) report.constructions.failures.push(id + ': ' + view.querySelectorAll('.cxcard').length + ' of ' + n.constructions.length + ' construction cards rendered');
+    }
     if (opts.sims && n.sims.length) {
       for (const card of view.querySelectorAll('.simcard')) {
         card.scrollIntoView();

@@ -1038,3 +1038,15 @@ root (`node scripts/serve.js 8172`) and open
 `http://localhost:8172/HYPER-PHYSICS/index.html?extra=content/dynamics.js,sims/dynamics.js#/c/friction`.
 Several authors work at once, so do not leave a server running or take over a shared
 browser; the two command-line checks are what must pass.
+
+## Hand constructions (Hyper Projections)
+
+A concept may carry `construction: 'id'` (or a list): a drawing made step by step with named
+hand tools — straightedge, T-square, set square, compass, dividers, scale, protractor, pencil,
+fold, thread — registered with `Hyper.construction({ id, title, note, build(k) })` in a
+`constructions/<topic>.js` file. The page plays it with an animated stroke per step, prints it
+as a worksheet, and opens it on a practice board that snaps to intersections and checks every
+stroke against the step's targets. The kit (`k`), its geometry helpers and the 3-D helpers
+(`k.project`, `k.wire` with `kit.proj`) are documented in `HYPER-PROJECTIONS/AUTHORING.md`; the
+validator builds and renders every construction. The engine modules behind the projections app
+are `js/projection.js` (kit.proj), `js/celestial.js` (kit.sky) and `js/geodata.js` (kit.world).

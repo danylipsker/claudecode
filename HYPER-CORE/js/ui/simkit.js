@@ -314,6 +314,10 @@
     qm: H.qm,                       // complex arrows, QED paths, slits, Schrödinger, spin, two-state systems, Lorentz, fields, least action (quantum.js)
     motor: H.motor,                 // DC, induction and stepper motors, move profiles, sizing, heat, hydraulic and air motors (motors.js)
     ergo: H.ergo,                   // anthropometry, workstations, NIOSH lifting, noise, vibration, thermal comfort, controls (ergo.js)
+    proj: H.proj,                   // projection matrices, cameras, vanishing points, fisheye and panoramic mappings, map projections, geodesy, models (projection.js)
+    world: H.world,                 // simplified coastlines, lakes and cities (geodata.js)
+    sky: H.sky,                     // time, celestial coordinates, Sun, Moon, planets, rise and set, stars and constellations (celestial.js)
+    construct: H.construct,         // the ruler-and-compass construction kit and its SVG renderer (construct.js)
     terms: tex => H.termChips ? H.termChips(tex) : '',   // chips of the math terms in a TeX string, which open their glossary cards (glossary.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),

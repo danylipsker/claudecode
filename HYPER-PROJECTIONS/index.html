@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Projections</title>
+<meta name="description" content="Every way of drawing the world on a flat sheet: orthographic, axonometric and oblique views, one- to six-point and curvilinear perspective, the map projections of the globe from Ptolemy to Equal Earth, and the sky as seen from the Earth — each with its matrices, its ruler-and-compass construction, live labs and the uses it was made for.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 28 9.5v13L16 29 4 22.5v-13z' fill='none' stroke='%232a7fd6' stroke-width='2.4' stroke-linejoin='round'/%3E%3Cpath d='M4 9.5 16 16l12-6.5M16 16v13' fill='none' stroke='%232a7fd6' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Projections needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/pharma.js"></script>
+<script src="../HYPER-CORE/js/bio.js"></script>
+<script src="../HYPER-CORE/js/quantum.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/motors.js"></script>
+<script src="../HYPER-CORE/js/ergo.js"></script>
+<script src="../HYPER-CORE/js/projection.js"></script>
+<script src="../HYPER-CORE/js/geodata.js"></script>
+<script src="../HYPER-CORE/js/celestial.js"></script>
+<script src="../HYPER-CORE/js/construct.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/construct.js"></script>
+<script src="../HYPER-CORE/js/ui/projtools.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/what-projection-is.js"></script>
+<script src="content/projection-mathematics.js"></script>
+<script src="content/descriptive-geometry.js"></script>
+<script src="content/multiview-drawing.js"></script>
+<script src="content/axonometric-projections.js"></script>
+<script src="content/oblique-projections.js"></script>
+<script src="content/perspective-basics.js"></script>
+<script src="content/one-two-three-points.js"></script>
+<script src="content/perspective-constructions.js"></script>
+<script src="content/perspective-history.js"></script>
+<script src="content/multi-point-perspective.js"></script>
+<script src="content/lenses-and-domes.js"></script>
+<script src="content/map-fundamentals.js"></script>
+<script src="content/azimuthal-family.js"></script>
+<script src="content/cylindrical-family.js"></script>
+<script src="content/conic-family.js"></script>
+<script src="content/pseudocylindrical-and-compromise.js"></script>
+<script src="content/polyhedral-and-history.js"></script>
+<script src="content/the-celestial-sphere.js"></script>
+<script src="content/sky-maps-and-instruments.js"></script>
+<script src="content/sky-history.js"></script>
+<script src="content/drawing-and-building.js"></script>
+<script src="content/art-and-photography.js"></script>
+<script src="content/computing-and-vision.js"></script>
+<script src="content/navigation-science-and-medicine.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/what-projection-is.js"></script>
+<script src="sims/projection-mathematics.js"></script>
+<script src="sims/descriptive-geometry.js"></script>
+<script src="sims/multiview-drawing.js"></script>
+<script src="sims/axonometric-projections.js"></script>
+<script src="sims/oblique-projections.js"></script>
+<script src="sims/perspective-basics.js"></script>
+<script src="sims/one-two-three-points.js"></script>
+<script src="sims/perspective-constructions.js"></script>
+<script src="sims/perspective-history.js"></script>
+<script src="sims/multi-point-perspective.js"></script>
+<script src="sims/lenses-and-domes.js"></script>
+<script src="sims/map-fundamentals.js"></script>
+<script src="sims/azimuthal-family.js"></script>
+<script src="sims/cylindrical-family.js"></script>
+<script src="sims/conic-family.js"></script>
+<script src="sims/pseudocylindrical-and-compromise.js"></script>
+<script src="sims/polyhedral-and-history.js"></script>
+<script src="sims/the-celestial-sphere.js"></script>
+<script src="sims/sky-maps-and-instruments.js"></script>
+<script src="sims/sky-history.js"></script>
+<script src="sims/drawing-and-building.js"></script>
+<script src="sims/art-and-photography.js"></script>
+<script src="sims/computing-and-vision.js"></script>
+<script src="sims/navigation-science-and-medicine.js"></script>
+
+<!-- constructions -->
+<script src="constructions/reference.js"></script>
+<script src="constructions/what-projection-is.js"></script>
+<script src="constructions/projection-mathematics.js"></script>
+<script src="constructions/descriptive-geometry.js"></script>
+<script src="constructions/multiview-drawing.js"></script>
+<script src="constructions/axonometric-projections.js"></script>
+<script src="constructions/oblique-projections.js"></script>
+<script src="constructions/perspective-basics.js"></script>
+<script src="constructions/one-two-three-points.js"></script>
+<script src="constructions/perspective-constructions.js"></script>
+<script src="constructions/perspective-history.js"></script>
+<script src="constructions/multi-point-perspective.js"></script>
+<script src="constructions/lenses-and-domes.js"></script>
+<script src="constructions/map-fundamentals.js"></script>
+<script src="constructions/azimuthal-family.js"></script>
+<script src="constructions/cylindrical-family.js"></script>
+<script src="constructions/conic-family.js"></script>
+<script src="constructions/pseudocylindrical-and-compromise.js"></script>
+<script src="constructions/polyhedral-and-history.js"></script>
+<script src="constructions/the-celestial-sphere.js"></script>
+<script src="constructions/sky-maps-and-instruments.js"></script>
+<script src="constructions/sky-history.js"></script>
+<script src="constructions/drawing-and-building.js"></script>
+<script src="constructions/art-and-photography.js"></script>
+<script src="constructions/computing-and-vision.js"></script>
+<script src="constructions/navigation-science-and-medicine.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+<script src="../HYPER-FEYNMAN/catalog.js"></script>
+<script src="../HYPER-MOTORS/catalog.js"></script>
+<script src="../HYPER-ERGONOMICS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js,constructions/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims|constructions)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'projections' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

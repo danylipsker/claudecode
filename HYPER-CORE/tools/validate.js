@@ -28,7 +28,7 @@ const only = onlyArg ? new Set(onlyArg.split(',').map(s => path.resolve(discDir,
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -41,14 +41,14 @@ const W = (where, msg) => warns.push(where + ': ' + msg);
 
 /* ---------------------------------------------------------------- load files */
 const files = [];
-for (const sub of ['content', 'sims']) {
+for (const sub of ['content', 'sims', 'constructions']) {
   const dir = path.join(discDir, sub);
   if (!fs.existsSync(dir)) continue;
   const list = fs.readdirSync(dir).filter(f => f.endsWith('.js')).sort((a, b) => (a === 'outline.js' ? -1 : b === 'outline.js' ? 1 : a.localeCompare(b)));
   for (const f of list) files.push(path.join(dir, f));
 }
 // other disciplines' catalogs
-for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS']) {
+for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS', 'HYPER-PROJECTIONS']) {
   const c = path.join(discDir, '..', d, 'catalog.js');
   if (d !== path.basename(discDir) && fs.existsSync(c)) { try { run(ctx, c); } catch (e) { W(d + '/catalog.js', e.message); } }
 }
@@ -61,6 +61,8 @@ H.add = function () {
   for (const id of H.nodes.keys()) if (!before.has(id)) fileOfNode.set(id, curFile);
 };
 H.sim = function (id, def) { origSim.call(H, id, def); fileOfSim.set(id, curFile); };
+const origCx = H.construction, fileOfCx = new Map();
+H.construction = function (def) { const r = origCx.call(H, def); if (def && def.id) fileOfCx.set(def.id, curFile); return r; };
 for (const f of files) {
   curFile = f;
   const errBefore = H.errors.length;
@@ -266,6 +268,12 @@ for (const n of H.list) {
   });
   for (const s of n.sims) if (!H.sims[s.id]) E(w, 'simulation "' + s.id + '" is not defined');
   stats.sims += n.sims.length;
+  for (const c of n.constructions) if (!H.constructions.has(c.id)) E(w, 'construction "' + c.id + '" is not defined');
+  stats.constructions = (stats.constructions || 0) + n.constructions.length;
+  if (DISC === 'projections' && n.kind === 'concept') {
+    if (!n.sims.length && !n.constructions.length) W(w, 'neither a simulation nor a construction: every projection should be seen or drawn');
+    if (!n.applications.length) W(w, 'no applications: say where this projection is used in practice');
+  }
   // formulas
   const fsList = H.formulasOf(n);
   fsList.forEach((f, i) => {
@@ -334,6 +342,21 @@ for (const [id, def] of Object.entries(H.sims)) {
   checkText('sim ' + id + ' blurb', def.blurb, true);
   if (!H.list.some(n => n.sims.some(s => s.id === id))) W('sim ' + id, 'is not used by any concept');
 }
+// constructions: each must build, render and name its steps
+const usedCx = new Set(); for (const n of H.list) for (const c of n.constructions) usedCx.add(c.id);
+for (const [id, def] of H.constructions) {
+  if (only && !only.has(fileOfCx.get(id))) continue;
+  const wh = 'construction ' + id;
+  checkText(wh + ' title', def.title, false);
+  checkText(wh + ' note', def.note, true);
+  let sc = null;
+  try { sc = H.construct.build(def); } catch (e) { E(wh, 'does not build: ' + e.message); continue; }
+  try { H.construct.svg(sc); } catch (e) { E(wh, 'does not render: ' + e.message); continue; }
+  if (sc.steps.length < 2) W(wh, 'only ' + sc.steps.length + ' step: a construction is a sequence of steps, each with its tool');
+  sc.steps.forEach((st, i) => { if (!st.text.trim()) E(wh, 'step ' + (i + 1) + ' (' + st.tool + ') has no instruction text'); if (!st.shapes.length) W(wh, 'step ' + (i + 1) + ' (' + st.tool + ') draws nothing'); });
+  if (!sc.steps.some(st => st.tool !== 'given' && st.tool !== 'note')) W(wh, 'has no drawing step (only given/note): nothing to practise');
+  if (!usedCx.has(id)) W(wh, 'is not used by any concept');
+}
 // a planned concept may not take the id of a branch or topic (ids are unique, so it could never be written)
 for (const n of H.list) for (const [id] of (n.plan || [])) {
   const other = H.nodes.get(id);
@@ -352,7 +375,7 @@ for (const n of H.list) if (n.kind === 'concept' && mine(n.id)) {
 /* ---------------------------------------------------------------- report */
 const out = [];
 out.push(path.basename(discDir) + (only ? ' (only ' + [...only].map(f => path.relative(discDir, f)).join(', ') + ')' : ''));
-out.push('  ' + stats.concepts + ' concepts, ' + stats.formulas + ' formulas, ' + stats.quiz + ' quiz questions, ' + stats.examples + ' examples, ' + stats.problems + ' problems, ' + stats.sims + ' simulation uses, ' + Object.keys(H.sims).length + ' simulations defined');
+out.push('  ' + stats.concepts + ' concepts, ' + stats.formulas + ' formulas, ' + stats.quiz + ' quiz questions, ' + stats.examples + ' examples, ' + stats.problems + ' problems, ' + stats.sims + ' simulation uses, ' + Object.keys(H.sims).length + ' simulations defined' + (H.constructions.size ? ', ' + (stats.constructions || 0) + ' construction uses, ' + H.constructions.size + ' constructions defined' : ''));
 if (!only) for (const [b, s] of Object.entries(stats.byBranch)) out.push('    ' + b.padEnd(22) + s.concepts + ' concepts  ' + s.formulas + ' formulas  ' + s.sims + ' sims  ' + s.quiz + ' quiz');
 console.log(out.join('\n'));
 if (errors.length) console.log('\nERRORS (' + errors.length + ')\n  ' + errors.join('\n  '));

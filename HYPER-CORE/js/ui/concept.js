@@ -149,6 +149,7 @@
       ['contents', 'Contents', kids.length > 0, kids.length],
       ['formulas', 'Formulas', fs.length > 0, fs.length],
       ['sim', n.sims.length > 1 ? 'Simulations' : 'Simulation', n.sims.length > 0, n.sims.length > 1 ? n.sims.length : 0],
+      ['construct', 'Draw it', n.constructions.length > 0, n.constructions.length > 1 ? n.constructions.length : 0],
       ['examples', 'Examples', n.examples.length > 0, n.examples.length],
       ['practice', 'Practice', !!hasPractice],
       ['links', 'Connections', true]
@@ -182,6 +183,7 @@
       (kids.length ? '<section class="sect" id="s-contents"><h2>' + H.icon('grid', 20) + 'In this ' + (n.kind === 'branch' ? 'branch' : 'topic') + '</h2><div class="kids">' + kids.map(kidCard).join('') + '</div></section>' : '') +
       (fs.length ? '<section class="sect" id="s-formulas"><h2>' + H.icon('formulas', 20) + 'Formulas <span class="n">click a symbol to solve for it</span></h2><div class="fslot"></div></section>' : '') +
       (n.sims.length ? '<section class="sect" id="s-sim"><h2>' + H.icon('play', 20) + (n.sims.length > 1 ? 'Simulations' : 'Simulation') + '</h2><div class="sslot"></div></section>' : '') +
+      (n.constructions.length ? '<section class="sect" id="s-construct"><h2>' + H.icon('drafting', 20) + 'Draw it by hand <span class="n">step by step, naming the tool of every stroke; then practise it</span></h2><div class="cxslot"></div></section>' : '') +
       (n.examples.length ? '<section class="sect" id="s-examples"><h2>' + H.icon('bulb', 20) + 'Worked examples</h2><div class="eslot"></div></section>' : '') +
       (hasPractice ? '<section class="sect" id="s-practice"><h2>' + H.icon('practice', 20) + 'Practice</h2><div class="pslot"></div></section>' : '') +
       '<section class="sect" id="s-links"><h2>' + H.icon('link', 20) + 'Connections</h2><div class="links3">' +
@@ -203,6 +205,8 @@
     if (fslot) fs.forEach(f => fslot.appendChild(ui.formulaCard(f)));
     const sslot = ui.$('.sslot', page);
     if (sslot) n.sims.forEach(s => sslot.appendChild(ui.simCard(s, n)));
+    const cxslot = ui.$('.cxslot', page);
+    if (cxslot && ui.constructionCard) n.constructions.forEach(c => cxslot.appendChild(ui.constructionCard(c, n)));
     const eslot = ui.$('.eslot', page);
     if (eslot) n.examples.forEach((ex, i) => eslot.appendChild(exampleCard(ex, i)));
     const pslot = ui.$('.pslot', page);
