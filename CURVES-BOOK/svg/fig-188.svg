@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1277.95 1448.99" width="520" height="590" data-fig="fig-188">
+<title>Fig. 188 — The orthographic projection of a conical helix is a spiral of Archimedes; the development of the cone</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 188, page 211. Section: spirals.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The cone: its axis is vertical. In elevation it is the triangle O′A′G′; in plan its base is the circle about O. The helix leaves A′ and rises to the apex O′ in one turn, turning by equal angles for equal rise.">
+<path class="ink given" style="stroke-width:5.22;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M593.97 860.01L738.97 308.01"/>
+<path class="ink given" style="stroke-width:5.22;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M883.97 860.01L738.97 308.01"/>
+<path class="ink given" style="stroke-width:5.22;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M576.57 860.01L901.37 860.01"/>
+<circle class="ink given" style="stroke-width:5.22;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="738.97" cy="1100.01" r="145"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.19" cx="738.97" cy="308.01" r="7.53"/>
+<text class="lbl " x="764.94" y="277.47" font-size="49.27" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O′</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.19" cx="738.97" cy="1100.01" r="6.59"/>
+<text class="lbl " x="759.74" y="1075.58" font-size="49.27" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="630.32" y="902.77" font-size="39.41" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A′</text>
+<text class="lbl " x="909.94" y="890.56" font-size="39.41" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">G′</text>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="Divide the base circle of the plan into 12 equal parts of 30°: A, B, C, … L. Draw the radii OA, OB, … and carry the points up to the base line of the elevation with the vertical projectors: A′, B′, … G′ (the points of the front half).">
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L593.97 1100.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="593.97" cy="1100.01" r="5.18"/>
+<text class="lbl  upright" x="566.48" y="1100.01" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M593.97 1100.01L593.97 860.01"/>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L613.4 1172.51"/>
+<circle class="pt" style="fill:#1b1b1b" cx="613.4" cy="1172.51" r="5.18"/>
+<text class="lbl  upright" x="590.03" y="1200" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M613.4 1172.51L613.4 860.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="613.4" cy="860.01" r="5.18"/>
+<text class="lbl " x="592.63" y="835.58" font-size="32.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B′</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L666.47 1225.59"/>
+<circle class="pt" style="fill:#1b1b1b" cx="666.47" cy="1225.59" r="5.18"/>
+<text class="lbl  upright" x="643.11" y="1253.08" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M666.47 1225.59L666.47 860.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="666.47" cy="860.01" r="5.18"/>
+<text class="lbl " x="645.7" y="835.58" font-size="32.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C′</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L738.97 1245.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="738.97" cy="1245.01" r="5.18"/>
+<text class="lbl  upright" x="738.97" y="1272.5" font-size="34.49" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">D</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1245.01L738.97 860.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="738.97" cy="860.01" r="5.18"/>
+<text class="lbl " x="718.2" y="835.58" font-size="32.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D′</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L811.47 1225.59"/>
+<circle class="pt" style="fill:#1b1b1b" cx="811.47" cy="1225.59" r="5.18"/>
+<text class="lbl  upright" x="834.84" y="1253.08" font-size="34.49" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">E</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M811.47 1225.59L811.47 860.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="811.47" cy="860.01" r="5.18"/>
+<text class="lbl " x="790.7" y="835.58" font-size="32.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">E′</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L864.55 1172.51"/>
+<circle class="pt" style="fill:#1b1b1b" cx="864.55" cy="1172.51" r="5.18"/>
+<text class="lbl  upright" x="887.91" y="1200" font-size="34.49" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M864.55 1172.51L864.55 860.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="864.55" cy="860.01" r="5.18"/>
+<text class="lbl " x="843.78" y="835.58" font-size="32.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F′</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L883.97 1100.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="883.97" cy="1100.01" r="5.18"/>
+<text class="lbl  upright" x="911.46" y="1100.01" font-size="34.49" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">G</text>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M883.97 1100.01L883.97 860.01"/>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L864.55 1027.51"/>
+<circle class="pt" style="fill:#1b1b1b" cx="864.55" cy="1027.51" r="5.18"/>
+<text class="lbl  upright" x="887.91" y="1000.02" font-size="34.49" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">H</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L811.47 974.44"/>
+<circle class="pt" style="fill:#1b1b1b" cx="811.47" cy="974.44" r="5.18"/>
+<text class="lbl  upright" x="834.84" y="946.95" font-size="34.49" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">I</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L738.97 955.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="738.97" cy="955.01" r="5.18"/>
+<text class="lbl  upright" x="738.97" y="927.52" font-size="34.49" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">J</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L666.47 974.44"/>
+<circle class="pt" style="fill:#1b1b1b" cx="666.47" cy="974.44" r="5.18"/>
+<text class="lbl  upright" x="643.11" y="946.95" font-size="34.49" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">K</text>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 1100.01L613.4 1027.51"/>
+<circle class="pt" style="fill:#1b1b1b" cx="613.4" cy="1027.51" r="5.18"/>
+<text class="lbl  upright" x="590.03" y="1000.02" font-size="34.49" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">L</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join the points B′ … F′ of the base line to the apex O′: the generators of the cone in elevation.">
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M613.4 860.01L738.97 308.01"/>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M666.47 860.01L738.97 308.01"/>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M738.97 860.01L738.97 308.01"/>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M811.47 860.01L738.97 308.01"/>
+<path class="ink cons" style="stroke-width:3.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M864.55 860.01L738.97 308.01"/>
+</g>
+<g class="step" data-step="3" data-tool="dividers" data-text="The helix rises by equal steps as it turns: on the j-th generator it stands j/12 of the height above the base, and in plan it stands j/12 of the way in from the base circle along the radius. Mark these points in plan and in elevation.">
+<circle class="pt" style="fill:#1b1b1b" cx="623.86" cy="1166.47" r="5.18"/>
+<text class="lbl " x="642.04" y="1145.09" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b</text>
+<circle class="pt" style="fill:#1b1b1b" cx="623.86" cy="814.01" r="5.18"/>
+<text class="lbl " x="605.69" y="792.63" font-size="29.56" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b</text>
+<circle class="pt" style="fill:#1b1b1b" cx="678.56" cy="1204.66" r="5.18"/>
+<text class="lbl " x="696.73" y="1183.28" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">c</text>
+<circle class="pt" style="fill:#1b1b1b" cx="678.56" cy="768.01" r="5.18"/>
+<text class="lbl " x="660.38" y="746.63" font-size="29.56" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">c</text>
+<circle class="pt" style="fill:#1b1b1b" cx="738.97" cy="1208.76" r="5.18"/>
+<text class="lbl " x="757.15" y="1187.38" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">d</text>
+<circle class="pt" style="fill:#1b1b1b" cx="738.97" cy="722.01" r="5.18"/>
+<text class="lbl " x="720.8" y="700.63" font-size="29.56" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">d</text>
+<circle class="pt" style="fill:#1b1b1b" cx="787.31" cy="1183.73" r="5.18"/>
+<text class="lbl " x="805.48" y="1162.35" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">e</text>
+<circle class="pt" style="fill:#1b1b1b" cx="787.31" cy="676.01" r="5.18"/>
+<text class="lbl " x="769.13" y="654.63" font-size="29.56" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">e</text>
+<circle class="pt" style="fill:#1b1b1b" cx="812.22" cy="1142.3" r="5.18"/>
+<text class="lbl " x="830.4" y="1120.92" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">f</text>
+<circle class="pt" style="fill:#1b1b1b" cx="812.22" cy="630.01" r="5.18"/>
+<text class="lbl " x="794.05" y="608.63" font-size="29.56" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">f</text>
+<circle class="pt" style="fill:#1b1b1b" cx="811.47" cy="1100.01" r="5.18"/>
+<text class="lbl " x="829.65" y="1078.63" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">g</text>
+<circle class="pt" style="fill:#1b1b1b" cx="811.47" cy="584.01" r="5.18"/>
+<text class="lbl " x="793.3" y="562.63" font-size="29.56" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">g</text>
+<circle class="pt" style="fill:#1b1b1b" cx="791.3" cy="1069.8" r="5.18"/>
+<text class="lbl " x="809.47" y="1048.42" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">h</text>
+<circle class="pt" style="fill:#1b1b1b" cx="763.14" cy="1058.15" r="5.18"/>
+<text class="lbl " x="781.31" y="1036.77" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">i</text>
+<circle class="pt" style="fill:#1b1b1b" cx="738.97" cy="1063.76" r="5.18"/>
+<text class="lbl " x="757.15" y="1042.38" font-size="29.56" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">j</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The plan of the helix: draw a smooth curve through the points of the plan. The radius falls by equal amounts for equal angles: this is the spiral of Archimedes, from A to the centre O in one turn.">
+<path class="ink curve" style="stroke-width:8.11;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M593.97 1100.01L594.63 1103.79L595.38 1107.54L596.23 1111.25L597.17 1114.92L598.21 1118.54L599.34 1122.13L600.56 1125.67L601.87 1129.15L603.27 1132.59L604.75 1135.98L606.32 1139.31L607.96 1142.58L609.69 1145.79L611.5 1148.94L613.38 1152.03L615.34 1155.06L617.37 1158.01L619.47 1160.9L621.63 1163.72L623.86 1166.47L626.16 1169.15L628.51 1171.75L630.93 1174.27L633.4 1176.72L635.92 1179.09L638.49 1181.38L641.12 1183.59L643.79 1185.72L646.5 1187.76L649.26 1189.73L652.05 1191.61L654.89 1193.4L657.75 1195.11L660.65 1196.73L663.58 1198.27L666.53 1199.72L669.51 1201.09L672.5 1202.37L675.52 1203.55L678.56 1204.66L681.6 1205.67L684.66 1206.6L687.73 1207.44L690.81 1208.19L693.89 1208.86L696.97 1209.44L700.05 1209.93L703.13 1210.34L706.2 1210.66L709.26 1210.89L712.32 1211.04L715.36 1211.11L718.38 1211.1L721.39 1211L724.38 1210.83L727.35 1210.57L730.3 1210.23L733.22 1209.82L736.11 1209.33L738.97 1208.76L741.8 1208.12L744.6 1207.41L747.36 1206.62L750.09 1205.76L752.77 1204.84L755.42 1203.84L758.02 1202.78L760.58 1201.66L763.09 1200.47L765.56 1199.22L767.97 1197.91L770.34 1196.54L772.65 1195.12L774.91 1193.64L777.12 1192.11L779.27 1190.53L781.37 1188.9L783.41 1187.22L785.39 1185.5L787.31 1183.73L789.17 1181.92L790.96 1180.07L792.7 1178.18L794.37 1176.26L795.98 1174.31L797.53 1172.32L799.01 1170.3L800.42 1168.26L801.77 1166.19L803.05 1164.09L804.27 1161.98L805.42 1159.84L806.51 1157.69L807.52 1155.52L808.47 1153.34L809.36 1151.15L810.17 1148.95L810.92 1146.74L811.61 1144.52L812.22 1142.3L812.78 1140.08L813.26 1137.86L813.68 1135.65L814.04 1133.43L814.33 1131.23L814.55 1129.03L814.72 1126.84L814.82 1124.66L814.86 1122.49L814.84 1120.34L814.76 1118.21L814.62 1116.09L814.42 1114L814.16 1111.92L813.85 1109.87L813.48 1107.84L813.06 1105.84L812.58 1103.87L812.05 1101.93L811.47 1100.01L810.84 1098.13L810.17 1096.28L809.44 1094.47L808.67 1092.69L807.86 1090.94L807 1089.24L806.1 1087.57L805.16 1085.94L804.18 1084.36L803.17 1082.81L802.12 1081.31L801.03 1079.85L799.91 1078.43L798.76 1077.06L797.58 1075.74L796.37 1074.46L795.14 1073.22L793.88 1072.04L792.6 1070.9L791.3 1069.8L789.97 1068.76L788.63 1067.77L787.27 1066.82L785.9 1065.92L784.51 1065.07L783.11 1064.27L781.7 1063.52L780.28 1062.82L778.85 1062.17L777.42 1061.56L775.99 1061.01L774.55 1060.5L773.11 1060.04L771.67 1059.63L770.24 1059.27L768.8 1058.95L767.38 1058.69L765.96 1058.46L764.54 1058.29L763.14 1058.15L761.75 1058.07L760.37 1058.02L759 1058.02L757.65 1058.07L756.31 1058.15L754.99 1058.27L753.7 1058.44L752.42 1058.64L751.16 1058.88L749.92 1059.16L748.7 1059.48L747.51 1059.83L746.35 1060.21L745.21 1060.63L744.1 1061.08L743.01 1061.56L741.96 1062.07L740.93 1062.61L739.94 1063.17L738.97 1063.76L738.04 1064.38L737.14 1065.02L736.27 1065.68L735.44 1066.36L734.64 1067.07L733.87 1067.79L733.14 1068.53L732.44 1069.28L731.78 1070.05L731.15 1070.83L730.56 1071.63L730.01 1072.43L729.49 1073.25L729.01 1074.07L728.57 1074.89L728.16 1075.73L727.79 1076.56L727.45 1077.4L727.15 1078.24L726.89 1079.08L726.66 1079.92L726.47 1080.76L726.31 1081.59L726.19 1082.42L726.1 1083.24L726.05 1084.05L726.02 1084.85L726.04 1085.65L726.08 1086.43L726.16 1087.2L726.26 1087.95L726.4 1088.69L726.57 1089.42L726.77 1090.13L726.99 1090.82L727.24 1091.49L727.52 1092.14L727.83 1092.77L728.15 1093.38L728.51 1093.97L728.88 1094.54L729.28 1095.08L729.7 1095.59L730.14 1096.08L730.6 1096.54L731.08 1096.98L731.57 1097.39L732.08 1097.77L732.6 1098.12L733.14 1098.45L733.69 1098.74L734.25 1099.01L734.81 1099.24L735.39 1099.45L735.98 1099.62L736.57 1099.76L737.17 1099.87L737.77 1099.95L738.37 1100L738.97 1100.01"/>
+<text class="lbl  upright" x="738.97" y="1311.01" font-size="35.47" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Archimedean Spiral as Plan</text>
+<text class="lbl  upright" x="738.97" y="1341.01" font-size="35.47" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">of Conical Helix</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The elevation of the helix: through the points of the elevation. The front half, from A′ up to the right, is drawn full; the half behind the cone is dashed.">
+<path class="ink curve" style="stroke-width:8.11;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M593.97 860.01L594.45 858.29L594.99 856.56L595.58 854.84L596.23 853.11L596.93 851.39L597.68 849.66L598.48 847.94L599.34 846.21L600.25 844.49L601.2 842.76L602.21 841.04L603.27 839.31L604.37 837.59L605.52 835.86L606.72 834.14L607.96 832.41L609.25 830.69L610.59 828.96L611.96 827.24L613.38 825.51L614.84 823.79L616.35 822.06L617.89 820.34L619.47 818.61L621.08 816.89L622.74 815.16L624.43 813.44L626.16 811.71L627.92 809.99L629.71 808.26L631.54 806.54L633.4 804.81L635.28 803.09L637.2 801.36L639.15 799.64L641.12 797.91L643.12 796.19L645.14 794.46L647.19 792.74L649.26 791.01L651.35 789.29L653.47 787.56L655.6 785.84L657.75 784.11L659.92 782.39L662.11 780.66L664.31 778.94L666.53 777.21L668.76 775.49L671 773.76L673.26 772.04L675.52 770.31L677.8 768.59L680.08 766.86L682.37 765.14L684.66 763.41L686.97 761.69L689.27 759.96L691.58 758.24L693.89 756.51L696.2 754.79L698.51 753.06L700.82 751.34L703.13 749.61L705.43 747.89L707.73 746.16L710.03 744.44L712.32 742.71L714.6 740.99L716.87 739.26L719.14 737.54L721.39 735.81L723.64 734.09L725.87 732.36L728.09 730.64L730.3 728.91L732.49 727.19L734.67 725.46L736.83 723.74L738.97 722.01L741.1 720.29L743.21 718.56L745.29 716.84L747.36 715.11L749.41 713.39L751.44 711.66L753.44 709.94L755.42 708.21L757.37 706.49L759.3 704.76L761.21 703.04L763.09 701.31L764.94 699.59L766.77 697.86L768.57 696.14L770.34 694.41L772.08 692.69L773.79 690.96L775.47 689.24L777.12 687.51L778.74 685.79L780.33 684.06L781.88 682.34L783.41 680.61L784.9 678.89L786.35 677.16L787.78 675.44L789.17 673.71L790.52 671.99L791.84 670.26L793.12 668.54L794.37 666.81L795.58 665.09L796.76 663.36L797.9 661.64L799.01 659.91L800.07 658.19L801.1 656.46L802.1 654.74L803.05 653.01L803.97 651.29L804.86 649.56L805.7 647.84L806.51 646.11L807.28 644.39L808.01 642.66L808.7 640.94L809.36 639.21L809.98 637.49L810.56 635.76L811.1 634.04L811.61 632.31L812.08 630.59L812.51 628.86L812.9 627.14L813.26 625.41L813.58 623.69L813.87 621.96L814.11 620.24L814.33 618.51L814.5 616.79L814.64 615.06L814.75 613.34L814.82 611.61L814.86 609.89L814.86 608.16L814.82 606.44L814.76 604.71L814.66 602.99L814.52 601.26L814.36 599.54L814.16 597.81L813.93 596.09L813.67 594.36L813.38 592.64L813.06 590.91L812.7 589.19L812.32 587.46L811.91 585.74L811.47 584.01"/>
+<path class="ink curve dash" style="stroke-width:8.11;fill:none;--dash:17.39 11.59;stroke:#0b4fa0;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M811.47 584.01L811.01 582.29L810.51 580.56L809.99 578.84L809.44 577.11L808.87 575.39L808.27 573.66L807.65 571.94L807 570.21L806.33 568.49L805.64 566.76L804.92 565.04L804.18 563.31L803.42 561.59L802.65 559.86L801.85 558.14L801.03 556.41L800.19 554.69L799.34 552.96L798.47 551.24L797.58 549.51L796.68 547.79L795.76 546.06L794.83 544.34L793.88 542.61L792.92 540.89L791.95 539.16L790.97 537.44L789.97 535.71L788.97 533.99L787.95 532.26L786.93 530.54L785.9 528.81L784.86 527.09L783.81 525.36L782.76 523.64L781.7 521.91L780.63 520.19L779.57 518.46L778.5 516.74L777.42 515.01L776.35 513.29L775.27 511.56L774.19 509.84L773.11 508.11L772.03 506.39L770.95 504.66L769.88 502.94L768.8 501.21L767.73 499.49L766.66 497.76L765.6 496.04L764.54 494.31L763.49 492.59L762.44 490.86L761.4 489.14L760.37 487.41L759.34 485.69L758.32 483.96L757.31 482.24L756.31 480.51L755.32 478.79L754.34 477.06L753.37 475.34L752.42 473.61L751.47 471.89L750.53 470.16L749.61 468.44L748.7 466.71L747.81 464.99L746.93 463.26L746.06 461.54L745.21 459.81L744.37 458.09L743.55 456.36L742.75 454.64L741.96 452.91L741.19 451.19L740.43 449.46L739.69 447.74L738.97 446.01L738.27 444.29L737.59 442.56L736.92 440.84L736.27 439.11L735.64 437.39L735.03 435.66L734.44 433.94L733.87 432.21L733.32 430.49L732.78 428.76L732.27 427.04L731.78 425.31L731.31 423.59L730.86 421.86L730.42 420.14L730.01 418.41L729.62 416.69L729.25 414.96L728.9 413.24L728.57 411.51L728.26 409.79L727.97 408.06L727.7 406.34L727.45 404.61L727.22 402.89L727.02 401.16L726.83 399.44L726.66 397.71L726.51 395.99L726.39 394.26L726.28 392.54L726.19 390.81L726.12 389.09L726.07 387.36L726.04 385.64L726.02 383.91L726.03 382.19L726.05 380.46L726.1 378.74L726.16 377.01L726.23 375.29L726.33 373.56L726.44 371.84L726.57 370.11L726.71 368.39L726.87 366.66L727.05 364.94L727.24 363.21L727.45 361.49L727.67 359.76L727.91 358.04L728.15 356.31L728.42 354.59L728.69 352.86L728.98 351.14L729.28 349.41L729.6 347.69L729.92 345.96L730.25 344.24L730.6 342.51L730.96 340.79L731.32 339.06L731.69 337.34L732.08 335.61L732.47 333.89L732.87 332.16L733.27 330.44L733.69 328.71L734.1 326.99L734.53 325.26L734.96 323.54L735.39 321.81L735.83 320.09L736.27 318.36L736.72 316.64L737.17 314.91L737.62 313.19L738.07 311.46L738.52 309.74L738.97 308.01"/>
+<text class="lbl  upright" x="920.22" y="705.45" font-size="35.47" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Elevation of</text>
+<text class="lbl  upright" x="920.22" y="735.45" font-size="35.47" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Conical Helix</text>
+</g>
+<g class="step" data-step="6" data-tool="compass" data-text="The development of the cone: with centre O′ and the slant height O′A′ as radius draw an arc. The base circle unrolls into it, so the sector has the angle 360°·R/O′A′ (about 91°). Divide the arc into the same 12 equal parts A, B, … L, A′ and join them to O′.">
+<path class="ink given dash" style="stroke-width:5.22;fill:none;--dash:17.39 11.59;stroke:#1b1b1b;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M190.85 148.97A570.73 570.73 0 0 0 593.97 860.01"/>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L593.97 860.01"/>
+<circle class="pt" style="fill:#1b1b1b" cx="593.97" cy="860.01" r="4.24"/>
+<text class="lbl  upright" x="593.97" y="887.5" font-size="34.49" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L522.04 835.9"/>
+<circle class="pt" style="fill:#1b1b1b" cx="522.04" cy="835.9" r="4.24"/>
+<text class="lbl  upright" x="522.04" y="863.39" font-size="34.49" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L453.94 802.47"/>
+<circle class="pt" style="fill:#1b1b1b" cx="453.94" cy="802.47" r="4.24"/>
+<text class="lbl  upright" x="430.57" y="829.96" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L390.88 760.29"/>
+<circle class="pt" style="fill:#1b1b1b" cx="390.88" cy="760.29" r="4.24"/>
+<text class="lbl  upright" x="367.51" y="787.78" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">D</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L333.96 710.13"/>
+<circle class="pt" style="fill:#1b1b1b" cx="333.96" cy="710.13" r="4.24"/>
+<text class="lbl  upright" x="310.6" y="737.62" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">E</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L284.21 652.86"/>
+<circle class="pt" style="fill:#1b1b1b" cx="284.21" cy="652.86" r="4.24"/>
+<text class="lbl  upright" x="260.84" y="680.35" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L242.49 589.49"/>
+<circle class="pt" style="fill:#1b1b1b" cx="242.49" cy="589.49" r="4.24"/>
+<text class="lbl  upright" x="219.12" y="616.98" font-size="34.49" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">G</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L209.54 521.15"/>
+<circle class="pt" style="fill:#1b1b1b" cx="209.54" cy="521.15" r="4.24"/>
+<text class="lbl  upright" x="182.05" y="521.15" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">H</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L185.95 449.05"/>
+<circle class="pt" style="fill:#1b1b1b" cx="185.95" cy="449.05" r="4.24"/>
+<text class="lbl  upright" x="158.46" y="449.05" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">I</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L172.13 374.45"/>
+<circle class="pt" style="fill:#1b1b1b" cx="172.13" cy="374.45" r="4.24"/>
+<text class="lbl  upright" x="144.64" y="374.45" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">J</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L168.32 298.68"/>
+<circle class="pt" style="fill:#1b1b1b" cx="168.32" cy="298.68" r="4.24"/>
+<text class="lbl  upright" x="140.83" y="298.68" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">K</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L174.6 223.08"/>
+<circle class="pt" style="fill:#1b1b1b" cx="174.6" cy="223.08" r="4.24"/>
+<text class="lbl  upright" x="147.11" y="223.08" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">L</text>
+<path class="ink aux dot" style="stroke-width:2.61;fill:none;--dot:2.9 13.04;stroke:#8a8a8a;stroke-dasharray:2.9 13.04;stroke-linecap:round;stroke-linejoin:round" d="M738.97 308.01L190.85 148.97"/>
+<circle class="pt" style="fill:#1b1b1b" cx="190.85" cy="148.97" r="4.24"/>
+<text class="lbl  upright" x="163.36" y="148.97" font-size="34.49" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A′</text>
+</g>
+<g class="step" data-step="7" data-tool="compass" data-text="The parallels of the cone, where the helix has risen by j/12 of the height, develop into arcs about O′ of radius (1 − j/12)·O′A′: draw them dashed.">
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M236.53 162.23A523.17 523.17 0 0 0 606.06 814.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M282.21 175.48A475.61 475.61 0 0 0 618.14 768.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M327.88 188.73A428.05 428.05 0 0 0 630.22 722.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M373.56 201.99A380.48 380.48 0 0 0 642.31 676.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M419.24 215.24A332.92 332.92 0 0 0 654.39 630.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M464.91 228.49A285.36 285.36 0 0 0 666.47 584.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M510.59 241.75A237.8 237.8 0 0 0 678.56 538.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M556.27 255A190.24 190.24 0 0 0 690.64 492.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M601.94 268.25A142.68 142.68 0 0 0 702.72 446.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M647.62 281.51A95.12 95.12 0 0 0 714.81 400.01"/>
+<path class="ink aux dash" style="stroke-width:2.61;fill:none;--dash:17.39 11.59;stroke:#8a8a8a;stroke-dasharray:17.39 11.59;stroke-linecap:round;stroke-linejoin:round" d="M693.3 294.76A47.56 47.56 0 0 0 726.89 354.01"/>
+</g>
+<g class="step" data-step="8" data-tool="pencil" data-text="The development of the helix: on the j-th generator mark the point on the j-th parallel and join the points. For the uniform helix drawn here the radius falls by equal steps for equal angles in the development too.">
+<path class="ink curve" style="stroke-width:8.11;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M593.97 860.01L590.32 856.08L586.72 852.13L583.17 848.16L579.68 844.16L576.24 840.14L572.85 836.11L569.52 832.05L566.24 827.97L563.02 823.87L559.85 819.76L556.74 815.63L553.68 811.48L550.67 807.31L547.72 803.13L544.82 798.94L541.98 794.73L539.19 790.5L536.46 786.27L533.79 782.01L531.16 777.75L528.6 773.48L526.08 769.19L523.63 764.9L521.22 760.59L518.88 756.28L516.58 751.96L514.35 747.63L512.16 743.29L510.03 738.95L507.96 734.6L505.94 730.24L503.98 725.88L502.07 721.51L500.21 717.14L498.41 712.77L496.67 708.4L494.98 704.02L493.34 699.65L491.76 695.27L490.23 690.89L488.76 686.51L487.34 682.13L485.97 677.76L484.66 673.38L483.4 669.01L482.19 664.65L481.04 660.28L479.94 655.92L478.89 651.57L477.9 647.22L476.96 642.88L476.07 638.55L475.24 634.22L474.45 629.9L473.72 625.59L473.04 621.28L472.41 616.99L471.84 612.71L471.31 608.43L470.84 604.17L470.42 599.92L470.04 595.69L469.72 591.46L469.45 587.25L469.23 583.05L469.05 578.87L468.93 574.7L468.86 570.55L468.83 566.41L468.86 562.29L468.93 558.19L469.05 554.1L469.22 550.03L469.43 545.98L469.7 541.95L470.01 537.94L470.37 533.95L470.77 529.98L471.22 526.03L471.71 522.1L472.26 518.2L472.84 514.31L473.47 510.45L474.15 506.62L474.87 502.8L475.63 499.01L476.44 495.25L477.29 491.51L478.18 487.79L479.12 484.11L480.1 480.44L481.12 476.81L482.18 473.2L483.28 469.62L484.42 466.07L485.6 462.55L486.83 459.05L488.09 455.59L489.39 452.16L490.73 448.75L492.11 445.38L493.52 442.04L494.98 438.73L496.47 435.45L498 432.2L499.56 428.99L501.16 425.8L502.79 422.66L504.46 419.54L506.17 416.46L507.9 413.42L509.68 410.4L511.48 407.43L513.32 404.49L515.19 401.58L517.09 398.71L519.02 395.88L520.99 393.09L522.98 390.33L525.01 387.61L527.06 384.92L529.14 382.28L531.25 379.67L533.39 377.1L535.56 374.57L537.76 372.08L539.98 369.62L542.22 367.21L544.5 364.84L546.8 362.51L549.12 360.22L551.46 357.96L553.84 355.75L556.23 353.58L558.65 351.45L561.08 349.37L563.54 347.32L566.03 345.32L568.53 343.36L571.05 341.44L573.59 339.56L576.15 337.73L578.73 335.94L581.33 334.19L583.94 332.49L586.57 330.83L589.22 329.21L591.89 327.64L594.57 326.11L597.26 324.62L599.97 323.18L602.69 321.78L605.43 320.43L608.18 319.12L610.94 317.86L613.71 316.64L616.49 315.47L619.29 314.34L622.09 313.26L624.9 312.22L627.73 311.23L630.56 310.28L633.4 309.38L636.24 308.52L639.1 307.71L641.96 306.94L644.82 306.22L647.69 305.55L650.56 304.92L653.44 304.34L656.32 303.8L659.21 303.31L662.1 302.86L664.99 302.46L667.88 302.11L670.77 301.8L673.66 301.54L676.55 301.32L679.44 301.15L682.33 301.02L685.22 300.94L688.1 300.91L690.98 300.92L693.86 300.98L696.73 301.08L699.6 301.23L702.47 301.42L705.32 301.66L708.18 301.94L711.02 302.27L713.86 302.64L716.69 303.06L719.51 303.53L722.32 304.03L725.12 304.59L727.91 305.18L730.7 305.82L733.47 306.51L736.23 307.24L738.97 308.01"/>
+<text class="lbl  upright" x="178.97" y="880.01" font-size="35.47" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Development of</text>
+<text class="lbl  upright" x="178.97" y="910.01" font-size="35.47" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Conical Helix</text>
+</g>
+</svg>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 158.57 119.47" width="520" height="392" data-fig="fig-140b">
+<title>Fig. 140(b) — The lemniscate as a cissoid of a circle</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 140(b), page 143. Section: lemniscate.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of radius a/2 about C, and the point O at a√2/2 from C on the line of centres; O is the pole.">
+<path class="ink cons" style="stroke-width:0.35;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M0 59.74L158.57 59.74"/>
+<circle class="ink cons dash" style="stroke-width:0.35;fill:none;--dash:1.9 1.27;stroke:#4b4b4b;stroke-dasharray:1.9 1.27;stroke-linecap:round;stroke-linejoin:round" cx="98.83" cy="59.74" r="50"/>
+<circle class="ink given" style="stroke-width:0.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="98.83" cy="59.74" r="5.5"/>
+<circle class="ink given" style="stroke-width:0.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="98.83" cy="59.74" r="2.2"/>
+<text class="lbl " x="94.29" y="54.39" font-size="5.39" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.35" cx="28.12" cy="59.74" r="1.03"/>
+<text class="lbl " x="23.44" y="59.74" font-size="5.39" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Through O draw a line at the angle θ with the axis. It cuts the circle at A (near) and B (far).">
+<path class="ink cons dash" style="stroke-width:0.35;fill:none;--dash:1.9 1.27;stroke:#4b4b4b;stroke-dasharray:1.9 1.27;stroke-linecap:round;stroke-linejoin:round" d="M28.12 59.74L120.51 14.68"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.35" cx="49.98" cy="49.07" r="1.03"/>
+<text class="lbl " x="52.82" y="52.42" font-size="5.39" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.35" cx="120.51" cy="14.68" r="1.03"/>
+<text class="lbl " x="123.35" y="11.34" font-size="5.39" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="Carry the chord AB from O along the line: OP = AB, that is, BP = OA. (OP = OB − OA, the cissoid of the circle with respect to O.)">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.35" cx="98.64" cy="25.34" r="1.03"/>
+<text class="lbl " x="98.64" y="22" font-size="5.39" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The lemniscate r² = a² cos 2θ: the locus of P as the line turns about O. Its tangents at the node O make 45° with the axis.">
+<path class="ink curve" style="stroke-width:0.89;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M28.12 59.74L36.26 67.77L39.71 71.03L42.4 73.47L44.72 75.48L46.79 77.22L48.69 78.75L50.47 80.12L52.15 81.37L53.75 82.51L55.28 83.56L56.76 84.53L58.2 85.42L59.59 86.26L60.94 87.03L62.26 87.76L63.56 88.43L64.82 89.06L66.06 89.65L67.28 90.2L68.48 90.71L69.66 91.18L70.82 91.62L71.97 92.03L73.09 92.41L74.21 92.76L75.3 93.08L76.39 93.38L77.46 93.64L78.51 93.89L79.56 94.11L80.59 94.3L81.61 94.47L82.62 94.62L83.61 94.75L84.6 94.86L85.57 94.94L86.53 95.01L87.49 95.06L88.43 95.08L89.36 95.09L90.28 95.08L91.19 95.06L92.09 95.01L92.98 94.95L93.86 94.87L94.73 94.78L95.58 94.67L96.43 94.54L97.27 94.4L98.1 94.25L98.92 94.07L99.72 93.89L100.52 93.69L101.31 93.48L102.08 93.25L102.85 93.01L103.61 92.75L104.35 92.49L105.09 92.21L105.81 91.92L106.52 91.61L107.23 91.3L107.92 90.97L108.6 90.63L109.27 90.28L109.93 89.92L110.58 89.55L111.22 89.16L111.85 88.77L112.46 88.37L113.07 87.95L113.66 87.53L114.25 87.1L114.82 86.66L115.38 86.21L115.93 85.75L116.47 85.28L116.99 84.8L117.51 84.32L118.01 83.82L118.5 83.32L118.98 82.81L119.45 82.3L119.91 81.77L120.35 81.24L120.78 80.7L121.2 80.16L121.61 79.61L122.01 79.05L122.39 78.49L122.77 77.92L123.13 77.34L123.47 76.76L123.81 76.18L124.13 75.59L124.44 74.99L124.74 74.39L125.03 73.79L125.3 73.18L125.56 72.56L125.81 71.95L126.05 71.33L126.27 70.7L126.48 70.07L126.68 69.44L126.86 68.81L127.04 68.17L127.2 67.53L127.34 66.89L127.48 66.25L127.6 65.6L127.71 64.96L127.81 64.31L127.89 63.66L127.96 63.01L128.02 62.35L128.06 61.7L128.1 61.05L128.12 60.39L128.12 59.74L128.12 59.08L128.1 58.43L128.06 57.77L128.02 57.12L127.96 56.47L127.89 55.82L127.81 55.17L127.71 54.52L127.6 53.87L127.48 53.22L127.34 52.58L127.2 51.94L127.04 51.3L126.86 50.66L126.68 50.03L126.48 49.4L126.27 48.77L126.05 48.15L125.81 47.53L125.56 46.91L125.3 46.3L125.03 45.69L124.74 45.08L124.44 44.48L124.13 43.89L123.81 43.29L123.47 42.71L123.13 42.13L122.77 41.55L122.39 40.98L122.01 40.42L121.61 39.86L121.2 39.31L120.78 38.77L120.35 38.23L119.91 37.7L119.45 37.18L118.98 36.66L118.5 36.15L118.01 35.65L117.51 35.16L116.99 34.67L116.47 34.2L115.93 33.73L115.38 33.27L114.82 32.82L114.25 32.37L113.66 31.94L113.07 31.52L112.46 31.11L111.85 30.7L111.22 30.31L110.58 29.93L109.93 29.55L109.27 29.19L108.6 28.84L107.92 28.5L107.23 28.18L106.52 27.86L105.81 27.56L105.09 27.27L104.35 26.99L103.61 26.72L102.85 26.47L102.08 26.22L101.31 26L100.52 25.78L99.72 25.58L98.92 25.4L98.1 25.23L97.27 25.07L96.43 24.93L95.58 24.8L94.73 24.69L93.86 24.6L92.98 24.52L92.09 24.46L91.19 24.42L90.28 24.39L89.36 24.38L88.43 24.39L87.49 24.42L86.53 24.47L85.57 24.53L84.6 24.62L83.61 24.72L82.62 24.85L81.61 25L80.59 25.17L79.56 25.37L78.51 25.59L77.46 25.83L76.39 26.1L75.3 26.39L74.21 26.71L73.09 27.06L71.97 27.44L70.82 27.85L69.66 28.29L68.48 28.77L67.28 29.28L66.06 29.82L64.82 30.41L63.56 31.04L62.26 31.72L60.94 32.44L59.59 33.22L58.2 34.05L56.76 34.95L55.28 35.92L53.75 36.96L52.15 38.1L50.47 39.35L48.69 40.72L46.79 42.25L44.72 43.99L42.4 46L39.71 48.45L36.26 51.7L28.12 59.74"/>
+<path class="ink thick" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M28.12 59.74L9.74 41.35"/>
+<path class="ink thick" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M28.12 59.74L9.74 78.12"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="Why: in the isosceles triangle CAB (CA = CB = a/2) the chord is AB = a cos α, and the sine rule in triangle OCB gives sin α = √2 sin θ. So r = a√(1 − 2 sin²θ), r² = a² cos 2θ.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.35" d="M35.88 59.74A7.76 7.76 0 0 0 35.1 56.33"/>
+<text class="lbl " x="41.6" y="56.63" font-size="5.39" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.35" d="M114.4 17.66A6.79 6.79 0 0 0 117.56 20.8"/>
+<text class="lbl " x="111.44" y="23.8" font-size="5.39" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+<path class="ink cons" style="stroke-width:0.35;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M98.83 59.74L120.51 14.68"/>
+<text class="lbl  upright" x="113.01" y="37.21" font-size="4.58" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a/2</text>
+</g>
+</svg>

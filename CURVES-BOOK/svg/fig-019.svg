@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1197.58 689.07" width="520" height="299" data-fig="fig-019">
+<title>Fig. 19 — The centres of similitude of two circles</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 19, page 23. Section: circle.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two circles with centres O1 and O2.">
+<circle class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="344.54" cy="344.54" r="271"/>
+<circle class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="856.54" cy="344.54" r="93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="344.54" cy="344.54" r="7.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="856.54" cy="344.54" r="7.01"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw a diameter of the large circle; its ends are U and L.">
+<path class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.98 511.38L558.09 177.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="558.09" cy="177.69" r="7.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="130.98" cy="511.38" r="7.01"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="Through O2 draw the diameter of the small circle parallel to it; its ends are U′ (on the same side as U) and L′.">
+<path class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M783.25 401.79L929.82 287.28"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="929.82" cy="287.28" r="7.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="783.25" cy="401.79" r="7.01"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join the ends of the parallel diameters that point the same way: UU′ and LL′. They meet at E, the external centre of similitude.">
+<path class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M558.09 177.69L1124.04 344.54"/>
+<path class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.98 511.38L1124.04 344.54"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="1124.04" cy="344.54" r="7.01"/>
+<text class="lbl  upright" x="1124.04" y="311.72" font-size="40.72" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">E</text>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="Join the ends that point opposite ways: UL′ and LU′. They meet at I, the internal centre of similitude. The four points O1, I, O2, E lie on one line.">
+<path class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M558.09 177.69L783.25 401.79"/>
+<path class="ink given" style="stroke-width:4.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.98 511.38L929.82 287.28"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.63" cx="725.72" cy="344.54" r="7.01"/>
+<text class="lbl  upright" x="725.72" y="311.72" font-size="40.72" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">I</text>
+</g>
+</svg>

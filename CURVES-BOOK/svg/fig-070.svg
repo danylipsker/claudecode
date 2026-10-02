@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1199.9 1464.9" width="520" height="635" data-fig="fig-070">
+<title>Fig. 70 — Two slopes at every point: the envelope is where they coincide</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 70, page 75. Section: envelopes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, and a number of points of the plane. A differential equation of the second degree, f(x, y, p) = 0 with p = dy/dx, gives two values of p at each point.">
+<path class="ink axis" style="stroke-width:4.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M89.95 1084.95L1109.95 1084.95"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1109.95 1084.95L1082.56 1073.44L1082.56 1096.46Z"/>
+<path class="ink axis" style="stroke-width:4.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M299.95 1374.95L299.95 89.95"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M299.95 89.95L288.44 117.34L311.46 117.34Z"/>
+<text class="lbl axis" x="1136.2" y="1115.83" font-size="49.81" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="326.2" y="59.07" font-size="49.81" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="299.95" cy="1084.95" r="14.28"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="459.95" cy="901.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="604.95" cy="812.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="469.95" cy="711.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="739.95" cy="678.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="562.95" cy="612.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="841.95" cy="506.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="640.95" cy="476.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="664.95" cy="343.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="899.95" cy="322.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="630.95" cy="974.95" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="811.95" cy="914.37" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="967.95" cy="809.66" r="6.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.22" cx="1054.95" cy="606.84" r="6.67"/>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="Through each point lay off the two directions given by its two values of p (the slopes of the two integral curves that pass through it).">
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M425.46 940.87L494.44 863.03"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M418.41 870.67L501.49 933.23"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M574.83 855.34L635.07 770.56"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M566.6 777.84L643.3 848.06"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M444 757.01L495.9 666.89"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M439.07 670.11L500.83 753.79"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M714.67 724.39L765.23 633.51"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M705.08 640.37L774.82 717.53"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M539.37 659.3L586.53 566.6"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M534.3 569.56L591.6 656.34"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M821 554.54L862.9 459.36"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M809.88 466.02L874.02 547.88"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M619.88 524.49L662.02 429.41"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M614.86 431.97L667.04 521.93"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M645.72 392.26L684.18 295.64"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M641.21 297.69L688.69 390.21"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M882.19 371.82L917.71 274.08"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M870.03 280.42L929.87 365.48"/>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="Where the two values of p are equal there is a single direction: the two integral curves touch. These are the points of the envelope.">
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M580.63 988.04L681.27 961.86"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M764.36 935.34L859.54 893.4"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M932.89 848.06L1003.01 771.25"/>
+<path class="ink cons" style="stroke-width:3.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1046.91 658.22L1062.99 555.47"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Draw the curve through the points with a single slope: the locus of equal values of p, the envelope of the family of integral curves. It satisfies the differential equation and touches an integral curve at each of its points.">
+<path class="ink curve" style="stroke-width:8.2;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M549.95 994.3L553.14 993.6L556.33 992.89L559.51 992.18L562.7 991.46L565.89 990.74L569.08 990.02L572.26 989.29L575.45 988.55L578.64 987.81L581.83 987.07L585.01 986.32L588.2 985.57L591.39 984.81L594.58 984.05L597.76 983.28L600.95 982.5L604.14 981.72L607.33 980.94L610.51 980.15L613.7 979.35L616.89 978.55L620.08 977.75L623.26 976.93L626.45 976.12L629.64 975.29L632.83 974.46L636.01 973.63L639.2 972.78L642.39 971.94L645.58 971.08L648.76 970.22L651.95 969.35L655.14 968.48L658.33 967.6L661.51 966.71L664.7 965.82L667.89 964.91L671.08 964.01L674.26 963.09L677.45 962.17L680.64 961.24L683.83 960.3L687.01 959.35L690.2 958.4L693.39 957.44L696.58 956.47L699.76 955.49L702.95 954.5L706.14 953.51L709.33 952.5L712.51 951.49L715.7 950.47L718.89 949.44L722.08 948.4L725.26 947.35L728.45 946.29L731.64 945.22L734.83 944.14L738.01 943.05L741.2 941.95L744.39 940.84L747.58 939.72L750.76 938.59L753.95 937.45L757.14 936.29L760.33 935.13L763.51 933.95L766.7 932.76L769.89 931.55L773.08 930.34L776.26 929.11L779.45 927.87L782.64 926.61L785.83 925.34L789.01 924.06L792.2 922.76L795.39 921.45L798.58 920.12L801.76 918.77L804.95 917.41L808.14 916.04L811.33 914.64L814.51 913.24L817.7 911.81L820.89 910.36L824.08 908.9L827.26 907.42L830.45 905.92L833.64 904.39L836.83 902.85L840.01 901.29L843.2 899.7L846.39 898.1L849.58 896.47L852.76 894.82L855.95 893.14L859.14 891.44L862.33 889.71L865.51 887.96L868.7 886.17L871.89 884.37L875.08 882.53L878.26 880.66L881.45 878.76L884.64 876.83L887.83 874.87L891.01 872.87L894.2 870.84L897.39 868.77L900.58 866.66L903.76 864.52L906.95 862.33L910.14 860.1L913.33 857.83L916.51 855.51L919.7 853.14L922.89 850.72L926.08 848.25L929.26 845.73L932.45 843.15L935.64 840.51L938.83 837.81L942.01 835.04L945.2 832.21L948.39 829.3L951.58 826.32L954.76 823.26L957.95 820.12L961.14 816.88L964.33 813.56L967.51 810.13L970.7 806.6L973.89 802.96L977.08 799.2L980.26 795.31L983.45 791.29L986.64 787.12L989.83 782.79L993.01 778.29L996.2 773.61L999.39 768.74L1002.58 763.64L1005.76 758.31L1008.95 752.72L1012.14 746.85L1015.33 740.65L1018.51 734.11L1021.7 727.17L1024.89 719.79L1028.08 711.9L1031.26 703.42L1034.45 694.28L1037.64 684.34L1040.83 673.46L1044.01 661.44L1047.2 648.02L1050.39 632.82L1053.58 615.31L1056.76 594.64L1059.95 569.42"/>
+</g>
+</svg>

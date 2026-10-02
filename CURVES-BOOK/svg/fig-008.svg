@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 250.97 133.79" width="520" height="277" data-fig="fig-008">
+<title>Fig. 8 — A Peaucellier-cell linkage that draws a Cassinian curve</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 8, page 9. Section: cassinian.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two fixed pivots A and O, AO = a, and the axis OX.">
+<path class="ink cons" style="stroke-width:0.55;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M28.41 90.63L74.41 90.63"/>
+<path class="ink cons" style="stroke-width:0.55;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M82.41 90.63L116.41 90.63"/>
+<text class="lbl " x="78.41" y="90.63" font-size="8.53" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<path class="ink cons" style="stroke-width:0.55;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M140.41 90.63L213.41 90.63"/>
+<path class="head cons" style="stroke:none;fill:#1b1b1b" d="M213.41 90.63L208.72 88.65L208.72 92.6Z"/>
+<text class="lbl  upright" x="218.81" y="84.28" font-size="8.53" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M15.41 100.63L41.41 100.63L41.41 80.63L15.41 80.63Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M115.41 100.63L141.41 100.63L141.41 80.63L115.41 80.63Z"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="28.41" cy="90.63" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="28.41" cy="90.63" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="2.8"/>
+<circle class="pt" style="fill:#1b1b1b" cx="128.41" cy="90.63" r="0.82"/>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The crank AD: a bar of length a turning about A; since AD = AO, the point D moves on a circle through O. In the position drawn the angle DAO is 2θ.">
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M25.88 88.06L97.09 17.85L102.14 22.97L30.94 93.19Z"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="28.41" cy="90.63" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="28.41" cy="90.63" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="99.61" cy="20.41" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="99.61" cy="20.41" r="2.8"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.55" d="M53.75 90.63A25.34 25.34 0 0 0 46.46 72.83"/>
+<text class="lbl " x="59.56" y="77.85" font-size="8.53" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2θ</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="The bars DC and OC, both of length c/2, meet at C.">
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M101.25 17.2L145.77 39.96L142.5 46.37L97.97 23.62Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M124.99 89.49L140.72 42.03L147.55 44.3L131.83 91.76Z"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="99.61" cy="20.41" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="99.61" cy="20.41" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="144.14" cy="43.16" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="144.14" cy="43.16" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="2.8"/>
+<circle class="pt" style="fill:#1b1b1b" cx="128.41" cy="90.63" r="0.82"/>
+</g>
+<g class="step" data-step="3" data-tool="linkage" data-text="The bar CQ of length c/2, in line with DC, and the bars QE and EO of length c/2: O, C, Q, E form a rhombus, D is on the line CQ and the angle DOQ is a right angle, since O, D, Q lie on a circle with centre C and diameter DQ.">
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M145.77 39.96L190.3 62.71L187.02 69.12L142.5 46.37Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M192.08 67.05L176.35 114.51L169.52 112.25L185.24 64.78Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.05 87.42L174.57 110.17L171.3 116.58L126.77 93.83Z"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="144.14" cy="43.16" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="144.14" cy="43.16" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.66" cy="65.92" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.66" cy="65.92" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="172.93" cy="113.38" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="172.93" cy="113.38" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="2.8"/>
+<circle class="pt" style="fill:#1b1b1b" cx="128.41" cy="90.63" r="0.82"/>
+</g>
+<g class="step" data-step="4" data-tool="linkage" data-text="The Peaucellier cell: four bars of length d joining C and E to P and P'. It inverts Q in O (OP · OP' = d² − c²/4), P and P' lie on the line OQ.">
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M144.37 39.57L230.79 45.14L230.33 52.32L143.9 46.76Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M233.25 51.13L175.62 115.77L170.25 110.98L227.87 46.34Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M172.7 116.97L86.28 111.4L86.74 104.22L173.17 109.79Z"/>
+<path class="ink given" style="stroke-width:1.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M83.82 105.41L141.45 40.77L146.82 45.56L89.2 110.21Z"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="144.14" cy="43.16" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="144.14" cy="43.16" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="172.93" cy="113.38" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="172.93" cy="113.38" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="230.56" cy="48.73" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="230.56" cy="48.73" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="86.51" cy="107.81" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="86.51" cy="107.81" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.66" cy="65.92" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.66" cy="65.92" r="2.8"/>
+<circle class="ink given" style="stroke-width:1.6;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="5"/>
+<circle class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="128.41" cy="90.63" r="2.8"/>
+<circle class="pt" style="fill:#1b1b1b" cx="128.41" cy="90.63" r="0.82"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The dashed lines: OD (perpendicular to OQ) and the line O–Q–P, which makes the angle θ with OX. With d² = a² − c²/4 the points P and P' describe a Cassinian curve.">
+<path class="ink cons dash" style="stroke-width:0.55;fill:none;--dash:3.01 2.01;stroke:#4b4b4b;stroke-dasharray:3.01 2.01;stroke-linecap:round;stroke-linejoin:round" d="M99.61 20.41L128.41 90.63"/>
+<path class="ink cons dash" style="stroke-width:0.55;fill:none;--dash:3.01 2.01;stroke:#4b4b4b;stroke-dasharray:3.01 2.01;stroke-linecap:round;stroke-linejoin:round" d="M128.41 90.63L230.56 48.73"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.55" d="M160.67 90.63A32.25 32.25 0 0 0 158.25 78.39"/>
+<text class="lbl " x="166.34" y="83.15" font-size="8.53" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<text class="lbl " x="28.41" y="77.93" font-size="8.53" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="109.51" y="8.77" font-size="8.53" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<text class="lbl " x="144.14" y="30.47" font-size="8.53" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="219.77" y="36.03" font-size="8.53" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="201.36" y="65.92" font-size="8.53" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl " x="183.73" y="126.08" font-size="8.53" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">E</text>
+<text class="lbl " x="73.81" y="107.81" font-size="8.53" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P'</text>
+<text class="lbl " x="111.48" y="90.63" font-size="8.53" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+</svg>

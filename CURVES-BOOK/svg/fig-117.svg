@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1214.46 1091.82" width="520" height="467" data-fig="fig-117">
+<title>Fig. 117 — The limacon: centre of rotation and the tangent at P</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 117, page 121. Section: instantaneous-center.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The dashed circle of radius a about A, and the point O on it. B runs round the circle (the arm AB turns about A); the rod OBP is pinned at B and slides through a swivel at O; P is the point of the rod at the distance k beyond B.">
+<circle class="ink cons dash" style="stroke-width:2.67;fill:none;--dash:14.57 9.72;stroke:#4b4b4b;stroke-dasharray:14.57 9.72;stroke-linecap:round;stroke-linejoin:round" cx="512.29" cy="663.25" r="354"/>
+<circle class="pt" style="fill:#1b1b1b" cx="158.29" cy="663.25" r="7.1"/>
+<circle class="pt" style="fill:#1b1b1b" cx="512.29" cy="663.25" r="7.1"/>
+<text class="lbl " x="158.29" y="560.85" font-size="41.29" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="415.01" y="663.25" font-size="41.29" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The arm AB and the rod OBP. The rod passes through the swivel at O and carries the tracing point P, k beyond B. The arrow shows the turning of B.">
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M491.21 654.04L632.94 329.65"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M533.37 672.46L675.09 348.07"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M491.21 654.04A23 23 0 0 0 533.37 672.46"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M675.09 348.07A23 23 0 0 0 632.94 329.65"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M74.57 690.55L901.65 149.32"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M99.76 729.04L926.84 187.81"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M78.42 688.03L74.92 699.48L86.82 700.86L83.32 712.31L95.21 713.69L91.71 725.14L103.61 726.52"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M926.84 187.81A23 23 0 0 0 901.65 149.32"/>
+<circle class="ink given" style="stroke-width:4.37;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="654.01" cy="338.86" r="44"/>
+<circle class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="654.01" cy="338.86" r="14"/>
+<circle class="pt" style="fill:#1b1b1b" cx="914.25" cy="168.57" r="6.32"/>
+<text class="lbl " x="914.25" y="122.48" font-size="41.29" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="654.01" y="262.06" font-size="41.29" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="B moves at right angles to AB, so its normal is the line BA: extend it beyond A. The point of the rod at O moves along the rod, so its normal is the perpendicular to the rod at O. They meet at H, on the circle (BH is a diameter).">
+<path class="ink cons dash" style="stroke-width:2.67;fill:none;--dash:14.57 9.72;stroke:#4b4b4b;stroke-dasharray:14.57 9.72;stroke-linecap:round;stroke-linejoin:round" d="M512.29 663.25L370.57 987.64"/>
+<path class="ink cons dash" style="stroke-width:2.67;fill:none;--dash:14.57 9.72;stroke:#4b4b4b;stroke-dasharray:14.57 9.72;stroke-linecap:round;stroke-linejoin:round" d="M158.29 663.25L370.57 987.64"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.67" cx="370.57" cy="987.64" r="15"/>
+<text class="lbl " x="411.53" y="987.64" font-size="41.29" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join H to P: HP is the normal to the limacon traced by P.">
+<path class="ink cons dash" style="stroke-width:2.67;fill:none;--dash:14.57 9.72;stroke:#4b4b4b;stroke-dasharray:14.57 9.72;stroke-linecap:round;stroke-linejoin:round" d="M370.57 987.64L914.25 168.57"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="The tangent to the limacon at P is the perpendicular to HP through P.">
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1005.9 229.4L822.6 107.73"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The limacon r = 2a cos θ + k traced by P about the pole O (a piece is drawn).">
+<path class="ink curve" style="stroke-width:6.8;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M1139.89 454.61L1138.08 449.8L1136.24 445.01L1134.35 440.24L1132.43 435.49L1130.46 430.75L1128.45 426.03L1126.4 421.34L1124.32 416.66L1122.19 411.99L1120.02 407.35L1117.82 402.73L1115.57 398.13L1113.29 393.55L1110.97 389L1108.61 384.46L1106.21 379.94L1103.77 375.45L1101.3 370.98L1098.79 366.53L1096.24 362.11L1093.66 357.71L1091.03 353.33L1088.37 348.98L1085.68 344.65L1082.95 340.35L1080.18 336.07L1077.38 331.82L1074.54 327.59L1071.66 323.39L1068.75 319.22L1065.81 315.07L1062.83 310.95L1059.82 306.86L1056.77 302.79L1053.69 298.75L1050.58 294.75L1047.44 290.77L1044.26 286.82L1041.05 282.89L1037.8 279L1034.53 275.14L1031.22 271.31L1027.88 267.51L1024.51 263.73L1021.11 259.99L1017.68 256.29L1014.22 252.61L1010.73 248.96L1007.21 245.35L1003.66 241.77L1000.08 238.22L996.47 234.7L992.84 231.22L989.17 227.77L985.48 224.35L981.76 220.97L978.02 217.62L974.24 214.31L970.45 211.03L966.62 207.78L962.77 204.57L958.89 201.4L954.99 198.26L951.07 195.15L947.12 192.08L943.14 189.05L939.14 186.06L935.12 183.1L931.08 180.17L927.01 177.29L922.92 174.44L918.81 171.63L914.68 168.85L910.52 166.11L906.35 163.42L902.15 160.75L897.94 158.13L893.7 155.55L889.45 153L885.17 150.49L880.88 148.02L876.57 145.59L872.24 143.2L867.89 140.85L863.53 138.54L859.15 136.27L854.75 134.03L850.34 131.84L845.91 129.68L841.47 127.57L837.01 125.5L832.54 123.46L828.05 121.47L823.55 119.52L819.03 117.61L814.51 115.74L809.97 113.91L805.41 112.12L800.85 110.37L796.27 108.66L791.69 107L787.09 105.37L782.48 103.79L777.86 102.24L773.24 100.74L768.6 99.28L763.96 97.87L759.3 96.49L754.64 95.16L749.97 93.86L745.3 92.61L740.61 91.4L735.92 90.24L731.23 89.11L726.53 88.03L721.82 86.99L717.11 85.99L712.4 85.03L707.68 84.11L702.96 83.24L698.23 82.41L693.5 81.62L688.77 80.87L684.04 80.17L679.31 79.5L674.57 78.88L669.83 78.3L665.1 77.76L660.36 77.27L655.63 76.81L650.89 76.4L646.16 76.03L641.42 75.7L636.69 75.42L631.96 75.17L627.24 74.97L622.52 74.81L617.8 74.69L613.08 74.61L608.37 74.57L603.66 74.58L598.96 74.62L594.27 74.71L589.58 74.84L584.89 75L580.22 75.21L575.55 75.46L570.88 75.76L566.23 76.09L561.58 76.46L556.94 76.87L552.31 77.33L547.69 77.82L543.08 78.35L538.48 78.93L533.89 79.54L529.31 80.19L524.74 80.89L520.19 81.62L515.64 82.39L511.11 83.2L506.59 84.05L502.08 84.94L497.58 85.86L493.1 86.83L488.64 87.83L484.18 88.88L479.75 89.96L475.32 91.07L470.92 92.23L466.52 93.42L462.15 94.65L457.79 95.92L453.45 97.23L449.12 98.57L444.81 99.95L440.52 101.36L436.25 102.81L432 104.3L427.76 105.82L423.55 107.38L419.35 108.98L415.17 110.61L411.02 112.27L406.88 113.97L402.76 115.7L398.67 117.47L394.59 119.27L390.54 121.11L386.51 122.98L382.5 124.88L378.52 126.81L374.56 128.78L370.62 130.78L366.7 132.82L362.81 134.88L358.94 136.98L355.09 139.11L351.27 141.27L347.48 143.46"/>
+</g>
+<g class="step" data-step="6" data-tool="note" data-text="The book draws the mechanism with blocks at O and A, and an arrow for the turning of B.">
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M454.29 711.25L570.29 711.25L570.29 615.25L454.29 615.25Z"/>
+<circle class="ink given" style="stroke-width:4.37;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="512.29" cy="663.25" r="45"/>
+<circle class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="512.29" cy="663.25" r="17"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M101.29 713.25L215.29 713.25L215.29 613.25L101.29 613.25Z"/>
+<path class="ink given" style="stroke-width:4.37;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M192.07 605.29L224.92 655.5L124.51 721.21L91.66 671Z"/>
+<circle class="pt" style="fill:#1b1b1b" cx="158.29" cy="663.25" r="7.1"/>
+<path class="ink given" style="stroke-width:4.37;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M595.07 304.68A368 368 0 0 0 454.72 299.78"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M454.72 299.78L478.65 305.65L475.66 286.81Z"/>
+</g>
+</svg>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 433.2 433.2" width="520" height="520" data-fig="fig-072">
+<title>Fig. 72 — Lines whose intercepts have a constant sum envelope the parabola √x + √y = 1</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 72, page 76. Section: envelopes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, and the unit length OX = OY = 1 (the constant sum of the intercepts).">
+<path class="ink axis" style="stroke-width:1.3;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M26.6 366.6L406.6 366.6"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M406.6 366.6L398.5 363.2L398.5 370Z"/>
+<path class="ink axis" style="stroke-width:1.3;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.6 406.6L66.6 26.6"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M66.6 26.6L63.2 34.7L70 34.7Z"/>
+<text class="lbl axis" x="414.36" y="375.73" font-size="14.73" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="74.36" y="17.47" font-size="14.73" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="366.6" r="4.22"/>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Divide the unit length on OX into eight equal parts, and do the same on OY. Pair the point at i/8 on OX with the point at 1 − i/8 on OY (the division numbered i from the far end).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="104.1" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="104.1" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="141.6" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="141.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="179.1" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="179.1" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="216.6" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="216.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="254.1" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="254.1" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="291.6" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="291.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="329.1" cy="366.6" r="1.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="66.6" cy="329.1" r="1.69"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join each point of OX to its partner on OY. Each line has intercepts a and 1 − a, so the sum of its intercepts is 1.">
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M104.1 366.6L66.6 104.1"/>
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M141.6 366.6L66.6 141.6"/>
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M179.1 366.6L66.6 179.1"/>
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.6 366.6L66.6 216.6"/>
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M254.1 366.6L66.6 254.1"/>
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M291.6 366.6L66.6 291.6"/>
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M329.1 366.6L66.6 329.1"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The lines touch a parabola: draw it through the points of contact, √x + √y = 1, from (0, 1) to (1, 0) (the points x = (1 − t)², y = t²).">
+<path class="ink curve" style="stroke-width:2.43;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M366.6 366.6L362.86 366.59L359.15 366.55L355.46 366.49L351.79 366.41L348.14 366.31L344.52 366.18L340.92 366.03L337.35 365.85L333.8 365.65L330.27 365.43L326.77 365.18L323.29 364.91L319.83 364.62L316.4 364.3L312.99 363.96L309.6 363.6L306.24 363.21L302.9 362.8L299.58 362.37L296.29 361.91L293.02 361.43L289.77 360.93L286.55 360.4L283.35 359.85L280.17 359.28L277.02 358.68L273.89 358.06L270.79 357.41L267.71 356.74L264.65 356.05L261.61 355.34L258.6 354.6L255.61 353.84L252.65 353.05L249.71 352.24L246.79 351.41L243.89 350.56L241.02 349.68L238.17 348.78L235.35 347.85L232.55 346.9L229.77 345.93L227.02 344.93L224.29 343.91L221.58 342.87L218.9 341.8L216.24 340.71L213.6 339.6L210.99 338.46L208.4 337.3L205.83 336.12L203.29 334.91L200.77 333.68L198.27 332.43L195.8 331.15L193.35 329.85L190.92 328.53L188.52 327.18L186.14 325.81L183.79 324.41L181.46 322.99L179.15 321.55L176.86 320.09L174.6 318.6L172.36 317.09L170.15 315.55L167.96 313.99L165.79 312.41L163.64 310.81L161.52 309.18L159.42 307.53L157.35 305.85L155.3 304.15L153.27 302.43L151.27 300.68L149.29 298.91L147.33 297.12L145.4 295.3L143.49 293.46L141.6 291.6L139.74 289.71L137.9 287.8L136.08 285.87L134.29 283.91L132.52 281.93L130.77 279.93L129.05 277.9L127.35 275.85L125.67 273.78L124.02 271.68L122.39 269.56L120.79 267.41L119.21 265.24L117.65 263.05L116.11 260.84L114.6 258.6L113.11 256.34L111.65 254.05L110.21 251.74L108.79 249.41L107.39 247.06L106.02 244.68L104.67 242.28L103.35 239.85L102.05 237.4L100.77 234.93L99.52 232.43L98.29 229.91L97.08 227.37L95.9 224.8L94.74 222.21L93.6 219.6L92.49 216.96L91.4 214.3L90.33 211.62L89.29 208.91L88.27 206.18L87.27 203.43L86.3 200.65L85.35 197.85L84.42 195.03L83.52 192.18L82.64 189.31L81.79 186.41L80.96 183.49L80.15 180.55L79.36 177.59L78.6 174.6L77.86 171.59L77.15 168.55L76.46 165.49L75.79 162.41L75.14 159.31L74.52 156.18L73.92 153.03L73.35 149.85L72.8 146.65L72.27 143.43L71.77 140.18L71.29 136.91L70.83 133.62L70.4 130.3L69.99 126.96L69.6 123.6L69.24 120.21L68.9 116.8L68.58 113.37L68.29 109.91L68.02 106.43L67.77 102.93L67.55 99.4L67.35 95.85L67.17 92.28L67.02 88.68L66.89 85.06L66.79 81.41L66.71 77.74L66.65 74.05L66.61 70.34L66.6 66.6"/>
+</g>
+</svg>

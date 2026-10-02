@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 396.72 313.92" width="520" height="411" data-fig="fig-050b">
+<title>Fig. 50(b) — Paper folding: F folded onto a line, the creases envelope a parabola</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 50(b), page 50. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A sheet of paper with a straight edge and the point F marked a little way from it.">
+<path class="ink given" style="stroke-width:1.43;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M24.36 24.36L372.36 24.36"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.43" cx="198.36" cy="84.36" r="5.67"/><circle class="pt" style="fill:#1b1b1b" cx="198.36" cy="84.36" r="2.32"/>
+<text class="lbl  upright" x="211.16" y="99.41" font-size="11.47" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F</text>
+</g>
+<g class="step" data-step="1" data-tool="fold" data-text="Fold F onto a point P of the edge and crease the paper: the crease is the perpendicular bisector of FP.">
+<path class="ink aux dash" style="stroke-width:0.71;fill:none;--dash:4.76 3.17;stroke:#8a8a8a;stroke-dasharray:4.76 3.17;stroke-linecap:round;stroke-linejoin:round" d="M198.36 84.36L221.39 24.36"/>
+<circle class="pt" style="fill:#1b1b1b" cx="221.39" cy="24.36" r="2.06"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 114.43L131.72 24.36"/>
+</g>
+<g class="step" data-step="2" data-tool="fold" data-text="Fold F onto 48 more points of the edge. Points far along the edge give creases that lean steeply.">
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M115.78 24.36L30.36 287.25"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M131.72 24.36L30.36 288.42"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M144.34 24.36L30.36 280.35"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M154.77 24.36L30.36 268.52"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M163.72 24.36L30.36 255.34"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M171.65 24.36L30.36 241.92"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M178.86 24.36L30.36 228.76"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M185.61 24.36L30.36 216.07"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M192.05 24.36L30.36 203.94"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M198.36 24.36L30.36 192.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M204.67 24.36L30.36 181.31"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M211.11 24.36L30.36 170.73"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M217.86 24.36L30.36 160.58"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M225.07 24.36L30.36 150.81"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M233 24.36L30.36 141.35"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M241.95 24.36L30.36 132.17"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M252.38 24.36L30.36 123.21"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M265 24.36L30.36 114.43"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M280.94 24.36L30.36 105.78"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M302.28 24.36L30.36 97.22"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M333.12 24.36L30.36 88.71"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 27L30.36 80.22"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 36.37L30.36 71.69"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 45.47L30.36 63.08"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 54.36L30.36 54.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 63.08L30.36 45.47"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 71.69L30.36 36.37"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 80.22L30.36 27"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 88.71L63.6 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 97.22L94.44 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 105.78L115.78 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 123.21L144.34 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 132.17L154.77 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 141.35L163.72 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 150.81L171.65 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 160.58L178.86 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 170.73L185.61 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 181.31L192.05 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 192.36L198.36 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 203.94L204.67 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 216.07L211.11 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 228.76L217.86 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 241.92L225.07 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 255.34L233 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 268.52L241.95 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 280.35L252.38 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 288.42L265 24.36"/>
+<path class="ink cons" style="stroke-width:0.87;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M366.36 287.25L280.94 24.36"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The creases envelope a parabola with focus F and the edge as its directrix.">
+<path class="ink curve" style="stroke-width:2.22;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M30.36 289.56L32.46 283.72L34.56 277.95L36.66 272.25L38.76 266.63L40.86 261.08L42.96 255.6L45.06 250.2L47.16 244.87L49.26 239.62L51.36 234.44L53.46 229.33L55.56 224.29L57.66 219.33L59.76 214.44L61.86 209.63L63.96 204.89L66.06 200.22L68.16 195.63L70.26 191.11L72.36 186.66L74.46 182.29L76.56 177.99L78.66 173.76L80.76 169.61L82.86 165.53L84.96 161.52L87.06 157.59L89.16 153.73L91.26 149.95L93.36 146.24L95.46 142.6L97.56 139.03L99.66 135.54L101.76 132.12L103.86 128.78L105.96 125.51L108.06 122.31L110.16 119.19L112.26 116.14L114.36 113.16L116.46 110.26L118.56 107.43L120.66 104.67L122.76 101.99L124.86 99.38L126.96 96.84L129.06 94.38L131.16 91.99L133.26 89.68L135.36 87.44L137.46 85.27L139.56 83.17L141.66 81.15L143.76 79.2L145.86 77.33L147.96 75.53L150.06 73.8L152.16 72.15L154.26 70.57L156.36 69.06L158.46 67.63L160.56 66.27L162.66 64.98L164.76 63.77L166.86 62.63L168.96 61.56L171.06 60.57L173.16 59.65L175.26 58.81L177.36 58.04L179.46 57.34L181.56 56.71L183.66 56.16L185.76 55.68L187.86 55.28L189.96 54.95L192.06 54.69L194.16 54.51L196.26 54.4L198.36 54.36L200.46 54.4L202.56 54.51L204.66 54.69L206.76 54.95L208.86 55.28L210.96 55.68L213.06 56.16L215.16 56.71L217.26 57.34L219.36 58.04L221.46 58.81L223.56 59.65L225.66 60.57L227.76 61.56L229.86 62.63L231.96 63.77L234.06 64.98L236.16 66.27L238.26 67.63L240.36 69.06L242.46 70.57L244.56 72.15L246.66 73.8L248.76 75.53L250.86 77.33L252.96 79.2L255.06 81.15L257.16 83.17L259.26 85.27L261.36 87.44L263.46 89.68L265.56 91.99L267.66 94.38L269.76 96.84L271.86 99.38L273.96 101.99L276.06 104.67L278.16 107.43L280.26 110.26L282.36 113.16L284.46 116.14L286.56 119.19L288.66 122.31L290.76 125.51L292.86 128.78L294.96 132.12L297.06 135.54L299.16 139.03L301.26 142.6L303.36 146.24L305.46 149.95L307.56 153.73L309.66 157.59L311.76 161.52L313.86 165.53L315.96 169.61L318.06 173.76L320.16 177.99L322.26 182.29L324.36 186.66L326.46 191.11L328.56 195.63L330.66 200.22L332.76 204.89L334.86 209.63L336.96 214.44L339.06 219.33L341.16 224.29L343.26 229.33L345.36 234.44L347.46 239.62L349.56 244.87L351.66 250.2L353.76 255.6L355.86 261.08L357.96 266.63L360.06 272.25L362.16 277.95L364.26 283.72L366.36 289.56"/>
+</g>
+</svg>

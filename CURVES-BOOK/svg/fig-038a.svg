@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1075.23 1047.56" width="520" height="507" data-fig="fig-038a">
+<title>Fig. 38(a) — The polar of P passes through R and S, the meets of the cross-joins of two secants through P</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 38(a), page 43. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The conic and the point P. Two secants will be drawn through P, meeting the conic in A, B and in C, D.">
+<path class="ink thick" style="stroke-width:6.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M101.09 842.93L104.8 849.15L108.67 855.27L112.73 861.28L116.95 867.18L121.34 872.97L125.89 878.63L130.6 884.17L135.48 889.59L140.51 894.88L145.69 900.03L151.02 905.05L156.5 909.93L162.13 914.67L167.89 919.27L173.79 923.72L179.83 928.03L186 932.18L192.29 936.18L198.71 940.02L205.24 943.7L211.89 947.23L218.66 950.59L225.53 953.78L232.5 956.81L239.58 959.67L246.75 962.36L254.01 964.88L261.35 967.23L268.79 969.41L276.29 971.4L283.88 973.22L291.53 974.87L299.25 976.33L307.03 977.62L314.86 978.72L322.75 979.65L330.68 980.39L338.65 980.95L346.67 981.33L354.71 981.52L362.79 981.54L370.88 981.37L379 981.02L387.13 980.48L395.27 979.77L403.41 978.87L411.56 977.79L419.69 976.53L427.82 975.09L435.94 973.48L444.03 971.68L452.11 969.71L460.15 967.56L468.16 965.24L476.13 962.75L484.06 960.08L491.94 957.24L499.77 954.24L507.54 951.07L515.25 947.73L522.9 944.23L530.48 940.57L537.98 936.75L545.4 932.78L552.74 928.65L560 924.37L567.16 919.94L574.22 915.36L581.19 910.64L588.05 905.78L594.8 900.78L601.44 895.64L607.97 890.37L614.37 884.98L620.66 879.45L626.81 873.81L632.84 868.04L638.73 862.16L644.48 856.16L650.09 850.06L655.56 843.85L660.88 837.54L666.05 831.12L671.06 824.62L675.92 818.02L680.62 811.34L685.16 804.57L689.54 797.73L693.74 790.8L697.78 783.81L701.64 776.75L705.33 769.63L708.84 762.45L712.18 755.21L715.33 747.93L718.3 740.59L721.09 733.22L723.69 725.81L726.11 718.36L728.34 710.89L730.37 703.39L732.22 695.87L733.87 688.34L735.33 680.79L736.59 673.24L737.66 665.68L738.54 658.13L739.22 650.58L739.7 643.04L739.99 635.52L740.08 628.02L739.97 620.54L739.67 613.09L739.17 605.68L738.47 598.3L737.58 590.96L736.49 583.66L735.21 576.42L733.73 569.23L732.06 562.1L730.2 555.03L728.15 548.03L725.9 541.1L723.47 534.24L720.85 527.46L718.05 520.76L715.06 514.15L711.89 507.63L708.54 501.21L705.01 494.88L701.31 488.66L697.43 482.54L693.37 476.52L689.15 470.63L684.77 464.84L680.21 459.18L675.5 453.64L670.63 448.22L665.6 442.93L660.41 437.78L655.08 432.76L649.6 427.88L643.97 423.13L638.21 418.54L632.31 414.08L626.27 409.78L620.1 405.63L613.81 401.63L607.39 397.79L600.86 394.11L594.21 390.58L587.44 387.22L580.57 384.03L573.6 381L566.52 378.14L559.35 375.44L552.09 372.92L544.75 370.58L537.32 368.4L529.81 366.41L522.22 364.58L514.57 362.94L506.85 361.48L499.08 360.19L491.24 359.09L483.36 358.16L475.42 357.42L467.45 356.86L459.43 356.48L451.39 356.28L443.32 356.27L435.22 356.44L427.1 356.79L418.97 357.33L410.83 358.04L402.69 358.94L394.54 360.02L386.41 361.28L378.28 362.71L370.16 364.33L362.07 366.13L354 368.1L345.95 370.25L337.94 372.57L329.97 375.06L322.04 377.73L314.16 380.57L306.33 383.57L298.56 386.74L290.85 390.08L283.2 393.58L275.62 397.24L268.12 401.06L260.7 405.03L253.36 409.16L246.11 413.44L238.94 417.87L231.88 422.45L224.91 427.17L218.05 432.03L211.3 437.03L204.66 442.17L198.13 447.44L191.73 452.83L185.44 458.36L179.29 464L173.26 469.77L167.37 475.65L161.62 481.65L156.01 487.75L150.54 493.96L145.22 500.27L140.05 506.68L135.04 513.19L130.18 519.79L125.48 526.47L120.94 533.24L116.57 540.08L112.36 547L108.32 554L104.46 561.06L100.77 568.18L97.26 575.36L93.92 582.6L90.77 589.88L87.8 597.22L85.01 604.59L82.41 612L79.99 619.45L77.77 626.92L75.73 634.42L73.88 641.94L72.23 649.47L70.77 657.02L69.51 664.57L68.44 672.13L67.56 679.68L66.88 687.23L66.4 694.76L66.11 702.29L66.02 709.79L66.13 717.27L66.43 724.72L66.93 732.13L67.63 739.51L68.52 746.85L69.61 754.15L70.89 761.39L72.37 768.58L74.04 775.71L75.9 782.78L77.96 789.78L80.2 796.71L82.63 803.57L85.25 810.35L88.05 817.05L91.04 823.66L94.21 830.18L97.56 836.6L101.09 842.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="707.65" cy="66.02" r="6.99"/>
+<text class="lbl " x="739.39" y="66.02" font-size="36.56" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw two arbitrary secants from P: one meets the conic in B and A, the other in C and D.">
+<path class="ink given" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M707.65 66.02L97.56 836.6"/>
+<path class="ink given" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M707.65 66.02L716.41 745.32"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="97.56" cy="836.6" r="6.99"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="476.85" cy="357.54" r="6.99"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="713.39" cy="510.65" r="6.99"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="716.41" cy="745.32" r="6.99"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the cross-joins AC and BD; they meet at R. Draw the other cross-joins AD and BC; they meet at S.">
+<path class="ink given" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M97.56 836.6L713.39 510.65"/>
+<path class="ink given" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M476.85 357.54L716.41 745.32"/>
+<path class="ink given" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M97.56 836.6L1009.21 702.14"/>
+<path class="ink given" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M476.85 357.54L1009.21 702.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="606.41" cy="567.27" r="6.99"/>
+<text class="lbl " x="574.68" y="567.27" font-size="36.56" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.37" cx="1009.21" cy="702.14" r="6.99"/>
+<text class="lbl " x="1009.21" y="729.34" font-size="36.56" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">S</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The polar of P passes through R and S (the book proves this with the family of lines through R, Fig. 38b). RS is the polar of P.">
+<path class="ink cons dash" style="stroke-width:2.37;fill:none;--dash:12.9 8.6;stroke:#4b4b4b;stroke-dasharray:12.9 8.6;stroke-linecap:round;stroke-linejoin:round" d="M606.41 567.27L1009.21 702.14"/>
+</g>
+</svg>

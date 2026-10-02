@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 919.5 1128.46" width="520" height="638" data-fig="fig-168a">
+<title>Fig. 168(a) — The crossed parallelogram: ellipses rolling on ellipses</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 168(a), page 183. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The short bar AB is fixed to the plane: the pivots A and B (in their slides) are the fixed points, the foci of the first ellipse.">
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M146.74 846.91L209.05 846.91L209.05 791.33L146.74 791.33Z"/>
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M568.74 846.91L631.05 846.91L631.05 791.33L568.74 791.33Z"/>
+<path class="ink given" style="fill:none;stroke-width:10.56;stroke:#1b1b1b;stroke-linecap:round" d="M177.89 819.12L599.89 819.12"/><path class="ink" style="fill:none;stroke-width:4.87;stroke:#fff;stroke-linecap:round" d="M177.89 819.12L599.89 819.12"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.06" cx="177.89" cy="819.12" r="16.14"/><circle class="pt" style="fill:#1b1b1b" cx="177.89" cy="819.12" r="6.6"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.06" cx="599.89" cy="819.12" r="16.14"/><circle class="pt" style="fill:#1b1b1b" cx="599.89" cy="819.12" r="6.6"/>
+<text class="lbl " x="177.89" y="890.48" font-size="38.37" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="599.89" y="890.48" font-size="38.37" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="Add the other three bars, equal in pairs: AD = BC (the longer bars, which cross) and CD = AB. This is a crossed parallelogram. The longer bars meet at P.">
+<path class="ink given" style="fill:none;stroke-width:10.56;stroke:#1b1b1b;stroke-linecap:round" d="M177.89 819.12L722.89 485.12"/><path class="ink" style="fill:none;stroke-width:4.87;stroke:#fff;stroke-linecap:round" d="M177.89 819.12L722.89 485.12"/>
+<path class="ink given" style="fill:none;stroke-width:10.56;stroke:#1b1b1b;stroke-linecap:round" d="M599.89 819.12L400.89 207.12"/><path class="ink" style="fill:none;stroke-width:4.87;stroke:#fff;stroke-linecap:round" d="M599.89 819.12L400.89 207.12"/>
+<path class="ink given" style="fill:none;stroke-width:10.56;stroke:#1b1b1b;stroke-linecap:round" d="M400.89 207.12L722.89 485.12"/><path class="ink" style="fill:none;stroke-width:4.87;stroke:#fff;stroke-linecap:round" d="M400.89 207.12L722.89 485.12"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.06" cx="400.89" cy="207.12" r="16.14"/><circle class="pt" style="fill:#1b1b1b" cx="400.89" cy="207.12" r="6.6"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.06" cx="722.89" cy="485.12" r="16.14"/><circle class="pt" style="fill:#1b1b1b" cx="722.89" cy="485.12" r="6.6"/>
+<text class="lbl " x="472.26" y="207.12" font-size="38.37" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="722.89" y="413.76" font-size="38.37" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<circle class="pt" style="fill:#1b1b1b" cx="529.77" cy="603.47" r="12.47"/>
+<text class="lbl " x="558.08" y="570.17" font-size="38.37" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="Whatever the position of the bars, PA + PB = AD is constant: P moves on the ellipse with foci A and B and major axis AD.">
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M708.49 819.12L708.34 811.58L707.86 804.05L707.08 796.53L705.97 789.03L704.56 781.57L702.83 774.14L700.8 766.75L698.45 759.42L695.8 752.15L692.85 744.94L689.6 737.81L686.05 730.75L682.21 723.78L678.08 716.91L673.66 710.14L668.96 703.47L663.99 696.92L658.74 690.49L653.23 684.19L647.46 678.02L641.43 671.99L635.15 666.11L628.63 660.37L621.87 654.79L614.89 649.38L607.68 644.13L600.25 639.06L592.62 634.16L584.78 629.44L576.75 624.92L568.54 620.58L560.14 616.44L551.58 612.5L542.86 608.76L533.99 605.23L524.97 601.92L515.82 598.81L506.55 595.93L497.15 593.26L487.66 590.82L478.06 588.6L468.37 586.61L458.61 584.85L448.78 583.32L438.89 582.02L428.95 580.96L418.97 580.13L408.96 579.54L398.93 579.19L388.89 579.07L378.85 579.19L368.83 579.54L358.82 580.13L348.84 580.96L338.9 582.02L329.01 583.32L319.17 584.85L309.41 586.61L299.73 588.6L290.13 590.82L280.63 593.26L271.24 595.93L261.96 598.81L252.81 601.92L243.8 605.23L234.92 608.76L226.2 612.5L217.64 616.44L209.25 620.58L201.04 624.92L193.01 629.44L185.17 634.16L177.54 639.06L170.11 644.13L162.9 649.38L155.91 654.79L149.16 660.37L142.64 666.11L136.36 671.99L130.33 678.02L124.56 684.19L119.04 690.49L113.8 696.92L108.82 703.47L104.13 710.14L99.71 716.91L95.58 723.78L91.74 730.75L88.19 737.81L84.93 744.94L81.98 752.15L79.33 759.42L76.99 766.75L74.95 774.14L73.23 781.57L71.81 789.03L70.71 796.53L69.92 804.05L69.45 811.58L69.29 819.12L69.45 826.66L69.92 834.19L70.71 841.71L71.81 849.21L73.23 856.67L74.95 864.1L76.99 871.49L79.33 878.82L81.98 886.09L84.93 893.3L88.19 900.43L91.74 907.49L95.58 914.46L99.71 921.33L104.13 928.1L108.82 934.77L113.8 941.32L119.04 947.75L124.56 954.05L130.33 960.22L136.36 966.25L142.64 972.13L149.16 977.87L155.91 983.45L162.9 988.86L170.11 994.11L177.54 999.18L185.17 1004.08L193.01 1008.8L201.04 1013.32L209.25 1017.66L217.64 1021.8L226.2 1025.74L234.92 1029.48L243.8 1033.01L252.81 1036.32L261.96 1039.43L271.24 1042.31L280.63 1044.98L290.13 1047.42L299.73 1049.64L309.41 1051.63L319.17 1053.39L329.01 1054.92L338.9 1056.22L348.84 1057.28L358.82 1058.11L368.83 1058.7L378.85 1059.05L388.89 1059.17L398.93 1059.05L408.96 1058.7L418.97 1058.11L428.95 1057.28L438.89 1056.22L448.78 1054.92L458.61 1053.39L468.37 1051.63L478.06 1049.64L487.66 1047.42L497.15 1044.98L506.55 1042.31L515.82 1039.43L524.97 1036.32L533.99 1033.01L542.86 1029.48L551.58 1025.74L560.14 1021.8L568.54 1017.66L576.75 1013.32L584.78 1008.8L592.62 1004.08L600.25 999.18L607.68 994.11L614.89 988.86L621.87 983.45L628.63 977.87L635.15 972.13L641.43 966.25L647.46 960.22L653.23 954.05L658.74 947.75L663.99 941.32L668.96 934.77L673.66 928.1L678.08 921.33L682.21 914.46L686.05 907.49L689.6 900.43L692.85 893.3L695.8 886.09L698.45 878.82L700.8 871.49L702.83 864.1L704.56 856.67L705.97 849.21L707.08 841.71L707.86 834.19L708.34 826.66L708.49 819.12"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M295.45 589.56L288.34 614.57"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M283.96 592.38L277.59 617.58"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M272.62 595.52L267.01 620.91"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M261.45 598.98L256.61 624.53"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M250.46 602.76L246.41 628.44"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M239.67 606.84L236.42 632.64"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M229.09 611.23L226.66 637.12"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M455.34 1053.92L464.12 1029.45"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M470.94 1051.13L478.77 1026.33"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M486.33 1047.74L493.19 1022.66"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M501.47 1043.78L507.33 1018.45"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M516.33 1039.26L521.17 1013.71"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M530.87 1034.18L534.67 1008.46"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M545.06 1028.56L547.77 1002.71"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M558.85 1022.42L560.46 996.47"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M572.21 1015.76L572.69 989.76"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The points C and D are the foci of an equal ellipse that touches the first at P. As the linkage moves, this ellipse rolls on the fixed one (the action of rolling ellipses).">
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M803.81 554.98L808.62 549.17L813.18 543.16L817.5 536.95L821.56 530.56L825.37 523.98L828.92 517.23L832.2 510.31L835.22 503.23L837.97 495.99L840.44 488.61L842.65 481.08L844.57 473.42L846.21 465.64L847.58 457.74L848.66 449.72L849.46 441.61L849.97 433.4L850.21 425.11L850.15 416.73L849.81 408.29L849.19 399.79L848.29 391.23L847.1 382.63L845.63 373.99L843.88 365.32L841.85 356.64L839.55 347.94L836.97 339.25L834.12 330.56L831 321.88L827.62 313.23L823.97 304.62L820.07 296.04L815.91 287.51L811.5 279.04L806.84 270.64L801.94 262.31L796.8 254.06L791.44 245.91L785.84 237.85L780.03 229.9L774 222.07L767.76 214.36L761.32 206.77L754.68 199.33L747.85 192.03L740.84 184.88L733.65 177.89L726.29 171.07L718.77 164.42L711.09 157.95L703.27 151.66L695.3 145.57L687.21 139.67L678.99 133.98L670.66 128.5L662.22 123.23L653.68 118.19L645.04 113.36L636.33 108.77L627.55 104.41L618.69 100.29L609.79 96.42L600.83 92.78L591.84 89.4L582.82 86.28L573.77 83.4L564.72 80.79L555.66 78.44L546.61 76.36L537.57 74.54L528.56 72.99L519.58 71.7L510.65 70.69L501.76 69.95L492.93 69.49L484.17 69.29L475.49 69.37L466.89 69.72L458.39 70.35L449.98 71.25L441.69 72.41L433.52 73.85L425.47 75.56L417.56 77.53L409.79 79.77L402.18 82.28L394.71 85.04L387.42 88.06L380.29 91.33L373.35 94.86L366.59 98.64L360.02 102.65L353.66 106.91L347.5 111.41L341.55 116.13L335.81 121.09L330.3 126.26L325.02 131.66L319.98 137.26L315.17 143.07L310.6 149.08L306.29 155.29L302.22 161.68L298.42 168.26L294.87 175.01L291.58 181.93L288.57 189.01L285.82 196.25L283.34 203.63L281.14 211.16L279.22 218.82L277.57 226.6L276.21 234.5L275.13 242.52L274.33 250.63L273.81 258.84L273.58 267.13L273.63 275.51L273.97 283.95L274.59 292.46L275.5 301.01L276.69 309.61L278.16 318.25L279.91 326.92L281.94 335.6L284.24 344.3L286.82 352.99L289.67 361.68L292.79 370.36L296.17 379.01L299.82 387.62L303.72 396.2L307.88 404.73L312.29 413.2L316.95 421.6L321.85 429.93L326.98 438.18L332.35 446.33L337.94 454.39L343.76 462.34L349.79 470.17L356.03 477.88L362.47 485.47L369.11 492.91L375.94 500.21L382.95 507.36L390.14 514.35L397.5 521.17L405.02 527.82L412.7 534.29L420.52 540.58L428.48 546.67L436.58 552.57L444.8 558.26L453.13 563.74L461.57 569.01L470.11 574.05L478.74 578.88L487.45 583.47L496.24 587.83L505.09 591.95L514 595.82L522.95 599.46L531.95 602.84L540.97 605.96L550.01 608.84L559.07 611.45L568.12 613.8L577.18 615.88L586.21 617.7L595.22 619.25L604.2 620.54L613.14 621.55L622.03 622.29L630.86 622.75L639.62 622.95L648.3 622.87L656.9 622.52L665.4 621.89L673.8 620.99L682.09 619.83L690.27 618.39L698.31 616.68L706.22 614.71L713.99 612.47L721.61 609.96L729.07 607.2L736.37 604.18L743.49 600.91L750.44 597.38L757.2 593.6L763.76 589.59L770.13 585.33L776.29 580.83L782.24 576.11L787.97 571.15L793.48 565.98L798.76 560.58L803.81 554.98"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M829.15 317.08L803.37 313.75"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M824.18 305.09L798.29 302.74"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M818.71 293.19L792.74 291.8"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M812.74 281.39L786.75 280.95"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M806.31 269.71L780.31 270.2"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M799.4 258.18L773.44 259.58"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M792.05 246.81L766.15 249.12"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M784.25 235.63L758.45 238.83"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M776.03 224.67L750.35 228.74"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M305.08 399.05L331.04 400.44"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M310.42 409.68L336.42 410.21"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M316.16 420.2L342.15 419.9"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M322.27 430.62L348.24 429.49"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M328.75 440.9L354.67 438.95"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M335.58 451.04L361.44 448.29"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M342.77 461.02L368.53 457.47"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M350.3 470.82L375.94 466.49"/>
+<path class="ink cons" style="stroke-width:1.5;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M358.15 480.43L383.65 475.33"/>
+</g>
+</svg>

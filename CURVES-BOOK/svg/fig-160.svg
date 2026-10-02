@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1165.44 972.42" width="520" height="434" data-fig="fig-160">
+<title>Fig. 160 — The roulette of a point carried by a curve rolling on a line</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 160, page 176. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The x-axis with the origin O, and the rolling curve resting on it at P. The point O1 of the curve touched the axis at O when the rolling began, so the arc O1P (length s) equals OP.">
+<path class="ink axis" style="stroke-width:3.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M71.56 857.96L1093.88 857.96"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1093.88 857.96L1072.08 848.81L1072.08 867.11Z"/>
+<path class="ink axis" style="stroke-width:3.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M107.31 900.85L107.31 71.56"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M107.31 71.56L98.15 93.36L116.46 93.36Z"/>
+<text class="lbl axis" x="1093.88" y="826.02" font-size="39.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="124.01" y="51.91" font-size="39.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink given" style="stroke-width:4.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M361.59 191.27L361.07 201.46L360.6 211.57L360.2 221.6L359.86 231.55L359.59 241.43L359.38 251.23L359.23 260.94L359.14 270.58L359.11 280.14L359.15 289.63L359.25 299.03L359.42 308.35L359.64 317.6L359.93 326.77L360.29 335.86L360.7 344.87L361.18 353.8L361.72 362.66L362.32 371.44L362.99 380.13L363.72 388.75L364.51 397.29L365.36 405.76L366.28 414.14L367.26 422.45L368.3 430.67L369.41 438.82L370.57 446.89L371.81 454.88L373.1 462.8L374.46 470.63L375.87 478.39L377.36 486.07L378.9 493.67L380.51 501.19L382.18 508.63L383.91 515.99L385.71 523.28L387.57 530.49L389.49 537.61L391.47 544.67L393.52 551.64L395.63 558.53L397.8 565.35L400.03 572.08L402.33 578.74L404.69 585.32L407.12 591.82L409.6 598.24L412.15 604.59L414.76 610.85L417.44 617.04L420.17 623.15L422.97 629.18L425.84 635.13L428.76 641.01L431.75 646.8L434.8 652.52L437.91 658.16L441.09 663.72L444.33 669.2L447.63 674.6L451 679.93L454.42 685.17L457.91 690.34L461.47 695.43L465.08 700.44L468.76 705.37L472.5 710.22L476.3 715L480.17 719.7L484.1 724.31L488.09 728.85L492.15 733.32L496.27 737.7L500.45 742L504.69 746.23L509 750.38L513.36 754.45L517.8 758.44L522.29 762.35L526.85 766.18L531.47 769.94L536.15 773.62L540.9 777.21L545.7 780.74L550.57 784.18L555.51 787.54L560.5 790.82L565.56 794.03L570.69 797.16L575.87 800.21L581.12 803.18L586.43 806.07L591.8 808.89L597.24 811.62L602.74 814.28L608.3 816.86L613.92 819.36L619.61 821.78L625.36 824.12L631.17 826.39L637.04 828.57L642.98 830.68L648.98 832.71L655.05 834.66L661.17 836.53L667.36 838.33L673.61 840.04L679.93 841.68L686.3 843.24L692.74 844.72L699.25 846.12L705.81 847.45L712.44 848.69L719.13 849.86L725.88 850.95L732.7 851.96L739.58 852.89L746.52 853.74L753.53 854.51L760.59 855.21L767.72 855.83L774.92 856.37L782.17 856.83L789.49 857.21L796.87 857.51L804.32 857.74L811.82 857.89L819.39 857.95L827.03 857.94L834.72 857.85L842.48 857.69L850.3 857.44L858.18 857.12L866.13 856.72L874.14 856.23L882.21 855.68L890.34 855.04L898.54 854.32L906.8 853.53L915.12 852.65L923.51 851.7L931.96 850.67L940.47 849.56L949.04 848.38L957.68 847.11L966.38 845.77L975.14 844.35L983.97 842.84L992.85 841.27L1001.8 839.61L1010.82 837.87L1019.89 836.06L1029.03 834.16L1038.23 832.19L1047.5 830.14L1056.82 828.01L1066.21 825.81L1075.66 823.52"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M361.59 191.27L336.36 203.41"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M360.67 210.08L335.57 222.48"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M359.96 228.61L334.99 241.3"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M359.46 246.88L334.65 259.85"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M359.18 264.88L334.52 278.14"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M359.12 282.61L334.62 296.16"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M359.27 300.07L334.94 313.93"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M359.63 317.26L335.48 331.43"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M360.22 334.18L336.26 348.67"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M868.5 856.58L883.39 880.29"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M885.22 855.45L900.56 878.87"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M902.2 853.98L917.97 877.11"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M919.46 852.17L935.64 875.02"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M936.99 850.02L953.56 872.6"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M954.79 847.54L971.73 869.84"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M972.86 844.72L990.15 866.74"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M991.2 841.56L1008.83 863.32"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1009.81 838.07L1027.76 859.56"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1028.69 834.24L1046.95 855.46"/>
+<path class="ink cons" style="stroke-width:1.3;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1047.84 830.07L1066.39 851.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.56" cx="107.31" cy="857.96" r="7.58"/>
+<text class="lbl " x="132.37" y="828.48" font-size="39.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.56" cx="822.21" cy="857.96" r="7.58"/>
+<text class="lbl " x="843.1" y="833.39" font-size="39.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.56" cx="366" cy="411.66" r="7.58"/>
+<text class="lbl " x="345.12" y="387.1" font-size="39.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl " x="446.16" y="595.69" font-size="39.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">s</text>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Check the contact: the arc O1P of the rolling curve and the distance OP along the axis are the same length s, so the curve has rolled without slipping.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.56" cx="627.04" cy="857.96" r="7.58"/>
+<text class="lbl " x="606.16" y="833.39" font-size="39.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">N</text>
+<text class="lbl " x="367.18" y="840.76" font-size="39.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Q is a point carried by the curve; its polar axis is QO1, and its radius vector to the contact point is r = QP. The angle θ at Q between QO1 and QP is the polar angle of the contact point: the curve is r = f(θ).">
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.2" cx="627.04" cy="394.7" r="16.67"/><circle class="pt" style="fill:#1b1b1b" cx="627.04" cy="394.7" r="6.82"/>
+<text class="lbl " x="627.04" y="340.65" font-size="39.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<path class="ink given" style="stroke-width:4.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M627.04 394.7L366 411.66"/>
+<path class="ink given" style="stroke-width:4.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M627.04 394.7L822.21 857.96"/>
+<text class="lbl " x="744.28" y="626.33" font-size="39.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.56" d="M566.55 398.63A60.63 60.63 0 0 0 650.58 450.57"/>
+<text class="lbl " x="581.11" y="469.02" font-size="39.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="The perpendicular QN from Q on the axis gives the coordinates of Q: x = ON and y = QN. The angle ψ between PQ and the axis at P satisfies y = r sin ψ.">
+<path class="ink given" style="stroke-width:4.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M627.04 394.7L627.04 857.96"/>
+<text class="lbl " x="607.39" y="626.33" font-size="39.62" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.56" d="M798.68 802.09A60.63 60.63 0 0 0 761.59 857.96"/>
+<text class="lbl " x="749.42" y="809.64" font-size="39.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ψ</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="P is the instantaneous centre of rotation of Q, so Q moves perpendicular to PQ: dy/dx = cot ψ. The path of Q (thick, with the wavy shape) is the roulette; the path of O1 itself is the thick curve rising from O.">
+<path class="ink thick" style="stroke-width:6.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M119.27 596.64L121.21 596.71L123.17 596.74L125.16 596.73L127.18 596.68L129.23 596.59L131.31 596.45L133.42 596.28L135.57 596.07L137.75 595.81L139.96 595.51L142.21 595.16L144.49 594.77L146.82 594.34L149.18 593.86L151.57 593.34L154.01 592.77L156.49 592.15L159.01 591.49L161.57 590.78L164.17 590.02L166.82 589.22L169.51 588.37L172.25 587.47L175.03 586.53L177.87 585.53L180.75 584.49L183.68 583.4L186.66 582.27L189.69 581.08L192.78 579.85L195.92 578.57L199.11 577.24L202.36 575.87L205.66 574.45L209.01 572.98L212.43 571.47L215.9 569.92L219.43 568.32L223.02 566.67L226.67 564.99L230.37 563.26L234.14 561.49L237.97 559.68L241.86 557.83L245.8 555.95L249.81 554.03L253.88 552.07L258.01 550.08L262.2 548.05L266.45 545.99L270.76 543.91L275.13 541.79L279.56 539.65L284.04 537.48L288.59 535.29L293.18 533.08L297.84 530.85L302.54 528.6L307.3 526.33L312.11 524.05L316.98 521.75L321.88 519.44L326.84 517.12L331.84 514.8L336.88 512.46L341.97 510.12L347.09 507.78L352.25 505.44L357.45 503.1L362.67 500.75L367.93 498.41L373.21 496.08L378.52 493.75L383.86 491.43L389.21 489.11L394.58 486.81L399.97 484.51L405.36 482.23L410.77 479.95L416.19 477.69L421.61 475.45L427.03 473.21L432.46 471L437.88 468.79L443.3 466.61L448.71 464.44L454.11 462.28L459.5 460.15L464.87 458.02L470.23 455.92L475.57 453.83L480.89 451.76L486.19 449.71L491.47 447.67L496.72 445.65L501.94 443.64L507.14 441.65L512.3 439.67L517.44 437.71L522.54 435.77L527.6 433.84L532.63 431.92L537.63 430.02L542.59 428.12L547.51 426.25L552.39 424.38L557.23 422.52L562.03 420.68L566.79 418.84L571.51 417.02L576.18 415.2L580.81 413.39L585.4 411.59L589.95 409.8L594.45 408.01L598.91 406.23L603.33 404.46L607.7 402.69L612.03 400.93L616.31 399.17L620.55 397.42L624.74 395.67L628.89 393.92L633 392.17L637.06 390.43L641.09 388.69L645.06 386.95L649 385.21L652.89 383.47L656.74 381.73L660.55 379.99L664.31 378.25L668.04 376.51L671.72 374.77L675.36 373.03L678.97 371.29L682.53 369.54L686.05 367.79L689.54 366.04L692.98 364.29L696.39 362.54L699.76 360.78L703.1 359.02L706.39 357.25L709.65 355.48L712.88 353.71L716.07 351.93L719.22 350.15L722.34 348.37L725.43 346.58L728.48 344.79L731.5 342.99L734.48 341.19L737.44 339.38L740.36 337.57L743.25 335.75L746.11 333.93L748.94 332.11L751.74 330.27L754.51 328.44"/>
+<path class="ink thick" style="stroke-width:6.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M107.31 857.96L107.31 857.93L107.31 857.84L107.31 857.7L107.31 857.5L107.32 857.23L107.32 856.9L107.33 856.51L107.35 856.05L107.37 855.53L107.39 854.93L107.42 854.27L107.46 853.54L107.5 852.73L107.55 851.85L107.61 850.9L107.68 849.87L107.77 848.76L107.86 847.57L107.97 846.3L108.09 844.95L108.23 843.52L108.39 842L108.56 840.39L108.76 838.7L108.97 836.92L109.21 835.05L109.48 833.09L109.76 831.04L110.08 828.9L110.43 826.66L110.8 824.33L111.21 821.9L111.65 819.38L112.13 816.76L112.65 814.04L113.21 811.23L113.81 808.32L114.45 805.31L115.14 802.2L115.88 799L116.67 795.69L117.51 792.3L118.4 788.8L119.35 785.21L120.36 781.52L121.43 777.74L122.55 773.87L123.75 769.9L125 765.84L126.33 761.7L127.72 757.46L129.19 753.14L130.72 748.74L132.33 744.26L134.02 739.69L135.77 735.05L137.61 730.34L139.52 725.56L141.52 720.7L143.59 715.78L145.74 710.8L147.97 705.76L150.28 700.67L152.68 695.52L155.15 690.32L157.7 685.08L160.34 679.79L163.05 674.47L165.84 669.11L168.71 663.72L171.65 658.3L174.67 652.86L177.76 647.4L180.93 641.92L184.17 636.43L187.47 630.92L190.85 625.41L194.28 619.9L197.79 614.39L201.35 608.88L204.97 603.37L208.65 597.87L212.38 592.39L216.16 586.92L220 581.46L223.87 576.03L227.8 570.61L231.76 565.22L235.76 559.86L239.8 554.52L243.87 549.21L247.97 543.93L252.1 538.68L256.26 533.47L260.44 528.29L264.63 523.15L268.85 518.05L273.08 512.98L277.33 507.95L281.58 502.96L285.84 498.01L290.11 493.1L294.39 488.23L298.67 483.4L302.94 478.62L307.22 473.87L311.49 469.16L315.76 464.5L320.02 459.88L324.27 455.3L328.51 450.76L332.74 446.26L336.95 441.8L341.15 437.38L345.34 432.99L349.51 428.65L353.66 424.35L357.8 420.08L361.91 415.86L366 411.66"/>
+</g>
+</svg>

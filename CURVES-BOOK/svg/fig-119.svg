@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1003.17 1190.41" width="520" height="617" data-fig="fig-119">
+<title>Fig. 119 — The point glissette of a curve sliding on two fixed circles</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 119, page 122. Section: instantaneous-center.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two fixed circles (hatched) and a curve (an ellipse) that slides touching both: at A it touches the first circle, at B the second. P is a point rigidly attached to the ellipse.">
+<path class="ink hatchline" style="fill:none;stroke-width:3.33;stroke:#2a2a2a" d="M113.54 687.94L189.32 731.69M93.3 660.86L222.88 735.68M83.25 639.66L246.27 733.78M77.4 620.89L265.45 729.46M74.32 603.72L281.87 723.54M73.18 587.66L296.34 716.5M73.67 572.55L309.18 708.52M75.67 558.31L320.52 699.67M78.87 544.76L330.65 690.13M83.19 531.86L339.66 679.94M88.57 519.57L347.62 669.13M94.98 507.88L354.54 657.73M102.42 496.78L360.42 645.74M110.92 486.29L365.26 633.14M120.51 476.43L369.01 619.9M131.27 467.25L371.57 605.99M143.33 458.82L372.85 591.33M156.85 451.23L372.66 575.83M172.1 444.64L370.75 559.33M189.94 439.54L366.24 541.33M210.85 436.22L358.66 521.56M237.99 436.5L344.85 498.19M297.75 455.6L298.42 455.99"/>
+<circle class="ink given" style="stroke-width:4.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="223.1" cy="585.69" r="150"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.33;stroke:#2a2a2a" d="M774.81 1109.23L865.68 1056.77M735.55 1116.51L891.61 1026.41M708.16 1116.92L905.66 1002.9M685.25 1114.76L915.24 981.97M665.4 1110.82L921.75 962.82M647.79 1105.59L926.03 944.95M631.91 1099.37L928.58 928.08M617.42 1092.34L929.74 912.02M604.09 1084.64L929.74 896.62M591.75 1076.37L928.75 881.8M580.3 1067.59L926.86 867.5M569.98 1058.15L923.85 853.84M560.38 1048.29L920.11 840.6M551.47 1038.05L915.7 827.76M543.28 1027.38L910.55 815.33M536.03 1016.17L904.47 803.45M529.38 1004.61L897.78 791.91M523.35 992.7L890.48 780.74M518.21 980.27L882.29 770.07M513.84 967.4L873.33 759.85M510.16 954.13L863.68 750.02M507.2 940.44L853.3 740.62M505.32 926.13L841.85 731.83M504.38 911.28L829.46 723.6M504.45 895.85L816.06 715.94M505.68 879.74L801.49 708.95M508.31 862.82L785.53 702.77M512.68 844.9L767.82 697.6M519.32 825.68L747.86 693.73M529.04 804.67L724.8 691.65M543.55 780.9L696.96 692.33M570.67 749.85L656.51 700.29"/>
+<circle class="ink given" style="stroke-width:4.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="717.08" cy="904.31" r="213"/>
+<path class="ink given" style="stroke-width:4.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M868.97 613.76L873.36 608.35L877.55 602.79L881.56 597.08L885.38 591.23L889 585.24L892.42 579.11L895.64 572.86L898.66 566.48L901.48 559.97L904.09 553.35L906.49 546.62L908.69 539.78L910.67 532.84L912.44 525.79L914 518.65L915.34 511.43L916.46 504.12L917.37 496.73L918.07 489.27L918.54 481.73L918.8 474.14L918.84 466.48L918.66 458.78L918.27 451.02L917.66 443.22L916.82 435.39L915.78 427.52L914.52 419.63L913.04 411.71L911.35 403.78L909.44 395.84L907.33 387.89L905 379.95L902.47 372.01L899.73 364.08L896.78 356.17L893.63 348.28L890.28 340.42L886.73 332.59L882.99 324.8L879.05 317.06L874.93 309.36L870.61 301.72L866.11 294.14L861.43 286.62L856.57 279.17L851.53 271.8L846.32 264.51L840.95 257.3L835.41 250.19L829.71 243.16L823.85 236.24L817.84 229.43L811.68 222.72L805.37 216.12L798.93 209.65L792.35 203.29L785.64 197.07L778.8 190.97L771.84 185.02L764.76 179.2L757.57 173.52L750.28 167.99L742.88 162.62L735.38 157.39L727.79 152.33L720.12 147.43L712.36 142.69L704.52 138.13L696.62 133.73L688.65 129.51L680.62 125.47L672.53 121.6L664.4 117.93L656.22 114.43L648 111.13L639.76 108.01L631.48 105.09L623.19 102.36L614.87 99.83L606.55 97.49L598.23 95.36L589.91 93.42L581.59 91.69L573.29 90.17L565 88.84L556.75 87.73L548.52 86.82L540.32 86.11L532.17 85.62L524.07 85.33L516.02 85.25L508.02 85.37L500.1 85.71L492.23 86.25L484.45 87L476.74 87.96L469.12 89.12L461.59 90.49L454.15 92.06L446.82 93.84L439.59 95.82L432.47 98L425.47 100.38L418.58 102.95L411.82 105.73L405.2 108.69L398.7 111.85L392.34 115.2L386.13 118.73L380.07 122.45L374.15 126.36L368.39 130.44L362.79 134.7L357.35 139.13L352.08 143.74L346.98 148.51L342.06 153.45L337.31 158.55L332.74 163.81L328.36 169.22L324.16 174.78L320.15 180.49L316.34 186.34L312.72 192.33L309.3 198.45L306.07 204.71L303.05 211.09L300.24 217.59L297.62 224.21L295.22 230.95L293.03 237.79L291.05 244.73L289.28 251.77L287.72 258.91L286.38 266.14L285.25 273.45L284.34 280.84L283.65 288.3L283.17 295.83L282.91 303.43L282.87 311.08L283.05 318.79L283.45 326.55L284.06 334.34L284.89 342.18L285.94 350.05L287.2 357.94L288.68 365.86L290.37 373.79L292.27 381.73L294.39 389.67L296.72 397.62L299.25 405.56L301.99 413.49L304.94 421.4L308.09 429.29L311.43 437.15L314.98 444.97L318.73 452.76L322.66 460.51L326.79 468.2L331.11 475.85L335.61 483.43L340.29 490.95L345.15 498.39L350.18 505.76L355.39 513.06L360.77 520.26L366.31 527.38L372.01 534.4L377.87 541.32L383.88 548.14L390.04 554.85L396.34 561.44L402.79 567.92L409.37 574.27L416.08 580.5L422.92 586.59L429.88 592.55L436.95 598.37L444.14 604.05L451.44 609.57L458.84 614.95L466.34 620.17L473.92 625.24L481.6 630.14L489.36 634.87L497.19 639.44L505.1 643.84L513.07 648.06L521.1 652.1L529.18 655.96L537.32 659.64L545.49 663.13L553.71 666.44L561.96 669.56L570.23 672.48L578.53 675.21L586.84 677.74L595.16 680.07L603.49 682.21L611.81 684.14L620.13 685.87L628.43 687.4L636.71 688.72L644.97 689.84L653.2 690.75L661.39 691.45L669.54 691.95L677.65 692.24L685.7 692.32L693.69 692.19L701.62 691.86L709.48 691.31L717.27 690.56L724.97 689.61L732.6 688.44L740.13 687.07L747.56 685.5L754.9 683.73L762.13 681.75L769.25 679.57L776.25 677.19L783.13 674.61L789.89 671.84L796.52 668.87L803.01 665.72L809.37 662.37L815.58 658.83L821.65 655.11L827.57 651.21L833.32 647.13L838.93 642.87L844.36 638.43L849.63 633.83L854.73 629.05L859.66 624.11L864.41 619.02L868.97 613.76"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.62" cx="420.86" cy="164.78" r="10.83"/>
+<text class="lbl " x="395.26" y="194.9" font-size="40.47" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="372.73" y="471.23" font-size="40.47" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="729.32" y="661.62" font-size="40.47" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="At a point of contact the two curves have a common normal, and the normal to a circle passes through its centre. Draw the normal at A (through the centre of the first circle) and at B (through the centre of the second).">
+<path class="ink cons dash" style="stroke-width:2.62;fill:none;--dash:14.28 9.52;stroke:#4b4b4b;stroke-dasharray:14.28 9.52;stroke-linecap:round;stroke-linejoin:round" d="M223.1 585.69L710.74 254.09"/>
+<path class="ink cons dash" style="stroke-width:2.62;fill:none;--dash:14.28 9.52;stroke:#4b4b4b;stroke-dasharray:14.28 9.52;stroke-linecap:round;stroke-linejoin:round" d="M703.73 691.73L675.15 236.66"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The normals meet at H, the centre of rotation of the sliding ellipse.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.62" cx="677.66" cy="276.58" r="14.7"/>
+<text class="lbl " x="717.81" y="276.58" font-size="40.47" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join H to P: HP is the normal to the path of P.">
+<path class="ink cons dash" style="stroke-width:2.62;fill:none;--dash:14.28 9.52;stroke:#4b4b4b;stroke-dasharray:14.28 9.52;stroke-linecap:round;stroke-linejoin:round" d="M420.86 164.78L677.66 276.58"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="The tangent to the path of P at P is the perpendicular to HP.">
+<path class="ink given" style="stroke-width:4.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M460.78 73.1L380.94 256.47"/>
+</g>
+</svg>

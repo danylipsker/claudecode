@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 376.1 701.1" width="520" height="969" data-fig="fig-172c">
+<title>Fig. 172(c) — A conic by combining ordinates: the parabola (B² − AC = 0)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 172(c), page 189. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the origin.">
+<path class="ink axis" style="stroke-width:2.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.05 488.05L300.05 488.05"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M300.05 488.05L286.94 482.54L286.94 493.56Z"/>
+<path class="ink axis" style="stroke-width:2.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M88.05 500.05L88.05 93.05"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M88.05 93.05L82.54 106.16L93.56 106.16Z"/>
+<text class="lbl axis" x="312.61" y="502.83" font-size="23.84" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="100.61" y="78.27" font-size="23.84" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="88.05" cy="488.05" r="7.75"/>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the conic y2² = (B²−AC)x² + … about the x-axis: for B² − AC = 0 it is a parabola with its vertex on the axis and the axis of symmetry along x.">
+<path class="ink curve" style="stroke-width:3.93;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M246.94 640.15L243.54 638.25L240.18 636.35L236.87 634.45L233.59 632.54L230.36 630.64L227.18 628.74L224.03 626.84L220.93 624.94L217.87 623.04L214.86 621.14L211.88 619.24L208.95 617.34L206.07 615.43L203.22 613.53L200.42 611.63L197.66 609.73L194.94 607.83L192.27 605.93L189.64 604.03L187.05 602.13L184.51 600.22L182 598.32L179.54 596.42L177.13 594.52L174.75 592.62L172.42 590.72L170.13 588.82L167.89 586.92L165.68 585.01L163.52 583.11L161.41 581.21L159.33 579.31L157.3 577.41L155.31 575.51L153.36 573.61L151.46 571.71L149.6 569.8L147.78 567.9L146.01 566L144.27 564.1L142.58 562.2L140.94 560.3L139.33 558.4L137.77 556.5L136.25 554.59L134.78 552.69L133.34 550.79L131.95 548.89L130.6 546.99L129.3 545.09L128.04 543.19L126.82 541.29L125.64 539.38L124.51 537.48L123.42 535.58L122.37 533.68L121.36 531.78L120.4 529.88L119.48 527.98L118.61 526.08L117.77 524.17L116.98 522.27L116.23 520.37L115.53 518.47L114.86 516.57L114.24 514.67L113.66 512.77L113.13 510.87L112.64 508.96L112.19 507.06L111.78 505.16L111.42 503.26L111.1 501.36L110.82 499.46L110.58 497.56L110.39 495.66L110.24 493.75L110.14 491.85L110.07 489.95L110.05 488.05L110.07 486.15L110.14 484.25L110.24 482.35L110.39 480.45L110.58 478.54L110.82 476.64L111.1 474.74L111.42 472.84L111.78 470.94L112.19 469.04L112.64 467.14L113.13 465.24L113.66 463.33L114.24 461.43L114.86 459.53L115.53 457.63L116.23 455.73L116.98 453.83L117.77 451.93L118.61 450.03L119.48 448.12L120.4 446.22L121.36 444.32L122.37 442.42L123.42 440.52L124.51 438.62L125.64 436.72L126.82 434.82L128.04 432.91L129.3 431.01L130.6 429.11L131.95 427.21L133.34 425.31L134.78 423.41L136.25 421.51L137.77 419.61L139.33 417.7L140.94 415.8L142.58 413.9L144.27 412L146.01 410.1L147.78 408.2L149.6 406.3L151.46 404.4L153.36 402.49L155.31 400.59L157.3 398.69L159.33 396.79L161.41 394.89L163.52 392.99L165.68 391.09L167.89 389.19L170.13 387.28L172.42 385.38L174.75 383.48L177.13 381.58L179.54 379.68L182 377.78L184.51 375.88L187.05 373.98L189.64 372.07L192.27 370.17L194.94 368.27L197.66 366.37L200.42 364.47L203.22 362.57L206.07 360.67L208.95 358.77L211.88 356.86L214.86 354.96L217.87 353.06L220.93 351.16L224.03 349.26L227.18 347.36L230.36 345.46L233.59 343.56L236.87 341.65L240.18 339.75L243.54 337.85L246.94 335.95"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="110.05" cy="488.05" r="4.56"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the straight line y1 = −Bx − E, heavy. It is parallel to the axis of the parabola and meets the vertical tangent at (x_v, y1).">
+<path class="ink thick" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M63.05 278.89L303.05 141.85"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="110.05" cy="252.05" r="4.56"/>
+</g>
+<g class="step" data-step="3" data-tool="ruler" data-text="Lay off y2 above and below the line at each x: the vertex of y2 goes to the line (a vertical tangent), the upper end grows steeply, the lower end falls back below the line and then turns up again.">
+<path class="ink cons dash" style="stroke-width:1.54;fill:none;--dash:8.41 5.61;stroke:#4b4b4b;stroke-dasharray:8.41 5.61;stroke-linecap:round;stroke-linejoin:round" d="M110.05 488.05L110.05 252.05"/>
+<path class="ink cons dash" style="stroke-width:1.54;fill:none;--dash:8.41 5.61;stroke:#4b4b4b;stroke-dasharray:8.41 5.61;stroke-linecap:round;stroke-linejoin:round" d="M143.05 488.05L143.05 158.53"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="Draw the parabola y = y1 ± y2, whose axis is parallel to the line.">
+<path class="ink curve" style="stroke-width:3.93;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M286.94 323.95L283.84 324.19L280.77 324.43L277.73 324.64L274.71 324.85L271.72 325.03L268.76 325.2L265.83 325.36L262.92 325.49L260.04 325.62L257.19 325.72L254.36 325.82L251.56 325.89L248.79 325.95L246.05 326L243.34 326.03L240.65 326.04L237.99 326.04L235.36 326.02L232.75 325.99L230.17 325.94L227.62 325.88L225.1 325.8L222.6 325.7L220.13 325.59L217.69 325.46L215.28 325.32L212.89 325.16L210.53 324.99L208.2 324.8L205.89 324.59L203.62 324.37L201.37 324.14L199.14 323.88L196.95 323.62L194.78 323.33L192.64 323.03L190.53 322.72L188.44 322.39L186.39 322.04L184.35 321.68L182.35 321.31L180.37 320.91L178.43 320.5L176.51 320.08L174.61 319.64L172.74 319.19L170.91 318.71L169.09 318.23L167.31 317.73L165.55 317.21L163.82 316.67L162.12 316.13L160.45 315.56L158.8 314.98L157.18 314.38L155.59 313.77L154.02 313.15L152.48 312.5L150.97 311.84L149.49 311.17L148.03 310.48L146.6 309.78L145.2 309.05L143.83 308.32L142.48 307.57L141.16 306.8L139.87 306.01L138.61 305.22L137.37 304.4L136.16 303.57L134.98 302.72L133.83 301.86L132.7 300.98L131.6 300.09L130.53 299.18L129.48 298.26L128.46 297.32L127.47 296.36L126.51 295.39L125.57 294.41L124.67 293.4L123.78 292.39L122.93 291.35L122.1 290.3L121.31 289.24L120.53 288.16L119.79 287.06L119.07 285.95L118.38 284.82L117.72 283.68L117.09 282.52L116.48 281.35L115.9 280.16L115.35 278.95L114.82 277.73L114.33 276.49L113.86 275.24L113.41 273.97L113 272.69L112.61 271.39L112.25 270.07L111.92 268.74L111.61 267.4L111.33 266.03L111.08 264.66L110.86 263.26L110.66 261.85L110.49 260.43L110.35 258.99L110.23 257.53L110.15 256.06L110.09 254.58L110.06 253.07L110.05 251.56L110.07 250.02L110.12 248.47L110.2 246.91L110.31 245.33L110.44 243.73L110.6 242.12L110.78 240.49L111 238.85L111.24 237.19L111.51 235.51L111.81 233.82L112.13 232.12L112.48 230.4L112.86 228.66L113.26 226.91L113.7 225.14L114.16 223.35L114.65 221.55L115.16 219.74L115.7 217.91L116.28 216.06L116.87 214.2L117.5 212.32L118.15 210.43L118.83 208.52L119.54 206.59L120.27 204.65L121.03 202.7L121.82 200.73L122.64 198.74L123.48 196.74L124.35 194.72L125.25 192.68L126.18 190.63L127.13 188.57L128.11 186.49L129.12 184.39L130.16 182.28L131.22 180.15L132.31 178.01L133.43 175.85L134.57 173.67L135.74 171.48L136.94 169.28L138.17 167.05L139.43 164.82L140.71 162.56L142.02 160.29L143.35 158.01L144.72 155.71L146.11 153.39L147.53 151.06L148.98 148.72L150.45 146.35L151.95 143.98L153.48 141.58L155.03 139.17L156.62 136.75L158.23 134.31L159.87 131.85L161.53 129.38L163.22 126.89L164.94 124.39L166.69 121.87L168.47 119.34L170.27 116.79L172.1 114.22L173.95 111.64L175.84 109.04L177.75 106.43L179.69 103.8L181.66 101.16L183.65 98.5L185.67 95.82L187.72 93.13L189.79 90.43L191.9 87.7L194.03 84.97L196.19 82.21L198.37 79.44L200.59 76.66L202.83 73.86L205.09 71.04L207.39 68.21L209.71 65.36L212.06 62.5"/>
+</g>
+</svg>

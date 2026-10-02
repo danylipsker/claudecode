@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 769.44 793.44" width="520" height="536" data-fig="fig-073">
+<title>Fig. 73 — The astroid as the envelope of the trammel of Archimedes</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 73, page 77. Section: envelopes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two axes (thin lines) and the length of the rod: the unit OA = 1.">
+<path class="ink given" style="stroke-width:2.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M48.72 384.72L720.72 384.72"/>
+<path class="ink given" style="stroke-width:2.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 720.72L384.72 48.72"/>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Divide OY (from 0 to 1) into fourteen equal parts and number the points B_1 … B_13 upwards.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="363.29" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="341.86" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="320.43" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="299.01" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="277.58" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="256.15" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="234.72" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="213.29" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="191.86" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="170.43" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="149.01" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="127.58" r="2.84"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="384.72" cy="106.15" r="2.84"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="Open the compass to the rod length 1. About each B_j draw a small arc cutting OX at A_j: the rod B_jA_j slides with its ends on the axes, and OA_j² + OB_j² = 1.">
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M682.69 398.16A300 300 0 0 0 684.61 371.24"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="683.95" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M679.41 398.03A300 300 0 0 0 683.27 371.32"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="681.64" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M674.56 397.84A300 300 0 0 0 680.35 371.47"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="677.75" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M668.07 397.57A300 300 0 0 0 675.78 371.7"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="672.21" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M659.83 397.22A300 300 0 0 0 669.47 372.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="664.93" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M649.71 396.78A300 300 0 0 0 661.28 372.4"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="655.77" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M637.52 396.26A300 300 0 0 0 651.01 372.88"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="644.53" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M622.95 395.62A300 300 0 0 0 638.38 373.47"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="630.92" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M605.61 394.86A300 300 0 0 0 622.96 374.19"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="614.52" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M584.82 393.95A300 300 0 0 0 604.1 375.06"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="594.68" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M559.51 392.83A300 300 0 0 0 580.71 376.13"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="570.3" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M527.52 391.41A300 300 0 0 0 550.65 377.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="539.24" cy="384.72" r="2.84"/>
+<path class="ink aux" style="stroke-width:1.43;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M483.42 389.45A300 300 0 0 0 508.48 379.43"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.75" cx="496.07" cy="384.72" r="2.84"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join each B_j to the A_j on the other axis: these are the positions of the rod. They crowd along a curve.">
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 363.29L683.95 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 341.86L681.64 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 320.43L677.75 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 299.01L672.21 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 277.58L664.93 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 256.15L655.77 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 234.72L644.53 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 213.29L630.92 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 191.86L614.52 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 170.43L594.68 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 149.01L570.3 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 127.58L539.24 384.72"/>
+<path class="ink cons" style="stroke-width:1.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M384.72 106.15L496.07 384.72"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The envelope of all the positions, in all four quadrants, is the astroid x^{2/3} + y^{2/3} = 1, with its cusps on the axes at distance 1.">
+<path class="ink curve" style="stroke-width:4.44;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M684.72 384.72L684.58 384.72L684.17 384.71L683.49 384.68L682.53 384.62L681.31 384.52L679.82 384.38L678.06 384.18L676.05 383.91L673.78 383.57L671.25 383.15L668.49 382.64L665.48 382.02L662.24 381.31L658.77 380.47L655.09 379.52L651.19 378.44L647.09 377.22L642.79 375.87L638.31 374.37L633.65 372.72L628.82 370.91L623.84 368.95L618.71 366.82L613.44 364.53L608.05 362.08L602.54 359.45L596.93 356.65L591.22 353.68L585.43 350.54L579.58 347.22L573.66 343.73L567.69 340.08L561.69 336.25L555.66 332.26L549.62 328.11L543.57 323.8L537.54 319.33L531.52 314.71L525.53 309.95L519.58 305.04L513.68 300.01L507.84 294.84L502.08 289.56L496.39 284.16L490.79 278.65L485.28 273.05L479.88 267.36L474.6 261.6L469.43 255.76L464.4 249.86L459.49 243.91L454.73 237.92L450.11 231.9L445.64 225.87L441.33 219.82L437.18 213.78L433.19 207.75L429.36 201.75L425.71 195.78L422.22 189.86L418.9 184.01L415.76 178.22L412.79 172.51L409.99 166.9L407.36 161.39L404.91 156L402.62 150.73L400.49 145.6L398.53 140.62L396.72 135.79L395.07 131.13L393.57 126.65L392.22 122.35L391 118.25L389.92 114.35L388.97 110.67L388.13 107.2L387.42 103.96L386.8 100.95L386.29 98.19L385.87 95.66L385.53 93.39L385.26 91.38L385.06 89.62L384.92 88.13L384.82 86.91L384.76 85.95L384.73 85.27L384.72 84.86L384.72 84.72L384.72 84.86L384.71 85.27L384.68 85.95L384.62 86.91L384.52 88.13L384.38 89.62L384.18 91.38L383.91 93.39L383.57 95.66L383.15 98.19L382.64 100.95L382.02 103.96L381.31 107.2L380.47 110.67L379.52 114.35L378.44 118.25L377.22 122.35L375.87 126.65L374.37 131.13L372.72 135.79L370.91 140.62L368.95 145.6L366.82 150.73L364.53 156L362.08 161.39L359.45 166.9L356.65 172.51L353.68 178.22L350.54 184.01L347.22 189.86L343.73 195.78L340.08 201.75L336.25 207.75L332.26 213.78L328.11 219.82L323.8 225.87L319.33 231.9L314.71 237.92L309.95 243.91L305.04 249.86L300.01 255.76L294.84 261.6L289.56 267.36L284.16 273.05L278.65 278.65L273.05 284.16L267.36 289.56L261.6 294.84L255.76 300.01L249.86 305.04L243.91 309.95L237.92 314.71L231.9 319.33L225.87 323.8L219.82 328.11L213.78 332.26L207.75 336.25L201.75 340.08L195.78 343.73L189.86 347.22L184.01 350.54L178.22 353.68L172.51 356.65L166.9 359.45L161.39 362.08L156 364.53L150.73 366.82L145.6 368.95L140.62 370.91L135.79 372.72L131.13 374.37L126.65 375.87L122.35 377.22L118.25 378.44L114.35 379.52L110.67 380.47L107.2 381.31L103.96 382.02L100.95 382.64L98.19 383.15L95.66 383.57L93.39 383.91L91.38 384.18L89.62 384.38L88.13 384.52L86.91 384.62L85.95 384.68L85.27 384.71L84.86 384.72L84.72 384.72L84.86 384.72L85.27 384.73L85.95 384.76L86.91 384.82L88.13 384.92L89.62 385.06L91.38 385.26L93.39 385.53L95.66 385.87L98.19 386.29L100.95 386.8L103.96 387.42L107.2 388.13L110.67 388.97L114.35 389.92L118.25 391L122.35 392.22L126.65 393.57L131.13 395.07L135.79 396.72L140.62 398.53L145.6 400.49L150.73 402.62L156 404.91L161.39 407.36L166.9 409.99L172.51 412.79L178.22 415.76L184.01 418.9L189.86 422.22L195.78 425.71L201.75 429.36L207.75 433.19L213.78 437.18L219.82 441.33L225.87 445.64L231.9 450.11L237.92 454.73L243.91 459.49L249.86 464.4L255.76 469.43L261.6 474.6L267.36 479.88L273.05 485.28L278.65 490.79L284.16 496.39L289.56 502.08L294.84 507.84L300.01 513.68L305.04 519.58L309.95 525.53L314.71 531.52L319.33 537.54L323.8 543.57L328.11 549.62L332.26 555.66L336.25 561.69L340.08 567.69L343.73 573.66L347.22 579.58L350.54 585.43L353.68 591.22L356.65 596.93L359.45 602.54L362.08 608.05L364.53 613.44L366.82 618.71L368.95 623.84L370.91 628.82L372.72 633.65L374.37 638.31L375.87 642.79L377.22 647.09L378.44 651.19L379.52 655.09L380.47 658.77L381.31 662.24L382.02 665.48L382.64 668.49L383.15 671.25L383.57 673.78L383.91 676.05L384.18 678.06L384.38 679.82L384.52 681.31L384.62 682.53L384.68 683.49L384.71 684.17L384.72 684.58L384.72 684.72L384.72 684.58L384.73 684.17L384.76 683.49L384.82 682.53L384.92 681.31L385.06 679.82L385.26 678.06L385.53 676.05L385.87 673.78L386.29 671.25L386.8 668.49L387.42 665.48L388.13 662.24L388.97 658.77L389.92 655.09L391 651.19L392.22 647.09L393.57 642.79L395.07 638.31L396.72 633.65L398.53 628.82L400.49 623.84L402.62 618.71L404.91 613.44L407.36 608.05L409.99 602.54L412.79 596.93L415.76 591.22L418.9 585.43L422.22 579.58L425.71 573.66L429.36 567.69L433.19 561.69L437.18 555.66L441.33 549.62L445.64 543.57L450.11 537.54L454.73 531.52L459.49 525.53L464.4 519.58L469.43 513.68L474.6 507.84L479.88 502.08L485.28 496.39L490.79 490.79L496.39 485.28L502.08 479.88L507.84 474.6L513.68 469.43L519.58 464.4L525.53 459.49L531.52 454.73L537.54 450.11L543.57 445.64L549.62 441.33L555.66 437.18L561.69 433.19L567.69 429.36L573.66 425.71L579.58 422.22L585.43 418.9L591.22 415.76L596.93 412.79L602.54 409.99L608.05 407.36L613.44 404.91L618.71 402.62L623.84 400.49L628.82 398.53L633.65 396.72L638.31 395.07L642.79 393.57L647.09 392.22L651.19 391L655.09 389.92L658.77 388.97L662.24 388.13L665.48 387.42L668.49 386.8L671.25 386.29L673.78 385.87L676.05 385.53L678.06 385.26L679.82 385.06L681.31 384.92L682.53 384.82L683.49 384.76L684.17 384.73L684.58 384.72L684.72 384.72"/>
+<text class="lbl  upright" x="384.72" y="744.72" font-size="24.28" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x<tspan baseline-shift="super" font-size="70%">2/3</tspan> + y<tspan baseline-shift="super" font-size="70%">2/3</tspan> = 1</text>
+</g>
+</svg>

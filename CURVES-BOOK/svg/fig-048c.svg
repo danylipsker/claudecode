@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1090.98 1393.94" width="520" height="664" data-fig="fig-048c">
+<title>Fig. 48(c) — Pointwise construction of the hyperbola from two concentric circles: x = a sec t, y = b tan t</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 48(c), page 49. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two concentric circles about O, of radii a and b (a &gt; b), and the axes OX, OY.">
+<path class="ink axis" style="stroke-width:4.18;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M85.59 702.44L1005.39 702.44"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1005.39 702.44L979.33 691.49L979.33 713.39Z"/>
+<path class="ink axis" style="stroke-width:4.18;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M450.59 702.44L450.59 85.59"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M450.59 85.59L439.64 111.66L461.54 111.66Z"/>
+<text class="lbl axis" x="1005.39" y="673.06" font-size="47.39" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="479.98" y="103.84" font-size="47.39" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="ink given" style="stroke-width:5.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="450.59" cy="702.44" r="365"/>
+<circle class="ink given" style="stroke-width:5.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="450.59" cy="702.44" r="195"/>
+<text class="lbl  upright" x="450.59" y="1038.06" font-size="47.39" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a</text>
+<text class="lbl  upright" x="450.59" y="868.06" font-size="47.39" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">b</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.07" cx="450.59" cy="702.44" r="14.5"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the verticals touching the circles: x = b at the right end of the inner circle, x = a at the right end of the outer circle.">
+<path class="ink given" style="stroke-width:5.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M645.59 1104.14L645.59 275.39"/>
+<path class="ink given" style="stroke-width:5.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M815.59 1158.69L815.59 140.34"/>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="Lay off the angle t from OX and draw the ray from O, to meet the vertical x = a (above the outer circle). It meets x = b on the way.">
+<path class="ink given" style="stroke-width:5.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M450.59 702.44L815.59 470.81"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.07" cx="645.59" cy="578.69" r="14.5"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.07" cx="815.59" cy="470.81" r="14.5"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.07" d="M527.37 702.44A76.78 76.78 0 0 0 515.42 661.3"/>
+<text class="lbl " x="565.28" y="669.12" font-size="47.39" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="About O draw the arc through the upper meeting point (dashed): it cuts OX at x = a sec t.">
+<path class="ink cons dash" style="stroke-width:3.07;fill:none;--dash:16.73 11.15;stroke:#4b4b4b;stroke-dasharray:16.73 11.15;stroke-linecap:round;stroke-linejoin:round" d="M882.89 702.44A432.3 432.3 0 0 0 815.59 470.81"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="Raise the vertical from that point of OX, and draw the horizontal from the meeting point on x = b (both dashed). They meet at P: x = a sec t, y = b tan t.">
+<path class="ink cons dash" style="stroke-width:3.07;fill:none;--dash:16.73 11.15;stroke:#4b4b4b;stroke-dasharray:16.73 11.15;stroke-linecap:round;stroke-linejoin:round" d="M882.89 702.44L882.89 578.69"/>
+<path class="ink cons dash" style="stroke-width:3.07;fill:none;--dash:16.73 11.15;stroke:#4b4b4b;stroke-dasharray:16.73 11.15;stroke-linecap:round;stroke-linejoin:round" d="M645.59 578.69L882.89 578.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.07" cx="882.89" cy="578.69" r="14.5"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="Repeat for other angles t and draw the branch of the hyperbola through the points; it touches the vertical x = a at its vertex.">
+<circle class="pt" style="fill:#1b1b1b" cx="853.33" cy="793.37" r="7.25"/>
+<circle class="pt" style="fill:#1b1b1b" cx="821.22" cy="736.83" r="7.25"/>
+<circle class="pt" style="fill:#1b1b1b" cx="828.47" cy="650.19" r="7.25"/>
+<circle class="pt" style="fill:#1b1b1b" cx="927.07" cy="538.82" r="7.25"/>
+<path class="ink curve" style="stroke-width:7.81;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M871.19 814.09L869.61 812.39L868.07 810.7L866.55 809.02L865.07 807.36L863.61 805.7L862.18 804.06L860.78 802.43L859.4 800.81L858.06 799.2L856.73 797.6L855.44 796.01L854.17 794.44L852.93 792.87L851.71 791.31L850.51 789.76L849.34 788.22L848.2 786.69L847.08 785.16L845.98 783.65L844.9 782.14L843.85 780.64L842.82 779.15L841.81 777.67L840.83 776.2L839.87 774.73L838.92 773.27L838 771.82L837.1 770.37L836.23 768.93L835.37 767.5L834.53 766.07L833.71 764.65L832.92 763.23L832.14 761.82L831.38 760.42L830.65 759.02L829.93 757.63L829.23 756.24L828.55 754.86L827.89 753.48L827.25 752.11L826.62 750.74L826.02 749.38L825.43 748.02L824.86 746.66L824.31 745.31L823.78 743.96L823.26 742.62L822.76 741.28L822.28 739.94L821.82 738.61L821.37 737.28L820.94 735.96L820.53 734.63L820.14 733.31L819.76 731.99L819.4 730.68L819.06 729.37L818.73 728.06L818.42 726.75L818.12 725.44L817.84 724.14L817.58 722.84L817.34 721.54L817.11 720.24L816.9 718.94L816.7 717.64L816.52 716.35L816.36 715.06L816.21 713.77L816.08 712.47L815.96 711.18L815.86 709.9L815.77 708.61L815.71 707.32L815.65 706.03L815.62 704.74L815.6 703.46L815.59 702.17L815.6 700.88L815.63 699.6L815.67 698.31L815.73 697.02L815.81 695.73L815.9 694.44L816.01 693.15L816.13 691.86L816.27 690.57L816.42 689.28L816.59 687.99L816.78 686.69L816.98 685.4L817.2 684.1L817.44 682.8L817.69 681.5L817.96 680.19L818.25 678.89L818.55 677.58L818.86 676.27L819.2 674.96L819.55 673.65L819.92 672.33L820.3 671.01L820.7 669.69L821.12 668.37L821.56 667.04L822.01 665.71L822.48 664.37L822.97 663.04L823.48 661.69L824 660.35L824.54 659L825.1 657.65L825.68 656.29L826.27 654.93L826.88 653.56L827.52 652.19L828.17 650.82L828.84 649.44L829.52 648.05L830.23 646.66L830.96 645.27L831.7 643.87L832.47 642.46L833.25 641.05L834.06 639.63L834.88 638.21L835.73 636.78L836.6 635.34L837.48 633.9L838.39 632.45L839.32 631L840.27 629.53L841.24 628.06L842.24 626.58L843.25 625.1L844.29 623.61L845.36 622.1L846.44 620.59L847.55 619.08L848.68 617.55L849.84 616.01L851.02 614.47L852.22 612.92L853.45 611.35L854.71 609.78L855.99 608.2L857.29 606.61L858.62 605L859.98 603.39L861.37 601.76L862.78 600.13L864.22 598.48L865.69 596.82L867.19 595.15L868.72 593.47L870.28 591.77L871.86 590.07L873.48 588.35L875.13 586.61L876.81 584.86L878.52 583.1L880.27 581.33L882.05 579.53L883.86 577.73L885.7 575.91L887.58 574.07L889.5 572.22L891.45 570.35L893.44 568.46L895.47 566.56L897.54 564.64L899.64 562.7L901.78 560.74L903.97 558.77L906.19 556.77L908.46 554.76L910.77 552.72L913.13 550.66L915.52 548.59L917.97 546.49L920.46 544.37L923 542.22L925.58 540.05L928.22 537.86L930.9 535.65L933.64 533.41L936.43 531.14L939.28 528.84L942.17 526.52L945.13 524.18L948.14 521.8L951.21 519.39L954.35 516.96L957.54 514.49L960.8 511.99L964.12 509.46L967.51 506.9L970.96 504.3L974.49 501.66"/>
+</g>
+<g class="step" data-step="6" data-tool="note" data-text="The equations of the construction, as printed under the figure.">
+<text class="lbl  upright" x="260.79" y="1279.14" font-size="144.08" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">{</text>
+<text class="lbl  upright" x="268.79" y="1249.94" font-size="45.02" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x  =  a sec t</text>
+<text class="lbl  upright" x="268.79" y="1308.34" font-size="45.02" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y  =  b tan t</text>
+</g>
+</svg>

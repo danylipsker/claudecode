@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curves Workshop · figure review</title>
+<style>
+  body { margin: 0; font: 14px/1.4 system-ui, sans-serif; background: #f3f1ea; color: #222; }
+  header { padding: 10px 16px; background: #fff; border-bottom: 1px solid #ddd; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  header input { font: inherit; padding: 4px 8px; }
+  .fig { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #ddd; align-items: start; }
+  .fig h2 { font-size: 15px; margin: 0 0 6px; grid-column: 1 / -1; }
+  .fig h2 small { color: #666; font-weight: normal; margin-left: 8px; }
+  .svgbox { background: #fff; border: 1px solid #ccc; padding: 6px; }
+  .svgbox svg { width: 100%; height: auto; display: block; }
+  .scan { background: #fff; border: 1px solid #ccc; overflow: hidden; }
+  .scan img { width: 100%; display: block; }
+  .steps { grid-column: 1 / -1; font-size: 13px; }
+  .steps li { margin: 2px 0; }
+  .steps b { color: #0b4fa0; }
+  .err { color: #b00; white-space: pre-wrap; }
+  .hint { color: #666; }
+</style>
+</head>
+<body>
+<header>
+  <b>Figure review</b>
+  <label>section <input id="sec" placeholder="astroid"></label>
+  <label>or figures <input id="figs" placeholder="fig-001a,fig-009" size="30"></label>
+  <button id="go">show</button>
+  <span class="hint">Left: the drawing from figures/*.js. Right: the page of the book (scan/pNNN.jpg, when present). Also ?section=astroid or ?figs=fig-001a</span>
+</header>
+<div id="list"></div>
+<script src="js/kit.js"></script>
+<script src="data/manifest.js"></script>
+<script>
+(async function () {
+  const q = new URLSearchParams(location.search);
+  const sec = document.getElementById('sec'), figs = document.getElementById('figs');
+  sec.value = q.get('section') || ''; figs.value = q.get('figs') || '';
+  document.getElementById('go').onclick = () => { location.search = sec.value ? '?section=' + sec.value : '?figs=' + figs.value; };
+  const files = (q.get('files') || '').split(',').filter(Boolean);
+  const names = sec.value ? [sec.value] : [];
+  if (figs.value) {                       // find the files by section of each figure number
+    figs.value.split(',').forEach(id => { const n = Number(id.replace(/\D/g, '')); const s = Curves.sectionOfFig(n); if (s && !names.includes(s.id)) names.push(s.id); });
+  }
+  const load = src => new Promise((ok, bad) => { const s = document.createElement('script'); s.src = src + '?' + Date.now(); s.onload = ok; s.onerror = () => bad(new Error('cannot load ' + src)); document.head.appendChild(s); });
+  Curves.allowRedefine = true;
+  (function () { const st = document.createElement('style'); st.textContent = Curves.STYLE; document.head.appendChild(st); })();
+  const list = document.getElementById('list');
+  try { await load('figures/_reference.js'); } catch (e) {}
+  for (const n of names.concat(files)) { try { await load('figures/' + n + '.js'); } catch (e) { list.insertAdjacentHTML('beforeend', '<div class="fig err">' + e.message + '</div>'); } }
+  let ids = Curves.order.slice();
+  if (figs.value) ids = figs.value.split(',').map(s => s.trim());
+  else if (sec.value) ids = ids.filter(id => (Curves.figures.get(id) || {}).section === sec.value);
+  ids.sort();
+  for (const id of ids) {
+    const f = Curves.figures.get(id);
+    if (!f) { list.insertAdjacentHTML('beforeend', '<div class="fig err">' + id + ' is not defined</div>'); continue; }
+    let svg = '', steps = '', err = '';
+    try {
+      const sc = Curves.build(f);
+      svg = Curves.svg(sc, { noSize: true });
+      steps = '<ol class="steps">' + sc.steps.map(s => '<li><b>' + s.tool + '</b> ' + s.text.replace(/</g, '&lt;') + '</li>').join('') + '</ol>';
+    } catch (e) { err = '<div class="err">' + e.message + '\n' + (e.stack || '') + '</div>'; }
+    const page = String(f.page).padStart(3, '0');
+    list.insertAdjacentHTML('beforeend',
+      '<section class="fig"><h2>' + id + ' · ' + f.caption + ' <small>' + (f.title || '') + ' · page ' + f.page + ' · ' + f.section + '</small></h2>' +
+      '<div class="svgbox">' + svg + err + '</div>' +
+      '<div class="scan"><img src="scan/p' + page + '.jpg" alt="page ' + f.page + '" onerror="this.parentNode.innerHTML=\'<p class=hint>scan/p' + page + '.jpg not present</p>\'"></div>' +
+      steps + '</section>');
+  }
+  if (!ids.length) list.innerHTML = '<p class="hint" style="padding:16px">Give a section or a list of figures.</p>';
+})();
+</script>
+</body>
+</html>

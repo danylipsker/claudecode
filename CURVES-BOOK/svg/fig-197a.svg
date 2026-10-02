@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 345.42 288.42" width="520" height="434" data-fig="fig-197a">
+<title>Fig. 197(a) — The right strophoid as the cissoid of a line and a circle</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 197(a), page 218. Section: strophoid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The centre O and the circle of radius a through A, the line L through O parallel to AB (AB is perpendicular to OA at A), the axis OA and the asymptote at the distance a from A.">
+<path class="ink axis" style="stroke-width:1.04;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M21.21 148.21L324.21 148.21"/>
+<circle class="ink thick" style="stroke-width:1.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="124.21" cy="148.21" r="100"/>
+<path class="ink given" style="stroke-width:2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M124.21 32.21L124.21 126.21"/>
+<path class="ink given" style="stroke-width:2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M124.21 183.21L124.21 267.21"/>
+<text class="lbl " x="124.21" y="176.21" font-size="11.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">L</text>
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M324.21 248.21L324.21 21.21"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="124.21" cy="148.21" r="2.25"/>
+<text class="lbl " x="116.78" y="156.95" font-size="11.74" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.24" cx="224.21" cy="148.21" r="4.94"/><circle class="pt" style="fill:#1b1b1b" cx="224.21" cy="148.21" r="2.02"/>
+<text class="lbl " x="238.77" y="148.21" font-size="11.74" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="324.21" cy="148.21" r="2.25"/>
+<text class="lbl " x="174.21" y="157.21" font-size="11.16" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw a line from A. It meets L at E and the circle again at D.">
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M224.21 148.21L71.22 63.41"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="124.21" cy="92.78" r="2.25"/>
+<text class="lbl " x="131.64" y="84.04" font-size="11.74" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">E</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="71.22" cy="63.41" r="2.25"/>
+<text class="lbl " x="63.17" y="53.94" font-size="11.74" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<path class="ink cons dash" style="stroke-width:0.76;fill:none;--dash:4.15 2.76;stroke:#4b4b4b;stroke-dasharray:4.15 2.76;stroke-linecap:round;stroke-linejoin:round" d="M124.21 148.21L71.22 63.41"/>
+<text class="lbl " x="89.71" y="102.81" font-size="11.16" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="Take the distance ED with the dividers and lay it off from A along AD: AP = ED. P is a point of the strophoid, the cissoid of the line L and the circle.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="171.22" cy="118.84" r="2.25"/>
+<text class="lbl " x="171.22" y="109.37" font-size="11.74" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The same point from the general construction: OP meets the perpendicular AB at K, and the circle about K with the radius KA cuts OK at P (and at P2).">
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M224.21 192.21L224.21 21.21"/>
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M124.21 148.21L282.29 49.43"/>
+<circle class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="224.21" cy="85.72" r="62.49"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="224.21" cy="85.72" r="2.25"/>
+<text class="lbl " x="216.16" y="76.26" font-size="11.74" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">K</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="277.2" cy="52.61" r="2.25"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angles: θ = ∠AOK, φ = ∠OAD, and the central angle DOX is 2φ (as is ∠AKP). Then ED = a cos 2φ sec φ and AP = AK = 2a tan θ sin φ = 2a cot 2φ sin φ, so AP = ED.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M147.46 148.21A23.25 23.25 0 0 0 143.93 135.89"/>
+<text class="lbl " x="156.72" y="138.89" font-size="11.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M202.02 135.91A25.37 25.37 0 0 0 198.84 148.21"/>
+<text class="lbl " x="189.42" y="139.21" font-size="11.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M110.77 126.7A25.37 25.37 0 0 0 98.84 148.21"/>
+<text class="lbl " x="92.78" y="130.79" font-size="11.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2φ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M209.87 94.68A16.91 16.91 0 0 0 224.21 102.63"/>
+<text class="lbl " x="210.46" y="110.53" font-size="11.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2φ</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="Repeat with other lines through A. P traces the right strophoid r = a(sec θ ± tan θ) with the pole at O: the loop through O and A and two branches that approach the asymptote.">
+<path class="ink curve" style="stroke-width:1.93;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M278.67 248.52L277.45 244.59L276.22 240.77L274.97 237.04L273.72 233.4L272.45 229.85L271.18 226.39L269.89 223.02L268.59 219.72L267.29 216.51L265.98 213.37L264.65 210.31L263.32 207.33L261.98 204.41L260.63 201.57L259.28 198.79L257.92 196.08L256.55 193.44L255.17 190.85L253.79 188.33L252.4 185.87L251 183.47L249.6 181.13L248.2 178.85L246.79 176.62L245.37 174.44L243.95 172.32L242.53 170.25L241.1 168.24L239.67 166.27L238.23 164.36L236.79 162.49L235.35 160.67L233.91 158.9L232.46 157.18L231.02 155.5L229.57 153.86L228.12 152.28L226.67 150.73L225.22 149.23L223.77 147.77L222.32 146.35L220.87 144.98L219.42 143.64L217.97 142.35L216.52 141.09L215.07 139.87L213.63 138.7L212.19 137.56L210.75 136.45L209.31 135.39L207.88 134.36L206.45 133.37L205.03 132.41L203.6 131.49L202.19 130.6L200.77 129.75L199.36 128.93L197.96 128.15L196.56 127.4L195.17 126.68L193.79 125.99L192.41 125.33L191.04 124.71L189.67 124.12L188.31 123.56L186.96 123.02L185.62 122.52L184.29 122.05L182.96 121.61L181.64 121.19L180.33 120.81L179.04 120.45L177.75 120.12L176.47 119.82L175.2 119.54L173.94 119.29L172.69 119.07L171.45 118.87L170.22 118.7L169.01 118.55L167.8 118.43L166.61 118.33L165.43 118.26L164.26 118.21L163.11 118.19L161.97 118.18L160.84 118.2L159.72 118.25L158.62 118.31L157.53 118.4L156.46 118.5L155.4 118.63L154.35 118.78L153.32 118.95L152.3 119.14L151.3 119.35L150.32 119.58L149.35 119.83L148.39 120.09L147.46 120.37L146.53 120.68L145.63 121L144.74 121.33L143.87 121.68L143.01 122.05L142.17 122.44L141.35 122.84L140.55 123.26L139.76 123.69L138.99 124.13L138.24 124.59L137.51 125.07L136.8 125.56L136.1 126.06L135.43 126.57L134.77 127.1L134.13 127.63L133.51 128.18L132.91 128.74L132.32 129.32L131.76 129.9L131.22 130.49L130.69 131.09L130.19 131.7L129.71 132.32L129.24 132.95L128.8 133.59L128.37 134.24L127.97 134.89L127.58 135.55L127.22 136.22L126.88 136.89L126.56 137.57L126.25 138.26L125.97 138.95L125.71 139.65L125.47 140.35L125.25 141.05L125.05 141.76L124.88 142.47L124.72 143.19L124.58 143.9L124.47 144.62L124.37 145.34L124.3 146.07L124.25 146.79L124.22 147.52L124.21 148.24L124.22 148.97L124.25 149.69L124.31 150.42L124.38 151.14L124.48 151.86L124.59 152.58L124.73 153.3L124.89 154.01L125.07 154.72L125.27 155.43L125.49 156.14L125.73 156.84L126 157.53L126.28 158.22L126.58 158.91L126.91 159.59L127.25 160.26L127.62 160.93L128 161.59L128.41 162.24L128.84 162.89L129.28 163.52L129.75 164.15L130.23 164.77L130.74 165.38L131.27 165.98L131.81 166.58L132.38 167.16L132.96 167.73L133.56 168.29L134.18 168.84L134.83 169.37L135.49 169.9L136.16 170.41L136.86 170.91L137.58 171.4L138.31 171.87L139.06 172.33L139.83 172.77L140.62 173.2L141.43 173.62L142.25 174.02L143.09 174.4L143.94 174.77L144.82 175.12L145.71 175.45L146.62 175.77L147.54 176.07L148.48 176.35L149.43 176.62L150.41 176.86L151.39 177.09L152.39 177.3L153.41 177.48L154.44 177.65L155.49 177.8L156.55 177.93L157.63 178.03L158.72 178.12L159.82 178.18L160.94 178.22L162.07 178.24L163.21 178.23L164.37 178.2L165.54 178.15L166.72 178.08L167.91 177.98L169.12 177.86L170.33 177.71L171.56 177.53L172.8 177.33L174.05 177.11L175.31 176.86L176.58 176.58L177.86 176.27L179.15 175.94L180.45 175.58L181.76 175.19L183.08 174.77L184.41 174.33L185.74 173.85L187.08 173.35L188.44 172.81L189.79 172.25L191.16 171.65L192.53 171.03L193.91 170.37L195.3 169.68L196.69 168.96L198.09 168.2L199.49 167.41L200.9 166.59L202.31 165.74L203.73 164.85L205.15 163.92L206.58 162.96L208.01 161.97L209.44 160.94L210.88 159.87L212.32 158.76L213.76 157.62L215.2 156.44L216.65 155.22L218.1 153.96L219.55 152.66L221 151.32L222.45 149.94L223.9 148.52L225.35 147.06L226.8 145.55L228.25 144L229.7 142.41L231.15 140.77L232.59 139.09L234.04 137.36L235.48 135.59L236.92 133.76L238.36 131.89L239.79 129.97L241.23 128L242.65 125.98L244.08 123.91L245.5 121.78L246.91 119.6L248.32 117.37L249.73 115.08L251.13 112.73L252.52 110.33L253.91 107.86L255.3 105.34L256.67 102.75L258.04 100.1L259.4 97.38L260.76 94.6L262.1 91.75L263.44 88.83L264.77 85.83L266.09 82.77L267.41 79.62L268.71 76.4L270.01 73.1L271.29 69.72L272.57 66.25L273.83 62.7L275.09 59.05L276.33 55.31L277.56 51.48L278.78 47.54L279.99 43.5L281.19 39.36L282.38 35.1L283.55 30.73"/>
+</g>
+</svg>

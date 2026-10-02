@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1036.1 1149.34" width="520" height="577" data-fig="fig-040">
+<title>Fig. 40 — Pascal's theorem: the meets of the three pairs of joins of an inscribed hexagon are collinear</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 40, page 45. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A conic with six points 1, 2, 3, 1', 2', 3' on it, numbered arbitrarily.">
+<path class="ink thick" style="stroke-width:6.44;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M200.43 949.92L208.14 955.78L216.03 961.39L224.1 966.77L232.33 971.89L240.74 976.77L249.31 981.4L258.03 985.77L266.91 989.88L275.93 993.74L285.09 997.33L294.39 1000.65L303.83 1003.72L313.38 1006.51L323.06 1009.03L332.85 1011.29L342.74 1013.27L352.74 1014.98L362.84 1016.41L373.03 1017.57L383.3 1018.45L393.65 1019.05L404.07 1019.38L414.56 1019.43L425.11 1019.21L435.72 1018.7L446.37 1017.92L457.06 1016.87L467.79 1015.54L478.55 1013.93L489.34 1012.05L500.14 1009.9L510.94 1007.48L521.76 1004.78L532.57 1001.82L543.37 998.59L554.16 995.1L564.93 991.34L575.67 987.32L586.37 983.05L597.04 978.51L607.66 973.73L618.23 968.69L628.74 963.41L639.18 957.88L649.56 952.12L659.85 946.11L670.07 939.87L680.19 933.4L690.22 926.7L700.16 919.78L709.98 912.64L719.69 905.29L729.29 897.72L738.76 889.95L748.1 881.98L757.31 873.81L766.37 865.45L775.3 856.91L784.07 848.18L792.69 839.27L801.14 830.19L809.43 820.95L817.56 811.54L825.5 801.98L833.27 792.26L840.85 782.41L848.25 772.41L855.45 762.29L862.45 752.03L869.26 741.65L875.85 731.16L882.24 720.57L888.42 709.86L894.38 699.07L900.12 688.18L905.64 677.21L910.93 666.16L915.99 655.04L920.82 643.85L925.41 632.61L929.77 621.32L933.89 609.98L937.76 598.61L941.39 587.2L944.77 575.77L947.9 564.32L950.78 552.86L953.41 541.39L955.78 529.93L957.9 518.48L959.76 507.04L961.36 495.62L962.71 484.23L963.79 472.88L964.62 461.57L965.18 450.31L965.48 439.1L965.52 427.96L965.3 416.88L964.82 405.88L964.08 394.96L963.07 384.13L961.81 373.39L960.29 362.76L958.51 352.22L956.47 341.8L954.18 331.5L951.63 321.33L948.83 311.28L945.78 301.38L942.47 291.61L938.92 281.99L935.13 272.53L931.09 263.22L926.81 254.08L922.29 245.11L917.53 236.31L912.54 227.7L907.32 219.27L901.88 211.03L896.2 202.98L890.31 195.14L884.2 187.49L877.88 180.06L871.35 172.84L864.61 165.84L857.67 159.06L850.53 152.51L843.19 146.18L835.67 140.09L827.96 134.23L820.07 128.61L812 123.24L803.76 118.11L795.36 113.23L786.79 108.61L778.06 104.24L769.19 100.12L760.17 96.27L751 92.68L741.7 89.35L732.27 86.29L722.71 83.5L713.04 80.97L703.25 78.72L693.35 76.74L683.35 75.03L673.25 73.6L663.07 72.44L652.8 71.56L642.45 70.95L632.02 70.63L621.53 70.57L610.98 70.8L600.38 71.3L589.73 72.08L579.03 73.14L568.3 74.47L557.54 76.07L546.76 77.95L535.96 80.11L525.15 82.53L514.34 85.22L503.53 88.19L492.72 91.42L481.93 94.91L471.17 98.67L460.43 102.68L449.72 106.96L439.05 111.49L428.43 116.28L417.87 121.31L407.36 126.59L396.91 132.12L386.54 137.89L376.24 143.89L366.03 150.13L355.9 156.61L345.87 163.3L335.94 170.22L326.12 177.36L316.4 184.72L306.81 192.28L297.34 200.05L288 208.02L278.79 216.19L269.72 224.55L260.8 233.1L252.03 241.83L243.41 250.74L234.95 259.82L226.66 269.06L218.54 278.47L210.59 288.03L202.83 297.74L195.24 307.6L187.85 317.59L180.65 327.72L173.64 337.98L166.84 348.35L160.24 358.84L153.85 369.44L147.68 380.14L141.72 390.94L135.98 401.83L130.46 412.8L125.17 423.85L120.1 434.97L115.28 446.15L110.68 457.39L106.33 468.69L102.21 480.02L98.34 491.4L94.71 502.81L91.33 514.24L88.2 525.69L85.32 537.15L82.69 548.61L80.32 560.07L78.2 571.53L76.34 582.97L74.73 594.38L73.39 605.77L72.3 617.12L71.48 628.43L70.92 639.7L70.61 650.9L70.57 662.05L70.79 673.12L71.28 684.12L72.02 695.04L73.02 705.87L74.28 716.61L75.81 727.25L77.59 737.78L79.62 748.2L81.92 758.5L84.46 768.68L87.27 778.72L90.32 788.63L93.62 798.4L97.17 808.01L100.97 817.48L105.01 826.79L109.29 835.93L113.81 844.9L118.56 853.69L123.55 862.31L128.77 870.74L134.22 878.98L139.89 887.02L145.78 894.87L151.89 902.51L158.21 909.94L164.75 917.16L171.49 924.17L178.43 930.95L185.57 937.5L192.9 943.83L200.43 949.92"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="103.76" cy="823.98" r="7.47"/>
+<text class="lbl " x="79.53" y="823.98" font-size="39.08" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">1</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="187.37" cy="318.25" r="7.47"/>
+<text class="lbl " x="166.78" y="294.02" font-size="39.08" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="631.87" cy="70.62" r="7.47"/>
+<text class="lbl " x="631.87" y="46.39" font-size="39.08" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">3</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="587.3" cy="982.66" r="7.47"/>
+<text class="lbl " x="607.89" y="1006.89" font-size="39.08" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">1'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="853.49" cy="765.08" r="7.47"/>
+<text class="lbl " x="874.08" y="789.31" font-size="39.08" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="963.7" cy="390.55" r="7.47"/>
+<text class="lbl " x="987.93" y="390.55" font-size="39.08" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">3'</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the joins 1,2' and 1',2: they meet at Z.">
+<path class="ink given" style="stroke-width:4.14;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M103.76 823.98L853.49 765.08"/>
+<path class="ink given" style="stroke-width:4.14;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M587.3 982.66L187.37 318.25"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="474.26" cy="794.87" r="7.47"/>
+<text class="lbl " x="474.26" y="831.22" font-size="39.08" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Z</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the joins 1,3' and 1',3: they meet at Y.">
+<path class="ink given" style="stroke-width:4.14;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M103.76 823.98L963.7 390.55"/>
+<path class="ink given" style="stroke-width:4.14;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M587.3 982.66L631.87 70.62"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="607.46" cy="570.11" r="7.47"/>
+<text class="lbl " x="638.35" y="606.45" font-size="39.08" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Y</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Draw the joins 2,3' and 2',3: they meet at X.">
+<path class="ink given" style="stroke-width:4.14;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M187.37 318.25L963.7 390.55"/>
+<path class="ink given" style="stroke-width:4.14;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M853.49 765.08L631.87 70.62"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.53" cx="726.93" cy="368.5" r="7.47"/>
+<text class="lbl " x="770.54" y="368.5" font-size="39.08" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="X, Y and Z are on one straight line, the Pascal line (heavy). The theorem holds for any six points of a conic, and conversely.">
+<path class="ink given" style="stroke-width:5.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M306.03 1078.77L895.16 84.6"/>
+</g>
+</svg>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 684 684" width="520" height="520" data-fig="fig-021a">
+<title>Fig. 21(a) — A train of circles between two circles that do not meet</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 21(a), page 24. Section: circle.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two circles, one inside the other, not concentric.">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="342" cy="342" r="300"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="442" cy="342" r="137.5"/>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Start where the gap between the circles is widest: the circle that touches both on the axis, with its diameter the width of the gap.">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="173.25" cy="342" r="131.25"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="Each next circle touches the two given circles and the one before it; going round above the axis the circles grow smaller as the gap narrows.">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="302.13" cy="147.84" r="101.79"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="467.76" cy="142.22" r="63.93"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="556.97" cy="202.15" r="43.54"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="597.38" cy="268.69" r="34.31"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The same below the axis (the figure is symmetrical). The train does not close: a gap is left in the narrow part on the right.">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="302.13" cy="536.16" r="101.79"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="467.76" cy="541.78" r="63.93"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="556.97" cy="481.85" r="43.54"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="597.38" cy="415.31" r="34.31"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The circles of the train are shaded with horizontal lines.">
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M137.64 468.25L208.86 468.25M112.76 458.4L233.74 458.4M96.74 448.55L249.76 448.55M84.56 438.7L261.94 438.7M74.94 428.85L271.56 428.85M66.97 419L279.53 419M60.56 409.15L285.94 409.15M55.26 399.3L291.24 399.3M50.95 389.45L295.55 389.45M47.55 379.6L298.95 379.6M44.98 369.75L301.52 369.75M43.24 359.9L303.26 359.9M42.28 350.05L304.22 350.05M42.06 340.2L304.44 340.2M42.58 330.35L303.92 330.35M43.85 320.5L302.65 320.5M45.88 310.65L300.62 310.65M48.72 300.8L297.78 300.8M52.4 290.95L294.1 290.95M57.01 281.1L289.49 281.1M62.75 271.25L283.75 271.25M69.76 261.4L276.74 261.4M78.18 251.55L268.32 251.55M88.71 241.7L257.79 241.7M101.99 231.85L244.51 231.85M120.27 222.01L226.23 222.01M154.64 212.16L191.86 212.16"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M270.66 244.65L333.6 244.65M249.32 234.8L354.95 234.8M235.76 224.95L368.5 224.95M225.8 215.1L378.47 215.1M218.15 205.25L386.12 205.25M212.14 195.4L392.12 195.4M207.65 185.55L396.62 185.55M204.23 175.7L400.03 175.7M202.01 165.85L402.26 165.85M200.7 156L403.56 156M200.4 146.15L403.86 146.15M201.06 136.3L403.21 136.3M202.62 126.45L401.64 126.45M205.32 116.6L398.95 116.6M209.02 106.75L395.25 106.75M214.08 96.9L390.19 96.9M220.53 87.05L383.73 87.05M228.85 77.2L375.42 77.2M239.84 67.35L364.42 67.35M255.35 57.5L348.92 57.5M284.19 47.65L320.08 47.65"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M443.12 201.19L492.4 201.19M426.9 191.34L508.62 191.34M417.36 181.49L518.16 181.49M411.02 171.64L524.5 171.64M406.94 161.79L528.58 161.79M404.6 151.94L530.93 151.94M403.83 142.09L531.69 142.09M404.64 132.24L530.88 132.24M407.02 122.39L528.5 122.39M411.15 112.54L524.38 112.54M417.56 102.69L517.96 102.69M427.2 92.84L508.32 92.84M443.7 83L491.83 83"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M536.86 240.74L577.09 240.74M524.3 230.89L589.65 230.89M517.77 221.04L596.18 221.04M514.38 211.2L599.57 211.2M513.46 201.35L600.49 201.35M514.78 191.5L599.16 191.5M518.57 181.65L595.38 181.65M525.77 171.8L588.18 171.8M540.29 161.95L573.65 161.95"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M579.67 298.05L615.09 298.05M569.19 288.2L625.58 288.2M564.47 278.35L630.29 278.35M563.08 268.5L631.68 268.5M564.59 258.65L630.17 258.65M569.44 248.81L625.32 248.81M580.28 238.96L614.48 238.96"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M270.66 632.96L333.6 632.96M249.32 623.11L354.95 623.11M235.76 613.26L368.5 613.26M225.8 603.41L378.47 603.41M218.15 593.56L386.12 593.56M212.14 583.71L392.12 583.71M207.65 573.86L396.62 573.86M204.23 564.02L400.03 564.02M202.01 554.17L402.26 554.17M200.7 544.32L403.56 544.32M200.4 534.47L403.86 534.47M201.06 524.62L403.21 524.62M202.62 514.77L401.64 514.77M205.32 504.92L398.95 504.92M209.02 495.07L395.25 495.07M214.08 485.22L390.19 485.22M220.53 475.37L383.73 475.37M228.85 465.52L375.42 465.52M239.84 455.67L364.42 455.67M255.35 445.82L348.92 445.82M284.19 435.97L320.08 435.97"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M443.12 600.75L492.4 600.75M426.9 590.9L508.62 590.9M417.36 581.05L518.16 581.05M411.02 571.2L524.5 571.2M406.94 561.35L528.58 561.35M404.6 551.5L530.93 551.5M403.83 541.65L531.69 541.65M404.64 531.8L530.88 531.8M407.02 521.95L528.5 521.95M411.15 512.1L524.38 512.1M417.56 502.25L517.96 502.25M427.2 492.4L508.32 492.4M443.7 482.55L491.83 482.55"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M536.86 520.44L577.09 520.44M524.3 510.59L589.65 510.59M517.77 500.74L596.18 500.74M514.38 490.89L599.57 490.89M513.46 481.04L600.49 481.04M514.78 471.19L599.16 471.19M518.57 461.34L595.38 461.34M525.77 451.49L588.18 451.49M540.29 441.64L573.65 441.64"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M579.67 444.67L615.09 444.67M569.19 434.82L625.58 434.82M564.47 424.97L630.29 424.97M563.08 415.12L631.68 415.12M564.59 405.27L630.17 405.27M569.44 395.42L625.32 395.42M580.28 385.57L614.48 385.57"/>
+</g>
+</svg>

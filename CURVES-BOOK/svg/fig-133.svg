@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 890.88 968.04" width="520" height="565" data-fig="fig-133">
+<title>Fig. 133 — A cyclic quadrilateral inverted into a line</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 133, page 134. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A circle through O, and on it three points A, B, C. The quadrilateral OABC is cyclic, so its opposite angles at B and O add up to π: if the angle at O is θ, the angle at B is π − θ.">
+<circle class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="445.44" cy="465.55" r="386"/>
+<path class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M61.56 425.2L532.27 89.44"/>
+<path class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M532.27 89.44L829.97 431.91"/>
+<path class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M61.56 425.2L445.44 851.55"/>
+<path class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M829.97 431.91L445.44 851.55"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.13" cx="61.56" cy="425.2" r="6.29"/>
+<text class="lbl " x="37.27" y="396.63" font-size="32.91" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.13" cx="532.27" cy="89.44" r="6.29"/>
+<text class="lbl " x="554.82" y="62.91" font-size="32.91" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.13" cx="829.97" cy="431.91" r="6.29"/>
+<text class="lbl " x="858.54" y="431.91" font-size="32.91" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<circle class="ink given" style="stroke-width:3.48;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="445.44" cy="851.55" r="13"/>
+<circle class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="445.44" cy="851.55" r="5.2"/>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Invert A, B, C with respect to O (the construction of Fig. 123). Ā and C̄ fall on OA and OC; B̄ falls on OB.">
+<path class="ink aux dash" style="stroke-width:1.74;fill:none;--dash:11.62 7.74;stroke:#8a8a8a;stroke-dasharray:11.62 7.74;stroke-linecap:round;stroke-linejoin:round" d="M445.44 851.55L532.27 89.44"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.13" cx="226.64" cy="608.54" r="6.29"/>
+<text class="lbl " x="226.64" y="573.85" font-size="32.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Ā</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.13" cx="473.13" cy="608.54" r="6.29"/>
+<text class="lbl " x="473.13" y="573.85" font-size="32.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B̄</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.13" cx="668.11" cy="608.54" r="6.29"/>
+<text class="lbl " x="668.11" y="573.85" font-size="32.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C̄</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The circle passes through O, so it inverts into a straight line: Ā, B̄, C̄ are collinear. Draw the line ĀC̄; B̄ lies on it.">
+<path class="ink curve" style="stroke-width:5.42;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M149.44 608.54L745.31 608.54"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The lines AB and BC do not pass through O, so they invert into circles through O: the circle through O, Ā, B̄ and the circle through O, B̄, C̄. They meet at B̄ at the angle π − θ, the angle between the lines AB and BC.">
+<circle class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="349.88" cy="717.58" r="164.56"/>
+<circle class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="570.62" cy="742.73" r="165.87"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="As B moves on the circle (to the left), B̄ moves on the line (to the right) and the circles through O, Ā and O, C̄ meet at B̄ at the constant angle π − θ. So the locus of the intersection of circles on the fixed points O, Ā and O, C̄ that meet at a constant angle is the line ĀC̄.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.13" d="M512.98 103.2A23.7 23.7 0 0 0 547.82 107.33"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.13" d="M507.08 107.41A30.94 30.94 0 0 0 552.57 112.79"/>
+<text class="lbl " x="524.84" y="152.2" font-size="32.91" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">π − θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.13" d="M465.45 829.71A29.62 29.62 0 0 0 425.62 829.53"/>
+<text class="lbl " x="445.8" y="770.09" font-size="32.91" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M502.27 59.44L382.27 59.44"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M382.27 59.44L396.75 65.52L396.75 53.36Z"/>
+<path class="ink given" style="stroke-width:3.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M503.13 626.54L588.13 626.54"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M588.13 626.54L573.65 620.46L573.65 632.62Z"/>
+</g>
+</svg>

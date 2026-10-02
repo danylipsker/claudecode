@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 279.7 299.35" width="520" height="557" data-fig="fig-078b">
+<title>Fig. 78(b) — The hypocycloid: the rolling circle at one position, with the tangent</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 78(b), page 81. Section: epi-hypo-cycloids.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius a (only the arc near the cusp is needed), its centre O and the axis OX through the cusp (a, 0).">
+<path class="ink axis" style="stroke-width:0.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M28.41 188.38L261.31 188.38"/>
+<path class="ink given" style="stroke-width:1.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M213.49 280.97A170 170 0 0 0 18.38 26.7"/>
+<path class="ink aux" style="stroke-width:0.54;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M100.43 20.96A170 170 0 0 0 18.38 26.7"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:0.84" d="M100.43 20.96L96.73 12.78M94.12 19.97L90.11 11.94M87.78 19.22L83.47 11.34M81.41 18.71L76.8 10.99M75.02 18.43L70.13 10.9M68.63 18.4L63.46 11.05M62.24 18.6L56.8 11.46M55.87 19.05L50.16 12.11M49.52 19.73L43.55 13.02M43.19 20.66L36.98 14.17M36.91 21.82L30.46 15.57M30.67 23.21L23.99 17.21M24.49 24.84L17.59 19.1M18.38 26.7L11.27 21.22"/>
+<path class="ink aux" style="stroke-width:0.54;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M222.39 265.56A170 170 0 0 0 237.2 223.73"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:0.84" d="M222.39 265.56L231.29 264.41M225.17 259.84L234.02 258.36M227.73 254.02L236.52 252.21M230.07 248.11L238.8 245.97M232.2 242.12L240.83 239.65M234.09 236.05L242.63 233.27M235.76 229.92L244.19 226.81M237.2 223.73L245.5 220.31"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.66" cx="70.91" cy="188.38" r="1.95"/>
+<text class="lbl " x="65.55" y="182.07" font-size="10.18" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Draw the radius OT at the angle t and the rolling circle of radius b inside the fixed circle: its centre is on OT, a − b from O. N is the other end of the diameter TN, so ON = a − 2b.">
+<path class="ink given" style="stroke-width:1.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M70.91 188.38L184.67 62.05"/>
+<circle class="ink given" style="stroke-width:1.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="151.21" cy="99.2" r="50"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.66" cx="151.21" cy="99.2" r="1.36"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.66" cx="184.67" cy="62.05" r="1.95"/>
+<text class="lbl " x="190.03" y="55.74" font-size="10.18" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.66" cx="117.75" cy="136.36" r="1.95"/>
+<text class="lbl " x="111.44" y="136.36" font-size="10.18" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">N</text>
+<text class="lbl " x="162.95" y="76.13" font-size="10.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b</text>
+<text class="lbl " x="129.49" y="113.29" font-size="10.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.66" d="M80.99 188.38A10.08 10.08 0 0 0 77.66 180.89"/>
+<text class="lbl " x="90.23" y="179.78" font-size="10.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+</g>
+<g class="step" data-step="2" data-tool="roll" data-text="P is the point of the rolling circle that touched the fixed circle at the cusp (a, 0): the arc TP equals the arc of the fixed circle from (a, 0) to T. Join T to P.">
+<path class="ink given" style="stroke-width:1.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M184.67 62.05L129.92 144.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.66" cx="129.92" cy="144.45" r="1.95"/>
+<text class="lbl " x="124.56" y="150.76" font-size="10.18" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="T is the instantaneous centre of rotation of P, so TP is the normal and the tangent is the chord PN. The angle TNP of the rolling circle is a·t / 2b, and the tangent, drawn as far as the axis, makes the angle φ = π − (a − 2b)t / 2b with OX.">
+<path class="ink given" style="stroke-width:1.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.75 136.36L196.05 188.38"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.66" d="M126.15 141.94A10.08 10.08 0 0 0 124.5 128.87"/>
+<text class="lbl " x="143.65" y="133.09" font-size="7.12" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">at/2b</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.66" d="M209.79 188.38A13.74 13.74 0 0 0 184.61 180.78"/>
+<text class="lbl " x="203" y="165.36" font-size="10.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+<text class="lbl " x="100.91" y="240.38" font-size="9.67" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ = π − (a−2b) t / 2b</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The hypocycloid: the path of P, with its cusp at (a, 0) on the fixed circle.">
+<path class="ink curve" style="stroke-width:1.68;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M210.12 194.15L211.72 193.7L213.28 193.27L214.81 192.86L216.3 192.48L217.76 192.11L219.17 191.77L220.55 191.45L221.89 191.15L223.18 190.87L224.44 190.6L225.65 190.36L226.82 190.13L227.95 189.93L229.04 189.74L230.08 189.56L231.07 189.4L232.02 189.26L232.92 189.13L233.78 189.01L234.59 188.9L235.36 188.81L236.07 188.73L236.74 188.66L237.36 188.6L237.93 188.55L238.45 188.51L238.92 188.47L239.34 188.45L239.72 188.42L240.04 188.41L240.31 188.4L240.53 188.39L240.7 188.38L240.82 188.38L240.89 188.38L240.91 188.38L240.88 188.38L240.8 188.38L240.67 188.38L240.48 188.37L240.25 188.36L239.97 188.35L239.63 188.33L239.25 188.31L238.81 188.28L238.33 188.25L237.8 188.2L237.22 188.15L236.58 188.09L235.91 188.01L235.18 187.93L234.4 187.83L233.58 187.73L232.71 187.61L231.8 187.47L230.84 187.33L229.83 187.16L228.78 186.98L227.69 186.79L226.55 186.58L225.37 186.35L224.14 186.1L222.88 185.83L221.57 185.54L220.22 185.24L218.84 184.91L217.41 184.57L215.95 184.2L214.45 183.81L212.91 183.39L211.34 182.96L209.73 182.5L208.09 182.02L206.41 181.51L204.71 180.98L202.97 180.42L201.2 179.84L199.4 179.24L197.57 178.61L195.72 177.95L193.84 177.27L191.93 176.56L189.99 175.82L188.04 175.06L186.06 174.27L184.06 173.45L182.04 172.61L179.99 171.74L177.93 170.84L175.86 169.92L173.76 168.97L171.65 167.99L169.52 166.98L167.39 165.95L165.24 164.89L163.07 163.81L160.9 162.7L158.72 161.56L156.53 160.39L154.33 159.2L152.13 157.99L149.92 156.75L147.71 155.48L145.49 154.19L143.27 152.87L141.05 151.53L138.84 150.17L136.62 148.78L134.41 147.37L132.19 145.94L129.99 144.49L127.78 143.01L125.59 141.52L123.4 140L121.22 138.47L119.05 136.91L116.89 135.34L114.74 133.75L112.6 132.14L110.47 130.52"/>
+</g>
+</svg>

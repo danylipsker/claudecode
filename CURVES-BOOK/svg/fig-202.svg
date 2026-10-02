@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 364.8 364.8" width="520" height="520" data-fig="fig-202">
+<title>Fig. 202 — The law of sines: a = 2R sin A in the circumscribed circle</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 202, page 226. Section: trigonometric.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of radius R about O and the triangle ABC inscribed in it; the angles are A, B, C (A + B + C = π), the sides a = BC, b = CA, c = AB.">
+<circle class="ink given" style="stroke-width:2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="182.4" cy="182.4" r="160"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.8" cx="182.4" cy="182.4" r="2.13"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The sides of the triangle. The chord a = BC subtends the angle 2A at the centre, so a = 2R sin A; in the same way b = 2R sin B and c = 2R sin C. Hence a / sin A = b / sin B = c / sin C = 2R.">
+<path class="ink given" style="stroke-width:2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.31 31.12L39.84 255.04L324.96 255.04Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.8" cx="130.31" cy="31.12" r="2.37"/>
+<text class="lbl " x="130.31" y="23.43" font-size="12.4" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.8" cx="39.84" cy="255.04" r="2.37"/>
+<text class="lbl " x="32.15" y="255.04" font-size="12.4" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.8" cx="324.96" cy="255.04" r="2.37"/>
+<text class="lbl " x="332.65" y="255.04" font-size="12.4" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl  upright" x="75.07" y="141.08" font-size="8.43" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">c = 2R sin C</text>
+<text class="lbl  upright" x="237.64" y="135.08" font-size="8.43" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">b = 2R sin B</text>
+<text class="lbl  upright" x="182.4" y="270.04" font-size="9.92" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a = 2R sin A</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The radii OB and OC (dashed) enclose the angle 2A at the centre, twice the inscribed angle A at the circumference.">
+<path class="ink given dash" style="stroke-width:1.31;fill:none;--dash:4.38 2.92;stroke:#1b1b1b;stroke-dasharray:4.38 2.92;stroke-linecap:round;stroke-linejoin:round" d="M182.4 182.4L39.84 255.04"/>
+<path class="ink given dash" style="stroke-width:1.31;fill:none;--dash:4.38 2.92;stroke:#1b1b1b;stroke-dasharray:4.38 2.92;stroke-linecap:round;stroke-linejoin:round" d="M182.4 182.4L324.96 255.04"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:0.8" d="M174.94 186.2A8.37 8.37 0 0 0 189.86 186.2"/>
+<text class="lbl given upright" x="182.4" y="206.59" font-size="12.4" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2A</text>
+<text class="lbl  upright" x="106.12" y="202.72" font-size="10.54" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">R</text>
+<text class="lbl  upright" x="269.68" y="202.72" font-size="10.54" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">R</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="The altitude AD (dashed) meets BC at D. It splits a into BD = c cos B = 2R sin C cos B and DC = b cos C = 2R sin B cos C, and so sin A = sin(B + C) = sin B cos C + cos B sin C.">
+<path class="ink given dash" style="stroke-width:1.31;fill:none;--dash:4.38 2.92;stroke:#1b1b1b;stroke-dasharray:4.38 2.92;stroke-linecap:round;stroke-linejoin:round" d="M130.31 31.12L130.31 255.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.8" cx="130.31" cy="255.04" r="2.37"/>
+<text class="lbl  upright" x="124.31" y="245.04" font-size="7.44" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2R sin C cos B</text>
+<text class="lbl  upright" x="138.31" y="245.04" font-size="7.44" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2R sin B cos C</text>
+</g>
+</svg>

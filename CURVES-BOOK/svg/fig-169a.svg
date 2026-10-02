@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1088.7 992.23" width="520" height="474" data-fig="fig-169a">
+<title>Fig. 169(a) — The crossed parallelogram rolling an ellipse on a line: the elliptic catenary</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 169(a), page 184. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The line along which P will be moved (it is the common tangent of the rolling ellipse, with foci C and D) and the fixed points: the crossed parallelogram ABCD with AB = CD (short) and AD = BC (long), the long bars crossing at P.">
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.85 572.59L451.85 574.59"/>
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M652.85 580.59L1021.85 584.59"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M824.85 582.09L802.64 572.77L802.64 591.42Z"/>
+<text class="lbl " x="483.85" y="572.59" font-size="37.02" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The four bars: AB and CD (equal), AD and BC (equal, longer); the long bars cross at P, where they pass through a sleeve that slides along the line. Beyond D and B the bars carry small toothed wheels that roll on the paper.">
+<path class="ink given" style="fill:none;stroke-width:10.19;stroke:#1b1b1b;stroke-linecap:round" d="M266.85 924.59L945.6 270.29"/><path class="ink" style="fill:none;stroke-width:4.7;stroke:#fff;stroke-linecap:round" d="M266.85 924.59L945.6 270.29"/>
+<path class="ink given" style="fill:none;stroke-width:10.19;stroke:#1b1b1b;stroke-linecap:round" d="M273.85 222.59L941.54 898.48"/><path class="ink" style="fill:none;stroke-width:4.7;stroke:#fff;stroke-linecap:round" d="M273.85 222.59L941.54 898.48"/>
+<path class="ink given" style="fill:none;stroke-width:10.19;stroke:#1b1b1b;stroke-linecap:round" d="M266.85 924.59L843.85 799.59"/><path class="ink" style="fill:none;stroke-width:4.7;stroke:#fff;stroke-linecap:round" d="M266.85 924.59L843.85 799.59"/>
+<path class="ink given" style="fill:none;stroke-width:10.19;stroke:#1b1b1b;stroke-linecap:round" d="M273.85 222.59L849.85 362.59"/><path class="ink" style="fill:none;stroke-width:4.7;stroke:#fff;stroke-linecap:round" d="M273.85 222.59L849.85 362.59"/>
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M653.63 518.41L686.95 552.97L597.67 639.02L564.36 604.47Z"/>
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M686.3 605.96L652.15 639.69L565.01 551.47L599.15 517.74Z"/>
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M919.23 242.93L921.25 242.78L924.92 244.51L930.01 248L936.16 253L942.95 259.19L949.92 266.12L956.6 273.35L962.53 280.36L967.31 286.69L970.6 291.9L972.2 295.64L971.98 297.65L969.96 297.79L966.28 296.06L961.2 292.58L955.05 287.57L948.26 281.39L941.28 274.45L934.61 267.23L928.68 260.22L923.9 253.89L920.6 248.68L919.01 244.94Z"/>
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M968.57 871.77L968.74 873.79L967.06 877.49L963.63 882.61L958.7 888.82L952.61 895.69L945.75 902.75L938.61 909.51L931.67 915.53L925.4 920.38L920.23 923.74L916.52 925.38L914.5 925.18L914.33 923.17L916.02 919.47L919.44 914.34L924.37 908.14L930.47 901.27L937.32 894.21L944.46 887.44L951.4 881.43L957.67 876.58L962.84 873.22L966.56 871.58Z"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.92" cx="266.85" cy="924.59" r="15.57"/><circle class="pt" style="fill:#1b1b1b" cx="266.85" cy="924.59" r="6.37"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.92" cx="843.85" cy="799.59" r="15.57"/><circle class="pt" style="fill:#1b1b1b" cx="843.85" cy="799.59" r="6.37"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.92" cx="273.85" cy="222.59" r="15.57"/><circle class="pt" style="fill:#1b1b1b" cx="273.85" cy="222.59" r="6.37"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.92" cx="849.85" cy="362.59" r="15.57"/><circle class="pt" style="fill:#1b1b1b" cx="849.85" cy="362.59" r="6.37"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.92" cx="625.65" cy="578.72" r="15.57"/><circle class="pt" style="fill:#1b1b1b" cx="625.65" cy="578.72" r="6.37"/>
+<text class="lbl " x="266.85" y="846.56" font-size="37.02" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="902.37" y="730.74" font-size="37.02" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="215.33" y="153.74" font-size="37.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="787.43" y="289.15" font-size="37.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="Move P along the line. The wheels force C and D to move perpendicular to the bars, so P is the centre of rotation of any point of CD: the action is that of an ellipse (foci C and D) rolling on the line. The path of C (or D) is the elliptic catenary.">
+<path class="ink thick" style="stroke-width:6.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M122.72 379.82L123.96 378.64L125.19 377.44L126.43 376.24L127.67 375.04L128.92 373.82L130.16 372.6L131.41 371.37L132.67 370.14L133.92 368.89L135.18 367.64L136.45 366.39L137.71 365.12L138.99 363.85L140.26 362.56L141.54 361.28L142.82 359.98L144.11 358.68L145.4 357.36L146.69 356.04L147.99 354.72L149.3 353.38L150.61 352.04L151.92 350.69L153.24 349.33L154.56 347.96L155.89 346.59L157.22 345.2L158.56 343.81L159.9 342.41L161.25 341.01L162.61 339.59L163.97 338.17L165.33 336.73L166.7 335.29L168.08 333.84L169.47 332.39L170.86 330.92L172.25 329.44L173.66 327.96L175.07 326.47L176.48 324.97L177.91 323.46L179.34 321.94L180.78 320.41L182.22 318.87L183.68 317.33L185.14 315.77L186.6 314.21L188.08 312.63L189.56 311.05L191.06 309.46L192.56 307.85L194.07 306.24L195.58 304.62L197.11 302.99L198.65 301.35L200.19 299.7L201.75 298.04L203.31 296.37L204.88 294.69L206.47 293L208.06 291.3L209.66 289.59L211.27 287.87L212.9 286.14L214.53 284.4L216.18 282.65L217.84 280.89L219.5 279.12L221.18 277.33L222.87 275.54L224.58 273.73L226.29 271.92L228.02 270.09L229.76 268.26L231.51 266.41L233.27 264.55L235.05 262.68L236.84 260.8L238.65 258.9L240.47 257L242.3 255.08L244.15 253.15L246.01 251.21L247.89 249.26L249.78 247.3L251.68 245.33L253.61 243.34L255.54 241.34L257.5 239.33L259.47 237.31L261.46 235.27L263.46 233.22L265.48 231.17L267.52 229.09L269.57 227.01L271.65 224.91L273.74 222.8L275.85 220.68L277.98 218.55L280.13 216.4L282.3 214.24L284.49 212.07L286.69 209.88L288.92 207.68L291.17 205.47L293.44 203.25L295.74 201.01L298.05 198.76L300.39 196.49L302.75 194.21L305.13 191.92L307.53 189.62L309.96 187.3L312.41 184.97L314.89 182.63L317.4 180.27L319.92 177.9L322.48 175.52L325.06 173.12L327.66 170.71L330.29 168.28L332.96 165.85L335.64 163.4L338.36 160.93L341.1 158.45L343.88 155.96L346.68 153.46L349.52 150.94L352.38 148.41L355.28 145.86L358.2 143.31L361.16 140.74L364.15 138.15L367.18 135.56L370.24 132.95L373.33 130.33L376.45 127.69L379.61 125.05L382.81 122.39L386.04 119.71L389.31 117.03L392.62 114.33L395.96 111.63L399.35 108.91L402.77 106.17L406.23 103.43L409.73 100.68L413.27 97.91L416.85 95.14L420.47 92.35L424.14 89.56L427.85 86.75L431.6 83.93L435.4 81.11L439.24 78.27L443.12 75.43L447.05 72.58L451.03 69.72L455.06 66.85"/>
+</g>
+</svg>

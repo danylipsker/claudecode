@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 413.16 355.58" width="520" height="448" data-fig="fig-142b">
+<title>Fig. 142(b) — The crossed parallelogram that draws the lemniscate r² = a² cos 2θ</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 142(b), page 146. Section: lemniscate.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The frame: two fixed pivots A and B on a line, AB = a√2, with O the midpoint of AB.">
+<path class="ink cons" style="stroke-width:0.91;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M0 230.62L413.16 230.62"/>
+<path class="ink cons" style="stroke-width:0.91;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M25.37 251.62L67.37 251.62L67.37 209.62L25.37 209.62Z"/>
+<path class="ink cons" style="stroke-width:0.91;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M308.21 251.62L350.21 251.62L350.21 209.62L308.21 209.62Z"/>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="46.37" cy="230.62" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="46.37" cy="230.62" r="5.2"/>
+<text class="lbl " x="46.37" y="204.49" font-size="14.05" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="329.21" cy="230.62" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="329.21" cy="230.62" r="5.2"/>
+<text class="lbl " x="355.34" y="230.62" font-size="14.05" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.91" cx="187.79" cy="230.62" r="3.22"/>
+<text class="lbl " x="187.79" y="239.33" font-size="14.05" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The bars AD and BC, each of length a, turn about A and B.">
+<path class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M50.05 222.96L230.34 309.55L232.52 311.06L234.14 313.17L235.02 315.68L235.08 318.34L234.32 320.89L232.81 323.07L230.69 324.69L228.18 325.57L225.52 325.63L222.98 324.87L42.69 238.28L40.5 236.77L38.89 234.66L38.01 232.15L37.95 229.49L38.71 226.94L40.22 224.75L42.33 223.14L44.84 222.26L47.5 222.2Z"/>
+<path class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M321.04 232.96L265.91 40.71L265.59 38.07L266.1 35.46L267.39 33.14L269.33 31.32L271.74 30.2L274.38 29.87L276.99 30.38L279.32 31.67L281.13 33.62L282.26 36.03L337.38 228.28L337.71 230.92L337.2 233.53L335.91 235.85L333.97 237.67L331.56 238.79L328.92 239.12L326.31 238.61L323.98 237.32L322.17 235.37Z"/>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="46.37" cy="230.62" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="46.37" cy="230.62" r="5.2"/>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="329.21" cy="230.62" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="329.21" cy="230.62" r="5.2"/>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="226.66" cy="317.21" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="226.66" cy="317.21" r="5.2"/>
+<text class="lbl " x="244.42" y="338.11" font-size="14.05" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="274.08" cy="38.37" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="274.08" cy="38.37" r="5.2"/>
+<text class="lbl " x="256.32" y="17.47" font-size="14.05" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="The bar DC of length a√2 joins their free ends and crosses the line AB: AB = DC and AD = BC, a crossed parallelogram. P is the midpoint of DC.">
+<path class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M218.28 315.78L265.71 36.94L266.56 34.42L268.14 32.29L270.31 30.75L272.85 29.96L275.51 29.99L278.03 30.84L280.16 32.43L281.7 34.6L282.49 37.14L282.46 39.79L235.03 318.63L234.18 321.15L232.6 323.29L230.43 324.82L227.89 325.62L225.23 325.59L222.71 324.74L220.58 323.15L219.04 320.98L218.25 318.44Z"/>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="226.66" cy="317.21" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="226.66" cy="317.21" r="5.2"/>
+<circle class="ink given" style="stroke-width:1.49;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="274.08" cy="38.37" r="13"/>
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="274.08" cy="38.37" r="5.2"/>
+<circle class="pt" style="fill:#1b1b1b" cx="250.37" cy="177.79" r="4.3"/>
+<text class="lbl " x="264.31" y="177.79" font-size="14.05" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="P and O are midpoints of DC and AB, and OP = r. Whatever the position of the bars, r² = a² cos 2θ.">
+<path class="ink cons dash" style="stroke-width:0.91;fill:none;--dash:4.96 3.31;stroke:#4b4b4b;stroke-dasharray:4.96 3.31;stroke-linecap:round;stroke-linejoin:round" d="M187.79 230.62L250.37 177.79"/>
+<text class="lbl " x="209.46" y="192.88" font-size="14.05" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.91" d="M213.08 230.62A25.29 25.29 0 0 0 207.11 214.31"/>
+<text class="lbl " x="224.4" y="217.23" font-size="14.05" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="As the bars swing, P draws the loop of the lemniscate (the other loop, on the left, when the bars are reversed).">
+<path class="ink curve" style="stroke-width:2.31;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M187.79 230.62L204.08 246.7L210.97 253.2L216.36 258.09L220.98 262.12L225.12 265.59L228.93 268.65L232.48 271.4L235.84 273.89L239.05 276.17L242.12 278.26L245.08 280.2L247.94 282L250.72 283.66L253.43 285.22L256.08 286.66L258.66 288.01L261.19 289.27L263.68 290.45L266.12 291.54L268.51 292.56L270.87 293.51L273.19 294.39L275.48 295.21L277.74 295.97L279.96 296.67L282.16 297.31L284.32 297.9L286.46 298.44L288.57 298.92L290.66 299.36L292.73 299.75L294.76 300.09L296.78 300.39L298.77 300.65L300.74 300.86L302.69 301.03L304.62 301.17L306.52 301.26L308.4 301.31L310.27 301.33L312.11 301.31L313.93 301.26L315.73 301.17L317.5 301.05L319.26 300.89L321 300.71L322.72 300.49L324.41 300.23L326.09 299.95L327.74 299.64L329.38 299.3L330.99 298.93L332.59 298.53L334.16 298.1L335.72 297.65L337.25 297.16L338.76 296.66L340.25 296.12L341.72 295.56L343.17 294.98L344.6 294.37L346 293.74L347.39 293.09L348.75 292.41L350.09 291.71L351.41 290.99L352.71 290.24L353.99 289.48L355.24 288.69L356.48 287.88L357.69 287.06L358.88 286.21L360.04 285.35L361.19 284.46L362.31 283.56L363.41 282.64L364.48 281.7L365.53 280.75L366.56 279.78L367.57 278.79L368.55 277.79L369.51 276.77L370.45 275.74L371.36 274.69L372.25 273.63L373.11 272.56L373.96 271.47L374.77 270.37L375.57 269.25L376.33 268.13L377.08 266.99L377.8 265.84L378.49 264.68L379.17 263.51L379.81 262.32L380.43 261.13L381.03 259.93L381.6 258.72L382.15 257.5L382.67 256.28L383.17 255.04L383.64 253.8L384.09 252.55L384.51 251.3L384.91 250.04L385.28 248.77L385.62 247.5L385.94 246.22L386.24 244.93L386.51 243.65L386.75 242.36L386.97 241.06L387.16 239.76L387.33 238.46L387.47 237.16L387.59 235.85L387.68 234.55L387.74 233.24L387.78 231.93L387.79 230.62L387.78 229.31L387.74 228L387.68 226.7L387.59 225.39L387.47 224.09L387.33 222.78L387.16 221.48L386.97 220.18L386.75 218.89L386.51 217.6L386.24 216.31L385.94 215.03L385.62 213.75L385.28 212.48L384.91 211.21L384.51 209.95L384.09 208.69L383.64 207.44L383.17 206.2L382.67 204.97L382.15 203.74L381.6 202.52L381.03 201.31L380.43 200.11L379.81 198.92L379.17 197.74L378.49 196.57L377.8 195.41L377.08 194.26L376.33 193.12L375.57 191.99L374.77 190.88L373.96 189.78L373.11 188.69L372.25 187.61L371.36 186.55L370.45 185.5L369.51 184.47L368.55 183.45L367.57 182.45L366.56 181.46L365.53 180.49L364.48 179.54L363.41 178.6L362.31 177.68L361.19 176.78L360.04 175.9L358.88 175.03L357.69 174.19L356.48 173.36L355.24 172.55L353.99 171.77L352.71 171L351.41 170.26L350.09 169.54L348.75 168.84L347.39 168.16L346 167.5L344.6 166.87L343.17 166.26L341.72 165.68L340.25 165.12L338.76 164.59L337.25 164.08L335.72 163.6L334.16 163.14L332.59 162.72L330.99 162.32L329.38 161.95L327.74 161.6L326.09 161.29L324.41 161.01L322.72 160.76L321 160.54L319.26 160.35L317.5 160.19L315.73 160.07L313.93 159.98L312.11 159.93L310.27 159.91L308.4 159.93L306.52 159.98L304.62 160.08L302.69 160.21L300.74 160.38L298.77 160.6L296.78 160.85L294.76 161.15L292.73 161.5L290.66 161.89L288.57 162.32L286.46 162.81L284.32 163.34L282.16 163.93L279.96 164.57L277.74 165.27L275.48 166.03L273.19 166.85L270.87 167.73L268.51 168.68L266.12 169.7L263.68 170.8L261.19 171.97L258.66 173.23L256.08 174.58L253.43 176.03L250.72 177.58L247.94 179.25L245.08 181.04L242.12 182.98L239.05 185.08L235.84 187.35L232.48 189.85L228.93 192.59L225.12 195.66L220.98 199.13L216.36 203.16L210.97 208.04L204.08 214.55L187.79 230.62"/>
+<path class="ink thick" style="stroke-width:2.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M216.08 202.34L159.51 258.91"/>
+<path class="ink thick" style="stroke-width:2.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M159.51 202.34L216.08 258.91"/>
+</g>
+</svg>

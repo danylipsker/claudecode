@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 352.26 237.26" width="520" height="350" data-fig="fig-140a">
+<title>Fig. 140(a) — The lemniscate as a Cassinian curve: the pointwise construction</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 140(a), page 143. Section: lemniscate.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The foci F1 and F2, 2a apart, with their midpoint O, and the point X on the axis with OX = a√2. The curve is to be the locus of P with F1P · F2P = a².">
+<path class="ink axis" style="stroke-width:1.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M21.63 149.63L330.63 149.63"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M330.63 149.63L324.04 146.86L324.04 152.4Z"/>
+<path class="ink axis" style="stroke-width:1.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M178.63 215.63L178.63 21.63"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M178.63 21.63L175.86 28.22L181.4 28.22Z"/>
+<circle class="ink given" style="stroke-width:1.27;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="78.63" cy="149.63" r="5.5"/>
+<circle class="ink given" style="stroke-width:1.27;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="78.63" cy="149.63" r="2.2"/>
+<text class="lbl " x="84.94" y="157.06" font-size="11.98" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="ink given" style="stroke-width:1.27;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="278.63" cy="149.63" r="5.5"/>
+<circle class="ink given" style="stroke-width:1.27;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="278.63" cy="149.63" r="2.2"/>
+<text class="lbl " x="284.94" y="157.06" font-size="11.98" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.77" cx="178.63" cy="149.63" r="2.29"/>
+<text class="lbl " x="178.63" y="157.06" font-size="11.98" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.77" cx="37.21" cy="149.63" r="2.29"/>
+<text class="lbl " x="30.9" y="142.2" font-size="11.98" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="About O draw the circle on F1F2 as diameter (radius a); only the upper half is needed.">
+<path class="ink cons dash" style="stroke-width:0.77;fill:none;--dash:4.23 2.82;stroke:#4b4b4b;stroke-dasharray:4.23 2.82;stroke-linecap:round;stroke-linejoin:round" d="M276.64 169.5A100 100 0 1 0 80.62 169.5"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Through X draw a secant that cuts the circle at A (the near point) and B (the far one). By the secant property XA · XB = OX² − a² = a².">
+<path class="ink cons" style="stroke-width:0.77;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M37.21 149.63L213.49 55.9"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.77" cx="81.43" cy="126.11" r="2.29"/>
+<text class="lbl " x="75.12" y="118.69" font-size="11.98" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.77" cx="213.49" cy="55.9" r="2.29"/>
+<text class="lbl " x="219.8" y="48.48" font-size="11.98" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="Take F1P = XB and F2P = XA: draw the circle about F1 with radius XB and the circle about F2 with radius XA. They meet at P, so F1P · F2P = XA · XB = a² and P is on the curve.">
+<path class="ink cons" style="stroke-width:0.77;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M275 113.63A199.65 199.65 0 0 0 268.06 86.58"/>
+<path class="ink cons" style="stroke-width:0.77;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M284.49 99.89A50.09 50.09 0 0 0 259.93 103.16"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.77" cx="272.01" cy="99.98" r="2.29"/>
+<text class="lbl " x="278.32" y="92.56" font-size="11.98" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="Join P to the foci: PF1 = XB and PF2 = XA.">
+<path class="ink cons" style="stroke-width:0.77;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M78.63 149.63L272.01 99.98"/>
+<path class="ink cons" style="stroke-width:0.77;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M278.63 149.63L272.01 99.98"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The lemniscate: repeat with other secants through X (each gives four points by symmetry) and draw the curve through them. It passes through X, through O (a node) and through the mirror point of X.">
+<path class="ink curve" style="stroke-width:1.97;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M320.05 149.63L319.99 147.16L319.79 144.7L319.47 142.26L319.02 139.84L318.45 137.44L317.76 135.09L316.94 132.77L316.01 130.51L314.97 128.3L313.83 126.15L312.58 124.07L311.23 122.06L309.79 120.13L308.26 118.27L306.66 116.49L304.97 114.8L303.22 113.2L301.41 111.69L299.53 110.27L297.61 108.94L295.63 107.7L293.62 106.55L291.57 105.5L289.49 104.54L287.38 103.67L285.25 102.89L283.1 102.2L280.95 101.6L278.78 101.08L276.61 100.64L274.44 100.29L272.27 100.01L270.1 99.81L267.95 99.69L265.8 99.63L263.66 99.65L261.54 99.73L259.44 99.88L257.36 100.09L255.29 100.35L253.25 100.68L251.22 101.06L249.22 101.48L247.25 101.96L245.3 102.49L243.37 103.06L241.47 103.67L239.59 104.33L237.74 105.02L235.92 105.75L234.12 106.51L232.34 107.3L230.6 108.13L228.87 108.98L227.17 109.87L225.5 110.77L223.85 111.71L222.22 112.66L220.62 113.64L219.04 114.64L217.48 115.65L215.94 116.69L214.42 117.74L212.92 118.81L211.44 119.89L209.98 120.99L208.54 122.1L207.12 123.22L205.71 124.35L204.32 125.49L202.94 126.64L201.58 127.81L200.23 128.98L198.89 130.15L197.57 131.34L196.25 132.53L194.95 133.73L193.66 134.93L192.37 136.14L191.1 137.35L189.83 138.57L188.57 139.79L187.31 141.01L186.06 142.24L184.82 143.47L183.57 144.7L182.34 145.93L181.1 147.16L179.86 148.4L178.63 149.63L177.4 150.86L176.16 152.1L174.92 153.33L173.69 154.56L172.44 155.79L171.2 157.02L169.95 158.25L168.69 159.47L167.43 160.69L166.16 161.91L164.89 163.12L163.6 164.33L162.31 165.53L161.01 166.73L159.69 167.92L158.37 169.11L157.03 170.28L155.68 171.45L154.32 172.62L152.94 173.77L151.55 174.91L150.14 176.04L148.72 177.16L147.28 178.27L145.82 179.37L144.34 180.45L142.84 181.52L141.32 182.57L139.78 183.61L138.22 184.62L136.64 185.62L135.04 186.6L133.41 187.55L131.76 188.49L130.09 189.39L128.39 190.28L126.66 191.13L124.92 191.96L123.14 192.75L121.34 193.51L119.52 194.24L117.67 194.93L115.79 195.59L113.89 196.2L111.96 196.77L110.01 197.3L108.04 197.78L106.04 198.2L104.01 198.58L101.97 198.91L99.9 199.17L97.82 199.38L95.72 199.53L93.6 199.61L91.46 199.63L89.31 199.57L87.16 199.45L84.99 199.25L82.82 198.97L80.65 198.62L78.48 198.18L76.31 197.66L74.16 197.06L72.01 196.37L69.88 195.59L67.77 194.72L65.69 193.76L63.64 192.71L61.63 191.56L59.65 190.32L57.73 188.99L55.85 187.57L54.04 186.06L52.29 184.46L50.6 182.77L49 180.99L47.47 179.13L46.03 177.2L44.68 175.19L43.43 173.11L42.29 170.96L41.25 168.75L40.32 166.49L39.5 164.17L38.81 161.82L38.24 159.42L37.79 157L37.47 154.56L37.27 152.1L37.21 149.63L37.27 147.16L37.47 144.7L37.79 142.26L38.24 139.84L38.81 137.44L39.5 135.09L40.32 132.77L41.25 130.51L42.29 128.3L43.43 126.15L44.68 124.07L46.03 122.06L47.47 120.13L49 118.27L50.6 116.49L52.29 114.8L54.04 113.2L55.85 111.69L57.73 110.27L59.65 108.94L61.63 107.7L63.64 106.55L65.69 105.5L67.77 104.54L69.88 103.67L72.01 102.89L74.16 102.2L76.31 101.6L78.48 101.08L80.65 100.64L82.82 100.29L84.99 100.01L87.16 99.81L89.31 99.69L91.46 99.63L93.6 99.65L95.72 99.73L97.82 99.88L99.9 100.09L101.97 100.35L104.01 100.68L106.04 101.06L108.04 101.48L110.01 101.96L111.96 102.49L113.89 103.06L115.79 103.67L117.67 104.33L119.52 105.02L121.34 105.75L123.14 106.51L124.92 107.3L126.66 108.13L128.39 108.98L130.09 109.87L131.76 110.77L133.41 111.71L135.04 112.66L136.64 113.64L138.22 114.64L139.78 115.65L141.32 116.69L142.84 117.74L144.34 118.81L145.82 119.89L147.28 120.99L148.72 122.1L150.14 123.22L151.55 124.35L152.94 125.49L154.32 126.64L155.68 127.81L157.03 128.98L158.37 130.15L159.69 131.34L161.01 132.53L162.31 133.73L163.6 134.93L164.89 136.14L166.16 137.35L167.43 138.57L168.69 139.79L169.95 141.01L171.2 142.24L172.44 143.47L173.69 144.7L174.92 145.93L176.16 147.16L177.4 148.4L178.63 149.63L179.86 150.86L181.1 152.1L182.34 153.33L183.57 154.56L184.82 155.79L186.06 157.02L187.31 158.25L188.57 159.47L189.83 160.69L191.1 161.91L192.37 163.12L193.66 164.33L194.95 165.53L196.25 166.73L197.57 167.92L198.89 169.11L200.23 170.28L201.58 171.45L202.94 172.62L204.32 173.77L205.71 174.91L207.12 176.04L208.54 177.16L209.98 178.27L211.44 179.37L212.92 180.45L214.42 181.52L215.94 182.57L217.48 183.61L219.04 184.62L220.62 185.62L222.22 186.6L223.85 187.55L225.5 188.49L227.17 189.39L228.87 190.28L230.6 191.13L232.34 191.96L234.12 192.75L235.92 193.51L237.74 194.24L239.59 194.93L241.47 195.59L243.37 196.2L245.3 196.77L247.25 197.3L249.22 197.78L251.22 198.2L253.25 198.58L255.29 198.91L257.36 199.17L259.44 199.38L261.54 199.53L263.66 199.61L265.8 199.63L267.95 199.57L270.1 199.45L272.27 199.25L274.44 198.97L276.61 198.62L278.78 198.18L280.95 197.66L283.1 197.06L285.25 196.37L287.38 195.59L289.49 194.72L291.57 193.76L293.62 192.71L295.63 191.56L297.61 190.32L299.53 188.99L301.41 187.57L303.22 186.06L304.97 184.46L306.66 182.77L308.26 180.99L309.79 179.13L311.23 177.2L312.58 175.19L313.83 173.11L314.97 170.96L316.01 168.75L316.94 166.49L317.76 164.17L318.45 161.82L319.02 159.42L319.47 157L319.79 154.56L319.99 152.1L320.05 149.63"/>
+</g>
+</svg>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 990.66 612.64" width="520" height="322" data-fig="fig-052">
+<title>Fig. 52 — The 3-bar linkage AB = CD = 2a, AC = BD = 2b: a variable trapezoid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 52, page 51. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two fixed pivots A and B on a straight line, AB = 2a, M its midpoint.">
+<path class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M60.83 385.91L929.83 385.91"/>
+<path class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M91.83 429.91L199.83 429.91L199.83 341.91L91.83 341.91Z"/>
+<path class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M705.83 429.91L813.83 429.91L813.83 341.91L705.83 341.91Z"/>
+<text class="lbl  upright" x="145.83" y="303.03" font-size="33.68" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+<text class="lbl  upright" x="850.71" y="345.91" font-size="33.68" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="Hinge a bar AC of length 2b at A and a bar BD of the same length at B (a &gt; b).">
+<path class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M156.02 364.18L439.44 497.08L444.02 499.89L447.86 503.65L450.77 508.17L452.59 513.22L453.25 518.56L452.7 523.9L450.98 528.99L448.17 533.57L444.41 537.41L439.89 540.32L434.83 542.15L429.5 542.8L424.15 542.26L419.06 540.54L135.64 407.64L131.06 404.83L127.22 401.07L124.32 396.55L122.49 391.5L121.83 386.16L122.38 380.82L124.1 375.73L126.91 371.15L130.67 367.31L135.19 364.4L140.25 362.57L145.58 361.92L150.93 362.46L156.02 364.18Z"/>
+<path class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M737.44 377.28L850.02 85.2L852.5 80.43L855.98 76.34L860.29 73.12L865.2 70.94L870.47 69.91L875.84 70.08L881.04 71.44L885.81 73.92L889.91 77.4L893.12 81.7L895.3 86.62L896.33 91.89L896.17 97.26L894.81 102.46L782.22 394.55L779.74 399.31L776.26 403.41L771.96 406.63L767.04 408.8L761.77 409.84L756.4 409.67L751.2 408.31L746.43 405.83L742.34 402.35L739.12 398.04L736.94 393.13L735.91 387.85L736.08 382.48L737.44 377.28Z"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="145.83" cy="385.91" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="145.83" cy="385.91" r="13.2"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="759.83" cy="385.91" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="759.83" cy="385.91" r="13.2"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="429.25" cy="518.81" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="429.25" cy="518.81" r="13.2"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="872.41" cy="93.83" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="872.41" cy="93.83" r="13.2"/>
+<text class="lbl  upright" x="486.14" y="532.81" font-size="33.68" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+<text class="lbl  upright" x="811.53" y="85.83" font-size="33.68" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">D</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="Join their free ends by a bar CD of length 2a. The bars AB and CD cross at T; AD and BC are parallel (dashed).">
+<path class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M412.64 501.48L855.8 76.51L860.07 73.25L864.96 71.02L870.23 69.93L875.6 70.04L880.81 71.35L885.6 73.78L889.74 77.22L893 81.49L895.23 86.38L896.31 91.64L896.2 97.02L894.9 102.23L892.46 107.02L889.02 111.15L445.86 536.13L441.59 539.39L436.7 541.62L431.44 542.71L426.07 542.59L420.85 541.29L416.06 538.86L411.93 535.42L408.67 531.15L406.44 526.26L405.35 520.99L405.46 515.62L406.77 510.41L409.2 505.61L412.64 501.48Z"/>
+<path class="ink cons dash" style="stroke-width:2.18;fill:none;--dash:11.89 7.93;stroke:#4b4b4b;stroke-dasharray:11.89 7.93;stroke-linecap:round;stroke-linejoin:round" d="M145.83 385.91L872.41 93.83"/>
+<path class="ink cons dash" style="stroke-width:2.18;fill:none;--dash:11.89 7.93;stroke:#4b4b4b;stroke-dasharray:11.89 7.93;stroke-linecap:round;stroke-linejoin:round" d="M429.25 518.81L759.83 385.91"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="145.83" cy="385.91" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="145.83" cy="385.91" r="13.2"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="759.83" cy="385.91" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="759.83" cy="385.91" r="13.2"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="429.25" cy="518.81" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="429.25" cy="518.81" r="13.2"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="872.41" cy="93.83" r="33"/>
+<circle class="ink given" style="stroke-width:3.57;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="872.41" cy="93.83" r="13.2"/>
+<circle class="pt" style="fill:#1b1b1b" cx="567.83" cy="385.91" r="4.51"/>
+<text class="lbl  upright" x="544.08" y="357.03" font-size="33.68" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">T</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="Choose a point P on CD and draw through it OP parallel to AD and BC, meeting AB at O. O is the same whatever the position of the linkage, so OP = r turns about the fixed point O.">
+<path class="ink cons dash" style="stroke-width:2.18;fill:none;--dash:11.89 7.93;stroke:#4b4b4b;stroke-dasharray:11.89 7.93;stroke-linecap:round;stroke-linejoin:round" d="M370.83 385.91L710.02 249.56"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="370.83" cy="385.91" r="7.08"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="452.83" cy="385.91" r="7.08"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="710.02" cy="249.56" r="7.73"/>
+<text class="lbl  upright" x="370.83" y="415.15" font-size="33.68" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">O</text>
+<text class="lbl  upright" x="452.83" y="415.15" font-size="33.68" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">M</text>
+<text class="lbl  upright" x="682.27" y="224.68" font-size="33.68" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P</text>
+<text class="lbl " x="531.47" y="295.47" font-size="33.68" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angle θ: the angle BAD, which AD makes with AB, is repeated at O (between OB and OP), at D (between DA and DC), at C (between CB and CD) and at B (between BA and BC).">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M206.46 385.91A60.63 60.63 0 0 0 202.08 363.3"/>
+<text class="lbl " x="237.6" y="368.16" font-size="33.68" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M443.58 385.91A72.75 72.75 0 0 0 438.33 358.78"/>
+<text class="lbl " x="474.5" y="365.86" font-size="33.68" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M799.28 123.23A78.82 78.82 0 0 0 815.53 148.38"/>
+<text class="lbl " x="778.61" y="154.4" font-size="33.68" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M496.76 491.67A72.75 72.75 0 0 0 481.76 468.45"/>
+<text class="lbl " x="517.96" y="461.53" font-size="33.68" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M693.14 385.91A66.69 66.69 0 0 0 697.95 410.79"/>
+<text class="lbl " x="662.11" y="404.82" font-size="33.68" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+</svg>

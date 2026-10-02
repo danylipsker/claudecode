@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1290.02 763.4" width="520" height="308" data-fig="fig-203b">
+<title>Fig. 203(b) — The sine curve as the development of an elliptical section of a cylinder</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 203(b), page 229. Section: trigonometric.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX, OY, OZ (drawn obliquely), the cylinder's base circle (z − 1)² + x² = 1 in the plane y = 0 with centre C = (0, 0, 1), and the trace z/2 + y/k = 1 of the cutting plane, which meets the axes at Z = (0, 0, 2) and Y = (0, k, 0).">
+<path class="ink axis" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M466.81 431.11L1173.61 451.63"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1173.61 451.63L1149.79 440.8L1149.2 461.06Z"/>
+<path class="ink axis" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M466.81 431.11L466.81 79.21"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M466.81 79.21L456.68 103.34L476.94 103.34Z"/>
+<path class="ink axis" style="stroke-width:3.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M466.81 431.11L79.21 684.19"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M79.21 684.19L104.95 679.49L93.87 662.52Z"/>
+<text class="lbl axis" x="1196.73" y="478.83" font-size="43.86" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="466.81" y="57.46" font-size="43.86" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl axis" x="60.72" y="705.95" font-size="43.86" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">z</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="466.81" cy="431.11" r="12.58"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="466.81" cy="431.11" r="5.87"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M126.81 653.11L466.81 86.11"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="126.81" cy="653.11" r="7.55"/>
+<text class="lbl " x="126.81" y="680.31" font-size="43.86" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Z</text>
+<path class="ink given" style="stroke-width:3;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M466.81 431.11L474.87 431.39L482.8 431.74L490.61 432.16L498.28 432.66L505.82 433.24L513.21 433.89L520.46 434.61L527.55 435.41L534.48 436.28L541.25 437.22L547.86 438.24L554.29 439.33L560.54 440.48L566.61 441.71L572.5 443.01L578.2 444.37L583.71 445.8L589.02 447.3L594.13 448.86L599.04 450.48L603.74 452.17L608.22 453.92L612.5 455.73L616.56 457.6L620.4 459.53L624.02 461.51L627.41 463.55L630.58 465.65L633.52 467.79L636.22 469.99L638.7 472.23L640.94 474.53L642.94 476.87L644.71 479.25L646.24 481.68L647.53 484.15L648.58 486.66L649.39 489.21L649.96 491.79L650.28 494.41L650.36 497.06L650.2 499.74L649.8 502.45L649.16 505.19L648.27 507.95L647.14 510.74L645.78 513.54L644.17 516.37L642.33 519.22L640.25 522.08L637.93 524.95L635.38 527.84L632.6 530.73L629.59 533.64L626.35 536.55L622.88 539.46L619.19 542.38L615.28 545.29L611.16 548.2L606.81 551.11L602.26 554.01L597.49 556.91L592.52 559.79L587.34 562.67L581.97 565.52L576.4 568.37L570.64 571.19L564.69 573.99L558.56 576.78L552.25 579.53L545.76 582.27L539.11 584.97L532.28 587.65L525.3 590.29L518.16 592.9L510.87 595.48L503.43 598.02L495.85 600.52L488.13 602.99L480.28 605.41L472.31 607.78L464.21 610.11L456 612.4L447.68 614.64L439.26 616.82L430.74 618.96L422.13 621.04L413.43 623.07L404.66 625.05L395.81 626.96L386.89 628.82L377.91 630.62L368.87 632.36L359.79 634.04L350.66 635.65L341.49 637.2L332.3 638.69L323.08 640.11L313.84 641.46L304.59 642.74L295.33 643.96L286.08 645.1L276.83 646.17L267.6 647.18L258.38 648.11L249.2 648.96L240.04 649.75L230.93 650.46L221.86 651.1L212.84 651.66L203.88 652.15L194.98 652.56L186.15 652.89L177.4 653.15L168.73 653.34L160.15 653.44L151.66 653.48L143.27 653.43L134.99 653.31L126.81 653.11"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="296.81" cy="542.11" r="7.55"/>
+<text class="lbl  upright" x="256.81" y="359.61" font-size="35.09" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">z/2 + y/k = 1</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="The elliptical section of the cylinder by the plane: the points (sin t, y, 1 − cos t) with y = (k/2)(1 + cos t), from Y at t = 0 to Z at t = π. Take the point P on it at the parameter θ.">
+<path class="ink given" style="stroke-width:3;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M466.81 86.11L474.87 86.44L482.8 86.97L490.61 87.69L498.28 88.61L505.82 89.71L513.21 91.01L520.46 92.5L527.55 94.18L534.48 96.05L541.25 98.1L547.86 100.34L554.29 102.77L560.54 105.38L566.61 108.17L572.5 111.14L578.2 114.28L583.71 117.6L589.02 121.1L594.13 124.76L599.04 128.59L603.74 132.59L608.22 136.75L612.5 141.07L616.56 145.55L620.4 150.18L624.02 154.96L627.41 159.88L630.58 164.95L633.52 170.16L636.22 175.51L638.7 180.99L640.94 186.6L642.94 192.34L644.71 198.19L646.24 204.17L647.53 210.26L648.58 216.45L649.39 222.75L649.96 229.16L650.28 235.66L650.36 242.25L650.2 248.92L649.8 255.69L649.16 262.52L648.27 269.44L647.14 276.42L645.78 283.46L644.17 290.57L642.33 297.72L640.25 304.93L637.93 312.18L635.38 319.47L632.6 326.8L629.59 334.15L626.35 341.53L622.88 348.93L619.19 356.34L615.28 363.76L611.16 371.19L606.81 378.61L602.26 386.03L597.49 393.44L592.52 400.83L587.34 408.2L581.97 415.54L576.4 422.85L570.64 430.13L564.69 437.36L558.56 444.55L552.25 451.68L545.76 458.76L539.11 465.78L532.28 472.73L525.3 479.61L518.16 486.42L510.87 493.14L503.43 499.79L495.85 506.34L488.13 512.8L480.28 519.16L472.31 525.41L464.21 531.57L456 537.61L447.68 543.53L439.26 549.34L430.74 555.02L422.13 560.57L413.43 566L404.66 571.29L395.81 576.44L386.89 581.45L377.91 586.32L368.87 591.03L359.79 595.6L350.66 600.01L341.49 604.26L332.3 608.35L323.08 612.28L313.84 616.04L304.59 619.63L295.33 623.05L286.08 626.3L276.83 629.37L267.6 632.26L258.38 634.98L249.2 637.51L240.04 639.86L230.93 642.02L221.86 643.99L212.84 645.78L203.88 647.38L194.98 648.79L186.15 650L177.4 651.03L168.73 651.86L160.15 652.5L151.66 652.94L143.27 653.19L134.99 653.25L126.81 653.11"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="648.63" cy="216.77" r="7.55"/>
+<text class="lbl  upright" x="669.43" y="192.3" font-size="43.86" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The numbers behind P: in the base circle the radius CQ makes the angle θ with CO, so Q = (sin θ, 0, 1 − cos θ), and the height of P above the XZ-plane is y = k(1 − z/2) = (k/2)(1 + cos θ).">
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M296.81 542.11L648.63 486.79"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M392.91 479.36L648.63 486.79"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M392.91 479.36L392.91 209.35"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M392.91 209.35L648.63 216.77"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M648.63 486.79L648.63 216.77"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="648.63" cy="486.79" r="6.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="392.91" cy="479.36" r="6.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="392.91" cy="209.35" r="6.71"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.84" d="M339.71 535.37A43.42 43.42 0 0 0 333.17 518.37"/>
+<text class="lbl  upright" x="383.39" y="508.81" font-size="43.86" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">θ</text>
+<text class="lbl  upright" x="520.77" y="471.08" font-size="32.9" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">sin θ</text>
+<text class="lbl  upright" x="484.72" y="528.45" font-size="32.9" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+<text class="lbl  upright" x="199.81" y="599.61" font-size="32.9" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+<text class="lbl  upright" x="378.91" y="344.36" font-size="35.09" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y</text>
+<text class="lbl  upright" x="658.63" y="351.78" font-size="35.09" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y</text>
+</g>
+<g class="step" data-step="3" data-tool="roll" data-text="Roll the cylinder on the XY plane (the dashed arrows): the base point Q lands on the x-axis at x = θ (the arc length), and P lands at P1 = (x = θ, y), directly above it at the height y.">
+<path class="ink given dash" style="stroke-width:1.8;fill:none;--dash:15.48 10.32;stroke:#1b1b1b;stroke-dasharray:15.48 10.32;stroke-linecap:round;stroke-linejoin:round" d="M648.63 486.79L651.21 484.62L653.8 482.5L656.42 480.43L659.06 478.41L661.72 476.44L664.4 474.53L667.1 472.66L669.82 470.85L672.56 469.09L675.32 467.38L678.1 465.72L680.9 464.11L683.72 462.55L686.56 461.05L689.42 459.59L692.3 458.19L695.2 456.83L698.13 455.53L701.07 454.28L704.03 453.08L707.01 451.94L710.01 450.84L713.04 449.79L716.08 448.8L719.14 447.85L722.23 446.96L725.33 446.12L728.45 445.33L731.6 444.59L734.76 443.91L737.94 443.27L741.15 442.68L744.37 442.15L747.62 441.67L750.88 441.23L754.17 440.85L757.47 440.52L760.8 440.25L764.15 440.02L767.51 439.84"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M763.48 440.06L736.51 430.69L737.91 452.75Z"/>
+<path class="ink given dash" style="stroke-width:1.8;fill:none;--dash:15.48 10.32;stroke:#1b1b1b;stroke-dasharray:15.48 10.32;stroke-linecap:round;stroke-linejoin:round" d="M648.63 216.77L651.13 214.42L653.66 212.13L656.22 209.9L658.8 207.73L661.4 205.62L664.03 203.57L666.67 201.58L669.35 199.65L672.05 197.78L674.77 195.97L677.51 194.22L680.28 192.53L683.08 190.91L685.89 189.34L688.73 187.83L691.6 186.39L694.49 185L697.4 183.68L700.33 182.41L703.3 181.21L706.28 180.07L709.29 178.98L712.32 177.96L715.37 177L718.45 176.1L721.56 175.26L724.68 174.47L727.84 173.75L731.01 173.1L734.21 172.5L737.43 171.96L740.68 171.48L743.95 171.06L747.24 170.7L750.56 170.41L753.9 170.17L757.27 169.99L760.66 169.88L764.07 169.82L767.51 169.83"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M763.39 169.83L736.96 159.06L737.19 181.17Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="767.51" cy="439.84" r="6.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="767.51" cy="169.83" r="6.71"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M767.51 439.84L767.51 169.83"/>
+<text class="lbl  upright" x="775.51" y="304.83" font-size="35.09" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y</text>
+<text class="lbl  upright" x="788.32" y="145.35" font-size="43.86" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl  upright" x="617.16" y="417.11" font-size="32.9" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x = θ</text>
+<text class="lbl  upright" x="1055.81" y="510.21" font-size="32.9" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">z = 1 − cos θ</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The developed cylinder: y = (k/2)(1 + cos x), the cosine (sine) curve, between the line y = k and the mean line y = k/2 (dash-dot), which it crosses at x = π/2. The line z = 2 through Z is the second edge of the strip.">
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M466.81 86.11L472.81 86.32L478.8 86.59L484.79 86.92L490.79 87.32L496.78 87.79L502.77 88.32L508.77 88.91L514.76 89.56L520.75 90.28L526.75 91.07L532.74 91.91L538.73 92.82L544.73 93.79L550.72 94.83L556.71 95.92L562.71 97.08L568.7 98.3L574.69 99.58L580.69 100.93L586.68 102.33L592.67 103.79L598.67 105.31L604.66 106.89L610.65 108.53L616.65 110.22L622.64 111.97L628.63 113.78L634.63 115.65L640.62 117.57L646.61 119.54L652.61 121.57L658.6 123.65L664.59 125.79L670.59 127.97L676.58 130.21L682.57 132.5L688.57 134.83L694.56 137.22L700.55 139.65L706.55 142.13L712.54 144.66L718.53 147.23L724.53 149.85L730.52 152.51L736.51 155.21L742.51 157.95L748.5 160.74L754.49 163.56L760.49 166.42L766.48 169.32L772.47 172.26L778.47 175.23L784.46 178.24L790.45 181.28L796.45 184.35L802.44 187.46L808.43 190.59L814.43 193.76L820.42 196.95L826.41 200.17L832.41 203.41L838.4 206.68L844.39 209.97L850.39 213.29L856.38 216.62L862.37 219.98L868.37 223.35L874.36 226.74L880.35 230.15L886.35 233.57L892.34 237.01L898.33 240.46L904.33 243.92L910.32 247.39L916.31 250.88L922.31 254.36L928.3 257.86L934.29 261.36L940.29 264.86L946.28 268.37L952.27 271.88L958.27 275.39L964.26 278.9L970.25 282.4L976.25 285.9L982.24 289.4L988.23 292.89L994.23 296.38L1000.22 299.85L1006.21 303.32L1012.21 306.78L1018.2 310.22L1024.19 313.65L1030.19 317.07L1036.18 320.47L1042.17 323.85L1048.17 327.21L1054.16 330.56L1060.15 333.89L1066.15 337.19L1072.14 340.47L1078.13 343.73L1084.13 346.96L1090.12 350.16L1096.11 353.34L1102.11 356.49L1108.1 359.61L1114.09 362.7L1120.09 365.75L1126.08 368.78L1132.07 371.77L1138.07 374.72L1144.06 377.64L1150.05 380.52L1156.05 383.36L1162.04 386.17L1168.03 388.93L1174.03 391.66L1180.02 394.34L1186.01 396.97"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M466.81 86.11L1210.81 107.71"/>
+<path class="ink cons" style="stroke-width:2.84;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M126.81 653.11L1180.81 683.71"/>
+<path class="ink cons dash" style="stroke-width:2.84;fill:none;--dash:14 4 2 4;stroke:#4b4b4b;stroke-dasharray:14 4 2 4;stroke-linecap:round;stroke-linejoin:round" d="M466.81 258.61L1210.81 280.21"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="466.81" cy="258.61" r="6.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.84" cx="953.76" cy="272.75" r="6.71"/>
+<path class="ink hatchline cons" style="fill:none;stroke-width:3.61;stroke:#2a2a2a" d="M428.81 619.35L428.81 556.08M418.49 621.74L418.49 562.46M408.17 624.12L408.17 568.83M397.85 626.51L397.85 575.21M387.53 628.57L387.53 580.8M377.21 630.6L377.21 586.28M366.89 632.62L366.89 591.75M356.57 634.6L356.57 597.12M346.25 636.27L346.25 601.74M335.93 637.95L335.93 606.36M325.61 639.63L325.61 610.97M315.29 641.2L315.29 615.35M304.97 642.55L304.97 619.13M294.65 643.89L294.65 622.91M284.33 645.23L284.33 626.7M274.01 646.42L274.01 630.11M263.69 647.43L263.69 633.06M253.37 648.43L253.37 636.01M243.05 649.44L243.05 638.96M232.73 650.24L232.73 641.38M222.41 650.9L222.41 643.48M212.09 651.56L212.09 645.57M201.77 652.23L201.77 647.67M191.45 652.58L191.45 649M181.12 652.88L181.12 650.19M170.8 653.18L170.8 651.39M160.48 653.4L160.48 652.38M150.16 653.31L150.16 652.6M139.84 653.22L139.84 652.83M129.52 653.14L129.52 653.05"/>
+</g>
+</svg>

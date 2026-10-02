@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 528.96 512.96" width="520" height="504" data-fig="fig-014a">
+<title>Fig. 14(a) — Catacaustic of a circle for parallel rays: the nephroid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 14(a), page 17. Section: caustics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The reflecting circle of radius a about O with its axes. The radiant point S is at infinity on the left: the incident rays are all parallel to OB; one of them meets the circle at T.">
+<circle class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="256.48" cy="256.48" r="200"/>
+<path class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M46.48 256.48L472.48 256.48"/>
+<path class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M256.48 472.48L256.48 38.48"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="256.48" cy="256.48" r="3.44"/>
+<text class="lbl " x="244.16" y="241.98" font-size="17.98" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt" style="fill:#1b1b1b" cx="80.48" cy="90.67" r="5.5"/>
+<circle class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="80.48" cy="90.67" r="8.16"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M92.96 90.67L100.64 90.67"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M91.29 84.43L97.94 80.59"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M86.72 79.86L90.56 73.21"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M80.48 78.19L80.48 70.51"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M74.24 79.86L70.4 73.21"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M69.67 84.43L63.02 80.59"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M68 90.67L60.32 90.67"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M69.67 96.91L63.02 100.75"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M74.24 101.48L70.4 108.13"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M80.48 103.15L80.48 110.83"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M86.72 101.48L90.56 108.13"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M91.29 96.91L97.94 100.75"/>
+<text class="lbl  upright" x="80.48" y="63.91" font-size="17.98" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">S(∞)</text>
+<path class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M120.48 90.67L368.32 90.67"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M216.48 90.67L205.69 86.14L205.69 95.2Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="368.32" cy="90.67" r="3.44"/>
+<text class="lbl " x="377.8" y="79.52" font-size="17.98" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Draw the circle about O of radius a/2. It cuts the axis at B and will be the fixed circle of the rolling construction.">
+<circle class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="256.48" cy="256.48" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="356.48" cy="256.48" r="3.44"/>
+<text class="lbl " x="367.85" y="269.86" font-size="17.98" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join O to T, the normal at T; it cuts the circle of radius a/2 at A. The incident and the reflected ray make the same angle θ with this normal.">
+<path class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M256.48 256.48L368.32 90.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="312.4" cy="173.58" r="3.44"/>
+<text class="lbl " x="299.02" y="173.58" font-size="17.98" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="Draw the circle on AT as diameter: radius a/4, the rolling circle of the nephroid. Its arc AP will equal the arc AB of the fixed circle.">
+<circle class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="340.36" cy="132.12" r="50"/>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="Draw the reflected ray TQ, the mirror image of the incident ray in the normal OT. It meets the rolling circle again at P; since AT is a diameter, AP is perpendicular to TP.">
+<path class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M368.32 90.67L472.46 348.43"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M472.46 348.43L472.62 336.73L464.21 340.12Z"/>
+<text class="lbl " x="485.84" y="348.43" font-size="17.98" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<path class="ink given" style="stroke-width:1.9;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M312.4 173.58L389.27 142.52"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="389.27" cy="142.52" r="3.44"/>
+<text class="lbl " x="402.65" y="142.52" font-size="17.98" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The point P describes the nephroid; the reflected ray TPQ is its tangent. The cusps are on AB at a/2 from O.">
+<path class="ink curve" style="stroke-width:2.96;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M356.48 256.48L356.51 256.48L356.58 256.48L356.71 256.47L356.89 256.45L357.12 256.42L357.4 256.38L357.73 256.33L358.11 256.25L358.53 256.16L359 256.04L359.52 255.89L360.08 255.71L360.69 255.51L361.34 255.27L362.02 254.99L362.75 254.68L363.52 254.33L364.32 253.94L365.15 253.5L366.01 253.01L366.91 252.48L367.83 251.9L368.78 251.26L369.75 250.58L370.74 249.84L371.75 249.04L372.78 248.19L373.82 247.28L374.87 246.3L375.93 245.27L376.99 244.18L378.06 243.02L379.13 241.8L380.2 240.52L381.26 239.18L382.31 237.77L383.35 236.29L384.38 234.75L385.39 233.15L386.38 231.48L387.35 229.75L388.3 227.95L389.22 226.09L390.1 224.17L390.95 222.18L391.77 220.14L392.55 218.03L393.28 215.87L393.97 213.64L394.62 211.36L395.21 209.02L395.75 206.63L396.24 204.19L396.67 201.69L397.03 199.15L397.34 196.56L397.58 193.93L397.76 191.25L397.87 188.53L397.9 185.77L397.86 182.97L397.75 180.15L397.57 177.29L397.3 174.4L396.96 171.48L396.53 168.54L396.02 165.58L395.43 162.61L394.75 159.62L393.99 156.61L393.14 153.6L392.2 150.58L391.17 147.56L390.06 144.53L388.85 141.51L387.56 138.5L386.18 135.5L384.7 132.51L383.14 129.53L381.48 126.58L379.73 123.64L377.9 120.73L375.98 117.85L373.96 115.01L371.86 112.19L369.68 109.42L367.4 106.69L365.04 104L362.6 101.36L360.08 98.76L357.47 96.23L354.79 93.74L352.02 91.32L349.18 88.96L346.27 86.66L343.28 84.43L340.23 82.27L337.1 80.18L333.91 78.17L330.66 76.24L327.34 74.38L323.97 72.6L320.54 70.91L317.06 69.31L313.52 67.79L309.94 66.36L306.31 65.02L302.64 63.78L298.94 62.63L295.19 61.57L291.42 60.61L287.61 59.75L283.78 58.99L279.92 58.32L276.04 57.76L272.15 57.3L268.25 56.94L264.33 56.69L260.41 56.53L256.48 56.48L252.55 56.53L248.63 56.69L244.71 56.94L240.81 57.3L236.92 57.76L233.04 58.32L229.18 58.99L225.35 59.75L221.54 60.61L217.77 61.57L214.02 62.63L210.32 63.78L206.65 65.02L203.02 66.36L199.44 67.79L195.9 69.31L192.42 70.91L188.99 72.6L185.62 74.38L182.3 76.24L179.05 78.17L175.86 80.18L172.73 82.27L169.68 84.43L166.69 86.66L163.78 88.96L160.94 91.32L158.17 93.74L155.49 96.23L152.88 98.76L150.36 101.36L147.92 104L145.56 106.69L143.28 109.42L141.1 112.19L139 115.01L136.98 117.85L135.06 120.73L133.23 123.64L131.48 126.58L129.82 129.53L128.26 132.51L126.78 135.5L125.4 138.5L124.11 141.51L122.9 144.53L121.79 147.56L120.76 150.58L119.82 153.6L118.97 156.61L118.21 159.62L117.53 162.61L116.94 165.58L116.43 168.54L116 171.48L115.66 174.4L115.39 177.29L115.21 180.15L115.1 182.97L115.06 185.77L115.09 188.53L115.2 191.25L115.38 193.93L115.62 196.56L115.93 199.15L116.29 201.69L116.72 204.19L117.21 206.63L117.75 209.02L118.34 211.36L118.99 213.64L119.68 215.87L120.41 218.03L121.19 220.14L122.01 222.18L122.86 224.17L123.74 226.09L124.66 227.95L125.61 229.75L126.58 231.48L127.57 233.15L128.58 234.75L129.61 236.29L130.65 237.77L131.7 239.18L132.76 240.52L133.83 241.8L134.9 243.02L135.97 244.18L137.03 245.27L138.09 246.3L139.14 247.28L140.18 248.19L141.21 249.04L142.22 249.84L143.21 250.58L144.18 251.26L145.13 251.9L146.05 252.48L146.95 253.01L147.81 253.5L148.64 253.94L149.44 254.33L150.21 254.68L150.94 254.99L151.62 255.27L152.27 255.51L152.88 255.71L153.44 255.89L153.96 256.04L154.43 256.16L154.85 256.25L155.23 256.33L155.56 256.38L155.84 256.42L156.07 256.45L156.25 256.47L156.38 256.48L156.45 256.48L156.48 256.48L156.45 256.48L156.38 256.48L156.25 256.49L156.07 256.51L155.84 256.54L155.56 256.58L155.23 256.63L154.85 256.71L154.43 256.8L153.96 256.92L153.44 257.07L152.88 257.25L152.27 257.45L151.62 257.69L150.94 257.97L150.21 258.28L149.44 258.63L148.64 259.02L147.81 259.46L146.95 259.95L146.05 260.48L145.13 261.06L144.18 261.7L143.21 262.38L142.22 263.12L141.21 263.92L140.18 264.77L139.14 265.68L138.09 266.66L137.03 267.69L135.97 268.78L134.9 269.94L133.83 271.16L132.76 272.44L131.7 273.78L130.65 275.19L129.61 276.67L128.58 278.21L127.57 279.81L126.58 281.48L125.61 283.21L124.66 285.01L123.74 286.87L122.86 288.79L122.01 290.78L121.19 292.82L120.41 294.93L119.68 297.09L118.99 299.32L118.34 301.6L117.75 303.94L117.21 306.33L116.72 308.77L116.29 311.27L115.93 313.81L115.62 316.4L115.38 319.03L115.2 321.71L115.09 324.43L115.06 327.19L115.1 329.99L115.21 332.81L115.39 335.67L115.66 338.56L116 341.48L116.43 344.42L116.94 347.38L117.53 350.35L118.21 353.34L118.97 356.35L119.82 359.36L120.76 362.38L121.79 365.4L122.9 368.43L124.11 371.45L125.4 374.46L126.78 377.46L128.26 380.45L129.82 383.43L131.48 386.38L133.23 389.32L135.06 392.23L136.98 395.11L139 397.95L141.1 400.77L143.28 403.54L145.56 406.27L147.92 408.96L150.36 411.6L152.88 414.2L155.49 416.73L158.17 419.22L160.94 421.64L163.78 424L166.69 426.3L169.68 428.53L172.73 430.69L175.86 432.78L179.05 434.79L182.3 436.72L185.62 438.58L188.99 440.36L192.42 442.05L195.9 443.65L199.44 445.17L203.02 446.6L206.65 447.94L210.32 449.18L214.02 450.33L217.77 451.39L221.54 452.35L225.35 453.21L229.18 453.97L233.04 454.64L236.92 455.2L240.81 455.66L244.71 456.02L248.63 456.27L252.55 456.43L256.48 456.48L260.41 456.43L264.33 456.27L268.25 456.02L272.15 455.66L276.04 455.2L279.92 454.64L283.78 453.97L287.61 453.21L291.42 452.35L295.19 451.39L298.94 450.33L302.64 449.18L306.31 447.94L309.94 446.6L313.52 445.17L317.06 443.65L320.54 442.05L323.97 440.36L327.34 438.58L330.66 436.72L333.91 434.79L337.1 432.78L340.23 430.69L343.28 428.53L346.27 426.3L349.18 424L352.02 421.64L354.79 419.22L357.47 416.73L360.08 414.2L362.6 411.6L365.04 408.96L367.4 406.27L369.68 403.54L371.86 400.77L373.96 397.95L375.98 395.11L377.9 392.23L379.73 389.32L381.48 386.38L383.14 383.43L384.7 380.45L386.18 377.46L387.56 374.46L388.85 371.45L390.06 368.43L391.17 365.4L392.2 362.38L393.14 359.36L393.99 356.35L394.75 353.34L395.43 350.35L396.02 347.38L396.53 344.42L396.96 341.48L397.3 338.56L397.57 335.67L397.75 332.81L397.86 329.99L397.9 327.19L397.87 324.43L397.76 321.71L397.58 319.03L397.34 316.4L397.03 313.81L396.67 311.27L396.24 308.77L395.75 306.33L395.21 303.94L394.62 301.6L393.97 299.32L393.28 297.09L392.55 294.93L391.77 292.82L390.95 290.78L390.1 288.79L389.22 286.87L388.3 285.01L387.35 283.21L386.38 281.48L385.39 279.81L384.38 278.21L383.35 276.67L382.31 275.19L381.26 273.78L380.2 272.44L379.13 271.16L378.06 269.94L376.99 268.78L375.93 267.69L374.87 266.66L373.82 265.68L372.78 264.77L371.75 263.92L370.74 263.12L369.75 262.38L368.78 261.7L367.83 261.06L366.91 260.48L366.01 259.95L365.15 259.46L364.32 259.02L363.52 258.63L362.75 258.28L362.02 257.97L361.34 257.69L360.69 257.45L360.08 257.25L359.52 257.07L359 256.92L358.53 256.8L358.11 256.71L357.73 256.63L357.4 256.58L357.12 256.54L356.89 256.51L356.71 256.49L356.58 256.48L356.51 256.48L356.48 256.48"/>
+</g>
+<g class="step" data-step="6" data-tool="note" data-text="Angles: the incident and the reflected ray make θ with the normal at T; the reflected ray makes 2θ with the axis. The arcs AB (on the circle of radius a/2) and AP (on the circle of radius a/4) are equal.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.16" d="M277.52 256.48A21.04 21.04 0 0 0 268.25 239.04"/>
+<text class="lbl " x="290.54" y="238.37" font-size="17.98" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.16" d="M344.04 90.67A24.28 24.28 0 0 0 354.74 110.8"/>
+<text class="lbl " x="331.4" y="110.3" font-size="17.98" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.16" d="M351.12 116.17A30.75 30.75 0 0 0 379.84 119.19"/>
+<text class="lbl " x="363.41" y="137.36" font-size="17.98" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.16" d="M459.59 256.48A24.28 24.28 0 0 0 426.21 233.97"/>
+<text class="lbl " x="459.45" y="220.7" font-size="17.98" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2θ</text>
+</g>
+</svg>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 378.95 274.67" width="520" height="377" data-fig="fig-062a">
+<title>Fig. 62(a) — The cycloid: the generating circle at one position, with its tangent</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 62(a), page 65. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The straight line on which the circle rolls, with the starting point O (the cusp of the curve).">
+<path class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M23.27 223.27L355.68 223.27"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="98.27" cy="223.27" r="2.46"/>
+<text class="lbl " x="98.27" y="231.26" font-size="12.88" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Draw the generating circle of radius a, touching the line at H, where OH = a·t is the length of the arc the circle has rolled over. Its centre C is a above H; N is the top of the diameter HN.">
+<circle class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="225.68" cy="123.27" r="100"/>
+<path class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M225.68 223.27L225.68 23.27"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="225.68" cy="123.27" r="1.72"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="225.68" cy="223.27" r="2.46"/>
+<text class="lbl " x="225.68" y="231.26" font-size="12.88" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="225.68" cy="23.27" r="2.46"/>
+<text class="lbl " x="225.68" y="15.28" font-size="12.88" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">N</text>
+</g>
+<g class="step" data-step="2" data-tool="roll" data-text="P is the point of the circle that was on the line at O. The arc HP of the circle is equal to OH, so the angle HCP is t. Draw the radius CP.">
+<path class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M225.68 123.27L130.05 152.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="130.05" cy="152.51" r="2.46"/>
+<text class="lbl " x="122.06" y="152.51" font-size="12.88" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="175.38" y="129.76" font-size="12.88" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.83" d="M215.7 126.32A10.44 10.44 0 0 0 225.68 133.7"/>
+<text class="lbl " x="212.57" y="140.98" font-size="12.88" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join P to H and to N. H is the instantaneous centre of rotation of P, so PH is the normal; the angle HPN is in a semicircle, hence a right angle, so PN is the tangent at P. Produce it to meet the line.">
+<path class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.05 152.51L225.68 223.27"/>
+<path class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M56.87 251.4L225.68 23.27"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="130.05" cy="152.51" r="2.46"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The marked angles: HNP = t/2 and PHO = t/2 (angles of the same arc HP at the circumference), and the tangent leans at φ = (π − t)/2 to the line.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.83" d="M217.4 34.45A13.91 13.91 0 0 0 225.68 37.18"/>
+<text class="lbl " x="216.18" y="52.08" font-size="12.88" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t/2</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.83" d="M211.7 212.92A17.39 17.39 0 0 0 208.28 223.27"/>
+<text class="lbl " x="195.85" y="213.43" font-size="12.88" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t/2</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.83" d="M95.08 223.27A17.39 17.39 0 0 0 88.03 209.29"/>
+<text class="lbl " x="104" y="210" font-size="12.88" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The cycloid: the path of P from the cusp O. The little V at O is the cusp, where the curve leaves the line at right angles.">
+<path class="ink curve" style="stroke-width:2.12;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M90 192.94L90.52 194.17L91.01 195.38L91.48 196.56L91.93 197.73L92.37 198.87L92.78 199.99L93.17 201.09L93.54 202.16L93.9 203.21L94.24 204.24L94.56 205.24L94.86 206.22L95.15 207.17L95.42 208.1L95.67 209L95.91 209.88L96.13 210.73L96.34 211.55L96.54 212.35L96.72 213.12L96.89 213.87L97.05 214.59L97.19 215.28L97.32 215.94L97.44 216.58L97.55 217.18L97.65 217.76L97.75 218.32L97.83 218.84L97.9 219.33L97.96 219.8L98.02 220.24L98.07 220.64L98.11 221.02L98.15 221.37L98.18 221.69L98.2 221.98L98.22 222.25L98.24 222.48L98.25 222.68L98.26 222.85L98.26 222.99L98.27 223.11L98.27 223.19L98.27 223.24L98.27 223.27L98.27 223.26L98.27 223.22L98.27 223.16L98.27 223.06L98.28 222.94L98.28 222.78L98.29 222.6L98.31 222.38L98.33 222.14L98.35 221.86L98.37 221.56L98.41 221.23L98.45 220.86L98.49 220.47L98.54 220.05L98.6 219.6L98.67 219.12L98.74 218.62L98.83 218.08L98.92 217.52L99.03 216.93L99.14 216.31L99.27 215.66L99.41 214.99L99.56 214.28L99.72 213.55L99.89 212.8L100.08 212.01L100.28 211.2L100.5 210.37L100.73 209.51L100.97 208.62L101.23 207.7L101.51 206.77L101.8 205.8L102.11 204.81L102.44 203.8L102.79 202.76L103.15 201.7L103.53 200.62L103.93 199.51L104.36 198.38L104.8 197.23L105.26 196.06L105.74 194.86L106.24 193.64L106.76 192.41L107.3 191.15L107.87 189.87L108.46 188.57L109.07 187.25L109.7 185.91L110.36 184.55L111.04 183.18L111.75 181.79L112.48 180.38L113.23 178.95L114.01 177.51L114.81 176.05L115.64 174.57L116.5 173.08L117.38 171.57L118.28 170.05L119.22 168.52L120.18 166.97L121.16 165.41L122.18 163.83L123.22 162.25L124.29 160.65L125.38 159.04L126.51 157.42L127.66 155.79L128.84 154.15L130.05 152.51"/>
+</g>
+</svg>

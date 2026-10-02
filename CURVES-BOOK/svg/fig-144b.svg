@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 577.13 511.45" width="520" height="461" data-fig="fig-144b">
+<title>Fig. 144(b) — The tangent to the limacon by the point of contact T</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 144(b), page 150. Section: limacon.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle about O, and the line OX.">
+<path class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M35.44 330.62L541.69 330.62"/>
+<circle class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="191.69" cy="330.62" r="125"/>
+<path class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M174.29 206.83A125 125 0 0 0 125.45 224.61"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.62" d="M174.29 206.83L166.6 222.35M165.7 208.35L159.11 224.36M157.23 210.46L151.77 226.89M148.93 213.16L144.64 229.93M140.85 216.42L137.73 233.46M133 220.25L131.08 237.46M125.45 224.61L124.73 241.91"/>
+<path class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M103.3 419.01A125 125 0 0 0 234.44 448.08"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.62" d="M103.3 419.01L120.32 415.81M112.87 427.64L129.47 422.71M123.28 435.23L139.28 428.63M134.41 441.72L149.65 433.5M146.15 447.03L160.46 437.28M158.38 451.1L171.61 439.93M170.96 453.89L182.97 441.42M183.76 455.37L194.42 441.73M196.64 455.52L205.85 440.85M209.48 454.35L217.12 438.81M222.12 451.86L228.12 435.62M234.44 448.08L238.74 431.31"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.27" cx="191.69" cy="330.62" r="3.75"/>
+<text class="lbl " x="181.35" y="318.45" font-size="19.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="The equal circle rolls on it: its centre A lies on OT produced, at distance 2R from O, and it touches the fixed circle at T.">
+<path class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M191.69 330.62L283.26 245.53"/>
+<circle class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="374.82" cy="160.44" r="125"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.27" cx="283.26" cy="245.53" r="3.75"/>
+<text class="lbl " x="283.26" y="233.36" font-size="19.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.27" cx="374.82" cy="160.44" r="3.75"/>
+<text class="lbl " x="385.16" y="148.27" font-size="19.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="2" data-tool="roll" data-text="P is a point rigidly attached to the rolling circle (the end of the bar from A, pointing in the direction π + 2t).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.27" cx="370.34" cy="221.52" r="3.75"/>
+<text class="lbl " x="380.68" y="209.36" font-size="19.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="T is the instantaneous centre of rotation of the rolling circle, so TP is normal to the path of P.">
+<path class="ink given" style="stroke-width:2.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M283.26 245.53L370.34 221.52"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="The perpendicular to TP at P is the tangent to the path.">
+<path class="ink cons" style="stroke-width:1.27;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M353.06 158.86L387.61 284.19"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The path of P, an epitrochoid (a limacon), touching the tangent at P.">
+<path class="ink curve" style="stroke-width:3.23;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M356.91 476.01L357.94 473.79L358.94 471.58L359.91 469.37L360.85 467.17L361.76 464.97L362.64 462.78L363.49 460.6L364.31 458.42L365.1 456.25L365.86 454.09L366.6 451.94L367.31 449.8L367.99 447.67L368.65 445.54L369.28 443.43L369.89 441.33L370.47 439.23L371.03 437.15L371.56 435.08L372.08 433.02L372.57 430.97L373.04 428.94L373.49 426.91L373.92 424.9L374.32 422.9L374.71 420.91L375.08 418.93L375.44 416.97L375.77 415.02L376.09 413.08L376.39 411.15L376.68 409.24L376.95 407.33L377.2 405.45L377.45 403.57L377.67 401.71L377.89 399.85L378.09 398.02L378.28 396.19L378.46 394.38L378.62 392.57L378.78 390.79L378.92 389.01L379.06 387.24L379.18 385.49L379.3 383.74L379.41 382.01L379.51 380.29L379.6 378.58L379.68 376.88L379.76 375.2L379.83 373.52L379.9 371.85L379.96 370.19L380.02 368.54L380.06 366.9L380.11 365.27L380.15 363.64L380.19 362.03L380.22 360.42L380.25 358.82L380.28 357.23L380.3 355.64L380.32 354.06L380.34 352.49L380.36 350.92L380.37 349.36L380.38 347.8L380.39 346.24L380.4 344.7L380.41 343.15L380.42 341.61L380.42 340.07L380.43 338.53L380.43 337L380.43 335.46L380.44 333.93L380.44 332.4L380.44 330.87L380.44 329.34L380.44 327.81L380.43 326.28L380.43 324.75L380.43 323.21L380.42 321.68L380.42 320.14L380.41 318.6L380.41 317.06L380.4 315.51L380.39 313.96L380.37 312.4L380.36 310.84L380.35 309.27L380.33 307.7L380.31 306.12L380.29 304.54L380.26 302.95L380.23 301.35L380.2 299.74L380.16 298.13L380.12 296.51L380.08 294.88L380.03 293.24L379.98 291.6L379.92 289.94L379.86 288.28L379.79 286.6L379.71 284.92L379.63 283.22L379.54 281.51L379.44 279.8L379.34 278.07L379.22 276.33L379.1 274.58L378.97 272.82L378.83 271.04L378.67 269.26L378.51 267.46L378.34 265.65L378.15 263.83L377.96 261.99L377.75 260.15L377.52 258.29L377.29 256.42L377.04 254.53L376.77 252.64L376.49 250.73L376.19 248.8L375.88 246.87L375.55 244.92L375.2 242.96L374.84 240.99L374.46 239L374.05 237.01L373.63 235L373.19 232.98L372.73 230.94L372.24 228.9L371.74 226.84L371.21 224.77L370.66 222.7L370.08 220.61L369.48 218.51L368.86 216.4L368.21 214.28L367.54 212.15L366.84 210.01L366.11 207.86L365.36 205.7L364.58 203.54L363.76 201.36L362.93 199.18L362.06 197L361.16 194.8L360.23 192.6L359.27 190.39L358.28 188.18L357.26 185.96L356.2 183.74L355.12 181.52"/>
+</g>
+</svg>

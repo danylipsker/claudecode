@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1105.8 1042.8" width="520" height="490" data-fig="fig-051">
+<title>Fig. 51 — Newton's method: two angles of constant size turning about A and B, one pair of sides meeting on a line</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 51, page 51. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A fixed line, and two fixed points A and B (the vertices of the two angles).">
+<path class="ink thick" style="stroke-width:6.19;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M67.9 352.9L1037.9 352.9"/>
+<path class="ink given" style="stroke-width:3.98;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M283.4 779.4L348.4 779.4L348.4 736.4L283.4 736.4Z"/>
+<path class="ink given" style="stroke-width:3.98;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M651.4 974.9L734.4 974.9L734.4 930.9L651.4 930.9Z"/>
+<circle class="pt" style="fill:#1b1b1b" cx="315.9" cy="757.9" r="15.81"/>
+<circle class="pt" style="fill:#1b1b1b" cx="692.9" cy="952.9" r="15.81"/>
+<text class="lbl  upright" x="315.9" y="815.21" font-size="35.72" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+<text class="lbl  upright" x="621.59" y="952.9" font-size="35.72" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M342.9 337.9L437.9 337.9"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M437.9 337.9L421.36 330.95L421.36 344.85Z"/>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="At A draw an angle of fixed size (about 46° here) turning about A. One of its sides passes through the point P of the fixed line; the other side is the one that will meet the second angle.">
+<path class="ink hatchline" style="fill:none;stroke-width:3.1;stroke:#2a2a2a" d="M320.82 744.06L328.75 751.99M330.67 716.37L354.46 740.16M340.51 688.68L380.17 728.34M350.36 660.99L405.87 716.51M360.2 633.31L431.58 704.69M370.04 605.62L457.29 692.86M379.89 577.93L482.99 681.04M389.73 550.24L508.7 669.21M399.58 522.56L534.41 657.39M409.42 494.87L560.12 645.56M419.27 467.18L585.82 633.74M429.11 439.49L611.53 621.91M438.96 411.8L637.24 610.09M448.8 384.12L662.94 598.26M458.65 356.43L688.65 586.43M468.49 328.74L714.36 574.61M478.33 301.05L740.06 562.78M488.18 273.37L765.77 550.96M498.02 245.68L791.48 539.13M507.87 217.99L817.18 527.31M517.71 190.3L842.89 515.48M527.56 162.62L868.6 503.66M537.4 134.93L894.31 491.83M547.25 107.24L920.01 480.01M557.09 79.55L939.66 462.12M587.55 72.48L638.25 123.18M670.82 155.75L708.28 193.21M744.02 228.96L780.7 265.63M868.97 353.9L902.3 387.23M942.57 427.5L945.45 430.38M632.99 80.39L636.04 83.44"/>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M315.9 757.9L561.23 67.9"/>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M315.9 757.9L937.9 471.78"/>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M561.23 67.9L635.9 80.9L639.9 152.9L704.9 158.9L711.9 229.9L779.9 227.9L780.9 274.9L852.9 352.9L900.9 355.9L903.9 422.9L945.9 427.9L937.9 471.78"/>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="At B draw a second angle of fixed size (about 37°). Its left side passes through the same point P; its right side meets the second side of the angle at A in the point Q.">
+<path class="fill" style="fill:#fff" d="M692.9 952.9L390 172.9L445.9 207.9L505.9 154.9L539.9 218.9L582.9 206.9L632.9 277.9L665.9 238.9L712.9 227.9L747.9 274.9L783.9 237.9L827.9 257.9L897.8 244.9Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.1;stroke:#2a2a2a" d="M688.95 942.73L695.84 942.73M681.05 922.38L701.73 922.38M673.15 902.03L707.62 902.03M665.25 881.69L713.51 881.69M657.34 861.34L719.4 861.34M649.44 840.99L725.29 840.99M641.54 820.65L731.18 820.65M633.64 800.3L737.06 800.3M625.74 779.95L742.95 779.95M617.84 759.61L748.84 759.61M609.94 739.26L754.73 739.26M602.03 718.91L760.62 718.91M594.13 698.57L766.51 698.57M586.23 678.22L772.4 678.22M578.33 657.87L778.28 657.87M570.43 637.53L784.17 637.53M562.53 617.18L790.06 617.18M554.63 596.83L795.95 596.83M546.73 576.49L801.84 576.49M538.82 556.14L807.73 556.14M530.92 535.79L813.62 535.79M523.02 515.45L819.5 515.45M515.12 495.1L825.39 495.1M507.22 474.75L831.28 474.75M499.32 454.41L837.17 454.41M491.42 434.06L843.06 434.06M483.52 413.71L848.95 413.71M475.61 393.37L854.84 393.37M467.71 373.02L860.72 373.02M459.81 352.67L866.61 352.67M451.91 332.33L872.5 332.33M444.01 311.98L878.39 311.98M436.11 291.63L884.28 291.63M428.21 271.28L628.24 271.28M638.5 271.28L745.21 271.28M751.42 271.28L890.17 271.28M420.3 250.94L613.91 250.94M655.71 250.94L730.06 250.94M771.21 250.94L812.58 250.94M865.34 250.94L896.06 250.94M412.4 230.59L599.58 230.59M701.4 230.59L714.9 230.59M404.5 210.24L535.3 210.24M570.91 210.24L585.26 210.24M396.6 189.9L417.15 189.9M466.28 189.9L524.49 189.9M489.31 169.55L513.68 169.55"/>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M692.9 952.9L390 172.9"/>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M692.9 952.9L897.8 244.9"/>
+<path class="ink given" style="stroke-width:3.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M390 172.9L445.9 207.9L505.9 154.9L539.9 218.9L582.9 206.9L632.9 277.9L665.9 238.9L712.9 227.9L747.9 274.9L783.9 237.9L827.9 257.9L897.8 244.9"/>
+<circle class="pt" style="fill:#1b1b1b" cx="692.9" cy="952.9" r="15.81"/>
+<circle class="pt" style="fill:#1b1b1b" cx="459.9" cy="352.9" r="5.03"/>
+<text class="lbl " x="440.09" y="376.21" font-size="37.6" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt" style="fill:#1b1b1b" cx="815.9" cy="527.9" r="5.03"/>
+<text class="lbl " x="839.21" y="527.9" font-size="37.6" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Slide P along the fixed line, keeping both angles the same size. The point Q then describes a conic through A and B.">
+<path class="ink curve" style="stroke-width:6.19;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M815.9 527.9L816.48 530L817.05 532.1L817.62 534.18L818.19 536.27L818.75 538.34L819.3 540.41L819.85 542.47L820.39 544.52L820.92 546.56L821.45 548.6L821.98 550.63L822.5 552.66L823.01 554.68L823.52 556.69L824.03 558.69L824.53 560.69L825.02 562.68L825.51 564.66L825.99 566.63L826.47 568.6L826.94 570.57L827.41 572.52L827.87 574.47L828.33 576.41L828.78 578.34L829.22 580.27L829.67 582.19L830.1 584.1L830.53 586.01L830.96 587.91L831.38 589.8L831.8 591.69L832.21 593.57L832.61 595.44L833.02 597.31L833.41 599.16L833.8 601.02L834.19 602.86L834.57 604.7L834.95 606.53L835.32 608.36L835.69 610.17L836.05 611.98L836.41 613.79L836.76 615.59L837.11 617.38L837.45 619.16L837.79 620.94L838.12 622.71L838.45 624.47L838.78 626.23L839.1 627.98L839.41 629.73L839.72 631.46L840.03 633.2L840.33 634.92L840.63 636.64L840.92 638.35L841.21 640.05L841.49 641.75L841.77 643.44L842.04 645.13L842.31 646.81L842.58 648.48L842.84 650.14L843.1 651.8L843.35 653.46L843.6 655.1L843.84 656.74L844.08 658.37L844.32 660L844.55 661.62L844.77 663.23L845 664.84L845.21 666.44L845.43 668.04L845.64 669.63L845.84 671.21L846.05 672.78L846.24 674.35"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M844.46 660.99L850.66 637.32L831.9 639.99Z"/>
+</g>
+</svg>

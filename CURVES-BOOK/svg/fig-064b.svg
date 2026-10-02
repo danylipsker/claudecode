@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 752.43 292.4" width="520" height="202" data-fig="fig-064b">
+<title>Fig. 64(b) — The tautochrone: two balls on a cycloidal arch</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 64(b), page 67. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A cycloidal arch with its cusps upwards: the curve of restraint. The small V at each end shows the cusp, where the next arch begins.">
+<path class="ink thick" style="stroke-width:4.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M46.2 92.17L47.74 89.3L49.18 86.5L50.52 83.76L51.77 81.11L52.93 78.52L54 76.02L54.99 73.61L55.9 71.28L56.72 69.04L57.47 66.89L58.15 64.83L58.76 62.88L59.3 61.02L59.78 59.26L60.21 57.61L60.57 56.06L60.89 54.62L61.16 53.29L61.38 52.07L61.56 50.96L61.71 49.97L61.82 49.08L61.91 48.32L61.97 47.67L62.01 47.14L62.04 46.73L62.05 46.43L62.05 46.26L62.05 46.2L62.06 46.26L62.06 46.45L62.07 46.75L62.1 47.17L62.14 47.7L62.2 48.36L62.29 49.13L62.41 50.01L62.56 51.01L62.74 52.13L62.97 53.35L63.24 54.69L63.55 56.14L63.92 57.69L64.35 59.35L64.83 61.11L65.38 62.97L65.99 64.94L66.67 67L67.43 69.15L68.26 71.4L69.17 73.73L70.16 76.15L71.24 78.66L72.4 81.24L73.66 83.9L75 86.64L76.45 89.45L77.99 92.32L79.63 95.26L81.38 98.26L83.23 101.32L85.18 104.43L87.24 107.59L89.42 110.79L91.7 114.04L94.1 117.33L96.61 120.65L99.24 124L101.98 127.38L104.84 130.78L107.82 134.2L110.92 137.63L114.13 141.07L117.47 144.52L120.92 147.97L124.49 151.42L128.18 154.86L131.99 158.3L135.92 161.71L139.97 165.11L144.13 168.49L148.41 171.84L152.8 175.16L157.31 178.45L161.93 181.69L166.66 184.9L171.5 188.06L176.45 191.17L181.51 194.22L186.67 197.22L191.93 200.16L197.29 203.03L202.76 205.84L208.31 208.57L213.96 211.23L219.7 213.81L225.53 216.32L231.44 218.73L237.44 221.07L243.51 223.31L249.66 225.46L255.89 227.52L262.18 229.48L268.54 231.34L274.96 233.1L281.44 234.75L287.97 236.3L294.56 237.75L301.19 239.08L307.87 240.3L314.59 241.42L321.34 242.41L328.13 243.3L334.95 244.07L341.79 244.72L348.65 245.25L355.52 245.67L362.41 245.96L369.31 246.14L376.21 246.2L383.12 246.14L390.01 245.96L396.9 245.67L403.78 245.25L410.64 244.72L417.48 244.07L424.3 243.3L431.09 242.41L437.84 241.42L444.56 240.3L451.24 239.08L457.87 237.75L464.46 236.3L470.99 234.75L477.47 233.1L483.89 231.34L490.25 229.48L496.54 227.52L502.76 225.46L508.91 223.31L514.99 221.07L520.98 218.73L526.9 216.32L532.73 213.81L538.47 211.23L544.12 208.57L549.67 205.84L555.13 203.03L560.5 200.16L565.76 197.22L570.92 194.22L575.98 191.17L580.93 188.06L585.77 184.9L590.5 181.69L595.12 178.45L599.63 175.16L604.02 171.84L608.3 168.49L612.46 165.11L616.51 161.71L620.44 158.3L624.25 154.86L627.94 151.42L631.51 147.97L634.96 144.52L638.29 141.07L641.51 137.63L644.61 134.2L647.58 130.78L650.44 127.38L653.19 124L655.81 120.65L658.33 117.33L660.72 114.04L663.01 110.79L665.18 107.59L667.25 104.43L669.2 101.32L671.05 98.26L672.8 95.26L674.44 92.32L675.98 89.45L677.42 86.64L678.77 83.9L680.03 81.24L681.19 78.66L682.27 76.15L683.26 73.73L684.17 71.4L685 69.15L685.76 67L686.44 64.94L687.05 62.97L687.6 61.11L688.08 59.35L688.5 57.69L688.87 56.14L689.19 54.69L689.46 53.35L689.69 52.13L689.87 51.01L690.02 50.01L690.14 49.13L690.22 48.36L690.29 47.7L690.33 47.17L690.35 46.75L690.37 46.45L690.37 46.26L690.37 46.2L690.37 46.26L690.38 46.43L690.39 46.73L690.42 47.14L690.46 47.67L690.52 48.32L690.6 49.08L690.72 49.97L690.87 50.96L691.05 52.07L691.27 53.29L691.54 54.62L691.85 56.06L692.22 57.61L692.64 59.26L693.12 61.02L693.67 62.88L694.28 64.83L694.95 66.89L695.71 69.04L696.53 71.28L697.44 73.61L698.42 76.02L699.5 78.52L700.66 81.11L701.91 83.76L703.25 86.5L704.69 89.3L706.23 92.17"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.66" d="M376.21 230.98L376.21 261.42"/>
+</g>
+<g class="step" data-step="1" data-tool="note" data-text="Two balls of the same mass are let go from different heights on the arch. Each is pulled along the tangent by the component of its weight and runs down towards the lowest point.">
+<circle class="pt" style="fill:#1b1b1b" cx="82.93" cy="100.84" r="11.74"/>
+<circle class="pt" style="fill:#1b1b1b" cx="527.68" cy="215.99" r="11.74"/>
+<path class="ink given" style="stroke-width:2.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M100.01 111.48L120.92 145.58"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M120.92 145.58L118.61 130.5L108.53 136.68Z"/>
+<path class="ink given" style="stroke-width:2.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M507.6 214.69L467.06 231.79"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M467.06 231.79L482.32 231.77L477.72 220.88Z"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="Because the arch is a cycloid, the force along the curve is proportional to the arc s measured from the lowest point (m s̈ = −k²s), so the motion is harmonic and the time to reach the lowest point does not depend on where the ball starts.">
+<text class="lbl  upright" x="376.21" y="195.45" font-size="20.47" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">lowest point</text>
+</g>
+</svg>

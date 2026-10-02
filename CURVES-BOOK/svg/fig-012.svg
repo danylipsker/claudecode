@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 519.84 466.94" width="520" height="467" data-fig="fig-012">
+<title>Fig. 12 — Reflection at a curve: the reflected point S̄ and the foot P</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 12, page 15. Section: caustics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A reflecting curve f = 0, a point T on it with its tangent (the horizontal line), and the radiant point S.">
+<path class="ink thick" style="stroke-width:2.91;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M61.92 406.01L64.31 402.64L66.7 399.32L69.08 396.02L71.47 392.76L73.86 389.53L76.25 386.34L78.63 383.18L81.02 380.06L83.41 376.97L85.8 373.91L88.18 370.89L90.57 367.9L92.96 364.95L95.35 362.03L97.73 359.15L100.12 356.29L102.51 353.48L104.9 350.7L107.28 347.95L109.67 345.23L112.06 342.55L114.45 339.91L116.83 337.3L119.22 334.72L121.61 332.18L124 329.67L126.38 327.2L128.77 324.76L131.16 322.35L133.55 319.98L135.93 317.64L138.32 315.34L140.71 313.07L143.1 310.83L145.48 308.63L147.87 306.47L150.26 304.33L152.65 302.23L155.03 300.17L157.42 298.14L159.81 296.15L162.2 294.18L164.58 292.26L166.97 290.36L169.36 288.5L171.75 286.68L174.13 284.89L176.52 283.13L178.91 281.41L181.3 279.72L183.68 278.07L186.07 276.45L188.46 274.87L190.85 273.32L193.23 271.8L195.62 270.32L198.01 268.87L200.4 267.45L202.78 266.07L205.17 264.73L207.56 263.42L209.95 262.14L212.33 260.9L214.72 259.69L217.11 258.51L219.5 257.37L221.88 256.27L224.27 255.19L226.66 254.16L229.05 253.15L231.43 252.18L233.82 251.25L236.21 250.35L238.6 249.48L240.98 248.65L243.37 247.85L245.76 247.08L248.15 246.35L250.53 245.66L252.92 245L255.31 244.37L257.7 243.77L260.08 243.22L262.47 242.69L264.86 242.2L267.25 241.74L269.63 241.32L272.02 240.93L274.41 240.58L276.8 240.26L279.18 239.97L281.57 239.72L283.96 239.5L286.35 239.32L288.73 239.17L291.12 239.06L293.51 238.98L295.9 238.93L298.28 238.92L300.67 238.94L303.06 239L305.45 239.09L307.83 239.21L310.22 239.37L312.61 239.57L315 239.79L317.38 240.06L319.77 240.35L322.16 240.68L324.55 241.05L326.93 241.45L329.32 241.88L331.71 242.34L334.1 242.85L336.48 243.38L338.87 243.95L341.26 244.55L343.65 245.19L346.03 245.86L348.42 246.57L350.81 247.31L353.2 248.09L355.58 248.89L357.97 249.74L360.36 250.62L362.75 251.53L365.13 252.47L367.52 253.45L369.91 254.47L372.3 255.51L374.68 256.6L377.07 257.71L379.46 258.87L381.85 260.05L384.23 261.27L386.62 262.52L389.01 263.81L391.4 265.13L393.78 266.49L396.17 267.88L398.56 269.3L400.95 270.76L403.33 272.26L405.72 273.78L408.11 275.34L410.5 276.94L412.88 278.57L415.27 280.23L417.66 281.93L420.05 283.66L422.43 285.43L424.82 287.23L427.21 289.07L429.6 290.93L431.98 292.84L434.37 294.78L436.76 296.75L439.15 298.75L441.53 300.79L443.92 302.87"/>
+<text class="lbl  upright" x="92.92" y="350.92" font-size="15.02" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">f = 0</text>
+<path class="ink given" style="stroke-width:1.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M31.92 238.92L487.92 238.92"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.14" cx="297.92" cy="238.92" r="3.72"/>
+<text class="lbl " x="307.23" y="227.96" font-size="17.67" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<circle class="pt" style="fill:#1b1b1b" cx="166.92" cy="423.92" r="5.41"/>
+<circle class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="166.92" cy="423.92" r="8.16"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M179.4 423.92L187.08 423.92"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M177.73 417.68L184.38 413.84"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.16 413.11L177 406.46"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.92 411.44L166.92 403.76"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M160.68 413.11L156.84 406.46"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M156.11 417.68L149.46 413.84"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M154.44 423.92L146.76 423.92"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M156.11 430.16L149.46 434"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M160.68 434.73L156.84 441.38"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.92 436.4L166.92 444.08"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.16 434.73L177 441.38"/>
+<path class="ink given" style="stroke-width:0.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M177.73 430.16L184.38 434"/>
+<text class="lbl " x="191.03" y="423.92" font-size="17.67" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">S</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the incident ray ST, the light going from S to the point T of the curve.">
+<path class="ink given" style="stroke-width:1.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.92 423.92L297.92 238.92"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M250.76 305.52L241 311.6L248.27 316.75Z"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="Drop the perpendicular from S to the tangent; its foot is P. As T runs along the curve, P describes the pedal of f = 0 with respect to S.">
+<path class="ink given" style="stroke-width:1.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.92 423.92L166.92 31.92"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.14" cx="166.92" cy="238.92" r="3.72"/>
+<text class="lbl " x="157.61" y="227.96" font-size="17.67" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.14" d="M176.64 238.92L176.64 248.64L166.92 248.64"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="Mark S̄ on the perpendicular beyond P with PS̄ = PS: S̄ is the reflection of S in the tangent. As T runs along the curve, S̄ describes the orthotomic, the pedal enlarged twice from S.">
+<path class="ink cons" style="stroke-width:1.14;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M200.04 56.91A185 185 0 0 0 133.8 56.91"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.14" cx="166.92" cy="53.92" r="3.72"/>
+<text class="lbl " x="155.96" y="53.92" font-size="17.67" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">S̄</text>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="Join S̄ to T and carry the line on beyond T: the line S̄TQ is the reflected ray (the mirror image of ST in the tangent). T is the instantaneous centre of S̄, so TQ is the normal of the orthotomic.">
+<path class="ink given" style="stroke-width:1.87;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.92 53.92L436.78 435.02"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M436.78 435.02L434.29 423.79L427.02 428.94Z"/>
+<text class="lbl " x="446.09" y="424.06" font-size="17.67" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="As T moves, the reflected rays TQ envelope the caustic, which is therefore the evolute of the orthotomic.">
+
+</g>
+</svg>

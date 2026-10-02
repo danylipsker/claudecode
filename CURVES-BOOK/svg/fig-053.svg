@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1165.08 626.11" width="520" height="279" data-fig="fig-053">
+<title>Fig. 53 — The inversor OEPFP′ attached to the 3-bar linkage: P′ describes a conic</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 53, page 52. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The 3-bar linkage of Fig. 52 (A, B and O on the fixed line, O the midpoint of AB here) with P on the bar CD, OP parallel to AD.">
+<path class="ink given" style="stroke-width:4.19;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M71.54 449.18L1093.54 449.18"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M126.54 479.18L206.54 479.18L206.54 419.18L126.54 419.18Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M327.54 479.18L412.54 479.18L412.54 419.18L327.54 419.18Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M535.54 479.18L611.54 479.18L611.54 419.18L535.54 419.18Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.52 433.68L358.67 517.07L361.94 519.01L364.7 521.64L366.81 524.81L368.16 528.37L368.68 532.14L368.35 535.93L367.18 539.55L365.24 542.83L362.62 545.59L359.45 547.69L355.89 549.04L352.12 549.57L348.33 549.24L344.7 548.07L159.56 464.68L156.28 462.74L153.52 460.12L151.42 456.95L150.07 453.39L149.55 449.62L149.87 445.82L151.04 442.2L152.98 438.93L155.6 436.17L158.77 434.06L162.33 432.71L166.1 432.19L169.9 432.52L173.52 433.68Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M340.49 519.78L646.72 251.69L649.85 249.52L653.38 248.1L657.14 247.5L660.94 247.75L664.58 248.85L667.9 250.72L670.71 253.29L672.88 256.41L674.3 259.95L674.9 263.71L674.65 267.5L673.56 271.15L671.68 274.46L669.11 277.28L362.88 545.36L359.75 547.53L356.22 548.95L352.46 549.55L348.67 549.3L345.02 548.21L341.71 546.33L338.89 543.77L336.72 540.64L335.3 537.11L334.7 533.35L334.95 529.55L336.05 525.91L337.92 522.59L340.49 519.78Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M673.38 271.55L589 456.25L587.04 459.51L584.41 462.25L581.22 464.35L577.66 465.68L573.88 466.18L570.09 465.83L566.48 464.64L563.21 462.68L560.47 460.05L558.38 456.87L557.05 453.3L556.54 449.53L556.89 445.74L558.08 442.12L642.45 257.42L644.41 254.16L647.05 251.41L650.23 249.32L653.8 247.99L657.57 247.49L661.36 247.84L664.98 249.02L668.24 250.98L670.99 253.62L673.08 256.8L674.41 260.37L674.91 264.14L674.56 267.93L673.38 271.55Z"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="166.54" cy="449.18" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="166.54" cy="449.18" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="573.54" cy="449.18" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="573.54" cy="449.18" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="351.68" cy="532.57" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="351.68" cy="532.57" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="657.92" cy="264.48" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="657.92" cy="264.48" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="370.04" cy="449.18" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="370.04" cy="449.18" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="504.8" cy="398.53" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="504.8" cy="398.53" r="8.8"/>
+<text class="lbl  upright" x="166.54" y="388.62" font-size="35.65" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+<text class="lbl  upright" x="370.04" y="388.62" font-size="35.65" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">O</text>
+<text class="lbl  upright" x="573.54" y="503.74" font-size="35.65" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+<text class="lbl  upright" x="402.24" y="538.57" font-size="35.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+<text class="lbl  upright" x="710.48" y="264.48" font-size="35.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">D</text>
+<text class="lbl  upright" x="500.8" y="355.97" font-size="35.65" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="Attach the inversor: bars OE and OF of equal length, and four equal bars EP, PF, FP′ and P′E forming a rhombus. O, P and P′ always lie on a straight line.">
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M357.57 437.62L687.34 81.98L690.22 79.5L693.59 77.72L697.26 76.73L701.07 76.59L704.81 77.29L708.3 78.81L711.36 81.07L713.85 83.96L715.63 87.32L716.61 91L716.76 94.8L716.05 98.55L714.53 102.04L712.27 105.1L382.51 460.74L379.62 463.22L376.26 465L372.58 465.99L368.78 466.13L365.03 465.43L361.54 463.91L358.48 461.65L356 458.76L354.22 455.4L353.23 451.72L353.09 447.92L353.79 444.18L355.31 440.69L357.57 437.62Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M490.48 389.37L685.48 84.38L687.88 81.42L690.87 79.07L694.32 77.45L698.03 76.63L701.84 76.66L705.54 77.54L708.96 79.22L711.92 81.61L714.27 84.61L715.89 88.05L716.71 91.77L716.68 95.58L715.81 99.28L714.13 102.7L519.12 407.69L516.73 410.64L513.73 412.99L510.29 414.62L506.57 415.44L502.76 415.41L499.06 414.53L495.64 412.85L492.69 410.45L490.34 407.46L488.71 404.02L487.89 400.3L487.92 396.49L488.8 392.79L490.48 389.37Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M704.55 77.22L1052.16 178.25L1055.68 179.71L1058.78 181.92L1061.31 184.77L1063.14 188.1L1064.19 191.76L1064.39 195.56L1063.74 199.32L1062.28 202.83L1060.07 205.93L1057.22 208.46L1053.89 210.29L1050.23 211.34L1046.43 211.54L1042.68 210.9L695.06 109.86L691.55 108.4L688.45 106.19L685.92 103.34L684.08 100.01L683.04 96.35L682.83 92.55L683.48 88.8L684.94 85.28L687.15 82.18L690 79.65L693.34 77.82L697 76.77L700.8 76.57L704.55 77.22Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1061.74 203.73L866.74 508.72L864.34 511.67L861.35 514.02L857.9 515.65L854.19 516.47L850.38 516.44L846.68 515.56L843.26 513.88L840.3 511.48L837.95 508.49L836.33 505.05L835.51 501.33L835.54 497.52L836.42 493.82L838.09 490.4L1033.1 185.41L1035.49 182.46L1038.49 180.11L1041.93 178.48L1045.65 177.66L1049.46 177.69L1053.16 178.57L1056.58 180.25L1059.53 182.65L1061.88 185.64L1063.51 189.08L1064.33 192.8L1064.3 196.61L1063.42 200.31L1061.74 203.73Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M847.67 515.88L500.06 414.85L496.54 413.39L493.44 411.18L490.91 408.33L489.08 405L488.03 401.34L487.83 397.54L488.48 393.78L489.94 390.27L492.15 387.17L495 384.64L498.33 382.81L501.99 381.76L505.79 381.56L509.55 382.2L857.16 483.23L860.67 484.7L863.77 486.91L866.3 489.75L868.14 493.09L869.18 496.75L869.39 500.55L868.74 504.3L867.28 507.82L865.07 510.92L862.22 513.45L858.89 515.28L855.22 516.33L851.42 516.53L847.67 515.88Z"/>
+<path class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M371.81 432.27L854.18 482.65L857.9 483.47L861.34 485.09L864.34 487.44L866.74 490.4L868.42 493.81L869.29 497.52L869.32 501.32L868.51 505.04L866.88 508.49L864.53 511.48L861.58 513.88L858.16 515.56L854.46 516.44L850.65 516.47L368.27 466.09L364.56 465.27L361.11 463.65L358.12 461.3L355.72 458.34L354.04 454.93L353.16 451.22L353.13 447.42L353.95 443.7L355.57 440.25L357.92 437.26L360.88 434.86L364.29 433.18L368 432.3L371.81 432.27Z"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="370.04" cy="449.18" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="370.04" cy="449.18" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="504.8" cy="398.53" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="504.8" cy="398.53" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="699.8" cy="93.54" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="699.8" cy="93.54" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="852.42" cy="499.56" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="852.42" cy="499.56" r="8.8"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="1047.42" cy="194.57" r="22"/>
+<circle class="ink given" style="stroke-width:4.19;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="1047.42" cy="194.57" r="8.8"/>
+<text class="lbl  upright" x="654.93" y="60.98" font-size="35.65" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">E</text>
+<text class="lbl  upright" x="902.98" y="503.56" font-size="35.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F</text>
+<text class="lbl  upright" x="1090.3" y="233.13" font-size="35.65" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P′</text>
+<text class="lbl  upright" x="500.8" y="355.97" font-size="35.65" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P</text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="OP · OP′ = OE² − PE² = 2k, so P′ is the inverse of P with respect to the circle of centre O and radius √(2k): when P describes the sextic, P′ describes a conic.">
+
+</g>
+</svg>

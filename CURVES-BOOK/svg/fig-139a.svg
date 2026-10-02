@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 357.96 414.96" width="520" height="603" data-fig="fig-139a">
+<title>Fig. 139(a) — Kieroid with b = 0: the conchoid of Nicomedes</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 139(a), page 142. Section: kieroid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed point O with the axis through it, the line AB at the distance c from O (here DE is the same line, b = 0), and the radius a.">
+<path class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M25.48 356.48L332.48 356.48"/>
+<path class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M226.48 356.48L226.48 25.48"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.49" cx="41.48" cy="356.48" r="5.93"/><circle class="pt" style="fill:#1b1b1b" cx="41.48" cy="356.48" r="2.43"/>
+<text class="lbl " x="29.58" y="342.48" font-size="14.11" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.91" cx="226.48" cy="356.48" r="2.7"/>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Choose B on AB and draw the circle of radius a about it.">
+<circle class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="226.48" cy="134.48" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.91" cx="226.48" cy="134.48" r="2.7"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the secant OB (D is the same point as B). It meets the circle at P2 and P1, each at the distance a from B.">
+<path class="ink given" style="stroke-width:1.49;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M41.48 356.48L290.5 57.66"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.91" cx="162.46" cy="211.3" r="2.7"/>
+<text class="lbl " x="171.38" y="221.8" font-size="14.11" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.91" cx="290.5" cy="57.66" r="2.7"/>
+<text class="lbl " x="299.42" y="47.16" font-size="14.11" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Move B along AB: P2 and P1 trace the two branches of the conchoid of Nicomedes with the pole O (here a &lt; c, so there is no loop).">
+<path class="ink curve" style="stroke-width:2.32;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M131.89 387.48L131.6 386.48L131.32 385.49L131.05 384.51L130.78 383.54L130.52 382.57L130.26 381.61L130.01 380.66L129.77 379.71L129.54 378.77L129.31 377.84L129.09 376.91L128.88 375.99L128.68 375.08L128.48 374.17L128.3 373.26L128.12 372.36L127.95 371.47L127.79 370.58L127.64 369.7L127.49 368.82L127.36 367.94L127.23 367.07L127.12 366.2L127.01 365.34L126.92 364.48L126.83 363.62L126.75 362.76L126.68 361.9L126.62 361.05L126.58 360.2L126.54 359.35L126.51 358.5L126.49 357.65L126.48 356.81L126.48 355.96L126.49 355.11L126.51 354.26L126.54 353.41L126.59 352.56L126.64 351.71L126.7 350.86L126.77 350L126.85 349.15L126.94 348.29L127.04 347.42L127.14 346.56L127.26 345.69L127.39 344.82L127.53 343.94L127.67 343.06L127.83 342.17L127.99 341.28L128.16 340.39L128.34 339.49L128.53 338.58L128.73 337.67L128.93 336.76L129.14 335.84L129.36 334.91L129.59 333.97L129.83 333.03L130.07 332.08L130.32 331.13L130.58 330.17L130.84 329.2L131.11 328.22L131.38 327.24L131.67 326.25L131.95 325.25L132.25 324.24L132.55 323.23L132.85 322.21L133.16 321.18L133.47 320.14L133.79 319.09L134.12 318.03L134.45 316.97L134.78 315.9L135.12 314.82L135.46 313.73L135.8 312.63L136.15 311.53L136.5 310.41L136.85 309.29L137.21 308.16L137.57 307.02L137.93 305.87L138.29 304.72L138.66 303.55L139.03 302.38L139.4 301.2L139.77 300L140.15 298.81L140.52 297.6L140.9 296.38L141.28 295.16L141.66 293.93L142.04 292.69L142.42 291.44L142.8 290.18L143.18 288.92L143.57 287.64L143.95 286.36L144.33 285.08L144.72 283.78L145.1 282.48L145.49 281.16L145.87 279.85L146.25 278.52L146.64 277.19L147.02 275.84L147.4 274.5L147.78 273.14L148.16 271.78L148.54 270.41L148.92 269.03L149.3 267.65L149.68 266.26L150.05 264.86L150.43 263.46L150.8 262.05L151.18 260.64L151.55 259.21L151.92 257.79L152.29 256.35L152.65 254.91L153.02 253.46L153.38 252.01L153.75 250.55L154.11 249.09L154.47 247.62L154.82 246.14L155.18 244.66L155.54 243.18L155.89 241.69L156.24 240.19L156.59 238.69L156.94 237.18L157.28 235.67L157.63 234.15L157.97 232.63L158.31 231.1L158.65 229.57L158.98 228.04L159.32 226.5L159.65 224.95L159.98 223.4L160.31 221.85L160.63 220.29L160.96 218.73L161.28 217.16L161.6 215.59L161.92 214.02L162.24 212.44L162.55 210.85L162.86 209.27L163.17 207.68L163.48 206.08L163.79 204.49L164.09 202.89L164.39 201.28L164.69 199.67L164.99 198.06L165.29 196.45L165.58 194.83L165.88 193.21L166.17 191.58L166.45 189.96L166.74 188.33L167.03 186.69L167.31 185.05L167.59 183.41L167.87 181.77L168.14 180.13L168.42 178.48L168.69 176.83L168.96 175.17L169.23 173.52L169.5 171.86L169.76 170.2L170.03 168.53L170.29 166.87L170.55 165.2L170.81 163.52L171.06 161.85L171.31 160.17L171.57 158.5L171.82 156.81L172.07 155.13L172.31 153.45L172.56 151.76L172.8 150.07L173.04 148.38L173.28 146.68L173.52 144.99L173.76 143.29L173.99 141.59L174.23 139.89L174.46 138.19L174.69 136.48"/>
+<path class="ink curve" style="stroke-width:2.32;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M325.81 389.48L325.87 388.08L325.92 386.68L325.97 385.28L326.02 383.88L326.07 382.48L326.11 381.08L326.15 379.68L326.19 378.27L326.22 376.87L326.26 375.47L326.29 374.06L326.32 372.66L326.35 371.25L326.37 369.84L326.39 368.44L326.41 367.03L326.43 365.62L326.44 364.22L326.46 362.81L326.47 361.4L326.47 360L326.48 358.59L326.48 357.18L326.48 355.77L326.48 354.36L326.47 352.96L326.47 351.55L326.46 350.14L326.44 348.73L326.43 347.33L326.41 345.92L326.39 344.51L326.37 343.11L326.35 341.7L326.32 340.3L326.29 338.89L326.26 337.49L326.22 336.08L326.19 334.68L326.15 333.28L326.11 331.87L326.06 330.47L326.02 329.07L325.97 327.67L325.92 326.27L325.87 324.87L325.81 323.47L325.76 322.07L325.7 320.68L325.63 319.28L325.57 317.89L325.5 316.49L325.43 315.1L325.36 313.71L325.29 312.32L325.22 310.93L325.14 309.54L325.06 308.15L324.98 306.77L324.89 305.38L324.81 304L324.72 302.61L324.63 301.23L324.54 299.85L324.44 298.47L324.35 297.1L324.25 295.72L324.15 294.34L324.05 292.97L323.94 291.6L323.84 290.23L323.73 288.86L323.62 287.49L323.51 286.13L323.39 284.76L323.28 283.4L323.16 282.04L323.04 280.68L322.92 279.32L322.8 277.97L322.68 276.61L322.55 275.26L322.42 273.91L322.29 272.56L322.16 271.21L322.03 269.87L321.9 268.52L321.76 267.18L321.62 265.84L321.49 264.5L321.35 263.17L321.2 261.83L321.06 260.5L320.92 259.17L320.77 257.84L320.63 256.51L320.48 255.19L320.33 253.86L320.18 252.54L320.02 251.22L319.87 249.91L319.72 248.59L319.56 247.28L319.4 245.97L319.25 244.66L319.09 243.35L318.93 242.05L318.76 240.74L318.6 239.44L318.44 238.14L318.27 236.85L318.11 235.55L317.94 234.26L317.77 232.97L317.6 231.68L317.44 230.39L317.27 229.11L317.09 227.83L316.92 226.55L316.75 225.27L316.58 223.99L316.4 222.72L316.23 221.45L316.05 220.18L315.87 218.91L315.7 217.64L315.52 216.38L315.34 215.12L315.16 213.86L314.98 212.6L314.8 211.35L314.62 210.09L314.44 208.84L314.26 207.59L314.07 206.35L313.89 205.1L313.71 203.86L313.52 202.62L313.34 201.38L313.15 200.14L312.97 198.91L312.78 197.68L312.6 196.45L312.41 195.22L312.22 193.99L312.04 192.77L311.85 191.55L311.66 190.33L311.47 189.11L311.29 187.89L311.1 186.68L310.91 185.47L310.72 184.26L310.53 183.05L310.34 181.84L310.15 180.64L309.96 179.44L309.77 178.24L309.58 177.04L309.39 175.84L309.2 174.65L309.01 173.45L308.82 172.26L308.63 171.08L308.44 169.89L308.25 168.7L308.06 167.52L307.87 166.34L307.68 165.16L307.49 163.98L307.3 162.81L307.11 161.63L306.92 160.46L306.73 159.29L306.54 158.12L306.35 156.96L306.16 155.79L305.98 154.63L305.79 153.47L305.6 152.31L305.41 151.15L305.22 150L305.03 148.84L304.84 147.69L304.65 146.54L304.47 145.39L304.28 144.24L304.09 143.1L303.9 141.95L303.72 140.81L303.53 139.67L303.34 138.53L303.15 137.4L302.97 136.26L302.78 135.13L302.6 133.99L302.41 132.86L302.23 131.73L302.04 130.61L301.86 129.48"/>
+</g>
+</svg>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 826.5 566.5" width="520" height="356" data-fig="fig-010">
+<title>Fig. 10 — The catenary, its tension, its tangent and the circle of radius a</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 10, page 12. Section: catenary.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX and OY, the vertex V of the catenary at the height a on OY, and its foot O.">
+<path class="ink axis" style="stroke-width:2.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M61.75 475.75L739.75 475.75"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M739.75 475.75L724.29 469.26L724.29 482.24Z"/>
+<path class="ink axis" style="stroke-width:2.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M310.75 501.75L310.75 65.75"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M310.75 65.75L304.26 81.21L317.24 81.21Z"/>
+<text class="lbl axis" x="754.56" y="493.17" font-size="28.1" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="325.56" y="48.33" font-size="28.1" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink given" style="stroke-width:2.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M310.75 475.75L310.75 375.75"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.82" cx="310.75" cy="475.75" r="6.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.82" cx="310.75" cy="375.75" r="6.45"/>
+<text class="lbl " x="295.07" y="430.75" font-size="28.1" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="The catenary y = a cosh(x/a), through V with its lowest point at V. Compute points from the formula and join them. The heavy arc from V to P has the length s.">
+<path class="ink curve" style="stroke-width:4.63;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M104.75 77.08L106.47 83.65L108.18 90.1L109.9 96.43L111.62 102.66L113.33 108.78L115.05 114.78L116.77 120.68L118.48 126.48L120.2 132.17L121.92 137.77L123.63 143.26L125.35 148.65L127.07 153.95L128.78 159.16L130.5 164.27L132.22 169.28L133.93 174.21L135.65 179.05L137.37 183.8L139.08 188.47L140.8 193.05L142.52 197.55L144.23 201.96L145.95 206.3L147.67 210.56L149.38 214.73L151.1 218.83L152.82 222.86L154.53 226.81L156.25 230.69L157.97 234.49L159.68 238.22L161.4 241.89L163.12 245.48L164.83 249.01L166.55 252.47L168.27 255.86L169.98 259.19L171.7 262.46L173.42 265.66L175.13 268.8L176.85 271.88L178.57 274.9L180.28 277.86L182 280.77L183.72 283.61L185.43 286.4L187.15 289.13L188.87 291.81L190.58 294.43L192.3 297L194.02 299.52L195.73 301.98L197.45 304.4L199.17 306.76L200.88 309.08L202.6 311.34L204.32 313.56L206.03 315.73L207.75 317.85L209.47 319.92L211.18 321.95L212.9 323.93L214.62 325.87L216.33 327.77L218.05 329.62L219.77 331.43L221.48 333.19L223.2 334.91L224.92 336.6L226.63 338.24L228.35 339.84L230.07 341.4L231.78 342.92L233.5 344.4L235.22 345.84L236.93 347.25L238.65 348.61L240.37 349.94L242.08 351.23L243.8 352.49L245.52 353.71L247.23 354.89L248.95 356.04L250.67 357.15L252.38 358.23L254.1 359.27L255.82 360.28L257.53 361.25L259.25 362.19L260.97 363.1L262.68 363.97L264.4 364.81L266.12 365.62L267.83 366.4L269.55 367.14L271.27 367.85L272.98 368.53L274.7 369.18L276.42 369.8L278.13 370.38L279.85 370.94L281.57 371.46L283.28 371.95L285 372.42L286.72 372.85L288.43 373.25L290.15 373.62L291.87 373.96L293.58 374.27L295.3 374.55L297.02 374.81L298.73 375.03L300.45 375.22L302.17 375.38L303.88 375.51L305.6 375.62L307.32 375.69L309.03 375.74L310.75 375.75"/>
+<path class="ink curve" style="stroke-width:6;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M310.75 375.75L312.25 375.74L313.75 375.7L315.25 375.65L316.75 375.57L318.25 375.47L319.75 375.34L321.25 375.2L322.75 375.03L324.25 374.84L325.75 374.62L327.25 374.39L328.75 374.13L330.25 373.84L331.75 373.54L333.25 373.21L334.75 372.86L336.25 372.48L337.75 372.08L339.25 371.66L340.75 371.22L342.25 370.75L343.75 370.26L345.25 369.74L346.75 369.2L348.25 368.64L349.75 368.05L351.25 367.44L352.75 366.8L354.25 366.14L355.75 365.45L357.25 364.74L358.75 364.01L360.25 363.25L361.75 362.46L363.25 361.65L364.75 360.81L366.25 359.95L367.75 359.06L369.25 358.15L370.75 357.2L372.25 356.24L373.75 355.24L375.25 354.22L376.75 353.17L378.25 352.09L379.75 350.99L381.25 349.85L382.75 348.69L384.25 347.5L385.75 346.28L387.25 345.03L388.75 343.76L390.25 342.45L391.75 341.11L393.25 339.74L394.75 338.35L396.25 336.92L397.75 335.46L399.25 333.97L400.75 332.44L402.25 330.89L403.75 329.3L405.25 327.68L406.75 326.02L408.25 324.33L409.75 322.61L411.25 320.85L412.75 319.06L414.25 317.23L415.75 315.37L417.25 313.47L418.75 311.54L420.25 309.56L421.75 307.55L423.25 305.51L424.75 303.42L426.25 301.3L427.75 299.13L429.25 296.93L430.75 294.68L432.25 292.4L433.75 290.07L435.25 287.71L436.75 285.3L438.25 282.84L439.75 280.35L441.25 277.81L442.75 275.22L444.25 272.59L445.75 269.92L447.25 267.19L448.75 264.43L450.25 261.61L451.75 258.75L453.25 255.83L454.75 252.87L456.25 249.86L457.75 246.79L459.25 243.68L460.75 240.51L462.25 237.29L463.75 234.01L465.25 230.69L466.75 227.3L468.25 223.86L469.75 220.37L471.25 216.81L472.75 213.2L474.25 209.53L475.75 205.8L477.25 202.01L478.75 198.15L480.25 194.24L481.75 190.26L483.25 186.22L484.75 182.11L486.25 177.93L487.75 173.69L489.25 169.38L490.75 165"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="Choose P on the curve, here at x = 1.8a, and drop the perpendicular PC to OX (C is the foot).">
+<path class="ink cons" style="stroke-width:1.82;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M490.75 165L490.75 475.75"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.82" cx="490.75" cy="165" r="6.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.82" cx="490.75" cy="475.75" r="6.45"/>
+<text class="lbl " x="471.5" y="142.35" font-size="28.1" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="510" y="498.4" font-size="28.1" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="506.43" y="420.75" font-size="28.1" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The circle about C with radius a.">
+<circle class="ink given" style="stroke-width:2.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="490.75" cy="475.75" r="100"/>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="The tangent to the catenary at P is also the tangent from P to this circle (item a of the general items). It touches the circle at B; CB is perpendicular to it, and its length from P to B equals the arc s. It cuts OX at the angle φ.">
+<path class="ink cons" style="stroke-width:1.82;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M375.95 502.75L490.75 165"/>
+<path class="ink given" style="stroke-width:4.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M490.75 165L525.5 62.75"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M525.5 62.75L514.38 75.29L526.68 79.47Z"/>
+<path class="ink cons" style="stroke-width:1.82;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M490.75 475.75L396.07 443.57"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.82" cx="396.07" cy="443.57" r="6.45"/>
+<text class="lbl " x="415.32" y="420.92" font-size="28.1" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl  upright" x="507.73" y="41.84" font-size="28.1" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">T</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.82" d="M415.48 475.75A30.35 30.35 0 0 0 394.9 447.02"/>
+<text class="lbl " x="432.08" y="442.12" font-size="28.1" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+<text class="lbl " x="452.69" y="317.75" font-size="28.1" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">s</text>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The forces on the arc VP of the chain (k = weight per unit length): the horizontal pull ka at V, the weight ks of the arc (a downward arrow) and the tension T at P along the tangent, with T cos φ = ka and T sin φ = ks.">
+<path class="ink thick" style="stroke-width:4.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M310.75 375.75L173.75 375.75"/>
+<path class="head thick" style="stroke:none;fill:#1b1b1b" d="M173.75 375.75L189.21 382.24L189.21 369.26Z"/>
+<text class="lbl  upright" x="205.75" y="397.75" font-size="28.1" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">ka</text>
+<path class="ink given" style="stroke-width:2.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M404.75 326.75L404.75 355.75"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M404.75 355.75L411.24 340.29L398.26 340.29Z"/>
+<text class="lbl  upright" x="390.75" y="365.75" font-size="28.1" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">ks</text>
+<text class="lbl " x="416.75" y="276.75" font-size="28.1" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">s</text>
+</g>
+<g class="step" data-step="6" data-tool="pencil" data-text="The path of B as the taut line PB unwinds from the catenary: an involute of the catenary, which is the tractrix (its cusp is at V, the axis OX is its asymptote). The line BC is its tangent.">
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M294.86 403.47L295.64 402.64L296.4 401.82L297.14 401L297.86 400.17L298.56 399.36L299.24 398.54L299.9 397.73L300.54 396.93L301.15 396.12L301.75 395.33L302.32 394.54L302.88 393.76L303.41 392.99L303.92 392.22L304.41 391.47L304.88 390.72L305.33 389.98L305.75 389.26L306.16 388.55L306.55 387.85L306.91 387.16L307.26 386.48L307.59 385.83L307.9 385.18L308.18 384.55L308.45 383.94L308.7 383.35L308.94 382.77L309.15 382.21L309.35 381.68L309.53 381.16L309.7 380.66L309.85 380.18L309.99 379.73L310.11 379.3L310.22 378.89L310.31 378.5L310.4 378.14L310.47 377.8L310.53 377.48L310.59 377.19L310.63 376.93L310.66 376.69L310.69 376.48L310.71 376.3L310.73 376.14L310.74 376.01L310.74 375.9L310.75 375.82L310.75 375.77L310.75 375.75L310.75 375.76L310.75 375.79L310.75 375.85L310.76 375.94L310.77 376.05L310.78 376.19L310.79 376.36L310.82 376.55L310.85 376.77L310.89 377.02L310.93 377.29L310.99 377.59L311.05 377.92L311.13 378.26L311.22 378.63L311.32 379.03L311.43 379.45L311.56 379.89L311.7 380.35L311.86 380.84L312.03 381.34L312.22 381.87L312.42 382.41L312.64 382.98L312.88 383.56L313.14 384.16L313.42 384.78L313.71 385.41L314.03 386.06L314.36 386.72L314.71 387.4L315.09 388.09L315.48 388.8L315.9 389.52L316.33 390.25L316.79 390.99L317.26 391.74L317.76 392.5L318.28 393.26L318.82 394.04L319.38 394.82L319.96 395.61L320.57 396.41L321.19 397.21L321.84 398.02L322.5 398.83L323.19 399.65L323.9 400.47L324.62 401.29L325.37 402.11L326.14 402.94L326.93 403.77L327.74 404.6L328.56 405.42L329.41 406.25L330.28 407.08L331.16 407.91L332.06 408.73L332.98 409.55L333.92 410.37L334.88 411.19L335.86 412.01L336.85 412.82L337.86 413.63L338.88 414.43L339.92 415.23L340.98 416.03L342.05 416.82L343.14 417.6L344.25 418.38L345.37 419.16L346.5 419.93L347.65 420.69L348.81 421.45L349.98 422.2L351.17 422.95L352.37 423.69L353.58 424.42L354.81 425.15L356.05 425.87L357.3 426.58L358.56 427.29L359.83 427.98L361.12 428.68L362.41 429.36L363.72 430.04L365.03 430.71L366.36 431.37L367.69 432.02L369.04 432.67L370.39 433.31L371.75 433.95L373.12 434.57L374.5 435.19L375.89 435.8L377.29 436.4L378.69 437L380.1 437.58L381.52 438.17L382.95 438.74L384.38 439.3L385.82 439.86L387.26 440.41L388.72 440.96L390.18 441.49L391.64 442.02L393.11 442.55L394.59 443.06L396.07 443.57"/>
+</g>
+</svg>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 524.4 371.4" width="520" height="368" data-fig="fig-180b">
+<title>Fig. 180(b) — Cusp of the second kind: (y − x²)² = x⁵</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 180(b), page 199. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The box with its axes, and the equation (y − x²)² = x⁵, that is y = x² ± x^(5/2).">
+<path class="ink given" style="stroke-width:1.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M37.2 334.2L487.2 334.2L487.2 37.2L37.2 37.2Z"/>
+<path class="ink axis" style="stroke-width:1.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M112.2 182.2L459.2 182.2"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M459.2 182.2L449.39 178.08L449.39 186.32Z"/>
+<path class="ink axis" style="stroke-width:1.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M124.2 313.2L124.2 67.2"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M124.2 67.2L120.08 77.01L128.32 77.01Z"/>
+<text class="lbl axis" x="468.6" y="193.25" font-size="17.83" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="133.6" y="56.15" font-size="17.83" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="334.2" y="81.2" font-size="14.26" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(y − x<tspan baseline-shift="super" font-size="70%">2</tspan>)<tspan baseline-shift="super" font-size="70%">2</tspan> = x<tspan baseline-shift="super" font-size="70%">5</tspan>    or</text>
+<text class="lbl  upright" x="349.2" y="111.2" font-size="14.26" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y = x<tspan baseline-shift="super" font-size="70%">2</tspan> ± x<tspan baseline-shift="super" font-size="70%">5/2</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the parabola y = x² as a guide in the mind, then the two branches y = x² + x^(5/2) (above it, rising steeply) and y = x² − x^(5/2) (below it, turning down and crossing the x-axis at x = 1).">
+<path class="ink curve" style="stroke-width:2.94;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M351.36 325.88L348.91 319.86L346.48 314.02L344.06 308.35L341.65 302.85L339.26 297.51L336.87 292.34L334.51 287.32L332.15 282.46L329.81 277.75L327.48 273.2L325.17 268.78L322.87 264.51L320.58 260.38L318.3 256.38L316.04 252.52L313.79 248.79L311.56 245.18L309.34 241.7L307.13 238.34L304.93 235.1L302.75 231.97L300.58 228.96L298.43 226.05L296.28 223.26L294.15 220.57L292.04 217.98L289.94 215.48L287.85 213.09L285.77 210.79L283.71 208.58L281.66 206.47L279.62 204.44L277.6 202.49L275.59 200.63L273.59 198.84L271.61 197.14L269.64 195.51L267.68 193.95L265.74 192.47L263.81 191.06L261.89 189.71L259.99 188.43L258.1 187.22L256.22 186.06L254.35 184.97L252.5 183.93L250.67 182.95L248.84 182.02L247.03 181.15L245.23 180.32L243.45 179.55L241.68 178.83L239.92 178.15L238.17 177.51L236.44 176.92L234.72 176.37L233.02 175.86L231.33 175.38L229.65 174.95L227.98 174.55L226.33 174.18L224.69 173.85L223.07 173.55L221.45 173.28L219.86 173.03L218.27 172.82L216.7 172.63L215.14 172.47L213.59 172.33L212.06 172.22L210.54 172.13L209.03 172.06L207.54 172.01L206.06 171.97L204.59 171.96L203.14 171.96L201.7 171.98L200.27 172.02L198.86 172.07L197.46 172.13L196.07 172.21L194.7 172.3L193.34 172.4L191.99 172.51L190.66 172.63L189.34 172.76L188.03 172.9L186.74 173.04L185.46 173.2L184.19 173.35L182.93 173.52L181.69 173.69L180.46 173.87L179.25 174.04L178.05 174.23L176.86 174.41L175.69 174.6L174.52 174.8L173.38 174.99L172.24 175.18L171.12 175.38L170.01 175.57L168.91 175.77L167.83 175.97L166.76 176.16L165.71 176.36L164.67 176.55L163.64 176.75L162.62 176.94L161.62 177.13L160.63 177.31L159.65 177.5L158.69 177.68L157.74 177.86L156.8 178.04L155.88 178.21L154.97 178.38L154.07 178.55L153.19 178.71L152.32 178.87L151.46 179.03L150.62 179.18L149.79 179.33L148.97 179.48L148.17 179.62L147.38 179.75L146.6 179.88L145.84 180.01L145.09 180.14L144.35 180.26L143.63 180.37L142.92 180.48L142.22 180.59L141.53 180.69L140.86 180.79L140.2 180.88L139.56 180.97L138.93 181.06L138.31 181.14L137.7 181.22L137.11 181.29L136.53 181.37L135.97 181.43L135.42 181.49L134.88 181.55L134.35 181.61L133.84 181.66L133.34 181.71L132.86 181.76L132.38 181.8L131.92 181.84L131.48 181.88L131.05 181.91L130.63 181.94L130.22 181.97L129.83 182L129.45 182.02L129.08 182.05L128.73 182.07L128.39 182.09L128.06 182.1L127.75 182.12L127.45 182.13L127.16 182.14L126.89 182.15L126.63 182.16L126.38 182.17L126.15 182.17L125.93 182.18L125.72 182.18L125.53 182.19L125.34 182.19L125.18 182.19L125.02 182.2L124.88 182.2L124.75 182.2L124.64 182.2L124.54 182.2L124.45 182.2L124.38 182.2L124.31 182.2L124.27 182.2L124.23 182.2L124.21 182.2L124.2 182.2L124.2 182.2L124.22 182.2L124.25 182.2L124.3 182.2L124.36 182.2L124.43 182.2L124.51 182.2L124.61 182.2L124.72 182.2L124.84 182.2L124.98 182.19L125.13 182.19L125.3 182.19L125.47 182.19L125.66 182.18L125.87 182.18L126.08 182.17L126.31 182.16L126.56 182.15L126.81 182.14L127.08 182.12L127.37 182.11L127.66 182.09L127.97 182.07L128.3 182.04L128.63 182.01L128.98 181.98L129.34 181.95L129.72 181.91L130.11 181.86L130.51 181.81L130.93 181.75L131.36 181.69L131.8 181.62L132.25 181.55L132.72 181.47L133.2 181.38L133.7 181.28L134.21 181.17L134.73 181.06L135.26 180.93L135.81 180.79L136.37 180.64L136.95 180.48L137.54 180.31L138.14 180.13L138.75 179.93L139.38 179.71L140.02 179.49L140.67 179.24L141.34 178.98L142.02 178.7L142.72 178.4L143.42 178.08L144.14 177.75L144.88 177.39L145.62 177.01L146.38 176.6L147.16 176.18L147.94 175.72L148.74 175.24L149.56 174.74L150.38 174.2L151.22 173.64L152.08 173.05L152.94 172.42L153.82 171.76L154.72 171.07L155.62 170.34L156.54 169.58L157.47 168.77L158.42 167.93L159.38 167.05L160.35 166.12L161.34 165.15L162.34 164.14L163.35 163.08L164.37 161.97L165.41 160.81L166.46 159.6L167.53 158.34L168.61 157.02L169.7 155.65L170.8 154.22L171.92 152.72L173.05 151.17L174.2 149.55L175.36 147.87L176.53 146.12L177.71 144.31L178.91 142.42L180.12 140.45L181.34 138.42L182.58 136.3L183.83 134.11L185.1 131.83L186.37 129.47L187.66 127.02L188.97 124.49L190.28 121.86L191.61 119.14L192.96 116.33L194.31 113.42L195.68 110.41L197.07 107.29L198.46 104.07L199.87 100.75L201.3 97.31L202.73 93.76L204.18 90.09L205.64 86.3L207.12 82.39L208.61 78.36L210.11 74.2L211.63 69.91L213.16 65.49L214.7 60.93L216.25 56.23L217.82 51.39L219.4 46.41L221 41.27"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.15" cx="249.2" cy="182.2" r="3.75"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="Both branches lie on the same side of the common tangent (the x-axis): a cusp of the second kind.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.15" cx="124.2" cy="182.2" r="3.75"/>
+<text class="lbl  upright" x="227.2" y="233.2" font-size="12.84" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">CUSP OF SECOND KIND</text>
+<path class="ink cons" style="stroke-width:1.15;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M155 242.2L299.4 242.2"/>
+<text class="lbl  upright" x="227.2" y="250.2" font-size="12.84" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">BRANCHES RECEDE ON</text>
+<text class="lbl  upright" x="227.2" y="267.2" font-size="12.84" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">SAME SIDE OF TANGENT.</text>
+</g>
+</svg>

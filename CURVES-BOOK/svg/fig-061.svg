@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 272.72 282.72" width="520" height="539" data-fig="fig-061">
+<title>Fig. 61 — Curvature at the origin: the circle through O and P</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 61, page 61. Section: curvature.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, and a curve that touches OX at the origin O; P = (x, y) is a point of the curve near O.">
+<path class="ink axis" style="stroke-width:0.85;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M22.36 239.36L255.36 239.36"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M255.36 239.36L250.07 237.14L250.07 241.58Z"/>
+<path class="ink axis" style="stroke-width:0.85;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.36 239.36L117.36 17.36"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M117.36 17.36L115.14 22.65L119.58 22.65Z"/>
+<text class="lbl axis" x="260.43" y="245.32" font-size="9.61" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="122.43" y="11.4" font-size="9.61" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink thick" style="stroke-width:1.58;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M22.36 211.36L23.5 211.78L24.64 212.2L25.78 212.63L26.92 213.06L28.06 213.5L29.2 213.94L30.34 214.38L31.48 214.82L32.62 215.26L33.76 215.71L34.9 216.16L36.04 216.61L37.18 217.07L38.32 217.52L39.46 217.97L40.6 218.43L41.74 218.89L42.88 219.34L44.02 219.8L45.16 220.26L46.3 220.71L47.44 221.17L48.58 221.62L49.72 222.08L50.86 222.53L52 222.98L53.14 223.43L54.28 223.88L55.42 224.33L56.56 224.77L57.7 225.22L58.84 225.65L59.98 226.09L61.12 226.52L62.26 226.95L63.4 227.38L64.54 227.8L65.68 228.22L66.82 228.63L67.96 229.04L69.1 229.45L70.24 229.85L71.38 230.25L72.52 230.64L73.66 231.02L74.8 231.4L75.94 231.77L77.08 232.14L78.22 232.5L79.36 232.85L80.5 233.2L81.64 233.54L82.78 233.87L83.92 234.19L85.06 234.51L86.2 234.82L87.34 235.12L88.48 235.41L89.62 235.7L90.76 235.97L91.9 236.24L93.04 236.49L94.18 236.74L95.32 236.98L96.46 237.21L97.6 237.42L98.74 237.63L99.88 237.83L101.02 238.01L102.16 238.19L103.3 238.35L104.44 238.5L105.58 238.64L106.72 238.77L107.86 238.89L109 238.99L110.14 239.09L111.28 239.16L112.42 239.23L113.56 239.28L114.7 239.32L115.84 239.35L116.98 239.36L118.12 239.36L119.26 239.34L120.4 239.31L121.54 239.26L122.68 239.2L123.82 239.13L124.96 239.03L126.1 238.93L127.24 238.8L128.38 238.67L129.52 238.51L130.66 238.34L131.8 238.15L132.94 237.95L134.08 237.72L135.22 237.48L136.36 237.23L137.5 236.95L138.64 236.66L139.78 236.35L140.92 236.02L142.06 235.67L143.2 235.3L144.34 234.91L145.48 234.51L146.62 234.08L147.76 233.63L148.9 233.17L150.04 232.68L151.18 232.18L152.32 231.65L153.46 231.1L154.6 230.53L155.74 229.95L156.88 229.33L158.02 228.7L159.16 228.04L160.3 227.37L161.44 226.67L162.58 225.95L163.72 225.2L164.86 224.43L166 223.64L167.14 222.82L168.28 221.99L169.42 221.12L170.56 220.24L171.7 219.32L172.84 218.39L173.98 217.43L175.12 216.44L176.26 215.43L177.4 214.39L178.54 213.33L179.68 212.24L180.82 211.13L181.96 209.99L183.1 208.82L184.24 207.63L185.38 206.41L186.52 205.16L187.66 203.88L188.8 202.58L189.94 201.25L191.08 199.89L192.22 198.5L193.36 197.08L194.5 195.64L195.64 194.16L196.78 192.66L197.92 191.13L199.06 189.57L200.2 187.97L201.34 186.35L202.48 184.7L203.62 183.02L204.76 181.3L205.9 179.56L207.04 177.78L208.18 175.97L209.32 174.13L210.46 172.26L211.6 170.36L212.74 168.43L213.88 166.46L215.02 164.46L216.16 162.42L217.3 160.36L218.44 158.26L219.58 156.13L220.72 153.96L221.86 151.76L223 149.52L224.14 147.25L225.28 144.95L226.42 142.61L227.56 140.23L228.7 137.82L229.84 135.38L230.98 132.9L232.12 130.38L233.26 127.82L234.4 125.23L235.54 122.61L236.68 119.94L237.82 117.24L238.96 114.51L240.1 111.73L241.24 108.92L242.38 106.07L243.52 103.18L244.66 100.25L245.8 97.28L246.94 94.28L248.08 91.23L249.22 88.15L250.36 85.03"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.62" cx="117.36" cy="239.36" r="1.84"/>
+<text class="lbl " x="117.36" y="245.32" font-size="9.61" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.62" cx="213.36" cy="167.36" r="1.84"/>
+<text class="lbl " x="219.32" y="167.36" font-size="9.61" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw OP (its length is r), and from P the horizontal PB to the y-axis. Then PB = x and OB = y.">
+<path class="ink given" style="stroke-width:1.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.36 239.36L213.36 167.36"/>
+<path class="ink given" style="stroke-width:1.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.36 167.36L213.36 167.36"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.62" cx="117.36" cy="167.36" r="1.84"/>
+<text class="lbl " x="111.4" y="167.36" font-size="9.61" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="165.36" y="160.8" font-size="9.61" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x</text>
+<text class="lbl " x="123.92" y="203.36" font-size="9.61" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+<text class="lbl " x="165.09" y="193.8" font-size="9.61" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="Find A, the centre of the circle through O and P that touches OX at O: it is where the perpendicular bisector of OP meets OY. Draw the circle; it cuts OY again at C, and OC = 2R is a diameter.">
+<path class="ink cons" style="stroke-width:0.62;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M178.56 220.96L110.16 129.76"/>
+<circle class="ink given" style="stroke-width:1.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="117.36" cy="139.36" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.62" cx="117.36" cy="139.36" r="1.84"/>
+<text class="lbl " x="111.4" y="139.36" font-size="9.61" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.62" cx="117.36" cy="39.36" r="1.84"/>
+<text class="lbl " x="112.29" y="33.4" font-size="9.61" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join C to P. The angle OPC is in a semicircle, so it is a right angle, and PB is the altitude of the triangle OPC: PB² = OB · BC, that is x² = y (2R − y). The angle OCP is equal to θ, the angle POX (tangent and chord).">
+<path class="ink given" style="stroke-width:1.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.36 39.36L213.36 167.36"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.62" d="M117.36 50.61A11.25 11.25 0 0 0 124.11 48.36"/>
+<text class="lbl " x="124.34" y="60.29" font-size="9.61" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.62" d="M130.34 239.36A12.98 12.98 0 0 0 127.74 231.57"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M127.74 231.57L128.88 236.12L131.79 233.94Z"/>
+<text class="lbl " x="139.59" y="231.95" font-size="9.61" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="Hence 2R − y = x²/y. As P moves along the curve towards O the circle becomes the osculating circle, and R₀ = lim x² / 2y. In polar coordinates r = 2R sin θ, so R₀ = lim r / 2θ.">
+<text class="lbl  upright" x="117.36" y="265.36" font-size="8.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">R<tspan baseline-shift="sub" font-size="70%">0</tspan> = lim x<tspan baseline-shift="super" font-size="70%">2</tspan> / 2y   (P → O)</text>
+</g>
+</svg>

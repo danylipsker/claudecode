@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 406.12 614.92" width="520" height="787" data-fig="fig-175c">
+<title>Fig. 175(c) — Cusp: y² = x³ has (0, 0) as a cusp</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 175(c), page 192. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the equation.">
+<path class="ink axis" style="stroke-width:1.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.76 304.56L345.16 304.56"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M345.16 304.56L333.66 299.73L333.66 309.39Z"/>
+<path class="ink axis" style="stroke-width:1.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M130.56 472.76L130.56 118.96"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M130.56 118.96L125.73 130.46L135.39 130.46Z"/>
+<text class="lbl axis" x="356.18" y="317.52" font-size="20.91" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="141.58" y="106" font-size="20.91" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="211.76" y="72.56" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y<tspan baseline-shift="super" font-size="70%">2</tspan> = x<tspan baseline-shift="super" font-size="70%">3</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the two branches y = ±x^(3/2): both leave the origin along the x-axis and spread out on either side of it.">
+<path class="ink curve" style="stroke-width:3.44;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M276.07 467.53L273.17 462.69L270.31 457.95L267.47 453.3L264.66 448.74L261.88 444.29L259.13 439.92L256.41 435.65L253.72 431.46L251.06 427.37L248.42 423.36L245.82 419.45L243.24 415.62L240.69 411.88L238.18 408.22L235.69 404.64L233.23 401.15L230.8 397.74L228.4 394.42L226.03 391.17L223.68 388L221.37 384.91L219.09 381.9L216.83 378.96L214.6 376.1L212.41 373.31L210.24 370.6L208.1 367.96L205.99 365.39L203.91 362.89L201.86 360.46L199.84 358.1L197.84 355.8L195.88 353.57L193.94 351.41L192.04 349.31L190.16 347.28L188.31 345.31L186.49 343.4L184.7 341.55L182.94 339.76L181.21 338.03L179.51 336.36L177.83 334.74L176.19 333.18L174.57 331.67L172.99 330.22L171.43 328.82L169.9 327.47L168.41 326.18L166.94 324.93L165.5 323.73L164.08 322.58L162.7 321.48L161.35 320.42L160.02 319.41L158.73 318.44L157.46 317.52L156.23 316.63L155.02 315.79L153.84 314.99L152.69 314.23L151.57 313.5L150.48 312.81L149.42 312.16L148.38 311.55L147.38 310.96L146.4 310.41L145.46 309.9L144.54 309.41L143.65 308.96L142.8 308.53L141.97 308.14L141.17 307.77L140.39 307.42L139.65 307.1L138.94 306.81L138.26 306.54L137.6 306.29L136.98 306.07L136.38 305.86L135.81 305.68L135.27 305.51L134.76 305.36L134.28 305.23L133.83 305.11L133.41 305.01L133.02 304.92L132.65 304.84L132.32 304.77L132.01 304.72L131.74 304.68L131.49 304.64L131.27 304.61L131.08 304.59L130.92 304.58L130.79 304.57L130.69 304.56L130.62 304.56L130.57 304.56L130.56 304.56L130.57 304.56L130.62 304.56L130.69 304.55L130.79 304.55L130.92 304.54L131.08 304.52L131.27 304.5L131.49 304.47L131.74 304.44L132.01 304.4L132.32 304.34L132.65 304.28L133.02 304.2L133.41 304.11L133.83 304.01L134.28 303.89L134.76 303.76L135.27 303.61L135.81 303.44L136.38 303.25L136.98 303.05L137.6 302.82L138.26 302.58L138.94 302.31L139.65 302.01L140.39 301.69L141.17 301.35L141.97 300.98L142.8 300.58L143.65 300.16L144.54 299.7L145.46 299.22L146.4 298.7L147.38 298.15L148.38 297.57L149.42 296.95L150.48 296.3L151.57 295.62L152.69 294.89L153.84 294.13L155.02 293.33L156.23 292.48L157.46 291.6L158.73 290.68L160.02 289.71L161.35 288.69L162.7 287.64L164.08 286.53L165.5 285.38L166.94 284.19L168.41 282.94L169.9 281.64L171.43 280.3L172.99 278.9L174.57 277.44L176.19 275.94L177.83 274.38L179.51 272.76L181.21 271.09L182.94 269.36L184.7 267.57L186.49 265.72L188.31 263.81L190.16 261.84L192.04 259.8L193.94 257.7L195.88 255.54L197.84 253.31L199.84 251.02L201.86 248.66L203.91 246.23L205.99 243.73L208.1 241.16L210.24 238.52L212.41 235.8L214.6 233.02L216.83 230.16L219.09 227.22L221.37 224.21L223.68 221.12L226.03 217.95L228.4 214.7L230.8 211.37L233.23 207.96L235.69 204.47L238.18 200.9L240.69 197.24L243.24 193.5L245.82 189.67L248.42 185.75L251.06 181.75L253.72 177.65L256.41 173.47L259.13 169.2L261.88 164.83L264.66 160.37L267.47 155.82L270.31 151.17L273.17 146.43L276.07 141.59"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The lowest-degree term is y² = 0, a double (equal) factor: the tangent y = 0 counts twice and the origin is a cusp. Caption of the book.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="130.56" cy="304.56" r="4.8"/>
+<text class="lbl  upright" x="211.76" y="513.36" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">has (0,0) as a</text>
+<text class="lbl  upright" x="211.76" y="537.36" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">cusp</text>
+</g>
+</svg>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1600.51 966.55" width="520" height="314" data-fig="fig-165">
+<title>Fig. 165 — The envelope of a diameter of a rolling circle is a cycloid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 165, page 181. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed line, and the circle of radius a resting on it at P, rolled from O (the circle touched the line at O when it started; then the diameter drawn was perpendicular to the line).">
+<path class="ink given" style="stroke-width:5.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M98.28 868.28L1502.23 868.28"/>
+<circle class="ink given" style="stroke-width:5.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="759.18" cy="483.28" r="385"/>
+<path class="ink given" style="stroke-width:5.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M852.32 109.71A385 385 0 0 0 745.75 98.51"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:4.48" d="M852.32 109.71L816.43 141.61M834.84 105.78L800.47 139.31M817.2 102.67L784.42 137.76M799.43 100.39L768.32 136.96M781.57 98.93L752.2 136.91M763.66 98.3L736.09 137.61M745.75 98.51L720.03 139.06"/>
+<path class="ink given" style="stroke-width:5.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M974.47 802.46A385 385 0 0 0 1045.29 740.89"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:4.48" d="M974.47 802.46L974.79 754.44M987.29 793.43L985.65 745.44M999.73 783.88L996.13 736M1011.76 773.84L1006.23 726.15M1023.39 763.32L1015.91 715.89M1034.57 752.33L1025.17 705.24M1045.29 740.89L1033.98 694.23"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.52" cx="275.38" cy="868.28" r="10.4"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.52" cx="759.18" cy="483.28" r="10.4"/>
+<path class="ink given" style="stroke-width:5.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M759.18 483.28L759.18 868.28"/>
+<text class="lbl " x="789.55" y="675.78" font-size="54.42" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The carried line is a diameter of the circle (the thick line through its centre, turned through the angle φ since the start).">
+<path class="ink thick" style="stroke-width:8.96;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M393.03 602.25L1125.34 364.31"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.52" cx="393.03" cy="602.25" r="10.4"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.52" cx="1125.34" cy="364.31" r="10.4"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From the contact point P drop the perpendicular PQ = z on the diameter. Q is the point where the diameter touches its envelope. Here z = a sin φ.">
+<path class="ink given" style="stroke-width:5.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M759.18 868.28L646.03 520.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.52" cx="646.03" cy="520.04" r="10.4"/>
+<text class="lbl " x="672.24" y="694.16" font-size="54.42" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">z</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.52" d="M722.86 756.49A117.54 117.54 0 0 0 641.64 868.28"/>
+<text class="lbl " x="637.67" y="780" font-size="54.42" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The envelope is the locus of Q, an ordinary cycloid: from ds/dφ = a and z = a sin φ, dσ/dφ = 2a sin φ, that is σ = −2a cos φ. It starts with a cusp at O.">
+<path class="ink curve" style="stroke-width:8.96;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M273.34 853.08L273.69 854.85L273.99 856.51L274.26 858.07L274.49 859.51L274.69 860.85L274.85 862.08L274.99 863.21L275.1 864.22L275.19 865.11L275.25 865.9L275.3 866.58L275.34 867.14L275.36 867.59L275.37 867.93L275.38 868.15L275.38 868.26L275.38 868.26L275.38 868.15L275.38 867.92L275.4 867.57L275.42 867.12L275.45 866.55L275.5 865.87L275.57 865.07L275.66 864.17L275.77 863.15L275.91 862.03L276.08 860.79L276.27 859.45L276.51 857.99L276.77 856.43L277.08 854.77L277.43 852.99L277.82 851.12L278.27 849.14L278.76 847.06L279.3 844.87L279.89 842.59L280.54 840.21L281.26 837.73L282.03 835.16L282.86 832.49L283.77 829.73L284.74 826.88L285.78 823.94L286.89 820.91L288.08 817.8L289.34 814.6L290.69 811.32L292.11 807.97L293.61 804.53L295.2 801.02L296.88 797.43L298.64 793.77L300.5 790.05L302.44 786.25L304.48 782.39L306.61 778.47L308.84 774.49L311.17 770.45L313.59 766.35L316.12 762.2L318.74 758L321.47 753.75L324.31 749.46L327.24 745.12L330.29 740.74L333.44 736.32L336.69 731.87L340.06 727.38L343.53 722.86L347.12 718.32L350.82 713.75L354.62 709.16L358.54 704.54L362.57 699.91L366.72 695.27L370.97 690.62L375.34 685.95L379.83 681.28L384.42 676.61L389.13 671.94L393.96 667.27L398.89 662.6L403.94 657.94L409.1 653.3L414.38 648.66L419.77 644.04L425.27 639.44L430.88 634.87L436.6 630.31L442.43 625.78L448.37 621.29L454.42 616.82L460.58 612.39L466.85 608L473.22 603.64L479.7 599.33L486.28 595.06L492.96 590.85L499.75 586.68L506.64 582.56L513.62 578.5L520.71 574.5L527.89 570.55L535.16 566.67L542.53 562.85L549.99 559.1L557.54 555.42L565.18 551.81L572.91 548.27L580.72 544.81L588.61 541.42L596.59 538.11L604.64 534.89L612.77 531.75L620.98 528.69L629.26 525.72L637.61 522.83L646.03 520.04"/>
+</g>
+</svg>

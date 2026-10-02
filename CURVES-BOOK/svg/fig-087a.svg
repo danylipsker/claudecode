@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 332.88 237.68" width="520" height="371" data-fig="fig-087a">
+<title>Fig. 87(a) — The law of growth: the logistic curve x = 1/(a + b·e^{−t})</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 87(a), page 95. Section: exponential.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes (x upwards, t to the right) and the saturation level x = 1/a.">
+<path class="ink axis" style="stroke-width:1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M164.44 190.84L164.44 20.44"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M164.44 20.44L161.83 26.66L167.05 26.66Z"/>
+<path class="ink axis" style="stroke-width:1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M20.44 190.84L306.44 190.84"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M306.44 190.84L300.22 188.23L300.22 193.45Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.73" cx="164.44" cy="190.84" r="2.16"/>
+<text class="lbl axis" x="170.4" y="13.42" font-size="11.32" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="313" y="183.12" font-size="11.32" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">t</text>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M20.44 70.84L312.44 70.84"/>
+<text class="lbl  upright" x="188.44" y="61.24" font-size="9.05" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x = 1/a</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="The curve: x = 1/(a + b·e^−t). It starts near 0, grows ever faster, has the height 1/(a + b) at t = 0 and flattens out towards the level 1/a.">
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M28.44 183.33L29.31 183.18L30.17 183.02L31.04 182.86L31.91 182.7L32.77 182.53L33.64 182.36L34.51 182.19L35.37 182.02L36.24 181.84L37.11 181.65L37.97 181.47L38.84 181.28L39.71 181.09L40.57 180.89L41.44 180.69L42.31 180.49L43.17 180.28L44.04 180.07L44.91 179.86L45.77 179.64L46.64 179.42L47.51 179.19L48.37 178.96L49.24 178.73L50.11 178.49L50.97 178.25L51.84 178L52.71 177.75L53.57 177.5L54.44 177.24L55.31 176.97L56.17 176.71L57.04 176.43L57.91 176.16L58.77 175.87L59.64 175.59L60.51 175.3L61.37 175L62.24 174.7L63.11 174.4L63.97 174.09L64.84 173.77L65.71 173.45L66.57 173.13L67.44 172.8L68.31 172.46L69.17 172.12L70.04 171.78L70.91 171.43L71.77 171.07L72.64 170.71L73.51 170.35L74.37 169.98L75.24 169.6L76.11 169.22L76.97 168.83L77.84 168.44L78.71 168.04L79.57 167.64L80.44 167.23L81.31 166.82L82.17 166.4L83.04 165.98L83.91 165.55L84.77 165.11L85.64 164.67L86.51 164.22L87.37 163.77L88.24 163.32L89.11 162.85L89.97 162.39L90.84 161.91L91.71 161.43L92.57 160.95L93.44 160.46L94.31 159.97L95.17 159.47L96.04 158.96L96.91 158.45L97.77 157.94L98.64 157.42L99.51 156.89L100.37 156.36L101.24 155.83L102.11 155.29L102.97 154.74L103.84 154.2L104.71 153.64L105.57 153.08L106.44 152.52L107.31 151.95L108.17 151.38L109.04 150.81L109.91 150.23L110.77 149.64L111.64 149.05L112.51 148.46L113.37 147.87L114.24 147.27L115.11 146.66L115.97 146.06L116.84 145.45L117.71 144.83L118.57 144.22L119.44 143.6L120.31 142.98L121.17 142.35L122.04 141.72L122.91 141.09L123.77 140.46L124.64 139.83L125.51 139.19L126.37 138.55L127.24 137.91L128.11 137.27L128.97 136.63L129.84 135.98L130.71 135.34L131.57 134.69L132.44 134.04L133.31 133.39L134.17 132.74L135.04 132.1L135.91 131.45L136.77 130.8L137.64 130.15L138.51 129.5L139.37 128.85L140.24 128.2L141.11 127.55L141.97 126.9L142.84 126.25L143.71 125.61L144.57 124.96L145.44 124.32L146.31 123.68L147.17 123.04L148.04 122.4L148.91 121.77L149.77 121.13L150.64 120.5L151.51 119.87L152.37 119.24L153.24 118.62L154.11 118L154.97 117.38L155.84 116.76L156.71 116.15L157.57 115.54L158.44 114.93L159.31 114.33L160.17 113.73L161.04 113.14L161.91 112.55L162.77 111.96L163.64 111.38L164.51 110.8L165.37 110.22L166.24 109.65L167.11 109.08L167.97 108.52L168.84 107.96L169.71 107.41L170.57 106.86L171.44 106.32L172.31 105.78L173.17 105.24L174.04 104.71L174.91 104.19L175.77 103.67L176.64 103.16L177.51 102.65L178.37 102.14L179.24 101.65L180.11 101.15L180.97 100.66L181.84 100.18L182.71 99.7L183.57 99.23L184.44 98.76L185.31 98.3L186.17 97.85L187.04 97.4L187.91 96.95L188.77 96.51L189.64 96.08L190.51 95.65L191.37 95.22L192.24 94.8L193.11 94.39L193.97 93.98L194.84 93.58L195.71 93.19L196.57 92.79L197.44 92.41L198.31 92.03L199.17 91.65L200.04 91.28L200.91 90.92L201.77 90.56L202.64 90.2L203.51 89.85L204.37 89.51L205.24 89.17L206.11 88.84L206.97 88.51L207.84 88.18L208.71 87.86L209.57 87.55L210.44 87.24L211.31 86.94L212.17 86.64L213.04 86.34L213.91 86.05L214.77 85.77L215.64 85.49L216.51 85.21L217.37 84.94L218.24 84.67L219.11 84.41L219.97 84.15L220.84 83.89L221.71 83.65L222.57 83.4L223.44 83.16L224.31 82.92L225.17 82.69L226.04 82.46L226.91 82.23L227.77 82.01L228.64 81.79L229.51 81.58L230.37 81.37L231.24 81.16L232.11 80.96L232.97 80.76L233.84 80.57L234.71 80.37L235.57 80.19L236.44 80L237.31 79.82L238.17 79.64L239.04 79.47L239.91 79.29L240.77 79.13L241.64 78.96L242.51 78.8L243.37 78.64L244.24 78.48L245.11 78.33L245.97 78.18L246.84 78.03L247.71 77.88L248.57 77.74L249.44 77.6L250.31 77.47L251.17 77.33L252.04 77.2L252.91 77.07L253.77 76.94L254.64 76.82L255.51 76.7L256.37 76.58L257.24 76.46L258.11 76.35L258.97 76.23L259.84 76.12L260.71 76.01L261.57 75.91L262.44 75.8L263.31 75.7L264.17 75.6L265.04 75.5L265.91 75.41L266.77 75.31L267.64 75.22L268.51 75.13L269.37 75.04L270.24 74.95L271.11 74.87L271.97 74.79L272.84 74.7L273.71 74.62L274.57 74.54L275.44 74.47L276.31 74.39L277.17 74.32L278.04 74.25L278.91 74.18L279.77 74.11L280.64 74.04L281.51 73.97L282.37 73.91L283.24 73.84L284.11 73.78L284.97 73.72L285.84 73.66L286.71 73.6L287.57 73.54L288.44 73.48"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The values the book writes beside the curve: the flex point, where the growth is fastest, and the value at t = 0.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.73" cx="136.71" cy="130.84" r="2.16"/>
+<text class="lbl  upright" x="22.44" y="90.04" font-size="8.49" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Flex at</text>
+<text class="lbl  upright" x="22.44" y="106.84" font-size="8.49" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x = ln b/(2b − a)</text>
+<circle class="pt" style="fill:#1b1b1b" cx="164.44" cy="110.84" r="1.3"/>
+<text class="lbl  upright" x="169.24" y="134.84" font-size="7.92" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1/(a + b)</text>
+<text class="lbl  upright" x="172.44" y="217.24" font-size="9.05" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x = 1/(a + b·e<tspan baseline-shift="super" font-size="70%">−t</tspan>)</text>
+</g>
+</svg>

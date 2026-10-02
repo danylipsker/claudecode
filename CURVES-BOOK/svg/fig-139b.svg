@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 374.22 425.22" width="520" height="591" data-fig="fig-139b">
+<title>Fig. 139(b) — Kieroid with b = a: the cissoid (plus an asymptote)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 139(b), page 142. Section: kieroid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed point O with the axis through it, the line AB at the distance c from O, the parallel line DE at the distance b = a from AB, and the radius a.">
+<path class="ink given" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M26.11 365.11L348.11 365.11"/>
+<path class="ink given" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M234.11 365.11L234.11 28.11"/>
+<path class="ink thick" style="stroke-width:2.38;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M334.11 365.11L334.11 26.11"/>
+<path class="ink thick" style="stroke-width:2.38;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M334.11 365.11L334.11 394.11"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.53" cx="43.11" cy="365.11" r="6.08"/><circle class="pt" style="fill:#1b1b1b" cx="43.11" cy="365.11" r="2.49"/>
+<text class="lbl " x="30.92" y="350.77" font-size="14.46" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="234.11" cy="365.11" r="2.76"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="334.11" cy="365.11" r="2.76"/>
+<text class="lbl " x="284.11" y="355.11" font-size="13.73" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="Choose D on DE and drop the perpendicular DB to AB. The circle of radius a about B touches DE at D.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M234.11 143.11L334.11 143.11"/>
+<circle class="ink given" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="234.11" cy="143.11" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="234.11" cy="143.11" r="2.76"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the secant OD. It meets the circle at D itself (this is P1, which stays on the line DE) and at the second point P2.">
+<path class="ink given" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M43.11 365.11L334.11 143.11"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="334.11" cy="143.11" r="2.76"/>
+<text class="lbl " x="322.68" y="129.66" font-size="14.46" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="207.69" cy="239.56" r="2.76"/>
+<text class="lbl " x="196.26" y="226.11" font-size="14.46" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Slide D along DE. P2 traces the cissoid, with DE as its asymptote; P1 traces the line DE itself.">
+<path class="ink curve" style="stroke-width:2.38;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M151.91 399.11L151.22 398.17L150.54 397.24L149.87 396.33L149.21 395.42L148.56 394.53L147.92 393.65L147.29 392.78L146.68 391.93L146.07 391.08L145.48 390.25L144.9 389.42L144.34 388.61L143.78 387.81L143.24 387.02L142.72 386.23L142.2 385.46L141.7 384.7L141.22 383.94L140.75 383.2L140.29 382.46L139.85 381.74L139.42 381.02L139.01 380.31L138.61 379.61L138.23 378.91L137.87 378.22L137.52 377.54L137.19 376.87L136.87 376.2L136.57 375.54L136.29 374.89L136.02 374.24L135.77 373.59L135.54 372.95L135.32 372.31L135.13 371.68L134.94 371.06L134.78 370.43L134.64 369.81L134.51 369.19L134.4 368.57L134.31 367.96L134.23 367.35L134.17 366.74L134.13 366.13L134.11 365.52L134.11 364.91L134.13 364.3L134.16 363.69L134.21 363.08L134.28 362.46L134.36 361.85L134.47 361.24L134.59 360.62L134.73 360L134.89 359.37L135.06 358.75L135.26 358.12L135.46 357.48L135.69 356.84L135.94 356.2L136.2 355.55L136.47 354.9L136.77 354.24L137.08 353.57L137.41 352.9L137.75 352.22L138.11 351.54L138.49 350.85L138.88 350.15L139.28 349.44L139.71 348.72L140.14 348L140.59 347.27L141.06 346.53L141.54 345.77L142.04 345.02L142.54 344.25L143.07 343.47L143.6 342.68L144.15 341.88L144.71 341.07L145.29 340.25L145.88 339.42L146.47 338.58L147.09 337.72L147.71 336.86L148.34 335.98L148.99 335.09L149.64 334.2L150.31 333.28L150.99 332.36L151.67 331.43L152.37 330.48L153.08 329.52L153.79 328.54L154.51 327.56L155.25 326.56L155.99 325.55L156.74 324.53L157.49 323.49L158.26 322.44L159.03 321.38L159.8 320.31L160.59 319.22L161.38 318.12L162.18 317L162.98 315.88L163.79 314.74L164.6 313.58L165.42 312.42L166.24 311.24L167.07 310.05L167.9 308.84L168.74 307.62L169.58 306.39L170.42 305.15L171.27 303.89L172.12 302.62L172.97 301.34L173.83 300.04L174.68 298.73L175.54 297.41L176.41 296.08L177.27 294.73L178.13 293.38L179 292.01L179.87 290.62L180.74 289.23L181.6 287.82L182.47 286.4L183.34 284.97L184.21 283.53L185.08 282.08L185.95 280.61L186.82 279.14L187.69 277.65L188.56 276.15L189.43 274.64L190.29 273.12L191.16 271.59L192.02 270.04L192.88 268.49L193.74 266.92L194.6 265.35L195.46 263.77L196.32 262.17L197.17 260.57L198.02 258.95L198.87 257.33L199.72 255.69L200.56 254.05L201.4 252.39L202.24 250.73L203.08 249.06L203.91 247.38L204.74 245.69L205.56 243.99L206.39 242.28L207.21 240.57L208.02 238.84L208.84 237.11L209.65 235.37L210.45 233.62L211.26 231.86L212.06 230.1L212.85 228.33L213.64 226.55L214.43 224.76L215.21 222.97L215.99 221.16L216.77 219.35L217.54 217.54L218.31 215.72L219.07 213.89L219.83 212.05L220.59 210.21L221.34 208.36L222.09 206.5L222.83 204.64L223.57 202.77L224.3 200.9L225.03 199.02L225.76 197.13L226.48 195.24L227.19 193.35L227.91 191.45L228.61 189.54L229.32 187.63L230.02 185.71L230.71 183.79L231.4 181.86L232.08 179.93L232.77 177.99L233.44 176.05L234.11 174.1L234.78 172.15L235.44 170.19L236.1 168.23L236.76 166.27L237.41 164.3L238.05 162.33L238.69 160.35L239.33 158.37L239.96 156.39L240.59 154.4L241.21 152.41L241.83 150.42L242.44 148.42L243.05 146.42L243.66 144.41L244.26 142.4L244.85 140.39L245.45 138.38L246.03 136.36L246.62 134.34L247.2 132.32L247.77 130.29L248.34 128.26L248.91 126.23L249.47 124.19L250.03 122.16L250.58 120.12L251.13 118.08L251.68 116.03L252.22 113.98L252.76 111.93L253.29 109.88L253.82 107.83L254.34 105.77L254.86 103.72L255.38 101.66L255.89 99.59L256.4 97.53L256.91 95.46L257.41 93.4L257.91 91.33L258.4 89.26L258.89 87.18L259.38 85.11"/>
+</g>
+</svg>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 502.74 400.74" width="520" height="414" data-fig="fig-134b">
+<title>Fig. 134(b) — The involute of a circle</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 134(b), page 135. Section: involutes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of radius a, its centre O and the axes. A is the point of the circle on OX where the curve will start.">
+<path class="ink axis" style="stroke-width:1.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M30.87 198.87L471.87 198.87"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M471.87 198.87L462.47 194.92L462.47 202.82Z"/>
+<path class="ink axis" style="stroke-width:1.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M188.37 369.87L188.37 30.87"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M188.37 30.87L184.42 40.27L192.32 40.27Z"/>
+<text class="lbl axis" x="480.88" y="209.47" font-size="17.09" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="197.38" y="20.27" font-size="17.09" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="ink given" style="stroke-width:1.81;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.37" cy="198.87" r="150"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="188.37" cy="198.87" r="3.27"/>
+<text class="lbl " x="179.36" y="188.27" font-size="17.09" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="338.37" cy="198.87" r="3.27"/>
+<text class="lbl " x="327.77" y="198.87" font-size="17.09" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Divide the circle into equal arcs of 15° from A, on both sides. The arc from A to each point is a·t, with t the angle at O.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="294.44" cy="304.94" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="318.27" cy="273.87" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="333.26" cy="237.69" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="333.26" cy="160.05" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="318.27" cy="123.87" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="294.44" cy="92.8" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="263.37" cy="68.97" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="227.19" cy="53.98" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="188.37" cy="48.87" r="2.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="263.37" cy="68.97" r="3.27"/>
+<text class="lbl " x="252.77" y="68.97" font-size="17.09" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="At each division point draw the tangent to the circle (perpendicular to the radius). Each tangent is a position of the unwinding string.">
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M294.44 304.94L386.23 213.15"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M318.27 273.87L363.54 195.46"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M333.26 237.69L346.53 188.17"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M333.26 160.05L346.53 209.57"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M318.27 123.87L363.54 202.28"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M294.44 92.8L386.23 184.59"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M263.37 68.97L409.8 153.51"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M227.19 53.98L428.44 107.91"/>
+<path class="ink cons" style="stroke-width:1.11;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M188.37 48.87L435.99 48.87"/>
+</g>
+<g class="step" data-step="3" data-tool="dividers" data-text="On each tangent lay off from its point of contact the length of the arc from A, a·t (rectify the arc with the dividers in short chords). The end of the string is a point of the involute.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="377.74" cy="221.63" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="357.54" cy="205.85" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="343.42" cy="199.76" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="343.42" cy="197.98" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="357.54" cy="191.89" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="377.74" cy="176.11" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="399.4" cy="147.51" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="416.85" cy="104.8" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="423.99" cy="48.87" r="2.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="338.37" cy="198.87" r="3.27"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="Draw the involute through the points: it starts at A with a cusp, where it is perpendicular to the circle, and winds outward on both sides.">
+<path class="ink curve" style="stroke-width:2.82;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M387.36 232.45L386.5 231.38L385.65 230.33L384.79 229.31L383.93 228.3L383.07 227.31L382.21 226.35L381.35 225.4L380.49 224.48L379.64 223.57L378.78 222.69L377.93 221.82L377.08 220.98L376.24 220.15L375.39 219.35L374.55 218.56L373.71 217.79L372.88 217.05L372.05 216.32L371.23 215.61L370.4 214.91L369.59 214.24L368.78 213.58L367.98 212.95L367.18 212.33L366.38 211.72L365.6 211.14L364.82 210.57L364.05 210.02L363.28 209.49L362.53 208.97L361.78 208.47L361.03 207.99L360.3 207.52L359.58 207.07L358.86 206.63L358.15 206.21L357.45 205.8L356.77 205.41L356.09 205.03L355.42 204.67L354.76 204.32L354.11 203.99L353.47 203.67L352.85 203.36L352.23 203.06L351.63 202.78L351.03 202.51L350.45 202.26L349.88 202.01L349.32 201.78L348.78 201.56L348.25 201.35L347.72 201.15L347.22 200.97L346.72 200.79L346.24 200.62L345.77 200.46L345.31 200.32L344.87 200.18L344.44 200.05L344.03 199.93L343.62 199.82L343.24 199.71L342.86 199.62L342.51 199.53L342.16 199.45L341.83 199.37L341.51 199.3L341.21 199.24L340.93 199.19L340.65 199.14L340.4 199.09L340.16 199.06L339.93 199.02L339.72 198.99L339.52 198.97L339.34 198.94L339.18 198.93L339.02 198.91L338.89 198.9L338.77 198.89L338.67 198.88L338.58 198.88L338.51 198.87L338.45 198.87L338.41 198.87L338.38 198.87L338.37 198.87L338.38 198.87L338.4 198.87L338.43 198.87L338.49 198.87L338.55 198.86L338.64 198.86L338.73 198.85L338.85 198.84L338.98 198.83L339.12 198.82L339.29 198.8L339.46 198.78L339.65 198.76L339.86 198.73L340.08 198.7L340.32 198.66L340.57 198.62L340.84 198.57L341.12 198.52L341.41 198.46L341.73 198.39L342.05 198.32L342.39 198.24L342.75 198.15L343.11 198.06L343.5 197.96L343.89 197.85L344.3 197.73L344.73 197.61L345.17 197.47L345.62 197.33L346.08 197.17L346.56 197.01L347.05 196.83L347.56 196.65L348.07 196.45L348.6 196.25L349.15 196.03L349.7 195.8L350.27 195.56L350.84 195.31L351.43 195.05L352.03 194.77L352.65 194.48L353.27 194.18L353.9 193.86L354.55 193.53L355.2 193.19L355.87 192.83L356.54 192.45L357.23 192.07L357.92 191.67L358.63 191.25L359.34 190.82L360.06 190.37L360.79 189.91L361.53 189.43L362.28 188.93L363.03 188.42L363.8 187.89L364.57 187.35L365.34 186.79L366.13 186.21L366.92 185.61L367.71 185L368.52 184.37L369.32 183.72L370.14 183.05L370.96 182.36L371.78 181.66L372.61 180.93L373.44 180.19L374.28 179.43L375.12 178.65L375.96 177.85L376.81 177.03L377.65 176.19L378.51 175.33L379.36 174.46L380.21 173.56L381.07 172.64L381.93 171.7L382.79 170.74L383.65 169.76L384.51 168.76L385.36 167.74L386.22 166.7L387.08 165.64L387.94 164.56L388.79 163.45L389.65 162.33L390.5 161.18L391.34 160.01L392.19 158.82L393.03 157.61L393.87 156.38L394.7 155.13L395.53 153.85L396.36 152.56L397.18 151.24L398 149.9L398.81 148.54L399.61 147.15L400.41 145.75L401.2 144.32L401.98 142.87L402.75 141.4L403.52 139.91L404.28 138.4L405.03 136.86L405.77 135.3L406.5 133.72L407.23 132.12L407.94 130.5L408.64 128.86L409.33 127.19L410.01 125.51L410.68 123.8L411.34 122.07L411.98 120.32L412.61 118.55L413.23 116.75L413.84 114.94L414.43 113.1L415 111.25L415.57 109.37L416.11 107.47L416.65 105.56L417.16 103.62L417.67 101.66L418.15 99.68L418.62 97.68L419.07 95.66L419.5 93.62L419.92 91.57L420.32 89.49L420.7 87.39L421.06 85.28L421.4 83.14L421.72 80.99L422.02 78.81L422.31 76.62L422.57 74.41L422.81 72.18L423.03 69.94L423.22 67.68L423.4 65.4L423.55 63.1L423.68 60.78L423.79 58.45L423.88 56.1L423.94 53.74"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="P is the point for the angle t. The tangent TP has length at, the dashed right triangle on it has the angle t at T, and y is the ordinate of P: x = a(cos t + t sin t), y = a(sin t − t cos t).">
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.03 4.02;stroke:#4b4b4b;stroke-dasharray:6.03 4.02;stroke-linecap:round;stroke-linejoin:round" d="M188.37 198.87L263.37 68.97"/>
+<text class="lbl " x="216.1" y="128.28" font-size="17.09" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.11" d="M208.37 198.87A20 20 0 0 0 198.37 181.55"/>
+<text class="lbl " x="217.9" y="181.82" font-size="17.09" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+<path class="ink given" style="stroke-width:1.81;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.37 68.97L427.98 164.01"/>
+<text class="lbl " x="336.52" y="99.35" font-size="17.09" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">at</text>
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.03 4.02;stroke:#4b4b4b;stroke-dasharray:6.03 4.02;stroke-linecap:round;stroke-linejoin:round" d="M263.37 68.97L263.37 147.51"/>
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.03 4.02;stroke:#4b4b4b;stroke-dasharray:6.03 4.02;stroke-linecap:round;stroke-linejoin:round" d="M263.37 147.51L399.4 147.51"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.11" d="M263.37 85.89A16.92 16.92 0 0 0 278.03 77.43"/>
+<text class="lbl " x="279.52" y="96.94" font-size="17.09" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.03 4.02;stroke:#4b4b4b;stroke-dasharray:6.03 4.02;stroke-linecap:round;stroke-linejoin:round" d="M399.4 198.87L399.4 147.51"/>
+<text class="lbl " x="409.66" y="173.19" font-size="17.09" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="399.4" cy="147.51" r="3.27"/>
+<text class="lbl " x="390.4" y="136.91" font-size="17.09" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+</svg>

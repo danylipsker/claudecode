@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 444.6 267.6" width="520" height="313" data-fig="fig-112a">
+<title>Fig. 112(a) — The circle: x = a cos t, y = a sin t, and the sector of area A = a²t/2</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 112(a), page 115. Section: hyperbolic.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the circle x² + y² = a² of radius a about O.">
+<path class="ink axis" style="stroke-width:1.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M27.3 207.3L417.3 207.3"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M417.3 207.3L408.99 203.81L408.99 210.79Z"/>
+<path class="ink axis" style="stroke-width:1.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M222.3 240.3L222.3 27.3"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M222.3 27.3L218.81 35.61L225.79 35.61Z"/>
+<text class="lbl axis" x="425.27" y="216.67" font-size="15.12" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="230.27" y="17.93" font-size="15.12" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink given" style="stroke-width:2.4;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M370.83 228.23A150 150 0 1 0 73.77 228.23"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.98" cx="222.3" cy="207.3" r="3.32"/>
+<text class="lbl  upright" x="214.33" y="197.93" font-size="15.12" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">O</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The point P = (x, y) on the circle at the angle t from OX: x = a cos t, y = a sin t. The vertical from P to the x-axis is dashed.">
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M222.3 207.3L340.8 115.33"/>
+<path class="ink cons dash" style="stroke-width:0.98;fill:none;--dash:5.34 3.56;stroke:#4b4b4b;stroke-dasharray:5.34 3.56;stroke-linecap:round;stroke-linejoin:round" d="M340.8 115.33L340.8 207.3"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.98" cx="340.8" cy="115.33" r="3.32"/>
+<text class="lbl  upright" x="353.92" y="115.33" font-size="15.12" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(x , y)</text>
+<text class="lbl  upright" x="297.3" y="225.3" font-size="14.36" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a</text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The shaded sector between OV, the arc VP and the radius OP has the angle θ = t at O and the area A = a²t/2.">
+<path class="ink hatchline" style="fill:none;stroke-width:1.24;stroke:#2a2a2a" d="M224.85 205.32L226.83 207.3M229.95 201.37L235.88 207.3M235.04 197.41L244.94 207.3M240.14 193.45L253.99 207.3M245.24 189.5L263.04 207.3M250.34 185.54L272.1 207.3M255.44 181.58L281.15 207.3M260.53 177.63L290.21 207.3M265.63 173.67L299.26 207.3M270.73 169.71L308.31 207.3M275.83 165.76L317.37 207.3M280.92 161.8L326.42 207.3M286.02 157.85L335.48 207.3M291.12 153.89L344.53 207.3M296.22 149.93L353.58 207.3M301.32 145.98L362.64 207.3M306.41 142.02L371.69 207.3M311.51 138.06L372.04 198.59M316.61 134.11L371.12 188.62M321.71 130.15L369.36 177.81M326.8 126.19L366.45 165.84M331.9 122.24L361.76 152.1M337 118.28L353.71 134.99"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.98" d="M234.54 207.3A12.24 12.24 0 0 0 231.97 199.79"/>
+<text class="lbl  upright" x="246.75" y="198.92" font-size="15.12" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">θ</text>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M222.3 207.3L372.3 207.3"/>
+</g>
+</svg>

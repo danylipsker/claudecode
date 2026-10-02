@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 501.4 465.27" width="520" height="483" data-fig="fig-186">
+<title>Fig. 186 — The spiral of Archimedes r = aθ: points by dividing the circle and the radius</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 186, page 209. Section: spirals.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The pole O and the axes. The spiral r = aθ has equal steps in the radius for equal steps in the angle: 30° of turning adds the length u = aπ/6 to the radius.">
+<path class="ink axis" style="stroke-width:1.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M30.79 180.01L470.61 180.01"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M470.61 180.01L461.23 176.08L461.23 183.95Z"/>
+<path class="ink axis" style="stroke-width:1.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 434.48L216.14 30.79"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="216.14" cy="180.01" r="2.61"/>
+<text class="lbl " x="207.16" y="190.58" font-size="17.05" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="On the initial line mark off the equal lengths u, 2u, 3u, … 9u from O: the radii that belong to the angles 30°, 60°, … 270°.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="242.32" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="268.5" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="294.68" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="320.86" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="347.04" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="373.22" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="399.4" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="425.58" cy="180.01" r="1.63"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="451.76" cy="180.01" r="1.63"/>
+<text class="lbl  upright" x="250.41" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+<text class="lbl  upright" x="276.59" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2</text>
+<text class="lbl  upright" x="302.77" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">3</text>
+<text class="lbl  upright" x="328.95" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">4</text>
+<text class="lbl  upright" x="355.13" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">5</text>
+<text class="lbl  upright" x="381.31" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">6</text>
+<text class="lbl  upright" x="407.49" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">7</text>
+<text class="lbl  upright" x="433.67" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">8</text>
+<text class="lbl  upright" x="459.85" y="189.53" font-size="9.38" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">9</text>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="Draw the rays from O at 30°, 60°, … 270° to the initial line.">
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L240.63 165.88"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L244.42 131.04"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L216.14 95.19"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L159.59 82.07"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L93.71 109.33"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L46.5 180.01"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L44.74 278.97"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L103.04 375.9"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L216.14 434.48"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="With centre O and radius j·u (taken from the initial line with the compass) swing an arc round to the j-th ray. It cuts that ray at P_j, the point with r = aθ.">
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M241.88 175.23A26.18 26.18 0 0 0 237.39 164.73"/>
+<circle class="pt" style="fill:#1b1b1b" cx="238.81" cy="166.92" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M255.94 145.99A52.36 52.36 0 0 0 237.66 132.28"/>
+<circle class="pt" style="fill:#1b1b1b" cx="242.32" cy="134.67" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M242.33 105.97A78.54 78.54 0 0 0 208.3 101.87"/>
+<circle class="pt" style="fill:#1b1b1b" cx="216.14" cy="101.47" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M197.02 77.05A104.72 104.72 0 0 0 154.99 95"/>
+<circle class="pt" style="fill:#1b1b1b" cx="163.78" cy="89.32" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M131.1 80.51A130.9 130.9 0 0 0 96.81 126.21"/>
+<circle class="pt" style="fill:#1b1b1b" cx="102.78" cy="114.56" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M68.05 127.63A157.08 157.08 0 0 0 59.85 195.7"/>
+<circle class="pt" style="fill:#1b1b1b" cx="59.06" cy="180.01" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M35.96 213.47A183.26 183.26 0 0 0 67.37 287.03"/>
+<circle class="pt" style="fill:#1b1b1b" cx="57.43" cy="271.64" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M56.93 316.09A209.44 209.44 0 0 0 130.05 370.94"/>
+<circle class="pt" style="fill:#1b1b1b" cx="111.42" cy="361.39" r="2.28"/>
+<path class="ink cons" style="stroke-width:1.1;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M137.57 402.14A235.62 235.62 0 0 0 239.66 414.46"/>
+<circle class="pt" style="fill:#1b1b1b" cx="216.14" cy="415.63" r="2.28"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="Draw the curve through the points P_j with a French curve: the branch for θ &gt; 0. It leaves O along the initial line and crosses OY at (0, aπ/2) and (0, −3πa/2).">
+<path class="ink curve" style="stroke-width:2.81;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L216.95 180L217.75 179.96L218.55 179.9L219.36 179.81L220.16 179.69L220.95 179.55L221.74 179.38L222.53 179.19L223.31 178.97L224.09 178.72L224.86 178.45L225.63 178.16L226.38 177.84L227.13 177.49L227.87 177.12L228.6 176.73L229.32 176.31L230.03 175.87L230.73 175.4L231.42 174.91L232.1 174.4L232.76 173.86L233.41 173.31L234.04 172.73L234.67 172.12L235.27 171.5L235.86 170.85L236.44 170.18L237 169.5L237.54 168.79L238.06 168.06L238.57 167.31L239.05 166.54L239.52 165.75L239.97 164.95L240.4 164.13L240.8 163.29L241.19 162.43L241.56 161.55L241.9 160.66L242.22 159.76L242.52 158.83L242.79 157.9L243.04 156.95L243.27 155.98L243.48 155.01L243.66 154.02L243.81 153.01L243.94 152L244.04 150.97L244.12 149.94L244.17 148.89L244.19 147.84L244.19 146.78L244.16 145.7L244.11 144.63L244.02 143.54L243.91 142.45L243.77 141.35L243.6 140.25L243.4 139.14L243.18 138.03L242.92 136.92L242.64 135.8L242.33 134.68L241.98 133.56L241.61 132.44L241.21 131.32L240.78 130.2L240.32 129.08L239.83 127.97L239.31 126.85L238.76 125.74L238.18 124.64L237.57 123.54L236.93 122.44L236.27 121.35L235.57 120.27L234.84 119.2L234.08 118.13L233.29 117.07L232.48 116.02L231.63 114.98L230.76 113.96L229.85 112.94L228.92 111.94L227.95 110.95L226.96 109.97L225.94 109.01L224.9 108.06L223.82 107.13L222.72 106.21L221.59 105.31L220.43 104.43L219.24 103.56L218.03 102.72L216.79 101.89L215.53 101.09L214.24 100.3L212.92 99.54L211.58 98.8L210.21 98.08L208.82 97.38L207.41 96.71L205.97 96.06L204.51 95.44L203.03 94.84L201.52 94.27L200 93.72L198.45 93.2L196.88 92.71L195.29 92.25L193.68 91.82L192.05 91.42L190.4 91.04L188.74 90.7L187.05 90.38L185.35 90.1L183.63 89.85L181.9 89.63L180.15 89.45L178.39 89.3L176.61 89.18L174.82 89.09L173.01 89.04L171.2 89.03L169.37 89.05L167.53 89.1L165.68 89.19L163.82 89.32L161.96 89.48L160.08 89.68L158.2 89.92L156.31 90.2L154.41 90.51L152.51 90.86L150.6 91.25L148.69 91.67L146.78 92.14L144.86 92.64L142.95 93.19L141.03 93.77L139.11 94.39L137.19 95.06L135.28 95.76L133.36 96.5L131.45 97.28L129.55 98.1L127.64 98.96L125.75 99.86L123.86 100.81L121.97 101.79L120.1 102.81L118.23 103.87L116.37 104.98L114.53 106.12L112.69 107.3L110.87 108.53L109.06 109.79L107.26 111.09L105.47 112.43L103.71 113.82L101.95 115.24L100.22 116.7L98.5 118.2L96.8 119.74L95.12 121.32L93.46 122.94L91.82 124.59L90.21 126.29L88.61 128.02L87.04 129.79L85.49 131.59L83.97 133.44L82.47 135.32L81 137.23L79.56 139.18L78.14 141.17L76.76 143.19L75.4 145.25L74.07 147.34L72.78 149.46L71.51 151.62L70.28 153.81L69.08 156.04L67.92 158.29L66.79 160.58L65.7 162.9L64.64 165.24L63.62 167.62L62.64 170.03L61.69 172.46L60.78 174.92L59.92 177.41L59.09 179.93L58.3 182.47L57.56 185.04L56.85 187.63L56.19 190.25L55.58 192.89L55 195.55L54.47 198.23L53.99 200.94L53.55 203.66L53.16 206.41L52.81 209.17L52.51 211.95L52.26 214.75L52.06 217.56L51.9 220.39L51.79 223.24L51.73 226.1L51.73 228.97L51.77 231.85L51.86 234.75L52 237.66L52.2 240.57L52.44 243.5L52.74 246.43L53.09 249.37L53.49 252.31L53.95 255.26L54.46 258.21L55.02 261.17L55.63 264.13L56.3 267.09L57.02 270.05L57.8 273.01L58.63 275.96L59.51 278.92L60.45 281.87L61.45 284.82L62.5 287.76L63.6 290.69L64.76 293.62L65.97 296.53L67.24 299.44L68.56 302.34L69.94 305.22L71.37 308.1L72.86 310.95L74.4 313.8L76 316.63L77.65 319.44L79.35 322.23L81.11 325L82.93 327.76L84.8 330.49L86.72 333.2L88.69 335.89L90.72 338.56L92.8 341.2L94.93 343.81L97.12 346.39L99.36 348.95L101.64 351.48L103.98 353.98L106.38 356.45L108.82 358.88L111.31 361.29L113.85 363.66L116.44 365.99L119.08 368.29L121.77 370.55L124.5 372.77L127.29 374.95L130.12 377.1L132.99 379.2L135.91 381.26L138.88 383.28L141.89 385.26L144.94 387.19L148.04 389.07L151.18 390.91L154.36 392.71L157.58 394.45L160.84 396.15L164.14 397.79L167.48 399.39L170.86 400.93L174.28 402.42L177.73 403.86L181.22 405.25L184.74 406.58L188.29 407.86L191.88 409.08L195.5 410.24L199.16 411.35L202.84 412.39L206.55 413.38L210.29 414.31L214.06 415.18L217.85 415.99L221.67 416.74L225.51 417.42L229.38 418.04L233.27 418.6L237.18 419.1L241.12 419.53L245.07 419.9"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M116 105.2L126.97 103.53L122.48 96.2Z"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The branch for θ &lt; 0 (r = aθ with θ negative, that is r &lt; 0) is the mirror image of the first in the axis OY. The two branches meet again at the bottom, and cross there.">
+<path class="ink curve" style="stroke-width:2.81;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M216.14 180.01L215.34 180L214.53 179.96L213.73 179.9L212.93 179.81L212.13 179.69L211.33 179.55L210.54 179.38L209.75 179.19L208.97 178.97L208.19 178.72L207.42 178.45L206.66 178.16L205.9 177.84L205.15 177.49L204.41 177.12L203.68 176.73L202.96 176.31L202.25 175.87L201.55 175.4L200.86 174.91L200.19 174.4L199.52 173.86L198.87 173.31L198.24 172.73L197.62 172.12L197.01 171.5L196.42 170.85L195.85 170.18L195.29 169.5L194.75 168.79L194.22 168.06L193.72 167.31L193.23 166.54L192.76 165.75L192.32 164.95L191.89 164.13L191.48 163.29L191.09 162.43L190.73 161.55L190.38 160.66L190.06 159.76L189.77 158.83L189.49 157.9L189.24 156.95L189.01 155.98L188.81 155.01L188.63 154.02L188.47 153.01L188.34 152L188.24 150.97L188.16 149.94L188.11 148.89L188.09 147.84L188.09 146.78L188.12 145.7L188.18 144.63L188.26 143.54L188.37 142.45L188.52 141.35L188.68 140.25L188.88 139.14L189.11 138.03L189.36 136.92L189.65 135.8L189.96 134.68L190.3 133.56L190.67 132.44L191.07 131.32L191.5 130.2L191.96 129.08L192.45 127.97L192.97 126.85L193.52 125.74L194.1 124.64L194.71 123.54L195.35 122.44L196.02 121.35L196.72 120.27L197.44 119.2L198.2 118.13L198.99 117.07L199.81 116.02L200.65 114.98L201.53 113.96L202.43 112.94L203.37 111.94L204.33 110.95L205.32 109.97L206.34 109.01L207.39 108.06L208.46 107.13L209.57 106.21L210.7 105.31L211.86 104.43L213.04 103.56L214.25 102.72L215.49 101.89L216.76 101.09L218.05 100.3L219.36 99.54L220.7 98.8L222.07 98.08L223.46 97.38L224.87 96.71L226.31 96.06L227.77 95.44L229.25 94.84L230.76 94.27L232.29 93.72L233.84 93.2L235.41 92.71L237 92.25L238.61 91.82L240.23 91.42L241.88 91.04L243.55 90.7L245.23 90.38L246.93 90.1L248.65 89.85L250.38 89.63L252.13 89.45L253.9 89.3L255.67 89.18L257.46 89.09L259.27 89.04L261.08 89.03L262.91 89.05L264.75 89.1L266.6 89.19L268.46 89.32L270.33 89.48L272.2 89.68L274.09 89.92L275.98 90.2L277.87 90.51L279.77 90.86L281.68 91.25L283.59 91.67L285.5 92.14L287.42 92.64L289.34 93.19L291.25 93.77L293.17 94.39L295.09 95.06L297.01 95.76L298.92 96.5L300.83 97.28L302.74 98.1L304.64 98.96L306.54 99.86L308.43 100.81L310.31 101.79L312.18 102.81L314.05 103.87L315.91 104.98L317.76 106.12L319.59 107.3L321.42 108.53L323.23 109.79L325.03 111.09L326.81 112.43L328.58 113.82L330.33 115.24L332.06 116.7L333.78 118.2L335.48 119.74L337.16 121.32L338.82 122.94L340.46 124.59L342.08 126.29L343.67 128.02L345.24 129.79L346.79 131.59L348.31 133.44L349.81 135.32L351.28 137.23L352.72 139.18L354.14 141.17L355.53 143.19L356.88 145.25L358.21 147.34L359.51 149.46L360.77 151.62L362 153.81L363.2 156.04L364.36 158.29L365.49 160.58L366.59 162.9L367.64 165.24L368.66 167.62L369.65 170.03L370.59 172.46L371.5 174.92L372.37 177.41L373.19 179.93L373.98 182.47L374.73 185.04L375.43 187.63L376.09 190.25L376.71 192.89L377.28 195.55L377.81 198.23L378.29 200.94L378.73 203.66L379.13 206.41L379.47 209.17L379.77 211.95L380.02 214.75L380.23 217.56L380.38 220.39L380.49 223.24L380.55 226.1L380.56 228.97L380.52 231.85L380.42 234.75L380.28 237.66L380.09 240.57L379.84 243.5L379.54 246.43L379.19 249.37L378.79 252.31L378.34 255.26L377.83 258.21L377.27 261.17L376.65 264.13L375.98 267.09L375.26 270.05L374.48 273.01L373.65 275.96L372.77 278.92L371.83 281.87L370.84 284.82L369.79 287.76L368.68 290.69L367.52 293.62L366.31 296.53L365.04 299.44L363.72 302.34L362.34 305.22L360.91 308.1L359.42 310.95L357.88 313.8L356.28 316.63L354.63 319.44L352.93 322.23L351.17 325L349.36 327.76L347.49 330.49L345.57 333.2L343.59 335.89L341.56 338.56L339.48 341.2L337.35 343.81L335.17 346.39L332.93 348.95L330.64 351.48L328.3 353.98L325.91 356.45L323.47 358.88L320.97 361.29L318.43 363.66L315.84 365.99L313.2 368.29L310.51 370.55L307.78 372.77L305 374.95L302.17 377.1L299.29 379.2L296.37 381.26L293.41 383.28L290.39 385.26L287.34 387.19L284.24 389.07L281.11 390.91L277.92 392.71L274.7 394.45L271.44 396.15L268.14 397.79L264.8 399.39L261.42 400.93L258.01 402.42L254.55 403.86L251.07 405.25L247.54 406.58L243.99 407.86L240.4 409.08L236.78 410.24L233.13 411.35L229.45 412.39L225.73 413.38L221.99 414.31L218.23 415.18L214.43 415.99L210.61 416.74L206.77 417.42L202.9 418.04L199.01 418.6L195.1 419.1L191.17 419.53L187.22 419.9"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M316.28 105.2L322.77 114.2L327.25 106.87Z"/>
+</g>
+<g class="step" data-step="6" data-tool="note" data-text="The book marks the points where the two branches meet the axes: (0, aπ/2) and (0, −3πa/2) on OY, and (−aπ, 0), (aπ, 0) on OX.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="216.14" cy="101.47" r="2.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="59.06" cy="180.01" r="2.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="373.22" cy="180.01" r="2.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.1" cx="216.14" cy="415.63" r="2.93"/>
+</g>
+</svg>

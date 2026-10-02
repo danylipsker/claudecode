@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 397.86 387.86" width="520" height="507" data-fig="fig-060">
+<title>Fig. 60 — The osculating circle: centre (α, β), radius R, tangential angle φ</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 60, page 60. Section: curvature.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX, OY and a curve. Choose the point (x, y) on it where the curvature is wanted.">
+<path class="ink axis" style="stroke-width:1.19;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M24.43 289.43L373.43 289.43"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M373.43 289.43L365.99 286.31L365.99 292.55Z"/>
+<path class="ink axis" style="stroke-width:1.19;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M53.43 363.43L53.43 24.43"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M53.43 24.43L50.31 31.87L56.55 31.87Z"/>
+<text class="lbl axis" x="380.56" y="297.82" font-size="13.53" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="60.56" y="16.04" font-size="13.53" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="53.43" cy="289.43" r="2.59"/>
+<path class="ink thick" style="stroke-width:2.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M284.04 217.67L284.39 217.6L284.74 217.51L285.09 217.43L285.44 217.34L285.78 217.24L286.13 217.14L286.48 217.04L286.83 216.93L287.17 216.82L287.52 216.71L287.87 216.59L288.22 216.46L288.57 216.33L288.91 216.2L289.26 216.06L289.61 215.91L289.96 215.76L290.31 215.61L290.65 215.45L291 215.28L291.35 215.11L291.7 214.93L292.05 214.75L292.39 214.56L292.74 214.37L293.09 214.17L293.44 213.96L293.79 213.75L294.13 213.53L294.48 213.31L294.83 213.08L295.18 212.84L295.52 212.59L295.87 212.34L296.22 212.09L296.57 211.82L296.92 211.55L297.26 211.27L297.61 210.99L297.96 210.7L298.31 210.4L298.66 210.09L299 209.77L299.35 209.45L299.7 209.12L300.05 208.79L300.4 208.44L300.74 208.09L301.09 207.73L301.44 207.36L301.79 206.98L302.14 206.59L302.48 206.2L302.83 205.8L303.18 205.39L303.53 204.97L303.87 204.54L304.22 204.1L304.57 203.66L304.92 203.2L305.27 202.74L305.61 202.27L305.96 201.78L306.31 201.29L306.66 200.79L307.01 200.28L307.35 199.76L307.7 199.23L308.05 198.69L308.4 198.14L308.75 197.59L309.09 197.02L309.44 196.44L309.79 195.85L310.14 195.25L310.48 194.64L310.83 194.02L311.18 193.39L311.53 192.74L311.88 192.09L312.22 191.43L312.57 190.75L312.92 190.07L313.27 189.37L313.62 188.67L313.96 187.95L314.31 187.22L314.66 186.47L315.01 185.72L315.36 184.96L315.7 184.18L316.05 183.39L316.4 182.59L316.75 181.78L317.1 180.95L317.44 180.12L317.79 179.27L318.14 178.41L318.49 177.53L318.83 176.65L319.18 175.75L319.53 174.84L319.88 173.91L320.23 172.98L320.57 172.03L320.92 171.06L321.27 170.09L321.62 169.1L321.97 168.09L322.31 167.08L322.66 166.05L323.01 165L323.36 163.95L323.71 162.88L324.05 161.79L324.4 160.69L324.75 159.58L325.1 158.45L325.45 157.31L325.79 156.16L326.14 154.99L326.49 153.8L326.84 152.6L327.18 151.39L327.53 150.16L327.88 148.92L328.23 147.66L328.58 146.39L328.92 145.1L329.27 143.8L329.62 142.48L329.97 141.14L330.32 139.8L330.66 138.43L331.01 137.05L331.36 135.65L331.71 134.24L332.06 132.81L332.4 131.37L332.75 129.91L333.1 128.43L333.45 126.94L333.79 125.43L334.14 123.9L334.49 122.36L334.84 120.8L335.19 119.23L335.53 117.64L335.88 116.03L336.23 114.4L336.58 112.76L336.93 111.1L337.27 109.42L337.62 107.72L337.97 106.01L338.32 104.28L338.67 102.53L339.01 100.77L339.36 98.99L339.71 97.19"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="310.85" cy="193.99" r="2.59"/>
+<text class="lbl " x="319.23" y="193.99" font-size="13.53" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">(x, y)</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent to the curve at (x, y). It makes the tangential angle φ with OX.">
+<path class="ink given" style="stroke-width:1.43;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M243.26 315.65L322.99 172.14"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.88" d="M278.52 289.43A20.7 20.7 0 0 0 267.88 271.34"/>
+<text class="lbl " x="287.91" y="271.73" font-size="13.53" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="At (x, y) raise the normal to the tangent, on the concave side of the curve, and lay off on it the radius of curvature R: its end is the centre (α, β) of the circle.">
+<path class="ink given" style="stroke-width:1.43;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M310.85 193.99L223.43 145.43"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="223.43" cy="145.43" r="2.59"/>
+<text class="lbl " x="223.43" y="137.04" font-size="13.53" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">(α, β)</text>
+<text class="lbl " x="280.78" y="161.24" font-size="13.53" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The circle about (α, β) with radius R: the osculating circle, or circle of curvature. It touches the curve at (x, y) and has the same y' and y'' there.">
+<circle class="ink given" style="stroke-width:1.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="223.43" cy="145.43" r="100"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="Drop the vertical from the centre and the horizontal from (x, y) to it. The right triangle (angle φ at the centre, since its sides are perpendicular to those of the tangent angle) gives α = x − R sin φ and β = y + R cos φ.">
+<path class="ink given" style="stroke-width:1.43;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M223.43 145.43L223.43 289.43"/>
+<path class="ink given" style="stroke-width:1.43;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M310.85 193.99L223.43 193.99"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.88" d="M223.43 163.69A18.26 18.26 0 0 0 239.39 154.3"/>
+<text class="lbl " x="240.15" y="173.85" font-size="13.53" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+</svg>

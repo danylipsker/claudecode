@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 324.69 256.91" width="520" height="411" data-fig="fig-131">
+<title>Fig. 131 — Poles and polars: the harmonic set</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 131, page 133. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of inversion with centre O and radius k, and the point Ā outside it on the line through O. P is where that line meets the circle.">
+<circle class="ink given" style="stroke-width:1.17;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="122.94" cy="128.45" r="100"/>
+<path class="ink given" style="stroke-width:1.17;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M19.94 128.45L304.76 128.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.71" cx="122.94" cy="128.45" r="2.11"/>
+<text class="lbl " x="122.94" y="121.61" font-size="11.04" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.71" cx="222.94" cy="128.45" r="2.11"/>
+<text class="lbl " x="222.94" y="121.61" font-size="11.04" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.71" cx="304.76" cy="128.45" r="2.11"/>
+<text class="lbl " x="304.76" y="119.56" font-size="11.04" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Ā</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the two tangents from Ā to the circle, touching it at T1 and T2.">
+<path class="ink given" style="stroke-width:1.17;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M148.71 25.69L304.76 128.45"/>
+<path class="ink given" style="stroke-width:1.17;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M148.71 231.22L304.76 128.45"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join the points of contact: the chord T1T2 is the polar of Ā. It cuts the line at A, the inverse of Ā (OA · OĀ = k²), and is perpendicular to it.">
+<path class="ink given" style="stroke-width:1.17;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M177.94 19.94L177.94 236.97"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.71" cx="177.94" cy="128.45" r="2.11"/>
+<text class="lbl " x="177.94" y="119.56" font-size="11.04" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.71" d="M182.79 128.45L182.79 123.6L177.94 123.6"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Since A lies on the polar of Ā, inversion is the theory of poles and polars for the circle. A and Ā divide the diameter through P harmonically: (AP′ / AP) = (ĀP′ / ĀP), where P′ is the other end of the diameter.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.71" cx="22.94" cy="128.45" r="2.11"/>
+<text class="lbl " x="17.12" y="121.61" font-size="11.04" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P′</text>
+</g>
+</svg>

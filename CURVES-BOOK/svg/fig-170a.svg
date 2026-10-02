@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 535.8 505.8" width="520" height="491" data-fig="fig-170a">
+<title>Fig. 170(a) — The cubic y1 = (x−1)(x−2)(x−3), the guide for the semi-cubic parabola</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 170(a), page 187. Section: semi-cubic-parabola.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Draw the axes X and Y1 and mark the three intercepts x = 1, 2, 3 where y1 = 0.">
+<path class="ink axis" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M52.9 292.9L457.9 292.9"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M457.9 292.9L447.88 288.69L447.88 297.11Z"/>
+<path class="ink axis" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M82.9 452.9L82.9 102.9"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M82.9 102.9L78.69 112.92L87.11 112.92Z"/>
+<text class="lbl axis" x="467.5" y="304.19" font-size="18.22" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="92.5" y="91.61" font-size="18.22" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.18" cx="82.9" cy="292.9" r="4.53"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.18" cx="182.9" cy="292.9" r="4.53"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.18" cx="282.9" cy="292.9" r="4.53"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.18" cx="382.9" cy="292.9" r="4.53"/>
+<text class="lbl  upright" x="52.9" y="57.9" font-size="15.48" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y<tspan baseline-shift="sub" font-size="70%">1</tspan> = y<tspan baseline-shift="super" font-size="70%">2</tspan> = (x−1)(x−2)(x−3)</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Sketch the cubic through the three intercepts: it rises from the left, turns at the maximum between 1 and 2, turns again at the minimum between 2 and 3, and then rises for ever.">
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M172.9 339.1L174.05 333.14L175.2 327.35L176.35 321.73L177.5 316.28L178.65 311L179.8 305.88L180.95 300.93L182.1 296.14L183.25 291.51L184.4 287.03L185.55 282.72L186.7 278.56L187.85 274.55L189 270.69L190.15 266.98L191.3 263.42L192.45 260L193.6 256.72L194.75 253.59L195.9 250.6L197.05 247.75L198.2 245.03L199.35 242.45L200.5 240L201.65 237.68L202.8 235.48L203.95 233.42L205.1 231.48L206.25 229.67L207.4 227.97L208.55 226.4L209.7 224.94L210.85 223.61L212 222.38L213.15 221.27L214.3 220.27L215.45 219.37L216.6 218.59L217.75 217.91L218.9 217.33L220.05 216.85L221.2 216.48L222.35 216.2L223.5 216.02L224.65 215.93L225.8 215.93L226.95 216.03L228.1 216.21L229.25 216.48L230.4 216.84L231.55 217.28L232.7 217.8L233.85 218.4L235 219.08L236.15 219.84L237.3 220.66L238.45 221.56L239.6 222.54L240.75 223.58L241.9 224.68L243.05 225.86L244.2 227.09L245.35 228.39L246.5 229.75L247.65 231.16L248.8 232.63L249.95 234.15L251.1 235.73L252.25 237.36L253.4 239.03L254.55 240.76L255.7 242.52L256.85 244.34L258 246.19L259.15 248.08L260.3 250.01L261.45 251.97L262.6 253.97L263.75 256L264.9 258.07L266.05 260.16L267.2 262.27L268.35 264.42L269.5 266.58L270.65 268.77L271.8 270.97L272.95 273.2L274.1 275.44L275.25 277.69L276.4 279.95L277.55 282.23L278.7 284.51L279.85 286.81L281 289.1L282.15 291.4L283.3 293.7L284.45 296L285.6 298.3L286.75 300.59L287.9 302.88L289.05 305.15L290.2 307.42L291.35 309.68L292.5 311.92L293.65 314.15L294.8 316.36L295.95 318.56L297.1 320.73L298.25 322.88L299.4 325L300.55 327.1L301.7 329.17L302.85 331.21L304 333.22L305.15 335.2L306.3 337.14L307.45 339.04L308.6 340.91L309.75 342.73L310.9 344.51L312.05 346.25L313.2 347.94L314.35 349.58L315.5 351.17L316.65 352.71L317.8 354.2L318.95 355.63L320.1 357L321.25 358.32L322.4 359.57L323.55 360.77L324.7 361.89L325.85 362.95L327 363.95L328.15 364.87L329.3 365.72L330.45 366.5L331.6 367.2L332.75 367.82L333.9 368.37L335.05 368.83L336.2 369.22L337.35 369.51L338.5 369.72L339.65 369.85L340.8 369.88L341.95 369.82L343.1 369.67L344.25 369.42L345.4 369.07L346.55 368.63L347.7 368.08L348.85 367.43L350 366.68L351.15 365.82L352.3 364.85L353.45 363.77L354.6 362.58L355.75 361.28L356.9 359.86L358.05 358.32L359.2 356.66L360.35 354.88L361.5 352.98L362.65 350.96L363.8 348.8L364.95 346.52L366.1 344.11L367.25 341.57L368.4 338.89L369.55 336.08L370.7 333.13L371.85 330.04L373 326.81L374.15 323.44L375.3 319.92L376.45 316.26L377.6 312.44L378.75 308.48L379.9 304.37L381.05 300.1L382.2 295.67L383.35 291.09L384.5 286.35L385.65 281.44L386.8 276.38L387.95 271.14L389.1 265.75L390.25 260.18L391.4 254.44L392.55 248.53L393.7 242.45L394.85 236.19L396 229.75L397.15 223.14L398.3 216.34L399.45 209.36L400.6 202.19L401.75 194.84L402.9 187.3"/>
+</g>
+<g class="step" data-step="2" data-tool="ruler" data-text="Carry the intercepts and the maximum down as dashed ordinates: they are the points where the curve under it, y² = y1, will have vertical tangents and its greatest height.">
+<path class="ink cons dash" style="stroke-width:1.18;fill:none;--dash:6.43 4.29;stroke:#4b4b4b;stroke-dasharray:6.43 4.29;stroke-linecap:round;stroke-linejoin:round" d="M182.9 292.9L182.9 432.9"/>
+<path class="ink cons dash" style="stroke-width:1.18;fill:none;--dash:6.43 4.29;stroke:#4b4b4b;stroke-dasharray:6.43 4.29;stroke-linecap:round;stroke-linejoin:round" d="M282.9 292.9L282.9 432.9"/>
+<path class="ink cons dash" style="stroke-width:1.18;fill:none;--dash:6.43 4.29;stroke:#4b4b4b;stroke-dasharray:6.43 4.29;stroke-linecap:round;stroke-linejoin:round" d="M382.9 292.9L382.9 432.9"/>
+<path class="ink cons dash" style="stroke-width:1.18;fill:none;--dash:6.43 4.29;stroke:#4b4b4b;stroke-dasharray:6.43 4.29;stroke-linecap:round;stroke-linejoin:round" d="M225.16 215.92L225.16 432.9"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.18" cx="225.16" cy="215.92" r="4.53"/>
+</g>
+</svg>

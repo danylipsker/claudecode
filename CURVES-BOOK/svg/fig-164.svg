@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1618.71 994.95" width="520" height="320" data-fig="fig-164">
+<title>Fig. 164 — The envelope of a line carried by a curve rolling on a line</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 164, page 180. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed line (the x-axis) with the origin O, and the rolling curve resting on it at P. A line ℓ is carried by the curve; it passes through the point O1 of the curve that touched the axis at O.">
+<path class="ink axis" style="stroke-width:4.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M183.06 872.01L1193.06 872.01"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1193.06 872.01L1162.79 859.3L1162.79 884.72Z"/>
+<path class="ink axis" style="stroke-width:4.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M438.06 872.01L438.06 247.01"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M438.06 247.01L425.35 277.28L450.78 277.28Z"/>
+<path class="ink given" style="stroke-width:5.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M99.39 359.95L108.19 369.13L116.97 378.23L125.72 387.25L134.44 396.18L143.14 405.03L151.81 413.8L160.46 422.48L169.09 431.08L177.69 439.6L186.26 448.03L194.81 456.38L203.34 464.65L211.84 472.84L220.32 480.94L228.77 488.96L237.19 496.89L245.6 504.75L253.97 512.52L262.32 520.2L270.65 527.81L278.95 535.33L287.23 542.77L295.48 550.12L303.71 557.39L311.91 564.58L320.09 571.68L328.24 578.71L336.37 585.65L344.48 592.5L352.55 599.27L360.61 605.96L368.64 612.57L376.64 619.1L384.62 625.54L392.57 631.89L400.5 638.17L408.41 644.36L416.29 650.47L424.14 656.49L431.97 662.44L439.78 668.29L447.56 674.07L455.32 679.76L463.05 685.37L470.75 690.9L478.43 696.34L486.09 701.7L493.72 706.98L501.33 712.18L508.91 717.29L516.47 722.32L524 727.26L531.51 732.12L538.99 736.9L546.45 741.6L553.88 746.21L561.29 750.74L568.67 755.19L576.03 759.55L583.36 763.84L590.67 768.03L597.96 772.15L605.21 776.18L612.45 780.13L619.66 783.99L626.84 787.78L634 791.48L641.14 795.09L648.25 798.63L655.33 802.08L662.39 805.44L669.43 808.73L676.44 811.93L683.42 815.05L690.39 818.08L697.32 821.03L704.23 823.9L711.12 826.69L717.98 829.39L724.82 832.01L731.63 834.54L738.42 837L745.18 839.37L751.92 841.66L758.63 843.86L765.32 845.98L771.98 848.02L778.62 849.97L785.23 851.85L791.82 853.63L798.38 855.34L804.92 856.96L811.44 858.5L817.93 859.96L824.39 861.33L830.83 862.62L837.24 863.83L843.63 864.96L850 866L856.34 866.95L862.65 867.83L868.94 868.62L875.21 869.33L881.45 869.96L887.67 870.5L893.86 870.96L900.02 871.34L906.17 871.63L912.28 871.84L918.37 871.97L924.44 872.01L930.48 871.97L936.5 871.85L942.49 871.65L948.46 871.36L954.4 870.99L960.32 870.53L966.21 870L972.08 869.38L977.93 868.67L983.74 867.89L989.54 867.02L995.31 866.06L1001.05 865.03L1006.77 863.91L1012.46 862.71L1018.13 861.42L1023.78 860.06L1029.4 858.61L1034.99 857.07L1040.56 855.46L1046.11 853.76L1051.63 851.97L1057.13 850.11L1062.6 848.16L1068.04 846.12L1073.46 844.01L1078.86 841.81L1084.23 839.53L1089.58 837.16L1094.9 834.72L1100.2 832.19L1105.47 829.57L1110.72 826.88L1115.94 824.1L1121.14 821.23L1126.31 818.29L1131.46 815.26L1136.58 812.15L1141.68 808.95L1146.75 805.67L1151.8 802.31L1156.83 798.87L1161.83 795.34L1166.8 791.73L1171.75 788.03L1176.67 784.26L1181.57 780.4L1186.45 776.45L1191.3 772.43L1196.12 768.32L1200.92 764.13L1205.7 759.85L1210.45 755.49L1215.18 751.05L1219.88 746.53L1224.55 741.92L1229.2 737.23L1233.83 732.46L1238.43 727.6L1243.01 722.66L1247.56 717.64L1252.09 712.53L1256.59 707.34L1261.07 702.07L1265.52 696.72L1269.95 691.28L1274.35 685.76L1278.73 680.15L1283.08 674.47L1287.41 668.7L1291.72 662.84L1295.99 656.91L1300.25 650.89L1304.48 644.78L1308.68 638.6L1312.86 632.33L1317.02 625.98L1321.15 619.54L1325.25 613.02L1329.33 606.42L1333.39 599.74L1337.42 592.97L1341.42 586.12L1345.4 579.19L1349.36 572.17L1353.29 565.07L1357.2 557.89L1361.08 550.62L1364.93 543.28"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M755.16 842.73L759.95 868.28"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M769.57 847.29L774.92 872.73"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M783.87 851.47L789.8 876.78"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M798.04 855.25L804.57 880.42"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M812.11 858.66L819.23 883.66"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M826.06 861.67L833.8 886.5"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M839.89 864.31L848.26 888.92"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M853.61 866.55L862.61 890.94"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M867.21 868.41L876.87 892.55"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1264.91 697.46L1290.45 702.3"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1274.05 686.14L1299.69 690.44"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1283.08 674.47L1308.81 678.24"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1292.01 662.44L1317.81 665.7"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1300.83 650.05L1326.69 652.81"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1309.55 637.31L1335.45 639.59"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1318.16 624.21L1344.09 626.02"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1326.66 610.76L1352.63 612.11"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1335.06 596.95L1361.04 597.86"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1343.35 582.78L1369.34 583.27"/>
+<path class="ink cons" style="stroke-width:1.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M1351.53 568.26L1377.53 568.33"/>
+<path class="ink thick" style="stroke-width:9.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M478.7 696.53L1519.32 99.39"/>
+<path class="ink given dash" style="stroke-width:5.83;fill:none;--dash:19.42 12.95;stroke:#1b1b1b;stroke-dasharray:19.42 12.95;stroke-linecap:round;stroke-linejoin:round" d="M172.89 872.01L478.7 696.53"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="1519.32" cy="99.39" r="10.52"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="478.7" cy="696.53" r="10.52"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="438.06" cy="872.01" r="10.52"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="924.65" cy="872.01" r="10.52"/>
+<text class="lbl " x="953.65" y="906.13" font-size="55.04" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="Draw PQ perpendicular to the carried line ℓ; Q is its foot. Every point of ℓ turns about P (P is the instantaneous centre), so Q, whose motion is perpendicular to PQ, moves along ℓ itself: ℓ touches its envelope at Q.">
+<path class="ink given" style="stroke-width:5.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M924.65 872.01L738.43 547.49"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="738.43" cy="547.49" r="10.52"/>
+<text class="lbl " x="709.43" y="513.37" font-size="55.04" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl " x="858.84" y="709.75" font-size="55.04" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">z</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.56" d="M882.74 798.98A84.21 84.21 0 0 0 840.44 872.01"/>
+<text class="lbl " x="819.63" y="811.2" font-size="55.04" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+<g class="step" data-step="2" data-tool="roll" data-text="Let the curve roll on to a neighbouring point P1, at the arc ds from P. The line ℓ turns through dφ about P1: the perpendicular P1T falls on the old position of ℓ, and P1Q1 (equal to P1T) on the new one, so the new point of tangency is Q1.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="1067.29" cy="846.41" r="10.52"/>
+<text class="lbl " x="1093.4" y="877.12" font-size="55.04" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl " x="995.97" y="814.85" font-size="55.04" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ds</text>
+<path class="ink given" style="stroke-width:5.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1067.29 846.41L856.79 479.57"/>
+<path class="ink given" style="stroke-width:5.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1067.29 846.41L1000.58 428.76"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="856.79" cy="479.57" r="10.52"/>
+<text class="lbl " x="856.79" y="445.45" font-size="55.04" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="1000.58" cy="428.76" r="10.52"/>
+<text class="lbl " x="1034.7" y="428.76" font-size="55.04" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.56" d="M1054.79 768.15A79.25 79.25 0 0 0 1027.85 777.67"/>
+<text class="lbl " x="1023.01" y="721.09" font-size="55.04" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">dφ</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The element of the envelope is dσ = QT + TQ1 = sin φ · ds + z · dφ (QT is the projection of ds on ℓ; TQ1 is an arc about P1 of radius z). Hence dσ/dφ = sin φ (ds/dφ) + z.">
+<path class="ink cons" style="stroke-width:3.56;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M438.06 872.01L372.38 757.54"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.56" cx="372.38" cy="757.54" r="10.52"/>
+<text class="lbl " x="371.1" y="814.78" font-size="55.04" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">p</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The envelope of ℓ is the locus of the points Q: it starts at O, where the line passed through the point of contact, and touches ℓ at Q and Q1.">
+<path class="ink curve" style="stroke-width:9.06;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M427.62 895.55L428.45 893.59L429.3 891.6L430.16 889.6L431.04 887.58L431.93 885.54L432.84 883.48L433.77 881.4L434.71 879.3L435.68 877.19L436.65 875.05L437.65 872.9L438.66 870.72L439.7 868.53L440.75 866.32L441.82 864.09L442.91 861.84L444.02 859.57L445.14 857.28L446.29 854.97L447.46 852.64L448.65 850.29L449.86 847.93L451.09 845.54L452.35 843.13L453.63 840.71L454.92 838.26L456.25 835.8L457.59 833.31L458.96 830.8L460.35 828.28L461.77 825.73L463.21 823.17L464.68 820.59L466.17 817.98L467.69 815.36L469.24 812.71L470.81 810.05L472.41 807.37L474.04 804.67L475.7 801.94L477.38 799.2L479.1 796.44L480.84 793.66L482.62 790.86L484.42 788.04L486.26 785.2L488.12 782.34L490.02 779.47L491.95 776.57L493.92 773.66L495.92 770.72L497.95 767.77L500.02 764.8L502.12 761.82L504.25 758.81L506.43 755.79L508.64 752.74L510.88 749.68L513.17 746.61L515.49 743.51L517.85 740.4L520.25 737.28L522.7 734.13L525.18 730.97L527.7 727.8L530.26 724.61L532.87 721.4L535.52 718.18L538.21 714.94L540.94 711.69L543.72 708.43L546.55 705.15L549.42 701.86L552.33 698.56L555.29 695.25L558.3 691.92L561.36 688.58L564.47 685.23L567.62 681.87L570.82 678.51L574.08 675.13L577.38 671.74L580.74 668.35L584.14 664.95L587.6 661.54L591.11 658.12L594.67 654.7L598.29 651.28L601.96 647.85L605.68 644.41L609.46 640.98L613.3 637.54L617.19 634.1L621.14 630.66L625.14 627.22L629.2 623.78L633.32 620.35L637.49 616.92L641.72 613.49L646.01 610.06L650.36 606.65L654.77 603.23L659.24 599.83L663.76 596.44L668.35 593.05L672.99 589.68L677.7 586.31L682.46 582.96L687.28 579.63L692.17 576.31L697.11 573L702.11 569.71L707.18 566.44L712.3 563.19L717.48 559.96L722.73 556.75L728.03 553.57L733.39 550.41L738.81 547.27L744.29 544.16L749.82 541.08L755.42 538.03L761.07 535.01L766.78 532.01L772.55 529.06L778.37 526.13L784.25 523.24L790.18 520.38L796.17 517.57L802.21 514.79L808.3 512.05L814.45 509.35L820.64 506.69L826.89 504.08L833.19 501.51L839.54 498.99L845.93 496.51L852.38 494.08L858.86 491.69L865.4 489.36L871.97 487.08L878.59 484.84L885.26 482.66L891.96 480.54L898.7 478.47L905.48 476.45L912.3 474.49L919.15 472.58L926.03 470.73L932.95 468.94L939.91 467.21L946.89 465.54L953.9 463.93L960.94 462.37L968 460.88L975.09 459.45L982.2 458.09L989.34 456.78L996.49 455.54L1003.66 454.36"/>
+</g>
+</svg>

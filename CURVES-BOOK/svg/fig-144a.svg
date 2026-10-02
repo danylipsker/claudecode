@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 567.67 465.99" width="520" height="427" data-fig="fig-144a">
+<title>Fig. 144(a) — Tangent and centre of curvature of the limacon</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 144(a), page 150. Section: limacon.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of radius a about O, the point B on it (the pole of the limacon) and the line BO.">
+<circle class="ink given" style="stroke-width:2.04;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="225.32" cy="281.14" r="150"/>
+<path class="ink given" style="stroke-width:2.04;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M75.32 281.14L532.82 281.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="75.32" cy="281.14" r="3.69"/>
+<text class="lbl " x="65.15" y="269.17" font-size="19.3" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="225.32" cy="281.14" r="3.69"/>
+<text class="lbl " x="215.15" y="269.17" font-size="19.3" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the secant from B through a point A of the circle and carry it on to P, with AP = k: P is a point of the limacon. Join O to A.">
+<path class="ink given" style="stroke-width:2.04;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M75.32 281.14L457.53 77.91"/>
+<path class="ink given" style="stroke-width:2.04;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M225.32 281.14L309.2 156.78"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="309.2" cy="156.78" r="3.69"/>
+<text class="lbl " x="309.2" y="144.81" font-size="19.3" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="457.53" cy="77.91" r="3.69"/>
+<text class="lbl " x="457.53" y="89.87" font-size="19.3" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The point A of the bar moves perpendicular to OA, so its normal is AO. The point of the bar at B moves along the bar, so its normal is the perpendicular to the bar at B. Both meet at H: carry AO through O to the circle, then BH is perpendicular to AB (a diameter subtends a right angle).">
+<path class="ink cons dash" style="stroke-width:1.25;fill:none;--dash:6.81 4.54;stroke:#4b4b4b;stroke-dasharray:6.81 4.54;stroke-linecap:round;stroke-linejoin:round" d="M225.32 281.14L141.44 405.49"/>
+<path class="ink cons dash" style="stroke-width:1.25;fill:none;--dash:6.81 4.54;stroke:#4b4b4b;stroke-dasharray:6.81 4.54;stroke-linecap:round;stroke-linejoin:round" d="M75.32 281.14L141.44 405.49"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="141.44" cy="405.49" r="3.69"/>
+<text class="lbl " x="141.44" y="417.46" font-size="19.3" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="H is the centre of rotation of the whole bar, so HP is the normal to the path of P.">
+<path class="ink cons dash" style="stroke-width:1.25;fill:none;--dash:6.81 4.54;stroke:#4b4b4b;stroke-dasharray:6.81 4.54;stroke-linecap:round;stroke-linejoin:round" d="M141.44 405.49L457.53 77.91"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="The perpendicular to HP at P is the tangent to the limacon.">
+<path class="ink cons" style="stroke-width:1.25;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M412.92 34.86L502.15 120.96"/>
+</g>
+<g class="step" data-step="5" data-tool="square" data-text="Radius of curvature: at H draw HQ perpendicular to HP, until it meets AB in Q (on the extension of AB beyond B).">
+<path class="ink cons dash" style="stroke-width:1.25;fill:none;--dash:6.81 4.54;stroke:#4b4b4b;stroke-dasharray:6.81 4.54;stroke-linecap:round;stroke-linejoin:round" d="M141.44 405.49L34.86 302.65"/>
+<path class="ink cons dash" style="stroke-width:1.25;fill:none;--dash:6.81 4.54;stroke:#4b4b4b;stroke-dasharray:6.81 4.54;stroke-linecap:round;stroke-linejoin:round" d="M34.86 302.65L75.32 281.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="34.86" cy="302.65" r="3.69"/>
+<text class="lbl " x="24.69" y="314.61" font-size="19.3" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="6" data-tool="straightedge" data-text="Join Q to O. It meets HP in C, the centre of curvature of the path of P.">
+<path class="ink cons dash" style="stroke-width:1.25;fill:none;--dash:6.81 4.54;stroke:#4b4b4b;stroke-dasharray:6.81 4.54;stroke-linecap:round;stroke-linejoin:round" d="M34.86 302.65L265.85 276.56"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.25" cx="265.85" cy="276.56" r="3.69"/>
+<text class="lbl " x="276.02" y="264.59" font-size="19.3" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="7" data-tool="pencil" data-text="The path of P near P, touching the tangent.">
+<path class="ink curve" style="stroke-width:3.18;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M487.7 112.25L485.86 109.8L483.99 107.37L482.1 104.97L480.18 102.58L478.24 100.22L476.28 97.88L474.29 95.56L472.27 93.27L470.24 91L468.18 88.76L466.09 86.54L463.98 84.34L461.86 82.17L459.7 80.03L457.53 77.91L455.34 75.81L453.12 73.75L450.88 71.7L448.63 69.69L446.35 67.7L444.05 65.73L441.74 63.8L439.4 61.89L437.04 60.01L434.67 58.15L432.28 56.33L429.87 54.53L427.44 52.76L425 51.02L422.54 49.31"/>
+</g>
+</svg>

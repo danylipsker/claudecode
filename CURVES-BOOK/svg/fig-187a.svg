@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 427.5 416.38" width="520" height="506" data-fig="fig-187a">
+<title>Fig. 187(a) — The spiral of Archimedes drawn by a carpenter's square rolling on a circle</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 187(a), page 210. Section: spirals.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of radius a about O, the initial line, and the point A′ where the initial line meets the circle. At the start A is at A′ and B is at O.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M26.25 290.13L401.25 290.13"/>
+<circle class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="186.25" cy="290.13" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="186.25" cy="290.13" r="2.5"/>
+<text class="lbl " x="178.59" y="299.14" font-size="14.54" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="286.25" cy="290.13" r="2.5"/>
+<text class="lbl " x="293.91" y="299.14" font-size="14.54" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A′</text>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="Take the angle θ from OA′: the radius OT meets the circle at T, the point where the square now touches. The arc A′T is aθ long.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M186.25 290.13L113.88 221.12"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="113.88" cy="221.12" r="2.5"/>
+<text class="lbl " x="124.69" y="221.12" font-size="14.54" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M199.33 290.13A13.08 13.08 0 0 0 176.78 281.1"/>
+<text class="lbl " x="196.38" y="264.83" font-size="14.54" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<text class="lbl " x="141.64" y="265.54" font-size="14.54" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="The long arm of the square lies along the tangent at T: draw the perpendicular to OT at T.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M41.42 297.11L294.68 31.5"/>
+</g>
+<g class="step" data-step="3" data-tool="dividers" data-text="The square rolls without slipping, so the arc A′T unwinds along the tangent: lay off TA = arc A′T = aθ from T in the direction away from A′. A is a point of the involute of the circle.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="278.11" cy="48.87" r="2.5"/>
+<text class="lbl " x="267.39" y="36.25" font-size="14.54" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="At A draw the perpendicular to the tangent, toward the circle, and lay off AB = a. Then OB is parallel to TA and OB = TA = aθ = r: B is a point of the spiral of Archimedes.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M278.11 48.87L350.49 117.88"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M273.7 53.5L278.33 57.91L282.74 53.28"/>
+<path class="ink cons dash" style="stroke-width:0.94;fill:none;--dash:5.13 3.42;stroke:#4b4b4b;stroke-dasharray:5.13 3.42;stroke-linecap:round;stroke-linejoin:round" d="M186.25 290.13L350.49 117.88"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="350.49" cy="117.88" r="2.5"/>
+<text class="lbl " x="359.5" y="117.88" font-size="14.54" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="260.71" y="194.99" font-size="14.54" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The square itself: a long arm and a short arm AB = a, shown hatched. T is the centre of rotation of the rolling square, so TA and TB are the normals to the paths of A and B.">
+<path class="ink hatchline" style="fill:none;stroke-width:1.2;stroke:#2a2a2a" d="M282.23 44.56L287.37 35.59M268.37 59.09L283.8 32.19M254.52 73.62L280.23 28.79M240.66 88.15L274.05 29.95M226.81 102.68L260.19 44.48M212.95 117.21L246.34 59.01M199.1 131.74L232.48 73.54M185.24 146.27L218.63 88.07M171.39 160.8L204.77 102.61M157.53 175.33L190.92 117.14M143.68 189.87L177.06 131.67M129.82 204.4L163.21 146.2M115.97 218.93L149.35 160.73M102.11 233.46L135.5 175.26M88.26 247.99L121.64 189.79M74.4 262.52L107.79 204.32M60.55 277.05L93.93 218.85M46.69 291.58L80.08 233.38M39.21 295.01L66.22 247.91M35.64 291.6L52.37 262.44M32.07 288.2L38.51 276.98"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:0.94" d="M41.42 297.11L289.16 37.29L277.58 26.25L29.84 286.07Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.2;stroke:#2a2a2a" d="M354.6 113.56L359.74 104.6M347.98 115.49L356.18 101.2M344.41 112.08L352.61 97.79M340.84 108.68L349.04 94.39M337.27 105.28L345.47 90.99M333.71 101.88L341.9 87.59M330.14 98.48L338.34 84.18M326.57 95.07L334.77 80.78M323 91.67L331.2 77.38M319.43 88.27L327.63 73.98M315.87 84.87L324.06 70.58M312.3 81.46L320.49 67.17M308.73 78.06L316.93 63.77M305.16 74.66L313.36 60.37M301.59 71.26L309.79 56.97M298.02 67.86L306.22 53.56M294.46 64.45L302.65 50.16M290.89 61.05L299.09 46.76M287.32 57.65L295.52 43.36M283.75 54.25L291.95 39.96M280.18 50.84L286.15 40.44"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:0.94" d="M278.11 48.87L350.49 117.88L361.53 106.3L289.16 37.29Z"/>
+<text class="lbl " x="177.18" y="117.05" font-size="13.08" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">aθ</text>
+</g>
+<g class="step" data-step="6" data-tool="pencil" data-text="The curve described by B as the square rolls on: the spiral r = aθ (the pole at O, the initial line turned by 90° from the starting direction of B).">
+<path class="ink curve" style="stroke-width:2.39;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M186.25 290.13L186.26 291L186.28 291.88L186.32 292.76L186.37 293.63L186.44 294.51L186.53 295.38L186.63 296.25L186.74 297.12L186.87 297.99L187.02 298.86L187.18 299.73L187.35 300.59L187.55 301.45L187.75 302.31L187.97 303.16L188.21 304.02L188.46 304.87L188.73 305.71L189.01 306.55L189.31 307.39L189.62 308.23L189.95 309.06L190.29 309.88L190.64 310.7L191.02 311.52L191.4 312.33L191.8 313.14L192.22 313.94L192.64 314.73L193.09 315.52L193.55 316.31L194.02 317.08L194.5 317.86L195 318.62L195.52 319.38L196.05 320.13L196.59 320.87L197.14 321.61L197.71 322.34L198.3 323.06L198.89 323.77L199.5 324.48L200.13 325.18L200.76 325.87L201.41 326.55L202.08 327.22L202.75 327.88L203.44 328.54L204.14 329.18L204.85 329.82L205.58 330.44L206.32 331.06L207.07 331.67L207.83 332.26L208.61 332.85L209.4 333.42L210.19 333.99L211 334.54L211.83 335.09L212.66 335.62L213.5 336.14L214.36 336.65L215.23 337.15L216.1 337.63L216.99 338.11L217.89 338.57L218.8 339.02L219.72 339.46L220.65 339.88L221.59 340.3L222.54 340.7L223.5 341.09L224.47 341.46L225.45 341.82L226.43 342.17L227.43 342.51L228.43 342.83L229.45 343.13L230.47 343.43L231.5 343.71L232.54 343.97L233.59 344.23L234.65 344.46L235.71 344.69L236.78 344.9L237.86 345.09L238.94 345.27L240.04 345.43L241.14 345.58L242.24 345.72L243.35 345.84L244.47 345.94L245.6 346.03L246.73 346.1L247.87 346.16L249.01 346.2L250.16 346.23L251.31 346.24L252.47 346.23L253.63 346.21L254.8 346.17L255.97 346.12L257.15 346.05L258.33 345.96L259.51 345.86L260.7 345.74L261.89 345.6L263.09 345.45L264.29 345.28L265.49 345.09L266.69 344.89L267.9 344.67L269.1 344.43L270.31 344.18L271.53 343.9L272.74 343.62L273.96 343.31L275.17 342.99L276.39 342.65L277.61 342.29L278.83 341.92L280.05 341.52L281.26 341.11L282.48 340.69L283.7 340.24L284.92 339.78L286.14 339.3L287.36 338.8L288.57 338.29L289.79 337.75L291 337.2L292.21 336.64L293.42 336.05L294.63 335.45L295.83 334.83L297.04 334.19L298.24 333.53L299.43 332.86L300.63 332.17L301.81 331.46L303 330.73L304.18 329.99L305.36 329.23L306.53 328.45L307.7 327.65L308.87 326.83L310.03 326L311.18 325.15L312.33 324.28L313.47 323.4L314.61 322.5L315.74 321.58L316.86 320.64L317.98 319.69L319.09 318.72L320.2 317.73L321.29 316.72L322.38 315.7L323.46 314.66L324.54 313.6L325.6 312.53L326.66 311.44L327.71 310.33L328.75 309.2L329.78 308.06L330.81 306.9L331.82 305.73L332.82 304.54L333.82 303.33L334.8 302.11L335.77 300.87L336.74 299.61L337.69 298.34L338.63 297.05L339.56 295.75L340.48 294.43L341.39 293.09L342.29 291.74L343.17 290.37L344.05 288.99L344.91 287.59L345.75 286.18L346.59 284.75L347.41 283.31L348.22 281.85L349.02 280.38L349.8 278.9L350.57 277.39L351.33 275.88L352.07 274.35L352.79 272.81L353.51 271.25L354.21 269.68L354.89 268.09L355.56 266.49L356.21 264.88L356.85 263.26L357.47 261.62L358.08 259.97L358.67 258.3L359.25 256.62L359.8 254.93L360.35 253.23L360.87 251.52L361.38 249.79L361.87 248.05L362.35 246.3L362.81 244.54L363.25 242.77L363.67 240.99L364.08 239.19L364.46 237.39L364.83 235.57L365.18 233.74L365.52 231.91L365.83 230.06L366.12 228.2L366.4 226.33L366.66 224.46L366.9 222.57L367.12 220.68L367.32 218.77L367.5 216.86L367.66 214.94L367.8 213.01L367.92 211.07L368.02 209.12L368.1 207.17L368.16 205.2L368.2 203.24L368.22 201.26L368.22 199.28L368.19 197.29L368.15 195.29L368.09 193.29L368 191.28L367.89 189.26L367.76 187.24L367.61 185.21L367.44 183.18L367.25 181.15L367.03 179.11L366.8 177.06L366.54 175.01L366.26 172.95L365.95 170.9L365.63 168.83L365.28 166.77L364.91 164.7L364.51 162.63L364.1 160.56L363.66 158.48L363.2 156.4L362.71 154.32L362.21 152.24L361.68 150.15L361.12 148.07L360.55 145.98L359.95 143.89L359.32 141.81L358.68 139.72L358.01 137.63L357.31 135.54L356.6 133.46L355.86 131.37L355.09 129.28L354.31 127.2L353.5 125.12L352.66 123.04L351.8 120.96L350.92 118.88L350.02 116.81L349.09 114.73L348.13 112.67L347.16 110.6L346.16 108.54L345.13 106.48L344.08 104.43L343.01 102.38L341.92 100.33L340.8 98.29L339.65 96.26L338.48 94.23L337.29 92.2L336.08 90.19L334.84 88.17L333.58 86.17L332.29 84.17L330.98 82.18L329.65 80.19L328.29 78.22L326.91 76.25L325.5 74.29L324.07 72.33L322.62 70.39L321.14 68.45L319.64 66.52L318.12 64.61L316.58 62.7L315.01 60.8"/>
+</g>
+</svg>

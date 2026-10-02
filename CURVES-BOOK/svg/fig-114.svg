@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 888.94 878.06" width="520" height="514" data-fig="fig-114">
+<title>Fig. 114 — The centrode: normals to the two curves meet at the instantaneous centre</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 114, page 119. Section: instantaneous-center.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two known curves (hatched), and a rigid body, the hatched triangle, two points of which, the open circles, are made to move on the two curves. P is another point of the body.">
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M359.37 823.48A420 420 0 0 0 54.58 563.17"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M110.91 579.32A420 420 0 0 0 54.58 563.17"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.49" d="M110.91 579.32L89.23 594.86M101.69 576.09L80.38 592.12M92.39 573.07L71.46 589.59M83.03 570.26L62.49 587.27M73.6 567.68L53.46 585.16M64.12 565.32L44.39 583.26M54.58 563.17L35.28 581.57"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M350.95 803.17A420 420 0 0 0 289 704.02"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.49" d="M350.95 803.17L324.72 798.36M342.59 785.5L316.16 781.92M333.41 768.24L306.85 765.9M323.44 751.43L296.8 750.32M312.7 735.1L286.03 735.23M301.21 719.29L274.58 720.66M289 704.02L262.46 706.64"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M834.36 319.14A265 265 0 0 0 606.09 651.27"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M613.04 492.05A265 265 0 0 0 599.64 619.57"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.49" d="M613.04 492.05L587.21 498.67M607.32 509.64L582.02 518.05M602.85 527.59L578.19 537.74M599.64 545.81L575.74 557.66M597.7 564.2L574.7 577.69M597.06 582.69L575.05 597.75M597.7 601.17L576.8 617.73M599.64 619.57L579.94 637.54"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M825.18 320.27A265 265 0 0 0 762.79 336.98"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.49" d="M825.18 320.27L813.33 344.16M814.52 321.99L803.66 346.34M803.95 324.14L794.08 348.91M793.47 326.72L784.62 351.88M783.11 329.72L775.29 355.22M772.87 333.15L766.1 358.94M762.79 336.98L757.07 363.03"/>
+<path class="ink hatchline" style="fill:none;stroke-width:2.49;stroke:#2a2a2a" d="M696.48 377.11L696.95 373.74M684.77 388.85L686.19 378.75M673.07 400.6L675.43 383.75M661.36 412.34L664.68 388.76M649.66 424.08L653.92 393.77M637.95 435.83L643.16 398.77M626.25 447.57L632.4 403.78M614.54 459.32L621.65 408.78M602.84 471.06L610.89 413.79M591.14 482.8L600.13 418.8M579.43 494.55L589.37 423.8M567.73 506.29L578.62 428.81M556.02 518.04L567.86 433.82M544.32 529.78L557.1 438.82M532.61 541.52L546.34 443.83M520.91 553.27L535.59 448.84M509.2 565.01L524.83 453.84M497.5 576.75L514.07 458.85M485.8 588.5L503.31 463.86M474.09 600.24L492.56 468.86M462.39 611.99L481.8 473.87M450.68 623.73L471.04 478.87M438.98 635.47L460.28 483.88M427.27 647.22L449.52 488.89M415.57 658.96L438.77 493.89M404.11 668.93L428.01 498.9M394.4 666.49L417.25 503.91M384.69 664.05L406.49 508.91M374.98 661.62L395.74 513.92M365.27 659.18L384.98 518.93M355.56 656.74L374.22 523.93M345.85 654.3L363.46 528.94M336.13 651.86L352.71 533.95M326.42 649.42L341.95 538.95M316.71 646.98L331.19 543.96M307 644.54L320.43 548.96M297.29 642.11L309.68 553.97M287.58 639.67L298.92 558.98M277.87 637.23L288.16 563.98M268.16 634.79L277.4 568.99M258.44 632.35L266.65 574M248.73 629.91L255.89 579M239.02 627.47L245.13 584.01M229.31 625.04L234.37 589.02M219.6 622.6L223.62 594.02M209.89 620.16L212.86 599.03M200.18 617.72L202.1 604.04M190.47 615.28L191.34 609.04"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M182.33 613.24L702.33 371.24L405.33 669.24Z"/>
+<circle class="ink given" style="stroke-width:3.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="182.33" cy="613.24" r="24"/>
+<circle class="ink given" style="stroke-width:3.2;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="702.33" cy="371.24" r="24"/>
+<circle class="pt" style="fill:#1b1b1b" cx="405.33" cy="669.24" r="4.04"/>
+<text class="lbl " x="427.63" y="695.47" font-size="30.22" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="At each of the two points draw the normal to its curve (the perpendicular to the tangent). A point of the body moves along its curve, so its instantaneous centre lies on the normal.">
+<path class="ink cons dash" style="stroke-width:1.96;fill:none;--dash:10.67 7.11;stroke:#4b4b4b;stroke-dasharray:10.67 7.11;stroke-linecap:round;stroke-linejoin:round" d="M194.62 592.62L515.37 54.58"/>
+<path class="ink cons dash" style="stroke-width:1.96;fill:none;--dash:10.67 7.11;stroke:#4b4b4b;stroke-dasharray:10.67 7.11;stroke-linecap:round;stroke-linejoin:round" d="M687.86 352.09L465.2 57.33"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The normals meet at H: the instantaneous centre of rotation of any point P of the body. The locus of H, as the body moves, is the centrode (Chasles).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.96" cx="492.33" cy="93.24" r="10.98"/>
+<text class="lbl " x="533.55" y="93.24" font-size="30.22" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+</svg>

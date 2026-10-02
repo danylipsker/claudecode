@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1115.28 671.96" width="520" height="313" data-fig="fig-065">
+<title>Fig. 65 — The cycloidal pendulum</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 65, page 68. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two cheeks: halves of a cycloidal arch of radius a that meet in a cusp at O, and end 2a below it. Draw the line through the ends of the cheeks and the line touching the bob's path from below.">
+<path class="ink given" style="stroke-width:4.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M123.48 403.48L991.8 403.48"/>
+<path class="ink given" style="stroke-width:4.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M68.48 603.48L1046.8 603.48"/>
+<path class="ink given" style="stroke-width:4.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M557.64 203.48L557.64 68.48"/>
+<path class="ink thick" style="stroke-width:6.25;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M243.48 403.48L249.76 403.43L256.04 403.28L262.32 403.04L268.58 402.69L274.83 402.25L281.07 401.71L287.29 401.07L293.48 400.34L299.66 399.51L305.8 398.59L311.91 397.57L317.99 396.46L324.04 395.26L330.04 393.97L336.01 392.58L341.92 391.11L347.79 389.56L353.61 387.92L359.38 386.19L365.09 384.38L370.75 382.5L376.34 380.53L381.87 378.49L387.34 376.38L392.73 374.19L398.06 371.94L403.32 369.61L408.5 367.22L413.6 364.77L418.63 362.26L423.58 359.69L428.45 357.06L433.23 354.39L437.93 351.66L442.54 348.88L447.06 346.06L451.5 343.2L455.84 340.29L460.09 337.36L464.25 334.38L468.32 331.38L472.29 328.35L476.16 325.3L479.94 322.22L483.62 319.13L487.21 316.02L490.69 312.89L494.08 309.76L497.37 306.62L500.56 303.48L503.65 300.34L506.65 297.2L509.54 294.07L512.34 290.95L515.04 287.84L517.64 284.74L520.14 281.67L522.55 278.61L524.87 275.58L527.08 272.58L529.21 269.61L531.24 266.67L533.18 263.77L535.03 260.9L536.79 258.08L538.46 255.31L540.04 252.58L541.54 249.9L542.96 247.27L544.3 244.7L545.55 242.19L546.73 239.74L547.83 237.35L548.86 235.03L549.81 232.77L550.7 230.59L551.52 228.47L552.27 226.43L552.96 224.47L553.59 222.58L554.16 220.77L554.68 219.05L555.14 217.41L555.55 215.85L555.92 214.38L556.24 213L556.52 211.71L556.75 210.5L556.96 209.39L557.13 208.38L557.27 207.45L557.38 206.62L557.46 205.89L557.53 205.25L557.58 204.71L557.61 204.27L557.63 203.93L557.64 203.68L557.64 203.53L557.64 203.48L557.64 203.53L557.65 203.68L557.66 203.93L557.67 204.27L557.71 204.71L557.75 205.25L557.82 205.89L557.91 206.62L558.02 207.45L558.16 208.38L558.33 209.39L558.53 210.5L558.77 211.71L559.05 213L559.37 214.38L559.73 215.85L560.14 217.41L560.61 219.05L561.12 220.77L561.69 222.58L562.32 224.47L563.01 226.43L563.77 228.47L564.59 230.59L565.47 232.77L566.43 235.03L567.45 237.35L568.55 239.74L569.73 242.19L570.99 244.7L572.32 247.27L573.74 249.9L575.24 252.58L576.83 255.31L578.5 258.08L580.26 260.9L582.11 263.77L584.04 266.67L586.08 269.61L588.2 272.58L590.42 275.58L592.73 278.61L595.14 281.67L597.64 284.74L600.24 287.84L602.94 290.95L605.74 294.07L608.64 297.2L611.63 300.34L614.72 303.48L617.91 306.62L621.2 309.76L624.59 312.89L628.08 316.02L631.66 319.13L635.34 322.22L639.12 325.3L643 328.35L646.97 331.38L651.03 334.38L655.19 337.36L659.44 340.29L663.79 343.2L668.22 346.06L672.74 348.88L677.36 351.66L682.05 354.39L686.84 357.06L691.7 359.69L696.65 362.26L701.68 364.77L706.78 367.22L711.97 369.61L717.22 371.94L722.55 374.19L727.95 376.38L733.41 378.49L738.94 380.53L744.54 382.5L750.19 384.38L755.9 386.19L761.67 387.92L767.49 389.56L773.36 391.11L779.28 392.58L785.24 393.97L791.25 395.26L797.29 396.46L803.37 397.57L809.48 398.59L815.63 399.51L821.8 400.34L828 401.07L834.21 401.71L840.45 402.25L846.7 402.69L852.97 403.04L859.24 403.28L865.52 403.43L871.8 403.48"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.45" cx="557.64" cy="203.48" r="7.25"/>
+<text class="lbl " x="581.15" y="203.48" font-size="37.92" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="A string of length 4a is tied at O and laid along one cheek. Unwind it: the part already free is straight and touches the cheek where it leaves it. Draw these straight pieces for the successive positions.">
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M440 350.42L263.4 456.54"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M498.5 305.52L298.54 501.44"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M529.78 268.79L342.2 538.18"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M546.5 240.22L391.62 566.75"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M554.45 219.81L444.93 587.16"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M557.25 207.56L500.69 599.4"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M557.64 203.48L557.64 603.48"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M558.03 207.56L614.59 599.4"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M560.83 219.81L670.35 587.16"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M568.78 240.22L723.67 566.75"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M585.5 268.79L773.08 538.18"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M616.78 305.52L816.74 501.44"/>
+<path class="ink given" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M675.28 350.42L851.88 456.54"/>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="The end of the string, the bob, is at a distance 4a from O along the string. Step off the positions with the dividers at equal arcs of the path (fourteen equal parts here): they are the black dots.">
+<circle class="pt" style="fill:#1b1b1b" cx="243.48" cy="403.48" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="263.4" cy="456.54" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="298.54" cy="501.44" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="342.2" cy="538.18" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="391.62" cy="566.75" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="444.93" cy="587.16" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="500.69" cy="599.4" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="557.64" cy="603.48" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="614.59" cy="599.4" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="670.35" cy="587.16" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="723.67" cy="566.75" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="773.08" cy="538.18" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="816.74" cy="501.44" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="851.88" cy="456.54" r="9.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="871.8" cy="403.48" r="9.79"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The path of the bob is a cycloid equal to the cheeks, with its cusps at the ends of the cheeks and its lowest point 4a below O: the pendulum swings along a cycloid.">
+<path class="ink curve" style="stroke-width:6.25;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M243.48 403.48L243.48 403.52L243.48 403.62L243.49 403.79L243.5 404.03L243.52 404.34L243.55 404.71L243.58 405.16L243.64 405.67L243.7 406.25L243.78 406.89L243.88 407.6L244 408.38L244.14 409.22L244.3 410.12L244.48 411.09L244.7 412.13L244.94 413.22L245.21 414.38L245.51 415.6L245.84 416.88L246.21 418.22L246.61 419.62L247.06 421.07L247.54 422.58L248.06 424.15L248.62 425.77L249.22 427.44L249.87 429.17L250.57 430.94L251.31 432.77L252.1 434.65L252.94 436.57L253.84 438.54L254.78 440.55L255.78 442.61L256.83 444.7L257.94 446.84L259.1 449.02L260.32 451.23L261.6 453.48L262.94 455.77L264.34 458.08L265.8 460.43L267.32 462.81L268.9 465.21L270.55 467.65L272.26 470.1L274.04 472.58L275.88 475.08L277.79 477.6L279.76 480.14L281.8 482.69L283.91 485.26L286.09 487.84L288.33 490.43L290.64 493.03L293.02 495.64L295.46 498.25L297.98 500.86L300.56 503.48L303.21 506.1L305.93 508.72L308.72 511.33L311.58 513.94L314.51 516.53L317.5 519.13L320.56 521.71L323.69 524.27L326.89 526.83L330.15 529.36L333.48 531.88L336.87 534.38L340.33 536.86L343.86 539.32L347.44 541.75L351.1 544.16L354.81 546.53L358.59 548.88L362.42 551.2L366.32 553.48L370.28 555.73L374.29 557.95L378.36 560.12L382.49 562.26L386.68 564.36L390.92 566.41L395.21 568.43L399.55 570.4L403.95 572.32L408.39 574.19L412.88 576.02L417.42 577.8L422.01 579.52L426.64 581.2L431.32 582.82L436.03 584.38L440.79 585.89L445.58 587.35L450.41 588.75L455.28 590.08L460.18 591.36L465.12 592.58L470.08 593.74L475.08 594.84L480.1 595.87L485.15 596.84L490.23 597.75L495.32 598.59L500.44 599.36L505.58 600.07L510.74 600.72L515.91 601.3L521.09 601.81L526.29 602.25L531.5 602.63L536.72 602.93L541.94 603.17L547.17 603.35L552.41 603.45L557.64 603.48L562.88 603.45L568.11 603.35L573.34 603.17L578.57 602.93L583.78 602.63L588.99 602.25L594.19 601.81L599.38 601.3L604.55 600.72L609.7 600.07L614.84 599.36L619.96 598.59L625.06 597.75L630.13 596.84L635.18 595.87L640.2 594.84L645.2 593.74L650.16 592.58L655.1 591.36L660 590.08L664.87 588.75L669.7 587.35L674.5 585.89L679.25 584.38L683.97 582.82L688.64 581.2L693.27 579.52L697.86 577.8L702.4 576.02L706.89 574.19L711.34 572.32L715.73 570.4L720.08 568.43L724.37 566.41L728.61 564.36L732.79 562.26L736.92 560.12L740.99 557.95L745.01 555.73L748.96 553.48L752.86 551.2L756.7 548.88L760.47 546.53L764.19 544.16L767.84 541.75L771.43 539.32L774.95 536.86L778.41 534.38L781.81 531.88L785.13 529.36L788.4 526.83L791.59 524.27L794.72 521.71L797.78 519.13L800.78 516.53L803.7 513.94L806.56 511.33L809.35 508.72L812.07 506.1L814.72 503.48L817.3 500.86L819.82 498.25L822.27 495.64L824.65 493.03L826.96 490.43L829.2 487.84L831.37 485.26L833.48 482.69L835.52 480.14L837.49 477.6L839.4 475.08L841.24 472.58L843.02 470.1L844.73 467.65L846.38 465.21L847.96 462.81L849.49 460.43L850.95 458.08L852.34 455.77L853.68 453.48L854.96 451.23L856.18 449.02L857.35 446.84L858.45 444.7L859.51 442.61L860.5 440.55L861.45 438.54L862.34 436.57L863.18 434.65L863.97 432.77L864.71 430.94L865.41 429.17L866.06 427.44L866.67 425.77L867.23 424.15L867.75 422.58L868.23 421.07L868.67 419.62L869.07 418.22L869.44 416.88L869.77 415.6L870.08 414.38L870.35 413.22L870.59 412.13L870.8 411.09L870.99 410.12L871.15 409.22L871.29 408.38L871.4 407.6L871.5 406.89L871.58 406.25L871.65 405.67L871.7 405.16L871.74 404.71L871.76 404.34L871.78 404.03L871.79 403.79L871.8 403.62L871.8 403.52L871.8 403.48"/>
+</g>
+</svg>

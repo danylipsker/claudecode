@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 599.18 488.22" width="520" height="424" data-fig="fig-179a">
+<title>Fig. 179(a) — A flex at the origin: y = x³, y″ = 0</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 179(a), page 197. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the equation.">
+<path class="ink axis" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M71.83 276.23L536.11 276.23"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M536.11 276.23L524.91 271.53L524.91 280.94Z"/>
+<path class="ink axis" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M284.99 407.63L284.99 130.23"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M284.99 130.23L280.29 141.44L289.7 141.44Z"/>
+<text class="lbl axis" x="546.85" y="288.86" font-size="20.37" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="295.73" y="117.6" font-size="20.37" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="299.59" y="60.15" font-size="17.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y = x<tspan baseline-shift="super" font-size="70%">3</tspan>,  y″<tspan baseline-shift="sub" font-size="70%">0</tspan> = 0</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw y = x³: y″ = 6x changes sign at x = 0, so the origin is a flex; the tangent there is the x-axis, which the curve crosses.">
+<path class="ink curve" style="stroke-width:3.36;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M65.99 399.42L68.23 395.69L70.46 392.03L72.69 388.45L74.93 384.95L77.16 381.52L79.39 378.16L81.63 374.87L83.86 371.66L86.1 368.51L88.33 365.44L90.56 362.43L92.8 359.5L95.03 356.63L97.27 353.82L99.5 351.09L101.73 348.41L103.97 345.81L106.2 343.26L108.43 340.78L110.67 338.36L112.9 336L115.14 333.71L117.37 331.47L119.6 329.29L121.84 327.17L124.07 325.11L126.3 323.1L128.54 321.15L130.77 319.25L133.01 317.41L135.24 315.62L137.47 313.88L139.71 312.2L141.94 310.56L144.17 308.98L146.41 307.45L148.64 305.96L150.88 304.52L153.11 303.13L155.34 301.79L157.58 300.49L159.81 299.24L162.05 298.03L164.28 296.86L166.51 295.74L168.75 294.65L170.98 293.61L173.21 292.61L175.45 291.65L177.68 290.72L179.92 289.84L182.15 288.99L184.38 288.18L186.62 287.4L188.85 286.65L191.08 285.94L193.32 285.27L195.55 284.62L197.79 284.01L200.02 283.43L202.25 282.87L204.49 282.35L206.72 281.86L208.96 281.39L211.19 280.95L213.42 280.53L215.66 280.14L217.89 279.78L220.12 279.43L222.36 279.11L224.59 278.82L226.83 278.54L229.06 278.28L231.29 278.05L233.53 277.83L235.76 277.63L237.99 277.45L240.23 277.28L242.46 277.13L244.7 277L246.93 276.88L249.16 276.77L251.4 276.68L253.63 276.59L255.86 276.52L258.1 276.46L260.33 276.41L262.57 276.36L264.8 276.33L267.03 276.3L269.27 276.28L271.5 276.26L273.74 276.25L275.97 276.24L278.2 276.24L280.44 276.23L282.67 276.23L284.9 276.23L287.14 276.23L289.37 276.23L291.61 276.23L293.84 276.22L296.07 276.22L298.31 276.2L300.54 276.19L302.77 276.17L305.01 276.14L307.24 276.1L309.48 276.06L311.71 276.01L313.94 275.95L316.18 275.88L318.41 275.79L320.65 275.7L322.88 275.59L325.11 275.47L327.35 275.34L329.58 275.19L331.81 275.03L334.05 274.85L336.28 274.65L338.52 274.43L340.75 274.2L342.98 273.94L345.22 273.67L347.45 273.37L349.68 273.06L351.92 272.72L354.15 272.35L356.39 271.96L358.62 271.55L360.85 271.11L363.09 270.65L365.32 270.15L367.55 269.63L369.79 269.08L372.02 268.5L374.26 267.89L376.49 267.25L378.72 266.57L380.96 265.87L383.19 265.13L385.43 264.35L387.66 263.54L389.89 262.69L392.13 261.81L394.36 260.89L396.59 259.93L398.83 258.93L401.06 257.89L403.3 256.81L405.53 255.69L407.76 254.53L410 253.32L412.23 252.07L414.46 250.78L416.7 249.44L418.93 248.05L421.17 246.62L423.4 245.14L425.63 243.6L427.87 242.03L430.1 240.4L432.34 238.72L434.57 236.98L436.8 235.2L439.04 233.36L441.27 231.47L443.5 229.52L445.74 227.52L447.97 225.46L450.21 223.34L452.44 221.17L454.67 218.93L456.91 216.64L459.14 214.29L461.37 211.87L463.61 209.4L465.84 206.86L468.08 204.26L470.31 201.59L472.54 198.86L474.78 196.06L477.01 193.2L479.25 190.26L481.48 187.26L483.71 184.19L485.95 181.06L488.18 177.85L490.41 174.57L492.65 171.21L494.88 167.79L497.12 164.29L499.35 160.71L501.58 157.07L503.82 153.34L506.05 149.54L508.28 145.66L510.52 141.7L512.75 137.66"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.32" cx="284.99" cy="276.23" r="4.67"/>
+</g>
+</svg>

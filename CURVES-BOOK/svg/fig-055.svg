@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1051.08 824.08" width="520" height="408" data-fig="fig-055">
+<title>Fig. 55 — The centre of curvature C at a point P of an ellipse</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 55, page 55. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="An ellipse with foci F1 and F2, a point P of it, and the focal radii F1P and F2P.">
+<path class="ink thick" style="stroke-width:5.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M986.54 412.04L986.44 404.76L986.14 397.49L985.63 390.22L984.92 382.96L984.01 375.72L982.9 368.49L981.59 361.28L980.08 354.09L978.37 346.92L976.47 339.79L974.36 332.69L972.06 325.62L969.56 318.59L966.86 311.6L963.98 304.66L960.9 297.76L957.63 290.91L954.17 284.12L950.52 277.38L946.68 270.7L942.67 264.08L938.46 257.53L934.08 251.04L929.52 244.63L924.78 238.29L919.86 232.03L914.78 225.84L909.52 219.74L904.09 213.72L898.5 207.78L892.74 201.94L886.82 196.19L880.75 190.54L874.51 184.98L868.13 179.52L861.59 174.16L854.91 168.91L848.08 163.76L841.12 158.72L834.01 153.8L826.77 148.98L819.39 144.29L811.89 139.71L804.26 135.25L796.51 130.91L788.64 126.69L780.65 122.6L772.56 118.64L764.35 114.8L756.04 111.1L747.63 107.52L739.12 104.08L730.52 100.78L721.82 97.61L713.05 94.58L704.18 91.69L695.25 88.94L686.23 86.33L677.15 83.87L668 81.55L658.78 79.37L649.51 77.34L640.19 75.46L630.81 73.72L621.39 72.13L611.92 70.7L602.42 69.41L592.88 68.27L583.32 67.28L573.73 66.44L564.12 65.76L554.49 65.23L544.84 64.84L535.19 64.62L525.54 64.54L515.89 64.62L506.24 64.84L496.59 65.23L486.96 65.76L477.35 66.44L467.76 67.28L458.2 68.27L448.66 69.41L439.16 70.7L429.69 72.13L420.27 73.72L410.89 75.46L401.57 77.34L392.3 79.37L383.08 81.55L373.93 83.87L364.85 86.33L355.83 88.94L346.9 91.69L338.03 94.58L329.26 97.61L320.56 100.78L311.96 104.08L303.45 107.52L295.04 111.1L286.73 114.8L278.52 118.64L270.43 122.6L262.44 126.69L254.57 130.91L246.82 135.25L239.19 139.71L231.69 144.29L224.31 148.98L217.07 153.8L209.96 158.72L203 163.76L196.17 168.91L189.49 174.16L182.95 179.52L176.57 184.98L170.33 190.54L164.26 196.19L158.34 201.94L152.58 207.78L146.99 213.72L141.56 219.74L136.3 225.84L131.22 232.03L126.3 238.29L121.56 244.63L117 251.04L112.62 257.53L108.41 264.08L104.4 270.7L100.56 277.38L96.91 284.12L93.45 290.91L90.18 297.76L87.1 304.66L84.22 311.6L81.52 318.59L79.02 325.62L76.72 332.69L74.61 339.79L72.71 346.92L71 354.09L69.49 361.28L68.18 368.49L67.07 375.72L66.16 382.96L65.45 390.22L64.94 397.49L64.64 404.76L64.54 412.04L64.64 419.32L64.94 426.59L65.45 433.86L66.16 441.12L67.07 448.36L68.18 455.59L69.49 462.8L71 469.99L72.71 477.16L74.61 484.29L76.72 491.39L79.02 498.46L81.52 505.49L84.22 512.48L87.1 519.42L90.18 526.32L93.45 533.17L96.91 539.96L100.56 546.7L104.4 553.38L108.41 560L112.62 566.55L117 573.04L121.56 579.45L126.3 585.79L131.22 592.05L136.3 598.24L141.56 604.34L146.99 610.36L152.58 616.3L158.34 622.14L164.26 627.89L170.33 633.54L176.57 639.1L182.95 644.56L189.49 649.92L196.17 655.17L203 660.32L209.96 665.36L217.07 670.28L224.31 675.1L231.69 679.79L239.19 684.37L246.82 688.83L254.57 693.17L262.44 697.39L270.43 701.48L278.52 705.44L286.73 709.28L295.04 712.98L303.45 716.56L311.96 720L320.56 723.3L329.26 726.47L338.03 729.5L346.9 732.39L355.83 735.14L364.85 737.75L373.93 740.21L383.08 742.53L392.3 744.71L401.57 746.74L410.89 748.62L420.27 750.36L429.69 751.95L439.16 753.38L448.66 754.67L458.2 755.81L467.76 756.8L477.35 757.64L486.96 758.32L496.59 758.85L506.24 759.24L515.89 759.46L525.54 759.54L535.19 759.46L544.84 759.24L554.49 758.85L564.12 758.32L573.73 757.64L583.32 756.8L592.88 755.81L602.42 754.67L611.92 753.38L621.39 751.95L630.81 750.36L640.19 748.62L649.51 746.74L658.78 744.71L668 742.53L677.15 740.21L686.23 737.75L695.25 735.14L704.18 732.39L713.05 729.5L721.82 726.47L730.52 723.3L739.12 720L747.63 716.56L756.04 712.98L764.35 709.28L772.56 705.44L780.65 701.48L788.64 697.39L796.51 693.17L804.26 688.83L811.89 684.37L819.39 679.79L826.77 675.1L834.01 670.28L841.12 665.36L848.08 660.32L854.91 655.17L861.59 649.92L868.13 644.56L874.51 639.1L880.75 633.54L886.82 627.89L892.74 622.14L898.5 616.3L904.09 610.36L909.52 604.34L914.78 598.24L919.86 592.05L924.78 585.79L929.52 579.45L934.08 573.04L938.46 566.55L942.67 560L946.68 553.38L950.52 546.7L954.17 539.96L957.63 533.17L960.9 526.32L963.98 519.42L966.86 512.48L969.56 505.49L972.06 498.46L974.36 491.39L976.47 484.29L978.37 477.16L980.08 469.99L981.59 462.8L982.9 455.59L984.01 448.36L984.92 441.12L985.63 433.86L986.14 426.59L986.44 419.32L986.54 412.04"/>
+<path class="ink given" style="stroke-width:3.78;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M222.61 412.04L828.47 412.04"/>
+<path class="ink thick" style="stroke-width:5.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M222.61 412.04L789.96 127.38"/>
+<path class="ink given" style="stroke-width:3.78;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M789.96 127.38L828.47 412.04"/>
+<circle class="pt" style="fill:#1b1b1b" cx="222.61" cy="412.04" r="11.61"/>
+<circle class="pt" style="fill:#1b1b1b" cx="828.47" cy="412.04" r="11.61"/>
+<text class="lbl  upright" x="222.61" y="443.06" font-size="35.74" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl  upright" x="828.47" y="443.06" font-size="35.74" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.31" cx="789.96" cy="127.38" r="6.83"/>
+<text class="lbl " x="808.79" y="105.23" font-size="35.74" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the normal at P (it bisects the angle F1PF2); it meets the axis F1F2 at Q. Its length PQ is N.">
+<path class="ink thick" style="stroke-width:5.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M789.96 127.38L639.71 412.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.31" cx="639.71" cy="412.04" r="6.83"/>
+<text class="lbl " x="658.55" y="434.2" font-size="35.74" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl  upright" x="743.64" y="269.71" font-size="30.38" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">N</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="At Q draw the perpendicular to the normal; it meets the focal radius F1P at K. In the right triangle PQK, PK = N sec α.">
+<path class="ink cons dash" style="stroke-width:2.31;fill:none;--dash:12.61 8.41;stroke:#4b4b4b;stroke-dasharray:12.61 8.41;stroke-linecap:round;stroke-linejoin:round" d="M639.71 412.04L436.45 304.75"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.31" d="M647.05 398.13L633.15 390.79L625.81 404.7"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.31" cx="436.45" cy="304.75" r="6.83"/>
+<text class="lbl " x="417.61" y="282.6" font-size="35.74" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">K</text>
+<text class="lbl  upright" x="590.6" y="189.48" font-size="30.38" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">N·sec α</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="At K draw the perpendicular to F1P; it meets the normal in C, the centre of curvature: PC = PK sec α = N sec²α = R.">
+<path class="ink cons dash" style="stroke-width:2.31;fill:none;--dash:12.61 8.41;stroke:#4b4b4b;stroke-dasharray:12.61 8.41;stroke-linecap:round;stroke-linejoin:round" d="M436.45 304.75L563.1 557.19"/>
+<path class="ink cons dash" style="stroke-width:2.31;fill:none;--dash:12.61 8.41;stroke:#4b4b4b;stroke-dasharray:12.61 8.41;stroke-linecap:round;stroke-linejoin:round" d="M639.71 412.04L563.1 557.19"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.31" d="M450.5 297.7L457.55 311.76L443.5 318.81"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.78" cx="563.1" cy="557.19" r="15.03"/><circle class="pt" style="fill:#1b1b1b" cx="563.1" cy="557.19" r="6.15"/>
+<text class="lbl  upright" x="611.85" y="557.19" font-size="30.38" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angle α between the focal radius and the normal at P.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.31" d="M743.96 150.46A51.46 51.46 0 0 0 765.94 172.9"/>
+<text class="lbl " x="728.31" y="187.78" font-size="35.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+</g>
+</svg>

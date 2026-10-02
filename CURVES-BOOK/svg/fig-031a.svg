@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 365.4 410.4" width="520" height="584" data-fig="fig-031a">
+<title>Fig. 31(a) — Focus and directrix: the ellipse (e &lt; 1), Cartesian form</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 31(a), page 36. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The directrix is the Y axis; the focus F lies on the X axis at the distance k from it. The ratio e = PF : (distance of P from the directrix) is fixed (here e &lt; 1).">
+<path class="ink axis" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M25.2 200.2L340.2 200.2"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M340.2 200.2L332.53 196.98L332.53 203.42Z"/>
+<path class="ink axis" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M50.2 350.2L50.2 25.2"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M50.2 25.2L46.98 32.87L53.42 32.87Z"/>
+<text class="lbl axis" x="347.55" y="208.85" font-size="13.95" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="57.55" y="16.55" font-size="13.95" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.9" cx="50.2" cy="200.2" r="2.67"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.48" cx="150.2" cy="200.2" r="5.87"/><circle class="pt" style="fill:#1b1b1b" cx="150.2" cy="200.2" r="2.4"/>
+<text class="lbl " x="80.2" y="207.99" font-size="13.95" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Take a point P of the locus. Its distance from the directrix is x, its height above the axis is y, and its distance from the focus is PF = e · x. So (x − k)² + y² = e²x².">
+<path class="ink cons dash" style="stroke-width:0.9;fill:none;--dash:4.92 3.28;stroke:#4b4b4b;stroke-dasharray:4.92 3.28;stroke-linecap:round;stroke-linejoin:round" d="M50.2 108.78L196.78 108.78"/>
+<path class="ink cons dash" style="stroke-width:0.9;fill:none;--dash:4.92 3.28;stroke:#4b4b4b;stroke-dasharray:4.92 3.28;stroke-linecap:round;stroke-linejoin:round" d="M196.78 108.78L196.78 200.2"/>
+<path class="ink cons dash" style="stroke-width:0.9;fill:none;--dash:4.92 3.28;stroke:#4b4b4b;stroke-dasharray:4.92 3.28;stroke-linecap:round;stroke-linejoin:round" d="M196.78 108.78L150.2 200.2"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.9" cx="196.78" cy="108.78" r="2.67"/>
+<text class="lbl " x="207.16" y="154.49" font-size="13.95" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+<text class="lbl " x="173.49" y="209.72" font-size="13.95" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x − k</text>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="The locus of all such P is the conic y² + (1 − e²)x² − 2kx + k² = 0; for e &lt; 1 it is an ellipse.">
+<path class="ink curve" style="stroke-width:2.3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M196.78 108.78L194.5 109.42L192.27 110.09L190.09 110.77L187.96 111.47L185.87 112.18L183.84 112.91L181.85 113.65L179.91 114.4L178.01 115.16L176.16 115.93L174.36 116.72L172.59 117.5L170.87 118.3L169.18 119.1L167.54 119.91L165.94 120.73L164.37 121.55L162.84 122.37L161.35 123.2L159.89 124.03L158.47 124.87L157.08 125.7L155.72 126.54L154.4 127.38L153.11 128.22L151.85 129.07L150.61 129.91L149.41 130.76L148.24 131.6L147.09 132.45L145.98 133.29L144.88 134.13L143.82 134.98L142.78 135.82L141.76 136.66L140.77 137.5L139.81 138.34L138.86 139.18L137.94 140.02L137.04 140.85L136.17 141.68L135.31 142.52L134.47 143.34L133.66 144.17L132.86 145L132.08 145.82L131.33 146.64L130.59 147.46L129.86 148.28L129.16 149.09L128.47 149.9L127.8 150.71L127.15 151.52L126.51 152.32L125.89 153.12L125.28 153.92L124.69 154.72L124.11 155.52L123.55 156.31L123.01 157.1L122.47 157.89L121.95 158.67L121.44 159.45L120.95 160.24L120.47 161.01L120 161.79L119.54 162.56L119.1 163.33L118.67 164.1L118.25 164.87L117.84 165.64L117.44 166.4L117.06 167.16L116.68 167.92L116.32 168.67L115.96 169.43L115.62 170.18L115.29 170.93L114.96 171.68L114.65 172.42L114.35 173.17L114.05 173.91L113.77 174.65L113.49 175.39L113.23 176.13L112.97 176.87L112.72 177.6L112.48 178.34L112.25 179.07L112.03 179.8L111.82 180.53L111.61 181.25L111.42 181.98L111.23 182.71L111.05 183.43L110.88 184.15L110.71 184.87L110.56 185.59L110.41 186.31L110.27 187.03L110.14 187.75L110.01 188.47L109.89 189.18L109.78 189.9L109.68 190.61L109.59 191.33L109.5 192.04L109.42 192.75L109.35 193.46L109.28 194.18L109.23 194.89L109.17 195.6L109.13 196.31L109.1 197.02L109.07 197.73L109.05 198.44L109.03 199.15L109.02 199.86L109.02 200.57L109.03 201.28L109.05 201.99L109.07 202.7L109.1 203.41L109.13 204.12L109.18 204.83L109.23 205.54L109.29 206.25L109.35 206.96L109.42 207.67L109.5 208.39L109.59 209.1L109.69 209.81L109.79 210.53L109.9 211.24L110.02 211.96L110.14 212.68L110.27 213.39L110.41 214.11L110.56 214.83L110.72 215.55L110.88 216.28L111.05 217L111.23 217.72L111.42 218.45L111.62 219.17L111.82 219.9L112.04 220.63L112.26 221.36L112.49 222.09L112.73 222.83L112.98 223.56L113.24 224.3L113.5 225.03L113.78 225.77L114.06 226.52L114.36 227.26L114.66 228L114.97 228.75L115.3 229.5L115.63 230.25L115.98 231L116.33 231.76L116.7 232.51L117.07 233.27L117.46 234.03L117.86 234.79L118.26 235.56L118.69 236.33L119.12 237.09L119.56 237.87L120.02 238.64L120.49 239.42L120.97 240.19L121.46 240.98L121.97 241.76L122.49 242.54L123.03 243.33L123.57 244.12L124.14 244.91L124.71 245.71L125.31 246.51L125.91 247.31L126.54 248.11L127.17 248.91L127.83 249.72L128.5 250.53L129.19 251.34L129.89 252.16L130.61 252.97L131.35 253.79L132.11 254.61L132.89 255.43L133.69 256.26L134.5 257.09L135.34 257.92L136.2 258.75L137.08 259.58L137.98 260.42L138.9 261.25L139.84 262.09L140.81 262.93L141.8 263.77L142.82 264.61L143.86 265.45L144.93 266.3L146.02 267.14L147.14 267.99L148.28 268.83L149.46 269.68L150.66 270.52L151.89 271.36L153.16 272.21L154.45 273.05L155.77 273.89L157.13 274.73L158.52 275.57L159.94 276.4L161.4 277.23L162.9 278.06L164.43 278.88L166 279.7L167.6 280.52L169.25 281.33L170.93 282.13L172.66 282.93L174.42 283.71L176.23 284.49L178.09 285.27L179.98 286.03L181.93 286.78L183.91 287.52L185.95 288.24L188.04 288.96L190.17 289.65L192.35 290.34L194.59 291L196.87 291.65L199.21 292.28L201.6 292.88L204.05 293.46"/>
+<text class="lbl  upright" x="200.2" y="385.2" font-size="11.86" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y² + (1 − e²)x² − 2kx + k² = 0</text>
+</g>
+</svg>

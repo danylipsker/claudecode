@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 902.38 950.34" width="520" height="548" data-fig="fig-076">
+<title>Fig. 76 — The conic M² = L·N with two tangents L = 0, N = 0 and their chord of contact M = 0</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 76, page 80. Section: envelopes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The conic (an ellipse), drawn heavy.">
+<path class="ink thick" style="stroke-width:5.32;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M770.18 261.51L765.55 257.07L760.73 252.83L755.72 248.79L750.52 244.95L745.15 241.32L739.6 237.89L733.87 234.68L727.98 231.67L721.92 228.88L715.71 226.31L709.33 223.96L702.8 221.82L696.13 219.91L689.31 218.21L682.36 216.74L675.27 215.5L668.05 214.48L660.7 213.69L653.24 213.12L645.67 212.78L637.98 212.67L630.2 212.79L622.31 213.13L614.34 213.7L606.27 214.5L598.12 215.52L589.9 216.77L581.61 218.24L573.25 219.94L564.84 221.85L556.37 223.99L547.85 226.35L539.3 228.93L530.7 231.72L522.08 234.73L513.43 237.95L504.77 241.38L496.09 245.01L487.41 248.86L478.73 252.9L470.05 257.15L461.39 261.59L452.74 266.22L444.12 271.05L435.52 276.06L426.97 281.26L418.45 286.63L409.98 292.19L401.56 297.92L393.21 303.81L384.91 309.87L376.69 316.09L368.54 322.47L360.48 329L352.5 335.68L344.61 342.5L336.82 349.46L329.14 356.55L321.56 363.77L314.1 371.11L306.75 378.58L299.53 386.15L292.44 393.84L285.48 401.63L278.66 409.51L271.98 417.49L265.45 425.56L259.08 433.7L252.86 441.93L246.8 450.22L240.9 458.58L235.17 467L229.62 475.46L224.24 483.98L219.05 492.54L214.03 501.13L209.21 509.76L204.57 518.4L200.13 527.07L195.89 535.74L191.84 544.43L188 553.11L184.36 561.79L180.93 570.45L177.71 579.1L174.71 587.72L171.91 596.31L169.34 604.87L166.98 613.39L164.84 621.85L162.92 630.27L161.23 638.63L159.75 646.92L158.5 655.14L157.48 663.29L156.69 671.35L156.12 679.33L155.77 687.21L155.66 695L155.77 702.68L156.11 710.26L156.67 717.72L157.47 725.06L158.49 732.28L159.73 739.37L161.2 746.33L162.89 753.14L164.81 759.82L166.94 766.35L169.3 772.72L171.87 778.94L174.66 785L177.66 790.89L180.88 796.61L184.3 802.16L187.94 807.54L191.78 812.73L195.82 817.74L200.06 822.56L204.5 827.2L209.13 831.63L213.95 835.88L218.96 839.92L224.15 843.76L229.53 847.39L235.08 850.82L240.8 854.03L246.7 857.03L252.75 859.82L258.97 862.4L265.35 864.75L271.87 866.89L278.55 868.8L285.37 870.49L292.32 871.96L299.41 873.21L306.63 874.23L313.97 875.02L321.44 875.58L329.01 875.92L336.69 876.04L344.48 875.92L352.37 875.58L360.34 875.01L368.41 874.21L376.55 873.19L384.77 871.94L393.07 870.47L401.42 868.77L409.84 866.85L418.31 864.71L426.82 862.36L435.38 859.78L443.97 856.99L452.6 853.98L461.24 850.76L469.91 847.33L478.58 843.69L487.27 839.85L495.95 835.81L504.63 831.56L513.29 827.12L521.94 822.49L530.56 817.66L539.15 812.65L547.71 807.45L556.23 802.07L564.7 796.52L573.11 790.79L581.47 784.9L589.77 778.84L597.99 772.62L606.14 766.24L614.2 759.71L622.18 753.03L630.07 746.21L637.85 739.25L645.54 732.16L653.12 724.94L660.58 717.6L667.92 710.13L675.15 702.55L682.24 694.87L689.2 687.08L696.02 679.19L702.69 671.22L709.22 663.15L715.6 655L721.82 646.78L727.88 638.49L733.78 630.13L739.5 621.71L745.06 613.24L750.44 604.73L755.63 596.17L760.65 587.58L765.47 578.95L770.11 570.31L774.55 561.64L778.79 552.96L782.84 544.28L786.68 535.6L790.32 526.92L793.74 518.26L796.96 509.61L799.97 500.99L802.76 492.4L805.34 483.84L807.7 475.32L809.84 466.85L811.76 458.44L813.45 450.08L814.93 441.79L816.17 433.57L817.2 425.42L817.99 417.36L818.56 409.38L818.9 401.5L819.02 393.71L818.91 386.03L818.57 378.45L818 370.99L817.21 363.65L816.19 356.43L814.95 349.34L813.48 342.38L811.79 335.56L809.87 328.89L807.74 322.36L805.38 315.99L802.81 309.77L800.02 303.71L797.02 297.82L793.8 292.09L790.37 286.54L786.74 281.17L782.9 275.98L778.86 270.97L774.62 266.14L770.18 261.51"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="From a point T outside the conic draw the two tangents, L = 0 and N = 0, touching it at A1 and A2.">
+<path class="ink given" style="stroke-width:3.42;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M138.34 58.35L160.89 891.98"/>
+<path class="ink given" style="stroke-width:3.42;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M138.34 58.35L844.03 262.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="138.34" cy="58.35" r="8.65"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="155.75" cy="702.05" r="7.41"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="699.94" cy="220.97" r="7.41"/>
+<text class="lbl  upright" x="97.01" y="360.2" font-size="27.46" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">L = 0</text>
+<text class="lbl  upright" x="419.14" y="107.61" font-size="27.46" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">N = 0</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join the points of contact: the chord of contact is M = 0.">
+<path class="ink given" style="stroke-width:3.42;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M58.35 788.15L789.85 141.49"/>
+<text class="lbl  upright" x="453.39" y="491.56" font-size="27.46" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">M = 0</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="With M scaled so that the conic is M² = L·N, the lines L·c² + 2M·c + N = 0 (c = 0 gives N = 0, c → ∞ gives L = 0) are tangents of the same conic. Here are four of them, for c = ±1 and ±2: the conic is their envelope.">
+<path class="ink aux" style="stroke-width:1.71;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M902.38 483.29L420.62 950.34"/>
+<path class="ink aux" style="stroke-width:1.71;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M902.38 863.35L0 883.69"/>
+<path class="ink aux" style="stroke-width:1.71;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M0 635.43L747.24 0"/>
+<path class="ink aux" style="stroke-width:1.71;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M0 810.34L554.93 0"/>
+</g>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 456 256" width="520" height="292" data-fig="fig-022">
+<title>Fig. 22 — The arbelos and the train of Pappus</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 22, page 25. Section: circle.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Three collinear points A, B, C. The arbelos is the figure bounded by the three semicircles on AB, BC and AC.">
+<path class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M28 228L428 228"/>
+<text class="lbl  upright" x="37.8" y="216.47" font-size="15.5" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+<text class="lbl  upright" x="288.2" y="216.47" font-size="15.5" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+<text class="lbl  upright" x="418.2" y="239.53" font-size="15.5" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Describe the semicircles on AB, BC and AC as diameters, all on the same side of the line.">
+<path class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M428 228A200 200 0 0 0 28 228"/>
+<path class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M298 228A135 135 0 0 0 28 228"/>
+<path class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M428 228A65 65 0 0 0 298 228"/>
+<text class="lbl  upright" x="163" y="110.3" font-size="15.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl  upright" x="376.89" y="146.66" font-size="15.5" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="At B raise the perpendicular to AC; it meets the large semicircle at Z. The area of the arbelos equals the area of the circle on BZ as diameter.">
+<path class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M298 228L298 40.65"/>
+<text class="lbl  upright" x="306.99" y="30.08" font-size="15.5" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Z</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The train of Pappus: c0 is the circle on BC, and each next circle touches the circles on AB and AC and the one before it. The centre of the n-th circle is at the height 2n times its radius above AC, h_n = 2n·r_n. Draw c1, c2 … towards A.">
+<circle class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="317.67" cy="115.59" r="56.2"/>
+<circle class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="234.04" cy="68.09" r="39.98"/>
+<circle class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="167.1" cy="66.06" r="26.99"/>
+<circle class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="123.61" cy="79.59" r="18.55"/>
+<circle class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="96.2" cy="95.67" r="13.23"/>
+<circle class="ink given" style="stroke-width:1.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="78.5" cy="110.41" r="9.8"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The half-disc on BC and the circles of the train are shaded.">
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M422.56 228L427.93 225.15M411.68 228L427.44 219.62M400.8 228L426.54 214.32M389.92 228L425.21 209.24M379.05 228L423.53 204.35M368.17 228L421.47 199.66M357.29 228L419.08 195.15M346.41 228L416.3 190.84M335.53 228L413.19 186.71M324.65 228L409.68 182.79M313.77 228L405.78 179.08M302.9 228L401.45 175.6M298.08 224.77L396.61 172.39M298.69 218.67L391.22 169.47M299.97 212.2L385.15 166.91M302.11 205.28L378.2 164.82M305.52 197.68L370.02 163.39M311.06 188.95L359.71 163.09M322.87 176.89L343.13 166.12"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M328.03 170.81L357.68 155.04M315.47 171.7L365.42 145.14M306.58 170.65L369.5 137.19M299.37 168.7L371.97 130.09M293.23 166.17L373.25 123.63M287.92 163.21L373.79 117.55M283.22 159.93L373.71 111.81M279.05 156.36L373.09 106.36M275.37 152.54L371.99 101.16M272.13 148.47L370.42 96.21M269.31 144.19L368.43 91.49M266.91 139.68L366.02 86.98M264.92 134.96L363.21 82.69M263.35 130L359.97 78.63M262.25 124.8L356.28 74.81M261.63 119.35L352.11 71.24M261.55 113.61L347.41 67.96M262.1 107.53L342.09 65M263.38 101.07L335.95 62.48M265.85 93.97L328.74 60.53M269.94 86.01L319.84 59.48M277.7 76.1L307.25 60.38"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M239.22 107.69L263.99 94.52M228.44 107.64L269.97 85.56M220.94 105.84L272.67 78.34M215.01 103.21L273.81 71.95M210.08 100.05L273.93 66.1M205.91 96.48L273.3 60.65M202.45 92.54L271.97 55.57M199.55 88.29L270.06 50.8M197.28 83.72L267.55 46.36M195.55 78.85L264.48 42.2M194.48 73.64L260.75 38.4M194.06 68.08L256.36 34.95M194.55 62.03L251.12 31.96M196.16 55.39L244.71 29.58M199.63 47.76L236.39 28.22M208.84 37.08L222.35 29.9"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M168.47 92.99L188.66 82.25M159.54 91.95L192.78 74.28M153.51 89.38L194.01 67.84M148.96 86.01L193.79 62.18M145.42 82.11L192.53 57.06M142.78 77.73L190.38 52.42M141 72.89L187.35 48.25M140.18 67.55L183.38 44.57M140.49 61.59L178.27 41.5M142.63 54.67L171.31 39.42M150.97 44.46L158.26 40.58"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M122.84 98.1L139.4 89.3M115.47 96.24L141.97 82.15M110.77 92.95L141.89 76.41M107.56 88.88L140.29 71.47M105.63 84.11L137.42 67.22M105.1 78.61L133.16 63.69M106.7 71.98L126.77 61.31"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M94.32 108.76L108.11 101.43M88.22 106.21L109.4 94.95M84.74 102.28L108.08 89.87M83.09 97.38L104.95 85.75M83.73 91.25L99.5 82.86"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.28;stroke:#2a2a2a" d="M76.08 119.9L87.73 113.71M71.06 116.78L87.95 107.81M68.86 112.17L85.35 103.4M69.83 105.87L79.59 100.68"/>
+</g>
+</svg>

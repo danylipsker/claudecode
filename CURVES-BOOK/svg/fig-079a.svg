@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 372.64 428.64" width="520" height="598" data-fig="fig-079a">
+<title>Fig. 79(a) — Double generation of the hypocycloid: rolling circles of radii b and a − b</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 79(a), page 82. Section: epi-hypo-cycloids.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius a with centre O, and its vertical diameter ET through O. T is the lower end, where the larger generating circle will touch it.">
+<circle class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="186.32" cy="214.32" r="160"/>
+<path class="ink aux" style="stroke-width:0.77;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M144.91 59.77A160 160 0 0 0 53.67 124.85"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.2" d="M144.91 59.77L140.64 71.9M135.77 62.51L132.24 74.88M126.81 65.8L124.02 78.35M118.07 69.61L116.03 82.3M109.57 73.93L108.29 86.73M101.34 78.76L100.82 91.6M93.41 84.06L93.66 96.92M85.81 89.83L86.83 102.65M78.57 96.04L80.35 108.78M71.71 102.67L74.25 115.28M65.26 109.7L68.54 122.14M59.24 117.1L63.26 129.32M53.67 124.85L58.41 136.8"/>
+<path class="ink aux" style="stroke-width:0.77;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M28.75 242.1A160 160 0 0 0 55.26 306.09"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.2" d="M28.75 242.1L40.46 247.41M30.79 251.87L42.81 256.43M33.43 261.48L45.71 265.29M36.66 270.91L49.16 273.95M40.48 280.13L53.14 282.38M44.86 289.08L57.64 290.54M49.79 297.75L62.64 298.41M55.26 306.09L68.11 305.95"/>
+<path class="ink aux" style="stroke-width:0.77;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M275.79 346.97A160 160 0 0 0 333.6 276.84"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.2" d="M275.79 346.97L275.88 334.11M283.28 341.6L282.62 328.75M290.44 335.8L289.05 323.02M297.26 329.61L295.14 316.93M303.72 323.03L300.86 310.49M309.78 316.09L306.21 303.74M315.43 308.82L311.16 296.69M320.66 301.23L315.69 289.37M325.44 293.35L319.8 281.8M329.76 285.21L323.46 274M333.6 276.84L326.67 266.01"/>
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M186.32 402.32L186.32 26.32"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="186.32" cy="214.32" r="2.79"/>
+<text class="lbl " x="177.28" y="214.32" font-size="14.57" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="186.32" cy="374.32" r="2.79"/>
+<text class="lbl " x="178.64" y="365.28" font-size="14.57" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="186.32" cy="54.32" r="2.79"/>
+<text class="lbl " x="178.64" y="45.28" font-size="14.57" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">E</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Choose T' on the fixed circle (the angle TOT' is the angle the rolling has gone through) and draw the generating circle of radius b touching the fixed circle at T', inside it: its centre A' is on OT'. Mark the other end F of the diameter T'F, by carrying the line OT' on.">
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M186.32 214.32L320.51 127.18"/>
+<circle class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="282.77" cy="151.69" r="45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="320.51" cy="127.18" r="2.79"/>
+<text class="lbl " x="328.19" y="118.14" font-size="14.57" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="282.77" cy="151.69" r="2.79"/>
+<text class="lbl " x="282.77" y="142.65" font-size="14.57" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="245.03" cy="176.2" r="2.79"/>
+<text class="lbl " x="237.35" y="185.23" font-size="14.57" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join T to T'. The chord cuts the small circle again at P, the tracing point: the angle T'PF is in a semicircle, so PF is perpendicular to TP.">
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M186.32 374.32L320.51 127.18"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="282.77" cy="196.69" r="2.79"/>
+<text class="lbl " x="291.8" y="196.69" font-size="14.57" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Draw FP and carry it to meet the axis at D: OD = OF, so the triangle OFD is isosceles. Join E to T': ET' is parallel to DP, and DE = 2b.">
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M186.32 144.32L282.77 196.69"/>
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M186.32 54.32L320.51 127.18"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="186.32" cy="144.32" r="2.79"/>
+<text class="lbl " x="178.64" y="135.28" font-size="14.57" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M186.32 158.75A14.43 14.43 0 0 0 199 151.2"/>
+<text class="lbl " x="202.64" y="171.75" font-size="14.57" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M186.32 68.75A14.43 14.43 0 0 0 199 61.2"/>
+<text class="lbl " x="202.64" y="81.75" font-size="14.57" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M234.65 170.56A11.8 11.8 0 0 0 235.13 182.62"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M310.13 121.55A11.8 11.8 0 0 0 310.61 133.61"/>
+</g>
+<g class="step" data-step="4" data-tool="compass" data-text="The circle through T, P and D (the angle DPT is a right angle, so DT is its diameter) touches the fixed circle at T: it is the second generating circle, of radius a − b, with its centre A on the axis, b below O.">
+<circle class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="186.32" cy="259.32" r="115"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="186.32" cy="259.32" r="2.79"/>
+<text class="lbl " x="177.28" y="259.32" font-size="14.57" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="5" data-tool="dividers" data-text="Mark X on the fixed circle so that the arc T'X is bθ (the arc of the small circle from T' to P): X is the cusp, where the curve meets the fixed circle. Then arc TX = (a − b)θ, the arc of the large circle from T to P: the same point P is obtained by both circles.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="346.26" cy="218.77" r="2.79"/>
+<text class="lbl " x="355.29" y="218.77" font-size="14.57" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+</g>
+<g class="step" data-step="6" data-tool="pencil" data-text="The hypocycloid near the cusp X, drawn through P: the same curve is generated by the circle of radius b and by the circle of radius a − b.">
+<path class="ink curve" style="stroke-width:2.4;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M315.48 224.3L317.27 223.79L319.01 223.31L320.71 222.86L322.37 222.44L323.97 222.05L325.53 221.68L327.04 221.34L328.51 221.03L329.91 220.75L331.27 220.49L332.57 220.25L333.82 220.03L335.02 219.84L336.15 219.66L337.23 219.51L338.25 219.37L339.22 219.26L340.12 219.15L340.97 219.07L341.75 218.99L342.47 218.93L343.13 218.88L343.73 218.85L344.27 218.82L344.74 218.8L345.15 218.78L345.49 218.77L345.77 218.77L345.99 218.77L346.14 218.77L346.23 218.77L346.26 218.77L346.22 218.77L346.11 218.76L345.95 218.75L345.71 218.74L345.42 218.72L345.06 218.69L344.63 218.65L344.15 218.6L343.6 218.54L342.99 218.46L342.32 218.37L341.59 218.27L340.79 218.15L339.94 218.01L339.03 217.85L338.06 217.68L337.04 217.48L335.95 217.26L334.81 217.02L333.62 216.75L332.37 216.46L331.07 216.15L329.72 215.8L328.32 215.43L326.86 215.03L325.36 214.6L323.81 214.15L322.22 213.66L320.58 213.14L318.9 212.59L317.17 212L315.41 211.38L313.6 210.73L311.76 210.05L309.88 209.33L307.96 208.57L306.01 207.78L304.03 206.95L302.02 206.09L299.98 205.19L297.91 204.26L295.81 203.29L293.69 202.28L291.54 201.23L289.38 200.15L287.19 199.03L284.99 197.88L282.77 196.69"/>
+</g>
+</svg>

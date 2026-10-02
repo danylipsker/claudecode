@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 340.91 325.48" width="520" height="496" data-fig="fig-143b">
+<title>Fig. 143(b) — The limacon as the conchoid of a circle, drawn by a linkage</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 143(b), page 148. Section: limacon.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The line OX with the fixed point O and the point B on it, OB = a. B is the fixed point of the conchoid; the distance AP = k is given.">
+<path class="ink axis" style="stroke-width:1.02;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M38.93 204.55L313.93 204.55"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M313.93 204.55L307.56 201.87L307.56 207.23Z"/>
+<text class="lbl axis" x="320.04" y="197.36" font-size="11.59" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="183.93" cy="204.55" r="2.22"/>
+<text class="lbl " x="183.93" y="221.8" font-size="11.59" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="83.93" cy="204.55" r="2.22"/>
+<text class="lbl " x="83.93" y="223.24" font-size="11.59" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl  upright" x="266.93" y="152.55" font-size="10.43" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">OB = OA = a</text>
+<text class="lbl  upright" x="20.93" y="184.55" font-size="10.43" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">AP = k</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Draw the circle about O through B, radius a. B is on the circle, and every secant from B cuts the circle once more.">
+<circle class="ink cons" style="stroke-width:0.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" cx="183.93" cy="204.55" r="100"/>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="Through B draw a secant making the angle θ with OX. It cuts the circle again at A. Because OA = OB, the angle AOX is 2θ.">
+<path class="ink cons" style="stroke-width:0.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M83.93 204.55L194.39 105.1"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="194.39" cy="105.1" r="2.22"/>
+<text class="lbl " x="207.32" y="105.1" font-size="11.59" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.75" d="M101.67 204.55A17.73 17.73 0 0 0 97.11 192.68"/>
+<text class="lbl " x="108.6" y="195.08" font-size="11.59" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="3" data-tool="dividers" data-text="With the dividers set to k, lay AP off along the secant beyond A. P is a point of the limacon. (Laid off back towards B it gives r = 2a cos θ − k, which is the same curve again.) Repeat for other angles θ.">
+<path class="ink cons" style="stroke-width:0.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M194.39 105.1L276.13 31.49"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="276.13" cy="31.49" r="2.22"/>
+<text class="lbl " x="276.13" y="47.3" font-size="11.59" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="4" data-tool="linkage" data-text="As a mechanism: the crank OA turns about O; the bar is pinned to the crank at A and slides through the swivel at B; the pencil sits at P, AP = k beyond A.">
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.93 215.8L200.93 215.8L200.93 190.8L166.93 190.8Z"/>
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M67.93 215.35L99.93 215.35L99.93 191.35L67.93 191.35Z"/>
+<path class="ink given" style="fill:none;stroke-width:3.19;stroke:#1b1b1b;stroke-linecap:round" d="M43.06 241.35L276.13 31.49"/><path class="ink" style="fill:none;stroke-width:1.47;stroke:#fff;stroke-linecap:round" d="M43.06 241.35L276.13 31.49"/>
+<path class="ink given" style="fill:none;stroke-width:3.19;stroke:#1b1b1b;stroke-linecap:round" d="M183.93 204.55L194.39 105.1"/><path class="ink" style="fill:none;stroke-width:1.47;stroke:#fff;stroke-linecap:round" d="M183.93 204.55L194.39 105.1"/>
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M91.88 187.97L101.25 198.38L75.98 221.13L66.62 210.72Z"/>
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M40.05 238.01L43.78 237.67L41.57 242.69L46.79 241.02L46.07 244.7"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.23" cx="183.93" cy="204.55" r="4.87"/><circle class="pt" style="fill:#1b1b1b" cx="183.93" cy="204.55" r="1.99"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.23" cx="83.93" cy="204.55" r="4.87"/><circle class="pt" style="fill:#1b1b1b" cx="83.93" cy="204.55" r="1.99"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.23" cx="194.39" cy="105.1" r="4.87"/><circle class="pt" style="fill:#1b1b1b" cx="194.39" cy="105.1" r="1.99"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.23" cx="276.13" cy="31.49" r="4.87"/><circle class="pt" style="fill:#1b1b1b" cx="276.13" cy="31.49" r="1.99"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The pencil at P draws the limacon r = 2a cos θ + k (the book shows a short piece of it through P).">
+<path class="ink curve" style="stroke-width:1.91;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M319.97 55.56L317.93 54.06L315.87 52.58L313.79 51.14L311.69 49.72L309.58 48.34L307.44 46.99L305.3 45.67L303.13 44.38L300.95 43.13L298.76 41.9L296.55 40.71L294.33 39.55L292.1 38.43L289.85 37.34L287.59 36.28L285.32 35.26L283.04 34.26L280.75 33.31L278.44 32.38L276.13 31.49L273.81 30.64L271.48 29.82L269.14 29.03L266.8 28.28L264.45 27.56L262.09 26.88L259.73 26.23L257.36 25.61L254.99 25.03L252.61 24.49L250.23 23.97L247.85 23.5L245.46 23.06L243.07 22.65L240.68 22.28L238.29 21.94L235.9 21.64L233.51 21.37L231.12 21.13L228.74 20.93"/>
+</g>
+</svg>

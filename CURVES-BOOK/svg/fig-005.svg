@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 421.8 421.8" width="520" height="520" data-fig="fig-005">
+<title>Fig. 5 — The cardioid traced by two crossed parallelograms</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 5, page 6. Section: cardioid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two fixed pivots A and O on the line OX, AO = a, and the dashed circle of radius a about O: the fixed circle of the cardioid, which will pass through the cusp at (a, 0).">
+<path class="ink cons dash" style="stroke-width:0.93;fill:none;--dash:14 4 3 4;stroke:#4b4b4b;stroke-dasharray:14 4 3 4;stroke-linecap:round;stroke-linejoin:round" d="M29.9 280.9L380.9 280.9"/>
+<path class="head cons" style="stroke:none;fill:#1b1b1b" d="M380.9 280.9L373.01 277.59L373.01 284.21Z"/>
+<text class="lbl  upright" x="388.46" y="272.01" font-size="14.34" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<circle class="ink cons dash" style="stroke-width:0.93;fill:none;--dash:5.06 3.37;stroke:#4b4b4b;stroke-dasharray:5.06 3.37;stroke-linecap:round;stroke-linejoin:round" cx="175.9" cy="280.9" r="100"/>
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M54.9 293.9L96.9 293.9L96.9 267.9L54.9 267.9Z"/>
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M154.9 293.9L196.9 293.9L196.9 267.9L154.9 267.9Z"/>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The first crossed parallelogram A, B, D, O: AB = OD = b and AO = BD = a. The bar OD (continued to C) turns about O, the bar AB about A.">
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M69.71 280.64L71.42 239.26L83.81 239.77L82.09 281.16Z"/>
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M82.05 235.18L151.93 306.71L143.06 315.38L73.18 243.85Z"/>
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M180.41 285.15L152 315.3L142.98 306.79L171.39 276.65Z"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="75.9" cy="280.9" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="75.9" cy="280.9" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="77.61" cy="239.51" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="77.61" cy="239.51" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="147.49" cy="311.05" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="147.49" cy="311.05" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="175.9" cy="280.9" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="175.9" cy="280.9" r="6"/>
+<circle class="pt" style="fill:#1b1b1b" cx="175.9" cy="280.9" r="1.37"/>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="The second, similar parallelogram B, P, C, D: BP = DC = c and CP = BD = a, with a² = bc. D, O, C lie on one line, so C is the end of the bar DC that passes through the pivot O.">
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M142.98 306.79L308.55 131.09L317.58 139.6L152 315.3Z"/>
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M77.5 233.32L318.88 228.97L319.11 241.37L77.72 245.71Z"/>
+<path class="ink given" style="stroke-width:1.3;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M319.25 134.98L325.18 234.8L312.81 235.54L306.87 135.71Z"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="313.06" cy="135.35" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="313.06" cy="135.35" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="318.99" cy="235.17" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="318.99" cy="235.17" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="77.61" cy="239.51" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="77.61" cy="239.51" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="147.49" cy="311.05" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="147.49" cy="311.05" r="6"/>
+<circle class="ink given" style="stroke-width:1.8;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="175.9" cy="280.9" r="10.8"/>
+<circle class="ink given" style="stroke-width:1.8;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="175.9" cy="280.9" r="6"/>
+<circle class="pt" style="fill:#1b1b1b" cx="175.9" cy="280.9" r="1.37"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The angles: at all times the angle PCO = θ = the angle COX (and the angle PBD = θ). The dashed circle about C of radius a (the rolling circle) touches the fixed circle on the line OC.">
+<circle class="ink cons dash" style="stroke-width:0.93;fill:none;--dash:5.06 3.37;stroke:#4b4b4b;stroke-dasharray:5.06 3.37;stroke-linecap:round;stroke-linejoin:round" cx="313.06" cy="135.35" r="100"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.93" d="M214.62 280.9A38.72 38.72 0 0 0 202.46 252.72"/>
+<text class="lbl " x="223.3" y="260.44" font-size="14.34" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.93" d="M142.34 280.9A33.56 33.56 0 0 0 152.89 305.32"/>
+<text class="lbl " x="133.24" y="299.32" font-size="14.34" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.93" d="M92.04 254.29A20.65 20.65 0 0 0 98.26 239.14"/>
+<text class="lbl " x="108.66" y="252.26" font-size="14.34" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.93" d="M298.9 150.37A20.65 20.65 0 0 0 314.29 155.96"/>
+<text class="lbl " x="301.61" y="166.89" font-size="14.34" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink given" style="stroke-width:1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M327.91 199.65A66 66 0 0 0 357.23 184.39"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M357.23 184.39L349.15 187.21L353.58 192.13Z"/>
+<text class="lbl " x="57.01" y="303.13" font-size="14.34" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="58.72" y="217.29" font-size="14.34" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="313.06" y="112.23" font-size="14.34" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="147.49" y="334.16" font-size="14.34" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<text class="lbl " x="195.55" y="304.02" font-size="14.34" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="338.64" y="212.05" font-size="14.34" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The path of P is the cardioid with its cusp at (a, 0). It is drawn from the cusp upward to P, and below the axis (the arrow shows the sense of motion).">
+<path class="ink curve" style="stroke-width:2.36;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M317.32 322.32L316.88 321.28L316.44 320.26L315.99 319.24L315.53 318.25L315.06 317.27L314.59 316.3L314.11 315.34L313.63 314.4L313.14 313.48L312.64 312.57L312.14 311.67L311.64 310.79L311.13 309.93L310.61 309.07L310.1 308.24L309.57 307.41L309.05 306.6L308.52 305.81L307.99 305.03L307.46 304.27L306.92 303.51L306.38 302.78L305.84 302.06L305.3 301.35L304.76 300.66L304.21 299.98L303.67 299.31L303.12 298.66L302.57 298.03L302.03 297.4L301.48 296.79L300.94 296.2L300.39 295.62L299.85 295.05L299.3 294.5L298.76 293.96L298.22 293.43L297.68 292.92L297.15 292.42L296.61 291.93L296.08 291.46L295.55 291L295.03 290.55L294.51 290.11L293.99 289.69L293.47 289.28L292.96 288.88L292.46 288.49L291.95 288.12L291.45 287.76L290.96 287.41L290.47 287.07L289.99 286.74L289.51 286.43L289.04 286.12L288.57 285.83L288.11 285.55L287.66 285.27L287.21 285.01L286.77 284.76L286.33 284.52L285.91 284.29L285.48 284.07L285.07 283.85L284.66 283.65L284.26 283.46L283.87 283.27L283.49 283.1L283.11 282.93L282.75 282.77L282.39 282.62L282.04 282.48L281.7 282.35L281.36 282.22L281.04 282.1L280.72 281.99L280.42 281.89L280.12 281.79L279.83 281.7L279.55 281.61L279.28 281.54L279.02 281.46L278.77 281.4L278.53 281.33L278.31 281.28L278.09 281.23L277.88 281.18L277.68 281.14L277.49 281.1L277.31 281.07L277.14 281.04L276.98 281.01L276.84 280.99L276.7 280.97L276.57 280.96L276.46 280.94L276.35 280.93L276.26 280.92L276.18 280.91L276.1 280.91L276.04 280.91L275.99 280.9L275.95 280.9L275.92 280.9L275.91 280.9L275.9 280.9L275.9 280.9L275.92 280.9L275.95 280.9L275.98 280.9L276.03 280.9L276.09 280.89L276.16 280.89L276.24 280.88L276.33 280.87L276.44 280.86L276.55 280.85L276.67 280.83L276.81 280.81L276.95 280.79L277.11 280.77L277.27 280.74L277.45 280.71L277.64 280.67L277.83 280.63L278.04 280.58L278.26 280.53L278.49 280.48L278.73 280.42L278.97 280.35L279.23 280.28L279.5 280.2L279.77 280.12L280.06 280.03L280.35 279.93L280.66 279.83L280.97 279.72L281.3 279.6L281.63 279.48L281.97 279.34L282.32 279.2L282.67 279.06L283.04 278.9L283.41 278.74L283.79 278.56L284.18 278.38L284.58 278.19L284.99 277.99L285.4 277.78L285.82 277.56L286.25 277.33L286.68 277.09L287.12 276.84L287.57 276.58L288.02 276.31L288.48 276.03L288.94 275.74L289.42 275.44L289.89 275.12L290.37 274.8L290.86 274.46L291.35 274.11L291.85 273.75L292.35 273.38L292.86 273L293.37 272.6L293.88 272.2L294.4 271.77L294.92 271.34L295.45 270.9L295.98 270.44L296.51 269.97L297.04 269.48L297.58 268.99L298.11 268.47L298.65 267.95L299.19 267.41L299.74 266.86L300.28 266.3L300.83 265.72L301.37 265.13L301.92 264.52L302.46 263.9L303.01 263.27L303.56 262.62L304.1 261.96L304.65 261.28L305.19 260.59L305.73 259.89L306.27 259.17L306.81 258.44L307.35 257.69L307.88 256.93L308.41 256.15L308.94 255.36L309.47 254.55L309.99 253.73L310.51 252.9L311.02 252.05L311.53 251.18"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M292.88 272.98L283.86 275.35L288.26 281.09Z"/>
+</g>
+</svg>

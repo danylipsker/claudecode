@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 807.12 637.12" width="520" height="410" data-fig="fig-054b">
+<title>Fig. 54(b) — Projection of the normal upon a focal radius: the ellipse</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 54(b), page 53. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="An ellipse with foci F1 and F2, a point P of it and the focal radii ρ1 = F1P and ρ2 = F2P.">
+<path class="ink thick" style="stroke-width:4.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M757.56 318.56L757.44 311.52L757.07 304.48L756.47 297.45L755.62 290.44L754.53 283.45L753.2 276.48L751.63 269.54L749.82 262.63L747.78 255.76L745.5 248.94L742.98 242.16L740.23 235.43L737.26 228.77L734.05 222.16L730.61 215.62L726.96 209.15L723.08 202.75L718.98 196.44L714.66 190.2L710.13 184.06L705.39 178.01L700.45 172.05L695.3 166.2L689.95 160.45L684.41 154.8L678.67 149.27L672.74 143.86L666.63 138.56L660.34 133.39L653.88 128.35L647.24 123.43L640.43 118.65L633.46 114.01L626.34 109.51L619.06 105.15L611.64 100.93L604.07 96.87L596.36 92.96L588.52 89.2L580.56 85.6L572.47 82.16L564.27 78.88L555.96 75.76L547.54 72.82L539.03 70.04L530.42 67.43L521.73 64.99L512.95 62.73L504.1 60.64L495.18 58.73L486.2 56.99L477.16 55.44L468.07 54.06L458.94 52.87L449.77 51.86L440.56 51.03L431.33 50.39L422.09 49.93L412.83 49.65L403.56 49.56L394.29 49.65L385.03 49.93L375.79 50.39L366.56 51.03L357.35 51.86L348.18 52.87L339.05 54.06L329.96 55.44L320.92 56.99L311.94 58.73L303.02 60.64L294.17 62.73L285.39 64.99L276.7 67.43L268.09 70.04L259.58 72.82L251.16 75.76L242.85 78.88L234.65 82.16L226.56 85.6L218.6 89.2L210.76 92.96L203.05 96.87L195.48 100.93L188.06 105.15L180.78 109.51L173.66 114.01L166.69 118.65L159.88 123.43L153.24 128.35L146.78 133.39L140.49 138.56L134.38 143.86L128.45 149.27L122.71 154.8L117.17 160.45L111.82 166.2L106.67 172.05L101.73 178.01L96.99 184.06L92.46 190.2L88.14 196.44L84.04 202.75L80.16 209.15L76.51 215.62L73.07 222.16L69.86 228.77L66.89 235.43L64.14 242.16L61.62 248.94L59.34 255.76L57.3 262.63L55.49 269.54L53.92 276.48L52.59 283.45L51.5 290.44L50.65 297.45L50.05 304.48L49.68 311.52L49.56 318.56L49.68 325.6L50.05 332.64L50.65 339.67L51.5 346.68L52.59 353.67L53.92 360.64L55.49 367.58L57.3 374.49L59.34 381.36L61.62 388.18L64.14 394.96L66.89 401.69L69.86 408.35L73.07 414.96L76.51 421.5L80.16 427.97L84.04 434.37L88.14 440.68L92.46 446.92L96.99 453.06L101.73 459.11L106.67 465.07L111.82 470.92L117.17 476.67L122.71 482.32L128.45 487.85L134.38 493.26L140.49 498.56L146.78 503.73L153.24 508.77L159.88 513.69L166.69 518.47L173.66 523.11L180.78 527.61L188.06 531.97L195.48 536.19L203.05 540.25L210.76 544.16L218.6 547.92L226.56 551.52L234.65 554.96L242.85 558.24L251.16 561.36L259.58 564.3L268.09 567.08L276.7 569.69L285.39 572.13L294.17 574.39L303.02 576.48L311.94 578.39L320.92 580.13L329.96 581.68L339.05 583.06L348.18 584.25L357.35 585.26L366.56 586.09L375.79 586.73L385.03 587.19L394.29 587.47L403.56 587.56L412.83 587.47L422.09 587.19L431.33 586.73L440.56 586.09L449.77 585.26L458.94 584.25L468.07 583.06L477.16 581.68L486.2 580.13L495.18 578.39L504.1 576.48L512.95 574.39L521.73 572.13L530.42 569.69L539.03 567.08L547.54 564.3L555.96 561.36L564.27 558.24L572.47 554.96L580.56 551.52L588.52 547.92L596.36 544.16L604.07 540.25L611.64 536.19L619.06 531.97L626.34 527.61L633.46 523.11L640.43 518.47L647.24 513.69L653.88 508.77L660.34 503.73L666.63 498.56L672.74 493.26L678.67 487.85L684.41 482.32L689.95 476.67L695.3 470.92L700.45 465.07L705.39 459.11L710.13 453.06L714.66 446.92L718.98 440.68L723.08 434.37L726.96 427.97L730.61 421.5L734.05 414.96L737.26 408.35L740.23 401.69L742.98 394.96L745.5 388.18L747.78 381.36L749.82 374.49L751.63 367.58L753.2 360.64L754.53 353.67L755.62 346.68L756.47 339.67L757.07 332.64L757.44 325.6L757.56 318.56"/>
+<path class="ink given" style="stroke-width:2.91;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.44 318.56L591.15 90.44"/>
+<path class="ink given" style="stroke-width:2.91;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M591.15 90.44L633.68 318.56"/>
+<circle class="pt" style="fill:#1b1b1b" cx="173.44" cy="318.56" r="11.54"/>
+<circle class="pt" style="fill:#1b1b1b" cx="633.68" cy="318.56" r="11.54"/>
+<text class="lbl " x="173.44" y="342.38" font-size="27.44" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl " x="633.68" y="342.38" font-size="27.44" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.78" cx="591.15" cy="90.44" r="7.34"/>
+<text class="lbl " x="591.15" y="73.42" font-size="27.44" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="632.83" y="204.5" font-size="27.44" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ρ<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the normal at P: it bisects the angle F1PF2 and meets the axis at Q, so F2Q : F1Q = ρ2 : ρ1. Its length PQ is N.">
+<path class="ink thick" style="stroke-width:4.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M591.15 90.44L482.83 318.56"/>
+<path class="ink given" style="stroke-width:2.91;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.44 318.56L633.68 318.56"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.78" cx="482.83" cy="318.56" r="5.77"/>
+<text class="lbl " x="482.83" y="335.57" font-size="27.44" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl  upright" x="562.51" y="204.5" font-size="24.7" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">N</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From Q draw the perpendicular QH to the focal radius F1P (dashed). Then PH = N cos α = ρ1 − F1Q cos θ, and with F1Q = e·ρ1 this is the constant A, the semi-latus rectum.">
+<path class="ink cons dash" style="stroke-width:1.78;fill:none;--dash:9.69 6.46;stroke:#4b4b4b;stroke-dasharray:9.69 6.46;stroke-linecap:round;stroke-linejoin:round" d="M482.83 318.56L411.75 188.41"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.78" cx="411.75" cy="188.41" r="4.72"/>
+<text class="lbl " x="394.74" y="188.41" font-size="27.44" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.78" d="M422.35 182.62L428.14 193.22L417.54 199.01"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The angle α at P between the normal and the focal radius, the angle θ at F1 between the axis (towards Q) and the focal radius, and the lengths marked.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.78" d="M554.3 110.56A41.99 41.99 0 0 0 573.14 128.36"/>
+<text class="lbl " x="545.35" y="138.9" font-size="27.44" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.78" d="M215.43 318.56A41.99 41.99 0 0 0 210.29 298.44"/>
+<text class="lbl " x="238.05" y="302.07" font-size="27.44" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<text class="lbl " x="331.52" y="202.33" font-size="27.44" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ρ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 991.8 827.8" width="520" height="434" data-fig="fig-146">
+<title>Fig. 146 — Double generation of the nephroid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 146, page 152. Section: nephroid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius a about O (strokes show it is fixed) and the axes; the curve starts at the cusp X = (0, a).">
+<path class="ink axis" style="stroke-width:2.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M60.9 456.9L930.9 456.9"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M930.9 456.9L912.35 449.11L912.35 464.69Z"/>
+<path class="ink axis" style="stroke-width:2.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M486.9 766.9L486.9 60.9"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M486.9 60.9L479.11 79.45L494.69 79.45Z"/>
+<circle class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="486.9" cy="456.9" r="200"/>
+<path class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M435.14 263.71A200 200 0 0 0 358.34 303.69"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.78" d="M435.14 263.71L425.26 291.78M421.24 267.99L413.43 296.7M407.68 273.26L401.98 302.46M394.55 279.5L390.99 309.04M381.9 286.68L380.5 316.4M369.81 294.76L370.57 324.5M358.34 303.69L361.26 333.3"/>
+<path class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M295.64 515.37A200 200 0 0 0 363.77 614.5"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.78" d="M295.64 515.37L324.04 524.26M302.57 534.51L331.72 540.46M311.41 552.84L341.02 555.8M322.07 570.18L351.83 570.12M334.44 586.35L364.04 583.26M348.39 601.17L377.51 595.09M363.77 614.5L392.13 605.49"/>
+<path class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M561.82 642.34A200 200 0 0 0 615.46 610.11"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.78" d="M561.82 642.34L568.2 613.27M571.42 638.16L576.27 608.81M580.79 633.49L584.1 603.92M589.91 628.33L591.66 598.63M598.74 622.71L598.93 592.95M607.26 616.63L605.9 586.9M615.46 610.11L612.54 580.5"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="486.9" cy="456.9" r="7.09"/>
+<text class="lbl " x="469.13" y="477.81" font-size="33.72" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="486.9" cy="256.9" r="7.09"/>
+<text class="lbl " x="486.9" y="286.17" font-size="33.72" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="Draw the ray OT' with the angle XOT' = θ measured from the cusp (T' is on the fixed circle).">
+<path class="ink cons" style="stroke-width:2.18;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M486.9 456.9L732.61 141.27"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="609.76" cy="299.08" r="7.09"/>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="Step off the distances on the ray: OT' = a, then T'A' = a/2 (A' is the centre of the rolling circle) and A'F = a/2, so that T'F is a diameter of the rolling circle.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="609.76" cy="299.08" r="7.09"/>
+<text class="lbl " x="630.66" y="299.08" font-size="33.72" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="671.19" cy="220.17" r="7.09"/>
+<text class="lbl " x="692.09" y="220.17" font-size="33.72" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="732.61" cy="141.27" r="7.09"/>
+<text class="lbl " x="750.39" y="120.36" font-size="33.72" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The rolling circle of radius a/2 about A': it touches the fixed circle at T' (from outside).">
+<circle class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="671.19" cy="220.17" r="100"/>
+</g>
+<g class="step" data-step="4" data-tool="protractor" data-text="The tracing point P: the arc T'P of the small circle equals the arc XT' = aθ of the fixed circle, so the angle T'A'P = 2θ.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="579.62" cy="179.98" r="7.09"/>
+<text class="lbl " x="579.62" y="159.07" font-size="33.72" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="5" data-tool="straightedge" data-text="Draw PT' and extend it to meet the fixed circle at T. Then extend TO beyond O to D, the point where TO meets FP: TD = 3a (OD = 2a).">
+<path class="ink cons" style="stroke-width:2.18;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M579.62 179.98L670.03 537.29"/>
+<path class="ink cons" style="stroke-width:2.18;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M670.03 537.29L120.63 296.12"/>
+<path class="ink cons" style="stroke-width:2.18;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M120.63 296.12L732.61 141.27"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="670.03" cy="537.29" r="7.09"/>
+<text class="lbl " x="690.94" y="537.29" font-size="33.72" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="120.63" cy="296.12" r="7.09"/>
+<text class="lbl " x="93.46" y="296.12" font-size="33.72" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+</g>
+<g class="step" data-step="6" data-tool="compass" data-text="The circle on T, P and D. The angle DPT is a right angle, so TD is a diameter: the circle has radius 3a/2, its centre A is the midpoint of TD (OA = a/2) and it touches the fixed circle at T. This larger circle generates the same nephroid.">
+<circle class="ink given" style="stroke-width:3.57;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="395.33" cy="416.71" r="300"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="395.33" cy="416.71" r="7.09"/>
+<text class="lbl " x="377.56" y="437.61" font-size="33.72" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="7" data-tool="straightedge" data-text="The other end of the diameter TO of the fixed circle is E; draw ET'. Since PD ∥ T'E, the triangles OET' and OFD are isosceles.">
+<path class="ink cons" style="stroke-width:2.18;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M303.77 376.51L609.76 299.08"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.18" cx="303.77" cy="376.51" r="7.09"/>
+<text class="lbl " x="286" y="397.42" font-size="33.72" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">E</text>
+</g>
+<g class="step" data-step="8" data-tool="note" data-text="The angles θ at D, E, T' and F are equal (the arcs: arc TT' = 2aθ, arc T'P = aθ = arc T'X, arc TX = 3aθ = arc TP).">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M165.1 315.64A48.56 48.56 0 0 0 167.71 284.21"/>
+<text class="lbl " x="209.35" y="303.49" font-size="33.72" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M348.23 396.03A48.56 48.56 0 0 0 350.84 364.6"/>
+<text class="lbl " x="392.49" y="383.88" font-size="33.72" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M562.68 310.99A48.56 48.56 0 0 0 579.93 337.4"/>
+<text class="lbl " x="535.22" y="347.76" font-size="33.72" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.18" d="M694.37 150.94A39.45 39.45 0 0 0 708.38 172.4"/>
+<text class="lbl " x="665.7" y="184.97" font-size="33.72" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="9" data-tool="pencil" data-text="The nephroid: the path of P, with its two cusps on the Y axis at (0, ±a) and its lobes reaching x = ±2a. It passes through P tangent to PF (and PD).">
+<path class="ink curve" style="stroke-width:5.55;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M486.9 256.9L486.9 256.85L486.91 256.69L486.92 256.44L486.96 256.08L487.01 255.62L487.09 255.06L487.21 254.4L487.36 253.65L487.55 252.8L487.79 251.85L488.08 250.82L488.43 249.69L488.84 248.48L489.32 247.19L489.87 245.81L490.49 244.36L491.2 242.83L491.99 241.23L492.87 239.56L493.84 237.83L494.9 236.04L496.06 234.2L497.33 232.3L498.7 230.36L500.18 228.38L501.78 226.36L503.49 224.3L505.31 222.22L507.25 220.12L509.32 218L511.5 215.87L513.82 213.74L516.25 211.6L518.82 209.47L521.51 207.35L524.33 205.24L527.28 203.16L530.36 201.1L533.56 199.08L536.9 197.09L540.37 195.15L543.96 193.26L547.68 191.43L551.52 189.66L555.49 187.95L559.58 186.32L563.8 184.76L568.13 183.29L572.58 181.91L577.14 180.63L581.81 179.44L586.6 178.36L591.48 177.39L596.47 176.53L601.56 175.79L606.74 175.18L612.01 174.69L617.37 174.34L622.8 174.13L628.32 174.06L633.91 174.13L639.57 174.35L645.29 174.73L651.06 175.26L656.89 175.95L662.77 176.8L668.69 177.82L674.64 179L680.63 180.36L686.64 181.88L692.66 183.58L698.7 185.46L704.75 187.51L710.79 189.74L716.83 192.15L722.86 194.74L728.86 197.51L734.85 200.46L740.8 203.59L746.71 206.9L752.57 210.39L758.39 214.06L764.15 217.91L769.85 221.93L775.47 226.13L781.02 230.51L786.49 235.06L791.87 239.77L797.15 244.66L802.33 249.71L807.41 254.92L812.37 260.29L817.22 265.82L821.94 271.49L826.54 277.32L831 283.29L835.32 289.41L839.49 295.65L843.52 302.04L847.39 308.54L851.1 315.17L854.65 321.92L858.03 328.78L861.25 335.75L864.28 342.82L867.14 349.98L869.82 357.23L872.31 364.57L874.61 371.99L876.72 379.47L878.64 387.03L880.36 394.64L881.89 402.31L883.21 410.02L884.34 417.77L885.26 425.56L885.98 433.37L886.49 441.2L886.8 449.05L886.9 456.9L886.8 464.75L886.49 472.6L885.98 480.43L885.26 488.24L884.34 496.03L883.21 503.78L881.89 511.49L880.36 519.16L878.64 526.77L876.72 534.33L874.61 541.81L872.31 549.23L869.82 556.57L867.14 563.82L864.28 570.98L861.25 578.05L858.03 585.02L854.65 591.88L851.1 598.63L847.39 605.26L843.52 611.76L839.49 618.15L835.32 624.39L831 630.51L826.54 636.48L821.94 642.31L817.22 647.98L812.37 653.51L807.41 658.88L802.33 664.09L797.15 669.14L791.87 674.03L786.49 678.74L781.02 683.29L775.47 687.67L769.85 691.87L764.15 695.89L758.39 699.74L752.57 703.41L746.71 706.9L740.8 710.21L734.85 713.34L728.86 716.29L722.86 719.06L716.83 721.65L710.79 724.06L704.75 726.29L698.7 728.34L692.66 730.22L686.64 731.92L680.63 733.44L674.64 734.8L668.69 735.98L662.77 737L656.89 737.85L651.06 738.54L645.29 739.07L639.57 739.45L633.91 739.67L628.32 739.74L622.8 739.67L617.37 739.46L612.01 739.11L606.74 738.62L601.56 738.01L596.47 737.27L591.48 736.41L586.6 735.44L581.81 734.36L577.14 733.17L572.58 731.89L568.13 730.51L563.8 729.04L559.58 727.48L555.49 725.85L551.52 724.14L547.68 722.37L543.96 720.54L540.37 718.65L536.9 716.71L533.56 714.72L530.36 712.7L527.28 710.64L524.33 708.56L521.51 706.45L518.82 704.33L516.25 702.2L513.82 700.06L511.5 697.93L509.32 695.8L507.25 693.68L505.31 691.58L503.49 689.5L501.78 687.44L500.18 685.42L498.7 683.44L497.33 681.5L496.06 679.6L494.9 677.76L493.84 675.97L492.87 674.24L491.99 672.57L491.2 670.97L490.49 669.44L489.87 667.99L489.32 666.61L488.84 665.32L488.43 664.11L488.08 662.98L487.79 661.95L487.55 661L487.36 660.15L487.21 659.4L487.09 658.74L487.01 658.18L486.96 657.72L486.92 657.36L486.91 657.11L486.9 656.95L486.9 656.9L486.9 656.95L486.89 657.11L486.88 657.36L486.84 657.72L486.79 658.18L486.71 658.74L486.59 659.4L486.44 660.15L486.25 661L486.01 661.95L485.72 662.98L485.37 664.11L484.96 665.32L484.48 666.61L483.93 667.99L483.31 669.44L482.6 670.97L481.81 672.57L480.93 674.24L479.96 675.97L478.9 677.76L477.74 679.6L476.47 681.5L475.1 683.44L473.62 685.42L472.02 687.44L470.31 689.5L468.49 691.58L466.55 693.68L464.48 695.8L462.3 697.93L459.98 700.06L457.55 702.2L454.98 704.33L452.29 706.45L449.47 708.56L446.52 710.64L443.44 712.7L440.24 714.72L436.9 716.71L433.43 718.65L429.84 720.54L426.12 722.37L422.28 724.14L418.31 725.85L414.22 727.48L410 729.04L405.67 730.51L401.22 731.89L396.66 733.17L391.99 734.36L387.2 735.44L382.32 736.41L377.33 737.27L372.24 738.01L367.06 738.62L361.79 739.11L356.43 739.46L351 739.67L345.48 739.74L339.89 739.67L334.23 739.45L328.51 739.07L322.74 738.54L316.91 737.85L311.03 737L305.11 735.98L299.16 734.8L293.17 733.44L287.16 731.92L281.14 730.22L275.1 728.34L269.05 726.29L263.01 724.06L256.97 721.65L250.94 719.06L244.94 716.29L238.95 713.34L233 710.21L227.09 706.9L221.23 703.41L215.41 699.74L209.65 695.89L203.95 691.87L198.33 687.67L192.78 683.29L187.31 678.74L181.93 674.03L176.65 669.14L171.47 664.09L166.39 658.88L161.43 653.51L156.58 647.98L151.86 642.31L147.26 636.48L142.8 630.51L138.48 624.39L134.31 618.15L130.28 611.76L126.41 605.26L122.7 598.63L119.15 591.88L115.77 585.02L112.55 578.05L109.52 570.98L106.66 563.82L103.98 556.57L101.49 549.23L99.19 541.81L97.08 534.33L95.16 526.77L93.44 519.16L91.91 511.49L90.59 503.78L89.46 496.03L88.54 488.24L87.82 480.43L87.31 472.6L87 464.75L86.9 456.9L87 449.05L87.31 441.2L87.82 433.37L88.54 425.56L89.46 417.77L90.59 410.02L91.91 402.31L93.44 394.64L95.16 387.03L97.08 379.47L99.19 371.99L101.49 364.57L103.98 357.23L106.66 349.98L109.52 342.82L112.55 335.75L115.77 328.78L119.15 321.92L122.7 315.17L126.41 308.54L130.28 302.04L134.31 295.65L138.48 289.41L142.8 283.29L147.26 277.32L151.86 271.49L156.58 265.82L161.43 260.29L166.39 254.92L171.47 249.71L176.65 244.66L181.93 239.77L187.31 235.06L192.78 230.51L198.33 226.13L203.95 221.93L209.65 217.91L215.41 214.06L221.23 210.39L227.09 206.9L233 203.59L238.95 200.46L244.94 197.51L250.94 194.74L256.97 192.15L263.01 189.74L269.05 187.51L275.1 185.46L281.14 183.58L287.16 181.88L293.17 180.36L299.16 179L305.11 177.82L311.03 176.8L316.91 175.95L322.74 175.26L328.51 174.73L334.23 174.35L339.89 174.13L345.48 174.06L351 174.13L356.43 174.34L361.79 174.69L367.06 175.18L372.24 175.79L377.33 176.53L382.32 177.39L387.2 178.36L391.99 179.44L396.66 180.63L401.22 181.91L405.67 183.29L410 184.76L414.22 186.32L418.31 187.95L422.28 189.66L426.12 191.43L429.84 193.26L433.43 195.15L436.9 197.09L440.24 199.08L443.44 201.1L446.52 203.16L449.47 205.24L452.29 207.35L454.98 209.47L457.55 211.6L459.98 213.74L462.3 215.87L464.48 218L466.55 220.12L468.49 222.22L470.31 224.3L472.02 226.36L473.62 228.38L475.1 230.36L476.47 232.3L477.74 234.2L478.9 236.04L479.96 237.83L480.93 239.56L481.81 241.23L482.6 242.83L483.31 244.36L483.93 245.81L484.48 247.19L484.96 248.48L485.37 249.69L485.72 250.82L486.01 251.85L486.25 252.8L486.44 253.65L486.59 254.4L486.71 255.06L486.79 255.62L486.84 256.08L486.88 256.44L486.89 256.69L486.9 256.85L486.9 256.9"/>
+</g>
+</svg>

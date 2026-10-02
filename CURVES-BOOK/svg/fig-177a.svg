@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 502.74 492.24" width="520" height="509" data-fig="fig-177a">
+<title>Fig. 177(a) — Asymptote of a cubic: y³ − x³ + x = 0 has y = x for an asymptote</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 177(a), page 195. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the equation y³ − x³ + x = 0.">
+<path class="ink axis" style="stroke-width:1.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M51.87 256.62L450.87 256.62"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M450.87 256.62L441.47 252.67L441.47 260.57Z"/>
+<path class="ink axis" style="stroke-width:1.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M235.62 403.62L235.62 104.37"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M235.62 104.37L231.67 113.77L239.57 113.77Z"/>
+<text class="lbl axis" x="459.88" y="267.22" font-size="17.09" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="244.63" y="93.77" font-size="17.09" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="256.62" y="51.87" font-size="14.53" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y<tspan baseline-shift="super" font-size="70%">3</tspan> − x<tspan baseline-shift="super" font-size="70%">3</tspan> + x = 0</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Dividing by x³ and letting x grow: y/x → 1 and y − x → 0, so the line y = x is an asymptote at both ends. Draw it.">
+<path class="ink given" style="stroke-width:1.81;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M78.12 414.12L393.12 99.12"/>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="Draw the curve y = ∛(x³ − x): it is odd, crosses the x-axis at −1, 0, 1 (a vertical tangent at the origin, where y³ ≈ −x) and hugs the asymptote at both ends.">
+<path class="ink curve" style="stroke-width:2.82;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M88.62 372.49L89.35 371.51L90.09 370.52L90.83 369.53L91.56 368.53L92.3 367.52L93.03 366.51L93.77 365.49L94.5 364.47L95.24 363.44L95.97 362.41L96.71 361.36L97.44 360.31L98.18 359.26L98.91 358.19L99.65 357.12L100.38 356.03L101.12 354.94L101.85 353.84L102.59 352.73L103.32 351.61L104.06 350.48L104.79 349.33L105.53 348.18L106.26 347.01L107 345.83L107.73 344.63L108.47 343.42L109.2 342.19L109.94 340.95L110.67 339.69L111.41 338.41L112.14 337.11L112.88 335.78L113.61 334.43L114.35 333.06L115.08 331.66L115.82 330.22L116.55 328.76L117.29 327.26L118.02 325.71L118.76 324.13L119.49 322.49L120.23 320.8L120.96 319.05L121.7 317.22L122.43 315.32L123.17 313.32L123.9 311.21L124.64 308.97L125.37 306.57L126.11 303.96L126.84 301.08L127.58 297.85L128.31 294.09L129.05 289.49L129.78 283.18L130.52 269.86L131.25 232.65L131.99 225.72L132.72 221.07L133.46 217.47L134.19 214.5L134.93 211.94L135.66 209.71L136.4 207.71L137.13 205.9L137.87 204.25L138.6 202.74L139.34 201.34L140.07 200.04L140.81 198.83L141.54 197.7L142.28 196.64L143.01 195.64L143.75 194.7L144.48 193.81L145.22 192.97L145.95 192.18L146.69 191.43L147.42 190.71L148.16 190.04L148.89 189.39L149.63 188.78L150.36 188.21L151.1 187.66L151.83 187.13L152.57 186.64L153.3 186.17L154.04 185.72L154.77 185.29L155.51 184.89L156.24 184.51L156.98 184.15L157.71 183.81L158.45 183.48L159.18 183.18L159.92 182.89L160.65 182.62L161.39 182.37L162.12 182.13L162.86 181.91L163.59 181.71L164.33 181.52L165.06 181.34L165.8 181.18L166.53 181.03L167.27 180.89L168 180.77L168.74 180.67L169.47 180.57L170.21 180.49L170.94 180.42L171.68 180.36L172.41 180.31L173.15 180.28L173.88 180.25L174.62 180.24L175.35 180.24L176.09 180.25L176.82 180.28L177.56 180.31L178.29 180.35L179.03 180.41L179.76 180.47L180.5 180.55L181.23 180.63L181.97 180.73L182.7 180.84L183.44 180.95L184.17 181.08L184.91 181.22L185.64 181.37L186.38 181.52L187.11 181.69L187.85 181.87L188.58 182.06L189.32 182.26L190.05 182.46L190.79 182.68L191.52 182.91L192.26 183.15L192.99 183.4L193.73 183.66L194.46 183.93L195.2 184.21L195.93 184.5L196.67 184.81L197.4 185.12L198.14 185.44L198.87 185.78L199.61 186.12L200.34 186.48L201.08 186.85L201.81 187.23L202.55 187.62L203.28 188.03L204.02 188.44L204.75 188.87L205.49 189.32L206.22 189.77L206.96 190.24L207.69 190.72L208.43 191.22L209.16 191.73L209.9 192.26L210.63 192.8L211.37 193.36L212.1 193.94L212.84 194.53L213.57 195.14L214.31 195.77L215.04 196.42L215.78 197.09L216.51 197.78L217.25 198.49L217.98 199.23L218.72 200L219.45 200.79L220.19 201.61L220.92 202.46L221.66 203.34L222.39 204.26L223.13 205.22L223.86 206.22L224.6 207.27L225.33 208.37L226.07 209.52L226.8 210.74L227.54 212.04L228.27 213.42L229.01 214.9L229.74 216.49L230.48 218.23L231.21 220.14L231.95 222.29L232.68 224.74L233.42 227.66L234.15 231.32L234.89 236.53L235.62 256.62L236.36 276.71L237.09 281.92L237.83 285.58L238.56 288.5L239.3 290.95L240.03 293.1L240.77 295.01L241.5 296.75L242.24 298.34L242.97 299.82L243.71 301.2L244.44 302.5L245.18 303.72L245.91 304.87L246.65 305.97L247.38 307.02L248.11 308.02L248.85 308.98L249.59 309.9L250.32 310.78L251.06 311.63L251.79 312.45L252.53 313.24L253.26 314.01L254 314.75L254.73 315.46L255.46 316.15L256.2 316.82L256.94 317.47L257.67 318.1L258.41 318.71L259.14 319.3L259.88 319.88L260.61 320.44L261.35 320.98L262.08 321.51L262.82 322.02L263.55 322.52L264.28 323L265.02 323.47L265.76 323.92L266.49 324.37L267.23 324.8L267.96 325.21L268.7 325.62L269.43 326.01L270.17 326.39L270.9 326.76L271.64 327.12L272.37 327.46L273.11 327.8L273.84 328.12L274.58 328.43L275.31 328.74L276.05 329.03L276.78 329.31L277.52 329.58L278.25 329.84L278.99 330.09L279.72 330.33L280.46 330.56L281.19 330.78L281.93 330.98L282.66 331.18L283.4 331.37L284.13 331.55L284.87 331.72L285.6 331.87L286.33 332.02L287.07 332.16L287.81 332.29L288.54 332.4L289.28 332.51L290.01 332.61L290.75 332.69L291.48 332.77L292.21 332.83L292.95 332.89L293.69 332.93L294.42 332.96L295.15 332.99L295.89 333L296.63 333L297.36 332.99L298.1 332.96L298.83 332.93L299.57 332.88L300.3 332.82L301.03 332.75L301.77 332.67L302.51 332.57L303.24 332.47L303.98 332.35L304.71 332.21L305.45 332.06L306.18 331.9L306.91 331.72L307.65 331.53L308.39 331.33L309.12 331.11L309.86 330.87L310.59 330.62L311.33 330.35L312.06 330.06L312.79 329.76L313.53 329.43L314.27 329.09L315 328.73L315.74 328.35L316.47 327.95L317.21 327.52L317.94 327.07L318.68 326.6L319.41 326.11L320.15 325.58L320.88 325.03L321.62 324.46L322.35 323.85L323.08 323.2L323.82 322.53L324.56 321.81L325.29 321.06L326.03 320.27L326.76 319.43L327.5 318.54L328.23 317.6L328.97 316.6L329.7 315.54L330.44 314.41L331.17 313.2L331.91 311.9L332.64 310.5L333.38 308.99L334.11 307.34L334.85 305.53L335.58 303.53L336.32 301.3L337.05 298.74L337.79 295.77L338.52 292.17L339.26 287.52L339.99 280.59L340.73 243.38L341.46 230.06L342.19 223.75L342.93 219.15L343.67 215.39L344.4 212.16L345.14 209.28L345.87 206.67L346.61 204.27L347.34 202.03L348.08 199.92L348.81 197.92L349.55 196.02L350.28 194.19L351.02 192.44L351.75 190.75L352.49 189.11L353.22 187.53L353.96 185.98L354.69 184.48L355.43 183.02L356.16 181.58L356.9 180.18L357.63 178.81L358.37 177.46L359.1 176.13L359.84 174.83L360.57 173.55L361.31 172.29L362.04 171.05L362.78 169.82L363.51 168.61L364.25 167.41L364.98 166.23L365.72 165.06L366.45 163.91L367.19 162.76L367.92 161.63L368.66 160.51L369.39 159.4L370.13 158.3L370.86 157.21L371.6 156.12L372.33 155.05L373.06 153.98L373.8 152.93L374.54 151.88L375.27 150.83L376.01 149.8L376.74 148.77L377.48 147.75L378.21 146.73L378.95 145.72L379.68 144.71L380.42 143.71L381.15 142.72L381.89 141.73L382.62 140.75"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="130.62" cy="256.62" r="2.94"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="235.62" cy="256.62" r="3.92"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="340.62" cy="256.62" r="2.94"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The caption of the book.">
+<text class="lbl  upright" x="256.62" y="435.12" font-size="13.67" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">has y = x for an asymptote.</text>
+</g>
+</svg>

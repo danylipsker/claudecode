@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 684 684" width="520" height="520" data-fig="fig-021b">
+<title>Fig. 21(b) — A Steiner chain between two concentric circles</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 21(b), page 24. Section: circle.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two concentric circles of radii R and r, with sin(π/8) = (R − r) / (R + r).">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="342" cy="342" r="300"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="342" cy="342" r="133.94"/>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="The circle that touches both: its diameter is the width R − r of the ring, its centre is at (R + r)/2 from O.">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="558.97" cy="342" r="83.03"/>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="Step the centre round the ring: each circle subtends the angle 2·asin((R − r)/(R + r)) = 45° at O, so eight circles close the chain after one turn about the centre.">
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="495.42" cy="188.58" r="83.03"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="342" cy="125.03" r="83.03"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.58" cy="188.58" r="83.03"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="125.03" cy="342" r="83.03"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="188.58" cy="495.42" r="83.03"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="342" cy="558.97" r="83.03"/>
+<circle class="ink given" style="stroke-width:2.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="495.42" cy="495.42" r="83.03"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The circles of the chain are shaded with horizontal lines.">
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M530.81 420.06L587.13 420.06M511.67 410.21L606.27 410.21M499.94 400.36L617.99 400.36M491.6 390.51L626.34 390.51M485.5 380.66L632.44 380.66M481.11 370.81L636.83 370.81M478.18 360.96L639.76 360.96M476.49 351.11L641.45 351.11M475.96 341.26L641.97 341.26M476.65 331.41L641.29 331.41M478.55 321.56L639.39 321.56M481.71 311.71L636.23 311.71M486.33 301.86L631.61 301.86M492.72 292.01L625.22 292.01M501.48 282.16L616.46 282.16M513.9 272.31L604.03 272.31M535.3 262.46L582.63 262.46"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M467.26 266.63L523.58 266.63M448.12 256.79L542.72 256.79M436.4 246.94L554.45 246.94M428.05 237.09L562.79 237.09M421.95 227.24L568.89 227.24M417.56 217.39L573.28 217.39M414.63 207.54L576.21 207.54M412.94 197.69L577.9 197.69M412.42 187.84L578.43 187.84M413.1 177.99L577.74 177.99M415 168.14L575.84 168.14M418.16 158.29L572.68 158.29M422.78 148.44L568.06 148.44M429.17 138.59L561.67 138.59M437.93 128.74L552.91 128.74M450.36 118.89L540.49 118.89M471.76 109.04L519.09 109.04"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M313.84 203.09L370.16 203.09M294.7 193.24L389.3 193.24M282.97 183.39L401.03 183.39M274.63 173.54L409.37 173.54M268.53 163.69L415.47 163.69M264.14 153.84L419.86 153.84M261.21 143.99L422.79 143.99M259.52 134.14L424.48 134.14M259 124.29L425 124.29M259.68 114.44L424.32 114.44M261.58 104.59L422.42 104.59M264.74 94.74L419.26 94.74M269.36 84.89L414.64 84.89M275.75 75.04L408.25 75.04M284.51 65.19L399.49 65.19M296.94 55.34L387.06 55.34M318.34 45.49L365.66 45.49"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M160.42 266.63L216.74 266.63M141.28 256.79L235.88 256.79M129.55 246.94L247.6 246.94M121.21 237.09L255.95 237.09M115.11 227.24L262.05 227.24M110.72 217.39L266.44 217.39M107.79 207.54L269.37 207.54M106.1 197.69L271.06 197.69M105.57 187.84L271.58 187.84M106.26 177.99L270.9 177.99M108.16 168.14L269 168.14M111.32 158.29L265.84 158.29M115.94 148.44L261.22 148.44M122.33 138.59L254.83 138.59M131.09 128.74L246.07 128.74M143.51 118.89L233.64 118.89M164.91 109.04L212.24 109.04"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M96.87 420.06L153.19 420.06M77.73 410.21L172.33 410.21M66.01 400.36L184.06 400.36M57.66 390.51L192.4 390.51M51.56 380.66L198.5 380.66M47.17 370.81L202.89 370.81M44.24 360.96L205.82 360.96M42.55 351.11L207.51 351.11M42.03 341.26L208.04 341.26M42.71 331.41L207.35 331.41M44.61 321.56L205.45 321.56M47.77 311.71L202.29 311.71M52.39 301.86L197.67 301.86M58.78 292.01L191.28 292.01M67.54 282.16L182.52 282.16M79.97 272.31L170.1 272.31M101.37 262.46L148.7 262.46"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M160.42 573.48L216.74 573.48M141.28 563.63L235.88 563.63M129.55 553.78L247.6 553.78M121.21 543.93L255.95 543.93M115.11 534.08L262.05 534.08M110.72 524.23L266.44 524.23M107.79 514.38L269.37 514.38M106.1 504.53L271.06 504.53M105.57 494.68L271.58 494.68M106.26 484.83L270.9 484.83M108.16 474.98L269 474.98M111.32 465.13L265.84 465.13M115.94 455.28L261.22 455.28M122.33 445.43L254.83 445.43M131.09 435.58L246.07 435.58M143.51 425.73L233.64 425.73M164.91 415.88L212.24 415.88"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M313.84 637.02L370.16 637.02M294.7 627.18L389.3 627.18M282.97 617.33L401.03 617.33M274.63 607.48L409.37 607.48M268.53 597.63L415.47 597.63M264.14 587.78L419.86 587.78M261.21 577.93L422.79 577.93M259.52 568.08L424.48 568.08M259 558.23L425 558.23M259.68 548.38L424.32 548.38M261.58 538.53L422.42 538.53M264.74 528.68L419.26 528.68M269.36 518.83L414.64 518.83M275.75 508.98L408.25 508.98M284.51 499.13L399.49 499.13M296.94 489.28L387.06 489.28M318.34 479.43L365.66 479.43"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.92;stroke:#2a2a2a" d="M467.26 573.48L523.58 573.48M448.12 563.63L542.72 563.63M436.4 553.78L554.45 553.78M428.05 543.93L562.79 543.93M421.95 534.08L568.89 534.08M417.56 524.23L573.28 524.23M414.63 514.38L576.21 514.38M412.94 504.53L577.9 504.53M412.42 494.68L578.43 494.68M413.1 484.83L577.74 484.83M415 474.98L575.84 474.98M418.16 465.13L572.68 465.13M422.78 455.28L568.06 455.28M429.17 445.43L561.67 445.43M437.93 435.58L552.91 435.58M450.36 425.73L540.49 425.73M471.76 415.88L519.09 415.88"/>
+</g>
+</svg>

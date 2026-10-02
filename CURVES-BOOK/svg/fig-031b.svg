@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 615.6 470.6" width="520" height="398" data-fig="fig-031b">
+<title>Fig. 31(b) — Focus and directrix: the parabola (e = 1), polar form with a horizontal directrix</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 31(b), page 36. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The focus F is the origin; the directrix is the horizontal line at the distance k below it. The ratio e = PF : (distance of P from the directrix) is fixed (here e = 1).">
+<path class="ink axis" style="stroke-width:1.85;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M37.8 267.8L577.8 267.8"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M577.8 267.8L566.29 262.97L566.29 272.63Z"/>
+<path class="ink axis" style="stroke-width:1.85;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M247.8 397.8L247.8 37.8"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M247.8 37.8L242.97 49.31L252.63 49.31Z"/>
+<text class="lbl axis" x="588.83" y="280.78" font-size="20.93" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="258.83" y="24.82" font-size="20.93" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.22" cx="247.8" cy="267.8" r="8.8"/><circle class="pt" style="fill:#1b1b1b" cx="247.8" cy="267.8" r="3.6"/>
+<path class="ink given" style="stroke-width:2.22;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M0 367.8L615.6 367.8"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="247.8" cy="367.8" r="4"/>
+<text class="lbl " x="260.78" y="345.8" font-size="20.93" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Take a point P of the locus, at the distance r = PF from the focus and the angle θ from the X axis; its distance from the directrix is k + r sin θ, and r = e (k + r sin θ).">
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M247.8 267.8L431.98 148.19"/>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M431.98 148.19L431.98 367.8"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="431.98" cy="148.19" r="4"/>
+<text class="lbl " x="328.86" y="195.02" font-size="20.93" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.35" d="M277.94 267.8A30.14 30.14 0 0 0 273.08 251.38"/>
+<text class="lbl " x="294.76" y="253.89" font-size="20.93" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="The locus is r = ek / (1 − e sin θ); for e = 1 it is a parabola with its vertex midway between focus and directrix.">
+<path class="ink curve" style="stroke-width:3.45;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M74.59 167.8L77.81 173.32L80.94 178.59L83.99 183.62L86.95 188.44L89.84 193.04L92.65 197.45L95.4 201.67L98.07 205.71L100.69 209.59L103.24 213.31L105.73 216.88L108.16 220.3L110.54 223.6L112.87 226.76L115.14 229.81L117.37 232.74L119.55 235.56L121.68 238.27L123.77 240.89L125.82 243.41L127.83 245.84L129.8 248.18L131.74 250.45L133.63 252.63L135.49 254.74L137.32 256.77L139.12 258.74L140.88 260.64L142.61 262.48L144.32 264.26L145.99 265.98L147.64 267.64L149.26 269.25L150.85 270.81L152.42 272.32L153.97 273.78L155.49 275.2L156.99 276.57L158.47 277.9L159.92 279.19L161.36 280.44L162.77 281.65L164.17 282.83L165.55 283.97L166.9 285.08L168.25 286.16L169.57 287.2L170.88 288.21L172.17 289.2L173.44 290.15L174.7 291.08L175.94 291.98L177.17 292.86L178.39 293.71L179.59 294.54L180.78 295.34L181.95 296.12L183.12 296.88L184.27 297.62L185.41 298.34L186.53 299.03L187.65 299.71L188.76 300.37L189.85 301.01L190.93 301.63L192.01 302.24L193.07 302.83L194.13 303.4L195.17 303.95L196.21 304.49L197.24 305.02L198.26 305.53L199.27 306.02L200.28 306.51L201.27 306.98L202.26 307.43L203.24 307.87L204.21 308.3L205.18 308.72L206.14 309.12L207.1 309.52L208.04 309.9L208.99 310.27L209.92 310.63L210.85 310.97L211.78 311.31L212.69 311.64L213.61 311.95L214.52 312.26L215.42 312.56L216.32 312.84L217.21 313.12L218.1 313.39L218.99 313.65L219.87 313.9L220.75 314.14L221.62 314.37L222.49 314.6L223.36 314.81L224.22 315.02L225.08 315.22L225.93 315.41L226.79 315.59L227.64 315.77L228.48 315.93L229.33 316.09L230.17 316.25L231.01 316.39L231.85 316.53L232.68 316.66L233.52 316.78L234.35 316.9L235.18 317L236.01 317.1L236.83 317.2L237.66 317.29L238.48 317.37L239.3 317.44L240.12 317.51L240.94 317.56L241.76 317.62L242.58 317.66L243.4 317.7L244.21 317.74L245.03 317.76L245.85 317.78L246.66 317.79L247.48 317.8L248.29 317.8L249.11 317.79L249.92 317.78L250.74 317.76L251.56 317.73L252.37 317.7L253.19 317.65L254.01 317.61L254.83 317.55L255.65 317.49L256.47 317.42L257.29 317.35L258.12 317.27L258.94 317.18L259.77 317.08L260.6 316.98L261.43 316.87L262.26 316.75L263.09 316.63L263.93 316.5L264.77 316.36L265.61 316.21L266.45 316.06L267.29 315.9L268.14 315.73L268.99 315.55L269.85 315.37L270.7 315.18L271.56 314.98L272.43 314.77L273.29 314.55L274.16 314.32L275.04 314.09L275.92 313.85L276.8 313.6L277.68 313.33L278.58 313.06L279.47 312.79L280.37 312.5L281.27 312.2L282.18 311.89L283.1 311.57L284.02 311.24L284.94 310.9L285.87 310.55L286.81 310.19L287.75 309.82L288.7 309.43L289.66 309.04L290.62 308.63L291.59 308.21L292.56 307.78L293.55 307.34L294.54 306.88L295.53 306.41L296.54 305.92L297.55 305.42L298.58 304.91L299.61 304.38L300.64 303.84L301.69 303.28L302.75 302.7L303.82 302.11L304.89 301.5L305.98 300.88L307.08 300.23L308.18 299.57L309.3 298.89L310.43 298.19L311.57 297.46L312.73 296.72L313.89 295.96L315.07 295.17L316.26 294.37L317.47 293.53L318.68 292.68L319.92 291.8L321.16 290.89L322.43 289.95L323.7 288.99L325 288L326.31 286.98L327.63 285.93L328.98 284.85L330.34 283.74L331.72 282.59L333.12 281.4L334.54 280.18L335.98 278.92L337.44 277.62L338.92 276.28L340.43 274.9L341.95 273.48L343.5 272L345.08 270.48L346.68 268.92L348.3 267.29L349.96 265.62L351.64 263.89L353.35 262.1L355.09 260.25L356.86 258.33L358.66 256.35L360.49 254.3L362.36 252.18L364.27 249.98L366.21 247.7L368.18 245.34L370.2 242.89L372.26 240.35L374.36 237.71L376.51 234.98L378.69 232.13L380.93 229.18L383.22 226.11L385.55 222.92L387.95 219.6L390.39 216.14L392.89 212.54L395.46 208.79L398.08 204.88L400.77 200.8L403.53 196.54L406.36 192.09L409.26 187.45L412.25 182.59L415.31 177.5L418.46 172.18L421.69 166.61L425.02 160.76L428.45 154.63L431.98 148.19"/>
+<text class="lbl  upright" x="307.8" y="432.8" font-size="17.79" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">r = ek / (1 ± e sin θ)</text>
+</g>
+</svg>

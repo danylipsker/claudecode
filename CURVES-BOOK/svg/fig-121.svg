@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1088.7 998.7" width="520" height="477" data-fig="fig-121">
+<title>Fig. 121 — The Whewell equation: arc length s and tangential angle φ</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 121, page 124. Section: intrinsic.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The initial point O of the arc, with the tangent to the curve at O taken as the x-axis, and the curve starting from O.">
+<path class="ink axis" style="stroke-width:3.27;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.85 811.85L1021.85 811.85"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1021.85 811.85L1001.49 803.3L1001.49 820.4Z"/>
+<path class="ink axis" style="stroke-width:3.27;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M216.85 931.85L216.85 66.85"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M216.85 66.85L208.3 87.21L225.4 87.21Z"/>
+<text class="lbl axis" x="1041.36" y="834.8" font-size="37.02" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="236.36" y="43.9" font-size="37.02" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink thick" style="stroke-width:6.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M101.85 794.32L105.06 795.29L108.27 796.23L111.48 797.15L114.68 798.03L117.89 798.89L121.1 799.72L124.31 800.53L127.52 801.3L130.73 802.05L133.93 802.77L137.14 803.46L140.35 804.12L143.56 804.76L146.77 805.37L149.98 805.95L153.18 806.5L156.39 807.03L159.6 807.53L162.81 808L166.02 808.44L169.23 808.86L172.43 809.25L175.64 809.61L178.85 809.95L182.06 810.26L185.27 810.54L188.48 810.79L191.68 811.02L194.89 811.22L198.1 811.39L201.31 811.53L204.52 811.65L207.73 811.74L210.93 811.8L214.14 811.84L217.35 811.85L220.56 811.83L223.77 811.79L226.98 811.72L230.18 811.62L233.39 811.49L236.6 811.34L239.81 811.16L243.02 810.95L246.23 810.71L249.43 810.45L252.64 810.16L255.85 809.85L259.06 809.5L262.27 809.13L265.48 808.73L268.68 808.31L271.89 807.86L275.1 807.38L278.31 806.87L281.52 806.33L284.73 805.77L287.93 805.18L291.14 804.56L294.35 803.92L297.56 803.25L300.77 802.55L303.98 801.82L307.18 801.06L310.39 800.28L313.6 799.47L316.81 798.63L320.02 797.76L323.23 796.86L326.43 795.94L329.64 794.99L332.85 794.01L336.06 793L339.27 791.96L342.48 790.89L345.68 789.8L348.89 788.68L352.1 787.53L355.31 786.35L358.52 785.14L361.73 783.9L364.93 782.63L368.14 781.33L371.35 780.01L374.56 778.65L377.77 777.27L380.98 775.85L384.18 774.41L387.39 772.93L390.6 771.43L393.81 769.9L397.02 768.33L400.23 766.74L403.43 765.12L406.64 763.46L409.85 761.78L413.06 760.06L416.27 758.31L419.48 756.54L422.68 754.73L425.89 752.89L429.1 751.02L432.31 749.11L435.52 747.18L438.73 745.21L441.93 743.22L445.14 741.19L448.35 739.13L451.56 737.03L454.77 734.91L457.98 732.75L461.18 730.56L464.39 728.33L467.6 726.07L470.81 723.78L474.02 721.46L477.23 719.1L480.43 716.71L483.64 714.28L486.85 711.82L490.06 709.33L493.27 706.8L496.48 704.24L499.68 701.64L502.89 699.01L506.1 696.34L509.31 693.64L512.52 690.9L515.73 688.13L518.93 685.32L522.14 682.47L525.35 679.59L528.56 676.67L531.77 673.72L534.98 670.73L538.18 667.7L541.39 664.63L544.6 661.53L547.81 658.38L551.02 655.2L554.23 651.98L557.43 648.73L560.64 645.43L563.85 642.1L567.06 638.72L570.27 635.31L573.48 631.86L576.68 628.36L579.89 624.83L583.1 621.26L586.31 617.64L589.52 613.99L592.73 610.29L595.93 606.55L599.14 602.78L602.35 598.95L605.56 595.09L608.77 591.18L611.98 587.24L615.18 583.24L618.39 579.21L621.6 575.13L624.81 571.01L628.02 566.84L631.23 562.63L634.43 558.37L637.64 554.07L640.85 549.72L644.06 545.33L647.27 540.89L650.48 536.4L653.68 531.87L656.89 527.29L660.1 522.66L663.31 517.99L666.52 513.27L669.73 508.49L672.93 503.68L676.14 498.81L679.35 493.89L682.56 488.92L685.77 483.9L688.98 478.83L692.18 473.71L695.39 468.54L698.6 463.32L701.81 458.05L705.02 452.72L708.23 447.34L711.43 441.91L714.64 436.43L717.85 430.89L721.06 425.29L724.27 419.64L727.48 413.94L730.68 408.18L733.89 402.37L737.1 396.5L740.31 390.57L743.52 384.58L746.73 378.54L749.93 372.44L753.14 366.28L756.35 360.07L759.56 353.79L762.77 347.45L765.98 341.06L769.18 334.6L772.39 328.08L775.6 321.5L778.81 314.86L782.02 308.15L785.23 301.39L788.43 294.56L791.64 287.66L794.85 280.7L798.06 273.68L801.27 266.59L804.48 259.43L807.68 252.21L810.89 244.92L814.1 237.56L817.31 230.14L820.52 222.64L823.73 215.08L826.93 207.45L830.14 199.75L833.35 191.97L836.56 184.13L839.77 176.21L842.98 168.23L846.18 160.16L849.39 152.03L852.6 143.82L855.81 135.54L859.02 127.18L862.23 118.74L865.43 110.23L868.64 101.64L871.85 92.98"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="216.85" cy="811.85" r="10.61"/>
+<text class="lbl " x="191.49" y="782.02" font-size="37.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="note" data-text="P is a point of the curve; the arc s is the length of the curve measured from O to P.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="773.9" cy="325" r="10.61"/>
+<text class="lbl " x="744.06" y="325" font-size="37.02" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl  upright" x="463.44" y="684.29" font-size="37.02" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">s</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the tangent to the curve at P. It meets the x-axis (the tangent at O) below P.">
+<path class="ink given" style="stroke-width:3.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M494.99 896.85L888.59 89.85"/>
+</g>
+<g class="step" data-step="3" data-tool="protractor" data-text="Measure the tangential angle φ: the angle from the initial tangent (the x-axis) to the tangent at P. The Whewell equation of the curve is the relation between s and φ.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.4" d="M593.08 811.85A56.63 56.63 0 0 0 561.27 760.95"/>
+<text class="lbl  upright" x="615.08" y="762.71" font-size="37.02" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">φ</text>
+</g>
+</svg>

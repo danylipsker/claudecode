@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1089.82 1350.22" width="520" height="644" data-fig="fig-048a">
+<title>Fig. 48(a) — Pointwise construction of the ellipse from two concentric circles: x = a cos t, y = b sin t</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 48(a), page 49. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two concentric circles about O, of radii a and b (a &gt; b), and the axes OX, OY.">
+<path class="ink axis" style="stroke-width:4.05;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M82.91 679.31L1006.91 679.31"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1006.91 679.31L981.66 668.7L981.66 689.91Z"/>
+<path class="ink axis" style="stroke-width:4.05;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M536.51 679.31L536.51 82.91"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M536.51 82.91L525.9 108.16L547.11 108.16Z"/>
+<text class="lbl axis" x="508.05" y="108.11" font-size="45.91" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="ink given" style="stroke-width:4.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="536.51" cy="679.31" r="420"/>
+<circle class="ink given" style="stroke-width:4.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="536.51" cy="679.31" r="220"/>
+<text class="lbl  upright" x="536.51" y="1070.85" font-size="45.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a</text>
+<text class="lbl  upright" x="536.51" y="870.85" font-size="45.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">b</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.97" cx="536.51" cy="679.31" r="14.04"/>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="Lay off the angle t from OX and draw the ray from O: it cuts the inner circle and the outer circle.">
+<path class="ink given" style="stroke-width:4.86;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M536.51 679.31L874.56 430.07"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.97" d="M610.88 679.31A74.37 74.37 0 0 0 596.37 635.18"/>
+<text class="lbl " x="646.41" y="643.18" font-size="45.91" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From the point where the ray cuts the outer circle draw a vertical, and from the point where it cuts the inner circle a horizontal (dashed). They meet at P, with x = a cos t and y = b sin t.">
+<path class="ink cons dash" style="stroke-width:2.97;fill:none;--dash:16.2 10.8;stroke:#4b4b4b;stroke-dasharray:16.2 10.8;stroke-linecap:round;stroke-linejoin:round" d="M874.56 430.07L874.56 548.76"/>
+<path class="ink cons dash" style="stroke-width:2.97;fill:none;--dash:16.2 10.8;stroke:#4b4b4b;stroke-dasharray:16.2 10.8;stroke-linecap:round;stroke-linejoin:round" d="M713.58 548.76L874.56 548.76"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.97" cx="874.56" cy="548.76" r="13.16"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Repeat for other angles t (mark P each time) and draw the ellipse through the points found.">
+<circle class="pt" style="fill:#1b1b1b" cx="950.13" cy="641.11" r="7.02"/>
+<circle class="pt" style="fill:#1b1b1b" cx="931.18" cy="604.06" r="7.02"/>
+<circle class="pt" style="fill:#1b1b1b" cx="777.41" cy="499.09" r="7.02"/>
+<circle class="pt" style="fill:#1b1b1b" cx="645.21" cy="466.8" r="7.02"/>
+<circle class="pt" style="fill:#1b1b1b" cx="499.9" cy="460.15" r="7.02"/>
+<path class="ink curve" style="stroke-width:7.56;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M956.51 679.31L956.49 677.2L956.43 675.08L956.33 672.97L956.2 670.86L956.02 668.75L955.81 666.64L955.56 664.54L955.27 662.43L954.94 660.32L954.57 658.22L954.17 656.12L953.72 654.02L953.24 651.92L952.72 649.83L952.16 647.74L951.56 645.65L950.93 643.56L950.25 641.48L949.54 639.4L948.79 637.33L948 635.26L947.18 633.19L946.31 631.13L945.41 629.07L944.47 627.01L943.49 624.96L942.48 622.92L941.43 620.88L940.34 618.85L939.21 616.82L938.05 614.8L936.85 612.78L935.61 610.77L934.33 608.77L933.02 606.77L931.67 604.78L930.29 602.8L928.87 600.82L927.41 598.85L925.92 596.89L924.39 594.93L922.83 592.99L921.23 591.05L919.59 589.12L917.92 587.2L916.22 585.28L914.48 583.38L912.7 581.48L910.89 579.59L909.05 577.72L907.17 575.85L905.25 573.99L903.31 572.14L901.33 570.3L899.31 568.47L897.26 566.65L895.18 564.84L893.07 563.04L890.92 561.26L888.74 559.48L886.53 557.71L884.28 555.96L882.01 554.22L879.7 552.48L877.36 550.77L874.99 549.06L872.58 547.36L870.15 545.68L867.69 544.01L865.19 542.35L862.67 540.7L860.11 539.07L857.53 537.45L854.91 535.84L852.27 534.24L849.59 532.66L846.89 531.09L844.16 529.54L841.4 528L838.61 526.47L835.8 524.96L832.96 523.46L830.09 521.98L827.19 520.51L824.27 519.06L821.32 517.62L818.34 516.19L815.34 514.78L812.31 513.39L809.26 512.01L806.18 510.65L803.07 509.3L799.95 507.97L796.79 506.65L793.62 505.35L790.42 504.06L787.19 502.79L783.95 501.54L780.68 500.31L777.39 499.09L774.07 497.88L770.74 496.7L767.38 495.53L764 494.37L760.6 493.24L757.18 492.12L753.74 491.02L750.28 489.94L746.8 488.87L743.3 487.82L739.78 486.79L736.24 485.78L732.69 484.78L729.11 483.8L725.52 482.84L721.91 481.9L718.28 480.98L714.64 480.08L710.98 479.19L707.31 478.32L703.61 477.47L699.91 476.64L696.19 475.83L692.45 475.03L688.7 474.26L684.93 473.5L681.15 472.77L677.36 472.05L673.56 471.35L669.74 470.67L665.91 470.01L662.07 469.37L658.22 468.75L654.35 468.15L650.48 467.56L646.59 467L642.69 466.46L638.79 465.93L634.87 465.43L630.95 464.94L627.01 464.48L623.07 464.03L619.12 463.61L615.17 463.2L611.2 462.82L607.23 462.45L603.25 462.1L599.27 461.78L595.28 461.47L591.29 461.19L587.29 460.92L583.28 460.68L579.27 460.45L575.26 460.25L571.24 460.06L567.22 459.9L563.2 459.75L559.18 459.63L555.15 459.52L551.12 459.44L547.09 459.38L543.06 459.33L539.03 459.31L534.99 459.31L530.96 459.33L526.93 459.37L522.9 459.42L518.87 459.5L514.84 459.6L510.82 459.72L506.8 459.86L502.77 460.02L498.76 460.2L494.74 460.4L490.73 460.62L486.73 460.86L482.73 461.12L478.73 461.4L474.74 461.7L470.75 462.02L466.77 462.36L462.8 462.72L458.84 463.1L454.88 463.5L450.93 463.92L446.98 464.36L443.05 464.82L439.12 465.3L435.2 465.8L431.3 466.32L427.4 466.86L423.51 467.42L419.63 468L415.76 468.6L411.91 469.21L408.06 469.85L404.23 470.5L400.41 471.18L396.6 471.87L392.81 472.59"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The equations of the construction, as printed under the figure.">
+<text class="lbl  upright" x="318.11" y="1237.91" font-size="139.56" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">{</text>
+<text class="lbl  upright" x="326.11" y="1208.51" font-size="43.61" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x  =  a cos t</text>
+<text class="lbl  upright" x="326.11" y="1267.31" font-size="43.61" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y  =  b sin t</text>
+</g>
+</svg>

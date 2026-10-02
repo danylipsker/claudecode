@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 333.78 341.71" width="520" height="532" data-fig="fig-029">
+<title>Fig. 29 — Trisection of an angle with the marked ruler</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 29, page 33. Section: conchoid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The angle XOY to be trisected, with its vertex O.">
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M52.8 288.91L163.4 21.91"/>
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M52.8 288.91L312.8 288.91"/>
+<text class="lbl " x="168.91" y="15.42" font-size="11.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+<text class="lbl " x="312.8" y="280.26" font-size="11.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Y</text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.23" cx="52.8" cy="288.91" r="4.89"/><circle class="pt" style="fill:#1b1b1b" cx="52.8" cy="288.91" r="2"/>
+<text class="lbl " x="61.99" y="299.71" font-size="11.62" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Choose a length k with the dividers and mark B on OY with OB = k.">
+<path class="ink cons" style="stroke-width:0.75;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M150.81 308.77A100 100 0 0 0 150.81 269.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="152.8" cy="288.91" r="2.22"/>
+<text class="lbl " x="160.15" y="297.55" font-size="11.62" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="102.8" y="279.91" font-size="11.04" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Through B draw BC parallel to OX, and the perpendicular BA to OX (A is its foot on OX).">
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M152.8 288.91L263.78 20.98"/>
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M39.73 242.07L152.8 288.91"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="67.45" cy="253.55" r="2.22"/>
+<text class="lbl " x="58.87" y="243.47" font-size="11.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="269.29" y="14.5" font-size="11.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="3" data-tool="ruler" data-text="The ruler carries two marks P and Q, 2k apart. Lay it with its edge through O and the mark P on the line AB; slide it about O until the mark Q falls on BC. The edge OPQ then makes the angle θ with OX.">
+<path class="ink thick" style="stroke-width:4.98;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M20.98 320.73L244.73 96.98"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="82.09" cy="259.62" r="2.67"/>
+<text class="lbl " x="93.62" y="259.62" font-size="11.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="223.51" cy="118.2" r="2.67"/>
+<text class="lbl " x="235.04" y="118.2" font-size="11.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="Why it works: M, the middle of PQ, is the centre of the circle through P, B and Q (the angle PBQ is right), so MB = MP = MQ = k = OB. Then the angles at Q and at O are θ and 2θ, and XOY = 3θ.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="152.8" cy="188.91" r="2.22"/>
+<path class="ink cons dash" style="stroke-width:0.75;fill:none;--dash:4.1 2.73;stroke:#4b4b4b;stroke-dasharray:4.1 2.73;stroke-linecap:round;stroke-linejoin:round" d="M152.8 288.91L152.8 188.91"/>
+<text class="lbl " x="145.6" y="238.91" font-size="11.62" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+<text class="lbl " x="111.32" y="217.06" font-size="11.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+<text class="lbl " x="182.03" y="146.35" font-size="11.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.75" d="M65.35 288.91A12.55 12.55 0 0 0 61.67 280.03"/>
+<text class="lbl " x="72.44" y="280.77" font-size="11.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.75" d="M85.33 256.37A46.01 46.01 0 0 0 70.41 246.4"/>
+<text class="lbl " x="84.17" y="241.96" font-size="11.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.75" d="M141.71 200A15.68 15.68 0 0 0 152.8 204.59"/>
+<text class="lbl " x="141.13" y="217.08" font-size="11.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.75" d="M211.68 130.03A16.73 16.73 0 0 0 217.11 133.65"/>
+<text class="lbl " x="207.92" y="141.53" font-size="11.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The mark Q describes a conchoid of Nicomedes (the conchoid of the line AB with respect to O, constant 2k); where it meets BC the angle is trisected.">
+<path class="ink curve" style="stroke-width:1.91;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M314.52 233.28L313.65 231.89L312.78 230.51L311.91 229.13L311.05 227.76L310.19 226.4L309.34 225.04L308.48 223.69L307.63 222.34L306.78 221L305.94 219.66L305.09 218.32L304.25 217L303.41 215.67L302.56 214.35L301.72 213.04L300.88 211.73L300.05 210.43L299.21 209.13L298.37 207.84L297.53 206.55L296.69 205.26L295.85 203.98L295.01 202.71L294.17 201.44L293.33 200.17L292.49 198.91L291.65 197.65L290.81 196.4L289.96 195.15L289.12 193.91L288.27 192.67L287.42 191.44L286.57 190.21L285.72 188.98L284.87 187.76L284.02 186.54L283.16 185.33L282.3 184.12L281.44 182.92L280.58 181.72L279.72 180.53L278.85 179.34L277.99 178.15L277.11 176.97L276.24 175.79L275.37 174.62L274.49 173.46L273.61 172.29L272.73 171.13L271.84 169.98L270.95 168.83L270.06 167.68L269.17 166.54L268.27 165.41L267.37 164.28L266.47 163.15L265.56 162.03L264.66 160.91L263.74 159.79L262.83 158.68L261.91 157.58L260.99 156.48L260.07 155.38L259.14 154.29L258.21 153.21L257.28 152.12L256.34 151.05L255.4 149.98L254.46 148.91L253.51 147.84L252.56 146.79L251.61 145.73L250.65 144.68L249.69 143.64L248.73 142.6L247.76 141.56L246.79 140.53L245.82 139.51L244.84 138.49L243.86 137.47L242.88 136.46L241.89 135.46L240.9 134.46L239.91 133.46L238.91 132.47L237.91 131.48L236.9 130.5L235.89 129.52L234.88 128.55L233.87 127.59L232.85 126.62L231.82 125.67L230.8 124.72L229.77 123.77L228.73 122.83L227.7 121.89L226.66 120.96L225.61 120.03L224.56 119.11L223.51 118.2L222.46 117.29L221.4 116.38L220.34 115.48L219.27 114.58L218.2 113.69L217.13 112.81L216.05 111.93L214.97 111.06L213.89 110.19L212.8 109.32L211.71 108.47L210.62 107.61L209.52 106.77L208.42 105.92L207.32 105.09L206.21 104.26L205.1 103.43L203.99 102.61L202.87 101.79L201.75 100.98L200.62 100.18L199.49 99.38L198.36 98.59L197.23 97.8L196.09 97.02L194.95 96.24L193.8 95.47L192.66 94.71L191.51 93.95L190.35 93.2L189.19 92.45L188.03 91.7L186.87 90.97L185.7 90.24L184.53 89.51L183.35 88.79L182.18 88.08L181 87.37L179.81 86.67L178.63 85.97L177.44 85.28L176.25 84.6L175.05 83.92L173.85 83.24L172.65 82.58L171.44 81.91L170.24 81.26L169.02 80.61L167.81 79.97L166.59 79.33L165.37 78.7L164.15 78.07L162.93 77.45L161.7 76.84L160.47 76.23L159.23 75.63L158 75.03L156.76 74.44L155.51 73.86L154.27 73.28L153.02 72.71L151.77 72.14L150.52 71.58L149.26 71.03L148 70.48L146.74 69.94L145.48 69.4L144.21 68.87L142.95 68.35L141.67 67.83L140.4 67.32L139.12 66.82L137.85 66.32L136.56 65.82L135.28 65.34L134 64.86L132.71 64.38L131.42 63.92L130.12 63.46L128.83 63L127.53 62.55L126.23 62.11L124.93 61.67L123.62 61.24L122.32 60.82L121.01 60.4L119.7 59.99L118.39 59.58L117.07 59.18L115.75 58.79L114.44 58.4L113.11 58.02L111.79 57.65L110.47 57.28L109.14 56.92L107.81 56.57L106.48 56.22L105.15 55.87L103.81 55.54L102.48 55.21"/>
+</g>
+</svg>

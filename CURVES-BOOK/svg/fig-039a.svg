@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1145.48 1257.4" width="520" height="571" data-fig="fig-039a">
+<title>Fig. 39(a) — Tangents from P to an ellipse with the straightedge alone</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 39(a), page 44. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The conic and the point P outside it.">
+<path class="ink thick" style="stroke-width:7.04;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M144.97 953.18L148.01 961.58L151.31 969.89L154.87 978.09L158.69 986.19L162.76 994.18L167.09 1002.05L171.67 1009.8L176.49 1017.43L181.57 1024.94L186.88 1032.31L192.44 1039.54L198.23 1046.63L204.25 1053.57L210.51 1060.37L216.99 1067.01L223.69 1073.5L230.61 1079.82L237.74 1085.98L245.09 1091.97L252.64 1097.79L260.39 1103.44L268.33 1108.9L276.47 1114.18L284.8 1119.28L293.31 1124.19L301.99 1128.91L310.85 1133.44L319.88 1137.77L329.07 1141.9L338.41 1145.84L347.91 1149.56L357.55 1153.08L367.33 1156.4L377.24 1159.5L387.29 1162.4L397.45 1165.08L407.74 1167.55L418.13 1169.8L428.63 1171.83L439.23 1173.64L449.91 1175.24L460.69 1176.61L471.54 1177.76L482.47 1178.7L493.47 1179.4L504.52 1179.89L515.63 1180.15L526.79 1180.19L537.98 1180.01L549.22 1179.6L560.48 1178.97L571.76 1178.11L583.06 1177.04L594.36 1175.74L605.67 1174.22L616.97 1172.49L628.26 1170.53L639.53 1168.35L650.78 1165.96L662 1163.36L673.17 1160.54L684.31 1157.51L695.39 1154.26L706.42 1150.81L717.38 1147.16L728.27 1143.3L739.08 1139.24L749.82 1134.97L760.46 1130.52L771.01 1125.86L781.45 1121.02L791.79 1115.98L802.01 1110.76L812.12 1105.36L822.1 1099.78L831.95 1094.02L841.66 1088.09L851.23 1081.99L860.65 1075.72L869.91 1069.29L879.02 1062.7L887.96 1055.96L896.73 1049.07L905.33 1042.03L913.75 1034.84L921.98 1027.52L930.02 1020.07L937.87 1012.48L945.52 1004.77L952.97 996.94L960.21 988.99L967.23 980.93L974.04 972.76L980.63 964.49L987 956.12L993.14 947.66L999.05 939.11L1004.72 930.48L1010.15 921.78L1015.35 913L1020.3 904.15L1025 895.24L1029.45 886.27L1033.65 877.25L1037.59 868.19L1041.28 859.08L1044.71 849.94L1047.88 840.77L1050.78 831.57L1053.42 822.35L1055.79 813.12L1057.9 803.88L1059.73 794.64L1061.3 785.39L1062.59 776.16L1063.61 766.94L1064.36 757.73L1064.84 748.55L1065.05 739.4L1064.98 730.28L1064.64 721.2L1064.02 712.16L1063.13 703.18L1061.97 694.25L1060.54 685.38L1058.84 676.57L1056.87 667.84L1054.63 659.18L1052.12 650.6L1049.35 642.11L1046.31 633.71L1043.01 625.41L1039.45 617.21L1035.63 609.11L1031.56 601.12L1027.23 593.25L1022.65 585.49L1017.83 577.86L1012.75 570.36L1007.44 562.99L1001.88 555.76L996.09 548.67L990.07 541.72L983.81 534.93L977.33 528.28L970.63 521.8L963.71 515.47L956.58 509.31L949.23 503.32L941.68 497.5L933.93 491.86L925.99 486.39L917.85 481.11L909.52 476.01L901.01 471.1L892.33 466.38L883.47 461.85L874.44 457.52L865.25 453.39L855.91 449.46L846.41 445.73L836.77 442.21L826.99 438.9L817.08 435.79L807.03 432.9L796.87 430.22L786.58 427.75L776.19 425.5L765.69 423.47L755.09 421.65L744.41 420.06L733.63 418.68L722.78 417.53L711.85 416.6L700.85 415.89L689.8 415.41L678.69 415.14L667.53 415.11L656.34 415.29L645.1 415.7L633.84 416.33L622.56 417.18L611.26 418.26L599.96 419.55L588.65 421.07L577.35 422.81L566.06 424.77L554.79 426.94L543.54 429.33L532.32 431.94L521.15 434.76L510.01 437.79L498.93 441.03L487.9 444.48L476.94 448.14L466.05 452L455.24 456.06L444.5 460.32L433.86 464.78L423.31 469.43L412.87 474.28L402.53 479.31L392.3 484.53L382.2 489.93L372.22 495.52L362.37 501.27L352.66 507.21L343.09 513.31L333.67 519.57L324.41 526L315.3 532.59L306.36 539.33L297.59 546.23L288.99 553.27L280.57 560.45L272.34 567.77L264.3 575.23L256.45 582.82L248.8 590.53L241.35 598.36L234.11 606.31L227.09 614.37L220.28 622.54L213.69 630.81L207.32 639.17L201.18 647.63L195.27 656.18L189.6 664.81L184.17 673.52L178.97 682.3L174.02 691.15L169.32 700.06L164.87 709.02L160.67 718.04L156.73 727.11L153.04 736.21L149.61 745.35L146.44 754.53L143.54 763.72L140.9 772.94L138.53 782.17L136.42 791.41L134.59 800.66L133.02 809.9L131.73 819.14L130.71 828.36L129.95 837.57L129.48 846.75L129.27 855.9L129.34 865.02L129.68 874.1L130.3 883.13L131.19 892.12L132.35 901.05L133.78 909.92L135.48 918.72L137.45 927.46L139.69 936.11L142.2 944.69L144.97 953.18"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.53" cx="731.84" cy="77.21" r="17.98"/><circle class="pt" style="fill:#1b1b1b" cx="731.84" cy="77.21" r="7.36"/>
+<text class="lbl " x="774.25" y="77.21" font-size="42.75" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw three arbitrary secants from P; they meet the conic at the pairs (t1, b1), (t2, b2), (t3, b3).">
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M731.84 77.21L224.4 1074.16"/>
+<circle class="pt cons open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="553.71" cy="427.16" r="5.72"/>
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M731.84 77.21L646.91 1166.81"/>
+<circle class="pt cons open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="705.42" cy="416.16" r="5.72"/>
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M731.84 77.21L987.84 954.98"/>
+<circle class="pt cons open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="838.47" cy="442.81" r="5.72"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the cross-joins of the first two secants (t1b2 and t2b1), and of the last two (t2b3 and t3b2). Each pair meets at a point of the polar of P.">
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M553.71 427.16L646.91 1166.81"/>
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M705.42 416.16L224.4 1074.16"/>
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M705.42 416.16L987.84 954.98"/>
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M838.47 442.81L646.91 1166.81"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="574.84" cy="594.79" r="8.17"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="798.52" cy="593.79" r="8.17"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join the two meets: this is the polar of P. It cuts the conic at T1 and T2, the points of tangency.">
+<path class="ink given" style="stroke-width:4.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M451.81 595.34L921.55 593.24"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="243.31" cy="596.27" r="8.17"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.77" cx="1026.96" cy="592.76" r="8.17"/>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="The tangents from P: the lines PT1 and PT2 (heavy).">
+<path class="ink given" style="stroke-width:5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M77.21 772.75L731.84 77.21"/>
+<path class="ink given" style="stroke-width:5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M731.84 77.21L1068.27 664.94"/>
+</g>
+</svg>

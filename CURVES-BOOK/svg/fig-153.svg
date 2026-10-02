@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 961.99 645.27" width="520" height="349" data-fig="fig-153">
+<title>Fig. 153 — The pedal equation of the pedal</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 153, page 162. Section: pedal-curves.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The pole O and the given curve r = f(p), with a point X1 and the radius vector r = OX1.">
+<path class="ink thick" style="stroke-width:5.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M67.13 59.07L70.56 62.49L74.06 65.84L77.62 69.13L81.24 72.34L84.93 75.49L88.67 78.57L92.47 81.57L96.33 84.5L100.24 87.36L104.2 90.15L108.22 92.85L112.29 95.49L116.41 98.04L120.57 100.51L124.78 102.91L129.04 105.22L133.34 107.46L137.68 109.61L142.06 111.68L146.48 113.66L150.94 115.56L155.43 117.38L159.95 119.11L164.51 120.75L169.1 122.31L173.72 123.78L178.36 125.16L183.03 126.45L187.72 127.66L192.44 128.77L197.17 129.8L201.93 130.73L206.7 131.57L211.48 132.33L216.28 132.99L221.09 133.56L225.92 134.04L230.75 134.43L235.58 134.72L240.42 134.93L245.27 135.04L250.11 135.06L254.95 134.99L259.8 134.82L264.64 134.57L269.47 134.22L274.29 133.78L279.11 133.25L283.91 132.63L288.7 131.91L293.48 131.11L298.24 130.21L302.99 129.23L307.71 128.15L312.41 126.98L317.09 125.73L321.75 124.39L326.38 122.96L330.98 121.44L335.55 119.83"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.46" cx="394.92" cy="565.35" r="13.76"/><circle class="pt" style="fill:#1b1b1b" cx="394.92" cy="565.35" r="5.63"/>
+<path class="ink given" style="stroke-width:3.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M394.92 565.35L199.92 130.35"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.12" cx="199.92" cy="130.35" r="6.25"/>
+<text class="lbl " x="261.31" y="326.1" font-size="32.71" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent to the curve at X1.">
+<path class="ink given" style="stroke-width:3.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M97.92 113.35L902.92 270.35"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From O drop the perpendicular p on this tangent. Its foot F is a point of the pedal, and p is the distance from the pole to the tangent of the given curve.">
+<path class="ink given" style="stroke-width:3.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M394.92 565.35L469.51 182.92"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.12" cx="469.51" cy="182.92" r="6.25"/>
+<text class="lbl " x="415.67" y="355.02" font-size="32.71" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">p</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The circle on r = OX1 as diameter passes through F. The tangent to the pedal at F is also tangent to this circle (the angle ψ is the same for both).">
+<circle class="ink aux dash" style="stroke-width:1.73;fill:none;--dash:11.54 7.7;stroke:#8a8a8a;stroke-dasharray:11.54 7.7;stroke-linecap:round;stroke-linejoin:round" cx="297.42" cy="347.85" r="238.35"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.12" cx="297.42" cy="347.85" r="4.38"/>
+<path class="ink aux dash" style="stroke-width:1.73;fill:none;--dash:11.54 7.7;stroke:#8a8a8a;stroke-dasharray:11.54 7.7;stroke-linecap:round;stroke-linejoin:round" d="M297.42 347.85L469.51 182.92"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="Draw the tangent to the pedal at F: the line through F perpendicular to MF.">
+<path class="ink given" style="stroke-width:3.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M383.02 92.68L760.12 486.15"/>
+</g>
+<g class="step" data-step="5" data-tool="square" data-text="From O drop the perpendicular p1 on the tangent to the pedal. The similar right triangles give p1 = p²/r, that is p² = r · p1 = f(p) · p1.">
+<path class="ink given" style="stroke-width:3.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M394.92 565.35L624.84 345"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.12" cx="624.84" cy="345" r="6.25"/>
+<text class="lbl " x="536.89" y="462.41" font-size="32.71" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">p<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="6" data-tool="pencil" data-text="The pedal of the curve through F.">
+<path class="ink curve" style="stroke-width:5.39;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M527.3 345.81L527.52 340.39L527.62 334.99L527.59 329.61L527.45 324.26L527.19 318.93L526.81 313.63L526.31 308.37L525.69 303.13L524.96 297.94L524.11 292.78L523.16 287.66L522.08 282.59L520.9 277.56L519.61 272.58L518.2 267.65L516.69 262.78L515.07 257.95L513.35 253.19L511.53 248.49L509.6 243.84L507.57 239.26L505.44 234.75L503.21 230.3L500.89 225.92L498.48 221.62L495.97 217.39L493.37 213.23L490.68 209.15L487.9 205.16L485.04 201.24L482.09 197.4L479.06 193.65L475.95 189.99L472.77 186.41L469.51 182.92L466.17 179.53L462.77 176.23L459.29 173.02L455.75 169.9L452.14 166.88L448.47 163.97L444.73 161.15L440.94 158.43L437.1 155.81L433.19 153.29L429.24 150.88L425.24 148.58L421.19 146.38L417.1 144.28L412.96 142.3L408.79 140.42L404.57 138.65L400.33 137L396.05 135.45L391.74 134.01L387.4 132.69L383.04 131.48L378.65 130.38L374.25 129.4L369.83 128.53"/>
+</g>
+</svg>

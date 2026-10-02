@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1129.02 1544.86" width="520" height="712" data-fig="fig-048b">
+<title>Fig. 48(b) — Pointwise construction of the parabola from circles about the focus and vertical lines</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 48(b), page 49. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The directrix (heavy line, a distance k to the left of K), the vertex K, and the focus (double circle) a distance k to the right of K. The axes through K.">
+<path class="ink thick" style="stroke-width:8.65;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M94.86 1358.33L94.86 121.43"/>
+<path class="ink axis" style="stroke-width:4.63;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M94.86 772.43L1034.16 772.43"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1034.16 772.43L1005.27 760.3L1005.27 784.56Z"/>
+<path class="ink axis" style="stroke-width:4.63;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M187.86 1144.43L187.86 121.43"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M187.86 121.43L175.73 150.32L199.99 150.32Z"/>
+<text class="lbl axis" x="1034.16" y="739.86" font-size="52.53" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="220.43" y="135.38" font-size="52.53" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.4" cx="187.86" cy="772.43" r="16.07"/>
+<text class="lbl " x="160.18" y="739.86" font-size="52.53" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">K</text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:5.56" cx="280.86" cy="772.43" r="22.09"/><circle class="pt" style="fill:#1b1b1b" cx="280.86" cy="772.43" r="9.04"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the verticals x = a for a series of values a (the first through the focus).">
+<path class="ink cons" style="stroke-width:3.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M280.86 1116.53L280.86 428.33"/>
+<path class="ink cons" style="stroke-width:3.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M411.06 1218.68L411.06 326.18"/>
+<path class="ink cons" style="stroke-width:3.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M531.96 1288.31L531.96 256.55"/>
+<path class="ink cons" style="stroke-width:3.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M652.86 1346.44L652.86 198.42"/>
+<path class="ink cons" style="stroke-width:3.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M783.06 1401.08L783.06 143.78"/>
+<path class="ink cons" style="stroke-width:3.4;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M913.26 1450L913.26 94.86"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="About the focus draw an arc of radius a + k (the distance of the line x = a from the directrix). It cuts the line x = a above and below the axis at points of the parabola, since (x − k)² + y² = (a + k)² with x = a.">
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M437.77 497.91A316.2 316.2 0 0 0 383.18 473.24"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M383.18 1071.62A316.2 316.2 0 0 0 437.77 1046.95"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="Repeat for each vertical, marking the crossing with a short stroke.">
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M310.73 588.84A186 186 0 0 0 250.99 588.84"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M250.99 956.02A186 186 0 0 0 310.73 956.02"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M555.91 432.71A437.1 437.1 0 0 0 506.83 398.27"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M506.83 1146.59A437.1 437.1 0 0 0 555.91 1112.14"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M674.67 377.11A558 558 0 0 0 629.97 337.13"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M629.97 1207.73A558 558 0 0 0 674.67 1167.75"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M803.09 324.21A688.2 688.2 0 0 0 762.08 280.44"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M762.08 1264.41A688.2 688.2 0 0 0 803.09 1220.64"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M931.87 276.49A818.4 818.4 0 0 0 893.8 230.13"/>
+<path class="ink given" style="stroke-width:5.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M893.8 1314.73A818.4 818.4 0 0 0 931.87 1268.37"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="Draw the parabola through the points found: it passes through K.">
+<path class="ink curve" style="stroke-width:8.65;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M956.56 1307.18L941.27 1301.83L926.12 1296.48L911.13 1291.14L896.3 1285.79L881.61 1280.44L867.09 1275.09L852.71 1269.75L838.49 1264.4L824.42 1259.05L810.51 1253.7L796.75 1248.36L783.14 1243.01L769.69 1237.66L756.39 1232.31L743.25 1226.97L730.26 1221.62L717.42 1216.27L704.74 1210.92L692.21 1205.58L679.83 1200.23L667.61 1194.88L655.54 1189.53L643.62 1184.19L631.86 1178.84L620.26 1173.49L608.8 1168.14L597.5 1162.8L586.36 1157.45L575.36 1152.1L564.52 1146.75L553.84 1141.41L543.31 1136.06L532.93 1130.71L522.71 1125.36L512.64 1120.02L502.72 1114.67L492.96 1109.32L483.35 1103.97L473.89 1098.63L464.59 1093.28L455.45 1087.93L446.45 1082.58L437.61 1077.24L428.93 1071.89L420.39 1066.54L412.01 1061.19L403.79 1055.85L395.72 1050.5L387.8 1045.15L380.04 1039.8L372.43 1034.46L364.97 1029.11L357.67 1023.76L350.52 1018.41L343.52 1013.07L336.68 1007.72L329.99 1002.37L323.46 997.02L317.08 991.68L310.85 986.33L304.78 980.98L298.86 975.63L293.1 970.29L287.48 964.94L282.03 959.59L276.72 954.24L271.57 948.9L266.57 943.55L261.73 938.2L257.04 932.85L252.51 927.51L248.13 922.16L243.9 916.81L239.82 911.46L235.9 906.12L232.14 900.77L228.52 895.42L225.06 890.07L221.76 884.73L218.61 879.38L215.61 874.03L212.77 868.68L210.08 863.34L207.54 857.99L205.16 852.64L202.93 847.29L200.85 841.95L198.93 836.6L197.16 831.25L195.55 825.9L194.09 820.56L192.78 815.21L191.63 809.86L190.63 804.51L189.78 799.17L189.09 793.82L188.55 788.47L188.17 783.12L187.94 777.78L187.86 772.43L187.94 767.08L188.17 761.73L188.55 756.39L189.09 751.04L189.78 745.69L190.63 740.34L191.63 735L192.78 729.65L194.09 724.3L195.55 718.95L197.16 713.61L198.93 708.26L200.85 702.91L202.93 697.56L205.16 692.22L207.54 686.87L210.08 681.52L212.77 676.17L215.61 670.83L218.61 665.48L221.76 660.13L225.06 654.78L228.52 649.44L232.14 644.09L235.9 638.74L239.82 633.39L243.9 628.05L248.13 622.7L252.51 617.35L257.04 612L261.73 606.66L266.57 601.31L271.57 595.96L276.72 590.61L282.03 585.27L287.48 579.92L293.1 574.57L298.86 569.22L304.78 563.88L310.85 558.53L317.08 553.18L323.46 547.83L329.99 542.49L336.68 537.14L343.52 531.79L350.52 526.44L357.67 521.1L364.97 515.75L372.43 510.4L380.04 505.05L387.8 499.71L395.72 494.36L403.79 489.01L412.01 483.66L420.39 478.32L428.93 472.97L437.61 467.62L446.45 462.27L455.45 456.93L464.59 451.58L473.89 446.23L483.35 440.88L492.96 435.54L502.72 430.19L512.64 424.84L522.71 419.49L532.93 414.15L543.31 408.8L553.84 403.45L564.52 398.1L575.36 392.76L586.36 387.41L597.5 382.06L608.8 376.71L620.26 371.37L631.86 366.02L643.62 360.67L655.54 355.32L667.61 349.98L679.83 344.63L692.21 339.28L704.74 333.93L717.42 328.59L730.26 323.24L743.25 317.89L756.39 312.54L769.69 307.2L783.14 301.85L796.75 296.5L810.51 291.15L824.42 285.81L838.49 280.46L852.71 275.11L867.09 269.76L881.61 264.42L896.3 259.07L911.13 253.72L926.12 248.37L941.27 243.03L956.56 237.68"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The equations of the construction, as printed under the figure.">
+<text class="lbl  upright" x="201.81" y="1384.37" font-size="159.68" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">{</text>
+<text class="lbl  upright" x="209.81" y="1362.98" font-size="49.9" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x  =  a</text>
+<text class="lbl  upright" x="209.81" y="1405.76" font-size="49.9" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(x − k)<tspan baseline-shift="super" font-size="70%">2</tspan> + y<tspan baseline-shift="super" font-size="70%">2</tspan>  =  (a + k)<tspan baseline-shift="super" font-size="70%">2</tspan></text>
+</g>
+</svg>

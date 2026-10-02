@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 359.46 386.47" width="520" height="559" data-fig="fig-059">
+<title>Fig. 59 — Trisection of an angle with the cubic parabola y = 4x³ and the unit circle</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 59, page 58. Section: cubic-parabola.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The angle AOB = 3θ with OA a radius of the unit circle. The projection of A on OB is a = cos 3θ.">
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M23.73 333.51L173.73 333.51"/>
+<path class="ink thick" style="stroke-width:2.16;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.73 333.51L335.73 333.51"/>
+<path class="head thick" style="stroke:none;fill:#1b1b1b" d="M335.73 333.51L328.5 330.47L328.5 336.54Z"/>
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M271.17 356A100 100 0 1 0 78.1 362.74"/>
+<path class="ink thick" style="stroke-width:2.16;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.73 333.51L205.31 215.66"/>
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M199.61 236.91L199.61 333.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="173.73" cy="333.51" r="4.02"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="199.61" cy="236.91" r="3.52"/>
+<text class="lbl " x="206.54" y="228.77" font-size="13.14" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl  upright" x="162.65" y="346.54" font-size="13.14" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">O</text>
+<text class="lbl  upright" x="335.73" y="323.73" font-size="13.14" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">B</text>
+<text class="lbl " x="186.67" y="342.51" font-size="13.14" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the cubic parabola y = 4x³ (once drawn it serves for every angle). With x = cos θ, cos 3θ = 4cos³θ − 3cos θ turns into 4x³ − 3x − a = 0.">
+<path class="ink curve" style="stroke-width:2.16;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M173.73 333.51L174.49 333.5L175.24 333.5L176 333.5L176.76 333.49L177.52 333.48L178.27 333.47L179.03 333.45L179.79 333.42L180.54 333.38L181.3 333.33L182.06 333.27L182.81 333.21L183.57 333.12L184.33 333.03L185.08 332.92L185.84 332.79L186.6 332.65L187.36 332.49L188.11 332.32L188.87 332.12L189.63 331.9L190.38 331.66L191.14 331.39L191.9 331.11L192.65 330.79L193.41 330.46L194.17 330.09L194.92 329.7L195.68 329.27L196.44 328.82L197.2 328.34L197.95 327.82L198.71 327.27L199.47 326.69L200.22 326.07L200.98 325.41L201.74 324.72L202.49 323.99L203.25 323.22L204.01 322.4L204.76 321.55L205.52 320.65L206.28 319.71L207.04 318.73L207.79 317.7L208.55 316.62L209.31 315.5L210.06 314.32L210.82 313.1L211.58 311.82L212.33 310.49L213.09 309.11L213.85 307.68L214.6 306.19L215.36 304.64L216.12 303.04L216.88 301.38L217.63 299.66L218.39 297.88L219.15 296.04L219.9 294.13L220.66 292.16L221.42 290.13L222.17 288.03L222.93 285.87L223.69 283.63L224.44 281.33L225.2 278.96L225.96 276.52L226.72 274.01L227.47 271.42L228.23 268.76L228.99 266.02L229.74 263.21L230.5 260.32L231.26 257.36L232.01 254.31L232.77 251.19L233.53 247.98L234.28 244.69L235.04 241.32L235.8 237.86L236.56 234.32L237.31 230.69L238.07 226.97L238.83 223.17L239.58 219.28L240.34 215.29L241.1 211.22L241.85 207.05L242.61 202.79L243.37 198.43L244.12 193.98L244.88 189.43L245.64 184.78L246.4 180.03L247.15 175.19L247.91 170.24L248.67 165.19L249.42 160.04L250.18 154.78L250.94 149.42L251.69 143.95L252.45 138.38L253.21 132.7L253.96 126.9L254.72 121L255.48 114.99L256.24 108.86L256.99 102.62L257.75 96.27L258.51 89.8L259.26 83.21L260.02 76.51L260.78 69.68L261.53 62.74L262.29 55.68L263.05 48.49L263.8 41.19L264.56 33.76"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the fixed line L of slope 3 through (−1, 0) and (0, 3).">
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M73.73 333.51L173.73 33.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="73.73" cy="333.51" r="3.52"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="173.73" cy="33.51" r="3.52"/>
+<path class="ink cons" style="stroke-width:0.85;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M173.73 333.51L173.73 33.51"/>
+<text class="lbl  upright" x="110.73" y="171.51" font-size="13.14" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">L</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="Through the point (0, a) on OY draw the parallel to L, which has slope 3: its equation is y − 3x − a = 0. It meets the curve at P, and the abscissa of P is cos θ.">
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M165.1 333.51L264.36 35.73"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="173.73" cy="307.62" r="3.52"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="264.36" cy="35.73" r="3.52"/>
+<text class="lbl " x="272.51" y="35.73" font-size="13.14" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="From P draw the perpendicular to OB. It cuts the unit circle at T and OB at the distance x = cos θ from O.">
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M264.36 23.73L264.36 333.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.85" cx="264.36" cy="291.24" r="3.52"/>
+<text class="lbl " x="271.29" y="283.1" font-size="13.14" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<text class="lbl " x="242.73" y="324.51" font-size="13.14" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x</text>
+</g>
+<g class="step" data-step="5" data-tool="straightedge" data-text="Join O to T and carry the line on. OT is the trisecting line: the angle BOT is θ, a third of the angle AOB.">
+<path class="ink given" style="stroke-width:1.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.73 333.51L301.52 273.92"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.85" d="M202.11 333.51A28.38 28.38 0 0 0 199.45 321.51"/>
+<text class="lbl " x="212.99" y="324.8" font-size="13.14" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+</svg>

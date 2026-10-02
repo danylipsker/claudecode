@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 759.14 913.14" width="520" height="625" data-fig="fig-054a">
+<title>Fig. 54(a) — Projection of the normal upon a focal radius: the parabola</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 54(a), page 53. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A parabola with focus F1, a point P of it, the focal radius F1P and the line through P parallel to the axis.">
+<path class="ink thick" style="stroke-width:5.11;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M477.56 857.07L482.31 853.73L487.01 850.4L491.67 847.06L496.27 843.72L500.82 840.38L505.32 837.05L509.77 833.71L514.17 830.37L518.52 827.03L522.81 823.7L527.06 820.36L531.26 817.02L535.4 813.68L539.5 810.35L543.54 807.01L547.54 803.67L551.48 800.33L555.37 797L559.21 793.66L563.01 790.32L566.75 786.98L570.44 783.65L574.08 780.31L577.67 776.97L581.2 773.63L584.69 770.3L588.13 766.96L591.51 763.62L594.85 760.28L598.14 756.95L601.37 753.61L604.55 750.27L607.69 746.93L610.77 743.6L613.8 740.26L616.78 736.92L619.71 733.58L622.59 730.25L625.42 726.91L628.2 723.57L630.93 720.23L633.61 716.9L636.23 713.56L638.81 710.22L641.34 706.88L643.81 703.55L646.23 700.21L648.61 696.87L650.93 693.53L653.2 690.2L655.43 686.86L657.6 683.52L659.72 680.18L661.79 676.85L663.81 673.51L665.78 670.17L667.69 666.83L669.56 663.5L671.38 660.16L673.14 656.82L674.86 653.48L676.52 650.15L678.14 646.81L679.7 643.47L681.21 640.13L682.68 636.8L684.09 633.46L685.45 630.12L686.76 626.78L688.02 623.45L689.23 620.11L690.39 616.77L691.5 613.43L692.55 610.1L693.56 606.76L694.52 603.42L695.42 600.08L696.28 596.75L697.08 593.41L697.83 590.07L698.54 586.73L699.19 583.4L699.79 580.06L700.34 576.72L700.84 573.38L701.29 570.05L701.69 566.71L702.04 563.37L702.34 560.03L702.58 556.7L702.78 553.36L702.93 550.02L703.02 546.68L703.07 543.35L703.06 540.01L703 536.67L702.9 533.33L702.74 530L702.53 526.66L702.27 523.32L701.96 519.98L701.6 516.65L701.19 513.31L700.73 509.97L700.22 506.63L699.65 503.3L699.04 499.96L698.38 496.62L697.66 493.28L696.89 489.95L696.08 486.61L695.21 483.27L694.29 479.93L693.33 476.6L692.31 473.26L691.24 469.92L690.12 466.58L688.95 463.25L687.73 459.91L686.46 456.57L685.13 453.23L683.76 449.9L682.34 446.56L680.86 443.22L679.34 439.88L677.76 436.55L676.14 433.21L674.46 429.87L672.73 426.53L670.95 423.2L669.12 419.86L667.25 416.52L665.32 413.18L663.33 409.85L661.3 406.51L659.22 403.17L657.09 399.83L654.91 396.5L652.67 393.16L650.39 389.82L648.05 386.48L645.67 383.15L643.23 379.81L640.74 376.47L638.21 373.13L635.62 369.8L632.98 366.46L630.29 363.12L627.55 359.78L624.76 356.45L621.92 353.11L619.03 349.77L616.08 346.43L613.09 343.1L610.05 339.76L606.95 336.42L603.81 333.08L600.61 329.75L597.36 326.41L594.07 323.07L590.72 319.73L587.32 316.4L583.87 313.06L580.37 309.72L576.82 306.38L573.22 303.05L569.57 299.71L565.87 296.37L562.12 293.03L558.31 289.7L554.46 286.36L550.55 283.02L546.6 279.68L542.59 276.35L538.54 273.01L534.43 269.67L530.27 266.33L526.06 263L521.8 259.66L517.49 256.32L513.13 252.98L508.72 249.65L504.26 246.31L499.75 242.97L495.19 239.63L490.57 236.3L485.91 232.96L481.19 229.62L476.43 226.28L471.61 222.95L466.75 219.61L461.83 216.27L456.86 212.93L451.84 209.6L446.77 206.26L441.65 202.92L436.48 199.58L431.26 196.25L425.99 192.91L420.67 189.57L415.3 186.23L409.87 182.9L404.4 179.56L398.87 176.22L393.3 172.88L387.67 169.55L382 166.21L376.27 162.87L370.49 159.53L364.66 156.2L358.78 152.86L352.85 149.52L346.87 146.18L340.84 142.85L334.76 139.51L328.63 136.17L322.44 132.83L316.21 129.5L309.93 126.16L303.59 122.82L297.21 119.48L290.77 116.15L284.28 112.81L277.75 109.47L271.16 106.13L264.52 102.8L257.83 99.46L251.09 96.12L244.3 92.78L237.46 89.45L230.57 86.11L223.62 82.77L216.63 79.43L209.59 76.1L202.49 72.76L195.35 69.42L188.15 66.08L180.91 62.75L173.61 59.41L166.26 56.07"/>
+<path class="ink given" style="stroke-width:3.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M56.07 159.07L369.69 159.07"/>
+<path class="ink given" style="stroke-width:3.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M369.69 159.07L593.07 542.07"/>
+<circle class="pt" style="fill:#1b1b1b" cx="593.07" cy="542.07" r="13.06"/>
+<text class="lbl " x="593.07" y="569.02" font-size="31.05" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.01" cx="369.69" cy="159.07" r="8.31"/>
+<text class="lbl " x="369.69" y="139.82" font-size="31.05" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="With centre F1 and radius F1P mark Q on the axis, on the far side of F1: for the parabola F1Q = ρ1, so the triangle F1PQ is isosceles and PQ is the normal.">
+<path class="ink aux" style="stroke-width:1.64;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M154 480.36A443.38 443.38 0 0 0 154 603.78"/>
+<path class="ink given" style="stroke-width:3.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M149.69 542.07L593.07 542.07"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw PQ, the normal of length N. Its projection on the axis, QM, is the semi-latus rectum A (the subnormal of a parabola is constant); the dashed ordinate PM is perpendicular to the axis.">
+<path class="ink thick" style="stroke-width:5.11;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M369.69 159.07L149.69 542.07"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.01" cx="149.69" cy="542.07" r="6.53"/>
+<text class="lbl " x="149.69" y="561.32" font-size="31.05" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl  upright" x="230.81" y="350.57" font-size="27.94" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">N</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="From Q draw the perpendicular QH to the focal radius F1P (dashed). Then PH = N cos α = ρ1 − F1Q cos θ, and with F1Q = e·ρ1 this is the constant A, the semi-latus rectum.">
+<path class="ink cons dash" style="stroke-width:2.01;fill:none;--dash:10.96 7.31;stroke:#4b4b4b;stroke-dasharray:10.96 7.31;stroke-linecap:round;stroke-linejoin:round" d="M149.69 542.07L480.53 349.11"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.01" cx="480.53" cy="349.11" r="5.34"/>
+<text class="lbl " x="464.16" y="368.36" font-size="31.05" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.01" d="M473.64 337.31L461.84 344.19L468.73 355.99"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angle α at P between the normal and the focal radius, the angle θ at F1 between the axis (towards Q) and the focal radius, and the lengths marked.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.01" d="M346.03 200.26A47.5 47.5 0 0 0 393.62 200.1"/>
+<text class="lbl " x="369.94" y="234.51" font-size="31.05" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.01" d="M569.14 501.04A47.5 47.5 0 0 0 545.57 542.07"/>
+<text class="lbl " x="527.65" y="504.49" font-size="31.05" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<text class="lbl " x="512.3" y="363.98" font-size="31.05" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ρ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The ordinate PM and the length A = QM.">
+<path class="ink cons dash" style="stroke-width:2.01;fill:none;--dash:10.96 7.31;stroke:#4b4b4b;stroke-dasharray:10.96 7.31;stroke-linecap:round;stroke-linejoin:round" d="M369.69 159.07L369.69 542.07"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.01" cx="369.69" cy="542.07" r="4.75"/>
+<text class="lbl  upright" x="259.69" y="517.05" font-size="31.05" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">A</text>
+</g>
+</svg>

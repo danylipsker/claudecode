@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 148.64 115.45" width="520" height="404" data-fig="fig-141">
+<title>Fig. 141 — Tangent and centre of curvature of the lemniscate</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 141, page 145. Section: lemniscate.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The lemniscate r² = a² cos 2θ with its node O and axes, and the point P at the polar angle θ.">
+<path class="ink axis" style="stroke-width:0.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M27.51 59.13L139.51 59.13"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M139.51 59.13L136.73 57.96L136.73 60.29Z"/>
+<path class="ink axis" style="stroke-width:0.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M27.51 104.13L27.51 9.13"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M27.51 9.13L26.34 11.91L28.68 11.91Z"/>
+<path class="ink thick" style="stroke-width:0.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M27.51 59.13L35.65 67.16L39.1 70.42L41.79 72.86L44.11 74.87L46.18 76.61L48.08 78.14L49.86 79.51L51.54 80.76L53.14 81.9L54.67 82.95L56.15 83.92L57.59 84.81L58.98 85.65L60.33 86.42L61.65 87.15L62.95 87.82L64.21 88.45L65.46 89.04L66.67 89.59L67.87 90.1L69.05 90.57L70.21 91.01L71.36 91.42L72.48 91.8L73.6 92.15L74.69 92.47L75.78 92.77L76.85 93.03L77.9 93.28L78.95 93.5L79.98 93.69L81 93.86L82.01 94.01L83 94.14L83.99 94.25L84.96 94.33L85.92 94.4L86.88 94.45L87.82 94.47L88.75 94.48L89.67 94.47L90.58 94.45L91.48 94.4L92.37 94.34L93.25 94.26L94.12 94.17L94.97 94.06L95.82 93.93L96.66 93.79L97.49 93.64L98.31 93.46L99.11 93.28L99.91 93.08L100.7 92.87L101.47 92.64L102.24 92.4L103 92.14L103.74 91.88L104.48 91.6L105.2 91.31L105.91 91L106.62 90.69L107.31 90.36L107.99 90.02L108.66 89.67L109.32 89.31L109.97 88.94L110.61 88.55L111.24 88.16L111.86 87.76L112.46 87.34L113.05 86.92L113.64 86.49L114.21 86.05L114.77 85.6L115.32 85.14L115.86 84.67L116.38 84.19L116.9 83.71L117.4 83.21L117.89 82.71L118.37 82.2L118.84 81.69L119.3 81.16L119.74 80.63L120.17 80.09L120.59 79.55L121 79L121.4 78.44L121.78 77.88L122.16 77.31L122.52 76.73L122.86 76.15L123.2 75.57L123.52 74.98L123.83 74.38L124.13 73.78L124.42 73.18L124.69 72.57L124.95 71.96L125.2 71.34L125.44 70.72L125.66 70.09L125.87 69.46L126.07 68.83L126.25 68.2L126.43 67.56L126.59 66.92L126.74 66.28L126.87 65.64L126.99 64.99L127.1 64.35L127.2 63.7L127.28 63.05L127.35 62.4L127.41 61.74L127.45 61.09L127.49 60.44L127.51 59.78L127.51 59.13L127.51 58.47L127.49 57.82L127.45 57.16L127.41 56.51L127.35 55.86L127.28 55.21L127.2 54.56L127.1 53.91L126.99 53.26L126.87 52.61L126.74 51.97L126.59 51.33L126.43 50.69L126.25 50.05L126.07 49.42L125.87 48.79L125.66 48.16L125.44 47.54L125.2 46.92L124.95 46.3L124.69 45.69L124.42 45.08L124.13 44.47L123.83 43.87L123.52 43.28L123.2 42.68L122.86 42.1L122.52 41.52L122.16 40.94L121.78 40.38L121.4 39.81L121 39.25L120.59 38.7L120.17 38.16L119.74 37.62L119.3 37.09L118.84 36.57L118.37 36.05L117.89 35.54L117.4 35.04L116.9 34.55L116.38 34.06L115.86 33.59L115.32 33.12L114.77 32.66L114.21 32.21L113.64 31.76L113.05 31.33L112.46 30.91L111.86 30.5L111.24 30.09L110.61 29.7L109.97 29.32L109.32 28.95L108.66 28.58L107.99 28.23L107.31 27.89L106.62 27.57L105.91 27.25L105.2 26.95L104.48 26.66L103.74 26.38L103 26.11L102.24 25.86L101.47 25.62L100.7 25.39L99.91 25.17L99.11 24.97L98.31 24.79L97.49 24.62L96.66 24.46L95.82 24.32L94.97 24.19L94.12 24.08L93.25 23.99L92.37 23.91L91.48 23.85L90.58 23.81L89.67 23.78L88.75 23.77L87.82 23.78L86.88 23.81L85.92 23.86L84.96 23.92L83.99 24.01L83 24.11L82.01 24.24L81 24.39L79.98 24.56L78.95 24.76L77.9 24.98L76.85 25.22L75.78 25.49L74.69 25.78L73.6 26.1L72.48 26.45L71.36 26.83L70.21 27.24L69.05 27.68L67.87 28.16L66.67 28.67L65.46 29.21L64.21 29.8L62.95 30.43L61.65 31.11L60.33 31.83L58.98 32.61L57.59 33.44L56.15 34.34L54.67 35.31L53.14 36.35L51.54 37.49L49.86 38.74L48.08 40.11L46.18 41.64L44.11 43.38L41.79 45.39L39.1 47.84L35.65 51.09L27.51 59.13"/>
+<path class="ink thick" style="stroke-width:0.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M27.51 59.13L9.13 40.74"/>
+<path class="ink thick" style="stroke-width:0.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M27.51 59.13L9.13 77.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.33" cx="27.51" cy="59.13" r="0.97"/>
+<text class="lbl " x="24.38" y="59.13" font-size="5.05" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.33" cx="103.25" cy="26.2" r="0.97"/>
+<text class="lbl " x="105.91" y="23.06" font-size="5.05" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the radius vector OP; it makes the angle θ with the polar axis.">
+<path class="ink cons" style="stroke-width:0.33;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M27.51 59.13L103.25 26.2"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.33" d="M38.43 59.13A10.92 10.92 0 0 0 37.52 54.77"/>
+<text class="lbl " x="41.91" y="56.13" font-size="5.05" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="The tangent makes the angle ψ = 2θ + π/2 with the radius vector, so the normal makes 2θ with it (and 3θ with the polar axis): at P lay off 2θ from PO and draw the normal.">
+<path class="ink cons" style="stroke-width:0.33;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M106.58 16.77L74.87 106.32"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.33" d="M94.07 30.19A10.01 10.01 0 0 0 99.91 35.63"/>
+<text class="lbl " x="93.19" y="36.98" font-size="5.05" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2θ</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="The tangent is the perpendicular to the normal at P.">
+<path class="ink thick" style="stroke-width:0.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M76.85 16.85L127.75 34.88"/>
+</g>
+<g class="step" data-step="4" data-tool="dividers" data-text="Divide OP into three equal parts; T is the division point farthest from O (OT = 2r/3).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.33" cx="78" cy="37.17" r="0.97"/>
+</g>
+<g class="step" data-step="5" data-tool="square" data-text="At T draw the perpendicular to OP. It meets the normal at C, the centre of curvature: the projection of R = a²/3r on the radius vector is R cos 2θ = r/3.">
+<path class="ink cons" style="stroke-width:0.33;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M78 37.17L89.77 64.25"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.33" d="M80.55 36.07L81.66 38.61L79.11 39.72"/>
+<circle class="ink given" style="stroke-width:0.54;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="89.77" cy="64.25" r="5.5"/>
+<circle class="ink given" style="stroke-width:0.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="89.77" cy="64.25" r="2.2"/>
+<text class="lbl " x="94.79" y="64.25" font-size="5.05" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+</svg>

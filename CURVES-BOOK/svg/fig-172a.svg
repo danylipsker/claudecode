@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 471.68 640.68" width="520" height="706" data-fig="fig-172a">
+<title>Fig. 172(a) — A conic by combining ordinates: the ellipse (B² − AC &lt; 0)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 172(a), page 189. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the origin.">
+<path class="ink axis" style="stroke-width:1.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M65.34 479.34L405.34 479.34"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M405.34 479.34L393.36 474.31L393.36 484.37Z"/>
+<path class="ink axis" style="stroke-width:1.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M87.34 491.34L87.34 84.34"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M87.34 84.34L82.31 96.32L92.37 96.32Z"/>
+<text class="lbl axis" x="416.82" y="492.85" font-size="21.78" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="98.82" y="70.83" font-size="21.78" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.41" cx="87.34" cy="479.34" r="7.08"/>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the conic y2² = (B²−AC)x² + 2(BE−CD)x + E² − CF about the x-axis. For B² − AC &lt; 0 it is an ellipse, centred at x = (CD − BE)/(B² − AC); the vertical through the centre is its diameter.">
+<path class="ink curve" style="stroke-width:3.59;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M369.34 479.34L369.26 475.78L369.02 472.22L368.62 468.68L368.07 465.14L367.35 461.63L366.48 458.13L365.45 454.66L364.27 451.22L362.93 447.82L361.44 444.45L359.8 441.13L358.01 437.85L356.08 434.63L354.01 431.45L351.79 428.34L349.43 425.29L346.94 422.3L344.32 419.39L341.57 416.54L338.69 413.78L335.69 411.09L332.57 408.48L329.34 405.97L326 403.54L322.55 401.2L318.99 398.96L315.34 396.82L311.59 394.78L307.76 392.84L303.84 391.01L299.84 389.28L295.77 387.66L291.62 386.16L287.41 384.77L283.14 383.49L278.82 382.33L274.45 381.29L270.03 380.37L265.58 379.57L261.09 378.89L256.57 378.33L252.03 377.9L247.48 377.59L242.91 377.4L238.34 377.34L233.77 377.4L229.2 377.59L224.65 377.9L220.11 378.33L215.59 378.89L211.1 379.57L206.65 380.37L202.23 381.29L197.86 382.33L193.54 383.49L189.27 384.77L185.06 386.16L180.91 387.66L176.84 389.28L172.84 391.01L168.92 392.84L165.09 394.78L161.34 396.82L157.69 398.96L154.13 401.2L150.68 403.54L147.34 405.97L144.11 408.48L140.99 411.09L137.99 413.78L135.11 416.54L132.36 419.39L129.74 422.3L127.25 425.29L124.89 428.34L122.67 431.45L120.6 434.63L118.67 437.85L116.88 441.13L115.24 444.45L113.75 447.82L112.41 451.22L111.23 454.66L110.2 458.13L109.33 461.63L108.61 465.14L108.06 468.68L107.66 472.22L107.42 475.78L107.34 479.34L107.42 482.9L107.66 486.46L108.06 490L108.61 493.54L109.33 497.05L110.2 500.55L111.23 504.02L112.41 507.46L113.75 510.86L115.24 514.23L116.88 517.55L118.67 520.83L120.6 524.05L122.67 527.23L124.89 530.34L127.25 533.39L129.74 536.38L132.36 539.29L135.11 542.14L137.99 544.9L140.99 547.59L144.11 550.2L147.34 552.71L150.68 555.14L154.13 557.48L157.69 559.72L161.34 561.86L165.09 563.9L168.92 565.84L172.84 567.67L176.84 569.4L180.91 571.02L185.06 572.52L189.27 573.91L193.54 575.19L197.86 576.35L202.23 577.39L206.65 578.31L211.1 579.11L215.59 579.79L220.11 580.35L224.65 580.78L229.2 581.09L233.77 581.28L238.34 581.34L242.91 581.28L247.48 581.09L252.03 580.78L256.57 580.35L261.09 579.79L265.58 579.11L270.03 578.31L274.45 577.39L278.82 576.35L283.14 575.19L287.41 573.91L291.62 572.52L295.77 571.02L299.84 569.4L303.84 567.67L307.76 565.84L311.59 563.9L315.34 561.86L318.99 559.72L322.55 557.48L326 555.14L329.34 552.71L332.57 550.2L335.69 547.59L338.69 544.9L341.57 542.14L344.32 539.29L346.94 536.38L349.43 533.39L351.79 530.34L354.01 527.23L356.08 524.05L358.01 520.83L359.8 517.55L361.44 514.23L362.93 510.86L364.27 507.46L365.45 504.02L366.48 500.55L367.35 497.05L368.07 493.54L368.62 490L369.02 486.46L369.26 482.9L369.34 479.34"/>
+<path class="ink given" style="stroke-width:2.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M238.34 581.34L238.34 132.06"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.41" cx="107.34" cy="479.34" r="4.16"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.41" cx="238.34" cy="479.34" r="4.16"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.41" cx="369.34" cy="479.34" r="4.16"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the straight line y1 = −Bx − E, heavy. It meets the vertical through the vertices of y2 where y2 = 0, so it passes through the points above the two vertices.">
+<path class="ink thick" style="stroke-width:3.59;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M55.34 340.43L399.34 148"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.41" cx="107.34" cy="311.34" r="4.16"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.41" cx="369.34" cy="164.78" r="4.16"/>
+</g>
+<g class="step" data-step="3" data-tool="ruler" data-text="Combine the ordinates: at each x lay off y2 above and below the line, measured from the line instead of from the axis. The parallelogram bounded by the two verticals through the vertices and the parallels to the line at distance ±b (the greatest y2) contains the curve.">
+<path class="ink cons" style="stroke-width:1.41;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M107.34 413.34L369.34 266.78L369.34 62.78L107.34 209.34Z"/>
+<path class="ink cons dash" style="stroke-width:1.41;fill:none;--dash:7.69 5.13;stroke:#4b4b4b;stroke-dasharray:7.69 5.13;stroke-linecap:round;stroke-linejoin:round" d="M107.34 479.34L107.34 209.34"/>
+<path class="ink cons dash" style="stroke-width:1.41;fill:none;--dash:7.69 5.13;stroke:#4b4b4b;stroke-dasharray:7.69 5.13;stroke-linecap:round;stroke-linejoin:round" d="M187.34 479.34L187.34 164.59"/>
+<path class="ink cons dash" style="stroke-width:1.41;fill:none;--dash:7.69 5.13;stroke:#4b4b4b;stroke-dasharray:7.69 5.13;stroke-linecap:round;stroke-linejoin:round" d="M300.34 479.34L300.34 101.38"/>
+<path class="ink cons dash" style="stroke-width:1.41;fill:none;--dash:7.69 5.13;stroke:#4b4b4b;stroke-dasharray:7.69 5.13;stroke-linecap:round;stroke-linejoin:round" d="M369.34 479.34L369.34 62.78"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="Draw the ellipse y = y1 ± y2 through the marks, tangent to the parallelogram: its tangents are vertical where it meets the line.">
+<path class="ink curve" style="stroke-width:3.59;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M369.34 164.78L369.3 162.13L369.16 159.54L368.94 157L368.62 154.52L368.22 152.09L367.73 149.72L367.15 147.42L366.48 145.17L365.72 142.99L364.88 140.87L363.95 138.83L362.93 136.84L361.83 134.93L360.64 133.09L359.37 131.32L358.01 129.63L356.58 128L355.06 126.46L353.47 124.99L351.79 123.6L350.04 122.28L348.21 121.05L346.3 119.89L344.32 118.82L342.27 117.83L340.15 116.92L337.95 116.09L335.69 115.35L333.36 114.69L330.97 114.12L328.51 113.63L326 113.22L323.42 112.9L320.78 112.67L318.09 112.53L315.34 112.47L312.54 112.49L309.69 112.6L306.79 112.8L303.84 113.08L300.85 113.45L297.81 113.91L294.74 114.45L291.62 115.07L288.47 115.78L285.29 116.57L282.07 117.45L278.82 118.41L275.55 119.45L272.25 120.57L268.92 121.77L265.58 123.05L262.21 124.41L258.83 125.85L255.44 127.37L252.03 128.96L248.62 130.62L245.2 132.36L241.77 134.18L238.34 136.06L234.91 138.01L231.48 140.03L228.06 142.12L224.65 144.28L221.24 146.5L217.85 148.78L214.47 151.12L211.1 153.52L207.76 155.98L204.43 158.5L201.13 161.07L197.86 163.7L194.61 166.37L191.39 169.1L188.21 171.87L185.06 174.68L181.94 177.54L178.87 180.44L175.83 183.39L172.84 186.36L169.89 189.38L166.99 192.43L164.14 195.5L161.34 198.61L158.59 201.75L155.9 204.91L153.26 208.09L150.68 211.29L148.17 214.51L145.71 217.75L143.32 221L140.99 224.27L138.73 227.54L136.53 230.82L134.41 234.1L132.36 237.39L130.38 240.68L128.47 243.96L126.64 247.25L124.89 250.52L123.21 253.79L121.62 257.05L120.1 260.29L118.67 263.52L117.31 266.73L116.04 269.92L114.85 273.09L113.75 276.23L112.73 279.35L111.8 282.44L110.96 285.5L110.2 288.53L109.53 291.52L108.95 294.48L108.46 297.4L108.06 300.28L107.74 303.11L107.52 305.9L107.38 308.64L107.34 311.34L107.38 313.98L107.52 316.58L107.74 319.12L108.06 321.6L108.46 324.03L108.95 326.39L109.53 328.7L110.2 330.95L110.96 333.13L111.8 335.24L112.73 337.29L113.75 339.27L114.85 341.18L116.04 343.03L117.31 344.8L118.67 346.49L120.1 348.11L121.62 349.66L123.21 351.13L124.89 352.52L126.64 353.84L128.47 355.07L130.38 356.23L132.36 357.3L134.41 358.29L136.53 359.2L138.73 360.03L140.99 360.77L143.32 361.43L145.71 362L148.17 362.49L150.68 362.89L153.26 363.21L155.9 363.44L158.59 363.59L161.34 363.65L164.14 363.63L166.99 363.51L169.89 363.32L172.84 363.03L175.83 362.66L178.87 362.21L181.94 361.67L185.06 361.05L188.21 360.34L191.39 359.55L194.61 358.67L197.86 357.71L201.13 356.67L204.43 355.55L207.76 354.35L211.1 353.07L214.47 351.71L217.85 350.27L221.24 348.75L224.65 347.16L228.06 345.49L231.48 343.75L234.91 341.94L238.34 340.06L241.77 338.11L245.2 336.08L248.62 333.99L252.03 331.84L255.44 329.62L258.83 327.34L262.21 325L265.58 322.59L268.92 320.13L272.25 317.62L275.55 315.05L278.82 312.42L282.07 309.75L285.29 307.02L288.47 304.25L291.62 301.43L294.74 298.57L297.81 295.67L300.85 292.73L303.84 289.75L306.79 286.74L309.69 283.69L312.54 280.61L315.34 277.5L318.09 274.37L320.78 271.21L323.42 268.03L326 264.82L328.51 261.6L330.97 258.37L333.36 255.11L335.69 251.85L337.95 248.58L340.15 245.3L342.27 242.01L344.32 238.73L346.3 235.44L348.21 232.15L350.04 228.87L351.79 225.6L353.47 222.33L355.06 219.07L356.58 215.83L358.01 212.6L359.37 209.39L360.64 206.2L361.83 203.03L362.93 199.88L363.95 196.76L364.88 193.67L365.72 190.61L366.48 187.59L367.15 184.59L367.73 181.64L368.22 178.72L368.62 175.84L368.94 173.01L369.16 170.22L369.3 167.47L369.34 164.78"/>
+</g>
+</svg>

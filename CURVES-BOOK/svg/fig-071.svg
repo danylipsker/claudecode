@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 921.91 1200.8" width="520" height="677" data-fig="fig-071">
+<title>Fig. 71 — The tangents y = px + 4/p and their envelope, the parabola y² = 16x</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 71, page 76. Section: envelopes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes. Every line y = px + 4/p crosses OX at x = −4/p² and OY at y = 4/p; the line for −p is its mirror image in OX.">
+<path class="ink axis" style="stroke-width:3.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M268.18 600.4L848.18 600.4"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M848.18 600.4L825.72 590.97L825.72 609.83Z"/>
+<path class="ink axis" style="stroke-width:3.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M368.18 1120.4L368.18 80.4"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M368.18 80.4L358.75 102.85L377.61 102.85Z"/>
+<text class="lbl axis" x="869.69" y="625.71" font-size="40.83" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="389.69" y="55.09" font-size="40.83" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.64" cx="368.18" cy="600.4" r="12.49"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="p = 3/4: mark A at x = −4/p² on OX and B at y = ±4/p on OY, and join A to B. The two lines (for p and −p) cross on the axis at A.">
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M73.73 607.9L756.62 95.73"/>
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M73.73 592.9L756.62 1105.07"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.64" cx="83.73" cy="600.4" r="7.02"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="p = 1: mark A at x = −4/p² on OX and B at y = ±4/p on OY, and join A to B. The two lines (for p and −p) cross on the axis at A.">
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M198.18 610.4L632.18 176.4"/>
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M198.18 590.4L632.18 1024.4"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.64" cx="208.18" cy="600.4" r="7.02"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="p = 3/2: mark A at x = −4/p² on OX and B at y = ±4/p on OY, and join A to B. The two lines (for p and −p) cross on the axis at A.">
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M287.07 615.4L543.29 231.07"/>
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M287.07 585.4L543.29 969.73"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.64" cx="297.07" cy="600.4" r="7.02"/>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="p = 3: mark A at x = −4/p² on OX and B at y = ±4/p on OY, and join A to B. The two lines (for p and −p) cross on the axis at A.">
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M340.4 630.4L525.96 73.73"/>
+<path class="ink cons" style="stroke-width:2.64;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M340.4 570.4L525.96 1127.07"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.64" cx="350.4" cy="600.4" r="7.02"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="Draw the parabola y² = 16x, vertex O: every line touches it, at x = 4/p², y = 8/p.">
+<path class="ink curve" style="stroke-width:6.72;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M790.68 1120.4L782.27 1115.2L773.95 1110L765.71 1104.8L757.55 1099.6L749.48 1094.4L741.5 1089.2L733.6 1084L725.78 1078.8L718.05 1073.6L710.4 1068.4L702.84 1063.2L695.36 1058L687.97 1052.8L680.66 1047.6L673.43 1042.4L666.29 1037.2L659.24 1032L652.27 1026.8L645.38 1021.6L638.58 1016.4L631.86 1011.2L625.23 1006L618.68 1000.8L612.21 995.6L605.83 990.4L599.54 985.2L593.33 980L587.2 974.8L581.16 969.6L575.2 964.4L569.33 959.2L563.54 954L557.84 948.8L552.22 943.6L546.68 938.4L541.23 933.2L535.87 928L530.59 922.8L525.39 917.6L520.28 912.4L515.25 907.2L510.31 902L505.45 896.8L500.67 891.6L495.98 886.4L491.38 881.2L486.86 876L482.42 870.8L478.07 865.6L473.8 860.4L469.62 855.2L465.52 850L461.51 844.8L457.58 839.6L453.73 834.4L449.97 829.2L446.3 824L442.71 818.8L439.2 813.6L435.78 808.4L432.44 803.2L429.19 798L426.02 792.8L422.93 787.6L419.93 782.4L417.02 777.2L414.19 772L411.44 766.8L408.78 761.6L406.2 756.4L403.71 751.2L401.3 746L398.98 740.8L396.74 735.6L394.58 730.4L392.51 725.2L390.53 720L388.63 714.8L386.81 709.6L385.08 704.4L383.43 699.2L381.87 694L380.39 688.8L378.99 683.6L377.68 678.4L376.46 673.2L375.32 668L374.26 662.8L373.29 657.6L372.4 652.4L371.6 647.2L370.88 642L370.25 636.8L369.7 631.6L369.23 626.4L368.85 621.2L368.56 616L368.35 610.8L368.22 605.6L368.18 600.4L368.22 595.2L368.35 590L368.56 584.8L368.85 579.6L369.23 574.4L369.7 569.2L370.25 564L370.88 558.8L371.6 553.6L372.4 548.4L373.29 543.2L374.26 538L375.32 532.8L376.46 527.6L377.68 522.4L378.99 517.2L380.39 512L381.87 506.8L383.43 501.6L385.08 496.4L386.81 491.2L388.63 486L390.53 480.8L392.51 475.6L394.58 470.4L396.74 465.2L398.98 460L401.3 454.8L403.71 449.6L406.2 444.4L408.78 439.2L411.44 434L414.19 428.8L417.02 423.6L419.93 418.4L422.93 413.2L426.02 408L429.19 402.8L432.44 397.6L435.78 392.4L439.2 387.2L442.71 382L446.3 376.8L449.97 371.6L453.73 366.4L457.58 361.2L461.51 356L465.52 350.8L469.62 345.6L473.8 340.4L478.07 335.2L482.42 330L486.86 324.8L491.38 319.6L495.98 314.4L500.67 309.2L505.45 304L510.31 298.8L515.25 293.6L520.28 288.4L525.39 283.2L530.59 278L535.87 272.8L541.23 267.6L546.68 262.4L552.22 257.2L557.84 252L563.54 246.8L569.33 241.6L575.2 236.4L581.16 231.2L587.2 226L593.33 220.8L599.54 215.6L605.83 210.4L612.21 205.2L618.68 200L625.23 194.8L631.86 189.6L638.58 184.4L645.38 179.2L652.27 174L659.24 168.8L666.29 163.6L673.43 158.4L680.66 153.2L687.97 148L695.36 142.8L702.84 137.6L710.4 132.4L718.05 127.2L725.78 122L733.6 116.8L741.5 111.6L749.48 106.4L757.55 101.2L765.71 96L773.95 90.8L782.27 85.6L790.68 80.4"/>
+</g>
+</svg>

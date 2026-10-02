@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 399.28 401.3" width="520" height="523" data-fig="fig-210a">
+<title>Fig. 210(a) — The three-leaved rose as a hypotrochoid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 210(a), page 236. Section: trochoids.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius a = 3b with its centre O.">
+<circle class="ink given" style="stroke-width:1.44;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="224.64" cy="200.65" r="150"/>
+<path class="ink aux" style="stroke-width:0.72;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M196.02 53.4A150 150 0 0 0 126.23 87.44"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.12" d="M196.02 53.4L191.24 64.45M187.51 55.32L183.38 66.63M179.12 57.72L175.66 69.25M170.89 60.61L168.1 72.32M162.83 63.97L160.73 75.83M154.99 67.8L153.59 79.76M147.39 72.07L146.68 84.09M140.04 76.78L140.03 88.82M132.98 81.91L133.67 93.93M126.23 87.44L127.62 99.4"/>
+<path class="ink aux" style="stroke-width:0.72;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M163.63 337.68A150 150 0 0 0 208.96 349.83"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.12" d="M163.63 337.68L173.88 331.37M170.89 340.69L180.79 333.85M178.29 343.31L187.82 335.96M185.82 345.54L194.96 337.7M193.45 347.37L202.17 339.06M201.18 348.8L209.44 340.05M208.96 349.83L216.76 340.66"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="224.64" cy="200.65" r="2.35"/>
+<text class="lbl  upright" x="139.64" y="268.15" font-size="12.96" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">3b = a</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="The rolling circle, of radius b = a/3, inside the fixed circle: its centre is on the circle of radius a − b about O, here at the angle 20°. (The book fills it in black.)">
+<circle class="ink given" style="stroke-width:1.44;fill:#171717;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="318.61" cy="166.45" r="50"/>
+<path class="ink given" style="stroke-width:1.44;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M268.29 199.12A60 60 0 0 0 310.26 225.86"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M268.29 199.12L269.73 207.13L275.02 203.7Z"/>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="A rod carries the tracing point at 2b from the centre of the rolling circle.">
+<path class="ink thick" style="stroke-width:7.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M283.37 136.88L242.01 102.17"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="242.01" cy="102.17" r="2.09"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="The three axes of the rose: lines through O at 60°, 180° and 300°. The tips of the petals lie on them, at the distance 4b = (4/3)a.">
+<path class="ink cons" style="stroke-width:0.88;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M224.64 200.65L324.64 27.44"/>
+<path class="ink cons" style="stroke-width:0.88;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M224.64 200.65L24.64 200.65"/>
+<path class="ink cons" style="stroke-width:0.88;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M224.64 200.65L324.64 373.85"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="324.64" cy="27.44" r="3.65"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.88" cx="324.64" cy="373.85" r="3.65"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The path of the tracing point is the three-leaved rose r = 4b cos 3θ. Each petal is drawn while the rolling circle goes one third of the way round.">
+<path class="ink curve" style="stroke-width:2.25;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M224.64 200.65L224.69 195.41L224.82 190.18L225.05 184.96L225.37 179.76L225.78 174.57L226.28 169.4L226.87 164.27L227.54 159.17L228.3 154.1L229.15 149.08L230.09 144.11L231.1 139.18L232.2 134.32L233.38 129.51L234.63 124.77L235.96 120.09L237.37 115.49L238.84 110.97L240.39 106.53L242.01 102.17L243.68 97.9L245.43 93.72L247.23 89.64L249.08 85.66L250.99 81.78L252.95 78.01L254.96 74.35L257.02 70.8L259.11 67.36L261.24 64.05L263.41 60.85L265.61 57.78L267.83 54.83L270.08 52.01L272.35 49.32L274.64 46.76L276.94 44.34L279.25 42.05L281.56 39.9L283.88 37.89L286.19 36.02L288.5 34.28L290.8 32.69L293.09 31.24L295.35 29.94L297.6 28.78L299.82 27.76L302.01 26.88L304.16 26.15L306.28 25.56L308.36 25.12L310.4 24.82L312.39 24.66L314.32 24.64L316.2 24.76L318.02 25.03L319.78 25.43L321.47 25.96L323.09 26.64L324.64 27.44L326.11 28.38L327.51 29.45L328.82 30.65L330.04 31.97L331.18 33.41L332.23 34.98L333.18 36.66L334.04 38.46L334.79 40.38L335.45 42.4L336 44.53L336.44 46.76L336.78 49.1L337.01 51.53L337.13 54.06L337.13 56.67L337.02 59.37L336.79 62.16L336.44 65.03L335.98 67.97L335.39 70.98L334.68 74.06L333.86 77.2L332.91 80.41L331.84 83.66L330.64 86.97L329.33 90.33L327.89 93.73L326.33 97.17L324.64 100.65L322.83 104.15L320.91 107.68L318.86 111.24L316.69 114.81L314.41 118.39L312 121.99L309.48 125.59L306.85 129.19L304.1 132.78L301.25 136.37L298.28 139.95L295.2 143.51L292.03 147.05L288.74 150.57L285.36 154.06L281.88 157.51L278.31 160.94L274.64 164.32L270.89 167.66L267.04 170.96L263.12 174.2L259.11 177.4L255.03 180.53L250.88 183.61L246.66 186.62L242.37 189.57L238.02 192.45L233.61 195.26L229.15 197.99L224.64 200.65L220.08 203.23L215.49 205.72L210.85 208.14L206.18 210.46L201.49 212.7L196.76 214.85L192.02 216.91L187.27 218.88L182.5 220.75L177.73 222.52L172.95 224.2L168.18 225.79L163.42 227.27L158.67 228.65L153.93 229.94L149.22 231.12L144.53 232.2L139.87 233.19L135.25 234.07L130.67 234.85L126.14 235.53L121.65 236.11L117.21 236.59L112.84 236.98L108.52 237.26L104.28 237.45L100.1 237.54L96 237.54L91.98 237.44L88.04 237.25L84.19 236.97L80.43 236.6L76.76 236.15L73.2 235.61L69.73 234.99L66.37 234.29L63.12 233.51L59.99 232.65L56.97 231.72L54.07 230.73L51.29 229.66L48.63 228.53L46.11 227.33L43.71 226.08L41.45 224.77L39.32 223.4L37.32 221.99L35.47 220.53L33.76 219.03L32.19 217.49L30.77 215.91L29.49 214.29L28.36 212.65L27.37 210.99L26.54 209.3L25.86 207.59L25.33 205.87L24.95 204.13L24.72 202.39L24.64 200.65L24.72 198.9L24.95 197.16L25.33 195.43L25.86 193.71L26.54 192L27.37 190.31L28.36 188.64L29.49 187L30.77 185.39L32.19 183.81L33.76 182.27L35.47 180.77L37.32 179.31L39.32 177.89L41.45 176.53L43.71 175.22L46.11 173.97L48.63 172.77L51.29 171.64L54.07 170.57L56.97 169.57L59.99 168.64L63.12 167.79L66.37 167.01L69.73 166.31L73.2 165.68L76.76 165.15L80.43 164.69L84.19 164.32L88.04 164.05L91.98 163.86L96 163.76L100.1 163.76L104.28 163.85L108.52 164.04L112.84 164.32L117.21 164.7L121.65 165.18L126.14 165.77L130.67 166.45L135.25 167.23L139.87 168.11L144.53 169.09L149.22 170.18L153.93 171.36L158.67 172.64L163.42 174.03L168.18 175.51L172.95 177.09L177.73 178.77L182.5 180.55L187.27 182.42L192.02 184.39L196.76 186.44L201.49 188.59L206.18 190.83L210.85 193.16L215.49 195.57L220.08 198.07L224.64 200.65L229.15 203.31L233.61 206.04L238.02 208.85L242.37 211.73L246.66 214.67L250.88 217.69L255.03 220.76L259.11 223.9L263.12 227.09L267.04 230.34L270.89 233.63L274.64 236.98L278.31 240.36L281.88 243.78L285.36 247.24L288.74 250.73L292.03 254.25L295.2 257.79L298.28 261.35L301.25 264.93L304.1 268.52L306.85 272.11L309.48 275.71L312 279.31L314.41 282.9L316.69 286.49L318.86 290.06L320.91 293.61L322.83 297.14L324.64 300.65L326.33 304.12L327.89 307.56L329.33 310.96L330.64 314.32L331.84 317.63L332.91 320.89L333.86 324.1L334.68 327.24L335.39 330.32L335.98 333.33L336.44 336.27L336.79 339.14L337.02 341.92L337.13 344.63L337.13 347.24L337.01 349.77L336.78 352.2L336.44 354.53L336 356.77L335.45 358.9L334.79 360.92L334.04 362.83L333.18 364.63L332.23 366.32L331.18 367.88L330.04 369.33L328.82 370.65L327.51 371.85L326.11 372.92L324.64 373.85L323.09 374.66L321.47 375.33L319.78 375.87L318.02 376.27L316.2 376.53L314.32 376.66L312.39 376.64L310.4 376.48L308.36 376.18L306.28 375.73L304.16 375.15L302.01 374.42L299.82 373.54L297.6 372.52L295.35 371.36L293.09 370.05L290.8 368.6L288.5 367.01L286.19 365.28L283.88 363.41L281.56 361.4L279.25 359.24L276.94 356.96L274.64 354.53L272.35 351.98L270.08 349.29L267.83 346.47L265.61 343.52L263.41 340.45L261.24 337.25L259.11 333.93L257.02 330.5L254.96 326.95L252.95 323.29L250.99 319.51L249.08 315.64L247.23 311.66L245.43 307.57L243.68 303.4L242.01 299.13L240.39 294.77L238.84 290.33L237.37 285.8L235.96 281.2L234.63 276.53L233.38 271.79L232.2 266.98L231.1 262.11L230.09 257.19L229.15 252.22L228.3 247.19L227.54 242.13L226.87 237.03L226.28 231.89L225.78 226.73L225.37 221.54L225.05 216.33L224.82 211.11L224.69 205.88L224.64 200.65"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M261.24 64.05L253.86 68.98L259.6 72.77Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M88.04 237.25L96 241.17L96.42 234.31Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M306.85 272.11L304.7 263.5L299.19 267.61Z"/>
+</g>
+</svg>

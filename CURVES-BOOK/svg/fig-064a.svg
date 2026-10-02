@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1202.7 1032.12" width="520" height="446" data-fig="fig-064a">
+<title>Fig. 64(a) — A particle on a curve under gravity: the force along the tangent</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 64(a), page 67. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The curve of restraint s = f(φ), the particle P on it, and a horizontal line to measure angles from.">
+<path class="ink thick" style="stroke-width:6.74;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M200.65 701.91A720 720 0 0 0 737.06 73.85"/>
+<path class="ink given" style="stroke-width:4.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M73.85 923.05L1128.85 923.05"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.65" cx="583.85" cy="453.05" r="7.82"/>
+<text class="lbl " x="562.3" y="427.7" font-size="40.89" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl  upright" x="325.85" y="473.05" font-size="34.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">s = f(φ)</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent at P. It rises at the angle φ to the horizontal.">
+<path class="ink given" style="stroke-width:4.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M181.98 958.27L751.93 241.75"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.65" d="M279.92 923.05A69.92 69.92 0 0 0 253.52 868.33"/>
+<text class="lbl " x="307.51" y="876.02" font-size="40.89" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+<g class="step" data-step="2" data-tool="ruler" data-text="From P draw the weight −mg straight down (the particle falls under gravity).">
+<path class="ink given" style="stroke-width:4.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M583.85 453.05L583.85 738.05"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M583.85 738.05L593.3 715.56L574.4 715.56Z"/>
+<text class="lbl  upright" x="583.85" y="776.05" font-size="34.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">−m g</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Resolve the weight into a component along the tangent, m s̈ = mg sin φ, and a component along the normal, mg cos φ: complete the rectangle with the dashed and the thin line.">
+<path class="ink given" style="stroke-width:4.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M583.85 453.05L445 627.61"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M445 627.61L466.4 615.89L451.61 604.13Z"/>
+<path class="ink given" style="stroke-width:4.33;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M583.85 453.05L722.7 563.5"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M722.7 563.5L710.98 542.1L699.22 556.89Z"/>
+<path class="ink cons dash" style="stroke-width:2.65;fill:none;--dash:14.43 9.62;stroke:#4b4b4b;stroke-dasharray:14.43 9.62;stroke-linecap:round;stroke-linejoin:round" d="M445 627.61L583.85 738.05"/>
+<path class="ink cons" style="stroke-width:2.65;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M583.85 738.05L722.7 563.5"/>
+<text class="lbl  upright" x="369.85" y="691.05" font-size="34.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">m</text>
+<text class="lbl  upright" x="420.85" y="691.05" font-size="34.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">s</text>
+<circle class="pt" style="fill:#1b1b1b" cx="415.85" cy="678.05" r="2.5"/>
+<circle class="pt" style="fill:#1b1b1b" cx="425.85" cy="678.05" r="2.5"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angle between the weight and the normal component is also φ, which is why the tangential force is mg sin φ.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.65" d="M583.85 541.38A88.33 88.33 0 0 0 652.97 508.04"/>
+<text class="lbl " x="643.54" y="576.8" font-size="40.89" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+</g>
+</svg>

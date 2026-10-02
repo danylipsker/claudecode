@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1090.66 823.9" width="520" height="393" data-fig="fig-044">
+<title>Fig. 44 — Inscribed triangle: the tangents at the vertices meet the opposite sides in three collinear points</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 44, page 47. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A conic and a triangle inscribed in it. Its vertices are named 1=2′, 2=3′ and 3=1′, because the triangle is Pascal's hexagon with neighbouring vertices run together.">
+<path class="ink hatchline" style="fill:none;stroke-width:3.05;stroke:#2a2a2a" d="M389.05 598.53L406.4 608.71M375.5 567.31L427.56 597.86M361.95 536.1L448.71 587M348.4 504.88L469.87 576.15M334.86 473.66L491.02 565.29M321.31 442.44L512.18 554.44M307.76 411.23L533.33 543.58M294.21 380.01L554.49 532.73M280.66 348.79L575.64 521.87M267.11 317.58L596.8 511.02"/>
+<path class="ink thick" style="stroke-width:6.11;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M374.91 608.97L378.45 610.06L382.02 611.06L385.61 611.98L389.23 612.83L392.86 613.58L396.52 614.26L400.2 614.85L403.89 615.36L407.6 615.79L411.33 616.13L415.07 616.39L418.83 616.57L422.6 616.66L426.38 616.67L430.17 616.59L433.97 616.43L437.78 616.19L441.6 615.86L445.42 615.45L449.24 614.96L453.07 614.38L456.9 613.72L460.73 612.98L464.57 612.16L468.4 611.25L472.22 610.26L476.05 609.19L479.87 608.04L483.68 606.8L487.49 605.49L491.29 604.09L495.08 602.62L498.85 601.07L502.62 599.43L506.37 597.72L510.11 595.93L513.84 594.07L517.54 592.12L521.24 590.1L524.91 588.01L528.56 585.84L532.19 583.59L535.8 581.27L539.39 578.88L542.95 576.42L546.49 573.88L550 571.28L553.48 568.6L556.93 565.86L560.36 563.04L563.76 560.16L567.12 557.22L570.45 554.2L573.75 551.13L577.01 547.99L580.24 544.78L583.43 541.52L586.58 538.19L589.7 534.8L592.77 531.36L595.81 527.86L598.8 524.3L601.75 520.68L604.66 517.01L607.53 513.29L610.34 509.52L613.12 505.69L615.85 501.81L618.53 497.89L621.16 493.92L623.74 489.9L626.27 485.83L628.75 481.73L631.19 477.58L633.56 473.38L635.89 469.15L638.16 464.88L640.38 460.57L642.54 456.23L644.65 451.85L646.7 447.44L648.7 442.99L650.64 438.52L652.52 434.01L654.34 429.48L656.1 424.92L657.8 420.34L659.44 415.73L661.03 411.1L662.55 406.44L664 401.77L665.4 397.08L666.73 392.37L668.01 387.65L669.21 382.91L670.36 378.16L671.44 373.4L672.45 368.63L673.41 363.86L674.29 359.07L675.11 354.28L675.87 349.49L676.56 344.69L677.18 339.89L677.74 335.1L678.23 330.3L678.66 325.51L679.02 320.73L679.31 315.95L679.53 311.17L679.69 306.41L679.78 301.66L679.81 296.92L679.77 292.2L679.66 287.49L679.48 282.79L679.24 278.12L678.93 273.46L678.56 268.82L678.11 264.21L677.6 259.62L677.03 255.06L676.39 250.52L675.68 246.01L674.91 241.52L674.07 237.07L673.17 232.66L672.2 228.27L671.17 223.92L670.07 219.6L668.91 215.33L667.69 211.09L666.4 206.89L665.05 202.73L663.64 198.61L662.16 194.54L660.63 190.51L659.03 186.53L657.37 182.6L655.66 178.71L653.88 174.87L652.04 171.09L650.15 167.36L648.2 163.67L646.19 160.05L644.12 156.48L642 152.96L639.82 149.51L637.59 146.11L635.3 142.77L632.96 139.49L630.57 136.28L628.13 133.13L625.63 130.04L623.09 127.01L620.49 124.05L617.85 121.16L615.16 118.33L612.42 115.57L609.63 112.88L606.8 110.26L603.92 107.71L601.01 105.24L598.04 102.83L595.04 100.5L591.99 98.24L588.91 96.05L585.78 93.94L582.62 91.91L579.42 89.95L576.18 88.07L572.91 86.26L569.61 84.54L566.27 82.89L562.89 81.32L559.49 79.83L556.06 78.42L552.6 77.09L549.11 75.84L545.59 74.67L542.04 73.58L538.48 72.58L534.88 71.65L531.27 70.81L527.63 70.05L523.97 69.38L520.3 68.78L516.6 68.27L512.89 67.85L509.16 67.51L505.42 67.25L501.66 67.07L497.89 66.98L494.11 66.97L490.32 67.05L486.52 67.2L482.71 67.45L478.9 67.77L475.08 68.18L471.25 68.68L467.42 69.25L463.59 69.91L459.76 70.66L455.93 71.48L452.1 72.39L448.27 73.38L444.44 74.45L440.63 75.6L436.81 76.83L433.01 78.15L429.21 79.54L425.42 81.02L421.64 82.57L417.87 84.2L414.12 85.92L410.38 87.7L406.66 89.57L402.95 91.51L399.26 93.53L395.59 95.63L391.93 97.8L388.3 100.05L384.69 102.36L381.11 104.76L377.55 107.22L374.01 109.75L370.5 112.36L367.01 115.04L363.56 117.78L360.13 120.59L356.74 123.47L353.37 126.42L350.04 129.43L346.75 132.51L343.48 135.65L340.26 138.85L337.07 142.12L333.91 145.45L330.8 148.83L327.72 152.28L324.69 155.78L321.69 159.34L318.74 162.95L315.83 166.62L312.97 170.35L310.15 174.12L307.38 177.95L304.65 181.82L301.97 185.75L299.34 189.72L296.75 193.74L294.22 197.8L291.74 201.91L289.31 206.06L286.93 210.25L284.6 214.48L282.33 218.76L280.11 223.06L277.95 227.41L275.84 231.79L273.79 236.2L271.79 240.64L269.86 245.12L267.98 249.62L266.16 254.16L264.39 258.72L262.69 263.3L261.05 267.91L259.47 272.54L257.95 277.19L256.49 281.87L255.09 286.56L253.76 291.26L252.49 295.99L251.28 300.72L250.14 305.47L249.06 310.23L248.04 315L247.09 319.78L246.2 324.57L245.38 329.36L244.63 334.15L243.94 338.95L243.31 343.74L242.75 348.54L242.26 353.33L241.84 358.13L241.48 362.91L241.19 367.69L240.96 372.46L240.8 377.22L240.71 381.98L240.68 386.72L240.73 391.44L240.84 396.15L241.01 400.85L241.25 405.52L241.56 410.18L241.94 414.81L242.38 419.43L242.89 424.02L243.46 428.58L244.11 433.12L244.81 437.63L245.58 442.11L246.42 446.56L247.32 450.98L248.29 455.37L249.32 459.72L250.42 464.03L251.58 468.31L252.81 472.55L254.09 476.75L255.44 480.91L256.86 485.03L258.33 489.1L259.87 493.13L261.46 497.11L263.12 501.04L264.84 504.93L266.61 508.76L268.45 512.55L270.34 516.28L272.3 519.96L274.31 523.59L276.37 527.16L278.49 530.67L280.67 534.13L282.9 537.53L285.19 540.87L287.53 544.14L289.92 547.36L292.37 550.51L294.86 553.6L297.41 556.63L300 559.59L302.65 562.48L305.34 565.31L308.08 568.07L310.86 570.75L313.69 573.37L316.57 575.92L319.49 578.4L322.45 580.81L325.46 583.14L328.5 585.4L331.59 587.58L334.71 589.69L337.87 591.73L341.07 593.69L344.31 595.57L347.58 597.37L350.89 599.1L354.23 600.75L357.6 602.32L361 603.81L364.44 605.22L367.9 606.55L371.39 607.8L374.91 608.97"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M395.83 614.14L616.46 500.93L254.52 288.56Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="254.52" cy="288.56" r="10.63"/>
+<text class="lbl  upright" x="224.63" y="288.56" font-size="33.37" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1′=3</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="616.46" cy="500.93" r="10.63"/>
+<text class="lbl  upright" x="646.35" y="500.93" font-size="33.37" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2=3′</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="395.83" cy="614.14" r="10.63"/>
+<text class="lbl  upright" x="361.95" y="654.82" font-size="33.37" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1=2′</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="At the vertex 3=1′ draw the tangent to the conic, and extend the opposite side (1=2′ to 2=3′) until the two lines meet.">
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M616.46 500.93L121.92 754.69"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M121.92 754.69L283.25 187.57"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="121.92" cy="754.69" r="10.63"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="In the same way the tangent at 2=3′ meets the side joining the other two vertices, 3=1′ and 1=2′.">
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M254.52 288.56L451 741.27"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M451 741.27L670.33 422.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="451" cy="741.27" r="10.63"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="And the tangent at 1=2′ meets the side from 3=1′ to 2=3′.">
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M254.52 288.56L988.72 719.34"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M988.72 719.34L297.36 596.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="988.72" cy="719.34" r="10.63"/>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="The three points of meeting lie on one straight line (the Pascal line of this degenerate hexagon). Lay the straightedge along any two of them: it passes through the third.">
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.97 756.93L1023.69 717.92"/>
+</g>
+</svg>

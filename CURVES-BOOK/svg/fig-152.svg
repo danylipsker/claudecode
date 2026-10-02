@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 876.79 641.04" width="520" height="380" data-fig="fig-152">
+<title>Fig. 152 — Polar coordinates of the pedal</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 152, page 161. Section: pedal-curves.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The pole O with the initial line, and the given curve with a point X, whose radius vector r makes the angle θ with the initial line.">
+<path class="ink given" style="stroke-width:3.16;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M109.96 587.21L822.96 587.21"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M822.96 587.21L806.56 580.32L806.56 594.09Z"/>
+<path class="ink thick" style="stroke-width:4.91;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M53.84 53.84L56.39 58.42L59.03 62.97L61.74 67.46L64.53 71.91L67.4 76.3L70.35 80.65L73.37 84.94L76.47 89.18L79.64 93.36L82.88 97.49L86.19 101.57L89.58 105.58L93.03 109.53L96.56 113.42L100.15 117.25L103.81 121.02L107.53 124.72L111.32 128.36L115.17 131.92L119.08 135.43L123.05 138.86L127.08 142.22L131.17 145.51L135.32 148.73L139.52 151.88L143.78 154.95L148.09 157.94L152.45 160.87L156.87 163.71L161.33 166.48L165.84 169.16L170.39 171.77L175 174.3L179.64 176.75L184.33 179.12L189.05 181.4L193.82 183.6L198.62 185.72L203.47 187.75L208.34 189.7L213.25 191.56L218.19 193.33L223.16 195.02L228.16 196.62L233.19 198.14L238.24 199.56L243.32 200.9L248.42 202.15L253.54 203.31L258.68 204.38L263.83 205.36L269.01 206.24L274.2 207.04L279.4 207.75L284.61 208.36L289.84 208.89L295.07 209.32L300.31 209.66L305.55 209.91L310.8 210.07"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.16" cx="109.96" cy="587.21" r="12.54"/><circle class="pt" style="fill:#1b1b1b" cx="109.96" cy="587.21" r="5.13"/>
+<path class="ink given" style="stroke-width:3.16;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M109.96 587.21L149.96 159.21"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.93" cx="149.96" cy="159.21" r="5.7"/>
+<text class="lbl " x="105.93" y="373.21" font-size="29.81" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.93" d="M185.08 587.21A75.12 75.12 0 0 0 116.95 512.41"/>
+<text class="lbl " x="173.76" y="529.09" font-size="29.81" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent at X. It makes the angle ψ with the radius vector, where tan ψ = r dθ/dr.">
+<path class="ink given" style="stroke-width:3.16;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M91.01 119.63L787.42 587.21"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.93" d="M144.96 212.63A53.66 53.66 0 0 0 194.51 189.12"/>
+<text class="lbl " x="183.51" y="229.9" font-size="29.81" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ψ</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From O drop the perpendicular on the tangent. Its foot has the polar coordinates (r0, θ0): r0 = r sin ψ.">
+<path class="ink given" style="stroke-width:3.16;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M109.96 587.21L320.46 273.68"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.93" cx="320.46" cy="273.68" r="5.7"/>
+<text class="lbl " x="199.5" y="411.96" font-size="29.81" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r<tspan baseline-shift="sub" font-size="70%">0</tspan></text>
+</g>
+<g class="step" data-step="3" data-tool="protractor" data-text="The angle θ0 is the direction of the perpendicular from the initial line. In the triangle formed by r, the perpendicular and the tangent, ψ + (θ − θ0) = π/2.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.93" d="M252.15 587.21A142.2 142.2 0 0 0 189.22 469.15"/>
+<text class="lbl " x="247.28" y="514" font-size="29.81" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ<tspan baseline-shift="sub" font-size="70%">0</tspan></text>
+</g>
+</svg>

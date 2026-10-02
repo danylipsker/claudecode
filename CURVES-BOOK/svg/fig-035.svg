@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 974.94 873.25" width="520" height="466" data-fig="fig-035">
+<title>Fig. 35 — The optical property of the ellipse: the tangent bisects the angle of the focal radii</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 35, page 40. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The ellipse with foci F1 and F2: F1P + F2P = 2a for every point P of it. P is a point of the curve.">
+<path class="ink thick" style="stroke-width:5.46;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M819.86 525.39L819.73 517.85L819.34 510.31L818.69 502.79L817.78 495.28L816.61 487.79L815.19 480.33L813.5 472.9L811.56 465.51L809.37 458.15L806.92 450.85L804.22 443.59L801.27 436.39L798.07 429.25L794.63 422.18L790.94 415.17L787.01 408.25L782.85 401.4L778.45 394.64L773.82 387.96L768.95 381.39L763.87 374.91L758.56 368.53L753.03 362.26L747.29 356.1L741.34 350.06L735.18 344.14L728.82 338.34L722.26 332.68L715.51 327.14L708.57 321.74L701.44 316.48L694.13 311.36L686.66 306.39L679.01 301.57L671.19 296.9L663.22 292.39L655.1 288.04L646.83 283.85L638.41 279.83L629.86 275.97L621.19 272.29L612.38 268.78L603.46 265.44L594.42 262.28L585.28 259.31L576.04 256.51L566.71 253.9L557.29 251.48L547.79 249.25L538.22 247.2L528.57 245.34L518.87 243.68L509.11 242.21L499.31 240.93L489.46 239.85L479.59 238.96L469.68 238.27L459.75 237.78L449.81 237.48L439.86 237.39L429.92 237.48L419.98 237.78L410.05 238.27L400.14 238.96L390.26 239.85L380.42 240.93L370.62 242.21L360.86 243.68L351.16 245.34L341.51 247.2L331.94 249.25L322.44 251.48L313.02 253.9L303.69 256.51L294.45 259.31L285.3 262.28L276.27 265.44L267.35 268.78L258.54 272.29L249.86 275.97L241.32 279.83L232.9 283.85L224.63 288.04L216.51 292.39L208.54 296.9L200.72 301.57L193.07 306.39L185.6 311.36L178.29 316.48L171.16 321.74L164.22 327.14L157.47 332.68L150.91 338.34L144.55 344.14L138.39 350.06L132.44 356.1L126.7 362.26L121.17 368.53L115.86 374.91L110.78 381.39L105.91 387.96L101.28 394.64L96.88 401.4L92.72 408.25L88.79 415.17L85.1 422.18L81.66 429.25L78.46 436.39L75.51 443.59L72.81 450.85L70.36 458.15L68.17 465.51L66.23 472.9L64.54 480.33L63.12 487.79L61.95 495.28L61.04 502.79L60.39 510.31L60 517.85L59.86 525.39L60 532.92L60.39 540.46L61.04 547.98L61.95 555.49L63.12 562.98L64.54 570.44L66.23 577.87L68.17 585.26L70.36 592.62L72.81 599.93L75.51 607.18L78.46 614.38L81.66 621.52L85.1 628.6L88.79 635.6L92.72 642.53L96.88 649.37L101.28 656.13L105.91 662.81L110.78 669.39L115.86 675.87L121.17 682.24L126.7 688.51L132.44 694.67L138.39 700.71L144.55 706.63L150.91 712.43L157.47 718.1L164.22 723.63L171.16 729.03L178.29 734.29L185.6 739.41L193.07 744.38L200.72 749.2L208.54 753.87L216.51 758.38L224.63 762.73L232.9 766.92L241.32 770.95L249.86 774.8L258.54 778.48L267.35 782L276.27 785.33L285.3 788.49L294.45 791.46L303.69 794.26L313.02 796.87L322.44 799.29L331.94 801.53L341.51 803.57L351.16 805.43L360.86 807.09L370.62 808.56L380.42 809.84L390.26 810.92L400.14 811.81L410.05 812.5L419.98 812.99L429.92 813.29L439.86 813.39L449.81 813.29L459.75 812.99L469.68 812.5L479.59 811.81L489.46 810.92L499.31 809.84L509.11 808.56L518.87 807.09L528.57 805.43L538.22 803.57L547.79 801.53L557.29 799.29L566.71 796.87L576.04 794.26L585.28 791.46L594.42 788.49L603.46 785.33L612.38 782L621.19 778.48L629.86 774.8L638.41 770.95L646.83 766.92L655.1 762.73L663.22 758.38L671.19 753.87L679.01 749.2L686.66 744.38L694.13 739.41L701.44 734.29L708.57 729.03L715.51 723.63L722.26 718.1L728.82 712.43L735.18 706.63L741.34 700.71L747.29 694.67L753.03 688.51L758.56 682.24L763.87 675.87L768.95 669.39L773.82 662.81L778.45 656.13L782.85 649.37L787.01 642.53L790.94 635.6L794.63 628.6L798.07 621.52L801.27 614.38L804.22 607.18L806.92 599.93L809.37 592.62L811.56 585.26L813.5 577.87L815.19 570.44L816.61 562.98L817.78 555.49L818.69 547.98L819.34 540.46L819.73 532.92L819.86 525.39"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.51" cx="191.96" cy="525.39" r="13.94"/><circle class="pt" style="fill:#1b1b1b" cx="191.96" cy="525.39" r="5.7"/>
+<text class="lbl " x="191.96" y="554.16" font-size="33.15" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.51" cx="687.77" cy="525.39" r="13.94"/><circle class="pt" style="fill:#1b1b1b" cx="687.77" cy="525.39" r="5.7"/>
+<text class="lbl " x="687.77" y="554.16" font-size="33.15" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.14" cx="641.23" cy="281.15" r="6.34"/>
+<text class="lbl " x="641.23" y="260.6" font-size="33.15" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent at P (heavy). All its other points lie outside the ellipse.">
+<path class="ink given" style="stroke-width:5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M173.98 59.86L915.08 410.84"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Take another point Q on the tangent. F1Q cuts the ellipse at R; join R and Q to F2. Since R is on the ellipse and Q outside it, F1Q + F2Q &gt; F1R + F2R = 2a.">
+<path class="ink given" style="stroke-width:3.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M191.96 525.39L295.14 117.24"/>
+<path class="ink given" style="stroke-width:3.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M255.64 273.5L687.77 525.39"/>
+<path class="ink cons dash" style="stroke-width:2.14;fill:none;--dash:11.7 7.8;stroke:#4b4b4b;stroke-dasharray:11.7 7.8;stroke-linecap:round;stroke-linejoin:round" d="M295.14 117.24L687.77 525.39"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.14" cx="295.14" cy="117.24" r="6.34"/>
+<text class="lbl " x="312.61" y="96.69" font-size="33.15" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.14" cx="255.64" cy="273.5" r="6.34"/>
+<text class="lbl " x="238.17" y="252.94" font-size="33.15" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="From F2 drop the perpendicular to the tangent, and carry the same distance beyond the tangent: this gives F̄2, the reflection of F2 in the tangent. Then F2Q = F̄2Q for every Q of the tangent.">
+<path class="ink cons dash" style="stroke-width:2.14;fill:none;--dash:11.7 7.8;stroke:#4b4b4b;stroke-dasharray:11.7 7.8;stroke-linecap:round;stroke-linejoin:round" d="M687.77 525.39L859.67 162.4"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.14" cx="859.67" cy="162.4" r="6.34"/>
+<text class="lbl " x="877.14" y="141.85" font-size="33.15" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F̄<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="Join F1 to F̄2: this straight line is the shortest path from F1 to the tangent and on to F̄2. It cuts the tangent at P, because F1P + F2P = 2a is the least possible sum on the tangent. Also draw PF2.">
+<path class="ink given" style="stroke-width:3.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M191.96 525.39L859.67 162.4"/>
+<path class="ink given" style="stroke-width:3.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M641.23 281.15L687.77 525.39"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The angle between the tangent and PF1 equals the angle between the tangent and PF̄2 (vertically opposite), and PF̄2 is the mirror image of PF2. So the tangent makes equal angles α = β with the two focal radii.">
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.14" d="M610.23 266.46A34.31 34.31 0 0 0 611.09 297.53"/>
+<text class="lbl given" x="575.88" y="282.97" font-size="33.15" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.14" d="M672.24 295.83A34.31 34.31 0 0 0 671.38 264.76"/>
+<text class="lbl given" x="706.59" y="279.33" font-size="33.15" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.14" d="M647.66 314.85A34.31 34.31 0 0 0 672.24 295.83"/>
+<text class="lbl given" x="683.52" y="335.82" font-size="33.15" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">β</text>
+<text class="lbl " x="444.86" y="740.39" font-size="36.46" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α = β</text>
+</g>
+</svg>

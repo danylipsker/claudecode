@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 429.6 345.55" width="520" height="418" data-fig="fig-025">
+<title>Fig. 25 — The Peaucellier cell that draws a cissoid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 25, page 28. Section: cissoid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two fixed pivots O and C on a line, at the distance c. C is the centre of a bar of length c.">
+<path class="ink given" style="stroke-width:1.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M35.8 209.75L393.8 209.75"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M393.8 209.75L385.77 206.37L385.77 213.12Z"/>
+<path class="ink given" style="stroke-width:1.55;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M161.8 225.75L201.8 225.75L201.8 193.75L161.8 193.75Z"/>
+<path class="ink given" style="stroke-width:1.55;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M59.8 226.75L103.8 226.75L103.8 192.75L59.8 192.75Z"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="181.8" cy="209.75" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="181.8" cy="209.75" r="2.51"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="81.8" cy="209.75" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="81.8" cy="209.75" r="2.51"/>
+<text class="lbl " x="181.8" y="233.29" font-size="14.61" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="131.8" y="199.23" font-size="14.61" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">c</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="Hinge a bar CQ of length c at C. Its free end Q can only move on the circle of radius c about C, and that circle passes through O.">
+<path class="ink aux dash" style="stroke-width:0.77;fill:none;--dash:5.16 3.44;stroke:#8a8a8a;stroke-dasharray:5.16 3.44;stroke-linecap:round;stroke-linejoin:round" d="M11.09 280.46A100 100 0 0 0 172.43 167.49"/>
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M81.8 209.75L81.8 309.75"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M81.8 209.75L81.8 309.75"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="81.8" cy="309.75" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="81.8" cy="309.75" r="2.51"/>
+<text class="lbl " x="65.5" y="309.75" font-size="14.61" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl " x="71.28" y="259.75" font-size="14.61" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">c</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="Hinge two long bars of length L at Q. Their other ends A and B are joined to O by two short bars of length s, and to P by two more short bars of length s: O, A, P, B is a rhombus.">
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M81.8 309.75L209.31 63.31"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M81.8 309.75L209.31 63.31"/>
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M81.8 309.75L328.24 182.24"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M81.8 309.75L328.24 182.24"/>
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M181.8 209.75L209.31 63.31"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M181.8 209.75L209.31 63.31"/>
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M181.8 209.75L328.24 182.24"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M181.8 209.75L328.24 182.24"/>
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M209.31 63.31L355.75 35.8"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M209.31 63.31L355.75 35.8"/>
+<path class="ink given" style="fill:none;stroke-width:4.02;stroke:#1b1b1b;stroke-linecap:round" d="M328.24 182.24L355.75 35.8"/><path class="ink" style="fill:none;stroke-width:1.86;stroke:#fff;stroke-linecap:round" d="M328.24 182.24L355.75 35.8"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="209.31" cy="63.31" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="209.31" cy="63.31" r="2.51"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="328.24" cy="182.24" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="328.24" cy="182.24" r="2.51"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="355.75" cy="35.8" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="355.75" cy="35.8" r="2.51"/>
+<text class="lbl " x="355.75" y="15.88" font-size="14.61" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="181.8" cy="209.75" r="6.14"/><circle class="pt" style="fill:#1b1b1b" cx="181.8" cy="209.75" r="2.51"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Q, O and P are always on one line (the rhombus is symmetric about it), and (OQ)(QP) = L² − s² = k². With OQ = 2c cos θ and QP = 2c cos θ + r this gives the polar equation of the path of P.">
+<path class="ink cons dash" style="stroke-width:0.95;fill:none;--dash:5.16 3.44;stroke:#4b4b4b;stroke-dasharray:5.16 3.44;stroke-linecap:round;stroke-linejoin:round" d="M81.8 309.75L181.8 209.75"/>
+<path class="ink cons dash" style="stroke-width:0.95;fill:none;--dash:5.16 3.44;stroke:#4b4b4b;stroke-dasharray:5.16 3.44;stroke-linecap:round;stroke-linejoin:round" d="M181.8 209.75L355.75 35.8"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.95" d="M154.19 209.75A27.61 27.61 0 0 0 162.28 229.27"/>
+<text class="lbl " x="143.14" y="225.76" font-size="14.61" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.95" d="M209.41 209.75A27.61 27.61 0 0 0 201.32 190.23"/>
+<text class="lbl " x="220.46" y="193.73" font-size="14.61" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<text class="lbl " x="285.17" y="123.13" font-size="14.61" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="Turn the cell. P draws the cissoid r = (k² / 2c) sec θ − 2c cos θ, which has no loop, a cusp or a loop as k² / 2c is greater than, equal to or less than 2c.">
+<path class="ink curve" style="stroke-width:2.41;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M373.11 437.75L371.68 432.74L370.25 427.83L368.81 423.03L367.38 418.32L365.93 413.7L364.49 409.17L363.05 404.74L361.6 400.39L360.15 396.13L358.7 391.95L357.25 387.86L355.8 383.84L354.35 379.91L352.9 376.05L351.45 372.27L350.01 368.56L348.56 364.92L347.11 361.35L345.67 357.86L344.23 354.43L342.79 351.07L341.35 347.77L339.92 344.54L338.49 341.37L337.06 338.26L335.64 335.22L334.22 332.23L332.81 329.3L331.4 326.43L330 323.62L328.6 320.86L327.21 318.16L325.82 315.51L324.44 312.91L323.06 310.37L321.7 307.87L320.34 305.43L318.99 303.03L317.64 300.69L316.3 298.39L314.98 296.13L313.66 293.92L312.35 291.76L311.04 289.64L309.75 287.57L308.47 285.54L307.2 283.54L305.93 281.6L304.68 279.69L303.44 277.82L302.21 275.99L300.99 274.2L299.78 272.44L298.59 270.72L297.41 269.04L296.23 267.4L295.07 265.79L293.93 264.21L292.8 262.67L291.68 261.16L290.57 259.69L289.48 258.24L288.4 256.83L287.33 255.45L286.28 254.1L285.25 252.78L284.23 251.48L283.22 250.22L282.23 248.98L281.25 247.77L280.29 246.59L279.35 245.43L278.42 244.3L277.51 243.19L276.62 242.11L275.74 241.05L274.88 240.02L274.03 239.01L273.21 238.02L272.4 237.05L271.6 236.1L270.83 235.17L270.07 234.27L269.33 233.38L268.61 232.51L267.91 231.66L267.23 230.83L266.56 230.01L265.92 229.22L265.29 228.43L264.68 227.67L264.09 226.92L263.52 226.18L262.97 225.46L262.44 224.75L261.93 224.05L261.43 223.37L260.96 222.7L260.51 222.04L260.08 221.39L259.67 220.76L259.27 220.13L258.9 219.51L258.55 218.9L258.22 218.3L257.91 217.71L257.62 217.12L257.35 216.54L257.1 215.97L256.88 215.4L256.67 214.84L256.48 214.29L256.32 213.73L256.17 213.19L256.05 212.64L255.95 212.1L255.87 211.56L255.81 211.02L255.77 210.48L255.75 209.95L255.75 209.41L255.78 208.87L255.82 208.34L255.89 207.8L255.97 207.26L256.08 206.71L256.21 206.17L256.36 205.62L256.53 205.07L256.72 204.51L256.93 203.95L257.17 203.38L257.42 202.8L257.69 202.22L257.99 201.64L258.31 201.04L258.64 200.44L259 199.83L259.37 199.21L259.77 198.58L260.19 197.94L260.63 197.29L261.08 196.62L261.56 195.95L262.06 195.26L262.57 194.56L263.11 193.85L263.67 193.13L264.24 192.39L264.84 191.63L265.45 190.86L266.08 190.08L266.73 189.27L267.4 188.45L268.09 187.62L268.8 186.76L269.52 185.89L270.27 185L271.03 184.08L271.81 183.15L272.61 182.2L273.42 181.23L274.25 180.23L275.1 179.21L275.97 178.17L276.85 177.11L277.75 176.02L278.66 174.9L279.59 173.77L280.54 172.6L281.51 171.41L282.48 170.2L283.48 168.95L284.49 167.68L285.51 166.38L286.55 165.05L287.61 163.69L288.68 162.3L289.76 160.88L290.85 159.43L291.96 157.94L293.09 156.43L294.22 154.88L295.37 153.29L296.54 151.67L297.71 150.02L298.9 148.33L300.1 146.6L301.31 144.84L302.53 143.04L303.76 141.2L305.01 139.32L306.26 137.4L307.53 135.44L308.8 133.44L310.09 131.39L311.38 129.31L312.69 127.18L314 125L315.32 122.78L316.65 120.52L317.99 118.21L319.34 115.85L320.69 113.44L322.05 110.98L323.42 108.47L324.8 105.91L326.18 103.3L327.57 100.64L328.96 97.92L330.36 95.15L331.76 92.32L333.17 89.44L334.59 86.5L336.01 83.5L337.43 80.43L338.86 77.31L340.29 74.13L341.72 70.88L343.16 67.57L344.6 64.19L346.04 60.74L347.49 57.23L348.93 53.64L350.38 49.99L351.83 46.26L353.28 42.45L354.73 38.58L356.18 34.62L357.63 30.58L359.08 26.47L360.53 22.27L361.97 17.99L363.42 13.62L364.87 9.16L366.31 4.61L367.75 -0.03L369.19 -4.77L370.62 -9.6L372.05 -14.53L373.48 -19.56L374.91 -24.7L376.33 -29.95L377.75 -35.3L379.16 -40.77L380.57 -46.36L381.97 -52.06L383.36 -57.89L384.75 -63.84L386.14 -69.92L387.52 -76.13L388.89 -82.48L390.25 -88.98L391.61 -95.62L392.96 -102.4L394.3 -109.35L395.64 -116.45L396.96 -123.72L398.28 -131.16L399.59 -138.78"/>
+</g>
+</svg>

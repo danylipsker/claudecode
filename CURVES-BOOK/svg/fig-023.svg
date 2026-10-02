@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 366.85 243.05" width="520" height="345" data-fig="fig-023">
+<title>Fig. 23 — The cissoid of two curves with respect to O</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 23, page 26. Section: cissoid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed point O and the two given curves.">
+<path class="ink thick" style="stroke-width:2.05;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M177.93 214.53L178.22 213.42L178.51 212.31L178.78 211.2L179.05 210.09L179.3 208.98L179.55 207.88L179.79 206.77L180.01 205.66L180.23 204.55L180.44 203.44L180.63 202.33L180.82 201.23L181 200.12L181.17 199.01L181.32 197.9L181.47 196.79L181.61 195.68L181.74 194.58L181.86 193.47L181.97 192.36L182.07 191.25L182.16 190.14L182.24 189.03L182.31 187.93L182.37 186.82L182.42 185.71L182.46 184.6L182.49 183.49L182.51 182.38L182.52 181.28L182.53 180.17L182.52 179.06L182.5 177.95L182.47 176.84L182.43 175.73L182.39 174.63L182.33 173.52L182.26 172.41L182.19 171.3L182.1 170.19L182.01 169.08L181.9 167.98L181.78 166.87L181.66 165.76L181.52 164.65L181.38 163.54L181.22 162.43L181.06 161.33L180.88 160.22L180.7 159.11L180.51 158L180.3 156.89L180.09 155.78L179.87 154.68L179.63 153.57L179.39 152.46L179.14 151.35L178.88 150.24L178.6 149.13L178.32 148.03L178.03 146.92L177.73 145.81L177.42 144.7L177.1 143.59L176.77 142.48L176.43 141.38L176.08 140.27L175.72 139.16L175.35 138.05L174.97 136.94L174.58 135.83L174.18 134.73L173.77 133.62L173.35 132.51L172.92 131.4L172.48 130.29L172.03 129.18L171.58 128.08L171.11 126.97L170.63 125.86L170.14 124.75L169.65 123.64L169.14 122.53L168.62 121.43L168.1 120.32L167.56 119.21L167.02 118.1L166.46 116.99L165.9 115.88L165.32 114.78L164.74 113.67L164.14 112.56L163.54 111.45L162.92 110.34L162.3 109.23L161.66 108.13L161.02 107.02L160.37 105.91L159.7 104.8L159.03 103.69L158.35 102.58L157.66 101.48L156.95 100.37L156.24 99.26L155.52 98.15L154.79 97.04L154.05 95.93L153.3 94.83L152.53 93.72L151.76 92.61L150.98 91.5L150.19 90.39L149.39 89.28L148.58 88.18L147.76 87.07L146.93 85.96L146.09 84.85L145.25 83.74L144.39 82.63L143.52 81.53"/>
+<path class="ink thick" style="stroke-width:2.05;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M344.33 200.53L342.83 199.04L341.34 197.56L339.87 196.08L338.41 194.59L336.97 193.11L335.54 191.63L334.12 190.14L332.72 188.66L331.34 187.18L329.97 185.69L328.61 184.21L327.27 182.73L325.94 181.24L324.63 179.76L323.33 178.28L322.04 176.79L320.77 175.31L319.52 173.83L318.28 172.34L317.05 170.86L315.84 169.38L314.64 167.89L313.46 166.41L312.29 164.93L311.13 163.44L309.99 161.96L308.87 160.48L307.76 158.99L306.66 157.51L305.58 156.03L304.51 154.54L303.45 153.06L302.41 151.58L301.39 150.09L300.38 148.61L299.38 147.13L298.4 145.64L297.44 144.16L296.48 142.68L295.55 141.19L294.62 139.71L293.71 138.23L292.82 136.74L291.94 135.26L291.07 133.78L290.22 132.29L289.38 130.81L288.56 129.33L287.75 127.84L286.96 126.36L286.18 124.88L285.41 123.39L284.66 121.91L283.93 120.43L283.21 118.94L282.5 117.46L281.81 115.98L281.13 114.49L280.46 113.01L279.81 111.53L279.18 110.04L278.56 108.56L277.95 107.08L277.36 105.59L276.78 104.11L276.22 102.63L275.67 101.14L275.14 99.66L274.62 98.18L274.11 96.69L273.62 95.21L273.15 93.73L272.68 92.24L272.24 90.76L271.8 89.28L271.39 87.79L270.98 86.31L270.59 84.83L270.22 83.34L269.86 81.86L269.51 80.38L269.18 78.89L268.86 77.41L268.56 75.93L268.27 74.44L267.99 72.96L267.73 71.48L267.49 69.99L267.26 68.51L267.04 67.03L266.84 65.54L266.65 64.06L266.48 62.58L266.32 61.09L266.18 59.61L266.05 58.13L265.93 56.64L265.83 55.16L265.74 53.68L265.67 52.19L265.61 50.71L265.57 49.23L265.54 47.74L265.53 46.26L265.53 44.78L265.54 43.29L265.57 41.81L265.61 40.33L265.67 38.84L265.74 37.36L265.83 35.88L265.93 34.39L266.05 32.91L266.18 31.43L266.32 29.94L266.48 28.46L266.65 26.98L266.84 25.49L267.04 24.01L267.26 22.53"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.32" cx="22.53" cy="220.53" r="5.25"/><circle class="pt" style="fill:#1b1b1b" cx="22.53" cy="220.53" r="2.15"/>
+<text class="lbl " x="22.53" y="205.83" font-size="12.47" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw a secant through O. It meets the first curve at Q and the second at R.">
+<path class="ink given" style="stroke-width:1.32;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M22.53 220.53L311.03 98.06"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.81" cx="179.69" cy="153.82" r="2.38"/>
+<text class="lbl " x="186.26" y="146.08" font-size="12.47" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.81" cx="279.74" cy="111.35" r="2.38"/>
+<text class="lbl " x="286.31" y="103.61" font-size="12.47" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="Take the distance QR with the dividers and lay it off from O along the secant: OP = QR. P is a point of the cissoid.">
+<path class="ink aux" style="stroke-width:0.66;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M126.94 190.34A108.69 108.69 0 0 0 116.77 166.39"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.81" cx="122.58" cy="178.06" r="2.38"/>
+<text class="lbl " x="116" y="170.32" font-size="12.47" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Repeat with other secants through O. The locus of P is the cissoid of the two curves with respect to O.">
+<path class="ink curve" style="stroke-width:2.05;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M179.62 206.78L178.17 206.18L176.73 205.59L175.32 205.01L173.93 204.43L172.57 203.87L171.23 203.32L169.91 202.78L168.62 202.24L167.34 201.72L166.09 201.2L164.86 200.69L163.65 200.19L162.46 199.7L161.29 199.21L160.14 198.73L159.01 198.26L157.9 197.79L156.8 197.33L155.73 196.88L154.67 196.43L153.64 195.99L152.62 195.55L151.62 195.12L150.63 194.7L149.67 194.27L148.72 193.86L147.79 193.44L146.87 193.04L145.97 192.63L145.09 192.23L144.22 191.83L143.37 191.44L142.54 191.05L141.72 190.66L140.92 190.28L140.13 189.89L139.36 189.51L138.6 189.14L137.86 188.76L137.13 188.38L136.42 188.01L135.72 187.64L135.03 187.27L134.36 186.9L133.71 186.53L133.07 186.17L132.44 185.8L131.83 185.43L131.23 185.07L130.65 184.7L130.08 184.33L129.52 183.96L128.97 183.6L128.44 183.23L127.93 182.86L127.42 182.48L126.93 182.11L126.46 181.74L125.99 181.36L125.54 180.98L125.1 180.6L124.68 180.22L124.27 179.83L123.87 179.44L123.48 179.05L123.11 178.66L122.75 178.26L122.4 177.86L122.07 177.45L121.75 177.04L121.44 176.63L121.14 176.21L120.86 175.78L120.59 175.35L120.33 174.92L120.09 174.48L119.85 174.03L119.64 173.58L119.43 173.12L119.24 172.66L119.05 172.19L118.89 171.71L118.73 171.22L118.59 170.73L118.46 170.23L118.35 169.72L118.25 169.2L118.16 168.67L118.08 168.14L118.02 167.59L117.97 167.04L117.94 166.47L117.92 165.89L117.91 165.31L117.92 164.71L117.95 164.1L117.98 163.47L118.04 162.84L118.1 162.19L118.19 161.52L118.29 160.84L118.4 160.15L118.53 159.44L118.68 158.72L118.84 157.98L119.02 157.22L119.22 156.44L119.44 155.65L119.68 154.83L119.93 154L120.2 153.14L120.5 152.26L120.81 151.36L121.15 150.44L121.51 149.49L121.89 148.51L122.29 147.51L122.72 146.48L123.18 145.41L123.66 144.32"/>
+</g>
+</svg>

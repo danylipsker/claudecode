@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 464.12 614.92" width="520" height="689" data-fig="fig-175b">
+<title>Fig. 175(b) — Node: y² = x²(1 − x) has (0, 0) as a node</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 175(b), page 192. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the equation. The curve exists for x ≤ 1.">
+<path class="ink axis" style="stroke-width:1.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M72.56 304.56L403.16 304.56"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M403.16 304.56L391.66 299.73L391.66 309.39Z"/>
+<path class="ink axis" style="stroke-width:1.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M194.36 472.76L194.36 118.96"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M194.36 118.96L189.53 130.46L199.19 130.46Z"/>
+<text class="lbl axis" x="414.18" y="317.52" font-size="20.91" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="205.38" y="106" font-size="20.91" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="240.76" y="72.56" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y<tspan baseline-shift="super" font-size="70%">2</tspan> = x<tspan baseline-shift="super" font-size="70%">2</tspan>(1−x)</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the curve: a loop between x = 0 and x = 1 (vertical tangent at (1, 0)) and two branches that leave the origin to the left, one rising and one falling.">
+<path class="ink curve" style="stroke-width:3.44;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M83 148.65L86.02 153.9L89.02 159.05L92 164.12L94.96 169.11L97.9 174.02L100.82 178.85L103.72 183.59L106.6 188.25L109.46 192.84L112.3 197.34L115.12 201.76L117.92 206.11L120.7 210.37L123.46 214.56L126.2 218.67L128.91 222.71L131.61 226.67L134.29 230.55L136.95 234.36L139.59 238.1L142.2 241.76L144.8 245.35L147.38 248.87L149.93 252.31L152.47 255.69L154.99 258.99L157.48 262.22L159.96 265.39L162.41 268.48L164.85 271.51L167.26 274.46L169.66 277.35L172.03 280.18L174.39 282.94L176.72 285.63L179.03 288.25L181.33 290.82L183.6 293.31L185.86 295.75L188.09 298.12L190.3 300.43L192.49 302.68L194.67 304.87L196.82 306.99L198.95 309.06L201.06 311.07L203.16 313.02L205.23 314.91L207.28 316.74L209.31 318.51L211.32 320.23L213.31 321.89L215.28 323.5L217.23 325.05L219.16 326.55L221.07 327.99L222.96 329.39L224.83 330.72L226.68 332.01L228.51 333.24L230.32 334.43L232.11 335.56L233.87 336.65L235.62 337.68L237.35 338.67L239.06 339.6L240.75 340.49L242.41 341.34L244.06 342.13L245.69 342.88L247.29 343.59L248.88 344.25L250.45 344.87L251.99 345.44L253.52 345.97L255.02 346.46L256.51 346.9L257.97 347.31L259.42 347.67L260.84 348L262.25 348.28L263.63 348.52L265 348.73L266.34 348.9L267.66 349.03L268.97 349.13L270.25 349.18L271.51 349.21L272.76 349.19L273.98 349.15L275.18 349.07L276.37 348.95L277.53 348.8L278.67 348.62L279.79 348.41L280.89 348.17L281.97 347.9L283.03 347.6L284.08 347.26L285.1 346.9L286.1 346.51L287.08 346.1L288.04 345.65L288.98 345.18L289.9 344.68L290.79 344.16L291.67 343.61L292.53 343.04L293.37 342.45L294.19 341.83L294.99 341.19L295.77 340.52L296.52 339.84L297.26 339.13L297.98 338.41L298.68 337.66L299.35 336.9L300.01 336.11L300.65 335.31L301.26 334.49L301.86 333.66L302.44 332.8L302.99 331.93L303.53 331.05L304.04 330.15L304.54 329.24L305.01 328.31L305.47 327.37L305.9 326.42L306.32 325.46L306.71 324.48L307.08 323.5L307.44 322.5L307.77 321.49L308.08 320.48L308.38 319.46L308.65 318.43L308.9 317.39L309.14 316.34L309.35 315.29L309.54 314.23L309.71 313.17L309.86 312.1L309.99 311.03L310.11 309.96L310.2 308.88L310.27 307.8L310.32 306.72L310.35 305.64L310.36 304.56L310.35 303.48L310.32 302.39L310.27 301.31L310.2 300.23L310.11 299.16L309.99 298.08L309.86 297.01L309.71 295.94L309.54 294.88L309.35 293.83L309.14 292.77L308.9 291.73L308.65 290.69L308.38 289.66L308.08 288.64L307.77 287.62L307.44 286.62L307.08 285.62L306.71 284.63L306.32 283.66L305.9 282.7L305.47 281.74L305.01 280.8L304.54 279.88L304.04 278.96L303.53 278.07L302.99 277.18L302.44 276.31L301.86 275.46L301.26 274.62L300.65 273.8L300.01 273L299.35 272.22L298.68 271.45L297.98 270.71L297.26 269.98L296.52 269.28L295.77 268.59L294.99 267.93L294.19 267.29L293.37 266.67L292.53 266.07L291.67 265.5L290.79 264.95L289.9 264.43L288.98 263.94L288.04 263.46L287.08 263.02L286.1 262.6L285.1 262.21L284.08 261.85L283.03 261.52L281.97 261.22L280.89 260.94L279.79 260.7L278.67 260.49L277.53 260.31L276.37 260.16L275.18 260.05L273.98 259.97L272.76 259.92L271.51 259.91L270.25 259.93L268.97 259.99L267.66 260.09L266.34 260.22L265 260.38L263.63 260.59L262.25 260.84L260.84 261.12L259.42 261.44L257.97 261.81L256.51 262.21L255.02 262.66L253.52 263.15L251.99 263.68L250.45 264.25L248.88 264.87L247.29 265.53L245.69 266.23L244.06 266.98L242.41 267.78L240.75 268.62L239.06 269.51L237.35 270.45L235.62 271.44L233.87 272.47L232.11 273.55L230.32 274.69L228.51 275.87L226.68 277.11L224.83 278.39L222.96 279.73L221.07 281.12L219.16 282.57L217.23 284.06L215.28 285.62L213.31 287.22L211.32 288.89L209.31 290.6L207.28 292.38L205.23 294.21L203.16 296.1L201.06 298.05L198.95 300.06L196.82 302.12L194.67 304.25L192.49 306.44L190.3 308.68L188.09 310.99L185.86 313.37L183.6 315.8L181.33 318.3L179.03 320.86L176.72 323.49L174.39 326.18L172.03 328.94L169.66 331.76L167.26 334.65L164.85 337.61L162.41 340.64L159.96 343.73L157.48 346.89L154.99 350.13L152.47 353.43L149.93 356.8L147.38 360.25L144.8 363.76L142.2 367.35L139.59 371.02L136.95 374.75L134.29 378.56L131.61 382.45L128.91 386.41L126.2 390.44L123.46 394.55L120.7 398.74L117.92 403.01L115.12 407.35L112.3 411.78L109.46 416.28L106.6 420.86L103.72 425.53L100.82 430.27L97.9 435.09L94.96 440L92 444.99L89.02 450.06L86.02 455.22L83 460.46"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The lowest-degree terms y² − x² = 0 give two distinct real tangents y = ±x at the origin: the origin is a node. Draw them lightly.">
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.38 4.92;stroke:#4b4b4b;stroke-dasharray:7.38 4.92;stroke-linecap:round;stroke-linejoin:round" d="M130.56 368.36L258.16 240.76"/>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.38 4.92;stroke:#4b4b4b;stroke-dasharray:7.38 4.92;stroke-linecap:round;stroke-linejoin:round" d="M130.56 240.76L258.16 368.36"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="194.36" cy="304.56" r="4.8"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The caption of the book.">
+<text class="lbl  upright" x="240.76" y="513.36" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">has (0,0) as a</text>
+<text class="lbl  upright" x="240.76" y="537.36" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">node</text>
+</g>
+</svg>

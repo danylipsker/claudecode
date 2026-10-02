@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1236.97 1206.75" width="520" height="507" data-fig="fig-043">
+<title>Fig. 43 — Inscribed quadrilateral: tangents at opposite vertices and opposite sides meet on a line</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 43, page 47. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A conic with an inscribed quadrilateral 1, 2 = 3', 1', 2' = 3: the hexagon of Pascal with two pairs of vertices coinciding (2' with 3 and 2 with 3').">
+<path class="ink thick" style="stroke-width:6.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M806.11 884.22L806.23 878.43L806.17 872.64L805.93 866.85L805.5 861.06L804.89 855.28L804.1 849.51L803.13 843.75L801.98 838.01L800.64 832.29L799.13 826.6L797.44 820.93L795.57 815.29L793.53 809.69L791.31 804.12L788.92 798.59L786.35 793.1L783.61 787.67L780.71 782.28L777.63 776.94L774.39 771.66L770.99 766.44L767.42 761.28L763.7 756.19L759.81 751.16L755.78 746.21L751.58 741.33L747.24 736.52L742.75 731.8L738.11 727.16L733.33 722.6L728.41 718.13L723.36 713.75L718.17 709.46L712.85 705.27L707.4 701.18L701.82 697.19L696.12 693.3L690.31 689.51L684.38 685.83L678.34 682.26L672.19 678.8L665.94 675.46L659.58 672.23L653.13 669.12L646.59 666.12L639.96 663.25L633.24 660.5L626.44 657.87L619.56 655.37L612.61 653L605.59 650.75L598.5 648.63L591.35 646.65L584.15 644.8L576.89 643.08L569.58 641.49L562.23 640.04L554.84 638.72L547.41 637.54L539.96 636.5L532.47 635.6L524.96 634.83L517.44 634.21L509.9 633.72L502.35 633.38L494.79 633.17L487.24 633.1L479.68 633.17L472.14 633.39L464.61 633.74L457.09 634.23L449.6 634.86L442.13 635.63L434.7 636.54L427.29 637.59L419.93 638.77L412.61 640.09L405.33 641.55L398.11 643.14L390.95 644.86L383.84 646.72L376.8 648.71L369.82 650.84L362.92 653.09L356.09 655.47L349.35 657.97L342.69 660.6L336.11 663.36L329.63 666.24L323.24 669.23L316.96 672.35L310.78 675.59L304.7 678.94L298.73 682.4L292.88 685.97L287.15 689.65L281.53 693.44L276.04 697.34L270.68 701.34L265.44 705.43L260.34 709.63L255.38 713.92L250.55 718.3L245.87 722.77L241.33 727.33L236.94 731.98L232.7 736.71L228.61 741.51L224.68 746.4L220.9 751.35L217.28 756.38L213.82 761.48L210.53 766.64L207.4 771.86L204.44 777.15L201.65 782.48L199.03 787.87L196.58 793.31L194.3 798.8L192.2 804.33L190.28 809.9L188.53 815.51L186.96 821.15L185.57 826.82L184.35 832.51L183.32 838.23L182.47 843.98L181.81 849.73L181.32 855.5L181.02 861.28L180.9 867.07L180.96 872.86L181.2 878.65L181.63 884.44L182.24 890.22L183.03 895.99L184 901.75L185.15 907.49L186.49 913.21L188 918.9L189.69 924.57L191.56 930.21L193.6 935.82L195.82 941.39L198.21 946.91L200.78 952.4L203.52 957.84L206.42 963.23L209.5 968.56L212.74 973.84L216.14 979.06L219.71 984.22L223.43 989.31L227.31 994.34L231.35 999.3L235.55 1004.18L239.89 1008.98L244.38 1013.7L249.02 1018.35L253.8 1022.9L258.71 1027.37L263.77 1031.75L268.96 1036.04L274.28 1040.23L279.73 1044.32L285.31 1048.32L291 1052.21L296.82 1055.99L302.75 1059.67L308.79 1063.24L314.94 1066.7L321.19 1070.04L327.55 1073.27L334 1076.39L340.54 1079.38L347.17 1082.25L353.89 1085L360.69 1087.63L367.57 1090.13L374.52 1092.51L381.54 1094.75L388.63 1096.87L395.78 1098.85L402.98 1100.71L410.24 1102.43L417.55 1104.01L424.9 1105.46L432.29 1106.78L439.71 1107.96L447.17 1109L454.66 1109.9L462.17 1110.67L469.69 1111.29L477.23 1111.78L484.78 1112.13L492.34 1112.33L499.89 1112.4L507.44 1112.33L514.99 1112.12L522.52 1111.76L530.03 1111.27L537.53 1110.64L544.99 1109.87L552.43 1108.96L559.84 1107.92L567.2 1106.73L574.52 1105.41L581.79 1103.95L589.02 1102.36L596.18 1100.64L603.29 1098.78L610.33 1096.79L617.31 1094.67L624.21 1092.42L631.04 1090.04L637.78 1087.53L644.44 1084.9L651.02 1082.14L657.5 1079.27L663.88 1076.27L670.17 1073.15L676.35 1069.92L682.43 1066.57L688.4 1063.1L694.25 1059.53L699.98 1055.85L705.6 1052.06L711.09 1048.16L716.45 1044.17L721.69 1040.07L726.79 1035.88L731.75 1031.59L736.58 1027.2L741.26 1022.73L745.8 1018.17L750.19 1013.52L754.43 1008.8L758.52 1003.99L762.45 999.11L766.23 994.15L769.85 989.12L773.31 984.02L776.6 978.86L779.73 973.64L782.69 968.36L785.48 963.02L788.1 957.63L790.55 952.19L792.83 946.7L794.93 941.17L796.85 935.6L798.6 929.99L800.17 924.35L801.56 918.68L802.78 912.99L803.81 907.27L804.66 901.53L805.32 895.77L805.81 890L806.11 884.22"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.46;stroke:#2a2a2a" d="M671.76 1051.2L685.62 1059.86M653.45 1018.75L695.04 1044.74M635.14 986.31L704.45 1029.62M616.83 953.86L713.87 1014.5M598.52 921.42L723.29 999.38M580.21 888.97L732.7 984.26M561.9 856.53L742.12 969.14M543.59 824.08L751.54 954.02M525.29 791.64L760.95 938.9M506.98 759.2L770.37 923.78M488.67 726.75L779.79 908.66M470.36 694.31L789.21 893.54M452.05 661.86L798.62 878.42M445.93 637.04L796.48 856.08M486.16 641.17L754.53 808.87M526.39 645.3L712.59 761.65M566.61 649.43L670.64 714.44M606.84 653.57L628.69 667.22"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M437.55 636.17L617.54 654.67L805.92 866.71L680.91 1067.42Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="680.91" cy="1067.42" r="8.04"/>
+<text class="lbl " x="711.94" y="1103.93" font-size="42.06" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">1</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="437.55" cy="636.17" r="8.04"/>
+<text class="lbl  upright" x="410.96" y="667.46" font-size="33.65" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2' = 3</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="617.54" cy="654.67" r="8.04"/>
+<text class="lbl " x="648.57" y="618.16" font-size="42.06" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">1'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="805.92" cy="866.71" r="8.04"/>
+<text class="lbl  upright" x="837.21" y="866.71" font-size="33.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2 = 3'</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangents at the opposite vertices 2' = 3 and 2 = 3' (they meet at one point), and the tangents at 1 and 1' (they meet at another).">
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M308.55 652.22L789.81 592.36"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M811.19 956.55L789.81 592.36"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M489.96 610.51L1113.01 826.16"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M567.41 1130.8L1113.01 826.16"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="789.81" cy="592.36" r="8.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="1113.01" cy="826.16" r="8.04"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the opposite sides: 1,(2' = 3) with 1',(2 = 3'), and 1',(2' = 3) with 1,(2 = 3'). Each pair meets at one point.">
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M680.91 1067.42L437.55 636.17"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M680.91 1067.42L805.92 866.71"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M437.55 636.17L152.77 131.53"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M805.92 866.71L152.77 131.53"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M437.55 636.17L918.71 685.61"/>
+<path class="ink given" style="stroke-width:4.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M805.92 866.71L918.71 685.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="152.77" cy="131.53" r="8.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.72" cx="918.71" cy="685.61" r="8.04"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="The four points lie on one line (heavy): the Pascal line of the degenerate hexagon.">
+<path class="ink given" style="stroke-width:5.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M75.95 75.95L1161.02 860.89"/>
+</g>
+</svg>

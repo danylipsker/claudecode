@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 540.37 531.08" width="520" height="511" data-fig="fig-130a">
+<title>Fig. 130(a) — The Peaucellier cell with the extra bar: straight-line motion</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 130(a), page 132. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The frame: two fixed pivots O and O′, OO′ = d (the bearings are drawn as squares).">
+<path class="ink cons" style="stroke-width:1.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M208.29 285.14L268.29 285.14L268.29 241.14L208.29 241.14Z"/>
+<path class="ink cons" style="stroke-width:1.19;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M378.19 279.21L438.19 279.21L438.19 235.21L378.19 235.21Z"/>
+<path class="ink cons dash" style="stroke-width:1.19;fill:none;--dash:6.48 4.32;stroke:#4b4b4b;stroke-dasharray:6.48 4.32;stroke-linecap:round;stroke-linejoin:round" d="M238.29 263.14L408.19 257.21"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="238.29" cy="263.14" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="238.29" cy="263.14" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="408.19" cy="257.21" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="408.19" cy="257.21" r="5.6"/>
+<text class="lbl " x="215.05" y="290.48" font-size="18.37" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="431.42" y="284.55" font-size="18.37" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O′</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The Peaucellier cell: the short bars OA and OB (length b) and the four bars AP, PB, BQ, QA (length a, a &gt; b) of the rhombus APBQ. O lies between P and Q on the line of symmetry, and OP · OQ = a² − b² (negatively inverse).">
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M230.29 266.01L166.22 87.13L165.72 84.52L166.06 81.88L167.2 79.48L169.02 77.54L171.35 76.27L173.97 75.77L176.61 76.11L179.01 77.25L180.95 79.07L182.22 81.4L246.29 260.27L246.79 262.89L246.45 265.53L245.31 267.93L243.49 269.87L241.16 271.14L238.54 271.64L235.9 271.3L233.5 270.16L231.56 268.34Z"/>
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M244.58 257.42L372.43 397.97L373.89 400.19L374.59 402.75L374.47 405.41L373.53 407.9L371.87 409.97L369.64 411.43L367.08 412.13L364.42 412.01L361.93 411.07L359.86 409.4L232 268.86L230.54 266.64L229.84 264.07L229.97 261.42L230.91 258.93L232.57 256.85L234.79 255.39L237.36 254.69L240.01 254.82L242.5 255.76Z"/>
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M174.9 75.8L493.87 101.51L496.45 102.14L498.72 103.53L500.44 105.56L501.45 108.01L501.66 110.67L501.03 113.25L499.64 115.52L497.61 117.24L495.15 118.25L492.5 118.46L173.54 92.74L170.95 92.12L168.69 90.72L166.96 88.7L165.95 86.24L165.75 83.59L166.37 81L167.77 78.74L169.79 77.01L172.25 76Z"/>
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M358.34 400.31L485.38 106.61L486.81 104.36L488.86 102.67L491.33 101.69L493.98 101.52L496.56 102.18L498.81 103.61L500.5 105.66L501.48 108.13L501.65 110.78L500.99 113.36L373.95 407.06L372.52 409.31L370.47 411L368 411.98L365.35 412.15L362.77 411.49L360.53 410.06L358.83 408.01L357.85 405.54L357.68 402.89Z"/>
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M182.02 87.64L54.98 381.34L53.56 383.59L51.51 385.29L49.04 386.27L46.38 386.43L43.81 385.77L41.56 384.35L39.86 382.3L38.89 379.83L38.72 377.17L39.38 374.6L166.42 80.89L167.84 78.65L169.89 76.95L172.37 75.97L175.02 75.81L177.6 76.47L179.84 77.89L181.54 79.94L182.52 82.41L182.68 85.07Z"/>
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M365.46 412.16L46.5 386.44L43.91 385.82L41.65 384.42L39.92 382.4L38.91 379.94L38.71 377.29L39.33 374.7L40.73 372.44L42.75 370.71L45.21 369.7L47.86 369.5L366.83 395.21L369.41 395.84L371.68 397.23L373.4 399.26L374.41 401.72L374.62 404.37L373.99 406.95L372.6 409.22L370.57 410.94L368.11 411.95Z"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="174.22" cy="84.27" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="174.22" cy="84.27" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="366.15" cy="403.69" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="366.15" cy="403.69" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="493.19" cy="109.98" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="493.19" cy="109.98" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="47.18" cy="377.97" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="47.18" cy="377.97" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="238.29" cy="263.14" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="238.29" cy="263.14" r="5.6"/>
+<text class="lbl " x="150.98" y="56.93" font-size="18.37" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="389.38" y="431.02" font-size="18.37" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="516.42" y="82.64" font-size="18.37" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="23.94" y="405.31" font-size="18.37" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="The extra bar O′P, of length O′O = d, forces P to move on the circle about O′ that passes through O.">
+<path class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M400.82 252.96L485.82 105.73L487.5 103.67L489.73 102.22L492.3 101.53L494.95 101.67L497.44 102.62L499.5 104.3L500.95 106.53L501.64 109.09L501.5 111.75L500.55 114.23L415.55 261.46L413.87 263.52L411.64 264.97L409.07 265.66L406.42 265.52L403.94 264.57L401.87 262.9L400.42 260.66L399.73 258.1L399.87 255.44Z"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="408.19" cy="257.21" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="408.19" cy="257.21" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.95;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="493.19" cy="109.98" r="14"/>
+<circle class="ink given" style="stroke-width:1.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="493.19" cy="109.98" r="5.6"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="A circle through the centre of inversion inverts into a straight line, so Q, the inverse of P, moves on a straight line perpendicular to OO′: line motion from circular motion.">
+<path class="ink curve" style="stroke-width:3.03;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M51.37 497.9L35.14 33.18"/>
+</g>
+</svg>

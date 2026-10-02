@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 849.3 567.3" width="520" height="347" data-fig="fig-174">
+<title>Fig. 174 — The slope of a curve at the intercept (a, 0): the limit of y/(x − a)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 174, page 191. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, the origin O and the intercept (a, 0): the curve passes through it.">
+<path class="ink axis" style="stroke-width:2.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M47.15 437.15L732.15 437.15"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M732.15 437.15L716.27 430.48L716.27 443.82Z"/>
+<path class="ink axis" style="stroke-width:2.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M97.15 482.15L97.15 97.15"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M97.15 97.15L90.48 113.03L103.82 113.03Z"/>
+<text class="lbl axis" x="747.37" y="455.05" font-size="28.88" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="112.37" y="79.25" font-size="28.88" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.87" cx="97.15" cy="437.15" r="7.73"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.87" cx="279.15" cy="437.15" r="7.73"/>
+<text class="lbl " x="188.15" y="415.25" font-size="28.88" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<path class="ink curve" style="stroke-width:4.76;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M242.15 499.19L244.63 494.85L247.1 490.55L249.58 486.27L252.05 482.02L254.53 477.79L257 473.59L259.48 469.41L261.95 465.26L264.43 461.14L266.9 457.04L269.38 452.97L271.85 448.93L274.33 444.91L276.8 440.92L279.27 436.95L281.75 433.01L284.23 429.09L286.7 425.21L289.18 421.34L291.65 417.51L294.13 413.7L296.6 409.91L299.08 406.15L301.55 402.42L304.02 398.71L306.5 395.03L308.98 391.38L311.45 387.75L313.93 384.15L316.4 380.57L318.88 377.02L321.35 373.5L323.83 370L326.3 366.53L328.78 363.08L331.25 359.66L333.73 356.27L336.2 352.9L338.68 349.56L341.15 346.24L343.63 342.95L346.1 339.69L348.58 336.45L351.05 333.24L353.53 330.05L356 326.89L358.48 323.76L360.95 320.65L363.42 317.57L365.9 314.52L368.38 311.49L370.85 308.48L373.33 305.5L375.8 302.55L378.28 299.63L380.75 296.73L383.23 293.86L385.7 291.01L388.17 288.19L390.65 285.39L393.13 282.62L395.6 279.88L398.08 277.16L400.55 274.47L403.03 271.81L405.5 269.17L407.98 266.55L410.45 263.97L412.92 261.41L415.4 258.87L417.88 256.36L420.35 253.88L422.83 251.42L425.3 248.99L427.78 246.59L430.25 244.21L432.73 241.86L435.2 239.53L437.67 237.23L440.15 234.95L442.63 232.71L445.1 230.48L447.58 228.29L450.05 226.12L452.53 223.97L455 221.85L457.48 219.76L459.95 217.69L462.42 215.65L464.9 213.64L467.38 211.65L469.85 209.69L472.33 207.75L474.8 205.84L477.28 203.96L479.75 202.1L482.23 200.27L484.7 198.46L487.17 196.68L489.65 194.93L492.13 193.2L494.6 191.5L497.08 189.82L499.55 188.18L502.03 186.55L504.5 184.95L506.98 183.38L509.45 181.84L511.92 180.32L514.4 178.82L516.88 177.36L519.35 175.91L521.83 174.5L524.3 173.11L526.78 171.75L529.25 170.41L531.73 169.1L534.2 167.81L536.67 166.55L539.15 165.32L541.63 164.11L544.1 162.93L546.58 161.78L549.05 160.65L551.53 159.54L554 158.47L556.48 157.42L558.95 156.39L561.42 155.39L563.9 154.42L566.38 153.47L568.85 152.55L571.33 151.66L573.8 150.79L576.28 149.95L578.75 149.13L581.23 148.34L583.7 147.57L586.17 146.84L588.65 146.12L591.13 145.44L593.6 144.78L596.08 144.14L598.55 143.53L601.03 142.95L603.5 142.39L605.98 141.86L608.45 141.36L610.92 140.88L613.4 140.43L615.88 140L618.35 139.6L620.82 139.23L623.3 138.88L625.78 138.56L628.25 138.26L630.73 137.99L633.2 137.75L635.67 137.53L638.15 137.34L640.63 137.17L643.1 137.03L645.57 136.92L648.05 136.83L650.53 136.77L653 136.74L655.48 136.73L657.95 136.74L660.43 136.79L662.9 136.85L665.38 136.95L667.85 137.07L670.33 137.22L672.8 137.39L675.28 137.59L677.75 137.81L680.23 138.06L682.7 138.34L685.18 138.64L687.65 138.97L690.13 139.33L692.6 139.71L695.08 140.11L697.55 140.55L700.03 141.01L702.5 141.49L704.98 142L707.45 142.54L709.93 143.1L712.4 143.69L714.88 144.31L717.35 144.95L719.83 145.61L722.3 146.31L724.78 147.03L727.25 147.77L729.73 148.54L732.2 149.34L734.68 150.16L737.15 151.01"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Take a neighbouring point (x, y) of the curve and draw the chord from (a, 0) to it; drop the ordinate y (dashed) to the axis.">
+<path class="ink given" style="stroke-width:3.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M279.15 437.15L640.15 137.15"/>
+<path class="ink cons dash" style="stroke-width:1.87;fill:none;--dash:10.19 6.79;stroke:#4b4b4b;stroke-dasharray:10.19 6.79;stroke-linecap:round;stroke-linejoin:round" d="M640.15 137.15L642.15 437.15"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.87" cx="640.15" cy="137.15" r="7.73"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.87" cx="642.15" cy="437.15" r="7.73"/>
+<text class="lbl " x="460.15" y="415.25" font-size="28.88" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x−a</text>
+<text class="lbl " x="660.05" y="287.15" font-size="28.88" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The chord has slope y/(x − a); as the point moves down the curve to (a, 0), the chord turns into the tangent and the limit of y/(x − a) is the slope m of the curve at the intercept.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.87" d="M312.94 437.15A33.79 33.79 0 0 0 305.13 415.56"/>
+</g>
+</svg>

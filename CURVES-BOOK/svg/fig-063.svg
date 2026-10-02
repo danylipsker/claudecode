@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 408.96 475.38" width="520" height="604" data-fig="fig-063">
+<title>Fig. 63 — The evolute of a cycloid is an equal cycloid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 63, page 66. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The arch of the cycloid from the cusp O to its top N, and the generating circle in the position where it touches the line through O at H, carrying P.">
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M34.77 246.19L379.77 246.19"/>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M34.77 446.19L34.77 29.19"/>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M348.93 446.19L348.93 34.19"/>
+<circle class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="179.77" cy="146.19" r="100"/>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M80.5 158.24L279.04 134.14"/>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M179.77 446.19L179.77 46.19"/>
+<path class="ink thick" style="stroke-width:2.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M29.19 222.67L29.74 224.2L30.25 225.68L30.72 227.11L31.16 228.5L31.57 229.84L31.95 231.13L32.29 232.37L32.61 233.57L32.9 234.71L33.16 235.8L33.4 236.84L33.61 237.83L33.8 238.76L33.97 239.64L34.12 240.47L34.25 241.24L34.36 241.96L34.45 242.62L34.53 243.23L34.59 243.78L34.64 244.28L34.68 244.72L34.71 245.1L34.74 245.43L34.75 245.69L34.76 245.9L34.77 246.06L34.77 246.15L34.77 246.19L34.77 246.17L34.77 246.09L34.77 245.96L34.78 245.76L34.79 245.51L34.81 245.21L34.84 244.84L34.88 244.42L34.93 243.94L34.99 243.41L35.06 242.82L35.15 242.17L35.25 241.47L35.38 240.72L35.52 239.9L35.68 239.04L35.86 238.12L36.07 237.15L36.3 236.13L36.55 235.05L36.83 233.92L37.14 232.75L37.48 231.52L37.85 230.24L38.24 228.92L38.67 227.55L39.14 226.13L39.64 224.66L40.17 223.15L40.75 221.6L41.36 220L42 218.36L42.69 216.67L43.42 214.95L44.19 213.19L45.01 211.38L45.86 209.55L46.77 207.67L47.71 205.76L48.71 203.81L49.75 201.83L50.84 199.82L51.98 197.78L53.16 195.71L54.4 193.61L55.69 191.48L57.03 189.33L58.42 187.15L59.86 184.95L61.36 182.73L62.91 180.48L64.52 178.21L66.17 175.93L67.89 173.63L69.66 171.31L71.49 168.98L73.37 166.64L75.31 164.28L77.3 161.92L79.35 159.54L81.46 157.16L83.63 154.77L85.85 152.37L88.13 149.98L90.47 147.58L92.87 145.18L95.32 142.77L97.83 140.38L100.4 137.98L103.03 135.59L105.71 133.21L108.46 130.83L111.25 128.46L114.11 126.1L117.02 123.76L119.99 121.43L123.01 119.11L126.09 116.8L129.22 114.52L132.41 112.25L135.66 110L138.95 107.77L142.3 105.57L145.7 103.39L149.16 101.23L152.67 99.1L156.22 96.99L159.83 94.92L163.49 92.87L167.19 90.85L170.95 88.87L174.75 86.92L178.59 85L182.49 83.12L186.42 81.28L190.41 79.47L194.43 77.7L198.5 75.97L202.6 74.28L206.75 72.63L210.94 71.03L215.16 69.47L219.42 67.95L223.72 66.48L228.05 65.05L232.42 63.67L236.82 62.34L241.25 61.05L245.71 59.82L250.2 58.63L254.71 57.5L259.26 56.42L263.82 55.38L268.42 54.41L273.03 53.48L277.67 52.61L282.33 51.79L287.01 51.02L291.7 50.31L296.41 49.66L301.14 49.06L305.88 48.52L310.63 48.03L315.39 47.6L320.17 47.23L324.95 46.91L329.73 46.65L334.53 46.45L339.33 46.31L344.13 46.22L348.93 46.19"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.05" cx="80.5" cy="158.24" r="3.09"/>
+<text class="lbl " x="71.98" y="148.22" font-size="16.16" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.05" cx="179.77" cy="246.19" r="3.09"/>
+<text class="lbl " x="188.29" y="236.17" font-size="16.16" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.05" cx="34.77" cy="246.19" r="3.09"/>
+<text class="lbl " x="43.29" y="256.21" font-size="16.16" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M249.77 237.19L297.77 237.19"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M297.77 237.19L288.88 233.46L288.88 240.92Z"/>
+<text class="lbl  upright" x="331.93" y="146.19" font-size="13.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2a</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Reflect the circle in the line: draw the circle of the same radius a on the other side, touching the line at H too, and the line through O' that it rolls along, 2a below. The reflected circle carries the point P' that belongs to P.">
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M34.77 446.19L379.77 446.19"/>
+<circle class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="179.77" cy="346.19" r="100"/>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M279.04 334.14L80.5 358.24"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.05" cx="34.77" cy="446.19" r="3.09"/>
+<text class="lbl " x="43.29" y="436.17" font-size="16.16" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O'</text>
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M236.77 440.19L284.77 440.19"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M284.77 440.19L275.88 436.46L275.88 443.92Z"/>
+<text class="lbl  upright" x="331.93" y="346.19" font-size="13.74" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2a</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join P to H and carry the line on beyond H by the same length: it ends at P'. PP' is the normal at P, and PP' = 2·PH = R, the radius of curvature, so P' is the centre of curvature of the arch at P.">
+<path class="ink given" style="stroke-width:1.71;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M80.5 158.24L279.04 334.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.05" cx="279.04" cy="334.14" r="3.09"/>
+<text class="lbl " x="289.06" y="334.14" font-size="16.16" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P'</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="As the lower circle rolls along its line, P' draws the evolute of the arch: a cycloid equal to the first, starting at O with a horizontal tangent and ending in the cusp below N. Each curve is thus the evolute of the other.">
+<path class="ink curve" style="stroke-width:2.66;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M34.77 246.19L39.48 246.22L44.19 246.3L48.9 246.44L53.61 246.63L58.31 246.88L63 247.19L67.68 247.55L72.36 247.96L77.03 248.43L81.68 248.95L86.32 249.53L90.95 250.16L95.56 250.85L100.15 251.58L104.73 252.37L109.29 253.21L113.82 254.11L118.34 255.05L122.83 256.05L127.3 257.09L131.74 258.19L136.16 259.33L140.55 260.52L144.91 261.76L149.24 263.05L153.54 264.38L157.81 265.76L162.04 267.18L166.25 268.64L170.41 270.15L174.54 271.71L178.63 273.3L182.69 274.93L186.71 276.6L190.68 278.32L194.62 280.07L198.51 281.85L202.36 283.67L206.17 285.53L209.93 287.42L213.65 289.34L217.33 291.3L220.95 293.28L224.53 295.3L228.06 297.34L231.55 299.41L234.98 301.5L238.37 303.62L241.7 305.77L244.98 307.93L248.22 310.12L251.4 312.33L254.52 314.55L257.6 316.8L260.62 319.06L263.59 321.33L266.51 323.62L269.37 325.93L272.17 328.24L274.93 330.56L277.62 332.89L280.27 335.23L282.85 337.58L285.38 339.93L287.86 342.28L290.28 344.64L292.65 346.99L294.96 349.35L297.21 351.7L299.41 354.05L301.55 356.4L303.64 358.74L305.67 361.07L307.65 363.4L309.58 365.72L311.45 368.02L313.26 370.32L315.02 372.6L316.73 374.86L318.38 377.11L319.98 379.34L321.53 381.56L323.03 383.75L324.48 385.92L325.87 388.07L327.22 390.2L328.51 392.31L329.76 394.38L330.95 396.44L332.1 398.46L333.2 400.45L334.26 402.42L335.26 404.35L336.23 406.25L337.15 408.12L338.02 409.95L338.86 411.75L339.65 413.51L340.4 415.23L341.11 416.92L341.78 418.56L342.41 420.17L343 421.73L343.56 423.26L344.08 424.74L344.57 426.17L345.03 427.57L345.45 428.91L345.84 430.21L346.2 431.47L346.54 432.68L346.84 433.83L347.12 434.94L347.37 436.01L347.6 437.02L347.8 437.98L347.99 438.89L348.15 439.74L348.29 440.55L348.41 441.3L348.52 442.01L348.61 442.65L348.69 443.25L348.75 443.79L348.8 444.27L348.84 444.71L348.87 445.08L348.89 445.41L348.91 445.67L348.92 445.88L348.92 446.04L348.93 446.14L348.93 446.19L348.93 446.18L348.93 446.11L348.93 445.99L348.94 445.81L348.95 445.58L348.97 445.3L348.99 444.95L349.03 444.56L349.07 444.11L349.12 443.6L349.19 443.04L349.27 442.43L349.37 441.76L349.48 441.04L349.61 440.27L349.76 439.44L349.93 438.56L350.12 437.64L350.34 436.66L350.57 435.63L350.83 434.55L351.12 433.42L351.44 432.24L351.78 431.02L352.15 429.75L352.55 428.43L352.99 427.07L353.46 425.66L353.96 424.21L354.49 422.71L355.06 421.17L355.67 419.59L356.32 417.97L357 416.31L357.73 414.61L358.49 412.88L359.3 411.1L360.14 409.29L361.03 407.45L361.97 405.57L362.95 403.66L363.97 401.71L365.05 399.74L366.16 397.73L367.33 395.7L368.54 393.64L369.81 391.55"/>
+</g>
+</svg>

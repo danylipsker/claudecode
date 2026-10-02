@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 930.05 755.89" width="520" height="423" data-fig="fig-159">
+<title>Fig. 159 — The roulette of a point attached to a rolling curve</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 159, page 175. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed curve with its normal and tangent at O1 as axes: OX is the normal, OY the tangent. (Here the fixed curve is a circular arc through O1.)">
+<path class="ink axis" style="stroke-width:2.79;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M64.94 657.11L872.94 657.11"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M872.94 657.11L855.55 649.8L855.55 664.41Z"/>
+<path class="ink axis" style="stroke-width:2.79;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M392.94 685.91L392.94 57.11"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M392.94 57.11L385.64 74.5L400.25 74.5Z"/>
+<text class="lbl axis" x="872.94" y="631.62" font-size="31.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="406.28" y="41.42" font-size="31.62" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M389.3 698.78A240 240 0 0 0 70.86 431.58"/>
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M377 571.1A240 240 0 0 0 303.98 470.59"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.6" d="M377 571.1L392.86 548.14M368.66 551.9L382.45 527.64M358.66 533.5L370.29 508.13M347.11 516.04L356.48 489.76M334.07 499.65L341.12 472.66M319.66 484.47L324.33 456.96M303.98 470.59L306.23 442.78"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.05" cx="392.94" cy="657.11" r="6.05"/>
+<text class="lbl " x="376.28" y="676.71" font-size="31.62" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="The rolling curve touches the fixed one at T, the point of the fixed curve at arc length s from O1. Its normal at T is the normal of the fixed curve there, which makes the angle φ with OX. (Here the rolling curve is a circle about a point CR on that normal.)">
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M57.11 305.34A340 340 0 0 0 642.78 243.79"/>
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M87.6 341.68A340 340 0 0 0 142.05 387.37"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.6" d="M87.6 341.68L81.98 369.01M95.99 350.07L91.33 377.58M104.67 358.16L100.97 385.82M113.63 365.95L110.89 393.72M122.85 373.42L121.09 401.27M132.33 380.56L131.54 408.45M142.05 387.37L142.23 415.27"/>
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M584.84 333A340 340 0 0 0 637.76 254.54"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:2.6" d="M584.84 333L612.5 336.7M595.15 321L622.95 323.41M604.9 308.53L632.78 309.64M614.05 295.62L641.95 295.44M622.59 282.3L650.45 280.82M630.5 268.6L658.26 265.82M637.76 254.54L665.37 250.48"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.05" cx="227.11" cy="428.85" r="6.05"/>
+<text class="lbl " x="213.78" y="413.17" font-size="31.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<text class="lbl " x="311.82" y="516.04" font-size="31.62" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">s</text>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="O is the point of the rolling curve that touched O1 when the motion began, so the arc TO of the rolling curve equals the arc O1T of the fixed curve: carry the length s from T along the rolling curve.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.05" cx="516.47" cy="391.21" r="6.05"/>
+<text class="lbl " x="536.08" y="391.21" font-size="31.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="376.03" y="419.13" font-size="31.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">s</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="The normals of the two curves at T coincide; the normal of the rolling curve at O meets it at the angle φ1 (the angle through which the rolling curve has turned). That second normal makes the angle φ + φ1 with OX.">
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M146.15 678.03L344.78 66.69"/>
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M699.91 675.6L354.29 139.78"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.05" d="M195.63 657.11A42.69 42.69 0 0 0 166.14 616.51"/>
+<text class="lbl " x="204.75" y="619.47" font-size="31.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.05" d="M318.98 146.1A42.69 42.69 0 0 0 355.31 141.37"/>
+<text class="lbl " x="340.74" y="171.35" font-size="31.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.05" d="M722.14 657.11A34.15 34.15 0 0 0 669.47 628.41"/>
+<text class="lbl " x="749.99" y="631.11" font-size="28.46" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ+φ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="The coordinates (x1, y1) of T: drop the perpendicular from T on OX. The coordinates (u, v) of T referred to the tangent and normal at O: drop the perpendicular v from T on the normal at O; u is the piece from O to its foot.">
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M227.11 428.85L227.11 657.11"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.05" cx="227.11" cy="657.11" r="6.05"/>
+<text class="lbl " x="242.79" y="542.98" font-size="31.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl " x="310.03" y="643.38" font-size="31.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M227.11 428.85L448.6 285.99"/>
+<text class="lbl " x="326.19" y="343.7" font-size="31.62" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">v</text>
+<text class="lbl " x="496.26" y="338.6" font-size="31.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">u</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The roulette of O: the path of O as the curve rolls, from O1 (where it starts with a cusp along OY) to the position shown. Its coordinates are x = v sin(φ+φ1) − u cos(φ+φ1) − x1 and y = −v cos(φ+φ1) − u sin(φ+φ1) + y1.">
+<path class="ink thick" style="stroke-width:5.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M392.94 657.11L392.97 657.11L393.03 657.11L393.15 657.1L393.3 657.09L393.5 657.08L393.75 657.06L394.04 657.04L394.38 657L394.76 656.95L395.18 656.9L395.64 656.83L396.15 656.74L396.71 656.64L397.3 656.53L397.94 656.4L398.62 656.24L399.34 656.07L400.1 655.88L400.9 655.67L401.74 655.43L402.62 655.16L403.54 654.87L404.5 654.56L405.5 654.21L406.53 653.84L407.6 653.44L408.7 653L409.84 652.53L411.02 652.03L412.23 651.49L413.47 650.92L414.74 650.31L416.04 649.66L417.38 648.98L418.74 648.25L420.13 647.49L421.55 646.68L423 645.83L424.47 644.94L425.97 644L427.49 643.01L429.04 641.98L430.6 640.91L432.19 639.78L433.8 638.61L435.42 637.39L437.06 636.12L438.72 634.8L440.4 633.42L442.09 632L443.79 630.52L445.5 628.99L447.22 627.4L448.96 625.76L450.7 624.06L452.45 622.31L454.2 620.5L455.96 618.64L457.72 616.72L459.48 614.74L461.24 612.7L463.01 610.61L464.77 608.46L466.52 606.24L468.27 603.97L470.02 601.64L471.76 599.25L473.49 596.8L475.21 594.29L476.91 591.72L478.61 589.09L480.29 586.4L481.95 583.64L483.6 580.83L485.22 577.96L486.83 575.02L488.42 572.03L489.98 568.97L491.52 565.85L493.03 562.68L494.52 559.44L495.97 556.14L497.4 552.79L498.79 549.37L500.16 545.9L501.48 542.36L502.78 538.77L504.03 535.12L505.25 531.41L506.42 527.65L507.56 523.82L508.65 519.94L509.7 516.01L510.7 512.02L511.66 507.97L512.56 503.87L513.42 499.72L514.23 495.51L514.98 491.25L515.68 486.94L516.33 482.58L516.92 478.17L517.45 473.71L517.92 469.2L518.33 464.64L518.68 460.04L518.97 455.39L519.2 450.69L519.35 445.95L519.45 441.17L519.47 436.35L519.43 431.48L519.32 426.58L519.13 421.63L518.88 416.65L518.55 411.63L518.14 406.58L517.66 401.49L517.11 396.37L516.47 391.21"/>
+</g>
+<g class="step" data-step="6" data-tool="note" data-text="The coordinates of O: x measured along OX from O1, y the height of O. The thin line through O is the tangent of the rolling curve there.">
+<path class="ink given" style="stroke-width:3.35;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M516.47 391.21L516.47 657.11"/>
+<text class="lbl " x="454.71" y="643.38" font-size="31.62" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x</text>
+<text class="lbl " x="530.2" y="524.16" font-size="31.62" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+<path class="ink cons" style="stroke-width:2.05;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M592.1 342.43L373.61 483.36"/>
+</g>
+</svg>

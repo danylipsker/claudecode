@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 377.91 346.41" width="520" height="477" data-fig="fig-209a">
+<title>Fig. 209(a) — The ellipse as a hypotrochoid (a = 2b)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 209(a), page 235. Section: trochoids.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius a with its centre O, the axes OX and OY, and X where the tracing point P starts.">
+<path class="ink axis" style="stroke-width:1.13;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M23.21 173.21L354.71 173.21"/>
+<path class="ink axis" style="stroke-width:1.13;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M179.21 323.21L179.21 23.21"/>
+<circle class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="179.21" cy="173.21" r="150"/>
+<path class="ink aux" style="stroke-width:0.68;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M130.37 31.38A150 150 0 0 0 84.81 56.63"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.06" d="M130.37 31.38L127.36 42.31M122.21 34.46L119.84 45.54M114.23 38.01L112.52 49.21M106.48 42.01L105.42 53.3M98.98 46.46L98.57 57.79M91.74 51.34L92 62.68M84.81 56.63L85.72 67.93"/>
+<path class="ink aux" style="stroke-width:0.68;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M49.3 248.21A150 150 0 0 0 78.84 284.68"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.06" d="M49.3 248.21L60.61 249.07M53.4 254.9L64.74 255.17M57.85 261.37L69.19 261.05M62.63 267.6L73.93 266.69M67.73 273.57L78.97 272.07M73.14 279.27L84.28 277.18M78.84 284.68L89.85 282.01"/>
+<path class="ink aux" style="stroke-width:0.68;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M240.22 310.24A150 150 0 0 0 267.37 294.56"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.06" d="M240.22 310.24L242.26 299.08M244.96 308.02L246.61 296.81M249.63 305.65L250.89 294.38M254.21 303.11L255.07 291.8M258.69 300.41L259.16 289.08M263.08 297.56L263.16 286.22M267.37 294.56L267.05 283.22"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.36" cx="179.21" cy="173.21" r="5.4"/><circle class="pt" style="fill:#1b1b1b" cx="179.21" cy="173.21" r="2.21"/>
+<text class="lbl " x="172.43" y="181.17" font-size="12.85" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="329.21" cy="173.21" r="2.46"/>
+<text class="lbl " x="335.98" y="165.24" font-size="12.85" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+<text class="lbl " x="106.21" y="161.21" font-size="12.85" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Draw the rolling circle: its radius is a/2, so it passes through O. Its centre C is a/2 from O, in the direction θ, and T, the other end of the diameter OT, is the point of contact.">
+<circle class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="242.81" cy="133.46" r="75"/>
+<path class="ink given dash" style="stroke-width:1.36;fill:none;--dash:4.53 3.02;stroke:#1b1b1b;stroke-dasharray:4.53 3.02;stroke-linecap:round;stroke-linejoin:round" d="M179.21 173.21L306.41 93.72"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="306.41" cy="93.72" r="2.46"/>
+<text class="lbl " x="313.18" y="85.75" font-size="12.85" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+<text class="lbl " x="206.1" y="145.49" font-size="12.85" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a/2</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="242.81" cy="133.46" r="2.21"/>
+<path class="ink given" style="stroke-width:1.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M210.5 213.43A86.25 86.25 0 0 0 277.89 212.25"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M210.5 213.43L215.94 218.83L218.16 213.33Z"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.83" d="M193.08 173.21A13.88 13.88 0 0 0 190.97 165.85"/>
+<text class="lbl " x="205.98" y="165.53" font-size="12.85" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The rolling circle meets the axes again at P (on OX) and Q (on OY); the angles at O are right angles, so PQ is a diameter. P was at X when the rolling began, and it stays on OX; Q stays on OY.">
+<path class="ink given dash" style="stroke-width:1.36;fill:none;--dash:4.53 3.02;stroke:#1b1b1b;stroke-dasharray:4.53 3.02;stroke-linecap:round;stroke-linejoin:round" d="M179.21 173.21L306.41 173.21"/>
+<path class="ink given dash" style="stroke-width:1.36;fill:none;--dash:4.53 3.02;stroke:#1b1b1b;stroke-dasharray:4.53 3.02;stroke-linecap:round;stroke-linejoin:round" d="M179.21 173.21L179.21 93.72"/>
+<path class="ink given dash" style="stroke-width:1.36;fill:none;--dash:4.53 3.02;stroke:#1b1b1b;stroke-dasharray:4.53 3.02;stroke-linecap:round;stroke-linejoin:round" d="M179.21 93.72L306.41 173.21"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="306.41" cy="173.21" r="2.46"/>
+<text class="lbl " x="313.18" y="181.17" font-size="12.85" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.83" cx="179.21" cy="93.72" r="2.46"/>
+<text class="lbl " x="172.43" y="85.75" font-size="12.85" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.83" d="M251.63 138.98A10.41 10.41 0 0 0 251.63 127.95"/>
+<text class="lbl " x="268.15" y="133.46" font-size="12.85" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">2θ</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="F is a point of the diameter PQ, G any other point of the rolling circle: both are carried along with it.">
+<circle class="pt" style="fill:#1b1b1b" cx="203.63" cy="108.98" r="2.95"/>
+<circle class="pt" style="fill:#1b1b1b" cx="241.21" cy="80.21" r="3.44"/>
+<text class="lbl " x="211.08" y="100.22" font-size="12.85" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F</text>
+<text class="lbl " x="249.97" y="80.21" font-size="12.85" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">G</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="F describes an ellipse with semi-axes b + d and b − d along OY and OX (d = CF): the path of a point of a trammel. (The book does not draw it.)">
+<path class="ink curve" style="stroke-width:2.12;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M208.01 173.21L207.98 168.45L207.92 163.7L207.81 158.96L207.65 154.25L207.45 149.56L207.21 144.91L206.92 140.31L206.6 135.75L206.22 131.26L205.81 126.82L205.36 122.46L204.87 118.18L204.33 113.98L203.76 109.88L203.15 105.87L202.5 101.97L201.82 98.17L201.1 94.49L200.35 90.93L199.57 87.5L198.75 84.21L197.91 81.04L197.03 78.02L196.13 75.15L195.21 72.43L194.25 69.87L193.28 67.46L192.28 65.22L191.26 63.14L190.23 61.23L189.17 59.5L188.1 57.94L187.02 56.56L185.93 55.35L184.82 54.33L183.71 53.5L182.59 52.85L181.46 52.38L180.34 52.1L179.21 52.01L178.07 52.1L176.95 52.38L175.82 52.85L174.7 53.5L173.59 54.33L172.48 55.35L171.39 56.56L170.31 57.94L169.24 59.5L168.18 61.23L167.15 63.14L166.13 65.22L165.13 67.46L164.16 69.87L163.2 72.43L162.28 75.15L161.38 78.02L160.5 81.04L159.66 84.21L158.84 87.5L158.06 90.93L157.31 94.49L156.59 98.17L155.91 101.97L155.26 105.87L154.65 109.88L154.08 113.98L153.54 118.18L153.05 122.46L152.6 126.82L152.19 131.26L151.81 135.75L151.49 140.31L151.2 144.91L150.96 149.56L150.76 154.25L150.6 158.96L150.49 163.7L150.43 168.45L150.41 173.21L150.43 177.96L150.49 182.71L150.6 187.45L150.76 192.16L150.96 196.85L151.2 201.5L151.49 206.1L151.81 210.66L152.19 215.15L152.6 219.59L153.05 223.95L153.54 228.23L154.08 232.43L154.65 236.53L155.26 240.54L155.91 244.44L156.59 248.24L157.31 251.92L158.06 255.48L158.84 258.91L159.66 262.2L160.5 265.37L161.38 268.39L162.28 271.26L163.2 273.98L164.16 276.54L165.13 278.95L166.13 281.19L167.15 283.27L168.18 285.18L169.24 286.91L170.31 288.47L171.39 289.85L172.48 291.06L173.59 292.08L174.7 292.91L175.82 293.56L176.95 294.03L178.07 294.31L179.21 294.4L180.34 294.31L181.46 294.03L182.59 293.56L183.71 292.91L184.82 292.08L185.93 291.06L187.02 289.85L188.1 288.47L189.17 286.91L190.23 285.18L191.26 283.27L192.28 281.19L193.28 278.95L194.25 276.54L195.21 273.98L196.13 271.26L197.03 268.39L197.91 265.37L198.75 262.2L199.57 258.91L200.35 255.48L201.1 251.92L201.82 248.24L202.5 244.44L203.15 240.54L203.76 236.53L204.33 232.43L204.87 228.23L205.36 223.95L205.81 219.59L206.22 215.15L206.6 210.66L206.92 206.1L207.21 201.5L207.45 196.85L207.65 192.16L207.81 187.45L207.92 182.71L207.98 177.96L208.01 173.21"/>
+</g>
+</svg>

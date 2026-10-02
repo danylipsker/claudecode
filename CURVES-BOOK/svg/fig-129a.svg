@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 526.38 443.25" width="520" height="438" data-fig="fig-129a">
+<title>Fig. 129(a) — The Peaucellier cell</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 129(a), page 131. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed pivot O, and the bars of the cell: OA = OB = b (long) and AP = PB = BQ = QA = a (the small rhombus APBQ); the bars AR and BR (length b) complete the second rhombus OARB. O, P, Q, R are on one line.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="32.32" cy="270.93" r="5.82"/>
+<text class="lbl " x="32.32" y="282.03" font-size="17.9" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The two long bars OA and OB turn about O.">
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M32.32 270.93L263.19 130.93"/>
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M32.32 270.93L263.19 410.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="263.19" cy="130.93" r="5.82"/>
+<text class="lbl " x="250.93" y="116.51" font-size="17.9" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="263.19" cy="410.93" r="5.82"/>
+<text class="lbl " x="275.45" y="425.36" font-size="17.9" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="The small rhombus APBQ has its corners A and B on the long bars.">
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.19 130.93L177.77 270.93"/>
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.19 130.93L348.61 270.93"/>
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.19 410.93L177.77 270.93"/>
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.19 410.93L348.61 270.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="177.77" cy="270.93" r="5.82"/>
+<text class="lbl " x="177.77" y="285.36" font-size="17.9" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="348.61" cy="270.93" r="5.82"/>
+<text class="lbl " x="348.61" y="285.36" font-size="17.9" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="3" data-tool="linkage" data-text="The bars AR and BR close the large rhombus OARB; its fourth corner R is on the line OPQ.">
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.19 130.93L494.06 270.93"/>
+<path class="ink thick" style="stroke-width:2.95;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M263.19 410.93L494.06 270.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="494.06" cy="270.93" r="5.82"/>
+<text class="lbl " x="494.06" y="285.36" font-size="17.9" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+<path class="ink cons dash" style="stroke-width:1.16;fill:none;--dash:6.32 4.21;stroke:#4b4b4b;stroke-dasharray:6.32 4.21;stroke-linecap:round;stroke-linejoin:round" d="M32.32 270.93L494.06 270.93"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The inversive property: draw the circle about A through P (radius a; it passes through Q). It cuts the line OA at D and C, with OD = b − a and OC = b + a. By the secant property (OP)(OQ) = (OD)(OC) = (b − a)(b + a) = b² − a². So P and Q are inverse points for the circle about O of radius √(b² − a²), whatever the position of the cell. With directions, (PO)(PR) = −(OP)(OQ) = a² − b².">
+<path class="ink cons dash" style="stroke-width:1.16;fill:none;--dash:6.32 4.21;stroke:#4b4b4b;stroke-dasharray:6.32 4.21;stroke-linecap:round;stroke-linejoin:round" d="M263.19 130.93L403.42 45.9"/>
+<path class="ink cons dash" style="stroke-width:1.16;fill:none;--dash:6.32 4.21;stroke:#4b4b4b;stroke-dasharray:6.32 4.21;stroke-linecap:round;stroke-linejoin:round" d="M115.17 201.55A164 164 0 1 0 394.23 32.32"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="122.96" cy="215.97" r="5.82"/>
+<text class="lbl " x="122.96" y="201.55" font-size="17.9" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.16" cx="403.42" cy="45.9" r="5.82"/>
+<text class="lbl " x="415.68" y="60.32" font-size="17.9" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+</svg>

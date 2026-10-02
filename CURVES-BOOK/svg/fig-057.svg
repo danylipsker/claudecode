@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1019.08 1026.68" width="520" height="524" data-fig="fig-057">
+<title>Fig. 57 — Graphical solution of x³ + hx + k = 0 by the cubic parabola y = x³ and the line y + hx + k = 0</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 57, page 57. Section: cubic-parabola.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX, OY. The cubic x³ + hx + k = 0 (here h &lt; 0, so that it has three real roots) is to be solved.">
+<path class="ink axis" style="stroke-width:3.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M101.04 553.24L956.04 553.24"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M956.04 553.24L936.84 545.18L936.84 561.31Z"/>
+<path class="ink axis" style="stroke-width:3.08;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M431.64 963.64L431.64 63.04"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M431.64 63.04L423.58 82.24L439.71 82.24Z"/>
+<text class="lbl axis" x="948.44" y="531.6" font-size="34.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="453.28" y="70.64" font-size="34.91" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the cubic parabola y = x³ once for all: it serves for every cubic of the form x³ + hx + k = 0.">
+<path class="ink curve" style="stroke-width:5.75;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M82.04 849.14L85.15 841.33L88.25 833.66L91.35 826.13L94.46 818.73L97.56 811.47L100.66 804.34L103.77 797.34L106.87 790.47L109.97 783.74L113.08 777.13L116.18 770.65L119.28 764.3L122.39 758.07L125.49 751.97L128.59 745.98L131.7 740.12L134.8 734.38L137.9 728.76L141.01 723.26L144.11 717.87L147.21 712.59L150.32 707.44L153.42 702.39L156.52 697.45L159.63 692.63L162.73 687.91L165.83 683.3L168.94 678.8L172.04 674.4L175.14 670.11L178.25 665.92L181.35 661.83L184.45 657.84L187.56 653.95L190.66 650.16L193.76 646.46L196.87 642.86L199.97 639.35L203.07 635.94L206.18 632.62L209.28 629.38L212.38 626.24L215.49 623.18L218.59 620.21L221.69 617.33L224.8 614.53L227.9 611.81L231 609.18L234.11 606.62L237.21 604.15L240.31 601.75L243.42 599.42L246.52 597.18L249.62 595L252.73 592.9L255.83 590.88L258.93 588.92L262.04 587.03L265.14 585.21L268.24 583.45L271.35 581.77L274.45 580.14L277.55 578.58L280.66 577.08L283.76 575.64L286.86 574.26L289.97 572.94L293.07 571.67L296.17 570.46L299.28 569.3L302.38 568.2L305.48 567.15L308.59 566.15L311.69 565.19L314.79 564.29L317.9 563.43L321 562.62L324.1 561.85L327.21 561.13L330.31 560.45L333.41 559.81L336.52 559.2L339.62 558.64L342.72 558.11L345.83 557.62L348.93 557.16L352.03 556.74L355.14 556.34L358.24 555.98L361.34 555.65L364.45 555.34L367.55 555.07L370.65 554.81L373.76 554.59L376.86 554.38L379.96 554.2L383.07 554.04L386.17 553.89L389.27 553.77L392.38 553.66L395.48 553.57L398.58 553.49L401.69 553.43L404.79 553.38L407.89 553.33L411 553.3L414.1 553.28L417.2 553.26L420.31 553.25L423.41 553.25L426.51 553.24L429.62 553.24L432.72 553.24L435.82 553.24L438.93 553.24L442.03 553.23L445.13 553.22L448.24 553.21L451.34 553.19L454.44 553.16L457.55 553.12L460.65 553.07L463.75 553.01L466.86 552.94L469.96 552.85L473.06 552.75L476.17 552.63L479.27 552.49L482.37 552.34L485.48 552.16L488.58 551.96L491.68 551.74L494.79 551.5L497.89 551.23L500.99 550.93L504.1 550.61L507.2 550.25L510.3 549.87L513.41 549.46L516.51 549.01L519.61 548.53L522.72 548.01L525.82 547.46L528.92 546.87L532.03 546.24L535.13 545.57L538.23 544.86L541.34 544.1L544.44 543.3L547.54 542.46L550.65 541.57L553.75 540.63L556.85 539.65L559.96 538.61L563.06 537.52L566.16 536.38L569.27 535.19L572.37 533.94L575.47 532.64L578.58 531.27L581.68 529.85L584.78 528.37L587.89 526.83L590.99 525.22L594.09 523.55L597.2 521.82L600.3 520.02L603.4 518.15L606.51 516.21L609.61 514.21L612.71 512.13L615.82 509.98L618.92 507.76L622.02 505.46L625.13 503.08L628.23 500.63L631.33 498.1L634.44 495.49L637.54 492.79L640.64 490.02L643.75 487.16L646.85 484.22L649.95 481.19L653.06 478.07L656.16 474.87L659.26 471.57L662.37 468.19L665.47 464.71L668.57 461.13L671.68 457.47L674.78 453.71L677.88 449.84L680.99 445.89L684.09 441.83L687.19 437.67L690.3 433.41L693.4 429.04L696.5 424.57L699.61 419.99L702.71 415.31L705.81 410.52L708.92 405.62L712.02 400.61L715.12 395.48L718.23 390.24L721.33 384.89L724.43 379.42L727.54 373.84L730.64 368.13L733.74 362.31L736.85 356.36L739.95 350.3L743.05 344.11L746.16 337.79L749.26 331.35L752.36 324.78L755.47 318.09L758.57 311.26L761.67 304.3L764.78 297.21L767.88 289.99L770.98 282.64L774.09 275.14L777.19 267.51L780.29 259.75L783.4 251.84L786.5 243.79L789.6 235.6L792.71 227.27L795.81 218.79L798.91 210.17L802.02 201.4L805.12 192.48L808.22 183.41L811.33 174.19L814.43 164.82L817.53 155.3L820.64 145.62L823.74 135.78L826.84 125.79"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the straight line y + hx + k = 0 (it cuts OY at height −k with slope −h). The abscissas of its meetings with the curve are the roots.">
+<path class="ink given" style="stroke-width:3.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M63.04 802.07L876.24 118.98"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.26" cx="127.64" cy="747.8" r="10.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.26" cx="355.64" cy="556.28" r="10.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.26" cx="811.64" cy="173.24" r="10.01"/>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="From each meeting point drop the perpendicular to OX (dashed). Its foot is a root: x1, x2, x3.">
+<path class="ink cons dash" style="stroke-width:2.26;fill:none;--dash:12.32 8.21;stroke:#4b4b4b;stroke-dasharray:12.32 8.21;stroke-linecap:round;stroke-linejoin:round" d="M127.64 747.8L127.64 553.24"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.26" cx="127.64" cy="553.24" r="10.01"/>
+<path class="ink cons dash" style="stroke-width:2.26;fill:none;--dash:12.32 8.21;stroke:#4b4b4b;stroke-dasharray:12.32 8.21;stroke-linecap:round;stroke-linejoin:round" d="M355.64 556.28L355.64 553.24"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.26" cx="355.64" cy="553.24" r="10.01"/>
+<path class="ink cons dash" style="stroke-width:2.26;fill:none;--dash:12.32 8.21;stroke:#4b4b4b;stroke-dasharray:12.32 8.21;stroke-linecap:round;stroke-linejoin:round" d="M811.64 173.24L811.64 553.24"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.26" cx="811.64" cy="553.24" r="10.01"/>
+<text class="lbl  upright" x="127.64" y="509.6" font-size="34.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl  upright" x="355.64" y="509.6" font-size="34.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<text class="lbl  upright" x="811.64" y="509.6" font-size="34.91" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x<tspan baseline-shift="sub" font-size="70%">3</tspan></text>
+</g>
+</svg>

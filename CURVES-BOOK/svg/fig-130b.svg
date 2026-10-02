@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 473.35 418.13" width="520" height="459" data-fig="fig-130b">
+<title>Fig. 130(b) — The Hart crossed parallelogram with the extra bar: straight-line motion</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 130(b), page 132. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The frame: two fixed pivots O and O′ (the bearings are squares). The bar AB of the Hart linkage turns about O, which is a point of it.">
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M40.15 232.6L100.15 232.6L100.15 188.6L40.15 188.6Z"/>
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M85.84 389.06L145.84 389.06L145.84 345.06L85.84 345.06Z"/>
+<path class="ink cons dash" style="stroke-width:1.04;fill:none;--dash:5.68 3.79;stroke:#4b4b4b;stroke-dasharray:5.68 3.79;stroke-linecap:round;stroke-linejoin:round" d="M70.15 210.6L115.84 367.06"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="70.15" cy="210.6" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="70.15" cy="210.6" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="115.84" cy="367.06" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="115.84" cy="367.06" r="5.6"/>
+<text class="lbl " x="46.2" y="210.6" font-size="16.09" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<text class="lbl " x="91.89" y="367.06" font-size="16.09" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O′</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The Hart crossed parallelogram ADCB: AB = CD, AC = BD, with O on AB, P on BD and Q on AC, so that OPQ is parallel to the bases.">
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M34.83 315.52L102.53 47.99L103.58 45.55L105.33 43.55L107.61 42.19L110.21 41.6L112.86 41.84L115.3 42.89L117.3 44.64L118.66 46.92L119.25 49.52L119.01 52.17L51.31 319.69L50.26 322.14L48.51 324.14L46.22 325.5L43.63 326.09L40.98 325.85L38.54 324.8L36.53 323.05L35.17 320.76L34.58 318.17Z"/>
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M389.77 307.87L303.57 45.72L303.15 43.1L303.55 40.47L304.75 38.09L306.63 36.21L308.99 34.99L311.62 34.57L314.25 34.97L316.62 36.17L318.51 38.04L319.72 40.41L405.92 302.56L406.35 305.19L405.94 307.81L404.74 310.19L402.87 312.08L400.5 313.29L397.88 313.72L395.25 313.31L392.88 312.11L390.99 310.24Z"/>
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M116.42 43.73L403.5 298.86L405.18 300.92L406.15 303.4L406.31 306.05L405.64 308.62L404.2 310.86L402.15 312.55L399.67 313.52L397.02 313.68L394.44 313L392.2 311.57L105.12 56.43L103.44 54.38L102.47 51.9L102.31 49.25L102.98 46.67L104.42 44.43L106.47 42.75L108.95 41.78L111.6 41.62L114.18 42.29Z"/>
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M36.99 311.66L305.57 37.12L307.71 35.53L310.23 34.68L312.89 34.66L315.42 35.45L317.59 36.99L319.18 39.12L320.03 41.64L320.06 44.3L319.26 46.84L317.72 49.01L49.14 323.55L47.01 325.14L44.49 325.99L41.83 326.02L39.29 325.22L37.12 323.68L35.53 321.55L34.68 319.03L34.66 316.37L35.45 313.83Z"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="43.07" cy="317.61" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="43.07" cy="317.61" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="110.77" cy="50.08" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="110.77" cy="50.08" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="311.65" cy="43.07" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="311.65" cy="43.07" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="397.85" cy="305.22" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="397.85" cy="305.22" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="283.02" cy="203.16" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="283.02" cy="203.16" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="150.5" cy="207.79" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="150.5" cy="207.79" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="70.15" cy="210.6" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="70.15" cy="210.6" r="5.6"/>
+<text class="lbl " x="19.12" y="317.61" font-size="16.09" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="421.8" y="305.22" font-size="16.09" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<text class="lbl " x="90.41" y="26.13" font-size="16.09" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="332" y="19.12" font-size="16.09" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="301.68" y="225.11" font-size="16.09" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="169.16" y="185.84" font-size="16.09" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="The extra bar O′Q, of length O′O, forces Q to move on the circle about O′ through O.">
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M107.53 365.25L142.19 205.98L143.16 203.5L144.84 201.45L147.08 200.01L149.65 199.33L152.31 199.48L154.78 200.45L156.84 202.13L158.28 204.37L158.96 206.94L158.8 209.6L124.14 368.87L123.18 371.35L121.49 373.41L119.26 374.84L116.68 375.52L114.03 375.37L111.55 374.4L109.49 372.72L108.05 370.48L107.38 367.91Z"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="115.84" cy="367.06" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="115.84" cy="367.06" r="5.6"/>
+<circle class="ink given" style="stroke-width:1.7;fill:#fff;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="150.5" cy="207.79" r="14"/>
+<circle class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="150.5" cy="207.79" r="5.6"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="P is the inverse of Q about O, so while Q goes round the circle through O, P moves on a straight line perpendicular to OO′.">
+<path class="ink curve" style="stroke-width:2.65;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M169.75 236.24L444.28 156.07"/>
+</g>
+</svg>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 946.2 856.2" width="520" height="471" data-fig="fig-108">
+<title>Fig. 108 — The general theorem: a circle rolling inside a circle twice as large</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 108, page 110. Section: glissettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two perpendicular lines meeting at O, and the rod AB of fixed length with A on one line and B on the other (the trammel).">
+<path class="ink axis" style="stroke-width:2.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M58.1 445.1L888.1 445.1"/>
+<path class="ink axis" style="stroke-width:2.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M474.1 798.1L474.1 58.1"/>
+<path class="ink thick" style="stroke-width:5.3;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M688.1 445.1L474.1 188.66"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.08" cx="474.1" cy="445.1" r="8.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.08" cx="688.1" cy="445.1" r="8.61"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.08" cx="474.1" cy="188.66" r="8.61"/>
+<text class="lbl " x="454.15" y="188.66" font-size="32.17" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="705.05" y="465.05" font-size="32.17" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="The perpendiculars to the two lines at A and B meet at I. A moves along OA, so IA is perpendicular to its motion; B moves along OB, so IB is perpendicular to its motion: I is the instantaneous centre of the rod.">
+<path class="ink cons dash" style="stroke-width:2.08;fill:none;--dash:11.35 7.57;stroke:#4b4b4b;stroke-dasharray:11.35 7.57;stroke-linecap:round;stroke-linejoin:round" d="M474.1 188.66L688.1 188.66"/>
+<path class="ink cons dash" style="stroke-width:2.08;fill:none;--dash:11.35 7.57;stroke:#4b4b4b;stroke-dasharray:11.35 7.57;stroke-linecap:round;stroke-linejoin:round" d="M688.1 188.66L688.1 445.1"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.08" cx="688.1" cy="188.66" r="8.61"/>
+<text class="lbl " x="708.05" y="188.66" font-size="32.17" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">I</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the diagonal OI of the rectangle OAIB. The diagonals of a rectangle are equal, so OI = AB.">
+<path class="ink cons dash" style="stroke-width:2.08;fill:none;--dash:11.35 7.57;stroke:#4b4b4b;stroke-dasharray:11.35 7.57;stroke-linecap:round;stroke-linejoin:round" d="M474.1 445.1L688.1 188.66"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="Since OI = AB, the point I always lies on the circle about O with radius AB: the fixed circle.">
+<circle class="ink given" style="stroke-width:3.41;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="474.1" cy="445.1" r="334"/>
+</g>
+<g class="step" data-step="4" data-tool="compass" data-text="I also lies on the circle that has AB as diameter (the angle AIB is a right angle), a circle carried with the rod. Its radius is half that of the fixed circle: the motion is a circle rolling inside a circle twice as large.">
+<circle class="ink given" style="stroke-width:3.41;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="581.1" cy="316.88" r="167"/>
+</g>
+</svg>

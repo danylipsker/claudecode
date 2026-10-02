@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1493.4 1243.4" width="520" height="433" data-fig="fig-015a">
+<title>Fig. 15(a) — Refraction at a line, dense to rare medium (μ &lt; 1)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 15(a), page 18. Section: caustics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The line L between a dense medium (above) and a rare one (below); the radiant point S in the dense medium; the incident ray SQ and the refracted ray QT, which obey sin θ1 = μ sin θ2 with μ &lt; 1.">
+<path class="ink thick" style="stroke-width:8.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M111.7 631.7L1351.7 631.7"/>
+<text class="lbl  upright" x="401.7" y="591.7" font-size="40.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">DENSE</text>
+<text class="lbl  upright" x="411.7" y="671.7" font-size="40.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">RARE</text>
+<text class="lbl  upright" x="881.7" y="591.7" font-size="40.62" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">L</text>
+<circle class="pt" style="fill:#1b1b1b" cx="701.7" cy="211.7" r="15.53"/>
+<circle class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="701.7" cy="211.7" r="17.14"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M727.91 211.7L744.04 211.7"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M724.4 198.6L738.36 190.53"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M714.8 189L722.87 175.04"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M701.7 185.49L701.7 169.36"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M688.6 189L680.53 175.04"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M679 198.6L665.04 190.53"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M675.49 211.7L659.36 211.7"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M679 224.8L665.04 232.87"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M688.6 234.4L680.53 248.36"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M701.7 237.91L701.7 254.04"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M714.8 234.4L722.87 248.36"/>
+<path class="ink given" style="stroke-width:1.61;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M724.4 224.8L738.36 232.87"/>
+<text class="lbl " x="760.57" y="142.44" font-size="50.78" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">S</text>
+<path class="ink thick" style="stroke-width:8.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M701.7 211.7L1022.7 631.7"/>
+<path class="head thick" style="stroke:none;fill:#1b1b1b" d="M900.72 472.1L892.39 440.12L872.05 455.66Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.29" cx="1022.7" cy="631.7" r="9.71"/>
+<text class="lbl " x="1052.13" y="597.07" font-size="50.78" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<path class="ink thick" style="stroke-width:8.36;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1022.7 631.7L1180.75 737.15"/>
+<path class="head thick" style="stroke:none;fill:#1b1b1b" d="M1180.75 737.15L1162.51 709.6L1148.3 730.89Z"/>
+<text class="lbl " x="1180.75" y="774.93" font-size="50.78" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="Drop the perpendicular from S to L and carry it as far again below L: this gives S̄, the reflection of S in L, with SS̄ perpendicular to L.">
+<path class="ink cons dash" style="stroke-width:3.29;fill:none;--dash:17.92 11.95;stroke:#4b4b4b;stroke-dasharray:17.92 11.95;stroke-linecap:round;stroke-linejoin:round" d="M701.7 211.7L701.7 1051.7"/>
+<circle class="pt" style="fill:#1b1b1b" cx="701.7" cy="1051.7" r="15.53"/>
+<text class="lbl " x="745.77" y="1051.7" font-size="50.78" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">S̄</text>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="Draw the circle through S, Q and S̄. Its centre is on L, because L is the perpendicular bisector of SS̄.">
+<circle class="ink cons dash" style="stroke-width:3.29;fill:none;--dash:17.92 11.95;stroke:#4b4b4b;stroke-dasharray:17.92 11.95;stroke-linecap:round;stroke-linejoin:round" cx="587.43" cy="631.7" r="435.27"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Produce TQ backwards until it meets the circle again at P and the line SS̄ at A. Join PS and PS̄. Q is the middle of the arc SS̄, so PQ bisects the angle at P of triangle SPS̄.">
+<path class="ink cons dash" style="stroke-width:3.29;fill:none;--dash:17.92 11.95;stroke:#4b4b4b;stroke-dasharray:17.92 11.95;stroke-linecap:round;stroke-linejoin:round" d="M1022.7 631.7L420.34 229.79"/>
+<path class="ink cons dash" style="stroke-width:3.29;fill:none;--dash:17.92 11.95;stroke:#4b4b4b;stroke-dasharray:17.92 11.95;stroke-linecap:round;stroke-linejoin:round" d="M420.34 229.79L701.7 211.7"/>
+<path class="ink cons dash" style="stroke-width:3.29;fill:none;--dash:17.92 11.95;stroke:#4b4b4b;stroke-dasharray:17.92 11.95;stroke-linecap:round;stroke-linejoin:round" d="M420.34 229.79L701.7 1051.7"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.29" cx="420.34" cy="229.79" r="9.71"/>
+<text class="lbl " x="420.34" y="192.01" font-size="50.78" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.29" cx="701.7" cy="417.52" r="9.71"/>
+<text class="lbl " x="669.59" y="455.3" font-size="50.78" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The marked angles: θ1 at S, θ1 twice at P (PQ bisects SPS̄), θ2 twice at A. The triangles SAP and S̄AP give μ = sin θ1 / sin θ2 = AS / PS = AS̄ / PS̄.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.29" d="M701.7 284.82A73.12 73.12 0 0 0 746.1 269.79"/>
+<text class="lbl " x="743.45" y="335.07" font-size="50.78" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.29" d="M473.55 265.29A63.98 63.98 0 0 0 484.18 225.68"/>
+<text class="lbl " x="540.98" y="262.15" font-size="50.78" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.29" d="M445.5 303.29A77.69 77.69 0 0 0 484.96 272.9"/>
+<text class="lbl " x="504.9" y="339.62" font-size="50.78" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.29" d="M701.7 353.54A63.98 63.98 0 0 0 648.48 382.01"/>
+<text class="lbl " x="642.78" y="307.38" font-size="50.78" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:3.29" d="M701.7 481.5A63.98 63.98 0 0 0 754.92 453.03"/>
+<text class="lbl " x="760.62" y="527.66" font-size="50.78" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<text class="lbl  upright" x="401.7" y="961.7" font-size="43.16" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">θ<tspan baseline-shift="sub" font-size="70%">1</tspan> &lt; θ<tspan baseline-shift="sub" font-size="70%">2</tspan>,  μ &lt; 1</text>
+</g>
+</svg>

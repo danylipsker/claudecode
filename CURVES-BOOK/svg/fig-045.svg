@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1015.8 850.58" width="520" height="435" data-fig="fig-045">
+<title>Fig. 45 — Aeroplane design: a conic through three points with two tangents, by Pascal lines</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 45, page 48. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Three points P1, P2, P3 of the conic and the tangents at two of them, P2 and P3; the tangents meet at X.">
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M112.37 62.37L367.17 763.37"/>
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M112.37 62.37L690.29 207.67"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="371.1" cy="260.88" r="9.9"/>
+<text class="lbl " x="349.69" y="260.88" font-size="34.54" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="315.93" cy="622.39" r="9.9"/>
+<text class="lbl " x="297.73" y="643.81" font-size="34.54" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="578.76" cy="179.63" r="9.9"/>
+<text class="lbl " x="578.76" y="138.94" font-size="34.54" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">3</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="112.37" cy="62.37" r="9.9"/>
+<text class="lbl " x="112.37" y="40.96" font-size="34.54" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="To find further points Q, draw any line through X (a Pascal line, here a horizontal).">
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M62.37 62.37L953.42 62.37"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Extend P1P2 until it meets this line at Y, and P1P3 until it meets it at Z.">
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M315.93 622.39L401.39 62.37"/>
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M371.1 260.88L878.42 62.37"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="401.39" cy="62.37" r="9.9"/>
+<text class="lbl " x="401.39" y="40.96" font-size="34.54" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="878.42" cy="62.37" r="9.9"/>
+<text class="lbl " x="878.42" y="40.96" font-size="34.54" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Z</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Draw YP3 and ZP2. They meet at Q, a point of the conic (Pascal's theorem for the hexagon Q P3 P3 P1 P2 P2).">
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M401.39 62.37L688.07 251.89"/>
+<path class="ink given" style="stroke-width:3.66;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M878.42 62.37L315.93 622.39"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.23" cx="688.07" cy="251.89" r="9.9"/>
+<text class="lbl " x="709.48" y="251.89" font-size="34.54" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The conic through P1, P2, P3 and Q, touching the given tangents at P2 and P3. Another line through X gives another point Q.">
+<path class="ink thick" style="stroke-width:5.69;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M505.77 787.8L509.82 788.03L513.88 788.16L517.94 788.2L522 788.15L526.06 788.01L530.13 787.77L534.19 787.44L538.25 787.02L542.31 786.5L546.36 785.89L550.41 785.19L554.45 784.39L558.48 783.5L562.51 782.52L566.52 781.45L570.51 780.29L574.5 779.03L578.47 777.69L582.43 776.25L586.36 774.73L590.28 773.11L594.19 771.41L598.07 769.62L601.92 767.74L605.76 765.77L609.57 763.72L613.36 761.58L617.12 759.35L620.85 757.04L624.55 754.65L628.23 752.17L631.87 749.61L635.48 746.97L639.06 744.25L642.6 741.44L646.11 738.56L649.58 735.6L653.01 732.56L656.41 729.45L659.77 726.26L663.08 723L666.36 719.66L669.59 716.25L672.78 712.76L675.92 709.21L679.02 705.59L682.07 701.9L685.08 698.14L688.03 694.32L690.94 690.43L693.8 686.48L696.6 682.46L699.36 678.38L702.06 674.25L704.71 670.05L707.3 665.8L709.84 661.49L712.32 657.13L714.75 652.71L717.12 648.24L719.43 643.72L721.68 639.15L723.88 634.53L726.01 629.87L728.08 625.16L730.1 620.4L732.05 615.61L733.93 610.77L735.76 605.89L737.52 600.98L739.21 596.03L740.84 591.04L742.41 586.02L743.91 580.97L745.34 575.89L746.71 570.78L748.01 565.64L749.24 560.48L750.41 555.29L751.51 550.08L752.54 544.85L753.5 539.59L754.39 534.33L755.21 529.04L755.96 523.74L756.64 518.43L757.25 513.11L757.8 507.77L758.27 502.43L758.67 497.08L759 491.73L759.26 486.38L759.45 481.02L759.56 475.66L759.61 470.31L759.59 464.95L759.49 459.61L759.32 454.27L759.09 448.93L758.78 443.61L758.4 438.3L757.95 433L757.43 427.72L756.84 422.45L756.18 417.2L755.45 411.97L754.65 406.76L753.79 401.58L752.85 396.42L751.84 391.28L750.77 386.17L749.62 381.09L748.41 376.04L747.13 371.03L745.78 366.04L744.37 361.1L742.89 356.18L741.35 351.31L739.74 346.48L738.06 341.68L736.32 336.93L734.52 332.23L732.65 327.57L730.72 322.95L728.73 318.39L726.68 313.87L724.56 309.4L722.39 304.99L720.15 300.63L717.86 296.33L715.51 292.08L713.1 287.89L710.63 283.76L708.11 279.69L705.54 275.68L702.9 271.73L700.22 267.85L697.48 264.03L694.69 260.27L691.85 256.59L688.96 252.97L686.02 249.43L683.03 245.95L679.99 242.54L676.91 239.21L673.78 235.95L670.6 232.77L667.39 229.66L664.13 226.63L660.82 223.68L657.48 220.8L654.1 218.01L650.67 215.29L647.21 212.66L643.72 210.1L640.18 207.63L636.62 205.24L633.02 202.94L629.38 200.72L625.72 198.59L622.03 196.54L618.3 194.58L614.55 192.71L610.77 190.93L606.97 189.23L603.14 187.62L599.29 186.11L595.42 184.68L591.52 183.34L587.61 182.09L583.68 180.94L579.73 179.87L575.76 178.9L571.78 178.02L567.79 177.23L563.78 176.54L559.76 175.93L555.73 175.42L551.69 175.01L547.65 174.68L543.6 174.45L539.54 174.32L535.48 174.27L531.42 174.33L527.35 174.47L523.29 174.71L519.22 175.04L515.16 175.46L511.1 175.98L507.05 176.59L503 177.29L498.96 178.09L494.93 178.98L490.91 179.96L486.9 181.03L482.9 182.19L478.92 183.45L474.94 184.79L470.99 186.23L467.05 187.75L463.13 189.37L459.23 191.07L455.35 192.86L451.49 194.74L447.66 196.71L443.84 198.76L440.06 200.9L436.3 203.13L432.57 205.44L428.86 207.83L425.19 210.31L421.55 212.87L417.94 215.51L414.36 218.23L410.81 221.04L407.31 223.92L403.84 226.88L400.4 229.92L397 233.03L393.65 236.22L390.33 239.48L387.06 242.82L383.83 246.23L380.64 249.72L377.49 253.27L374.4 256.89L371.34 260.58L368.34 264.34L365.38 268.16L362.48 272.05L359.62 276L356.81 280.02L354.06 284.1L351.36 288.23L348.71 292.43L346.11 296.68L343.58 300.99L341.09 305.35L338.66 309.77L336.3 314.24L333.98 318.76L331.73 323.33L329.54 327.95L327.4 332.61L325.33 337.32L323.32 342.08L321.37 346.87L319.48 351.71L317.66 356.59L315.9 361.5L314.2 366.45L312.57 371.44L311.01 376.46L309.51 381.51L308.07 386.59L306.7 391.7L305.4 396.84L304.17 402L303.01 407.19L301.91 412.4L300.88 417.63L299.92 422.88L299.03 428.15L298.21 433.44L297.46 438.74L296.77 444.05L296.16 449.37L295.62 454.71L295.15 460.05L294.75 465.39L294.42 470.75L294.16 476.1L293.97 481.46L293.85 486.82L293.81 492.17L293.83 497.53L293.93 502.87L294.09 508.21L294.33 513.55L294.64 518.87L295.01 524.18L295.46 529.48L295.98 534.76L296.57 540.03L297.23 545.28L297.96 550.51L298.76 555.72L299.63 560.9L300.57 566.06L301.58 571.2L302.65 576.31L303.79 581.39L305.01 586.44L306.28 591.45L307.63 596.44L309.04 601.38L310.52 606.29L312.07 611.17L313.68 616L315.35 620.8L317.09 625.55L318.9 630.25L320.77 634.91L322.69 639.53L324.69 644.09L326.74 648.61L328.85 653.08L331.03 657.49L333.26 661.85L335.56 666.15L337.91 670.4L340.32 674.59L342.78 678.72L345.3 682.79L347.88 686.8L350.51 690.75L353.2 694.63L355.93 698.45L358.72 702.2L361.57 705.89L364.46 709.51L367.4 713.05L370.39 716.53L373.42 719.93L376.51 723.27L379.64 726.53L382.81 729.71L386.03 732.82L389.29 735.85L392.59 738.8L395.94 741.68L399.32 744.47L402.74 747.19L406.2 749.82L409.7 752.38L413.23 754.85L416.8 757.23L420.4 759.54L424.03 761.76L427.7 763.89L431.39 765.94L435.11 767.9L438.86 769.77L442.64 771.55L446.45 773.25L450.27 774.86L454.12 776.37L458 777.8L461.89 779.14L465.81 780.39L469.74 781.54L473.69 782.61L477.65 783.58L481.64 784.46L485.63 785.25L489.64 785.94L493.66 786.55L497.68 787.06L501.72 787.47L505.77 787.8"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The book shades the quadrilateral P1 P3 Q P2 inscribed in the conic.">
+<path class="ink hatchline" style="fill:none;stroke-width:2.84;stroke:#2a2a2a" d="M317.47 612.31L323.26 615.1M320.55 592.13L337.9 600.52M323.63 571.96L352.55 585.93M326.71 551.79L367.2 571.35M329.78 531.62L381.85 556.77M332.86 511.44L396.5 542.18M335.94 491.27L411.14 527.6M339.02 471.1L425.79 513.02M342.1 450.93L440.44 498.43M345.18 430.75L455.09 483.85M348.25 410.58L469.74 469.26M351.33 390.41L484.38 454.68M354.41 370.24L499.03 440.1M357.49 350.06L513.68 425.51M360.57 329.89L528.33 410.93M363.65 309.72L542.98 396.35M366.73 289.55L557.62 381.76M369.8 269.37L572.27 367.18M385.44 255.27L586.92 352.59M410.22 245.58L601.57 338.01M434.99 235.88L616.22 323.43M459.76 226.19L630.87 308.84M484.53 216.5L645.51 294.26M509.31 206.8L660.16 279.68M534.08 197.11L674.81 265.09M558.85 187.42L676.55 244.28"/>
+</g>
+</svg>

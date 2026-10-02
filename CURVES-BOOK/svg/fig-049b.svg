@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 410.4 147.2" width="520" height="187" data-fig="fig-049b">
+<title>Fig. 49(b) — Envelope of the perpendicular to a ray from F at a point of a line: the parabola</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 49(b), page 50. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A fixed line and a fixed point F near it.">
+<path class="ink given" style="stroke-width:1.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M25.2 25.2L385.2 25.2"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.9" cx="205.2" cy="105.2" r="2.67"/>
+<text class="lbl  upright" x="205.2" y="113.85" font-size="11.86" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw a ray from F to a point P of the line.">
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L238.17 25.2"/>
+<circle class="pt" style="fill:#1b1b1b" cx="238.17" cy="25.2" r="2.13"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="At P draw the perpendicular to the ray. It is a tangent of the envelope.">
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 84.15L238.17 25.2"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.9" d="M235.25 32.3L228.15 29.37L231.08 22.28"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Repeat from 40 further points along the line, rays first …">
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L93.46 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L125.76 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L148.77 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L166.87 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L182.26 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L196.23 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L209.67 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L223.38 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L255.19 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L276.23 25.2"/>
+<path class="ink cons" style="stroke-width:0.9;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.2 105.2L304.7 25.2"/>
+</g>
+<g class="step" data-step="4" data-tool="square" data-text="… then the perpendiculars, cut off at the edge of the drawing.">
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M41.18 25.2L29.2 49.75"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M62.06 25.2L29.2 83.99"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M79.14 25.2L29.2 103.89"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M93.46 25.2L29.2 114.95"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M105.7 25.2L29.2 120.35"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M116.35 25.2L29.2 121.99"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M125.76 25.2L29.2 121.08"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M134.17 25.2L29.2 118.4"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M141.79 25.2L29.2 114.44"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M148.77 25.2L29.2 109.54"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M155.21 25.2L29.2 103.94"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M161.22 25.2L29.2 97.78"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.87 25.2L29.2 91.16"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M172.23 25.2L29.2 84.15"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M177.34 25.2L29.2 76.79"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M182.26 25.2L29.2 69.09"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M187.02 25.2L29.2 61.06"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M191.67 25.2L29.2 52.68"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M196.23 25.2L29.2 43.94"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M200.73 25.2L29.2 34.79"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 25.2L29.2 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 34.79L209.67 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 43.94L214.17 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 52.68L218.73 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 61.06L223.38 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 69.09L228.14 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 76.79L233.06 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 91.16L243.53 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 97.78L249.18 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 103.94L255.19 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 109.54L261.63 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 114.44L268.61 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 118.4L276.23 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 121.08L284.64 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 121.99L294.05 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 120.35L304.7 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 114.95L316.94 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 103.89L331.26 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 83.99L348.34 25.2"/>
+<path class="ink given" style="stroke-width:0.89;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M381.2 49.75L369.22 25.2"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="The envelope is a parabola with focus F, touching the fixed line at its vertex (the fixed line is the tangent at the vertex).">
+<path class="ink curve" style="stroke-width:2.3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M29.2 122L31.4 119.6L33.6 117.22L35.8 114.88L38 112.56L40.2 110.28L42.4 108.02L44.6 105.8L46.8 103.61L49 101.45L51.2 99.31L53.4 97.21L55.6 95.14L57.8 93.1L60 91.08L62.2 89.1L64.4 87.15L66.6 85.23L68.8 83.34L71 81.48L73.2 79.65L75.4 77.85L77.6 76.08L79.8 74.34L82 72.63L84.2 70.95L86.4 69.3L88.6 67.69L90.8 66.1L93 64.54L95.2 63.01L97.4 61.52L99.6 60.05L101.8 58.61L104 57.2L106.2 55.83L108.4 54.48L110.6 53.17L112.8 51.88L115 50.63L117.2 49.4L119.4 48.21L121.6 47.04L123.8 45.91L126 44.8L128.2 43.73L130.4 42.68L132.6 41.67L134.8 40.69L137 39.74L139.2 38.81L141.4 37.92L143.6 37.06L145.8 36.23L148 35.42L150.2 34.65L152.4 33.91L154.6 33.2L156.8 32.52L159 31.87L161.2 31.25L163.4 30.66L165.6 30.1L167.8 29.57L170 29.07L172.2 28.6L174.4 28.16L176.6 27.76L178.8 27.38L181 27.03L183.2 26.71L185.4 26.43L187.6 26.17L189.8 25.94L192 25.74L194.2 25.58L196.4 25.44L198.6 25.34L200.8 25.26L203 25.22L205.2 25.2L207.4 25.22L209.6 25.26L211.8 25.34L214 25.44L216.2 25.58L218.4 25.74L220.6 25.94L222.8 26.17L225 26.43L227.2 26.71L229.4 27.03L231.6 27.38L233.8 27.76L236 28.16L238.2 28.6L240.4 29.07L242.6 29.57L244.8 30.1L247 30.66L249.2 31.25L251.4 31.87L253.6 32.52L255.8 33.2L258 33.91L260.2 34.65L262.4 35.42L264.6 36.23L266.8 37.06L269 37.92L271.2 38.81L273.4 39.74L275.6 40.69L277.8 41.67L280 42.68L282.2 43.73L284.4 44.8L286.6 45.91L288.8 47.04L291 48.21L293.2 49.4L295.4 50.63L297.6 51.88L299.8 53.17L302 54.48L304.2 55.83L306.4 57.2L308.6 58.61L310.8 60.05L313 61.52L315.2 63.01L317.4 64.54L319.6 66.1L321.8 67.69L324 69.3L326.2 70.95L328.4 72.63L330.6 74.34L332.8 76.08L335 77.85L337.2 79.65L339.4 81.48L341.6 83.34L343.8 85.23L346 87.15L348.2 89.1L350.4 91.08L352.6 93.1L354.8 95.14L357 97.21L359.2 99.31L361.4 101.45L363.6 103.61L365.8 105.8L368 108.02L370.2 110.28L372.4 112.56L374.6 114.88L376.8 117.22L379 119.6L381.2 122"/>
+</g>
+</svg>

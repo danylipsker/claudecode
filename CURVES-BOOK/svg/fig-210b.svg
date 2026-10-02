@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 343.86 312.23" width="520" height="472" data-fig="fig-210b">
+<title>Fig. 210(b) — The rose in polar coordinates: the angles α, β, θ</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 210(b), page 236. Section: trochoids.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle (only an arc is needed), its centre O, and the initial line OX, which passes through a maximum point of the path.">
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M221.23 291.11A180 180 0 0 0 24.86 25.73"/>
+<path class="ink aux" style="stroke-width:0.62;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M90.4 22.87A180 180 0 0 0 49.66 21.8"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:0.96" d="M90.4 22.87L83.45 30.49M83.64 22.05L76.98 29.92M76.86 21.48L70.5 29.61M70.06 21.18L64.02 29.53M63.26 21.13L57.53 29.71M56.45 21.33L51.06 30.13M49.66 21.8L44.6 30.79"/>
+<path class="ink aux" style="stroke-width:0.62;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M244.91 188.56A180 180 0 0 0 231.04 130.78"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:0.96" d="M244.91 188.56L236.01 183.34M244.24 181.13L235.13 176.28M243.25 173.73L233.95 169.27M241.97 166.38L232.49 162.31M240.38 159.09L230.74 155.42M238.48 151.88L228.7 148.6M236.3 144.74L226.39 141.88M233.81 137.71L223.79 135.26M231.04 130.78L220.93 128.75"/>
+<path class="ink axis" style="stroke-width:1.03;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M65.35 201.11L322.75 201.11"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.24" cx="65.35" cy="201.11" r="4.92"/><circle class="pt" style="fill:#1b1b1b" cx="65.35" cy="201.11" r="2.01"/>
+<text class="lbl " x="65.35" y="209.81" font-size="11.69" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="The rolling circle, of radius b, touches the fixed circle inside at B, with OB = a. Its centre A is on OB, so OA = a − b; the angle BOX is α.">
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M65.35 201.11L203.24 85.41"/>
+<circle class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="157.28" cy="123.98" r="60"/>
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M119.44 63.43A71.4 71.4 0 0 0 91.07 97.23"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M119.44 63.43L112.55 64.55L115.42 69.13Z"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="157.28" cy="123.98" r="2.01"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="203.24" cy="85.41" r="2.24"/>
+<text class="lbl " x="209.4" y="78.16" font-size="11.69" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="149.88" y="115.28" font-size="11.69" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="83.37" y="175.92" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a−2b</text>
+<text class="lbl " x="139.25" y="149.17" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b</text>
+<text class="lbl " x="185.22" y="110.61" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M82.19 201.11A16.84 16.84 0 0 0 78.25 190.29"/>
+<text class="lbl " x="91.88" y="191.46" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="P is the tracing point, at the distance AP = OA = a − b from A (drawn with the compass about A). Join A to P and O to P: the triangle OAP is isosceles, so its angles at O and P are equal, α + θ, where θ is the angle of OP with the initial line, below it.">
+<path class="ink given" style="stroke-width:1.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M157.28 123.98L178.11 242.16"/>
+<path class="ink given dash" style="stroke-width:1.24;fill:none;--dash:4.13 2.75;stroke:#1b1b1b;stroke-dasharray:4.13 2.75;stroke-linecap:round;stroke-linejoin:round" d="M65.35 201.11L178.11 242.16"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.76" cx="178.11" cy="242.16" r="2.24"/>
+<text class="lbl " x="178.11" y="249.41" font-size="11.69" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="135.26" y="217.14" font-size="11.69" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M87.1 209.03A23.15 23.15 0 0 0 88.5 201.11"/>
+<text class="lbl " x="98.51" y="206.96" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M175.74 228.69A13.68 13.68 0 0 0 165.26 237.48"/>
+<text class="lbl " x="158.05" y="218.24" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α+θ</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="At A the angle β between AB and AP is 2(α + θ); rolling without slipping gives aα = bβ, hence α = 2bθ / (a − 2b).">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.76" d="M159.1 134.34A10.52 10.52 0 0 0 165.34 117.22"/>
+<text class="lbl " x="181.17" y="132.68" font-size="11.69" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">β</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The path of P in polar coordinates: r = 2(a − b) cos(α + θ) = 2(a − b) cos(aθ/(a − 2b)). The little stub left of O is the continuation through the pole, and the arrow shows the direction of tracing.">
+<path class="ink curve" style="stroke-width:1.93;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M21.11 170.94L23.6 172.91L26.1 174.86L28.63 176.79L31.18 178.7L33.76 180.59L36.35 182.46L38.97 184.31L41.61 186.14L44.27 187.95L46.95 189.74L49.65 191.5L52.36 193.25L55.1 194.96L57.85 196.66L60.61 198.33L63.4 199.98L66.19 201.6L69 203.2L71.83 204.77L74.67 206.31L77.52 207.83L80.38 209.32L83.25 210.79L86.14 212.22L89.03 213.63L91.93 215.02L94.84 216.37L97.76 217.69L100.68 218.99L103.61 220.25L106.54 221.49L109.48 222.7L112.42 223.88L115.37 225.02L118.32 226.14L121.26 227.23L124.21 228.28L127.16 229.31L130.11 230.3L133.06 231.26L136 232.2L138.94 233.1L141.88 233.96L144.81 234.8L147.74 235.61L150.66 236.38L153.57 237.12L156.47 237.83L159.37 238.51L162.26 239.15L165.14 239.77L168 240.35L170.86 240.9L173.7 241.41L176.53 241.9L179.35 242.35L182.15 242.77L184.94 243.16L187.71 243.52L190.47 243.85L193.2 244.14L195.92 244.41L198.62 244.64L201.3 244.84L203.96 245.01L206.6 245.15L209.22 245.25L211.81 245.33L214.39 245.38L216.93 245.4L219.46 245.38L221.96 245.34L224.43 245.27L226.88 245.17L229.3 245.04L231.69 244.88L234.05 244.69L236.39 244.47L238.69 244.23L240.96 243.96L243.21 243.66L245.42 243.34L247.6 242.99L249.75 242.61L251.86 242.2L253.94 241.78L255.99 241.32L258 240.84L259.97 240.34L261.91 239.81L263.81 239.26L265.68 238.69L267.51 238.09L269.3 237.47L271.05 236.83L272.76 236.17L274.43 235.49L276.07 234.79L277.66 234.06L279.21 233.32L280.72 232.56L282.19 231.78L283.62 230.98L285 230.17L286.34 229.34L287.64 228.49L288.89 227.62L290.1 226.74L291.27 225.85L292.39 224.94L293.47 224.02L294.5 223.08L295.49 222.14L296.43 221.18L297.32 220.2L298.17 219.22L298.97 218.23L299.73 217.23L300.44 216.21L301.1 215.19L301.71 214.17L302.28 213.13L302.8 212.09L303.27 211.04L303.69 209.98L304.07 208.92L304.4 207.86L304.68 206.79L304.91 205.72L305.09 204.65L305.22 203.57L305.31 202.5L305.35 201.42L305.34 200.34L305.28 199.26L305.17 198.19L305.02 197.11L304.81 196.04L304.56 194.97L304.26 193.9L303.91 192.84L303.51 191.78L303.07 190.73L302.58 189.69L302.04 188.65L301.45 187.61L300.81 186.59L300.13 185.57L299.4 184.56L298.63 183.57L297.8 182.58L296.94 181.6L296.02 180.63L295.06 179.68L294.05 178.73L293 177.8L291.91 176.89L290.77 175.99L289.58 175.1L288.35 174.23"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M259.48 240.47L267.01 241.56L265.53 235.86Z"/>
+</g>
+</svg>

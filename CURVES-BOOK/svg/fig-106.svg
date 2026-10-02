@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1023.15 665.65" width="520" height="338" data-fig="fig-106">
+<title>Fig. 106 — Point glissette of a curve sliding between two lines at right angles</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 106, page 109. Section: glissettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX and OY, the curve touching OX and OY at the two open circles, and the point P carried with the curve.">
+<path class="ink axis" style="stroke-width:3.07;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M62.82 542.82L772.82 542.82"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M772.82 542.82L753.69 534.79L753.69 550.86Z"/>
+<path class="ink axis" style="stroke-width:3.07;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M122.82 602.82L122.82 62.82"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M122.82 62.82L114.79 81.96L130.86 81.96Z"/>
+<text class="lbl axis" x="791.16" y="564.39" font-size="34.79" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="141.16" y="41.26" font-size="34.79" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.25" cx="122.82" cy="542.82" r="9.31"/>
+<path class="ink curve" style="stroke-width:5.73;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M282.98 182.51L279.91 184.08L276.88 185.65L273.88 187.23L270.91 188.81L267.98 190.4L265.08 192L262.22 193.6L259.38 195.2L256.58 196.82L253.82 198.43L251.08 200.05L248.38 201.68L245.7 203.31L243.06 204.95L240.46 206.59L237.88 208.24L235.33 209.89L232.82 211.55L230.33 213.21L227.88 214.87L225.45 216.54L223.06 218.22L220.69 219.89L218.36 221.57L216.05 223.26L213.78 224.95L211.53 226.64L209.31 228.34L207.13 230.04L204.97 231.75L202.84 233.46L200.74 235.17L198.66 236.89L196.62 238.61L194.6 240.33L192.62 242.06L190.66 243.79L188.72 245.52L186.82 247.26L184.94 249L183.1 250.75L181.27 252.5L179.48 254.25L177.72 256.01L175.98 257.76L174.27 259.53L172.58 261.29L170.93 263.06L169.3 264.83L167.7 266.61L166.12 268.39L164.58 270.17L163.06 271.95L161.56 273.74L160.1 275.53L158.66 277.33L157.25 279.13L155.86 280.93L154.51 282.73L153.18 284.54L151.87 286.35L150.6 288.17L149.35 289.98L148.13 291.8L146.94 293.63L145.77 295.46L144.63 297.29L143.52 299.12L142.43 300.96L141.38 302.8L140.35 304.64L139.35 306.49L138.37 308.34L137.43 310.19L136.51 312.05L135.62 313.91L134.76 315.77L133.93 317.63L133.12 319.5L132.35 321.38L131.6 323.25L130.89 325.13L130.2 327.01L129.54 328.9L128.91 330.79L128.31 332.68L127.74 334.57L127.2 336.47L126.69 338.37L126.21 340.27L125.76 342.18L125.34 344.09L124.96 346L124.6 347.92L124.28 349.84L123.99 351.76L123.72 353.69L123.5 355.61L123.3 357.54L123.14 359.48L123.01 361.42L122.92 363.35L122.85 365.3L122.83 367.24L122.83 369.19L122.88 371.14L122.95 373.09L123.06 375.05L123.21 377.01L123.4 378.97L123.62 380.93L123.88 382.9L124.17 384.86L124.51 386.83L124.88 388.81L125.29 390.78L125.74 392.76L126.23 394.73L126.76 396.71L127.33 398.69L127.94 400.68L128.59 402.66L129.28 404.65L130.02 406.63L130.8 408.62L131.62 410.61L132.49 412.6L133.4 414.59L134.36 416.58L135.36 418.57L136.41 420.56L137.51 422.55L138.65 424.54L139.85 426.54L141.09 428.53L142.38 430.52L143.72 432.5L145.11 434.49L146.56 436.48L148.06 438.46L149.61 440.44L151.21 442.42L152.87 444.4L154.58 446.38L156.35 448.35L158.17 450.32L160.06 452.28L162 454.25L164 456.2L166.06 458.15L168.18 460.1L170.36 462.04L172.61 463.98L174.92 465.91L177.29 467.83L179.72 469.75L182.23 471.66L184.8 473.56L187.43 475.45L190.14 477.33L192.91 479.21L195.76 481.07L198.68 482.92L201.66 484.76L204.73 486.59L207.86 488.41L211.07 490.22L214.36 492.01L217.72 493.78L221.16 495.54L224.68 497.29L228.28 499.02L231.96 500.73L235.72 502.42L239.56 504.09L243.48 505.75L247.49 507.38L251.59 508.99L255.77 510.58L260.03 512.15L264.39 513.69L268.83 515.2L273.36 516.69L277.98 518.15L282.69 519.59L287.49 520.99L292.39 522.36L297.38 523.7L302.46 525.01L307.63 526.28L312.9 527.52L318.26 528.72L323.72 529.88L329.27 531L334.92 532.08L340.67 533.12L346.51 534.11L352.45 535.06L358.49 535.96L364.62 536.82L370.85 537.62L377.18 538.37L383.6 539.07L390.12 539.72L396.74 540.31L403.45 540.84L410.25 541.31L417.15 541.72L424.14 542.07L431.23 542.36L438.41 542.58L445.67 542.73L453.03 542.81L460.47 542.82L468 542.76L475.61 542.62L483.31 542.41L491.08 542.12L498.93 541.75L506.86 541.29L514.87 540.76L522.94 540.14L531.08 539.43L539.29 538.64L547.56 537.76L555.89 536.78L564.27 535.72L572.7 534.56L581.18 533.31L589.71 531.96L598.27 530.51L606.87 528.96L615.5 527.32L624.15 525.57L632.83 523.72L641.52 521.77L650.22 519.71L658.92 517.56L667.63 515.29L676.32 512.93L685.01 510.45L693.67 507.88L702.31 505.19L710.92 502.4L719.49 499.51L728.01 496.51L736.48 493.41L744.9 490.2L753.24 486.89L761.52 483.48L769.71 479.97L777.82 476.36L785.84 472.64L793.75 468.84L801.56 464.93L809.24 460.94L816.81 456.85L824.25 452.67L831.55 448.41L838.71 444.06L845.71 439.63L852.56 435.12L859.24 430.53L865.76 425.87L872.1 421.14L878.25 416.35L884.22 411.49L889.99 406.57L895.56 401.59L900.93 396.56L906.09 391.49L911.03 386.37L915.75 381.2L920.25 376.01L924.53 370.78L928.57 365.52L932.38 360.23L935.95 354.93L939.28 349.61L942.37 344.28L945.22 338.95L947.83 333.61L950.18 328.27L952.29 322.94L954.16 317.61L955.78 312.31L957.15 307.01L958.27 301.75L959.15 296.51L959.78 291.29L960.17 286.12L960.32 280.97L960.23 275.87L959.91 270.82L959.35 265.81L958.56 260.86L957.54 255.95L956.3 251.11L954.84 246.33L953.16 241.6"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.25" cx="457.82" cy="542.82" r="9.31"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.25" cx="122.82" cy="367.82" r="9.31"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.25" cx="645.82" cy="232.82" r="9.31"/>
+<text class="lbl " x="667.39" y="232.82" font-size="34.79" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="From P drop the perpendiculars to the two lines: the distance from P to OX is y and the distance from P to OY is x. When the curve is given by p = f(φ), referred to P, then y = p = f(φ) and x = f(φ + π/2), the coordinates of the glissette of P.">
+<path class="ink cons dash" style="stroke-width:2.25;fill:none;--dash:12.28 8.19;stroke:#4b4b4b;stroke-dasharray:12.28 8.19;stroke-linecap:round;stroke-linejoin:round" d="M122.82 232.82L645.82 232.82"/>
+<path class="ink cons dash" style="stroke-width:2.25;fill:none;--dash:12.28 8.19;stroke:#4b4b4b;stroke-dasharray:12.28 8.19;stroke-linecap:round;stroke-linejoin:round" d="M645.82 232.82L645.82 542.82"/>
+<text class="lbl  upright" x="384.32" y="211.26" font-size="34.79" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">x</text>
+<text class="lbl  upright" x="624.26" y="387.82" font-size="34.79" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y</text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="Shading as in the book, along the inside of the curve.">
+<path class="ink hatchline" style="fill:none;stroke-width:2.86;stroke:#2a2a2a" d="M161.01 443.67L178.71 468.94M170.79 434.79L208.63 488.83M180.56 425.92L233.4 501.38M202.14 433.9L255.84 510.6M232.08 453.84L269.42 507.16M256.28 465.55L274.65 491.79M278.18 474.01L279.88 476.43"/>
+<path class="ink hatchline" style="fill:none;stroke-width:2.86;stroke:#2a2a2a" d="M880.12 414.83L885.23 400.8M860.9 429.36L875.39 389.53M842.48 441.66L865.56 378.27M824.63 452.42L848.78 386.08M807.22 461.98L829.86 399.76M790.15 470.57L811.73 411.29M773.4 478.31L794.13 421.35M756.89 485.37L776.95 430.26M740.6 491.85L760.1 438.28M724.51 497.75L743.55 445.43M708.61 503.14L727.24 451.98M692.87 508.09L711.13 457.94M677.28 512.64L695.23 463.33M661.83 516.81L679.5 468.25M646.52 520.58L663.93 472.75M631.34 524L648.5 476.84M622.8 509.18L633.21 480.56M617.7 484.9L618.05 483.93"/>
+</g>
+</svg>

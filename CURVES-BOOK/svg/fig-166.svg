@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 832.04 1091.3" width="520" height="682" data-fig="fig-166">
+<title>Fig. 166 — The envelope of a line carried by a curve rolling on a curve</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 166, page 181. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed curve (lower) and the rolling curve (upper) touch at T. R1 and R2 are the radii of curvature at T; their centres lie on the common normal.">
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M109.03 268.15A310 310 0 1 0 606.87 67.01"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M765.03 822.79A403 403 0 0 0 67.01 822.79"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M153.12 475.57A310 310 0 0 0 216.75 548.77"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:3.06" d="M153.12 475.57L185.83 476.93M162.08 489.1L194.82 488.75M171.73 502.15L204.41 500.08M182.06 514.67L214.58 510.9M193.02 526.64L225.3 521.16M204.6 538.01L236.55 530.86M216.75 548.77L248.28 539.95"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M598.23 562.09A310 310 0 0 0 660.3 502.15"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:3.06" d="M598.23 562.09L597.3 529.36M609.7 553.34L607.25 520.69M620.75 544.07L616.79 511.57M631.36 534.29L625.89 502.01M641.5 524.03L634.54 492.04M651.16 513.31L642.71 481.68M660.3 502.15L650.39 470.95"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M167.91 706.72A403 403 0 0 0 116.53 754.63"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:3.06" d="M167.91 706.72L169.98 739.4M158.78 714.08L161.79 746.68M149.86 721.69L153.83 754.19M141.17 729.56L146.08 761.93M132.72 737.68L138.56 769.89M124.5 746.04L131.28 778.07M116.53 754.63L124.24 786.45"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M765.03 822.79A403 403 0 0 0 652.9 698.26"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:3.06" d="M765.03 822.79L732.38 820.29M752.35 802.28L719.62 801.74M738.47 782.56L705.76 783.98M723.44 763.71L690.87 767.08M707.3 745.79L675 751.11M690.13 728.87L658.2 736.11M671.97 713.01L640.53 722.14M652.9 698.26L622.06 709.25"/>
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M416.02 311.29L416.02 1024.29"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="416.02" cy="311.29" r="7.09"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="416.02" cy="1024.29" r="7.09"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="416.02" cy="621.29" r="7.09"/>
+<text class="lbl " x="441.32" y="466.29" font-size="37.1" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<text class="lbl " x="441.32" y="822.79" font-size="37.1" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The carried line AB is a chord of the rolling curve (a line rigidly fixed to it).">
+<path class="ink thick" style="stroke-width:6.11;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M109 354.15L680.47 149.54"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="109" cy="354.15" r="7.09"/>
+<text class="lbl " x="85.99" y="354.15" font-size="37.1" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="680.47" cy="149.54" r="7.09"/>
+<text class="lbl " x="703.47" y="149.54" font-size="37.1" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From the point of contact T drop the perpendicular z on the line. The normal to the line (the direction of z) makes the angle α with the common normal of the curves.">
+<path class="ink given" style="stroke-width:3.93;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M416.02 621.29L296.35 287.07"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.4" cx="296.35" cy="287.07" r="7.09"/>
+<text class="lbl " x="335.48" y="454.18" font-size="37.1" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">z</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.4" d="M416.02 547.83A73.47 73.47 0 0 0 391.25 552.13"/>
+<text class="lbl " x="399.17" y="524.23" font-size="37.1" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Then dσ/dφ = z + (cos α) · R1R2/(R1 + R2): the first term comes from the rotation about the point of contact, the second from the change of the point of contact along the curves.">
+
+</g>
+</svg>

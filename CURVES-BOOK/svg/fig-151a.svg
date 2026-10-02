@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 943.94 837.57" width="520" height="461" data-fig="fig-151a">
+<title>Fig. 151(a) — The first positive pedal of a curve</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 151(a), page 160. Section: pedal-curves.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The given curve C and the pedal point P.">
+<path class="ink thick" style="stroke-width:5.29;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M414.37 275.27L412.46 270.07L410.45 264.92L408.35 259.8L406.15 254.72L403.85 249.68L401.47 244.69L398.99 239.74L396.42 234.83L393.77 229.98L391.02 225.17L388.19 220.42L385.26 215.72L382.25 211.07L379.16 206.48L375.98 201.95L372.72 197.48L369.38 193.07L365.96 188.72L362.45 184.43L358.87 180.21L355.21 176.06L351.48 171.97L347.67 167.96L343.79 164.02L339.83 160.14L335.8 156.34L331.71 152.62L327.55 148.97L323.32 145.4L319.02 141.91L314.66 138.5L310.24 135.17L305.76 131.92L301.22 128.76L296.62 125.68L291.97 122.68L287.26 119.77L282.5 116.95L277.68 114.22L272.82 111.57L267.91 109.02L262.95 106.56L257.95 104.19L252.91 101.91L247.82 99.72L242.7 97.63L237.53 95.64L232.34 93.74L227.1 91.93L221.84 90.23L216.54 88.62L211.22 87.11L205.87 85.69L200.49 84.38L195.09 83.16L189.67 82.05L184.23 81.03L178.77 80.12L173.29 79.31L167.8 78.59L162.3 77.98L156.79 77.47L151.27 77.07L145.75 76.76L140.21 76.56L134.68 76.46L129.14 76.46L123.61 76.56L118.08 76.77L112.55 77.07L107.03 77.48L101.52 77.99L96.02 78.6L90.53 79.32L85.06 80.13L79.6 81.05L74.16 82.06L68.74 83.18L63.34 84.4L57.96 85.71"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.4" cx="359.02" cy="779.6" r="13.5"/><circle class="pt" style="fill:#1b1b1b" cx="359.02" cy="779.6" r="5.52"/>
+<text class="lbl " x="321.81" y="735.83" font-size="32.09" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl  upright" x="236.02" y="259.6" font-size="35.3" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C</text>
+<path class="ink given" style="stroke-width:3.4;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M276.02 264.6L381.02 276.6"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M381.02 276.6L367.67 269.11L366.32 280.89Z"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent to C at a point X of the curve (the open dot).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.08" cx="298.02" cy="126.6" r="6.14"/>
+<path class="ink given" style="stroke-width:3.4;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M194.76 57.96L885.98 517.43"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From P drop the perpendicular on the tangent. Its foot is a point of the first positive pedal.">
+<path class="ink given" style="stroke-width:3.4;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M359.02 779.6L641.37 354.83"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.08" cx="641.37" cy="354.83" r="6.14"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Repeat for other points of C: the locus of the feet is the first positive pedal C1 of C with respect to P. (C is the first negative pedal of C1.)">
+<path class="ink curve" style="stroke-width:5.29;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M653.69 534.34L654.68 528.56L655.57 522.74L656.36 516.89L657.07 511.01L657.68 505.09L658.19 499.14L658.61 493.16L658.93 487.15L659.15 481.12L659.28 475.07L659.31 468.99L659.23 462.89L659.06 456.77L658.78 450.64L658.41 444.49L657.93 438.33L657.35 432.16L656.67 425.97L655.89 419.78L655 413.59L654.01 407.39L652.91 401.18L651.71 394.98L650.41 388.78L649 382.58L647.48 376.39L645.86 370.2L644.14 364.03L642.31 357.86L640.38 351.71L638.34 345.57L636.2 339.45L633.95 333.35L631.6 327.27L629.14 321.21L626.58 315.17L623.91 309.16L621.14 303.18L618.27 297.23L615.3 291.31L612.22 285.43L609.04 279.58L605.76 273.77L602.37 268L598.89 262.26L595.31 256.58L591.62 250.93L587.84 245.34L583.96 239.79L579.98 234.3L575.91 228.85L571.74 223.46L567.47 218.13L563.11 212.85L558.66 207.63L554.12 202.48L549.48 197.38L544.75 192.36L539.94 187.39L535.03 182.5"/>
+<text class="lbl  upright" x="741.02" y="184.6" font-size="35.3" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">C<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink given" style="stroke-width:3.4;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M696.02 206.6L599.02 204.6"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M599.02 204.6L613.02 210.83L613.26 198.97Z"/>
+</g>
+</svg>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 505.93 401.63" width="520" height="413" data-fig="fig-136a">
+<title>Fig. 136(a) — The orthoptic of a parabola is its directrix</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 136(a), page 138. Section: isoptic.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The parabola with vertex V and focus F, and the axes: X through the vertex (the tangent there), Y the axis of the parabola.">
+<path class="ink axis" style="stroke-width:1.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M77.97 209.57L455.97 209.57"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M455.97 209.57L446.51 205.59L446.51 213.54Z"/>
+<path class="ink axis" style="stroke-width:1.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M252.97 370.57L252.97 31.07"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M252.97 31.07L248.99 40.53L256.94 40.53Z"/>
+<text class="lbl axis" x="465.03" y="220.23" font-size="17.2" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="262.03" y="20.4" font-size="17.2" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink thick" style="stroke-width:2.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M31.07 33.71L32.92 36.63L34.76 39.52L36.61 42.39L38.46 45.24L40.31 48.06L42.16 50.86L44.01 53.63L45.86 56.38L47.71 59.1L49.56 61.8L51.41 64.47L53.26 67.12L55.11 69.75L56.95 72.35L58.8 74.93L60.65 77.48L62.5 80.01L64.35 82.51L66.2 84.99L68.05 87.44L69.9 89.87L71.75 92.28L73.6 94.66L75.45 97.02L77.3 99.35L79.14 101.66L80.99 103.94L82.84 106.2L84.69 108.44L86.54 110.65L88.39 112.83L90.24 114.99L92.09 117.13L93.94 119.24L95.79 121.33L97.64 123.4L99.49 125.44L101.33 127.45L103.18 129.44L105.03 131.41L106.88 133.35L108.73 135.27L110.58 137.16L112.43 139.03L114.28 140.87L116.13 142.69L117.98 144.49L119.83 146.26L121.68 148L123.52 149.73L125.37 151.42L127.22 153.1L129.07 154.75L130.92 156.37L132.77 157.97L134.62 159.54L136.47 161.1L138.32 162.62L140.17 164.12L142.02 165.6L143.87 167.06L145.71 168.48L147.56 169.89L149.41 171.27L151.26 172.62L153.11 173.96L154.96 175.26L156.81 176.54L158.66 177.8L160.51 179.04L162.36 180.24L164.21 181.43L166.06 182.59L167.9 183.72L169.75 184.84L171.6 185.92L173.45 186.99L175.3 188.02L177.15 189.04L179 190.03L180.85 190.99L182.7 191.93L184.55 192.85L186.4 193.74L188.25 194.61L190.09 195.45L191.94 196.27L193.79 197.06L195.64 197.83L197.49 198.58L199.34 199.3L201.19 199.99L203.04 200.66L204.89 201.31L206.74 201.93L208.59 202.53L210.44 203.11L212.28 203.66L214.13 204.18L215.98 204.68L217.83 205.16L219.68 205.61L221.53 206.04L223.38 206.44L225.23 206.82L227.08 207.17L228.93 207.5L230.78 207.81L232.63 208.09L234.47 208.34L236.32 208.58L238.17 208.78L240.02 208.97L241.87 209.13L243.72 209.26L245.57 209.37L247.42 209.46L249.27 209.52L251.12 209.55L252.97 209.57L254.82 209.55L256.66 209.52L258.51 209.46L260.36 209.37L262.21 209.26L264.06 209.13L265.91 208.97L267.76 208.78L269.61 208.58L271.46 208.34L273.31 208.09L275.16 207.81L277.01 207.5L278.85 207.17L280.7 206.82L282.55 206.44L284.4 206.04L286.25 205.61L288.1 205.16L289.95 204.68L291.8 204.18L293.65 203.66L295.5 203.11L297.35 202.53L299.2 201.93L301.04 201.31L302.89 200.66L304.74 199.99L306.59 199.3L308.44 198.58L310.29 197.83L312.14 197.06L313.99 196.27L315.84 195.45L317.69 194.61L319.54 193.74L321.39 192.85L323.23 191.93L325.08 190.99L326.93 190.03L328.78 189.04L330.63 188.02L332.48 186.99L334.33 185.92L336.18 184.84L338.03 183.72L339.88 182.59L341.73 181.43L343.58 180.24L345.42 179.04L347.27 177.8L349.12 176.54L350.97 175.26L352.82 173.96L354.67 172.62L356.52 171.27L358.37 169.89L360.22 168.48L362.07 167.06L363.92 165.6L365.77 164.12L367.61 162.62L369.46 161.1L371.31 159.54L373.16 157.97L375.01 156.37L376.86 154.75L378.71 153.1L380.56 151.42L382.41 149.73L384.26 148L386.11 146.26L387.96 144.49L389.8 142.69L391.65 140.87L393.5 139.03L395.35 137.16L397.2 135.27L399.05 133.35L400.9 131.41L402.75 129.44L404.6 127.45L406.45 125.44L408.3 123.4L410.15 121.33L411.99 119.24L413.84 117.13L415.69 114.99L417.54 112.83L419.39 110.65L421.24 108.44L423.09 106.2L424.94 103.94L426.79 101.66L428.64 99.35L430.49 97.02L432.34 94.66L434.18 92.28L436.03 89.87L437.88 87.44L439.73 84.99L441.58 82.51L443.43 80.01L445.28 77.48L447.13 74.93L448.98 72.35L450.83 69.75L452.68 67.12L454.53 64.47L456.37 61.8L458.22 59.1L460.07 56.38L461.92 53.63L463.77 50.86L465.62 48.06L467.47 45.24L469.32 42.39L471.17 39.52L473.02 36.63L474.87 33.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="252.97" cy="209.57" r="3.29"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.82" cx="252.97" cy="139.57" r="7.23"/><circle class="pt" style="fill:#1b1b1b" cx="252.97" cy="139.57" r="2.96"/>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Lay off the distance VF from V on the axis on the other side of V, and draw the directrix through that point at right angles to the axis.">
+<path class="ink thick" style="stroke-width:2.83;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M49.97 279.57L462.97 279.57"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="Take any point W of the directrix. The circle about W through the focus F cuts the directrix at two points: the reflections of F in the two tangents from W.">
+<path class="ink aux" style="stroke-width:0.91;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M377.17 279.57A141 141 0 0 0 95.16 279.57"/>
+<circle class="pt aux open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="95.16" cy="279.57" r="1.81"/>
+<circle class="pt aux open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="377.17" cy="279.57" r="1.81"/>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Each tangent from W is the perpendicular bisector of the segment joining F to one of those two points. Draw the two tangents from W; each ends where it touches the parabola.">
+<path class="ink aux" style="stroke-width:0.91;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M252.97 139.57L95.16 279.57"/>
+<path class="ink aux" style="stroke-width:0.91;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M252.97 139.57L377.17 279.57"/>
+<path class="ink given" style="stroke-width:1.82;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M236.17 279.57L95.16 120.63"/>
+<path class="ink given" style="stroke-width:1.82;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M236.17 279.57L377.17 154.47"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.11" cx="236.17" cy="279.57" r="3.29"/>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The two tangents meet at W at a right angle, whichever point W of the directrix is chosen: the directrix is the locus of the intersection of perpendicular tangents, the orthoptic of the parabola.">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.11" d="M242.54 273.92L236.88 267.55L230.52 273.2"/>
+</g>
+</svg>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1140 1140" width="520" height="520" data-fig="fig-075a">
+<title>Fig. 75(a) — Folding a point inside a circle onto the circle: the creases envelope an ellipse</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 75(a), page 78. Section: envelopes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius r with centre C, and the point P inside it (wax paper, so that you can fold it).">
+<circle class="ink given" style="stroke-width:4.1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="570" cy="570" r="500"/>
+<circle class="pt" style="fill:#1b1b1b" cx="570" cy="570" r="12.6"/>
+<text class="lbl " x="570" y="594.03" font-size="38.76" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<circle class="pt" style="fill:#1b1b1b" cx="270" cy="570" r="12.6"/>
+<text class="lbl " x="270" y="594.03" font-size="38.76" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="fold" data-text="Choose a point P' on the circle and fold P over onto P': the crease is the perpendicular bisector of PP'. Press it flat and unfold; draw PP' as a guide.">
+<path class="ink cons dash" style="stroke-width:2.51;fill:none;--dash:13.68 9.12;stroke:#4b4b4b;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M270 570L374.63 109.75"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.51" cx="374.63" cy="109.75" r="6.67"/>
+<text class="lbl " x="374.63" y="85.72" font-size="38.76" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P'</text>
+<path class="ink thick" style="stroke-width:6.38;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M148.88 300.44L1066.27 509"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw CP' to cut the crease at Q, and join Q to P. Q is on the crease, which is the perpendicular bisector of PP', so QP = QP' = u; with QC = v we have u + v = CP' = r.">
+<path class="ink cons dash" style="stroke-width:2.51;fill:none;--dash:13.68 9.12;stroke:#4b4b4b;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M374.63 109.75L488.34 377.62"/>
+<path class="ink cons dash" style="stroke-width:2.51;fill:none;--dash:13.68 9.12;stroke:#4b4b4b;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M488.34 377.62L570 570"/>
+<path class="ink cons dash" style="stroke-width:2.51;fill:none;--dash:13.68 9.12;stroke:#4b4b4b;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M270 570L488.34 377.62"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.51" cx="488.34" cy="377.62" r="5.93"/>
+<text class="lbl " x="508.76" y="353.59" font-size="38.76" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<text class="lbl " x="455.52" y="243.68" font-size="38.76" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">u</text>
+<text class="lbl " x="379.17" y="497.84" font-size="38.76" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">u</text>
+<text class="lbl " x="553.2" y="473.81" font-size="38.76" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">v</text>
+<text class="lbl  upright" x="570" y="1000" font-size="31.01" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">CP' = r</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="The crease bisects the angle between the two focal radii QP and QP' (the equal angles θ), so it is the tangent at Q.">
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.51" d="M473.35 342.3A38.37 38.37 0 0 0 450.92 369.11"/>
+<text class="lbl given" x="428.8" y="327.83" font-size="38.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.51" d="M450.92 369.11A38.37 38.37 0 0 0 459.55 402.99"/>
+<text class="lbl given" x="413.12" y="396.77" font-size="38.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="4" data-tool="fold" data-text="Move P' round the circle, folding each time: the creases (dashed) are the tangents of one curve.">
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M709.38 1050.18L630.36 73.66"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M825.19 999.97L510.37 73.57"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M929.64 917.36L395.46 101.45"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M1013.97 799.98L290.66 155.31"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M1064.55 643.65L200.54 233.1"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M1053.35 442.03L129.29 333.83"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M907.75 201.32L81.89 461.6"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M483.19 77.59L76.21 648.56"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M102.87 391.71L299.85 990.73"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M73.02 624.88L799.85 1014.04"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M110.04 766.06L1024.79 777.77"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M173.82 875.03L1069.9 559.94"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M257.95 960.67L1036.03 388.85"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M358.21 1022.93L961.3 258.73"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M470.21 1059.94L862.6 164.55"/>
+<path class="ink aux dash" style="stroke-width:2.05;fill:none;--dash:13.68 9.12;stroke:#8a8a8a;stroke-dasharray:13.68 9.12;stroke-linecap:round;stroke-linejoin:round" d="M589.06 1069.64L749.84 103.46"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="They envelope an ellipse with foci P and C and major axis r (u + v = r).">
+<path class="ink curve" style="stroke-width:6.38;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M670 570L669.91 564.76L669.66 559.53L669.23 554.31L668.63 549.09L667.86 543.89L666.92 538.71L665.81 533.55L664.54 528.42L663.09 523.31L661.48 518.24L659.7 513.2L657.76 508.2L655.66 503.24L653.4 498.33L650.97 493.46L648.39 488.65L645.65 483.9L642.75 479.2L639.7 474.57L636.51 470L633.16 465.5L629.67 461.07L626.03 456.72L622.25 452.44L618.34 448.25L614.29 444.14L610.1 440.11L605.79 436.17L601.34 432.33L596.78 428.58L592.09 424.93L587.28 421.37L582.36 417.92L577.33 414.57L572.19 411.33L566.95 408.2L561.6 405.17L556.16 402.27L550.62 399.47L545 396.79L539.29 394.24L533.5 391.8L527.63 389.48L521.68 387.29L515.67 385.22L509.59 383.28L503.45 381.47L497.25 379.79L491 378.24L484.7 376.81L478.36 375.53L471.98 374.37L465.56 373.35L459.11 372.46L452.63 371.71L446.13 371.1L439.61 370.62L433.08 370.27L426.54 370.07L420 370L413.46 370.07L406.92 370.27L400.39 370.62L393.87 371.1L387.37 371.71L380.89 372.46L374.44 373.35L368.02 374.37L361.64 375.53L355.3 376.81L349 378.24L342.75 379.79L336.55 381.47L330.41 383.28L324.33 385.22L318.32 387.29L312.37 389.48L306.5 391.8L300.71 394.24L295 396.79L289.38 399.47L283.84 402.27L278.4 405.17L273.05 408.2L267.81 411.33L262.67 414.57L257.64 417.92L252.72 421.37L247.91 424.93L243.22 428.58L238.66 432.33L234.21 436.17L229.9 440.11L225.71 444.14L221.66 448.25L217.75 452.44L213.97 456.72L210.33 461.07L206.84 465.5L203.49 470L200.3 474.57L197.25 479.2L194.35 483.9L191.61 488.65L189.03 493.46L186.6 498.33L184.34 503.24L182.24 508.2L180.3 513.2L178.52 518.24L176.91 523.31L175.46 528.42L174.19 533.55L173.08 538.71L172.14 543.89L171.37 549.09L170.77 554.31L170.34 559.53L170.09 564.76L170 570L170.09 575.24L170.34 580.47L170.77 585.69L171.37 590.91L172.14 596.11L173.08 601.29L174.19 606.45L175.46 611.58L176.91 616.69L178.52 621.76L180.3 626.8L182.24 631.8L184.34 636.76L186.6 641.67L189.03 646.54L191.61 651.35L194.35 656.1L197.25 660.8L200.3 665.43L203.49 670L206.84 674.5L210.33 678.93L213.97 683.28L217.75 687.56L221.66 691.75L225.71 695.86L229.9 699.89L234.21 703.83L238.66 707.67L243.22 711.42L247.91 715.07L252.72 718.63L257.64 722.08L262.67 725.43L267.81 728.67L273.05 731.8L278.4 734.83L283.84 737.73L289.38 740.53L295 743.21L300.71 745.76L306.5 748.2L312.37 750.52L318.32 752.71L324.33 754.78L330.41 756.72L336.55 758.53L342.75 760.21L349 761.76L355.3 763.19L361.64 764.47L368.02 765.63L374.44 766.65L380.89 767.54L387.37 768.29L393.87 768.9L400.39 769.38L406.92 769.73L413.46 769.93L420 770L426.54 769.93L433.08 769.73L439.61 769.38L446.13 768.9L452.63 768.29L459.11 767.54L465.56 766.65L471.98 765.63L478.36 764.47L484.7 763.19L491 761.76L497.25 760.21L503.45 758.53L509.59 756.72L515.67 754.78L521.68 752.71L527.63 750.52L533.5 748.2L539.29 745.76L545 743.21L550.62 740.53L556.16 737.73L561.6 734.83L566.95 731.8L572.19 728.67L577.33 725.43L582.36 722.08L587.28 718.63L592.09 715.07L596.78 711.42L601.34 707.67L605.79 703.83L610.1 699.89L614.29 695.86L618.34 691.75L622.25 687.56L626.03 683.28L629.67 678.93L633.16 674.5L636.51 670L639.7 665.43L642.75 660.8L645.65 656.1L648.39 651.35L650.97 646.54L653.4 641.67L655.66 636.76L657.76 631.8L659.7 626.8L661.48 621.76L663.09 616.69L664.54 611.58L665.81 606.45L666.92 601.29L667.86 596.11L668.63 590.91L669.23 585.69L669.66 580.47L669.91 575.24L670 570"/>
+</g>
+</svg>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 426.38 237.36" width="520" height="289" data-fig="fig-009">
+<title>Fig. 9 — Pointwise construction of a Cassinian curve</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 9, page 10. Section: cassinian.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The foci F1, F2 on the axis, their midpoint M, and the constant product k² — the length k is given (drawn at the top left, to be taken with the dividers).">
+<path class="ink given" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M0 211.18L426.38 211.18"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.53" cx="176.18" cy="211.18" r="6.1"/><circle class="pt" style="fill:#1b1b1b" cx="176.18" cy="211.18" r="2.49"/>
+<text class="lbl " x="176.18" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.53" cx="346.18" cy="211.18" r="6.1"/><circle class="pt" style="fill:#1b1b1b" cx="346.18" cy="211.18" r="2.49"/>
+<text class="lbl " x="346.18" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt" style="fill:#1b1b1b" cx="261.18" cy="211.18" r="2.77"/>
+<text class="lbl " x="261.18" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">M</text>
+<path class="ink given" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M26.18 26.18L136.18 26.18"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:0.94" d="M26.18 21.11L26.18 31.25"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:0.94" d="M136.18 21.11L136.18 31.25"/>
+<text class="lbl " x="81.18" y="16.61" font-size="14.5" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">k</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="At F1 raise the perpendicular to the axis.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M176.18 237.36L176.18 0"/>
+</g>
+<g class="step" data-step="2" data-tool="dividers" data-text="Take the length k with the dividers and lay it off from F1 along the perpendicular: the point C.">
+<path class="ink aux" style="stroke-width:0.77;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M213.9 107.85A110 110 0 0 0 138.46 107.85"/>
+<circle class="pt" style="fill:#1b1b1b" cx="176.18" cy="101.18" r="2.77"/>
+<text class="lbl " x="168.54" y="92.19" font-size="14.5" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The circle about M through C cuts the axis at A and B: the two vertices of the curve.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M400.2 211.18A139.01 139.01 0 0 0 122.17 211.18"/>
+<circle class="pt" style="fill:#1b1b1b" cx="122.17" cy="211.18" r="2.77"/>
+<text class="lbl " x="122.17" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt" style="fill:#1b1b1b" cx="400.2" cy="211.18" r="2.77"/>
+<text class="lbl " x="400.2" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="4" data-tool="compass" data-text="Choose any point X on the axis and draw the circle about F1 through X.">
+<circle class="pt" style="fill:#1b1b1b" cx="26.18" cy="211.18" r="2.77"/>
+<text class="lbl " x="26.18" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M326.18 211.18A150 150 0 0 0 26.18 211.18"/>
+</g>
+<g class="step" data-step="5" data-tool="straightedge" data-text="Draw CX, and at C the perpendicular to it, meeting the axis at Y. In the right triangle XCY the altitude gives F1X · F1Y = F1C² = k².">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M26.18 211.18L176.18 101.18"/>
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M176.18 101.18L256.85 211.18"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M169.75 105.9L174.47 112.33L180.9 107.61"/>
+<circle class="pt" style="fill:#1b1b1b" cx="256.85" cy="211.18" r="2.77"/>
+<text class="lbl " x="256.85" y="220.17" font-size="14.5" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Y</text>
+</g>
+<g class="step" data-step="6" data-tool="compass" data-text="With the radius F1Y, draw the circle about F2. It cuts the first circle at P: F1P · F2P = k², so P is on the curve. Repeat from other points X; by symmetry each X gives four points.">
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M334.93 131.3A80.67 80.67 0 0 0 278.74 166.92"/>
+<circle class="pt" style="fill:#1b1b1b" cx="308.22" cy="140.01" r="2.77"/>
+<text class="lbl " x="317.21" y="140.01" font-size="14.5" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<path class="ink thick" style="stroke-width:2.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M176.18 211.18L308.22 140.01"/>
+<path class="ink thick" style="stroke-width:2.39;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M346.18 211.18L308.22 140.01"/>
+</g>
+<g class="step" data-step="7" data-tool="note" data-text="The book also marks the normal at P (it bisects the angle between PF1 and PF2 as seen from the curve) and the line PM.">
+<path class="ink cons dash" style="stroke-width:0.94;fill:none;--dash:5.12 3.41;stroke:#4b4b4b;stroke-dasharray:5.12 3.41;stroke-linecap:round;stroke-linejoin:round" d="M308.22 140.01L261.18 211.18"/>
+<path class="ink cons" style="stroke-width:0.94;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M308.22 185.01L308.22 95.01"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M293.29 148.05A16.96 16.96 0 0 0 298.87 154.16"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M308.22 156.97A16.96 16.96 0 0 0 316.2 154.97"/>
+</g>
+</svg>

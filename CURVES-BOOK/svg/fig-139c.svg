@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 263.92 430.92" width="520" height="849" data-fig="fig-139c">
+<title>Fig. 139(c) — Kieroid with b = a and O on AB: the strophoid (plus an asymptote)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 139(c), page 142. Section: kieroid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed point O on the line AB (so A = O), the axis through O, the parallel line DE at the distance b = a, and the radius a.">
+<path class="ink given" style="stroke-width:1.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M74.46 373.46L237.46 373.46"/>
+<path class="ink given" style="stroke-width:1.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M126.46 373.46L126.46 35.46"/>
+<path class="ink thick" style="stroke-width:2.41;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M226.46 373.46L226.46 26.46"/>
+<path class="ink thick" style="stroke-width:2.41;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M226.46 373.46L226.46 404.46"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.55" cx="126.46" cy="373.46" r="6.16"/><circle class="pt" style="fill:#1b1b1b" cx="126.46" cy="373.46" r="2.52"/>
+<text class="lbl " x="126.46" y="395.26" font-size="14.65" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="226.46" cy="373.46" r="2.8"/>
+<text class="lbl " x="176.46" y="363.46" font-size="13.92" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="Choose D on DE; the point B is the foot of the perpendicular from D to AB. The circle of radius a about B touches DE at D.">
+<path class="ink cons" style="stroke-width:0.95;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M126.46 151.46L226.46 151.46"/>
+<circle class="ink given" style="stroke-width:1.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="126.46" cy="151.46" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="126.46" cy="151.46" r="2.8"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw the secant OD. It meets the circle at D (P1, on the line DE) and at P2.">
+<path class="ink given" style="stroke-width:1.55;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M126.46 373.46L226.46 151.46"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="226.46" cy="151.46" r="2.8"/>
+<text class="lbl " x="238.04" y="137.83" font-size="14.65" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.95" cx="192.72" cy="226.35" r="2.8"/>
+<text class="lbl " x="179.1" y="226.35" font-size="14.65" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Slide D along DE. P2 traces the strophoid r = a(sec θ − 2 cos θ) with its node at O, and P1 the asymptote DE.">
+<path class="ink curve" style="stroke-width:2.41;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M150.65 404.42L149.45 402.51L148.25 400.65L147.04 398.81L145.83 397.02L144.61 395.27L143.39 393.55L142.18 391.87L140.95 390.23L139.73 388.62L138.5 387.05L137.27 385.51L136.04 384.01L134.81 382.54L133.58 381.11L132.35 379.7L131.11 378.33L129.88 377L128.64 375.69L127.41 374.41L126.17 373.17L124.93 371.96L123.7 370.77L122.46 369.62L121.23 368.49L119.99 367.4L118.76 366.33L117.53 365.29L116.3 364.28L115.07 363.3L113.84 362.34L112.61 361.42L111.39 360.51L110.17 359.64L108.95 358.79L107.74 357.97L106.52 357.17L105.31 356.4L104.11 355.65L102.9 354.93L101.7 354.23L100.51 353.56L99.32 352.91L98.13 352.29L96.94 351.69L95.77 351.11L94.59 350.55L93.42 350.02L92.26 349.51L91.1 349.02L89.95 348.56L88.8 348.12L87.65 347.69L86.52 347.29L85.39 346.91L84.26 346.56L83.15 346.22L82.04 345.9L80.93 345.61L79.83 345.33L78.74 345.07L77.66 344.83L76.59 344.62L75.52 344.42L74.46 344.24L73.41 344.08L72.36 343.93L71.33 343.81L70.3 343.7L69.28 343.62L68.27 343.54L67.27 343.49L66.28 343.45L65.3 343.44L64.32 343.43L63.36 343.45L62.4 343.48L61.46 343.52L60.53 343.59L59.6 343.66L58.69 343.76L57.78 343.87L56.89 343.99L56.01 344.13L55.13 344.28L54.27 344.45L53.42 344.63L52.59 344.82L51.76 345.03L50.94 345.26L50.14 345.49L49.34 345.74L48.56 346L47.79 346.28L47.04 346.56L46.29 346.86L45.56 347.17L44.84 347.5L44.13 347.83L43.43 348.18L42.75 348.53L42.08 348.9L41.42 349.28L40.78 349.67L40.15 350.06L39.53 350.47L38.93 350.89L38.34 351.32L37.76 351.75L37.19 352.2L36.64 352.66L36.11 353.12L35.58 353.59L35.08 354.07L34.58 354.56L34.1 355.05L33.63 355.56L33.18 356.07L32.74 356.58L32.32 357.11L31.91 357.64L31.51 358.17L31.13 358.72L30.77 359.27L30.41 359.82L30.08 360.38L29.76 360.94L29.45 361.51L29.16 362.09L28.88 362.67L28.62 363.25L28.37 363.83L28.13 364.43L27.92 365.02L27.71 365.62L27.53 366.22L27.35 366.82L27.2 367.43L27.05 368.03L26.93 368.64L26.82 369.25L26.72 369.87L26.64 370.48L26.57 371.1L26.52 371.72L26.49 372.33L26.47 372.95L26.46 373.57L26.47 374.19L26.5 374.8L26.54 375.42L26.59 376.04L26.66 376.65L26.75 377.27L26.85 377.88L26.97 378.49L27.1 379.1L27.25 379.71L27.41 380.31L27.59 380.92L27.78 381.51L27.99 382.11L28.21 382.7L28.45 383.29L28.71 383.88L28.97 384.46L29.26 385.04L29.55 385.61L29.87 386.18L30.19 386.74L30.54 387.3L30.89 387.85L31.26 388.4L31.65 388.94L32.05 389.47L32.47 390L32.9 390.52L33.34 391.03L33.8 391.54L34.27 392.04L34.75 392.53L35.25 393.02L35.77 393.5L36.3 393.97L36.84 394.43L37.39 394.88L37.96 395.32L38.54 395.75L39.14 396.18L39.75 396.59L40.37 397L41.01 397.39L41.66 397.78L42.32 398.15L42.99 398.52L43.68 398.87L44.38 399.21L45.09 399.54L45.82 399.86L46.55 400.16L47.3 400.46L48.06 400.74L48.84 401.01L49.62 401.27L50.42 401.51L51.23 401.74L52.05 401.96L52.88 402.17L53.72 402.36L54.58 402.53L55.44 402.7L56.32 402.84L57.2 402.98L58.1 403.09L59.01 403.2L59.93 403.29L60.85 403.36L61.79 403.41L62.74 403.46L63.7 403.48L64.66 403.49L65.64 403.48L66.63 403.45L67.62 403.41L68.63 403.35L69.64 403.28L70.66 403.18L71.69 403.07L72.73 402.94L73.78 402.79L74.83 402.62L75.89 402.43L76.96 402.23L78.04 402L79.13 401.76L80.22 401.5L81.32 401.21L82.43 400.91L83.54 400.58L84.66 400.24L85.79 399.87L86.92 399.49L88.06 399.08L89.2 398.65L90.35 398.2L91.51 397.73L92.67 397.23L93.83 396.71L95.01 396.17L96.18 395.61L97.36 395.02L98.55 394.41L99.74 393.78L100.93 393.12L102.13 392.44L103.33 391.74L104.53 391.01L105.74 390.25L106.95 389.47L108.16 388.66L109.38 387.83L110.6 386.97L111.82 386.09L113.05 385.18L114.27 384.24L115.5 383.28L116.73 382.28L117.96 381.26L119.19 380.22L120.43 379.14L121.66 378.03L122.9 376.9L124.13 375.73L125.37 374.54L126.61 373.31L127.84 372.06L129.08 370.77L130.31 369.46L131.55 368.11L132.78 366.72L134.02 365.31L135.25 363.86L136.48 362.38L137.71 360.87L138.94 359.32L140.16 357.73L141.38 356.11L142.61 354.46L143.82 352.77L145.04 351.04L146.25 349.27L147.46 347.46L148.67 345.62L149.88 343.74L151.08 341.81L152.27 339.85L153.46 337.84L154.65 335.79L155.84 333.7L157.02 331.56L158.19 329.38L159.36 327.16L160.53 324.88L161.69 322.56L162.84 320.2L163.99 317.78L165.13 315.31L166.27 312.79L167.4 310.22L168.52 307.59L169.64 304.91L170.75 302.17L171.86 299.38L172.96 296.52L174.05 293.6L175.13 290.63L176.21 287.58L177.28 284.47L178.34 281.3L179.39 278.05L180.44 274.74L181.47 271.35L182.5 267.88L183.52 264.33L184.53 260.71L185.53 257L186.53 253.21L187.51 249.32L188.48 245.35L189.45 241.28L190.4 237.11L191.35 232.84L192.29 228.46L193.21 223.97L194.13 219.37L195.03 214.65L195.93 209.81L196.81 204.84L197.68 199.73L198.55 194.48L199.4 189.09L200.24 183.54L201.07 177.83L201.88 171.95L202.69 165.9L203.48 159.67L204.27 153.23L205.04 146.6L205.8 139.75L206.54 132.67L207.28 125.35L208 117.77L208.71 109.93L209.4 101.81L210.09 93.38L210.76 84.63L211.42 75.54L212.06 66.08L212.7 56.24L213.32 45.98L213.92 35.27"/>
+</g>
+</svg>

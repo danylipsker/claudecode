@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 342 295.18" width="520" height="449" data-fig="fig-123b">
+<title>Fig. 123(b) — Inverse of A with the compass alone</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 123(b), page 128. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of inversion, centre O and radius k, and a point A outside it.">
+<circle class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="121" cy="147.59" r="100"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="121" cy="147.59" r="2.22"/>
+<text class="lbl " x="114.87" y="140.38" font-size="11.63" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="321" cy="147.59" r="2.22"/>
+<text class="lbl " x="321" y="140.38" font-size="11.63" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Draw the circle about A through O (radius AO). It meets the circle of inversion at P and Q.">
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M166.16 21A200 200 0 0 0 166.16 274.18"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="146" cy="50.77" r="2.22"/>
+<text class="lbl " x="158.98" y="50.77" font-size="11.63" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="146" cy="244.42" r="2.22"/>
+<text class="lbl " x="158.98" y="244.42" font-size="11.63" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="Keep the compass at the radius k and draw the circles about P and Q through O (PO = QO = k). They meet again at Ā: that is the inverse of A.">
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M102.26 140.69A100 100 0 0 0 189.74 140.69"/>
+<path class="ink given" style="stroke-width:1.23;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M189.74 154.49A100 100 0 0 0 102.26 154.49"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.75" cx="171" cy="147.59" r="2.22"/>
+<text class="lbl " x="171" y="133.89" font-size="11.63" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Ā</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Proof: the isosceles triangles OAP (AO = AP, OP = k) and POĀ (PO = PĀ = k) have the same base angle at O, so they are similar: OA / OP = OP / OĀ, hence OA · OĀ = k².">
+
+</g>
+</svg>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 503.88 191.12" width="520" height="197" data-fig="fig-102">
+<title>Fig. 102 — The snowflake (von Koch) curve: the first four stages</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 102, page 106. Section: discontinuous.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Stage 0: an equilateral triangle.">
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M30.94 117.54L130.94 117.54L80.94 30.94Z"/>
+<text class="lbl  upright" x="80.94" y="160.18" font-size="13.71" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">n = 0</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Stage 1: trisect each side, discard the middle third (dashed) and build on it an equilateral triangle pointing outwards. The result is a six-pointed star with 12 sides.">
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.05 4.03;stroke:#4b4b4b;stroke-dasharray:6.05 4.03;stroke-linecap:round;stroke-linejoin:round" d="M178.27 117.54L211.61 117.54"/>
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.05 4.03;stroke:#4b4b4b;stroke-dasharray:6.05 4.03;stroke-linecap:round;stroke-linejoin:round" d="M228.27 88.68L211.61 59.81"/>
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.05 4.03;stroke:#4b4b4b;stroke-dasharray:6.05 4.03;stroke-linecap:round;stroke-linejoin:round" d="M178.27 59.81L161.61 88.68"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M144.94 117.54L178.27 117.54"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M178.27 117.54L194.94 146.41"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M194.94 146.41L211.61 117.54"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M211.61 117.54L244.94 117.54"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M244.94 117.54L228.27 88.68"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M228.27 88.68L244.94 59.81"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M244.94 59.81L211.61 59.81"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M211.61 59.81L194.94 30.94"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M194.94 30.94L178.27 59.81"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M178.27 59.81L144.94 59.81"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M144.94 59.81L161.61 88.68"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M161.61 88.68L144.94 117.54"/>
+<text class="lbl  upright" x="194.94" y="160.18" font-size="13.71" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">n = 1</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Stage 2: do the same to each of the 12 sides of the star: 48 sides. The sides of the original triangle are drawn dashed.">
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.05 4.03;stroke:#4b4b4b;stroke-dasharray:6.05 4.03;stroke-linecap:round;stroke-linejoin:round" d="M258.94 117.54L358.94 117.54L308.94 30.94Z"/>
+<path class="ink given" style="stroke-width:1.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M258.94 117.54L270.05 117.54L275.61 127.17L281.16 117.54L292.27 117.54L297.83 127.17L292.27 136.79L303.38 136.79L308.94 146.41L314.5 136.79L325.61 136.79L320.05 127.17L325.61 117.54L336.72 117.54L342.27 127.17L347.83 117.54L358.94 117.54L353.38 107.92L358.94 98.3L347.83 98.3L342.27 88.68L347.83 79.05L358.94 79.05L353.38 69.43L358.94 59.81L347.83 59.81L342.27 50.19L336.72 59.81L325.61 59.81L320.05 50.19L325.61 40.56L314.5 40.56L308.94 30.94L303.38 40.56L292.27 40.56L297.83 50.19L292.27 59.81L281.16 59.81L275.61 50.19L270.05 59.81L258.94 59.81L264.5 69.43L258.94 79.05L270.05 79.05L275.61 88.68L270.05 98.3L258.94 98.3L264.5 107.92Z"/>
+<text class="lbl  upright" x="308.94" y="160.18" font-size="13.71" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">n = 2</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Stage 3: 192 sides. Repeated without end the curve has a finite area, an infinite length and no tangent anywhere.">
+<path class="ink cons dash" style="stroke-width:1.11;fill:none;--dash:6.05 4.03;stroke:#4b4b4b;stroke-dasharray:6.05 4.03;stroke-linecap:round;stroke-linejoin:round" d="M372.94 117.54L472.94 117.54L422.94 30.94Z"/>
+<path class="ink curve" style="stroke-width:1.4;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M372.94 117.54L376.64 117.54L378.5 120.75L380.35 117.54L384.05 117.54L385.9 120.75L384.05 123.96L387.75 123.96L389.61 127.17L391.46 123.96L395.16 123.96L393.31 120.75L395.16 117.54L398.87 117.54L400.72 120.75L402.57 117.54L406.27 117.54L408.13 120.75L406.27 123.96L409.98 123.96L411.83 127.17L409.98 130.37L406.27 130.37L408.13 133.58L406.27 136.79L409.98 136.79L411.83 140L413.68 136.79L417.38 136.79L419.24 140L417.38 143.2L421.09 143.2L422.94 146.41L424.79 143.2L428.5 143.2L426.64 140L428.5 136.79L432.2 136.79L434.05 140L435.9 136.79L439.61 136.79L437.75 133.58L439.61 130.37L435.9 130.37L434.05 127.17L435.9 123.96L439.61 123.96L437.75 120.75L439.61 117.54L443.31 117.54L445.16 120.75L447.01 117.54L450.72 117.54L452.57 120.75L450.72 123.96L454.42 123.96L456.27 127.17L458.13 123.96L461.83 123.96L459.98 120.75L461.83 117.54L465.53 117.54L467.38 120.75L469.24 117.54L472.94 117.54L471.09 114.34L472.94 111.13L469.24 111.13L467.38 107.92L469.24 104.71L472.94 104.71L471.09 101.51L472.94 98.3L469.24 98.3L467.38 95.09L465.53 98.3L461.83 98.3L459.98 95.09L461.83 91.88L458.13 91.88L456.27 88.68L458.13 85.47L461.83 85.47L459.98 82.26L461.83 79.05L465.53 79.05L467.38 82.26L469.24 79.05L472.94 79.05L471.09 75.85L472.94 72.64L469.24 72.64L467.38 69.43L469.24 66.22L472.94 66.22L471.09 63.02L472.94 59.81L469.24 59.81L467.38 56.6L465.53 59.81L461.83 59.81L459.98 56.6L461.83 53.39L458.13 53.39L456.27 50.19L454.42 53.39L450.72 53.39L452.57 56.6L450.72 59.81L447.01 59.81L445.16 56.6L443.31 59.81L439.61 59.81L437.75 56.6L439.61 53.39L435.9 53.39L434.05 50.19L435.9 46.98L439.61 46.98L437.75 43.77L439.61 40.56L435.9 40.56L434.05 37.36L432.2 40.56L428.5 40.56L426.64 37.36L428.5 34.15L424.79 34.15L422.94 30.94L421.09 34.15L417.38 34.15L419.24 37.36L417.38 40.56L413.68 40.56L411.83 37.36L409.98 40.56L406.27 40.56L408.13 43.77L406.27 46.98L409.98 46.98L411.83 50.19L409.98 53.39L406.27 53.39L408.13 56.6L406.27 59.81L402.57 59.81L400.72 56.6L398.87 59.81L395.16 59.81L393.31 56.6L395.16 53.39L391.46 53.39L389.61 50.19L387.75 53.39L384.05 53.39L385.9 56.6L384.05 59.81L380.35 59.81L378.5 56.6L376.64 59.81L372.94 59.81L374.79 63.02L372.94 66.22L376.64 66.22L378.5 69.43L376.64 72.64L372.94 72.64L374.79 75.85L372.94 79.05L376.64 79.05L378.5 82.26L380.35 79.05L384.05 79.05L385.9 82.26L384.05 85.47L387.75 85.47L389.61 88.68L387.75 91.88L384.05 91.88L385.9 95.09L384.05 98.3L380.35 98.3L378.5 95.09L376.64 98.3L372.94 98.3L374.79 101.51L372.94 104.71L376.64 104.71L378.5 107.92L376.64 111.13L372.94 111.13L374.79 114.34Z"/>
+<text class="lbl  upright" x="422.94" y="160.18" font-size="13.71" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">n = 3</text>
+</g>
+</svg>

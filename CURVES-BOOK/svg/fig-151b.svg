@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1043.1 713.12" width="520" height="356" data-fig="fig-151b">
+<title>Fig. 151(b) — The tangent to the pedal: the circle on r as diameter</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 151(b), page 160. Section: pedal-curves.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The pedal point P with the initial line and its perpendicular, and the given curve through a point X; r is the radius vector PX.">
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M64.05 605.56L979.05 605.56"/>
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M257.05 605.56L257.05 82.56"/>
+<path class="ink thick" style="stroke-width:5.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M547.92 82.28L549.98 85.83L552.08 89.35L554.23 92.84L556.43 96.3L558.67 99.73L560.96 103.13L563.3 106.5L565.68 109.84L568.11 113.14L570.58 116.41L573.1 119.65L575.66 122.85L578.27 126.01L580.92 129.14L583.61 132.24L586.34 135.29L589.12 138.31L591.93 141.29L594.79 144.23L597.68 147.14L600.62 150L603.59 152.82L606.6 155.6L609.65 158.34L612.74 161.04L615.87 163.69L619.03 166.31L622.22 168.88L625.45 171.4L628.71 173.88L632.01 176.32L635.34 178.71L638.71 181.05L642.1 183.35L645.53 185.61L648.98 187.81L652.47 189.97L655.99 192.08L659.53 194.14L663.1 196.15L666.7 198.12L670.33 200.03L673.98 201.9L677.65 203.71L681.35 205.48L685.08 207.19L688.83 208.85L692.6 210.46L696.39 212.02L700.2 213.53L704.03 214.99L707.89 216.39L711.76 217.74L715.65 219.03L719.55 220.28L723.48 221.47L727.42 222.61L731.37 223.69L735.34 224.72L739.32 225.69"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.76" cx="257.05" cy="605.56" r="14.92"/><circle class="pt" style="fill:#1b1b1b" cx="257.05" cy="605.56" r="6.1"/>
+<text class="lbl " x="212.19" y="658.33" font-size="35.47" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M257.05 605.56L564.05 107.56"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.29" cx="564.05" cy="107.56" r="6.78"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent to the curve at X.">
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M564.05 107.56L696.19 293.54"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From P drop the perpendicular p on the tangent: its foot F is a point of the pedal.">
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M257.05 605.56L696.19 293.54"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.29" cx="696.19" cy="293.54" r="6.78"/>
+<text class="lbl " x="493.44" y="469.34" font-size="35.47" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">p</text>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The circle on r = PX as diameter (centre M, the midpoint of PX) passes through F, because the angle PFX is a right angle. The open dot is its centre.">
+<circle class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="410.55" cy="356.56" r="292.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.29" cx="410.55" cy="356.56" r="6.78"/>
+<text class="lbl " x="448.84" y="244.51" font-size="35.47" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angle ψ between r and the tangent at X equals the angle between p and the tangent to the pedal at F (both are inscribed in the same circle on the same chord).">
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.29" d="M537.25 151.04A51.07 51.07 0 0 0 593.63 149.19"/>
+<text class="lbl " x="566.59" y="185.19" font-size="35.47" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ψ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.29" d="M654.56 323.12A51.07 51.07 0 0 0 707.2 343.41"/>
+<text class="lbl " x="668.25" y="366.01" font-size="35.47" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">ψ</text>
+</g>
+<g class="step" data-step="5" data-tool="straightedge" data-text="So the tangent to the pedal at F is the tangent to the circle on r as diameter: the line through F perpendicular to MF.">
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M671.42 181.24L774.19 647.04"/>
+<text class="lbl  upright" x="837.05" y="485.56" font-size="31.92" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">PEDAL</text>
+<text class="lbl  upright" x="861.05" y="527.56" font-size="31.92" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">TANGENT</text>
+<path class="ink given" style="stroke-width:3.76;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M829.05 488.56L747.05 488.56"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M747.05 488.56L762.65 495.12L762.65 482.01Z"/>
+</g>
+<g class="step" data-step="6" data-tool="pencil" data-text="The pedal itself: the locus of F as X runs along the curve. It touches the line just drawn at F.">
+<path class="ink curve" style="stroke-width:5.84;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M669.16 470.02L672.16 464.42L675.02 458.77L677.73 453.07L680.31 447.33L682.74 441.55L685.02 435.74L687.17 429.89L689.16 424.01L691.01 418.1L692.72 412.18L694.28 406.23L695.69 400.26L696.96 394.28L698.08 388.29L699.05 382.29L699.88 376.28L700.56 370.28L701.09 364.27L701.48 358.28L701.72 352.29L701.81 346.31L701.76 340.34L701.56 334.4L701.22 328.47L700.74 322.57L700.11 316.7L699.34 310.86L698.43 305.05L697.38 299.27L696.19 293.54L694.86 287.85L693.4 282.2L691.79 276.61L690.05 271.06L688.18 265.57L686.17 260.14L684.04 254.76L681.77 249.45L679.37 244.21L676.85 239.03L674.2 233.93L671.43 228.9L668.53 223.95L665.52 219.07L662.39 214.28L659.14 209.57L655.77 204.95L652.3 200.42L648.71 195.99L645.01 191.64L641.21 187.4L637.3 183.25L633.29 179.2L629.19 175.26L624.98 171.43L620.68 167.7L616.29 164.08L611.8 160.57L607.23 157.18L602.57 153.9"/>
+</g>
+</svg>

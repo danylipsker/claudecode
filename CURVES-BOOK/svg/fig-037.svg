@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 981.01 997.29" width="520" height="529" data-fig="fig-037">
+<title>Fig. 37 — The harmonic section: Q1 and Q2 divide P1P2 internally and externally in the same ratio</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 37, page 42. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The conic and the point P2 outside it.">
+<path class="ink thick" style="stroke-width:5.58;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.97 746.87L68.57 753.08L70.38 759.24L72.37 765.35L74.57 771.4L76.95 777.38L79.52 783.31L82.29 789.16L85.24 794.94L88.37 800.64L91.69 806.27L95.2 811.81L98.88 817.27L102.74 822.64L106.78 827.92L110.99 833.1L115.37 838.18L119.92 843.17L124.63 848.05L129.51 852.82L134.55 857.48L139.74 862.04L145.09 866.47L150.59 870.79L156.24 874.99L162.03 879.07L167.96 883.02L174.03 886.84L180.24 890.54L186.57 894.11L193.03 897.54L199.62 900.83L206.32 903.99L213.14 907.01L220.07 909.89L227.11 912.62L234.25 915.21L241.49 917.65L248.82 919.95L256.25 922.1L263.76 924.1L271.35 925.95L279.02 927.64L286.76 929.18L294.57 930.57L302.44 931.81L310.37 932.88L318.36 933.8L326.4 934.57L334.48 935.18L342.6 935.63L350.76 935.92L358.95 936.05L367.16 936.03L375.4 935.85L383.65 935.51L391.92 935.01L400.19 934.36L408.46 933.55L416.73 932.58L424.99 931.45L433.24 930.17L441.47 928.74L449.68 927.15L457.87 925.41L466.02 923.52L474.13 921.47L482.21 919.28L490.24 916.94L498.21 914.45L506.14 911.82L514 909.04L521.8 906.12L529.52 903.06L537.18 899.86L544.76 896.52L552.25 893.05L559.66 889.45L566.98 885.71L574.2 881.85L581.32 877.86L588.34 873.75L595.25 869.51L602.04 865.16L608.73 860.68L615.29 856.1L621.73 851.4L628.04 846.6L634.22 841.69L640.26 836.67L646.17 831.56L651.94 826.35L657.56 821.04L663.03 815.65L668.35 810.16L673.51 804.59L678.52 798.94L683.37 793.22L688.06 787.41L692.57 781.54L696.92 775.6L701.1 769.59L705.11 763.53L708.93 757.4L712.58 751.23L716.05 745L719.34 738.73L722.44 732.41L725.36 726.05L728.09 719.66L730.63 713.24L732.97 706.79L735.13 700.31L737.09 693.82L738.86 687.3L740.43 680.78L741.81 674.25L742.98 667.71L743.96 661.17L744.74 654.63L745.32 648.1L745.7 641.58L745.88 635.07L745.87 628.58L745.65 622.11L745.23 615.67L744.61 609.25L743.8 602.87L742.78 596.53L741.57 590.22L740.16 583.96L738.55 577.75L736.75 571.59L734.75 565.48L732.56 559.43L730.17 553.45L727.6 547.52L724.84 541.67L721.89 535.89L718.75 530.19L715.43 524.56L711.92 519.02L708.24 513.56L704.38 508.19L700.34 502.91L696.13 497.73L691.75 492.65L687.2 487.66L682.49 482.78L677.61 478.01L672.58 473.35L667.38 468.8L662.03 464.36L656.53 460.04L650.88 455.84L645.09 451.76L639.16 447.81L633.09 443.99L626.89 440.29L620.55 436.73L614.09 433.29L607.5 430L600.8 426.84L593.98 423.82L587.05 420.95L580.01 418.21L572.87 415.62L565.63 413.18L558.3 410.88L550.88 408.73L543.37 406.73L535.77 404.88L528.11 403.19L520.36 401.65L512.55 400.26L504.68 399.03L496.75 397.95L488.76 397.03L480.72 396.26L472.64 395.65L464.52 395.2L456.36 394.91L448.17 394.78L439.96 394.8L431.72 394.98L423.47 395.32L415.21 395.82L406.94 396.47L398.66 397.29L390.39 398.25L382.13 399.38L373.88 400.66L365.65 402.09L357.44 403.68L349.25 405.42L341.1 407.31L332.99 409.36L324.91 411.55L316.89 413.89L308.91 416.38L300.99 419.01L293.12 421.79L285.33 424.71L277.6 427.77L269.94 430.97L262.37 434.31L254.87 437.78L247.46 441.38L240.15 445.12L232.93 448.98L225.8 452.97L218.79 457.08L211.88 461.32L205.08 465.67L198.4 470.15L191.83 474.73L185.4 479.43L179.08 484.23L172.9 489.14L166.86 494.16L160.95 499.27L155.19 504.48L149.57 509.79L144.09 515.19L138.77 520.67L133.61 526.24L128.6 531.89L123.75 537.61L119.07 543.42L114.55 549.29L110.2 555.23L106.02 561.24L102.02 567.3L98.19 573.43L94.54 579.6L91.07 585.83L87.78 592.11L84.68 598.42L81.76 604.78L79.03 611.17L76.5 617.59L74.15 624.04L71.99 630.52L70.03 637.01L68.26 643.53L66.69 650.05L65.32 656.58L64.14 663.12L63.16 669.66L62.38 676.2L61.8 682.73L61.42 689.26L61.24 695.76L61.26 702.25L61.47 708.72L61.89 715.16L62.51 721.58L63.33 727.96L64.34 734.3L65.56 740.61L66.97 746.87"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="919.77" cy="61.24" r="6.48"/>
+<text class="lbl " x="901.9" y="40.21" font-size="33.91" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the polar of P2: the chord through the points of contact T1, T2 of the two tangents from P2 (drawn too).">
+<path class="ink given" style="stroke-width:3.59;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.53 514.08L919.77 61.24"/>
+<path class="ink given" style="stroke-width:3.59;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M919.77 61.24L705.89 801.88"/>
+<path class="ink given" style="stroke-width:3.59;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M100.99 390.96L864.16 754.92"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="228.18" cy="451.62" r="6.48"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="736.96" cy="694.26" r="6.48"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Draw any line through P2. It meets the conic in Q1 and Q2 and the polar in P1.">
+<path class="ink given" style="stroke-width:3.59;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M919.77 61.24L118.34 841.47"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="560.08" cy="411.42" r="6.48"/>
+<text class="lbl " x="588.67" y="377.78" font-size="33.91" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="118.34" cy="841.47" r="6.48"/>
+<text class="lbl " x="154.08" y="799.43" font-size="33.91" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="423.24" cy="544.64" r="6.48"/>
+<text class="lbl " x="423.24" y="578.28" font-size="33.91" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="P1, P2, Q1, Q2 are a harmonic set: P1Q1 : Q1P2 = P1Q2 : Q2P2 (internal and external division in the same ratio), so 2 / P2P1 = 1 / P2Q1 + 1 / P2Q2. Q1 and Q2 divide P1P2 internally and externally in the same ratio.">
+<circle class="pt cons open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.19" cx="423.24" cy="544.64" r="9.08"/>
+</g>
+</svg>

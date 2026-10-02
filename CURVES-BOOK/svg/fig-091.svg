@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 264.43 306.43" width="520" height="603" data-fig="fig-091">
+<title>Fig. 91 — A removable discontinuity: y = (x³ − 1)/(x − 1)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 91, page 100. Section: discontinuous.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes. The function is undefined at x = 1.">
+<path class="ink axis" style="stroke-width:0.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M18.82 254.02L245.62 254.02"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M245.62 254.02L239.89 251.61L239.89 256.42Z"/>
+<path class="ink axis" style="stroke-width:0.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M140.62 287.62L140.62 18.82"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M140.62 18.82L138.21 24.55L143.02 24.55Z"/>
+<text class="lbl axis" x="251.11" y="260.48" font-size="10.42" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="146.11" y="12.36" font-size="10.42" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.67" cx="140.62" cy="254.02" r="1.99"/>
+<path class="ink cons dash" style="stroke-width:0.67;fill:none;--dash:3.68 2.45;stroke:#4b4b4b;stroke-dasharray:3.68 2.45;stroke-linecap:round;stroke-linejoin:round" d="M182.62 254.02L182.62 128.02"/>
+<text class="lbl  upright" x="182.62" y="266.62" font-size="9.38" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Away from x = 1 the quotient equals x² + x + 1 (divide x³ − 1 by x − 1): draw this parabola, with its lowest point at (−1/2, 3/4), and leave the point (1, 3) open.">
+<path class="ink curve" style="stroke-width:1.72;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M35.62 54.52L36.71 58.85L37.79 63.12L38.88 67.33L39.97 71.49L41.06 75.6L42.15 79.64L43.24 83.63L44.33 87.57L45.42 91.44L46.51 95.27L47.6 99.03L48.69 102.74L49.78 106.39L50.87 109.98L51.96 113.52L53.05 117L54.14 120.43L55.22 123.8L56.31 127.11L57.4 130.36L58.49 133.56L59.58 136.71L60.67 139.79L61.76 142.82L62.85 145.79L63.94 148.71L65.03 151.57L66.12 154.37L67.21 157.12L68.3 159.81L69.39 162.44L70.48 165.02L71.57 167.54L72.65 170.01L73.74 172.42L74.83 174.77L75.92 177.06L77.01 179.3L78.1 181.48L79.19 183.61L80.28 185.68L81.37 187.69L82.46 189.64L83.55 191.54L84.64 193.39L85.73 195.17L86.82 196.9L87.91 198.57L89 200.19L90.08 201.75L91.17 203.26L92.26 204.7L93.35 206.09L94.44 207.43L95.53 208.71L96.62 209.93L97.71 211.09L98.8 212.2L99.89 213.25L100.98 214.25L102.07 215.18L103.16 216.07L104.25 216.89L105.34 217.66L106.43 218.37L107.51 219.03L108.6 219.63L109.69 220.17L110.78 220.66L111.87 221.09L112.96 221.46L114.05 221.78L115.14 222.04L116.23 222.24L117.32 222.39L118.41 222.48L119.5 222.52L120.59 222.49L121.68 222.41L122.77 222.28L123.86 222.09L124.94 221.84L126.03 221.54L127.12 221.17L128.21 220.76L129.3 220.28L130.39 219.75L131.48 219.16L132.57 218.52L133.66 217.82L134.75 217.06L135.84 216.25L136.93 215.38L138.02 214.45L139.11 213.47L140.2 212.43L141.29 211.34L142.37 210.18L143.46 208.97L144.55 207.71L145.64 206.39L146.73 205.01L147.82 203.57L148.91 202.08L150 200.53L151.09 198.93L152.18 197.27L153.27 195.55L154.36 193.78L155.45 191.95L156.54 190.06L157.63 188.12L158.72 186.12L159.8 184.06L160.89 181.95L161.98 179.78L163.07 177.55L164.16 175.27L165.25 172.93L166.34 170.53L167.43 168.08L168.52 165.57L169.61 163.01L170.7 160.39L171.79 157.71L172.88 154.97L173.97 152.18L175.06 149.34L176.15 146.43L177.23 143.47L178.32 140.45L179.41 137.38L180.5 134.25L181.59 131.06L182.68 127.82L183.77 124.52L184.86 121.16L185.95 117.75L187.04 114.28L188.13 110.75L189.22 107.17L190.31 103.53L191.4 99.84L192.49 96.09L193.58 92.28L194.66 88.41L195.75 84.49L196.84 80.51L197.93 76.48L199.02 72.39L200.11 68.24L201.2 64.04L202.29 59.78L203.38 55.46L204.47 51.09L205.56 46.66L206.65 42.17L207.74 37.63L208.83 33.03L209.92 28.37"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.67" cx="182.62" cy="128.02" r="1.99"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The limit of y as x → 1 is 3.">
+<path class="ink cons dash" style="stroke-width:0.67;fill:none;--dash:3.68 2.45;stroke:#4b4b4b;stroke-dasharray:3.68 2.45;stroke-linecap:round;stroke-linejoin:round" d="M140.62 128.02L182.62 128.02"/>
+<text class="lbl  upright" x="135.58" y="128.02" font-size="9.38" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">3</text>
+</g>
+</svg>

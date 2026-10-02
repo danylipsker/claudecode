@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 661.1 806.93" width="520" height="635" data-fig="fig-056d">
+<title>Fig. 56(d) — The cubic y = Ax³ with a = b = c = 0</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 56(d), page 56. Section: cubic-parabola.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX, OY of the graph of y = Ax³ + Bx² + Cx + D = A(x − a)(x² + bx + c).">
+<path class="ink axis" style="stroke-width:2.42;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M61.55 501.55L611.55 501.55"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M611.55 501.55L596.46 495.21L596.46 507.89Z"/>
+<path class="ink axis" style="stroke-width:2.42;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M311.55 749.55L311.55 49.55"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M311.55 49.55L305.21 64.64L317.89 64.64Z"/>
+<text class="lbl axis" x="591.55" y="484.54" font-size="27.44" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="328.56" y="64.55" font-size="27.44" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.78" cx="311.55" cy="501.55" r="8.39"/>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="When b = c = 0 as well the curve is the basic cubic parabola, with its point of inflexion at the origin where the tangent is the x-axis.">
+<path class="ink curve" style="stroke-width:4.52;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M49.55 757.38L51.73 751.04L53.91 744.8L56.1 738.67L58.28 732.64L60.46 726.72L62.65 720.89L64.83 715.17L67.01 709.55L69.2 704.03L71.38 698.6L73.56 693.28L75.75 688.05L77.93 682.92L80.11 677.88L82.3 672.94L84.48 668.09L86.66 663.33L88.85 658.66L91.03 654.09L93.21 649.6L95.4 645.2L97.58 640.89L99.76 636.67L101.95 632.53L104.13 628.48L106.31 624.52L108.5 620.63L110.68 616.83L112.86 613.12L115.05 609.48L117.23 605.92L119.41 602.44L121.6 599.04L123.78 595.72L125.96 592.47L128.15 589.3L130.33 586.2L132.51 583.18L134.7 580.23L136.88 577.35L139.06 574.54L141.25 571.81L143.43 569.14L145.61 566.54L147.8 564.01L149.98 561.54L152.16 559.14L154.35 556.81L156.53 554.54L158.71 552.33L160.9 550.18L163.08 548.1L165.26 546.08L167.45 544.11L169.63 542.21L171.81 540.36L174 538.57L176.18 536.83L178.36 535.15L180.55 533.53L182.73 531.95L184.91 530.43L187.1 528.97L189.28 527.55L191.46 526.18L193.65 524.86L195.83 523.59L198.01 522.37L200.2 521.19L202.38 520.05L204.56 518.97L206.75 517.92L208.93 516.92L211.11 515.96L213.3 515.04L215.48 514.16L217.66 513.32L219.85 512.52L222.03 511.75L224.21 511.02L226.4 510.33L228.58 509.67L230.76 509.05L232.95 508.46L235.13 507.9L237.31 507.37L239.5 506.87L241.68 506.4L243.86 505.96L246.05 505.55L248.23 505.16L250.41 504.8L252.6 504.46L254.78 504.15L256.96 503.86L259.15 503.59L261.33 503.35L263.51 503.12L265.7 502.92L267.88 502.73L270.06 502.56L272.25 502.41L274.43 502.28L276.61 502.15L278.8 502.05L280.98 501.95L283.16 501.87L285.35 501.8L287.53 501.75L289.71 501.7L291.9 501.66L294.08 501.62L296.26 501.6L298.45 501.58L300.63 501.57L302.81 501.56L305 501.55L307.18 501.55L309.36 501.55L311.55 501.55L313.73 501.55L315.91 501.55L318.1 501.54L320.28 501.54L322.46 501.53L324.65 501.52L326.83 501.5L329.01 501.47L331.2 501.44L333.38 501.4L335.56 501.35L337.75 501.29L339.93 501.22L342.11 501.14L344.3 501.05L346.48 500.94L348.66 500.82L350.85 500.68L353.03 500.53L355.21 500.36L357.4 500.18L359.58 499.97L361.76 499.75L363.95 499.5L366.13 499.23L368.31 498.95L370.5 498.63L372.68 498.3L374.86 497.94L377.05 497.55L379.23 497.14L381.41 496.7L383.6 496.23L385.78 495.73L387.96 495.2L390.15 494.64L392.33 494.05L394.51 493.42L396.7 492.77L398.88 492.07L401.06 491.34L403.25 490.58L405.43 489.78L407.61 488.94L409.8 488.06L411.98 487.14L414.16 486.18L416.35 485.17L418.53 484.13L420.71 483.04L422.9 481.91L425.08 480.73L427.26 479.51L429.45 478.24L431.63 476.92L433.81 475.55L436 474.13L438.18 472.66L440.36 471.14L442.55 469.57L444.73 467.94L446.91 466.26L449.1 464.53L451.28 462.74L453.46 460.89L455.65 458.98L457.83 457.02L460.01 455L462.2 452.91L464.38 450.77L466.56 448.56L468.75 446.29L470.93 443.95L473.11 441.55L475.3 439.09L477.48 436.56L479.66 433.96L481.85 431.29L484.03 428.55L486.21 425.75L488.4 422.87L490.58 419.92L492.76 416.89L494.95 413.8L497.13 410.63L499.31 407.38L501.5 404.06L503.68 400.66L505.86 397.18L508.05 393.62L510.23 389.98L512.41 386.26L514.6 382.46L516.78 378.58L518.96 374.61L521.15 370.56L523.33 366.43L525.51 362.2L527.7 357.89L529.88 353.5L532.06 349.01L534.25 344.44L536.43 339.77L538.61 335.01L540.8 330.16L542.98 325.22L545.16 320.18L547.35 315.05L549.53 309.82L551.71 304.49L553.9 299.07L556.08 293.55L558.26 287.93L560.45 282.2L562.63 276.38L564.81 270.46L567 264.43L569.18 258.3L571.36 252.06L573.55 245.72"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The condition on the quadratic factor x² + bx + c, written under the graph in the book.">
+<text class="lbl  upright" x="193.55" y="711.55" font-size="27.44" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a = b = c = 0</text>
+</g>
+</svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 416.69 494.59" width="520" height="617" data-fig="fig-122">
+<title>Fig. 122 — Mutually inverse points and curves</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 122, page 127. Section: inversion.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle of inversion, with centre O and radius k, and the figure to be inverted: the triangle ABC with one curved side.">
+<circle class="ink given" style="stroke-width:1.78;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="190.37" cy="304.22" r="160"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="190.37" cy="304.22" r="3.21"/>
+<text class="lbl " x="179.94" y="304.22" font-size="16.82" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<path class="ink thick" style="stroke-width:2.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M207.63 181.43L233.07 238.47L279.69 239.33"/>
+<path class="ink thick" style="stroke-width:2.77;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M207.63 181.43L209.27 181.54L210.9 181.68L212.54 181.86L214.17 182.08L215.79 182.32L217.41 182.6L219.03 182.92L220.63 183.26L222.23 183.64L223.82 184.05L225.41 184.5L226.98 184.98L228.54 185.49L230.09 186.03L231.63 186.6L233.16 187.21L234.68 187.85L236.18 188.52L237.67 189.21L239.14 189.94L240.6 190.7L242.04 191.49L243.46 192.31L244.87 193.16L246.26 194.04L247.63 194.95L248.98 195.88L250.32 196.84L251.63 197.83L252.92 198.85L254.19 199.89L255.44 200.96L256.67 202.06L257.87 203.17L259.05 204.32L260.21 205.49L261.34 206.68L262.45 207.89L263.53 209.13L264.58 210.39L265.61 211.67L266.62 212.97L267.59 214.3L268.54 215.64L269.46 217L270.35 218.38L271.22 219.78L272.05 221.2L272.86 222.63L273.63 224.08L274.38 225.54L275.09 227.02L275.78 228.52L276.43 230.03L277.05 231.55L277.64 233.08L278.2 234.63L278.73 236.18L279.22 237.75L279.69 239.33"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="279.69" cy="239.33" r="3.21"/>
+<text class="lbl " x="293.24" y="239.33" font-size="16.82" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="233.07" cy="238.47" r="3.21"/>
+<text class="lbl " x="221.55" y="252.02" font-size="16.82" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="207.63" cy="181.43" r="3.21"/>
+<text class="lbl " x="194.07" y="181.43" font-size="16.82" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the lines OA, OB, OC. The inverse of each point lies on its own ray from O.">
+<path class="ink cons dash" style="stroke-width:1.09;fill:none;--dash:5.94 3.96;stroke:#4b4b4b;stroke-dasharray:5.94 3.96;stroke-linecap:round;stroke-linejoin:round" d="M190.37 304.22L377.97 167.92"/>
+<path class="ink cons dash" style="stroke-width:1.09;fill:none;--dash:5.94 3.96;stroke:#4b4b4b;stroke-dasharray:5.94 3.96;stroke-linecap:round;stroke-linejoin:round" d="M190.37 304.22L368.21 30.37"/>
+<path class="ink cons dash" style="stroke-width:1.09;fill:none;--dash:5.94 3.96;stroke:#4b4b4b;stroke-dasharray:5.94 3.96;stroke-linecap:round;stroke-linejoin:round" d="M190.37 304.22L219.1 99.78"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="On each ray find the inverse point, with OA · OĀ = OB · OB̄ = OC · OC̄ = k² (the construction of Fig. 123).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="377.97" cy="167.92" r="3.21"/>
+<text class="lbl " x="389.49" y="181.48" font-size="16.82" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Ā</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="368.21" cy="30.37" r="3.21"/>
+<text class="lbl " x="379.73" y="16.82" font-size="16.82" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B̄</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.09" cx="219.1" cy="99.78" r="3.21"/>
+<text class="lbl " x="207.58" y="86.23" font-size="16.82" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C̄</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="Invert enough points of each side and join them: the inverse of a segment or an arc is an arc (a circle through O when the side is a straight line), and the figure Ā B̄ C̄ has the same angles as ABC, in the opposite sense.">
+<path class="ink curve" style="stroke-width:2.77;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M219.1 99.78L219.95 98.78L220.81 97.78L221.68 96.77L222.57 95.76L223.48 94.74L224.41 93.72L225.35 92.69L226.32 91.66L227.3 90.63L228.3 89.59L229.31 88.55L230.35 87.5L231.41 86.45L232.48 85.4L233.58 84.34L234.69 83.28L235.83 82.22L236.99 81.15L238.17 80.08L239.38 79.01L240.6 77.94L241.85 76.87L243.13 75.79L244.42 74.71L245.75 73.64L247.09 72.56L248.46 71.48L249.86 70.4L251.28 69.32L252.73 68.24L254.21 67.17L255.71 66.09L257.25 65.02L258.81 63.95L260.4 62.88L262.02 61.82L263.66 60.76L265.34 59.7L267.05 58.65L268.79 57.61L270.57 56.57L272.37 55.54L274.21 54.51L276.08 53.49L277.98 52.49L279.92 51.49L281.89 50.5L283.9 49.52L285.94 48.56L288.02 47.6L290.13 46.67L292.28 45.74L294.47 44.83L296.69 43.94L298.95 43.06L301.25 42.21L303.59 41.37L305.96 40.55L308.38 39.75L310.83 38.98L313.33 38.23L315.86 37.51L318.43 36.81L321.04 36.14L323.7 35.5L326.39 34.89L329.12 34.31L331.89 33.76L334.7 33.25L337.56 32.78L340.45 32.34L343.38 31.94L346.35 31.59L349.36 31.27L352.41 31L355.49 30.78L358.62 30.6L361.78 30.47L364.98 30.39L368.21 30.37"/>
+<path class="ink curve" style="stroke-width:2.77;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M368.21 30.37L369.22 32.57L370.2 34.76L371.14 36.94L372.04 39.12L372.91 41.3L373.75 43.46L374.56 45.62L375.33 47.77L376.08 49.91L376.79 52.05L377.47 54.17L378.12 56.28L378.74 58.39L379.33 60.48L379.9 62.56L380.43 64.63L380.94 66.69L381.42 68.73L381.88 70.77L382.31 72.79L382.72 74.8L383.1 76.79L383.45 78.78L383.79 80.75L384.1 82.7L384.38 84.64L384.65 86.57L384.89 88.48L385.12 90.38L385.32 92.27L385.5 94.14L385.66 96L385.81 97.84L385.93 99.67L386.04 101.48L386.13 103.27L386.2 105.06L386.25 106.82L386.29 108.58L386.31 110.31L386.32 112.04L386.31 113.74L386.29 115.44L386.25 117.11L386.19 118.78L386.13 120.42L386.05 122.06L385.96 123.67L385.85 125.28L385.73 126.86L385.6 128.44L385.46 129.99L385.31 131.54L385.15 133.07L384.97 134.58L384.79 136.08L384.59 137.56L384.39 139.03L384.18 140.49L383.95 141.93L383.72 143.36L383.48 144.77L383.23 146.17L382.98 147.56L382.71 148.93L382.44 150.29L382.16 151.64L381.87 152.97L381.58 154.28L381.28 155.59L380.98 156.88L380.66 158.16L380.35 159.42L380.02 160.67L379.69 161.91L379.36 163.14L379.02 164.36L378.67 165.56L378.32 166.75L377.97 167.92"/>
+<path class="ink curve" style="stroke-width:2.77;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M219.1 99.78L221.1 100.23L223.1 100.7L225.09 101.17L227.07 101.65L229.05 102.14L231.03 102.63L233 103.13L234.97 103.65L236.94 104.16L238.9 104.69L240.86 105.23L242.81 105.77L244.76 106.32L246.71 106.88L248.66 107.45L250.6 108.03L252.55 108.61L254.49 109.21L256.42 109.81L258.36 110.42L260.3 111.04L262.23 111.67L264.16 112.3L266.09 112.95L268.03 113.61L269.96 114.27L271.89 114.94L273.82 115.62L275.75 116.32L277.67 117.02L279.6 117.73L281.53 118.45L283.47 119.18L285.4 119.92L287.33 120.67L289.26 121.43L291.2 122.2L293.13 122.98L295.07 123.77L297.01 124.58L298.95 125.39L300.9 126.21L302.84 127.05L304.79 127.9L306.74 128.75L308.69 129.63L310.65 130.51L312.61 131.4L314.57 132.31L316.54 133.23L318.51 134.16L320.48 135.1L322.46 136.06L324.44 137.03L326.43 138.02L328.42 139.02L330.41 140.03L332.41 141.06L334.41 142.1L336.42 143.16L338.44 144.23L340.46 145.32L342.49 146.42L344.52 147.54L346.56 148.67L348.6 149.83L350.65 151L352.71 152.18L354.77 153.39L356.84 154.61L358.92 155.85L361.01 157.11L363.1 158.39L365.2 159.69L367.31 161.01L369.42 162.35L371.55 163.71L373.68 165.09L375.82 166.5L377.97 167.92"/>
+</g>
+</svg>

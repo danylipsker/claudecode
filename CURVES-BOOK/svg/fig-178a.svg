@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 511.63 399.43" width="520" height="406" data-fig="fig-178a">
+<title>Fig. 178(a) — Maximum and minimum values of y: y² = x³(1 − x)</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 178(a), page 196. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the equation. The curve exists only for 0 ≤ x ≤ 1, where x³(1 − x) ≥ 0.">
+<path class="ink axis" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M47.92 203.02L440.62 203.02"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M440.62 203.02L431.05 199L431.05 207.03Z"/>
+<path class="ink axis" style="stroke-width:1.53;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M77.62 335.02L77.62 71.02"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M77.62 71.02L73.6 80.58L81.63 80.58Z"/>
+<text class="lbl axis" x="449.78" y="213.8" font-size="17.4" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="86.78" y="60.23" font-size="17.4" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="259.12" y="47.92" font-size="14.79" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y<tspan baseline-shift="super" font-size="70%">2</tspan> = x<tspan baseline-shift="super" font-size="70%">3</tspan>(1 − x)</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the closed curve: a cusp at the origin and a vertical tangent at (1, 0). Between them dy/dx = 0 at the greatest and least values of y, at x = 3/4 (y = ±0.325).">
+<path class="ink curve" style="stroke-width:2.87;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M407.62 203.02L407.58 206.47L407.47 209.92L407.29 213.37L407.04 216.8L406.71 220.22L406.31 223.61L405.85 226.99L405.31 230.34L404.69 233.66L404.01 236.95L403.26 240.2L402.43 243.41L401.54 246.57L400.57 249.69L399.54 252.76L398.44 255.77L397.27 258.73L396.03 261.62L394.72 264.46L393.35 267.23L391.91 269.93L390.41 272.56L388.84 275.11L387.21 277.59L385.51 279.99L383.75 282.31L381.93 284.55L380.05 286.7L378.11 288.76L376.1 290.74L374.04 292.63L371.93 294.42L369.75 296.12L367.52 297.73L365.23 299.24L362.9 300.66L360.5 301.98L358.06 303.2L355.57 304.32L353.02 305.35L350.43 306.28L347.79 307.1L345.11 307.83L342.37 308.46L339.6 308.99L336.78 309.42L333.93 309.76L331.03 310L328.09 310.14L325.12 310.19L322.11 310.14L319.06 310L315.98 309.77L312.87 309.45L309.73 309.04L306.56 308.54L303.36 307.96L300.13 307.3L296.88 306.55L293.6 305.72L290.31 304.82L286.99 303.85L283.65 302.8L280.29 301.68L276.92 300.49L273.53 299.24L270.13 297.93L266.72 296.55L263.3 295.12L259.86 293.64L256.42 292.11L252.98 290.52L249.53 288.9L246.07 287.23L242.62 285.52L239.16 283.77L235.71 281.99L232.26 280.18L228.81 278.35L225.37 276.49L221.94 274.61L218.51 272.71L215.1 270.79L211.7 268.87L208.31 266.94L204.94 265L201.58 263.05L198.24 261.11L194.93 259.17L191.63 257.23L188.35 255.3L185.1 253.39L181.88 251.48L178.68 249.6L175.5 247.73L172.36 245.88L169.25 244.06L166.17 242.26L163.13 240.48L160.12 238.74L157.14 237.03L154.2 235.35L151.31 233.71L148.45 232.1L145.63 230.53L142.86 229L140.13 227.51L137.44 226.06L134.8 224.66L132.21 223.3L129.67 221.99L127.17 220.72L124.73 219.5L122.34 218.32L120 217.2L117.71 216.12L115.48 215.08L113.31 214.1L111.19 213.16L109.13 212.28L107.13 211.44L105.18 210.64L103.3 209.9L101.48 209.2L99.72 208.54L98.03 207.93L96.39 207.37L94.82 206.84L93.32 206.36L91.88 205.92L90.51 205.51L89.2 205.15L87.96 204.82L86.79 204.53L85.69 204.26L84.66 204.03L83.69 203.83L82.8 203.66L81.98 203.51L81.22 203.39L80.54 203.29L79.93 203.21L79.39 203.15L78.92 203.1L78.52 203.06L78.19 203.04L77.94 203.03L77.76 203.02L77.65 203.02L77.62 203.02L77.65 203.02L77.76 203.01L77.94 203.01L78.19 202.99L78.52 202.97L78.92 202.93L79.39 202.89L79.93 202.82L80.54 202.74L81.22 202.64L81.98 202.52L82.8 202.37L83.69 202.2L84.66 202L85.69 201.77L86.79 201.51L87.96 201.21L89.2 200.88L90.51 200.52L91.88 200.11L93.32 199.67L94.82 199.19L96.39 198.67L98.03 198.1L99.72 197.49L101.48 196.83L103.3 196.13L105.18 195.39L107.13 194.6L109.13 193.75L111.19 192.87L113.31 191.93L115.48 190.95L117.71 189.92L120 188.84L122.34 187.71L124.73 186.53L127.17 185.31L129.67 184.04L132.21 182.73L134.8 181.37L137.44 179.97L140.13 178.52L142.86 177.03L145.63 175.5L148.45 173.93L151.31 172.33L154.2 170.68L157.14 169L160.12 167.29L163.13 165.55L166.17 163.78L169.25 161.98L172.36 160.15L175.5 158.3L178.68 156.43L181.88 154.55L185.1 152.64L188.35 150.73L191.63 148.8L194.93 146.86L198.24 144.92L201.58 142.98L204.94 141.04L208.31 139.1L211.7 137.16L215.1 135.24L218.51 133.32L221.94 131.42L225.37 129.54L228.81 127.68L232.26 125.85L235.71 124.04L239.16 122.26L242.62 120.52L246.07 118.81L249.53 117.14L252.98 115.51L256.42 113.93L259.86 112.39L263.3 110.91L266.72 109.48L270.13 108.11L273.53 106.79L276.92 105.54L280.29 104.35L283.65 103.24L286.99 102.19L290.31 101.21L293.6 100.31L296.88 99.48L300.13 98.74L303.36 98.07L306.56 97.49L309.73 96.99L312.87 96.58L315.98 96.26L319.06 96.03L322.11 95.89L325.12 95.85L328.09 95.89L331.03 96.03L333.93 96.27L336.78 96.61L339.6 97.04L342.37 97.57L345.11 98.2L347.79 98.93L350.43 99.76L353.02 100.68L355.57 101.71L358.06 102.83L360.5 104.05L362.9 105.37L365.23 106.79L367.52 108.3L369.75 109.91L371.93 111.61L374.04 113.41L376.1 115.29L378.11 117.27L380.05 119.33L381.93 121.49L383.75 123.72L385.51 126.04L387.21 128.44L388.84 130.92L390.41 133.48L391.91 136.11L393.35 138.81L394.72 141.57L396.03 144.41L397.27 147.31L398.44 150.26L399.54 153.28L400.57 156.34L401.54 159.46L402.43 162.63L403.26 165.84L404.01 169.09L404.69 172.37L405.31 175.69L405.85 179.04L406.31 182.42L406.71 185.82L407.04 189.23L407.29 192.67L407.47 196.11L407.58 199.56L407.62 203.02"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.13" cx="77.62" cy="203.02" r="3.99"/>
+</g>
+</svg>

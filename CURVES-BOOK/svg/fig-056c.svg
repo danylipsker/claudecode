@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 633.2 832.2" width="520" height="683" data-fig="fig-056c">
+<title>Fig. 56(c) — The cubic with one real root: b² − 4ac &lt; 0</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 56(c), page 56. Section: cubic-parabola.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes OX, OY of the graph of y = Ax³ + Bx² + Cx + D = A(x − a)(x² + bx + c).">
+<path class="ink axis" style="stroke-width:2.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M52.1 523.1L582.1 523.1"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M582.1 523.1L566.54 516.56L566.54 529.64Z"/>
+<path class="ink axis" style="stroke-width:2.5;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M117.1 781.1L117.1 51.1"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M117.1 51.1L110.56 66.66L123.64 66.66Z"/>
+<text class="lbl axis" x="562.1" y="505.56" font-size="28.29" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="134.64" y="66.1" font-size="28.29" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.83" cx="117.1" cy="523.1" r="8.65"/>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="When the quadratic factor has no real roots the cubic crosses the x-axis once, at x = a; it may still have a maximum and a minimum.">
+<path class="ink curve" style="stroke-width:4.66;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M51.1 537.27L53.17 527.46L55.23 517.86L57.3 508.46L59.37 499.25L61.43 490.25L63.5 481.44L65.57 472.83L67.63 464.41L69.7 456.18L71.77 448.14L73.83 440.29L75.9 432.62L77.97 425.14L80.03 417.85L82.1 410.73L84.17 403.79L86.23 397.04L88.3 390.45L90.37 384.04L92.43 377.81L94.5 371.74L96.57 365.85L98.63 360.12L100.7 354.56L102.77 349.16L104.83 343.92L106.9 338.85L108.97 333.93L111.03 329.18L113.1 324.57L115.17 320.12L117.23 315.83L119.3 311.68L121.37 307.68L123.43 303.83L125.5 300.13L127.57 296.57L129.63 293.15L131.7 289.87L133.77 286.73L135.83 283.72L137.9 280.85L139.97 278.12L142.03 275.52L144.1 273.04L146.17 270.7L148.23 268.48L150.3 266.39L152.37 264.42L154.43 262.57L156.5 260.84L158.57 259.23L160.63 257.74L162.7 256.36L164.77 255.09L166.83 253.94L168.9 252.89L170.97 251.96L173.03 251.13L175.1 250.4L177.17 249.78L179.23 249.25L181.3 248.83L183.37 248.5L185.43 248.28L187.5 248.14L189.57 248.1L191.63 248.15L193.7 248.28L195.77 248.51L197.83 248.82L199.9 249.22L201.97 249.69L204.03 250.25L206.1 250.89L208.17 251.6L210.23 252.39L212.3 253.26L214.37 254.19L216.43 255.2L218.5 256.27L220.57 257.42L222.63 258.62L224.7 259.9L226.77 261.23L228.83 262.62L230.9 264.08L232.97 265.58L235.03 267.15L237.1 268.77L239.17 270.43L241.23 272.15L243.3 273.92L245.37 275.74L247.43 277.6L249.5 279.5L251.57 281.44L253.63 283.42L255.7 285.45L257.77 287.5L259.83 289.6L261.9 291.72L263.97 293.88L266.03 296.07L268.1 298.28L270.17 300.52L272.23 302.79L274.3 305.08L276.37 307.39L278.43 309.71L280.5 312.06L282.57 314.42L284.63 316.8L286.7 319.19L288.77 321.59L290.83 324L292.9 326.41L294.97 328.83L297.03 331.26L299.1 333.69L301.17 336.12L303.23 338.55L305.3 340.97L307.37 343.39L309.43 345.81L311.5 348.21L313.57 350.61L315.63 353L317.7 355.37L319.77 357.73L321.83 360.07L323.9 362.39L325.97 364.7L328.03 366.98L330.1 369.24L332.17 371.48L334.23 373.68L336.3 375.86L338.37 378.01L340.43 380.13L342.5 382.21L344.57 384.26L346.63 386.28L348.7 388.25L350.77 390.18L352.83 392.07L354.9 393.92L356.97 395.72L359.03 397.48L361.1 399.19L363.17 400.84L365.23 402.45L367.3 404L369.37 405.49L371.43 406.93L373.5 408.31L375.57 409.63L377.63 410.88L379.7 412.07L381.77 413.2L383.83 414.26L385.9 415.25L387.97 416.16L390.03 417.01L392.1 417.78L394.17 418.48L396.23 419.09L398.3 419.63L400.37 420.09L402.43 420.46L404.5 420.75L406.57 420.96L408.63 421.07L410.7 421.1L412.77 421.03L414.83 420.87L416.9 420.62L418.97 420.27L421.03 419.82L423.1 419.27L425.17 418.63L427.23 417.87L429.3 417.02L431.37 416.05L433.43 414.98L435.5 413.8L437.57 412.5L439.63 411.09L441.7 409.57L443.77 407.93L445.83 406.17L447.9 404.29L449.97 402.29L452.03 400.17L454.1 397.92L456.17 395.54L458.23 393.04L460.3 390.4L462.37 387.63L464.43 384.73L466.5 381.69L468.57 378.52L470.63 375.2L472.7 371.75L474.77 368.15L476.83 364.41L478.9 360.52L480.97 356.49L483.03 352.3L485.1 347.97L487.17 343.48L489.23 338.84L491.3 334.04L493.37 329.09L495.43 323.97L497.5 318.69L499.57 313.26L501.63 307.65L503.7 301.88L505.77 295.94L507.83 289.84L509.9 283.56L511.97 277.1L514.03 270.48L516.1 263.67L518.17 256.69L520.23 249.53L522.3 242.19L524.37 234.66L526.43 226.95L528.5 219.05L530.57 210.97L532.63 202.69L534.7 194.22L536.77 185.56L538.83 176.7L540.9 167.65L542.97 158.39L545.03 148.94L547.1 139.29"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The condition on the quadratic factor x² + bx + c, written under the graph in the book.">
+<text class="lbl  upright" x="172.1" y="738.1" font-size="28.29" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">b<tspan baseline-shift="super" font-size="70%">2</tspan> − 4ac &lt; 0</text>
+</g>
+</svg>

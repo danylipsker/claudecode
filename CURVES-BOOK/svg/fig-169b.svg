@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1151.4 1025.79" width="520" height="463" data-fig="fig-169b">
+<title>Fig. 169(b) — The crossed parallelogram rolling a hyperbola on a line: the hyperbolic catenary</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 169(b), page 184. Section: roulettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The line along which P will be moved, and the crossed parallelogram ABCD: AB = CD (short) and AD = BC (long). The short bars, extended, meet at P.">
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M70.7 581.09L1080.7 593.09"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M385.7 586.09L362.21 576.22L362.21 595.95Z"/>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="The bars: the long bars AD and CB (they cross), and the short bars BA and DC, extended to the sleeve at P (where they cross, and slide on the line) and a little beyond. The small wheels on the short bars roll on the paper.">
+<path class="ink given" style="fill:none;stroke-width:10.78;stroke:#1b1b1b;stroke-linecap:round" d="M102.36 501.73L812.7 955.09"/><path class="ink" style="fill:none;stroke-width:4.97;stroke:#fff;stroke-linecap:round" d="M102.36 501.73L812.7 955.09"/>
+<path class="ink given" style="fill:none;stroke-width:10.78;stroke:#1b1b1b;stroke-linecap:round" d="M100.18 659.6L822.7 226.09"/><path class="ink" style="fill:none;stroke-width:4.97;stroke:#fff;stroke-linecap:round" d="M100.18 659.6L822.7 226.09"/>
+<path class="ink given" style="fill:none;stroke-width:10.78;stroke:#1b1b1b;stroke-linecap:round" d="M472.7 738.09L822.7 226.09"/><path class="ink" style="fill:none;stroke-width:4.97;stroke:#fff;stroke-linecap:round" d="M472.7 738.09L822.7 226.09"/>
+<path class="ink given" style="fill:none;stroke-width:10.78;stroke:#1b1b1b;stroke-linecap:round" d="M472.7 436.09L812.7 955.09"/><path class="ink" style="fill:none;stroke-width:4.97;stroke:#fff;stroke-linecap:round" d="M472.7 436.09L812.7 955.09"/>
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M284.47 591.86L260.8 628.95L173.14 572.99L196.81 535.9Z"/>
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M262.08 536.81L284.71 574.54L195.53 628.04L172.9 590.31Z"/>
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M644.62 286.29L646.65 286.66L649.95 289.34L654.29 294.15L659.37 300.76L664.84 308.73L670.34 317.5L675.5 326.48L679.95 335.06L683.39 342.66L685.6 348.75L686.41 352.92L685.78 354.89L683.75 354.52L680.45 351.84L676.11 347.02L671.03 340.41L665.56 332.45L660.06 323.67L654.9 314.69L650.45 306.11L647.01 298.52L644.8 292.43L643.99 288.26Z"/>
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M681.22 823.72L681.8 825.7L680.87 829.85L678.49 835.88L674.84 843.37L670.16 851.83L664.76 860.67L659.02 869.28L653.32 877.09L648.06 883.56L643.59 888.25L640.22 890.84L638.18 891.16L637.6 889.17L638.53 885.02L640.91 879L644.56 871.5L649.24 863.05L654.64 854.21L660.38 845.59L666.08 837.78L671.34 831.31L675.81 826.62L679.18 824.03Z"/>
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M114.2 483.18L98.24 489.6L105.88 511.09L90.53 520.27"/>
+<path class="ink given" style="stroke-width:4.15;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M88.86 640.73L87.49 657.88L110.13 660.63L111.5 678.46"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.15" cx="472.7" cy="738.09" r="16.47"/><circle class="pt" style="fill:#1b1b1b" cx="472.7" cy="738.09" r="6.74"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.15" cx="812.7" cy="955.09" r="16.47"/><circle class="pt" style="fill:#1b1b1b" cx="812.7" cy="955.09" r="6.74"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.15" cx="472.7" cy="436.09" r="16.47"/><circle class="pt" style="fill:#1b1b1b" cx="472.7" cy="436.09" r="6.74"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.15" cx="822.7" cy="226.09" r="16.47"/><circle class="pt" style="fill:#1b1b1b" cx="822.7" cy="226.09" r="6.74"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.15" cx="228.8" cy="582.42" r="16.47"/><circle class="pt" style="fill:#1b1b1b" cx="228.8" cy="582.42" r="6.74"/>
+<text class="lbl " x="406.68" y="815.76" font-size="39.15" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="874.59" y="882.27" font-size="39.15" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="406.68" y="358.42" font-size="39.15" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="895.51" y="226.09" font-size="39.15" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<text class="lbl " x="228.8" y="499.9" font-size="39.15" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="Move P along the line. A and D are the foci of a hyperbola that touches the line at P; the wheels make P the centre of rotation, so the hyperbola rolls on the line, and D (or A) describes the hyperbolic catenary.">
+<path class="ink thick" style="stroke-width:6.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M321.69 158.36L323.23 156.91L324.81 155.46L326.4 154L328.03 152.54L329.68 151.07L331.36 149.61L333.06 148.14L334.79 146.67L336.55 145.2L338.33 143.73L340.15 142.26L341.99 140.78L343.86 139.31L345.76 137.84L347.69 136.37L349.64 134.9L351.63 133.44L353.65 131.97L355.69 130.51L357.77 129.05L359.87 127.6L362.01 126.15L364.18 124.71L366.37 123.27L368.6 121.84L370.86 120.41L373.15 118.99L375.47 117.58L377.82 116.18L380.2 114.79L382.61 113.4L385.06 112.03L387.53 110.67L390.04 109.31L392.57 107.98L395.14 106.65L397.74 105.34L400.37 104.04L403.03 102.75L405.72 101.49L408.44 100.23L411.19 99L413.97 97.78L416.78 96.58L419.62 95.4L422.49 94.24L425.38 93.1L428.31 91.98L431.26 90.88L434.24 89.8L437.25 88.75L440.28 87.72L443.35 86.71L446.43 85.73L449.54 84.78L452.68 83.85L455.84 82.95L459.02 82.08L462.23 81.23L465.45 80.42L468.7 79.63L471.97 78.87L475.26 78.14L478.57 77.45L481.9 76.79L485.24 76.15L488.6 75.55L491.98 74.99L495.37 74.46L498.78 73.96L502.2 73.49L505.63 73.06L509.08 72.67L512.53 72.31L515.99 71.99L519.47 71.7L522.94 71.44L526.43 71.23L529.92 71.05L533.42 70.91L536.92 70.8L540.42 70.73L543.92 70.7L547.43 70.7L550.93 70.75L554.43 70.82L557.93 70.94L561.42 71.09L564.91 71.28L568.4 71.5L571.87 71.77L575.34 72.06L578.81 72.4L582.26 72.76L585.7 73.17L589.13 73.61L592.54 74.08L595.95 74.59L599.33 75.13L602.71 75.7L606.07 76.31L609.41 76.95L612.73 77.62L616.03 78.32L619.32 79.06L622.58 79.82L625.83 80.62L629.05 81.44L632.25 82.29L635.43 83.17L638.58 84.08L641.71 85.02L644.81 85.98L647.89 86.96L650.95 87.97L653.97 89.01L656.98 90.07L659.95 91.15L662.9 92.25L665.81 93.38L668.7 94.53L671.56 95.69L674.4 96.88L677.2 98.08L679.97 99.3L682.71 100.54L685.43 101.8L688.11 103.07L690.76 104.36L693.38 105.66L695.97 106.98L698.53 108.31L701.06 109.65L703.56 111.01L706.03 112.37L708.47 113.75L710.87 115.13L713.24 116.53L715.59 117.93L717.9 119.35L720.18 120.77L722.43 122.19L724.65 123.63L726.84 125.07L729 126.51L731.13 127.96L733.22 129.42L735.29 130.88L737.33 132.34L739.34 133.8L741.32 135.27L743.27 136.74L745.19 138.21L747.08 139.68L748.94 141.15L750.78 142.62L752.59 144.1L754.36 145.57L756.12 147.04L757.84 148.51L759.54 149.98L761.21 151.44L762.85 152.9L764.47 154.36L766.06 155.82L767.63 157.27L769.17 158.72L770.68 160.17L772.18 161.61L773.64 163.05L775.08 164.48L776.5 165.91L777.9 167.34L779.27 168.75L780.62 170.17L781.95 171.57L783.25 172.97L784.53 174.37L785.79 175.75L787.03 177.14L788.25 178.51L789.45 179.88L790.62 181.24L791.78 182.59L792.92 183.94L794.04 185.28L795.13 186.61L796.21 187.94L797.27 189.26L798.31 190.57L799.34 191.87L800.34 193.16L801.33 194.45L802.3 195.72L803.26 196.99L804.2 198.25L805.12 199.51L806.02 200.75L806.91 201.99L807.78 203.22L808.64 204.44L809.48 205.65L810.31 206.85L811.13 208.04L811.92 209.23L812.71 210.41L813.48 211.58L814.24 212.74L814.98 213.89L815.71 215.03L816.43 216.17L817.13 217.29L817.82 218.41L818.5 219.52L819.17 220.62L819.83 221.71L820.47 222.79L821.1 223.87L821.72 224.93L822.33 225.99L822.93 227.04L823.52 228.08L824.1 229.11L824.67 230.14L825.22 231.15L825.77 232.16L826.31 233.16L826.84 234.15L827.36 235.13L827.86 236.11L828.37 237.07L828.86 238.03L829.34 238.98L829.81 239.93L830.28 240.86L830.73 241.79L831.18 242.71L831.62 243.62L832.06 244.52L832.48 245.41L832.9 246.3L833.31 247.18L833.71 248.05L834.11 248.92L834.5 249.78L834.88 250.63L835.25 251.47L835.62 252.3L835.98 253.13L836.34 253.95L836.69 254.76L837.03 255.57L837.36 256.37L837.69 257.16L838.02 257.95L838.34 258.73L838.65 259.5L838.96 260.26L839.26 261.02L839.56 261.77L839.85 262.51L840.13 263.25L840.41 263.98L840.69 264.71L840.96 265.43L841.23 266.14L841.49 266.84L841.75 267.54L842 268.23L842.25 268.92L842.49 269.6L842.73 270.28L842.97 270.94L843.2 271.61L843.42 272.26L843.65 272.91L843.86 273.56L844.08 274.2L844.29 274.83L844.5 275.46L844.7 276.08L844.9 276.69L845.1 277.3L845.29 277.91L845.48 278.51L845.67 279.1L845.85 279.69L846.03 280.27L846.21 280.85L846.38 281.43L846.55 281.99L846.72 282.56L846.89 283.11L847.05 283.67L847.21 284.21L847.36 284.76L847.52 285.29L847.67 285.83L847.82 286.36L847.96 286.88"/>
+</g>
+</svg>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 698.82 685.82" width="520" height="510" data-fig="fig-069a">
+<title>Fig. 69(a) — The deltoid as a hypocycloid of three cusps, with its tangent</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 69(a), page 71. Section: deltoid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The fixed circle of radius a = 3b about O (strokes show the inside is fixed) and the axis OX; the curve starts at X on the circle.">
+<circle class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="355.91" cy="342.91" r="300"/>
+<path class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M458.52 61A300 300 0 0 0 293.54 49.47"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.96" d="M458.52 61L453.31 40.69M444.08 56.16L437.85 36.14M429.41 52.05L422.17 32.38M414.55 48.7L406.33 29.41M399.55 46.1L390.35 27.26M384.43 44.27L374.29 25.92M369.23 43.21L358.18 25.39M354.01 42.92L342.06 25.69M338.78 43.4L325.98 26.8M323.6 44.65L309.97 28.73M308.51 46.68L294.09 31.46M293.54 49.47L278.36 35"/>
+<path class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M91.03 202.07A300 300 0 0 0 86.27 474.42"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.96" d="M91.03 202.07L70.19 204.4M84.02 216.12L63.33 219.54M77.75 230.53L57.28 235.02M72.25 245.24L52.04 250.8M67.53 260.22L47.64 266.83M63.6 275.42L44.08 283.07M60.47 290.82L41.37 299.47M58.15 306.35L39.53 315.99M56.64 321.98L38.55 332.58M55.96 337.67L38.45 349.21M56.09 353.38L39.21 365.81M57.05 369.06L40.85 382.36M58.83 384.66L43.34 398.79M61.42 400.15L46.7 415.07M64.82 415.49L50.9 431.16M69.02 430.62L55.93 447M74 445.52L61.79 462.56M79.76 460.13L68.46 477.79M86.27 474.42L75.91 492.65"/>
+<path class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M438.6 631.29A300 300 0 0 0 578.85 543.65"/>
+<path class="ink hatchline" style="fill:none;stroke:#2a2a2a;stroke-width:1.96" d="M438.6 631.29L454.75 644.66M453.13 626.72L469.94 639.25M467.41 621.42L484.83 633.08M481.4 615.4L499.39 626.17M495.07 608.68L513.58 618.52M508.38 601.28L527.36 610.16M521.29 593.21L540.71 601.12M533.78 584.49L553.57 591.41M545.81 575.15L565.93 581.05M557.36 565.22L577.75 570.09M568.38 554.71L588.99 558.54M578.85 543.65L599.63 546.43"/>
+<path class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M42.91 342.91L655.91 342.91"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="355.91" cy="342.91" r="5"/>
+<text class="lbl " x="355.91" y="357.64" font-size="23.76" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="655.91" cy="342.91" r="5"/>
+<text class="lbl " x="643.39" y="328.18" font-size="23.76" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">X</text>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="The three cusps divide the fixed circle into three equal arcs: from X step off two arcs of 120°.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="205.91" cy="83.1" r="5"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="205.91" cy="602.72" r="5"/>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="Draw the ray OT at the angle t to OX (here t = 40°).">
+<path class="ink cons" style="stroke-width:1.54;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M355.91 342.91L585.72 150.07"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.54" d="M390.12 342.91A34.21 34.21 0 0 0 382.12 320.92"/>
+<text class="lbl " x="408.16" y="323.89" font-size="23.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+</g>
+<g class="step" data-step="3" data-tool="dividers" data-text="Step off b three times along OT: N (on the inscribed circle of radius b), A (the centre of the rolling circle) and T (on the fixed circle).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="432.51" cy="278.63" r="5"/>
+<text class="lbl " x="432.51" y="262.43" font-size="23.76" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">N</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="509.12" cy="214.35" r="5"/>
+<text class="lbl " x="509.12" y="198.15" font-size="23.76" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="585.72" cy="150.07" r="5"/>
+<text class="lbl " x="598.24" y="135.34" font-size="23.76" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+</g>
+<g class="step" data-step="4" data-tool="compass" data-text="The inscribed circle about O with radius b, and the rolling circle about A with the same radius b: it touches the fixed circle at T and passes through N.">
+<circle class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="355.91" cy="342.91" r="100"/>
+<circle class="ink given" style="stroke-width:2.52;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="509.12" cy="214.35" r="100"/>
+<path class="ink given" style="stroke-width:1;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M438.01 126.53A113 113 0 0 0 399.02 188.93"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M438.01 126.53L424.4 130.49L431.3 139.02Z"/>
+</g>
+<g class="step" data-step="5" data-tool="protractor" data-text="The tracing point P is on the rolling circle: the arc TP of the small circle equals the arc XT of the fixed one, and the radius ratio is 3, so the angle TAP = 3t (turned clockwise).">
+<path class="ink cons" style="stroke-width:1.54;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M509.12 214.35L526.48 312.83"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="526.48" cy="312.83" r="5"/>
+<text class="lbl " x="513.96" y="298.1" font-size="23.76" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="6" data-tool="straightedge" data-text="T is the instantaneous centre of P, so TP is the normal; the tangent is perpendicular to it and passes through N, the end of the diameter through T. Extend it both ways to meet the curve at B and C: N is the midpoint of BC and BC = 4b. The angle between the tangent and NT is 3t/2.">
+<path class="ink cons" style="stroke-width:1.54;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M585.72 150.07L526.48 312.83"/>
+<path class="ink cons" style="stroke-width:1.54;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M244.58 210.23L620.45 347.04"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="244.58" cy="210.23" r="5"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.54" cx="620.45" cy="347.04" r="5"/>
+<text class="lbl " x="228.3" y="191.08" font-size="23.76" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="636.73" y="366.19" font-size="23.76" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.54" d="M458.64 288.14A27.8 27.8 0 0 0 453.81 260.76"/>
+<text class="lbl " x="486.21" y="269.16" font-size="23.76" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">3t/2</text>
+</g>
+<g class="step" data-step="7" data-tool="straightedge" data-text="Join each cusp to O: the lines meet the inscribed circle where the curve touches it.">
+<path class="ink cons" style="stroke-width:1.54;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.91 83.1L405.91 429.51"/>
+<path class="ink cons" style="stroke-width:1.54;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M205.91 602.72L405.91 256.31"/>
+</g>
+<g class="step" data-step="8" data-tool="pencil" data-text="The deltoid: the path of P, with its three cusps on the fixed circle and the inscribed circle touching it at its three vertices.">
+<path class="ink curve" style="stroke-width:3.91;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M655.91 342.91L655.86 342.91L655.7 342.91L655.45 342.9L655.09 342.9L654.63 342.88L654.06 342.86L653.4 342.83L652.63 342.8L651.76 342.75L650.79 342.69L649.72 342.61L648.55 342.52L647.29 342.42L645.92 342.3L644.46 342.16L642.89 342L641.24 341.82L639.48 341.62L637.64 341.4L635.7 341.15L633.67 340.87L631.54 340.57L629.33 340.24L627.02 339.89L624.63 339.5L622.15 339.08L619.59 338.63L616.94 338.15L614.21 337.63L611.4 337.08L608.5 336.5L605.53 335.88L602.48 335.22L599.36 334.52L596.16 333.79L592.89 333.01L589.55 332.2L586.14 331.35L582.66 330.45L579.12 329.51L575.51 328.53L571.84 327.51L568.11 326.45L564.32 325.34L560.47 324.18L556.57 322.99L552.62 321.75L548.62 320.46L544.56 319.13L540.46 317.75L536.32 316.33L532.13 314.86L527.9 313.35L523.63 311.79L519.33 310.19L514.99 308.54L510.62 306.84L506.22 305.1L501.79 303.32L497.33 301.49L492.85 299.62L488.35 297.7L483.82 295.74L479.28 293.73L474.73 291.69L470.16 289.6L465.57 287.47L460.98 285.3L456.38 283.08L451.78 280.83L447.17 278.54L442.57 276.21L437.96 273.85L433.35 271.44L428.76 269L424.16 266.53L419.58 264.02L415.01 261.48L410.45 258.91L405.91 256.31L401.38 253.67L396.88 251.01L392.39 248.33L387.93 245.61L383.49 242.87L379.08 240.11L374.7 237.32L370.34 234.52L366.02 231.69L361.74 228.84L357.48 225.98L353.27 223.11L349.09 220.22L344.96 217.31L340.86 214.4L336.81 211.48L332.81 208.55L328.85 205.61L324.93 202.67L321.07 199.72L317.26 196.78L313.5 193.84L309.79 190.89L306.14 187.95L302.54 185.02L299 182.1L295.52 179.18L292.09 176.27L288.73 173.38L285.42 170.5L282.18 167.64L279 164.8L275.88 161.97L272.83 159.17L269.85 156.39L266.93 153.64L264.07 150.91L261.28 148.21L258.56 145.54L255.91 142.91L253.33 140.31L250.81 137.74L248.37 135.22L245.99 132.73L243.68 130.29L241.45 127.88L239.28 125.53L237.19 123.21L235.17 120.95L233.21 118.74L231.33 116.58L229.52 114.47L227.78 112.42L226.1 110.42L224.5 108.48L222.97 106.61L221.51 104.79L220.12 103.04L218.8 101.35L217.54 99.72L216.36 98.17L215.24 96.68L214.19 95.27L213.2 93.92L212.29 92.65L211.43 91.45L210.65 90.33L209.92 89.28L209.26 88.31L208.66 87.42L208.13 86.61L207.65 85.89L207.23 85.24L206.88 84.68L206.58 84.2L206.33 83.81L206.15 83.5L206.01 83.28L205.94 83.15L205.91 83.1L205.94 83.15L206.01 83.28L206.14 83.51L206.31 83.82L206.53 84.23L206.79 84.73L207.1 85.32L207.45 86L207.84 86.78L208.28 87.65L208.75 88.61L209.25 89.67L209.8 90.82L210.38 92.06L210.99 93.4L211.63 94.83L212.3 96.35L213.01 97.97L213.73 99.68L214.49 101.49L215.27 103.39L216.07 105.38L216.89 107.46L217.73 109.63L218.59 111.9L219.47 114.25L220.37 116.7L221.27 119.23L222.19 121.85L223.12 124.57L224.06 127.36L225.01 130.25L225.96 133.22L226.92 136.27L227.88 139.41L228.85 142.63L229.82 145.93L230.78 149.31L231.74 152.77L232.7 156.31L233.66 159.92L234.61 163.61L235.55 167.37L236.49 171.21L237.41 175.12L238.32 179.09L239.23 183.14L240.11 187.25L240.99 191.42L241.84 195.66L242.69 199.96L243.51 204.32L244.31 208.74L245.1 213.22L245.86 217.75L246.6 222.33L247.32 226.96L248.01 231.64L248.68 236.37L249.33 241.15L249.95 245.96L250.54 250.82L251.1 255.72L251.64 260.65L252.14 265.62L252.62 270.63L253.06 275.66L253.48 280.72L253.86 285.81L254.21 290.92L254.53 296.06L254.82 301.21L255.07 306.39L255.3 311.57L255.48 316.78L255.64 321.99L255.76 327.21L255.84 332.44L255.89 337.67L255.91 342.91L255.89 348.15L255.84 353.38L255.76 358.61L255.64 363.83L255.48 369.04L255.3 374.25L255.07 379.43L254.82 384.61L254.53 389.76L254.21 394.9L253.86 400.01L253.48 405.1L253.06 410.16L252.62 415.19L252.14 420.2L251.64 425.17L251.1 430.1L250.54 435L249.95 439.86L249.33 444.67L248.68 449.45L248.01 454.18L247.32 458.86L246.6 463.49L245.86 468.07L245.1 472.6L244.31 477.08L243.51 481.5L242.69 485.86L241.84 490.16L240.99 494.4L240.11 498.57L239.23 502.68L238.32 506.73L237.41 510.7L236.49 514.61L235.55 518.45L234.61 522.21L233.66 525.9L232.7 529.51L231.74 533.05L230.78 536.51L229.82 539.89L228.85 543.19L227.88 546.41L226.92 549.55L225.96 552.6L225.01 555.57L224.06 558.46L223.12 561.25L222.19 563.97L221.27 566.59L220.37 569.12L219.47 571.57L218.59 573.92L217.73 576.19L216.89 578.36L216.07 580.44L215.27 582.43L214.49 584.33L213.73 586.14L213.01 587.85L212.3 589.47L211.63 590.99L210.99 592.42L210.38 593.76L209.8 595L209.25 596.15L208.75 597.21L208.28 598.17L207.84 599.04L207.45 599.82L207.1 600.5L206.79 601.09L206.53 601.59L206.31 602L206.14 602.31L206.01 602.54L205.94 602.67L205.91 602.72L205.94 602.67L206.01 602.54L206.15 602.32L206.33 602.01L206.58 601.62L206.88 601.14L207.23 600.58L207.65 599.93L208.13 599.21L208.66 598.4L209.26 597.51L209.92 596.54L210.65 595.49L211.43 594.37L212.29 593.17L213.2 591.9L214.19 590.55L215.24 589.14L216.36 587.65L217.54 586.1L218.8 584.47L220.12 582.78L221.51 581.03L222.97 579.21L224.5 577.34L226.1 575.4L227.78 573.4L229.52 571.35L231.33 569.24L233.21 567.08L235.17 564.87L237.19 562.61L239.28 560.29L241.45 557.94L243.68 555.53L245.99 553.09L248.37 550.6L250.81 548.08L253.33 545.51L255.91 542.91L258.56 540.28L261.28 537.61L264.07 534.91L266.93 532.18L269.85 529.43L272.83 526.65L275.88 523.85L279 521.02L282.18 518.18L285.42 515.32L288.73 512.44L292.09 509.55L295.52 506.64L299 503.72L302.54 500.8L306.14 497.87L309.79 494.93L313.5 491.98L317.26 489.04L321.07 486.1L324.93 483.15L328.85 480.21L332.81 477.27L336.81 474.34L340.86 471.42L344.96 468.51L349.09 465.6L353.27 462.71L357.48 459.84L361.74 456.98L366.02 454.13L370.34 451.3L374.7 448.5L379.08 445.71L383.49 442.95L387.93 440.21L392.39 437.49L396.88 434.81L401.38 432.15L405.91 429.51L410.45 426.91L415.01 424.34L419.58 421.8L424.16 419.29L428.76 416.82L433.35 414.38L437.96 411.97L442.57 409.61L447.17 407.28L451.78 404.99L456.38 402.74L460.98 400.52L465.57 398.35L470.16 396.22L474.73 394.13L479.28 392.09L483.82 390.08L488.35 388.12L492.85 386.2L497.33 384.33L501.79 382.5L506.22 380.72L510.62 378.98L514.99 377.28L519.33 375.63L523.63 374.03L527.9 372.47L532.13 370.96L536.32 369.49L540.46 368.07L544.56 366.69L548.62 365.36L552.62 364.07L556.57 362.83L560.47 361.64L564.32 360.48L568.11 359.37L571.84 358.31L575.51 357.29L579.12 356.31L582.66 355.37L586.14 354.47L589.55 353.62L592.89 352.81L596.16 352.03L599.36 351.3L602.48 350.6L605.53 349.94L608.5 349.32L611.4 348.74L614.21 348.19L616.94 347.67L619.59 347.19L622.15 346.74L624.63 346.32L627.02 345.93L629.33 345.58L631.54 345.25L633.67 344.95L635.7 344.67L637.64 344.42L639.48 344.2L641.24 344L642.89 343.82L644.46 343.66L645.92 343.52L647.29 343.4L648.55 343.3L649.72 343.21L650.79 343.13L651.76 343.07L652.63 343.02L653.4 342.99L654.06 342.96L654.63 342.94L655.09 342.92L655.45 342.92L655.7 342.91L655.86 342.91L655.91 342.91"/>
+</g>
+</svg>

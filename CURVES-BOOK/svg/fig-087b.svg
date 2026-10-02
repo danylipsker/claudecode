@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 615.6 268.1" width="520" height="226" data-fig="fig-087b">
+<title>Fig. 87(b) — The probability curve y = e^{−x²/2}</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 87(b), page 95. Section: exponential.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes; the origin is open because the picture is only the graph.">
+<path class="ink axis" style="stroke-width:1.85;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M37.8 200.3L577.8 200.3"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M577.8 200.3L566.29 195.47L566.29 205.13Z"/>
+<path class="ink axis" style="stroke-width:1.85;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M307.8 215.3L307.8 37.8"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M307.8 37.8L302.97 49.31L312.63 49.31Z"/>
+<text class="lbl axis" x="588.83" y="213.28" font-size="20.93" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="318.83" y="24.82" font-size="20.93" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="307.8" cy="200.3" r="4"/>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="The curve y = e^(−x²/2): symmetric about the y-axis, with its top at (0, 1) and the x-axis as asymptote.">
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M62.8 194.08L64.43 193.83L66.07 193.57L67.7 193.3L69.33 193.02L70.97 192.73L72.6 192.44L74.23 192.13L75.87 191.81L77.5 191.49L79.13 191.15L80.77 190.8L82.4 190.44L84.03 190.08L85.67 189.7L87.3 189.31L88.93 188.9L90.57 188.49L92.2 188.07L93.83 187.63L95.47 187.18L97.1 186.72L98.73 186.25L100.37 185.76L102 185.26L103.63 184.75L105.27 184.22L106.9 183.69L108.53 183.13L110.17 182.57L111.8 181.99L113.43 181.4L115.07 180.79L116.7 180.17L118.33 179.53L119.97 178.88L121.6 178.22L123.23 177.54L124.87 176.85L126.5 176.14L128.13 175.41L129.77 174.68L131.4 173.92L133.03 173.16L134.67 172.37L136.3 171.58L137.93 170.76L139.57 169.94L141.2 169.1L142.83 168.24L144.47 167.37L146.1 166.48L147.73 165.58L149.37 164.67L151 163.74L152.63 162.79L154.27 161.84L155.9 160.87L157.53 159.88L159.17 158.88L160.8 157.87L162.43 156.84L164.07 155.81L165.7 154.76L167.33 153.69L168.97 152.62L170.6 151.53L172.23 150.43L173.87 149.32L175.5 148.2L177.13 147.07L178.77 145.93L180.4 144.78L182.03 143.62L183.67 142.45L185.3 141.27L186.93 140.09L188.57 138.9L190.2 137.7L191.83 136.49L193.47 135.28L195.1 134.06L196.73 132.84L198.37 131.61L200 130.39L201.63 129.15L203.27 127.92L204.9 126.68L206.53 125.44L208.17 124.21L209.8 122.97L211.43 121.73L213.07 120.49L214.7 119.26L216.33 118.03L217.97 116.8L219.6 115.58L221.23 114.36L222.87 113.15L224.5 111.94L226.13 110.75L227.77 109.56L229.4 108.37L231.03 107.2L232.67 106.04L234.3 104.89L235.93 103.75L237.57 102.62L239.2 101.51L240.83 100.41L242.47 99.32L244.1 98.25L245.73 97.2L247.37 96.16L249 95.14L250.63 94.14L252.27 93.16L253.9 92.2L255.53 91.26L257.17 90.34L258.8 89.44L260.43 88.56L262.07 87.71L263.7 86.88L265.33 86.08L266.97 85.3L268.6 84.54L270.23 83.82L271.87 83.12L273.5 82.44L275.13 81.79L276.77 81.18L278.4 80.59L280.03 80.03L281.67 79.5L283.3 79L284.93 78.53L286.57 78.09L288.2 77.68L289.83 77.3L291.47 76.96L293.1 76.64L294.73 76.36L296.37 76.11L298 75.9L299.63 75.72L301.27 75.57L302.9 75.45L304.53 75.37L306.17 75.32L307.8 75.3L309.43 75.32L311.07 75.37L312.7 75.45L314.33 75.57L315.97 75.72L317.6 75.9L319.23 76.11L320.87 76.36L322.5 76.64L324.13 76.96L325.77 77.3L327.4 77.68L329.03 78.09L330.67 78.53L332.3 79L333.93 79.5L335.57 80.03L337.2 80.59L338.83 81.18L340.47 81.79L342.1 82.44L343.73 83.12L345.37 83.82L347 84.54L348.63 85.3L350.27 86.08L351.9 86.88L353.53 87.71L355.17 88.56L356.8 89.44L358.43 90.34L360.07 91.26L361.7 92.2L363.33 93.16L364.97 94.14L366.6 95.14L368.23 96.16L369.87 97.2L371.5 98.25L373.13 99.32L374.77 100.41L376.4 101.51L378.03 102.62L379.67 103.75L381.3 104.89L382.93 106.04L384.57 107.2L386.2 108.37L387.83 109.56L389.47 110.75L391.1 111.94L392.73 113.15L394.37 114.36L396 115.58L397.63 116.8L399.27 118.03L400.9 119.26L402.53 120.49L404.17 121.73L405.8 122.97L407.43 124.21L409.07 125.44L410.7 126.68L412.33 127.92L413.97 129.15L415.6 130.39L417.23 131.61L418.87 132.84L420.5 134.06L422.13 135.28L423.77 136.49L425.4 137.7L427.03 138.9L428.67 140.09L430.3 141.27L431.93 142.45L433.57 143.62L435.2 144.78L436.83 145.93L438.47 147.07L440.1 148.2L441.73 149.32L443.37 150.43L445 151.53L446.63 152.62L448.27 153.69L449.9 154.76L451.53 155.81L453.17 156.84L454.8 157.87L456.43 158.88L458.07 159.88L459.7 160.87L461.33 161.84L462.97 162.79L464.6 163.74L466.23 164.67L467.87 165.58L469.5 166.48L471.13 167.37L472.77 168.24L474.4 169.1L476.03 169.94L477.67 170.76L479.3 171.58L480.93 172.37L482.57 173.16L484.2 173.92L485.83 174.68L487.47 175.41L489.1 176.14L490.73 176.85L492.37 177.54L494 178.22L495.63 178.88L497.27 179.53L498.9 180.17L500.53 180.79L502.17 181.4L503.8 181.99L505.43 182.57L507.07 183.13L508.7 183.69L510.33 184.22L511.97 184.75L513.6 185.26L515.23 185.76L516.87 186.25L518.5 186.72L520.13 187.18L521.77 187.63L523.4 188.07L525.03 188.49L526.67 188.9L528.3 189.31L529.93 189.7L531.57 190.08L533.2 190.44L534.83 190.8L536.47 191.15L538.1 191.49L539.73 191.81L541.37 192.13L543 192.44L544.63 192.73L546.27 193.02L547.9 193.3L549.53 193.57L551.17 193.83L552.8 194.08"/>
+<text class="lbl  upright" x="307.8" y="230.3" font-size="19.88" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y = e<tspan baseline-shift="super" font-size="70%">−x²/2</tspan></text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The flex points (±1, e^−1/2), where y″ = y(x² − 1) = 0, are the upper corners of the largest rectangle inscribed with one side on the x-axis; the tangents there meet the x-axis at ±2.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="207.8" cy="124.48" r="4"/>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M207.8 200.3L207.8 124.48"/>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M207.8 124.48L107.8 200.3"/>
+<text class="lbl  upright" x="207.8" y="210.68" font-size="16.74" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">−1</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="407.8" cy="124.48" r="4"/>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M407.8 200.3L407.8 124.48"/>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M407.8 124.48L507.8 200.3"/>
+<text class="lbl  upright" x="407.8" y="210.68" font-size="16.74" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+<path class="ink cons dash" style="stroke-width:1.35;fill:none;--dash:7.39 4.92;stroke:#4b4b4b;stroke-dasharray:7.39 4.92;stroke-linecap:round;stroke-linejoin:round" d="M207.8 124.48L407.8 124.48"/>
+<text class="lbl  upright" x="419.8" y="115.73" font-size="15.7" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(1, e<tspan baseline-shift="super" font-size="70%">−1/2</tspan>)</text>
+<text class="lbl  upright" x="195.8" y="115.73" font-size="15.7" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(−1, e<tspan baseline-shift="super" font-size="70%">−1/2</tspan>)</text>
+</g>
+</svg>

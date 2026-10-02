@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 686.28 296.28" width="520" height="224" data-fig="fig-211">
+<title>Fig. 211 — The witch of Agnesi</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 211, page 237. Section: witch.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The circle on the diameter OK (OK = 2a, so the radius is a), the tangent at K, and the axis OX through O.">
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M42.14 42.14L639.14 42.14"/>
+<path class="ink axis" style="stroke-width:2.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M55.14 242.14L644.14 242.14"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M644.14 242.14L631.31 236.75L631.31 247.53Z"/>
+<text class="lbl axis" x="637.14" y="220.44" font-size="23.33" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<circle class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="344.14" cy="142.14" r="100"/>
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M344.14 242.14L344.14 42.14"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.47" cx="344.14" cy="242.14" r="9.81"/><circle class="pt" style="fill:#1b1b1b" cx="344.14" cy="242.14" r="4.01"/>
+<text class="lbl " x="318.1" y="242.14" font-size="23.33" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="344.14" cy="42.14" r="4.46"/>
+<text class="lbl " x="328.15" y="60.95" font-size="23.33" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">K</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="344.14" cy="142.14" r="4.46"/>
+<text class="lbl " x="335.14" y="92.14" font-size="22.17" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<text class="lbl " x="335.14" y="192.14" font-size="22.17" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw a secant OA through O. It cuts the circle again at Q and the tangent at K at A. θ is the angle KOA.">
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M344.14 242.14L622.14 42.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="438.95" cy="173.93" r="4.46"/>
+<text class="lbl " x="418.7" y="173.93" font-size="23.33" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="622.14" cy="42.14" r="4.46"/>
+<text class="lbl " x="643.84" y="42.14" font-size="23.33" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.51" d="M378.23 217.61A42 42 0 0 0 344.14 200.14"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M344.14 200.14L354.64 204.55L354.64 195.73Z"/>
+<text class="lbl " x="370.48" y="190.75" font-size="23.33" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="From Q draw QP perpendicular to OK (horizontal), and from A the parallel AP to OK (vertical). They meet at P: its height is that of Q, its distance from OK is that of A.">
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M622.14 42.14L622.14 242.14"/>
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M438.95 173.93L622.14 173.93"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="438.95" cy="242.14" r="4.46"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="622.14" cy="242.14" r="4.46"/>
+<path class="ink cons dash" style="stroke-width:1.51;fill:none;--dash:8.24 5.49;stroke:#4b4b4b;stroke-dasharray:8.24 5.49;stroke-linecap:round;stroke-linejoin:round" d="M438.95 173.93L438.95 242.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="622.14" cy="173.93" r="4.46"/>
+<text class="lbl " x="606.15" y="155.12" font-size="23.33" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="445.95" y="208.03" font-size="22.17" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+<text class="lbl " x="614.14" y="208.03" font-size="22.17" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">y</text>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Marks of the book: the right angle OQK (dashed KQ), the angle θ at A, and the abscissa x = OX written between arrows.">
+<path class="ink cons dash" style="stroke-width:1.51;fill:none;--dash:8.24 5.49;stroke:#4b4b4b;stroke-dasharray:8.24 5.49;stroke-linecap:round;stroke-linejoin:round" d="M344.14 42.14L438.95 173.93"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.51" d="M594.86 61.76A33.6 33.6 0 0 0 622.14 75.74"/>
+<text class="lbl " x="596.44" y="92.29" font-size="23.33" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M344.14 254.14L469.14 254.14"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M344.14 254.14L356.97 259.53L356.97 248.75Z"/>
+<path class="ink given" style="stroke-width:2.47;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M497.14 254.14L622.14 254.14"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M622.14 254.14L609.31 248.75L609.31 259.53Z"/>
+<text class="lbl " x="483.14" y="254.14" font-size="22.17" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">x</text>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="A second secant gives another point in the same way (dashed): A' on the tangent, and P' at the height of its intersection with the circle.">
+<path class="ink cons dash" style="stroke-width:1.51;fill:none;--dash:8.24 5.49;stroke:#4b4b4b;stroke-dasharray:8.24 5.49;stroke-linecap:round;stroke-linejoin:round" d="M344.14 242.14L455.34 42.14"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="455.34" cy="42.14" r="4.46"/>
+<path class="ink cons dash" style="stroke-width:1.51;fill:none;--dash:8.24 5.49;stroke:#4b4b4b;stroke-dasharray:8.24 5.49;stroke-linecap:round;stroke-linejoin:round" d="M455.34 42.14L455.34 89.37"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="455.34" cy="89.37" r="4.46"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="Repeat for every secant: P traces the witch of Agnesi, x = 2a tan θ, y = 2a cos² θ, with OX as its asymptote.">
+<path class="ink curve" style="stroke-width:3.84;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M46.14 180.03L50.31 178.82L54.39 177.6L58.4 176.38L62.34 175.15L66.2 173.91L70 172.67L73.72 171.42L77.39 170.17L80.99 168.91L84.52 167.65L88 166.39L91.42 165.12L94.78 163.85L98.09 162.57L101.35 161.29L104.56 160L107.71 158.72L110.82 157.43L113.88 156.14L116.9 154.84L119.87 153.54L122.8 152.25L125.68 150.95L128.53 149.64L131.33 148.34L134.1 147.04L136.82 145.73L139.52 144.43L142.17 143.12L144.79 141.81L147.38 140.51L149.93 139.2L152.46 137.9L154.95 136.59L157.41 135.29L159.84 133.98L162.24 132.68L164.61 131.38L166.96 130.09L169.27 128.79L171.57 127.5L173.83 126.21L176.07 124.92L178.29 123.63L180.48 122.35L182.65 121.07L184.8 119.8L186.92 118.53L189.03 117.26L191.11 115.99L193.17 114.74L195.21 113.48L197.23 112.23L199.23 110.99L201.21 109.75L203.18 108.52L205.12 107.29L207.05 106.07L208.96 104.85L210.86 103.65L212.74 102.44L214.6 101.25L216.45 100.06L218.28 98.88L220.09 97.7L221.89 96.54L223.68 95.38L225.46 94.23L227.21 93.09L228.96 91.95L230.69 90.83L232.41 89.71L234.12 88.6L235.82 87.5L237.5 86.41L239.17 85.33L240.83 84.26L242.48 83.2L244.12 82.15L245.75 81.11L247.37 80.08L248.97 79.06L250.57 78.06L252.16 77.06L253.73 76.07L255.3 75.1L256.86 74.13L258.41 73.18L259.96 72.24L261.49 71.31L263.01 70.4L264.53 69.49L266.04 68.6L267.54 67.72L269.04 66.86L270.52 66L272 65.16L273.48 64.34L274.94 63.52L276.4 62.72L277.85 61.93L279.3 61.16L280.74 60.4L282.18 59.66L283.6 58.92L285.03 58.21L286.45 57.5L287.86 56.82L289.26 56.14L290.67 55.48L292.06 54.84L293.46 54.21L294.84 53.59L296.23 52.99L297.61 52.41L298.98 51.84L300.35 51.29L301.72 50.75L303.08 50.23L304.44 49.72L305.8 49.23L307.15 48.75L308.5 48.3L309.85 47.85L311.19 47.43L312.53 47.01L313.87 46.62L315.2 46.24L316.54 45.88L317.86 45.53L319.19 45.2L320.52 44.89L321.84 44.6L323.16 44.32L324.48 44.05L325.8 43.81L327.12 43.58L328.43 43.37L329.75 43.17L331.06 42.99L332.37 42.83L333.68 42.69L334.99 42.56L336.3 42.45L337.61 42.35L338.91 42.28L340.22 42.22L341.53 42.17L342.83 42.15L344.14 42.14L345.45 42.15L346.75 42.17L348.06 42.22L349.37 42.28L350.67 42.35L351.98 42.45L353.29 42.56L354.6 42.69L355.91 42.83L357.22 42.99L358.53 43.17L359.85 43.37L361.16 43.58L362.48 43.81L363.8 44.05L365.12 44.32L366.44 44.6L367.76 44.89L369.09 45.2L370.42 45.53L371.74 45.88L373.08 46.24L374.41 46.62L375.75 47.01L377.09 47.43L378.43 47.85L379.78 48.3L381.13 48.75L382.48 49.23L383.84 49.72L385.2 50.23L386.56 50.75L387.93 51.29L389.3 51.84L390.67 52.41L392.05 52.99L393.44 53.59L394.82 54.21L396.22 54.84L397.61 55.48L399.02 56.14L400.42 56.82L401.83 57.5L403.25 58.21L404.68 58.92L406.1 59.66L407.54 60.4L408.98 61.16L410.43 61.93L411.88 62.72L413.34 63.52L414.8 64.34L416.28 65.16L417.76 66L419.24 66.86L420.74 67.72L422.24 68.6L423.75 69.49L425.27 70.4L426.79 71.31L428.32 72.24L429.87 73.18L431.42 74.13L432.98 75.1L434.55 76.07L436.12 77.06L437.71 78.06L439.31 79.06L440.91 80.08L442.53 81.11L444.16 82.15L445.8 83.2L447.45 84.26L449.11 85.33L450.78 86.41L452.46 87.5L454.16 88.6L455.87 89.71L457.59 90.83L459.32 91.95L461.07 93.09L462.82 94.23L464.6 95.38L466.39 96.54L468.19 97.7L470 98.88L471.83 100.06L473.68 101.25L475.54 102.44L477.42 103.65L479.32 104.85L481.23 106.07L483.16 107.29L485.1 108.52L487.07 109.75L489.05 110.99L491.05 112.23L493.07 113.48L495.11 114.74L497.17 115.99L499.25 117.26L501.36 118.53L503.48 119.8L505.63 121.07L507.8 122.35L509.99 123.63L512.21 124.92L514.45 126.21L516.71 127.5L519.01 128.79L521.32 130.09L523.67 131.38L526.04 132.68L528.44 133.98L530.87 135.29L533.33 136.59L535.82 137.9L538.35 139.2L540.9 140.51L543.49 141.81L546.11 143.12L548.76 144.43L551.46 145.73L554.18 147.04L556.95 148.34L559.75 149.64L562.6 150.95L565.48 152.25L568.41 153.54L571.38 154.84L574.4 156.14L577.46 157.43L580.57 158.72L583.72 160L586.93 161.29L590.19 162.57L593.5 163.85L596.86 165.12L600.28 166.39L603.76 167.65L607.29 168.91L610.89 170.17L614.56 171.42L618.28 172.67L622.08 173.91L625.94 175.15L629.88 176.38L633.89 177.6L637.97 178.82L642.14 180.03"/>
+</g>
+</svg>

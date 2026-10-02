@@ -45,3 +45,9 @@ scripts/_taskview.txt
 
 # third-party PDFs kept beside the projects, not part of them (96 MB)
 STUDY CLAUDE CODE/
+
+# CURVES-BOOK: the scanned source book (300MB, not ours to publish) and the page
+# images extracted from it for authoring and checking the SVG reconstructions.
+CURVES-BOOK/*.pdf
+CURVES-BOOK/scan/
+CURVES-BOOK/_review/

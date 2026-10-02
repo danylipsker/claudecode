@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 951.9 485.9" width="520" height="265" data-fig="fig-101">
+<title>Fig. 101 — The saw-tooth path between A and B by repeated halving</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 101, page 106. Section: discontinuous.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The isosceles triangle ABC; the path A–C–B is its two equal sides.">
+<path class="ink cons" style="stroke-width:2.09;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M58.45 427.45L475.95 58.45"/>
+<path class="ink cons" style="stroke-width:2.09;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M475.95 58.45L893.45 427.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="58.45" cy="427.45" r="6.19"/>
+<text class="lbl " x="41.39" y="447.52" font-size="32.36" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="893.45" cy="427.45" r="6.19"/>
+<text class="lbl " x="910.51" y="447.52" font-size="32.36" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="475.95" cy="58.45" r="6.19"/>
+<text class="lbl " x="458.89" y="38.38" font-size="32.36" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Halve AC at M1 and CB at M2; draw M1V parallel to CB and M2V parallel to AC, where V is the midpoint of AB. The path A–M1–V–M2–B has the same length 2·AC.">
+<path class="ink given" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M58.45 427.45L267.2 242.95"/>
+<path class="ink given" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M267.2 242.95L475.95 427.45"/>
+<path class="ink given" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M475.95 427.45L684.7 242.95"/>
+<path class="ink given" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M684.7 242.95L893.45 427.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="267.2" cy="242.95" r="4.33"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="475.95" cy="427.45" r="4.33"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="684.7" cy="242.95" r="4.33"/>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Do the same in each of the two small isosceles triangles A M1 V and V M2 B: the path now has 8 sides, each AC/4 long.">
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M58.45 427.45L162.82 335.2"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M162.82 335.2L267.2 427.45"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M267.2 427.45L371.58 335.2"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M371.58 335.2L475.95 427.45"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M475.95 427.45L580.33 335.2"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M580.33 335.2L684.7 427.45"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M684.7 427.45L789.08 335.2"/>
+<path class="ink given" style="stroke-width:2.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M789.08 335.2L893.45 427.45"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="And once more in each of the four small triangles: 16 sides of length AC/8 form the saw tooth. Repeating without end gives a continuous path of constant length with no tangent at the corners.">
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M58.45 427.45L110.64 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M110.64 381.33L162.82 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M162.82 427.45L215.01 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M215.01 381.33L267.2 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M267.2 427.45L319.39 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M319.39 381.33L371.58 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M371.58 427.45L423.76 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M423.76 381.33L475.95 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M475.95 427.45L528.14 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M528.14 381.33L580.33 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M580.33 427.45L632.51 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M632.51 381.33L684.7 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M684.7 427.45L736.89 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M736.89 381.33L789.08 427.45"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M789.08 427.45L841.26 381.33"/>
+<path class="ink curve" style="stroke-width:3;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M841.26 381.33L893.45 427.45"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="110.64" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="162.82" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="215.01" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="267.2" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="319.39" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="371.58" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="423.76" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="475.95" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="528.14" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="580.33" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="632.51" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="684.7" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="736.89" cy="381.33" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="789.08" cy="427.45" r="3.71"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.09" cx="841.26" cy="381.33" r="3.71"/>
+</g>
+</svg>

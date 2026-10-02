@@ -1,0 +1,43 @@
+/* Curves Workshop · data/sections/instantaneous-center.js — pages 119–122 */
+Curves.section({
+  id: 'instantaneous-center',
+  title: 'Instantaneous Center of Rotation and the Construction of Some Tangents',
+  pages: [119, 122],
+  history: 'The book credits the instantaneous centre and its locus, the centrode, to the French geometer Michel Chasles, and points to Keown and Faires, *Mechanism*, for the use of the idea in the theory of machines.',
+  description: 'A rigid body that moves in a plane, in any manner at all, is at each instant turning about one point H, its *instantaneous centre of rotation*. H is found from the directions in which two points A and B of the body are moving: draw the perpendicular to each direction of motion at its point, and H is where the perpendiculars meet (Fig. 113). It must be so, since no point of the line HA can move towards or away from A or H (the body is rigid), so every point of HA moves at right angles to HA, and likewise for HB; but H cannot move at right angles to both lines, so it stays at rest. If two points of the body move on known curves, the instantaneous centre of any point P of the body is the meeting point H of the normals to the two curves, and the locus of H is the *centrode* (Fig. 114). This gives a tangent construction for the path of any point carried by the body: HP is the normal to the path of P, and the tangent is the perpendicular to HP at P. The section applies it to the ellipse of the trammel, the conchoid, the limacon, the isoptic, the point glissette and the trochoidal curves.',
+  equations: [
+    { tex: 'x^2/a^2 + y^2/b^2 = 1', note: 'path of the point P of the trammel rod AB, with PB = a and PA = b (Fig. 115)' },
+    { tex: 'r = d\\sec\\theta \\pm k', note: 'conchoid of the line at distance d from the pole O, with the constant length k on either side of the line (Fig. 116)' },
+    { tex: 'r = 2a\\cos\\theta + k', note: 'limacon traced by the point P of the rod OBP, with B on the circle of radius a through the pole O and BP = k (Fig. 117)' }
+  ],
+  metrical: [
+    { tex: 'v_P = \\omega \\cdot HP, \\quad \\mathbf{v}_P \\perp HP', note: 'velocity of a point P of the body about the instantaneous centre H, with ω the angular speed (the arrows of Fig. 113)' }
+  ],
+  items: [
+    { label: '1', text: 'Instantaneous centre: given the directions of motion of two points of a rigid body, the centre is the meeting point of the perpendiculars to those directions at the two points. It is at rest at that instant.' },
+    { label: '2', text: 'Centrode (Chasles): when two points of a rigid body move on known curves, the instantaneous centre of every point P of the body is the meeting point H of the normals to the two curves; its locus is the centrode.' },
+    { label: '3a', text: 'Ellipse of the trammel of Archimedes: A and B move along two perpendicular lines, so AH and BH are the normals to their directions and H is the centre of rotation of every point of the rod. HP is normal to the path of P and the perpendicular PT to HP is the tangent (Fig. 115; see [[glissettes]] and [[trochoids]]). The path of P is an ellipse whenever A and B move along any two intersecting lines.' },
+    { label: '3b', text: 'Conchoid: A, the midpoint of the constant length P1P2, moves along the fixed line while the line P1P2 passes through the fixed point O. The point of the rod at O moves in the direction of the rod, so the perpendiculars to the fixed line at A and to the rod at O meet at H, the centre of rotation. The perpendiculars to HP1 at P1 and to HP2 at P2 are the tangents of the two branches (Fig. 116; see [[conchoid]]).' },
+    { label: '3c', text: 'Limacon: B moves along a circle while the rod OBP turns about O. B moves at right angles to the radius BA, the point of the rod at O moves along the rod, so the centre of rotation is the point H of the circle where BA, produced, meets the perpendicular to the rod at O. The tangent to the limacon described by P is perpendicular to PH (Fig. 117; see [[limacon]]).' },
+    { label: '3d', text: 'Isoptic: the isoptic of a curve is the locus of the meeting point of two tangents that make a constant angle. If the tangents touch the curve at A and B, the normals there meet at H, the centre of rotation of every point of the rigid body formed by the constant angle, so HP is normal to the path of P. For instance, the vertex of a triangle with two sides touching fixed circles describes a limacon; the normals to those sides pass through the centres of the circles and make a constant angle, they meet at H, and the locus of H is a circle through the two centres (Fig. 118; see [[isoptic]]).' },
+    { label: '3e', text: 'Point glissette: the locus of a point P rigidly attached to a curve that slides on given fixed curves. If the curve touches the fixed curves at A and B, the normals to the fixed curves there meet at H, and HP is normal to the path of P (Fig. 119).' },
+    { label: '3f', text: 'Trochoidal curves are generated by a point P rigidly attached to a curve that rolls on a fixed curve. The point of contact H is the centre of rotation and HP is normal to the path of P. This is specially useful for the trochoids of a circle: the epi- and hypocycloids and the ordinary cycloid (Fig. 120; see [[trochoids]] and [[epi-hypo-cycloids]]).' }
+  ],
+  constructions: [
+    { fig: 'fig-113', title: 'The instantaneous centre from two velocities', level: 1 },
+    { fig: 'fig-114', title: 'The normals to two curves meet at the instantaneous centre', level: 1 },
+    { fig: 'fig-115', title: 'Normal and tangent of the ellipse of the trammel', level: 1 },
+    { fig: 'fig-119', title: 'Tangent to a point glissette', level: 2 },
+    { fig: 'fig-120', title: 'Tangent to a trochoid of a rolling curve', level: 2 },
+    { fig: 'fig-118', title: 'The isoptic: HP is normal to the locus of P', level: 2 },
+    { fig: 'fig-116', title: 'Tangents to the two branches of the conchoid', level: 3 },
+    { fig: 'fig-117', title: 'Tangent to the limacon', level: 3 }
+  ],
+  bibliography: [
+    'Chasles, M.: Histoire de la Géométrie, Bruxelles (1881) 548.',
+    'Keown and Faires: Mechanism, McGraw-Hill (1931) Chap. V.',
+    'Niewenglowski, B.: Cours de Géométrie Analytique, I (Paris) (1894) 347 ff.',
+    'Williamson, B.: Calculus, Longmans, Green (1895) 359.'
+  ],
+  seeAlso: ['glissettes', 'roulettes', 'trochoids', 'conchoid', 'limacon', 'isoptic', 'cycloid', 'epi-hypo-cycloids']
+});

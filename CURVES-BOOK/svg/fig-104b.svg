@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 356.82 333.82" width="520" height="486" data-fig="fig-104b">
+<title>Fig. 104(b) — Trammel of Archimedes: the ellipse of a point of the rod</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 104(b), page 108. Section: glissettes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Two fixed perpendicular lines, and a rod AB of fixed length with its end A on one line and its end B on the other.">
+<path class="ink axis" style="stroke-width:1.07;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M21.91 165.91L334.91 165.91"/>
+<path class="ink axis" style="stroke-width:1.07;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M155.91 311.91L155.91 21.91"/>
+<path class="ink given" style="stroke-width:1.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M327.84 165.91L155.91 73.91"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.79" cx="327.84" cy="165.91" r="3.25"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.79" cx="155.91" cy="73.91" r="3.25"/>
+<text class="lbl " x="148.39" y="73.91" font-size="12.13" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="327.84" y="158.39" font-size="12.13" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+</g>
+<g class="step" data-step="1" data-tool="dividers" data-text="Mark the carried point P on the rod: PB = a (it is the half-axis along OX) and PA = b (the half-axis along OY).">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.79" cx="230.86" cy="114.01" r="3.25"/>
+<text class="lbl " x="237.25" y="106.49" font-size="12.13" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="2" data-tool="pencil" data-text="Slide the rod, keeping A on one line and B on the other, and mark P in many positions: the points lie on the ellipse with semi-axes a = PB and b = PA, whose centre is the crossing of the lines.">
+<path class="ink curve" style="stroke-width:2;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M240.91 165.91L240.88 163.03L240.79 160.15L240.65 157.28L240.44 154.41L240.18 151.55L239.86 148.7L239.49 145.86L239.05 143.04L238.56 140.23L238.01 137.44L237.41 134.67L236.75 131.92L236.03 129.19L235.26 126.49L234.44 123.81L233.56 121.17L232.63 118.55L231.65 115.97L230.61 113.42L229.52 110.91L228.38 108.44L227.2 106L225.96 103.61L224.68 101.25L223.35 98.95L221.97 96.68L220.54 94.47L219.08 92.31L217.57 90.19L216.01 88.13L214.42 86.12L212.79 84.16L211.11 82.27L209.4 80.42L207.65 78.64L205.87 76.92L204.05 75.26L202.2 73.66L200.32 72.12L198.41 70.65L196.47 69.24L194.5 67.9L192.5 66.63L190.48 65.42L188.44 64.28L186.37 63.22L184.28 62.22L182.18 61.29L180.05 60.44L177.91 59.66L175.75 58.95L173.58 58.31L171.4 57.75L169.21 57.26L167 56.85L164.79 56.51L162.58 56.25L160.36 56.06L158.14 55.95L155.91 55.91L153.68 55.95L151.46 56.06L149.24 56.25L147.03 56.51L144.82 56.85L142.61 57.26L140.42 57.75L138.24 58.31L136.07 58.95L133.91 59.66L131.77 60.44L129.64 61.29L127.54 62.22L125.45 63.22L123.38 64.28L121.34 65.42L119.32 66.63L117.32 67.9L115.35 69.24L113.41 70.65L111.5 72.12L109.62 73.66L107.77 75.26L105.95 76.92L104.17 78.64L102.42 80.42L100.71 82.27L99.03 84.16L97.4 86.12L95.81 88.13L94.25 90.19L92.74 92.31L91.28 94.47L89.85 96.68L88.47 98.95L87.14 101.25L85.86 103.61L84.62 106L83.44 108.44L82.3 110.91L81.21 113.42L80.17 115.97L79.19 118.55L78.26 121.17L77.38 123.81L76.56 126.49L75.79 129.19L75.07 131.92L74.41 134.67L73.81 137.44L73.26 140.23L72.77 143.04L72.33 145.86L71.96 148.7L71.64 151.55L71.38 154.41L71.17 157.28L71.03 160.15L70.94 163.03L70.91 165.91L70.94 168.79L71.03 171.67L71.17 174.54L71.38 177.41L71.64 180.27L71.96 183.12L72.33 185.96L72.77 188.78L73.26 191.59L73.81 194.38L74.41 197.15L75.07 199.9L75.79 202.63L76.56 205.33L77.38 208.01L78.26 210.65L79.19 213.27L80.17 215.85L81.21 218.4L82.3 220.91L83.44 223.38L84.62 225.82L85.86 228.21L87.14 230.57L88.47 232.87L89.85 235.14L91.28 237.35L92.74 239.51L94.25 241.63L95.81 243.69L97.4 245.7L99.03 247.66L100.71 249.55L102.42 251.4L104.17 253.18L105.95 254.9L107.77 256.56L109.62 258.16L111.5 259.7L113.41 261.17L115.35 262.58L117.32 263.92L119.32 265.19L121.34 266.4L123.38 267.54L125.45 268.6L127.54 269.6L129.64 270.53L131.77 271.38L133.91 272.16L136.07 272.87L138.24 273.51L140.42 274.07L142.61 274.56L144.82 274.97L147.03 275.31L149.24 275.57L151.46 275.76L153.68 275.87L155.91 275.91L158.14 275.87L160.36 275.76L162.58 275.57L164.79 275.31L167 274.97L169.21 274.56L171.4 274.07L173.58 273.51L175.75 272.87L177.91 272.16L180.05 271.38L182.18 270.53L184.28 269.6L186.37 268.6L188.44 267.54L190.48 266.4L192.5 265.19L194.5 263.92L196.47 262.58L198.41 261.17L200.32 259.7L202.2 258.16L204.05 256.56L205.87 254.9L207.65 253.18L209.4 251.4L211.11 249.55L212.79 247.66L214.42 245.7L216.01 243.69L217.57 241.63L219.08 239.51L220.54 237.35L221.97 235.14L223.35 232.87L224.68 230.57L225.96 228.21L227.2 225.82L228.38 223.38L229.52 220.91L230.61 218.4L231.65 215.85L232.63 213.27L233.56 210.65L234.44 208.01L235.26 205.33L236.03 202.63L236.75 199.9L237.41 197.15L238.01 194.38L238.56 191.59L239.05 188.78L239.49 185.96L239.86 183.12L240.18 180.27L240.44 177.41L240.65 174.54L240.79 171.67L240.88 168.79L240.91 165.91"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Every point rigidly attached to the rod describes an ellipse; the case of the point at the end (a = 0 or b = 0) is the degenerate ellipse, the line.">
+
+</g>
+</svg>

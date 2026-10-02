@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1244.42 1225.94" width="520" height="512" data-fig="fig-085">
+<title>Fig. 85 — The intrinsic equation of the evolute: σ = R_P − R_0</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 85, page 92. Section: evolutes.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, and the given curve s = f(φ) from O, where the tangent is OX (heavy). P is the point with tangential angle φ.">
+<path class="ink axis" style="stroke-width:3.73;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M188.01 1004.52L1168.01 1004.52"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1168.01 1004.52L1144.74 994.75L1144.74 1014.3Z"/>
+<path class="ink axis" style="stroke-width:3.73;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M528.01 1149.52L528.01 124.52"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M528.01 124.52L518.24 147.8L537.78 147.8Z"/>
+<text class="lbl axis" x="1190.31" y="1030.76" font-size="42.31" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="550.31" y="98.29" font-size="42.31" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink thick" style="stroke-width:6.97;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M528.01 1004.52L529.51 1004.52L531.01 1004.51L532.51 1004.48L534.01 1004.45L535.52 1004.41L537.03 1004.36L538.53 1004.3L540.05 1004.24L541.56 1004.16L543.08 1004.07L544.6 1003.98L546.13 1003.87L547.66 1003.75L549.2 1003.63L550.74 1003.5L552.29 1003.35L553.85 1003.2L555.41 1003.03L556.98 1002.86L558.56 1002.67L560.14 1002.48L561.73 1002.27L563.34 1002.05L564.95 1001.82L566.57 1001.58L568.2 1001.33L569.85 1001.07L571.5 1000.79L573.16 1000.5L574.84 1000.2L576.52 999.89L578.22 999.57L579.94 999.23L581.66 998.88L583.4 998.51L585.15 998.13L586.92 997.74L588.7 997.33L590.49 996.91L592.3 996.47L594.13 996.02L595.97 995.55L597.83 995.07L599.7 994.57L601.59 994.05L603.5 993.52L605.42 992.97L607.37 992.4L609.33 991.81L611.31 991.2L613.3 990.58L615.32 989.94L617.35 989.27L619.41 988.59L621.48 987.89L623.57 987.16L625.69 986.42L627.82 985.65L629.98 984.86L632.15 984.05L634.35 983.22L636.57 982.36L638.81 981.48L641.07 980.57L643.35 979.64L645.66 978.68L647.99 977.7L650.34 976.69L652.71 975.66L655.11 974.6L657.53 973.51L659.97 972.39L662.44 971.24L664.93 970.07L667.45 968.86L669.98 967.63L672.55 966.36L675.13 965.06L677.75 963.73L680.38 962.37L683.04 960.97L685.73 959.54L688.44 958.08L691.18 956.58L693.94 955.05L696.72 953.48L699.53 951.87L702.37 950.23L705.23 948.55L708.12 946.83L711.03 945.07L713.97 943.28L716.93 941.44L719.92 939.56L722.94 937.64L725.98 935.68L729.04 933.68L732.13 931.63L735.25 929.54L738.39 927.4L741.56 925.22L744.75 923L747.97 920.72L751.21 918.4L754.48 916.04L757.77 913.62L761.09 911.15L764.43 908.64L767.8 906.07L771.19 903.46L774.61 900.79L778.05 898.07L781.52 895.29L785 892.47L788.52 889.58L792.05 886.65L795.62 883.65L799.2 880.6L802.81 877.5L806.44 874.33L810.09 871.11L813.76 867.83L817.46 864.48L821.18 861.08L824.92 857.62L828.69 854.09L832.47 850.5L836.28 846.85L840.1 843.13L843.95 839.35L847.81 835.5L851.7 831.59L855.6 827.61L859.53 823.56L863.47 819.44L867.43 815.25L871.41 811L875.41 806.67L879.42 802.27L883.45 797.8L887.5 793.26L891.56 788.65L895.64 783.96L899.74 779.19L903.84 774.35L907.97 769.44L912.1 764.44L916.25 759.37L920.41 754.22L924.59 749L928.77 743.69L932.97 738.3L937.18 732.83L941.39 727.28L945.62 721.65L949.86 715.93L954.1 710.13L958.36 704.25L962.61 698.28L966.88 692.22"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.74" cx="528.01" cy="1004.52" r="12.13"/>
+<text class="lbl " x="505.71" y="978.29" font-size="42.31" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.74" cx="831.21" cy="851.7" r="9.71"/>
+<text class="lbl " x="831.21" y="825.47" font-size="42.31" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="638.46" y="934.76" font-size="42.31" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">s</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangent at P (inclined at φ to OX) and the normal at P. The normal makes the angle β = φ + π/2 with OX.">
+<path class="ink given" style="stroke-width:4.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M616.06 1056.19L1001.54 689.81"/>
+<path class="ink given" style="stroke-width:4.48;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M231.21 220.43L1028.12 1058.89"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.74" cx="831.21" cy="851.7" r="9.71"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="The centres of curvature: O' on the normal at O at distance R0 = R_O above O, and P' on the normal at P at the distance R_P = f'(φ) from P.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.74" cx="528.01" cy="754.52" r="9.71"/>
+<text class="lbl " x="554.24" y="754.52" font-size="42.31" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O'</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.74" cx="231.21" cy="220.43" r="9.71"/>
+<text class="lbl " x="253.51" y="194.2" font-size="42.31" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P'</text>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The evolute from O' to P' (heavy): it touches the normal at P' and its length is σ = R_P − R_0 = f'(φ) − R_0, or, with β: σ = f'(β − π/2) − R_0.">
+<path class="ink thick" style="stroke-width:6.97;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M528.01 754.52L528.01 754.49L528.01 754.39L528.01 754.23L528 754L528 753.71L527.98 753.35L527.97 752.93L527.95 752.44L527.92 751.89L527.89 751.28L527.85 750.59L527.8 749.85L527.75 749.04L527.68 748.16L527.61 747.22L527.52 746.22L527.43 745.15L527.32 744.01L527.19 742.82L527.06 741.56L526.91 740.23L526.74 738.84L526.56 737.39L526.37 735.88L526.15 734.3L525.92 732.65L525.67 730.95L525.4 729.18L525.11 727.35L524.8 725.46L524.47 723.5L524.12 721.48L523.74 719.4L523.34 717.26L522.92 715.06L522.47 712.79L522 710.47L521.5 708.08L520.97 705.63L520.42 703.12L519.83 700.55L519.22 697.92L518.58 695.24L517.91 692.49L517.21 689.68L516.48 686.81L515.71 683.89L514.92 680.9L514.08 677.86L513.22 674.76L512.32 671.6L511.38 668.38L510.41 665.11L509.4 661.78L508.35 658.39L507.27 654.95L506.15 651.45L504.98 647.9L503.78 644.29L502.54 640.63L501.25 636.91L499.92 633.13L498.55 629.31L497.14 625.43L495.68 621.49L494.18 617.51L492.63 613.47L491.04 609.38L489.4 605.23L487.72 601.04L485.98 596.79L484.2 592.5L482.37 588.15L480.49 583.76L478.56 579.31L476.58 574.82L474.55 570.28L472.46 565.69L470.33 561.05L468.14 556.37L465.89 551.64L463.6 546.86L461.24 542.04L458.84 537.17L456.37 532.26L453.85 527.3L451.28 522.3L448.64 517.26L445.95 512.17L443.2 507.04L440.39 501.87L437.52 496.65L434.59 491.4L431.6 486.11L428.54 480.77L425.43 475.4L422.25 469.99L419.01 464.53L415.71 459.05L412.34 453.52L408.91 447.96L405.41 442.36L401.85 436.72L398.22 431.05L394.53 425.35L390.77 419.61L386.94 413.84L383.04 408.03L379.08 402.2L375.04 396.33L370.94 390.43L366.76 384.5L362.52 378.54L358.21 372.55L353.82 366.53L349.36 360.48L344.83 354.41L340.23 348.31L335.56 342.18L330.81 336.03L325.99 329.85L321.09 323.65L316.12 317.42L311.07 311.17L305.95 304.9L300.75 298.61L295.48 292.29L290.13 285.96L284.7 279.6L279.2 273.23L273.62 266.83L267.96 260.42L262.22 253.99L256.4 247.55L250.5 241.09L244.53 234.61L238.47 228.12L232.34 221.61L226.12 215.1L219.82 208.56L213.44 202.02L206.98 195.47L200.44 188.9L193.81 182.33L187.11 175.75L180.32 169.16L173.44 162.56L166.49 155.95L159.45 149.34L152.32 142.72L145.12 136.1L137.82 129.48L130.45 122.85L122.98 116.21L115.44 109.58L107.8 102.95L100.08 96.31L92.28 89.68L84.39 83.04L76.41 76.41"/>
+<text class="lbl " x="466.18" y="626.84" font-size="42.31" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">σ</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The angles: φ between the tangent and OX, β between the normal and OX.">
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.74" d="M731.35 1004.52A60.93 60.93 0 0 0 714.58 962.55"/>
+<text class="lbl given" x="771.2" y="964.27" font-size="42.31" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">φ</text>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.74" d="M1037.38 1004.52A60.93 60.93 0 0 0 934.48 960.36"/>
+<text class="lbl given" x="1019.26" y="904.8" font-size="42.31" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">β</text>
+</g>
+</svg>

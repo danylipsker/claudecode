@@ -4,20 +4,39 @@
     {
       "name": "apps",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["scripts/serve.js", "8172"],
+      "runtimeArgs": [
+        "scripts/serve.js",
+        "8172"
+      ],
       "port": 8172
     },
     {
       "name": "driving",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["scripts/serve.js", "HYPER-DRIVING", "8173"],
+      "runtimeArgs": [
+        "scripts/serve.js",
+        "HYPER-DRIVING",
+        "8173"
+      ],
       "port": 8173
     },
     {
       "name": "galaxies",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["GALAXIES/tools/serve.js", "8171"],
+      "runtimeArgs": [
+        "GALAXIES/tools/serve.js",
+        "8171"
+      ],
       "port": 8171
+    },
+    {
+      "name": "curves",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/serve.js",
+        "8174"
+      ],
+      "port": 8174
     }
   ]
 }

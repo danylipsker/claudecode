@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 367.5 427.5" width="520" height="605" data-fig="fig-112b">
+<title>Fig. 112(b) — The rectangular hyperbola: x = a cosh t, y = a sinh t, and the sector of area A = a²t/2</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 112(b), page 115. Section: hyperbolic.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, the right-hand branch x² − y² = a² of the rectangular hyperbola with its vertex V = (a, 0), and its asymptote y = x.">
+<path class="ink axis" style="stroke-width:1.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M26.25 341.25L341.25 341.25"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M341.25 341.25L333.26 337.89L333.26 344.61Z"/>
+<path class="ink axis" style="stroke-width:1.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M41.25 401.25L41.25 26.25"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M41.25 26.25L37.89 34.24L44.61 34.24Z"/>
+<text class="lbl axis" x="348.91" y="350.26" font-size="14.54" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="48.91" y="17.24" font-size="14.54" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M41.25 341.25L303.75 78.75"/>
+<path class="ink given" style="stroke-width:2.4;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M198.05 386.93L197.61 385.39L197.18 383.86L196.77 382.33L196.38 380.81L196 379.29L195.63 377.77L195.28 376.26L194.94 374.75L194.62 373.24L194.32 371.74L194.03 370.24L193.75 368.74L193.49 367.24L193.24 365.75L193 364.26L192.79 362.77L192.58 361.29L192.39 359.8L192.22 358.32L192.06 356.84L191.91 355.36L191.78 353.88L191.66 352.41L191.56 350.93L191.47 349.46L191.4 347.98L191.34 346.51L191.3 345.04L191.27 343.57L191.25 342.09L191.25 340.62L191.26 339.15L191.29 337.68L191.33 336.21L191.39 334.73L191.46 333.26L191.55 331.78L191.65 330.31L191.76 328.83L191.89 327.36L192.04 325.88L192.19 324.4L192.37 322.91L192.55 321.43L192.76 319.94L192.97 318.46L193.2 316.97L193.45 315.47L193.71 313.98L193.98 312.48L194.27 310.98L194.58 309.48L194.9 307.97L195.23 306.46L195.58 304.95L195.94 303.44L196.32 301.92L196.71 300.39L197.12 298.86L197.55 297.33L197.99 295.8L198.44 294.26L198.91 292.71L199.39 291.16L199.89 289.61L200.4 288.05L200.93 286.49L201.48 284.92L202.04 283.34L202.62 281.76L203.21 280.17L203.81 278.58L204.44 276.98L205.08 275.38L205.73 273.77L206.4 272.15L207.09 270.53L207.79 268.9L208.51 267.26L209.24 265.61L209.99 263.96L210.76 262.3L211.54 260.64L212.34 258.96L213.16 257.28L213.99 255.59L214.84 253.89L215.7 252.18L216.58 250.46L217.48 248.74L218.4 247.01L219.33 245.26L220.28 243.51L221.25 241.75L222.24 239.98L223.24 238.2L224.26 236.41L225.3 234.61L226.35 232.79L227.42 230.97L228.52 229.14L229.62 227.3L230.75 225.44L231.9 223.58L233.06 221.7L234.24 219.81L235.44 217.91L236.66 216L237.9 214.08L239.16 212.14L240.44 210.2L241.73 208.23L243.05 206.26L244.38 204.27L245.74 202.27L247.11 200.26L248.5 198.23L249.92 196.19L251.35 194.14L252.8 192.07L254.28 189.99L255.77 187.89L257.29 185.78L258.82 183.65L260.38 181.51L261.96 179.35L263.56 177.18L265.18 174.99L266.82 172.78L268.48 170.56L270.17 168.32L271.88 166.07L273.61 163.8L275.36 161.51L277.13 159.2L278.93 156.88L280.75 154.54L282.6 152.18L284.46 149.8L286.35 147.4L288.27 144.99L290.21 142.56L292.17 140.1L294.15 137.63L296.16 135.14L298.2 132.63L300.26 130.1L302.34 127.55L304.45 124.97L306.59 122.38L308.75 119.77L310.93 117.13L313.15 114.47L315.38 111.8L317.65 109.09L319.94 106.37L322.26 103.62L324.6 100.86L326.98 98.06L329.38 95.25"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="41.25" cy="341.25" r="3.2"/>
+<text class="lbl  upright" x="33.59" y="332.24" font-size="14.54" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">O</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The point P = (x, y) on the branch with x = a cosh t, y = a sinh t; join it to O and drop the dashed vertical to the x-axis.">
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M41.25 341.25L256.21 187.27"/>
+<path class="ink cons dash" style="stroke-width:0.94;fill:none;--dash:5.13 3.42;stroke:#4b4b4b;stroke-dasharray:5.13 3.42;stroke-linecap:round;stroke-linejoin:round" d="M256.21 187.27L256.21 341.25"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:0.94" cx="256.21" cy="187.27" r="3.2"/>
+<text class="lbl  upright" x="268.83" y="187.27" font-size="14.54" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(x , y)</text>
+<text class="lbl  upright" x="116.25" y="366.75" font-size="13.81" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">a</text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The shaded region between OV, the arc VP and the line OP has the angle θ (tan θ = tanh t) at O and the area A = a²t/2: the same relation as for the circle.">
+<path class="ink hatchline" style="fill:none;stroke-width:1.2;stroke:#2a2a2a" d="M43.79 339.43L45.6 341.25M48.86 335.8L54.31 341.25M53.93 332.17L63.01 341.25M59 328.53L71.72 341.25M64.08 324.9L80.43 341.25M69.15 321.27L89.13 341.25M74.22 317.63L97.84 341.25M79.29 314L106.54 341.25M84.37 310.37L115.25 341.25M89.44 306.73L123.96 341.25M94.51 303.1L132.66 341.25M99.58 299.47L141.37 341.25M104.66 295.83L150.07 341.25M109.73 292.2L158.78 341.25M114.8 288.57L167.49 341.25M119.87 284.93L176.19 341.25M124.95 281.3L184.9 341.25M130.02 277.67L191.29 338.94M135.09 274.03L191.64 330.58M140.16 270.4L192.42 322.66M145.24 266.77L193.54 315.07M150.31 263.13L194.95 307.77M155.38 259.5L196.63 300.75M160.45 255.86L198.55 293.96M165.53 252.23L200.66 287.36M170.6 248.6L202.94 280.94M175.67 244.96L205.38 274.68M180.74 241.33L207.96 268.55M185.82 237.7L210.67 262.55M190.89 234.06L213.48 256.66M195.96 230.43L216.39 250.86M201.03 226.8L219.4 245.16M206.11 223.16L222.49 239.54M211.18 219.53L225.66 234.01M216.25 215.9L228.9 228.54M221.32 212.26L232.19 223.13M226.4 208.63L235.54 217.77M231.47 205L238.95 212.48M236.54 201.36L242.41 207.24M241.61 197.73L245.91 202.03M246.69 194.1L249.46 196.87M251.76 190.46L253.05 191.75"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.94" d="M53.02 341.25A11.77 11.77 0 0 0 50.82 334.39"/>
+<text class="lbl  upright" x="64.91" y="333.65" font-size="14.54" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">θ</text>
+<path class="ink given" style="stroke-width:1.54;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M41.25 341.25L191.25 341.25"/>
+</g>
+</svg>

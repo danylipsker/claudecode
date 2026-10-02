@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1127.18 1065.43" width="520" height="492" data-fig="fig-157a">
+<title>Fig. 157(a) — The radial of the cycloid: a circle of radius 2a</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 157(a), page 172. Section: radial.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The base line, the cycloid near its cusp O (thin), and the axis of the cycloid through O.">
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M69.21 996.21L1044.21 996.21"/>
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M538.21 996.21L538.21 69.21"/>
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M442.45 804.47L445.77 808.45L449.02 812.42L452.2 816.37L455.32 820.3L458.36 824.22L461.34 828.12L464.25 832L467.09 835.86L469.86 839.69L472.56 843.51L475.2 847.3L477.78 851.07L480.28 854.81L482.73 858.52L485.1 862.2L487.42 865.86L489.67 869.48L491.85 873.07L493.98 876.63L496.04 880.15L498.04 883.64L499.98 887.09L501.86 890.51L503.68 893.88L505.44 897.22L507.14 900.52L508.79 903.77L510.38 906.99L511.91 910.16L513.39 913.28L514.81 916.36L516.19 919.4L517.5 922.38L518.77 925.32L519.98 928.21L521.15 931.05L522.27 933.84L523.33 936.58L524.35 939.26L525.33 941.89L526.25 944.47L527.14 946.99L527.98 949.46L528.77 951.87L529.53 954.22L530.25 956.51L530.92 958.75L531.56 960.93L532.16 963.05L532.72 965.1L533.24 967.1L533.74 969.03L534.2 970.9L534.62 972.71L535.02 974.46L535.39 976.14L535.72 977.75L536.03 979.3L536.31 980.79L536.57 982.21L536.81 983.56L537.02 984.85L537.2 986.07L537.37 987.22L537.52 988.3L537.65 989.31L537.76 990.26L537.86 991.14L537.94 991.95L538.01 992.68L538.06 993.35L538.11 993.95L538.14 994.48L538.17 994.94L538.19 995.33L538.2 995.65L538.21 995.89L538.21 996.07L538.21 996.18L538.21 996.21L538.21 996.18L538.21 996.07L538.22 995.89L538.23 995.65L538.24 995.33L538.26 994.94L538.28 994.48L538.32 993.95L538.36 993.35L538.42 992.68L538.49 991.95L538.57 991.14L538.66 990.26L538.78 989.31L538.91 988.3L539.05 987.22L539.22 986.07L539.41 984.85L539.62 983.56L539.85 982.21L540.11 980.79L540.39 979.3L540.7 977.75L541.04 976.14L541.41 974.46L541.8 972.71L542.23 970.9L542.69 969.03L543.18 967.1L543.71 965.1L544.27 963.05L544.87 960.93L545.5 958.75L546.18 956.51L546.89 954.22L547.65 951.87L548.45 949.46L549.29 946.99L550.17 944.47L551.1 941.89L552.07 939.26L553.09 936.58L554.16 933.84L555.28 931.05L556.44 928.21L557.66 925.32L558.92 922.38L560.24 919.4L561.61 916.36L563.03 913.28L564.51 910.16L566.05 906.99L567.64 903.77L569.28 900.52L570.99 897.22L572.75 893.88L574.57 890.51L576.45 887.09L578.39 883.64L580.39 880.15L582.45 876.63L584.57 873.07L586.76 869.48L589.01 865.86L591.32 862.2L593.7 858.52L596.14 854.81L598.65 851.07L601.22 847.3L603.86 843.51L606.57 839.69L609.34 835.86L612.18 832L615.09 828.12L618.06 824.22L621.11 820.3L624.22 816.37L627.4 812.42L630.65 808.45L633.97 804.47"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.48" cx="538.21" cy="996.21" r="14.65"/>
+<text class="lbl " x="542.21" y="874.21" font-size="38.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+</g>
+<g class="step" data-step="1" data-tool="roll" data-text="The generating circle of radius a rolls along the base line. When it touches the line at H, with OH equal to the arc a·t, the point P (which was at O) is on the cycloid. The angle at the centre between the vertical and ZP is t.">
+<circle class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="826.96" cy="765.21" r="231"/>
+<path class="ink given" style="stroke-width:4.06;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M826.96 534.21L826.96 996.21"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.48" cx="826.96" cy="534.21" r="14.65"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.48" cx="826.96" cy="996.21" r="14.65"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.48" cx="826.96" cy="765.21" r="8.06"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.48" cx="607.75" cy="838.05" r="14.65"/>
+<text class="lbl " x="575.43" y="800.03" font-size="38.32" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<text class="lbl " x="853.22" y="965.32" font-size="38.32" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+<text class="lbl " x="854.56" y="649.71" font-size="38.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<text class="lbl " x="854.56" y="880.71" font-size="38.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.48" d="M781.14 780.44A48.29 48.29 0 0 0 826.96 813.5"/>
+<text class="lbl " x="778.53" y="832.34" font-size="38.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join P to H: H is the instantaneous centre of the rolling circle, so PH is the normal of the cycloid at P. Since the angle PH-top is a right angle in a semicircle, the angle between HP and the base line is half of t.">
+<path class="ink cons dash" style="stroke-width:2.48;fill:none;--dash:13.53 9.02;stroke:#4b4b4b;stroke-dasharray:13.53 9.02;stroke-linecap:round;stroke-linejoin:round" d="M607.75 838.05L826.96 996.21"/>
+<path class="ink cons dash" style="stroke-width:2.48;fill:none;--dash:13.53 9.02;stroke:#4b4b4b;stroke-dasharray:13.53 9.02;stroke-linecap:round;stroke-linejoin:round" d="M607.75 838.05L826.96 765.21"/>
+<path class="ink cons dash" style="stroke-width:2.48;fill:none;--dash:13.53 9.02;stroke:#4b4b4b;stroke-dasharray:13.53 9.02;stroke-linecap:round;stroke-linejoin:round" d="M607.75 838.05L826.96 534.21"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.48" d="M765.43 951.81A75.88 75.88 0 0 0 751.08 996.21"/>
+<text class="lbl " x="720.57" y="961.84" font-size="38.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t/2</text>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="The radius of curvature of the cycloid at P is twice PH. Through the point O draw the line parallel to HP.">
+<path class="ink cons" style="stroke-width:2.48;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M538.21 996.21L362.84 869.68"/>
+</g>
+<g class="step" data-step="4" data-tool="dividers" data-text="Carry the length R = 2·PH from O along that line: its end R is a point of the radial.">
+<path class="ink thick" style="stroke-width:6.31;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M538.21 996.21L99.78 679.89"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.48" cx="99.78" cy="679.89" r="14.65"/>
+<text class="lbl " x="363.43" y="785.78" font-size="38.32" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:2.48" d="M490.66 961.9A58.64 58.64 0 0 0 479.58 996.21"/>
+<text class="lbl " x="446.86" y="966.7" font-size="38.32" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">t/2</text>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="Repeat for other positions of the generating circle: the points R run along a circle of radius 2a through O (r = 4a sin(t/2) = 4a sin θ, with θ = π − t/2).">
+<circle class="ink curve" style="stroke-width:6.31;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" cx="538.21" cy="534.21" r="462"/>
+</g>
+</svg>

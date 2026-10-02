@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1413.6 1113.6" width="520" height="410" data-fig="fig-036">
+<title>Fig. 36 — Poles and polars: the polar of P is the chord of contact of the tangents from P</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 36, page 41. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The conic Ax² + 2Bxy + Cy² + 2Dx + 2Ey + F = 0 with its axes, and the point P: (h, k) from which tangents can be drawn.">
+<path class="ink axis" style="stroke-width:4.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M146.8 916.8L976.8 916.8"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M976.8 916.8L950.37 905.7L950.37 927.9Z"/>
+<path class="ink axis" style="stroke-width:4.24;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M176.8 976.8L176.8 136.8"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M176.8 136.8L165.7 163.23L187.9 163.23Z"/>
+<text class="lbl axis" x="1002.13" y="946.6" font-size="48.06" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="202.13" y="107" font-size="48.06" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.11" cx="176.8" cy="916.8" r="11.03"/>
+<path class="ink thick" style="stroke-width:7.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M934.82 509.51L931.81 503.32L928.6 497.22L925.18 491.23L921.57 485.34L917.77 479.56L913.77 473.9L909.58 468.34L905.2 462.91L900.63 457.6L895.88 452.42L890.96 447.36L885.85 442.43L880.57 437.64L875.12 432.98L869.5 428.47L863.71 424.09L857.76 419.86L851.66 415.78L845.4 411.85L838.98 408.07L832.43 404.44L825.72 400.97L818.88 397.66L811.9 394.5L804.8 391.51L797.56 388.68L790.2 386.02L782.72 383.53L775.13 381.2L767.43 379.04L759.62 377.06L751.71 375.24L743.71 373.6L735.61 372.14L727.43 370.85L719.16 369.73L710.82 368.79L702.4 368.03L693.92 367.44L685.37 367.04L676.77 366.81L668.12 366.76L659.41 366.88L650.67 367.19L641.88 367.67L633.07 368.33L624.23 369.17L615.36 370.18L606.48 371.37L597.59 372.74L588.69 374.28L579.79 376L570.9 377.88L562.01 379.94L553.14 382.17L544.29 384.57L535.46 387.13L526.67 389.87L517.9 392.76L509.18 395.82L500.51 399.05L491.88 402.43L483.31 405.96L474.8 409.66L466.35 413.5L457.98 417.5L449.68 421.64L441.46 425.94L433.33 430.37L425.28 434.95L417.33 439.66L409.48 444.51L401.73 449.49L394.09 454.61L386.57 459.85L379.16 465.21L371.87 470.69L364.7 476.29L357.67 482.01L350.77 487.83L344.01 493.77L337.39 499.81L330.91 505.94L324.59 512.18L318.42 518.51L312.4 524.92L306.55 531.43L300.85 538.01L295.33 544.68L289.98 551.41L284.79 558.22L279.79 565.1L274.96 572.03L270.32 579.03L265.86 586.08L261.59 593.18L257.51 600.32L253.62 607.51L249.93 614.73L246.43 621.99L243.13 629.28L240.03 636.59L237.14 643.92L234.45 651.27L231.96 658.63L229.68 666L227.61 673.37L225.75 680.74L224.1 688.1L222.67 695.46L221.44 702.8L220.43 710.13L219.63 717.43L219.05 724.7L218.68 731.95L218.53 739.15L218.59 746.32L218.87 753.45L219.36 760.53L220.07 767.56L220.99 774.53L222.12 781.44L223.47 788.28L225.03 795.06L226.8 801.77L228.78 808.4L230.97 814.95L233.37 821.42L235.97 827.8L238.78 834.09L241.79 840.28L245 846.38L248.42 852.37L252.03 858.26L255.83 864.04L259.83 869.7L264.02 875.26L268.4 880.69L272.97 886L277.72 891.18L282.64 896.24L287.75 901.17L293.03 905.96L298.48 910.62L304.1 915.13L309.89 919.51L315.84 923.74L321.94 927.82L328.2 931.75L334.62 935.53L341.17 939.16L347.88 942.63L354.72 945.94L361.7 949.1L368.8 952.09L376.04 954.92L383.4 957.58L390.88 960.07L398.47 962.4L406.17 964.56L413.98 966.54L421.89 968.36L429.89 970L437.99 971.46L446.17 972.75L454.44 973.87L462.78 974.81L471.2 975.57L479.68 976.16L488.23 976.56L496.83 976.79L505.48 976.84L514.19 976.72L522.93 976.41L531.72 975.93L540.53 975.27L549.37 974.43L558.24 973.42L567.12 972.23L576.01 970.86L584.91 969.32L593.81 967.6L602.7 965.72L611.59 963.66L620.46 961.43L629.31 959.03L638.14 956.47L646.93 953.73L655.7 950.84L664.42 947.78L673.09 944.55L681.72 941.17L690.29 937.64L698.8 933.94L707.25 930.1L715.62 926.1L723.92 921.96L732.14 917.66L740.27 913.23L748.32 908.65L756.27 903.94L764.12 899.09L771.87 894.11L779.51 888.99L787.03 883.75L794.44 878.39L801.73 872.91L808.9 867.31L815.93 861.59L822.83 855.77L829.59 849.83L836.21 843.79L842.69 837.66L849.01 831.42L855.18 825.09L861.2 818.68L867.05 812.17L872.75 805.59L878.27 798.92L883.62 792.19L888.81 785.38L893.81 778.5L898.64 771.57L903.28 764.57L907.74 757.52L912.01 750.42L916.09 743.28L919.98 736.09L923.67 728.87L927.17 721.61L930.47 714.32L933.57 707.01L936.46 699.68L939.15 692.33L941.64 684.97L943.92 677.6L945.99 670.23L947.85 662.86L949.5 655.5L950.93 648.14L952.16 640.8L953.17 633.47L953.97 626.17L954.55 618.9L954.92 611.65L955.07 604.45L955.01 597.28L954.73 590.15L954.24 583.07L953.53 576.04L952.61 569.07L951.48 562.16L950.13 555.32L948.57 548.54L946.8 541.83L944.82 535.2L942.63 528.65L940.23 522.18L937.63 515.8L934.82 509.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.11" cx="1114.27" cy="322.25" r="9.19"/>
+<text class="lbl  upright" x="1114.27" y="274.57" font-size="38.45" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">P: (h, k)</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The polar of P, the line Ahx + B(hy + kx) + Cky + D(x + h) + E(y + k) + F = 0 (the tangent equation with (h, k) put in): it meets the conic at the two points of contact (x1, y1) and (x2, y2).">
+<path class="ink given" style="stroke-width:5.09;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M598.34 333.45L1001.73 810.21"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.11" cx="628.22" cy="368.77" r="9.19"/>
+<text class="lbl  upright" x="628.22" y="324.07" font-size="38.45" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(x<tspan baseline-shift="sub" font-size="70%">1</tspan>, y<tspan baseline-shift="sub" font-size="70%">1</tspan>)</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.11" cx="927.03" cy="721.92" r="9.19"/>
+<text class="lbl  upright" x="962.78" y="721.92" font-size="38.45" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(x<tspan baseline-shift="sub" font-size="70%">2</tspan>, y<tspan baseline-shift="sub" font-size="70%">2</tspan>)</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="The tangents from P: the lines from P through the two points of contact.">
+<path class="ink given" style="stroke-width:5.09;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M385.2 392.03L1114.27 322.25"/>
+<path class="ink given" style="stroke-width:5.09;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1114.27 322.25L876.47 829.83"/>
+</g>
+<g class="step" data-step="3" data-tool="note" data-text="Any point Q: (a, b) of the polar has a polar through P as well. If P lay on the conic, its polar would be the tangent at P.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:3.11" cx="731.61" cy="490.96" r="9.19"/>
+<text class="lbl  upright" x="769.6" y="446.26" font-size="38.45" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Q:</text>
+<text class="lbl  upright" x="779.73" y="547.58" font-size="38.45" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">(a, b)</text>
+</g>
+</svg>

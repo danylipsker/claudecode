@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1187.88 1185.88" width="520" height="519" data-fig="fig-115">
+<title>Fig. 115 — The ellipse of the trammel: centre of rotation, normal and tangent</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 115, page 120. Section: instantaneous-center.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two perpendicular lines meeting at O, and the rod AB with its ends A on one line and B on the other. P is a point of the rod; the arrows show how A and B move.">
+<path class="ink axis" style="stroke-width:3.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M72.94 646.94L1114.94 646.94"/>
+<path class="ink axis" style="stroke-width:3.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M455.94 72.94L455.94 1112.94"/>
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1043.94 665.19L441.94 203.19"/>
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1071.94 628.69L469.94 166.69"/>
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1043.94 665.19A23 23 0 0 0 1071.94 628.69"/>
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M469.94 166.69A23 23 0 0 0 441.94 203.19"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.61" cx="455.94" cy="646.94" r="10.81"/>
+<circle class="pt" style="fill:#1b1b1b" cx="1057.94" cy="646.94" r="15.44"/>
+<circle class="pt" style="fill:#1b1b1b" cx="455.94" cy="184.94" r="15.44"/>
+<circle class="pt" style="fill:#1b1b1b" cx="723.83" cy="390.53" r="13.9"/>
+<text class="lbl " x="400.85" y="184.94" font-size="40.39" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<text class="lbl " x="1057.94" y="689.51" font-size="40.39" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="687.65" y="433.1" font-size="40.39" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="A moves along OA, so the normal to its path at A is the perpendicular to OA; B moves along OB, so the normal to its path is the perpendicular to OB. Draw both: they meet at H, the centre of rotation of the rod and of every point of it.">
+<path class="ink cons dash" style="stroke-width:2.61;fill:none;--dash:14.25 9.5;stroke:#4b4b4b;stroke-dasharray:14.25 9.5;stroke-linecap:round;stroke-linejoin:round" d="M455.94 184.94L1057.94 184.94"/>
+<path class="ink cons dash" style="stroke-width:2.61;fill:none;--dash:14.25 9.5;stroke:#4b4b4b;stroke-dasharray:14.25 9.5;stroke-linecap:round;stroke-linejoin:round" d="M1057.94 184.94L1057.94 646.94"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.61" cx="1057.94" cy="184.94" r="10.81"/>
+<text class="lbl " x="1103.01" y="184.94" font-size="40.39" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+<g class="step" data-step="2" data-tool="straightedge" data-text="Join H to P: HP is the normal to the path of P.">
+<path class="ink cons dash" style="stroke-width:2.61;fill:none;--dash:14.25 9.5;stroke:#4b4b4b;stroke-dasharray:14.25 9.5;stroke-linecap:round;stroke-linejoin:round" d="M1057.94 184.94L723.83 390.53"/>
+</g>
+<g class="step" data-step="3" data-tool="square" data-text="The tangent at P is the perpendicular to HP through P.">
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M832.31 566.83L576.57 151.21"/>
+<text class="lbl " x="595.72" y="128.67" font-size="40.39" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">T</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The path of P is the ellipse with semi-axes a = PB along OX and b = PA along OY; the tangent just drawn touches it at P.">
+<path class="ink curve" style="stroke-width:6.65;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M793.63 646.94L793.55 638.12L793.33 629.3L792.96 620.5L792.44 611.7L791.78 602.92L790.96 594.15L790 585.42L788.9 576.7L787.65 568.02L786.25 559.38L784.7 550.77L783.02 542.2L781.19 533.68L779.21 525.21L777.1 516.79L774.84 508.43L772.45 500.14L769.91 491.9L767.24 483.73L764.43 475.64L761.49 467.62L758.41 459.68L755.2 451.82L751.86 444.04L748.39 436.36L744.79 428.77L741.06 421.27L737.21 413.87L733.23 406.58L729.13 399.39L724.92 392.31L720.58 385.34L716.13 378.48L711.57 371.75L706.89 365.13L702.1 358.64L697.21 352.27L692.21 346.03L687.1 339.93L681.9 333.96L676.59 328.12L671.19 322.43L665.69 316.88L660.11 311.47L654.43 306.21L648.66 301.1L642.81 296.15L636.88 291.34L630.87 286.69L624.78 282.2L618.62 277.87L612.39 273.71L606.09 269.7L599.72 265.86L593.29 262.19L586.8 258.69L580.25 255.36L573.65 252.19L566.99 249.21L560.29 246.39L553.54 243.76L546.75 241.29L539.92 239.01L533.05 236.91L526.15 234.98L519.22 233.24L512.26 231.68L505.27 230.3L498.26 229.1L491.24 228.09L484.2 227.26L477.14 226.61L470.08 226.15L463.01 225.87L455.94 225.78L448.87 225.87L441.8 226.15L434.74 226.61L427.68 227.26L420.64 228.09L413.62 229.1L406.61 230.3L399.62 231.68L392.66 233.24L385.73 234.98L378.83 236.91L371.96 239.01L365.13 241.29L358.34 243.76L351.59 246.39L344.89 249.21L338.23 252.19L331.63 255.36L325.08 258.69L318.59 262.19L312.16 265.86L305.79 269.7L299.49 273.71L293.26 277.87L287.1 282.2L281.01 286.69L275 291.34L269.07 296.15L263.22 301.1L257.45 306.21L251.77 311.47L246.19 316.88L240.69 322.43L235.29 328.12L229.98 333.96L224.78 339.93L219.67 346.03L214.67 352.27L209.78 358.64L204.99 365.13L200.31 371.75L195.75 378.48L191.3 385.34L186.96 392.31L182.75 399.39L178.65 406.58L174.67 413.87L170.82 421.27L167.09 428.77L163.49 436.36L160.02 444.04L156.68 451.82L153.47 459.68L150.39 467.62L147.45 475.64L144.64 483.73L141.97 491.9L139.43 500.14L137.04 508.43L134.78 516.79L132.67 525.21L130.69 533.68L128.86 542.2L127.18 550.77L125.63 559.38L124.23 568.02L122.98 576.7L121.88 585.42L120.92 594.15L120.1 602.92L119.44 611.7L118.92 620.5L118.55 629.3L118.33 638.12L118.25 646.94L118.33 655.76L118.55 664.58L118.92 673.38L119.44 682.18L120.1 690.96L120.92 699.73L121.88 708.46L122.98 717.18L124.23 725.86L125.63 734.5L127.18 743.11L128.86 751.68L130.69 760.2L132.67 768.67L134.78 777.09L137.04 785.45L139.43 793.74L141.97 801.98L144.64 810.15L147.45 818.24L150.39 826.26L153.47 834.2L156.68 842.06L160.02 849.84L163.49 857.52L167.09 865.11L170.82 872.61L174.67 880.01L178.65 887.3L182.75 894.49L186.96 901.57L191.3 908.54L195.75 915.4L200.31 922.13L204.99 928.75L209.78 935.24L214.67 941.61L219.67 947.85L224.78 953.95L229.98 959.92L235.29 965.76L240.69 971.45L246.19 977L251.77 982.41L257.45 987.67L263.22 992.78L269.07 997.73L275 1002.54L281.01 1007.19L287.1 1011.68L293.26 1016.01L299.49 1020.17L305.79 1024.18L312.16 1028.02L318.59 1031.69L325.08 1035.19L331.63 1038.52L338.23 1041.69L344.89 1044.67L351.59 1047.49L358.34 1050.12L365.13 1052.59L371.96 1054.87L378.83 1056.97L385.73 1058.9L392.66 1060.64L399.62 1062.2L406.61 1063.58L413.62 1064.78L420.64 1065.79L427.68 1066.62L434.74 1067.27L441.8 1067.73L448.87 1068.01L455.94 1068.1L463.01 1068.01L470.08 1067.73L477.14 1067.27L484.2 1066.62L491.24 1065.79L498.26 1064.78L505.27 1063.58L512.26 1062.2L519.22 1060.64L526.15 1058.9L533.05 1056.97L539.92 1054.87L546.75 1052.59L553.54 1050.12L560.29 1047.49L566.99 1044.67L573.65 1041.69L580.25 1038.52L586.8 1035.19L593.29 1031.69L599.72 1028.02L606.09 1024.18L612.39 1020.17L618.62 1016.01L624.78 1011.68L630.87 1007.19L636.88 1002.54L642.81 997.73L648.66 992.78L654.43 987.67L660.11 982.41L665.69 977L671.19 971.45L676.59 965.76L681.9 959.92L687.1 953.95L692.21 947.85L697.21 941.61L702.1 935.24L706.89 928.75L711.57 922.13L716.13 915.4L720.58 908.54L724.92 901.57L729.13 894.49L733.23 887.3L737.21 880.01L741.06 872.61L744.79 865.11L748.39 857.52L751.86 849.84L755.2 842.06L758.41 834.2L761.49 826.26L764.43 818.24L767.24 810.15L769.91 801.98L772.45 793.74L774.84 785.45L777.1 777.09L779.21 768.67L781.19 760.2L783.02 751.68L784.7 743.11L786.25 734.5L787.65 725.86L788.9 717.18L790 708.46L790.96 699.73L791.78 690.96L792.44 682.18L792.96 673.38L793.33 664.58L793.55 655.76L793.63 646.94"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="Arrows: the directions in which B and A move.">
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M421.94 162.94L421.94 82.94"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M421.94 82.94L412.61 105.15L431.27 105.15Z"/>
+<path class="ink given" style="stroke-width:4.28;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1034.94 680.94L929.94 680.94"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M929.94 680.94L952.15 690.27L952.15 671.61Z"/>
+</g>
+</svg>

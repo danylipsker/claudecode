@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 887.69 559.01" width="520" height="327" data-fig="fig-066">
+<title>Fig. 66 — The brachistochrone: refraction through layers</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 66, page 68. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="Five horizontal lines at equal distances h: the layers of the medium. The particle starts at P0 on the top line and must reach the bottom line in the shortest time.">
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M54.51 54.51L833.18 54.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M54.51 154.51L813.18 154.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M54.51 254.51L813.18 254.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M54.51 354.51L813.18 354.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M54.51 454.51L833.18 454.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.95" cx="723.18" cy="54.51" r="5.77"/>
+<text class="lbl " x="739.08" y="35.79" font-size="30.18" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">0</tspan></text>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.51 59.51L66.51 149.51"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 149.51L71.39 137.89L61.63 137.89Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 59.51L61.63 71.13L71.39 71.13Z"/>
+<text class="lbl  upright" x="84.51" y="104.51" font-size="25.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">h</text>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.51 159.51L66.51 249.51"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 249.51L71.39 237.89L61.63 237.89Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 159.51L61.63 171.13L71.39 171.13Z"/>
+<text class="lbl  upright" x="84.51" y="204.51" font-size="25.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">h</text>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.51 259.51L66.51 349.51"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 349.51L71.39 337.89L61.63 337.89Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 259.51L61.63 271.13L71.39 271.13Z"/>
+<text class="lbl  upright" x="84.51" y="304.51" font-size="25.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">h</text>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M66.51 359.51L66.51 449.51"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 449.51L71.39 437.89L61.63 437.89Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M66.51 359.51L61.63 371.13L71.39 371.13Z"/>
+<text class="lbl  upright" x="84.51" y="404.51" font-size="25.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">h</text>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M813.18 58.51L813.18 450.51"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M813.18 450.51L818.06 438.89L808.3 438.89Z"/>
+<path class="head given" style="stroke:none;fill:#1b1b1b" d="M813.18 58.51L808.3 70.13L818.06 70.13Z"/>
+<text class="lbl  upright" x="829.18" y="254.51" font-size="25.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y</text>
+</g>
+<g class="step" data-step="1" data-tool="protractor" data-text="Layer 1: from P0 lay off the angle α1 with the vertical, where sin α1 is proportional to √2 (the speed there is √(2gh)); the line meets the next line at P1.">
+<path class="ink curve" style="stroke-width:4.97;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M723.18 54.51L672.23 154.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M672.23 204.51L672.23 109.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.95" cx="672.23" cy="154.51" r="5.77"/>
+<text class="lbl " x="688.13" y="173.22" font-size="30.18" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.95" d="M690.72 118.2A40.74 40.74 0 0 0 672.23 113.76"/>
+<text class="lbl " x="689.4" y="82.97" font-size="30.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+</g>
+<g class="step" data-step="2" data-tool="protractor" data-text="Layer 2: from P1 lay off the angle α2 with the vertical, where sin α2 is proportional to √4 (the speed there is √(4gh)); the line meets the next line at P2.">
+<path class="ink curve" style="stroke-width:4.97;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M672.23 154.51L588.48 254.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M588.48 304.51L588.48 209.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.95" cx="588.48" cy="254.51" r="5.77"/>
+<text class="lbl " x="604.39" y="273.22" font-size="30.18" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.95" d="M614.64 223.27A40.74 40.74 0 0 0 588.48 213.76"/>
+<text class="lbl " x="613.61" y="185.36" font-size="30.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="3" data-tool="protractor" data-text="Layer 3: from P2 lay off the angle α3 with the vertical, where sin α3 is proportional to √6 (the speed there is √(6gh)); the line meets the next line at P3.">
+<path class="ink curve" style="stroke-width:4.97;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M588.48 254.51L461.2 354.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M461.2 404.51L461.2 309.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.95" cx="461.2" cy="354.51" r="5.77"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.95" d="M493.24 329.33A40.74 40.74 0 0 0 461.2 313.76"/>
+<text class="lbl " x="493.36" y="288.34" font-size="30.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α<tspan baseline-shift="sub" font-size="70%">3</tspan></text>
+</g>
+<g class="step" data-step="4" data-tool="protractor" data-text="Layer 4: from P3 lay off the angle α4 with the vertical, where sin α4 is proportional to √8 (the speed there is √(8gh)); the line meets the next line at P4.">
+<path class="ink curve" style="stroke-width:4.97;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M461.2 354.51L244.51 454.51"/>
+<path class="ink given" style="stroke-width:3.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M244.51 504.51L244.51 409.51"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.95" cx="244.51" cy="454.51" r="5.77"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.95" d="M281.5 437.43A40.74 40.74 0 0 0 244.51 413.76"/>
+<text class="lbl " x="284.16" y="392.54" font-size="30.18" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">α<tspan baseline-shift="sub" font-size="70%">4</tspan></text>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="As the layers get thinner (h → 0) the broken line becomes the curve of quickest descent: sin α = k·√y, which is the cycloid.">
+
+</g>
+</svg>

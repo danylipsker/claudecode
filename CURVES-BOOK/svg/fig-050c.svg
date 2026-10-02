@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 419.52 321.52" width="520" height="399" data-fig="fig-050c">
+<title>Fig. 50(c) — Paper folding: F outside the circle, the creases envelope a hyperbola</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 50(c), page 50. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="A circle on the paper, with the point F marked outside it (the centre of the circle is the other focus).">
+<circle class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" cx="258.76" cy="160.76" r="135"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="258.76" cy="160.76" r="6"/><circle class="pt" style="fill:#1b1b1b" cx="258.76" cy="160.76" r="2.45"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.51" cx="67.76" cy="160.76" r="6"/><circle class="pt" style="fill:#1b1b1b" cx="67.76" cy="160.76" r="2.45"/>
+<text class="lbl  upright" x="54.23" y="176.68" font-size="12.12" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">F</text>
+</g>
+<g class="step" data-step="1" data-tool="fold" data-text="Fold F onto a point P of the circle and crease the paper: the crease is the perpendicular bisector of FP.">
+<path class="ink aux dash" style="stroke-width:0.76;fill:none;--dash:5.03 3.36;stroke:#8a8a8a;stroke-dasharray:5.03 3.36;stroke-linecap:round;stroke-linejoin:round" d="M67.76 160.76L287.35 28.82"/>
+<circle class="pt" style="fill:#1b1b1b" cx="287.35" cy="28.82" r="2.18"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M298.31 295.76L136.08 25.76"/>
+</g>
+<g class="step" data-step="2" data-tool="fold" data-text="Fold F onto 47 more points spaced round the circle, creasing each time.">
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M233.45 295.76L228.04 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M240.61 295.76L220.53 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M247.61 295.76L212.78 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M254.46 295.76L204.75 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M261.18 295.76L196.38 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M267.79 295.76L187.64 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M274.26 295.76L178.46 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M280.6 295.76L168.78 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M286.76 295.76L158.53 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M292.69 295.76L147.65 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M303.46 295.76L123.74 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M307.96 295.76L110.59 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M310.76 294.82L96.64 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M310.76 292.35L81.96 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M310.76 292.34L66.74 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M310.76 295.2L51.4 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M304.81 295.76L36.71 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M293.03 295.76L25.76 27.59"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M274.42 295.76L25.76 36.94"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M247.62 295.76L25.76 40.87"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M212.19 295.76L25.76 34.22"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M169.55 295.76L38.87 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M123.67 295.76L70.49 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M80.51 295.76L111.93 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M45.94 295.76L157.72 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M25.76 292.31L201.68 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M25.76 281.01L239.22 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M25.76 282.92L268.28 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M25.76 291.12L288.91 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M33.14 295.76L302.32 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M47.48 295.76L310.04 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M62.74 295.76L310.76 28.74"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M78.04 295.76L310.76 29.42"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M92.89 295.76L310.76 27.57"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M107.04 295.76L308.99 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M120.4 295.76L304.7 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M132.94 295.76L299.7 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M144.71 295.76L294.19 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M155.77 295.76L288.33 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M166.17 295.76L282.22 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M175.99 295.76L275.93 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M185.3 295.76L269.48 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M194.15 295.76L262.91 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M202.61 295.76L256.22 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M210.72 295.76L249.4 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M218.54 295.76L242.44 25.76"/>
+<path class="ink cons" style="stroke-width:0.92;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M226.11 295.76L235.33 25.76"/>
+</g>
+<g class="step" data-step="3" data-tool="pencil" data-text="The creases envelope a hyperbola with foci F and the centre of the circle: the difference of the distances from a point of it to F and to the centre is the radius.">
+<path class="ink curve" style="stroke-width:2.35;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M309.48 290.58L307.59 288.44L305.74 286.34L303.91 284.26L302.12 282.21L300.35 280.18L298.62 278.18L296.91 276.21L295.23 274.26L293.58 272.34L291.96 270.43L290.37 268.56L288.8 266.7L287.26 264.87L285.75 263.06L284.27 261.27L282.81 259.51L281.37 257.76L279.96 256.04L278.58 254.34L277.22 252.66L275.89 250.99L274.57 249.35L273.29 247.72L272.03 246.12L270.79 244.53L269.57 242.96L268.38 241.41L267.21 239.88L266.06 238.36L264.93 236.86L263.83 235.37L262.75 233.91L261.68 232.45L260.64 231.02L259.63 229.59L258.63 228.19L257.65 226.79L256.69 225.42L255.75 224.05L254.84 222.7L253.94 221.36L253.06 220.04L252.2 218.73L251.36 217.43L250.54 216.14L249.74 214.86L248.95 213.6L248.19 212.35L247.44 211.11L246.71 209.88L246 208.66L245.31 207.45L244.63 206.25L243.98 205.06L243.34 203.88L242.71 202.71L242.11 201.54L241.52 200.39L240.95 199.25L240.39 198.11L239.85 196.98L239.33 195.86L238.82 194.75L238.33 193.64L237.86 192.55L237.4 191.45L236.96 190.37L236.53 189.29L236.12 188.22L235.73 187.15L235.35 186.09L234.99 185.03L234.64 183.98L234.3 182.94L233.99 181.9L233.68 180.86L233.4 179.83L233.13 178.8L232.87 177.78L232.63 176.76L232.4 175.74L232.19 174.73L231.99 173.72L231.81 172.71L231.64 171.71L231.49 170.7L231.35 169.7L231.23 168.7L231.12 167.71L231.02 166.71L230.94 165.72L230.88 164.73L230.83 163.73L230.79 162.74L230.77 161.75L230.76 160.76L230.77 159.77L230.79 158.78L230.83 157.79L230.88 156.79L230.94 155.8L231.02 154.81L231.12 153.81L231.23 152.82L231.35 151.82L231.49 150.82L231.64 149.81L231.81 148.81L231.99 147.8L232.19 146.79L232.4 145.78L232.63 144.76L232.87 143.74L233.13 142.72L233.4 141.69L233.68 140.66L233.99 139.62L234.3 138.58L234.64 137.54L234.99 136.49L235.35 135.43L235.73 134.37L236.12 133.3L236.53 132.23L236.96 131.15L237.4 130.07L237.86 128.97L238.33 127.88L238.82 126.77L239.33 125.66L239.85 124.54L240.39 123.41L240.95 122.27L241.52 121.13L242.11 119.98L242.71 118.81L243.34 117.64L243.98 116.46L244.63 115.27L245.31 114.07L246 112.86L246.71 111.64L247.44 110.41L248.19 109.17L248.95 107.92L249.74 106.66L250.54 105.38L251.36 104.09L252.2 102.79L253.06 101.48L253.94 100.16L254.84 98.82L255.75 97.47L256.69 96.1L257.65 94.73L258.63 93.33L259.63 91.93L260.64 90.5L261.68 89.07L262.75 87.61L263.83 86.15L264.93 84.66L266.06 83.16L267.21 81.64L268.38 80.11L269.57 78.56L270.79 76.99L272.03 75.4L273.29 73.8L274.57 72.17L275.89 70.53L277.22 68.86L278.58 67.18L279.96 65.48L281.37 63.76L282.81 62.01L284.27 60.25L285.75 58.46L287.26 56.65L288.8 54.82L290.37 52.96L291.96 51.09L293.58 49.18L295.23 47.26L296.91 45.31L298.62 43.34L300.35 41.34L302.12 39.31L303.91 37.26L305.74 35.18L307.59 33.08L309.48 30.94"/>
+<path class="ink curve" style="stroke-width:2.35;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M26.17 280.18L27.9 278.18L29.61 276.21L31.29 274.26L32.94 272.34L34.56 270.43L36.15 268.56L37.72 266.7L39.26 264.87L40.77 263.06L42.25 261.27L43.71 259.51L45.15 257.76L46.56 256.04L47.94 254.34L49.3 252.66L50.63 250.99L51.95 249.35L53.23 247.72L54.49 246.12L55.73 244.53L56.95 242.96L58.14 241.41L59.31 239.88L60.46 238.36L61.59 236.86L62.69 235.37L63.77 233.91L64.84 232.45L65.88 231.02L66.89 229.59L67.89 228.19L68.87 226.79L69.83 225.42L70.77 224.05L71.68 222.7L72.58 221.36L73.46 220.04L74.32 218.73L75.16 217.43L75.98 216.14L76.78 214.86L77.57 213.6L78.33 212.35L79.08 211.11L79.81 209.88L80.52 208.66L81.21 207.45L81.89 206.25L82.54 205.06L83.18 203.88L83.81 202.71L84.41 201.54L85 200.39L85.57 199.25L86.13 198.11L86.67 196.98L87.19 195.86L87.7 194.75L88.19 193.64L88.66 192.55L89.12 191.45L89.56 190.37L89.99 189.29L90.4 188.22L90.79 187.15L91.17 186.09L91.53 185.03L91.88 183.98L92.22 182.94L92.53 181.9L92.84 180.86L93.12 179.83L93.39 178.8L93.65 177.78L93.89 176.76L94.12 175.74L94.33 174.73L94.53 173.72L94.71 172.71L94.88 171.71L95.03 170.7L95.17 169.7L95.29 168.7L95.4 167.71L95.5 166.71L95.58 165.72L95.64 164.73L95.69 163.73L95.73 162.74L95.75 161.75L95.76 160.76L95.75 159.77L95.73 158.78L95.69 157.79L95.64 156.79L95.58 155.8L95.5 154.81L95.4 153.81L95.29 152.82L95.17 151.82L95.03 150.82L94.88 149.81L94.71 148.81L94.53 147.8L94.33 146.79L94.12 145.78L93.89 144.76L93.65 143.74L93.39 142.72L93.12 141.69L92.84 140.66L92.53 139.62L92.22 138.58L91.88 137.54L91.53 136.49L91.17 135.43L90.79 134.37L90.4 133.3L89.99 132.23L89.56 131.15L89.12 130.07L88.66 128.97L88.19 127.88L87.7 126.77L87.19 125.66L86.67 124.54L86.13 123.41L85.57 122.27L85 121.13L84.41 119.98L83.81 118.81L83.18 117.64L82.54 116.46L81.89 115.27L81.21 114.07L80.52 112.86L79.81 111.64L79.08 110.41L78.33 109.17L77.57 107.92L76.78 106.66L75.98 105.38L75.16 104.09L74.32 102.79L73.46 101.48L72.58 100.16L71.68 98.82L70.77 97.47L69.83 96.1L68.87 94.73L67.89 93.33L66.89 91.93L65.88 90.5L64.84 89.07L63.77 87.61L62.69 86.15L61.59 84.66L60.46 83.16L59.31 81.64L58.14 80.11L56.95 78.56L55.73 76.99L54.49 75.4L53.23 73.8L51.95 72.17L50.63 70.53L49.3 68.86L47.94 67.18L46.56 65.48L45.15 63.76L43.71 62.01L42.25 60.25L40.77 58.46L39.26 56.65L37.72 54.82L36.15 52.96L34.56 51.09L32.94 49.18L31.29 47.26L29.61 45.31L27.9 43.34L26.17 41.34"/>
+</g>
+</svg>

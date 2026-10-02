@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 472.14 257.98" width="520" height="284" data-fig="fig-062b">
+<title>Fig. 62(b) — Point-by-point construction of the cycloid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 62(b), page 65. Section: cycloid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The base line with the starting point O and the point H, where OH = πa is the half circumference of the generating circle of radius a.">
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M28.99 228.99L443.15 228.99"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="98.99" cy="228.99" r="3.07"/>
+<text class="lbl " x="98.99" y="238.94" font-size="16.05" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">O</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="413.15" cy="228.99" r="3.07"/>
+<text class="lbl " x="413.15" y="238.94" font-size="16.05" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+<g class="step" data-step="1" data-tool="square" data-text="At H raise the perpendicular HN = 2a, the diameter of the generating circle in its highest position.">
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M413.15 228.99L413.15 28.99"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="413.15" cy="28.99" r="3.07"/>
+<text class="lbl " x="413.15" y="19.04" font-size="16.05" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">N</text>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="About the middle C of HN draw the semicircle NH on the side of O, with radius a.">
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M413.15 28.99A100 100 0 0 0 413.15 228.99"/>
+</g>
+<g class="step" data-step="3" data-tool="dividers" data-text="Divide the semicircle NH into equal parts (four here): the division points 1, 2, 3, counted from N. Join them to the centre C.">
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M413.15 128.99L342.44 58.28"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="342.44" cy="58.28" r="3.07"/>
+<text class="lbl  upright" x="350.9" y="48.33" font-size="12.84" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M413.15 128.99L313.15 128.99"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="313.15" cy="128.99" r="3.07"/>
+<text class="lbl  upright" x="321.61" y="119.04" font-size="12.84" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2</text>
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M413.15 128.99L342.44 199.7"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="342.44" cy="199.7" r="3.07"/>
+<text class="lbl  upright" x="350.9" y="189.75" font-size="12.84" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">3</text>
+</g>
+<g class="step" data-step="4" data-tool="dividers" data-text="Divide the base OH into the same number of equal parts and number the points 1, 2, 3 from H towards O.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="334.61" cy="228.99" r="3.07"/>
+<text class="lbl  upright" x="334.61" y="238.94" font-size="12.84" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">1</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="256.07" cy="228.99" r="3.07"/>
+<text class="lbl  upright" x="256.07" y="238.94" font-size="12.84" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">2</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="177.53" cy="228.99" r="3.07"/>
+<text class="lbl  upright" x="177.53" y="238.94" font-size="12.84" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">3</text>
+</g>
+<g class="step" data-step="5" data-tool="square" data-text="Through the points 1, 2, 3 of the semicircle draw the horizontals, running to the left.">
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M342.44 58.28L263.9 58.28"/>
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M313.15 128.99L156.07 128.99"/>
+<path class="ink given" style="stroke-width:1.7;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M342.44 199.7L140.82 199.7"/>
+</g>
+<g class="step" data-step="6" data-tool="compass" data-text="Open the compass to H1 (the distance from H to the point 1 of the base) and strike an arc about the point 1 of the semicircle: it cuts the horizontal at P1. Likewise 2P2 = H2 and 3P3 = H3.">
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M265.52 42.39A78.54 78.54 0 0 0 265.52 74.17"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="263.9" cy="58.28" r="3.07"/>
+<text class="lbl " x="255.44" y="48.33" font-size="16.05" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M156.88 113.02A157.08 157.08 0 0 0 156.88 144.96"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="156.07" cy="128.99" r="3.07"/>
+<text class="lbl " x="147.61" y="119.04" font-size="16.05" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<path class="ink cons" style="stroke-width:1.04;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M107.36 183.71A235.62 235.62 0 0 0 107.36 215.69"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.04" cx="106.82" cy="199.7" r="3.07"/>
+<text class="lbl " x="116.77" y="199.7" font-size="16.05" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P<tspan baseline-shift="sub" font-size="70%">3</tspan></text>
+</g>
+<g class="step" data-step="7" data-tool="pencil" data-text="Draw the curve through O, P3, P2, P1 and N with a French curve: half an arch of the cycloid, with its top at N. The mirror image gives the other half.">
+<path class="ink curve" style="stroke-width:2.64;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M90.73 198.66L91.45 200.41L92.14 202.11L92.78 203.77L93.38 205.38L93.94 206.95L94.46 208.47L94.95 209.94L95.4 211.36L95.82 212.73L96.21 214.05L96.56 215.32L96.88 216.54L97.17 217.7L97.44 218.81L97.67 219.87L97.89 220.87L98.07 221.81L98.24 222.7L98.38 223.53L98.51 224.31L98.62 225.02L98.71 225.68L98.78 226.28L98.84 226.82L98.89 227.3L98.92 227.72L98.95 228.08L98.97 228.38L98.98 228.63L98.99 228.81L98.99 228.93L98.99 228.98L98.99 228.98L98.99 228.92L99 228.8L99 228.61L99.01 228.37L99.03 228.07L99.06 227.7L99.1 227.28L99.15 226.79L99.21 226.25L99.28 225.65L99.37 224.99L99.48 224.27L99.6 223.49L99.75 222.66L99.92 221.77L100.11 220.82L100.32 219.81L100.56 218.76L100.82 217.64L101.12 216.48L101.44 215.26L101.8 213.99L102.18 212.66L102.6 211.29L103.05 209.86L103.54 208.39L104.07 206.87L104.63 205.3L105.24 203.68L105.88 202.02L106.57 200.32L107.29 198.57L108.07 196.78L108.88 194.95L109.74 193.08L110.65 191.17L111.61 189.22L112.61 187.23L113.66 185.21L114.77 183.16L115.92 181.07L117.13 178.95L118.39 176.81L119.7 174.63L121.07 172.42L122.49 170.19L123.96 167.93L125.5 165.65L127.09 163.35L128.73 161.03L130.43 158.68L132.2 156.32L134.01 153.94L135.89 151.55L137.83 149.14L139.83 146.73L141.88 144.3L144 141.86L146.18 139.41L148.41 136.96L150.71 134.5L153.07 132.04L155.49 129.58L157.97 127.11L160.51 124.65L163.11 122.19L165.77 119.73L168.49 117.28L171.27 114.84L174.12 112.41L177.02 109.98L179.98 107.57L183 105.17L186.08 102.79L189.22 100.42L192.41 98.07L195.67 95.73L198.98 93.42L202.35 91.13L205.77 88.86L209.25 86.62L212.79 84.4L216.38 82.21L220.02 80.04L223.71 77.91L227.46 75.81L231.26 73.74L235.11 71.7L239.01 69.7L242.96 67.73L246.96 65.81L251 63.92L255.09 62.07L259.22 60.26L263.4 58.49L267.62 56.76L271.89 55.08L276.19 53.44L280.54 51.85L284.92 50.31L289.34 48.81L293.8 47.36L298.29 45.97L302.81 44.62L307.37 43.32L311.96 42.08L316.58 40.89L321.23 39.75L325.9 38.66L330.61 37.63L335.33 36.66L340.08 35.74L344.85 34.88L349.64 34.08L354.46 33.33L359.28 32.64L364.13 32.01L368.99 31.44L373.86 30.93L378.75 30.47L383.64 30.08L388.55 29.75L393.46 29.48L398.38 29.26L403.3 29.11L408.22 29.02L413.15 28.99"/>
+</g>
+</svg>

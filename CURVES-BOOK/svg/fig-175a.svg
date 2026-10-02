@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 504.72 614.92" width="520" height="634" data-fig="fig-175a">
+<title>Fig. 175(a) — Isolated point: y² = x²(x − 1) has (0, 0) as an isolated point</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 175(a), page 192. Section: sketching.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes and the equation. y² ≥ 0 needs x ≥ 1, apart from the single value x = 0, which also satisfies the equation (y = 0).">
+<path class="ink axis" style="stroke-width:1.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M89.96 304.56L426.36 304.56"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M426.36 304.56L414.86 299.73L414.86 309.39Z"/>
+<path class="ink axis" style="stroke-width:1.84;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M124.76 484.36L124.76 101.56"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M124.76 101.56L119.93 113.06L129.59 113.06Z"/>
+<text class="lbl axis" x="437.38" y="317.52" font-size="20.91" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="135.78" y="88.6" font-size="20.91" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<text class="lbl  upright" x="252.36" y="72.56" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">y<tspan baseline-shift="super" font-size="70%">2</tspan> = x<tspan baseline-shift="super" font-size="70%">2</tspan>(x−1)</text>
+</g>
+<g class="step" data-step="1" data-tool="pencil" data-text="Draw the single branch for x ≥ 1: it starts at (1, 0) with a vertical tangent and opens to the right, symmetric about the x-axis.">
+<path class="ink curve" style="stroke-width:3.44;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M330.59 485.69L328.8 482.32L327.03 479L325.28 475.72L323.55 472.49L321.83 469.31L320.13 466.17L318.45 463.08L316.79 460.03L315.15 457.02L313.52 454.06L311.91 451.14L310.32 448.26L308.75 445.42L307.2 442.63L305.66 439.87L304.14 437.16L302.64 434.48L301.16 431.85L299.7 429.25L298.25 426.7L296.82 424.18L295.41 421.69L294.02 419.25L292.64 416.84L291.29 414.47L289.95 412.13L288.63 409.83L287.33 407.56L286.04 405.33L284.77 403.13L283.53 400.96L282.3 398.83L281.08 396.73L279.89 394.66L278.71 392.62L277.55 390.61L276.41 388.63L275.29 386.69L274.18 384.77L273.1 382.88L272.03 381.02L270.98 379.19L269.94 377.38L268.93 375.61L267.93 373.85L266.95 372.13L265.99 370.43L265.05 368.75L264.12 367.1L263.22 365.48L262.33 363.88L261.45 362.3L260.6 360.74L259.77 359.21L258.95 357.7L258.15 356.21L257.37 354.74L256.6 353.29L255.86 351.86L255.13 350.45L254.42 349.06L253.73 347.69L253.06 346.33L252.4 344.99L251.76 343.68L251.14 342.37L250.54 341.09L249.96 339.81L249.39 338.56L248.84 337.32L248.31 336.09L247.8 334.88L247.31 333.68L246.83 332.49L246.37 331.31L245.93 330.15L245.51 329L245.11 327.86L244.72 326.73L244.35 325.61L244 324.5L243.67 323.39L243.35 322.3L243.06 321.21L242.78 320.14L242.52 319.07L242.28 318L242.05 316.94L241.84 315.89L241.66 314.85L241.49 313.8L241.33 312.76L241.2 311.73L241.08 310.7L240.98 309.67L240.9 308.65L240.84 307.62L240.79 306.6L240.77 305.58L240.76 304.56L240.77 303.54L240.79 302.52L240.84 301.49L240.9 300.47L240.98 299.44L241.08 298.42L241.2 297.39L241.33 296.35L241.49 295.31L241.66 294.27L241.84 293.22L242.05 292.17L242.28 291.11L242.52 290.05L242.78 288.98L243.06 287.9L243.35 286.82L243.67 285.72L244 284.62L244.35 283.51L244.72 282.39L245.11 281.26L245.51 280.12L245.93 278.97L246.37 277.8L246.83 276.63L247.31 275.44L247.8 274.24L248.31 273.03L248.84 271.8L249.39 270.56L249.96 269.3L250.54 268.03L251.14 266.74L251.76 265.44L252.4 264.12L253.06 262.78L253.73 261.43L254.42 260.06L255.13 258.67L255.86 257.26L256.6 255.83L257.37 254.38L258.15 252.91L258.95 251.42L259.77 249.91L260.6 248.37L261.45 246.82L262.33 245.24L263.22 243.64L264.12 242.01L265.05 240.36L265.99 238.69L266.95 236.99L267.93 235.26L268.93 233.51L269.94 231.73L270.98 229.93L272.03 228.1L273.1 226.24L274.18 224.35L275.29 222.43L276.41 220.48L277.55 218.5L278.71 216.5L279.89 214.46L281.08 212.39L282.3 210.29L283.53 208.15L284.77 205.99L286.04 203.79L287.33 201.55L288.63 199.29L289.95 196.99L291.29 194.65L292.64 192.28L294.02 189.87L295.41 187.42L296.82 184.94L298.25 182.42L299.7 179.86L301.16 177.27L302.64 174.63L304.14 171.96L305.66 169.24L307.2 166.49L308.75 163.69L310.32 160.86L311.91 157.98L313.52 155.06L315.15 152.09L316.79 149.09L318.45 146.04L320.13 142.94L321.83 139.81L323.55 136.62L325.28 133.39L327.03 130.12L328.8 126.8L330.59 123.43"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="240.76" cy="304.56" r="4.4"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The origin is a point of the curve with no real tangent: the lowest-degree terms y² + x² = 0 have no real factor, so it is an isolated (hermit) point, drawn as a ringed dot.">
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.35" cx="124.76" cy="304.56" r="6.79"/>
+<circle class="pt" style="fill:#1b1b1b" cx="124.76" cy="304.56" r="3.4"/>
+<text class="lbl  upright" x="229.16" y="513.36" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">has (0,0) as an</text>
+<text class="lbl  upright" x="229.16" y="537.36" font-size="17.77" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">isolated point</text>
+</g>
+</svg>

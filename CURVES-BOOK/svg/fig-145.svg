@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 496.37 533.19" width="520" height="559" data-fig="fig-145">
+<title>Fig. 145 — Linkage of crossed parallelograms drawing the limacon</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 145, page 151. Section: limacon.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The base line with the fixed pivots C and F (CF = f), and the equal lengths: CD = KF, DK = CF, CG = ED, GE = CD, with CD² = CF · CG.">
+<path class="ink given" style="stroke-width:1.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M44.63 368.89L463.63 368.89"/>
+<path class="ink given" style="stroke-width:1.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M78.63 387.89L130.63 387.89L130.63 349.89L78.63 349.89Z"/>
+<path class="ink given" style="stroke-width:1.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M379.63 387.89L431.63 387.89L431.63 349.89L379.63 349.89Z"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="104.63" cy="368.89" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="104.63" cy="368.89" r="3.12"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="405.63" cy="368.89" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="405.63" cy="368.89" r="3.12"/>
+<text class="lbl " x="104.63" y="398.11" font-size="18.13" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="428.56" y="395.86" font-size="18.13" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">F</text>
+</g>
+<g class="step" data-step="1" data-tool="linkage" data-text="First crossed parallelogram CDKF: the bar CD turns about C by the angle θ with the base line; the bar DK (length CF) crosses the base line to K, and KF equals CD. The angle at K between KD and KF is also θ.">
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M104.63 368.89L215.02 202.11"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M104.63 368.89L215.02 202.11"/>
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M215.02 202.11L254.99 500.45"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M215.02 202.11L254.99 500.45"/>
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M254.99 500.45L405.63 368.89"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M254.99 500.45L405.63 368.89"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="215.02" cy="202.11" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="215.02" cy="202.11" r="3.12"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="254.99" cy="500.45" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="254.99" cy="500.45" r="3.12"/>
+<text class="lbl " x="234.13" y="179.63" font-size="18.13" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">D</text>
+<text class="lbl " x="228.02" y="500.45" font-size="18.13" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">K</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.17" d="M132.37 368.89A27.74 27.74 0 0 0 119.94 345.76"/>
+<text class="lbl " x="169.59" y="333.75" font-size="18.13" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.17" d="M274.66 483.28A26.1 26.1 0 0 0 251.53 474.57"/>
+<text class="lbl " x="279.3" y="443.43" font-size="18.13" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="2" data-tool="linkage" data-text="Second crossed parallelogram CGED, similar to the first and sharing the bar CD: G lies on the line at the angle 2θ from C with CG = ED, and the bar GE crosses CD to E on DK, with GE = CD.">
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M104.63 368.89L32.74 199.52"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M104.63 368.89L32.74 199.52"/>
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M52.71 246.56L232.67 333.83"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M52.71 246.56L232.67 333.83"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="52.71" cy="246.56" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="52.71" cy="246.56" r="3.12"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="232.67" cy="333.83" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="232.67" cy="333.83" r="3.12"/>
+<text class="lbl " x="33.6" y="269.04" font-size="18.13" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">G</text>
+<text class="lbl " x="255.15" y="333.83" font-size="18.13" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">E</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.17" d="M119.94 345.76A27.74 27.74 0 0 0 93.8 343.36"/>
+<text class="lbl " x="107.96" y="304.88" font-size="18.13" text-anchor="middle" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="3" data-tool="linkage" data-text="Complete the parallelogram CHJD: H on the line CG with CH = DJ, then J = D + CH. The angle at J between JH and JD is again θ.">
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M32.74 199.52L143.13 32.74"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M32.74 199.52L143.13 32.74"/>
+<path class="ink given" style="fill:none;stroke-width:4.99;stroke:#1b1b1b;stroke-linecap:round" d="M143.13 32.74L215.02 202.11"/><path class="ink" style="fill:none;stroke-width:2.3;stroke:#fff;stroke-linecap:round" d="M143.13 32.74L215.02 202.11"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="32.74" cy="199.52" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="32.74" cy="199.52" r="3.12"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="143.13" cy="32.74" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="143.13" cy="32.74" r="3.12"/>
+<text class="lbl " x="15.54" y="179.29" font-size="18.13" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+<text class="lbl " x="125.93" y="12.51" font-size="18.13" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">J</text>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:1.17" d="M128.72 54.51A26.1 26.1 0 0 0 153.33 56.77"/>
+<text class="lbl " x="137.64" y="102.6" font-size="18.13" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="P is a point on the extension of JD beyond D. D is the centre of a circle that rolls on the equal fixed circle about C, and JD is carried by it, so P traces a limacon (short piece shown).">
+<path class="ink given" style="stroke-width:1.92;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M215.02 202.11L241.28 263.97"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:1.92" cx="241.28" cy="263.97" r="7.62"/><circle class="pt" style="fill:#1b1b1b" cx="241.28" cy="263.97" r="3.12"/>
+<circle class="pt" style="fill:#1b1b1b" cx="241.28" cy="263.97" r="3.47"/>
+<text class="lbl " x="252.52" y="263.97" font-size="18.13" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<path class="ink curve" style="stroke-width:2.99;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M246.16 297.37L246.11 295.84L246.04 294.28L245.95 292.72L245.84 291.13L245.71 289.54L245.57 287.93L245.4 286.3L245.22 284.66L245.01 283L244.79 281.34L244.54 279.65L244.27 277.96L243.98 276.25L243.67 274.53L243.33 272.8L242.97 271.06L242.58 269.3L242.17 267.53L241.74 265.76L241.28 263.97L240.79 262.17L240.28 260.37L239.74 258.55L239.17 256.73L238.58 254.9L237.95 253.06L237.3 251.21L236.62 249.36L235.91 247.5L235.17 245.64L234.4 243.77L233.6 241.9L232.77 240.02L231.91 238.14L231.01 236.26L230.09 234.37L229.13 232.49L228.14 230.6L227.12 228.71L226.07 226.82"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="The equal angles θ of the figure: at J (between JH and JD), at C (between CG and CD, and between CD and the base line) and at K (between KD and KF); the short ticks mark the bars of equal length.">
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.17" d="M137.38 52.92L126.8 45.92"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.17" d="M156.16 47.2L144.48 52.16"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.17" d="M84.25 337.12L95.94 332.16"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.17" d="M130.25 318.69L140.83 325.69"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.17" d="M244.71 471.46L257.28 469.77"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:1.17" d="M271.91 477.25L280.26 486.81"/>
+</g>
+</svg>

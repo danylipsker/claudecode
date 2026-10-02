@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1170.78 941.78" width="520" height="418" data-fig="fig-136b">
+<title>Fig. 136(b) — The orthoptics of the ellipse and the hyperbola are concentric circles</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 136(b), page 138. Section: isoptic.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The axes, the centre O, the ellipse with semi-axes a and b, and the hyperbola with the same vertices (±a, 0) and semi-axes a and b.">
+<path class="ink axis" style="stroke-width:3.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M71.89 474.89L1091.89 474.89"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1091.89 474.89L1070 465.69L1070 484.09Z"/>
+<path class="ink axis" style="stroke-width:3.51;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M587.89 869.89L587.89 71.89"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M587.89 71.89L578.69 93.78L597.09 93.78Z"/>
+<text class="lbl axis" x="1112.87" y="499.57" font-size="39.81" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="608.87" y="47.21" font-size="39.81" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.58" cx="587.89" cy="474.89" r="6.85"/>
+<path class="ink thick" style="stroke-width:6.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M849.89 474.89L849.73 468.08L849.25 461.29L848.45 454.51L847.34 447.75L845.91 441.03L844.16 434.35L842.11 427.72L839.74 421.14L837.07 414.63L834.09 408.2L830.81 401.84L827.24 395.58L823.37 389.41L819.22 383.34L814.79 377.39L810.08 371.56L805.1 365.85L799.85 360.27L794.35 354.84L788.59 349.55L782.59 344.41L776.36 339.43L769.89 334.62L763.2 329.98L756.3 325.51L749.19 321.23L741.89 317.13L734.4 313.23L726.73 309.52L718.89 306.02L710.89 302.72L702.74 299.63L694.46 296.75L686.04 294.09L677.5 291.65L668.85 289.43L660.11 287.44L651.27 285.68L642.36 284.15L633.39 282.85L624.35 281.79L615.28 280.96L606.17 280.37L597.03 280.01L587.89 279.89L578.75 280.01L569.61 280.37L560.5 280.96L551.43 281.79L542.39 282.85L533.42 284.15L524.51 285.68L515.67 287.44L506.93 289.43L498.28 291.65L489.74 294.09L481.32 296.75L473.04 299.63L464.89 302.72L456.89 306.02L449.05 309.52L441.38 313.23L433.89 317.13L426.59 321.23L419.48 325.51L412.58 329.98L405.89 334.62L399.42 339.43L393.19 344.41L387.19 349.55L381.43 354.84L375.93 360.27L370.68 365.85L365.7 371.56L360.99 377.39L356.56 383.34L352.41 389.41L348.54 395.58L344.97 401.84L341.69 408.2L338.71 414.63L336.04 421.14L333.67 427.72L331.62 434.35L329.87 441.03L328.44 447.75L327.33 454.51L326.53 461.29L326.05 468.08L325.89 474.89L326.05 481.7L326.53 488.49L327.33 495.27L328.44 502.03L329.87 508.75L331.62 515.43L333.67 522.06L336.04 528.64L338.71 535.15L341.69 541.58L344.97 547.94L348.54 554.2L352.41 560.37L356.56 566.44L360.99 572.39L365.7 578.22L370.68 583.93L375.93 589.51L381.43 594.94L387.19 600.23L393.19 605.37L399.42 610.35L405.89 615.16L412.58 619.8L419.48 624.27L426.59 628.55L433.89 632.65L441.38 636.55L449.05 640.26L456.89 643.76L464.89 647.06L473.04 650.15L481.32 653.03L489.74 655.69L498.28 658.13L506.93 660.35L515.67 662.34L524.51 664.1L533.42 665.63L542.39 666.93L551.43 667.99L560.5 668.82L569.61 669.41L578.75 669.77L587.89 669.89L597.03 669.77L606.17 669.41L615.28 668.82L624.35 667.99L633.39 666.93L642.36 665.63L651.27 664.1L660.11 662.34L668.85 660.35L677.5 658.13L686.04 655.69L694.46 653.03L702.74 650.15L710.89 647.06L718.89 643.76L726.73 640.26L734.4 636.55L741.89 632.65L749.19 628.55L756.3 624.27L763.2 619.8L769.89 615.16L776.36 610.35L782.59 605.37L788.59 600.23L794.35 594.94L799.85 589.51L805.1 583.93L810.08 578.22L814.79 572.39L819.22 566.44L823.37 560.37L827.24 554.2L830.81 547.94L834.09 541.58L837.07 535.15L839.74 528.64L842.11 522.06L844.16 515.43L845.91 508.75L847.34 502.03L848.45 495.27L849.25 488.49L849.73 481.7L849.89 474.89"/>
+<path class="ink thick" style="stroke-width:6.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1091.15 794.69L1082.17 786.83L1073.41 779.12L1064.86 771.54L1056.53 764.09L1048.41 756.77L1040.5 749.58L1032.79 742.51L1025.28 735.56L1017.96 728.73L1010.84 722.01L1003.9 715.4L997.16 708.9L990.59 702.5L984.21 696.21L978 690.01L971.97 683.92L966.11 677.91L960.42 672L954.9 666.17L949.54 660.43L944.35 654.78L939.31 649.2L934.43 643.7L929.71 638.28L925.14 632.93L920.72 627.66L916.45 622.45L912.32 617.3L908.35 612.22L904.51 607.21L900.82 602.25L897.27 597.35L893.85 592.5L890.58 587.7L887.44 582.96L884.43 578.27L881.56 573.62L878.81 569.01L876.2 564.45L873.72 559.93L871.36 555.44L869.14 551L867.04 546.58L865.06 542.2L863.21 537.85L861.48 533.52L859.87 529.23L858.39 524.95L857.02 520.7L855.78 516.47L854.66 512.26L853.66 508.07L852.77 503.89L852.01 499.72L851.36 495.57L850.83 491.42L850.42 487.28L850.12 483.15L849.95 479.02L849.89 474.89L849.95 470.76L850.12 466.63L850.42 462.5L850.83 458.36L851.36 454.21L852.01 450.06L852.77 445.89L853.66 441.71L854.66 437.52L855.78 433.31L857.02 429.08L858.39 424.83L859.87 420.55L861.48 416.26L863.21 411.93L865.06 407.58L867.04 403.2L869.14 398.78L871.36 394.34L873.72 389.85L876.2 385.33L878.81 380.77L881.56 376.16L884.43 371.51L887.44 366.82L890.58 362.08L893.85 357.28L897.27 352.43L900.82 347.53L904.51 342.57L908.35 337.56L912.32 332.48L916.45 327.33L920.72 322.12L925.14 316.85L929.71 311.5L934.43 306.08L939.31 300.58L944.35 295L949.54 289.35L954.9 283.61L960.42 277.78L966.11 271.87L971.97 265.86L978 259.77L984.21 253.57L990.59 247.28L997.16 240.88L1003.9 234.38L1010.84 227.77L1017.96 221.05L1025.28 214.22L1032.79 207.27L1040.5 200.2L1048.41 193.01L1056.53 185.69L1064.86 178.24L1073.41 170.66L1082.17 162.95L1091.15 155.09"/>
+<path class="ink thick" style="stroke-width:6.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M84.63 794.69L93.61 786.83L102.37 779.12L110.92 771.54L119.25 764.09L127.37 756.77L135.28 749.58L142.99 742.51L150.5 735.56L157.82 728.73L164.94 722.01L171.88 715.4L178.62 708.9L185.19 702.5L191.57 696.21L197.78 690.01L203.81 683.92L209.67 677.91L215.36 672L220.88 666.17L226.24 660.43L231.43 654.78L236.47 649.2L241.35 643.7L246.07 638.28L250.64 632.93L255.06 627.66L259.33 622.45L263.46 617.3L267.43 612.22L271.27 607.21L274.96 602.25L278.51 597.35L281.93 592.5L285.2 587.7L288.34 582.96L291.35 578.27L294.22 573.62L296.97 569.01L299.58 564.45L302.06 559.93L304.42 555.44L306.64 551L308.74 546.58L310.72 542.2L312.57 537.85L314.3 533.52L315.91 529.23L317.39 524.95L318.76 520.7L320 516.47L321.12 512.26L322.12 508.07L323.01 503.89L323.77 499.72L324.42 495.57L324.95 491.42L325.36 487.28L325.66 483.15L325.83 479.02L325.89 474.89L325.83 470.76L325.66 466.63L325.36 462.5L324.95 458.36L324.42 454.21L323.77 450.06L323.01 445.89L322.12 441.71L321.12 437.52L320 433.31L318.76 429.08L317.39 424.83L315.91 420.55L314.3 416.26L312.57 411.93L310.72 407.58L308.74 403.2L306.64 398.78L304.42 394.34L302.06 389.85L299.58 385.33L296.97 380.77L294.22 376.16L291.35 371.51L288.34 366.82L285.2 362.08L281.93 357.28L278.51 352.43L274.96 347.53L271.27 342.57L267.43 337.56L263.46 332.48L259.33 327.33L255.06 322.12L250.64 316.85L246.07 311.5L241.35 306.08L236.47 300.58L231.43 295L226.24 289.35L220.88 283.61L215.36 277.78L209.67 271.87L203.81 265.86L197.78 259.77L191.57 253.57L185.19 247.28L178.62 240.88L171.88 234.38L164.94 227.77L157.82 221.05L150.5 214.22L142.99 207.27L135.28 200.2L127.37 193.01L119.25 185.69L110.92 178.24L102.37 170.66L93.61 162.95L84.63 155.09"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the rectangle with sides x = ±a and y = ±b, which touch the ellipse at its vertices, and its two diagonals: they are the asymptotes of the hyperbola.">
+<path class="ink given" style="stroke-width:4.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M325.89 669.89L849.89 669.89L849.89 279.89L325.89 279.89Z"/>
+<path class="ink given" style="stroke-width:4.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M76.89 855.21L1098.89 94.57"/>
+<path class="ink given" style="stroke-width:4.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M76.89 94.57L1098.89 855.21"/>
+</g>
+<g class="step" data-step="2" data-tool="compass" data-text="The circle about O through the corners of the rectangle has the radius √(a² + b²): it is the orthoptic of the ellipse, and it cuts the axis at the foci of the hyperbola.">
+<circle class="ink thick" style="stroke-width:6.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="587.89" cy="474.89" r="326.6"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.21" cx="914.49" cy="474.89" r="16.74"/><circle class="pt" style="fill:#1b1b1b" cx="914.49" cy="474.89" r="6.85"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.21" cx="261.29" cy="474.89" r="16.74"/><circle class="pt" style="fill:#1b1b1b" cx="261.29" cy="474.89" r="6.85"/>
+</g>
+<g class="step" data-step="3" data-tool="compass" data-text="The circle about the end of the minor axis (0, b) with the radius a cuts the major axis at the foci of the ellipse, at the distance √(a² − b²) from O. The circle about O through those foci is the orthoptic of the hyperbola.">
+<path class="ink aux" style="stroke-width:2.11;fill:none;stroke:#8a8a8a;stroke-linecap:round;stroke-linejoin:round" d="M416 477.62A262 262 0 0 0 759.78 477.62"/>
+<circle class="ink thick" style="stroke-width:6.56;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" cx="587.89" cy="474.89" r="174.98"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.21" cx="762.87" cy="474.89" r="16.74"/><circle class="pt" style="fill:#1b1b1b" cx="762.87" cy="474.89" r="6.85"/>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.21" cx="412.91" cy="474.89" r="16.74"/><circle class="pt" style="fill:#1b1b1b" cx="412.91" cy="474.89" r="6.85"/>
+</g>
+<g class="step" data-step="4" data-tool="straightedge" data-text="From any point U of the large circle draw the two tangents to the ellipse. They are perpendicular, whichever U is chosen: U is on the orthoptic.">
+<path class="ink given" style="stroke-width:4.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M694.22 166.08L828.45 397.64"/>
+<path class="ink given" style="stroke-width:4.21;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M694.22 166.08L426.9 321.05"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.58" cx="694.22" cy="166.08" r="8.37"/>
+</g>
+</svg>

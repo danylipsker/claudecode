@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1145.7 843.48" width="520" height="383" data-fig="fig-038b">
+<title>Fig. 38(b) — The two secants as axes of reference: the intercepts a1, a2, b1, b2 and the cross-joins</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 38(b), page 43. Section: conics.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The two secants through P are taken as axes of reference (not necessarily at right angles). The conic Ax² + 2Bxy + Cy² + 2Dx + 2Ey + F = 0 cuts the X axis at a1, a2 and the Y axis at b1, b2.">
+<path class="ink axis" style="stroke-width:3.44;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M70.35 668.13L1075.35 668.13"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M1075.35 668.13L1053.93 659.13L1053.93 677.13Z"/>
+<path class="ink axis" style="stroke-width:3.44;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M205.35 773.13L205.35 78.13"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M205.35 78.13L196.35 99.55L214.35 99.55Z"/>
+<text class="lbl axis" x="1095.88" y="692.28" font-size="38.95" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">X</text>
+<text class="lbl axis" x="225.88" y="53.98" font-size="38.95" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">Y</text>
+<circle class="ink pivot" style="fill:#fff;stroke:#1b1b1b;stroke-width:4.12" cx="205.35" cy="668.13" r="16.38"/><circle class="pt" style="fill:#1b1b1b" cx="205.35" cy="668.13" r="6.7"/>
+<text class="lbl " x="178.66" y="699.53" font-size="38.95" text-anchor="end" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+<path class="ink thick" style="stroke-width:6.42;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M918.04 572.17L921.12 565.49L923.99 558.71L926.63 551.83L929.06 544.87L931.28 537.82L933.26 530.68L935.03 523.47L936.57 516.18L937.89 508.83L938.99 501.4L939.86 493.92L940.5 486.38L940.91 478.78L941.1 471.14L941.06 463.46L940.79 455.73L940.3 447.97L939.58 440.18L938.63 432.37L937.46 424.53L936.07 416.68L934.45 408.81L932.6 400.94L930.54 393.06L928.25 385.19L925.74 377.32L923.02 369.47L920.08 361.63L916.92 353.81L913.55 346.01L909.97 338.24L906.18 330.51L902.19 322.82L897.99 315.17L893.59 307.56L888.99 300.01L884.19 292.52L879.2 285.08L874.02 277.71L868.65 270.41L863.09 263.18L857.36 256.03L851.44 248.96L845.35 241.98L839.09 235.09L832.66 228.29L826.07 221.59L819.32 214.99L812.41 208.5L805.35 202.12L798.15 195.85L790.8 189.7L783.31 183.67L775.68 177.76L767.93 171.98L760.05 166.33L752.04 160.82L743.92 155.44L735.69 150.21L727.35 145.11L718.91 140.17L710.38 135.37L701.75 130.73L693.03 126.24L684.23 121.91L675.35 117.73L666.4 113.73L657.39 109.88L648.31 106.21L639.18 102.7L630 99.36L620.77 96.2L611.5 93.21L602.19 90.4L592.86 87.77L583.51 85.32L574.13 83.05L564.74 80.96L555.35 79.06L545.95 77.34L536.56 75.81L527.18 74.47L517.81 73.31L508.46 72.34L499.14 71.57L489.84 70.98L480.59 70.58L471.37 70.37L462.21 70.35L453.09 70.52L444.04 70.88L435.05 71.44L426.12 72.18L417.27 73.11L408.5 74.23L399.81 75.53L391.21 77.03L382.71 78.71L374.3 80.58L366 82.63L357.81 84.86L349.73 87.28L341.77 89.87L333.93 92.65L326.22 95.6L318.64 98.73L311.2 102.03L303.89 105.51L296.74 109.15L289.73 112.96L282.88 116.94L276.18 121.08L269.64 125.38L263.27 129.83L257.07 134.45L251.04 139.22L245.19 144.13L239.52 149.2L234.03 154.4L228.72 159.75L223.6 165.24L218.68 170.86L213.95 176.62L209.42 182.5L205.08 188.51L200.96 194.64L197.03 200.88L193.32 207.24L189.81 213.71L186.51 220.29L183.43 226.97L180.56 233.75L177.92 240.62L175.49 247.59L173.27 254.64L171.29 261.77L169.52 268.99L167.98 276.27L166.66 283.63L165.56 291.05L164.69 298.54L164.05 306.08L163.64 313.67L163.45 321.32L163.49 329L163.76 336.73L164.25 344.49L164.97 352.28L165.92 360.09L167.09 367.93L168.48 375.78L170.1 383.65L171.95 391.52L174.01 399.4L176.3 407.27L178.81 415.14L181.53 422.99L184.47 430.83L187.63 438.65L191 446.45L194.58 454.21L198.36 461.95L202.36 469.64L206.56 477.29L210.96 484.89L215.56 492.45L220.36 499.94L225.35 507.38L230.53 514.75L235.9 522.05L241.46 529.28L247.19 536.43L253.11 543.49L259.2 550.48L265.46 557.37L271.89 564.17L278.48 570.87L285.23 577.46L292.14 583.95L299.2 590.34L306.4 596.61L313.75 602.76L321.24 608.79L328.87 614.7L336.62 620.48L344.5 626.12L352.51 631.64L360.63 637.02L368.86 642.25L377.2 647.34L385.64 652.29L394.17 657.09L402.8 661.73L411.52 666.22L420.32 670.55L429.2 674.72L438.15 678.73L447.16 682.58L456.24 686.25L465.37 689.76L474.55 693.09L483.78 696.26L493.05 699.24L502.36 702.05L511.69 704.68L521.04 707.14L530.42 709.41L539.81 711.49L549.2 713.4L558.6 715.11L567.99 716.64L577.37 717.99L586.74 719.15L596.09 720.11L605.41 720.89L614.71 721.48L623.96 721.88L633.18 722.09L642.34 722.11L651.46 721.94L660.51 721.57L669.5 721.02L678.43 720.28L687.28 719.35L696.05 718.23L704.74 716.92L713.34 715.43L721.84 713.75L730.25 711.88L738.55 709.83L746.74 707.6L754.82 705.18L762.78 702.58L770.62 699.81L778.33 696.86L785.91 693.73L793.35 690.43L800.66 686.95L807.81 683.31L814.82 679.5L821.67 675.52L828.37 671.38L834.91 667.08L841.28 662.62L847.48 658.01L853.51 653.24L859.36 648.33L865.03 643.26L870.52 638.05L875.83 632.7L880.95 627.22L885.87 621.59L890.6 615.84L895.13 609.96L899.47 603.95L903.59 597.82L907.52 591.57L911.23 585.21L914.74 578.74L918.04 572.17"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.52" cx="415.35" cy="668.13" r="7.45"/>
+<text class="lbl " x="415.35" y="699.53" font-size="38.95" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.52" cx="833.35" cy="668.13" r="7.45"/>
+<text class="lbl " x="860.04" y="699.53" font-size="38.95" text-anchor="start" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.52" cx="205.35" cy="475.13" r="7.45"/>
+<text class="lbl " x="173.95" y="475.13" font-size="38.95" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b<tspan baseline-shift="sub" font-size="70%">1</tspan></text>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.52" cx="205.35" cy="188.13" r="7.45"/>
+<text class="lbl " x="173.95" y="188.13" font-size="38.95" text-anchor="end" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">b<tspan baseline-shift="sub" font-size="70%">2</tspan></text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the cross-joins a1b2 and a2b1: the lines x/a1 + y/b2 = 1 and x/a2 + y/b1 = 1. They meet at R.">
+<path class="ink given" style="stroke-width:4.12;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M415.35 668.13L205.35 188.13"/>
+<path class="ink given" style="stroke-width:4.12;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M833.35 668.13L205.35 475.13"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.52" cx="350.42" cy="519.71" r="7.45"/>
+<text class="lbl " x="377.1" y="488.32" font-size="38.95" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">R</text>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The intercepts are the roots of Ax² + 2Dx + F = 0 and Cy² + 2Ey + F = 0, so 1/a1 + 1/a2 = −2D/F and 1/b1 + 1/b2 = −2E/F. The polar of P(0, 0), Dx + Ey + F = 0, is x(1/a1 + 1/a2) + y(1/b1 + 1/b2) − 2 = 0; it contains R.">
+<circle class="pt cons open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.52" cx="350.42" cy="519.71" r="10.43"/>
+</g>
+</svg>

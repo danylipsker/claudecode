@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1162.8 947.8" width="520" height="424" data-fig="fig-088">
+<title>Fig. 88 — The &quot;slot machine&quot;: shot, nails and bins form a binomial histogram</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 88, page 96. Section: exponential.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The floor of the machine: a horizontal line, about ten bins long.">
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M79.4 876.4L1089.4 876.4"/>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="The hopper: from the ends of the floor the two walls go up and then the two sloping shoulders rise towards the neck of the funnel; the neck is closed by the short sides and the wide rim.">
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M421.4 71.4L728.4 71.4"/>
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M728.4 71.4L686.4 152.4"/>
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M686.4 152.4L1091.4 567.4"/>
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1091.4 567.4L1089.4 876.4"/>
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M79.4 876.4L71.4 567.4"/>
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M71.4 567.4L463.4 152.4"/>
+<path class="ink thick" style="stroke-width:2.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M463.4 152.4L421.4 71.4"/>
+</g>
+<g class="step" data-step="2" data-tool="note" data-text="The nails: row r has r nails, the first row one nail under the neck of the funnel, each row shifted by half a bin so that a falling shot meets one nail at every row.">
+<circle class="pt" style="fill:#1b1b1b" cx="576.4" cy="154.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="525.25" cy="206.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="627.55" cy="206.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="474.1" cy="259.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="576.4" cy="259.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="678.7" cy="259.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="422.95" cy="311.6" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="525.25" cy="311.6" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="627.55" cy="311.6" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="729.85" cy="311.6" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="371.8" cy="364" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="474.1" cy="364" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="576.4" cy="364" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="678.7" cy="364" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="781" cy="364" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="320.65" cy="416.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="422.95" cy="416.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="525.25" cy="416.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="627.55" cy="416.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="729.85" cy="416.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="832.15" cy="416.4" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="269.5" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="371.8" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="474.1" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="576.4" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="678.7" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="781" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="883.3" cy="468.8" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="218.35" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="320.65" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="422.95" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="525.25" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="627.55" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="729.85" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="832.15" cy="521.2" r="5.67"/>
+<circle class="pt" style="fill:#1b1b1b" cx="934.45" cy="521.2" r="5.67"/>
+<text class="lbl  upright" x="612.4" y="150.4" font-size="29.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:normal">nail</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="The partitions: at the bottom, upright posts with pointed tops (hatched) divide the box into ten bins; a half post stands against each wall.">
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M198.25 876.4L206.4 858.18M181.94 876.4L206.4 821.75M165.63 876.4L206.4 785.31M152.4 869.54L206.4 748.87M152.4 833.1L206.4 712.44M152.4 796.66L206.4 676M152.4 760.23L206.4 639.56M152.4 723.79L206.4 603.13M152.4 687.35L198.49 584.37M152.4 650.92L186.82 574M152.4 614.48L169.55 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M152.4 876.4L152.4 591.4L179.4 567.4L206.4 591.4L206.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M152.4 876.4L152.4 591.4L179.4 567.4L206.4 591.4L206.4 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M299.75 876.4L307.9 858.18M283.44 876.4L307.9 821.75M267.13 876.4L307.9 785.31M253.9 869.54L307.9 748.87M253.9 833.1L307.9 712.44M253.9 796.66L307.9 676M253.9 760.23L307.9 639.56M253.9 723.79L307.9 603.13M253.9 687.35L299.99 584.37M253.9 650.92L288.32 574M253.9 614.48L271.05 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M253.9 876.4L253.9 591.4L280.9 567.4L307.9 591.4L307.9 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M253.9 876.4L253.9 591.4L280.9 567.4L307.9 591.4L307.9 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M401.25 876.4L409.4 858.18M384.94 876.4L409.4 821.75M368.63 876.4L409.4 785.31M355.4 869.54L409.4 748.87M355.4 833.1L409.4 712.44M355.4 796.66L409.4 676M355.4 760.23L409.4 639.56M355.4 723.79L409.4 603.13M355.4 687.35L401.49 584.37M355.4 650.92L389.82 574M355.4 614.48L372.55 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M355.4 876.4L355.4 591.4L382.4 567.4L409.4 591.4L409.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M355.4 876.4L355.4 591.4L382.4 567.4L409.4 591.4L409.4 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M502.75 876.4L510.9 858.18M486.44 876.4L510.9 821.75M470.13 876.4L510.9 785.31M456.9 869.54L510.9 748.87M456.9 833.1L510.9 712.44M456.9 796.66L510.9 676M456.9 760.23L510.9 639.56M456.9 723.79L510.9 603.13M456.9 687.35L502.99 584.37M456.9 650.92L491.32 574M456.9 614.48L474.05 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M456.9 876.4L456.9 591.4L483.9 567.4L510.9 591.4L510.9 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M456.9 876.4L456.9 591.4L483.9 567.4L510.9 591.4L510.9 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M604.25 876.4L612.4 858.18M587.94 876.4L612.4 821.75M571.63 876.4L612.4 785.31M558.4 869.54L612.4 748.87M558.4 833.1L612.4 712.44M558.4 796.66L612.4 676M558.4 760.23L612.4 639.56M558.4 723.79L612.4 603.13M558.4 687.35L604.49 584.37M558.4 650.92L592.82 574M558.4 614.48L575.55 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M558.4 876.4L558.4 591.4L585.4 567.4L612.4 591.4L612.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M558.4 876.4L558.4 591.4L585.4 567.4L612.4 591.4L612.4 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M705.75 876.4L713.9 858.18M689.44 876.4L713.9 821.75M673.13 876.4L713.9 785.31M659.9 869.54L713.9 748.87M659.9 833.1L713.9 712.44M659.9 796.66L713.9 676M659.9 760.23L713.9 639.56M659.9 723.79L713.9 603.13M659.9 687.35L705.99 584.37M659.9 650.92L694.32 574M659.9 614.48L677.05 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M659.9 876.4L659.9 591.4L686.9 567.4L713.9 591.4L713.9 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M659.9 876.4L659.9 591.4L686.9 567.4L713.9 591.4L713.9 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M807.25 876.4L815.4 858.18M790.94 876.4L815.4 821.75M774.63 876.4L815.4 785.31M761.4 869.54L815.4 748.87M761.4 833.1L815.4 712.44M761.4 796.66L815.4 676M761.4 760.23L815.4 639.56M761.4 723.79L815.4 603.13M761.4 687.35L807.49 584.37M761.4 650.92L795.82 574M761.4 614.48L778.55 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M761.4 876.4L761.4 591.4L788.4 567.4L815.4 591.4L815.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M761.4 876.4L761.4 591.4L788.4 567.4L815.4 591.4L815.4 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M908.75 876.4L916.9 858.18M892.44 876.4L916.9 821.75M876.13 876.4L916.9 785.31M862.9 869.54L916.9 748.87M862.9 833.1L916.9 712.44M862.9 796.66L916.9 676M862.9 760.23L916.9 639.56M862.9 723.79L916.9 603.13M862.9 687.35L908.99 584.37M862.9 650.92L897.32 574M862.9 614.48L880.05 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M862.9 876.4L862.9 591.4L889.9 567.4L916.9 591.4L916.9 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M862.9 876.4L862.9 591.4L889.9 567.4L916.9 591.4L916.9 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M1010.25 876.4L1018.4 858.18M993.94 876.4L1018.4 821.75M977.63 876.4L1018.4 785.31M964.4 869.54L1018.4 748.87M964.4 833.1L1018.4 712.44M964.4 796.66L1018.4 676M964.4 760.23L1018.4 639.56M964.4 723.79L1018.4 603.13M964.4 687.35L1010.49 584.37M964.4 650.92L998.82 574M964.4 614.48L981.55 576.15"/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:2.56" d="M964.4 876.4L964.4 591.4L991.4 567.4L1018.4 591.4L1018.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M964.4 876.4L964.4 591.4L991.4 567.4L1018.4 591.4L1018.4 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M91.25 876.4L99.4 858.18M79.16 866.98L99.4 821.75M78.26 832.54L99.4 785.31M77.37 798.09L99.4 748.87M76.48 763.65L99.4 712.44M75.59 729.2L99.4 676M74.7 694.76L99.4 639.56M73.81 660.32L99.4 603.13M72.91 625.87L91.41 584.55M72.02 591.43L79.62 574.45"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M71.4 567.4L99.4 591.4L99.4 876.4L79.4 876.4Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:3.26;stroke:#2a2a2a" d="M1081.25 876.4L1089.52 857.91M1066.4 873.14L1089.76 820.94M1066.4 836.7L1090 783.97M1066.4 800.27L1090.24 747M1066.4 763.83L1090.48 710.03M1066.4 727.39L1090.72 673.06M1066.4 690.96L1090.96 636.09M1066.4 654.52L1091.19 599.12M1066.4 618.08L1087.34 571.3"/>
+<path class="ink given" style="stroke-width:1.6;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1091.4 567.4L1066.4 591.4L1066.4 876.4L1089.4 876.4Z"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The shot collected in the ten bins: the heights are in the ratio of the coefficients 1, 9, 36, 84, 126, 126, 84, 36, 9, 1 of the binomial expansion (1 + 1)^9.">
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M99.4 876.4L99.4 874.12L152.4 874.12L152.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M206.4 876.4L206.4 855.88L254.4 855.88L254.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M308.4 876.4L308.4 794.32L356.4 794.32L356.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M410.4 876.4L410.4 684.88L459.4 684.88L459.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M513.4 876.4L513.4 589.12L560.4 589.12L560.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M614.4 876.4L614.4 589.12L661.4 589.12L661.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M715.4 876.4L715.4 684.88L762.4 684.88L762.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M816.4 876.4L816.4 794.32L864.4 794.32L864.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M918.4 876.4L918.4 855.88L964.4 855.88L964.4 876.4Z"/>
+<path class="ink given" style="stroke-width:1;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M1018.4 876.4L1018.4 874.12L1066.4 874.12L1066.4 876.4Z"/>
+</g>
+<g class="step" data-step="5" data-tool="note" data-text="As more shot falls the bars follow the bell-shaped normal curve (dashed): the binomial law tends to the law of Fig. 87b.">
+<path class="ink curve dash" style="stroke-width:2;fill:none;--dash:13.95 9.3;stroke:#0b4fa0;stroke-dasharray:13.95 9.3;stroke-linecap:round;stroke-linejoin:round" d="M99.4 874.5L107.46 874.16L115.52 873.76L123.58 873.29L131.63 872.76L139.69 872.15L147.75 871.45L155.81 870.64L163.87 869.73L171.93 868.69L179.98 867.52L188.04 866.19L196.1 864.7L204.16 863.03L212.22 861.17L220.28 859.09L228.33 856.78L236.39 854.22L244.45 851.4L252.51 848.31L260.57 844.91L268.63 841.21L276.68 837.17L284.74 832.8L292.8 828.07L300.86 822.97L308.92 817.51L316.98 811.66L325.03 805.43L333.09 798.81L341.15 791.82L349.21 784.45L357.27 776.71L365.33 768.62L373.38 760.2L381.44 751.47L389.5 742.46L397.56 733.19L405.62 723.7L413.67 714.04L421.73 704.24L429.79 694.36L437.85 684.44L445.91 674.55L453.97 664.73L462.03 655.05L470.08 645.57L478.14 636.34L486.2 627.45L494.26 618.93L502.32 610.87L510.38 603.31L518.43 596.31L526.49 589.93L534.55 584.21L542.61 579.21L550.67 574.96L558.73 571.49L566.78 568.84L574.84 567.03L582.9 566.07L590.96 565.96L599.02 566.72L607.07 568.33L615.13 570.78L623.19 574.05L631.25 578.12L639.31 582.94L647.37 588.49L655.43 594.71L663.48 601.57L671.54 609L679.6 616.95L687.66 625.36L695.72 634.17L703.78 643.32L711.83 652.74L719.89 662.38L727.95 672.17L736.01 682.05L744.07 691.97L752.13 701.86L760.18 711.69L768.24 721.39L776.3 730.92L784.36 740.24L792.42 749.32L800.48 758.13L808.53 766.63L816.59 774.79L824.65 782.62L832.71 790.08L840.77 797.16L848.83 803.87L856.88 810.19L864.94 816.13L873 821.69L881.06 826.87L889.12 831.69L897.18 836.15L905.23 840.26L913.29 844.05L921.35 847.52L929.41 850.68L937.47 853.57L945.53 856.19L953.58 858.55L961.64 860.68L969.7 862.6L977.76 864.32L985.82 865.85L993.88 867.21L1001.93 868.42L1009.99 869.49L1018.05 870.43L1026.11 871.26L1034.17 871.99L1042.23 872.62L1050.28 873.17L1058.34 873.65L1066.4 874.07"/>
+</g>
+</svg>

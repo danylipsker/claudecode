@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 1011.28 933.63" width="520" height="480" data-fig="fig-118">
+<title>Fig. 118 — The isoptic: HP is the normal to the locus of P</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 118, page 121. Section: instantaneous-center.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The curve, and two points A and B on it.">
+<path class="ink given" style="stroke-width:3.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M62.1 651.13L63.76 646.14L65.51 641.15L67.33 636.16L69.24 631.18L71.23 626.21L73.3 621.25L75.46 616.3L77.7 611.36L80.02 606.42L82.43 601.5L84.93 596.58L87.51 591.68L90.18 586.79L92.94 581.91L95.78 577.05L98.71 572.2L101.74 567.37L104.85 562.55L108.05 557.76L111.35 552.98L114.74 548.21L118.22 543.47L121.79 538.75L125.45 534.06L129.21 529.38L133.07 524.74L137.02 520.11L141.07 515.52L145.21 510.95L149.45 506.42L153.79 501.92L158.22 497.45L162.76 493.01L167.39 488.61L172.12 484.25L176.95 479.93L181.87 475.65L186.9 471.41L192.03 467.22L197.25 463.08L202.58 458.98L208 454.94L213.52 450.94L219.14 447L224.86 443.12L230.67 439.3L236.58 435.54L242.59 431.84L248.7 428.2L254.9 424.63L261.19 421.13L267.58 417.71L274.05 414.35L280.62 411.07L287.28 407.87L294.03 404.75L300.86 401.71L307.77 398.76L314.77 395.89L321.85 393.12L329.01 390.43L336.25 387.83L343.56 385.33L350.94 382.93L358.4 380.63L365.92 378.43L373.5 376.33L381.15 374.33L388.86 372.44L396.62 370.66L404.43 368.99L412.3 367.43L420.21 365.98L428.17 364.64L436.16 363.42L444.19 362.32L452.26 361.33L460.35 360.46L468.47 359.72L476.61 359.09L484.77 358.58L492.94 358.19L501.12 357.92L509.31 357.77L517.5 357.75L525.7 357.84L533.88 358.06L542.06 358.4L550.23 358.86L558.37 359.44L566.5 360.14L574.61 360.96L582.68 361.9L590.73 362.96L598.74 364.13L606.71 365.41L614.64 366.82L622.52 368.33L630.36 369.96L638.15 371.69L645.87 373.54L653.55 375.49L661.16 377.55L668.71 379.71L676.19 381.97L683.6 384.33L690.94 386.79L698.21 389.35L705.4 392L712.51 394.74L719.54 397.57L726.5 400.49L733.36 403.49L740.14 406.58L746.84 409.75L753.44 412.99L759.96 416.32L766.38 419.71L772.71 423.18L778.95 426.72L785.1 430.33L791.14 434L797.1 437.74L802.95 441.54L808.71 445.4L814.37 449.31L819.93 453.29L825.39 457.31L830.76 461.39L836.02 465.51L841.19 469.68L846.26 473.9L851.23 478.16L856.1 482.47L860.87 486.81L865.54 491.2L870.11 495.62L874.59 500.07L878.96 504.56L883.24 509.08L887.43 513.64L891.51 518.22L895.5 522.83L899.4 527.47L903.2 532.13L906.9 536.82L910.52 541.53L914.03 546.26L917.46 551.01L920.79 555.79L924.03 560.58L927.18 565.39L930.24 570.21L933.21 575.05L936.09 579.91L938.89 584.78L941.59 589.67L944.21 594.56L946.74 599.47L949.18 604.39"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M330.28 389.96L354.86 407.17"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M354.73 381.74L378.43 400.15"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M379.95 374.64L402.7 394.19"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M405.82 368.7L427.58 389.36"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M432.24 364.01L452.95 385.71"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M459.08 360.59L478.69 383.29"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M486.21 358.5L504.67 382.14"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M513.49 357.74L530.76 382.27"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M540.78 358.34L556.82 383.69"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M567.93 360.28L582.7 386.39"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M594.82 363.54L608.28 390.35"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M621.29 368.09L633.41 395.53"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M647.23 373.88L657.98 401.88"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M62.1 651.13L90.79 642.36"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M67.59 635.48L96.66 628.05"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M73.89 619.89L103.27 613.83"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M81.01 604.39L110.64 599.7"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M914.85 547.38L905.08 575.74"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M924.59 561.42L913.6 589.33"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M933.56 575.62L921.35 603.03"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M941.75 589.95L928.36 616.8"/>
+<path class="ink cons" style="stroke-width:2.22;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M949.18 604.39L934.64 630.63"/>
+<text class="lbl " x="94.81" y="529.41" font-size="34.38" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<text class="lbl " x="897.85" y="484.04" font-size="34.38" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+</g>
+<g class="step" data-step="1" data-tool="straightedge" data-text="Draw the tangents at A and B. They meet at P, and the angle between them (shaded) is the constant angle of the isoptic.">
+<path class="ink given" style="stroke-width:3.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M112.93 550.73L458.46 64.53"/>
+<path class="ink given" style="stroke-width:3.64;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M879.73 505.36L458.46 64.53"/>
+<path class="fill" style="fill:#1b1b1b" d="M458.46 64.53L405.17 139.52L410.47 143.01L415.99 146.14L421.72 148.87L427.63 151.21L433.68 153.13L439.85 154.62L446.11 155.69L452.43 156.33L458.77 156.53L465.12 156.28L471.43 155.61L477.68 154.5L483.84 152.96L489.88 150.99L495.77 148.62L501.48 145.85L506.99 142.69L512.26 139.15L517.28 135.26L522.02 131.04Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:2.83;stroke:#2a2a2a" d=""/>
+<text class="lbl " x="429.47" y="30.42" font-size="34.38" text-anchor="end" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">P</text>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="At A and B draw the normals to the curve (the perpendiculars to the tangents). They meet at H, the centre of rotation of the rigid angle APB.">
+<path class="ink cons dash" style="stroke-width:2.22;fill:none;--dash:12.14 8.09;stroke:#4b4b4b;stroke-dasharray:12.14 8.09;stroke-linecap:round;stroke-linejoin:round" d="M112.93 550.73L558.07 867.07"/>
+<path class="ink cons dash" style="stroke-width:2.22;fill:none;--dash:12.14 8.09;stroke:#4b4b4b;stroke-dasharray:12.14 8.09;stroke-linecap:round;stroke-linejoin:round" d="M879.73 505.36L496.54 871.54"/>
+<circle class="pt open" style="fill:#fff;stroke:#1b1b1b;stroke-width:2.22" cx="525.46" cy="843.9" r="12.49"/>
+<text class="lbl " x="525.46" y="878.01" font-size="34.38" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">H</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Join H to P. H is the centre of rotation of every point of the rigid angle, so HP is the normal to the path of P, the isoptic.">
+<path class="ink cons dash" style="stroke-width:2.22;fill:none;--dash:12.14 8.09;stroke:#4b4b4b;stroke-dasharray:12.14 8.09;stroke-linecap:round;stroke-linejoin:round" d="M458.46 64.53L525.46 843.9"/>
+</g>
+<g class="step" data-step="4" data-tool="pencil" data-text="The isoptic itself (a piece), the locus of P as the angle keeps its size; HP is perpendicular to it.">
+<path class="ink curve" style="stroke-width:5.66;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M661.77 78.57L657.8 77.68L653.83 76.81L649.84 75.97L645.85 75.15L641.85 74.36L637.85 73.59L633.84 72.84L629.83 72.12L625.8 71.43L621.78 70.76L617.74 70.11L613.71 69.49L609.66 68.89L605.62 68.32L601.57 67.77L597.51 67.25L593.45 66.75L589.38 66.28L585.32 65.84L581.24 65.41L577.17 65.02L573.09 64.64L569.01 64.3L564.93 63.98L560.84 63.68L556.75 63.41L552.66 63.16L548.57 62.94L544.47 62.75L540.38 62.58L536.28 62.44L532.18 62.32L528.08 62.22L523.98 62.16L519.88 62.11L515.78 62.1L511.68 62.1L507.58 62.14L503.48 62.2L499.38 62.28L495.28 62.39L491.18 62.53L487.08 62.69L482.99 62.88L478.9 63.09L474.8 63.32L470.71 63.59L466.63 63.87L462.54 64.19L458.46 64.53L454.38 64.89L450.3 65.28L446.23 65.69L442.16 66.13L438.1 66.59L434.03 67.08L429.98 67.6L425.92 68.14L421.87 68.7L417.83 69.29L413.79 69.9L409.76 70.54L405.73 71.2L401.7 71.89L397.69 72.6L393.68 73.34L389.67 74.1L385.67 74.88L381.68 75.69L377.69 76.53L373.71 77.38L369.74 78.27L365.78 79.17L361.82 80.1L357.87 81.06L353.93 82.03L349.99 83.03L346.07 84.06L342.15 85.11L338.24 86.18L334.34 87.27L330.45 88.39L326.57 89.53L322.7 90.69L318.83 91.88L314.98 93.09L311.13 94.32L307.3 95.58L303.48 96.85L299.66 98.15L295.86 99.47L292.07 100.82L288.29 102.18L284.52 103.57L280.76 104.98L277.01 106.41L273.27 107.86L269.55 109.34L265.84 110.83L262.13 112.35"/>
+</g>
+</svg>

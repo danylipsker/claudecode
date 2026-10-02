@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="cw" viewBox="0 0 401.52 322.45" width="520" height="418" data-fig="fig-198">
+<title>Fig. 198 — The carpenter's square that draws the strophoid</title>
+<desc>Redrawn from Robert C. Yates, A Handbook on Curves and Their Properties (1947), Fig. 198, page 219. Section: strophoid.</desc>
+<style>svg.cw{font-family:"Times New Roman",Times,"Liberation Serif",serif;background:#fff}
+svg.cw .ink{stroke:#1b1b1b;fill:none;stroke-linecap:round;stroke-linejoin:round}
+svg.cw .given{stroke:#1b1b1b}
+svg.cw .cons{stroke:#4b4b4b}
+svg.cw .aux{stroke:#8a8a8a}
+svg.cw .axis{stroke:#1b1b1b}
+svg.cw .curve{stroke:#0b4fa0}
+svg.cw .thick{stroke:#1b1b1b}
+svg.cw .hatchline{stroke:#2a2a2a}
+svg.cw .lbl{fill:#1b1b1b;stroke:none;font-style:italic}
+svg.cw .lbl.axis{font-style:normal}
+svg.cw .lbl.upright{font-style:normal}
+svg.cw .pt{fill:#1b1b1b;stroke:none}
+svg.cw .pt.curve{fill:#0b4fa0}
+svg.cw .pt.open{fill:#fff;stroke:#1b1b1b}
+svg.cw .head{stroke:none}
+svg.cw .fill{stroke:none}
+svg.cw .pivot{fill:#fff;stroke:#1b1b1b}
+svg.cw .dash{stroke-dasharray:var(--dash)}
+svg.cw .dot{stroke-dasharray:var(--dot)}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g class="step" data-step="0" data-tool="given" data-text="The line BC with the fixed point B and the pole C (BC = a), and the line CA perpendicular to BC at C. The square will slide with its corner A on CA.">
+<path class="ink axis" style="stroke-width:1.2;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M31.87 256.65L376.87 256.65"/>
+<path class="head axis" style="stroke:none;fill:#1b1b1b" d="M376.87 256.65L369.36 253.5L369.36 259.81Z"/>
+<path class="ink given" style="stroke-width:1.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M191.87 256.65L191.87 24.65"/>
+<circle class="pt" style="fill:#1b1b1b" cx="91.87" cy="256.65" r="3.13"/>
+<text class="lbl " x="91.87" y="268.5" font-size="13.65" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">B</text>
+<circle class="pt" style="fill:#1b1b1b" cx="191.87" cy="256.65" r="3.13"/>
+<text class="lbl " x="191.87" y="268.5" font-size="13.65" text-anchor="middle" dominant-baseline="hanging" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">C</text>
+<text class="lbl " x="141.87" y="247.65" font-size="12.97" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="1" data-tool="compass" data-text="Choose A on CA. Q is the point at distance a from A (AQ = a) on the circle that has AB as diameter, so that the angle AQB is a right angle.">
+<path class="ink cons dash" style="stroke-width:0.88;fill:none;--dash:4.82 3.21;stroke:#4b4b4b;stroke-dasharray:4.82 3.21;stroke-linecap:round;stroke-linejoin:round" d="M191.87 60.39L91.87 256.65"/>
+<text class="lbl " x="202.66" y="47.7" font-size="13.65" text-anchor="start" dominant-baseline="auto" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">A</text>
+<path class="ink cons" style="stroke-width:0.88;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M250.88 174.21A110.13 110.13 0 0 0 240.69 109.92"/>
+<path class="ink cons" style="stroke-width:0.88;fill:none;stroke:#4b4b4b;stroke-linecap:round;stroke-linejoin:round" d="M233.4 151.36A100 100 0 0 0 265.55 128.01"/>
+</g>
+<g class="step" data-step="2" data-tool="square" data-text="Place the carpenter's square with its corner at Q: one edge runs from Q to A (length a), the other passes through B.">
+<path class="ink given" style="stroke-width:1.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M250.64 141.3L191.87 60.39"/>
+<path class="ink given" style="stroke-width:1.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M250.64 141.3L35.23 297.8"/>
+<path class="fill" style="fill:#fff" d="M250.64 141.3L191.87 60.39L177.3 70.97L225.5 137.31L24.65 283.24L30.01 283.8L25.65 291.41L34.24 289.62L29.88 297.24L35.23 297.8Z"/>
+<path class="ink hatchline" style="fill:none;stroke-width:1.12;stroke:#2a2a2a" d=""/>
+<path class="ink given" style="fill:none;stroke:#1b1b1b;stroke-width:0.88" d="M250.64 141.3L191.87 60.39L177.3 70.97L225.5 137.31L24.65 283.24L30.01 283.8L25.65 291.41L34.24 289.62L29.88 297.24L35.23 297.8Z"/>
+<path class="ink given" style="stroke-width:1.45;fill:none;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M250.64 141.3L191.87 60.39L177.3 70.97L225.5 137.31L24.65 283.24L30.01 283.8L25.65 291.41L34.24 289.62L29.88 297.24L35.23 297.8Z"/>
+<path class="ink given" style="stroke-width:1.45;fill:#1b1b1b;stroke:#1b1b1b;stroke-linecap:round;stroke-linejoin:round" d="M245.94 134.82L239.47 139.53L244.17 146L250.64 141.3Z"/>
+<text class="lbl " x="264.19" y="141.3" font-size="13.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">Q</text>
+<circle class="pt" style="fill:#1b1b1b" cx="91.87" cy="256.65" r="3.13"/>
+<text class="lbl " x="236.63" y="89.68" font-size="12.97" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">a</text>
+</g>
+<g class="step" data-step="3" data-tool="straightedge" data-text="Draw CQ (it is parallel to BA). With C as the pole, θ is its angle with CB's direction, AB = a sec θ, and CQ = r.">
+<path class="ink cons dash" style="stroke-width:0.88;fill:none;--dash:4.82 3.21;stroke:#4b4b4b;stroke-dasharray:4.82 3.21;stroke-linecap:round;stroke-linejoin:round" d="M191.87 256.65L250.64 141.3"/>
+<path class="ink cons" style="fill:none;stroke:#4b4b4b;stroke-width:0.88" d="M216.44 256.65A24.57 24.57 0 0 0 203.02 234.76"/>
+<text class="lbl " x="223.29" y="237.4" font-size="13.65" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">θ</text>
+<text class="lbl " x="233.5" y="193.21" font-size="13.65" text-anchor="start" dominant-baseline="middle" style="fill:#1b1b1b;stroke:none;font-family:Times New Roman,Times,serif;font-style:italic">r</text>
+</g>
+<g class="step" data-step="4" data-tool="note" data-text="The book also draws the line AB and the perpendiculars to it from C and from Q (the square hides the parts underneath): CQ ∥ AB, so these perpendiculars give the rectangle that shows r = AB − 2 BF.">
+<path class="ink cons dash" style="stroke-width:0.88;fill:none;--dash:4.82 3.21;stroke:#4b4b4b;stroke-dasharray:4.82 3.21;stroke-linecap:round;stroke-linejoin:round" d="M182.69 78.39L109.87 221.33"/>
+<path class="ink cons dash" style="stroke-width:0.88;fill:none;--dash:4.82 3.21;stroke:#4b4b4b;stroke-dasharray:4.82 3.21;stroke-linecap:round;stroke-linejoin:round" d="M191.87 256.65L133.09 226.71"/>
+<path class="ink cons dash" style="stroke-width:0.88;fill:none;--dash:4.82 3.21;stroke:#4b4b4b;stroke-dasharray:4.82 3.21;stroke-linecap:round;stroke-linejoin:round" d="M115.09 217.53L112.48 216.2"/>
+<path class="ink cons dash" style="stroke-width:0.88;fill:none;--dash:4.82 3.21;stroke:#4b4b4b;stroke-dasharray:4.82 3.21;stroke-linecap:round;stroke-linejoin:round" d="M171.26 100.84L215.32 123.3"/>
+</g>
+<g class="step" data-step="5" data-tool="pencil" data-text="As the square slides, Q draws the strophoid r = a sec θ − 2a cos θ, with C as the pole.">
+<path class="ink curve" style="stroke-width:2.25;fill:none;stroke:#0b4fa0;stroke-linecap:round;stroke-linejoin:round" d="M268.47 467.12L267.59 460.39L266.7 453.88L265.79 447.57L264.87 441.46L263.93 435.53L262.99 429.78L262.03 424.2L261.05 418.77L260.07 413.5L259.07 408.38L258.06 403.4L257.03 398.55L256 393.83L254.95 389.24L253.89 384.77L252.82 380.41L251.74 376.16L250.64 372.01L249.54 367.97L248.43 364.03L247.3 360.19L246.17 356.43L245.02 352.77L243.87 349.19L242.7 345.7L241.53 342.29L240.35 338.96L239.16 335.7L237.95 332.52L236.75 329.42L235.53 326.38L234.3 323.41L233.07 320.51L231.83 317.67L230.58 314.9L229.33 312.19L228.06 309.54L226.8 306.95L225.52 304.42L224.24 301.95L222.95 299.53L221.66 297.16L220.36 294.85L219.06 292.59L217.75 290.38L216.43 288.23L215.12 286.12L213.79 284.06L212.47 282.05L211.14 280.08L209.8 278.16L208.47 276.28L207.13 274.45L205.78 272.66L204.44 270.92L203.09 269.22L201.74 267.56L200.39 265.94L199.04 264.36L197.68 262.82L196.32 261.32L194.97 259.85L193.61 258.43L192.25 257.04L190.9 255.69L189.54 254.38L188.18 253.1L186.83 251.86L185.47 250.66L184.12 249.48L182.76 248.35L181.41 247.24L180.06 246.17L178.72 245.13L177.37 244.13L176.03 243.16L174.69 242.22L173.36 241.31L172.02 240.43L170.7 239.58L169.37 238.76L168.05 237.97L166.73 237.22L165.42 236.49L164.12 235.79L162.81 235.11L161.52 234.47L160.23 233.86L158.94 233.27L157.66 232.71L156.39 232.17L155.13 231.67L153.87 231.18L152.61 230.73L151.37 230.3L150.13 229.9L148.9 229.52L147.68 229.16L146.47 228.83L145.26 228.53L144.07 228.25L142.88 227.99L141.7 227.76L140.53 227.54L139.37 227.35L138.22 227.19L137.08 227.04L135.95 226.92L134.83 226.82L133.72 226.74L132.62 226.68L131.53 226.65L130.45 226.63L129.39 226.63L128.33 226.65L127.29 226.7L126.26 226.76L125.24 226.84L124.24 226.94L123.24 227.05L122.26 227.19L121.29 227.34L120.34 227.51L119.4 227.7L118.47 227.91L117.55 228.13L116.65 228.37L115.76 228.62L114.89 228.89L114.03 229.18L113.18 229.48L112.35 229.79L111.54 230.12L110.74 230.47L109.95 230.83L109.18 231.2L108.42 231.59L107.68 231.98L106.96 232.4L106.25 232.82L105.56 233.26L104.88 233.71L104.22 234.17L103.57 234.64L102.94 235.12L102.33 235.62L101.73 236.12L101.15 236.64L100.59 237.16L100.04 237.7L99.52 238.24L99 238.79L98.51 239.35L98.03 239.92L97.57 240.5L97.13 241.08L96.7 241.68L96.29 242.28L95.9 242.88L95.53 243.5L95.17 244.12L94.84 244.74L94.52 245.37L94.22 246.01L93.93 246.65L93.67 247.3L93.42 247.95L93.19 248.6L92.98 249.26L92.79 249.92L92.61 250.58L92.46 251.25L92.32 251.92L92.2 252.59L92.1 253.27L92.01 253.94L91.95 254.62L91.9 255.3L91.88 255.98L91.87 256.65L91.88 257.33L91.9 258.01L91.95 258.69L92.01 259.37L92.1 260.04L92.2 260.72L92.32 261.39L92.46 262.06L92.61 262.73L92.79 263.39L92.98 264.05L93.19 264.71L93.42 265.36L93.67 266.01L93.93 266.66L94.22 267.3L94.52 267.94L94.84 268.57L95.17 269.19L95.53 269.81L95.9 270.43L96.29 271.03L96.7 271.63L97.13 272.23L97.57 272.81L98.03 273.39L98.51 273.96L99 274.52L99.52 275.07L100.04 275.61L100.59 276.15L101.15 276.67L101.73 277.19L102.33 277.69L102.94 278.19L103.57 278.67L104.22 279.14L104.88 279.6L105.56 280.05L106.25 280.49L106.96 280.91L107.68 281.32L108.42 281.72L109.18 282.11L109.95 282.48L110.74 282.84L111.54 283.19L112.35 283.52L113.18 283.83L114.03 284.13L114.89 284.42L115.76 284.69L116.65 284.94L117.55 285.18L118.47 285.4L119.4 285.61L120.34 285.8L121.29 285.97L122.26 286.12L123.24 286.26L124.24 286.37L125.24 286.47L126.26 286.55L127.29 286.61L128.33 286.66L129.39 286.68L130.45 286.68L131.53 286.66L132.62 286.63L133.72 286.57L134.83 286.49L135.95 286.39L137.08 286.27L138.22 286.12L139.37 285.95L140.53 285.77L141.7 285.55L142.88 285.32L144.07 285.06L145.26 284.78L146.47 284.48L147.68 284.15L148.9 283.79L150.13 283.41L151.37 283.01L152.61 282.58L153.87 282.13L155.13 281.64L156.39 281.14L157.66 280.6L158.94 280.04L160.23 279.45L161.52 278.84L162.81 278.2L164.12 277.52L165.42 276.82L166.73 276.09L168.05 275.34L169.37 274.55L170.7 273.73L172.02 272.88L173.36 272L174.69 271.09L176.03 270.15L177.37 269.18L178.72 268.17L180.06 267.14L181.41 266.07L182.76 264.96L184.12 263.83L185.47 262.65L186.83 261.45L188.18 260.21L189.54 258.93L190.9 257.62L192.25 256.27L193.61 254.88L194.97 253.45L196.32 251.99L197.68 250.49L199.04 248.95L200.39 247.37L201.74 245.75L203.09 244.09L204.44 242.39L205.78 240.64L207.13 238.86L208.47 237.03L209.8 235.15L211.14 233.23L212.47 231.26L213.79 229.25L215.12 227.19L216.43 225.08L217.75 222.92L219.06 220.72L220.36 218.46L221.66 216.15L222.95 213.78L224.24 211.36L225.52 208.89L226.8 206.36L228.06 203.77L229.33 201.12L230.58 198.41L231.83 195.64L233.07 192.8L234.3 189.9L235.53 186.93L236.75 183.89L237.95 180.79L239.16 177.61L240.35 174.35L241.53 171.02L242.7 167.61L243.87 164.12L245.02 160.54L246.17 156.88L247.3 153.12L248.43 149.28L249.54 145.34L250.64 141.3L251.74 137.15L252.82 132.9L253.89 128.54L254.95 124.07L256 119.47L257.03 114.76L258.06 109.91L259.07 104.93L260.07 99.81L261.05 94.54L262.03 89.11L262.99 83.53L263.93 77.78L264.87 71.85L265.79 65.74L266.7 59.43L267.59 52.92L268.47 46.19"/>
+</g>
+</svg>
