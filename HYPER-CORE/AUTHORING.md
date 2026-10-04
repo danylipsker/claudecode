@@ -1015,6 +1015,22 @@ dimension of one percentile, with a manikin), `#/tools/workstation/` sitting, st
 niosh, carry, `#/tools/environment/` noise, vibration, thermal, heat, cold, light, and `#/tools/ranges` (the
 Dimension finder: every recommended range in the app, searchable by setting).
 
+### Hyper Optics
+
+Light and everything built to handle it — rays, lenses and aberrations, waves and polarization, glass and
+coatings, cameras and sensors, lamps and fibres, lasers and beam shaping, the eye and its glasses, instruments,
+scanners, illusions, and whole systems read from the source to the detector. Its guide is
+**`HYPER-OPTICS/AUTHORING.md`**: every page defines its vocabulary in **`terms: [{ term, also, def }]`** (shown
+on the page, gathered in Tools → Optics dictionary, found by the search box) and shows its idea in a
+simulation. References: Snell's law, the f-number and the C-mount (`content/reference.js`,
+`sims/reference.js`). The engine is `js/optics.js`, `js/optics-wave.js`, `js/optics-vision.js` (`kit.optics`:
+materials and dispersion, Snell and Fresnel, exact ray tracing through lens prescriptions with spots and Seidel
+sums, thin-film stacks, diffraction, MTF, Gaussian beams, lasers, polarization, colour, lamps, cameras, the eye,
+scanners, beam shaping, fibres) and `js/opticsym.js` (`kit.osym`: lenses, mirrors, rays coloured by wavelength,
+beams, waves, spectra, fringes), tested by `tools/test-optics.js`; the labs under Tools are tested headless by
+`tools/labtest.js`. New unit quantities: `luminance`, `efficacy`, `spatialfreq`, `angfreq`, `responsivity`,
+`lumexposure`, `fluence`, `radiance`, `radintensity`, `attenuation`, `prism`.
+
 ## Checking your work
 
 ```bash

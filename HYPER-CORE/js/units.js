@@ -153,8 +153,26 @@
     thermalres:  { name: 'thermal resistance', units: [['K/W', 1], ['°C/W', 1]] },
     rate:        { name: 'rate', units: [['1/s', 1], ['1/min', 1 / 60], ['1/h', 1 / 3600], ['1/day', 1 / 86400], ['1/week', 1 / 604800], ['1/month', 1 / 2629800], ['1/yr', 1 / 3.15576e7], ['kHz', 1e3]] },
     hubble:      { name: 'Hubble parameter', units: [['km/s/Mpc', 1e3 / 3.0856775814913673e22], ['1/s', 1]] },
-    gravparam:   { name: 'gravitational parameter', units: [['m³/s²', 1], ['km³/s²', 1e9]] }
+    gravparam:   { name: 'gravitational parameter', units: [['m³/s²', 1], ['km³/s²', 1e9]] },
+    // light and optics
+    luminance:   { name: 'luminance', units: [['cd/m²', 1], ['nit', 1], ['cd/cm²', 1e4], ['fL', 3.4262591]] },
+    efficacy:    { name: 'luminous efficacy', units: [['lm/W', 1]] },
+    spatialfreq: { name: 'spatial frequency', units: [['cycles/m', 1], ['lp/mm', 1e3], ['cycles/mm', 1e3]] },
+    angfreq:     { name: 'angular spatial frequency', units: [['cycles/rad', 1], ['cycles/°', 180 / Math.PI], ['cycles/mrad', 1e3]] },
+    responsivity:{ name: 'responsivity', units: [['A/W', 1], ['mA/W', 1e-3]] },
+    lumexposure: { name: 'luminous exposure', units: [['lx·s', 1]] },
+    fluence:     { name: 'radiant exposure (fluence)', units: [['J/m²', 1], ['J/cm²', 1e4], ['mJ/cm²', 10]] },
+    radiance:    { name: 'radiance', units: [['W/(m²·sr)', 1], ['mW/(cm²·sr)', 10]] },
+    radintensity:{ name: 'radiant intensity', units: [['W/sr', 1], ['mW/sr', 1e-3]] },
+    attenuation: { name: 'attenuation', units: [['dB/m', 1], ['dB/km', 1e-3]] },
+    prism:       { name: 'prism power', units: [['Δ', 1]] }       // prism dioptres: centimetres of deviation at one metre
   };
+  // more units for quantities that were already there
+  Q.luminousflux.units.push(['klm', 1e3]);
+  Q.luminousint.units.push(['mcd', 1e-3], ['kcd', 1e3]);
+  Q.illuminance.units.push(['klx', 1e3]);
+  Q.angle.units.push(['µrad', 1e-6]);
+  Q.intensity.units.push(['µW/cm²', 0.01], ['W/mm²', 1e6], ['kW/cm²', 1e7], ['MW/cm²', 1e10], ['GW/cm²', 1e13]);
 
   /* A variable given only `unit` finds its quantity through this table */
   const UNIT_INDEX = {};
@@ -243,7 +261,8 @@
     rhoSL: { v: 1.225, u: 'kg/m³', q: 'density', name: 'air density at sea level (ISA, 15 °C)', tex: '\\rho_0' },
     aSL:   { v: 340.294, u: 'm/s', q: 'speed', name: 'speed of sound at sea level (ISA, 15 °C)', tex: 'a_0' },
     I0:    { v: 1e-12, u: 'W/m²', q: 'intensity', name: 'threshold of hearing', tex: 'I_0' },
-    gMoon: { v: 1.62, u: 'm/s²', q: 'accel', name: 'gravity on the Moon', tex: 'g_\\text{Moon}' }
+    gMoon: { v: 1.62, u: 'm/s²', q: 'accel', name: 'gravity on the Moon', tex: 'g_\\text{Moon}' },
+    Km:    { v: 683, u: 'lm/W', q: 'efficacy', name: 'luminous efficacy of light at 555 nm', tex: 'K_m', exact: true }
   };
   // quantity of a constant, from its unit when not given
   for (const k in C) if (!C[k].q && UNIT_INDEX[C[k].u]) C[k].q = UNIT_INDEX[C[k].u];

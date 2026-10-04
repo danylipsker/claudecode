@@ -20,7 +20,9 @@ const { makeContext, loadCore, run } = require('./load');
 const args = process.argv.slice(2);
 const discDir = path.resolve(args.find(a => !a.startsWith('--')) || 'HYPER-PHYSICS');
 const onlyArg = (args.find(a => a.startsWith('--only=')) || '').slice(7) || (args.includes('--only') ? args[args.indexOf('--only') + 1] : '');
-const only = onlyArg ? new Set(onlyArg.split(',').map(s => path.resolve(discDir, s.trim()))) : null;
+// a bare topic name (no folder, no .js) stands for that topic's content and simulation files
+const onlyFiles = s => s.includes('/') || s.includes(path.sep) || s.endsWith('.js') ? [s] : ['content/' + s + '.js', 'sims/' + s + '.js'];
+const only = onlyArg ? new Set(onlyArg.split(',').flatMap(s => onlyFiles(s.trim())).map(s => path.resolve(discDir, s))) : null;
 
 const ctx = makeContext();
 /* ---------------------------------------------------------------- a stand-in DOM */
@@ -94,6 +96,7 @@ run(ctx, path.join(__dirname, '..', 'js', 'chem.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'molecule.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'finance.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'fluidsym.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'opticsym.js'));
 
 /* ---------------------------------------------------------------- the stand-in kit */
 function makeKit(record) {
@@ -159,7 +162,7 @@ function makeKit(record) {
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
     fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio, qm: H.qm, motor: H.motor, ergo: H.ergo, terms: () => "",
-    proj: H.proj, world: H.world, sky: H.sky, construct: H.construct,
+    proj: H.proj, world: H.world, sky: H.sky, construct: H.construct, optics: H.optics, osym: H.osym,
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }

@@ -24,11 +24,13 @@ const { makeContext, loadCore, run } = require('./load');
 const args = process.argv.slice(2);
 const discDir = path.resolve(args.find(a => !a.startsWith('--')) || 'HYPER-PHYSICS');
 const onlyArg = (args.find(a => a.startsWith('--only=')) || '').slice(7) || (args.includes('--only') ? args[args.indexOf('--only') + 1] : '');
-const only = onlyArg ? new Set(onlyArg.split(',').map(s => path.resolve(discDir, s.trim()))) : null;
+// a bare topic name (no folder, no .js) stands for that topic's content and simulation files
+const onlyFiles = s => s.includes('/') || s.includes(path.sep) || s.endsWith('.js') ? [s] : ['content/' + s + '.js', 'sims/' + s + '.js'];
+const only = onlyArg ? new Set(onlyArg.split(',').flatMap(s => onlyFiles(s.trim())).map(s => path.resolve(discDir, s))) : null;
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections', 'HYPER-OPTICS': 'optics' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -48,7 +50,7 @@ for (const sub of ['content', 'sims', 'constructions']) {
   for (const f of list) files.push(path.join(dir, f));
 }
 // other disciplines' catalogs
-for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS', 'HYPER-PROJECTIONS']) {
+for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS', 'HYPER-PROJECTIONS', 'HYPER-OPTICS']) {
   const c = path.join(discDir, '..', d, 'catalog.js');
   if (d !== path.basename(discDir) && fs.existsSync(c)) { try { run(ctx, c); } catch (e) { W(d + '/catalog.js', e.message); } }
 }
@@ -128,6 +130,7 @@ function checkText(where, s, block) {
   lostBackslash(where, s);
   // Hyper Motors and Hyper Ergonomics: reader-facing text names methods, standards and tools, never the code
   if ((DISC === 'motors' || DISC === 'ergonomics') && /\bkit\.(motor|ergo)\b|\bDIMS\b|\b(ergo|motors)\.js\b/.test(s)) W(where, 'names code (kit.motor / kit.ergo / DIMS / *.js) in reader-facing text: name the method, the standard or the tool instead');
+  if (DISC === 'optics' && /\bkit\.(optics|osym)\b|\bO\.(sys|film|diff|mtf|beam|cam|eye|colour)\b|\boptics(-wave|-vision)?\.js\b|\bopticsym\.js\b/.test(s)) W(where, 'names code (kit.optics / kit.osym / *.js) in reader-facing text: name the method or the tool instead');
   const dollars = (s.replace(/\\\$/g, '').match(/\$/g) || []).length;
   if (dollars % 2) E(where, 'odd number of $ signs: an unclosed math span');
 }
@@ -270,6 +273,24 @@ for (const n of H.list) {
   stats.sims += n.sims.length;
   for (const c of n.constructions) if (!H.constructions.has(c.id)) E(w, 'construction "' + c.id + '" is not defined');
   stats.constructions = (stats.constructions || 0) + n.constructions.length;
+  // the vocabulary of a page (Hyper Optics): { term, also, def }
+  n.terms.forEach((t, i) => {
+    const wt = w + ' term ' + (i + 1) + (t.term ? ' "' + t.term + '"' : '');
+    if (!t.term) E(wt, 'no term');
+    if (!t.def) E(wt, 'no def: say in one or two sentences what the term means');
+    else if (t.def.length < 30) W(wt, 'the definition is very short (' + t.def.length + ' characters)');
+    else if (t.def.length > 420) W(wt, 'the definition is long (' + t.def.length + ' characters): a dictionary entry is one to three sentences');
+    for (const k of Object.keys(t)) if (!['term', 'also', 'def'].includes(k)) E(wt, 'unknown key "' + k + '" (term, also, def)');
+    checkText(wt + ' term', t.term, false); checkText(wt + ' def', t.def, false);
+    t.also.forEach(a => checkText(wt + ' also', a, false));
+  });
+  stats.terms = (stats.terms || 0) + n.terms.length;
+  if (DISC === 'optics' && n.kind === 'concept') {
+    if (!n.sims.length) W(w, 'no simulation: optics should be seen — give the page one (a simulation may serve two or three pages through its params)');
+    if (n.terms.length < 2) W(w, 'fewer than 2 terms: list the vocabulary this page introduces (terms: [{ term, also, def }])');
+    if (!n.applications.length) W(w, 'no applications: say where the reader meets this');
+    if (!n.sources.length) W(w, 'no sources: name the textbook chapter, standard or handbook behind the page');
+  }
   if (DISC === 'projections' && n.kind === 'concept') {
     if (!n.sims.length && !n.constructions.length) W(w, 'neither a simulation nor a construction: every projection should be seen or drawn');
     if (!n.applications.length) W(w, 'no applications: say where this projection is used in practice');
@@ -375,7 +396,7 @@ for (const n of H.list) if (n.kind === 'concept' && mine(n.id)) {
 /* ---------------------------------------------------------------- report */
 const out = [];
 out.push(path.basename(discDir) + (only ? ' (only ' + [...only].map(f => path.relative(discDir, f)).join(', ') + ')' : ''));
-out.push('  ' + stats.concepts + ' concepts, ' + stats.formulas + ' formulas, ' + stats.quiz + ' quiz questions, ' + stats.examples + ' examples, ' + stats.problems + ' problems, ' + stats.sims + ' simulation uses, ' + Object.keys(H.sims).length + ' simulations defined' + (H.constructions.size ? ', ' + (stats.constructions || 0) + ' construction uses, ' + H.constructions.size + ' constructions defined' : ''));
+out.push('  ' + stats.concepts + ' concepts, ' + stats.formulas + ' formulas, ' + stats.quiz + ' quiz questions, ' + stats.examples + ' examples, ' + stats.problems + ' problems, ' + stats.sims + ' simulation uses, ' + Object.keys(H.sims).length + ' simulations defined' + (H.constructions.size ? ', ' + (stats.constructions || 0) + ' construction uses, ' + H.constructions.size + ' constructions defined' : '') + (stats.terms ? ', ' + stats.terms + ' dictionary terms' : ''));
 if (!only) for (const [b, s] of Object.entries(stats.byBranch)) out.push('    ' + b.padEnd(22) + s.concepts + ' concepts  ' + s.formulas + ' formulas  ' + s.sims + ' sims  ' + s.quiz + ' quiz');
 console.log(out.join('\n'));
 if (errors.length) console.log('\nERRORS (' + errors.length + ')\n  ' + errors.join('\n  '));

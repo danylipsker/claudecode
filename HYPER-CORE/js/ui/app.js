@@ -165,6 +165,17 @@
     horizon: '<path d="M3 15h18M7 15a5 5 0 0 1 10 0M12 4v3M5.5 8l2 2M18.5 8l-2 2"/>',
     views: '<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><path d="M15 17h4M17 15v4"/>',
     keyboard: '<rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M9.5 10h.01M13 10h.01M16.5 10h.01M7.5 14h9"/>',
+    lens: '<path d="M12 3c3.2 3 3.2 15 0 18-3.2-3-3.2-15 0-18z"/><path d="M2 8l8.2 2.4M2 16l8.2-2.4M13.8 10.6 22 12l-8.2 1.4" opacity=".75"/>',
+    prism: '<path d="M12 4 21 19.5H3z"/><path d="M1.5 14.5 8 12.5M15.4 11.2 22.5 11.5M15.9 12.8l6.4 2.6" opacity=".8"/>',
+    laser: '<rect x="2" y="9" width="9.5" height="6" rx="1.2"/><path d="M11.5 12H22"/><path d="M15 8.5l1.3 1.2M15 15.5l1.3-1.2M18.6 7.2l.9 1.6M18.6 16.8l.9-1.6" opacity=".7"/>',
+    camera: '<rect x="3" y="7" width="18" height="12.5" rx="2.2"/><circle cx="12" cy="13.2" r="3.6"/><path d="M8 7l1.4-2.5h5.2L16 7"/>',
+    glasses: '<circle cx="6.5" cy="14.5" r="3.5"/><circle cx="17.5" cy="14.5" r="3.5"/><path d="M10 14c1.2-1 2.8-1 4 0M3.2 13.5 5.2 6.5M20.8 13.5l-2-7"/>',
+    wave: '<path d="M2 12c2-6.5 4-6.5 6 0s4 6.5 6 0 4-6.5 6 0"/><path d="M2 19.5h20" opacity=".5"/>',
+    scan: '<path d="M12 4 4.5 20M12 4l7.5 16M12 4v16"/><path d="M3.5 20h17"/><circle cx="12" cy="4" r="1.4" fill="currentColor"/>',
+    fibre: '<path d="M3 16.5c4.5 0 5-9.5 9-9.5s4.5 9.5 9 9.5"/><path d="M3 20c5.5 0 5.5-9.5 9-9.5s3.5 9.5 9 9.5" opacity=".55"/>',
+    palette: '<path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-2 0-1.6-1.2-1.6-1.2-3 0-1.2 1-2 2.3-2H17a4 4 0 0 0 4-4c0-3.9-4-7-9-7z"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor"/><circle cx="10.5" cy="7.2" r="1.1" fill="currentColor"/><circle cx="15" cy="7.5" r="1.1" fill="currentColor"/>',
+    illusion: '<path d="M12 3 21 19H3z"/><path d="M12 9.2l4 7H8z"/><path d="M12 3v6.2M3 19l5-2.8M21 19l-5-2.8"/>',
+    layers: '<path d="M12 3 3 8l9 5 9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>',
     grid: '<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>'
   };
   H.icon = function (name, size, extra) {
@@ -433,6 +444,8 @@
         const vars = f.vars ? Object.entries(f.vars).map(([k, v]) => k + ' ' + (v.name || '') + ' ' + (v.tex || '') + ' ' + (v.const || '')).join(' ') : '';
         index.push({ k: 'f', id: n.id, i, t: f.name || 'Formula', tl: norm(f.name), tex: f.tex, expr: f.expr, kw: norm(vars + ' ' + f.expr), b: n.title, h: n.hue });
       });
+      // the terms a page defines (Hyper Optics): found by name or by an alternative name
+      (n.terms || []).forEach(t => index.push({ k: 't', id: n.id, t: t.term, tl: norm(t.term), kw: norm((t.also || []).join(' ')), s: t.def || '', sl: '', b: n.title, h: n.hue }));
     }
     for (const [disc, cat] of Object.entries(H.catalogs)) {
       const d = H.DISCIPLINES[disc];
@@ -466,6 +479,7 @@
       if (e.tl === whole) score += 80;
       else if (e.tl.startsWith(whole)) score += 30;
       if (e.k === 'f') score -= 4;
+      if (e.k === 't') score -= 2;
       if (e.k === 'x') score -= 10;
       res.push([score, e]);
     }
@@ -484,7 +498,7 @@
   function searchUI() {
     const inp = ui.$('#q'), box = ui.$('#qres');
     let sel = -1, items = [];
-    const hrefOf = e => e.k === 'x' ? H.href(e.disc + ':' + e.id) : '#/c/' + e.id + (e.k === 'f' ? '?f=' + e.i : '');
+    const hrefOf = e => e.k === 'x' ? H.href(e.disc + ':' + e.id) : '#/c/' + e.id + (e.k === 'f' ? '?f=' + e.i : e.k === 't' ? '?s=terms' : '');
     const render = () => {
       const q = inp.value;
       items = search(q);
@@ -493,7 +507,7 @@
       if (!items.length) { box.innerHTML = '<div class="empty">Nothing matches “' + esc(q) + '”.</div>'; box.classList.add('on'); return; }
       let h = '', last = '';
       items.forEach((e, i) => {
-        const g = e.k === 'c' ? 'Concepts' : e.k === 'f' ? 'Formulas' : 'In other disciplines';
+        const g = e.k === 'c' ? 'Concepts' : e.k === 'f' ? 'Formulas' : e.k === 't' ? 'Terms' : 'In other disciplines';
         if (g !== last) { h += '<div class="grp">' + g + '</div>'; last = g; }
         let math = '';
         if (e.k === 'f') { try { math = e.tex ? H.tex(e.tex, false) : H.tex(H.formulasOf(H.nodes.get(e.id))[e.i].displayTex, false); } catch (x) { math = ''; } }

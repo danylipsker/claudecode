@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Optics</title>
+<meta name="description" content="Light and everything built to handle it: rays, mirrors and lenses, aberrations, interference, diffraction and polarization, glass and coatings, cameras, sensors and lens mounts, lamps and fibres, lasers and beam shaping, the eye and its glasses, instruments, scanners and illusions — every term defined, every idea shown in a simulation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c5 4 5 22 0 26-5-4-5-22 0-26z' fill='%2319b3b3' fill-opacity='.25' stroke='%2319b3b3' stroke-width='2.2' stroke-linejoin='round'/%3E%3Cpath d='M2 10l11 3.5M2 22l11-3.5M19 14.5 30 16l-11 1.5' fill='none' stroke='%2319b3b3' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Optics needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/pharma.js"></script>
+<script src="../HYPER-CORE/js/bio.js"></script>
+<script src="../HYPER-CORE/js/quantum.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/motors.js"></script>
+<script src="../HYPER-CORE/js/ergo.js"></script>
+<script src="../HYPER-CORE/js/projection.js"></script>
+<script src="../HYPER-CORE/js/geodata.js"></script>
+<script src="../HYPER-CORE/js/celestial.js"></script>
+<script src="../HYPER-CORE/js/construct.js"></script>
+<script src="../HYPER-CORE/js/optics.js"></script>
+<script src="../HYPER-CORE/js/optics-wave.js"></script>
+<script src="../HYPER-CORE/js/optics-vision.js"></script>
+<script src="../HYPER-CORE/js/opticsym.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/construct.js"></script>
+<script src="../HYPER-CORE/js/ui/optictools.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-beams.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-bench.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-camera.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-coatings.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-colour.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-eye.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-illusions.js"></script>
+<script src="../HYPER-CORE/js/ui/optics-lenslab.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/nature-of-light.js"></script>
+<script src="content/reflection-and-mirrors.js"></script>
+<script src="content/refraction-and-snell.js"></script>
+<script src="content/thin-lenses.js"></script>
+<script src="content/paraxial-systems.js"></script>
+<script src="content/aberrations.js"></script>
+<script src="content/correcting-aberrations.js"></script>
+<script src="content/lens-design-forms.js"></script>
+<script src="content/interference.js"></script>
+<script src="content/diffraction.js"></script>
+<script src="content/polarization.js"></script>
+<script src="content/optical-materials.js"></script>
+<script src="content/coatings-and-filters.js"></script>
+<script src="content/optical-components.js"></script>
+<script src="content/camera-basics.js"></script>
+<script src="content/image-sensors.js"></script>
+<script src="content/field-focus-and-zoom.js"></script>
+<script src="content/lens-mounts.js"></script>
+<script src="content/image-quality-and-mtf.js"></script>
+<script src="content/machine-vision.js"></script>
+<script src="content/radiometry-and-photometry.js"></script>
+<script src="content/lamp-families.js"></script>
+<script src="content/illumination-design.js"></script>
+<script src="content/fibre-optics.js"></script>
+<script src="content/laser-principles.js"></script>
+<script src="content/laser-families.js"></script>
+<script src="content/gaussian-beams.js"></script>
+<script src="content/beam-shaping.js"></script>
+<script src="content/eye-optics.js"></script>
+<script src="content/colour-science.js"></script>
+<script src="content/refractive-errors.js"></script>
+<script src="content/optometry-methods.js"></script>
+<script src="content/spectacles-and-contact-lenses.js"></script>
+<script src="content/optical-instruments.js"></script>
+<script src="content/scanning-methods.js"></script>
+<script src="content/scanning-systems.js"></script>
+<script src="content/optical-metrology.js"></script>
+<script src="content/visual-illusions.js"></script>
+<script src="content/optical-phenomena.js"></script>
+<script src="content/understanding-optical-systems.js"></script>
+<script src="content/everyday-optical-systems.js"></script>
+<script src="content/industrial-and-scientific-systems.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/nature-of-light.js"></script>
+<script src="sims/reflection-and-mirrors.js"></script>
+<script src="sims/refraction-and-snell.js"></script>
+<script src="sims/thin-lenses.js"></script>
+<script src="sims/paraxial-systems.js"></script>
+<script src="sims/aberrations.js"></script>
+<script src="sims/correcting-aberrations.js"></script>
+<script src="sims/lens-design-forms.js"></script>
+<script src="sims/interference.js"></script>
+<script src="sims/diffraction.js"></script>
+<script src="sims/polarization.js"></script>
+<script src="sims/optical-materials.js"></script>
+<script src="sims/coatings-and-filters.js"></script>
+<script src="sims/optical-components.js"></script>
+<script src="sims/camera-basics.js"></script>
+<script src="sims/image-sensors.js"></script>
+<script src="sims/field-focus-and-zoom.js"></script>
+<script src="sims/lens-mounts.js"></script>
+<script src="sims/image-quality-and-mtf.js"></script>
+<script src="sims/machine-vision.js"></script>
+<script src="sims/radiometry-and-photometry.js"></script>
+<script src="sims/lamp-families.js"></script>
+<script src="sims/illumination-design.js"></script>
+<script src="sims/fibre-optics.js"></script>
+<script src="sims/laser-principles.js"></script>
+<script src="sims/laser-families.js"></script>
+<script src="sims/gaussian-beams.js"></script>
+<script src="sims/beam-shaping.js"></script>
+<script src="sims/eye-optics.js"></script>
+<script src="sims/colour-science.js"></script>
+<script src="sims/refractive-errors.js"></script>
+<script src="sims/optometry-methods.js"></script>
+<script src="sims/spectacles-and-contact-lenses.js"></script>
+<script src="sims/optical-instruments.js"></script>
+<script src="sims/scanning-methods.js"></script>
+<script src="sims/scanning-systems.js"></script>
+<script src="sims/optical-metrology.js"></script>
+<script src="sims/visual-illusions.js"></script>
+<script src="sims/optical-phenomena.js"></script>
+<script src="sims/understanding-optical-systems.js"></script>
+<script src="sims/everyday-optical-systems.js"></script>
+<script src="sims/industrial-and-scientific-systems.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+<script src="../HYPER-FEYNMAN/catalog.js"></script>
+<script src="../HYPER-MOTORS/catalog.js"></script>
+<script src="../HYPER-ERGONOMICS/catalog.js"></script>
+<script src="../HYPER-PROJECTIONS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims|constructions)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'optics' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

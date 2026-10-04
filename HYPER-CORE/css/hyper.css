@@ -810,6 +810,31 @@ canvas.iconarr, .mextra canvas { display: block; }
 .tgh { margin: 20px 0 10px; font: 650 18px var(--font-display); scroll-margin-top: 70px; }
 .srcs h3 { color: var(--accent); }
 .srcs li::before { content: "¶"; position: absolute; left: 6px; top: 5px; color: var(--accent); }
+/* the terms a page defines, and the dictionary that gathers them (Optics) */
+.tbox h3 { color: var(--bc, var(--accent)); }
+.tdl { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px 22px; margin: 0 0 10px; }
+.tdl dt { font-weight: 650; }
+.tdl .aka, .dict-e .aka { font-weight: 400; color: var(--muted); font-size: 12.5px; margin-left: 5px; }
+.tdl dd { margin: 2px 0 0; color: var(--text2); font-size: 14px; line-height: 1.5; }
+.tbox { scroll-margin-top: 80px; }
+.dict-letters { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 4px; }
+.dict-letters a { min-width: 28px; text-align: center; padding: 3px 6px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); font-weight: 600; font-size: 13.5px; }
+.dict-letters a:hover { text-decoration: none; border-color: var(--accent); color: var(--text); }
+.dict-letters a.off { opacity: .35; pointer-events: none; }
+.dict-h { margin: 22px 0 8px; font: 700 22px var(--font-display); color: var(--accent); scroll-margin-top: 70px; }
+.dict-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+.dict-e { border: 1px solid var(--border); border-left: 3px solid var(--bc, var(--accent)); border-radius: 10px; padding: 9px 12px; background: var(--surface); font-size: 14px; line-height: 1.5; }
+.dict-e b { font-weight: 650; font-size: 15px; }
+.dict-e p { margin: 3px 0 4px; color: var(--text2); }
+.dict-e a { font-size: 12.5px; }
+/* the labs of Hyper Optics share the two-column layout of the projection labs (.pjlab); small extras */
+.oplab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; align-items: start; }
+.optable { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.optable th, .optable td { padding: 5px 8px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.optable th { color: var(--muted); font-weight: 600; font-size: 12.5px; position: sticky; top: 0; background: var(--surface); }
+.optable td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.optable tr.hl td { background: var(--accent-bg); }
+.opsw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--border); }
 /* recommended ranges (Ergonomics) and choosing for an application (Motors) */
 .rbox h3 { color: var(--bc, var(--accent)); }
 .rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }

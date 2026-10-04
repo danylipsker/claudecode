@@ -39,7 +39,8 @@
     feynman:     { id: 'feynman',     title: 'Hyper Feynman',     short: 'Feynman',     folder: 'HYPER-FEYNMAN',     hue: 22,  ready: true, sourcesTitle: 'Where Feynman tells it' },
     motors:      { id: 'motors',      title: 'Hyper Motors',      short: 'Motors',      folder: 'HYPER-MOTORS',      hue: 248, ready: true, sourcesTitle: 'Standards and further reading' },
     ergonomics:  { id: 'ergonomics',  title: 'Hyper Ergonomics',  short: 'Ergonomics',  folder: 'HYPER-ERGONOMICS',  hue: 62,  ready: true, sourcesTitle: 'Standards and data sources' },
-    projections: { id: 'projections', title: 'Hyper Projections', short: 'Projections', folder: 'HYPER-PROJECTIONS', hue: 205, ready: true, sourcesTitle: 'Sources and further reading' }
+    projections: { id: 'projections', title: 'Hyper Projections', short: 'Projections', folder: 'HYPER-PROJECTIONS', hue: 205, ready: true, sourcesTitle: 'Sources and further reading' },
+    optics:      { id: 'optics',      title: 'Hyper Optics',      short: 'Optics',      folder: 'HYPER-OPTICS',      hue: 183, ready: true, sourcesTitle: 'Sources and further reading' }
   };
 
   H.use = function (id) {
@@ -50,7 +51,7 @@
   };
 
   const ARRAYS = ['prereq', 'related', 'keywords', 'formulas', 'examples', 'quiz',
-                  'problems', 'ideas', 'pitfalls', 'applications', 'sources', 'ranges'];
+                  'problems', 'ideas', 'pitfalls', 'applications', 'sources', 'ranges', 'terms'];
 
   /* Register concept nodes. Accepts nodes, arrays of nodes, or both. */
   H.add = function () {
@@ -70,6 +71,8 @@
       n.constructions = normSims(n.construction);
       // choosing for an application (Hyper Motors): { good: [...], avoid: [...], check: [...] }
       if (n.choose) for (const k of ['good', 'avoid', 'check']) n.choose[k] = n.choose[k] == null ? [] : Array.isArray(n.choose[k]) ? n.choose[k] : [n.choose[k]];
+      // the vocabulary a page introduces (Hyper Optics): { term, also: [...], def }, gathered into the dictionary
+      n.terms = n.terms.map(t => typeof t === 'string' ? { term: t, also: [], def: '' } : Object.assign({}, t, { also: t.also == null ? [] : Array.isArray(t.also) ? t.also : [t.also] }));
       n.level = n.level || 1;
       H.nodes.set(n.id, n);
       H.list.push(n);
@@ -229,6 +232,14 @@
       out.push(x);
     })(id);
     return out;
+  };
+
+  /* Every term the concepts define, A to Z: [{ term, also, def, id (concept), title, hue }] */
+  H.allTerms = function () {
+    const out = [];
+    for (const n of H.list) for (const t of (n.terms || [])) out.push({ term: t.term, also: t.also || [], def: t.def || '', id: n.id, title: n.title, hue: n.hue, branch: n.branch });
+    const key = s => String(s).toLowerCase().replace(/^[^a-z0-9]+/, '');
+    return out.sort((a, b) => key(a.term).localeCompare(key(b.term)));
   };
 
   /* A round spacing for about n grid lines across a span: 1, 2 or 5 times a power of ten */

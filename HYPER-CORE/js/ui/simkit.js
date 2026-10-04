@@ -318,6 +318,8 @@
     world: H.world,                 // simplified coastlines, lakes and cities (geodata.js)
     sky: H.sky,                     // time, celestial coordinates, Sun, Moon, planets, rise and set, stars and constellations (celestial.js)
     construct: H.construct,         // the ruler-and-compass construction kit and its SVG renderer (construct.js)
+    optics: H.optics,               // materials, Snell and Fresnel, ray tracing through lens systems, thin films, diffraction, MTF, beams, lasers, polarisation, colour, cameras, the eye, scanners, fibres (optics*.js)
+    osym: H.osym,                   // drawing optics: lenses, mirrors, prisms, rays by wavelength, beams, waves, spectra, fringes (opticsym.js)
     terms: tex => H.termChips ? H.termChips(tex) : '',   // chips of the math terms in a TeX string, which open their glossary cards (glossary.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),

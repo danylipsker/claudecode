@@ -72,8 +72,8 @@
     ui.setTitle('Tools');
     const disc = H.discipline ? H.discipline.id : '';
     const chemApp = disc === 'chemistry', moneyApp = disc === 'finance', medApp = disc === 'medicine';
-    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology', feynApp = disc === 'feynman', motorApp = disc === 'motors', ergoApp = disc === 'ergonomics', projApp = disc === 'projections';
-    const tab = parts[0] || (chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : feynApp ? 'arrows' : motorApp ? 'motorlab' : ergoApp ? 'bodysize' : projApp ? 'projlab' : 'plot');
+    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology', feynApp = disc === 'feynman', motorApp = disc === 'motors', ergoApp = disc === 'ergonomics', projApp = disc === 'projections', optApp = disc === 'optics';
+    const tab = parts[0] || (optApp ? 'bench' :chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : feynApp ? 'arrows' : motorApp ? 'motorlab' : ergoApp ? 'bodysize' : projApp ? 'projlab' : 'plot');
     const common = [['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['constants', 'Constants'], ['symbols', 'Symbols'], ['az', 'Index A–Z']];
     const tabs = moneyApp
       ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
@@ -88,6 +88,7 @@
       : motorApp ? [['motorlab', 'Motor lab'], ['sizing', 'Sizing & selection'], ['wiring', 'Wiring diagrams'], ['drives', 'Drives & signals']].concat(common)
       : ergoApp ? [['bodysize', 'Body sizes'], ['workstation', 'Workstation fitter'], ['lifting', 'Lifting (NIOSH)'], ['environment', 'Noise, vibration & climate'], ['ranges', 'Dimension finder']].concat(common)
       : projApp ? [['projlab', 'Projection lab'], ['perspective', 'Perspective lab'], ['maplab', 'Map lab'], ['skylab', 'Sky lab'], ['constructions', 'Constructions']].concat(common)
+      : optApp ? [['bench', 'Ray bench'], ['lenslab', 'Lens lab'], ['camera', 'Camera & lens'], ['coatings', 'Coatings & glass'], ['colour', 'Colour lab'], ['eyelab', 'Eye & glasses'], ['beams', 'Lasers & beams'], ['illusions', 'Illusions'], ['dictionary', 'Optics dictionary']].concat(common)
       : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
         .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
         .concat([['symbols', 'Symbols'], ['az', 'Index A–Z']]);
@@ -106,13 +107,15 @@
     const mo = k => (e, p) => H.motorTools ? H.motorTools[k](e, p, parts[1]) : plotter(e, p);
     const eg = k => (e, p) => H.ergoTools ? H.ergoTools[k](e, p, parts[1]) : plotter(e, p);
     const pj = k => (e, p) => H.projTools ? H.projTools[k](e, p, parts[1]) : plotter(e, p);
+    const op = k => (e, p) => H.opticsTools && H.opticsTools[k] ? H.opticsTools[k](e, p, parts[1]) : (e.innerHTML = '<p class="muted">This tool is not loaded.</p>');
     const terms = (e, p) => H.termsTool ? H.termsTool(e, p, parts[1]) : plotter(e, p);
     ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical,
       airfoil: fl('airfoil'), flight: fl('flight'), hydro: fl('hydro'), fpower: fl('fpower'), pneu: fl('pneu'), iso: fl('iso'),
       pharmcalc: ph('pharmcalc'), formulation: ph('formulation'), pk: ph('pk'), sequence: bi('sequence'), genetics: bi('genetics'), cell: bi('cell'), terms,
       arrows: fy('arrows'), slits: fy('slits'), spacetime: fy('spacetime'), fields: fy('fields'), wells: fy('wells'),
       motorlab: mo('motorlab'), sizing: mo('sizing'), wiring: mo('wiring'), drives: mo('drives'), bodysize: eg('bodysize'), workstation: eg('workstation'), lifting: eg('lifting'), environment: eg('environment'), ranges: eg('ranges'),
-      projlab: pj('projlab'), perspective: pj('perspective'), maplab: pj('maplab'), skylab: pj('skylab'), constructions: pj('constructions') }[tab] || plotter)(el, params);
+      projlab: pj('projlab'), perspective: pj('perspective'), maplab: pj('maplab'), skylab: pj('skylab'), constructions: pj('constructions'),
+      bench: op('bench'), lenslab: op('lenslab'), camera: op('camera'), coatings: op('coatings'), colour: op('colour'), eyelab: op('eyelab'), beams: op('beams'), illusions: op('illusions'), dictionary: op('dictionary') }[tab] || plotter)(el, params);
   };
 
   /* ---------------------------------------------------------------- periodic table */

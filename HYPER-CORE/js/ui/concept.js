@@ -112,6 +112,13 @@
       col('good', 'A good choice for', c.good) + col('avoid', 'Think twice for', c.avoid) + col('check', 'Check before you choose', c.check) + '</div></div>';
   }
 
+  /* the vocabulary a page introduces (Hyper Optics): { term, also: [...], def } */
+  function termsBox(ts) {
+    return '<div class="boxy tbox mt" id="s-terms"><h3>' + H.icon('book', 16) + 'Terms on this page</h3><dl class="tdl">' + ts.map(t =>
+      '<div><dt>' + H.inline(t.term || '') + (t.also.length ? ' <span class="aka">' + t.also.map(a => H.inline(a)).join(' · ') + '</span>' : '') + '</dt><dd>' + H.inline(t.def || '') + '</dd></div>').join('') +
+      '</dl><div class="small"><a href="#/tools/dictionary">The whole dictionary, A to Z</a></div></div>';
+  }
+
   function kidCard(id) {
     const n = H.nodes.get(id);
     const isC = n.kind === 'concept';
@@ -143,7 +150,7 @@
     const branch = n.branch && n.branch !== id ? H.nodes.get(n.branch) : null;
     const hasPractice = n.quiz.length || fs.length || n.problems.length;
     const kids = n.children;
-    const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history || n.sources.length || n.ranges.length || n.choose);
+    const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history || n.sources.length || n.ranges.length || n.choose || n.terms.length);
     const sections = [
       ['understand', 'Understand', hasU],
       ['contents', 'Contents', kids.length > 0, kids.length],
@@ -172,6 +179,7 @@
           (n.ideas.length ? '<div class="boxy ideas"><h3>' + H.icon('check', 16) + 'Key ideas</h3><ul>' + n.ideas.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '') +
           (n.pitfalls.length ? '<div class="boxy pits"><h3>' + H.icon('info', 16) + 'Common mix-ups</h3><ul>' + n.pitfalls.map(pitfall).join('') + '</ul></div>' : '') +
         '</div>' : '') +
+        (n.terms.length ? termsBox(n.terms) : '') +
         (n.ranges.length ? rangesBox(n.ranges) : '') +
         (n.choose ? chooseBox(n.choose) : '') +
         (n.derivation ? derivation(n.derivation) : '') +
