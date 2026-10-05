@@ -2,6 +2,9 @@
  *
  *   node HYPER-CORE/tools/compile-esp32.js [--work <dir>] [--only topic[,topic]] [--jobs 6] [--limit n] [--failed] [--list]
  *                                          [--report [file.md]] [--report-only [file.md]]     (default HYPER-ESP32/COMPILED.md)
+ *                                          [--sketchbook <dir>]   build against <dir>/libraries instead of the configured sketchbook
+ *                                          [--data <dir>]         use the cores installed in that Arduino data folder
+ *                                          [--libraries <dir>,…]  more folders of libraries, beside the sketchbook's
  *
  * Every `code[].cpp` of every concept is written out as a sketch and built with `arduino-cli compile` for the chip the
  * program is meant for (read from its `needs`, `about` and title; the original ESP32 when nothing is said). Nothing is
@@ -26,6 +29,13 @@ const work = path.resolve(String(opt('work', path.join(os.tmpdir(), 'hyper-esp32
 const only = opt('only', null) ? new Set(String(opt('only')).split(',')) : null;
 const jobs = Math.max(1, +opt('jobs', 6) || 6);
 const limit = +opt('limit', 0) || 0;
+// --sketchbook <dir>: use that folder's libraries/ instead of the sketchbook arduino-cli is set up with (the setting itself is not touched)
+const sketchbook = typeof opt('sketchbook', null) === 'string' ? path.resolve(String(opt('sketchbook'))) : null;
+// --libraries <dir>[,<dir>]: more folders of libraries, beside the sketchbook's own
+const moreLibs = typeof opt('libraries', null) === 'string' ? String(opt('libraries')).split(',').map(d => path.resolve(d)).filter(d => fs.existsSync(d)) : [];
+// --data <dir>: use the cores and tools installed in that Arduino data folder (another version of the ESP32 core, say)
+const dataDir = typeof opt('data', null) === 'string' ? path.resolve(String(opt('data'))) : null;
+const cliEnv = Object.assign({}, process.env, sketchbook ? { ARDUINO_DIRECTORIES_USER: sketchbook } : {}, dataDir ? { ARDUINO_DIRECTORIES_DATA: dataDir } : {});
 
 /* ---------------------------------------------------------------- the compiler */
 function findCli() {
@@ -50,13 +60,15 @@ if (!CLI) { console.log('arduino-cli not found (install the Arduino IDE or set A
  * sketchbook is changed. */
 function libraryIndex() {
   let dir = '';
-  try { dir = (spawnSync(CLI, ['config', 'get', 'directories.user'], { encoding: 'utf8' }).stdout || '').trim(); } catch (e) { /* none */ }
+  if (sketchbook) dir = sketchbook;
+  else try { dir = (spawnSync(CLI, ['config', 'get', 'directories.user'], { encoding: 'utf8' }).stdout || '').trim(); } catch (e) { /* none */ }
   dir = dir ? path.join(dir, 'libraries') : '';
   const byHeader = {};
-  if (!dir || !fs.existsSync(dir)) return byHeader;
+  const dirs = (dir && fs.existsSync(dir) ? [dir] : []).concat(moreLibs);
+  if (!dirs.length) return byHeader;
   const key = v => v.split('.').map(x => String(parseInt(x, 10) || 0).padStart(5, '0')).join('.');
-  for (const name of fs.readdirSync(dir)) {
-    const root = path.join(dir, name);
+  for (const [name, base] of dirs.flatMap(d => fs.readdirSync(d).map(n => [n, d]))) {
+    const root = path.join(base, name);
     let headers = [];
     try {
       if (!fs.statSync(root).isDirectory()) continue;
@@ -74,7 +86,7 @@ function libraryIndex() {
 const LIBINDEX = libraryIndex();
 
 /* the core installed here, and the calls that came with a later one: a program that uses them is right, but cannot be built here */
-const CORE_VERSION = (/esp32:esp32\s+(\S+)/.exec(spawnSync(CLI, ['core', 'list'], { encoding: 'utf8' }).stdout || '') || [])[1] || '0';
+const CORE_VERSION = (/esp32:esp32\s+(\S+)/.exec(spawnSync(CLI, ['core', 'list'], { encoding: 'utf8', env: cliEnv }).stdout || '') || [])[1] || '0';
 const NEWER = [[/matterWaitUntilReady|matterRestartIfNoFabric|useBuiltinCACertBundle/, '3.3.12']];
 const olderThan = (a, b) => { const x = a.split('.').map(Number), y = b.split('.').map(Number); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) < (y[i] || 0); return false; };
 /* the library folders to name for one program: for each header it includes (and those headers include, three deep) that
@@ -168,17 +180,17 @@ function fqbnOf(key, src) {
   return base + (o.length ? ':' + o.join(',') : '');
 }
 
-const progs = [];
+const allProgs = [];                 // every program (the report covers them all); progs = the ones this run is about
 for (const node of H.list) {
   if (!node.code || !node.code.length) continue;
   const topic = fileOf[node.id] || node.parent;
-  if (only && !only.has(topic) && !only.has(node.id)) continue;
   node.code.forEach((entry, i) => {
     if (!entry.cpp) return;
     const src = H.code.dedent(entry.cpp);
-    progs.push({ id: node.id + '#' + (i + 1), topic, title: entry.title || node.title, src, targets: targetsOf(Object.assign({}, entry, { cpp: src }), node) });
+    allProgs.push({ id: node.id + '#' + (i + 1), topic, title: entry.title || node.title, src, targets: targetsOf(Object.assign({}, entry, { cpp: src }), node) });
   });
 }
+const progs = only ? allProgs.filter(p => only.has(p.topic) || only.has(p.id.replace(/#\d+$/, ''))) : allProgs;
 const resFile = path.join(work, 'results.json');
 let previous = {};
 try { previous = JSON.parse(fs.readFileSync(resFile, 'utf8')); } catch (e) { /* first run */ }
@@ -192,10 +204,11 @@ function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^=
 
 /* ---------------------------------------------------------------- the report: --report <file.md> (after a run), --report-only (from the last results) */
 function writeReport(results, file) {
-  const core = spawnSync(CLI, ['core', 'list'], { encoding: 'utf8' }).stdout || '';
-  const coreV = (/esp32:esp32\s+(\S+)/.exec(core) || [])[1] || '?';
+  const tally = {};
+  for (const p of allProgs) { const r = results[p.id]; if (r && r.status === 'ok') tally[r.core || CORE_VERSION] = (tally[r.core || CORE_VERSION] || 0) + 1; }
+  const coreV = (Object.entries(tally).sort((a, b) => b[1] - a[1])[0] || [CORE_VERSION])[0];
   const cliV = ((spawnSync(CLI, ['version'], { encoding: 'utf8' }).stdout || '').match(/Version:\s*(\S+)/) || [])[1] || '?';
-  const rows = progs.map(p => Object.assign({ id: p.id, stale: results[p.id] && results[p.id].src !== hash(p.src) }, results[p.id] || { status: 'none' }));
+  const rows = allProgs.map(p => Object.assign({ id: p.id, stale: results[p.id] && results[p.id].src !== hash(p.src) }, results[p.id] || { status: 'none' }));
   const by = s => rows.filter(r => r.status === s && !r.stale);
   const needCore = by('core');
   const ok = by('ok'), lib = by('lib'), skip = by('skip'), fail = by('fail'), none = rows.filter(r => r.status === 'none' || r.stale);
@@ -210,14 +223,16 @@ function writeReport(results, file) {
     'Every Arduino C++ program of the pages was built for the chip it is written for. A build proves that the program is\nvalid C++ against that version of the core and the libraries installed on the machine; it does not prove that it does\nwhat the page says — nothing here was run on hardware. MicroPython programs are only parsed, and block programs are\nchecked by the validator.\n\n' +
     '| | Programs |\n|---|---|\n| Arduino C++ programs | ' + rows.length + ' |\n| **Built without error** | **' + ok.length + '** |\n' +
     '| … of those, only with the large app partition (Tools → Partition Scheme → Huge APP) | ' + ok.filter(r => r.note && !r.part).length + ' |\n| … of those, one part of a sketch whose other part is on another page (compiled, not linked) | ' + ok.filter(r => r.part).length + ' |\n' +
-    '| Need a library that was not installed on that machine (not built) | ' + lib.length + ' |\n| Use a call of a newer core than the one installed (not built) | ' + needCore.length + ' |\n| Written for a board outside the ESP32 core (not built) | ' + skip.length + ' |\n' +
+    '| Need a library that was not installed on that machine (not built) | ' + lib.length + ' |\n| Use a call of a newer core than the one installed (not built) | ' + needCore.length + ' |\n| Written for another board, or needing a file of your own (not built) | ' + skip.length + ' |\n' +
     '| Failed to build | ' + fail.length + ' |\n' + (none.length ? '| Not compiled since they were last changed | ' + none.length + ' |\n' : '') +
     '\nBuilt for: ' + Object.entries(boards).sort((a, b) => b[1] - a[1]).map(([k, n]) => (names[k] || k) + ' ' + n).join(', ') + '.\n';
   if (fail.length) md += '\n## Failed to build\n\n' + table(fail, 'Compiler says');
   if (lib.length) md += '\n## Not built: the library is not installed\n\nInstall the library named on the page (Sketch → Include Library → Manage Libraries) and they can be built the same way.\n\n' + table(lib, 'Missing header');
   if (needCore.length) md += '\n## Not built: they need a newer core\n\nUpdate the "esp32 by Espressif Systems" package in the Boards Manager and they can be built the same way.\n\n' + table(needCore, 'Why');
-  if (skip.length) md += '\n## Not built: another board\n\n' + table(skip, 'Why');
+  if (skip.length) md += '\n## Not built: another board, or a file of your own\n\n' + table(skip, 'Why');
   if (ok.some(r => r.note && !r.part)) md += '\n## Built, but only with a larger app partition\n\n' + table(ok.filter(r => r.note && !r.part), 'Note');
+  const other = ok.filter(r => r.core && r.core !== coreV);
+  if (other.length) md += '\n## Built with another version of the core\n\nThe library these use, as installed on that machine, does not build with core ' + coreV + '; they were built with the version named.\n\n' + table(other.map(r => Object.assign({}, r, { why: 'built with the Arduino core ' + r.core })), 'Note');
   if (ok.some(r => r.part)) md += '\n## Compiled as one part of a sketch\n\n' + table(ok.filter(r => r.part), 'Note');
   if (none.length) md += '\n## Not compiled since their last change\n\n' + none.map(r => '`' + r.id + '`').join(', ') + '\n';
   fs.writeFileSync(file, md);
@@ -227,7 +242,7 @@ if (opt('report-only', false)) { writeReport(previous, path.resolve(typeof opt('
 
 /* ---------------------------------------------------------------- compiling */
 fs.mkdirSync(work, { recursive: true });
-const env = Object.assign({}, process.env, { ARDUINO_BUILD_CACHE_PATH: path.join(work, 'cache') });
+const env = Object.assign({}, cliEnv, { ARDUINO_BUILD_CACHE_PATH: path.join(work, 'cache') });
 function compile(worker, p, key, extra) {
   return new Promise(resolve => {
     let fqbn = fqbnOf(key, p.src);
@@ -237,6 +252,7 @@ function compile(worker, p, key, extra) {
     fs.mkdirSync(sk, { recursive: true });
     fs.writeFileSync(ino, p.src + '\n');
     const extraArgs = [];
+    for (const d of moreLibs) extraArgs.push('--libraries', d);
     for (const l of librariesFor(p.src)) extraArgs.push('--library', l);
     // LVGL wants an lv_conf.h beside its folder; without one, build it on its defaults (and with its TFT_eSPI driver when the program uses it)
     // (flags go through the ESP32 core's own mechanism: a build_opt.h file in the sketch folder)
@@ -253,16 +269,20 @@ function compile(worker, p, key, extra) {
     const child = spawn(CLI, ['compile', '--fqbn', fqbn, '--build-path', path.join(work, 'w' + worker, 'build_' + key + (fqbn.split(':').length > 3 ? '_' + hash(fqbn) : '')), '--warnings', 'none', '--no-color', '--jobs', '4'].concat(extraArgs, [sk]), { env });
     let out = '';
     child.stdout.on('data', d => { out += d; }); child.stderr.on('data', d => { out += d; });
-    const timer = setTimeout(() => { try { child.kill(); } catch (e) { /* gone */ } }, 15 * 60 * 1000);
+    const timer = setTimeout(() => { try { child.kill(); } catch (e) { /* gone */ } }, 45 * 60 * 1000);                  // (a big audio or GUI library alone can take a quarter of an hour)
     child.on('close', code => {
       clearTimeout(timer);
       if (code === 0) return resolve({ status: 'ok', board: key });
+      if (code === null) return resolve({ status: 'fail', board: key, why: 'the build did not finish in 45 minutes and was stopped' });
       const lines = out.split(/\r?\n/);
       // a library that is installed but whose files cannot be opened (cloud-only copies in a synchronised folder)
       const locked = /error: [^\n]*[\\/]libraries[\\/]([^\\/\n]+)[\\/][^\n:]*: (?:Invalid argument|Permission denied)/.exec(out);
       if (locked) return resolve({ status: 'lib', board: key, why: 'the library "' + locked[1] + '" is installed but its files cannot be read on this machine' });
       const newer = NEWER.find(([re, v]) => re.test(out) && olderThan(CORE_VERSION, v));
       if (newer && /was not declared|has no member|not a member/.test(out)) return resolve({ status: 'core', board: key, why: 'uses ' + (newer[0].exec(out) || [''])[0] + '(): needs the Arduino core ' + newer[1] + ' or later (installed here: ' + CORE_VERSION + ')' });
+      // a header no library provides: the reader's own trained model, exported for their project
+      const own = /fatal error: ((?:model_data|model|\w+_inferencing)\.h): No such file or directory/.exec(out);
+      if (own) return resolve({ status: 'skip', board: key, why: 'includes ' + own[1] + ', a file of the reader\'s own (the model exported for their project)' });
       const miss = /fatal error: ([^\s:]+): No such file or directory/.exec(out);
       if (miss) return resolve({ status: 'lib', board: key, why: 'library not installed: ' + miss[1] });
       // a page that shows one part of a sketch declares the function another page defines (void start_display();): it compiles, and
@@ -296,7 +316,7 @@ async function build(worker, p) {
       r = r2.status === 'ok' ? { status: 'ok', board: key, note: 'needs a larger app partition (Tools > Partition Scheme > Huge APP)' }
         : r2.status === 'big' ? { status: 'fail', board: key, why: 'too big even for the Huge APP partition scheme' } : r2;
     }
-    if (r.status === 'ok' || r.status === 'lib' || r.status === 'core') return r;
+    if (r.status === 'ok' || r.status === 'lib' || r.status === 'core' || (r.status === 'skip' && /reader/.test(r.why || ''))) return r;
     if (r.status === 'fail') { if (!last || last.status === 'skip') last = r; else last.also = (last.also || '') + ' · on ' + key + ': ' + r.why.slice(0, 160); }
     else if (!last) last = r;
     // a failure that has nothing to do with the chip is not retried on another chip
@@ -330,7 +350,7 @@ async function build(worker, p) {
     while (q.length) {
       const p = q.shift();
       const r = await build(w, p);
-      results[p.id] = Object.assign({ src: hash(p.src), topic: p.topic, title: p.title }, r);
+      results[p.id] = Object.assign({ src: hash(p.src), topic: p.topic, title: p.title, core: CORE_VERSION }, r);
       done++;
       if (r.status !== 'ok') console.log((r.status === 'fail' ? 'FAIL ' : r.status === 'core' ? 'core ' : r.status === 'lib' ? 'lib  ' : 'skip ') + p.id + ' [' + (r.board || '-') + '] ' + String(r.why || '').slice(0, 300));
       fs.writeFileSync(resFile, JSON.stringify(results, null, 1));

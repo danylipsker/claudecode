@@ -2497,3 +2497,11 @@ ESP-IDF names (6.x): legacy `driver/adc.h`, `timer.h`, `i2s.h`, `rmt.h`, `pcnt.h
   and `client.setCACertBundle(ca_bundle_start, ca_bundle_end - ca_bundle_start);`.
 - **Matter helpers**: `matterWaitUntilReady()` and `matterRestartIfNoFabric()` (MatterHelpers.h) exist from core 3.3.12;
   a page that uses them says "core 3.3.12 or later" in `needs`.
+- **Arduino_GFX and the core version** (built both ways): GFX Library for Arduino 1.6.4 builds with the Arduino core
+  3.3.3 and fails with 3.3.7 (`spiFrequencyToClockDiv` gained a first argument in the core); the library's current
+  release has both forms. A page that uses the library tells the reader to keep it up to date.
+- **MAX7219 on an ESP32**: the LedControl library includes `avr/pgmspace.h` and does not compile for the ESP32. Write
+  the chip's registers over SPI (two bytes: register, value) or use MD_MAX72XX / MD_Parola for matrices.
+- **A global named `bars`** (and other short, common names) can collide with a symbol inside the Wi-Fi libraries at
+  link time ("multiple definition"): give globals specific names or make them `static`.
+- **Big libraries need the Huge APP partition scheme**: an internet radio with ESP32-audioI2S is about 1.9 MB.

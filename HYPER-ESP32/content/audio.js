@@ -1033,7 +1033,7 @@ Many stations interleave **metadata** into the stream when asked: the request ca
     {
       title: 'Play an internet radio station',
       about: 'Connects to Wi-Fi, turns Wi-Fi power saving off and plays an MP3 or AAC stream through an I2S amplifier. Put the address of a stream you are allowed to use in STREAM; the one below is a placeholder.',
-      needs: 'An ESP32 with PSRAM (or an ESP32-S3), a MAX98357A and a speaker. Install the ESP32-audioI2S library.',
+      needs: 'An ESP32 with PSRAM (or an ESP32-S3), a MAX98357A and a speaker. Install the ESP32-audioI2S library, and choose Tools → Partition Scheme → Huge APP: with its decoders the program is about 1.9 MB, more than the 1.3 MB of the default scheme.',
       wiring: [['GPIO27', 'amplifier BCLK'], ['GPIO25', 'amplifier LRC'], ['GPIO26', 'amplifier DIN'], ['5V', 'amplifier VIN'], ['GND', 'amplifier GND']],
       libs: ['ESP32-audioI2S (schreibfaul1)'],
       blocks: `

@@ -574,7 +574,7 @@ The MAX7219 is specified for 4.0 to 5.5 V, and its datasheet asks for a logic hi
 
 ### Libraries and drivers
 
-For the TM1637 the usual Arduino library is TM1637Display (\`showNumberDec\`, \`showNumberDecEx\`, \`setSegments\`, \`setBrightness\`). For the MAX7219, LedControl handles digits and single LEDs; MD_MAX72XX and MD_Parola handle matrices and text ([[led-matrices]]). MicroPython has no built-in driver for either. The MAX7219 is easy to drive directly, as the second program shows; the TM1637 needs a small driver file copied to the board.
+For the TM1637 the usual Arduino library is TM1637Display (\`showNumberDec\`, \`showNumberDecEx\`, \`setSegments\`, \`setBrightness\`). For the MAX7219, MD_MAX72XX and MD_Parola handle matrices and text ([[led-matrices]]). LedControl, the library of most older tutorials, was written for AVR boards and does not compile for the ESP32 as published. MicroPython has no built-in driver for either chip. The MAX7219 is easy to drive directly, as the second program shows in all three languages; the TM1637 needs a small driver file copied to the board.
 
 > [!key] Driver chips scan the digits for you: the TM1637 on two wires, the MAX7219 on three, with chaining, decode mode and 16 brightness steps. Both keep displaying while your program does something else. Check the MAX7219's logic level on a 3.3 V ESP.`,
   ideas: [
@@ -670,10 +670,10 @@ For the TM1637 the usual Arduino library is TM1637Display (\`showNumberDec\`, \`
     },
     {
       title: 'An eight-digit MAX7219 counter',
-      about: 'A number counts up ten times a second on an eight-digit module. Leading zeros are blanked. The Arduino version uses the LedControl library; the MicroPython version writes the 16-bit words itself, which shows what the library does.',
+      about: 'A number counts up ten times a second on an eight-digit module. Leading zeros are blanked. All three versions write the chip\'s 16-bit words themselves over SPI: a register address, then its value.',
       needs: 'An ESP32 DevKit, an eight-digit MAX7219 seven-segment module and a 5 V supply for it (a level shifter on the three signal lines is the sound design).',
       wiring: [['GPIO23', 'DIN'], ['GPIO18', 'CLK'], ['GPIO27', 'CS (LOAD)'], ['5V', 'VCC', 'the display\'s own supply, ground shared with the ESP'], ['GND', 'GND']],
-      libs: ['LedControl (by Eberhard Fahle)'],
+      libs: ['None: the SPI library of the core is enough. (The well-known LedControl library includes an AVR-only header and does not build for the ESP32.)'],
       blocks: `
         when started
           start SPI on SCK (18) MOSI (23) chip select (27)
@@ -697,24 +697,36 @@ For the TM1637 the usual Arduino library is TM1637Display (\`showNumberDec\`, \`
         end
       `,
       cpp: String.raw`
-        #include <LedControl.h>
+        #include <SPI.h>
 
         const int DIN_PIN = 23, CLK_PIN = 18, CS_PIN = 27;
-        LedControl lc(DIN_PIN, CLK_PIN, CS_PIN, 1);     // one MAX7219 chip
+
+        void writeRegister(uint8_t reg, uint8_t value) {   // one 16-bit word: register address, then data
+          digitalWrite(CS_PIN, LOW);
+          SPI.transfer(reg);
+          SPI.transfer(value);
+          digitalWrite(CS_PIN, HIGH);                      // the rising edge latches the word
+        }
 
         uint32_t count = 0;
 
         void setup() {
-          lc.shutdown(0, false);              // wake the chip: it starts in shutdown
-          lc.setIntensity(0, 8);              // 0 to 15
-          lc.clearDisplay(0);
+          pinMode(CS_PIN, OUTPUT);
+          digitalWrite(CS_PIN, HIGH);
+          SPI.begin(CLK_PIN, -1, DIN_PIN);                 // clock, no input line, data out
+          SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
+          writeRegister(0x0C, 1);             // shutdown register: 1 = normal operation
+          writeRegister(0x0B, 7);             // scan limit: all eight digits
+          writeRegister(0x09, 0xFF);          // decode mode: numbers on all eight digits
+          writeRegister(0x0A, 8);             // intensity, 0 to 15
+          writeRegister(0x0F, 0);             // display test off
         }
 
         void loop() {
           uint32_t n = count;
-          for (int digit = 0; digit < 8; digit++) {          // digit 0 is the rightmost
-            if (n == 0 && digit > 0) lc.setChar(0, digit, ' ', false);   // blank leading zeros
-            else lc.setDigit(0, digit, n % 10, false);
+          for (int digit = 0; digit < 8; digit++) {          // register 1 is the rightmost digit
+            if (n == 0 && digit > 0) writeRegister(digit + 1, 0x0F);   // decode mode: 0x0F is blank
+            else writeRegister(digit + 1, n % 10);
             n /= 10;
           }
           count++;
@@ -751,7 +763,7 @@ For the TM1637 the usual Arduino library is TM1637Display (\`showNumberDec\`, \`
             count += 1
             time.sleep_ms(100)
       `,
-      notes: ['The module runs from 5 V. The MAX7219 asks for a logic high of 3.5 V at that supply, so 3.3 V signals from an ESP32 are out of specification even when they appear to work.', 'The Arduino version uses a table of its own and writes raw segments; the MicroPython version uses the chip\'s decode mode. The picture is the same.']
+      notes: ['The module runs from 5 V. The MAX7219 asks for a logic high of 3.5 V at that supply, so 3.3 V signals from an ESP32 are out of specification even when they appear to work.', 'All three versions use the chip\'s decode mode: you send the digit, and the chip knows its segments. Code 15 in that mode is a blank.', 'The clock is 1 MHz in SPI mode 0; the chip accepts up to 10 MHz.']
     }
   ],
   examples: [
@@ -777,7 +789,7 @@ For the TM1637 the usual Arduino library is TM1637Display (\`showNumberDec\`, \`
   sources: [
     'Titan Micro Electronics, *TM1637 datasheet*: command set, display register, timing.',
     'Analog Devices (Maxim Integrated), *MAX7219/MAX7221 datasheet*: register map, serial interface, RSET table.',
-    'The README files of the LedControl and TM1637Display Arduino libraries.'
+    'The README of the TM1637Display Arduino library: its calls and the segment order.'
   ],
   sim: { id: 'ad-mux', params: { scanner: 'chip' } }
 },
@@ -1283,7 +1295,7 @@ The simulation lets you draw a character, see its eight bytes and watch several 
         #include <LiquidCrystal_I2C.h>
 
         LiquidCrystal_I2C lcd(0x27, 16, 2);
-        uint8_t bars[5][8];                   // slot k holds a cell with k + 1 columns filled
+        uint8_t cells[5][8];                  // slot k holds a cell with k + 1 columns filled
 
         void setup() {
           Wire.begin(21, 22);
@@ -1291,8 +1303,8 @@ The simulation lets you draw a character, see its eight bytes and watch several 
           lcd.backlight();
           for (int k = 0; k < 5; k++) {
             uint8_t columns = (0x1F << (4 - k)) & 0x1F;   // k = 0: 10000, k = 4: 11111
-            for (int row = 0; row < 8; row++) bars[k][row] = columns;
-            lcd.createChar(k, bars[k]);
+            for (int row = 0; row < 8; row++) cells[k][row] = columns;
+            lcd.createChar(k, cells[k]);
           }
           lcd.setCursor(0, 0);                // after createChar: set the cursor before printing
           lcd.print("Progress");
@@ -1861,7 +1873,7 @@ Sixty-four LEDs wired as 8 rows by 8 columns need 16 lines, and the MAX7219 scan
 
 A classic font is 5 columns wide plus one blank column between letters: **6 columns per character**, so a 32-column sign holds five letters at once. To scroll, shift the picture one column left at each step and add the next column of the message on the right. The speed is columns per second. A 20-character message is 120 columns; at 40 ms per column it takes 4.8 s to pass.
 
-A byte per row is also a drawing: eight bytes are a picture, a smiley or an icon. In LedControl's convention the most significant bit of a row is the leftmost column.
+A byte per row is also a drawing: eight bytes are a picture, a smiley or an icon. In the convention used here the most significant bit of a row is the leftmost column.
 
 ### Brightness and current
 
@@ -1962,10 +1974,10 @@ Addressable RGB matrices (WS2812) use one data pin and full colour but 60 mA per
     },
     {
       title: 'Drawing one picture: a smiley',
-      about: 'Eight bytes, one per row, are a picture. The Arduino version uses LedControl; the MicroPython version writes the 16-bit words itself. The leftmost column is the most significant bit.',
+      about: 'Eight bytes, one per row, are a picture. All three versions write the chip\'s 16-bit words themselves over SPI. The leftmost column is the most significant bit.',
       needs: 'One 8 × 8 MAX7219 matrix module.',
       wiring: [['GPIO23', 'DIN'], ['GPIO18', 'CLK'], ['GPIO27', 'CS'], ['5V', 'VCC'], ['GND', 'GND']],
-      libs: ['LedControl (by Eberhard Fahle)'],
+      libs: ['None: the SPI library of the core is enough. (The well-known LedControl library includes an AVR-only header and does not build for the ESP32.)'],
       blocks: `
         when started
           start SPI on SCK (18) MOSI (23) chip select (27)
@@ -1978,9 +1990,9 @@ Addressable RGB matrices (WS2812) use one data pin and full colour but 60 mA per
           end
       `,
       cpp: String.raw`
-        #include <LedControl.h>
+        #include <SPI.h>
 
-        LedControl lc(23, 18, 27, 1);        // DIN, CLK, CS, number of modules
+        const int DIN_PIN = 23, CLK_PIN = 18, CS_PIN = 27;
 
         const uint8_t SMILEY[8] = {          // one byte per row, leftmost column = most significant bit
           0b00111100,
@@ -1993,11 +2005,24 @@ Addressable RGB matrices (WS2812) use one data pin and full colour but 60 mA per
           0b00111100
         };
 
+        void writeRegister(uint8_t reg, uint8_t value) {   // one 16-bit word: register address, then data
+          digitalWrite(CS_PIN, LOW);
+          SPI.transfer(reg);
+          SPI.transfer(value);
+          digitalWrite(CS_PIN, HIGH);                      // the rising edge latches the word
+        }
+
         void setup() {
-          lc.shutdown(0, false);             // wake the chip
-          lc.setIntensity(0, 4);             // 0 to 15
-          lc.clearDisplay(0);
-          for (int row = 0; row < 8; row++) lc.setRow(0, row, SMILEY[row]);
+          pinMode(CS_PIN, OUTPUT);
+          digitalWrite(CS_PIN, HIGH);
+          SPI.begin(CLK_PIN, -1, DIN_PIN);                 // clock, no input line, data out
+          SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
+          writeRegister(0x0C, 1);            // normal operation (the chip powers up in shutdown)
+          writeRegister(0x09, 0);            // no decode: each byte is a row of raw dots
+          writeRegister(0x0B, 7);            // scan all eight rows
+          writeRegister(0x0A, 4);            // intensity, 0 to 15
+          writeRegister(0x0F, 0);            // display test off
+          for (int row = 0; row < 8; row++) writeRegister(row + 1, SMILEY[row]);   // registers 1 to 8 are the rows
         }
 
         void loop() {}
@@ -2024,7 +2049,7 @@ Addressable RGB matrices (WS2812) use one data pin and full colour but 60 mA per
         for row, bits in enumerate(SMILEY):
             write(row + 1, bits)             # registers 1 to 8 are the rows
       `,
-      notes: ['Some modules are mirrored: the picture then comes out reversed left to right. Reverse the bits of each byte, or use the library\'s hardware type.', 'To animate, keep a list of pictures and write one every 200 ms with a non-blocking timer.']
+      notes: ['Some modules are mirrored: the picture then comes out reversed left to right. Reverse the bits of each byte (a matrix library does the same through its hardware type setting).', 'To animate, keep a list of pictures and write one every 200 ms with a non-blocking timer.']
     }
   ],
   examples: [
@@ -2049,8 +2074,7 @@ Addressable RGB matrices (WS2812) use one data pin and full colour but 60 mA per
   ],
   sources: [
     'Analog Devices (Maxim Integrated), *MAX7219/MAX7221 datasheet*: scan rate, intensity steps, RSET and the matrix data format.',
-    'The documentation of the MD_MAX72XX and MD_Parola Arduino libraries: hardware types and text effects.',
-    'The README of the LedControl library: setRow, setLed and the column order.'
+    'The documentation of the MD_MAX72XX and MD_Parola Arduino libraries: hardware types and text effects.'
   ],
   sim: 'ad-matrix'
 }
