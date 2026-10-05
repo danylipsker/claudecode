@@ -1031,6 +1031,30 @@ beams, waves, spectra, fringes), tested by `tools/test-optics.js`; the labs unde
 `tools/labtest.js`. New unit quantities: `luminance`, `efficacy`, `spatialfreq`, `angfreq`, `responsivity`,
 `lumexposure`, `fluence`, `radiance`, `radintensity`, `attenuation`, `prism`.
 
+### Hyper ESP32
+
+Espressif's microcontrollers and everything built on them — the chips with their virtues and limits, the boards
+of every maker, pins and power, components, programming, wired and wireless links, networks and the cloud,
+security, displays and touch GUIs, motion, sound and vision, instruments, and the way from an idea to a product.
+Its guide is **`HYPER-ESP32/AUTHORING.md`**, with **`HYPER-ESP32/API-CRIB.md`** for the exact API forms the
+programs use. Two things are new to the format. A concept may carry **`code: [{ title, about, needs, wiring,
+libs, blocks, cpp, py, idf, yaml, na, output, notes }]`**: one program shown as Scratch-style blocks, Arduino C++
+and MicroPython side by side (ESP-IDF C and ESPHome YAML where they help), each written in a `String.raw`
+template; `na: { py: 'why' }` says honestly that a language cannot do it. And bodies may hold fenced code
+(`~~~cpp … ~~~`), highlighted by `js/espcode.js`. Chip, pin and board facts are never written from memory: they
+are quoted from the catalogue (`js/esp32-chips.js`, `js/esp32-boards.js`, asked through `js/esp32.js` —
+`E.chip`, `E.pin`, `E.board`, the pin planner `E.planPins`, the project advisor `E.advise`). The engine is
+`js/esp32-calc.js` (`kit.esp`: PWM, ADC, batteries, radio links, channels, LoRa, bus signals as edge lists,
+CRCs, partitions, a scheduler, filters, PID, state machines that run and turn into code), `js/espgfx.js`
+(`kit.gfx`: frame buffers with a 5 × 7 font, a character LCD, seven-segment digits, widgets, touch mapping, a
+catalogue of display modules) and `js/espsym.js` (`kit.esym`: boards with their pins, parts, logic traces,
+packets, memory maps, network pictures, state diagrams), tested by `tools/test-esp32.js`; the labs under Tools
+are tested by `tools/labtest.js --app esp32`. The validator parses every block program, balances the brackets
+of the C++, warns on API forms that are out of date (`js/esp32-api.js`) and has a real Python parse the
+MicroPython (`--nopy` skips that); `tools/compile-esp32.js` builds every Arduino C++ program with arduino-cli where
+that and the ESP32 core are installed (see `HYPER-ESP32/COMPILED.md`). `tools/wire.js HYPER-ESP32` lists new content,
+simulation and lab files in `index.html`. References: the first blink, strapping pins, the ESP32-C3's page.
+
 ## Checking your work
 
 ```bash

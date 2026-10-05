@@ -11,6 +11,7 @@
  *   - bullet      1. numbered
  *   > [!tip] ...   > [!note] ...   > [!warn] ...   > [!key] ...   (callouts)
  *   | a | b |  tables, second line |---|---|
+ *   ~~~cpp … ~~~                        a program (cpp, python, yaml, json, sh, ini, blocks, text), highlighted by espcode.js
  *
  * Nothing here touches the DOM: text in, HTML string out.
  */
@@ -78,6 +79,18 @@
       let line = lines[i];
       const tr = line.trim();
       if (!tr) { flush(); continue; }
+      // a fenced program: ~~~cpp … ~~~ (or three backticks), highlighted by espcode.js when it is loaded
+      const fence = /^(~~~+|```+)\s*([\w+-]*)\s*$/.exec(tr);
+      if (fence) {
+        flush();
+        const buf = [];
+        let j = i + 1;
+        while (j < lines.length && !(lines[j].trim().startsWith(fence[1].slice(0, 3)) && /^(~~~+|```+)\s*$/.test(lines[j].trim()))) { buf.push(lines[j]); j++; }
+        i = j;
+        const code = buf.join('\n');
+        html += H.code ? H.code.pre(code, fence[2]) : '<pre class="code"><code>' + esc(code) + '</code></pre>';
+        continue;
+      }
       // display math block
       if (tr.startsWith('$$')) {
         flush();
@@ -167,7 +180,7 @@
   H.text = render;
   H.inline = inline;
   H.plain = function (s) {           // text for search indexes and tooltips
-    return String(s || '').replace(/\$\$?([^$]+)\$\$?/g, (m, x) => ' ' + x.replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}^_\\]/g, ' ') + ' ')
+    return String(s || '').replace(/^(~~~+|```+).*$/gm, ' ').replace(/\$\$?([^$]+)\$\$?/g, (m, x) => ' ' + x.replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}^_\\]/g, ' ') + ' ')
       .replace(/\[\[\?([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, l) => termLabel(id.trim(), l))
       .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, l) => l || (H.titleOf ? H.titleOf(id) : id))
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*`#>|]/g, '').replace(/\s+/g, ' ').trim();

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper ESP32</title>
+<meta name="description" content="Espressif's microcontrollers and everything built with them: every ESP chip with its virtues and limits, the boards of M5Stack, Seeed, Adafruit, LilyGO and the rest, pins and power, sensors and motors, Wi-Fi, Bluetooth, ESP-NOW, Zigbee, Thread and Matter, the cloud, security, displays and touch GUIs, state machines — every idea as a program in blocks, Arduino C++ and MicroPython, with a project advisor that picks the chip for your idea.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2.5' fill='%23e8483a' fill-opacity='.25' stroke='%23e8483a' stroke-width='2.2'/%3E%3Cpath d='M12 3v5M16 3v5M20 3v5M12 24v5M16 24v5M20 24v5M3 12h5M3 16h5M3 20h5M24 12h5M24 16h5M24 20h5' stroke='%23e8483a' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M12.5 18.5a5 5 0 0 1 7 0M14.3 20.3a2.4 2.4 0 0 1 3.4 0' fill='none' stroke='%23e8483a' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<link rel="stylesheet" href="../HYPER-CORE/css/esp32.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper ESP32 needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/espcode.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/motors.js"></script>
+<script src="../HYPER-CORE/js/esp32-calc.js"></script>
+<script src="../HYPER-CORE/js/esp32-chips.js"></script>
+<script src="../HYPER-CORE/js/esp32-boards.js"></script>
+<script src="../HYPER-CORE/js/esp32.js"></script>
+<script src="../HYPER-CORE/js/esp32-api.js"></script>
+<script src="../HYPER-CORE/js/espgfx.js"></script>
+<script src="../HYPER-CORE/js/espsym.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/espcode.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/esptools.js"></script>
+<script src="../HYPER-CORE/js/ui/esp-pinout.js"></script>
+<!-- labs -->
+<script src="../HYPER-CORE/js/ui/esp-blocks.js"></script>
+<script src="../HYPER-CORE/js/ui/esp-calc.js"></script>
+<script src="../HYPER-CORE/js/ui/esp-display.js"></script>
+<script src="../HYPER-CORE/js/ui/esp-fsm.js"></script>
+<script src="../HYPER-CORE/js/ui/esp-signals.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/the-esp-idea.js"></script>
+<script src="content/the-soc-series.js"></script>
+<script src="content/modules-and-packages.js"></script>
+<script src="content/inside-the-chip.js"></script>
+<script src="content/espressif-devkits.js"></script>
+<script src="content/m5stack-family.js"></script>
+<script src="content/seeed-and-small-boards.js"></script>
+<script src="content/maker-board-families.js"></script>
+<script src="content/specialised-boards.js"></script>
+<script src="content/chips-inside-products.js"></script>
+<script src="content/gpio-and-pinouts.js"></script>
+<script src="content/powering-the-esp.js"></script>
+<script src="content/sleep-and-low-power.js"></script>
+<script src="content/passive-components.js"></script>
+<script src="content/active-components.js"></script>
+<script src="content/human-inputs.js"></script>
+<script src="content/sensing-the-world.js"></script>
+<script src="content/measuring-electricity-and-force.js"></script>
+<script src="content/outputs-and-actuators.js"></script>
+<script src="content/toolchains-and-setup.js"></script>
+<script src="content/program-structure.js"></script>
+<script src="content/core-peripherals.js"></script>
+<script src="content/freertos-and-concurrency.js"></script>
+<script src="content/state-machines.js"></script>
+<script src="content/memory-and-storage.js"></script>
+<script src="content/debugging-and-testing.js"></script>
+<script src="content/uart-i2c-spi.js"></script>
+<script src="content/fieldbuses-and-other-links.js"></script>
+<script src="content/radio-and-antennas.js"></script>
+<script src="content/wifi.js"></script>
+<script src="content/bluetooth-and-ble.js"></script>
+<script src="content/esp-now-and-peer-to-peer.js"></script>
+<script src="content/zigbee-thread-matter.js"></script>
+<script src="content/long-range-and-other-radios.js"></script>
+<script src="content/internet-protocols.js"></script>
+<script src="content/cloud-and-data-management.js"></script>
+<script src="content/ready-made-firmware.js"></script>
+<script src="content/device-security.js"></script>
+<script src="content/connection-security.js"></script>
+<script src="content/alphanumeric-displays.js"></script>
+<script src="content/graphic-displays.js"></script>
+<script src="content/touch-and-gui.js"></script>
+<script src="content/driving-motors.js"></script>
+<script src="content/control-and-automation.js"></script>
+<script src="content/audio.js"></script>
+<script src="content/camera-and-vision.js"></script>
+<script src="content/tinyml.js"></script>
+<script src="content/bench-instruments.js"></script>
+<script src="content/the-esp-as-an-instrument.js"></script>
+<script src="content/designing-a-solution.js"></script>
+<script src="content/updating-and-deploying.js"></script>
+<script src="content/worked-projects.js"></script>
+<script src="content/worked-projects-2.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/the-esp-idea.js"></script>
+<script src="sims/the-soc-series.js"></script>
+<script src="sims/modules-and-packages.js"></script>
+<script src="sims/inside-the-chip.js"></script>
+<script src="sims/espressif-devkits.js"></script>
+<script src="sims/m5stack-family.js"></script>
+<script src="sims/seeed-and-small-boards.js"></script>
+<script src="sims/maker-board-families.js"></script>
+<script src="sims/specialised-boards.js"></script>
+<script src="sims/chips-inside-products.js"></script>
+<script src="sims/gpio-and-pinouts.js"></script>
+<script src="sims/powering-the-esp.js"></script>
+<script src="sims/sleep-and-low-power.js"></script>
+<script src="sims/passive-components.js"></script>
+<script src="sims/active-components.js"></script>
+<script src="sims/human-inputs.js"></script>
+<script src="sims/sensing-the-world.js"></script>
+<script src="sims/measuring-electricity-and-force.js"></script>
+<script src="sims/outputs-and-actuators.js"></script>
+<script src="sims/toolchains-and-setup.js"></script>
+<script src="sims/program-structure.js"></script>
+<script src="sims/core-peripherals.js"></script>
+<script src="sims/freertos-and-concurrency.js"></script>
+<script src="sims/state-machines.js"></script>
+<script src="sims/memory-and-storage.js"></script>
+<script src="sims/debugging-and-testing.js"></script>
+<script src="sims/uart-i2c-spi.js"></script>
+<script src="sims/fieldbuses-and-other-links.js"></script>
+<script src="sims/radio-and-antennas.js"></script>
+<script src="sims/wifi.js"></script>
+<script src="sims/bluetooth-and-ble.js"></script>
+<script src="sims/esp-now-and-peer-to-peer.js"></script>
+<script src="sims/zigbee-thread-matter.js"></script>
+<script src="sims/long-range-and-other-radios.js"></script>
+<script src="sims/internet-protocols.js"></script>
+<script src="sims/cloud-and-data-management.js"></script>
+<script src="sims/ready-made-firmware.js"></script>
+<script src="sims/device-security.js"></script>
+<script src="sims/connection-security.js"></script>
+<script src="sims/alphanumeric-displays.js"></script>
+<script src="sims/graphic-displays.js"></script>
+<script src="sims/touch-and-gui.js"></script>
+<script src="sims/driving-motors.js"></script>
+<script src="sims/control-and-automation.js"></script>
+<script src="sims/audio.js"></script>
+<script src="sims/camera-and-vision.js"></script>
+<script src="sims/tinyml.js"></script>
+<script src="sims/bench-instruments.js"></script>
+<script src="sims/the-esp-as-an-instrument.js"></script>
+<script src="sims/designing-a-solution.js"></script>
+<script src="sims/updating-and-deploying.js"></script>
+<script src="sims/worked-projects.js"></script>
+<script src="sims/worked-projects-2.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-MOTORS/catalog.js"></script>
+<script src="../HYPER-OPTICS/catalog.js"></script>
+<script src="../HYPER-ERGONOMICS/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FEYNMAN/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PROJECTIONS/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'esp32' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

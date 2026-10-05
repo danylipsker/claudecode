@@ -23,8 +23,18 @@ window.HyperSelfTest = async function (opts) {
     location.hash = '#/c/' + id;
     await wait(opts.delay);
     report.pages++;
-    const pre = view.querySelector('pre');
+    const h1 = view.querySelector('.page > h1');                 // a page that threw is drawn as "Something went wrong" + the stack (other <pre> are programs)
+    const pre = h1 && /Something went wrong/.test(h1.textContent) ? view.querySelector('.page > pre') : null;
     if (pre) report.crashes.push(id + ': ' + pre.textContent.slice(0, 200));
+    // programs (Hyper ESP32): every entry of `code` must be drawn as a card with at least one language in it
+    if (n.code && n.code.length) {
+      report.programs = report.programs || { pages: 0, cards: 0, failures: [] };
+      report.programs.pages++;
+      const cards = view.querySelectorAll('.codecard');
+      report.programs.cards += cards.length;
+      if (cards.length < n.code.length) report.programs.failures.push(id + ': ' + cards.length + ' of ' + n.code.length + ' program cards');
+      cards.forEach((c, k) => { if (!c.querySelector('pre, .sb-script, .sb-b')) report.programs.failures.push(id + ': program ' + (k + 1) + ' is empty'); });
+    }
     view.querySelectorAll('.tex-err').forEach(e => report.texErrors.push(id + ': ' + e.title + ' — ' + e.textContent.slice(0, 80)));
     view.querySelectorAll('.clink.missing').forEach(e => report.missingLinks.push(id + ' → ' + e.dataset.ref));
     view.querySelectorAll('.fcard').forEach(c => {

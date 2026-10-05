@@ -1,7 +1,8 @@
-/* Runs the Tools labs of Hyper Optics headless, the way simtest.js runs simulations.
+/* Runs the Tools labs of Hyper Optics (or, with --app esp32, of Hyper ESP32) headless, the way simtest.js runs simulations.
  *
  *   node HYPER-CORE/tools/labtest.js                     every lab in HYPER-CORE/js/ui/optics-*.js
  *   node HYPER-CORE/tools/labtest.js --only bench,camera
+ *   node HYPER-CORE/tools/labtest.js --app esp32         every lab in HYPER-CORE/js/ui/esp-*.js (Hyper.espTools)
  *
  * Each lab function Hyper.opticsTools.<name>(el, params, sub) is called once for every sub-tab it lists in
  * Hyper.opticsTools.<name>.tabs, against a stand-in DOM, canvas and kit. Every kit control is then moved to its
@@ -19,6 +20,10 @@ const { makeContext, loadCore, run } = require('./load');
 const args = process.argv.slice(2);
 const onlyArg = (args.find(a => a.startsWith('--only=')) || '').slice(7) || (args.includes('--only') ? args[args.indexOf('--only') + 1] : '');
 const only = onlyArg ? new Set(onlyArg.split(',').map(s => s.trim())) : null;
+const APP = (args.find(a => a.startsWith('--app=')) || '').slice(6) || (args.includes('--app') ? args[args.indexOf('--app') + 1] : 'optics');
+const CONF = { optics: { disc: 'optics', folder: 'HYPER-OPTICS', tools: 'opticsTools', first: 'optictools.js', re: /^optics-[a-z]+\.js$/, sym: 'opticsym.js', where: /optic[s-]/, cut: /^.*?(optic)/ },
+  esp32: { disc: 'esp32', folder: 'HYPER-ESP32', tools: 'espTools', first: 'esptools.js', re: /^esp-[a-z]+\.js$/, sym: 'espsym.js', where: /esp(tools|-)/, cut: /^.*?(esp(?:tools|-))/ } }[APP];
+if (!CONF) { console.error('Unknown --app ' + APP + ' (optics, esp32)'); process.exit(2); }
 
 const ctx = makeContext();
 const bad = [];
@@ -81,10 +86,10 @@ ctx.Symbol = Symbol; ctx.Promise = Promise; ctx.Proxy = Proxy; ctx.Reflect = Ref
 ctx.decodeURIComponent = decodeURIComponent; ctx.encodeURIComponent = encodeURIComponent; ctx.URLSearchParams = URLSearchParams; ctx.location = { hash: '' };
 
 const H = loadCore(ctx);
-run(ctx, path.join(__dirname, '..', 'js', 'opticsym.js'));
-H.use('optics');
+run(ctx, path.join(__dirname, '..', 'js', CONF.sym));
+H.use(CONF.disc);
 // the content, so that links to pages and the dictionary have something to show
-const cdir = path.join(__dirname, '..', '..', 'HYPER-OPTICS', 'content');
+const cdir = path.join(__dirname, '..', '..', CONF.folder, 'content');
 if (fs.existsSync(cdir)) for (const f of fs.readdirSync(cdir).filter(f => f.endsWith('.js')).sort((a, b) => (a === 'outline.js' ? -1 : b === 'outline.js' ? 1 : a.localeCompare(b)))) { try { run(ctx, path.join(cdir, f)); } catch (e) { /* validate.js reports content errors */ } }
 H.build();
 
@@ -132,7 +137,7 @@ const kit = {
     rec.plots.push(p); return p;
   },
   table(el, cols) { return { el: fakeEl(), set(rows) { if (!Array.isArray(rows)) { rec.errors.push('table.set needs an array of rows'); return; } for (const r of rows) for (const c of cols) { const v = typeof c.key === 'function' ? c.key(r) : r[c.key]; const t = String(c.fmt ? c.fmt(v, r) : v); if (BAD.test(t)) rec.readoutBad.add('table ' + c.label + ' = ' + t); } } }; },
-  colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2, optics: H.optics, osym: H.osym, terms: () => '',
+  colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2, optics: H.optics, osym: H.osym, esp: H.esp, esym: H.esym, gfx: H.gfx, code: H.code, terms: () => '',
   eng: (v, u) => H.util.fmt(v) + ' ' + u, money: v => String(v), pct: (f, d) => H.util.pct(f, d)
 };
 H.kit = kit;
@@ -144,11 +149,11 @@ H.ui = { $: () => fakeEl(), $$: () => [], el: () => fakeEl(), onLeave() {}, leav
 /* ---------------------------------------------------------------- load the labs */
 const uiDir = path.join(__dirname, '..', 'js', 'ui');
 const loadErr = [];
-try { run(ctx, path.join(uiDir, 'optictools.js')); } catch (e) { loadErr.push('optictools.js: ' + e.message); }
-for (const f of fs.readdirSync(uiDir).filter(f => /^optics-[a-z]+\.js$/.test(f)).sort()) { try { run(ctx, path.join(uiDir, f)); } catch (e) { loadErr.push(f + ': ' + e.message + ' ' + ((e.stack || '').split('\n').find(l => l.includes(f)) || '').trim()); } }
+try { run(ctx, path.join(uiDir, CONF.first)); } catch (e) { loadErr.push(CONF.first + ': ' + e.message); }
+for (const f of fs.readdirSync(uiDir).filter(f => CONF.re.test(f)).sort()) { try { run(ctx, path.join(uiDir, f)); } catch (e) { loadErr.push(f + ': ' + e.message + ' ' + ((e.stack || '').split('\n').find(l => l.includes(f)) || '').trim()); } }
 
-const T = H.opticsTools || {};
-const where = e => { const line = (e.stack || '').split('\n').find(l => /optic[s-]/.test(l)); return line ? ' (' + line.trim().replace(/^at /, '').replace(/^.*?(optic)/, '$1') + ')' : ''; };
+const T = H[CONF.tools] || {};
+const where = e => { const line = (e.stack || '').split('\n').find(l => CONF.where.test(l)); return line ? ' (' + line.trim().replace(/^at /, '').replace(CONF.cut, (m, a) => a) + ')' : ''; };
 let failures = 0, tested = 0;
 const report = [];
 for (const [name, fn] of Object.entries(T)) {
@@ -183,13 +188,13 @@ for (const [name, fn] of Object.entries(T)) {
       for (const f2 of rec.clicks) for (let y = 20; y < 520; y += 70) for (let x = 20; x < 900; x += 70) { f2({ x, y }); frames(1); }
       frames(30);
     } catch (e) { problems.push('throws: ' + e.message + where(e)); }
-    if (name !== 'dictionary' && !rec.stages.length && !rec.plots.length && !rec.controls.length) problems.push('builds nothing with the kit (no stage, plot or controls)');
+    if (name !== 'dictionary' && !fn.dom && !rec.stages.length && !rec.plots.length && !rec.controls.length) problems.push('builds nothing with the kit (no stage, plot or controls)');
     problems.push(...rec.errors);
     const nans = bad.slice(badBefore);
     if (nans.length) problems.push(nans.length + ' drawing call(s) with bad values, e.g. ' + [...new Set(nans)].slice(0, 3).join('; '));
     if (rec.readoutBad.size) problems.push('shows NaN/Infinity/undefined: ' + [...rec.readoutBad].slice(0, 4).join('; '));
     // the dictionary prints the writers' own words ("Infinity-corrected objective"), which are not computed values
-    if (htmlBad.size && name !== 'dictionary') problems.push('writes NaN/Infinity/undefined into the page: ' + [...htmlBad].slice(0, 3).join('; '));
+    if (htmlBad.size && name !== 'dictionary' && !fn.words) problems.push('writes NaN/Infinity/undefined into the page: ' + [...htmlBad].slice(0, 3).join('; '));
     if (problems.length) { failures++; report.push('✗ ' + current + '\n    ' + [...new Set(problems)].join('\n    ')); } else report.push('✓ ' + current);
   }
 }

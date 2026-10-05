@@ -150,10 +150,12 @@
     const branch = n.branch && n.branch !== id ? H.nodes.get(n.branch) : null;
     const hasPractice = n.quiz.length || fs.length || n.problems.length;
     const kids = n.children;
+    const codes = n.code || [];
     const hasU = !!(n.body || n.ideas.length || n.pitfalls.length || n.derivation || n.applications.length || n.history || n.sources.length || n.ranges.length || n.choose || n.terms.length);
     const sections = [
       ['understand', 'Understand', hasU],
       ['contents', 'Contents', kids.length > 0, kids.length],
+      ['code', codes.length > 1 ? 'Programs' : 'Program', codes.length > 0 && !!ui.codeCard, codes.length > 1 ? codes.length : 0],
       ['formulas', 'Formulas', fs.length > 0, fs.length],
       ['sim', n.sims.length > 1 ? 'Simulations' : 'Simulation', n.sims.length > 0, n.sims.length > 1 ? n.sims.length : 0],
       ['construct', 'Draw it', n.constructions.length > 0, n.constructions.length > 1 ? n.constructions.length : 0],
@@ -189,6 +191,7 @@
         (n.sources.length ? '<div class="boxy srcs mt"><h3>' + H.icon('book', 16) + esc((H.discipline && H.discipline.sourcesTitle) || 'Sources and further reading') + '</h3><ul>' + n.sources.map(x => '<li>' + H.inline(x) + '</li>').join('') + '</ul></div>' : '') +
       '</section>') +
       (kids.length ? '<section class="sect" id="s-contents"><h2>' + H.icon('grid', 20) + 'In this ' + (n.kind === 'branch' ? 'branch' : 'topic') + '</h2><div class="kids">' + kids.map(kidCard).join('') + '</div></section>' : '') +
+      (codes.length && ui.codeCard ? '<section class="sect" id="s-code"><h2>' + H.icon('chip', 20) + (codes.length > 1 ? 'Programs' : 'The program') + ' <span class="n">the same program as blocks, Arduino C++ and MicroPython</span></h2><div class="cdslot"></div></section>' : '') +
       (fs.length ? '<section class="sect" id="s-formulas"><h2>' + H.icon('formulas', 20) + 'Formulas <span class="n">click a symbol to solve for it</span></h2><div class="fslot"></div></section>' : '') +
       (n.sims.length ? '<section class="sect" id="s-sim"><h2>' + H.icon('play', 20) + (n.sims.length > 1 ? 'Simulations' : 'Simulation') + '</h2><div class="sslot"></div></section>' : '') +
       (n.constructions.length ? '<section class="sect" id="s-construct"><h2>' + H.icon('drafting', 20) + 'Draw it by hand <span class="n">step by step, naming the tool of every stroke; then practise it</span></h2><div class="cxslot"></div></section>' : '') +
@@ -211,6 +214,8 @@
     ui.$('.mapslot', page).appendChild(ui.localMap(n));
     const fslot = ui.$('.fslot', page);
     if (fslot) fs.forEach(f => fslot.appendChild(ui.formulaCard(f)));
+    const cdslot = ui.$('.cdslot', page);
+    if (cdslot) codes.forEach((e, i) => cdslot.appendChild(ui.codeCard(e, n, i)));
     const sslot = ui.$('.sslot', page);
     if (sslot) n.sims.forEach(s => sslot.appendChild(ui.simCard(s, n)));
     const cxslot = ui.$('.cxslot', page);

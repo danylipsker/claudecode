@@ -30,7 +30,7 @@ const only = onlyArg ? new Set(onlyArg.split(',').flatMap(s => onlyFiles(s.trim(
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections', 'HYPER-OPTICS': 'optics' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections', 'HYPER-OPTICS': 'optics', 'HYPER-ESP32': 'esp32' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -50,7 +50,7 @@ for (const sub of ['content', 'sims', 'constructions']) {
   for (const f of list) files.push(path.join(dir, f));
 }
 // other disciplines' catalogs
-for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS', 'HYPER-PROJECTIONS', 'HYPER-OPTICS']) {
+for (const d of ['HYPER-PHYSICS', 'HYPER-MATH', 'HYPER-ELECTRONICS', 'HYPER-CHEMISTRY', 'HYPER-FINANCES', 'HYPER-MEDICINE', 'HYPER-AERODYNAMICS', 'HYPER-HYDRAULICS', 'HYPER-PNEUMATICS', 'HYPER-PHARMACEUTICS', 'HYPER-BIOLOGY', 'HYPER-FEYNMAN', 'HYPER-MOTORS', 'HYPER-ERGONOMICS', 'HYPER-PROJECTIONS', 'HYPER-OPTICS', 'HYPER-ESP32']) {
   const c = path.join(discDir, '..', d, 'catalog.js');
   if (d !== path.basename(discDir) && fs.existsSync(c)) { try { run(ctx, c); } catch (e) { W(d + '/catalog.js', e.message); } }
 }
@@ -127,7 +127,12 @@ function checkText(where, s, block) {
     if (!H.DISCIPLINES[m[1]]) E(where, 'unknown discipline in [[' + m[1] + ':' + m[2] + ']]');
     else if (cat && !cat.has(m[2].trim())) W(where, 'link [[' + m[1] + ':' + m[2] + ']] is not in the ' + m[1] + ' catalog');
   }
+  // fenced programs (~~~cpp … ~~~) and inline code are not prose: a tab or a $ in them is fine
+  const fences = s;
+  s = s.replace(/^[ \t]*(~~~+|```+)[^\n]*\n[\s\S]*?^[ \t]*\1[ \t]*$/gm, '').replace(/`[^`\n]+`/g, '');
+  if ((fences.match(/^[ \t]*(~~~+|```+)/gm) || []).length % 2) E(where, 'a fenced program (~~~) is never closed');
   lostBackslash(where, s);
+  if (DISC === 'esp32' && /\bkit\.(esp|esym|gfx)\b|\besp(32|sym|gfx|code)[\w-]*\.js\b/.test(s)) W(where, 'names the app\'s own code (kit.esp / kit.esym / *.js) in reader-facing text: name the tool or the simulation instead');
   // Hyper Motors and Hyper Ergonomics: reader-facing text names methods, standards and tools, never the code
   if ((DISC === 'motors' || DISC === 'ergonomics') && /\bkit\.(motor|ergo)\b|\bDIMS\b|\b(ergo|motors)\.js\b/.test(s)) W(where, 'names code (kit.motor / kit.ergo / DIMS / *.js) in reader-facing text: name the method, the standard or the tool instead');
   if (DISC === 'optics' && /\bkit\.(optics|osym)\b|\bO\.(sys|film|diff|mtf|beam|cam|eye|colour)\b|\boptics(-wave|-vision)?\.js\b|\bopticsym\.js\b/.test(s)) W(where, 'names code (kit.optics / kit.osym / *.js) in reader-facing text: name the method or the tool instead');
@@ -169,6 +174,7 @@ function checkSteps(where, steps) {
 
 /* ---------------------------------------------------------------- nodes */
 const stats = { concepts: 0, formulas: 0, sims: 0, quiz: 0, examples: 0, problems: 0, byBranch: {} };
+const pyProgs = [];        // MicroPython programs, checked for syntax by a real Python when one is installed
 const close = (a, b) => Math.abs(a - b) <= 1e-6 * Math.max(Math.abs(a), Math.abs(b), 1e-300);
 for (const n of H.list) {
   if (!mine(n.id)) continue;
@@ -285,6 +291,26 @@ for (const n of H.list) {
     t.also.forEach(a => checkText(wt + ' also', a, false));
   });
   stats.terms = (stats.terms || 0) + n.terms.length;
+  // the programs of a page (Hyper ESP32): { title, about, needs, wiring, libs, cpp, py, blocks, idf, yaml, na, output, notes }
+  (n.code || []).forEach((e, i) => {
+    const wc = w + ' program ' + (i + 1) + (e && e.title ? ' "' + e.title + '"' : '');
+    if (!H.code) { E(wc, 'the code module is not loaded'); return; }
+    const r = H.code.check(e);
+    r.errors.forEach(x => E(wc, x)); r.warnings.forEach(x => W(wc, x));
+    if (!e || typeof e !== 'object') return;
+    checkText(wc + ' title', e.title, false); checkText(wc + ' about', e.about, true); checkText(wc + ' needs', e.needs, false);
+    (Array.isArray(e.notes) ? e.notes : e.notes ? [e.notes] : []).forEach((x, j) => checkText(wc + ' note ' + (j + 1), x, false));
+    (Array.isArray(e.wiring) ? e.wiring : []).forEach((row, j) => (Array.isArray(row) ? row : []).forEach(x => checkText(wc + ' wiring ' + (j + 1), String(x), false)));
+    if (e.na) Object.values(e.na).forEach(x => checkText(wc + ' na', x, false));
+    if (typeof e.py === 'string') pyProgs.push({ where: wc, src: H.code.dedent(e.py) });
+    stats.code = (stats.code || 0) + 1;
+  });
+  if (DISC === 'esp32' && n.kind === 'concept') {
+    if (n.terms.length < 2) W(w, 'fewer than 2 terms: list the vocabulary this page introduces (terms: [{ term, also, def }])');
+    if (!n.applications.length) W(w, 'no applications: say where the reader meets this');
+    if (!n.sources.length) W(w, 'no sources: name the datasheet, the official guide or the standard behind the page');
+    if (!(n.code || []).length && !n.sims.length) W(w, 'neither a program nor a simulation: every page shows its idea working');
+  }
   if (DISC === 'optics' && n.kind === 'concept') {
     if (!n.sims.length) W(w, 'no simulation: optics should be seen — give the page one (a simulation may serve two or three pages through its params)');
     if (n.terms.length < 2) W(w, 'fewer than 2 terms: list the vocabulary this page introduces (terms: [{ term, also, def }])');
@@ -393,10 +419,27 @@ for (const n of H.list) if (n.kind === 'concept' && mine(n.id)) {
   if (p && p.plan && !p.plan.some(x => x[0] === n.id)) infos.push(n.id + ' is an extra concept under ' + n.parent + ' (not in its plan) — fine if intended');
 }
 
+/* ---------------------------------------------------------------- MicroPython syntax, by a real Python (if there is one) */
+if (pyProgs.length && !args.includes('--nopy')) {
+  const { spawnSync } = require('child_process');
+  const script = 'import ast, json, sys\nprogs = json.load(sys.stdin)\nout = []\nfor i, p in enumerate(progs):\n    try:\n        ast.parse(p)\n    except SyntaxError as e:\n        out.append([i, "line %s: %s" % (e.lineno, e.msg)])\nprint(json.dumps(out))\n';
+  let done = false;
+  for (const exe of ['python', 'python3', 'py']) {
+    // ASCII-only JSON (\uXXXX escapes): on Windows Python reads stdin in the code page, not UTF-8, and would mangle °, µ, →
+    const ascii = JSON.stringify(pyProgs.map(p => p.src)).replace(/[\u0080-￿]/g, ch => '\\u' + ch.charCodeAt(0).toString(16).padStart(4, '0'));
+    const r = spawnSync(exe, ['-c', script], { input: ascii, encoding: 'utf8', timeout: 60000 });
+    if (r.status === 0 && r.stdout) {
+      try { for (const [i, msg] of JSON.parse(r.stdout)) E(pyProgs[i].where, 'py does not parse as Python — ' + msg); done = true; } catch (e) { /* try the next */ }
+      if (done) break;
+    }
+  }
+  if (!done) infos.push('no Python found: the MicroPython programs were not syntax-checked');
+}
+
 /* ---------------------------------------------------------------- report */
 const out = [];
 out.push(path.basename(discDir) + (only ? ' (only ' + [...only].map(f => path.relative(discDir, f)).join(', ') + ')' : ''));
-out.push('  ' + stats.concepts + ' concepts, ' + stats.formulas + ' formulas, ' + stats.quiz + ' quiz questions, ' + stats.examples + ' examples, ' + stats.problems + ' problems, ' + stats.sims + ' simulation uses, ' + Object.keys(H.sims).length + ' simulations defined' + (H.constructions.size ? ', ' + (stats.constructions || 0) + ' construction uses, ' + H.constructions.size + ' constructions defined' : '') + (stats.terms ? ', ' + stats.terms + ' dictionary terms' : ''));
+out.push('  ' + stats.concepts + ' concepts, ' + stats.formulas + ' formulas, ' + stats.quiz + ' quiz questions, ' + stats.examples + ' examples, ' + stats.problems + ' problems, ' + stats.sims + ' simulation uses, ' + Object.keys(H.sims).length + ' simulations defined' + (H.constructions.size ? ', ' + (stats.constructions || 0) + ' construction uses, ' + H.constructions.size + ' constructions defined' : '') + (stats.terms ? ', ' + stats.terms + ' dictionary terms' : '') + (stats.code ? ', ' + stats.code + ' programs' : ''));
 if (!only) for (const [b, s] of Object.entries(stats.byBranch)) out.push('    ' + b.padEnd(22) + s.concepts + ' concepts  ' + s.formulas + ' formulas  ' + s.sims + ' sims  ' + s.quiz + ' quiz');
 console.log(out.join('\n'));
 if (errors.length) console.log('\nERRORS (' + errors.length + ')\n  ' + errors.join('\n  '));

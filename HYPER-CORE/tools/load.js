@@ -6,10 +6,10 @@ const path = require('path');
 const vm = require('vm');
 
 const CORE = path.join(__dirname, '..', 'js');
-const CORE_FILES = ['hyper.js', 'tex.js', 'expr.js', 'units.js', 'text.js', 'formula.js', 'chem.js', 'finance.js', 'medicine.js', 'fluid.js', 'pharma.js', 'bio.js', 'quantum.js', 'glossary.js', 'motors.js', 'ergo.js', 'projection.js', 'geodata.js', 'celestial.js', 'construct.js', 'optics.js', 'optics-wave.js', 'optics-vision.js'];
+const CORE_FILES = ['hyper.js', 'tex.js', 'expr.js', 'units.js', 'text.js', 'formula.js', 'chem.js', 'finance.js', 'medicine.js', 'fluid.js', 'pharma.js', 'bio.js', 'quantum.js', 'glossary.js', 'motors.js', 'ergo.js', 'projection.js', 'geodata.js', 'celestial.js', 'construct.js', 'optics.js', 'optics-wave.js', 'optics-vision.js', 'espcode.js', 'esp32-calc.js', 'esp32-chips.js', 'esp32-boards.js', 'esp32.js', 'esp32-api.js', 'espgfx.js'];
 
 function makeContext() {
-  const ctx = { console, Math, JSON, Date, Map, Set, Number, String, Array, Object, Error, RegExp, isFinite, parseFloat, parseInt };
+  const ctx = { console, Math, JSON, Date, Map, Set, Number, String, Array, Object, Error, RegExp, isFinite, parseFloat, parseInt, Uint8Array, Uint32Array };
   ctx.globalThis = ctx;
   ctx.window = ctx;
   vm.createContext(ctx);

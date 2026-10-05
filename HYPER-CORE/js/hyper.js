@@ -40,7 +40,8 @@
     motors:      { id: 'motors',      title: 'Hyper Motors',      short: 'Motors',      folder: 'HYPER-MOTORS',      hue: 248, ready: true, sourcesTitle: 'Standards and further reading' },
     ergonomics:  { id: 'ergonomics',  title: 'Hyper Ergonomics',  short: 'Ergonomics',  folder: 'HYPER-ERGONOMICS',  hue: 62,  ready: true, sourcesTitle: 'Standards and data sources' },
     projections: { id: 'projections', title: 'Hyper Projections', short: 'Projections', folder: 'HYPER-PROJECTIONS', hue: 205, ready: true, sourcesTitle: 'Sources and further reading' },
-    optics:      { id: 'optics',      title: 'Hyper Optics',      short: 'Optics',      folder: 'HYPER-OPTICS',      hue: 183, ready: true, sourcesTitle: 'Sources and further reading' }
+    optics:      { id: 'optics',      title: 'Hyper Optics',      short: 'Optics',      folder: 'HYPER-OPTICS',      hue: 183, ready: true, sourcesTitle: 'Sources and further reading' },
+    esp32:       { id: 'esp32',       title: 'Hyper ESP32',       short: 'ESP32',       folder: 'HYPER-ESP32',       hue: 8,   ready: true, sourcesTitle: 'Datasheets and further reading' }
   };
 
   H.use = function (id) {
@@ -51,7 +52,7 @@
   };
 
   const ARRAYS = ['prereq', 'related', 'keywords', 'formulas', 'examples', 'quiz',
-                  'problems', 'ideas', 'pitfalls', 'applications', 'sources', 'ranges', 'terms'];
+                  'problems', 'ideas', 'pitfalls', 'applications', 'sources', 'ranges', 'terms', 'code'];
 
   /* Register concept nodes. Accepts nodes, arrays of nodes, or both. */
   H.add = function () {

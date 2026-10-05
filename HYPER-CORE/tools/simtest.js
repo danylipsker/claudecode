@@ -97,6 +97,7 @@ run(ctx, path.join(__dirname, '..', 'js', 'molecule.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'finance.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'fluidsym.js'));
 run(ctx, path.join(__dirname, '..', 'js', 'opticsym.js'));
+run(ctx, path.join(__dirname, '..', 'js', 'espsym.js'));
 
 /* ---------------------------------------------------------------- the stand-in kit */
 function makeKit(record) {
@@ -162,7 +163,7 @@ function makeKit(record) {
     colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2,
     schem: H.schem, Circuit: H.Circuit, eng: (v, u) => H.schem.fmt(v, u), chem: H.chem,
     fin: H.finance, money: (v, d, c) => H.util.money(v, d, c), pct: (f, d) => H.util.pct(f, d), med: H.med, fluid: H.fluid, fsym: H.fsym, pharma: H.pharma, bio: H.bio, qm: H.qm, motor: H.motor, ergo: H.ergo, terms: () => "",
-    proj: H.proj, world: H.world, sky: H.sky, construct: H.construct, optics: H.optics, osym: H.osym,
+    proj: H.proj, world: H.world, sky: H.sky, construct: H.construct, optics: H.optics, osym: H.osym, esp: H.esp, esym: H.esym, gfx: H.gfx, code: H.code,
     table(el, cols) {
       return { el: fakeEl(), set(rows) {
         if (!Array.isArray(rows)) { record.errors.push('table.set needs an array of rows'); return; }
