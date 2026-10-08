@@ -2496,12 +2496,17 @@ ESP-IDF names (6.x): legacy `driver/adc.h`, `timer.h`, `i2s.h`, `rmt.h`, `pcnt.h
   `extern const uint8_t ca_bundle_start[] asm("_binary_x509_crt_bundle_start"); extern const uint8_t ca_bundle_end[] asm("_binary_x509_crt_bundle_end");`
   and `client.setCACertBundle(ca_bundle_start, ca_bundle_end - ca_bundle_start);`.
 - **Matter helpers**: `matterWaitUntilReady()` and `matterRestartIfNoFabric()` (MatterHelpers.h) exist from core 3.3.12;
-  a page that uses them says "core 3.3.12 or later" in `needs`.
+  a page that uses them says "core 3.3.12 or later" in `needs`. Both Matter programs were built with 3.3.12 (ESP32-C6).
 - **Arduino_GFX and the core version** (built both ways): GFX Library for Arduino 1.6.4 builds with the Arduino core
-  3.3.3 and fails with 3.3.7 (`spiFrequencyToClockDiv` gained a first argument in the core); the library's current
-  release has both forms. A page that uses the library tells the reader to keep it up to date.
+  3.3.3 and fails with 3.3.7 (`spiFrequencyToClockDiv` gained a first argument in the core); 1.6.9 builds with 3.3.7.
+  A page that uses the library tells the reader to keep it up to date.
 - **MAX7219 on an ESP32**: the LedControl library includes `avr/pgmspace.h` and does not compile for the ESP32. Write
   the chip's registers over SPI (two bytes: register, value) or use MD_MAX72XX / MD_Parola for matrices.
 - **A global named `bars`** (and other short, common names) can collide with a symbol inside the Wi-Fi libraries at
   link time ("multiple definition"): give globals specific names or make them `static`.
 - **Big libraries need the Huge APP partition scheme**: an internet radio with ESP32-audioI2S is about 1.9 MB.
+- **ESP32-BLE-Keyboard (T-vK) does not build with core 3.x**: version 0.3.2 and its master branch (last commit 2024-03)
+  pass `std::string` where the core's BLE library has taken `String` since 3.0. The ble-hid program uses the core's own
+  `BLEHIDDevice` instead (report map as bytes, `inputReport(1)`, `BLESecurity::setAuthenticationMode(true, false, true)`,
+  appearance 0x03C1); built with 3.3.7. ESP32-A2DP 1.8.11 (GitHub) builds with 3.3.7: `start(name, frames_callback)`,
+  `set_volume(0..127)`, sink `start(name)`.

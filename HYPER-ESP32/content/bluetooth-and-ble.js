@@ -1443,7 +1443,7 @@ Windows, Android, iOS and macOS generally accept a HID device only over an **enc
 
 ### Building one
 
-In Arduino a library hides the report map and the services: a small "BLE keyboard" library offers \`print()\`, \`write()\` and \`press()\`, and the ones in circulation differ in which core and which Bluetooth stack they support, so pick one that states your core version ([[ble-stacks-nimble-bluedroid]]). MicroPython has no ready HID library in its standard set. Typical products: a macro pad, a presenter's page turner, a foot switch, or a one-button switch for someone who cannot use a keyboard.
+In Arduino a library hides the report map and the services: a small "BLE keyboard" library offers \`print()\`, \`write()\` and \`press()\`, and the ones in circulation differ in which core and which Bluetooth stack they support, so pick one that states your core version ([[ble-stacks-nimble-bluedroid]]). The program below uses none of them: the BLE library of the core has a BLEHIDDevice class that builds the HID, device-information and battery services, and the report map itself is 45 bytes. MicroPython has no ready HID library in its standard set. Typical products: a macro pad, a presenter's page turner, a foot switch, or a one-button switch for someone who cannot use a keyboard.
 
 > [!warn] A device that types by itself into a computer is also an attack tool. Build it for machines that are yours or whose owner agreed, and do not use it to inject keystrokes into anyone else's.
 
@@ -1479,10 +1479,10 @@ In Arduino a library hides the report map and the services: a small "BLE keyboar
   code: [
     {
       title: 'A one-button macro pad',
-      about: 'A button on GPIO4 types a line of text into whatever computer or phone the ESP is paired with, then waits half a second.',
-      needs: 'An ESP32-family board with Bluetooth LE, a push button from GPIO4 to GND (the internal pull-up is used), and a BLE keyboard library that supports your core (for example the ESP32 BLE Keyboard library or a maintained fork). Pair the "macro-pad" device in the computer first. Use it only on machines that are yours.',
+      about: 'A button on GPIO4 types a line of text into whatever computer or phone the ESP is paired with, then waits half a second. The HID service, the report map and the 8-byte reports described on the page are written out with the BLE library of the core: no other library is needed.',
+      needs: 'An ESP32-family board with Bluetooth LE and a push button from GPIO4 to GND (the internal pull-up is used). Pair the "macro-pad" device in the computer first. Use it only on machines that are yours.',
       wiring: [['GPIO4', 'button → GND', 'internal pull-up']],
-      libs: ['ESP32 BLE Keyboard (or a fork that supports your core)'],
+      libs: ['None: the BLE library of the core has the BLEHIDDevice class used here. (The ESP32-BLE-Keyboard library of most tutorials, version 0.3.2, is written for core 2.x and does not build with core 3.x as published.)'],
       blocks: `
         when started
           set pin (4) as [input with pull-up v]
@@ -1496,28 +1496,107 @@ In Arduino a library hides the report map and the services: a small "BLE keyboar
         end
       `,
       cpp: String.raw`
-        #include <BleKeyboard.h>
+        #include <BLEDevice.h>
+        #include <BLEServer.h>
+        #include <BLEHIDDevice.h>
+        #include <BLESecurity.h>
 
         const int BUTTON_PIN = 4;                        // button to GND, internal pull-up
-        BleKeyboard bleKeyboard("macro-pad", "Hobby", 100);   // name, maker, battery level shown to the host
+
+        // The report map, in the USB HID language: one keyboard report of 8 bytes, report id 1.
+        const uint8_t REPORT_MAP[] = {
+          0x05, 0x01,        // Usage Page: Generic Desktop
+          0x09, 0x06,        // Usage: Keyboard
+          0xA1, 0x01,        // Collection: Application
+          0x85, 0x01,        //   Report ID 1
+          0x05, 0x07,        //   Usage Page: Keyboard (key codes)
+          0x19, 0xE0,        //   Usage Minimum: left Ctrl
+          0x29, 0xE7,        //   Usage Maximum: right GUI
+          0x15, 0x00,        //   Logical Minimum 0
+          0x25, 0x01,        //   Logical Maximum 1
+          0x75, 0x01,        //   Report Size: 1 bit
+          0x95, 0x08,        //   Report Count: 8          -> byte 0: the eight modifier bits
+          0x81, 0x02,        //   Input (data, variable)
+          0x75, 0x08,        //   Report Size: 8 bits
+          0x95, 0x01,        //   Report Count: 1          -> byte 1: reserved
+          0x81, 0x01,        //   Input (constant)
+          0x95, 0x06,        //   Report Count: 6          -> bytes 2 to 7: six key codes
+          0x75, 0x08,        //   Report Size: 8 bits
+          0x15, 0x00,        //   Logical Minimum 0
+          0x25, 0x65,        //   Logical Maximum 101
+          0x19, 0x00,        //   Usage Minimum 0
+          0x29, 0x65,        //   Usage Maximum 101
+          0x81, 0x00,        //   Input (data, array)
+          0xC0               // End Collection
+        };
+
+        BLEHIDDevice *hid;
+        BLECharacteristic *input;                        // the Report characteristic that notifies the host
+        bool connected = false;
+
+        class ServerCallbacks : public BLEServerCallbacks {
+          void onConnect(BLEServer *server) override { connected = true; }
+          void onDisconnect(BLEServer *server) override { connected = false; server->startAdvertising(); }
+        };
+
+        void sendKey(uint8_t modifiers, uint8_t keycode) {   // a press report, then the all-zero release report
+          uint8_t report[8] = { modifiers, 0, keycode, 0, 0, 0, 0, 0 };
+          input->setValue(report, sizeof(report));
+          input->notify();
+          delay(8);
+          memset(report, 0, sizeof(report));
+          input->setValue(report, sizeof(report));
+          input->notify();
+          delay(8);
+        }
+
+        void typeText(const char *text) {                // letters, digits and spaces: enough for a macro pad
+          for (; *text; text++) {
+            char c = *text;
+            if (c >= 'a' && c <= 'z') sendKey(0x00, 0x04 + (c - 'a'));
+            else if (c >= 'A' && c <= 'Z') sendKey(0x02, 0x04 + (c - 'A'));   // 0x02 = left Shift held
+            else if (c >= '1' && c <= '9') sendKey(0x00, 0x1E + (c - '1'));
+            else if (c == '0') sendKey(0x00, 0x27);
+            else if (c == ' ') sendKey(0x00, 0x2C);
+          }
+        }
 
         void setup() {
           pinMode(BUTTON_PIN, INPUT_PULLUP);
-          bleKeyboard.begin();                           // starts advertising as a keyboard
+          BLEDevice::init("macro-pad");
+          BLEServer *server = BLEDevice::createServer();
+          server->setCallbacks(new ServerCallbacks());
+
+          hid = new BLEHIDDevice(server);                // creates the HID, device information and battery services
+          input = hid->inputReport(1);                   // report id 1, as in the map; read and notify, encrypted
+          hid->manufacturer("Hobby");
+          hid->pnp(0x02, 0xE502, 0xA111, 0x0210);        // vendor id source (USB), vendor, product, version
+          hid->hidInfo(0x00, 0x01);                      // no country code; normally connectable
+          hid->reportMap((uint8_t *)REPORT_MAP, sizeof(REPORT_MAP));
+          hid->startServices();
+          hid->setBatteryLevel(100);
+
+          BLESecurity::setAuthenticationMode(true, false, true);   // bonding, no passkey, LE Secure Connections
+
+          BLEAdvertising *adv = server->getAdvertising();
+          adv->setAppearance(0x03C1);                    // "keyboard", so the host shows the right icon
+          adv->addServiceUUID(hid->hidService()->getUUID());
+          adv->start();
         }
 
         void loop() {
-          if (bleKeyboard.isConnected() && digitalRead(BUTTON_PIN) == LOW) {
-            bleKeyboard.print("Hello from the ESP32");   // each character is a press report and a release report
+          if (connected && digitalRead(BUTTON_PIN) == LOW) {
+            typeText("Hello from the ESP32");            // each character is a press report and a release report
             delay(500);                                  // a crude debounce and a pause
           }
           delay(10);
         }
       `,
-      na: { py: 'MicroPython has no ready-made HID keyboard library. A raw HID service needs the report map above, a Report characteristic with its Report Reference descriptor and the device information and battery services that hosts expect; use the C++ library, or the ESP-IDF HID device example.' },
+      na: { py: 'MicroPython has no ready-made HID keyboard library. A raw HID service needs the report map above, a Report characteristic with its Report Reference descriptor and the device information and battery services that hosts expect; use the C++ program here, or the ESP-IDF HID device example.' },
       output: `(nothing on the serial port) Pressing the button types "Hello from the ESP32" into the focused window of the paired computer.`,
       notes: [
-        'Most of these libraries use the NimBLE stack and take over the Bluetooth host: do not combine them with the core BLE library in one sketch.',
+        'Keyboard libraries from GitHub hide all of this behind print() and press(). Most use the NimBLE stack and take over the Bluetooth host, so do not combine one with the core BLE library in a sketch; and check that it names your core version, because the best-known one was written for core 2.x.',
+        'The key codes typed here cover letters, digits and the space; add the rest of the table (0x28 Enter, 0x2B Tab …) for a full keyboard, and remember that the host\'s layout decides which letter a code becomes.',
         'Pins: GPIO4 is a safe general-purpose pin on the original ESP32 and on the S3; check your board for the C3 and C6 ([[gpio-and-pinouts]]).',
         'Use a debounce or a wait for the release in a real macro pad ([[debouncing]]).'
       ]

@@ -400,7 +400,7 @@ The module's pins are nearly always the same: VCC and GND, SCK and MOSI (labelle
       about: 'Three bars — red, green, blue — show at once whether the colour order is right; then some text. Change the width, height and pins to your module.',
       needs: 'An ESP32 DevKit and a 1.3-inch 240 × 240 ST7789 SPI module with a backlight pin.',
       wiring: [['GPIO18', 'SCK'], ['GPIO23', 'MOSI (SDA)'], ['GPIO5', 'CS'], ['GPIO27', 'DC'], ['GPIO26', 'RST'], ['GPIO25', 'BL (backlight)'], ['3V3 / GND', 'power']],
-      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 builds with the Arduino core 3.3.3 but not with 3.3.7, where an SPI function of the core changed; the current release follows the newer cores'],
+      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 did not build with the Arduino core 3.3.7 (an SPI function of the core changed); 1.6.9 does'],
       blocks: `
         when started
           start display [ST7789 240×240 v]
@@ -541,7 +541,7 @@ An I2C, SPI or parallel (I80) panel has a controller with **display memory**: yo
       about: 'Fills a 240 × 240 screen forty times and prints how many full screens per second the bus really delivers, next to the figure the clock predicts. It is the quickest way to see what an interface can do.',
       needs: 'The ST7789 module of the colour TFT page on an ESP32 DevKit.',
       wiring: [['GPIO18', 'SCK'], ['GPIO23', 'MOSI'], ['GPIO5', 'CS'], ['GPIO27', 'DC'], ['GPIO26', 'RST'], ['GPIO25', 'BL']],
-      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 builds with the Arduino core 3.3.3 but not with 3.3.7, where an SPI function of the core changed; the current release follows the newer cores'],
+      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 did not build with the Arduino core 3.3.7 (an SPI function of the core changed); 1.6.9 does'],
       blocks: `
         when started
           start serial at (115200) baud
@@ -1181,7 +1181,7 @@ Even a perfect sprite push has a trap. The panel scans its own memory from top t
       about: 'Counts up twenty times a second. Switch the constant to see the difference: clearing the whole screen every time makes it blink; drawing the number with a background colour does not.',
       needs: 'The ST7789 240 × 240 module of the colour TFT page on an ESP32 DevKit.',
       wiring: [['GPIO18', 'SCK'], ['GPIO23', 'MOSI'], ['GPIO5', 'CS'], ['GPIO27', 'DC'], ['GPIO26', 'RST'], ['GPIO25', 'BL']],
-      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 builds with the Arduino core 3.3.3 but not with 3.3.7, where an SPI function of the core changed; the current release follows the newer cores'],
+      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 did not build with the Arduino core 3.3.7 (an SPI function of the core changed); 1.6.9 does'],
       blocks: `
         when started
           start display [ST7789 240×240 v]
@@ -1364,7 +1364,7 @@ A reading on a thermostat needs one update a second. A moving needle looks smoot
       about: 'Moves a square across the screen for two seconds twice: first wiping the whole screen every frame, then erasing only the square\'s old position. The printed frame rates show what "send less" is worth.',
       needs: 'The ST7789 240 × 240 module of the colour TFT page on an ESP32 DevKit.',
       wiring: [['GPIO18', 'SCK'], ['GPIO23', 'MOSI'], ['GPIO5', 'CS'], ['GPIO27', 'DC'], ['GPIO26', 'RST'], ['GPIO25', 'BL']],
-      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 builds with the Arduino core 3.3.3 but not with 3.3.7, where an SPI function of the core changed; the current release follows the newer cores'],
+      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 did not build with the Arduino core 3.3.7 (an SPI function of the core changed); 1.6.9 does'],
       blocks: `
         define animate (whole screen)
           set [x v] to (0)
@@ -2146,7 +2146,7 @@ Controllers can rotate the picture in hardware by changing the order in which me
       about: 'Draws twelve tick marks around the rim of a 240-pixel round screen and moves a seconds hand once a second. The hand is erased by drawing it again in black, so only a few pixels are rewritten.',
       needs: 'An ESP32 DevKit and a 1.28-inch 240 × 240 round GC9A01 SPI module.',
       wiring: [['GPIO18', 'SCL (SCK)'], ['GPIO23', 'SDA (MOSI)'], ['GPIO5', 'CS'], ['GPIO27', 'DC'], ['GPIO26', 'RST'], ['GPIO25', 'BLK (backlight)']],
-      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 builds with the Arduino core 3.3.3 but not with 3.3.7, where an SPI function of the core changed; the current release follows the newer cores'],
+      libs: ['GFX Library for Arduino (Arduino_GFX) — keep it up to date: version 1.6.4 did not build with the Arduino core 3.3.7 (an SPI function of the core changed); 1.6.9 does'],
       blocks: `
         define hand (sec) (colour)
           set [a v] to (radians (((sec) * (6)) - (90)))

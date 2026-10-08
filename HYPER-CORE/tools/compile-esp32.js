@@ -1,6 +1,6 @@
 /* Compiles the Arduino C++ programs of Hyper ESP32 with a real compiler — if arduino-cli and the ESP32 core are installed.
  *
- *   node HYPER-CORE/tools/compile-esp32.js [--work <dir>] [--only topic[,topic]] [--jobs 6] [--limit n] [--failed] [--list]
+ *   node HYPER-CORE/tools/compile-esp32.js [--work <dir>] [--only topic[,topic]] [--jobs 6] [--limit n] [--failed] [--redo] [--list]
  *                                          [--report [file.md]] [--report-only [file.md]]     (default HYPER-ESP32/COMPILED.md)
  *                                          [--sketchbook <dir>]   build against <dir>/libraries instead of the configured sketchbook
  *                                          [--data <dir>]         use the cores installed in that Arduino data folder
@@ -9,7 +9,8 @@
  * Every `code[].cpp` of every concept is written out as a sketch and built with `arduino-cli compile` for the chip the
  * program is meant for (read from its `needs`, `about` and title; the original ESP32 when nothing is said). Nothing is
  * uploaded and nothing is installed: a program whose library is not installed on this machine is reported as "library
- * not installed", not as a failure. Results go to <work>/results.json; `--failed` compiles only what failed last time.
+ * not installed", not as a failure. Results go to <work>/results.json; `--failed` compiles only what failed last time;
+ * `--redo` builds the chosen programs again even when they built before (after a library or core was updated, say).
  *
  * It needs: arduino-cli (the one inside the Arduino IDE will do, or set ARDUINO_CLI) and the esp32:esp32 core.
  * <work> defaults to a folder in the system's temporary directory; the first build of each chip takes about a minute
@@ -195,7 +196,8 @@ const resFile = path.join(work, 'results.json');
 let previous = {};
 try { previous = JSON.parse(fs.readFileSync(resFile, 'utf8')); } catch (e) { /* first run */ }
 let todo = progs;
-if (opt('failed', false)) todo = progs.filter(p => !previous[p.id] || previous[p.id].status !== 'ok' || previous[p.id].src !== hash(p.src));   // everything that did not build
+if (opt('redo', false)) todo = progs.slice();   // again, whatever happened last time
+else if (opt('failed', false)) todo = progs.filter(p => !previous[p.id] || previous[p.id].status !== 'ok' || previous[p.id].src !== hash(p.src));   // everything that did not build
 else todo = progs.filter(p => !(previous[p.id] && previous[p.id].status === 'ok' && previous[p.id].src === hash(p.src)));   // unchanged and fine: not again
 if (limit) todo = todo.slice(0, limit);
 if (opt('list', false)) { for (const p of progs) console.log(p.id.padEnd(46) + p.targets.join(',')); console.log(progs.length + ' programs'); process.exit(0); }
@@ -232,7 +234,7 @@ function writeReport(results, file) {
   if (skip.length) md += '\n## Not built: another board, or a file of your own\n\n' + table(skip, 'Why');
   if (ok.some(r => r.note && !r.part)) md += '\n## Built, but only with a larger app partition\n\n' + table(ok.filter(r => r.note && !r.part), 'Note');
   const other = ok.filter(r => r.core && r.core !== coreV);
-  if (other.length) md += '\n## Built with another version of the core\n\nThe library these use, as installed on that machine, does not build with core ' + coreV + '; they were built with the version named.\n\n' + table(other.map(r => Object.assign({}, r, { why: 'built with the Arduino core ' + r.core })), 'Note');
+  if (other.length) md += '\n## Built with another version of the core\n\nThey were built with the version of the core named, not with ' + coreV + ' like the rest: either they use a call that only a newer core has, or the library they use, as installed on that machine, does not build with ' + coreV + '.\n\n' + table(other.map(r => Object.assign({}, r, { why: 'built with the Arduino core ' + r.core })), 'Note');
   if (ok.some(r => r.part)) md += '\n## Compiled as one part of a sketch\n\n' + table(ok.filter(r => r.part), 'Note');
   if (none.length) md += '\n## Not compiled since their last change\n\n' + none.map(r => '`' + r.id + '`').join(', ') + '\n';
   fs.writeFileSync(file, md);
