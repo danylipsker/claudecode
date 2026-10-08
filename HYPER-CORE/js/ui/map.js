@@ -254,12 +254,30 @@
       const r = stage.getBoundingClientRect();
       zoomAt(Math.exp(-e.deltaY * 0.0015), e.clientX - r.left, e.clientY - r.top);
     }, { passive: false });
+    // ---------- which circle is under a pointer: the node itself, or the nearest one within a finger's reach
+    // (the capture below retargets pointerup and click to the stage, so the tap is resolved here, at pointerdown)
+    const hitNode = e => {
+      const g = e.target.closest && e.target.closest('.n');
+      if (g && !g.classList.contains('hide')) return g.dataset.n;
+      const rc = stage.getBoundingClientRect();
+      const wx = (e.clientX - rc.left - tx) / k, wy = (e.clientY - rc.top - ty) / k;
+      let best = null, bd = Infinity;
+      pos.forEach((p, id) => {
+        const el = nodeEls.get(id);
+        if (!el || el.classList.contains('hide')) return;
+        const d = Math.hypot(p.x - wx, p.y - wy) * k;                       // in screen pixels
+        if (d <= Math.max(R(H.nodes.get(id)) * k, 16) && d < bd) { bd = d; best = id; }
+      });
+      return best;
+    };
     const ptrs = new Map();
-    let dragged = false, pinch0 = null;
+    let dragged = false, pinch0 = null, down = null;
     stage.addEventListener('pointerdown', e => {
+      if (e.target.closest && e.target.closest('.mapzoom')) return;         // the zoom buttons take their own clicks (a capture would steal them)
       ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
-      stage.setPointerCapture(e.pointerId);
+      try { stage.setPointerCapture(e.pointerId); } catch (err) { /* a pointer the browser no longer tracks */ }
       dragged = false;
+      down = ptrs.size === 1 ? { x: e.clientX, y: e.clientY, id: hitNode(e), pointer: e.pointerId } : null;
       if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch0 = { d: Math.hypot(a.x - b.x, a.y - b.y), k }; }
     });
     stage.addEventListener('pointermove', e => {
@@ -268,8 +286,11 @@
       const cur = { x: e.clientX, y: e.clientY };
       if (ptrs.size === 1) {
         const dx = cur.x - prev.x, dy = cur.y - prev.y;
-        if (Math.abs(dx) + Math.abs(dy) > 1) { dragged = true; stage.classList.add('drag'); }
-        tx += dx; ty += dy; apply();
+        // a finger wobbles a few pixels during a tap: only a real displacement is a drag
+        if (!dragged && down && Math.hypot(cur.x - down.x, cur.y - down.y) > 6) {
+          dragged = true; stage.classList.add('drag');
+          tx += cur.x - down.x; ty += cur.y - down.y; apply();              // catch up on the wobble allowance
+        } else if (dragged) { tx += dx; ty += dy; apply(); }
       } else if (ptrs.size === 2 && pinch0) {
         ptrs.set(e.pointerId, cur);
         const [a, b] = [...ptrs.values()];
@@ -281,8 +302,14 @@
       ptrs.set(e.pointerId, cur);
     });
     const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch0 = null; stage.classList.remove('drag'); };
-    stage.addEventListener('pointerup', up);
-    stage.addEventListener('pointercancel', up);
+    stage.addEventListener('pointerup', e => {
+      // a tap or click on a circle (no drag, no pinch) opens that topic
+      const tap = down && down.pointer === e.pointerId && !dragged && ptrs.size === 1 && down.id;
+      up(e);
+      down = null;
+      if (tap) H.go('#/c/' + tap);
+    });
+    stage.addEventListener('pointercancel', e => { up(e); down = null; });
     ui.$('.mapzoom', stage).addEventListener('click', e => {
       const b = e.target.closest('button');
       if (!b) return;
@@ -342,11 +369,6 @@
       if (g && !(e.relatedTarget && g.contains(e.relatedTarget))) { hoverId = null; focus(selected); }
     });
     let selected = null;
-    svg.addEventListener('click', e => {
-      if (dragged) return;
-      const g = e.target.closest('.n');
-      if (g) H.go('#/c/' + g.dataset.n);
-    });
     // ---------- side panel
     const ms = ui.$('.msearch', view);
     ms.addEventListener('input', () => {
