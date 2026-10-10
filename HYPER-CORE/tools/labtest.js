@@ -22,8 +22,10 @@ const onlyArg = (args.find(a => a.startsWith('--only=')) || '').slice(7) || (arg
 const only = onlyArg ? new Set(onlyArg.split(',').map(s => s.trim())) : null;
 const APP = (args.find(a => a.startsWith('--app=')) || '').slice(6) || (args.includes('--app') ? args[args.indexOf('--app') + 1] : 'optics');
 const CONF = { optics: { disc: 'optics', folder: 'HYPER-OPTICS', tools: 'opticsTools', first: 'optictools.js', re: /^optics-[a-z]+\.js$/, sym: 'opticsym.js', where: /optic[s-]/, cut: /^.*?(optic)/ },
-  esp32: { disc: 'esp32', folder: 'HYPER-ESP32', tools: 'espTools', first: 'esptools.js', re: /^esp-[a-z]+\.js$/, sym: 'espsym.js', where: /esp(tools|-)/, cut: /^.*?(esp(?:tools|-))/ } }[APP];
-if (!CONF) { console.error('Unknown --app ' + APP + ' (optics, esp32)'); process.exit(2); }
+  esp32: { disc: 'esp32', folder: 'HYPER-ESP32', tools: 'espTools', first: 'esptools.js', re: /^esp-[a-z]+\.js$/, sym: 'espsym.js', where: /esp(tools|-)/, cut: /^.*?(esp(?:tools|-))/ },
+  // Hyper Math: the SVD lab (ui/mathtools.js) mounts simulations from HYPER-MATH/sims/svd.js, so those are loaded too
+  math: { disc: 'math', folder: 'HYPER-MATH', tools: 'mathTools', first: 'mathtools.js', re: /^math-[a-z]+\.js$/, sym: null, sims: /^svd\.js$/, where: /mathtools|sims[\\/]svd/, cut: /^.*?(mathtools|svd\.js)/ } }[APP];
+if (!CONF) { console.error('Unknown --app ' + APP + ' (optics, esp32, math)'); process.exit(2); }
 
 const ctx = makeContext();
 const bad = [];
@@ -86,12 +88,15 @@ ctx.Symbol = Symbol; ctx.Promise = Promise; ctx.Proxy = Proxy; ctx.Reflect = Ref
 ctx.decodeURIComponent = decodeURIComponent; ctx.encodeURIComponent = encodeURIComponent; ctx.URLSearchParams = URLSearchParams; ctx.location = { hash: '' };
 
 const H = loadCore(ctx);
-run(ctx, path.join(__dirname, '..', 'js', CONF.sym));
+if (CONF.sym) run(ctx, path.join(__dirname, '..', 'js', CONF.sym));
 H.use(CONF.disc);
 // the content, so that links to pages and the dictionary have something to show
 const cdir = path.join(__dirname, '..', '..', CONF.folder, 'content');
 if (fs.existsSync(cdir)) for (const f of fs.readdirSync(cdir).filter(f => f.endsWith('.js')).sort((a, b) => (a === 'outline.js' ? -1 : b === 'outline.js' ? 1 : a.localeCompare(b)))) { try { run(ctx, path.join(cdir, f)); } catch (e) { /* validate.js reports content errors */ } }
 H.build();
+// simulations the labs mount (Hyper Math: sims/svd.js) — loaded after the kit stand-in is in place, below
+const simFiles = [];
+if (CONF.sims) { const sdir = path.join(__dirname, '..', '..', CONF.folder, 'sims'); if (fs.existsSync(sdir)) for (const f of fs.readdirSync(sdir).filter(f => CONF.sims.test(f)).sort()) simFiles.push(path.join(sdir, f)); }
 
 const colors = { theme: 'dark', bg: '#0d1020', bg2: '#10142a', surface: '#151a31', surface2: '#1a2040', border: '#252d52', border2: '#323c6b', text: '#e7e9f5', text2: '#c3c8e0',
   muted: '#959cbd', faint: '#677096', accent: '#7b8cff', ok: '#22b37a', bad: '#e5484d', warn: '#e0a030', grid: 'rgba(0,0,0,.1)', axis: '#888', dark: true,
@@ -137,7 +142,7 @@ const kit = {
     rec.plots.push(p); return p;
   },
   table(el, cols) { return { el: fakeEl(), set(rows) { if (!Array.isArray(rows)) { rec.errors.push('table.set needs an array of rows'); return; } for (const r of rows) for (const c of cols) { const v = typeof c.key === 'function' ? c.key(r) : r[c.key]; const t = String(c.fmt ? c.fmt(v, r) : v); if (BAD.test(t)) rec.readoutBad.add('table ' + c.label + ' = ' + t); } } }; },
-  colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2, optics: H.optics, osym: H.osym, esp: H.esp, esym: H.esym, gfx: H.gfx, code: H.code, terms: () => '',
+  colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2, optics: H.optics, osym: H.osym, esp: H.esp, esym: H.esym, gfx: H.gfx, code: H.code, linalg: H.linalg, terms: () => '',
   eng: (v, u) => H.util.fmt(v) + ' ' + u, money: v => String(v), pct: (f, d) => H.util.pct(f, d)
 };
 H.kit = kit;
@@ -149,6 +154,7 @@ H.ui = { $: () => fakeEl(), $$: () => [], el: () => fakeEl(), onLeave() {}, leav
 /* ---------------------------------------------------------------- load the labs */
 const uiDir = path.join(__dirname, '..', 'js', 'ui');
 const loadErr = [];
+for (const f of simFiles) { try { run(ctx, f); } catch (e) { loadErr.push(path.basename(f) + ': ' + e.message); } }
 try { run(ctx, path.join(uiDir, CONF.first)); } catch (e) { loadErr.push(CONF.first + ': ' + e.message); }
 for (const f of fs.readdirSync(uiDir).filter(f => CONF.re.test(f)).sort()) { try { run(ctx, path.join(uiDir, f)); } catch (e) { loadErr.push(f + ': ' + e.message + ' ' + ((e.stack || '').split('\n').find(l => l.includes(f)) || '').trim()); } }
 

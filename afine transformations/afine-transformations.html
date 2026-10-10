@@ -13,7 +13,7 @@
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);
     font-family:"Segoe UI",system-ui,Roboto,Arial,sans-serif;font-size:14px;overflow:hidden}
-  #app{display:grid;grid-template-columns:430px 1fr;height:100vh}
+  #app{display:grid;grid-template-columns:470px 1fr;height:100vh}
   /* ---------- left panel ---------- */
   #panel{background:var(--panel);border-right:1px solid var(--line);overflow-y:auto;padding:14px}
   #panel h1{font-size:18px;margin:2px 0 2px;color:var(--accent)}
@@ -37,14 +37,15 @@
   .mhead{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#20242f;cursor:pointer;user-select:none}
   .mhead .name{flex:1;background:transparent;border:none;color:var(--txt);font-size:13px;font-weight:600;outline:none;min-width:0}
   .mhead .name:focus{color:var(--accent)}
-  .mgrid{display:grid;gap:4px;padding:8px;width:max-content;margin:0 auto}
-  .mgrid input{width:78px;text-align:center;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
+  /* cells grow with their contents (see autosize); a row too wide for the panel scrolls sideways instead of clipping */
+  .mgrid{display:grid;gap:4px;padding:8px;width:max-content;max-width:100%;margin:0 auto;overflow-x:auto;justify-content:start}
+  .mgrid input{width:78px;min-width:78px;text-align:center;background:#0d0f14;border:1px solid var(--line);color:var(--accent2);
     border-radius:5px;padding:5px 4px;font-family:Consolas,monospace;font-size:12.5px;outline:none}
   .mgrid input:focus{border-color:var(--accent2)}
   .mgrid input.bad{border-color:var(--err);color:var(--err)}
   .mgrid input.hom{background:#111420;color:#5d6575}
   /* ---------- result ---------- */
-  #result .mgrid div,#tprime .mgrid div{width:78px;text-align:center;font-family:Consolas,monospace;font-size:12.5px;
+  #result .mgrid div,#tprime .mgrid div{min-width:78px;white-space:nowrap;text-align:center;font-family:Consolas,monospace;font-size:12.5px;
     padding:5px 4px;color:var(--txt);background:#0d0f14;border:1px solid var(--line);border-radius:5px}
   #detline{margin-top:8px;font-size:12.5px;color:var(--dim)}
   #detline b{color:var(--accent)}
@@ -80,8 +81,8 @@
   #slerpCtl input[type=range]{flex:1;accent-color:var(--accent2)}
   #slerpVal{font-family:Consolas,monospace;font-size:12px;color:var(--accent2);min-width:34px;text-align:right}
   /* ---------- numeric spinners ---------- */
-  .numcell{display:flex;align-items:stretch;width:78px}
-  .numcell input{flex:1 1 auto;min-width:0;width:auto !important;border-radius:5px 0 0 5px;border-right:none}
+  .numcell{display:flex;align-items:stretch;width:auto}
+  .numcell input{flex:0 0 auto;min-width:64px;border-radius:5px 0 0 5px;border-right:none}
   .spin{display:flex;flex-direction:column;flex:0 0 14px;width:14px}
   .spin button{flex:1;padding:0;margin:0;min-height:0;font-size:7.5px;line-height:1;color:var(--dim);
     background:#20262f;border:1px solid var(--line);border-radius:0;cursor:pointer}
@@ -89,6 +90,7 @@
   .spin button:last-child{border-radius:0 0 5px 0}
   .spin button:hover{background:#313a4b;color:var(--accent2)}
   .qrow .numcell{width:auto}
+  .qrow .numcell input{flex:1 1 auto}
   /* ---------- tensors ---------- */
   .tsub{margin-top:9px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--dim)}
   .tctl{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
@@ -99,6 +101,24 @@
   #tinfo{margin-top:8px;font-size:12.3px;color:var(--dim);line-height:1.65}
   #tinfo b{color:var(--txt)}
   #tinfo .lam{font-family:Consolas,monospace;color:var(--accent2)}
+  /* ---------- SVD ---------- */
+  :root{--svd:#a66bff}
+  #sfactors{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start;margin-top:4px}
+  #sfactors .fac{display:flex;flex-direction:column;align-items:center;gap:2px}
+  #sfactors .fac .lab{font-family:Consolas,monospace;font-size:11.5px;color:var(--svd)}
+  #sfactors .fac .op{font-size:18px;color:var(--dim);padding-top:26px}
+  #sfactors .mgrid{padding:2px;gap:3px}
+  #sfactors .mgrid div{min-width:62px;white-space:nowrap;text-align:center;font-family:Consolas,monospace;font-size:12px;
+    padding:4px 3px;color:var(--txt);background:#0d0f14;border:1px solid var(--line);border-radius:5px}
+  #sfactors .mgrid div.sig{color:var(--svd);font-weight:600}
+  #sfactors .mgrid input{min-width:64px;font-size:12px;padding:4px 3px}
+  #sfactors .mgrid input.sig{color:var(--svd);font-weight:600}
+  #sinfo{margin-top:8px;font-size:12.3px;color:var(--dim);line-height:1.65}
+  #sinfo b{color:var(--txt)}
+  #sinfo .sig{font-family:Consolas,monospace;color:var(--svd)}
+  #sstageCtl input[type=range]{flex:1;accent-color:var(--svd);min-width:90px}
+  #sstageVal{font-family:Consolas,monospace;font-size:12px;color:var(--svd);min-width:112px}
+  #ssrcRow button.sel{background:var(--svd);border-color:var(--svd)}
 </style>
 </head>
 <body>
@@ -190,6 +210,33 @@
       <div id="tinfo"></div>
     </div>
 
+    <div class="section" id="ssection">
+      <h2>SVD — singular value decomposition: M = U·Σ·Vᵀ</h2>
+      <div class="note" id="snote"></div>
+      <div class="row" style="margin-top:8px" id="ssrcRow">
+        <button data-src="composite" class="mini sel">Composite (linear part)</button>
+        <button data-src="own" class="mini">Own matrix</button>
+      </div>
+      <div id="sown" style="display:none">
+        <div class="tsub">Matrix M</div>
+        <div id="sgrid" style="margin-top:4px"></div>
+        <div class="row" id="spresetRow"></div>
+      </div>
+      <div class="tsub">The three factors</div>
+      <div id="sfactors"></div>
+      <div id="sinfo"></div>
+      <div class="tctl" id="sstageCtl">
+        <button id="splayBtn" class="mini">▶ Play the stages</button>
+        <input type="range" id="sstageRange" min="0" max="3" step="0.01" value="3">
+        <span id="sstageVal">M = U·Σ·Vᵀ</span>
+        <button id="sshowBtn" class="mini sel">Ellipse: on</button>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button id="sstackBtn" class="mini">→ Rebuild the stack as Vᵀ, Σ, U</button>
+        <button id="srankBtn" class="mini">→ Add rank-1 approximation to the stack</button>
+      </div>
+    </div>
+
     <div class="section">
       <h2>How each transform is represented</h2>
       <div class="note" id="cheatsheet"></div>
@@ -212,6 +259,7 @@
       <div><span class="sw" style="background:#ff9f1c"></span>transformed</div>
       <div><span class="sw" style="background:#e5484d"></span>x̂ axis&nbsp; <span class="sw" style="background:#30a46c"></span>ŷ axis&nbsp; <span class="sw" style="background:#3e8eed"></span>ẑ axis</div>
       <div><span class="sw" style="background:#2ec4b6"></span>tensor ellipse / ellipsoid&nbsp; <span class="sw" style="background:#9aa3b2"></span>rotated basis frame</div>
+      <div><span class="sw" style="background:#a66bff"></span>SVD ellipse / ellipsoid · σᵢuᵢ axes&nbsp; <span class="sw" style="background:#5d6575"></span>vᵢ input axes</div>
     </div>
   </div>
 </div>
@@ -377,6 +425,11 @@ function holdable(btn,fn){            // click once, or press-and-hold to auto-r
     t=setTimeout(()=>{ iv=setInterval(fn,80); },400); });
   ["mouseup","mouseleave","blur"].forEach(ev=>btn.addEventListener(ev,stop));
 }
+/* a cell grows with what is typed in it (cos(deg(30)) is never clipped); 7.3 px per monospace character + padding */
+function autosize(inp){
+  const n=String(inp.value||"").length, base=+inp.dataset.base||78;
+  inp.style.minWidth=Math.max(base,Math.round(n*7.3)+26)+"px";
+}
 function spinWrap(inp,step){          // wrap an input with ▲/▼ buttons + arrow-key support
   const wrap=document.createElement("div"); wrap.className="numcell";
   const col=document.createElement("div"); col.className="spin";
@@ -384,12 +437,15 @@ function spinWrap(inp,step){          // wrap an input with ▲/▼ buttons + ar
   up.title="increase — angles: +1°, values: +1 step (hold to repeat)";
   const dn=document.createElement("button"); dn.type="button"; dn.textContent="▼";
   dn.title="decrease — angles: −1°, values: −1 step (hold to repeat)";
-  holdable(up,()=>step(+1)); holdable(dn,()=>step(-1));
+  const go=d=>{ step(d); autosize(inp); };
+  holdable(up,()=>go(+1)); holdable(dn,()=>go(-1));
   col.append(up,dn); wrap.append(inp,col);
   inp.addEventListener("keydown",e=>{
-    if(e.key==="ArrowUp"){e.preventDefault();step(+1);}
-    else if(e.key==="ArrowDown"){e.preventDefault();step(-1);}
+    if(e.key==="ArrowUp"){e.preventDefault();go(+1);}
+    else if(e.key==="ArrowDown"){e.preventDefault();go(-1);}
   });
+  inp.addEventListener("input",()=>autosize(inp));
+  autosize(inp);
   return wrap;
 }
 
@@ -508,9 +564,47 @@ const DIM_NOTES = {
   4:"<b>4×4</b> — full 3D affine maps in homogeneous coordinates (x, y, z, 1): upper-left 3×3 = rotate / scale / shear, last column = translation."
 };
 const CHEATSHEET = {
-  2:"<b>Scale</b>: diagonal entries <code>sx, sy</code>.<br><b>Rotation θ</b>: <code>[cosθ −sinθ; sinθ cosθ]</code> — columns stay orthonormal.<br><b>Shear</b>: off-diagonal entries.<br><b>Reflection</b>: −1 on a diagonal → det &lt; 0 flips orientation.<br><b>Move (translate)</b>: impossible here — needs 3×3 homogeneous form.",
-  3:"<b>Move</b>: <code>tx, ty</code> in the last column.<br><b>Rotation θ</b>: upper 2×2 block <code>[cosθ −sinθ; sinθ cosθ]</code>.<br><b>Scale</b>: <code>M[0][0], M[1][1]</code>.<br><b>Shear</b>: off-diagonal <code>M[0][1]</code> / <code>M[1][0]</code>.<br><b>Any affine map</b> = linear part + translation in one matrix.<br><b>det</b> = signed area scale factor.",
-  4:"<b>Move</b>: <code>tx, ty, tz</code> in the last column.<br><b>Rotation</b>: orthonormal upper 3×3 (see the Rotate X/Y/Z presets).<br><b>Scale</b>: diagonal <code>sx, sy, sz</code>.<br><b>Shear</b>: off-diagonal entries of the upper 3×3.<br><b>det</b> = signed volume scale factor; det = 0 → collapses space (non-invertible)."
+  2:"<b>Scale</b>: diagonal entries <code>sx, sy</code>.<br><b>Rotation θ</b>: <code>[cosθ −sinθ; sinθ cosθ]</code> — columns stay orthonormal.<br><b>Shear</b>: off-diagonal entries.<br><b>Reflection</b>: −1 on a diagonal → det &lt; 0 flips orientation.<br><b>Move (translate)</b>: impossible here — needs 3×3 homogeneous form.<br><b>Any 2×2</b> = rotation · stretch · rotation: <code>M = U·Σ·Vᵀ</code> (SVD section) — a shear is a rotation, a stretch by φ and 1/φ, and a rotation back.",
+  3:"<b>Move</b>: <code>tx, ty</code> in the last column.<br><b>Rotation θ</b>: upper 2×2 block <code>[cosθ −sinθ; sinθ cosθ]</code>.<br><b>Scale</b>: <code>M[0][0], M[1][1]</code>.<br><b>Shear</b>: off-diagonal <code>M[0][1]</code> / <code>M[1][0]</code>.<br><b>Any affine map</b> = linear part + translation in one matrix.<br><b>det</b> = signed area scale factor.<br><b>SVD of the linear part</b>: <code>U·Σ·Vᵀ</code> — every affine map is rotate · stretch along perpendicular axes · rotate · translate.",
+  4:"<b>Move</b>: <code>tx, ty, tz</code> in the last column.<br><b>Rotation</b>: orthonormal upper 3×3 (see the Rotate X/Y/Z presets).<br><b>Scale</b>: diagonal <code>sx, sy, sz</code>.<br><b>Shear</b>: off-diagonal entries of the upper 3×3.<br><b>det</b> = signed volume scale factor; det = 0 → collapses space (non-invertible).<br><b>SVD of the upper 3×3</b>: <code>U·Σ·Vᵀ</code> — the unit sphere becomes an ellipsoid with semi-axes σ₁ ≥ σ₂ ≥ σ₃; σ₃ = 0 flattens it to a disc."
+};
+
+/* ---------- SVD notes / presets (2×2 in 2D modes, 3×3 in 4×4 mode) ---------- */
+const SVD_NOTES={
+  2:`Every matrix, however lopsided, is <b>a rotation, then a stretch along perpendicular axes, then a
+     rotation</b>: <code>M = U·Σ·Vᵀ</code>. The unit circle comes out as an <b>ellipse</b> whose semi-axes are the
+     <b>singular values</b> σ₁ ≥ σ₂ ≥ 0, lying along the columns u₁, u₂ of U; they are the images of the
+     columns v₁, v₂ of V (M·vᵢ = σᵢ·uᵢ). Vᵀ turns v₁, v₂ onto the axes, Σ stretches the axes, U turns them
+     onto u₁, u₂. Compare the tensor section: a symmetric tensor has U = V (one rotation); a general
+     matrix needs two. The SVD exists for every matrix — shears and projections included — unlike
+     eigenvectors. Read: rank = number of non-zero σ · ‖M‖ = σ₁ · κ = σ₁/σ₂ (error amplification) ·
+     |det| = σ₁σ₂. In the viewport (right of the shape) the purple ellipse is the image of the unit circle
+     under the current stage; grey arrows are v₁, v₂; purple arrows their images.`,
+  3:`Same idea in 3D for the upper 3×3 of the composite (the translation is set aside): <code>M = U·Σ·Vᵀ</code>
+     with U, V rotations (a mirror folded into Σ when det &lt; 0) and σ₁ ≥ σ₂ ≥ σ₃ ≥ 0. The unit sphere becomes
+     an <b>ellipsoid</b> with semi-axes σᵢ along uᵢ, the images of the perpendicular directions vᵢ. The stages
+     use slerp for the two rotations. rank = number of non-zero σ · ‖M‖ = σ₁ · κ = σ₁/σ₃ · |det| = σ₁σ₂σ₃.`
+};
+const SPRESETS={
+  2:[
+    ["Identity",()=>[["1","0"],["0","1"]]],
+    ["Rotate 30°",()=>[["cos(deg(30))","-sin(deg(30))"],["sin(deg(30))","cos(deg(30))"]]],
+    ["Stretch 2, 0.5",()=>[["2","0"],["0","0.5"]]],
+    ["Shear",()=>[["1","1"],["0","1"]]],
+    ["Symmetric 2 1;1 2",()=>[["2","1"],["1","2"]]],
+    ["Reflect X",()=>[["-1","0"],["0","1"]]],
+    ["Rank 1",()=>[["1","2"],["0.5","1"]]],
+    ["Hand example 3 0;4 5",()=>[["3","0"],["4","5"]]],
+  ],
+  3:[
+    ["Identity",()=>[["1","0","0"],["0","1","0"],["0","0","1"]]],
+    ["Rotate Z 30°",()=>[["cos(deg(30))","-sin(deg(30))","0"],["sin(deg(30))","cos(deg(30))","0"],["0","0","1"]]],
+    ["Stretch 2, 1, 0.5",()=>[["2","0","0"],["0","1","0"],["0","0","0.5"]]],
+    ["Shear XY",()=>[["1","1","0"],["0","1","0"],["0","0","1"]]],
+    ["Rank 2 (flat)",()=>[["1","2","3"],["4","5","6"],["7","8","9"]]],
+    ["Reflect Z",()=>[["1","0","0"],["0","1","0"],["0","0","-1"]]],
+    ["General",()=>[["1.5","0.5","0"],["0.25","1","0.3"],["0","0.4","0.8"]]],
+  ]
 };
 
 /* ---------- rank-2 tensor presets / notes (2×2 in 2D modes, 3×3 in 4×4 mode) ---------- */
@@ -568,6 +662,7 @@ const state={
   slerp:{active:false,t:0,val:1},
   qTotal:[1,0,0,0],
   tensor:{cells:null,theta:"0",spin:false,show:true},
+  svd:{source:"composite",cells:null,t:3,play:false,show:true},
 };
 function newMatrix(name,cells){ return {id:++uid,name,enabled:true,cells:cells||I(state.dim)}; }
 function defaultStack(dim){
@@ -620,7 +715,7 @@ function renderStack(){
       b.onclick=e=>{e.stopPropagation();fn();};head.appendChild(b);});
     card.appendChild(head);
     const grid=document.createElement("div"); grid.className="mgrid";
-    grid.style.gridTemplateColumns=`repeat(${state.dim},78px)`;
+    grid.style.gridTemplateColumns=`repeat(${state.dim},auto)`;
     m.cells.forEach((row,r)=>row.forEach((val,c)=>{
       const inp=document.createElement("input"); inp.value=val;
       const homogeneous = state.dim>2 && r===state.dim-1;
@@ -650,7 +745,7 @@ $("#dimRow").addEventListener("click",e=>{
   state.dim=+b.dataset.dim;
   [...$("#dimRow").children].forEach(x=>x.classList.toggle("sel",x===b));
   state.stack=defaultStack(state.dim); state.selectedId=state.stack[0].id;
-  rebuildGeometry(); renderPresets(); renderStack(); renderTensor(); rebuildTensorGeo(); update();
+  rebuildGeometry(); renderPresets(); renderStack(); renderTensor(); rebuildTensorGeo(); renderSvd(); rebuildSvdGeo(); update();
 });
 $("#addBtn").onclick=()=>{ const m=newMatrix("Matrix"); state.stack.push(m); state.selectedId=m.id; renderStack(); update(); };
 $("#clearBtn").onclick=()=>{ state.stack=defaultStack(state.dim); state.selectedId=state.stack[0].id; renderStack(); update(); };
@@ -776,7 +871,7 @@ function renderTensor(){
   });
   tgridEl.innerHTML="";
   const g=document.createElement("div"); g.className="mgrid";
-  g.style.gridTemplateColumns=`repeat(${td},78px)`;
+  g.style.gridTemplateColumns=`repeat(${td},auto)`;
   T.cells.forEach((row,r)=>row.forEach((val,c)=>{
     const inp=document.createElement("input"); inp.value=val;
     inp.oninput=()=>{ T.cells[r][c]=inp.value;
@@ -800,7 +895,7 @@ function renderTensor(){
     T.theta=stepExpr(T.theta,dir,1);
     ti.value=T.theta; ti.classList.remove("bad"); update();
   });
-  cell.style.width="92px";
+  cell.style.minWidth="92px";
   th.appendChild(cell);
   T._thetaInp=ti;
   $("#tshowBtn").textContent=(td===3?"Ellipsoid: ":"Ellipse: ")+(T.show?"on":"off");
@@ -823,7 +918,7 @@ function updateTensor(){
   const eig=symEig(S);
   tprimeEl.innerHTML="";
   const g=document.createElement("div"); g.className="mgrid";
-  g.style.gridTemplateColumns=`repeat(${td},78px)`;
+  g.style.gridTemplateColumns=`repeat(${td},auto)`;
   TP.forEach(row=>row.forEach(v=>{
     const d=document.createElement("div"); d.textContent=fmt(v); g.appendChild(d);
   }));
@@ -846,6 +941,204 @@ $("#tshowBtn").onclick=e=>{ state.tensor.show=!state.tensor.show;
   e.target.classList.toggle("sel",state.tensor.show);
   e.target.textContent=(tdim()===3?"Ellipsoid: ":"Ellipse: ")+(state.tensor.show?"on":"off");
   tensorGroup.visible=state.tensor.show; };
+
+/* =====================================================================
+   5d. UI — SVD: M = U·Σ·Vᵀ (2×2 in 2D modes, 3×3 in 4×4 mode)
+   ===================================================================== */
+const sdim=()=>state.dim===4?3:2;
+const sgridEl=$("#sgrid"), sfactorsEl=$("#sfactors"), sinfoEl=$("#sinfo");
+const ident=n=>Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>r===c?1:0));
+const transp=M=>M[0].map((_,j)=>M.map(r=>r[j]));
+const det3=M=>M.length===2?M[0][0]*M[1][1]-M[0][1]*M[1][0]:matDet(M);
+/* the SVD of a 2×2 or 3×3 matrix, from the eigenvectors of MᵀM (fine for a hand-sized matrix):
+   V a pure rotation (det +1), U a rotation — with a mirror on the last axis when det M < 0 */
+function svdSmall(M){
+  const n=M.length, G=matMul(transp(M),M);
+  const eig=symEig(G);
+  const S=eig.map(e=>Math.sqrt(Math.max(0,e.val)));
+  const Vc=eig.map(e=>{ const v=e.vec.slice(); let big=0; for(let k=1;k<n;k++) if(Math.abs(v[k])>Math.abs(v[big])) big=k; return v[big]<0?v.map(x=>-x):v; });
+  const tol=1e-10*(S[0]||1);
+  const Uc=[];
+  Vc.forEach((v,i)=>{ if(S[i]>tol){ const u=M.map(r=>r.reduce((s,a,j)=>s+a*v[j],0)/S[i]); Uc.push(u); } else Uc.push(null); });
+  /* complete missing u's by Gram–Schmidt against the standard basis */
+  for(let i=0;i<n;i++) if(!Uc[i]){
+    for(let e=0;e<n&&!Uc[i];e++){
+      const v=Array.from({length:n},(_,k)=>k===e?1:0);
+      Uc.forEach(q=>{ if(!q) return; const d=q.reduce((s,a,k)=>s+a*v[k],0); for(let k=0;k<n;k++) v[k]-=d*q[k]; });
+      const L=Math.hypot(...v); if(L>1e-6) Uc[i]=v.map(x=>x/L);
+    }
+  }
+  let U=transp(Uc), V=transp(Vc);           // columns are the singular vectors
+  if(det3(V)<0){ for(let k=0;k<n;k++){ V[k][n-1]=-V[k][n-1]; U[k][n-1]=-U[k][n-1]; } }
+  const rank=S.filter(s=>s>tol).length;
+  if(rank<n&&det3(U)<0) for(let k=0;k<n;k++) U[k][n-1]=-U[k][n-1];   // a completed column has no sign of its own: make U a rotation
+  const mirror=det3(U)<0;
+  const Ur=mirror? U.map(r=>r.map((x,c)=>c===n-1?-x:x)) : U;   // the rotation part of U
+  const out={M,n,U,S,V,mirror,Ur,rank};
+  if(n===2){ out.thV=Math.atan2(V[1][0],V[0][0]); out.thU=Math.atan2(Ur[1][0],Ur[0][0]); }
+  else{ out.qV=mat3ToQ(V); out.qU=mat3ToQ(Ur); }
+  return out;
+}
+/* the transformation at stage t ∈ [0,3]: U(t3) · Σ(t2) · Vᵀ(t1) */
+function svdStage(D,t){
+  const n=D.n, t1=Math.min(1,Math.max(0,t)), t2=Math.min(1,Math.max(0,t-1)), t3=Math.min(1,Math.max(0,t-2));
+  const Sg=D.S.slice(); if(D.mirror) Sg[n-1]=-Sg[n-1];
+  const Sig=ident(n).map((r,i)=>r.map((x,j)=>i===j?1+(Sg[i]-1)*t2:0));
+  let Rv,Ru;
+  if(n===2){ const a=-D.thV*t1, b=D.thU*t3;
+    Rv=[[Math.cos(a),-Math.sin(a)],[Math.sin(a),Math.cos(a)]]; Ru=[[Math.cos(b),-Math.sin(b)],[Math.sin(b),Math.cos(b)]]; }
+  else{ Rv=qToMat3(qSlerp([1,0,0,0],qConj(D.qV),t1)); Ru=qToMat3(qSlerp([1,0,0,0],D.qU,t3)); }
+  return matMul(Ru,matMul(Sig,Rv));
+}
+function svdSource(){                 // the matrix the SVD is taken of
+  const n=sdim(), S=state.svd;
+  if(S.source==="own"){
+    if(!S.cells||S.cells.length!==n) S.cells=SPRESETS[n][n===2?7:6][1]();
+    try{ const M=S.cells.map(r=>r.map(parseExpr)); S._lastM=M; return {M,err:""}; }
+    catch(e){ return {M:S._lastM||ident(n),err:"component: "+e.message}; }
+  }
+  const C=state.currentComposite||ident(state.dim);
+  return {M:C.slice(0,n).map(r=>r.slice(0,n)),err:""};
+}
+function renderSvd(){
+  const n=sdim(), S=state.svd;
+  if(!S.cells||S.cells.length!==n) S.cells=SPRESETS[n][n===2?7:6][1]();
+  $("#snote").innerHTML=SVD_NOTES[n];
+  const prow=$("#spresetRow"); prow.innerHTML="";
+  SPRESETS[n].forEach(([label,gen])=>{
+    const b=document.createElement("button"); b.className="mini"; b.textContent=label;
+    b.onclick=()=>{ S.cells=gen().map(r=>r.slice()); S.source="own"; syncSvdSource(); renderSvd(); update(); };
+    prow.appendChild(b);
+  });
+  sgridEl.innerHTML="";
+  const g=document.createElement("div"); g.className="mgrid";
+  g.style.gridTemplateColumns=`repeat(${n},auto)`;
+  S.cells.forEach((row,r)=>row.forEach((val,c)=>{
+    const inp=document.createElement("input"); inp.value=val;
+    inp.oninput=()=>{ S.cells[r][c]=inp.value;
+      try{ parseExpr(inp.value); inp.classList.remove("bad"); }
+      catch{ inp.classList.add("bad"); }
+      update(); };
+    g.appendChild(spinWrap(inp,dir=>{
+      S.cells[r][c]=stepExpr(S.cells[r][c],dir,0.1);
+      inp.value=S.cells[r][c]; inp.classList.remove("bad"); update();
+    }));
+  }));
+  sgridEl.appendChild(g);
+  $("#sown").style.display=S.source==="own"?"":"none";
+  $("#sshowBtn").textContent=(n===3?"Ellipsoid: ":"Ellipse: ")+(S.show?"on":"off");
+  $("#sshowBtn").classList.toggle("sel",S.show);
+}
+function syncSvdSource(){
+  [...$("#ssrcRow").children].forEach(b=>b.classList.toggle("sel",b.dataset.src===state.svd.source));
+  $("#sown").style.display=state.svd.source==="own"?"":"none";
+}
+function stageLabel(t){
+  if(t<=0) return "stage 0: unit circle";
+  if(t<1) return `Vᵀ turning… ${(t*100).toFixed(0)}%`;
+  if(t<2) return `Σ stretching… ${((t-1)*100).toFixed(0)}%`;
+  if(t<3) return `U turning… ${((t-2)*100).toFixed(0)}%`;
+  return "M = U·Σ·Vᵀ";
+}
+/* the four grids of the factor row (M = U · Σ · Vᵀ), as expression cells with spinners */
+function buildFactorGrids(n){
+  const S=state.svd;
+  sfactorsEl.innerHTML="";
+  const mkGrid=(key,diagOnly)=>{
+    const g=document.createElement("div"); g.className="mgrid"; g.style.gridTemplateColumns=`repeat(${n},auto)`;
+    const cells=[];
+    for(let i=0;i<n;i++) for(let j=0;j<n;j++){
+      if(diagOnly&&i!==j){ const d=document.createElement("div"); d.textContent="0"; g.appendChild(d); cells.push(null); continue; }
+      const inp=document.createElement("input"); inp.value="0"; inp.dataset.i=i; inp.dataset.j=j; inp.dataset.base="58";
+      if(diagOnly) inp.classList.add("sig");
+      inp.title= key==="M" ? "edit M: it is decomposed afresh" : "edit a factor: M is rebuilt as U·Σ·Vᵀ and decomposed again";
+      inp.oninput=()=>{ try{ parseExpr(inp.value); inp.classList.remove("bad"); }catch{ inp.classList.add("bad"); return; } factorEdited(key); };
+      g.appendChild(spinWrap(inp,dir=>{ inp.value=stepExpr(inp.value,dir,0.1); inp.classList.remove("bad"); factorEdited(key); }));
+      cells.push(inp);
+    }
+    return {g,cells};
+  };
+  const fac=(label,grid)=>{ const f=document.createElement("div"); f.className="fac"; const l=document.createElement("div"); l.className="lab"; l.textContent=label; f.append(l,grid.g); grid.lab=l; return f; };
+  const op=t=>{ const o=document.createElement("div"); o.className="fac"; o.innerHTML=`<div class="lab">&nbsp;</div><div class="op">${t}</div>`; return o; };
+  const M=mkGrid("M"), U=mkGrid("U"), Sg=mkGrid("S",true), Vt=mkGrid("Vt");
+  sfactorsEl.append(fac("M",M), op("="), fac("U",U), op("·"), fac("Σ",Sg), op("·"), fac("Vᵀ",Vt));
+  S._fac={n,M,U,S:Sg,Vt,labU:U.lab};
+}
+/* put the numbers of A into a grid, leaving alone the cell the user is typing in */
+function refreshFactorGrid(grid,A){
+  grid.cells.forEach(inp=>{
+    if(!inp||inp===document.activeElement) return;
+    const s=fmt(A[+inp.dataset.i][+inp.dataset.j]);
+    if(inp.value!==s){ inp.value=s; inp.classList.remove("bad"); autosize(inp); }
+  });
+}
+function readFactorGrid(grid,n){
+  const A=ident(n).map(r=>r.map(()=>0));
+  grid.cells.forEach(inp=>{ if(inp) A[+inp.dataset.i][+inp.dataset.j]=parseExpr(inp.value); });
+  return A;
+}
+function factorEdited(key){
+  const S=state.svd, F=S._fac, n=F.n; let M;
+  try{ M= key==="M" ? readFactorGrid(F.M,n) : matMul(matMul(readFactorGrid(F.U,n),readFactorGrid(F.S,n)),readFactorGrid(F.Vt,n)); }
+  catch{ return; }
+  S.cells=M.map(r=>r.map(v=>fmtStep(v)));
+  if(S.source!=="own"){ S.source="own"; syncSvdSource(); }
+  renderSvd(); update();
+}
+function updateSvd(){
+  const n=sdim(), S=state.svd, {M,err}=svdSource();
+  const D=svdSmall(M);
+  S._num=D;
+  /* the three factors: editable cells with spinners, built once per size and refreshed in place
+     (so typing in one is never interrupted). Editing M decomposes it afresh; editing U, Σ or Vᵀ rebuilds
+     M = U·Σ·Vᵀ from the cells and decomposes that (U and V come back re-orthogonalised). */
+  const Sig=ident(n).map((r,i)=>r.map((x,j)=>i===j?D.S[i]:0));
+  if(!S._fac||S._fac.n!==n) buildFactorGrids(n);
+  S._fac.labU.textContent="U"+(D.mirror?" (incl. mirror)":"");
+  refreshFactorGrid(S._fac.M,M); refreshFactorGrid(S._fac.U,D.U); refreshFactorGrid(S._fac.S,Sig); refreshFactorGrid(S._fac.Vt,transp(D.V));
+  const p=n, kap=D.rank<p?"∞ (singular)":fmt(D.S[0]/D.S[p-1]);
+  const dm=det3(M);
+  const angles= n===2?
+    ` · Vᵀ rotates by <b>${fmt(-D.thV*180/Math.PI)}°</b>, U rotates by <b>${fmt(D.thU*180/Math.PI)}°</b>${D.mirror?" and mirrors the 2nd axis":""}`
+    : (()=>{ const au=qToAxisAngle(D.qU), av=qToAxisAngle(D.qV);
+        return ` · Vᵀ: ${fmt(av.thetaDeg)}° about (${av.axis.map(fmt).join(", ")}) · U: ${fmt(au.thetaDeg)}° about (${au.axis.map(fmt).join(", ")})${D.mirror?" + mirror of the 3rd axis":""}`; })();
+  sinfoEl.innerHTML=
+    (err?`<div style="color:var(--err)">⚠ ${err} — showing last valid matrix</div>`:"")+
+    `singular values <span class="sig">σ = ${D.S.map(fmt).join(", ")}</span> · rank <b>${D.rank}</b> of ${n}`+
+    ` · ‖M‖₂ = <b>${fmt(D.S[0])}</b> · κ = <b>${kap}</b> · |det| = Πσ = <b>${fmt(D.S.reduce((a,s)=>a*s,1))}</b>${Math.abs(Math.abs(dm)-D.S.reduce((a,s)=>a*s,1))>1e-6?" (det "+fmt(dm)+")":""}`+
+    angles+`<br>σᵢ² are the eigenvalues of MᵀM; M·vᵢ = σᵢ·uᵢ (columns of V and U). <b>${stageLabel(S.t)}</b>`;
+}
+$("#ssrcRow").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  state.svd.source=b.dataset.src; syncSvdSource(); update();
+});
+$("#sstageRange").oninput=e=>{ state.svd.t=+e.target.value; state.svd.play=false; $("#splayBtn").textContent="▶ Play the stages";
+  $("#sstageVal").textContent=stageLabel(state.svd.t); updateSvd(); };
+$("#splayBtn").onclick=e=>{ state.svd.play=!state.svd.play; if(state.svd.play&&state.svd.t>=3) state.svd.t=0;
+  e.target.textContent=state.svd.play?"■ Pause":"▶ Play the stages"; };
+$("#sshowBtn").onclick=e=>{ state.svd.show=!state.svd.show; e.target.classList.toggle("sel",state.svd.show);
+  e.target.textContent=(sdim()===3?"Ellipsoid: ":"Ellipse: ")+(state.svd.show?"on":"off"); svdGroup.visible=state.svd.show; };
+/* embed an n×n linear matrix into the current stack dimension, as expression strings */
+function embedCells(A,name){
+  const d=state.dim, n=A.length;
+  const cells=I(d).map((row,r)=>row.map((v,c)=>(r<n&&c<n)?fmt(A[r][c]):v));
+  return newMatrix(name,cells);
+}
+$("#sstackBtn").onclick=()=>{
+  const D=state.svd._num; if(!D) return;
+  const n=D.n, Sig=ident(n).map((r,i)=>r.map((x,j)=>i===j?D.S[i]:0));
+  const ms=[embedCells(transp(D.V),"Vᵀ (rotate)"), embedCells(Sig,"Σ (stretch)"), embedCells(D.U,"U (rotate"+(D.mirror?" + mirror":"")+")")];
+  if(state.svd.source==="composite"&&state.dim>2&&state.currentComposite){
+    const C=state.currentComposite, d=state.dim, t=C.slice(0,d-1).map(r=>r[d-1]);
+    if(t.some(v=>Math.abs(v)>1e-9)){ const cells=I(d).map((row,r)=>row.map((v,c)=>c===d-1&&r<d-1?fmt(t[r]):v)); ms.push(newMatrix("translate",cells)); }
+  }
+  state.stack=ms; state.selectedId=ms[0].id; renderStack(); update();
+};
+$("#srankBtn").onclick=()=>{
+  const D=state.svd._num; if(!D) return;
+  const n=D.n, A=Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>D.S[0]*D.U[i][0]*D.V[j][0]));
+  const m=embedCells(A,"rank-1: σ₁u₁v₁ᵀ"); state.stack.push(m); state.selectedId=m.id; renderStack(); update();
+};
 
 /* =====================================================================
    6. THREE.JS SCENE
@@ -994,6 +1287,56 @@ function deformTensor(){
   });
 }
 
+/* ---------- SVD visualization: unit circle/sphere → ellipse/ellipsoid through the stages ---------- */
+const svdGroup=new THREE.Group(); scene.add(svdGroup);
+let svdMesh=null, svdGhost=null, sBase=null, sOutArrows=[], sInArrows=[];
+function rebuildSvdGeo(){
+  svdGroup.clear(); sOutArrows=[]; sInArrows=[];
+  const n=sdim();
+  const geo= n===3? new THREE.SphereGeometry(1,28,18) : new THREE.CircleGeometry(1,72);
+  sBase=geo.attributes.position.array.slice();
+  const mat=new THREE.MeshStandardMaterial({color:0xa66bff,roughness:.5,metalness:.05,
+    transparent:true,opacity:.32,side:THREE.DoubleSide,depthWrite:false});
+  svdMesh=new THREE.Mesh(geo,mat); svdGroup.add(svdMesh);
+  svdGhost=new THREE.Mesh(geo.clone(),
+    new THREE.MeshBasicMaterial({color:0x8b93a5,wireframe:true,transparent:true,opacity:.22}));
+  svdGroup.add(svdGhost);
+  for(let i=0;i<n;i++){
+    const a=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(),1,0xa66bff,.16,.08);
+    sOutArrows.push(a); svdGroup.add(a);
+    const f=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(),1,0x5d6575,.1,.06);
+    f.line.material.transparent=true; f.line.material.opacity=.6;
+    f.cone.material.transparent=true; f.cone.material.opacity=.6;
+    sInArrows.push(f); svdGroup.add(f);
+  }
+  svdGroup.position.set(3.0,0.5,n===3?0.5:0);
+  svdGroup.visible=state.svd.show;
+}
+function deformSvd(){
+  const S=state.svd, D=S._num;
+  if(!svdMesh||!D) return;
+  svdGroup.visible=S.show;
+  if(!S.show) return;
+  const n=D.n, Mt=svdStage(D,S.t);
+  const lin=(Mx,x,y,z)=> n===2?
+    [Mx[0][0]*x+Mx[0][1]*y, Mx[1][0]*x+Mx[1][1]*y, 0.002]:
+    [Mx[0][0]*x+Mx[0][1]*y+Mx[0][2]*z, Mx[1][0]*x+Mx[1][1]*y+Mx[1][2]*z, Mx[2][0]*x+Mx[2][1]*y+Mx[2][2]*z];
+  const pos=svdMesh.geometry.attributes.position;
+  for(let i=0;i<pos.count;i++){ const p=lin(Mt,sBase[i*3],sBase[i*3+1],sBase[i*3+2]); pos.setXYZ(i,p[0],p[1],p[2]); }
+  pos.needsUpdate=true; svdMesh.geometry.computeVertexNormals();
+  for(let i=0;i<n;i++){
+    const v=D.V.map(r=>r[i]);                       // input direction vᵢ
+    const w=lin(Mt,v[0],v[1],n===3?v[2]:0);         // its image at this stage (σᵢuᵢ at the end)
+    const vin=new THREE.Vector3(v[0],v[1],n===3?v[2]:0);
+    sInArrows[i].setDirection(vin.clone().normalize()); sInArrows[i].setLength(1,.1,.06);
+    const len=Math.hypot(w[0],w[1],w[2]);
+    if(len<1e-4){ sOutArrows[i].visible=false; continue; }
+    sOutArrows[i].visible=true;
+    sOutArrows[i].setDirection(new THREE.Vector3(w[0],w[1],w[2]).normalize());
+    sOutArrows[i].setLength(len,Math.min(.16,len*.3),Math.min(.08,len*.18));
+  }
+}
+
 /* =====================================================================
    7. COMPOSITE + UPDATE
    ===================================================================== */
@@ -1039,7 +1382,7 @@ function update(){
   /* result grid */
   resultGrid.innerHTML="";
   const g=document.createElement("div"); g.className="mgrid";
-  g.style.gridTemplateColumns=`repeat(${n},78px)`;
+  g.style.gridTemplateColumns=`repeat(${n},auto)`;
   composite.forEach(row=>row.forEach(v=>{
     const d=document.createElement("div"); d.textContent=fmt(v); g.appendChild(d);
   }));
@@ -1057,6 +1400,7 @@ function update(){
   state.currentComposite=composite;
   refreshQuatReadouts();   // update readouts without stealing input focus
   updateTensor();
+  updateSvd();
 }
 
 /* =====================================================================
@@ -1111,6 +1455,13 @@ function loop(){
     updateTensor();
   }
   deformTensor();
+  if(state.svd.play){            // walk through Vᵀ, Σ, U: one stage per 1.5 s
+    state.svd.t=Math.min(3,state.svd.t+dt/1.5);
+    $("#sstageRange").value=state.svd.t; $("#sstageVal").textContent=stageLabel(state.svd.t);
+    if(state.svd.t>=3){ state.svd.play=false; $("#splayBtn").textContent="▶ Play the stages"; }
+    updateSvd();
+  }
+  deformSvd();
   controls.update();
   renderer.render(scene,camera);
 }
@@ -1121,8 +1472,8 @@ function loop(){
 state.stack=defaultStack(3); state.selectedId=state.stack[0].id;
 state.quats=[newQuat("q: 30° about Z", ["cos(deg(15))","0","0","sin(deg(15))"])];
 state.tensor.cells=TDEFAULT[2].map(r=>r.slice());
-renderPresets(); renderStack(); renderQuats(); renderTensor();
-rebuildGeometry(); rebuildTensorGeo(); resize(); update(); loop();
+renderPresets(); renderStack(); renderQuats(); renderTensor(); renderSvd();
+rebuildGeometry(); rebuildTensorGeo(); rebuildSvdGeo(); resize(); update(); loop();
 </script>
 </body>
 </html>

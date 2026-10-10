@@ -324,6 +324,7 @@
     esym: H.esym,                   // drawing boards, parts, logic traces, packets, networks, radio rings, state machines (espsym.js)
     gfx: H.gfx,                     // virtual displays: frame buffers, the 5 × 7 font, character LCDs, seven segments, widgets (espgfx.js)
     code: H.code,                   // highlighting and the block notation (espcode.js)
+    linalg: H.linalg,               // dense linear algebra: SVD, pseudoinverse, least squares, low rank, PCA (linalg.js)
     terms: tex => H.termChips ? H.termChips(tex) : '',   // chips of the math terms in a TeX string, which open their glossary cards (glossary.js)
     colors: () => ui.colors(),
     fmt: (v, s) => H.util.fmt(v, s),

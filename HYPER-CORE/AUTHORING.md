@@ -818,7 +818,7 @@ stationary`; *vectors and fields* — `vector scalar components magnitude unit-v
 cross-product field nabla gradient divergence curl laplacian line-integral closed-integral flux
 gauss-theorem stokes-theorem solid-angle gauge hodograph tensor`; *complex numbers* — `imaginary-unit complex-number conjugate
 absolute-square euler-formula rotating-arrow amplitude`; *matrices and quantum notation* — `matrix trace
-determinant eigenvalue hermitian bra-ket base-states superposition normalization operator commutator
+determinant eigenvalue transpose orthogonal-matrix singular-value rank condition-number pseudoinverse hermitian bra-ket base-states superposition normalization operator commutator
 expectation-value wave-function probability-density kronecker-delta dirac-delta hbar`; *relativity* —
 `lorentz-factor hyperbolic rapidity four-vector invariant summation-convention`; *probability* — `least-squares chi-square bayes binomial-coefficient probability mean
 standard-deviation coefficient-of-variation correlation gaussian random-walk boltzmann-factor`; *action* — `action lagrangian functional stationary-phase variation`.
@@ -1054,6 +1054,36 @@ of the C++, warns on API forms that are out of date (`js/esp32-api.js`) and has 
 MicroPython (`--nopy` skips that); `tools/compile-esp32.js` builds every Arduino C++ program with arduino-cli where
 that and the ESP32 core are installed (see `HYPER-ESP32/COMPILED.md`). `tools/wire.js HYPER-ESP32` lists new content,
 simulation and lab files in `index.html`. References: the first blink, strapping pins, the ESP32-C3's page.
+
+### Hyper Math: the linear algebra module and the SVD lab
+
+**The linear algebra module** (`HYPER-CORE/js/linalg.js`; `kit.linalg` in simulations, `Hyper.linalg`
+anywhere; tested by `tools/test-linalg.js`) is dense linear algebra on arrays of rows. Never re-derive an
+SVD, a pseudoinverse or a least-squares fit in a simulation — call it:
+
+```js
+const L = kit.linalg;
+L.svd(A, { full })        // -> { U, S, V, Ufull, Vfull, rank, tol, sweeps, rotations }   one-sided Jacobi; A = U diag(S) Vᵀ, S descending
+L.svd2(A)                 // 2 × 2: { s1, s2, U, V, thetaU, thetaV, mirror }   V a pure rotation; U rotation (+ mirror when det A < 0)
+L.svdTrace(A, maxSteps)   // the same, every rotation recorded: steps[k] = { i, j, angle, off, cols, V }
+L.rank(A)  L.cond(A)  L.norm2(A)  L.nuclear(A)  L.fro(A)  L.det(A)  L.solve(A, b)   // solve: Gaussian elimination, null if singular
+L.pinv(A, { tol, k, lambda })   L.lstsq(A, b, { k, lambda })   // -> { x, r, resid, rank, S, cond }; k truncates, lambda is Tikhonov
+L.lowRank(A, k)           // -> { Ak, err2 (σ_{k+1}), errF, energy, storage, full }     L.layer(svd, k)  the k-th rank-one piece
+L.fourSubspaces(A)        // orthonormal bases: { rank, col, row, nul, leftNul }       L.polar(A) -> { Q, P }
+L.eigSym(S)               // Jacobi for a symmetric matrix: { values (descending), vectors (columns) }
+L.pca(X, { standardise }) // rows = observations: { mean, sd, Xc, S, variance, ratio, cum, scores, V }
+L.T  L.mul  L.mv  L.add  L.sub  L.scale  L.outer  L.dot  L.norm  L.eye  L.zeros  L.diag  L.gram  L.col  L.hilbert(n)  L.rotation(θ)
+L.rng(seed)               // { next(), normal() } reproducible randomness     L.parse(text)  L.toText(A)  L.toTex(A, d, { env, blank })  L.fmt(v, d)
+```
+
+Singular vectors are signed so that the largest entry of each $v_i$ is positive, so results are the same from run to
+run. The pictures of the compression simulation (`Hyper.svdDemo.makeImage(kind, N)`) are computed, never drawn with
+text, so they work headless.
+
+**The SVD lab** (`HYPER-CORE/js/ui/mathtools.js`, Tools → SVD lab, `#/tools/svdlab/<decompose|algorithm|geometry|image|fit|pca>`)
+keeps the matrix typed in its first tab (`Hyper.mathTools.svdState`) for the other tabs, and mounts the `svd-geometry`
+simulation from `HYPER-MATH/sims/svd.js`. Link to it from pages: `[the SVD lab](#/tools/svdlab)`. It is tested headless
+by `node HYPER-CORE/tools/labtest.js --app math`, which also loads `HYPER-MATH/sims/svd.js`.
 
 ## Checking your work
 

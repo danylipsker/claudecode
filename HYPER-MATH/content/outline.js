@@ -127,9 +127,11 @@ Hyper.add(
     short: 'Matrices and what they do: systems of equations, transformations, determinants and eigenvalues.',
     body: 'A matrix is a table of numbers that acts on vectors: it rotates, stretches, shears and projects them. Linear algebra studies those actions, and with them solves many equations at once, finds the directions a transformation leaves unchanged (eigenvectors), and underlies computer graphics, quantum mechanics and data science.'
   },
-  { id: 'matrices-topic', kind: 'topic', parent: 'linear-algebra', title: 'Matrices', short: 'Matrix arithmetic, determinants, inverses, elimination, transformations and eigenvalues.',
+  { id: 'matrices-topic', kind: 'topic', parent: 'linear-algebra', title: 'Matrices', short: 'Matrix arithmetic, determinants, inverses, elimination, transformations, eigenvalues, orthogonal matrices and the singular value decomposition with what is built on it.',
     plan: [['matrices', 'Matrices'], ['matrix-multiplication', 'Matrix multiplication'], ['determinants', 'Determinants'], ['matrix-inverse', 'The inverse matrix'], ['gaussian-elimination', 'Gaussian elimination'],
-           ['linear-transformations', 'Linear transformations'], ['eigenvalues', 'Eigenvalues and eigenvectors'], ['vector-spaces', 'Vector spaces, span and basis']] },
+           ['linear-transformations', 'Linear transformations'], ['eigenvalues', 'Eigenvalues and eigenvectors'], ['vector-spaces', 'Vector spaces, span and basis'],
+           ['orthogonal-matrices', 'Orthogonal matrices: rotations and reflections'], ['singular-value-decomposition', 'The singular value decomposition (SVD)'], ['low-rank-approximation', 'Low-rank approximation and compression'],
+           ['pseudoinverse', 'The pseudoinverse, least squares and conditioning'], ['principal-component-analysis', 'Principal component analysis (PCA)']] },
 
   /* ================================================================ PROBABILITY AND STATISTICS */
   {

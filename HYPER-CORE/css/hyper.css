@@ -924,3 +924,12 @@ canvas.iconarr, .mextra canvas { display: block; }
 .pjlegend i { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 4px; border-radius: 2px; }
 .pjinfo { font-size: 13px; color: var(--text2); line-height: 1.5; }
 .pjinfo b { color: var(--text); }
+
+/* number boxes with ▲/▼ spinners (the SVD lab's matrix editor and right-hand side) */
+.mspin { display: inline-flex; align-items: stretch; vertical-align: middle; }
+.mspin input.inp { border-radius: 6px 0 0 6px; border-right: none; }
+.mspin .sb { display: flex; flex-direction: column; width: 15px; }
+.mspin .sb button { flex: 1; min-height: 0; padding: 0; margin: 0; font-size: 7px; line-height: 1; cursor: pointer; border: 1px solid var(--border); background: var(--bg2); color: var(--muted); border-radius: 0; }
+.mspin .sb button:first-child { border-radius: 0 6px 0 0; border-bottom: none; }
+.mspin .sb button:last-child { border-radius: 0 0 6px 0; }
+.mspin .sb button:hover { color: var(--accent); background: var(--surface); }
