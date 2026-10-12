@@ -36,6 +36,50 @@
     return [base / 20, base * 20, true];
   }
 
+  /* ---------------- the variable tooltip
+     One box for the whole page. Pointing at a variable's symbol or name in the list, or at
+     its symbol inside the written formula, says what the variable is: its quantity and unit,
+     the starting value, the value it has now, its range, and the author's hint if there is one. */
+  let tipEl = null, tipTimer = 0, tipFor = null;
+  const hover = () => matchMedia('(hover: hover)').matches;
+  function hideTip() {
+    clearTimeout(tipTimer);
+    tipFor = null;
+    if (tipEl) { tipEl.classList.remove('on'); tipEl.hidden = true; }
+  }
+  function tipBox() {
+    if (tipEl) return tipEl;
+    tipEl = ui.el('<div class="vtip" role="tooltip" hidden></div>');
+    document.body.appendChild(tipEl);
+    document.addEventListener('scroll', hideTip, true);
+    window.addEventListener('hashchange', hideTip);
+    window.addEventListener('resize', hideTip);
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
+    document.addEventListener('pointerdown', e => { if (tipFor && !tipFor.contains(e.target)) hideTip(); });
+    return tipEl;
+  }
+  function showTip(anchor, html, delay) {
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(() => {
+      if (!anchor.isConnected) return;
+      const t = tipBox();
+      t.innerHTML = html;
+      t.hidden = false;
+      tipFor = anchor;
+      const b = anchor.getBoundingClientRect();
+      const W = Math.min(310, window.innerWidth - 24);
+      t.style.width = W + 'px';
+      const x = Math.min(window.innerWidth - W - 12, Math.max(12, b.left + b.width / 2 - W / 2));
+      let y = b.bottom + 8;
+      t.style.left = x + 'px';
+      t.style.top = y + 'px';
+      const h = t.getBoundingClientRect().height;
+      if (y + h > window.innerHeight - 8 && b.top - h - 8 > 0) t.style.top = (b.top - h - 8) + 'px';
+      t.classList.add('on');
+    }, delay == null ? 200 : delay);
+  }
+  ui.hideVarTip = hideTip;
+
   ui.formulaCard = function (f, opts) {
     opts = opts || {};
     const node = f.node;
@@ -57,13 +101,13 @@
         (f.def.practice === false ? '' : '<button class="tbtn" data-act="practice" title="A practice problem from this formula">' + H.icon('practice', 16) + '<span>Practice</span></button>') +
         '<button class="tbtn" data-act="reset" title="Back to the starting values">' + H.icon('refresh', 16) + '</button>' +
       '</div>' +
-      '<div class="fdisp" title="Click a symbol to solve for it">' + H.texSafe(f.displayTex, true) + '</div>' +
+      '<div class="fdisp">' + H.texSafe(f.displayTex, true) + '</div>' +
       (f.def.note ? '<div class="fnote">' + H.text(f.def.note) + '</div>' : '') +
       (H.termChips ? H.termChips(f.displayTex) : '') +
       '<div class="fcalc"><div class="fgrid">' + f.vars.map(v =>
         '<div class="frow" data-v="' + esc(v.id) + '">' +
-          '<button class="fsym" title="Solve for ' + esc(v.name) + '">' + H.texSafe(v.tex, false) + '</button>' +
-          '<div class="fname">' + H.inline(v.name) + (v.isConst ? '<span class="cbadge" title="A constant; you may still change it (try the Moon)">const</span> <button class="freset" hidden title="Back to the standard value">reset</button>' : '') +
+          '<button class="fsym" aria-label="Solve for ' + esc(v.name) + '">' + H.texSafe(v.tex, false) + '</button>' +
+          '<div class="fname" tabindex="0" aria-label="About ' + esc(v.name) + '">' + H.inline(v.name) + (v.isConst ? '<span class="cbadge">const</span> <button class="freset" hidden title="Back to the standard value">reset</button>' : '') +
             (v.q && units().Q[v.q] ? '<small>' + esc(units().Q[v.q].name) + '</small>' : '') + '</div>' +
           '<input class="fin" inputmode="decimal" spellcheck="false" aria-label="' + esc(v.name) + '">' +
           (v.q && units().Q[v.q].units.length > 1 ? '<select class="fu" aria-label="unit of ' + esc(v.name) + '">' + unitOptions(v, v.unit) + '</select>' : '<span class="fu fixed">' + esc(v.unit || '') + '</span>') +
@@ -78,6 +122,46 @@
     });
     const res = card.querySelector('.fres');
     const disp = card.querySelector('.fdisp');
+
+    /* what the tooltip of a variable says, from what the formula knows about it */
+    const tipHtml = (v) => {
+      const Q = v.q && units().Q[v.q];
+      const unit = unitOf[v.id];
+      const cur = vals[v.id];
+      const isT = v.id === target;
+      const show = x => esc(H.Formula.show(x, v, unit));
+      const role = isT ? 'the unknown' : v.constId ? 'constant' : v.isConst ? 'fixed number' : 'given';
+      let h = '<div class="vt-h">' + H.texSafe(v.tex, false) + '<b>' + H.inline(v.name) + '</b><span class="vt-role">' + role + '</span></div>';
+      if (v.hint) h += '<div class="vt-hint">' + H.inline(v.hint) + '</div>';
+      const rows = [];
+      if (Q) {
+        const others = Q.units.map(u => u[0]).filter(u => u && u !== unit);
+        rows.push(['Quantity', esc(Q.name) + (unit ? ', in ' + esc(unit) : '') + (others.length && !v.fixedUnit ? '<small> (also ' + esc(others.slice(0, 4).join(', ')) + (others.length > 4 ? ', …' : '') + ')</small>' : '')]);
+      } else if (v.unit) rows.push(['Unit', esc(v.unit)]);
+      else rows.push(['Quantity', 'a pure number']);
+      if (v.constId) {
+        // a constant to the figures it is known with, not the four of an ordinary value
+        rows.push(['Standard value', esc(U.fmtInput(toShow(v.def, v, unit), 7) + (unit ? (unit === '°' ? '' : ' ') + unit : ''))]);
+        if (Number.isFinite(cur) && !near(cur, v.def)) rows.push(['Now', show(cur) + ' <small>(changed; reset in the row)</small>']);
+      } else if (isT) {
+        rows.push(['Now', (Number.isFinite(cur) ? show(cur) : '—') + ' <small>(computed from the other values)</small>']);
+      } else {
+        if (v.def != null) rows.push(['Starting value', show(v.def)]);
+        if (Number.isFinite(cur) && (v.def == null || !near(cur, v.def))) rows.push(['Now', show(cur)]);
+      }
+      const lim = [];
+      if (v.min != null && v.max != null) lim.push('from ' + show(v.min) + ' to ' + show(v.max));
+      else if (v.min != null) lim.push('at least ' + show(v.min));
+      else if (v.max != null) lim.push('at most ' + show(v.max));
+      if (v.signed) lim.push('may be negative');
+      if (v.int) lim.push('a whole number');
+      if (lim.length) rows.push(['Range', esc(lim.join('; '))]);
+      h += '<dl>' + rows.map(r => '<dt>' + r[0] + '</dt><dd>' + r[1] + '</dd>').join('') + '</dl>';
+      h += '<div class="vt-f">' + (isT ? 'This is what the card solves for now. Click another symbol to solve for that instead.' : v.constId ? 'Click the symbol to solve for it. The value can be changed (try the Moon); reset brings the standard value back.' : 'Click the symbol to solve for it; type a value in any unit or drag the slider.') + '</div>';
+      return h;
+    };
+    const near = (a, b) => Math.abs(a - b) <= 1e-9 * Math.max(Math.abs(a), Math.abs(b), 1e-300);
+    const tipOf = (anchor, v, delay) => showTip(anchor, tipHtml(v), delay);
 
     /* ---------------- showing values */
     const showRow = (id) => {
@@ -132,7 +216,12 @@
     /* ---------------- events */
     card.addEventListener('click', e => {
       const sym = e.target.closest('.fsym');
-      if (sym) { setTarget(sym.closest('.frow').dataset.v); return; }
+      if (sym) {
+        const id = sym.closest('.frow').dataset.v;
+        setTarget(id);
+        if (tipFor === sym) tipOf(sym, f.byName[id], 0);   // the tooltip now says it is the unknown
+        return;
+      }
       const alt = e.target.closest('[data-alt]');
       if (alt) {
         // adopt another root: move it to the front
@@ -227,15 +316,35 @@
       const key = H.texKey(v.tex);
       r.el.addEventListener('mouseenter', () => lit(key, true));
       r.el.addEventListener('mouseleave', () => lit(key, false));
+      // the tooltip: pointing at the symbol or the name (with a mouse), focusing the symbol
+      // (keyboard), or tapping the name (touch, where there is no hover)
+      const sym = r.el.querySelector('.fsym'), nm = r.el.querySelector('.fname');
+      for (const a of [sym, nm]) {
+        a.addEventListener('mouseenter', () => { if (hover()) tipOf(a, v); });
+        a.addEventListener('mouseleave', hideTip);
+        a.addEventListener('focus', () => tipOf(a, v, 0));
+        a.addEventListener('blur', hideTip);
+      }
+      nm.addEventListener('click', e => {
+        if (e.target.closest('.freset')) return;
+        if (hover()) { tipOf(nm, v, 0); return; }          // a mouse: the tooltip is already up, keep it
+        if (tipFor === nm) hideTip(); else tipOf(nm, v, 0); // a finger: tap to show, tap again to hide
+      });
+      nm.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nm.click(); } });
     });
     function lit(key, on) {
       disp.querySelectorAll('[data-k]').forEach(el => { if (el.dataset.k === key) el.classList.toggle('lit', on); });
     }
     disp.addEventListener('mouseover', e => {
       const k = e.target.closest('[data-k]');
-      f.vars.forEach(v => rows[v.id].el.classList.toggle('lit', !!k && H.texKey(v.tex) === k.dataset.k));
+      let hit = null;
+      f.vars.forEach(v => { const on = !!k && H.texKey(v.tex) === k.dataset.k; rows[v.id].el.classList.toggle('lit', on); if (on) hit = v; });
+      if (hit && hover()) { if (tipFor !== k) tipOf(k, hit); }
+      else if (tipFor && disp.contains(tipFor)) hideTip();
     });
-    disp.addEventListener('mouseleave', () => f.vars.forEach(v => rows[v.id].el.classList.remove('lit')));
+    disp.addEventListener('mouseleave', () => { f.vars.forEach(v => rows[v.id].el.classList.remove('lit')); if (tipFor && disp.contains(tipFor)) hideTip(); });
+    // (on a touch screen a tap on a symbol in the formula solves for it, as before; the name in the list explains it)
+    ui.onLeave(hideTip);
 
     /* ---------------- graph */
     let graph = null;

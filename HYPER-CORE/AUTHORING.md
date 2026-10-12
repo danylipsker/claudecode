@@ -171,6 +171,12 @@ Anything else is reported by the validator as an unknown command.
 - **int: true** for counts (number of turns, quantum numbers, harmonics).
 - **fixed: true** marks a variable as a fixed number of the formula (like a constant: shown with a
   badge, never asked for in practice), e.g. the 10 pc of the distance modulus.
+- **hint** (optional) is one sentence shown in the variable's tooltip (pointing at its symbol or
+  name in the list, or at its symbol inside the written formula): what the quantity is physically,
+  how it is measured or chosen, what a typical value means. The tooltip already states the
+  quantity, the unit (and the other units offered), the starting value, the value now and the
+  range, so the hint should say what those do not — e.g. `hint: 'Measured from the horizontal;
+  45° gives the longest range in a vacuum.'`. Text, `$…$` and links work as everywhere.
 - **q** is the quantity, which gives the unit menu. Quantities available:
   none, ratio, count, length, area, volume, mass, time, frequency, angle, solidangle, angvel,
   angacc, speed, accel, force, energy, power, pressure, momentum, torque, inertia, angmom,
