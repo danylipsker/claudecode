@@ -1061,6 +1061,22 @@ MicroPython (`--nopy` skips that); `tools/compile-esp32.js` builds every Arduino
 that and the ESP32 core are installed (see `HYPER-ESP32/COMPILED.md`). `tools/wire.js HYPER-ESP32` lists new content,
 simulation and lab files in `index.html`. References: the first blink, strapping pins, the ESP32-C3's page.
 
+### Hyper Water
+
+One substance followed from its molecule to the oceans of other worlds: the bent shape and the hydrogen bond, why
+water is liquid, ice and the many ices, heat and climate, the solvent and the surface, water at work on the Earth, water
+in cells and trees, water in the universe and the ocean worlds, the anomalies, and water for people. Its guide is
+**`HYPER-WATER/AUTHORING.md`**, with **`HYPER-WATER/SOURCES.md`** digesting the thirteen sources of the film the app
+grew from. Every page has `terms`, a simulation, numbers with their comparisons, applications and sources (the
+validator warns otherwise). The engine is `js/water.js` (`kit.water`: Kell density, the IAPWS vapour-pressure,
+sublimation and melting curves, `phaseAt` for the whole phase diagram including the ices, the property tables,
+solutions, humidity, the network's numbers, and the data sets `MOLECULES`, `LIQUIDS`, `DH`, `WORLDS`, `EARTH`,
+`ANOMALIES`, `ICES`), tested by `tools/test-water.js`; the drawing kit is `js/watersym.js` (`kit.wsym`: molecules,
+hydrogen bonds, a flickering network, ice lattices, snowflakes, drops, beakers, thermometers). The labs are
+`ui/watertools.js` (shared helpers, calculators, dictionary) and `ui/water-phase.js`, `water-molecule.js`,
+`water-anomalies.js`, `water-worlds.js`, tested by `tools/labtest.js --app water`. References: a hydrogen bond, why
+ice floats, the specific heat of water (`content/reference.js`, `sims/reference.js`).
+
 ### Hyper Math: the linear algebra module and the SVD lab
 
 **The linear algebra module** (`HYPER-CORE/js/linalg.js`; `kit.linalg` in simulations, `Hyper.linalg`

@@ -41,7 +41,8 @@
     ergonomics:  { id: 'ergonomics',  title: 'Hyper Ergonomics',  short: 'Ergonomics',  folder: 'HYPER-ERGONOMICS',  hue: 62,  ready: true, sourcesTitle: 'Standards and data sources' },
     projections: { id: 'projections', title: 'Hyper Projections', short: 'Projections', folder: 'HYPER-PROJECTIONS', hue: 205, ready: true, sourcesTitle: 'Sources and further reading' },
     optics:      { id: 'optics',      title: 'Hyper Optics',      short: 'Optics',      folder: 'HYPER-OPTICS',      hue: 183, ready: true, sourcesTitle: 'Sources and further reading' },
-    esp32:       { id: 'esp32',       title: 'Hyper ESP32',       short: 'ESP32',       folder: 'HYPER-ESP32',       hue: 8,   ready: true, sourcesTitle: 'Datasheets and further reading' }
+    esp32:       { id: 'esp32',       title: 'Hyper ESP32',       short: 'ESP32',       folder: 'HYPER-ESP32',       hue: 8,   ready: true, sourcesTitle: 'Datasheets and further reading' },
+    water:       { id: 'water',       title: 'Hyper Water',       short: 'Water',       folder: 'HYPER-WATER',       hue: 212, ready: true, sourcesTitle: 'Sources and further reading' }
   };
 
   H.use = function (id) {

@@ -30,7 +30,7 @@ const only = onlyArg ? new Set(onlyArg.split(',').flatMap(s => onlyFiles(s.trim(
 const FINAL = args.includes('--final');
 const QUIET = args.includes('--quiet');
 
-const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections', 'HYPER-OPTICS': 'optics', 'HYPER-ESP32': 'esp32' }[path.basename(discDir)];
+const DISC = { 'HYPER-PHYSICS': 'physics', 'HYPER-MATH': 'math', 'HYPER-ELECTRONICS': 'electronics', 'HYPER-CHEMISTRY': 'chemistry', 'HYPER-FINANCES': 'finance', 'HYPER-MEDICINE': 'medicine', 'HYPER-AERODYNAMICS': 'aerodynamics', 'HYPER-HYDRAULICS': 'hydraulics', 'HYPER-PNEUMATICS': 'pneumatics', 'HYPER-PHARMACEUTICS': 'pharmaceutics', 'HYPER-BIOLOGY': 'biology', 'HYPER-FEYNMAN': 'feynman', 'HYPER-MOTORS': 'motors', 'HYPER-ERGONOMICS': 'ergonomics', 'HYPER-PROJECTIONS': 'projections', 'HYPER-OPTICS': 'optics', 'HYPER-ESP32': 'esp32', 'HYPER-WATER': 'water' }[path.basename(discDir)];
 if (!DISC) { console.error('Not a Hyper discipline folder: ' + discDir); process.exit(2); }
 
 const ctx = makeContext();
@@ -135,6 +135,7 @@ function checkText(where, s, block) {
   if (DISC === 'esp32' && /\bkit\.(esp|esym|gfx)\b|\besp(32|sym|gfx|code)[\w-]*\.js\b/.test(s)) W(where, 'names the app\'s own code (kit.esp / kit.esym / *.js) in reader-facing text: name the tool or the simulation instead');
   // Hyper Motors and Hyper Ergonomics: reader-facing text names methods, standards and tools, never the code
   if ((DISC === 'motors' || DISC === 'ergonomics') && /\bkit\.(motor|ergo)\b|\bDIMS\b|\b(ergo|motors)\.js\b/.test(s)) W(where, 'names code (kit.motor / kit.ergo / DIMS / *.js) in reader-facing text: name the method, the standard or the tool instead');
+  if (DISC === 'water' && /\bkit\.(water|wsym)\b|\bW\.(density|vapourPressure|meltingPoint|phaseAt)\b|\bwater(sym)?\.js\b/.test(s)) W(where, 'names code (kit.water / kit.wsym / *.js) in reader-facing text: name the quantity, the method or the tool instead');
   if (DISC === 'optics' && /\bkit\.(optics|osym)\b|\bO\.(sys|film|diff|mtf|beam|cam|eye|colour)\b|\boptics(-wave|-vision)?\.js\b|\bopticsym\.js\b/.test(s)) W(where, 'names code (kit.optics / kit.osym / *.js) in reader-facing text: name the method or the tool instead');
   const dollars = (s.replace(/\\\$/g, '').match(/\$/g) || []).length;
   if (dollars % 2) E(where, 'odd number of $ signs: an unclosed math span');
@@ -316,6 +317,12 @@ for (const n of H.list) {
     if (n.terms.length < 2) W(w, 'fewer than 2 terms: list the vocabulary this page introduces (terms: [{ term, also, def }])');
     if (!n.applications.length) W(w, 'no applications: say where the reader meets this');
     if (!n.sources.length) W(w, 'no sources: name the textbook chapter, standard or handbook behind the page');
+  }
+  if (DISC === 'water' && n.kind === 'concept') {
+    if (!n.sims.length) W(w, 'no simulation: water should be seen — give the page one (a simulation may serve two or three pages through its params)');
+    if (n.terms.length < 2) W(w, 'fewer than 2 terms: list the vocabulary this page introduces (terms: [{ term, also, def }])');
+    if (!n.applications.length) W(w, 'no applications: say where the reader meets this');
+    if (!n.sources.length) W(w, 'no sources: name the paper, textbook chapter or data source behind the page');
   }
   if (DISC === 'projections' && n.kind === 'concept') {
     if (!n.sims.length && !n.constructions.length) W(w, 'neither a simulation nor a construction: every projection should be seen or drawn');

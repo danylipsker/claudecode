@@ -72,8 +72,8 @@
     ui.setTitle('Tools');
     const disc = H.discipline ? H.discipline.id : '';
     const chemApp = disc === 'chemistry', moneyApp = disc === 'finance', medApp = disc === 'medicine';
-    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology', feynApp = disc === 'feynman', motorApp = disc === 'motors', ergoApp = disc === 'ergonomics', projApp = disc === 'projections', optApp = disc === 'optics', espApp = disc === 'esp32', mathApp = disc === 'math';
-    const tab = parts[0] || (espApp ? 'advisor' : optApp ? 'bench' :chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : feynApp ? 'arrows' : motorApp ? 'motorlab' : ergoApp ? 'bodysize' : projApp ? 'projlab' : 'plot');
+    const aeroApp = disc === 'aerodynamics', hydApp = disc === 'hydraulics', pneuApp = disc === 'pneumatics', pharmApp = disc === 'pharmaceutics', bioApp = disc === 'biology', feynApp = disc === 'feynman', motorApp = disc === 'motors', ergoApp = disc === 'ergonomics', projApp = disc === 'projections', optApp = disc === 'optics', espApp = disc === 'esp32', mathApp = disc === 'math', waterApp = disc === 'water';
+    const tab = parts[0] || (waterApp ? 'phase' : espApp ? 'advisor' : optApp ? 'bench' :chemApp ? 'periodic' : moneyApp ? 'money' : medApp ? 'body' : aeroApp ? 'airfoil' : hydApp ? 'hydro' : pneuApp ? 'pneu' : pharmApp ? 'pharmcalc' : bioApp ? 'sequence' : feynApp ? 'arrows' : motorApp ? 'motorlab' : ergoApp ? 'bodysize' : projApp ? 'projlab' : 'plot');
     const common = [['calc', 'Calculator'], ['units', 'Unit converter'], ['plot', 'Function plotter'], ['constants', 'Constants'], ['symbols', 'Symbols'], ['az', 'Index A–Z']];
     const tabs = moneyApp
       ? [['money', 'Money calculators'], ['calc', 'Calculator'], ['plot', 'Function plotter'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
@@ -90,6 +90,7 @@
       : projApp ? [['projlab', 'Projection lab'], ['perspective', 'Perspective lab'], ['maplab', 'Map lab'], ['skylab', 'Sky lab'], ['constructions', 'Constructions']].concat(common)
       : espApp ? [['advisor', 'Project advisor'], ['chips', 'Chips'], ['boards', 'Boards'], ['pinout', 'Pinout explorer'], ['blocklab', 'Block lab'], ['displaylab', 'Display & GUI lab'], ['fsmlab', 'State machines'], ['signals', 'Signal lab'], ['espcalc', 'Calculators'], ['dictionary', 'Dictionary']].concat(common)
       : optApp ? [['bench', 'Ray bench'], ['lenslab', 'Lens lab'], ['camera', 'Camera & lens'], ['coatings', 'Coatings & glass'], ['colour', 'Colour lab'], ['eyelab', 'Eye & glasses'], ['beams', 'Lasers & beams'], ['illusions', 'Illusions'], ['dictionary', 'Optics dictionary']].concat(common)
+      : waterApp ? [['phase', 'Phase lab'], ['molecule', 'Molecule lab'], ['anomalies', 'Anomalies'], ['worlds', 'Water worlds'], ['watercalc', 'Water calculators'], ['dictionary', 'Water dictionary']].concat(common)
       : mathApp ? [['plot', 'Function plotter'], ['svdlab', 'SVD lab'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table'], ['symbols', 'Symbols'], ['az', 'Index A–Z']]
       : [['plot', 'Function plotter'], ['calc', 'Calculator'], ['units', 'Unit converter'], ['constants', 'Constants'], ['periodic', 'Periodic table']]
         .concat(chemApp ? [['chemcalc', 'Molar mass & equations']] : [])
@@ -112,6 +113,7 @@
     const op = k => (e, p) => H.opticsTools && H.opticsTools[k] ? H.opticsTools[k](e, p, parts[1]) : (e.innerHTML = '<p class="muted">This tool is not loaded.</p>');
     const es = k => (e, p) => H.espTools && H.espTools[k] ? H.espTools[k](e, p, parts[1]) : (e.innerHTML = '<p class="muted">This tool is not loaded.</p>');
     const ma = k => (e, p) => H.mathTools && H.mathTools[k] ? H.mathTools[k](e, p, parts[1]) : (e.innerHTML = '<p class="muted">This tool is not loaded.</p>');
+    const wa = k => (e, p) => H.waterTools && H.waterTools[k] ? H.waterTools[k](e, p, parts[1]) : (e.innerHTML = '<p class="muted">This tool is not loaded.</p>');
     const terms = (e, p) => H.termsTool ? H.termsTool(e, p, parts[1]) : plotter(e, p);
     ({ constants, units: unitsTool, calc, symbols, plot: plotter, az, periodic, chemcalc, money, body, clinical, svdlab: ma('svdlab'),
       airfoil: fl('airfoil'), flight: fl('flight'), hydro: fl('hydro'), fpower: fl('fpower'), pneu: fl('pneu'), iso: fl('iso'),
@@ -119,7 +121,8 @@
       arrows: fy('arrows'), slits: fy('slits'), spacetime: fy('spacetime'), fields: fy('fields'), wells: fy('wells'),
       motorlab: mo('motorlab'), sizing: mo('sizing'), wiring: mo('wiring'), drives: mo('drives'), bodysize: eg('bodysize'), workstation: eg('workstation'), lifting: eg('lifting'), environment: eg('environment'), ranges: eg('ranges'),
       projlab: pj('projlab'), perspective: pj('perspective'), maplab: pj('maplab'), skylab: pj('skylab'), constructions: pj('constructions'),
-      bench: op('bench'), lenslab: op('lenslab'), camera: op('camera'), coatings: op('coatings'), colour: op('colour'), eyelab: op('eyelab'), beams: op('beams'), illusions: op('illusions'), dictionary: espApp ? es('dictionary') : op('dictionary'),
+      bench: op('bench'), lenslab: op('lenslab'), camera: op('camera'), coatings: op('coatings'), colour: op('colour'), eyelab: op('eyelab'), beams: op('beams'), illusions: op('illusions'), dictionary: espApp ? es('dictionary') : waterApp ? wa('dictionary') : op('dictionary'),
+      phase: wa('phase'), molecule: wa('molecule'), anomalies: wa('anomalies'), worlds: wa('worlds'), watercalc: wa('watercalc'),
       advisor: es('advisor'), chips: es('chips'), boards: es('boards'), pinout: es('pinout'), blocklab: es('blocklab'), displaylab: es('displaylab'), fsmlab: es('fsmlab'), signals: es('signals'), espcalc: es('espcalc') }[tab] || plotter)(el, params);
   };
 

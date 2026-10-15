@@ -320,6 +320,8 @@
     construct: H.construct,         // the ruler-and-compass construction kit and its SVG renderer (construct.js)
     optics: H.optics,               // materials, Snell and Fresnel, ray tracing through lens systems, thin films, diffraction, MTF, beams, lasers, polarisation, colour, cameras, the eye, scanners, fibres (optics*.js)
     osym: H.osym,                   // drawing optics: lenses, mirrors, prisms, rays by wavelength, beams, waves, spectra, fringes (opticsym.js)
+    water: H.water,                 // the physics and data of water: density, vapour pressure, the phase diagram, properties, solutions, humidity, isotopes, worlds (water.js)
+    wsym: H.wsym,                   // drawing water: molecules, hydrogen bonds, a flickering network, ice lattices, snowflakes, drops, beakers, thermometers (watersym.js)
     esp: H.esp,                     // ESP chips, pins and boards; PWM, ADC, batteries, radio links, serial signals as edges, partitions, filters, PID, state machines (esp32*.js)
     esym: H.esym,                   // drawing boards, parts, logic traces, packets, networks, radio rings, state machines (espsym.js)
     gfx: H.gfx,                     // virtual displays: frame buffers, the 5 × 7 font, character LCDs, seven segments, widgets (espgfx.js)

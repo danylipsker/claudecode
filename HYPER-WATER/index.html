@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Water</title>
+<meta name="description" content="One molecule followed from its bent shape and its barely-a-bond to the ice that floats, the ocean that remembers heat, the solvent that pulls salt apart, the sculptor inside every cell, the column inside the tallest tree, water older than the Sun, the oceans in the dark and the liquid no one can fully describe — every term defined, every number given, every idea shown in a simulation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c4 6 10 12 10 18a10 10 0 0 1-20 0c0-6 6-12 10-18z' fill='%233b8fe6' fill-opacity='.35' stroke='%233b8fe6' stroke-width='2.2' stroke-linejoin='round'/%3E%3Cpath d='M11 20a5 5 0 0 0 4 5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../HYPER-CORE/css/hyper.css">
+<script>
+  // the theme before the first paint, so a dark page never flashes white
+  try {
+    var t = (JSON.parse(localStorage.getItem('hyper:settings') || '{}').theme) || 'auto';
+    document.documentElement.dataset.theme = t === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t;
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+</script>
+</head>
+<body>
+<noscript><p style="padding:2em">Hyper Water needs JavaScript switched on.</p></noscript>
+
+<!-- engine -->
+<script src="../HYPER-CORE/js/hyper.js"></script>
+<script src="../HYPER-CORE/js/tex.js"></script>
+<script src="../HYPER-CORE/js/expr.js"></script>
+<script src="../HYPER-CORE/js/units.js"></script>
+<script src="../HYPER-CORE/js/text.js"></script>
+<script src="../HYPER-CORE/js/formula.js"></script>
+<script src="../HYPER-CORE/js/circuit.js"></script>
+<script src="../HYPER-CORE/js/schematic.js"></script>
+<script src="../HYPER-CORE/js/chem.js"></script>
+<script src="../HYPER-CORE/js/molecule.js"></script>
+<script src="../HYPER-CORE/js/finance.js"></script>
+<script src="../HYPER-CORE/js/medicine.js"></script>
+<script src="../HYPER-CORE/js/fluid.js"></script>
+<script src="../HYPER-CORE/js/fluidsym.js"></script>
+<script src="../HYPER-CORE/js/pharma.js"></script>
+<script src="../HYPER-CORE/js/bio.js"></script>
+<script src="../HYPER-CORE/js/quantum.js"></script>
+<script src="../HYPER-CORE/js/glossary.js"></script>
+<script src="../HYPER-CORE/js/motors.js"></script>
+<script src="../HYPER-CORE/js/ergo.js"></script>
+<script src="../HYPER-CORE/js/projection.js"></script>
+<script src="../HYPER-CORE/js/geodata.js"></script>
+<script src="../HYPER-CORE/js/celestial.js"></script>
+<script src="../HYPER-CORE/js/construct.js"></script>
+<script src="../HYPER-CORE/js/optics.js"></script>
+<script src="../HYPER-CORE/js/optics-wave.js"></script>
+<script src="../HYPER-CORE/js/optics-vision.js"></script>
+<script src="../HYPER-CORE/js/opticsym.js"></script>
+<script src="../HYPER-CORE/js/water.js"></script>
+<script src="../HYPER-CORE/js/watersym.js"></script>
+<script src="../HYPER-CORE/js/ui/app.js"></script>
+<script src="../HYPER-CORE/js/ui/plot.js"></script>
+<script src="../HYPER-CORE/js/ui/simkit.js"></script>
+<script src="../HYPER-CORE/js/ui/calc.js"></script>
+<script src="../HYPER-CORE/js/ui/map.js"></script>
+<script src="../HYPER-CORE/js/ui/concept.js"></script>
+<script src="../HYPER-CORE/js/ui/practice.js"></script>
+<script src="../HYPER-CORE/js/ui/views.js"></script>
+<script src="../HYPER-CORE/js/ui/terms.js"></script>
+<script src="../HYPER-CORE/js/ui/watertools.js"></script>
+<script src="../HYPER-CORE/js/ui/water-phase.js"></script>
+<script src="../HYPER-CORE/js/ui/water-molecule.js"></script>
+<script src="../HYPER-CORE/js/ui/water-anomalies.js"></script>
+<script src="../HYPER-CORE/js/ui/water-worlds.js"></script>
+
+<!-- content -->
+<script src="content/outline.js"></script>
+<script src="content/reference.js"></script>
+<script src="content/one-molecule.js"></script>
+<script src="content/discovering-water.js"></script>
+<script src="content/hydrogen-bonds.js"></script>
+<script src="content/melting-and-boiling.js"></script>
+<script src="content/the-ice-that-floats.js"></script>
+<script src="content/the-many-ices.js"></script>
+<script src="content/the-ocean-that-remembers-heat.js"></script>
+<script src="content/the-water-cycle-and-climate.js"></script>
+<script src="content/the-liquid-that-pulls-salt-apart.js"></script>
+<script src="content/surfaces-and-flow.js"></script>
+<script src="content/what-the-water-has-been-doing.js"></script>
+<script src="content/the-sculptor-inside-every-cell.js"></script>
+<script src="content/trees-and-the-tallest.js"></script>
+<script src="content/older-than-the-sun.js"></script>
+<script src="content/oceans-in-the-dark.js"></script>
+<script src="content/the-anomalies.js"></script>
+<script src="content/water-for-people.js"></script>
+
+<!-- simulations -->
+<script src="sims/reference.js"></script>
+<script src="sims/one-molecule.js"></script>
+<script src="sims/discovering-water.js"></script>
+<script src="sims/hydrogen-bonds.js"></script>
+<script src="sims/melting-and-boiling.js"></script>
+<script src="sims/the-ice-that-floats.js"></script>
+<script src="sims/the-many-ices.js"></script>
+<script src="sims/the-ocean-that-remembers-heat.js"></script>
+<script src="sims/the-water-cycle-and-climate.js"></script>
+<script src="sims/the-liquid-that-pulls-salt-apart.js"></script>
+<script src="sims/surfaces-and-flow.js"></script>
+<script src="sims/what-the-water-has-been-doing.js"></script>
+<script src="sims/the-sculptor-inside-every-cell.js"></script>
+<script src="sims/trees-and-the-tallest.js"></script>
+<script src="sims/older-than-the-sun.js"></script>
+<script src="sims/oceans-in-the-dark.js"></script>
+<script src="sims/the-anomalies.js"></script>
+<script src="sims/water-for-people.js"></script>
+
+<!-- titles of the sibling disciplines, for links and search -->
+<script src="../HYPER-PHYSICS/catalog.js"></script>
+<script src="../HYPER-MATH/catalog.js"></script>
+<script src="../HYPER-ELECTRONICS/catalog.js"></script>
+<script src="../HYPER-CHEMISTRY/catalog.js"></script>
+<script src="../HYPER-FINANCES/catalog.js"></script>
+<script src="../HYPER-MEDICINE/catalog.js"></script>
+<script src="../HYPER-AERODYNAMICS/catalog.js"></script>
+<script src="../HYPER-HYDRAULICS/catalog.js"></script>
+<script src="../HYPER-PNEUMATICS/catalog.js"></script>
+<script src="../HYPER-PHARMACEUTICS/catalog.js"></script>
+<script src="../HYPER-BIOLOGY/catalog.js"></script>
+<script src="../HYPER-FEYNMAN/catalog.js"></script>
+<script src="../HYPER-MOTORS/catalog.js"></script>
+<script src="../HYPER-ERGONOMICS/catalog.js"></script>
+<script src="../HYPER-PROJECTIONS/catalog.js"></script>
+<script src="../HYPER-OPTICS/catalog.js"></script>
+<script src="../HYPER-ESP32/catalog.js"></script>
+
+<script>
+  // ?extra=content/new.js,sims/new.js loads files not listed above yet (for previewing new content)
+  (function () {
+    var extra = (new URLSearchParams(location.search).get('extra') || '').split(',').filter(function (s) { return /^(content|sims)\/[\w.-]+\.js$/.test(s); });
+    (function next() {
+      if (!extra.length) return Hyper.start({ discipline: 'water' });
+      var s = document.createElement('script');
+      s.src = extra.shift(); s.onload = s.onerror = next;
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

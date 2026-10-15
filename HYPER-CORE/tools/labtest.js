@@ -24,8 +24,9 @@ const APP = (args.find(a => a.startsWith('--app=')) || '').slice(6) || (args.inc
 const CONF = { optics: { disc: 'optics', folder: 'HYPER-OPTICS', tools: 'opticsTools', first: 'optictools.js', re: /^optics-[a-z]+\.js$/, sym: 'opticsym.js', where: /optic[s-]/, cut: /^.*?(optic)/ },
   esp32: { disc: 'esp32', folder: 'HYPER-ESP32', tools: 'espTools', first: 'esptools.js', re: /^esp-[a-z]+\.js$/, sym: 'espsym.js', where: /esp(tools|-)/, cut: /^.*?(esp(?:tools|-))/ },
   // Hyper Math: the SVD lab (ui/mathtools.js) mounts simulations from HYPER-MATH/sims/svd.js, so those are loaded too
-  math: { disc: 'math', folder: 'HYPER-MATH', tools: 'mathTools', first: 'mathtools.js', re: /^math-[a-z]+\.js$/, sym: null, sims: /^svd\.js$/, where: /mathtools|sims[\\/]svd/, cut: /^.*?(mathtools|svd\.js)/ } }[APP];
-if (!CONF) { console.error('Unknown --app ' + APP + ' (optics, esp32, math)'); process.exit(2); }
+  math: { disc: 'math', folder: 'HYPER-MATH', tools: 'mathTools', first: 'mathtools.js', re: /^math-[a-z]+\.js$/, sym: null, sims: /^svd\.js$/, where: /mathtools|sims[\\/]svd/, cut: /^.*?(mathtools|svd\.js)/ },
+  water: { disc: 'water', folder: 'HYPER-WATER', tools: 'waterTools', first: 'watertools.js', re: /^water-[a-z]+\.js$/, sym: 'watersym.js', where: /water(tools|-|sym)/, cut: /^.*?(water(?:tools|-|sym))/ } }[APP];
+if (!CONF) { console.error('Unknown --app ' + APP + ' (optics, esp32, math, water)'); process.exit(2); }
 
 const ctx = makeContext();
 const bad = [];
@@ -89,6 +90,7 @@ ctx.decodeURIComponent = decodeURIComponent; ctx.encodeURIComponent = encodeURIC
 
 const H = loadCore(ctx);
 if (CONF.sym) run(ctx, path.join(__dirname, '..', 'js', CONF.sym));
+if (CONF.disc === 'water') run(ctx, path.join(__dirname, '..', 'js', 'molecule.js'));   // the molecule lab turns 3-D molecules
 H.use(CONF.disc);
 // the content, so that links to pages and the dictionary have something to show
 const cdir = path.join(__dirname, '..', '..', CONF.folder, 'content');
@@ -143,6 +145,7 @@ const kit = {
   },
   table(el, cols) { return { el: fakeEl(), set(rows) { if (!Array.isArray(rows)) { rec.errors.push('table.set needs an array of rows'); return; } for (const r of rows) for (const c of cols) { const v = typeof c.key === 'function' ? c.key(r) : r[c.key]; const t = String(c.fmt ? c.fmt(v, r) : v); if (BAD.test(t)) rec.readoutBad.add('table ' + c.label + ' = ' + t); } } }; },
   colors: () => colors, fmt: (v, s) => H.util.fmt(v, s), hue: colors.hue, TAU: Math.PI * 2, optics: H.optics, osym: H.osym, esp: H.esp, esym: H.esym, gfx: H.gfx, code: H.code, linalg: H.linalg, terms: () => '',
+  water: H.water, wsym: H.wsym, chem: H.chem, mol: Object.assign({}, H.mol || {}, { rotator(st, v, fn) { rec.drags.push({ hit: () => 1, move: () => { v.rotY += 0.1; fn && fn(); } }); return v; } }),
   eng: (v, u) => H.util.fmt(v) + ' ' + u, money: v => String(v), pct: (f, d) => H.util.pct(f, d)
 };
 H.kit = kit;
