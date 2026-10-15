@@ -486,7 +486,7 @@ Semiconductor-grade water (the standards are ASTM D5127 and the SEMI documents) 
 5. **Ultraviolet light** at 185 nm, which turns traces of organic carbon into CO₂ that the resin then takes, and at 254 nm, which kills bacteria.
 6. **Ultrafiltration** at about 0.02 µm to stop particles, and a recirculating loop through plastic pipe, to stop anything from settling.
 
-The end product has ions at the parts-per-trillion level, organic carbon in single parts per billion and particles of tens of nanometres. A single leading-edge fab uses thousands of cubic metres of it a day (figures of 2,000–5,000 m³/day are quoted for a large factory).
+The end product has ions at the parts-per-trillion level, organic carbon in single parts per billion and particles of tens of nanometres. A single leading-edge fab uses tens of thousands of cubic metres of it a day (figures of 2 to 10 million US gallons, 8,000–38,000 m³, a day are quoted for a large factory).
 
 ### Safe to drink, hostile to everything else
 Ultrapure water contains no toxin, and a mouthful is harmless; it tastes flat. But it is “hungry”: with no ions and no buffer, it dissolves whatever it touches. It leaches metal ions from stainless steel, silica from glass, and additives from plastic, so the pipes are plastic of high purity (PVDF, PFA). Exposed to air it absorbs carbon dioxide, falls to about 1 MΩ·cm in minutes and turns slightly acidic (pH about 5.6), which is why it is delivered through closed loops. The old notion that drinking very pure water “leaches minerals from your body” is not borne out: the gut handles it, and the diet supplies the minerals. The WHO's concern is only that demineralised water is a poor source of calcium and magnesium for people who rely on it alone for years.

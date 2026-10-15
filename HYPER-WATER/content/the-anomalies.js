@@ -586,7 +586,7 @@ To simulate water you give a computer the positions of some hundreds or thousand
 | SPC/E | about 241 K | about 215 K |
 | TIP4P | about 253 K | about 232 K |
 | TIP4P/2005 | about 278 K | about 252 K (−21 °C) |
-| TIP5P | about 277 K | about 274 K |
+| TIP5P | about 285 K | about 274 K |
 
 (Approximate values from the compilation of Vega and Abascal, 2011.) TIP3P, the model used in most protein simulations, puts the density maximum 95 K too low and the melting point of ice 127 K too low: its water is hopelessly under-structured at 0 °C. TIP4P/2005 has the best anomalies of the rigid models but still melts ice about 20 K too cold. No model reproduces all of: the density curve, the melting point, the dielectric constant, the surface tension, the phase diagram of ice, and the anomalies together.
 

@@ -445,7 +445,7 @@
   /* absorption coefficient of pure water, 1/m, rounded from published measurements of pure water (Pope and Fry 1997 and
      earlier work); in the red the values are uncertain by tens of per cent, and the bands near 606 and 760 nm are the
      fifth and fourth overtones of the O–H stretch */
-  const AW = [[380, 0.012], [400, 0.006], [420, 0.0045], [450, 0.0092], [475, 0.0148], [500, 0.0204], [525, 0.043], [550, 0.064], [575, 0.098], [600, 0.222], [625, 0.275], [650, 0.34], [675, 0.43], [700, 0.65], [725, 1.5], [750, 2.7]];
+  const AW = [[380, 0.012], [400, 0.006], [420, 0.0045], [450, 0.0092], [475, 0.0114], [500, 0.0204], [525, 0.0417], [550, 0.0565], [575, 0.0772], [600, 0.222], [625, 0.283], [650, 0.34], [675, 0.448], [700, 0.624], [725, 1.5], [750, 2.7]];
   function absorb(l) {
     if (l <= AW[0][0]) return AW[0][1];
     for (let i = 1; i < AW.length; i++) if (l <= AW[i][0]) {

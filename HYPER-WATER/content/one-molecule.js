@@ -442,7 +442,7 @@ Light falls off exponentially with the path through the water, $I = I_0 e^{-aL}$
 |---|---|---|---|
 | deep red | 750 nm | 2.7 per m | 0.37 m |
 | red | 650 nm | 0.34 per m | 2.9 m |
-| green | 550 nm | 0.064 per m | 16 m |
+| green | 550 nm | 0.057 per m | 18 m |
 | blue | 450 nm | 0.0092 per m | 110 m |
 
 After two metres roughly half the red is gone but nearly all the blue is left; after ten, 97 % of the red has been removed. That is why a diver's red turns grey within a few metres and why the sea looks blue. In real seawater plankton and sediment add yellow and green; in an ice crevasse, with few bubbles, the blue is purest.
@@ -471,7 +471,7 @@ The oven's 2.45 GHz is a wavelength of 12 cm and a photon energy of $10^{-5}$ eV
       solveFor: 'E', note: 'About 0.45 eV for a stretch: far above the thermal energy of 0.026 eV at room temperature, so the molecule\'s stretches are almost never excited by heat — it is quantum-mechanically "frozen" in the ground state.',
       stories: { E: 'A vibration absorbs at {wn}. What is the energy of one quantum?' } },
     { name: 'Light left after a path through water', expr: 'T = exp(-a*L)', tex: 'T = e^{-a L}',
-      vars: { T: { name: 'fraction transmitted', q: 'ratio', unit: '%' }, a: { name: 'absorption coefficient (1/m)', value: 0.34, hint: '0.0092 at 450 nm (blue), 0.064 at 550 nm (green), 0.34 at 650 nm (red), 2.7 at 750 nm. Pure water.' }, L: { name: 'path length', q: 'length', unit: 'm', value: 10 } },
+      vars: { T: { name: 'fraction transmitted', q: 'ratio', unit: '%' }, a: { name: 'absorption coefficient (1/m)', value: 0.34, hint: '0.0092 at 450 nm (blue), 0.057 at 550 nm (green), 0.34 at 650 nm (red), 2.7 at 750 nm. Pure water (Pope and Fry 1997).' }, L: { name: 'path length', q: 'length', unit: 'm', value: 10 } },
       solveFor: 'T', note: 'The Beer–Lambert law. After a distance 1/a only 37 % remains; after 2.3/a only 10 %.',
       stories: { T: 'Red light of absorption coefficient {a} passes through {L} of pure water. How much is left?', L: 'Light with absorption coefficient {a} is reduced to {T}. How long was the path?' } },
     { name: 'Dielectric loss of water (one Debye relaxation)', expr: 'eL = deps*(2*pi*f*tau)/(1 + (2*pi*f*tau)^2)', tex: '\\varepsilon_L = \\Delta\\varepsilon\\,\\frac{\\omega\\tau}{1 + (\\omega\\tau)^2},\\ \\omega = 2\\pi f',
