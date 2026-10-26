@@ -51,3 +51,9 @@ STUDY CLAUDE CODE/
 CURVES-BOOK/*.pdf
 CURVES-BOOK/scan/
 CURVES-BOOK/_review/
+GEAR-REDUCTIONS/
+
+# Printables 357952 download (third-party, CC BY-NC, STEP conversions up to 34 MB): reference only
+500-to-1-gear-set/
+# Separate repository checked out inside this one: danylipsker/HIGH-RATIO-GEAR-SET
+HIGH-RATIO-GEAR-SET/
