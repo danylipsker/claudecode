@@ -57,3 +57,10 @@ GEAR-REDUCTIONS/
 500-to-1-gear-set/
 # Separate repository checked out inside this one: danylipsker/HIGH-RATIO-GEAR-SET
 HIGH-RATIO-GEAR-SET/
+
+# BEARINGS: catalogue downloads too big for GitHub (zip 145 MB, extracted catalogue 168 MB) and saved-web-page junk
+BEARINGS/Katalog43_EN.zip
+BEARINGS/Katalog43_EN/
+BEARINGS/Deep groove ball bearings _ SKF_files/
+# Excel lock files
+~$*
