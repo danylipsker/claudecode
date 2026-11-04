@@ -1,0 +1,6 @@
+bin/
+obj/
+probe-tables/
+build-log*.txt
+check-log*.txt
+dump-*.txt

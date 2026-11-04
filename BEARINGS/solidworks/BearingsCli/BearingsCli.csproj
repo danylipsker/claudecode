@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    BearingsCli.exe - builds the SOLIDWORKS bearing parts that take the design tables in
+    BEARINGS\design-tables (one part per table, dimensions named after the table headers).
+      BearingsCli probe                      report API details of the running SOLIDWORKS (no files written)
+      BearingsCli build [-only <text>] [-dir <design-tables>] [-no-table] [-keep]
+      BearingsCli check [-only <text>] [-dir <design-tables>]
+      BearingsCli dump <file.SLDPRT>         feature tree, dimensions, equations, design table
+    Build:  dotnet build BEARINGS\solidworks\BearingsCli\BearingsCli.csproj -c Release
+    Uses the running SOLIDWORKS (2020 on this machine); interop DLLs from the install folder.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>BearingsCli</AssemblyName>
+    <RootNamespace>Bearings.Cli</RootNamespace>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64;AnyCPU</Platforms>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Deterministic>true</Deterministic>
+    <NoWarn>CS1591;MSB3270</NoWarn>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SwVersion Condition="'$(SwVersion)' == ''">2020</SwVersion>
+    <SwInstallDir Condition="'$(SwInstallDir)' == ''">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\SolidWorks\SOLIDWORKS $(SwVersion)\Setup', 'SolidWorks Folder', null, RegistryView.Registry64))</SwInstallDir>
+    <SwInstallDir Condition="'$(SwInstallDir)' != '' and !HasTrailingSlash('$(SwInstallDir)')">$(SwInstallDir)\</SwInstallDir>
+    <SwInteropDir>$(SwInstallDir)api\redist\</SwInteropDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="SolidWorks.Interop.sldworks">
+      <HintPath>$(SwInteropDir)SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst">
+      <HintPath>$(SwInteropDir)SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
